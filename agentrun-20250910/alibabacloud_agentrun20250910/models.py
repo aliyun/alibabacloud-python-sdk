@@ -1049,6 +1049,41 @@ class ApigLLMModel(TeaModel):
         return self
 
 
+class ArmsConfiguration(TeaModel):
+    def __init__(
+        self,
+        arms_license_key: str = None,
+        enable_arms: bool = None,
+    ):
+        # 应用实时监控服务（ARMS）的许可证密钥
+        self.arms_license_key = arms_license_key
+        # 是否启用应用实时监控服务（ARMS）
+        self.enable_arms = enable_arms
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arms_license_key is not None:
+            result['armsLicenseKey'] = self.arms_license_key
+        if self.enable_arms is not None:
+            result['enableArms'] = self.enable_arms
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('armsLicenseKey') is not None:
+            self.arms_license_key = m.get('armsLicenseKey')
+        if m.get('enableArms') is not None:
+            self.enable_arms = m.get('enableArms')
+        return self
+
+
 class AttachPolicyConfig(TeaModel):
     def __init__(
         self,
@@ -1298,6 +1333,101 @@ class BrowserAutomationStream(TeaModel):
             self.stream_endpoint = m.get('streamEndpoint')
         if m.get('streamStatus') is not None:
             self.stream_status = m.get('streamStatus')
+        return self
+
+
+class ViewPortConfiguration(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        width: float = None,
+    ):
+        # 视口高度（像素）
+        # 
+        # This parameter is required.
+        self.height = height
+        # 视口宽度（像素）
+        # 
+        # This parameter is required.
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['height'] = self.height
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
+class BrowserConfiguration(TeaModel):
+    def __init__(
+        self,
+        browser_type: str = None,
+        enable_extension: List[str] = None,
+        headless: bool = None,
+        user_agent: str = None,
+        view_port: ViewPortConfiguration = None,
+    ):
+        self.browser_type = browser_type
+        # 要启用的浏览器扩展列表
+        self.enable_extension = enable_extension
+        # 是否以无头模式运行浏览器
+        self.headless = headless
+        # 浏览器用户代理字符串
+        self.user_agent = user_agent
+        self.view_port = view_port
+
+    def validate(self):
+        if self.view_port:
+            self.view_port.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.browser_type is not None:
+            result['browserType'] = self.browser_type
+        if self.enable_extension is not None:
+            result['enableExtension'] = self.enable_extension
+        if self.headless is not None:
+            result['headless'] = self.headless
+        if self.user_agent is not None:
+            result['userAgent'] = self.user_agent
+        if self.view_port is not None:
+            result['viewPort'] = self.view_port.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('browserType') is not None:
+            self.browser_type = m.get('browserType')
+        if m.get('enableExtension') is not None:
+            self.enable_extension = m.get('enableExtension')
+        if m.get('headless') is not None:
+            self.headless = m.get('headless')
+        if m.get('userAgent') is not None:
+            self.user_agent = m.get('userAgent')
+        if m.get('viewPort') is not None:
+            temp_model = ViewPortConfiguration()
+            self.view_port = temp_model.from_map(m['viewPort'])
         return self
 
 
@@ -2053,6 +2183,7 @@ class CreateAgentRuntimeInput(TeaModel):
         container_configuration: ContainerConfiguration = None,
         cpu: float = None,
         credential_id: str = None,
+        credential_name: str = None,
         description: str = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
@@ -2083,6 +2214,8 @@ class CreateAgentRuntimeInput(TeaModel):
         self.cpu = cpu
         # 用于访问外部服务的凭证ID，智能体运行时将使用此凭证进行身份验证
         self.credential_id = credential_id
+        # 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+        self.credential_name = credential_name
         # 智能体运行时的描述信息，用于说明该运行时的用途和功能
         self.description = description
         # 智能体运行时的环境变量配置，用于在运行时传递配置参数
@@ -2144,6 +2277,8 @@ class CreateAgentRuntimeInput(TeaModel):
             result['cpu'] = self.cpu
         if self.credential_id is not None:
             result['credentialId'] = self.credential_id
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
         if self.description is not None:
             result['description'] = self.description
         if self.environment_variables is not None:
@@ -2184,6 +2319,8 @@ class CreateAgentRuntimeInput(TeaModel):
             self.cpu = m.get('cpu')
         if m.get('credentialId') is not None:
             self.credential_id = m.get('credentialId')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('environmentVariables') is not None:
@@ -2470,21 +2607,16 @@ class CreateCodeInterpreterInput(TeaModel):
         return self
 
 
-class CreateCredentialInput(TeaModel):
+class CredentialPublicConfigRemoteConfig(TeaModel):
     def __init__(
         self,
-        config: Dict[str, str] = None,
-        description: str = None,
-        name: str = None,
-        secret: str = None,
-        type: str = None,
+        timeout: int = None,
+        ttl: int = None,
+        uri: str = None,
     ):
-        # 凭证的配置参数，以键值对形式存储
-        self.config = config
-        self.description = description
-        self.name = name
-        self.secret = secret
-        self.type = type
+        self.timeout = timeout
+        self.ttl = ttl
+        self.uri = uri
 
     def validate(self):
         pass
@@ -2495,30 +2627,230 @@ class CreateCredentialInput(TeaModel):
             return _map
 
         result = dict()
-        if self.config is not None:
-            result['config'] = self.config
-        if self.description is not None:
-            result['description'] = self.description
-        if self.name is not None:
-            result['name'] = self.name
-        if self.secret is not None:
-            result['secret'] = self.secret
-        if self.type is not None:
-            result['type'] = self.type
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.ttl is not None:
+            result['ttl'] = self.ttl
+        if self.uri is not None:
+            result['uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('config') is not None:
-            self.config = m.get('config')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('ttl') is not None:
+            self.ttl = m.get('ttl')
+        if m.get('uri') is not None:
+            self.uri = m.get('uri')
+        return self
+
+
+class CredentialPublicConfigUsers(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        username: str = None,
+    ):
+        self.password = password
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['password'] = self.password
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class CredentialPublicConfig(TeaModel):
+    def __init__(
+        self,
+        auth_config: Dict[str, str] = None,
+        auth_type: str = None,
+        header_key: str = None,
+        provider: str = None,
+        remote_config: CredentialPublicConfigRemoteConfig = None,
+        users: List[CredentialPublicConfigUsers] = None,
+    ):
+        self.auth_config = auth_config
+        self.auth_type = auth_type
+        self.header_key = header_key
+        self.provider = provider
+        self.remote_config = remote_config
+        self.users = users
+
+    def validate(self):
+        if self.remote_config:
+            self.remote_config.validate()
+        if self.users:
+            for k in self.users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.header_key is not None:
+            result['headerKey'] = self.header_key
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.remote_config is not None:
+            result['remoteConfig'] = self.remote_config.to_map()
+        result['users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['users'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authConfig') is not None:
+            self.auth_config = m.get('authConfig')
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('headerKey') is not None:
+            self.header_key = m.get('headerKey')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('remoteConfig') is not None:
+            temp_model = CredentialPublicConfigRemoteConfig()
+            self.remote_config = temp_model.from_map(m['remoteConfig'])
+        self.users = []
+        if m.get('users') is not None:
+            for k in m.get('users'):
+                temp_model = CredentialPublicConfigUsers()
+                self.users.append(temp_model.from_map(k))
+        return self
+
+
+class CreateCredentialInput(TeaModel):
+    def __init__(
+        self,
+        credential_auth_type: str = None,
+        credential_name: str = None,
+        credential_public_config: CredentialPublicConfig = None,
+        credential_secret: str = None,
+        credential_source_type: str = None,
+        description: str = None,
+        enabled: bool = None,
+    ):
+        # This parameter is required.
+        self.credential_auth_type = credential_auth_type
+        # This parameter is required.
+        self.credential_name = credential_name
+        self.credential_public_config = credential_public_config
+        self.credential_secret = credential_secret
+        # This parameter is required.
+        self.credential_source_type = credential_source_type
+        self.description = description
+        self.enabled = enabled
+
+    def validate(self):
+        if self.credential_public_config:
+            self.credential_public_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_auth_type is not None:
+            result['credentialAuthType'] = self.credential_auth_type
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.credential_public_config is not None:
+            result['credentialPublicConfig'] = self.credential_public_config.to_map()
+        if self.credential_secret is not None:
+            result['credentialSecret'] = self.credential_secret
+        if self.credential_source_type is not None:
+            result['credentialSourceType'] = self.credential_source_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialAuthType') is not None:
+            self.credential_auth_type = m.get('credentialAuthType')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('credentialPublicConfig') is not None:
+            temp_model = CredentialPublicConfig()
+            self.credential_public_config = temp_model.from_map(m['credentialPublicConfig'])
+        if m.get('credentialSecret') is not None:
+            self.credential_secret = m.get('credentialSecret')
+        if m.get('credentialSourceType') is not None:
+            self.credential_source_type = m.get('credentialSourceType')
         if m.get('description') is not None:
             self.description = m.get('description')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('secret') is not None:
-            self.secret = m.get('secret')
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        return self
+
+
+class RelatedResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
         return self
 
 
@@ -2526,17 +2858,34 @@ class CreateCredentialOutput(TeaModel):
     def __init__(
         self,
         created_at: str = None,
-        id: str = None,
-        name: str = None,
-        type: str = None,
+        credential_auth_type: str = None,
+        credential_id: str = None,
+        credential_name: str = None,
+        credential_public_config: Dict[str, str] = None,
+        credential_secret: str = None,
+        credential_source_type: str = None,
+        description: str = None,
+        enabled: bool = None,
+        related_resources: List[RelatedResource] = None,
+        updated_at: str = None,
     ):
         self.created_at = created_at
-        self.id = id
-        self.name = name
-        self.type = type
+        self.credential_auth_type = credential_auth_type
+        self.credential_id = credential_id
+        self.credential_name = credential_name
+        self.credential_public_config = credential_public_config
+        self.credential_secret = credential_secret
+        self.credential_source_type = credential_source_type
+        self.description = description
+        self.enabled = enabled
+        self.related_resources = related_resources
+        self.updated_at = updated_at
 
     def validate(self):
-        pass
+        if self.related_resources:
+            for k in self.related_resources:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2546,24 +2895,57 @@ class CreateCredentialOutput(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['createdAt'] = self.created_at
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.type is not None:
-            result['type'] = self.type
+        if self.credential_auth_type is not None:
+            result['credentialAuthType'] = self.credential_auth_type
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.credential_public_config is not None:
+            result['credentialPublicConfig'] = self.credential_public_config
+        if self.credential_secret is not None:
+            result['credentialSecret'] = self.credential_secret
+        if self.credential_source_type is not None:
+            result['credentialSourceType'] = self.credential_source_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        result['relatedResources'] = []
+        if self.related_resources is not None:
+            for k in self.related_resources:
+                result['relatedResources'].append(k.to_map() if k else None)
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('credentialAuthType') is not None:
+            self.credential_auth_type = m.get('credentialAuthType')
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('credentialPublicConfig') is not None:
+            self.credential_public_config = m.get('credentialPublicConfig')
+        if m.get('credentialSecret') is not None:
+            self.credential_secret = m.get('credentialSecret')
+        if m.get('credentialSourceType') is not None:
+            self.credential_source_type = m.get('credentialSourceType')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        self.related_resources = []
+        if m.get('relatedResources') is not None:
+            for k in m.get('relatedResources'):
+                temp_model = RelatedResource()
+                self.related_resources.append(temp_model.from_map(k))
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
         return self
 
 
@@ -3131,6 +3513,896 @@ class CreateModelInput(TeaModel):
         return self
 
 
+class ProxyConfigEndpoints(TeaModel):
+    def __init__(
+        self,
+        base_url: str = None,
+        model_names: List[str] = None,
+        model_service_name: str = None,
+        weight: int = None,
+    ):
+        self.base_url = base_url
+        self.model_names = model_names
+        self.model_service_name = model_service_name
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_url is not None:
+            result['baseUrl'] = self.base_url
+        if self.model_names is not None:
+            result['modelNames'] = self.model_names
+        if self.model_service_name is not None:
+            result['modelServiceName'] = self.model_service_name
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('baseUrl') is not None:
+            self.base_url = m.get('baseUrl')
+        if m.get('modelNames') is not None:
+            self.model_names = m.get('modelNames')
+        if m.get('modelServiceName') is not None:
+            self.model_service_name = m.get('modelServiceName')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class ProxyConfigPoliciesFallbacks(TeaModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        model_service_name: str = None,
+    ):
+        self.model_name = model_name
+        self.model_service_name = model_service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.model_service_name is not None:
+            result['modelServiceName'] = self.model_service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('modelServiceName') is not None:
+            self.model_service_name = m.get('modelServiceName')
+        return self
+
+
+class ProxyConfigPolicies(TeaModel):
+    def __init__(
+        self,
+        cache: bool = None,
+        concurrency_limit: int = None,
+        fallbacks: List[ProxyConfigPoliciesFallbacks] = None,
+        num_retries: int = None,
+        request_timeout: int = None,
+    ):
+        self.cache = cache
+        self.concurrency_limit = concurrency_limit
+        self.fallbacks = fallbacks
+        self.num_retries = num_retries
+        self.request_timeout = request_timeout
+
+    def validate(self):
+        if self.fallbacks:
+            for k in self.fallbacks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache is not None:
+            result['cache'] = self.cache
+        if self.concurrency_limit is not None:
+            result['concurrencyLimit'] = self.concurrency_limit
+        result['fallbacks'] = []
+        if self.fallbacks is not None:
+            for k in self.fallbacks:
+                result['fallbacks'].append(k.to_map() if k else None)
+        if self.num_retries is not None:
+            result['numRetries'] = self.num_retries
+        if self.request_timeout is not None:
+            result['requestTimeout'] = self.request_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cache') is not None:
+            self.cache = m.get('cache')
+        if m.get('concurrencyLimit') is not None:
+            self.concurrency_limit = m.get('concurrencyLimit')
+        self.fallbacks = []
+        if m.get('fallbacks') is not None:
+            for k in m.get('fallbacks'):
+                temp_model = ProxyConfigPoliciesFallbacks()
+                self.fallbacks.append(temp_model.from_map(k))
+        if m.get('numRetries') is not None:
+            self.num_retries = m.get('numRetries')
+        if m.get('requestTimeout') is not None:
+            self.request_timeout = m.get('requestTimeout')
+        return self
+
+
+class ProxyConfig(TeaModel):
+    def __init__(
+        self,
+        endpoints: List[ProxyConfigEndpoints] = None,
+        policies: ProxyConfigPolicies = None,
+    ):
+        self.endpoints = endpoints
+        self.policies = policies
+
+    def validate(self):
+        if self.endpoints:
+            for k in self.endpoints:
+                if k:
+                    k.validate()
+        if self.policies:
+            self.policies.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['endpoints'] = []
+        if self.endpoints is not None:
+            for k in self.endpoints:
+                result['endpoints'].append(k.to_map() if k else None)
+        if self.policies is not None:
+            result['policies'] = self.policies.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.endpoints = []
+        if m.get('endpoints') is not None:
+            for k in m.get('endpoints'):
+                temp_model = ProxyConfigEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
+        if m.get('policies') is not None:
+            temp_model = ProxyConfigPolicies()
+            self.policies = temp_model.from_map(m['policies'])
+        return self
+
+
+class CreateModelProxyInput(TeaModel):
+    def __init__(
+        self,
+        arms_configuration: ArmsConfiguration = None,
+        cpu: float = None,
+        credential_name: str = None,
+        description: str = None,
+        litellm_version: str = None,
+        log_configuration: LogConfiguration = None,
+        memory: int = None,
+        model_proxy_name: str = None,
+        model_type: str = None,
+        network_configuration: NetworkConfiguration = None,
+        proxy_config: ProxyConfig = None,
+        proxy_mode: str = None,
+        service_region_id: str = None,
+    ):
+        self.arms_configuration = arms_configuration
+        # This parameter is required.
+        self.cpu = cpu
+        self.credential_name = credential_name
+        self.description = description
+        self.litellm_version = litellm_version
+        self.log_configuration = log_configuration
+        # This parameter is required.
+        self.memory = memory
+        # This parameter is required.
+        self.model_proxy_name = model_proxy_name
+        self.model_type = model_type
+        self.network_configuration = network_configuration
+        # This parameter is required.
+        self.proxy_config = proxy_config
+        # This parameter is required.
+        self.proxy_mode = proxy_mode
+        self.service_region_id = service_region_id
+
+    def validate(self):
+        if self.arms_configuration:
+            self.arms_configuration.validate()
+        if self.log_configuration:
+            self.log_configuration.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.proxy_config:
+            self.proxy_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arms_configuration is not None:
+            result['armsConfiguration'] = self.arms_configuration.to_map()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.litellm_version is not None:
+            result['litellmVersion'] = self.litellm_version
+        if self.log_configuration is not None:
+            result['logConfiguration'] = self.log_configuration.to_map()
+        if self.memory is not None:
+            result['memory'] = self.memory
+        if self.model_proxy_name is not None:
+            result['modelProxyName'] = self.model_proxy_name
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        if self.proxy_config is not None:
+            result['proxyConfig'] = self.proxy_config.to_map()
+        if self.proxy_mode is not None:
+            result['proxyMode'] = self.proxy_mode
+        if self.service_region_id is not None:
+            result['serviceRegionId'] = self.service_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('armsConfiguration') is not None:
+            temp_model = ArmsConfiguration()
+            self.arms_configuration = temp_model.from_map(m['armsConfiguration'])
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('litellmVersion') is not None:
+            self.litellm_version = m.get('litellmVersion')
+        if m.get('logConfiguration') is not None:
+            temp_model = LogConfiguration()
+            self.log_configuration = temp_model.from_map(m['logConfiguration'])
+        if m.get('memory') is not None:
+            self.memory = m.get('memory')
+        if m.get('modelProxyName') is not None:
+            self.model_proxy_name = m.get('modelProxyName')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        if m.get('proxyConfig') is not None:
+            temp_model = ProxyConfig()
+            self.proxy_config = temp_model.from_map(m['proxyConfig'])
+        if m.get('proxyMode') is not None:
+            self.proxy_mode = m.get('proxyMode')
+        if m.get('serviceRegionId') is not None:
+            self.service_region_id = m.get('serviceRegionId')
+        return self
+
+
+class ModelFeatures(TeaModel):
+    def __init__(
+        self,
+        agent_thought: bool = None,
+        multi_tool_call: bool = None,
+        stream_tool_call: bool = None,
+        tool_call: bool = None,
+        vision: bool = None,
+    ):
+        self.agent_thought = agent_thought
+        self.multi_tool_call = multi_tool_call
+        self.stream_tool_call = stream_tool_call
+        self.tool_call = tool_call
+        self.vision = vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_thought is not None:
+            result['agentThought'] = self.agent_thought
+        if self.multi_tool_call is not None:
+            result['multiToolCall'] = self.multi_tool_call
+        if self.stream_tool_call is not None:
+            result['streamToolCall'] = self.stream_tool_call
+        if self.tool_call is not None:
+            result['toolCall'] = self.tool_call
+        if self.vision is not None:
+            result['vision'] = self.vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentThought') is not None:
+            self.agent_thought = m.get('agentThought')
+        if m.get('multiToolCall') is not None:
+            self.multi_tool_call = m.get('multiToolCall')
+        if m.get('streamToolCall') is not None:
+            self.stream_tool_call = m.get('streamToolCall')
+        if m.get('toolCall') is not None:
+            self.tool_call = m.get('toolCall')
+        if m.get('vision') is not None:
+            self.vision = m.get('vision')
+        return self
+
+
+class ModelParameterRule(TeaModel):
+    def __init__(
+        self,
+        default: Any = None,
+        max: int = None,
+        min: int = None,
+        name: str = None,
+        required: bool = None,
+        type: str = None,
+    ):
+        self.default = default
+        self.max = max
+        self.min = min
+        self.name = name
+        self.required = required
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default is not None:
+            result['default'] = self.default
+        if self.max is not None:
+            result['max'] = self.max
+        if self.min is not None:
+            result['min'] = self.min
+        if self.name is not None:
+            result['name'] = self.name
+        if self.required is not None:
+            result['required'] = self.required
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('default') is not None:
+            self.default = m.get('default')
+        if m.get('max') is not None:
+            self.max = m.get('max')
+        if m.get('min') is not None:
+            self.min = m.get('min')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ModelProperties(TeaModel):
+    def __init__(
+        self,
+        context_size: int = None,
+    ):
+        self.context_size = context_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_size is not None:
+            result['contextSize'] = self.context_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('contextSize') is not None:
+            self.context_size = m.get('contextSize')
+        return self
+
+
+class ModelInfoConfig(TeaModel):
+    def __init__(
+        self,
+        model_features: ModelFeatures = None,
+        model_name: str = None,
+        model_parameter_rules: List[ModelParameterRule] = None,
+        model_properties: ModelProperties = None,
+    ):
+        self.model_features = model_features
+        self.model_name = model_name
+        self.model_parameter_rules = model_parameter_rules
+        self.model_properties = model_properties
+
+    def validate(self):
+        if self.model_features:
+            self.model_features.validate()
+        if self.model_parameter_rules:
+            for k in self.model_parameter_rules:
+                if k:
+                    k.validate()
+        if self.model_properties:
+            self.model_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_features is not None:
+            result['modelFeatures'] = self.model_features.to_map()
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        result['modelParameterRules'] = []
+        if self.model_parameter_rules is not None:
+            for k in self.model_parameter_rules:
+                result['modelParameterRules'].append(k.to_map() if k else None)
+        if self.model_properties is not None:
+            result['modelProperties'] = self.model_properties.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modelFeatures') is not None:
+            temp_model = ModelFeatures()
+            self.model_features = temp_model.from_map(m['modelFeatures'])
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        self.model_parameter_rules = []
+        if m.get('modelParameterRules') is not None:
+            for k in m.get('modelParameterRules'):
+                temp_model = ModelParameterRule()
+                self.model_parameter_rules.append(temp_model.from_map(k))
+        if m.get('modelProperties') is not None:
+            temp_model = ModelProperties()
+            self.model_properties = temp_model.from_map(m['modelProperties'])
+        return self
+
+
+class ProviderSettings(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        base_url: str = None,
+        model_names: List[str] = None,
+    ):
+        self.api_key = api_key
+        self.base_url = base_url
+        self.model_names = model_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+        if self.base_url is not None:
+            result['baseUrl'] = self.base_url
+        if self.model_names is not None:
+            result['modelNames'] = self.model_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+        if m.get('baseUrl') is not None:
+            self.base_url = m.get('baseUrl')
+        if m.get('modelNames') is not None:
+            self.model_names = m.get('modelNames')
+        return self
+
+
+class CreateModelServiceInput(TeaModel):
+    def __init__(
+        self,
+        credential_name: str = None,
+        description: str = None,
+        model_info_configs: List[ModelInfoConfig] = None,
+        model_service_name: str = None,
+        model_type: str = None,
+        network_configuration: NetworkConfiguration = None,
+        provider: str = None,
+        provider_settings: ProviderSettings = None,
+    ):
+        self.credential_name = credential_name
+        self.description = description
+        self.model_info_configs = model_info_configs
+        # This parameter is required.
+        self.model_service_name = model_service_name
+        # This parameter is required.
+        self.model_type = model_type
+        self.network_configuration = network_configuration
+        # This parameter is required.
+        self.provider = provider
+        # This parameter is required.
+        self.provider_settings = provider_settings
+
+    def validate(self):
+        if self.model_info_configs:
+            for k in self.model_info_configs:
+                if k:
+                    k.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.provider_settings:
+            self.provider_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.description is not None:
+            result['description'] = self.description
+        result['modelInfoConfigs'] = []
+        if self.model_info_configs is not None:
+            for k in self.model_info_configs:
+                result['modelInfoConfigs'].append(k.to_map() if k else None)
+        if self.model_service_name is not None:
+            result['modelServiceName'] = self.model_service_name
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.provider_settings is not None:
+            result['providerSettings'] = self.provider_settings.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        self.model_info_configs = []
+        if m.get('modelInfoConfigs') is not None:
+            for k in m.get('modelInfoConfigs'):
+                temp_model = ModelInfoConfig()
+                self.model_info_configs.append(temp_model.from_map(k))
+        if m.get('modelServiceName') is not None:
+            self.model_service_name = m.get('modelServiceName')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('providerSettings') is not None:
+            temp_model = ProviderSettings()
+            self.provider_settings = temp_model.from_map(m['providerSettings'])
+        return self
+
+
+class CreateSandboxInput(TeaModel):
+    def __init__(
+        self,
+        sandbox_idle_timeout_seconds: int = None,
+        template_name: str = None,
+    ):
+        # 沙箱空闲超时时间（秒）
+        self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
+        # 模板名称（系统内部通过 templateName 查询 template_id）
+        # 
+        # This parameter is required.
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sandbox_idle_timeout_seconds is not None:
+            result['sandboxIdleTimeoutSeconds'] = self.sandbox_idle_timeout_seconds
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sandboxIdleTimeoutSeconds') is not None:
+            self.sandbox_idle_timeout_seconds = m.get('sandboxIdleTimeoutSeconds')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
+        return self
+
+
+class CredentialConfiguration(TeaModel):
+    def __init__(
+        self,
+        credential_name: str = None,
+    ):
+        # 凭证的唯一标识符
+        self.credential_name = credential_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        return self
+
+
+class OssConfiguration(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        mount_point: str = None,
+        permission: str = None,
+        prefix: str = None,
+    ):
+        # This parameter is required.
+        self.bucket_name = bucket_name
+        # This parameter is required.
+        self.mount_point = mount_point
+        self.permission = permission
+        # This parameter is required.
+        self.prefix = prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+        if self.mount_point is not None:
+            result['mountPoint'] = self.mount_point
+        if self.permission is not None:
+            result['permission'] = self.permission
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+        if m.get('mountPoint') is not None:
+            self.mount_point = m.get('mountPoint')
+        if m.get('permission') is not None:
+            self.permission = m.get('permission')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        return self
+
+
+class CreateTemplateInput(TeaModel):
+    def __init__(
+        self,
+        arms_configuration: ArmsConfiguration = None,
+        container_configuration: ContainerConfiguration = None,
+        cpu: float = None,
+        credential_configuration: CredentialConfiguration = None,
+        description: str = None,
+        disk_size: int = None,
+        environment_variables: Dict[str, str] = None,
+        execution_role_arn: str = None,
+        log_configuration: LogConfiguration = None,
+        memory: int = None,
+        network_configuration: NetworkConfiguration = None,
+        oss_configuration: List[OssConfiguration] = None,
+        sandbox_idle_timeout_in_seconds: int = None,
+        sandbox_ttlin_seconds: int = None,
+        template_configuration: Dict[str, Any] = None,
+        template_name: str = None,
+        template_type: str = None,
+    ):
+        self.arms_configuration = arms_configuration
+        # 容器配置，只允许基于 Browser/Code Interpreter 基础镜像的 image
+        self.container_configuration = container_configuration
+        # CPU资源配置（单位：核心）
+        # 
+        # This parameter is required.
+        self.cpu = cpu
+        self.credential_configuration = credential_configuration
+        self.description = description
+        self.disk_size = disk_size
+        self.environment_variables = environment_variables
+        self.execution_role_arn = execution_role_arn
+        self.log_configuration = log_configuration
+        # 内存资源配置（单位：MB）
+        # 
+        # This parameter is required.
+        self.memory = memory
+        # This parameter is required.
+        self.network_configuration = network_configuration
+        self.oss_configuration = oss_configuration
+        # 沙箱空闲超时时间（秒）
+        self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
+        # 沙箱存活时间（秒）
+        self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+        self.template_configuration = template_configuration
+        # 模板名称（要求账号唯一的）
+        # 
+        # This parameter is required.
+        self.template_name = template_name
+        # This parameter is required.
+        self.template_type = template_type
+
+    def validate(self):
+        if self.arms_configuration:
+            self.arms_configuration.validate()
+        if self.container_configuration:
+            self.container_configuration.validate()
+        if self.credential_configuration:
+            self.credential_configuration.validate()
+        if self.log_configuration:
+            self.log_configuration.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.oss_configuration:
+            for k in self.oss_configuration:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arms_configuration is not None:
+            result['armsConfiguration'] = self.arms_configuration.to_map()
+        if self.container_configuration is not None:
+            result['containerConfiguration'] = self.container_configuration.to_map()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.credential_configuration is not None:
+            result['credentialConfiguration'] = self.credential_configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.execution_role_arn is not None:
+            result['executionRoleArn'] = self.execution_role_arn
+        if self.log_configuration is not None:
+            result['logConfiguration'] = self.log_configuration.to_map()
+        if self.memory is not None:
+            result['memory'] = self.memory
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        result['ossConfiguration'] = []
+        if self.oss_configuration is not None:
+            for k in self.oss_configuration:
+                result['ossConfiguration'].append(k.to_map() if k else None)
+        if self.sandbox_idle_timeout_in_seconds is not None:
+            result['sandboxIdleTimeoutInSeconds'] = self.sandbox_idle_timeout_in_seconds
+        if self.sandbox_ttlin_seconds is not None:
+            result['sandboxTTLInSeconds'] = self.sandbox_ttlin_seconds
+        if self.template_configuration is not None:
+            result['templateConfiguration'] = self.template_configuration
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
+        if self.template_type is not None:
+            result['templateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('armsConfiguration') is not None:
+            temp_model = ArmsConfiguration()
+            self.arms_configuration = temp_model.from_map(m['armsConfiguration'])
+        if m.get('containerConfiguration') is not None:
+            temp_model = ContainerConfiguration()
+            self.container_configuration = temp_model.from_map(m['containerConfiguration'])
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('credentialConfiguration') is not None:
+            temp_model = CredentialConfiguration()
+            self.credential_configuration = temp_model.from_map(m['credentialConfiguration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('executionRoleArn') is not None:
+            self.execution_role_arn = m.get('executionRoleArn')
+        if m.get('logConfiguration') is not None:
+            temp_model = LogConfiguration()
+            self.log_configuration = temp_model.from_map(m['logConfiguration'])
+        if m.get('memory') is not None:
+            self.memory = m.get('memory')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        self.oss_configuration = []
+        if m.get('ossConfiguration') is not None:
+            for k in m.get('ossConfiguration'):
+                temp_model = OssConfiguration()
+                self.oss_configuration.append(temp_model.from_map(k))
+        if m.get('sandboxIdleTimeoutInSeconds') is not None:
+            self.sandbox_idle_timeout_in_seconds = m.get('sandboxIdleTimeoutInSeconds')
+        if m.get('sandboxTTLInSeconds') is not None:
+            self.sandbox_ttlin_seconds = m.get('sandboxTTLInSeconds')
+        if m.get('templateConfiguration') is not None:
+            self.template_configuration = m.get('templateConfiguration')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
+        if m.get('templateType') is not None:
+            self.template_type = m.get('templateType')
+        return self
+
+
 class CreateToolData(TeaModel):
     def __init__(
         self,
@@ -3286,65 +4558,36 @@ class CreateToolOutput(TeaModel):
         return self
 
 
-class RelatedWorkload(TeaModel):
-    def __init__(
-        self,
-        workload_id: str = None,
-        workload_name: str = None,
-        workload_type: str = None,
-    ):
-        self.workload_id = workload_id
-        self.workload_name = workload_name
-        self.workload_type = workload_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.workload_id is not None:
-            result['workloadId'] = self.workload_id
-        if self.workload_name is not None:
-            result['workloadName'] = self.workload_name
-        if self.workload_type is not None:
-            result['workloadType'] = self.workload_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('workloadId') is not None:
-            self.workload_id = m.get('workloadId')
-        if m.get('workloadName') is not None:
-            self.workload_name = m.get('workloadName')
-        if m.get('workloadType') is not None:
-            self.workload_type = m.get('workloadType')
-        return self
-
-
-class CredentialListItem(TeaModel):
+class Credential(TeaModel):
     def __init__(
         self,
         created_at: str = None,
-        id: str = None,
-        name: str = None,
-        related_worloads: List[RelatedWorkload] = None,
-        type: str = None,
+        credential_auth_type: str = None,
+        credential_id: str = None,
+        credential_name: str = None,
+        credential_public_config: Dict[str, str] = None,
+        credential_secret: str = None,
+        credential_source_type: str = None,
+        description: str = None,
+        enabled: bool = None,
+        related_resources: List[RelatedResource] = None,
         updated_at: str = None,
     ):
         self.created_at = created_at
-        self.id = id
-        self.name = name
-        self.related_worloads = related_worloads
-        self.type = type
+        self.credential_auth_type = credential_auth_type
+        self.credential_id = credential_id
+        self.credential_name = credential_name
+        self.credential_public_config = credential_public_config
+        self.credential_secret = credential_secret
+        self.credential_source_type = credential_source_type
+        self.description = description
+        self.enabled = enabled
+        self.related_resources = related_resources
         self.updated_at = updated_at
 
     def validate(self):
-        if self.related_worloads:
-            for k in self.related_worloads:
+        if self.related_resources:
+            for k in self.related_resources:
                 if k:
                     k.validate()
 
@@ -3356,16 +4599,26 @@ class CredentialListItem(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['createdAt'] = self.created_at
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        result['relatedWorloads'] = []
-        if self.related_worloads is not None:
-            for k in self.related_worloads:
-                result['relatedWorloads'].append(k.to_map() if k else None)
-        if self.type is not None:
-            result['type'] = self.type
+        if self.credential_auth_type is not None:
+            result['credentialAuthType'] = self.credential_auth_type
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.credential_public_config is not None:
+            result['credentialPublicConfig'] = self.credential_public_config
+        if self.credential_secret is not None:
+            result['credentialSecret'] = self.credential_secret
+        if self.credential_source_type is not None:
+            result['credentialSourceType'] = self.credential_source_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        result['relatedResources'] = []
+        if self.related_resources is not None:
+            for k in self.related_resources:
+                result['relatedResources'].append(k.to_map() if k else None)
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
         return result
@@ -3374,19 +4627,139 @@ class CredentialListItem(TeaModel):
         m = m or dict()
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        self.related_worloads = []
-        if m.get('relatedWorloads') is not None:
-            for k in m.get('relatedWorloads'):
-                temp_model = RelatedWorkload()
-                self.related_worloads.append(temp_model.from_map(k))
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('credentialAuthType') is not None:
+            self.credential_auth_type = m.get('credentialAuthType')
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('credentialPublicConfig') is not None:
+            self.credential_public_config = m.get('credentialPublicConfig')
+        if m.get('credentialSecret') is not None:
+            self.credential_secret = m.get('credentialSecret')
+        if m.get('credentialSourceType') is not None:
+            self.credential_source_type = m.get('credentialSourceType')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        self.related_resources = []
+        if m.get('relatedResources') is not None:
+            for k in m.get('relatedResources'):
+                temp_model = RelatedResource()
+                self.related_resources.append(temp_model.from_map(k))
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
+        return self
+
+
+class CredentialListItem(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        credential_auth_type: str = None,
+        credential_id: str = None,
+        credential_name: str = None,
+        credential_source_type: str = None,
+        enabled: bool = None,
+        related_resource_count: int = None,
+        updated_at: str = None,
+    ):
+        self.created_at = created_at
+        self.credential_auth_type = credential_auth_type
+        self.credential_id = credential_id
+        self.credential_name = credential_name
+        self.credential_source_type = credential_source_type
+        self.enabled = enabled
+        self.related_resource_count = related_resource_count
+        self.updated_at = updated_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.credential_auth_type is not None:
+            result['credentialAuthType'] = self.credential_auth_type
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.credential_source_type is not None:
+            result['credentialSourceType'] = self.credential_source_type
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.related_resource_count is not None:
+            result['relatedResourceCount'] = self.related_resource_count
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('credentialAuthType') is not None:
+            self.credential_auth_type = m.get('credentialAuthType')
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('credentialSourceType') is not None:
+            self.credential_source_type = m.get('credentialSourceType')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('relatedResourceCount') is not None:
+            self.related_resource_count = m.get('relatedResourceCount')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        return self
+
+
+class CredentialResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Credential = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = Credential()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -3592,6 +4965,816 @@ class DeleteCodeInterpreterResult(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        return self
+
+
+class ModelProxy(TeaModel):
+    def __init__(
+        self,
+        cpu: float = None,
+        created_at: str = None,
+        credential_name: str = None,
+        description: str = None,
+        endpoint: str = None,
+        function_name: str = None,
+        last_updated_at: str = None,
+        litellm_version: str = None,
+        log_configuration: LogConfiguration = None,
+        memory: int = None,
+        model_proxy_id: str = None,
+        model_proxy_name: str = None,
+        model_type: str = None,
+        network_configuration: NetworkConfiguration = None,
+        proxy_config: ProxyConfig = None,
+        proxy_mode: str = None,
+        service_region_id: str = None,
+        status: str = None,
+        status_reason: str = None,
+    ):
+        self.cpu = cpu
+        self.created_at = created_at
+        self.credential_name = credential_name
+        self.description = description
+        self.endpoint = endpoint
+        self.function_name = function_name
+        self.last_updated_at = last_updated_at
+        self.litellm_version = litellm_version
+        self.log_configuration = log_configuration
+        self.memory = memory
+        self.model_proxy_id = model_proxy_id
+        self.model_proxy_name = model_proxy_name
+        self.model_type = model_type
+        self.network_configuration = network_configuration
+        self.proxy_config = proxy_config
+        self.proxy_mode = proxy_mode
+        self.service_region_id = service_region_id
+        self.status = status
+        self.status_reason = status_reason
+
+    def validate(self):
+        if self.log_configuration:
+            self.log_configuration.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.proxy_config:
+            self.proxy_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.last_updated_at is not None:
+            result['lastUpdatedAt'] = self.last_updated_at
+        if self.litellm_version is not None:
+            result['litellmVersion'] = self.litellm_version
+        if self.log_configuration is not None:
+            result['logConfiguration'] = self.log_configuration.to_map()
+        if self.memory is not None:
+            result['memory'] = self.memory
+        if self.model_proxy_id is not None:
+            result['modelProxyId'] = self.model_proxy_id
+        if self.model_proxy_name is not None:
+            result['modelProxyName'] = self.model_proxy_name
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        if self.proxy_config is not None:
+            result['proxyConfig'] = self.proxy_config.to_map()
+        if self.proxy_mode is not None:
+            result['proxyMode'] = self.proxy_mode
+        if self.service_region_id is not None:
+            result['serviceRegionId'] = self.service_region_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_reason is not None:
+            result['statusReason'] = self.status_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('lastUpdatedAt') is not None:
+            self.last_updated_at = m.get('lastUpdatedAt')
+        if m.get('litellmVersion') is not None:
+            self.litellm_version = m.get('litellmVersion')
+        if m.get('logConfiguration') is not None:
+            temp_model = LogConfiguration()
+            self.log_configuration = temp_model.from_map(m['logConfiguration'])
+        if m.get('memory') is not None:
+            self.memory = m.get('memory')
+        if m.get('modelProxyId') is not None:
+            self.model_proxy_id = m.get('modelProxyId')
+        if m.get('modelProxyName') is not None:
+            self.model_proxy_name = m.get('modelProxyName')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        if m.get('proxyConfig') is not None:
+            temp_model = ProxyConfig()
+            self.proxy_config = temp_model.from_map(m['proxyConfig'])
+        if m.get('proxyMode') is not None:
+            self.proxy_mode = m.get('proxyMode')
+        if m.get('serviceRegionId') is not None:
+            self.service_region_id = m.get('serviceRegionId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusReason') is not None:
+            self.status_reason = m.get('statusReason')
+        return self
+
+
+class DeleteModelProxyResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModelProxy = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ModelProxy()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ModelService(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        credential_name: str = None,
+        description: str = None,
+        last_updated_at: str = None,
+        mode_service_id: str = None,
+        model_info_configs: List[ModelInfoConfig] = None,
+        model_service_name: str = None,
+        model_type: str = None,
+        network_configuration: NetworkConfiguration = None,
+        provider: str = None,
+        provider_settings: ProviderSettings = None,
+        status: str = None,
+        status_reason: str = None,
+    ):
+        self.created_at = created_at
+        self.credential_name = credential_name
+        self.description = description
+        self.last_updated_at = last_updated_at
+        self.mode_service_id = mode_service_id
+        self.model_info_configs = model_info_configs
+        self.model_service_name = model_service_name
+        self.model_type = model_type
+        self.network_configuration = network_configuration
+        self.provider = provider
+        self.provider_settings = provider_settings
+        self.status = status
+        self.status_reason = status_reason
+
+    def validate(self):
+        if self.model_info_configs:
+            for k in self.model_info_configs:
+                if k:
+                    k.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.provider_settings:
+            self.provider_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.last_updated_at is not None:
+            result['lastUpdatedAt'] = self.last_updated_at
+        if self.mode_service_id is not None:
+            result['modeServiceId'] = self.mode_service_id
+        result['modelInfoConfigs'] = []
+        if self.model_info_configs is not None:
+            for k in self.model_info_configs:
+                result['modelInfoConfigs'].append(k.to_map() if k else None)
+        if self.model_service_name is not None:
+            result['modelServiceName'] = self.model_service_name
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.provider_settings is not None:
+            result['providerSettings'] = self.provider_settings.to_map()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_reason is not None:
+            result['statusReason'] = self.status_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('lastUpdatedAt') is not None:
+            self.last_updated_at = m.get('lastUpdatedAt')
+        if m.get('modeServiceId') is not None:
+            self.mode_service_id = m.get('modeServiceId')
+        self.model_info_configs = []
+        if m.get('modelInfoConfigs') is not None:
+            for k in m.get('modelInfoConfigs'):
+                temp_model = ModelInfoConfig()
+                self.model_info_configs.append(temp_model.from_map(k))
+        if m.get('modelServiceName') is not None:
+            self.model_service_name = m.get('modelServiceName')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('providerSettings') is not None:
+            temp_model = ProviderSettings()
+            self.provider_settings = temp_model.from_map(m['providerSettings'])
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusReason') is not None:
+            self.status_reason = m.get('statusReason')
+        return self
+
+
+class DeleteModelServiceResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModelService = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ModelService()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class Sandbox(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        last_updated_at: str = None,
+        metadata: Dict[str, Any] = None,
+        sandbox_arn: str = None,
+        sandbox_id: str = None,
+        sandbox_idle_timeout_seconds: int = None,
+        status: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        # 沙箱创建时间
+        # 
+        # This parameter is required.
+        self.created_at = created_at
+        # 最后更新时间
+        self.last_updated_at = last_updated_at
+        self.metadata = metadata
+        self.sandbox_arn = sandbox_arn
+        # This parameter is required.
+        self.sandbox_id = sandbox_id
+        # 沙箱空闲超时时间（秒）
+        self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
+        # This parameter is required.
+        self.status = status
+        # This parameter is required.
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.last_updated_at is not None:
+            result['lastUpdatedAt'] = self.last_updated_at
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+        if self.sandbox_arn is not None:
+            result['sandboxArn'] = self.sandbox_arn
+        if self.sandbox_id is not None:
+            result['sandboxId'] = self.sandbox_id
+        if self.sandbox_idle_timeout_seconds is not None:
+            result['sandboxIdleTimeoutSeconds'] = self.sandbox_idle_timeout_seconds
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('lastUpdatedAt') is not None:
+            self.last_updated_at = m.get('lastUpdatedAt')
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+        if m.get('sandboxArn') is not None:
+            self.sandbox_arn = m.get('sandboxArn')
+        if m.get('sandboxId') is not None:
+            self.sandbox_id = m.get('sandboxId')
+        if m.get('sandboxIdleTimeoutSeconds') is not None:
+            self.sandbox_idle_timeout_seconds = m.get('sandboxIdleTimeoutSeconds')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
+        return self
+
+
+class DeleteSandboxResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Sandbox = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功
+        self.code = code
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = Sandbox()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class TemplateMcpOptions(TeaModel):
+    def __init__(
+        self,
+        enabled_tools: List[str] = None,
+        transport: str = None,
+    ):
+        self.enabled_tools = enabled_tools
+        self.transport = transport
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled_tools is not None:
+            result['enabledTools'] = self.enabled_tools
+        if self.transport is not None:
+            result['transport'] = self.transport
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabledTools') is not None:
+            self.enabled_tools = m.get('enabledTools')
+        if m.get('transport') is not None:
+            self.transport = m.get('transport')
+        return self
+
+
+class TemplateMcpState(TeaModel):
+    def __init__(
+        self,
+        access_endpoint: str = None,
+        status: str = None,
+        status_reason: str = None,
+    ):
+        self.access_endpoint = access_endpoint
+        self.status = status
+        self.status_reason = status_reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_endpoint is not None:
+            result['accessEndpoint'] = self.access_endpoint
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_reason is not None:
+            result['statusReason'] = self.status_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessEndpoint') is not None:
+            self.access_endpoint = m.get('accessEndpoint')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusReason') is not None:
+            self.status_reason = m.get('statusReason')
+        return self
+
+
+class Template(TeaModel):
+    def __init__(
+        self,
+        container_configuration: ContainerConfiguration = None,
+        cpu: float = None,
+        created_at: str = None,
+        credential_configuration: CredentialConfiguration = None,
+        disk_size: int = None,
+        environment_variables: str = None,
+        execution_role_arn: str = None,
+        last_updated_at: str = None,
+        log_configuration: LogConfiguration = None,
+        mcp_options: TemplateMcpOptions = None,
+        mcp_state: TemplateMcpState = None,
+        memory: int = None,
+        network_configuration: NetworkConfiguration = None,
+        oss_configuration: List[OssConfiguration] = None,
+        resource_name: str = None,
+        sandbox_idle_timeout_in_seconds: str = None,
+        sandbox_ttlin_seconds: str = None,
+        status: str = None,
+        status_reason: str = None,
+        template_arn: str = None,
+        template_configuration: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_type: str = None,
+        template_version: str = None,
+    ):
+        self.container_configuration = container_configuration
+        # This parameter is required.
+        self.cpu = cpu
+        self.created_at = created_at
+        self.credential_configuration = credential_configuration
+        self.disk_size = disk_size
+        self.environment_variables = environment_variables
+        self.execution_role_arn = execution_role_arn
+        self.last_updated_at = last_updated_at
+        self.log_configuration = log_configuration
+        self.mcp_options = mcp_options
+        self.mcp_state = mcp_state
+        # This parameter is required.
+        self.memory = memory
+        self.network_configuration = network_configuration
+        self.oss_configuration = oss_configuration
+        self.resource_name = resource_name
+        self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
+        self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        self.status = status
+        self.status_reason = status_reason
+        self.template_arn = template_arn
+        self.template_configuration = template_configuration
+        # This parameter is required.
+        self.template_id = template_id
+        # This parameter is required.
+        self.template_name = template_name
+        self.template_type = template_type
+        self.template_version = template_version
+
+    def validate(self):
+        if self.container_configuration:
+            self.container_configuration.validate()
+        if self.credential_configuration:
+            self.credential_configuration.validate()
+        if self.log_configuration:
+            self.log_configuration.validate()
+        if self.mcp_options:
+            self.mcp_options.validate()
+        if self.mcp_state:
+            self.mcp_state.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.oss_configuration:
+            for k in self.oss_configuration:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.container_configuration is not None:
+            result['containerConfiguration'] = self.container_configuration.to_map()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.credential_configuration is not None:
+            result['credentialConfiguration'] = self.credential_configuration.to_map()
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.execution_role_arn is not None:
+            result['executionRoleArn'] = self.execution_role_arn
+        if self.last_updated_at is not None:
+            result['lastUpdatedAt'] = self.last_updated_at
+        if self.log_configuration is not None:
+            result['logConfiguration'] = self.log_configuration.to_map()
+        if self.mcp_options is not None:
+            result['mcpOptions'] = self.mcp_options.to_map()
+        if self.mcp_state is not None:
+            result['mcpState'] = self.mcp_state.to_map()
+        if self.memory is not None:
+            result['memory'] = self.memory
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        result['ossConfiguration'] = []
+        if self.oss_configuration is not None:
+            for k in self.oss_configuration:
+                result['ossConfiguration'].append(k.to_map() if k else None)
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.sandbox_idle_timeout_in_seconds is not None:
+            result['sandboxIdleTimeoutInSeconds'] = self.sandbox_idle_timeout_in_seconds
+        if self.sandbox_ttlin_seconds is not None:
+            result['sandboxTTLInSeconds'] = self.sandbox_ttlin_seconds
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_reason is not None:
+            result['statusReason'] = self.status_reason
+        if self.template_arn is not None:
+            result['templateArn'] = self.template_arn
+        if self.template_configuration is not None:
+            result['templateConfiguration'] = self.template_configuration
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
+        if self.template_type is not None:
+            result['templateType'] = self.template_type
+        if self.template_version is not None:
+            result['templateVersion'] = self.template_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('containerConfiguration') is not None:
+            temp_model = ContainerConfiguration()
+            self.container_configuration = temp_model.from_map(m['containerConfiguration'])
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('credentialConfiguration') is not None:
+            temp_model = CredentialConfiguration()
+            self.credential_configuration = temp_model.from_map(m['credentialConfiguration'])
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('executionRoleArn') is not None:
+            self.execution_role_arn = m.get('executionRoleArn')
+        if m.get('lastUpdatedAt') is not None:
+            self.last_updated_at = m.get('lastUpdatedAt')
+        if m.get('logConfiguration') is not None:
+            temp_model = LogConfiguration()
+            self.log_configuration = temp_model.from_map(m['logConfiguration'])
+        if m.get('mcpOptions') is not None:
+            temp_model = TemplateMcpOptions()
+            self.mcp_options = temp_model.from_map(m['mcpOptions'])
+        if m.get('mcpState') is not None:
+            temp_model = TemplateMcpState()
+            self.mcp_state = temp_model.from_map(m['mcpState'])
+        if m.get('memory') is not None:
+            self.memory = m.get('memory')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        self.oss_configuration = []
+        if m.get('ossConfiguration') is not None:
+            for k in m.get('ossConfiguration'):
+                temp_model = OssConfiguration()
+                self.oss_configuration.append(temp_model.from_map(k))
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('sandboxIdleTimeoutInSeconds') is not None:
+            self.sandbox_idle_timeout_in_seconds = m.get('sandboxIdleTimeoutInSeconds')
+        if m.get('sandboxTTLInSeconds') is not None:
+            self.sandbox_ttlin_seconds = m.get('sandboxTTLInSeconds')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusReason') is not None:
+            self.status_reason = m.get('statusReason')
+        if m.get('templateArn') is not None:
+            self.template_arn = m.get('templateArn')
+        if m.get('templateConfiguration') is not None:
+            self.template_configuration = m.get('templateConfiguration')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
+        if m.get('templateType') is not None:
+            self.template_type = m.get('templateType')
+        if m.get('templateVersion') is not None:
+            self.template_version = m.get('templateVersion')
+        return self
+
+
+class DeleteTemplateResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Template = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功
+        self.code = code
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = Template()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeregisterServiceInput(TeaModel):
+    def __init__(
+        self,
+        service_name: str = None,
+    ):
+        # 要注销的服务名称（UUID格式）
+        # 
+        # This parameter is required.
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
         return self
 
 
@@ -3865,27 +6048,35 @@ class GetCodeInterpreterSessionResult(TeaModel):
 class GetCredentialOutput(TeaModel):
     def __init__(
         self,
-        config: Dict[str, str] = None,
         created_at: str = None,
+        credential_auth_type: str = None,
+        credential_id: str = None,
+        credential_name: str = None,
+        credential_public_config: Dict[str, str] = None,
+        credential_secret: str = None,
+        credential_source_type: str = None,
         description: str = None,
-        id: str = None,
-        name: str = None,
-        secret: str = None,
-        type: str = None,
+        enabled: bool = None,
+        related_resources: List[RelatedResource] = None,
         updated_at: str = None,
     ):
-        # 凭证的配置参数，以键值对形式存储
-        self.config = config
         self.created_at = created_at
+        self.credential_auth_type = credential_auth_type
+        self.credential_id = credential_id
+        self.credential_name = credential_name
+        self.credential_public_config = credential_public_config
+        self.credential_secret = credential_secret
+        self.credential_source_type = credential_source_type
         self.description = description
-        self.id = id
-        self.name = name
-        self.secret = secret
-        self.type = type
+        self.enabled = enabled
+        self.related_resources = related_resources
         self.updated_at = updated_at
 
     def validate(self):
-        pass
+        if self.related_resources:
+            for k in self.related_resources:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3893,40 +6084,57 @@ class GetCredentialOutput(TeaModel):
             return _map
 
         result = dict()
-        if self.config is not None:
-            result['config'] = self.config
         if self.created_at is not None:
             result['createdAt'] = self.created_at
+        if self.credential_auth_type is not None:
+            result['credentialAuthType'] = self.credential_auth_type
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.credential_public_config is not None:
+            result['credentialPublicConfig'] = self.credential_public_config
+        if self.credential_secret is not None:
+            result['credentialSecret'] = self.credential_secret
+        if self.credential_source_type is not None:
+            result['credentialSourceType'] = self.credential_source_type
         if self.description is not None:
             result['description'] = self.description
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.secret is not None:
-            result['secret'] = self.secret
-        if self.type is not None:
-            result['type'] = self.type
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        result['relatedResources'] = []
+        if self.related_resources is not None:
+            for k in self.related_resources:
+                result['relatedResources'].append(k.to_map() if k else None)
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('config') is not None:
-            self.config = m.get('config')
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
+        if m.get('credentialAuthType') is not None:
+            self.credential_auth_type = m.get('credentialAuthType')
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('credentialPublicConfig') is not None:
+            self.credential_public_config = m.get('credentialPublicConfig')
+        if m.get('credentialSecret') is not None:
+            self.credential_secret = m.get('credentialSecret')
+        if m.get('credentialSourceType') is not None:
+            self.credential_source_type = m.get('credentialSourceType')
         if m.get('description') is not None:
             self.description = m.get('description')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('secret') is not None:
-            self.secret = m.get('secret')
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        self.related_resources = []
+        if m.get('relatedResources') is not None:
+            for k in m.get('relatedResources'):
+                temp_model = RelatedResource()
+                self.related_resources.append(temp_model.from_map(k))
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
         return self
@@ -4927,19 +7135,21 @@ class ListCodeInterpretersResult(TeaModel):
 class ListCredentialsOutput(TeaModel):
     def __init__(
         self,
-        items: CredentialListItem = None,
-        page_num: str = None,
+        items: List[CredentialListItem] = None,
+        page_number: str = None,
         page_size: str = None,
         total: str = None,
     ):
         self.items = items
-        self.page_num = page_num
+        self.page_number = page_number
         self.page_size = page_size
         self.total = total
 
     def validate(self):
         if self.items:
-            self.items.validate()
+            for k in self.items:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4947,10 +7157,12 @@ class ListCredentialsOutput(TeaModel):
             return _map
 
         result = dict()
+        result['items'] = []
         if self.items is not None:
-            result['items'] = self.items.to_map()
-        if self.page_num is not None:
-            result['pageNum'] = self.page_num
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
         if self.total is not None:
@@ -4959,15 +7171,58 @@ class ListCredentialsOutput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.items = []
         if m.get('items') is not None:
-            temp_model = CredentialListItem()
-            self.items = temp_model.from_map(m['items'])
-        if m.get('pageNum') is not None:
-            self.page_num = m.get('pageNum')
+            for k in m.get('items'):
+                temp_model = CredentialListItem()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
         if m.get('total') is not None:
             self.total = m.get('total')
+        return self
+
+
+class ListCredentialsResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListCredentialsOutput = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListCredentialsOutput()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -5068,6 +7323,381 @@ class ListGatewaysOutput(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('total') is not None:
             self.total = m.get('total')
+        return self
+
+
+class ListModelProxiesOutput(TeaModel):
+    def __init__(
+        self,
+        items: List[ModelProxy] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ModelProxy()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListModelProxiesResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListModelProxiesOutput = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListModelProxiesOutput()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListModelServicesOutput(TeaModel):
+    def __init__(
+        self,
+        items: List[ModelService] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ModelService()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListModelServicesResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListModelServicesOutput = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListModelServicesOutput()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListSandboxesOutput(TeaModel):
+    def __init__(
+        self,
+        items: List[Sandbox] = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.items = items
+        self.next_token = next_token
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = Sandbox()
+                self.items.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListSandboxesResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListSandboxesOutput = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        self.code = code
+        # 沙箱列表的详细信息
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListSandboxesOutput()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListTemplatesOutput(TeaModel):
+    def __init__(
+        self,
+        items: List[Template] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        # This parameter is required.
+        self.items = items
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = Template()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListTemplatesResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListTemplatesOutput = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        self.code = code
+        # 模板列表的详细信息
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListTemplatesOutput()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -5549,6 +8179,88 @@ class Model(TeaModel):
         return self
 
 
+class ModelProxyResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModelProxy = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ModelProxy()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ModelServiceResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModelService = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ModelService()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
 class PaginationInfo(TeaModel):
     def __init__(
         self,
@@ -5598,9 +8310,12 @@ class PublishRuntimeVersionInput(TeaModel):
     def __init__(
         self,
         description: str = None,
+        publisher: str = None,
     ):
         # 此版本的描述
         self.description = description
+        # 发布此版本的用户或系统标识
+        self.publisher = publisher
 
     def validate(self):
         pass
@@ -5613,12 +8328,292 @@ class PublishRuntimeVersionInput(TeaModel):
         result = dict()
         if self.description is not None:
             result['description'] = self.description
+        if self.publisher is not None:
+            result['publisher'] = self.publisher
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('publisher') is not None:
+            self.publisher = m.get('publisher')
+        return self
+
+
+class RecordingConfiguration(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        oss_location: OssConfiguration = None,
+    ):
+        # 是否启用录制
+        # 
+        # This parameter is required.
+        self.enabled = enabled
+        self.oss_location = oss_location
+
+    def validate(self):
+        if self.oss_location:
+            self.oss_location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.oss_location is not None:
+            result['ossLocation'] = self.oss_location.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('ossLocation') is not None:
+            temp_model = OssConfiguration()
+            self.oss_location = temp_model.from_map(m['ossLocation'])
+        return self
+
+
+class RegisterServiceInput(TeaModel):
+    def __init__(
+        self,
+        credential_name: str = None,
+        protocol: str = None,
+        resource_name: str = None,
+        service_backend_endpoint: str = None,
+        service_name: str = None,
+        service_type: str = None,
+        tenant_id: str = None,
+    ):
+        # 关联的凭证ID，用于服务认证
+        self.credential_name = credential_name
+        # 服务的协议类型
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # 关联的资源名称
+        self.resource_name = resource_name
+        # 转发的下游服务端点URL，必须是有效的HTTP/HTTPS地址（这里是 FC trigger endpoint）
+        # 
+        # This parameter is required.
+        self.service_backend_endpoint = service_backend_endpoint
+        # 服务名称，在租户内唯一
+        # 
+        # This parameter is required.
+        self.service_name = service_name
+        # 服务类型
+        # 
+        # This parameter is required.
+        self.service_type = service_type
+        # 租户ID，用于多租户隔离
+        # 
+        # This parameter is required.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.service_backend_endpoint is not None:
+            result['serviceBackendEndpoint'] = self.service_backend_endpoint
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        if self.service_type is not None:
+            result['serviceType'] = self.service_type
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('serviceBackendEndpoint') is not None:
+            self.service_backend_endpoint = m.get('serviceBackendEndpoint')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        if m.get('serviceType') is not None:
+            self.service_type = m.get('serviceType')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class RelatedWorkload(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class SandboxHealthCheckOut(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        # 健康状态，OK表示健康
+        # 
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class SandboxHealthCheckResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SandboxHealthCheckOut = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功
+        self.code = code
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = SandboxHealthCheckOut()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SandboxResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Sandbox = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功，失败情况返回对应错误类型
+        self.code = code
+        # 沙箱的详细信息
+        # 
+        # This parameter is required.
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = Sandbox()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -5654,6 +8649,48 @@ class ServiceConfig(TeaModel):
             self.ai_service_config = temp_model.from_map(m['aiServiceConfig'])
         if m.get('name') is not None:
             self.name = m.get('name')
+        return self
+
+
+class ServiceResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        self.code = code
+        # 服务的详细信息
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -5874,17 +8911,25 @@ class Target(TeaModel):
         return self
 
 
-class Template(TeaModel):
+class TemplateResult(TeaModel):
     def __init__(
         self,
-        template_id: str = None,
-        template_version: str = None,
+        code: str = None,
+        data: Template = None,
+        request_id: str = None,
     ):
-        self.template_id = template_id
-        self.template_version = template_version
+        # SUCCESS 为成功，失败情况返回对应错误类型
+        self.code = code
+        # 模板的详细信息
+        # 
+        # This parameter is required.
+        self.data = data
+        # 唯一的请求标识符，用于问题追踪
+        self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.data:
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5892,18 +8937,23 @@ class Template(TeaModel):
             return _map
 
         result = dict()
-        if self.template_id is not None:
-            result['templateID'] = self.template_id
-        if self.template_version is not None:
-            result['templateVersion'] = self.template_version
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('templateID') is not None:
-            self.template_id = m.get('templateID')
-        if m.get('templateVersion') is not None:
-            self.template_version = m.get('templateVersion')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = Template()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -5997,6 +9047,7 @@ class UpdateAgentRuntimeInput(TeaModel):
         code_configuration: CodeConfiguration = None,
         container_configuration: ContainerConfiguration = None,
         cpu: float = None,
+        credential_name: str = None,
         description: str = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
@@ -6017,6 +9068,8 @@ class UpdateAgentRuntimeInput(TeaModel):
         self.container_configuration = container_configuration
         # This parameter is required.
         self.cpu = cpu
+        # 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+        self.credential_name = credential_name
         self.description = description
         # 智能体运行时的环境变量配置，用于在运行时传递配置参数
         self.environment_variables = environment_variables
@@ -6067,6 +9120,8 @@ class UpdateAgentRuntimeInput(TeaModel):
             result['containerConfiguration'] = self.container_configuration.to_map()
         if self.cpu is not None:
             result['cpu'] = self.cpu
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
         if self.description is not None:
             result['description'] = self.description
         if self.environment_variables is not None:
@@ -6105,6 +9160,8 @@ class UpdateAgentRuntimeInput(TeaModel):
             self.container_configuration = temp_model.from_map(m['containerConfiguration'])
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('environmentVariables') is not None:
@@ -6200,21 +9257,19 @@ class UpdateApigLLMModelInput(TeaModel):
 class UpdateCredentialInput(TeaModel):
     def __init__(
         self,
-        config: Dict[str, str] = None,
+        credential_public_config: CredentialPublicConfig = None,
+        credential_secret: str = None,
         description: str = None,
-        name: str = None,
-        secret: str = None,
-        type: str = None,
+        enabled: bool = None,
     ):
-        # 凭证的配置参数，以键值对形式存储
-        self.config = config
+        self.credential_public_config = credential_public_config
+        self.credential_secret = credential_secret
         self.description = description
-        self.name = name
-        self.secret = secret
-        self.type = type
+        self.enabled = enabled
 
     def validate(self):
-        pass
+        if self.credential_public_config:
+            self.credential_public_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6222,48 +9277,62 @@ class UpdateCredentialInput(TeaModel):
             return _map
 
         result = dict()
-        if self.config is not None:
-            result['config'] = self.config
+        if self.credential_public_config is not None:
+            result['credentialPublicConfig'] = self.credential_public_config.to_map()
+        if self.credential_secret is not None:
+            result['credentialSecret'] = self.credential_secret
         if self.description is not None:
             result['description'] = self.description
-        if self.name is not None:
-            result['name'] = self.name
-        if self.secret is not None:
-            result['secret'] = self.secret
-        if self.type is not None:
-            result['type'] = self.type
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('config') is not None:
-            self.config = m.get('config')
+        if m.get('credentialPublicConfig') is not None:
+            temp_model = CredentialPublicConfig()
+            self.credential_public_config = temp_model.from_map(m['credentialPublicConfig'])
+        if m.get('credentialSecret') is not None:
+            self.credential_secret = m.get('credentialSecret')
         if m.get('description') is not None:
             self.description = m.get('description')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('secret') is not None:
-            self.secret = m.get('secret')
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
         return self
 
 
 class UpdateCredentialOutput(TeaModel):
     def __init__(
         self,
-        id: str = None,
-        name: str = None,
-        type: str = None,
+        created_at: str = None,
+        credential_auth_type: str = None,
+        credential_id: str = None,
+        credential_name: str = None,
+        credential_public_config: Dict[str, str] = None,
+        credential_secret: str = None,
+        credential_source_type: str = None,
+        description: str = None,
+        enabled: bool = None,
+        related_resources: List[RelatedResource] = None,
         updated_at: str = None,
     ):
-        self.id = id
-        self.name = name
-        self.type = type
+        self.created_at = created_at
+        self.credential_auth_type = credential_auth_type
+        self.credential_id = credential_id
+        self.credential_name = credential_name
+        self.credential_public_config = credential_public_config
+        self.credential_secret = credential_secret
+        self.credential_source_type = credential_source_type
+        self.description = description
+        self.enabled = enabled
+        self.related_resources = related_resources
         self.updated_at = updated_at
 
     def validate(self):
-        pass
+        if self.related_resources:
+            for k in self.related_resources:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6271,24 +9340,57 @@ class UpdateCredentialOutput(TeaModel):
             return _map
 
         result = dict()
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.type is not None:
-            result['type'] = self.type
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.credential_auth_type is not None:
+            result['credentialAuthType'] = self.credential_auth_type
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.credential_public_config is not None:
+            result['credentialPublicConfig'] = self.credential_public_config
+        if self.credential_secret is not None:
+            result['credentialSecret'] = self.credential_secret
+        if self.credential_source_type is not None:
+            result['credentialSourceType'] = self.credential_source_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        result['relatedResources'] = []
+        if self.related_resources is not None:
+            for k in self.related_resources:
+                result['relatedResources'].append(k.to_map() if k else None)
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('credentialAuthType') is not None:
+            self.credential_auth_type = m.get('credentialAuthType')
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('credentialPublicConfig') is not None:
+            self.credential_public_config = m.get('credentialPublicConfig')
+        if m.get('credentialSecret') is not None:
+            self.credential_secret = m.get('credentialSecret')
+        if m.get('credentialSourceType') is not None:
+            self.credential_source_type = m.get('credentialSourceType')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        self.related_resources = []
+        if m.get('relatedResources') is not None:
+            for k in m.get('relatedResources'):
+                temp_model = RelatedResource()
+                self.related_resources.append(temp_model.from_map(k))
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
         return self
@@ -6390,6 +9492,151 @@ class UpdateModelInput(TeaModel):
         return self
 
 
+class UpdateModelProxyInput(TeaModel):
+    def __init__(
+        self,
+        arms_configuration: ArmsConfiguration = None,
+        credential_name: str = None,
+        description: str = None,
+        log_configuration: LogConfiguration = None,
+        network_configuration: NetworkConfiguration = None,
+        proxy_config: ProxyConfig = None,
+    ):
+        self.arms_configuration = arms_configuration
+        self.credential_name = credential_name
+        self.description = description
+        self.log_configuration = log_configuration
+        self.network_configuration = network_configuration
+        self.proxy_config = proxy_config
+
+    def validate(self):
+        if self.arms_configuration:
+            self.arms_configuration.validate()
+        if self.log_configuration:
+            self.log_configuration.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.proxy_config:
+            self.proxy_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arms_configuration is not None:
+            result['armsConfiguration'] = self.arms_configuration.to_map()
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.log_configuration is not None:
+            result['logConfiguration'] = self.log_configuration.to_map()
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        if self.proxy_config is not None:
+            result['proxyConfig'] = self.proxy_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('armsConfiguration') is not None:
+            temp_model = ArmsConfiguration()
+            self.arms_configuration = temp_model.from_map(m['armsConfiguration'])
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('logConfiguration') is not None:
+            temp_model = LogConfiguration()
+            self.log_configuration = temp_model.from_map(m['logConfiguration'])
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        if m.get('proxyConfig') is not None:
+            temp_model = ProxyConfig()
+            self.proxy_config = temp_model.from_map(m['proxyConfig'])
+        return self
+
+
+class UpdateModelServiceInput(TeaModel):
+    def __init__(
+        self,
+        credential_name: str = None,
+        description: str = None,
+        model_info_configs: List[ModelInfoConfig] = None,
+        network_configuration: NetworkConfiguration = None,
+        provider_settings: ProviderSettings = None,
+        status: str = None,
+        status_reason: str = None,
+    ):
+        self.credential_name = credential_name
+        self.description = description
+        self.model_info_configs = model_info_configs
+        self.network_configuration = network_configuration
+        self.provider_settings = provider_settings
+        self.status = status
+        self.status_reason = status_reason
+
+    def validate(self):
+        if self.model_info_configs:
+            for k in self.model_info_configs:
+                if k:
+                    k.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.provider_settings:
+            self.provider_settings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+        if self.description is not None:
+            result['description'] = self.description
+        result['modelInfoConfigs'] = []
+        if self.model_info_configs is not None:
+            for k in self.model_info_configs:
+                result['modelInfoConfigs'].append(k.to_map() if k else None)
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        if self.provider_settings is not None:
+            result['providerSettings'] = self.provider_settings.to_map()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_reason is not None:
+            result['statusReason'] = self.status_reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        self.model_info_configs = []
+        if m.get('modelInfoConfigs') is not None:
+            for k in m.get('modelInfoConfigs'):
+                temp_model = ModelInfoConfig()
+                self.model_info_configs.append(temp_model.from_map(k))
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        if m.get('providerSettings') is not None:
+            temp_model = ProviderSettings()
+            self.provider_settings = temp_model.from_map(m['providerSettings'])
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusReason') is not None:
+            self.status_reason = m.get('statusReason')
+        return self
+
+
 class UpdateTargetConfigurationInput(TeaModel):
     def __init__(
         self,
@@ -6422,6 +9669,140 @@ class UpdateTargetConfigurationInput(TeaModel):
         if m.get('targetConfiguration') is not None:
             temp_model = TargetConfiguration()
             self.target_configuration = temp_model.from_map(m['targetConfiguration'])
+        return self
+
+
+class UpdateTemplateInput(TeaModel):
+    def __init__(
+        self,
+        arms_configuration: ArmsConfiguration = None,
+        container_configuration: ContainerConfiguration = None,
+        cpu: float = None,
+        credential_configuration: CredentialConfiguration = None,
+        description: str = None,
+        environment_variables: Dict[str, str] = None,
+        execution_role_arn: str = None,
+        log_configuration: LogConfiguration = None,
+        memory: int = None,
+        network_configuration: NetworkConfiguration = None,
+        oss_configuration: List[OssConfiguration] = None,
+        sandbox_idle_timeout_in_seconds: int = None,
+        sandbox_ttlin_seconds: int = None,
+        template_configuration: Dict[str, Any] = None,
+    ):
+        self.arms_configuration = arms_configuration
+        # 容器配置（内置的不可改）
+        self.container_configuration = container_configuration
+        # CPU资源配置（单位：核心）
+        self.cpu = cpu
+        self.credential_configuration = credential_configuration
+        self.description = description
+        self.environment_variables = environment_variables
+        self.execution_role_arn = execution_role_arn
+        self.log_configuration = log_configuration
+        # 内存资源配置（单位：MB）
+        self.memory = memory
+        self.network_configuration = network_configuration
+        self.oss_configuration = oss_configuration
+        # 沙箱空闲超时时间（秒）
+        self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
+        # 沙箱存活时间（秒）
+        self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+        self.template_configuration = template_configuration
+
+    def validate(self):
+        if self.arms_configuration:
+            self.arms_configuration.validate()
+        if self.container_configuration:
+            self.container_configuration.validate()
+        if self.credential_configuration:
+            self.credential_configuration.validate()
+        if self.log_configuration:
+            self.log_configuration.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
+        if self.oss_configuration:
+            for k in self.oss_configuration:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arms_configuration is not None:
+            result['armsConfiguration'] = self.arms_configuration.to_map()
+        if self.container_configuration is not None:
+            result['containerConfiguration'] = self.container_configuration.to_map()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.credential_configuration is not None:
+            result['credentialConfiguration'] = self.credential_configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.execution_role_arn is not None:
+            result['executionRoleArn'] = self.execution_role_arn
+        if self.log_configuration is not None:
+            result['logConfiguration'] = self.log_configuration.to_map()
+        if self.memory is not None:
+            result['memory'] = self.memory
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+        result['ossConfiguration'] = []
+        if self.oss_configuration is not None:
+            for k in self.oss_configuration:
+                result['ossConfiguration'].append(k.to_map() if k else None)
+        if self.sandbox_idle_timeout_in_seconds is not None:
+            result['sandboxIdleTimeoutInSeconds'] = self.sandbox_idle_timeout_in_seconds
+        if self.sandbox_ttlin_seconds is not None:
+            result['sandboxTTLInSeconds'] = self.sandbox_ttlin_seconds
+        if self.template_configuration is not None:
+            result['templateConfiguration'] = self.template_configuration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('armsConfiguration') is not None:
+            temp_model = ArmsConfiguration()
+            self.arms_configuration = temp_model.from_map(m['armsConfiguration'])
+        if m.get('containerConfiguration') is not None:
+            temp_model = ContainerConfiguration()
+            self.container_configuration = temp_model.from_map(m['containerConfiguration'])
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('credentialConfiguration') is not None:
+            temp_model = CredentialConfiguration()
+            self.credential_configuration = temp_model.from_map(m['credentialConfiguration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('executionRoleArn') is not None:
+            self.execution_role_arn = m.get('executionRoleArn')
+        if m.get('logConfiguration') is not None:
+            temp_model = LogConfiguration()
+            self.log_configuration = temp_model.from_map(m['logConfiguration'])
+        if m.get('memory') is not None:
+            self.memory = m.get('memory')
+        if m.get('networkConfiguration') is not None:
+            temp_model = NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m['networkConfiguration'])
+        self.oss_configuration = []
+        if m.get('ossConfiguration') is not None:
+            for k in m.get('ossConfiguration'):
+                temp_model = OssConfiguration()
+                self.oss_configuration.append(temp_model.from_map(k))
+        if m.get('sandboxIdleTimeoutInSeconds') is not None:
+            self.sandbox_idle_timeout_in_seconds = m.get('sandboxIdleTimeoutInSeconds')
+        if m.get('sandboxTTLInSeconds') is not None:
+            self.sandbox_ttlin_seconds = m.get('sandboxTTLInSeconds')
+        if m.get('templateConfiguration') is not None:
+            self.template_configuration = m.get('templateConfiguration')
         return self
 
 
@@ -6849,7 +10230,6 @@ class CreateMemoryRequest(TeaModel):
         self,
         long_ttl: int = None,
         name: str = None,
-        permanent: bool = None,
         short_ttl: int = None,
         strategy: List[str] = None,
     ):
@@ -6857,7 +10237,6 @@ class CreateMemoryRequest(TeaModel):
         self.long_ttl = long_ttl
         # This parameter is required.
         self.name = name
-        self.permanent = permanent
         # This parameter is required.
         self.short_ttl = short_ttl
         self.strategy = strategy
@@ -6875,8 +10254,6 @@ class CreateMemoryRequest(TeaModel):
             result['longTtl'] = self.long_ttl
         if self.name is not None:
             result['name'] = self.name
-        if self.permanent is not None:
-            result['permanent'] = self.permanent
         if self.short_ttl is not None:
             result['shortTtl'] = self.short_ttl
         if self.strategy is not None:
@@ -6889,8 +10266,6 @@ class CreateMemoryRequest(TeaModel):
             self.long_ttl = m.get('longTtl')
         if m.get('name') is not None:
             self.name = m.get('name')
-        if m.get('permanent') is not None:
-            self.permanent = m.get('permanent')
         if m.get('shortTtl') is not None:
             self.short_ttl = m.get('shortTtl')
         if m.get('strategy') is not None:
@@ -7611,7 +10986,6 @@ class GetMemoryResponseBodyData(TeaModel):
         create_time: int = None,
         long_ttl: int = None,
         name: str = None,
-        permanent: bool = None,
         short_ttl: int = None,
         strategy: List[str] = None,
     ):
@@ -7619,7 +10993,6 @@ class GetMemoryResponseBodyData(TeaModel):
         self.create_time = create_time
         self.long_ttl = long_ttl
         self.name = name
-        self.permanent = permanent
         self.short_ttl = short_ttl
         self.strategy = strategy
 
@@ -7640,8 +11013,6 @@ class GetMemoryResponseBodyData(TeaModel):
             result['longTtl'] = self.long_ttl
         if self.name is not None:
             result['name'] = self.name
-        if self.permanent is not None:
-            result['permanent'] = self.permanent
         if self.short_ttl is not None:
             result['shortTtl'] = self.short_ttl
         if self.strategy is not None:
@@ -7658,8 +11029,6 @@ class GetMemoryResponseBodyData(TeaModel):
             self.long_ttl = m.get('longTtl')
         if m.get('name') is not None:
             self.name = m.get('name')
-        if m.get('permanent') is not None:
-            self.permanent = m.get('permanent')
         if m.get('shortTtl') is not None:
             self.short_ttl = m.get('shortTtl')
         if m.get('strategy') is not None:
@@ -8048,6 +11417,7 @@ class ListAgentRuntimeEndpointsRequest(TeaModel):
         endpoint_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        search_mode: str = None,
     ):
         # 根据端点名称进行模糊匹配过滤
         self.endpoint_name = endpoint_name
@@ -8055,6 +11425,8 @@ class ListAgentRuntimeEndpointsRequest(TeaModel):
         self.page_number = page_number
         # 每页返回的记录数量
         self.page_size = page_size
+        # 查询模式，支持精确查询和模糊查询
+        self.search_mode = search_mode
 
     def validate(self):
         pass
@@ -8071,6 +11443,8 @@ class ListAgentRuntimeEndpointsRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.search_mode is not None:
+            result['searchMode'] = self.search_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -8081,6 +11455,8 @@ class ListAgentRuntimeEndpointsRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('searchMode') is not None:
+            self.search_mode = m.get('searchMode')
         return self
 
 
@@ -8207,6 +11583,7 @@ class ListAgentRuntimesRequest(TeaModel):
         agent_runtime_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        search_mode: str = None,
     ):
         # 根据智能体运行时名称进行模糊匹配过滤
         self.agent_runtime_name = agent_runtime_name
@@ -8214,6 +11591,8 @@ class ListAgentRuntimesRequest(TeaModel):
         self.page_number = page_number
         # 每页返回的记录数量
         self.page_size = page_size
+        # 查询模式，支持精确查询和模糊查询
+        self.search_mode = search_mode
 
     def validate(self):
         pass
@@ -8230,6 +11609,8 @@ class ListAgentRuntimesRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.search_mode is not None:
+            result['searchMode'] = self.search_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -8240,6 +11621,8 @@ class ListAgentRuntimesRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('searchMode') is not None:
+            self.search_mode = m.get('searchMode')
         return self
 
 
@@ -8460,15 +11843,15 @@ class ListCodeInterpretersResponse(TeaModel):
 class ListMemoryRequest(TeaModel):
     def __init__(
         self,
-        name_prefix: str = None,
         page_number: int = None,
         page_size: int = None,
+        pattern: str = None,
     ):
-        self.name_prefix = name_prefix
         # This parameter is required.
         self.page_number = page_number
         # This parameter is required.
         self.page_size = page_size
+        self.pattern = pattern
 
     def validate(self):
         pass
@@ -8479,22 +11862,22 @@ class ListMemoryRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.name_prefix is not None:
-            result['namePrefix'] = self.name_prefix
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.pattern is not None:
+            result['pattern'] = self.pattern
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('namePrefix') is not None:
-            self.name_prefix = m.get('namePrefix')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('pattern') is not None:
+            self.pattern = m.get('pattern')
         return self
 
 
@@ -9408,12 +12791,10 @@ class UpdateMemoryRequest(TeaModel):
     def __init__(
         self,
         long_ttl: int = None,
-        permanent: bool = None,
         short_ttl: int = None,
         strategy: List[str] = None,
     ):
         self.long_ttl = long_ttl
-        self.permanent = permanent
         self.short_ttl = short_ttl
         self.strategy = strategy
 
@@ -9428,8 +12809,6 @@ class UpdateMemoryRequest(TeaModel):
         result = dict()
         if self.long_ttl is not None:
             result['longTtl'] = self.long_ttl
-        if self.permanent is not None:
-            result['permanent'] = self.permanent
         if self.short_ttl is not None:
             result['shortTtl'] = self.short_ttl
         if self.strategy is not None:
@@ -9440,8 +12819,6 @@ class UpdateMemoryRequest(TeaModel):
         m = m or dict()
         if m.get('longTtl') is not None:
             self.long_ttl = m.get('longTtl')
-        if m.get('permanent') is not None:
-            self.permanent = m.get('permanent')
         if m.get('shortTtl') is not None:
             self.short_ttl = m.get('shortTtl')
         if m.get('strategy') is not None:

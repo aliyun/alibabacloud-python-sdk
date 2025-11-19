@@ -1,3 +1,13 @@
+2025-11-19 Version: 3.0.0
+- Update API CreateMemory: delete request parameters body.permanent.
+- Update API GetMemory: delete response parameters Body.data.permanent.
+- Update API ListAgentRuntimeEndpoints: add request parameters searchMode.
+- Update API ListAgentRuntimes: add request parameters searchMode.
+- Update API ListMemory: add request parameters pattern.
+- Update API ListMemory: delete request parameters namePrefix.
+- Update API UpdateMemory: delete request parameters body.permanent.
+
+
 2025-10-29 Version: 2.0.1
 - Generated python 2025-09-10 for AgentRun.
 

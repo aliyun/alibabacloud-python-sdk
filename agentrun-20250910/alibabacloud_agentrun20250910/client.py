@@ -489,8 +489,6 @@ class Client(OpenApiClient):
             body['longTtl'] = request.long_ttl
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.permanent):
-            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
             body['shortTtl'] = request.short_ttl
         if not UtilClient.is_unset(request.strategy):
@@ -535,8 +533,6 @@ class Client(OpenApiClient):
             body['longTtl'] = request.long_ttl
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.permanent):
-            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
             body['shortTtl'] = request.short_ttl
         if not UtilClient.is_unset(request.strategy):
@@ -1944,6 +1940,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['searchMode'] = request.search_mode
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1989,6 +1987,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['searchMode'] = request.search_mode
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2179,6 +2179,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['searchMode'] = request.search_mode
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2223,6 +2225,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['searchMode'] = request.search_mode
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2535,12 +2539,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.name_prefix):
-            query['namePrefix'] = request.name_prefix
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pattern):
+            query['pattern'] = request.pattern
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2577,12 +2581,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.name_prefix):
-            query['namePrefix'] = request.name_prefix
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pattern):
+            query['pattern'] = request.pattern
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3352,8 +3356,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.long_ttl):
             body['longTtl'] = request.long_ttl
-        if not UtilClient.is_unset(request.permanent):
-            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
             body['shortTtl'] = request.short_ttl
         if not UtilClient.is_unset(request.strategy):
@@ -3397,8 +3399,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.long_ttl):
             body['longTtl'] = request.long_ttl
-        if not UtilClient.is_unset(request.permanent):
-            body['permanent'] = request.permanent
         if not UtilClient.is_unset(request.short_ttl):
             body['shortTtl'] = request.short_ttl
         if not UtilClient.is_unset(request.strategy):
