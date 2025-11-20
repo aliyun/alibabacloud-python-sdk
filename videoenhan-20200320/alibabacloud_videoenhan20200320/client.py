@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+import time
+
 from Tea.request import TeaRequest
-from Tea.exceptions import TeaException
+from Tea.exceptions import TeaException, UnretryableException
 from Tea.core import TeaCore
 from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_tea_fileform.client import Client as FileFormClient
 from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_videoenhan20200320 import models as videoenhan_20200320_models
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_darabonba_number.client import Client as NumberClient
@@ -35,77 +37,163 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = TeaCore.do_action(_request)
-        resp_map = None
-        body_str = UtilClient.read_as_string(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                body_str = UtilClient.read_as_string(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await TeaCore.async_do_action(_request)
-        resp_map = None
-        body_str = await UtilClient.read_as_string_async(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                body_str = await UtilClient.read_as_string_async(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     def get_endpoint(
         self,
@@ -122,530 +210,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
-
-    def abstract_ecommerce_video_with_options(
-        self,
-        request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
-        """
-        @param request: AbstractEcommerceVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AbstractEcommerceVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.duration):
-            body['Duration'] = request.duration
-        if not UtilClient.is_unset(request.height):
-            body['Height'] = request.height
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoUrl'] = request.video_url
-        if not UtilClient.is_unset(request.width):
-            body['Width'] = request.width
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AbstractEcommerceVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.AbstractEcommerceVideoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def abstract_ecommerce_video_with_options_async(
-        self,
-        request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
-        """
-        @param request: AbstractEcommerceVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AbstractEcommerceVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.duration):
-            body['Duration'] = request.duration
-        if not UtilClient.is_unset(request.height):
-            body['Height'] = request.height
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoUrl'] = request.video_url
-        if not UtilClient.is_unset(request.width):
-            body['Width'] = request.width
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AbstractEcommerceVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.AbstractEcommerceVideoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def abstract_ecommerce_video(
-        self,
-        request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
-    ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
-        """
-        @param request: AbstractEcommerceVideoRequest
-        @return: AbstractEcommerceVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.abstract_ecommerce_video_with_options(request, runtime)
-
-    async def abstract_ecommerce_video_async(
-        self,
-        request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
-    ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
-        """
-        @param request: AbstractEcommerceVideoRequest
-        @return: AbstractEcommerceVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.abstract_ecommerce_video_with_options_async(request, runtime)
-
-    def abstract_ecommerce_video_advance(
-        self,
-        request: videoenhan_20200320_models.AbstractEcommerceVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        abstract_ecommerce_video_req = videoenhan_20200320_models.AbstractEcommerceVideoRequest()
-        OpenApiUtilClient.convert(request, abstract_ecommerce_video_req)
-        if not UtilClient.is_unset(request.video_url_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            abstract_ecommerce_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        abstract_ecommerce_video_resp = self.abstract_ecommerce_video_with_options(abstract_ecommerce_video_req, runtime)
-        return abstract_ecommerce_video_resp
-
-    async def abstract_ecommerce_video_advance_async(
-        self,
-        request: videoenhan_20200320_models.AbstractEcommerceVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        abstract_ecommerce_video_req = videoenhan_20200320_models.AbstractEcommerceVideoRequest()
-        OpenApiUtilClient.convert(request, abstract_ecommerce_video_req)
-        if not UtilClient.is_unset(request.video_url_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            abstract_ecommerce_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        abstract_ecommerce_video_resp = await self.abstract_ecommerce_video_with_options_async(abstract_ecommerce_video_req, runtime)
-        return abstract_ecommerce_video_resp
-
-    def abstract_film_video_with_options(
-        self,
-        request: videoenhan_20200320_models.AbstractFilmVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
-        """
-        @param request: AbstractFilmVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AbstractFilmVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.length):
-            body['Length'] = request.length
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoUrl'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AbstractFilmVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.AbstractFilmVideoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def abstract_film_video_with_options_async(
-        self,
-        request: videoenhan_20200320_models.AbstractFilmVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
-        """
-        @param request: AbstractFilmVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AbstractFilmVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.length):
-            body['Length'] = request.length
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoUrl'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AbstractFilmVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.AbstractFilmVideoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def abstract_film_video(
-        self,
-        request: videoenhan_20200320_models.AbstractFilmVideoRequest,
-    ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
-        """
-        @param request: AbstractFilmVideoRequest
-        @return: AbstractFilmVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.abstract_film_video_with_options(request, runtime)
-
-    async def abstract_film_video_async(
-        self,
-        request: videoenhan_20200320_models.AbstractFilmVideoRequest,
-    ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
-        """
-        @param request: AbstractFilmVideoRequest
-        @return: AbstractFilmVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.abstract_film_video_with_options_async(request, runtime)
-
-    def abstract_film_video_advance(
-        self,
-        request: videoenhan_20200320_models.AbstractFilmVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        abstract_film_video_req = videoenhan_20200320_models.AbstractFilmVideoRequest()
-        OpenApiUtilClient.convert(request, abstract_film_video_req)
-        if not UtilClient.is_unset(request.video_url_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            abstract_film_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        abstract_film_video_resp = self.abstract_film_video_with_options(abstract_film_video_req, runtime)
-        return abstract_film_video_resp
-
-    async def abstract_film_video_advance_async(
-        self,
-        request: videoenhan_20200320_models.AbstractFilmVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        abstract_film_video_req = videoenhan_20200320_models.AbstractFilmVideoRequest()
-        OpenApiUtilClient.convert(request, abstract_film_video_req)
-        if not UtilClient.is_unset(request.video_url_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            abstract_film_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        abstract_film_video_resp = await self.abstract_film_video_with_options_async(abstract_film_video_req, runtime)
-        return abstract_film_video_resp
 
     def add_face_video_template_with_options(
         self,
@@ -825,7 +389,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             add_face_video_template_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         add_face_video_template_resp = self.add_face_video_template_with_options(add_face_video_template_req, runtime)
         return add_face_video_template_resp
@@ -908,7 +472,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             add_face_video_template_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         add_face_video_template_resp = await self.add_face_video_template_with_options_async(add_face_video_template_req, runtime)
         return add_face_video_template_resp
@@ -1095,7 +659,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             adjust_video_color_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         adjust_video_color_resp = self.adjust_video_color_with_options(adjust_video_color_req, runtime)
         return adjust_video_color_resp
@@ -1178,7 +742,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             adjust_video_color_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         adjust_video_color_resp = await self.adjust_video_color_with_options_async(adjust_video_color_req, runtime)
         return adjust_video_color_resp
@@ -1381,7 +945,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             change_video_size_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         change_video_size_resp = self.change_video_size_with_options(change_video_size_req, runtime)
         return change_video_size_resp
@@ -1464,276 +1028,10 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             change_video_size_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         change_video_size_resp = await self.change_video_size_with_options_async(change_video_size_req, runtime)
         return change_video_size_resp
-
-    def convert_hdr_video_with_options(
-        self,
-        request: videoenhan_20200320_models.ConvertHdrVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
-        """
-        @param request: ConvertHdrVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ConvertHdrVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.bitrate):
-            body['Bitrate'] = request.bitrate
-        if not UtilClient.is_unset(request.hdrformat):
-            body['HDRFormat'] = request.hdrformat
-        if not UtilClient.is_unset(request.max_illuminance):
-            body['MaxIlluminance'] = request.max_illuminance
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoURL'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ConvertHdrVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.ConvertHdrVideoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def convert_hdr_video_with_options_async(
-        self,
-        request: videoenhan_20200320_models.ConvertHdrVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
-        """
-        @param request: ConvertHdrVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ConvertHdrVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.bitrate):
-            body['Bitrate'] = request.bitrate
-        if not UtilClient.is_unset(request.hdrformat):
-            body['HDRFormat'] = request.hdrformat
-        if not UtilClient.is_unset(request.max_illuminance):
-            body['MaxIlluminance'] = request.max_illuminance
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoURL'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ConvertHdrVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.ConvertHdrVideoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def convert_hdr_video(
-        self,
-        request: videoenhan_20200320_models.ConvertHdrVideoRequest,
-    ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
-        """
-        @param request: ConvertHdrVideoRequest
-        @return: ConvertHdrVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.convert_hdr_video_with_options(request, runtime)
-
-    async def convert_hdr_video_async(
-        self,
-        request: videoenhan_20200320_models.ConvertHdrVideoRequest,
-    ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
-        """
-        @param request: ConvertHdrVideoRequest
-        @return: ConvertHdrVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.convert_hdr_video_with_options_async(request, runtime)
-
-    def convert_hdr_video_advance(
-        self,
-        request: videoenhan_20200320_models.ConvertHdrVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        convert_hdr_video_req = videoenhan_20200320_models.ConvertHdrVideoRequest()
-        OpenApiUtilClient.convert(request, convert_hdr_video_req)
-        if not UtilClient.is_unset(request.video_urlobject):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_urlobject,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            convert_hdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        convert_hdr_video_resp = self.convert_hdr_video_with_options(convert_hdr_video_req, runtime)
-        return convert_hdr_video_resp
-
-    async def convert_hdr_video_advance_async(
-        self,
-        request: videoenhan_20200320_models.ConvertHdrVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        convert_hdr_video_req = videoenhan_20200320_models.ConvertHdrVideoRequest()
-        OpenApiUtilClient.convert(request, convert_hdr_video_req)
-        if not UtilClient.is_unset(request.video_urlobject):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_urlobject,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            convert_hdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        convert_hdr_video_resp = await self.convert_hdr_video_with_options_async(convert_hdr_video_req, runtime)
-        return convert_hdr_video_resp
 
     def delete_face_video_template_with_options(
         self,
@@ -2005,7 +1303,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             enhance_portrait_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_portrait_video_resp = self.enhance_portrait_video_with_options(enhance_portrait_video_req, runtime)
         return enhance_portrait_video_resp
@@ -2088,7 +1386,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             enhance_portrait_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_portrait_video_resp = await self.enhance_portrait_video_with_options_async(enhance_portrait_video_req, runtime)
         return enhance_portrait_video_resp
@@ -2283,7 +1581,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             enhance_video_quality_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_video_quality_resp = self.enhance_video_quality_with_options(enhance_video_quality_req, runtime)
         return enhance_video_quality_resp
@@ -2366,7 +1664,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             enhance_video_quality_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_video_quality_resp = await self.enhance_video_quality_with_options_async(enhance_video_quality_req, runtime)
         return enhance_video_quality_resp
@@ -2541,7 +1839,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_video_logo_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_logo_resp = self.erase_video_logo_with_options(erase_video_logo_req, runtime)
         return erase_video_logo_resp
@@ -2624,7 +1922,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_video_logo_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_logo_resp = await self.erase_video_logo_with_options_async(erase_video_logo_req, runtime)
         return erase_video_logo_resp
@@ -2811,7 +2109,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_video_subtitles_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_subtitles_resp = self.erase_video_subtitles_with_options(erase_video_subtitles_req, runtime)
         return erase_video_subtitles_resp
@@ -2894,7 +2192,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_video_subtitles_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_subtitles_resp = await self.erase_video_subtitles_with_options_async(erase_video_subtitles_req, runtime)
         return erase_video_subtitles_resp
@@ -3077,7 +2375,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             generate_human_anime_style_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_human_anime_style_video_resp = self.generate_human_anime_style_video_with_options(generate_human_anime_style_video_req, runtime)
         return generate_human_anime_style_video_resp
@@ -3160,7 +2458,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             generate_human_anime_style_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_human_anime_style_video_resp = await self.generate_human_anime_style_video_with_options_async(generate_human_anime_style_video_req, runtime)
         return generate_human_anime_style_video_resp
@@ -3374,7 +2672,7 @@ class Client(OpenApiClient):
                         'file': file_obj,
                         'success_action_status': '201'
                     }
-                    self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+                    self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
                     tmp = generate_video_req.file_list[i_0]
                     tmp.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
@@ -3462,7 +2760,7 @@ class Client(OpenApiClient):
                         'file': file_obj,
                         'success_action_status': '201'
                     }
-                    await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+                    await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
                     tmp = generate_video_req.file_list[i_0]
                     tmp.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
@@ -3731,7 +3029,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             interpolate_video_frame_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         interpolate_video_frame_resp = self.interpolate_video_frame_with_options(interpolate_video_frame_req, runtime)
         return interpolate_video_frame_resp
@@ -3814,7 +3112,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             interpolate_video_frame_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         interpolate_video_frame_resp = await self.interpolate_video_frame_with_options_async(interpolate_video_frame_req, runtime)
         return interpolate_video_frame_resp
@@ -4001,7 +3299,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             merge_video_face_req.reference_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.video_urlobject):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -4023,7 +3321,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             merge_video_face_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_face_resp = self.merge_video_face_with_options(merge_video_face_req, runtime)
         return merge_video_face_resp
@@ -4106,7 +3404,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             merge_video_face_req.reference_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.video_urlobject):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -4128,7 +3426,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             merge_video_face_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_face_resp = await self.merge_video_face_with_options_async(merge_video_face_req, runtime)
         return merge_video_face_resp
@@ -4327,7 +3625,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             merge_video_model_face_req.face_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_model_face_resp = self.merge_video_model_face_with_options(merge_video_model_face_req, runtime)
         return merge_video_model_face_resp
@@ -4410,7 +3708,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             merge_video_model_face_req.face_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_model_face_resp = await self.merge_video_model_face_with_options_async(merge_video_model_face_req, runtime)
         return merge_video_model_face_resp
@@ -4518,268 +3816,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_face_video_template_with_options_async(request, runtime)
-
-    def reduce_video_noise_with_options(
-        self,
-        request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
-        """
-        @summary 视频降噪
-        
-        @param request: ReduceVideoNoiseRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReduceVideoNoiseResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoUrl'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ReduceVideoNoise',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.ReduceVideoNoiseResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def reduce_video_noise_with_options_async(
-        self,
-        request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
-        """
-        @summary 视频降噪
-        
-        @param request: ReduceVideoNoiseRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReduceVideoNoiseResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoUrl'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ReduceVideoNoise',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.ReduceVideoNoiseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def reduce_video_noise(
-        self,
-        request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
-    ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
-        """
-        @summary 视频降噪
-        
-        @param request: ReduceVideoNoiseRequest
-        @return: ReduceVideoNoiseResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.reduce_video_noise_with_options(request, runtime)
-
-    async def reduce_video_noise_async(
-        self,
-        request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
-    ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
-        """
-        @summary 视频降噪
-        
-        @param request: ReduceVideoNoiseRequest
-        @return: ReduceVideoNoiseResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.reduce_video_noise_with_options_async(request, runtime)
-
-    def reduce_video_noise_advance(
-        self,
-        request: videoenhan_20200320_models.ReduceVideoNoiseAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        reduce_video_noise_req = videoenhan_20200320_models.ReduceVideoNoiseRequest()
-        OpenApiUtilClient.convert(request, reduce_video_noise_req)
-        if not UtilClient.is_unset(request.video_url_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            reduce_video_noise_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        reduce_video_noise_resp = self.reduce_video_noise_with_options(reduce_video_noise_req, runtime)
-        return reduce_video_noise_resp
-
-    async def reduce_video_noise_advance_async(
-        self,
-        request: videoenhan_20200320_models.ReduceVideoNoiseAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        reduce_video_noise_req = videoenhan_20200320_models.ReduceVideoNoiseRequest()
-        OpenApiUtilClient.convert(request, reduce_video_noise_req)
-        if not UtilClient.is_unset(request.video_url_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            reduce_video_noise_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        reduce_video_noise_resp = await self.reduce_video_noise_with_options_async(reduce_video_noise_req, runtime)
-        return reduce_video_noise_resp
 
     def super_resolve_video_with_options(
         self,
@@ -4951,7 +3987,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             super_resolve_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         super_resolve_video_resp = self.super_resolve_video_with_options(super_resolve_video_req, runtime)
         return super_resolve_video_resp
@@ -5034,269 +4070,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             super_resolve_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         super_resolve_video_resp = await self.super_resolve_video_with_options_async(super_resolve_video_req, runtime)
         return super_resolve_video_resp
-
-    def tone_sdr_video_with_options(
-        self,
-        request: videoenhan_20200320_models.ToneSdrVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
-        """
-        @param request: ToneSdrVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ToneSdrVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.bitrate):
-            body['Bitrate'] = request.bitrate
-        if not UtilClient.is_unset(request.recolor_model):
-            body['RecolorModel'] = request.recolor_model
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoURL'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ToneSdrVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.ToneSdrVideoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def tone_sdr_video_with_options_async(
-        self,
-        request: videoenhan_20200320_models.ToneSdrVideoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
-        """
-        @param request: ToneSdrVideoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ToneSdrVideoResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.bitrate):
-            body['Bitrate'] = request.bitrate
-        if not UtilClient.is_unset(request.recolor_model):
-            body['RecolorModel'] = request.recolor_model
-        if not UtilClient.is_unset(request.video_url):
-            body['VideoURL'] = request.video_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ToneSdrVideo',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            videoenhan_20200320_models.ToneSdrVideoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def tone_sdr_video(
-        self,
-        request: videoenhan_20200320_models.ToneSdrVideoRequest,
-    ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
-        """
-        @param request: ToneSdrVideoRequest
-        @return: ToneSdrVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.tone_sdr_video_with_options(request, runtime)
-
-    async def tone_sdr_video_async(
-        self,
-        request: videoenhan_20200320_models.ToneSdrVideoRequest,
-    ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
-        """
-        @param request: ToneSdrVideoRequest
-        @return: ToneSdrVideoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.tone_sdr_video_with_options_async(request, runtime)
-
-    def tone_sdr_video_advance(
-        self,
-        request: videoenhan_20200320_models.ToneSdrVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        tone_sdr_video_req = videoenhan_20200320_models.ToneSdrVideoRequest()
-        OpenApiUtilClient.convert(request, tone_sdr_video_req)
-        if not UtilClient.is_unset(request.video_urlobject):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_urlobject,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            tone_sdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        tone_sdr_video_resp = self.tone_sdr_video_with_options(tone_sdr_video_req, runtime)
-        return tone_sdr_video_resp
-
-    async def tone_sdr_video_advance_async(
-        self,
-        request: videoenhan_20200320_models.ToneSdrVideoAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'videoenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        tone_sdr_video_req = videoenhan_20200320_models.ToneSdrVideoRequest()
-        OpenApiUtilClient.convert(request, tone_sdr_video_req)
-        if not UtilClient.is_unset(request.video_urlobject):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.video_urlobject,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            tone_sdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        tone_sdr_video_resp = await self.tone_sdr_video_with_options_async(tone_sdr_video_req, runtime)
-        return tone_sdr_video_resp

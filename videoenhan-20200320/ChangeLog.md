@@ -1,3 +1,11 @@
+2025-11-20 Version: 4.0.0
+- Delete API AbstractEcommerceVideo.
+- Delete API AbstractFilmVideo.
+- Delete API ConvertHdrVideo.
+- Delete API ReduceVideoNoise.
+- Delete API ToneSdrVideo.
+
+
 2025-08-25 Version: 3.0.22
 - Generated python 2020-03-20 for videoenhan.
 
