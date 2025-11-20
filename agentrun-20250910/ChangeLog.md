@@ -1,3 +1,34 @@
+2025-11-20 Version: 3.1.0
+- Support API ActivateTemplateMCP.
+- Support API CreateCredential.
+- Support API CreateModelProxy.
+- Support API CreateModelService.
+- Support API CreateSandbox.
+- Support API CreateTemplate.
+- Support API DeleteCredential.
+- Support API DeleteModelProxy.
+- Support API DeleteModelService.
+- Support API DeleteTemplate.
+- Support API GetAccessToken.
+- Support API GetCredential.
+- Support API GetModelProxy.
+- Support API GetModelService.
+- Support API GetSandbox.
+- Support API GetTemplate.
+- Support API ListCredentials.
+- Support API ListModelProviders.
+- Support API ListModelProxies.
+- Support API ListModelServices.
+- Support API ListSandboxes.
+- Support API ListTemplates.
+- Support API StopSandbox.
+- Support API StopTemplateMCP.
+- Support API UpdateCredential.
+- Support API UpdateModelProxy.
+- Support API UpdateModelService.
+- Support API UpdateTemplate.
+
+
 2025-11-19 Version: 3.0.0
 - Update API CreateMemory: delete request parameters body.permanent.
 - Update API GetMemory: delete response parameters Body.data.permanent.
