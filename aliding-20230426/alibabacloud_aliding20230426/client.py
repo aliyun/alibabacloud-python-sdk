@@ -4207,6 +4207,156 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CopyDentryHeaders()
         return await self.copy_dentry_with_options_async(request, headers, runtime)
 
+    def copy_dentry_by_node_id_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CopyDentryByNodeIdRequest,
+        tmp_header: aliding_20230426_models.CopyDentryByNodeIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CopyDentryByNodeIdResponse:
+        """
+        @summary 通过NodeId创建知识库节点副本
+        
+        @param tmp_req: CopyDentryByNodeIdRequest
+        @param tmp_header: CopyDentryByNodeIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyDentryByNodeIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CopyDentryByNodeIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CopyDentryByNodeIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.to_next_node_id):
+            body['ToNextNodeId'] = request.to_next_node_id
+        if not UtilClient.is_unset(request.to_parent_node_id):
+            body['ToParentNodeId'] = request.to_parent_node_id
+        if not UtilClient.is_unset(request.to_prev_node_id):
+            body['ToPrevNodeId'] = request.to_prev_node_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyDentryByNodeId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/copyDentryByNodeId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CopyDentryByNodeIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_dentry_by_node_id_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CopyDentryByNodeIdRequest,
+        tmp_header: aliding_20230426_models.CopyDentryByNodeIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CopyDentryByNodeIdResponse:
+        """
+        @summary 通过NodeId创建知识库节点副本
+        
+        @param tmp_req: CopyDentryByNodeIdRequest
+        @param tmp_header: CopyDentryByNodeIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyDentryByNodeIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CopyDentryByNodeIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CopyDentryByNodeIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.to_next_node_id):
+            body['ToNextNodeId'] = request.to_next_node_id
+        if not UtilClient.is_unset(request.to_parent_node_id):
+            body['ToParentNodeId'] = request.to_parent_node_id
+        if not UtilClient.is_unset(request.to_prev_node_id):
+            body['ToPrevNodeId'] = request.to_prev_node_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyDentryByNodeId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/copyDentryByNodeId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CopyDentryByNodeIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_dentry_by_node_id(
+        self,
+        request: aliding_20230426_models.CopyDentryByNodeIdRequest,
+    ) -> aliding_20230426_models.CopyDentryByNodeIdResponse:
+        """
+        @summary 通过NodeId创建知识库节点副本
+        
+        @param request: CopyDentryByNodeIdRequest
+        @return: CopyDentryByNodeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CopyDentryByNodeIdHeaders()
+        return self.copy_dentry_by_node_id_with_options(request, headers, runtime)
+
+    async def copy_dentry_by_node_id_async(
+        self,
+        request: aliding_20230426_models.CopyDentryByNodeIdRequest,
+    ) -> aliding_20230426_models.CopyDentryByNodeIdResponse:
+        """
+        @summary 通过NodeId创建知识库节点副本
+        
+        @param request: CopyDentryByNodeIdRequest
+        @return: CopyDentryByNodeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CopyDentryByNodeIdHeaders()
+        return await self.copy_dentry_by_node_id_with_options_async(request, headers, runtime)
+
     def create_aliding_assistant_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateAlidingAssistantRequest,

@@ -1,3 +1,7 @@
+2025-11-20 Version: 2.46.0
+- Support API CopyDentryByNodeId.
+
+
 2025-11-20 Version: 2.45.2
 - Generated python 2023-04-26 for aliding.
 
