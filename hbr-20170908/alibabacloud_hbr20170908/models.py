@@ -20141,6 +20141,244 @@ class InstallBackupClientsResponse(TeaModel):
         return self
 
 
+class ListProtectedResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        created_by_product: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_id: str = None,
+        skip: int = None,
+        source_type: str = None,
+    ):
+        self.created_by_product = created_by_product
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_id = resource_id
+        self.skip = skip
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_by_product is not None:
+            result['CreatedByProduct'] = self.created_by_product
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedByProduct') is not None:
+            self.created_by_product = m.get('CreatedByProduct')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ListProtectedResourcesResponseBodyProtectedResources(TeaModel):
+    def __init__(
+        self,
+        created_by_product: str = None,
+        protected_data_size: int = None,
+        protected_resource_id: str = None,
+        resource_id: str = None,
+        resource_owner_id: int = None,
+        snapshot_count: int = None,
+        source_type: str = None,
+    ):
+        self.created_by_product = created_by_product
+        self.protected_data_size = protected_data_size
+        self.protected_resource_id = protected_resource_id
+        self.resource_id = resource_id
+        self.resource_owner_id = resource_owner_id
+        self.snapshot_count = snapshot_count
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_by_product is not None:
+            result['CreatedByProduct'] = self.created_by_product
+        if self.protected_data_size is not None:
+            result['ProtectedDataSize'] = self.protected_data_size
+        if self.protected_resource_id is not None:
+            result['ProtectedResourceId'] = self.protected_resource_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.snapshot_count is not None:
+            result['SnapshotCount'] = self.snapshot_count
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedByProduct') is not None:
+            self.created_by_product = m.get('CreatedByProduct')
+        if m.get('ProtectedDataSize') is not None:
+            self.protected_data_size = m.get('ProtectedDataSize')
+        if m.get('ProtectedResourceId') is not None:
+            self.protected_resource_id = m.get('ProtectedResourceId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SnapshotCount') is not None:
+            self.snapshot_count = m.get('SnapshotCount')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ListProtectedResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        protected_resources: List[ListProtectedResourcesResponseBodyProtectedResources] = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.protected_resources = protected_resources
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.protected_resources:
+            for k in self.protected_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['ProtectedResources'] = []
+        if self.protected_resources is not None:
+            for k in self.protected_resources:
+                result['ProtectedResources'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.protected_resources = []
+        if m.get('ProtectedResources') is not None:
+            for k in m.get('ProtectedResources'):
+                temp_model = ListProtectedResourcesResponseBodyProtectedResources()
+                self.protected_resources.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProtectedResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProtectedResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProtectedResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OpenHbrServiceResponseBody(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,7 @@
+2025-11-20 Version: 2.2.0
+- Support API ListProtectedResources.
+
+
 2025-10-11 Version: 2.1.10
 - Update API DescribeUdmSnapshots: add response parameters Body.Snapshots.$.ArchiveErrorMessage.
 - Update API DescribeUdmSnapshots: add response parameters Body.Snapshots.$.ArchiveStatus.

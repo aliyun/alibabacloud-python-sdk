@@ -7866,6 +7866,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.install_backup_clients_with_options_async(request, runtime)
 
+    def list_protected_resources_with_options(
+        self,
+        request: hbr_20170908_models.ListProtectedResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.ListProtectedResourcesResponse:
+        """
+        @summary 查询已保护的资源列表
+        
+        @param request: ListProtectedResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProtectedResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.created_by_product):
+            query['CreatedByProduct'] = request.created_by_product
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.skip):
+            query['Skip'] = request.skip
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProtectedResources',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.ListProtectedResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_protected_resources_with_options_async(
+        self,
+        request: hbr_20170908_models.ListProtectedResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.ListProtectedResourcesResponse:
+        """
+        @summary 查询已保护的资源列表
+        
+        @param request: ListProtectedResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProtectedResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.created_by_product):
+            query['CreatedByProduct'] = request.created_by_product
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.skip):
+            query['Skip'] = request.skip
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProtectedResources',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.ListProtectedResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_protected_resources(
+        self,
+        request: hbr_20170908_models.ListProtectedResourcesRequest,
+    ) -> hbr_20170908_models.ListProtectedResourcesResponse:
+        """
+        @summary 查询已保护的资源列表
+        
+        @param request: ListProtectedResourcesRequest
+        @return: ListProtectedResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_protected_resources_with_options(request, runtime)
+
+    async def list_protected_resources_async(
+        self,
+        request: hbr_20170908_models.ListProtectedResourcesRequest,
+    ) -> hbr_20170908_models.ListProtectedResourcesResponse:
+        """
+        @summary 查询已保护的资源列表
+        
+        @param request: ListProtectedResourcesRequest
+        @return: ListProtectedResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_protected_resources_with_options_async(request, runtime)
+
     def open_hbr_service_with_options(
         self,
         runtime: util_models.RuntimeOptions,
