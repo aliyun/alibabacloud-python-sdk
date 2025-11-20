@@ -13202,9 +13202,11 @@ class UpdateUserResponse(TeaModel):
 class ValidateEmailRequest(TeaModel):
     def __init__(
         self,
+        check_graylist: bool = None,
         email: str = None,
         timeout: int = None,
     ):
+        self.check_graylist = check_graylist
         # This parameter is required.
         self.email = email
         self.timeout = timeout
@@ -13218,6 +13220,8 @@ class ValidateEmailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.check_graylist is not None:
+            result['CheckGraylist'] = self.check_graylist
         if self.email is not None:
             result['Email'] = self.email
         if self.timeout is not None:
@@ -13226,6 +13230,8 @@ class ValidateEmailRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckGraylist') is not None:
+            self.check_graylist = m.get('CheckGraylist')
         if m.get('Email') is not None:
             self.email = m.get('Email')
         if m.get('Timeout') is not None:

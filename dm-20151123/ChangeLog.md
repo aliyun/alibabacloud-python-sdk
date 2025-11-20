@@ -1,3 +1,7 @@
+2025-11-20 Version: 1.7.2
+- Update API ValidateEmail: add request parameters CheckGraylist.
+
+
 2025-10-29 Version: 1.7.1
 - Generated python 2015-11-23 for Dm.
 
