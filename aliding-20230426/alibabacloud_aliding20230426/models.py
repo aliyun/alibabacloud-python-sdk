@@ -64091,9 +64091,11 @@ class InvokeSkillHeadersAccountContext(TeaModel):
     def __init__(
         self,
         account_id: str = None,
+        sso_ticket: str = None,
     ):
         # This parameter is required.
         self.account_id = account_id
+        self.sso_ticket = sso_ticket
 
     def validate(self):
         pass
@@ -64106,12 +64108,16 @@ class InvokeSkillHeadersAccountContext(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['accountId'] = self.account_id
+        if self.sso_ticket is not None:
+            result['ssoTicket'] = self.sso_ticket
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+        if m.get('ssoTicket') is not None:
+            self.sso_ticket = m.get('ssoTicket')
         return self
 
 
@@ -64189,11 +64195,13 @@ class InvokeSkillRequest(TeaModel):
         params: Dict[str, Any] = None,
         skill_id: str = None,
         stream: bool = None,
+        source_id_of_assistant_id: str = None,
     ):
         self.params = params
         # This parameter is required.
         self.skill_id = skill_id
         self.stream = stream
+        self.source_id_of_assistant_id = source_id_of_assistant_id
 
     def validate(self):
         pass
@@ -64210,6 +64218,8 @@ class InvokeSkillRequest(TeaModel):
             result['SkillId'] = self.skill_id
         if self.stream is not None:
             result['Stream'] = self.stream
+        if self.source_id_of_assistant_id is not None:
+            result['sourceIdOfAssistantId'] = self.source_id_of_assistant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -64220,6 +64230,8 @@ class InvokeSkillRequest(TeaModel):
             self.skill_id = m.get('SkillId')
         if m.get('Stream') is not None:
             self.stream = m.get('Stream')
+        if m.get('sourceIdOfAssistantId') is not None:
+            self.source_id_of_assistant_id = m.get('sourceIdOfAssistantId')
         return self
 
 
@@ -64229,11 +64241,13 @@ class InvokeSkillShrinkRequest(TeaModel):
         params_shrink: str = None,
         skill_id: str = None,
         stream: bool = None,
+        source_id_of_assistant_id: str = None,
     ):
         self.params_shrink = params_shrink
         # This parameter is required.
         self.skill_id = skill_id
         self.stream = stream
+        self.source_id_of_assistant_id = source_id_of_assistant_id
 
     def validate(self):
         pass
@@ -64250,6 +64264,8 @@ class InvokeSkillShrinkRequest(TeaModel):
             result['SkillId'] = self.skill_id
         if self.stream is not None:
             result['Stream'] = self.stream
+        if self.source_id_of_assistant_id is not None:
+            result['sourceIdOfAssistantId'] = self.source_id_of_assistant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -64260,6 +64276,8 @@ class InvokeSkillShrinkRequest(TeaModel):
             self.skill_id = m.get('SkillId')
         if m.get('Stream') is not None:
             self.stream = m.get('Stream')
+        if m.get('sourceIdOfAssistantId') is not None:
+            self.source_id_of_assistant_id = m.get('sourceIdOfAssistantId')
         return self
 
 

@@ -1,3 +1,8 @@
+2025-11-20 Version: 2.45.1
+- Update API InvokeSkill: add request parameters sourceIdOfAssistantId.
+- Update API InvokeSkill: add request parameters AccountContext.ssoTicket.
+
+
 2025-10-14 Version: 2.45.0
 - Support API DocBlocksDelete.
 - Support API DocBlocksModify.

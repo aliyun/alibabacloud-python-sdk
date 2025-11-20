@@ -22651,6 +22651,8 @@ class Client(OpenApiClient):
             body['SkillId'] = request.skill_id
         if not UtilClient.is_unset(request.stream):
             body['Stream'] = request.stream
+        if not UtilClient.is_unset(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -22706,6 +22708,8 @@ class Client(OpenApiClient):
             body['SkillId'] = request.skill_id
         if not UtilClient.is_unset(request.stream):
             body['Stream'] = request.stream
+        if not UtilClient.is_unset(request.source_id_of_assistant_id):
+            body['sourceIdOfAssistantId'] = request.source_id_of_assistant_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
