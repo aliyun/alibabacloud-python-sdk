@@ -1,3 +1,6 @@
+2025-11-20 Version: 2.45.2
+- Generated python 2023-04-26 for aliding.
+
 2025-11-20 Version: 2.45.1
 - Update API InvokeSkill: add request parameters sourceIdOfAssistantId.
 - Update API InvokeSkill: add request parameters AccountContext.ssoTicket.
