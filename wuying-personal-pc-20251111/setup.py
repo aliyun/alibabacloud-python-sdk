@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_wuying_personal_pc20251111.
 
-Created on 19/11/2025
+Created on 20/11/2025
 
 @author: Alibaba Cloud SDK
 """

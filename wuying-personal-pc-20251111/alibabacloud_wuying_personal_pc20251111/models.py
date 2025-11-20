@@ -2733,6 +2733,7 @@ class DescribePackageOrdersResponse(TeaModel):
 class GenerateWuyingServerSceneUrlRequest(TeaModel):
     def __init__(
         self,
+        api_key: str = None,
         client_id: str = None,
         client_ip: str = None,
         client_os: str = None,
@@ -2747,6 +2748,8 @@ class GenerateWuyingServerSceneUrlRequest(TeaModel):
         uuid: str = None,
         wuying_server_id: str = None,
     ):
+        # This parameter is required.
+        self.api_key = api_key
         self.client_id = client_id
         self.client_ip = client_ip
         self.client_os = client_os
@@ -2754,13 +2757,11 @@ class GenerateWuyingServerSceneUrlRequest(TeaModel):
         self.client_version = client_version
         self.end_user_id = end_user_id
         self.login_region_id = login_region_id
-        # This parameter is required.
         self.login_token = login_token
         # This parameter is required.
         self.product_type = product_type
         # This parameter is required.
         self.scene = scene
-        # This parameter is required.
         self.session_id = session_id
         self.uuid = uuid
         # This parameter is required.
@@ -2775,6 +2776,8 @@ class GenerateWuyingServerSceneUrlRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_ip is not None:
@@ -2805,6 +2808,8 @@ class GenerateWuyingServerSceneUrlRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientIp') is not None:

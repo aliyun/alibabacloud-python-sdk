@@ -1127,6 +1127,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_ip):
@@ -1186,6 +1188,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.api_key):
+            body['ApiKey'] = request.api_key
         if not UtilClient.is_unset(request.client_id):
             body['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_ip):
