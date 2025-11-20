@@ -1,3 +1,7 @@
+2025-11-20 Version: 5.1.0
+- Support API ListGatewayFeatures.
+
+
 2025-11-06 Version: 5.0.3
 - Update API CreateMcpServer: add request parameters body.createFromType.
 - Update API UpdateMcpServer: add request parameters body.createFromType.

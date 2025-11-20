@@ -384,7 +384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateAndAttachPolicyResponse:
         """
-        @summary CreateAndAttachPolicy
+        @summary Creates and associates a policy.
         
         @param request: CreateAndAttachPolicyRequest
         @param headers: map
@@ -436,7 +436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateAndAttachPolicyResponse:
         """
-        @summary CreateAndAttachPolicy
+        @summary Creates and associates a policy.
         
         @param request: CreateAndAttachPolicyRequest
         @param headers: map
@@ -486,7 +486,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateAndAttachPolicyRequest,
     ) -> apig20240327_models.CreateAndAttachPolicyResponse:
         """
-        @summary CreateAndAttachPolicy
+        @summary Creates and associates a policy.
         
         @param request: CreateAndAttachPolicyRequest
         @return: CreateAndAttachPolicyResponse
@@ -500,7 +500,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateAndAttachPolicyRequest,
     ) -> apig20240327_models.CreateAndAttachPolicyResponse:
         """
-        @summary CreateAndAttachPolicy
+        @summary Creates and associates a policy.
         
         @param request: CreateAndAttachPolicyRequest
         @return: CreateAndAttachPolicyResponse
@@ -516,7 +516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateConsumerResponse:
         """
-        @summary 创建消费者
+        @summary Creates a consumer.
         
         @param request: CreateConsumerRequest
         @param headers: map
@@ -566,7 +566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateConsumerResponse:
         """
-        @summary 创建消费者
+        @summary Creates a consumer.
         
         @param request: CreateConsumerRequest
         @param headers: map
@@ -614,7 +614,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateConsumerRequest,
     ) -> apig20240327_models.CreateConsumerResponse:
         """
-        @summary 创建消费者
+        @summary Creates a consumer.
         
         @param request: CreateConsumerRequest
         @return: CreateConsumerResponse
@@ -628,7 +628,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateConsumerRequest,
     ) -> apig20240327_models.CreateConsumerResponse:
         """
-        @summary 创建消费者
+        @summary Creates a consumer.
         
         @param request: CreateConsumerRequest
         @return: CreateConsumerResponse
@@ -645,7 +645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
         """
-        @summary 创建消费者授权规则
+        @summary Creates a consumer authorization rule.
         
         @param request: CreateConsumerAuthorizationRuleRequest
         @param headers: map
@@ -692,7 +692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
         """
-        @summary 创建消费者授权规则
+        @summary Creates a consumer authorization rule.
         
         @param request: CreateConsumerAuthorizationRuleRequest
         @param headers: map
@@ -737,7 +737,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateConsumerAuthorizationRuleRequest,
     ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
         """
-        @summary 创建消费者授权规则
+        @summary Creates a consumer authorization rule.
         
         @param request: CreateConsumerAuthorizationRuleRequest
         @return: CreateConsumerAuthorizationRuleResponse
@@ -752,7 +752,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateConsumerAuthorizationRuleRequest,
     ) -> apig20240327_models.CreateConsumerAuthorizationRuleResponse:
         """
-        @summary 创建消费者授权规则
+        @summary Creates a consumer authorization rule.
         
         @param request: CreateConsumerAuthorizationRuleRequest
         @return: CreateConsumerAuthorizationRuleResponse
@@ -1172,7 +1172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateGatewayResponse:
         """
-        @summary 创建云原生网关
+        @summary Creates a cloud-native gateway.
         
         @param request: CreateGatewayRequest
         @param headers: map
@@ -1230,7 +1230,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateGatewayResponse:
         """
-        @summary 创建云原生网关
+        @summary Creates a cloud-native gateway.
         
         @param request: CreateGatewayRequest
         @param headers: map
@@ -1286,7 +1286,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateGatewayRequest,
     ) -> apig20240327_models.CreateGatewayResponse:
         """
-        @summary 创建云原生网关
+        @summary Creates a cloud-native gateway.
         
         @param request: CreateGatewayRequest
         @return: CreateGatewayResponse
@@ -1300,7 +1300,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateGatewayRequest,
     ) -> apig20240327_models.CreateGatewayResponse:
         """
-        @summary 创建云原生网关
+        @summary Creates a cloud-native gateway.
         
         @param request: CreateGatewayRequest
         @return: CreateGatewayResponse
@@ -1724,7 +1724,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateMcpServerResponse:
         """
-        @summary 创建MCP server
+        @summary Creates an MCP server.
         
         @param request: CreateMcpServerRequest
         @param headers: map
@@ -1784,7 +1784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateMcpServerResponse:
         """
-        @summary 创建MCP server
+        @summary Creates an MCP server.
         
         @param request: CreateMcpServerRequest
         @param headers: map
@@ -1842,7 +1842,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateMcpServerRequest,
     ) -> apig20240327_models.CreateMcpServerResponse:
         """
-        @summary 创建MCP server
+        @summary Creates an MCP server.
         
         @param request: CreateMcpServerRequest
         @return: CreateMcpServerResponse
@@ -1856,7 +1856,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateMcpServerRequest,
     ) -> apig20240327_models.CreateMcpServerResponse:
         """
-        @summary 创建MCP server
+        @summary Creates an MCP server.
         
         @param request: CreateMcpServerRequest
         @return: CreateMcpServerResponse
@@ -1872,7 +1872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreatePluginAttachmentResponse:
         """
-        @summary 创建API
+        @summary Attaches a plug-in.
         
         @param request: CreatePluginAttachmentRequest
         @param headers: map
@@ -1922,7 +1922,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreatePluginAttachmentResponse:
         """
-        @summary 创建API
+        @summary Attaches a plug-in.
         
         @param request: CreatePluginAttachmentRequest
         @param headers: map
@@ -1970,7 +1970,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreatePluginAttachmentRequest,
     ) -> apig20240327_models.CreatePluginAttachmentResponse:
         """
-        @summary 创建API
+        @summary Attaches a plug-in.
         
         @param request: CreatePluginAttachmentRequest
         @return: CreatePluginAttachmentResponse
@@ -1984,7 +1984,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreatePluginAttachmentRequest,
     ) -> apig20240327_models.CreatePluginAttachmentResponse:
         """
-        @summary 创建API
+        @summary Attaches a plug-in.
         
         @param request: CreatePluginAttachmentRequest
         @return: CreatePluginAttachmentResponse
@@ -2360,7 +2360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteConsumerResponse:
         """
-        @summary 删除消费者
+        @summary Deletes a consumer.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2392,7 +2392,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteConsumerResponse:
         """
-        @summary 删除消费者
+        @summary Deletes a consumer.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2422,7 +2422,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.DeleteConsumerResponse:
         """
-        @summary 删除消费者
+        @summary Deletes a consumer.
         
         @return: DeleteConsumerResponse
         """
@@ -2435,7 +2435,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.DeleteConsumerResponse:
         """
-        @summary 删除消费者
+        @summary Deletes a consumer.
         
         @return: DeleteConsumerResponse
         """
@@ -2451,7 +2451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
         """
-        @summary 删除消费者授权规则
+        @summary Deletes a consumer authorization rule.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2484,7 +2484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
         """
-        @summary 删除消费者授权规则
+        @summary Deletes a consumer authorization rule.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2515,7 +2515,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
         """
-        @summary 删除消费者授权规则
+        @summary Deletes a consumer authorization rule.
         
         @return: DeleteConsumerAuthorizationRuleResponse
         """
@@ -2529,7 +2529,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.DeleteConsumerAuthorizationRuleResponse:
         """
-        @summary 删除消费者授权规则
+        @summary Deletes a consumer authorization rule.
         
         @return: DeleteConsumerAuthorizationRuleResponse
         """
@@ -3306,7 +3306,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeletePluginAttachmentResponse:
         """
-        @summary 删除挂载规则API
+        @summary Deletes a plug-in attachment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3338,7 +3338,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeletePluginAttachmentResponse:
         """
-        @summary 删除挂载规则API
+        @summary Deletes a plug-in attachment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3368,7 +3368,7 @@ class Client(OpenApiClient):
         plugin_attachment_id: str,
     ) -> apig20240327_models.DeletePluginAttachmentResponse:
         """
-        @summary 删除挂载规则API
+        @summary Deletes a plug-in attachment.
         
         @return: DeletePluginAttachmentResponse
         """
@@ -3381,7 +3381,7 @@ class Client(OpenApiClient):
         plugin_attachment_id: str,
     ) -> apig20240327_models.DeletePluginAttachmentResponse:
         """
-        @summary 删除挂载规则API
+        @summary Deletes a plug-in attachment.
         
         @return: DeletePluginAttachmentResponse
         """
@@ -3576,7 +3576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteServiceResponse:
         """
-        @summary 删除服务
+        @summary Deletes a service.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3608,7 +3608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteServiceResponse:
         """
-        @summary 删除服务
+        @summary Deletes a service.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3638,7 +3638,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> apig20240327_models.DeleteServiceResponse:
         """
-        @summary 删除服务
+        @summary Deletes a service.
         
         @return: DeleteServiceResponse
         """
@@ -3651,7 +3651,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> apig20240327_models.DeleteServiceResponse:
         """
-        @summary 删除服务
+        @summary Deletes a service.
         
         @return: DeleteServiceResponse
         """
@@ -3782,7 +3782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeployMcpServerResponse:
         """
-        @summary 发布MCP server
+        @summary Deploys an MCP server.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3814,7 +3814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeployMcpServerResponse:
         """
-        @summary 发布MCP server
+        @summary Deploys an MCP server.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3844,7 +3844,7 @@ class Client(OpenApiClient):
         mcp_server_id: str,
     ) -> apig20240327_models.DeployMcpServerResponse:
         """
-        @summary 发布MCP server
+        @summary Deploys an MCP server.
         
         @return: DeployMcpServerResponse
         """
@@ -3857,7 +3857,7 @@ class Client(OpenApiClient):
         mcp_server_id: str,
     ) -> apig20240327_models.DeployMcpServerResponse:
         """
-        @summary 发布MCP server
+        @summary Deploys an MCP server.
         
         @return: DeployMcpServerResponse
         """
@@ -3962,7 +3962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetConsumerResponse:
         """
-        @summary 查询消费者
+        @summary Obtains the information of a consumer.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3994,7 +3994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetConsumerResponse:
         """
-        @summary 查询消费者
+        @summary Obtains the information of a consumer.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4024,7 +4024,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.GetConsumerResponse:
         """
-        @summary 查询消费者
+        @summary Obtains the information of a consumer.
         
         @return: GetConsumerResponse
         """
@@ -4037,7 +4037,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.GetConsumerResponse:
         """
-        @summary 查询消费者
+        @summary Obtains the information of a consumer.
         
         @return: GetConsumerResponse
         """
@@ -4053,7 +4053,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
         """
-        @summary 查询消费者授权规则
+        @summary Obtains a consumer authentication rule.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4086,7 +4086,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
         """
-        @summary 查询消费者授权规则
+        @summary Obtains a consumer authentication rule.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4117,7 +4117,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
         """
-        @summary 查询消费者授权规则
+        @summary Obtains a consumer authentication rule.
         
         @return: GetConsumerAuthorizationRuleResponse
         """
@@ -4131,7 +4131,7 @@ class Client(OpenApiClient):
         consumer_id: str,
     ) -> apig20240327_models.GetConsumerAuthorizationRuleResponse:
         """
-        @summary 查询消费者授权规则
+        @summary Obtains a consumer authentication rule.
         
         @return: GetConsumerAuthorizationRuleResponse
         """
@@ -4894,7 +4894,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetMcpServerResponse:
         """
-        @summary 获取MCP server
+        @summary Queries the detailed information of an MCP server.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4926,7 +4928,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetMcpServerResponse:
         """
-        @summary 获取MCP server
+        @summary Queries the detailed information of an MCP server.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4956,7 +4960,9 @@ class Client(OpenApiClient):
         mcp_server_id: str,
     ) -> apig20240327_models.GetMcpServerResponse:
         """
-        @summary 获取MCP server
+        @summary Queries the detailed information of an MCP server.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @return: GetMcpServerResponse
         """
@@ -4969,7 +4975,9 @@ class Client(OpenApiClient):
         mcp_server_id: str,
     ) -> apig20240327_models.GetMcpServerResponse:
         """
-        @summary 获取MCP server
+        @summary Queries the detailed information of an MCP server.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @return: GetMcpServerResponse
         """
@@ -4984,7 +4992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetPluginAttachmentResponse:
         """
-        @summary GetPluginAttachment。
+        @summary Queries a plug-in attachment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5016,7 +5024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetPluginAttachmentResponse:
         """
-        @summary GetPluginAttachment。
+        @summary Queries a plug-in attachment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5046,7 +5054,7 @@ class Client(OpenApiClient):
         plugin_attachment_id: str,
     ) -> apig20240327_models.GetPluginAttachmentResponse:
         """
-        @summary GetPluginAttachment。
+        @summary Queries a plug-in attachment.
         
         @return: GetPluginAttachmentResponse
         """
@@ -5059,7 +5067,7 @@ class Client(OpenApiClient):
         plugin_attachment_id: str,
     ) -> apig20240327_models.GetPluginAttachmentResponse:
         """
-        @summary GetPluginAttachment。
+        @summary Queries a plug-in attachment.
         
         @return: GetPluginAttachmentResponse
         """
@@ -5708,7 +5716,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.InstallPluginResponse:
         """
-        @summary InstallPlugin
+        @summary Installs a plug-in.
         
         @param request: InstallPluginRequest
         @param headers: map
@@ -5748,7 +5756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.InstallPluginResponse:
         """
-        @summary InstallPlugin
+        @summary Installs a plug-in.
         
         @param request: InstallPluginRequest
         @param headers: map
@@ -5786,7 +5794,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.InstallPluginRequest,
     ) -> apig20240327_models.InstallPluginResponse:
         """
-        @summary InstallPlugin
+        @summary Installs a plug-in.
         
         @param request: InstallPluginRequest
         @return: InstallPluginResponse
@@ -5800,7 +5808,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.InstallPluginRequest,
     ) -> apig20240327_models.InstallPluginResponse:
         """
-        @summary InstallPlugin
+        @summary Installs a plug-in.
         
         @param request: InstallPluginRequest
         @return: InstallPluginResponse
@@ -5816,7 +5824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListConsumersResponse:
         """
-        @summary 查询消费者列表
+        @summary Queries a list of consumers.
         
         @param request: ListConsumersRequest
         @param headers: map
@@ -5860,7 +5868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListConsumersResponse:
         """
-        @summary 查询消费者列表
+        @summary Queries a list of consumers.
         
         @param request: ListConsumersRequest
         @param headers: map
@@ -5902,7 +5910,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListConsumersRequest,
     ) -> apig20240327_models.ListConsumersResponse:
         """
-        @summary 查询消费者列表
+        @summary Queries a list of consumers.
         
         @param request: ListConsumersRequest
         @return: ListConsumersResponse
@@ -5916,7 +5924,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListConsumersRequest,
     ) -> apig20240327_models.ListConsumersResponse:
         """
-        @summary 查询消费者列表
+        @summary Queries a list of consumers.
         
         @param request: ListConsumersRequest
         @return: ListConsumersResponse
@@ -6192,6 +6200,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_environments_with_options_async(request, headers, runtime)
+
+    def list_gateway_features_with_options(
+        self,
+        gateway_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListGatewayFeaturesResponse:
+        """
+        @summary 获取Gateway的Features
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayFeaturesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListGatewayFeatures',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-features',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListGatewayFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_features_with_options_async(
+        self,
+        gateway_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListGatewayFeaturesResponse:
+        """
+        @summary 获取Gateway的Features
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayFeaturesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListGatewayFeatures',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/gateways/{OpenApiUtilClient.get_encode_param(gateway_id)}/gateway-features',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListGatewayFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_features(
+        self,
+        gateway_id: str,
+    ) -> apig20240327_models.ListGatewayFeaturesResponse:
+        """
+        @summary 获取Gateway的Features
+        
+        @return: ListGatewayFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_gateway_features_with_options(gateway_id, headers, runtime)
+
+    async def list_gateway_features_async(
+        self,
+        gateway_id: str,
+    ) -> apig20240327_models.ListGatewayFeaturesResponse:
+        """
+        @summary 获取Gateway的Features
+        
+        @return: ListGatewayFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_features_with_options_async(gateway_id, headers, runtime)
 
     def list_gateways_with_options(
         self,
@@ -6824,7 +6922,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListMcpServersResponse:
         """
-        @summary 获取MCP server列表
+        @summary Retrieves a list of MCP servers.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @param request: ListMcpServersRequest
         @param headers: map
@@ -6874,7 +6974,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListMcpServersResponse:
         """
-        @summary 获取MCP server列表
+        @summary Retrieves a list of MCP servers.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @param request: ListMcpServersRequest
         @param headers: map
@@ -6922,7 +7024,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListMcpServersRequest,
     ) -> apig20240327_models.ListMcpServersResponse:
         """
-        @summary 获取MCP server列表
+        @summary Retrieves a list of MCP servers.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @param request: ListMcpServersRequest
         @return: ListMcpServersResponse
@@ -6936,7 +7040,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListMcpServersRequest,
     ) -> apig20240327_models.ListMcpServersResponse:
         """
-        @summary 获取MCP server列表
+        @summary Retrieves a list of MCP servers.
+        
+        @description You can call this operation to create multiple services at a time.
         
         @param request: ListMcpServersRequest
         @return: ListMcpServersResponse
@@ -6952,7 +7058,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPluginAttachmentsResponse:
         """
-        @summary 获取挂载列表
+        @summary Retrieves a list of plug-in attachments.
         
         @param request: ListPluginAttachmentsRequest
         @param headers: map
@@ -7006,7 +7112,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPluginAttachmentsResponse:
         """
-        @summary 获取挂载列表
+        @summary Retrieves a list of plug-in attachments.
         
         @param request: ListPluginAttachmentsRequest
         @param headers: map
@@ -7058,7 +7164,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPluginAttachmentsRequest,
     ) -> apig20240327_models.ListPluginAttachmentsResponse:
         """
-        @summary 获取挂载列表
+        @summary Retrieves a list of plug-in attachments.
         
         @param request: ListPluginAttachmentsRequest
         @return: ListPluginAttachmentsResponse
@@ -7072,7 +7178,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPluginAttachmentsRequest,
     ) -> apig20240327_models.ListPluginAttachmentsResponse:
         """
-        @summary 获取挂载列表
+        @summary Retrieves a list of plug-in attachments.
         
         @param request: ListPluginAttachmentsRequest
         @return: ListPluginAttachmentsResponse
@@ -7088,7 +7194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPluginsResponse:
         """
-        @summary ListPlugins
+        @summary Queries plug-ins.
         
         @param request: ListPluginsRequest
         @param headers: map
@@ -7144,7 +7250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPluginsResponse:
         """
-        @summary ListPlugins
+        @summary Queries plug-ins.
         
         @param request: ListPluginsRequest
         @param headers: map
@@ -7198,7 +7304,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPluginsRequest,
     ) -> apig20240327_models.ListPluginsResponse:
         """
-        @summary ListPlugins
+        @summary Queries plug-ins.
         
         @param request: ListPluginsRequest
         @return: ListPluginsResponse
@@ -7212,7 +7318,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPluginsRequest,
     ) -> apig20240327_models.ListPluginsResponse:
         """
-        @summary ListPlugins
+        @summary Queries plug-ins.
         
         @param request: ListPluginsRequest
         @return: ListPluginsResponse
@@ -7228,7 +7334,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPoliciesResponse:
         """
-        @summary ListPolicies
+        @summary Queries policies.
         
         @param request: ListPoliciesRequest
         @param headers: map
@@ -7276,7 +7382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPoliciesResponse:
         """
-        @summary ListPolicies
+        @summary Queries policies.
         
         @param request: ListPoliciesRequest
         @param headers: map
@@ -7322,7 +7428,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPoliciesRequest,
     ) -> apig20240327_models.ListPoliciesResponse:
         """
-        @summary ListPolicies
+        @summary Queries policies.
         
         @param request: ListPoliciesRequest
         @return: ListPoliciesResponse
@@ -7336,7 +7442,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPoliciesRequest,
     ) -> apig20240327_models.ListPoliciesResponse:
         """
-        @summary ListPolicies
+        @summary Queries policies.
         
         @param request: ListPoliciesRequest
         @return: ListPoliciesResponse
@@ -8130,7 +8236,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UnDeployMcpServerResponse:
         """
-        @summary 取消发布MCP server
+        @summary Undeploys an MCP server.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8162,7 +8268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UnDeployMcpServerResponse:
         """
-        @summary 取消发布MCP server
+        @summary Undeploys an MCP server.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8192,7 +8298,7 @@ class Client(OpenApiClient):
         mcp_server_id: str,
     ) -> apig20240327_models.UnDeployMcpServerResponse:
         """
-        @summary 取消发布MCP server
+        @summary Undeploys an MCP server.
         
         @return: UnDeployMcpServerResponse
         """
@@ -8205,7 +8311,7 @@ class Client(OpenApiClient):
         mcp_server_id: str,
     ) -> apig20240327_models.UnDeployMcpServerResponse:
         """
-        @summary 取消发布MCP server
+        @summary Undeploys an MCP server.
         
         @return: UnDeployMcpServerResponse
         """
@@ -8340,7 +8446,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UninstallPluginResponse:
         """
-        @summary UninstallPlugin
+        @summary Uninstalls a plug-in.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8372,7 +8478,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UninstallPluginResponse:
         """
-        @summary UninstallPlugin
+        @summary Uninstalls a plug-in.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8402,7 +8508,7 @@ class Client(OpenApiClient):
         plugin_id: str,
     ) -> apig20240327_models.UninstallPluginResponse:
         """
-        @summary UninstallPlugin
+        @summary Uninstalls a plug-in.
         
         @return: UninstallPluginResponse
         """
@@ -8415,7 +8521,7 @@ class Client(OpenApiClient):
         plugin_id: str,
     ) -> apig20240327_models.UninstallPluginResponse:
         """
-        @summary UninstallPlugin
+        @summary Uninstalls a plug-in.
         
         @return: UninstallPluginResponse
         """
@@ -8431,7 +8537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
         """
-        @summary UpdateAndAttachPolicy
+        @summary Updates and associates a policy.
         
         @param request: UpdateAndAttachPolicyRequest
         @param headers: map
@@ -8482,7 +8588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
         """
-        @summary UpdateAndAttachPolicy
+        @summary Updates and associates a policy.
         
         @param request: UpdateAndAttachPolicyRequest
         @param headers: map
@@ -8531,7 +8637,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateAndAttachPolicyRequest,
     ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
         """
-        @summary UpdateAndAttachPolicy
+        @summary Updates and associates a policy.
         
         @param request: UpdateAndAttachPolicyRequest
         @return: UpdateAndAttachPolicyResponse
@@ -8546,7 +8652,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateAndAttachPolicyRequest,
     ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
         """
-        @summary UpdateAndAttachPolicy
+        @summary Updates and associates a policy.
         
         @param request: UpdateAndAttachPolicyRequest
         @return: UpdateAndAttachPolicyResponse
@@ -8563,7 +8669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateConsumerResponse:
         """
-        @summary 更新消费者
+        @summary Updates a consumer.
         
         @param request: UpdateConsumerRequest
         @param headers: map
@@ -8610,7 +8716,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateConsumerResponse:
         """
-        @summary 更新消费者
+        @summary Updates a consumer.
         
         @param request: UpdateConsumerRequest
         @param headers: map
@@ -8655,7 +8761,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateConsumerRequest,
     ) -> apig20240327_models.UpdateConsumerResponse:
         """
-        @summary 更新消费者
+        @summary Updates a consumer.
         
         @param request: UpdateConsumerRequest
         @return: UpdateConsumerResponse
@@ -8670,7 +8776,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateConsumerRequest,
     ) -> apig20240327_models.UpdateConsumerResponse:
         """
-        @summary 更新消费者
+        @summary Updates a consumer.
         
         @param request: UpdateConsumerRequest
         @return: UpdateConsumerResponse
@@ -8688,7 +8794,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
         """
-        @summary 更新消费者授权规则
+        @summary Updates a consumer authorization rule.
         
         @param request: UpdateConsumerAuthorizationRuleRequest
         @param headers: map
@@ -8732,7 +8838,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
         """
-        @summary 更新消费者授权规则
+        @summary Updates a consumer authorization rule.
         
         @param request: UpdateConsumerAuthorizationRuleRequest
         @param headers: map
@@ -8774,7 +8880,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateConsumerAuthorizationRuleRequest,
     ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
         """
-        @summary 更新消费者授权规则
+        @summary Updates a consumer authorization rule.
         
         @param request: UpdateConsumerAuthorizationRuleRequest
         @return: UpdateConsumerAuthorizationRuleResponse
@@ -8790,7 +8896,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateConsumerAuthorizationRuleRequest,
     ) -> apig20240327_models.UpdateConsumerAuthorizationRuleResponse:
         """
-        @summary 更新消费者授权规则
+        @summary Updates a consumer authorization rule.
         
         @param request: UpdateConsumerAuthorizationRuleRequest
         @return: UpdateConsumerAuthorizationRuleResponse
@@ -9703,7 +9809,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateMcpServerResponse:
         """
-        @summary 更新MCP server
+        @summary Updates an MCP server.
+        
+        @description You can only update the listening Ingress configuration for sources of the *ACK** type.
         
         @param request: UpdateMcpServerRequest
         @param headers: map
@@ -9760,7 +9868,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateMcpServerResponse:
         """
-        @summary 更新MCP server
+        @summary Updates an MCP server.
+        
+        @description You can only update the listening Ingress configuration for sources of the *ACK** type.
         
         @param request: UpdateMcpServerRequest
         @param headers: map
@@ -9815,7 +9925,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateMcpServerRequest,
     ) -> apig20240327_models.UpdateMcpServerResponse:
         """
-        @summary 更新MCP server
+        @summary Updates an MCP server.
+        
+        @description You can only update the listening Ingress configuration for sources of the *ACK** type.
         
         @param request: UpdateMcpServerRequest
         @return: UpdateMcpServerResponse
@@ -9830,7 +9942,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateMcpServerRequest,
     ) -> apig20240327_models.UpdateMcpServerResponse:
         """
-        @summary 更新MCP server
+        @summary Updates an MCP server.
+        
+        @description You can only update the listening Ingress configuration for sources of the *ACK** type.
         
         @param request: UpdateMcpServerRequest
         @return: UpdateMcpServerResponse
@@ -9847,7 +9961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdatePluginAttachmentResponse:
         """
-        @summary 更新挂载规则API
+        @summary Updates a plug-in attachment.
         
         @param request: UpdatePluginAttachmentRequest
         @param headers: map
@@ -9890,7 +10004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdatePluginAttachmentResponse:
         """
-        @summary 更新挂载规则API
+        @summary Updates a plug-in attachment.
         
         @param request: UpdatePluginAttachmentRequest
         @param headers: map
@@ -9931,7 +10045,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdatePluginAttachmentRequest,
     ) -> apig20240327_models.UpdatePluginAttachmentResponse:
         """
-        @summary 更新挂载规则API
+        @summary Updates a plug-in attachment.
         
         @param request: UpdatePluginAttachmentRequest
         @return: UpdatePluginAttachmentResponse
@@ -9946,7 +10060,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdatePluginAttachmentRequest,
     ) -> apig20240327_models.UpdatePluginAttachmentResponse:
         """
-        @summary 更新挂载规则API
+        @summary Updates a plug-in attachment.
         
         @param request: UpdatePluginAttachmentRequest
         @return: UpdatePluginAttachmentResponse

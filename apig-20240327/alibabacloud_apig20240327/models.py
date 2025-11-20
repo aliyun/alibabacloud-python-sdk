@@ -6349,17 +6349,58 @@ class CreateAndAttachPolicyRequest(TeaModel):
         gateway_id: str = None,
         name: str = None,
     ):
+        # The IDs of the resources to be associated with the policy.
+        # 
         # This parameter is required.
         self.attach_resource_ids = attach_resource_ids
+        # The supported resource type. Valid values:
+        # 
+        # *   HttpApi: an HTTP API
+        # *   Operation: an operation in an HTTP API
+        # *   GatewayRoute: a route
+        # *   GatewayService: a service
+        # *   GatewayServicePort: a service port
+        # *   Domain: a domain name
+        # *   Gateway: an instance
+        # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
+        # The class name supported by the policy. Different policies support different resources. This parameter is used in combination with AttachResourceType.
+        # 
+        # *   RateLimit: throttles traffic. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   ConcurrencyLimit: controls concurrency. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   CircuitBreaker: breaks circuits and downgrades traffic. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   HttpRewrite: rewrites HTTP traffic. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   HeaderModify: modifies headers. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   Cors: supports CORS. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   FlowCopy: replicates traffic. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   Timeout: times out requests. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   Retry: retries requests. Supported: HttpApi, Operation, and GatewayRoute.
+        # *   IpAccessControl: implements IP address-based access control. Supported: HttpApi, Operation, GatewayRoute, Domain, and Gateway.
+        # *   DirectResponse: mocks responses. Supported: Operation and GatewayRoute.
+        # *   Redirect: redirects traffic. Supported: GatewayRoute.
+        # *   Fallback: implements fallback. Supported: Operation and GatewayRoute.
+        # *   ServiceTls: implements TLS authentication. Supported: GatewayService.
+        # *   ServiceLb: balances loads. Supported: GatewayService.
+        # *   ServicePortTls: implements service port TLS authentication. Supported: GatewayServicePort.
+        # *   Waf: implements WAF protection. Supported: GatewayRoute and Gateway.
+        # *   JWTAuth: implements global JWT authentication. Supported: Gateway.
+        # *   OIDCAuth: implements global OIDC authentication. Supported: Gateway.
+        # *   ExternalZAuth: implements custom authentication. Supported: Gateway.
+        # 
         # This parameter is required.
         self.class_name = class_name
+        # The policy configurations.
+        # 
         # This parameter is required.
         self.config = config
+        # The policy description.
         self.description = description
+        # The environment ID.
         self.environment_id = environment_id
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The policy name.
         self.name = name
 
     def validate(self):
@@ -6416,7 +6457,9 @@ class CreateAndAttachPolicyResponseBodyData(TeaModel):
         attachment: Attachment = None,
         policy_id: str = None,
     ):
+        # The association information of the policy.
         self.attachment = attachment
+        # The policy ID.
         self.policy_id = policy_id
 
     def validate(self):
@@ -6453,9 +6496,13 @@ class CreateAndAttachPolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message returned.
         self.message = message
+        # The request ID, which is used to trace the call link.
         self.request_id = request_id
 
     def validate(self):
@@ -6544,12 +6591,19 @@ class CreateConsumerRequest(TeaModel):
         jwt_identity_config: JwtIdentityConfig = None,
         name: str = None,
     ):
+        # The list of AK/SK identity configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
+        # The configuration for the API key authentication method.
         self.apikey_identity_config = apikey_identity_config
+        # The description of the consumer.
         self.description = description
+        # Indicates if enabled.
         self.enable = enable
+        # The type of the gateway.
         self.gateway_type = gateway_type
+        # The configuration of the JWT identity.
         self.jwt_identity_config = jwt_identity_config
+        # The name of the consumer.
         self.name = name
 
     def validate(self):
@@ -6615,6 +6669,7 @@ class CreateConsumerResponseBodyData(TeaModel):
         self,
         consumer_id: str = None,
     ):
+        # The consumer ID.
         self.consumer_id = consumer_id
 
     def validate(self):
@@ -6645,10 +6700,13 @@ class CreateConsumerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6735,10 +6793,15 @@ class CreateConsumerAuthorizationRuleRequest(TeaModel):
         parent_resource_type: str = None,
         resource_type: str = None,
     ):
+        # The list of resource authorization information.
         self.authorization_resource_infos = authorization_resource_infos
+        # The expiry mode. Valid values: LongTerm and ShortTerm.
         self.expire_mode = expire_mode
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
+        # The type of the parent resource.
         self.parent_resource_type = parent_resource_type
+        # The resource type,
         self.resource_type = resource_type
 
     def validate(self):
@@ -6790,6 +6853,7 @@ class CreateConsumerAuthorizationRuleResponseBodyData(TeaModel):
         self,
         consumer_authorization_rule_id: str = None,
     ):
+        # Filters the list of operations based on a specific consumer authorization rule ID. Only authorized operations are returned in the response.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
 
     def validate(self):
@@ -6820,9 +6884,13 @@ class CreateConsumerAuthorizationRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7594,6 +7662,7 @@ class CreateGatewayRequestLogConfigSls(TeaModel):
         self,
         enable: bool = None,
     ):
+        # Indicates if enabled.
         self.enable = enable
 
     def validate(self):
@@ -7621,6 +7690,7 @@ class CreateGatewayRequestLogConfig(TeaModel):
         self,
         sls: CreateGatewayRequestLogConfigSls = None,
     ):
+        # The Simple Log Service configurations.
         self.sls = sls
 
     def validate(self):
@@ -7650,6 +7720,13 @@ class CreateGatewayRequestNetworkAccessConfig(TeaModel):
         self,
         type: str = None,
     ):
+        # The network access type.
+        # 
+        # Valid values:
+        # 
+        # *   InternetAndIntranet
+        # *   Intranet
+        # *   Internet
         self.type = type
 
     def validate(self):
@@ -7678,7 +7755,9 @@ class CreateGatewayRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7711,7 +7790,9 @@ class CreateGatewayRequestZoneConfigZones(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7745,8 +7826,16 @@ class CreateGatewayRequestZoneConfig(TeaModel):
         v_switch_id: str = None,
         zones: List[CreateGatewayRequestZoneConfigZones] = None,
     ):
+        # The option for selecting the zone.
+        # 
+        # Valid values:
+        # 
+        # *   Auto
+        # *   Manual
         self.select_option = select_option
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The supported zones.
         self.zones = zones
 
     def validate(self):
@@ -7800,16 +7889,37 @@ class CreateGatewayRequest(TeaModel):
         vpc_id: str = None,
         zone_config: CreateGatewayRequestZoneConfig = None,
     ):
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   POSTPAY
+        # *   PREPAY
         self.charge_type = charge_type
+        # The gateway edition.
         self.gateway_edition = gateway_edition
+        # The type of the gateway.
+        # 
+        # Valid values:
+        # 
+        # *   AI
+        # *   API
         self.gateway_type = gateway_type
+        # The logging configurations.
         self.log_config = log_config
+        # The name of the gateway instance.
         self.name = name
+        # The network access configuration.
         self.network_access_config = network_access_config
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The specifications of the node.
         self.spec = spec
+        # The tags.
         self.tag = tag
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The zone settings.
         self.zone_config = zone_config
 
     def validate(self):
@@ -7894,6 +8004,7 @@ class CreateGatewayResponseBodyData(TeaModel):
         self,
         gateway_id: str = None,
     ):
+        # The instance ID.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -7924,10 +8035,13 @@ class CreateGatewayResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8906,9 +9020,11 @@ class CreateMcpServerRequestAssembledSources(TeaModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # MCP Server ID
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The list of the MCP tools.
         self.tools = tools
 
     def validate(self):
@@ -8948,10 +9064,18 @@ class CreateMcpServerRequestBackendConfigServices(TeaModel):
         version: str = None,
         weight: int = None,
     ):
+        # The backend node port of the service.
         self.port = port
+        # The service protocol. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.protocol = protocol
+        # The service ID.
         self.service_id = service_id
+        # The service version.
         self.version = version
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -8996,7 +9120,9 @@ class CreateMcpServerRequestBackendConfig(TeaModel):
         scene: str = None,
         services: List[CreateMcpServerRequestBackendConfigServices] = None,
     ):
+        # The scenario of the backend service.
         self.scene = scene
+        # The backend services.
         self.services = services
 
     def validate(self):
@@ -9047,19 +9173,36 @@ class CreateMcpServerRequest(TeaModel):
         protocol: str = None,
         type: str = None,
     ):
+        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
+        # The backend service configurations for the route.
         self.backend_config = backend_config
+        # Creates the MCP server from the specified type.
         self.create_from_type = create_from_type
+        # The MCP server description.
         self.description = description
+        # The domain IDs.
         self.domain_ids = domain_ids
+        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        # The ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        # The route match rule.
         self.match = match
+        # Specifies whether MCP observability is enabled. Default: false.
         self.mcp_statistics_enable = mcp_statistics_enable
+        # The name of the MCP server. The name must match the regular expression ^[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?(.[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?)\\*$ and can be up to 64 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The protocol type. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP
         self.protocol = protocol
+        # The type. Valid value:
+        # 
+        # RealMCP: regular MCP service
+        # 
         # This parameter is required.
         self.type = type
 
@@ -9147,8 +9290,9 @@ class CreateMcpServerResponseBodyData(TeaModel):
         mcp_server_id: str = None,
         name: str = None,
     ):
-        # MCP Server ID
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.name = name
 
     def validate(self):
@@ -9183,10 +9327,13 @@ class CreateMcpServerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9275,12 +9422,19 @@ class CreatePluginAttachmentRequest(TeaModel):
         plugin_config: str = None,
         plugin_id: str = None,
     ):
+        # The attachment IDs.
         self.attach_resource_ids = attach_resource_ids
+        # The type of the resource to which the plug-in is attached. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
         self.attach_resource_type = attach_resource_type
+        # Specifies whether to enable the plug-in. Default value: false.
         self.enable = enable
+        # The environment ID.
         self.environment_id = environment_id
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The Base64-encoded configurations of the plug-in.
         self.plugin_config = plugin_config
+        # The plug-in ID.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -9332,6 +9486,7 @@ class CreatePluginAttachmentResponseBodyData(TeaModel):
         self,
         plugin_attachment_id: str = None,
     ):
+        # The plug-in ID.
         self.plugin_attachment_id = plugin_attachment_id
 
     def validate(self):
@@ -9362,10 +9517,13 @@ class CreatePluginAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10088,9 +10246,11 @@ class DeleteConsumerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10169,9 +10329,11 @@ class DeleteConsumerAuthorizationRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10859,9 +11021,11 @@ class DeleteMcpServerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10940,9 +11104,11 @@ class DeletePluginAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The response message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11187,8 +11353,11 @@ class DeleteServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11609,9 +11778,11 @@ class DeployMcpServerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11817,15 +11988,25 @@ class GetConsumerResponseBodyData(TeaModel):
         name: str = None,
         update_timestamp: int = None,
     ):
+        # The AK/SK authentication configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
+        # The API key authentication configurations.
         self.api_key_identity_config = api_key_identity_config
+        # The consumer ID.
         self.consumer_id = consumer_id
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
+        # The publishing status of the API in the current environment.
         self.deploy_status = deploy_status
+        # The description.
         self.description = description
+        # Indicates if enabled.
         self.enable = enable
+        # The JWT authentication configurations.
         self.jwt_identity_config = jwt_identity_config
+        # The consumer name.
         self.name = name
+        # The last update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -11900,10 +12081,13 @@ class GetConsumerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11998,19 +12182,31 @@ class GetConsumerAuthorizationRuleResponseBody(TeaModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
+        # The API information.
         self.api_info = api_info
+        # Filters the list of operations by a specific consumer authorization rule ID. Only authorized operations are returned in the response.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # The consumer ID.
         self.consumer_id = consumer_id
+        # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The publishing status of the API in the current environment.
         self.deploy_status = deploy_status
+        # The environment information.
         self.environment_info = environment_info
+        # The expiry mode. Valid values: LongTerm and ShortTerm.
         self.expire_mode = expire_mode
+        # The rule status.
         self.expire_status = expire_status
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
+        # The gateway information.
         self.gateway_info = gateway_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The resource type.
         self.resource_type = resource_type
+        # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -14222,9 +14418,11 @@ class GetMcpServerResponseBodyDataAssembledSources(TeaModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # MCP Server ID
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The list of the MCP tools.
         self.tools = tools
 
     def validate(self):
@@ -14262,8 +14460,11 @@ class GetMcpServerResponseBodyDataDomainInfos(TeaModel):
         name: str = None,
         protocol: str = None,
     ):
+        # The domain name ID.
         self.domain_id = domain_id
+        # The domain name.
         self.name = name
+        # The protocol. Valid values: HTTP and HTTPS.
         self.protocol = protocol
 
     def validate(self):
@@ -14301,8 +14502,11 @@ class GetMcpServerResponseBodyDataNacosMcpSyncInfo(TeaModel):
         import_mcp_server_id: str = None,
         import_namespace: str = None,
     ):
+        # The Nacos instance.
         self.import_instance_id = import_instance_id
+        # The synchronized MCP server ID.
         self.import_mcp_server_id = import_mcp_server_id
+        # The Nacos namespace.
         self.import_namespace = import_namespace
 
     def validate(self):
@@ -14358,27 +14562,53 @@ class GetMcpServerResponseBodyData(TeaModel):
         route_id: str = None,
         type: str = None,
     ):
+        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
+        # The backend service of the route.
         self.backend = backend
+        # Indicates the type of source for MCP server creation. Valid values: 
+        # 
+        # ApiGatewayHttpToMCP 
+        # ApiGatewayMcpHosting 
+        # ApiGatewayAssembly 
+        # NacosHttpToMCP 
+        # NacosMcpHosting
         self.create_from_type = create_from_type
+        # The publishing status of the API in the current environment.
         self.deploy_status = deploy_status
+        # The description.
         self.description = description
+        # The domain name IDs.
         self.domain_ids = domain_ids
+        # The list of domain information.
         self.domain_infos = domain_infos
+        # The environment ID.
         self.environment_id = environment_id
+        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The route match rule.
         self.match = match
+        # The HTTP-to-MCP configurations.
         self.mcp_server_config = mcp_server_config
+        # The attachment ID for the MCP server plug-in configuration.
         self.mcp_server_config_plugin_attachment_id = mcp_server_config_plugin_attachment_id
-        # MCP Server ID
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
+        # The MCP server access path provided by the gateway.
         self.mcp_server_path = mcp_server_path
+        # Indicates whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
+        # The MCP information managed and synchronized by Nacos.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
+        # The name of the MCP server.
         self.name = name
+        # The service protocol.
         self.protocol = protocol
+        # The route ID.
         self.route_id = route_id
+        # The type of the MCP server.
         self.type = type
 
     def validate(self):
@@ -14515,10 +14745,13 @@ class GetMcpServerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14609,14 +14842,23 @@ class GetPluginAttachmentResponseBodyData(TeaModel):
         plugin_id: str = None,
         resource_infos: List[ResourceInfo] = None,
     ):
+        # Indicates whether the plug-in is enabled.
         self.enable = enable
+        # The environment information.
         self.environment_info = environment_info
+        # The instance information.
         self.gateway_info = gateway_info
+        # The information about the parent resource to which the plug-in is attached.
         self.parent_resource_info = parent_resource_info
+        # The attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
+        # The plug-in type information.
         self.plugin_class_info = plugin_class_info
+        # The Base64-encoded configurations of the plug-in.
         self.plugin_config = plugin_config
+        # The plug-in ID.
         self.plugin_id = plugin_id
+        # The resource details.
         self.resource_infos = resource_infos
 
     def validate(self):
@@ -14699,10 +14941,13 @@ class GetPluginAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16136,7 +16381,9 @@ class InstallPluginRequest(TeaModel):
         gateway_ids: List[str] = None,
         plugin_class_id: str = None,
     ):
+        # The list of gateway IDs.
         self.gateway_ids = gateway_ids
+        # The plug-in type ID.
         self.plugin_class_id = plugin_class_id
 
     def validate(self):
@@ -16169,7 +16416,9 @@ class InstallPluginResponseBodyDataInstallPluginResults(TeaModel):
         gateway_id: str = None,
         plugin_id: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The plug-in ID.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -16201,6 +16450,7 @@ class InstallPluginResponseBodyData(TeaModel):
         self,
         install_plugin_results: List[InstallPluginResponseBodyDataInstallPluginResults] = None,
     ):
+        # The installation result.
         self.install_plugin_results = install_plugin_results
 
     def validate(self):
@@ -16239,10 +16489,13 @@ class InstallPluginResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16328,9 +16581,13 @@ class ListConsumersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The instance type. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
+        # The name used to perform a fuzzy search for operations.
         self.name_like = name_like
+        # The page number to return. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -16376,12 +16633,19 @@ class ListConsumersResponseBodyDataItems(TeaModel):
         name: str = None,
         update_timestamp: int = None,
     ):
+        # The consumer ID.
         self.consumer_id = consumer_id
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
+        # The description.
         self.description = description
+        # Indicates if enabled.
         self.enable = enable
+        # The consumer name.
         self.name = name
+        # The last update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -16436,9 +16700,13 @@ class ListConsumersResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of consumer information.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -16489,10 +16757,13 @@ class ListConsumersResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17002,6 +17273,316 @@ class ListEnvironmentsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEnvironmentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        label: str = None,
+    ):
+        self.key = key
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.label is not None:
+            result['label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        return self
+
+
+class ListGatewayFeaturesResponseBodyDataItemsDefinition(TeaModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        description: str = None,
+        display_name: str = None,
+        group: str = None,
+        input_type: str = None,
+        max_length: int = None,
+        max_value: str = None,
+        min_length: int = None,
+        min_value: str = None,
+        name: str = None,
+        read_only: bool = None,
+        regex: str = None,
+        value_options: List[ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions] = None,
+        value_type: str = None,
+        value_unit: str = None,
+    ):
+        self.default_value = default_value
+        self.description = description
+        self.display_name = display_name
+        self.group = group
+        self.input_type = input_type
+        self.max_length = max_length
+        self.max_value = max_value
+        self.min_length = min_length
+        self.min_value = min_value
+        self.name = name
+        self.read_only = read_only
+        self.regex = regex
+        self.value_options = value_options
+        self.value_type = value_type
+        self.value_unit = value_unit
+
+    def validate(self):
+        if self.value_options:
+            for k in self.value_options:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_value is not None:
+            result['defaultValue'] = self.default_value
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.group is not None:
+            result['group'] = self.group
+        if self.input_type is not None:
+            result['inputType'] = self.input_type
+        if self.max_length is not None:
+            result['maxLength'] = self.max_length
+        if self.max_value is not None:
+            result['maxValue'] = self.max_value
+        if self.min_length is not None:
+            result['minLength'] = self.min_length
+        if self.min_value is not None:
+            result['minValue'] = self.min_value
+        if self.name is not None:
+            result['name'] = self.name
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+        if self.regex is not None:
+            result['regex'] = self.regex
+        result['valueOptions'] = []
+        if self.value_options is not None:
+            for k in self.value_options:
+                result['valueOptions'].append(k.to_map() if k else None)
+        if self.value_type is not None:
+            result['valueType'] = self.value_type
+        if self.value_unit is not None:
+            result['valueUnit'] = self.value_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('defaultValue') is not None:
+            self.default_value = m.get('defaultValue')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('inputType') is not None:
+            self.input_type = m.get('inputType')
+        if m.get('maxLength') is not None:
+            self.max_length = m.get('maxLength')
+        if m.get('maxValue') is not None:
+            self.max_value = m.get('maxValue')
+        if m.get('minLength') is not None:
+            self.min_length = m.get('minLength')
+        if m.get('minValue') is not None:
+            self.min_value = m.get('minValue')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
+        if m.get('regex') is not None:
+            self.regex = m.get('regex')
+        self.value_options = []
+        if m.get('valueOptions') is not None:
+            for k in m.get('valueOptions'):
+                temp_model = ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions()
+                self.value_options.append(temp_model.from_map(k))
+        if m.get('valueType') is not None:
+            self.value_type = m.get('valueType')
+        if m.get('valueUnit') is not None:
+            self.value_unit = m.get('valueUnit')
+        return self
+
+
+class ListGatewayFeaturesResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        definition: ListGatewayFeaturesResponseBodyDataItemsDefinition = None,
+        value: str = None,
+    ):
+        self.definition = definition
+        self.value = value
+
+    def validate(self):
+        if self.definition:
+            self.definition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.definition is not None:
+            result['definition'] = self.definition.to_map()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('definition') is not None:
+            temp_model = ListGatewayFeaturesResponseBodyDataItemsDefinition()
+            self.definition = temp_model.from_map(m['definition'])
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListGatewayFeaturesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[ListGatewayFeaturesResponseBodyDataItems] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListGatewayFeaturesResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class ListGatewayFeaturesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListGatewayFeaturesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListGatewayFeaturesResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListGatewayFeaturesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGatewayFeaturesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGatewayFeaturesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18755,15 +19336,25 @@ class ListMcpServersRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # The type of source to create from.
         self.create_from_types = create_from_types
+        # The deployment status of the MCP server.
         self.deploy_statuses = deploy_statuses
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        # The name to perform a fuzzy search on the MCP server.
         self.name_like = name_like
+        # The page number to return. Pages start from 1. Default value: 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The type of the MCP server.
         self.type = type
 
     def validate(self):
@@ -18817,9 +19408,11 @@ class ListMcpServersResponseBodyDataItemsAssembledSources(TeaModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # MCP Server ID
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The list of MCP tools.
         self.tools = tools
 
     def validate(self):
@@ -18857,8 +19450,11 @@ class ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo(TeaModel):
         import_mcp_server_id: str = None,
         import_namespace: str = None,
     ):
+        # The Nacos instance.
         self.import_instance_id = import_instance_id
+        # The synchronized MCP server ID.
         self.import_mcp_server_id = import_mcp_server_id
+        # The Nacos namespace.
         self.import_namespace = import_namespace
 
     def validate(self):
@@ -18914,27 +19510,53 @@ class ListMcpServersResponseBodyDataItems(TeaModel):
         route_id: str = None,
         type: str = None,
     ):
+        # The API ID.
         self.api_id = api_id
+        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
+        # The backend service of the route.
         self.backend = backend
+        # The type of source for MCP server creation. Valid values: 
+        # 
+        # ApiGatewayHttpToMCP 
+        # ApiGatewayMcpHosting 
+        # ApiGatewayAssembly 
+        # NacosHttpToMCP 
+        # NacosMcpHosting
         self.create_from_type = create_from_type
+        # The publishing status of the API in the current environment.
         self.deploy_status = deploy_status
+        # The description.
         self.description = description
+        # The domain name IDs.
         self.domain_ids = domain_ids
+        # The list of domain information.
         self.domain_infos = domain_infos
+        # The environment ID.
         self.environment_id = environment_id
+        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The route match rule.
         self.match = match
+        # The HTTP-to-MCP configurations.
         self.mcp_server_config = mcp_server_config
-        # MCP Server ID
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
+        # The MCP server access path provided by the gateway.
         self.mcp_server_path = mcp_server_path
+        # Indicates whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
+        # The MCP information synchronized and managed by Nacos.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
+        # The name of the MCP server.
         self.name = name
+        # The service protocol.
         self.protocol = protocol
+        # The ID of the MCP server associated route.
         self.route_id = route_id
+        # The type of the MCP server. Valid values: RealMCP and AssemblyMCP.
         self.type = type
 
     def validate(self):
@@ -19071,9 +19693,13 @@ class ListMcpServersResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of MCP servers.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -19124,10 +19750,13 @@ class ListMcpServersResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19218,14 +19847,23 @@ class ListPluginAttachmentsRequest(TeaModel):
         plugin_id: str = None,
         with_parent_resource: bool = None,
     ):
+        # The resource attachment ID.
         self.attach_resource_id = attach_resource_id
+        # The resource attachment type (not yet in use).
         self.attach_resource_type = attach_resource_type
+        # The resource attachment types, separated by commas.
         self.attach_resource_types = attach_resource_types
+        # The environment ID.
         self.environment_id = environment_id
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The page number to return. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The plug-in ID.
         self.plugin_id = plugin_id
+        # Specifies whether to return parent resource attachments.
         self.with_parent_resource = with_parent_resource
 
     def validate(self):
@@ -19293,14 +19931,28 @@ class ListPluginAttachmentsResponseBodyDataItems(TeaModel):
         plugin_id: str = None,
         resource_infos: List[ResourceInfo] = None,
     ):
+        # The types of resource attachments.
+        # - HttpApi
+        # - Operation
+        # - GatewayRoute
+        # - GatewayDomain
+        # - Gateway
         self.attach_resource_type = attach_resource_type
+        # Indicates if enabled.
         self.enable = enable
+        # The environment metadata.
         self.environment_info = environment_info
+        # The parent resource metadata.
         self.parent_resource_info = parent_resource_info
+        # The ID of the resource attachment.
         self.plugin_attachment_id = plugin_attachment_id
+        # The plug-in type metadata.
         self.plugin_class_info = plugin_class_info
+        # The plug-in configurations (Base64-encoded).
         self.plugin_config = plugin_config
+        # The plug-in ID.
         self.plugin_id = plugin_id
+        # The information of resource attachments.
         self.resource_infos = resource_infos
 
     def validate(self):
@@ -19380,9 +20032,13 @@ class ListPluginAttachmentsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The details of resource attachments.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -19433,10 +20089,13 @@ class ListPluginAttachmentsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19528,15 +20187,33 @@ class ListPluginsRequest(TeaModel):
         plugin_class_name: str = None,
         with_attachment_info: bool = None,
     ):
+        # The resource attachment ID.
         self.attach_resource_id = attach_resource_id
+        # The resource attachment type.
+        # 
+        # - HttpApi: HttpApi.
+        # - Operation: Operation of HttpApi.
+        # - GatewayRoute: Gateway route.
+        # - GatewayService: Gateway service.
+        # - GatewayServicePort: Gateway service port.
+        # - Domain: Gateway domain.
+        # - Gateway: Gateway.
         self.attach_resource_type = attach_resource_type
+        # The gateway instance ID for filtering.
         self.gateway_id = gateway_id
+        # The instance type. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
+        # Specifies whether to include built-in AI plug-ins in the returned results. Default: false.
         self.include_builtin_ai_gateway = include_builtin_ai_gateway
+        # The page number to return. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The plug-in type ID for filtering.
         self.plugin_class_id = plugin_class_id
+        # The plug-in type name for filtering.
         self.plugin_class_name = plugin_class_name
+        # Specifies whether the returned results should include plug-in attachment information corresponding to the attachResourceId.
         self.with_attachment_info = with_attachment_info
 
     def validate(self):
@@ -19601,7 +20278,9 @@ class ListPluginsResponseBodyDataItemsAttachmentInfo(TeaModel):
         enable: str = None,
         plugin_attachment_id: str = None,
     ):
+        # Indicates if enabled.
         self.enable = enable
+        # The attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
 
     def validate(self):
@@ -19634,7 +20313,9 @@ class ListPluginsResponseBodyDataItemsGatewayInfo(TeaModel):
         gateway_id: str = None,
         name: str = None,
     ):
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The instance name.
         self.name = name
 
     def validate(self):
@@ -19673,13 +20354,21 @@ class ListPluginsResponseBodyDataItemsPluginClassInfo(TeaModel):
         version: str = None,
         version_description: str = None,
     ):
+        # The alias.
         self.alias = alias
+        # The execution priority.
         self.execute_priority = execute_priority
+        # The execution stage.
         self.execute_stage = execute_stage
+        # The name of the plug-in.
         self.name = name
+        # The plug-in type ID.
         self.plugin_class_id = plugin_class_id
+        # The source of the plug-in.
         self.source = source
+        # The version.
         self.version = version
+        # The description of the version.
         self.version_description = version_description
 
     def validate(self):
@@ -19738,9 +20427,13 @@ class ListPluginsResponseBodyDataItems(TeaModel):
         plugin_class_info: ListPluginsResponseBodyDataItemsPluginClassInfo = None,
         plugin_id: str = None,
     ):
+        # The attachment information.
         self.attachment_info = attachment_info
+        # The gateway instance information.
         self.gateway_info = gateway_info
+        # The plug-in type information.
         self.plugin_class_info = plugin_class_info
+        # The plug-in ID.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -19791,9 +20484,13 @@ class ListPluginsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of plug-in information.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -19844,9 +20541,13 @@ class ListPluginsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19934,11 +20635,25 @@ class ListPoliciesRequest(TeaModel):
         with_attachments: bool = None,
         with_system_policy: bool = None,
     ):
+        # The attachment point ID.
         self.attach_resource_id = attach_resource_id
+        # The types of attachment points supported by the policy. Valid values: 
+        # 
+        # - HttpApi
+        # - Operation
+        # - GatewayRoute
+        # - GatewayService
+        # - GatewayServicePort
+        # - Domain
+        # - Gateway
         self.attach_resource_type = attach_resource_type
+        # The environment ID.
         self.environment_id = environment_id
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # Specifies whether to return attachment information.
         self.with_attachments = with_attachments
+        # Specifies whether it is a system policy.
         self.with_system_policy = with_system_policy
 
     def validate(self):
@@ -19989,9 +20704,13 @@ class ListPoliciesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of policies.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -20042,9 +20761,13 @@ class ListPoliciesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response payload.
         self.data = data
+        # The status message.
         self.message = message
+        # The request ID for API call tracing.
         self.request_id = request_id
 
     def validate(self):
@@ -21541,9 +22264,11 @@ class UnDeployMcpServerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21752,9 +22477,11 @@ class UninstallPluginResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21837,15 +22564,33 @@ class UpdateAndAttachPolicyRequest(TeaModel):
         gateway_id: str = None,
         name: str = None,
     ):
+        # The association IDs.
+        # 
         # This parameter is required.
         self.attach_resource_ids = attach_resource_ids
+        # The supported associated resource type. Valid values:
+        # 
+        # *   HttpApi: an HTTP API
+        # *   Operation: an operation in an HTTP API
+        # *   GatewayRoute: a route
+        # *   GatewayService: a service
+        # *   GatewayServicePort: a service port
+        # *   Domain: a domain name
+        # *   Gateway: an instance
+        # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
+        # The policy configurations. The value is a JSON string.
+        # 
         # This parameter is required.
         self.config = config
+        # The policy description.
         self.description = description
+        # The environment ID.
         self.environment_id = environment_id
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The policy name.
         self.name = name
 
     def validate(self):
@@ -21899,8 +22644,11 @@ class UpdateAndAttachPolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The response message returned.
         self.message = message
+        # The request ID, which is used to trace the call link.
         self.request_id = request_id
 
     def validate(self):
@@ -21981,10 +22729,15 @@ class UpdateConsumerRequest(TeaModel):
         enable: bool = None,
         jwt_identity_config: JwtIdentityConfig = None,
     ):
+        # The list of AK/SK authentication configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
+        # The API key authentication configurations.
         self.apikey_identity_config = apikey_identity_config
+        # The description.
         self.description = description
+        # Specifies the enablement status.
         self.enable = enable
+        # The JWT authentication configuration.
         self.jwt_identity_config = jwt_identity_config
 
     def validate(self):
@@ -22044,9 +22797,11 @@ class UpdateConsumerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22125,8 +22880,11 @@ class UpdateConsumerAuthorizationRuleRequest(TeaModel):
         expire_mode: str = None,
         expire_timestamp: int = None,
     ):
+        # The list of resource authorization information.
         self.authorization_resource_infos = authorization_resource_infos
+        # The expiry mode. Valid values: LongTerm and ShortTerm.
         self.expire_mode = expire_mode
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
 
     def validate(self):
@@ -22172,9 +22930,11 @@ class UpdateConsumerAuthorizationRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23520,9 +24280,11 @@ class UpdateMcpServerRequestAssembledSources(TeaModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # MCP Server ID
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The MCP tools.
         self.tools = tools
 
     def validate(self):
@@ -23562,10 +24324,19 @@ class UpdateMcpServerRequestBackendConfigServices(TeaModel):
         version: str = None,
         weight: int = None,
     ):
+        # The service port (omit for dynamic ports).
         self.port = port
+        # The service protocol. Valid values:
+        # 
+        # *   TCP
+        # *   HTTP
+        # *   DUBBO
         self.protocol = protocol
+        # The service ID.
         self.service_id = service_id
+        # The service version.
         self.version = version
+        # The traffic weight percentage.
         self.weight = weight
 
     def validate(self):
@@ -23610,7 +24381,9 @@ class UpdateMcpServerRequestBackendConfig(TeaModel):
         scene: str = None,
         services: List[UpdateMcpServerRequestBackendConfigServices] = None,
     ):
+        # The backend service scenario.
         self.scene = scene
+        # The backend services.
         self.services = services
 
     def validate(self):
@@ -23659,16 +24432,28 @@ class UpdateMcpServerRequest(TeaModel):
         protocol: str = None,
         type: str = None,
     ):
+        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
+        # The backend service configurations for the route.
         self.backend_config = backend_config
+        # Specifies the type of source for MCP server creation.
         self.create_from_type = create_from_type
+        # The description.
         self.description = description
+        # The domain IDs.
         self.domain_ids = domain_ids
+        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        # The route match rule.
         self.match = match
+        # Specifies if MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
+        # The service protocol. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP.
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The MCP server type. Valid values: RealMCP and AssemblyMCP.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -23749,9 +24534,11 @@ class UpdateMcpServerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23830,8 +24617,11 @@ class UpdatePluginAttachmentRequest(TeaModel):
         enable: bool = None,
         plugin_config: str = None,
     ):
+        # The IDs of the resources to which the plug-in is attached.
         self.attach_resource_ids = attach_resource_ids
+        # Specifies whether to enable the plug-in.
         self.enable = enable
+        # The Base64-encoded configurations of the plug-in.
         self.plugin_config = plugin_config
 
     def validate(self):
@@ -23869,9 +24659,11 @@ class UpdatePluginAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
