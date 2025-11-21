@@ -1,3 +1,14 @@
+2025-11-21 Version: 1.2.0
+- Support API ChangeResourceGroup.
+- Support API CreateInstance.
+- Support API DeleteInstance.
+- Support API GetInstance.
+- Support API ListInstancesV2.
+- Support API TagResources.
+- Support API UnTagResources.
+- Support API UpdateInstance.
+
+
 2025-10-30 Version: 1.1.3
 - Update API GetInstanceDetail: add response parameters Body.Data.Encrypted.
 - Update API GetInstanceDetail: add response parameters Body.Data.KmsKeyId.
