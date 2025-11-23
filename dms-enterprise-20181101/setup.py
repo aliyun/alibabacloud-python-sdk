@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_dms-enterprise20181101.
+setup module for alibabacloud_dms_enterprise20181101.
 
-Created on 26/09/2025
+Created on 23/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_dms_enterprise20181101"
-NAME = "alibabacloud_dms-enterprise20181101" or "alibabacloud-package"
+NAME = "alibabacloud_dms_enterprise20181101" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud dms-enterprise (20181101) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

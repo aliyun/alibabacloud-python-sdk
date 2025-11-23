@@ -1,3 +1,12 @@
+2025-11-23 Version: 1.77.0
+- Support API ChatWithDesensitize.
+- Support API ListUserOwnedResources.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.BillingInstanceId.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.ChargeType.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.ExpireTime.
+- Update API DescribeDifyAttribute: add response parameters Body.Root.StorageType.
+
+
 2025-09-26 Version: 1.76.1
 - Update API GetPermApplyOrderDetail: add response parameters Body.PermApplyOrderDetail.Resources.$.RowInfo.
 - Update API GetPermApplyOrderDetail: add response parameters Body.PermApplyOrderDetail.Resources.$.RowValueInfo.

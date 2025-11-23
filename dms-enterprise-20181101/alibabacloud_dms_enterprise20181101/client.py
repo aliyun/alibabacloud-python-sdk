@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
         """
-        @summary 添加权限模板资源
+        @summary Adds instances, databases, and tables to the specified permission template.
         
         @param tmp_req: AddAuthorityTemplateItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -90,7 +90,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
         """
-        @summary 添加权限模板资源
+        @summary Adds instances, databases, and tables to the specified permission template.
         
         @param tmp_req: AddAuthorityTemplateItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -132,7 +132,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddAuthorityTemplateItemsRequest,
     ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
         """
-        @summary 添加权限模板资源
+        @summary Adds instances, databases, and tables to the specified permission template.
         
         @param request: AddAuthorityTemplateItemsRequest
         @return: AddAuthorityTemplateItemsResponse
@@ -145,7 +145,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddAuthorityTemplateItemsRequest,
     ) -> dms_enterprise_20181101_models.AddAuthorityTemplateItemsResponse:
         """
-        @summary 添加权限模板资源
+        @summary Adds instances, databases, and tables to the specified permission template.
         
         @param request: AddAuthorityTemplateItemsRequest
         @return: AddAuthorityTemplateItemsResponse
@@ -285,7 +285,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
         """
-        @summary 添加实例
+        @summary Adds a database instance to Data Management (DMS) and enable security hosting for the instance.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: AddInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -376,7 +378,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
         """
-        @summary 添加实例
+        @summary Adds a database instance to Data Management (DMS) and enable security hosting for the instance.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: AddInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -466,7 +470,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddInstanceRequest,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
         """
-        @summary 添加实例
+        @summary Adds a database instance to Data Management (DMS) and enable security hosting for the instance.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: AddInstanceRequest
         @return: AddInstanceResponse
@@ -479,7 +485,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddInstanceRequest,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
         """
-        @summary 添加实例
+        @summary Adds a database instance to Data Management (DMS) and enable security hosting for the instance.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: AddInstanceRequest
         @return: AddInstanceResponse
@@ -741,7 +749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
         """
-        @summary 添加表到资产类目
+        @summary Add a table to an asset category.
         
         @param request: AddTableToCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -784,7 +792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
         """
-        @summary 添加表到资产类目
+        @summary Add a table to an asset category.
         
         @param request: AddTableToCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -826,7 +834,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddTableToCategoryRequest,
     ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
         """
-        @summary 添加表到资产类目
+        @summary Add a table to an asset category.
         
         @param request: AddTableToCategoryRequest
         @return: AddTableToCategoryResponse
@@ -839,7 +847,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddTableToCategoryRequest,
     ) -> dms_enterprise_20181101_models.AddTableToCategoryResponse:
         """
-        @summary 添加表到资产类目
+        @summary Add a table to an asset category.
         
         @param request: AddTableToCategoryRequest
         @return: AddTableToCategoryResponse
@@ -1101,9 +1109,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
         """
-        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @summary Answers the syntax questions of the corresponding engine according to the specified database ID.
         
-        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @description You can call this operation to answer the syntax questions of the corresponding engine according to the specified database ID.
         
         @param request: AnswerSqlSyntaxByMetaAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1142,9 +1150,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
         """
-        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @summary Answers the syntax questions of the corresponding engine according to the specified database ID.
         
-        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @description You can call this operation to answer the syntax questions of the corresponding engine according to the specified database ID.
         
         @param request: AnswerSqlSyntaxByMetaAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1182,9 +1190,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentRequest,
     ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
         """
-        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @summary Answers the syntax questions of the corresponding engine according to the specified database ID.
         
-        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @description You can call this operation to answer the syntax questions of the corresponding engine according to the specified database ID.
         
         @param request: AnswerSqlSyntaxByMetaAgentRequest
         @return: AnswerSqlSyntaxByMetaAgentResponse
@@ -1197,9 +1205,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentRequest,
     ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
         """
-        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @summary Answers the syntax questions of the corresponding engine according to the specified database ID.
         
-        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        @description You can call this operation to answer the syntax questions of the corresponding engine according to the specified database ID.
         
         @param request: AnswerSqlSyntaxByMetaAgentRequest
         @return: AnswerSqlSyntaxByMetaAgentResponse
@@ -1501,7 +1509,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BatchCreateDataLakePartitionsResponse:
         """
-        @summary 批量新建湖仓表分区
+        @summary Creates multiple partitions for a table in a data lakehouse at a time.
         
         @param tmp_req: BatchCreateDataLakePartitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1558,7 +1566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BatchCreateDataLakePartitionsResponse:
         """
-        @summary 批量新建湖仓表分区
+        @summary Creates multiple partitions for a table in a data lakehouse at a time.
         
         @param tmp_req: BatchCreateDataLakePartitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1614,7 +1622,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BatchCreateDataLakePartitionsRequest,
     ) -> dms_enterprise_20181101_models.BatchCreateDataLakePartitionsResponse:
         """
-        @summary 批量新建湖仓表分区
+        @summary Creates multiple partitions for a table in a data lakehouse at a time.
         
         @param request: BatchCreateDataLakePartitionsRequest
         @return: BatchCreateDataLakePartitionsResponse
@@ -1627,7 +1635,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BatchCreateDataLakePartitionsRequest,
     ) -> dms_enterprise_20181101_models.BatchCreateDataLakePartitionsResponse:
         """
-        @summary 批量新建湖仓表分区
+        @summary Creates multiple partitions for a table in a data lakehouse at a time.
         
         @param request: BatchCreateDataLakePartitionsRequest
         @return: BatchCreateDataLakePartitionsResponse
@@ -1641,7 +1649,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BatchDeleteDataLakePartitionsResponse:
         """
-        @summary 批量删除湖仓表分区
+        @summary Deletes multiple partitions of a table in a data lakehouse at a time.
         
         @param request: BatchDeleteDataLakePartitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1690,7 +1698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BatchDeleteDataLakePartitionsResponse:
         """
-        @summary 批量删除湖仓表分区
+        @summary Deletes multiple partitions of a table in a data lakehouse at a time.
         
         @param request: BatchDeleteDataLakePartitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1738,7 +1746,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BatchDeleteDataLakePartitionsRequest,
     ) -> dms_enterprise_20181101_models.BatchDeleteDataLakePartitionsResponse:
         """
-        @summary 批量删除湖仓表分区
+        @summary Deletes multiple partitions of a table in a data lakehouse at a time.
         
         @param request: BatchDeleteDataLakePartitionsRequest
         @return: BatchDeleteDataLakePartitionsResponse
@@ -1751,7 +1759,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BatchDeleteDataLakePartitionsRequest,
     ) -> dms_enterprise_20181101_models.BatchDeleteDataLakePartitionsResponse:
         """
-        @summary 批量删除湖仓表分区
+        @summary Deletes multiple partitions of a table in a data lakehouse at a time.
         
         @param request: BatchDeleteDataLakePartitionsRequest
         @return: BatchDeleteDataLakePartitionsResponse
@@ -1765,7 +1773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BatchUpdateDataLakePartitionsResponse:
         """
-        @summary 批量更新湖仓表分区
+        @summary Updates multiple partitions of a table in a data lakehouse at a time.
         
         @param tmp_req: BatchUpdateDataLakePartitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1818,7 +1826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BatchUpdateDataLakePartitionsResponse:
         """
-        @summary 批量更新湖仓表分区
+        @summary Updates multiple partitions of a table in a data lakehouse at a time.
         
         @param tmp_req: BatchUpdateDataLakePartitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1870,7 +1878,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BatchUpdateDataLakePartitionsRequest,
     ) -> dms_enterprise_20181101_models.BatchUpdateDataLakePartitionsResponse:
         """
-        @summary 批量更新湖仓表分区
+        @summary Updates multiple partitions of a table in a data lakehouse at a time.
         
         @param request: BatchUpdateDataLakePartitionsRequest
         @return: BatchUpdateDataLakePartitionsResponse
@@ -1883,7 +1891,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BatchUpdateDataLakePartitionsRequest,
     ) -> dms_enterprise_20181101_models.BatchUpdateDataLakePartitionsResponse:
         """
-        @summary 批量更新湖仓表分区
+        @summary Updates multiple partitions of a table in a data lakehouse at a time.
         
         @param request: BatchUpdateDataLakePartitionsRequest
         @return: BatchUpdateDataLakePartitionsResponse
@@ -2125,7 +2133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
         """
-        @summary 修改字段敏感序列
+        @summary Changes the security level of a column.
         
         @param request: ChangeColumnSecurityLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2172,7 +2180,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
         """
-        @summary 修改字段敏感序列
+        @summary Changes the security level of a column.
         
         @param request: ChangeColumnSecurityLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2218,7 +2226,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
         """
-        @summary 修改字段敏感序列
+        @summary Changes the security level of a column.
         
         @param request: ChangeColumnSecurityLevelRequest
         @return: ChangeColumnSecurityLevelResponse
@@ -2231,7 +2239,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
         """
-        @summary 修改字段敏感序列
+        @summary Changes the security level of a column.
         
         @param request: ChangeColumnSecurityLevelRequest
         @return: ChangeColumnSecurityLevelResponse
@@ -2359,6 +2367,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_lh_dag_owner_with_options_async(request, runtime)
 
+    def chat_with_desensitize_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.ChatWithDesensitizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天API接口
+        
+        @description 带有DMS脱敏能力的聊天API接口
+        
+        @param tmp_req: ChatWithDesensitizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithDesensitizeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.ChatWithDesensitizeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.messages):
+            request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        if not UtilClient.is_unset(tmp_req.stop):
+            request.stop_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stop, 'Stop', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.desensitization_rule):
+            query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.enable_thinking):
+            query['EnableThinking'] = request.enable_thinking
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_tokens):
+            query['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.need_desensitization):
+            query['NeedDesensitization'] = request.need_desensitization
+        if not UtilClient.is_unset(request.presence_penalty):
+            query['PresencePenalty'] = request.presence_penalty
+        if not UtilClient.is_unset(request.response_format):
+            query['ResponseFormat'] = request.response_format
+        if not UtilClient.is_unset(request.seed):
+            query['Seed'] = request.seed
+        if not UtilClient.is_unset(request.stop_shrink):
+            query['Stop'] = request.stop_shrink
+        if not UtilClient.is_unset(request.temperature):
+            query['Temperature'] = request.temperature
+        if not UtilClient.is_unset(request.thinking_budget):
+            query['ThinkingBudget'] = request.thinking_budget
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.top_logprobs):
+            query['TopLogprobs'] = request.top_logprobs
+        if not UtilClient.is_unset(request.top_p):
+            query['TopP'] = request.top_p
+        body = {}
+        if not UtilClient.is_unset(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatWithDesensitize',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChatWithDesensitizeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_with_desensitize_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.ChatWithDesensitizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天API接口
+        
+        @description 带有DMS脱敏能力的聊天API接口
+        
+        @param tmp_req: ChatWithDesensitizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithDesensitizeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.ChatWithDesensitizeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.messages):
+            request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        if not UtilClient.is_unset(tmp_req.stop):
+            request.stop_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stop, 'Stop', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.desensitization_rule):
+            query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.enable_thinking):
+            query['EnableThinking'] = request.enable_thinking
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_tokens):
+            query['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.need_desensitization):
+            query['NeedDesensitization'] = request.need_desensitization
+        if not UtilClient.is_unset(request.presence_penalty):
+            query['PresencePenalty'] = request.presence_penalty
+        if not UtilClient.is_unset(request.response_format):
+            query['ResponseFormat'] = request.response_format
+        if not UtilClient.is_unset(request.seed):
+            query['Seed'] = request.seed
+        if not UtilClient.is_unset(request.stop_shrink):
+            query['Stop'] = request.stop_shrink
+        if not UtilClient.is_unset(request.temperature):
+            query['Temperature'] = request.temperature
+        if not UtilClient.is_unset(request.thinking_budget):
+            query['ThinkingBudget'] = request.thinking_budget
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.top_logprobs):
+            query['TopLogprobs'] = request.top_logprobs
+        if not UtilClient.is_unset(request.top_p):
+            query['TopP'] = request.top_p
+        body = {}
+        if not UtilClient.is_unset(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatWithDesensitize',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChatWithDesensitizeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_with_desensitize(
+        self,
+        request: dms_enterprise_20181101_models.ChatWithDesensitizeRequest,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天API接口
+        
+        @description 带有DMS脱敏能力的聊天API接口
+        
+        @param request: ChatWithDesensitizeRequest
+        @return: ChatWithDesensitizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_with_desensitize_with_options(request, runtime)
+
+    async def chat_with_desensitize_async(
+        self,
+        request: dms_enterprise_20181101_models.ChatWithDesensitizeRequest,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天API接口
+        
+        @description 带有DMS脱敏能力的聊天API接口
+        
+        @param request: ChatWithDesensitizeRequest
+        @return: ChatWithDesensitizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_with_desensitize_with_options_async(request, runtime)
+
     def close_order_with_options(
         self,
         request: dms_enterprise_20181101_models.CloseOrderRequest,
@@ -2469,7 +2657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
         """
-        @summary 创建权限策略授权
+        @summary Attaches a system policy or custom policy to a DMS user or custom role.
         
         @param request: CreateAbacAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2512,7 +2700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
         """
-        @summary 创建权限策略授权
+        @summary Attaches a system policy or custom policy to a DMS user or custom role.
         
         @param request: CreateAbacAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2554,7 +2742,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateAbacAuthorizationRequest,
     ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
         """
-        @summary 创建权限策略授权
+        @summary Attaches a system policy or custom policy to a DMS user or custom role.
         
         @param request: CreateAbacAuthorizationRequest
         @return: CreateAbacAuthorizationResponse
@@ -2567,7 +2755,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateAbacAuthorizationRequest,
     ) -> dms_enterprise_20181101_models.CreateAbacAuthorizationResponse:
         """
-        @summary 创建权限策略授权
+        @summary Attaches a system policy or custom policy to a DMS user or custom role.
         
         @param request: CreateAbacAuthorizationRequest
         @return: CreateAbacAuthorizationResponse
@@ -2581,7 +2769,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
         """
-        @summary 创建权限策略
+        @summary Creates a policy to manage the permissions on DMS features and data resources managed in DMS in a fine-grained manner.
+        
+        @description Currently, this feature is in the phased release phase. Only users who have phased out can use this feature and related APIs. For more information about the policy feature, see [Manage policies](https://help.aliyun.com/document_detail/2848565.html).
         
         @param request: CreateAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2622,7 +2812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
         """
-        @summary 创建权限策略
+        @summary Creates a policy to manage the permissions on DMS features and data resources managed in DMS in a fine-grained manner.
+        
+        @description Currently, this feature is in the phased release phase. Only users who have phased out can use this feature and related APIs. For more information about the policy feature, see [Manage policies](https://help.aliyun.com/document_detail/2848565.html).
         
         @param request: CreateAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2662,7 +2854,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
         """
-        @summary 创建权限策略
+        @summary Creates a policy to manage the permissions on DMS features and data resources managed in DMS in a fine-grained manner.
+        
+        @description Currently, this feature is in the phased release phase. Only users who have phased out can use this feature and related APIs. For more information about the policy feature, see [Manage policies](https://help.aliyun.com/document_detail/2848565.html).
         
         @param request: CreateAbacPolicyRequest
         @return: CreateAbacPolicyResponse
@@ -2675,7 +2869,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.CreateAbacPolicyResponse:
         """
-        @summary 创建权限策略
+        @summary Creates a policy to manage the permissions on DMS features and data resources managed in DMS in a fine-grained manner.
+        
+        @description Currently, this feature is in the phased release phase. Only users who have phased out can use this feature and related APIs. For more information about the policy feature, see [Manage policies](https://help.aliyun.com/document_detail/2848565.html).
         
         @param request: CreateAbacPolicyRequest
         @return: CreateAbacPolicyResponse
@@ -3477,7 +3673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakeDatabaseResponse:
         """
-        @summary 新建湖仓数据库
+        @summary Creates a database in a data lakehouse.
         
         @param tmp_req: CreateDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3530,7 +3726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakeDatabaseResponse:
         """
-        @summary 新建湖仓数据库
+        @summary Creates a database in a data lakehouse.
         
         @param tmp_req: CreateDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3582,7 +3778,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakeDatabaseResponse:
         """
-        @summary 新建湖仓数据库
+        @summary Creates a database in a data lakehouse.
         
         @param request: CreateDataLakeDatabaseRequest
         @return: CreateDataLakeDatabaseResponse
@@ -3595,7 +3791,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakeDatabaseResponse:
         """
-        @summary 新建湖仓数据库
+        @summary Creates a database in a data lakehouse.
         
         @param request: CreateDataLakeDatabaseRequest
         @return: CreateDataLakeDatabaseResponse
@@ -3609,7 +3805,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
         """
-        @summary 新建湖仓自定义函数
+        @summary Creates a custom function in a data lakehouse.
         
         @param tmp_req: CreateDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3660,7 +3856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
         """
-        @summary 新建湖仓自定义函数
+        @summary Creates a custom function in a data lakehouse.
         
         @param tmp_req: CreateDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3710,7 +3906,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
         """
-        @summary 新建湖仓自定义函数
+        @summary Creates a custom function in a data lakehouse.
         
         @param request: CreateDataLakeFunctionRequest
         @return: CreateDataLakeFunctionResponse
@@ -3723,7 +3919,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
         """
-        @summary 新建湖仓自定义函数
+        @summary Creates a custom function in a data lakehouse.
         
         @param request: CreateDataLakeFunctionRequest
         @return: CreateDataLakeFunctionResponse
@@ -3737,7 +3933,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakePartitionResponse:
         """
-        @summary 新建湖仓表分区
+        @summary Creates a partition for a table in a data lakehouse.
         
         @param tmp_req: CreateDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3794,7 +3990,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakePartitionResponse:
         """
-        @summary 新建湖仓表分区
+        @summary Creates a partition for a table in a data lakehouse.
         
         @param tmp_req: CreateDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3850,7 +4046,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakePartitionResponse:
         """
-        @summary 新建湖仓表分区
+        @summary Creates a partition for a table in a data lakehouse.
         
         @param request: CreateDataLakePartitionRequest
         @return: CreateDataLakePartitionResponse
@@ -3863,7 +4059,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakePartitionResponse:
         """
-        @summary 新建湖仓表分区
+        @summary Creates a partition for a table in a data lakehouse.
         
         @param request: CreateDataLakePartitionRequest
         @return: CreateDataLakePartitionResponse
@@ -3877,7 +4073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakeTableResponse:
         """
-        @summary 新建湖仓表
+        @summary Creates a table in a data lakehouse.
         
         @param tmp_req: CreateDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3928,7 +4124,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataLakeTableResponse:
         """
-        @summary 新建湖仓表
+        @summary Creates a table in a data lakehouse.
         
         @param tmp_req: CreateDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3978,7 +4174,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakeTableResponse:
         """
-        @summary 新建湖仓表
+        @summary Creates a table in a data lakehouse.
         
         @param request: CreateDataLakeTableRequest
         @return: CreateDataLakeTableResponse
@@ -3991,7 +4187,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.CreateDataLakeTableResponse:
         """
-        @summary 新建湖仓表
+        @summary Creates a table in a data lakehouse.
         
         @param request: CreateDataLakeTableRequest
         @return: CreateDataLakeTableResponse
@@ -5009,7 +5205,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
         """
-        @summary 创建资产类目
+        @summary Create Asset Category
         
         @param request: CreateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5048,7 +5244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
         """
-        @summary 创建资产类目
+        @summary Create Asset Category
         
         @param request: CreateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5086,7 +5282,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
         """
-        @summary 创建资产类目
+        @summary Create Asset Category
         
         @param request: CreateMetaCategoryRequest
         @return: CreateMetaCategoryResponse
@@ -5099,7 +5295,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
         """
-        @summary 创建资产类目
+        @summary Create Asset Category
         
         @param request: CreateMetaCategoryRequest
         @return: CreateMetaCategoryResponse
@@ -5265,7 +5461,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
         """
-        @summary 创建可编程对象变更工单
+        @summary Creates a programmable object ticket.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param tmp_req: CreateProcCorrectOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5314,7 +5512,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
         """
-        @summary 创建可编程对象变更工单
+        @summary Creates a programmable object ticket.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param tmp_req: CreateProcCorrectOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5362,7 +5562,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
         """
-        @summary 创建可编程对象变更工单
+        @summary Creates a programmable object ticket.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: CreateProcCorrectOrderRequest
         @return: CreateProcCorrectOrderResponse
@@ -5375,7 +5577,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
         """
-        @summary 创建可编程对象变更工单
+        @summary Creates a programmable object ticket.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: CreateProcCorrectOrderRequest
         @return: CreateProcCorrectOrderResponse
@@ -6677,7 +6881,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
+        
+        @description ## [](#)Prerequisites
+        A virtual private cloud (VPC) is created.
+        Log on to the DMS console by using an Alibaba Cloud account or a RAM user that has high permissions, and grant DMS the permissions to access cloud resources (AliyunDMSProcessingDataRolePolicy).
         
         @param request: CreateWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6722,7 +6930,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
+        
+        @description ## [](#)Prerequisites
+        A virtual private cloud (VPC) is created.
+        Log on to the DMS console by using an Alibaba Cloud account or a RAM user that has high permissions, and grant DMS the permissions to access cloud resources (AliyunDMSProcessingDataRolePolicy).
         
         @param request: CreateWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6766,7 +6978,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
+        
+        @description ## [](#)Prerequisites
+        A virtual private cloud (VPC) is created.
+        Log on to the DMS console by using an Alibaba Cloud account or a RAM user that has high permissions, and grant DMS the permissions to access cloud resources (AliyunDMSProcessingDataRolePolicy).
         
         @param request: CreateWorkspaceRequest
         @return: CreateWorkspaceResponse
@@ -6779,7 +6995,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
         """
-        @summary 创建工作空间
+        @summary Creates a workspace.
+        
+        @description ## [](#)Prerequisites
+        A virtual private cloud (VPC) is created.
+        Log on to the DMS console by using an Alibaba Cloud account or a RAM user that has high permissions, and grant DMS the permissions to access cloud resources (AliyunDMSProcessingDataRolePolicy).
         
         @param request: CreateWorkspaceRequest
         @return: CreateWorkspaceResponse
@@ -6793,7 +7013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
         """
-        @summary 删除权限策略授权
+        @summary Detaches a policy from a user or role.
         
         @param request: DeleteAbacAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6832,7 +7052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
         """
-        @summary 删除权限策略授权
+        @summary Detaches a policy from a user or role.
         
         @param request: DeleteAbacAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6870,7 +7090,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
     ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
         """
-        @summary 删除权限策略授权
+        @summary Detaches a policy from a user or role.
         
         @param request: DeleteAbacAuthorizationRequest
         @return: DeleteAbacAuthorizationResponse
@@ -6883,7 +7103,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
     ) -> dms_enterprise_20181101_models.DeleteAbacAuthorizationResponse:
         """
-        @summary 删除权限策略授权
+        @summary Detaches a policy from a user or role.
         
         @param request: DeleteAbacAuthorizationRequest
         @return: DeleteAbacAuthorizationResponse
@@ -6897,7 +7117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a created permission policy.
         
         @param request: DeleteAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6934,7 +7154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a created permission policy.
         
         @param request: DeleteAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6970,7 +7190,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a created permission policy.
         
         @param request: DeleteAbacPolicyRequest
         @return: DeleteAbacPolicyResponse
@@ -6983,7 +7203,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.DeleteAbacPolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a created permission policy.
         
         @param request: DeleteAbacPolicyRequest
         @return: DeleteAbacPolicyResponse
@@ -6997,7 +7217,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
         """
-        @summary 删除权限模版
+        @summary Deletes a permission template.
         
         @param request: DeleteAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7034,7 +7254,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
         """
-        @summary 删除权限模版
+        @summary Deletes a permission template.
         
         @param request: DeleteAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7070,7 +7290,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
         """
-        @summary 删除权限模版
+        @summary Deletes a permission template.
         
         @param request: DeleteAuthorityTemplateRequest
         @return: DeleteAuthorityTemplateResponse
@@ -7083,7 +7303,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
         """
-        @summary 删除权限模版
+        @summary Deletes a permission template.
         
         @param request: DeleteAuthorityTemplateRequest
         @return: DeleteAuthorityTemplateResponse
@@ -7097,7 +7317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeDatabaseResponse:
         """
-        @summary 删除湖仓数据库
+        @summary Deletes a database from a data lakehouse.
         
         @param request: DeleteDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7140,7 +7360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeDatabaseResponse:
         """
-        @summary 删除湖仓数据库
+        @summary Deletes a database from a data lakehouse.
         
         @param request: DeleteDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7182,7 +7402,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeDatabaseResponse:
         """
-        @summary 删除湖仓数据库
+        @summary Deletes a database from a data lakehouse.
         
         @param request: DeleteDataLakeDatabaseRequest
         @return: DeleteDataLakeDatabaseResponse
@@ -7195,7 +7415,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeDatabaseResponse:
         """
-        @summary 删除湖仓数据库
+        @summary Deletes a database from a data lakehouse.
         
         @param request: DeleteDataLakeDatabaseRequest
         @return: DeleteDataLakeDatabaseResponse
@@ -7209,7 +7429,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
         """
-        @summary 删除湖仓自定义函数
+        @summary Deletes a user-defined function in a data lakehouse.
         
         @param request: DeleteDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7254,7 +7474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
         """
-        @summary 删除湖仓自定义函数
+        @summary Deletes a user-defined function in a data lakehouse.
         
         @param request: DeleteDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7298,7 +7518,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
         """
-        @summary 删除湖仓自定义函数
+        @summary Deletes a user-defined function in a data lakehouse.
         
         @param request: DeleteDataLakeFunctionRequest
         @return: DeleteDataLakeFunctionResponse
@@ -7311,7 +7531,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
         """
-        @summary 删除湖仓自定义函数
+        @summary Deletes a user-defined function in a data lakehouse.
         
         @param request: DeleteDataLakeFunctionRequest
         @return: DeleteDataLakeFunctionResponse
@@ -7325,7 +7545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakePartitionResponse:
         """
-        @summary 删除湖仓表分区
+        @summary Deletes a partition from a table in a data lakehouse.
         
         @param tmp_req: DeleteDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7378,7 +7598,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakePartitionResponse:
         """
-        @summary 删除湖仓表分区
+        @summary Deletes a partition from a table in a data lakehouse.
         
         @param tmp_req: DeleteDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7430,7 +7650,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakePartitionResponse:
         """
-        @summary 删除湖仓表分区
+        @summary Deletes a partition from a table in a data lakehouse.
         
         @param request: DeleteDataLakePartitionRequest
         @return: DeleteDataLakePartitionResponse
@@ -7443,7 +7663,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakePartitionResponse:
         """
-        @summary 删除湖仓表分区
+        @summary Deletes a partition from a table in a data lakehouse.
         
         @param request: DeleteDataLakePartitionRequest
         @return: DeleteDataLakePartitionResponse
@@ -7457,7 +7677,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeTableResponse:
         """
-        @summary 删除湖仓表
+        @summary Deletes a table from a data lakehouse.
         
         @param request: DeleteDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7502,7 +7722,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeTableResponse:
         """
-        @summary 删除湖仓表
+        @summary Deletes a table from a data lakehouse.
         
         @param request: DeleteDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7546,7 +7766,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeTableResponse:
         """
-        @summary 删除湖仓表
+        @summary Deletes a table from a data lakehouse.
         
         @param request: DeleteDataLakeTableRequest
         @return: DeleteDataLakeTableResponse
@@ -7559,7 +7779,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.DeleteDataLakeTableResponse:
         """
-        @summary 删除湖仓表
+        @summary Deletes a table from a data lakehouse.
         
         @param request: DeleteDataLakeTableRequest
         @return: DeleteDataLakeTableResponse
@@ -8121,7 +8341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
         """
-        @summary 删除资产类目
+        @summary Deletes an asset category.
         
         @param request: DeleteMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8158,7 +8378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
         """
-        @summary 删除资产类目
+        @summary Deletes an asset category.
         
         @param request: DeleteMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8194,7 +8414,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
         """
-        @summary 删除资产类目
+        @summary Deletes an asset category.
         
         @param request: DeleteMetaCategoryRequest
         @return: DeleteMetaCategoryResponse
@@ -8207,7 +8427,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.DeleteMetaCategoryResponse:
         """
-        @summary 删除资产类目
+        @summary Deletes an asset category.
         
         @param request: DeleteMetaCategoryRequest
         @return: DeleteMetaCategoryResponse
@@ -8537,7 +8757,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
         """
-        @summary 删除安全规则
+        @summary Deletes a security rule set.
+        
+        @description Before you call this API operation, make sure that the security rule set is not associated with an instance.
         
         @param request: DeleteStandardGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8574,7 +8796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
         """
-        @summary 删除安全规则
+        @summary Deletes a security rule set.
+        
+        @description Before you call this API operation, make sure that the security rule set is not associated with an instance.
         
         @param request: DeleteStandardGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8610,7 +8834,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
         """
-        @summary 删除安全规则
+        @summary Deletes a security rule set.
+        
+        @description Before you call this API operation, make sure that the security rule set is not associated with an instance.
         
         @param request: DeleteStandardGroupRequest
         @return: DeleteStandardGroupResponse
@@ -8623,7 +8849,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
         """
-        @summary 删除安全规则
+        @summary Deletes a security rule set.
+        
+        @description Before you call this API operation, make sure that the security rule set is not associated with an instance.
         
         @param request: DeleteStandardGroupRequest
         @return: DeleteStandardGroupResponse
@@ -9069,7 +9297,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace.
         
         @param request: DeleteWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9104,7 +9332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace.
         
         @param request: DeleteWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9138,7 +9366,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace.
         
         @param request: DeleteWorkspaceRequest
         @return: DeleteWorkspaceResponse
@@ -9151,7 +9379,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
         """
-        @summary 删除工作空间
+        @summary Deletes a workspace.
         
         @param request: DeleteWorkspaceRequest
         @return: DeleteWorkspaceResponse
@@ -10097,7 +10325,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
         """
-        @summary 编辑指定guid的元数据业务知识
+        @summary Edits the metadata business knowledge for specified GUIDs.
+        
+        @description Edits the business knowledge of the metadata represented by the specified GUID.
         
         @param request: EditMetaKnowledgeAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10140,7 +10370,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
         """
-        @summary 编辑指定guid的元数据业务知识
+        @summary Edits the metadata business knowledge for specified GUIDs.
+        
+        @description Edits the business knowledge of the metadata represented by the specified GUID.
         
         @param request: EditMetaKnowledgeAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10182,7 +10414,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.EditMetaKnowledgeAssetRequest,
     ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
         """
-        @summary 编辑指定guid的元数据业务知识
+        @summary Edits the metadata business knowledge for specified GUIDs.
+        
+        @description Edits the business knowledge of the metadata represented by the specified GUID.
         
         @param request: EditMetaKnowledgeAssetRequest
         @return: EditMetaKnowledgeAssetResponse
@@ -10195,7 +10429,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.EditMetaKnowledgeAssetRequest,
     ) -> dms_enterprise_20181101_models.EditMetaKnowledgeAssetResponse:
         """
-        @summary 编辑指定guid的元数据业务知识
+        @summary Edits the metadata business knowledge for specified GUIDs.
+        
+        @description Edits the business knowledge of the metadata represented by the specified GUID.
         
         @param request: EditMetaKnowledgeAssetRequest
         @return: EditMetaKnowledgeAssetResponse
@@ -10785,9 +11021,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @summary Uses the specified SQL statement, error message, and database ID to analyze and fix the SQL error.
         
-        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @description You can call this operation to analyze and fix SQL errors based on the specified SQL statement, error message, and database ID.
         
         @param request: FixSqlByMetaAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10830,9 +11066,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @summary Uses the specified SQL statement, error message, and database ID to analyze and fix the SQL error.
         
-        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @description You can call this operation to analyze and fix SQL errors based on the specified SQL statement, error message, and database ID.
         
         @param request: FixSqlByMetaAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10874,9 +11110,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.FixSqlByMetaAgentRequest,
     ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @summary Uses the specified SQL statement, error message, and database ID to analyze and fix the SQL error.
         
-        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @description You can call this operation to analyze and fix SQL errors based on the specified SQL statement, error message, and database ID.
         
         @param request: FixSqlByMetaAgentRequest
         @return: FixSqlByMetaAgentResponse
@@ -10889,9 +11125,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.FixSqlByMetaAgentRequest,
     ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @summary Uses the specified SQL statement, error message, and database ID to analyze and fix the SQL error.
         
-        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        @description You can call this operation to analyze and fix SQL errors based on the specified SQL statement, error message, and database ID.
         
         @param request: FixSqlByMetaAgentRequest
         @return: FixSqlByMetaAgentResponse
@@ -11157,7 +11393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
         """
-        @summary 获取策略详情
+        @summary Queries the details of a policy, including the name, content, and the user who created the policy.
         
         @param request: GetAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11196,7 +11432,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
         """
-        @summary 获取策略详情
+        @summary Queries the details of a policy, including the name, content, and the user who created the policy.
         
         @param request: GetAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11234,7 +11470,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
         """
-        @summary 获取策略详情
+        @summary Queries the details of a policy, including the name, content, and the user who created the policy.
         
         @param request: GetAbacPolicyRequest
         @return: GetAbacPolicyResponse
@@ -11247,7 +11483,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.GetAbacPolicyResponse:
         """
-        @summary 获取策略详情
+        @summary Queries the details of a policy, including the name, content, and the user who created the policy.
         
         @param request: GetAbacPolicyRequest
         @return: GetAbacPolicyResponse
@@ -11577,7 +11813,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
         """
-        @summary 获取实例绑定的分类分级模板
+        @summary Queries the information about the classification and grading template associated with an instance.
         
         @param request: GetClassificationTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11614,7 +11850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
         """
-        @summary 获取实例绑定的分类分级模板
+        @summary Queries the information about the classification and grading template associated with an instance.
         
         @param request: GetClassificationTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11650,7 +11886,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
         """
-        @summary 获取实例绑定的分类分级模板
+        @summary Queries the information about the classification and grading template associated with an instance.
         
         @param request: GetClassificationTemplateRequest
         @return: GetClassificationTemplateResponse
@@ -11663,7 +11899,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
         """
-        @summary 获取实例绑定的分类分级模板
+        @summary Queries the information about the classification and grading template associated with an instance.
         
         @param request: GetClassificationTemplateRequest
         @return: GetClassificationTemplateResponse
@@ -13233,7 +13469,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录
+        @summary Queries the data catalog of the data lake.
         
         @param request: GetDataLakeCatalogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13274,7 +13510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录
+        @summary Queries the data catalog of the data lake.
         
         @param request: GetDataLakeCatalogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13314,7 +13550,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeCatalogRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录
+        @summary Queries the data catalog of the data lake.
         
         @param request: GetDataLakeCatalogRequest
         @return: GetDataLakeCatalogResponse
@@ -13327,7 +13563,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeCatalogRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录
+        @summary Queries the data catalog of the data lake.
         
         @param request: GetDataLakeCatalogRequest
         @return: GetDataLakeCatalogResponse
@@ -13341,7 +13577,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
         """
-        @summary 获取UC的数据库
+        @summary Queries the information about the database in the data lake.
         
         @param request: GetDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13384,7 +13620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
         """
-        @summary 获取UC的数据库
+        @summary Queries the information about the database in the data lake.
         
         @param request: GetDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13426,7 +13662,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
         """
-        @summary 获取UC的数据库
+        @summary Queries the information about the database in the data lake.
         
         @param request: GetDataLakeDatabaseRequest
         @return: GetDataLakeDatabaseResponse
@@ -13439,7 +13675,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeDatabaseResponse:
         """
-        @summary 获取UC的数据库
+        @summary Queries the information about the database in the data lake.
         
         @param request: GetDataLakeDatabaseRequest
         @return: GetDataLakeDatabaseResponse
@@ -13453,7 +13689,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
         """
-        @summary 获取湖仓自定义函数详细信息
+        @summary Obtains the details about a user-defined function in a data lakehouse.
         
         @param request: GetDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13498,7 +13734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
         """
-        @summary 获取湖仓自定义函数详细信息
+        @summary Obtains the details about a user-defined function in a data lakehouse.
         
         @param request: GetDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13542,7 +13778,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
         """
-        @summary 获取湖仓自定义函数详细信息
+        @summary Obtains the details about a user-defined function in a data lakehouse.
         
         @param request: GetDataLakeFunctionRequest
         @return: GetDataLakeFunctionResponse
@@ -13555,7 +13791,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
         """
-        @summary 获取湖仓自定义函数详细信息
+        @summary Obtains the details about a user-defined function in a data lakehouse.
         
         @param request: GetDataLakeFunctionRequest
         @return: GetDataLakeFunctionResponse
@@ -13569,7 +13805,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakePartitionResponse:
         """
-        @summary 获取湖仓表分区详情
+        @summary Queries the information about a partition of a table in a data lakehouse.
         
         @param tmp_req: GetDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13620,7 +13856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakePartitionResponse:
         """
-        @summary 获取湖仓表分区详情
+        @summary Queries the information about a partition of a table in a data lakehouse.
         
         @param tmp_req: GetDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13670,7 +13906,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakePartitionResponse:
         """
-        @summary 获取湖仓表分区详情
+        @summary Queries the information about a partition of a table in a data lakehouse.
         
         @param request: GetDataLakePartitionRequest
         @return: GetDataLakePartitionResponse
@@ -13683,7 +13919,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakePartitionResponse:
         """
-        @summary 获取湖仓表分区详情
+        @summary Queries the information about a partition of a table in a data lakehouse.
         
         @param request: GetDataLakePartitionRequest
         @return: GetDataLakePartitionResponse
@@ -13697,7 +13933,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: GetDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13742,7 +13978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: GetDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13786,7 +14022,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: GetDataLakeTableRequest
         @return: GetDataLakeTableResponse
@@ -13799,7 +14035,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.GetDataLakeTableResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: GetDataLakeTableRequest
         @return: GetDataLakeTableResponse
@@ -14333,7 +14569,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
         """
-        @summary 获取数据库导出下载地址
+        @summary Queries the download URL of the results of a database export ticket.
         
         @param request: GetDbExportDownloadURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14370,7 +14606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
         """
-        @summary 获取数据库导出下载地址
+        @summary Queries the download URL of the results of a database export ticket.
         
         @param request: GetDbExportDownloadURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14406,7 +14642,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
         """
-        @summary 获取数据库导出下载地址
+        @summary Queries the download URL of the results of a database export ticket.
         
         @param request: GetDbExportDownloadURLRequest
         @return: GetDbExportDownloadURLResponse
@@ -14419,7 +14655,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
         """
-        @summary 获取数据库导出下载地址
+        @summary Queries the download URL of the results of a database export ticket.
         
         @param request: GetDbExportDownloadURLRequest
         @return: GetDbExportDownloadURLResponse
@@ -15613,7 +15849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
         """
-        @summary 获取数据归档工单任务实例
+        @summary Queries the task information about a ticket.
         
         @param request: GetPagedInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15646,7 +15882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
         """
-        @summary 获取数据归档工单任务实例
+        @summary Queries the task information about a ticket.
         
         @param request: GetPagedInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15678,7 +15914,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
         """
-        @summary 获取数据归档工单任务实例
+        @summary Queries the task information about a ticket.
         
         @param request: GetPagedInstanceRequest
         @return: GetPagedInstanceResponse
@@ -15691,7 +15927,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
         """
-        @summary 获取数据归档工单任务实例
+        @summary Queries the task information about a ticket.
         
         @param request: GetPagedInstanceRequest
         @return: GetPagedInstanceResponse
@@ -16429,7 +16665,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
         """
-        @summary 获取安全规则
+        @summary Queries the information about security rule sets of a tenant. The information includes the name and description of security rules, and instances associated with security rules.
         
         @param request: GetStandardGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16466,7 +16702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
         """
-        @summary 获取安全规则
+        @summary Queries the information about security rule sets of a tenant. The information includes the name and description of security rules, and instances associated with security rules.
         
         @param request: GetStandardGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16502,7 +16738,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
         """
-        @summary 获取安全规则
+        @summary Queries the information about security rule sets of a tenant. The information includes the name and description of security rules, and instances associated with security rules.
         
         @param request: GetStandardGroupRequest
         @return: GetStandardGroupResponse
@@ -16515,7 +16751,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
         """
-        @summary 获取安全规则
+        @summary Queries the information about security rule sets of a tenant. The information includes the name and description of security rules, and instances associated with security rules.
         
         @param request: GetStandardGroupRequest
         @return: GetStandardGroupResponse
@@ -17249,7 +17485,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
         """
-        @summary 获取指定guid的元数据知识
+        @summary Gets metadata knowledge for a specified GUID.
+        
+        @description This API can be called only for database instances that are enabled for security hosting.
         
         @param request: GetTableKnowledgeInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17288,7 +17526,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
         """
-        @summary 获取指定guid的元数据知识
+        @summary Gets metadata knowledge for a specified GUID.
+        
+        @description This API can be called only for database instances that are enabled for security hosting.
         
         @param request: GetTableKnowledgeInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17326,7 +17566,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableKnowledgeInfoRequest,
     ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
         """
-        @summary 获取指定guid的元数据知识
+        @summary Gets metadata knowledge for a specified GUID.
+        
+        @description This API can be called only for database instances that are enabled for security hosting.
         
         @param request: GetTableKnowledgeInfoRequest
         @return: GetTableKnowledgeInfoResponse
@@ -17339,7 +17581,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableKnowledgeInfoRequest,
     ) -> dms_enterprise_20181101_models.GetTableKnowledgeInfoResponse:
         """
-        @summary 获取指定guid的元数据知识
+        @summary Gets metadata knowledge for a specified GUID.
+        
+        @description This API can be called only for database instances that are enabled for security hosting.
         
         @param request: GetTableKnowledgeInfoRequest
         @return: GetTableKnowledgeInfoResponse
@@ -18157,7 +18401,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
         """
-        @summary 获取空间描述
+        @summary Queries the details of a workspace.
         
         @param request: GetWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18192,7 +18436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
         """
-        @summary 获取空间描述
+        @summary Queries the details of a workspace.
         
         @param request: GetWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18226,7 +18470,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
         """
-        @summary 获取空间描述
+        @summary Queries the details of a workspace.
         
         @param request: GetWorkspaceRequest
         @return: GetWorkspaceResponse
@@ -18239,7 +18483,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
         """
-        @summary 获取空间描述
+        @summary Queries the details of a workspace.
         
         @param request: GetWorkspaceRequest
         @return: GetWorkspaceResponse
@@ -18605,7 +18849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
         """
-        @summary 获取权限策略授权列表
+        @summary Queries a list of users to which the specified policy is attached and the number of the users.
         
         @param request: ListAbacAuthorizationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18648,7 +18892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
         """
-        @summary 获取权限策略授权列表
+        @summary Queries a list of users to which the specified policy is attached and the number of the users.
         
         @param request: ListAbacAuthorizationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18690,7 +18934,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAbacAuthorizationsRequest,
     ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
         """
-        @summary 获取权限策略授权列表
+        @summary Queries a list of users to which the specified policy is attached and the number of the users.
         
         @param request: ListAbacAuthorizationsRequest
         @return: ListAbacAuthorizationsResponse
@@ -18703,7 +18947,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAbacAuthorizationsRequest,
     ) -> dms_enterprise_20181101_models.ListAbacAuthorizationsResponse:
         """
-        @summary 获取权限策略授权列表
+        @summary Queries a list of users to which the specified policy is attached and the number of the users.
         
         @param request: ListAbacAuthorizationsRequest
         @return: ListAbacAuthorizationsResponse
@@ -18717,7 +18961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
         """
-        @summary 获取权限策略列表
+        @summary Queries a list of policies that are created by a user.
         
         @param request: ListAbacPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18758,7 +19002,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
         """
-        @summary 获取权限策略列表
+        @summary Queries a list of policies that are created by a user.
         
         @param request: ListAbacPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18798,7 +19042,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAbacPoliciesRequest,
     ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
         """
-        @summary 获取权限策略列表
+        @summary Queries a list of policies that are created by a user.
         
         @param request: ListAbacPoliciesRequest
         @return: ListAbacPoliciesResponse
@@ -18811,7 +19055,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAbacPoliciesRequest,
     ) -> dms_enterprise_20181101_models.ListAbacPoliciesResponse:
         """
-        @summary 获取权限策略列表
+        @summary Queries a list of policies that are created by a user.
         
         @param request: ListAbacPoliciesRequest
         @return: ListAbacPoliciesResponse
@@ -18825,7 +19069,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
         """
-        @summary 获取权限模版列表
+        @summary Queries the information about permission templates, including the template creator, template name, and total number of templates.
         
         @param request: ListAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18866,7 +19110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
         """
-        @summary 获取权限模版列表
+        @summary Queries the information about permission templates, including the template creator, template name, and total number of templates.
         
         @param request: ListAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18906,7 +19150,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
         """
-        @summary 获取权限模版列表
+        @summary Queries the information about permission templates, including the template creator, template name, and total number of templates.
         
         @param request: ListAuthorityTemplateRequest
         @return: ListAuthorityTemplateResponse
@@ -18919,7 +19163,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
         """
-        @summary 获取权限模版列表
+        @summary Queries the information about permission templates, including the template creator, template name, and total number of templates.
         
         @param request: ListAuthorityTemplateRequest
         @return: ListAuthorityTemplateResponse
@@ -18933,7 +19177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
         """
-        @summary 获取用户有权限的数据库
+        @summary Queries the databases on which the specified user has permissions.
         
         @param request: ListAuthorizedDatabasesForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18982,7 +19226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
         """
-        @summary 获取用户有权限的数据库
+        @summary Queries the databases on which the specified user has permissions.
         
         @param request: ListAuthorizedDatabasesForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19030,7 +19274,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
         """
-        @summary 获取用户有权限的数据库
+        @summary Queries the databases on which the specified user has permissions.
         
         @param request: ListAuthorizedDatabasesForUserRequest
         @return: ListAuthorizedDatabasesForUserResponse
@@ -19043,7 +19287,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedDatabasesForUserResponse:
         """
-        @summary 获取用户有权限的数据库
+        @summary Queries the databases on which the specified user has permissions.
         
         @param request: ListAuthorizedDatabasesForUserRequest
         @return: ListAuthorizedDatabasesForUserResponse
@@ -19057,7 +19301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
         """
-        @summary 获取用户有权限的实例
+        @summary Queries the instances on which the specified user has permissions.
         
         @param request: ListAuthorizedInstancesForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19104,7 +19348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
         """
-        @summary 获取用户有权限的实例
+        @summary Queries the instances on which the specified user has permissions.
         
         @param request: ListAuthorizedInstancesForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19150,7 +19394,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedInstancesForUserRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
         """
-        @summary 获取用户有权限的实例
+        @summary Queries the instances on which the specified user has permissions.
         
         @param request: ListAuthorizedInstancesForUserRequest
         @return: ListAuthorizedInstancesForUserResponse
@@ -19163,7 +19407,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedInstancesForUserRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedInstancesForUserResponse:
         """
-        @summary 获取用户有权限的实例
+        @summary Queries the instances on which the specified user has permissions.
         
         @param request: ListAuthorizedInstancesForUserRequest
         @return: ListAuthorizedInstancesForUserResponse
@@ -19177,7 +19421,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
         """
-        @summary 查询有数据库权限的用户
+        @summary Queries a list of users that have permissions on the specified database.
         
         @param request: ListAuthorizedUsersForDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19222,7 +19466,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
         """
-        @summary 查询有数据库权限的用户
+        @summary Queries a list of users that have permissions on the specified database.
         
         @param request: ListAuthorizedUsersForDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19266,7 +19510,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
         """
-        @summary 查询有数据库权限的用户
+        @summary Queries a list of users that have permissions on the specified database.
         
         @param request: ListAuthorizedUsersForDatabaseRequest
         @return: ListAuthorizedUsersForDatabaseResponse
@@ -19279,7 +19523,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForDatabaseResponse:
         """
-        @summary 查询有数据库权限的用户
+        @summary Queries a list of users that have permissions on the specified database.
         
         @param request: ListAuthorizedUsersForDatabaseRequest
         @return: ListAuthorizedUsersForDatabaseResponse
@@ -19293,7 +19537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
         """
-        @summary 查询有实例权限的用户
+        @summary Queries a list of users that have permissions on the specified instance.
         
         @param request: ListAuthorizedUsersForInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19336,7 +19580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
         """
-        @summary 查询有实例权限的用户
+        @summary Queries a list of users that have permissions on the specified instance.
         
         @param request: ListAuthorizedUsersForInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19378,7 +19622,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
         """
-        @summary 查询有实例权限的用户
+        @summary Queries a list of users that have permissions on the specified instance.
         
         @param request: ListAuthorizedUsersForInstanceRequest
         @return: ListAuthorizedUsersForInstanceResponse
@@ -19391,7 +19635,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorizedUsersForInstanceResponse:
         """
-        @summary 查询有实例权限的用户
+        @summary Queries a list of users that have permissions on the specified instance.
         
         @param request: ListAuthorizedUsersForInstanceRequest
         @return: ListAuthorizedUsersForInstanceResponse
@@ -20505,7 +20749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录列表
+        @summary Queries a list of data catalogs in a data lake.
         
         @param request: ListDataLakeCatalogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20546,7 +20790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录列表
+        @summary Queries a list of data catalogs in a data lake.
         
         @param request: ListDataLakeCatalogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20586,7 +20830,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeCatalogRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录列表
+        @summary Queries a list of data catalogs in a data lake.
         
         @param request: ListDataLakeCatalogRequest
         @return: ListDataLakeCatalogResponse
@@ -20599,7 +20843,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeCatalogRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeCatalogResponse:
         """
-        @summary 获取uc的数据库目录列表
+        @summary Queries a list of data catalogs in a data lake.
         
         @param request: ListDataLakeCatalogRequest
         @return: ListDataLakeCatalogResponse
@@ -20613,7 +20857,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
         """
-        @summary 获取数据库列表
+        @summary Queries the list of databases in the data lake.
         
         @param request: ListDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20660,7 +20904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
         """
-        @summary 获取数据库列表
+        @summary Queries the list of databases in the data lake.
         
         @param request: ListDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20706,7 +20950,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
         """
-        @summary 获取数据库列表
+        @summary Queries the list of databases in the data lake.
         
         @param request: ListDataLakeDatabaseRequest
         @return: ListDataLakeDatabaseResponse
@@ -20719,7 +20963,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeDatabaseResponse:
         """
-        @summary 获取数据库列表
+        @summary Queries the list of databases in the data lake.
         
         @param request: ListDataLakeDatabaseRequest
         @return: ListDataLakeDatabaseResponse
@@ -20733,7 +20977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
         """
-        @summary 获取数据湖函数列表
+        @summary Queries a list of functions in a data lake.
         
         @param request: ListDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20782,7 +21026,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
         """
-        @summary 获取数据湖函数列表
+        @summary Queries a list of functions in a data lake.
         
         @param request: ListDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20830,7 +21074,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
         """
-        @summary 获取数据湖函数列表
+        @summary Queries a list of functions in a data lake.
         
         @param request: ListDataLakeFunctionRequest
         @return: ListDataLakeFunctionResponse
@@ -20843,7 +21087,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
         """
-        @summary 获取数据湖函数列表
+        @summary Queries a list of functions in a data lake.
         
         @param request: ListDataLakeFunctionRequest
         @return: ListDataLakeFunctionResponse
@@ -20857,7 +21101,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
         """
-        @summary 获取数据湖函数名列表
+        @summary Gets a list of data lake function names.
         
         @param request: ListDataLakeFunctionNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20906,7 +21150,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
         """
-        @summary 获取数据湖函数名列表
+        @summary Gets a list of data lake function names.
         
         @param request: ListDataLakeFunctionNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20954,7 +21198,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeFunctionNameRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
         """
-        @summary 获取数据湖函数名列表
+        @summary Gets a list of data lake function names.
         
         @param request: ListDataLakeFunctionNameRequest
         @return: ListDataLakeFunctionNameResponse
@@ -20967,7 +21211,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeFunctionNameRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
         """
-        @summary 获取数据湖函数名列表
+        @summary Gets a list of data lake function names.
         
         @param request: ListDataLakeFunctionNameRequest
         @return: ListDataLakeFunctionNameResponse
@@ -20981,7 +21225,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionResponse:
         """
-        @summary 获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake.
         
         @param tmp_req: ListDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21038,7 +21282,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionResponse:
         """
-        @summary 获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake.
         
         @param tmp_req: ListDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21094,7 +21338,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionResponse:
         """
-        @summary 获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake.
         
         @param request: ListDataLakePartitionRequest
         @return: ListDataLakePartitionResponse
@@ -21107,7 +21351,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionResponse:
         """
-        @summary 获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake.
         
         @param request: ListDataLakePartitionRequest
         @return: ListDataLakePartitionResponse
@@ -21121,7 +21365,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionByFilterResponse:
         """
-        @summary 根据筛选条件获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake based on filter conditions.
         
         @param request: ListDataLakePartitionByFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21174,7 +21418,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionByFilterResponse:
         """
-        @summary 根据筛选条件获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake based on filter conditions.
         
         @param request: ListDataLakePartitionByFilterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21226,7 +21470,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakePartitionByFilterRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionByFilterResponse:
         """
-        @summary 根据筛选条件获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake based on filter conditions.
         
         @param request: ListDataLakePartitionByFilterRequest
         @return: ListDataLakePartitionByFilterResponse
@@ -21239,7 +21483,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakePartitionByFilterRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionByFilterResponse:
         """
-        @summary 根据筛选条件获取数据湖表分区列表
+        @summary Queries a list of partitions of a table in a data lake based on filter conditions.
         
         @param request: ListDataLakePartitionByFilterRequest
         @return: ListDataLakePartitionByFilterResponse
@@ -21253,7 +21497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionNameResponse:
         """
-        @summary 获取数据湖表分区名列表
+        @summary Queries a list of partition names of a table in a data lake.
         
         @param request: ListDataLakePartitionNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21302,7 +21546,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionNameResponse:
         """
-        @summary 获取数据湖表分区名列表
+        @summary Queries a list of partition names of a table in a data lake.
         
         @param request: ListDataLakePartitionNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21350,7 +21594,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakePartitionNameRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionNameResponse:
         """
-        @summary 获取数据湖表分区名列表
+        @summary Queries a list of partition names of a table in a data lake.
         
         @param request: ListDataLakePartitionNameRequest
         @return: ListDataLakePartitionNameResponse
@@ -21363,7 +21607,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakePartitionNameRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakePartitionNameResponse:
         """
-        @summary 获取数据湖表分区名列表
+        @summary Queries a list of partition names of a table in a data lake.
         
         @param request: ListDataLakePartitionNameRequest
         @return: ListDataLakePartitionNameResponse
@@ -21377,7 +21621,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableResponse:
         """
-        @summary 获取数据湖表列表
+        @summary Queries a list of tables in a data lake.
         
         @param request: ListDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21428,7 +21672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableResponse:
         """
-        @summary 获取数据湖表列表
+        @summary Queries a list of tables in a data lake.
         
         @param request: ListDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21478,7 +21722,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableResponse:
         """
-        @summary 获取数据湖表列表
+        @summary Queries a list of tables in a data lake.
         
         @param request: ListDataLakeTableRequest
         @return: ListDataLakeTableResponse
@@ -21491,7 +21735,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableResponse:
         """
-        @summary 获取数据湖表列表
+        @summary Queries a list of tables in a data lake.
         
         @param request: ListDataLakeTableRequest
         @return: ListDataLakeTableResponse
@@ -21505,7 +21749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableNameResponse:
         """
-        @summary 获取数据湖表名列表
+        @summary Queries a list of names of tables in a data lake.
         
         @param request: ListDataLakeTableNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21556,7 +21800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableNameResponse:
         """
-        @summary 获取数据湖表名列表
+        @summary Queries a list of names of tables in a data lake.
         
         @param request: ListDataLakeTableNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21606,7 +21850,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeTableNameRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableNameResponse:
         """
-        @summary 获取数据湖表名列表
+        @summary Queries a list of names of tables in a data lake.
         
         @param request: ListDataLakeTableNameRequest
         @return: ListDataLakeTableNameResponse
@@ -21619,7 +21863,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeTableNameRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeTableNameResponse:
         """
-        @summary 获取数据湖表名列表
+        @summary Queries a list of names of tables in a data lake.
         
         @param request: ListDataLakeTableNameRequest
         @return: ListDataLakeTableNameResponse
@@ -21633,7 +21877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: ListDataLakeTablebaseInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21682,7 +21926,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: ListDataLakeTablebaseInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21730,7 +21974,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeTablebaseInfoRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: ListDataLakeTablebaseInfoRequest
         @return: ListDataLakeTablebaseInfoResponse
@@ -21743,7 +21987,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataLakeTablebaseInfoRequest,
     ) -> dms_enterprise_20181101_models.ListDataLakeTablebaseInfoResponse:
         """
-        @summary 获取表信息
+        @summary Queries basic information about tables in the data lake.
         
         @param request: ListDataLakeTablebaseInfoRequest
         @return: ListDataLakeTablebaseInfoResponse
@@ -23353,7 +23597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
         """
-        @summary 获取资产类目列表
+        @summary Queries a list of categories
         
         @param request: ListMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23394,7 +23638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
         """
-        @summary 获取资产类目列表
+        @summary Queries a list of categories
         
         @param request: ListMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23434,7 +23678,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
         """
-        @summary 获取资产类目列表
+        @summary Queries a list of categories
         
         @param request: ListMetaCategoryRequest
         @return: ListMetaCategoryResponse
@@ -23447,7 +23691,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.ListMetaCategoryResponse:
         """
-        @summary 获取资产类目列表
+        @summary Queries a list of categories
         
         @param request: ListMetaCategoryRequest
         @return: ListMetaCategoryResponse
@@ -24361,7 +24605,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
         """
-        @summary 获取敏感字段信息
+        @summary Queries the information about a sensitive field. The information includes the masking algorithm ID, masking algorithm name, and field security level.
         
         @param request: ListSensitiveColumnInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24408,7 +24652,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
         """
-        @summary 获取敏感字段信息
+        @summary Queries the information about a sensitive field. The information includes the masking algorithm ID, masking algorithm name, and field security level.
         
         @param request: ListSensitiveColumnInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24454,7 +24698,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnInfoRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
         """
-        @summary 获取敏感字段信息
+        @summary Queries the information about a sensitive field. The information includes the masking algorithm ID, masking algorithm name, and field security level.
         
         @param request: ListSensitiveColumnInfoRequest
         @return: ListSensitiveColumnInfoResponse
@@ -24467,7 +24711,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnInfoRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
         """
-        @summary 获取敏感字段信息
+        @summary Queries the information about a sensitive field. The information includes the masking algorithm ID, masking algorithm name, and field security level.
         
         @param request: ListSensitiveColumnInfoRequest
         @return: ListSensitiveColumnInfoResponse
@@ -25045,7 +25289,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
         """
-        @summary 获取表字段信息
+        @summary Queries the details about fields in a table.
         
         @param request: ListTableColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25086,7 +25330,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
         """
-        @summary 获取表字段信息
+        @summary Queries the details about fields in a table.
         
         @param request: ListTableColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25126,7 +25370,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTableColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
         """
-        @summary 获取表字段信息
+        @summary Queries the details about fields in a table.
         
         @param request: ListTableColumnsRequest
         @return: ListTableColumnsResponse
@@ -25139,7 +25383,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTableColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListTableColumnsResponse:
         """
-        @summary 获取表字段信息
+        @summary Queries the details about fields in a table.
         
         @param request: ListTableColumnsRequest
         @return: ListTableColumnsResponse
@@ -25281,7 +25525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
         """
-        @summary 获取类目下的表列表
+        @summary Obtains the list of tables in a category.
         
         @param request: ListTablesInCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25322,7 +25566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
         """
-        @summary 获取类目下的表列表
+        @summary Obtains the list of tables in a category.
         
         @param request: ListTablesInCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25362,7 +25606,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTablesInCategoryRequest,
     ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
         """
-        @summary 获取类目下的表列表
+        @summary Obtains the list of tables in a category.
         
         @param request: ListTablesInCategoryRequest
         @return: ListTablesInCategoryResponse
@@ -25375,7 +25619,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTablesInCategoryRequest,
     ) -> dms_enterprise_20181101_models.ListTablesInCategoryResponse:
         """
-        @summary 获取类目下的表列表
+        @summary Obtains the list of tables in a category.
         
         @param request: ListTablesInCategoryRequest
         @return: ListTablesInCategoryResponse
@@ -26251,6 +26495,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_in_task_flow_with_options_async(request, runtime)
 
+    def list_user_owned_resources_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListUserOwnedResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListUserOwnedResourcesResponse:
+        """
+        @summary Obtains
+        
+        @param request: ListUserOwnedResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserOwnedResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.owner_type):
+            query['OwnerType'] = request.owner_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserOwnedResources',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUserOwnedResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_owned_resources_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListUserOwnedResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListUserOwnedResourcesResponse:
+        """
+        @summary Obtains
+        
+        @param request: ListUserOwnedResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserOwnedResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.owner_type):
+            query['OwnerType'] = request.owner_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserOwnedResources',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListUserOwnedResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_owned_resources(
+        self,
+        request: dms_enterprise_20181101_models.ListUserOwnedResourcesRequest,
+    ) -> dms_enterprise_20181101_models.ListUserOwnedResourcesResponse:
+        """
+        @summary Obtains
+        
+        @param request: ListUserOwnedResourcesRequest
+        @return: ListUserOwnedResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_owned_resources_with_options(request, runtime)
+
+    async def list_user_owned_resources_async(
+        self,
+        request: dms_enterprise_20181101_models.ListUserOwnedResourcesRequest,
+    ) -> dms_enterprise_20181101_models.ListUserOwnedResourcesResponse:
+        """
+        @summary Obtains
+        
+        @param request: ListUserOwnedResourcesRequest
+        @return: ListUserOwnedResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_owned_resources_with_options_async(request, runtime)
+
     def list_user_permissions_with_options(
         self,
         request: dms_enterprise_20181101_models.ListUserPermissionsRequest,
@@ -26801,7 +27173,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
         """
-        @summary 搜索工作空间列表
+        @summary Queries a list of workspaces of the tenant.
         
         @param request: ListWorkspacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26852,7 +27224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
         """
-        @summary 搜索工作空间列表
+        @summary Queries a list of workspaces of the tenant.
         
         @param request: ListWorkspacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26902,7 +27274,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListWorkspacesRequest,
     ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
         """
-        @summary 搜索工作空间列表
+        @summary Queries a list of workspaces of the tenant.
         
         @param request: ListWorkspacesRequest
         @return: ListWorkspacesResponse
@@ -26915,7 +27287,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListWorkspacesRequest,
     ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
         """
-        @summary 搜索工作空间列表
+        @summary Queries a list of workspaces of the tenant.
         
         @param request: ListWorkspacesRequest
         @return: ListWorkspacesResponse
@@ -27269,7 +27641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
         """
-        @summary 修改实例信息，同时检查该实例连通性
+        @summary Modifies the basic and advanced information about a database instance in Data Management (DMS). The basic information includes the hosting mode of the instance, the instance account username and password, and features that are enabled for the instance. The advanced information includes the environment type, the instance name in DMS, and the timeout period for querying and exporting data.
         
         @param request: ModifyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27362,7 +27734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
         """
-        @summary 修改实例信息，同时检查该实例连通性
+        @summary Modifies the basic and advanced information about a database instance in Data Management (DMS). The basic information includes the hosting mode of the instance, the instance account username and password, and features that are enabled for the instance. The advanced information includes the environment type, the instance name in DMS, and the timeout period for querying and exporting data.
         
         @param request: ModifyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27454,7 +27826,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyInstanceRequest,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
         """
-        @summary 修改实例信息，同时检查该实例连通性
+        @summary Modifies the basic and advanced information about a database instance in Data Management (DMS). The basic information includes the hosting mode of the instance, the instance account username and password, and features that are enabled for the instance. The advanced information includes the environment type, the instance name in DMS, and the timeout period for querying and exporting data.
         
         @param request: ModifyInstanceRequest
         @return: ModifyInstanceResponse
@@ -27467,7 +27839,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyInstanceRequest,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
         """
-        @summary 修改实例信息，同时检查该实例连通性
+        @summary Modifies the basic and advanced information about a database instance in Data Management (DMS). The basic information includes the hosting mode of the instance, the instance account username and password, and features that are enabled for the instance. The advanced information includes the environment type, the instance name in DMS, and the timeout period for querying and exporting data.
         
         @param request: ModifyInstanceRequest
         @return: ModifyInstanceResponse
@@ -27685,9 +28057,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @summary Analyzes and optimizes the SQL statements in the specified database.
         
-        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @description You can call this operation to analyze and optimize the SQL statements in the specified database.
         
         @param request: OptimizeSqlByMetaAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27728,9 +28100,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @summary Analyzes and optimizes the SQL statements in the specified database.
         
-        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @description You can call this operation to analyze and optimize the SQL statements in the specified database.
         
         @param request: OptimizeSqlByMetaAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27770,9 +28142,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.OptimizeSqlByMetaAgentRequest,
     ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @summary Analyzes and optimizes the SQL statements in the specified database.
         
-        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @description You can call this operation to analyze and optimize the SQL statements in the specified database.
         
         @param request: OptimizeSqlByMetaAgentRequest
         @return: OptimizeSqlByMetaAgentResponse
@@ -27785,9 +28157,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.OptimizeSqlByMetaAgentRequest,
     ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
         """
-        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @summary Analyzes and optimizes the SQL statements in the specified database.
         
-        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        @description You can call this operation to analyze and optimize the SQL statements in the specified database.
         
         @param request: OptimizeSqlByMetaAgentRequest
         @return: OptimizeSqlByMetaAgentResponse
@@ -27917,7 +28289,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
         """
-        @summary 终止数据导出任务
+        @summary Terminates a SQL result set export task.
         
         @param request: PauseDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27956,7 +28328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
         """
-        @summary 终止数据导出任务
+        @summary Terminates a SQL result set export task.
         
         @param request: PauseDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27994,7 +28366,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PauseDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
         """
-        @summary 终止数据导出任务
+        @summary Terminates a SQL result set export task.
         
         @param request: PauseDataExportJobRequest
         @return: PauseDataExportJobResponse
@@ -28007,7 +28379,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PauseDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
         """
-        @summary 终止数据导出任务
+        @summary Terminates a SQL result set export task.
         
         @param request: PauseDataExportJobRequest
         @return: PauseDataExportJobResponse
@@ -28021,7 +28393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
         """
-        @summary 创建工单审批流
+        @summary Previews the approval process of a ticket before the ticket is submitted.
         
         @param request: PreviewWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28058,7 +28430,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
         """
-        @summary 创建工单审批流
+        @summary Previews the approval process of a ticket before the ticket is submitted.
         
         @param request: PreviewWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28094,7 +28466,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
         """
-        @summary 创建工单审批流
+        @summary Previews the approval process of a ticket before the ticket is submitted.
         
         @param request: PreviewWorkflowRequest
         @return: PreviewWorkflowResponse
@@ -28107,7 +28479,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
         """
-        @summary 创建工单审批流
+        @summary Previews the approval process of a ticket before the ticket is submitted.
         
         @param request: PreviewWorkflowRequest
         @return: PreviewWorkflowResponse
@@ -29117,7 +29489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
         """
-        @summary 删除数据导出任务
+        @summary Deletes a data export task.
         
         @param request: RemoveDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29156,7 +29528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
         """
-        @summary 删除数据导出任务
+        @summary Deletes a data export task.
         
         @param request: RemoveDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29194,7 +29566,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RemoveDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
         """
-        @summary 删除数据导出任务
+        @summary Deletes a data export task.
         
         @param request: RemoveDataExportJobRequest
         @return: RemoveDataExportJobResponse
@@ -29207,7 +29579,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RemoveDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
         """
-        @summary 删除数据导出任务
+        @summary Deletes a data export task.
         
         @param request: RemoveDataExportJobRequest
         @return: RemoveDataExportJobResponse
@@ -29221,7 +29593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
         """
-        @summary 从资产类目移除表
+        @summary Removes table from the asset category.
         
         @param request: RemoveTableFromCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29264,7 +29636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
         """
-        @summary 从资产类目移除表
+        @summary Removes table from the asset category.
         
         @param request: RemoveTableFromCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29306,7 +29678,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RemoveTableFromCategoryRequest,
     ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
         """
-        @summary 从资产类目移除表
+        @summary Removes table from the asset category.
         
         @param request: RemoveTableFromCategoryRequest
         @return: RemoveTableFromCategoryResponse
@@ -29319,7 +29691,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RemoveTableFromCategoryRequest,
     ) -> dms_enterprise_20181101_models.RemoveTableFromCategoryResponse:
         """
-        @summary 从资产类目移除表
+        @summary Removes table from the asset category.
         
         @param request: RemoveTableFromCategoryRequest
         @return: RemoveTableFromCategoryResponse
@@ -29445,7 +29817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
         """
-        @summary 重启数据导出任务
+        @summary Restarts a SQL result set export task.
         
         @param request: RestartDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29484,7 +29856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
         """
-        @summary 重启数据导出任务
+        @summary Restarts a SQL result set export task.
         
         @param request: RestartDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29522,7 +29894,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RestartDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
         """
-        @summary 重启数据导出任务
+        @summary Restarts a SQL result set export task.
         
         @param request: RestartDataExportJobRequest
         @return: RestartDataExportJobResponse
@@ -29535,7 +29907,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RestartDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
         """
-        @summary 重启数据导出任务
+        @summary Restarts a SQL result set export task.
         
         @param request: RestartDataExportJobRequest
         @return: RestartDataExportJobResponse
@@ -30521,7 +30893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
         """
-        @summary 修改审批流额外信息
+        @summary Configures whether the operation buttons, such as Agree, Revoke, and Sign, are displayed in the ticket approval section of the DMS console.
         
         @param request: SetWorkflowExtraInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30572,7 +30944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
         """
-        @summary 修改审批流额外信息
+        @summary Configures whether the operation buttons, such as Agree, Revoke, and Sign, are displayed in the ticket approval section of the DMS console.
         
         @param request: SetWorkflowExtraInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30622,7 +30994,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SetWorkflowExtraInfoRequest,
     ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
         """
-        @summary 修改审批流额外信息
+        @summary Configures whether the operation buttons, such as Agree, Revoke, and Sign, are displayed in the ticket approval section of the DMS console.
         
         @param request: SetWorkflowExtraInfoRequest
         @return: SetWorkflowExtraInfoResponse
@@ -30635,7 +31007,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SetWorkflowExtraInfoRequest,
     ) -> dms_enterprise_20181101_models.SetWorkflowExtraInfoResponse:
         """
-        @summary 修改审批流额外信息
+        @summary Configures whether the operation buttons, such as Agree, Revoke, and Sign, are displayed in the ticket approval section of the DMS console.
         
         @param request: SetWorkflowExtraInfoRequest
         @return: SetWorkflowExtraInfoResponse
@@ -31185,7 +31557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
         """
-        @summary 中断数据导出任务
+        @summary Suspends an ongoing or scheduled SQL result set export task.
         
         @param request: SuspendDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31224,7 +31596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
         """
-        @summary 中断数据导出任务
+        @summary Suspends an ongoing or scheduled SQL result set export task.
         
         @param request: SuspendDataExportJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31262,7 +31634,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SuspendDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
         """
-        @summary 中断数据导出任务
+        @summary Suspends an ongoing or scheduled SQL result set export task.
         
         @param request: SuspendDataExportJobRequest
         @return: SuspendDataExportJobResponse
@@ -31275,7 +31647,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SuspendDataExportJobRequest,
     ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
         """
-        @summary 中断数据导出任务
+        @summary Suspends an ongoing or scheduled SQL result set export task.
         
         @param request: SuspendDataExportJobRequest
         @return: SuspendDataExportJobResponse
@@ -31609,7 +31981,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
         """
-        @summary 任务编排试运行
+        @summary Tests the task flow of task orchestration.
+        
+        @description ### [](#)Usage notes
+        An edge can be created only when the following conditions are met:
+        1.  The start and end nodes of the edge exist in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  After the edge is created, the DAG does not contain loops.
         
         @param request: TryRunTaskFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31644,7 +32021,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
         """
-        @summary 任务编排试运行
+        @summary Tests the task flow of task orchestration.
+        
+        @description ### [](#)Usage notes
+        An edge can be created only when the following conditions are met:
+        1.  The start and end nodes of the edge exist in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  After the edge is created, the DAG does not contain loops.
         
         @param request: TryRunTaskFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31678,7 +32060,12 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.TryRunTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
         """
-        @summary 任务编排试运行
+        @summary Tests the task flow of task orchestration.
+        
+        @description ### [](#)Usage notes
+        An edge can be created only when the following conditions are met:
+        1.  The start and end nodes of the edge exist in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  After the edge is created, the DAG does not contain loops.
         
         @param request: TryRunTaskFlowRequest
         @return: TryRunTaskFlowResponse
@@ -31691,7 +32078,12 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.TryRunTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
         """
-        @summary 任务编排试运行
+        @summary Tests the task flow of task orchestration.
+        
+        @description ### [](#)Usage notes
+        An edge can be created only when the following conditions are met:
+        1.  The start and end nodes of the edge exist in the directed acyclic graph (DAG) of the task flow specified by DagId.
+        2.  After the edge is created, the DAG does not contain loops.
         
         @param request: TryRunTaskFlowRequest
         @return: TryRunTaskFlowResponse
@@ -31705,7 +32097,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
         """
-        @summary 更新权限策略
+        @summary Updates the name, description, or content of a policy.
         
         @param request: UpdateAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31748,7 +32140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
         """
-        @summary 更新权限策略
+        @summary Updates the name, description, or content of a policy.
         
         @param request: UpdateAbacPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31790,7 +32182,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
         """
-        @summary 更新权限策略
+        @summary Updates the name, description, or content of a policy.
         
         @param request: UpdateAbacPolicyRequest
         @return: UpdateAbacPolicyResponse
@@ -31803,7 +32195,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
     ) -> dms_enterprise_20181101_models.UpdateAbacPolicyResponse:
         """
-        @summary 更新权限策略
+        @summary Updates the name, description, or content of a policy.
         
         @param request: UpdateAbacPolicyRequest
         @return: UpdateAbacPolicyResponse
@@ -31933,7 +32325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeDatabaseResponse:
         """
-        @summary 更新湖仓数据库
+        @summary Updates the information about a database in a data lakehouse.
         
         @param tmp_req: UpdateDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31986,7 +32378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeDatabaseResponse:
         """
-        @summary 更新湖仓数据库
+        @summary Updates the information about a database in a data lakehouse.
         
         @param tmp_req: UpdateDataLakeDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32038,7 +32430,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeDatabaseResponse:
         """
-        @summary 更新湖仓数据库
+        @summary Updates the information about a database in a data lakehouse.
         
         @param request: UpdateDataLakeDatabaseRequest
         @return: UpdateDataLakeDatabaseResponse
@@ -32051,7 +32443,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakeDatabaseRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeDatabaseResponse:
         """
-        @summary 更新湖仓数据库
+        @summary Updates the information about a database in a data lakehouse.
         
         @param request: UpdateDataLakeDatabaseRequest
         @return: UpdateDataLakeDatabaseResponse
@@ -32065,7 +32457,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
         """
-        @summary 更新湖仓自定义函数
+        @summary Updates a user-defined function in a data lakehouse.
         
         @param tmp_req: UpdateDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32118,7 +32510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
         """
-        @summary 更新湖仓自定义函数
+        @summary Updates a user-defined function in a data lakehouse.
         
         @param tmp_req: UpdateDataLakeFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32170,7 +32562,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
         """
-        @summary 更新湖仓自定义函数
+        @summary Updates a user-defined function in a data lakehouse.
         
         @param request: UpdateDataLakeFunctionRequest
         @return: UpdateDataLakeFunctionResponse
@@ -32183,7 +32575,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakeFunctionRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
         """
-        @summary 更新湖仓自定义函数
+        @summary Updates a user-defined function in a data lakehouse.
         
         @param request: UpdateDataLakeFunctionRequest
         @return: UpdateDataLakeFunctionResponse
@@ -32197,7 +32589,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakePartitionResponse:
         """
-        @summary 更新湖仓表分区
+        @summary Updates the partition information of a table in a data lakehouse.
         
         @param tmp_req: UpdateDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32250,7 +32642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakePartitionResponse:
         """
-        @summary 更新湖仓表分区
+        @summary Updates the partition information of a table in a data lakehouse.
         
         @param tmp_req: UpdateDataLakePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32302,7 +32694,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakePartitionResponse:
         """
-        @summary 更新湖仓表分区
+        @summary Updates the partition information of a table in a data lakehouse.
         
         @param request: UpdateDataLakePartitionRequest
         @return: UpdateDataLakePartitionResponse
@@ -32315,7 +32707,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakePartitionRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakePartitionResponse:
         """
-        @summary 更新湖仓表分区
+        @summary Updates the partition information of a table in a data lakehouse.
         
         @param request: UpdateDataLakePartitionRequest
         @return: UpdateDataLakePartitionResponse
@@ -32329,7 +32721,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeTableResponse:
         """
-        @summary 更新湖仓表信息
+        @summary Updates the information about a table in a data lakehouse.
         
         @param tmp_req: UpdateDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32382,7 +32774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeTableResponse:
         """
-        @summary 更新湖仓表信息
+        @summary Updates the information about a table in a data lakehouse.
         
         @param tmp_req: UpdateDataLakeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32434,7 +32826,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeTableResponse:
         """
-        @summary 更新湖仓表信息
+        @summary Updates the information about a table in a data lakehouse.
         
         @param request: UpdateDataLakeTableRequest
         @return: UpdateDataLakeTableResponse
@@ -32447,7 +32839,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateDataLakeTableRequest,
     ) -> dms_enterprise_20181101_models.UpdateDataLakeTableResponse:
         """
-        @summary 更新湖仓表信息
+        @summary Updates the information about a table in a data lakehouse.
         
         @param request: UpdateDataLakeTableRequest
         @return: UpdateDataLakeTableResponse
@@ -32661,7 +33053,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
         """
-        @summary 更新资产类目信息
+        @summary Updates asset category information.
         
         @param request: UpdateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32700,7 +33092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
         """
-        @summary 更新资产类目信息
+        @summary Updates asset category information.
         
         @param request: UpdateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32738,7 +33130,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
         """
-        @summary 更新资产类目信息
+        @summary Updates asset category information.
         
         @param request: UpdateMetaCategoryRequest
         @return: UpdateMetaCategoryResponse
@@ -32751,7 +33143,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
     ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
         """
-        @summary 更新资产类目信息
+        @summary Updates asset category information.
         
         @param request: UpdateMetaCategoryRequest
         @return: UpdateMetaCategoryResponse
@@ -33325,7 +33717,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 大sql更新节点专用
+        @summary Updates the node content in large SQL files.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -33364,7 +33758,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 大sql更新节点专用
+        @summary Updates the node content in large SQL files.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -33402,7 +33798,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 大sql更新节点专用
+        @summary Updates the node content in large SQL files.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentV2Request
         @return: UpdateTaskContentV2Response
@@ -33415,7 +33813,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 大sql更新节点专用
+        @summary Updates the node content in large SQL files.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentV2Request
         @return: UpdateTaskContentV2Response
@@ -34933,7 +35333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
         """
-        @summary 修改工作空间
+        @summary Updates the information about a workspace.
         
         @param request: UpdateWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34976,7 +35376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
         """
-        @summary 修改工作空间
+        @summary Updates the information about a workspace.
         
         @param request: UpdateWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35018,7 +35418,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
         """
-        @summary 修改工作空间
+        @summary Updates the information about a workspace.
         
         @param request: UpdateWorkspaceRequest
         @return: UpdateWorkspaceResponse
@@ -35031,7 +35431,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateWorkspaceRequest,
     ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
         """
-        @summary 修改工作空间
+        @summary Updates the information about a workspace.
         
         @param request: UpdateWorkspaceRequest
         @return: UpdateWorkspaceResponse

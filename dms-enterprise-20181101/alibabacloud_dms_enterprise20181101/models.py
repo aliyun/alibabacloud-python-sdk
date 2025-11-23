@@ -2031,11 +2031,32 @@ class AddAuthorityTemplateItemsRequestItems(TeaModel):
         resource_type: str = None,
         table_name: str = None,
     ):
+        # The database ID. Databases are divided into physical databases and logical databases.
+        # 
+        # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
+        # > This parameter is required if the ResourceType parameter is set to META_DB, LOGIC_DB, META_TABLE, or LOGIC_TABLE.
         self.db_id = db_id
+        # The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+        # 
+        # > This parameter is required if the ResourceType parameter is set to INSTANCE.
         self.instance_id = instance_id
+        # The permission types.
         self.permission_types = permission_types
+        # The type of the resource from which you want to remove tags. Valid values:
+        # 
+        # *   **INSTANCE**: instance
+        # *   **LOGIC_DB**: logical database
+        # *   **META_DB**: physical database
+        # *   **LOGIC_TABLE**: logical table
+        # *   **LOGIC_TABLE**: physical table
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The table name. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the name of the table.
+        # 
+        # > This parameter is required if the ResourceType parameter is set to META_TABLE or LOGIC_TABLE.
         self.table_name = table_name
 
     def validate(self):
@@ -2081,10 +2102,17 @@ class AddAuthorityTemplateItemsRequest(TeaModel):
         template_id: int = None,
         tid: int = None,
     ):
+        # The resources that you want to add to the permission template.
+        # 
         # This parameter is required.
         self.items = items
+        # The ID of the permission template. You can call the [CreateAuthorityTemplate](https://help.aliyun.com/document_detail/600705.html) operation to obtain the value of this parameter.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -2130,10 +2158,17 @@ class AddAuthorityTemplateItemsShrinkRequest(TeaModel):
         template_id: int = None,
         tid: int = None,
     ):
+        # The resources that you want to add to the permission template.
+        # 
         # This parameter is required.
         self.items_shrink = items_shrink
+        # The ID of the permission template. You can call the [CreateAuthorityTemplate](https://help.aliyun.com/document_detail/600705.html) operation to obtain the value of this parameter.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -2173,10 +2208,18 @@ class AddAuthorityTemplateItemsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the resource is added to the permission template.
         self.data = data
+        # The error code returned if the request failed. The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -2528,46 +2571,159 @@ class AddInstanceRequest(TeaModel):
         use_ssl: int = None,
         vpc_id: str = None,
     ):
+        # The name of the database link for cross-database queries.
+        # 
+        # > 
+        # 
+        # *   This property must be specified when UseDsql is set to 1.
+        # 
+        # *   The name can contain only lowercase letters and underscores (_).
+        # 
+        # *   The name must be unique within a tenant.
         self.data_link_name = data_link_name
+        # The password of the database account.
+        # 
         # This parameter is required.
         self.database_password = database_password
+        # The name of the database account.
+        # 
         # This parameter is required.
         self.database_user = database_user
+        # The ID of the user who assumes the database administrator (DBA) role. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to obtain the value of this parameter.
         self.dba_id = dba_id
+        # Specifies whether to enable Lock-free Schema Change. Valid values:
+        # 
+        # *   **0**: does not enable lock-free schema change.
+        # *   **1**: uses the native online DDL operations of MySQL first.
+        # *   **2:** uses lock-free schema change first.
+        # 
+        # > Supported databases include ApsaraDB RDS for MySQL, PolarDB for MySQL, ApsaraDB MyBase for MySQL, and third-party MySQL databases.
         self.ddl_online = ddl_online
+        # The ID of the instance. If your instance is a database instance connected by using a database gateway, specify the gateway ID for this parameter.
+        # 
+        # > This parameter is required if InstanceSource is set to ECS_OWN or GATEWAY.
         self.ecs_instance_id = ecs_instance_id
+        # The region in which the ECS instance resides.
+        # 
+        # > This parameter is required if InstanceSource is set to RDS, ECS_OWN, GATEWAY, or VPC_IDC.
         self.ecs_region = ecs_region
+        # Specifies whether to enable Security Collaboration for the database instance. Valid values:
+        # 
+        # *   Y: enables Security Collaboration.
+        # *   N: disables Security Collaboration.
         self.enable_sell_common = enable_sell_common
+        # Specifies whether to enable sensitive data protection. Valid values:
+        # 
+        # *   Y: enables the sensitive data protection feature for the database instance.
+        # *   N: disables the sensitive data protection feature for the database instance.
         self.enable_sell_sitd = enable_sell_sitd
+        # Specifies whether to enable Stable Change for the database instance. Valid values:
+        # 
+        # *   Y: Enables Stable Change.
+        # *   N: Disables Stable Change.
         self.enable_sell_stable = enable_sell_stable
+        # Specifies whether to enable the security hosting feature for the database instance. Valid values:
+        # 
+        # *   Y: enables the security hosting feature for the database instance.
+        # *   N: disables the security hosting feature for the database instance.
+        # 
         # This parameter is required.
         self.enable_sell_trust = enable_sell_trust
+        # The type of the environment to which the database instance belongs. Valid values:
+        # 
+        # *   **product:** the production environment.
+        # *   **dev**: development environment.
+        # *   **pre**: pre-release environment.
+        # *   **test**: test environment.
+        # *   **sit**: system integration testing (SIT) environment.
+        # *   **uat**: user acceptance testing (UAT) environment.
+        # *   **pet**: stress testing environment.
+        # *   **stag**: staging environment.
+        # 
         # This parameter is required.
         self.env_type = env_type
+        # The timeout period for exporting data from the database instance. Unit: seconds.
+        # 
         # This parameter is required.
         self.export_timeout = export_timeout
+        # The endpoint that is used to connect to the database.
+        # 
         # This parameter is required.
         self.host = host
+        # The alias of the database instance. Specify an alias that can help you identify the database instance in DMS.
+        # 
         # This parameter is required.
         self.instance_alias = instance_alias
+        # The source of the database instance. Valid values:
+        # 
+        # *   **PUBLIC_OWN**: a self-managed database instance that is deployed on the Internet.
+        # *   **RDS**: an ApsaraDB RDS instance.
+        # *   **ECS_OWN**: a self-managed database instance that is deployed on an Elastic Compute Service (ECS) instance.
+        # *   **VPC_IDC**: a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC).
+        # *   **GATEWAY**: a database instance connected by using a database gateway.
+        # 
         # This parameter is required.
         self.instance_source = instance_source
+        # The type of the database instance. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # The network type. Valid values:
+        # 
+        # *   **CLASSIC:** the classic network.
+        # *   **VPC**\
+        # 
         # This parameter is required.
         self.network_type = network_type
+        # The port that is used to connect to the database.
+        # 
         # This parameter is required.
         self.port = port
+        # The timeout period for querying data from the database instance. Unit: seconds.
+        # 
         # This parameter is required.
         self.query_timeout = query_timeout
+        # The name of the security rule set for the database instance. This parameter is required if Security Collaboration is enabled. You can call the[ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) or [GetInstance](https://help.aliyun.com/document_detail/465826.html) operation to obtain the name of the security rule set from GroupName.
         self.safe_rule = safe_rule
+        # The system ID (SID) of the database instance.
+        # 
+        # > This parameter is required if InstanceType is set to ORACLE.
         self.sid = sid
+        # Specifies whether to skip the connectivity test. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.skip_test = skip_test
+        # The ID of the classification and grading template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/465947.html) operation to query the template ID.
         self.template_id = template_id
+        # The type of the classification and grading template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/465947.html) operation to query the template type.
         self.template_type = template_type
+        # The ID of the tenant.
+        # 
+        # > You can move the pointer over the profile picture in the upper-right corner of the DMS console to obtain the tenant ID.
         self.tid = tid
+        # Specifies whether to enable cross-database query for the database instance. Valid values:
+        # 
+        # *   **0: does not enable cross-database query.**\
+        # *   **1**: enables cross-database query.
+        # 
+        # > Supported databases include MySQL, SQL Server, PostgreSQL, PolarDB for Oracle, and Redis.
         self.use_dsql = use_dsql
+        # Specifies whether to allow Data Management Service (DMS) to connect to the database instance by using SSL connections. Before you use SSL connections, make sure that the SSL encryption feature is enabled for the database instance. Valid values:
+        # 
+        # *   **0** (default): DMS automatically checks whether self-negotiation is enabled for the database instance. DMS automatically checks whether the SSL encryption feature is enabled for the database instance. If the SSL encryption feature is enabled, DMS connects to the database instance by using SSL connections. Otherwise, DMS connects to the database instance without encryption.
+        # *   **1**: DMS connects to the database instance by using SSL connections. This value is invalid if the SSL encryption feature is disabled for the database instance.
+        # *   **-1**: DMS does not connect to the database instance by using SSL connections.
+        # 
+        # > 
+        # 
+        # *   This parameter is available only for a MySQL or Redis database instance.
+        # 
+        # *   SSL encrypts network connections at the transport layer to improve the security and integrity of data in transmission. However, SSL increases the response time of network connections.
         self.use_ssl = use_ssl
+        # The ID of the instance connected over a VPC.
+        # 
+        # > This parameter is required if InstanceSource is set to VPC_IDC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2710,9 +2866,16 @@ class AddInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -3214,13 +3377,21 @@ class AddTableToCategoryRequest(TeaModel):
         table_schema_name: str = None,
         tid: int = None,
     ):
+        # The ID of the associated category.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The ID of a physical database: You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the physical database ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The name of the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The schema name of the table, which is required only for SQL Server instances.
         self.table_schema_name = table_schema_name
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3267,9 +3438,16 @@ class AddTableToCategoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4025,9 +4203,13 @@ class AnswerSqlSyntaxByMetaAgentRequest(TeaModel):
         model: str = None,
         query: str = None,
     ):
+        # The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The name of the selected model. You can use only Qwen series models.
         self.model = model
+        # The syntax question.
         self.query = query
 
     def validate(self):
@@ -4064,7 +4246,9 @@ class AnswerSqlSyntaxByMetaAgentResponseBodyData(TeaModel):
         content: str = None,
         session_id: str = None,
     ):
+        # The answer to the question.
         self.content = content
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -4100,11 +4284,18 @@ class AnswerSqlSyntaxByMetaAgentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4715,19 +4906,38 @@ class BatchCreateDataLakePartitionsRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore this exception if the name of the new partition is the same as that of an existing partition. Valid values:
+        # 
+        # *   true: Ignore the exception.
+        # *   false: Do not ignore the exception.
         self.if_not_exists = if_not_exists
+        # Specifies whether to return partition information. If the value is true, Partitions is returned.
         self.need_result = need_result
+        # The information about the new partitions.
+        # 
         # This parameter is required.
         self.partition_inputs = partition_inputs
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4803,19 +5013,38 @@ class BatchCreateDataLakePartitionsShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore this exception if the name of the new partition is the same as that of an existing partition. Valid values:
+        # 
+        # *   true: Ignore the exception.
+        # *   false: Do not ignore the exception.
         self.if_not_exists = if_not_exists
+        # Specifies whether to return partition information. If the value is true, Partitions is returned.
         self.need_result = need_result
+        # The information about the new partitions.
+        # 
         # This parameter is required.
         self.partition_inputs_shrink = partition_inputs_shrink
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4879,10 +5108,18 @@ class BatchCreateDataLakePartitionsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The details about the new partitions. This parameter is returned when the NeedResult parameter is set to true.
         self.partitions = partitions
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4982,18 +5219,33 @@ class BatchDeleteDataLakePartitionsRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore the exception if the partition that you want to delete does not exist.
         self.if_exists = if_exists
+        # The values in a partition key column.
+        # 
         # This parameter is required.
         self.partition_values_list = partition_values_list
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5053,10 +5305,18 @@ class BatchDeleteDataLakePartitionsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The error messages.
         self.partition_errors = partition_errors
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -5155,17 +5415,31 @@ class BatchUpdateDataLakePartitionsRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data directory.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the created partition.
+        # 
         # This parameter is required.
         self.partition_inputs = partition_inputs
+        # The name of the table
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5231,17 +5505,31 @@ class BatchUpdateDataLakePartitionsShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data directory.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the created partition.
+        # 
         # This parameter is required.
         self.partition_inputs_shrink = partition_inputs_shrink
+        # The name of the table
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5297,10 +5585,18 @@ class BatchUpdateDataLakePartitionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The error messages.
         self.partition_errors = partition_errors
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -5755,18 +6051,41 @@ class ChangeColumnSecurityLevelRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
+        # The name of the field. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) or [ListColumns](https://help.aliyun.com/document_detail/141870.html) operation to query the column name.
+        # 
         # This parameter is required.
         self.column_name = column_name
+        # The database ID. The database can be a physical database or a logical database.
+        # 
+        # *   The ID of a physical database: You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the physical database ID.
+        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true**: The database is a logical database
+        # *   **false**: The database is a physical database.
+        # 
         # This parameter is required.
         self.is_logic = is_logic
+        # The new security level of the column. The valid values are the same as the sensitivity levels of the classification template that is associated with the instance. You can call the [ListSensitivityLevel](https://help.aliyun.com/document_detail/2539519.html) operation to obtain the sensitivity levels of the classification template.
+        # 
         # This parameter is required.
         self.new_sensitivity_level = new_sensitivity_level
+        # The database name. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to query the database name.
+        # 
+        # > You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the name of a physical database and call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the name of a logical database.
+        # 
         # This parameter is required.
         self.schema_name = schema_name
+        # The name of the table. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) or [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -5821,9 +6140,16 @@ class ChangeColumnSecurityLevelResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -6038,6 +6364,507 @@ class ChangeLhDagOwnerResponse(TeaModel):
         return self
 
 
+class ChatWithDesensitizeRequest(TeaModel):
+    def __init__(
+        self,
+        desensitization_rule: str = None,
+        enable_thinking: bool = None,
+        instance_id: int = None,
+        max_tokens: int = None,
+        messages: List[Dict[str, Any]] = None,
+        model: str = None,
+        need_desensitization: bool = None,
+        presence_penalty: float = None,
+        response_format: str = None,
+        seed: int = None,
+        stop: List[str] = None,
+        temperature: float = None,
+        thinking_budget: int = None,
+        top_k: int = None,
+        top_logprobs: int = None,
+        top_p: float = None,
+    ):
+        self.desensitization_rule = desensitization_rule
+        self.enable_thinking = enable_thinking
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.max_tokens = max_tokens
+        # This parameter is required.
+        self.messages = messages
+        self.model = model
+        self.need_desensitization = need_desensitization
+        self.presence_penalty = presence_penalty
+        self.response_format = response_format
+        self.seed = seed
+        self.stop = stop
+        self.temperature = temperature
+        self.thinking_budget = thinking_budget
+        self.top_k = top_k
+        self.top_logprobs = top_logprobs
+        self.top_p = top_p
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desensitization_rule is not None:
+            result['DesensitizationRule'] = self.desensitization_rule
+        if self.enable_thinking is not None:
+            result['EnableThinking'] = self.enable_thinking
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        if self.messages is not None:
+            result['Messages'] = self.messages
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.need_desensitization is not None:
+            result['NeedDesensitization'] = self.need_desensitization
+        if self.presence_penalty is not None:
+            result['PresencePenalty'] = self.presence_penalty
+        if self.response_format is not None:
+            result['ResponseFormat'] = self.response_format
+        if self.seed is not None:
+            result['Seed'] = self.seed
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.thinking_budget is not None:
+            result['ThinkingBudget'] = self.thinking_budget
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        if self.top_logprobs is not None:
+            result['TopLogprobs'] = self.top_logprobs
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesensitizationRule') is not None:
+            self.desensitization_rule = m.get('DesensitizationRule')
+        if m.get('EnableThinking') is not None:
+            self.enable_thinking = m.get('EnableThinking')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        if m.get('Messages') is not None:
+            self.messages = m.get('Messages')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('NeedDesensitization') is not None:
+            self.need_desensitization = m.get('NeedDesensitization')
+        if m.get('PresencePenalty') is not None:
+            self.presence_penalty = m.get('PresencePenalty')
+        if m.get('ResponseFormat') is not None:
+            self.response_format = m.get('ResponseFormat')
+        if m.get('Seed') is not None:
+            self.seed = m.get('Seed')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('ThinkingBudget') is not None:
+            self.thinking_budget = m.get('ThinkingBudget')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        if m.get('TopLogprobs') is not None:
+            self.top_logprobs = m.get('TopLogprobs')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        return self
+
+
+class ChatWithDesensitizeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        desensitization_rule: str = None,
+        enable_thinking: bool = None,
+        instance_id: int = None,
+        max_tokens: int = None,
+        messages_shrink: str = None,
+        model: str = None,
+        need_desensitization: bool = None,
+        presence_penalty: float = None,
+        response_format: str = None,
+        seed: int = None,
+        stop_shrink: str = None,
+        temperature: float = None,
+        thinking_budget: int = None,
+        top_k: int = None,
+        top_logprobs: int = None,
+        top_p: float = None,
+    ):
+        self.desensitization_rule = desensitization_rule
+        self.enable_thinking = enable_thinking
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.max_tokens = max_tokens
+        # This parameter is required.
+        self.messages_shrink = messages_shrink
+        self.model = model
+        self.need_desensitization = need_desensitization
+        self.presence_penalty = presence_penalty
+        self.response_format = response_format
+        self.seed = seed
+        self.stop_shrink = stop_shrink
+        self.temperature = temperature
+        self.thinking_budget = thinking_budget
+        self.top_k = top_k
+        self.top_logprobs = top_logprobs
+        self.top_p = top_p
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desensitization_rule is not None:
+            result['DesensitizationRule'] = self.desensitization_rule
+        if self.enable_thinking is not None:
+            result['EnableThinking'] = self.enable_thinking
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+        if self.messages_shrink is not None:
+            result['Messages'] = self.messages_shrink
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.need_desensitization is not None:
+            result['NeedDesensitization'] = self.need_desensitization
+        if self.presence_penalty is not None:
+            result['PresencePenalty'] = self.presence_penalty
+        if self.response_format is not None:
+            result['ResponseFormat'] = self.response_format
+        if self.seed is not None:
+            result['Seed'] = self.seed
+        if self.stop_shrink is not None:
+            result['Stop'] = self.stop_shrink
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+        if self.thinking_budget is not None:
+            result['ThinkingBudget'] = self.thinking_budget
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        if self.top_logprobs is not None:
+            result['TopLogprobs'] = self.top_logprobs
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesensitizationRule') is not None:
+            self.desensitization_rule = m.get('DesensitizationRule')
+        if m.get('EnableThinking') is not None:
+            self.enable_thinking = m.get('EnableThinking')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+        if m.get('Messages') is not None:
+            self.messages_shrink = m.get('Messages')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('NeedDesensitization') is not None:
+            self.need_desensitization = m.get('NeedDesensitization')
+        if m.get('PresencePenalty') is not None:
+            self.presence_penalty = m.get('PresencePenalty')
+        if m.get('ResponseFormat') is not None:
+            self.response_format = m.get('ResponseFormat')
+        if m.get('Seed') is not None:
+            self.seed = m.get('Seed')
+        if m.get('Stop') is not None:
+            self.stop_shrink = m.get('Stop')
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+        if m.get('ThinkingBudget') is not None:
+            self.thinking_budget = m.get('ThinkingBudget')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        if m.get('TopLogprobs') is not None:
+            self.top_logprobs = m.get('TopLogprobs')
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+        return self
+
+
+class ChatWithDesensitizeResponseBodyDataChoicesMessage(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        reasoning_content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.reasoning_content = reasoning_content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.reasoning_content is not None:
+            result['ReasoningContent'] = self.reasoning_content
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ReasoningContent') is not None:
+            self.reasoning_content = m.get('ReasoningContent')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class ChatWithDesensitizeResponseBodyDataChoices(TeaModel):
+    def __init__(
+        self,
+        finish_reason: str = None,
+        message: ChatWithDesensitizeResponseBodyDataChoicesMessage = None,
+    ):
+        self.finish_reason = finish_reason
+        self.message = message
+
+    def validate(self):
+        if self.message:
+            self.message.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finish_reason is not None:
+            result['FinishReason'] = self.finish_reason
+        if self.message is not None:
+            result['Message'] = self.message.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FinishReason') is not None:
+            self.finish_reason = m.get('FinishReason')
+        if m.get('Message') is not None:
+            temp_model = ChatWithDesensitizeResponseBodyDataChoicesMessage()
+            self.message = temp_model.from_map(m['Message'])
+        return self
+
+
+class ChatWithDesensitizeResponseBodyDataUsage(TeaModel):
+    def __init__(
+        self,
+        completion_tokens: str = None,
+        prompt_tokens: str = None,
+        total_tokens: str = None,
+    ):
+        self.completion_tokens = completion_tokens
+        self.prompt_tokens = prompt_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completion_tokens is not None:
+            result['CompletionTokens'] = self.completion_tokens
+        if self.prompt_tokens is not None:
+            result['PromptTokens'] = self.prompt_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletionTokens') is not None:
+            self.completion_tokens = m.get('CompletionTokens')
+        if m.get('PromptTokens') is not None:
+            self.prompt_tokens = m.get('PromptTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class ChatWithDesensitizeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        choices: List[ChatWithDesensitizeResponseBodyDataChoices] = None,
+        created: str = None,
+        model: str = None,
+        usage: ChatWithDesensitizeResponseBodyDataUsage = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.model = model
+        self.usage = usage
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['Choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('Choices') is not None:
+            for k in m.get('Choices'):
+                temp_model = ChatWithDesensitizeResponseBodyDataChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Usage') is not None:
+            temp_model = ChatWithDesensitizeResponseBodyDataUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class ChatWithDesensitizeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ChatWithDesensitizeResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ChatWithDesensitizeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChatWithDesensitizeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChatWithDesensitizeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChatWithDesensitizeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloseOrderRequest(TeaModel):
     def __init__(
         self,
@@ -6185,12 +7012,30 @@ class CreateAbacAuthorizationRequest(TeaModel):
         tid: int = None,
         user_id: int = None,
     ):
+        # Principal Type. Valid values:**user**or**custom role**.
+        # 
+        # Valid values:
+        # 
+        # *   USER
+        # *   ROLE
+        # 
         # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The ID of the role.
+        # 
+        # > If IdentityType is set to ROLE, this parameter is required.
         self.role_id = role_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The ID of the user. You can call the [GetUser](https://help.aliyun.com/document_detail/465816.html) operation to query the user ID.
+        # 
+        # > If IdentityType is set to USER, this parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6238,10 +7083,18 @@ class CreateAbacAuthorizationResponseBody(TeaModel):
         result: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID. You can use the request ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the policy is attached.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -6329,11 +7182,19 @@ class CreateAbacPolicyRequest(TeaModel):
         abac_policy_name: str = None,
         tid: int = None,
     ):
+        # The content of the policy. Specifies whether the authorized user can access and use the resources and features defined in the policy.
+        # 
         # This parameter is required.
         self.abac_policy_content = abac_policy_content
+        # The description of the policy.
         self.abac_policy_desc = abac_policy_desc
+        # The name of the policy. The name must be unique for the tenant.
+        # 
         # This parameter is required.
         self.abac_policy_name = abac_policy_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -6377,10 +7238,18 @@ class CreateAbacPolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the policy.
         self.create_policy_result = create_policy_result
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -8884,17 +9753,31 @@ class CreateDataLakeDatabaseRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The description of the database.
         self.description = description
+        # The storage path of the database. OSS, S3, and S3A are supported.
+        # 
         # This parameter is required.
         self.location = location
+        # The key-value pairs of the database attributes.
         self.parameters = parameters
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8957,17 +9840,31 @@ class CreateDataLakeDatabaseShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The description of the database.
         self.description = description
+        # The storage path of the database. OSS, S3, and S3A are supported.
+        # 
         # This parameter is required.
         self.location = location
+        # The key-value pairs of the database attributes.
         self.parameters_shrink = parameters_shrink
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9026,9 +9923,16 @@ class CreateDataLakeDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -9114,15 +10018,27 @@ class CreateDataLakeFunctionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The details about the function.
+        # 
         # This parameter is required.
         self.function_input = function_input
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9177,15 +10093,27 @@ class CreateDataLakeFunctionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The details about the function.
+        # 
         # This parameter is required.
         self.function_input_shrink = function_input_shrink
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9237,10 +10165,18 @@ class CreateDataLakeFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The details about the function.
         self.function = function
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -9335,19 +10271,38 @@ class CreateDataLakePartitionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore the exception if the name of the created partition is the same as the name of an existing partition.
         self.if_not_exists = if_not_exists
+        # Specifies whether to return information about the created partition. If the value is true, the Partition parameter is returned. Valid values:
+        # 
+        # *   true: returns information about the created partition.
+        # *   false: does not return information about the created partition.
         self.need_result = need_result
+        # The information about the created partition.
+        # 
         # This parameter is required.
         self.partition_input = partition_input
+        # The name of the table
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9417,19 +10372,38 @@ class CreateDataLakePartitionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore the exception if the name of the created partition is the same as the name of an existing partition.
         self.if_not_exists = if_not_exists
+        # Specifies whether to return information about the created partition. If the value is true, the Partition parameter is returned. Valid values:
+        # 
+        # *   true: returns information about the created partition.
+        # *   false: does not return information about the created partition.
         self.need_result = need_result
+        # The information about the created partition.
+        # 
         # This parameter is required.
         self.partition_input_shrink = partition_input_shrink
+        # The name of the table
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9493,10 +10467,18 @@ class CreateDataLakePartitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The information about the partition.
         self.partition = partition
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -9588,15 +10570,27 @@ class CreateDataLakeTableRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the table.
+        # 
         # This parameter is required.
         self.table_input = table_input
+        # The ID of the tenant.
+        # 
+        # > You can move the pointer over the profile picture in the upper-right corner of the DMS console to obtain the tenant ID.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9651,15 +10645,27 @@ class CreateDataLakeTableShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the table.
+        # 
         # This parameter is required.
         self.table_input_shrink = table_input_shrink
+        # The ID of the tenant.
+        # 
+        # > You can move the pointer over the profile picture in the upper-right corner of the DMS console to obtain the tenant ID.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9711,10 +10717,18 @@ class CreateDataLakeTableResponseBody(TeaModel):
         success: bool = None,
         table: DLTable = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The information about the table.
         self.table = table
 
     def validate(self):
@@ -11861,9 +12875,13 @@ class CreateMetaCategoryRequest(TeaModel):
         parent_category_id: int = None,
         tid: int = None,
     ):
+        # The name of the category.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the parent category. The new category is created under this parent category. If this value is left empty, the new category is of the first level.
         self.parent_category_id = parent_category_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -11903,10 +12921,18 @@ class CreateMetaCategoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the category.
         self.category = category
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -12261,8 +13287,18 @@ class CreateProcCorrectOrderRequestParamDbItemList(TeaModel):
         db_id: int = None,
         logic: bool = None,
     ):
+        # The database ID. Databases are divided into physical databases and logical databases.
+        # 
+        # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true**: The database is a logical database.
+        # *   **false**: The database is a physical database.
+        # 
         # This parameter is required.
         self.logic = logic
 
@@ -12301,14 +13337,34 @@ class CreateProcCorrectOrderRequestParam(TeaModel):
         rollback_sql: str = None,
         rollback_sql_type: str = None,
     ):
+        # The reason for the programmable object change.
         self.classify = classify
+        # The information about the database.
+        # 
         # This parameter is required.
         self.db_item_list = db_item_list
+        # The mode in which the data change ticket is executed after the ticket is approved. Valid values:
+        # 
+        # *   **COMMITOR**: The ticket is executed by the user who submits the ticket.
+        # *   **AUTO**: The ticket is automatically executed after the ticket is approved.
+        # *   **LAST_AUDITOR**: The ticket is executed by the last approver of the ticket.
         self.exec_mode = exec_mode
+        # The SQL statements for data change.
+        # 
         # This parameter is required.
         self.exec_sql = exec_sql
+        # The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of AttachmentKey.
+        # 
+        # >  This parameter is required if you set **RollbackSqlType** to **ATTACHMENT**.
         self.rollback_attachment_name = rollback_attachment_name
+        # The SQL statements for rolling back the data change.
+        # 
+        # >  This parameter is required if you set the **RollbackSqlType** parameter to **TEXT**.
         self.rollback_sql = rollback_sql
+        # The format of the SQL statements used to roll back the data change. Valid values:
+        # 
+        # *   **TEXT**\
+        # *   **ATTACHMENT**\
         self.rollback_sql_type = rollback_sql_type
 
     def validate(self):
@@ -12372,12 +13428,23 @@ class CreateProcCorrectOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
+        # The key of the attachment for the ticket. The attachment provides more instructions for this operation.
+        # 
+        # You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
+        # The remarks of the ticket.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The parameters of the ticket.
+        # 
         # This parameter is required.
         self.param = param
+        # The operators that are related to the ticket.
         self.related_user_list = related_user_list
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -12427,12 +13494,23 @@ class CreateProcCorrectOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
+        # The key of the attachment for the ticket. The attachment provides more instructions for this operation.
+        # 
+        # You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
+        # The remarks of the ticket.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The parameters of the ticket.
+        # 
         # This parameter is required.
         self.param_shrink = param_shrink
+        # The operators that are related to the ticket.
         self.related_user_list_shrink = related_user_list_shrink
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -12480,10 +13558,18 @@ class CreateProcCorrectOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ticket IDs.
         self.create_order_result = create_order_result
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -14905,13 +15991,22 @@ class CreateWorkspaceRequest(TeaModel):
         vpc_id: str = None,
         workspace_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The description of the workspace.
+        # 
         # This parameter is required.
         self.description = description
+        # The region to which the workspace belongs.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The VPC ID.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The name of the workspace.
+        # 
         # This parameter is required.
         self.workspace_name = workspace_name
 
@@ -14958,8 +16053,14 @@ class CreateWorkspaceResponseBody(TeaModel):
         success: bool = None,
         workspace_id: int = None,
     ):
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15038,10 +16139,22 @@ class DeleteAbacAuthorizationRequest(TeaModel):
         identity_type: str = None,
         tid: int = None,
     ):
+        # The authorization ID.
+        # 
         # This parameter is required.
         self.authorization_id = authorization_id
+        # The type of object to which you want to attach the policy.********\
+        # 
+        # Valid values:
+        # 
+        # *   USER
+        # *   ROLE
+        # 
         # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -15081,10 +16194,18 @@ class DeleteAbacAuthorizationResponseBody(TeaModel):
         result: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the policy is detached from the user.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -15170,8 +16291,13 @@ class DeleteAbacPolicyRequest(TeaModel):
         abac_policy_id: int = None,
         tid: int = None,
     ):
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.abac_policy_id = abac_policy_id
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -15207,10 +16333,18 @@ class DeleteAbacPolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the policy is deleted.
         self.delete_policy_result = delete_policy_result
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -15296,8 +16430,11 @@ class DeleteAuthorityTemplateRequest(TeaModel):
         template_id: int = None,
         tid: int = None,
     ):
+        # The ID of the permission template.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -15333,10 +16470,18 @@ class DeleteAuthorityTemplateResponseBody(TeaModel):
         success: bool = None,
         tid: int = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -15425,13 +16570,23 @@ class DeleteDataLakeDatabaseRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data directory.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15478,9 +16633,16 @@ class DeleteDataLakeDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -15566,15 +16728,27 @@ class DeleteDataLakeFunctionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data directory.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The function name.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The ID of the tenant.
+        # 
+        # >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15625,9 +16799,16 @@ class DeleteDataLakeFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -15715,18 +16896,33 @@ class DeleteDataLakePartitionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore the exception if the partition that you want to delete does not exist.
         self.if_exists = if_exists
+        # The values in a partition key column.
+        # 
         # This parameter is required.
         self.partition_values = partition_values
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15789,18 +16985,33 @@ class DeleteDataLakePartitionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether to ignore the exception if the partition that you want to delete does not exist.
         self.if_exists = if_exists
+        # The values in a partition key column.
+        # 
         # This parameter is required.
         self.partition_values_shrink = partition_values_shrink
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15859,9 +17070,16 @@ class DeleteDataLakePartitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The partition is deleted.
+        # *   **false**: The partition failed to be deleted.
         self.success = success
 
     def validate(self):
@@ -15947,15 +17165,27 @@ class DeleteDataLakeTableRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16006,9 +17236,16 @@ class DeleteDataLakeTableResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -16852,8 +18089,13 @@ class DeleteMetaCategoryRequest(TeaModel):
         category_id: int = None,
         tid: int = None,
     ):
+        # The category ID.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -16888,9 +18130,16 @@ class DeleteMetaCategoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -17358,8 +18607,13 @@ class DeleteStandardGroupRequest(TeaModel):
         group_id: int = None,
         tid: int = None,
     ):
+        # The security rule set ID. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) operation to obtain the ID of the security rule set.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -17394,9 +18648,16 @@ class DeleteStandardGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -18024,6 +19285,8 @@ class DeleteWorkspaceRequest(TeaModel):
         self,
         workspace_id: int = None,
     ):
+        # The ID of the DMS workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -18054,9 +19317,11 @@ class DeleteWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the workspace is deleted successfully.
         self.data = data
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the operation is called successfully.
         self.success = success
 
     def validate(self):
@@ -18177,20 +19442,28 @@ class DescribeDifyAttributeResponseBodyRoot(TeaModel):
     def __init__(
         self,
         app_uuid: str = None,
+        billing_instance_id: str = None,
+        charge_type: str = None,
+        expire_time: int = None,
         replicas: str = None,
         resource_quota: str = None,
         security_group_id: str = None,
         status: str = None,
+        storage_type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         workspace_id: str = None,
         zone_id: str = None,
     ):
         self.app_uuid = app_uuid
+        self.billing_instance_id = billing_instance_id
+        self.charge_type = charge_type
+        self.expire_time = expire_time
         self.replicas = replicas
         self.resource_quota = resource_quota
         self.security_group_id = security_group_id
         self.status = status
+        self.storage_type = storage_type
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
         self.workspace_id = workspace_id
@@ -18207,6 +19480,12 @@ class DescribeDifyAttributeResponseBodyRoot(TeaModel):
         result = dict()
         if self.app_uuid is not None:
             result['AppUuid'] = self.app_uuid
+        if self.billing_instance_id is not None:
+            result['BillingInstanceId'] = self.billing_instance_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
         if self.replicas is not None:
             result['Replicas'] = self.replicas
         if self.resource_quota is not None:
@@ -18215,6 +19494,8 @@ class DescribeDifyAttributeResponseBodyRoot(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -18229,6 +19510,12 @@ class DescribeDifyAttributeResponseBodyRoot(TeaModel):
         m = m or dict()
         if m.get('AppUuid') is not None:
             self.app_uuid = m.get('AppUuid')
+        if m.get('BillingInstanceId') is not None:
+            self.billing_instance_id = m.get('BillingInstanceId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
         if m.get('ResourceQuota') is not None:
@@ -18237,6 +19524,8 @@ class DescribeDifyAttributeResponseBodyRoot(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -19587,13 +20876,21 @@ class EditMetaKnowledgeAssetRequest(TeaModel):
         table_name: str = None,
         table_schema_name: str = None,
     ):
+        # Business knowledge content edited by users.
+        # 
         # This parameter is required.
         self.asset_description = asset_description
+        # The name of the field. This parameter is used when the edited content is a field.
         self.column_name = column_name
+        # The ID of the physical database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The schema name of the table, which is required only for SQL Server instances.
         self.table_schema_name = table_schema_name
 
     def validate(self):
@@ -19640,9 +20937,16 @@ class EditMetaKnowledgeAssetResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -20653,11 +21957,18 @@ class FixSqlByMetaAgentRequest(TeaModel):
         query: str = None,
         sql: str = None,
     ):
+        # The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The error message.
         self.error = error
+        # The name of the selected model. You can use only Qwen series models.
         self.model = model
+        # The remarks.
         self.query = query
+        # The SQL statement that reports the error.
+        # 
         # This parameter is required.
         self.sql = sql
 
@@ -20703,7 +22014,9 @@ class FixSqlByMetaAgentResponseBodyData(TeaModel):
         content: str = None,
         session_id: str = None,
     ):
+        # The answer.
         self.content = content
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -20739,11 +22052,18 @@ class FixSqlByMetaAgentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -21305,8 +22625,13 @@ class GetAbacPolicyRequest(TeaModel):
         abac_policy_name: str = None,
         tid: int = None,
     ):
+        # The ID of the policy.
         self.abac_policy_id = abac_policy_id
+        # The name of the policy.
         self.abac_policy_name = abac_policy_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -21348,12 +22673,19 @@ class GetAbacPolicyResponseBodyPolicy(TeaModel):
         policy_name: str = None,
         policy_source: str = None,
     ):
+        # The number of users or custom roles to which the policy is attached.
         self.authorized_quantity = authorized_quantity
+        # The ID of the user who create the policy.
         self.creator_id = creator_id
+        # The content of the policy.
         self.policy_content = policy_content
+        # The description of the policy.
         self.policy_desc = policy_desc
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The name of the policy.
         self.policy_name = policy_name
+        # The source of the policy. Valid values:
         self.policy_source = policy_source
 
     def validate(self):
@@ -21409,10 +22741,18 @@ class GetAbacPolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The details of the policy.
         self.policy = policy
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -22599,8 +23939,13 @@ class GetClassificationTemplateRequest(TeaModel):
         instance_id: int = None,
         tid: int = None,
     ):
+        # The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -22635,9 +23980,16 @@ class GetClassificationTemplateResponseBodyClassificationResourceTemplateMap(Tea
         template_id: int = None,
         template_type: str = None,
     ):
+        # The ID of the resource. The supported resource type is INSTANCE. The resource ID corresponds to the value of InstanceId. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the value of InstanceId.
         self.resource_id = resource_id
+        # The resource type. The value is fixed as **INSTANCE**.
         self.resource_type = resource_type
+        # The ID of the classification and grading template.
         self.template_id = template_id
+        # The type of the classification and grading template. Valid values:
+        # 
+        # *   **INNER**: a built-in template.
+        # *   **USER_DEFINE**: a custom template.
         self.template_type = template_type
 
     def validate(self):
@@ -22681,10 +24033,18 @@ class GetClassificationTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the classification template that is associated to the instance.
         self.classification_resource_template_map = classification_resource_template_map
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -27474,11 +28834,17 @@ class GetDataLakeCatalogRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27522,10 +28888,18 @@ class GetDataLakeCatalogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the catalog.
         self.catalog = catalog
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -27616,13 +28990,23 @@ class GetDataLakeDatabaseRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27670,10 +29054,18 @@ class GetDataLakeDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The database information.
         self.database = database
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -27765,15 +29157,27 @@ class GetDataLakeFunctionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The function name.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27825,10 +29229,18 @@ class GetDataLakeFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The details about the function.
         self.function = function
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -27921,17 +29333,31 @@ class GetDataLakePartitionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The values in a partition key column.
+        # 
         # This parameter is required.
         self.partition_values = partition_values
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27989,17 +29415,31 @@ class GetDataLakePartitionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The values in a partition key column.
+        # 
         # This parameter is required.
         self.partition_values_shrink = partition_values_shrink
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -28055,10 +29495,18 @@ class GetDataLakePartitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The queried partition.
         self.partition = partition
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -28150,15 +29598,25 @@ class GetDataLakeTableRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database to which the table belongs.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The table name.
+        # 
         # This parameter is required.
         self.name = name
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -28210,10 +29668,18 @@ class GetDataLakeTableResponseBody(TeaModel):
         success: str = None,
         table: DLTable = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The information of the table.
         self.table = table
 
     def validate(self):
@@ -29828,8 +31294,11 @@ class GetDbExportDownloadURLRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -29863,8 +31332,14 @@ class GetDbExportDownloadURLResponseBodyDownloadURLResult(TeaModel):
         tip_message: str = None,
         url: str = None,
     ):
+        # Indicates whether export results are available for download. Valid values:
+        # 
+        # *   **true**: Export results are available for download.
+        # *   **false**: No export results are available for download.
         self.has_result = has_result
+        # The message that indicates an exception.
         self.tip_message = tip_message
+        # The download URL of the exported file.
         self.url = url
 
     def validate(self):
@@ -29904,10 +31379,18 @@ class GetDbExportDownloadURLResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The download URL of the exported file.
         self.download_urlresult = download_urlresult
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request succeeded.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -33217,8 +34700,13 @@ class GetPagedInstanceRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of data archiving ticket.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -33265,21 +34753,59 @@ class GetPagedInstanceResponseBodyDataInstance(TeaModel):
         trigger_type: int = None,
         version: str = None,
     ):
+        # The data timestamp of the task node.
         self.business_time = business_time
+        # The state of archived data verification. Valid values:
+        # 
+        # *   **0**: The verification was successful.
+        # *   **1**: Inconsistent data was detected.
+        # *   **2**: The verification was not performed.
+        # *   **3**: The verification is in progress.
+        # *   **4**: The verification was interrupted.
         self.check_status = check_status
+        # The unique ID of the task flow.
         self.dag_id = dag_id
+        # Indicates whether the source data is deleted. Valid values:
+        # 
+        # *   **true**: deletes the jobs in the application group.
+        # *   **false**\
         self.delete = delete
+        # The time when the task ended.
         self.end_time = end_time
+        # The time when the task flow was created.
         self.gmt_create = gmt_create
+        # The time when the task flow was last modified.
         self.gmt_modified = gmt_modified
+        # The ID of the historical task flow.
         self.history_dag_id = history_dag_id
+        # The task flow ID.
         self.id = id
+        # The context of the last execution of the task flow.
         self.last_running_context = last_running_context
+        # The details of the current task execution.
         self.msg = msg
+        # The state of the archiving task.
+        # 
+        # *   **0**: Pending.
+        # *   **1**: Running.
+        # *   **2**: Paused.
+        # *   **3**: Failed.
+        # *   **4**: Succeeded.
         self.status = status
+        # The task type. Valid values:
+        # 
+        # *   **1**: data archiving
+        # *   **2**: archived data restoration
+        # *   **3**: archived data verification
         self.task_type = task_type
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The mode in which the task flow is triggered. Valid values:
+        # 
+        # *   **0**: The task flow was triggered based on a schedule.
+        # *   **1**: The task flow was manually triggered.
         self.trigger_type = trigger_type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -33367,6 +34893,7 @@ class GetPagedInstanceResponseBodyData(TeaModel):
         self,
         instance: List[GetPagedInstanceResponseBodyDataInstance] = None,
     ):
+        # The information about the task.
         self.instance = instance
 
     def validate(self):
@@ -33410,15 +34937,26 @@ class GetPagedInstanceResponseBody(TeaModel):
         total: int = None,
         trace_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The page number.
         self.page_index = page_index
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The request ID. You can use the request ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**: The request failed.
         self.success = success
+        # The total number of instances.
         self.total = total
-        # Id of the request
+        # The trace ID, which is used to track the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -35758,8 +37296,13 @@ class GetStandardGroupRequest(TeaModel):
         group_id: int = None,
         tid: int = None,
     ):
+        # The security rule set ID. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) operation to obtain the ID of the security rule set.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -35796,11 +37339,21 @@ class GetStandardGroupResponseBodyStandardGroup(TeaModel):
         group_name: str = None,
         last_mender_id: int = None,
     ):
+        # The engine type.
         self.db_type = db_type
+        # The description of the security rule set.
         self.description = description
+        # The ID of the security rule set.
         self.group_id = group_id
+        # The control mode. Valid values:
+        # 
+        # *   **NONE_CONTROL**: Flexible Management
+        # *   **STABLE**: Stable Change
+        # *   **COMMON**: Security Collaboration
         self.group_mode = group_mode
+        # The name of the security rule set.
         self.group_name = group_name
+        # The ID of the user who last modified the security rules.
         self.last_mender_id = last_mender_id
 
     def validate(self):
@@ -35852,10 +37405,18 @@ class GetStandardGroupResponseBody(TeaModel):
         standard_group: GetStandardGroupResponseBodyStandardGroup = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # The information about the security rule set.
         self.standard_group = standard_group
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -38090,10 +39651,15 @@ class GetTableKnowledgeInfoRequest(TeaModel):
         table_name: str = None,
         table_schema_name: str = None,
     ):
+        # The ID of the physical database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The schema name of the table, which is required only for SQL Server instances.
         self.table_schema_name = table_schema_name
 
     def validate(self):
@@ -38133,10 +39699,18 @@ class GetTableKnowledgeInfoResponseBody(TeaModel):
         success: bool = None,
         table: TableKnowledgeInfo = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The information about the table.
         self.table = table
 
     def validate(self):
@@ -40494,6 +42068,8 @@ class GetWorkspaceRequest(TeaModel):
         self,
         workspace_id: int = None,
     ):
+        # The ID of the DMS workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -40529,13 +42105,23 @@ class GetWorkspaceResponseBodyData(TeaModel):
         workspace_id: int = None,
         workspace_name: str = None,
     ):
+        # The description of the workspace.
         self.description = description
+        # The owner ID.
         self.owner_id = owner_id
+        # The ID of the region to which the workspace belongs.
         self.region_id = region_id
+        # The ID of the service account.
         self.service_account_id = service_account_id
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -40594,9 +42180,16 @@ class GetWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The error message that is returned if the request failed.
         self.message = message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -41192,10 +42785,22 @@ class ListAbacAuthorizationsRequest(TeaModel):
         policy_source: str = None,
         tid: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries on each page.
         self.page_size = page_size
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The type of the policy. The value can be custom or system.
+        # 
+        # Valid values:
+        # 
+        # *   USER_DEFINE
+        # *   SYSTEM
         self.policy_source = policy_source
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -41245,12 +42850,19 @@ class ListAbacAuthorizationsResponseBodyAuthorizationList(TeaModel):
         policy_name: str = None,
         policy_source: str = None,
     ):
+        # The authorization ID.
         self.authorization_id = authorization_id
+        # The ID of the object to which the policy is attached.
         self.identity_id = identity_id
+        # The name of the object to which the policy is attached.
         self.identity_name = identity_name
+        # The type of the object to which the policy is attached.
         self.identity_type = identity_type
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The name of the policy.
         self.policy_name = policy_name
+        # The source of the policy.
         self.policy_source = policy_source
 
     def validate(self):
@@ -41307,11 +42919,20 @@ class ListAbacAuthorizationsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of users to which the specified policy is attached.
         self.authorization_list = authorization_list
+        # The error code that is returned when the request failed.
         self.error_code = error_code
+        # The error message that is returned when the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The number of objects to which the policy is attached.
         self.total_count = total_count
 
     def validate(self):
@@ -41411,9 +43032,15 @@ class ListAbacPoliciesRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The search keyword. Fuzzy match is supported.
         self.search_key = search_key
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -41458,11 +43085,17 @@ class ListAbacPoliciesResponseBodyPolicyList(TeaModel):
         abac_policy_source: str = None,
         creator_id: int = None,
     ):
+        # The content of the policy.
         self.abac_policy_content = abac_policy_content
+        # The description of the policy.
         self.abac_policy_desc = abac_policy_desc
+        # The ID of the policy.
         self.abac_policy_id = abac_policy_id
+        # The name of the policy.
         self.abac_policy_name = abac_policy_name
+        # The source of the policy.
         self.abac_policy_source = abac_policy_source
+        # The ID of the user who created the policy.
         self.creator_id = creator_id
 
     def validate(self):
@@ -41516,12 +43149,22 @@ class ListAbacPoliciesResponseBody(TeaModel):
         tid: int = None,
         total_count: int = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The details of the permission policies.
         self.policy_list = policy_list
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The ID of the tenant.
         self.tid = tid
+        # The total number of policies.
         self.total_count = total_count
 
     def validate(self):
@@ -41625,9 +43268,17 @@ class ListAuthorityTemplateRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   5
+        # *   10
+        # *   20
         self.page_size = page_size
+        # The keyword that is used to search for permission templates.
         self.search_key = search_key
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -41671,10 +43322,15 @@ class ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplat
         name: str = None,
         template_id: int = None,
     ):
+        # The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.create_time = create_time
+        # The ID of the user who created the permission template.
         self.creator_id = creator_id
+        # The description of the permission template.
         self.description = description
+        # The name of the permission template.
         self.name = name
+        # The ID of the permission template.
         self.template_id = template_id
 
     def validate(self):
@@ -41759,12 +43415,22 @@ class ListAuthorityTemplateResponseBody(TeaModel):
         tid: int = None,
         total_count: int = None,
     ):
+        # The permission templates.
         self.authority_template_view_list = authority_template_view_list
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The ID of the tenant.
         self.tid = tid
+        # The total number of permission templates.
         self.total_count = total_count
 
     def validate(self):
@@ -41866,13 +43532,43 @@ class ListAuthorizedDatabasesForUserRequest(TeaModel):
         tid: int = None,
         user_id: str = None,
     ):
+        # The type of databases. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **SQLServer**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
+        # *   **DRDS**\
+        # *   **OceanBase**\
+        # *   **Mongo**\
+        # *   **Redis**\
         self.db_type = db_type
+        # The type of the environment in which the database instance is deployed. Valid values:
+        # 
+        # *   **product**: production environment.
+        # *   **dev**: development environment.
+        # *   **pre**: pre-release environment.
+        # *   **test**: test environment.
+        # *   **sit**: system integration testing (SIT) environment.
+        # *   **uat**: user acceptance testing (UAT) environment.
+        # *   **pet**: stress testing environment.
+        # *   **stag**: staging environment.
         self.env_type = env_type
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true.**: The database is a logical database
+        # *   **false**: The database is a physical database.
         self.logic = logic
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The search keyword.
         self.search_key = search_key
+        # The ID of the tenant.
         self.tid = tid
+        # The ID of the user. You can call the [GetUser](https://help.aliyun.com/document_detail/465816.html) operation to query the user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -41932,9 +43628,17 @@ class ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail(TeaMod
         message: str = None,
         perm_type: str = None,
     ):
+        # The type of object on which the operation is performed.
         self.ds_type = ds_type
+        # The time when the permissions expire.
         self.expire_date = expire_date
+        # If the permission source is a permission policy, the value of this parameter includes the policy name and the operations that are allowed for the user.
         self.message = message
+        # The type of the permission. Valid values:
+        # 
+        # *   **QUERY**: the query permission
+        # *   **EXPORT**: the data export permission
+        # *   **CORRECT**: the data change permission
         self.perm_type = perm_type
 
     def validate(self):
@@ -41982,14 +43686,26 @@ class ListAuthorizedDatabasesForUserResponseBodyDatabases(TeaModel):
         search_name: str = None,
         user_id: str = None,
     ):
+        # The database ID.
         self.db_id = db_id
+        # The engine of the database.
         self.db_type = db_type
+        # The type of the environment in which the database instance is deployed.
         self.env_type = env_type
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the database is a logical database. Valid values:
+        # 
+        # *   **true.**: The database is a logical database
+        # *   **false**: The database is a physical database.
         self.logic = logic
+        # The details of permissions. The format of the permission details varies with the permission source. For example, if the permission source is a normal permission, the following parameters are returned.
         self.permission_detail = permission_detail
+        # The database name.
         self.schema_name = schema_name
+        # The name that is used to search for the database.
         self.search_name = search_name
+        # The user IDs.
         self.user_id = user_id
 
     def validate(self):
@@ -42052,7 +43768,9 @@ class ListAuthorizedDatabasesForUserResponseBody(TeaModel):
         databases: List[ListAuthorizedDatabasesForUserResponseBodyDatabases] = None,
         request_id: str = None,
     ):
+        # The names of the databases on which the user has permissions.
         self.databases = databases
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42139,12 +43857,42 @@ class ListAuthorizedInstancesForUserRequest(TeaModel):
         tid: int = None,
         user_id: str = None,
     ):
+        # The type of databases. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **SQLServer**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
+        # *   **DRDS**\
+        # *   **OceanBase**\
+        # *   **Mongo**\
+        # *   **Redis**\
         self.db_type = db_type
+        # The type of the environment in which the database instance is deployed. Valid values:
+        # 
+        # *   **product**: production environment.
+        # *   **dev**: development environment.
+        # *   **pre**: pre-release environment.
+        # *   **test**: test environment.
+        # *   **sit**: system integration testing (SIT) environment.
+        # *   **uat**: user acceptance testing (UAT) environment.
+        # *   **pet**: stress testing environment.
+        # *   **stag**: staging environment.
         self.env_type = env_type
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The search keyword.
         self.search_key = search_key
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The ID of the user. You can call the [GetUser](https://help.aliyun.com/document_detail/465816.html) operation to query the user ID.
+        # 
+        # > If IdentityType is set to USER, this parameter is required.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -42200,9 +43948,17 @@ class ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail(TeaMod
         message: str = None,
         perm_type: str = None,
     ):
+        # The type of object on which the operation is performed.
         self.ds_type = ds_type
+        # The time when the permission expires.
         self.expire_date = expire_date
+        # If the permission source is a permission policy, the value of this parameter includes the policy name and the operations that are allowed for the user.
         self.message = message
+        # The type of the permission. Valid values:
+        # 
+        # *   **QUERY**: the query permission
+        # *   **EXPORT**: the data export permission
+        # *   **CORRECT**: the data change permission
         self.perm_type = perm_type
 
     def validate(self):
@@ -42250,14 +44006,23 @@ class ListAuthorizedInstancesForUserResponseBodyInstances(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The database engine that the instance runs.
         self.db_type = db_type
+        # The type of the environment to which the database instance belongs.
         self.env_type = env_type
+        # The endpoint that is used to connect to the instance.
         self.host = host
+        # The alias of the instance.
         self.instance_alias = instance_alias
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The details of permissions. The format of the permission details varies with the permission source. For example, if the permission source is a normal permission, the following parameters are returned.
         self.permission_detail = permission_detail
+        # The port number that is used to connect to the instance.
         self.port = port
+        # The user IDs.
         self.user_id = user_id
+        # The user name.
         self.user_name = user_name
 
     def validate(self):
@@ -42320,7 +44085,9 @@ class ListAuthorizedInstancesForUserResponseBody(TeaModel):
         instances: List[ListAuthorizedInstancesForUserResponseBodyInstances] = None,
         request_id: str = None,
     ):
+        # The list of instances on which the user has permissions.
         self.instances = instances
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42406,12 +44173,27 @@ class ListAuthorizedUsersForDatabaseRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # The database ID. The database can be a physical database or a logical database.
+        # 
+        # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true.**: The database is a logical database
+        # *   **false**: The database is a physical database.
         self.logic = logic
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The keyword that is used for the search.
         self.search_key = search_key
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -42461,8 +44243,11 @@ class ListAuthorizedUsersForDatabaseResponseBodyUsers(TeaModel):
         user_id: str = None,
         user_nick_name: str = None,
     ):
+        # The UID of the user\\"s Alibaba Cloud account.
         self.uid = uid
+        # The user IDs.
         self.user_id = user_id
+        # The nickname of the user.
         self.user_nick_name = user_nick_name
 
     def validate(self):
@@ -42499,7 +44284,9 @@ class ListAuthorizedUsersForDatabaseResponseBody(TeaModel):
         request_id: str = None,
         users: List[ListAuthorizedUsersForDatabaseResponseBodyUsers] = None,
     ):
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # The list of users that have permissions on the specified instance.
         self.users = users
 
     def validate(self):
@@ -42584,11 +44371,19 @@ class ListAuthorizedUsersForInstanceRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The keyword that is used for the search.
         self.search_key = search_key
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -42635,9 +44430,13 @@ class ListAuthorizedUsersForInstanceResponseBodyUsers(TeaModel):
         user_nick_name: str = None,
         user_real_name: str = None,
     ):
+        # The UID of the user\\"s Alibaba Cloud account.
         self.uid = uid
+        # The ID of the user.
         self.user_id = user_id
+        # The nickname of the user.
         self.user_nick_name = user_nick_name
+        # The real name of the user.
         self.user_real_name = user_real_name
 
     def validate(self):
@@ -42678,7 +44477,9 @@ class ListAuthorizedUsersForInstanceResponseBody(TeaModel):
         request_id: str = None,
         users: List[ListAuthorizedUsersForInstanceResponseBodyUsers] = None,
     ):
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # The list of users that have permissions on the specified instance.
         self.users = users
 
     def validate(self):
@@ -45368,10 +47169,15 @@ class ListDataLakeCatalogRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The keyword that is used to search for catalogs.
         self.search_key = search_key
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the ID of the tenant.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -45415,10 +47221,18 @@ class ListDataLakeCatalogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of catalogs.
         self.cata_log_list = cata_log_list
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -45517,14 +47331,28 @@ class ListDataLakeDatabaseRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog. You can view the name of the data catalog in the [DLF console](https://dlf.console.aliyun.com/cn-hangzhou/metadata/catalog?spm=a2c4g.11186623.0.0.5a225658pT4Dkr).
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The number of entries per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The keyword that is used to search for databases.
         self.search_key = search_key
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -45582,12 +47410,22 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of databases.
         self.database_list = database_list
+        # The error code returned if the call failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The maximum number of entries to be returned in a request. You can use this parameter and NextToken to implement paging.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. Set this parameter to the value of NextToken obtained from the previous query.
         self.next_token = next_token
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -45695,15 +47533,30 @@ class ListDataLakeFunctionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database.
         self.db_name = db_name
+        # The regular expression that is used to filter the returned function names.
         self.function_name_pattern = function_name_pattern
+        # The number of records per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -45765,12 +47618,22 @@ class ListDataLakeFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The information about functions.
         self.function_list = function_list
+        # The number of records per page.
         self.max_results = max_results
+        # The token that determines the start point of the next query.
         self.next_token = next_token
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -45878,16 +47741,32 @@ class ListDataLakeFunctionNameRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The regular expression that is used to filter the returned function names.
         self.function_name_pattern = function_name_pattern
+        # The number of records per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -45949,12 +47828,22 @@ class ListDataLakeFunctionNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The information about the list of function names.
         self.function_name_list = function_name_list
+        # The number of entries per page.
         self.max_results = max_results
+        # The token that determines the start point of the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -46055,18 +47944,36 @@ class ListDataLakePartitionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of records per page. Valid values: 0 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The partition names.
         self.part_names = part_names
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -46134,18 +48041,36 @@ class ListDataLakePartitionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of records per page. Valid values: 0 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The partition names.
         self.part_names_shrink = part_names_shrink
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -46211,12 +48136,22 @@ class ListDataLakePartitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The number of records per page.
         self.max_results = max_results
+        # The information about the token.
         self.next_token = next_token
+        # The queried partitions.
         self.partition_list = partition_list
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -46325,19 +48260,43 @@ class ListDataLakePartitionByFilterRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The expression of the query condition. The following operators are supported:
+        # 
+        # *   Comparison operators: =, <>, ! =, <, <=,>, and >=. Example: ds>20240101.
+        # *   Logical operators: AND, OR, and NOT. Example: ds LIKE \\"20240%\\".
+        # *   BETWEEN operator: Specifies a range. Example: ds BETWEEN 20240101 AND 20241201.
+        # *   IN operator: Specifies a set of values. Example: ds IN (20240101, 20240102).
+        # 
         # This parameter is required.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid value:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -46403,12 +48362,22 @@ class ListDataLakePartitionByFilterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The number of entries per page.
         self.max_results = max_results
+        # The information about the token.
         self.next_token = next_token
+        # The queried partitions.
         self.partition_list = partition_list
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -46516,17 +48485,34 @@ class ListDataLakePartitionNameRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of records per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -46588,12 +48574,22 @@ class ListDataLakePartitionNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The number of records per page.
         self.max_results = max_results
+        # The information about the token.
         self.next_token = next_token
+        # The partition names.
         self.partition_name_list = partition_name_list
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -46694,17 +48690,40 @@ class ListDataLakeTableRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of records per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The regular expression that is used to match the names of metadata tables.
         self.table_name_pattern = table_name_pattern
+        # The type of the data table. Valid values:
+        # 
+        # *   MANAGED_TABLE
+        # *   EXTERNAL_TABLE
+        # *   VIRTUAL_VIEW
+        # *   INDEX_TABLE
+        # *   MATERIALIZED_VIEW
         self.table_type = table_type
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -46770,12 +48789,22 @@ class ListDataLakeTableResponseBody(TeaModel):
         success: bool = None,
         table_list: List[DLTable] = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The number of records per page.
         self.max_results = max_results
+        # The information about the token.
         self.next_token = next_token
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The details of the tables.
         self.table_list = table_list
 
     def validate(self):
@@ -46884,17 +48913,40 @@ class ListDataLakeTableNameRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The number of records per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, there is no next page.
+        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
         self.next_token = next_token
+        # The regular expression that is used to match the table name.
         self.table_name_pattern = table_name_pattern
+        # The type of the data table. Valid values:
+        # 
+        # *   MANAGED_TABLE
+        # *   EXTERNAL_TABLE
+        # *   VIRTUAL_VIEW
+        # *   INDEX_TABLE
+        # *   MATERIALIZED_VIEW
         self.table_type = table_type
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -46960,12 +49012,22 @@ class ListDataLakeTableNameResponseBody(TeaModel):
         success: bool = None,
         table_name_list: List[str] = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The number of records per page.
         self.max_results = max_results
+        # The information about the token.
         self.next_token = next_token
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The table names.
         self.table_name_list = table_name_list
 
     def validate(self):
@@ -47065,16 +49127,27 @@ class ListDataLakeTablebaseInfoRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog to query.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database to which the table belongs.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.rows = rows
+        # The keyword that is used to search for tables.
         self.search_key = search_key
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -47135,11 +49208,20 @@ class ListDataLakeTablebaseInfoResponseBody(TeaModel):
         tablebase_info_list: List[DLTablebaseInfo] = None,
         total_count: str = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The list of tables in the data lake.
         self.tablebase_info_list = tablebase_info_list
+        # The number of tables that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -52246,11 +54328,17 @@ class ListMetaCategoryRequest(TeaModel):
         parent_category_id: int = None,
         tid: int = None,
     ):
+        # The number of the page to return. Pages start from page 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The parent category ID.
         self.parent_category_id = parent_category_id
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -52330,11 +54418,20 @@ class ListMetaCategoryResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of categories.
         self.category_list = category_list
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -54851,13 +56948,29 @@ class ListSensitiveColumnInfoRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
+        # The name of the sensitive field. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to query the name of the sensitive field.
+        # 
+        # > You can also call the [ListColumns](https://help.aliyun.com/document_detail/141870.html) operation to query the name of the sensitive field.
         self.column_name = column_name
+        # The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The database name. You can also call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to query the name of the database.
+        # 
+        # > You can also call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the value of the SchemaName parameter of a physical database, or the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the value of the SchemaName parameter of a logical database.
         self.schema_name = schema_name
+        # The name of the table. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to query the table name.
+        # 
+        # > You can also call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -54910,7 +57023,9 @@ class ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefau
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # The masking algorithm ID.
         self.rule_id = rule_id
+        # The masking algorithm name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -54943,7 +57058,9 @@ class ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiD
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # The ID of the partial masking algorithm.
         self.rule_id = rule_id
+        # The partial masking algorithm name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -55020,16 +57137,31 @@ class ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn(TeaM
         table_name: str = None,
         user_sensitivity_level: str = None,
     ):
+        # The name of the category.
         self.category_name = category_name
+        # The name of the sensitive field.
         self.column_name = column_name
+        # The information about the default masking algorithm.
         self.default_desensitization_rule = default_desensitization_rule
+        # The ID of the instance.
         self.instance_id = instance_id
+        # Indicates whether the sensitive field is displayed in plaintext.
         self.is_plain = is_plain
+        # The sample data.
         self.sample_data = sample_data
+        # The name of the database.
         self.schema_name = schema_name
+        # The sensitivity level of the field. Valid values:
+        # 
+        # *   Low
+        # *   Medium
+        # *   High
         self.security_level = security_level
+        # The list of partial masking algorithms.
         self.semi_desensitization_rule_list = semi_desensitization_rule_list
+        # The name of the table.
         self.table_name = table_name
+        # The user-defined sensitivity level.
         self.user_sensitivity_level = user_sensitivity_level
 
     def validate(self):
@@ -55142,11 +57274,20 @@ class ListSensitiveColumnInfoResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # The details of the sensitive field.
         self.sensitive_column_list = sensitive_column_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The total number of entries that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -56641,11 +58782,19 @@ class ListTableColumnsRequest(TeaModel):
         table_schema_name: str = None,
         tid: int = None,
     ):
+        # The ID of a physical database: You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the physical database ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The table name.
+        # 
+        # >  You can also call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The schema name of the table, which is required only for SQL Server instances.
         self.table_schema_name = table_schema_name
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -56697,18 +58846,49 @@ class ListTableColumnsResponseBodyColumnListColumn(TeaModel):
         security_level: str = None,
         sensitive: bool = None,
     ):
+        # Indicates whether the field is an auto-increment field. Valid values:
+        # 
+        # *   true: The field is an auto-increment field.
+        # *   false: The field is not an auto-increment field.
         self.auto_increment = auto_increment
+        # The ID of the field.
         self.column_id = column_id
+        # The field name.
         self.column_name = column_name
+        # The data type of the field.
         self.column_type = column_type
+        # The length of the field.
         self.data_length = data_length
+        # The number of valid digits for the column.
         self.data_precision = data_precision
+        # The number of decimal places of the field data.
         self.data_scale = data_scale
+        # The default value of the column.
         self.default_value = default_value
+        # The description of the field.
         self.description = description
+        # The type of the masking algorithm that is used for the field. Valid values:
+        # 
+        # *   null: No masking algorithm is used.
+        # *   DEFAULT: A full masking algorithm is used.
+        # *   FIX_POS: The fixed position is masked.
+        # *   FIX_CHAR: The fixed characters are replaced.
         self.function_type = function_type
+        # Indicates whether the field can be empty. Valid values:
+        # 
+        # *   true: The field can be empty.
+        # *   false: The field cannot be empty.
         self.nullable = nullable
+        # The security level of the field. Valid values:
+        # 
+        # *   INNER: The field is an internal field but not sensitive.
+        # *   SENSITIVE: The field is sensitive.
+        # *   CONFIDENTIAL: The field is a confidential column.
         self.security_level = security_level
+        # Indicates whether the field is a sensitive column. Valid values:
+        # 
+        # *   true: The field is a sensitive field.
+        # *   false: The field is not a sensitive field.
         self.sensitive = sensitive
 
     def validate(self):
@@ -56823,10 +59003,18 @@ class ListTableColumnsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about fields in the table.
         self.column_list = column_list
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -57305,12 +59493,19 @@ class ListTablesInCategoryRequest(TeaModel):
         page_size: int = None,
         tid: int = None,
     ):
+        # The category ID.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -57390,11 +59585,20 @@ class ListTablesInCategoryResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # List of table information associated with the asset category.
         self.entity_list = entity_list
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -59686,6 +61890,368 @@ class ListTasksInTaskFlowResponse(TeaModel):
         return self
 
 
+class ListUserOwnedResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        db_type: str = None,
+        env_type: str = None,
+        logic: bool = None,
+        owner_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        tid: int = None,
+        user_id: str = None,
+    ):
+        # The database name.
+        self.database_name = database_name
+        # The type of the database instance. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+        self.db_type = db_type
+        # The type of the environment in which the database instance is deployed. Valid values:
+        # 
+        # *   **product**: production environment.
+        # *   **dev**: development environment.
+        # *   **pre**: pre-release environment.
+        # *   **test**: test environment.
+        # *   **sit**: system integration testing (SIT) environment.
+        # *   **uat**: user acceptance testing (UAT) environment.
+        # *   **pet**: stress testing environment.
+        # *   **stag**: staging environment.
+        self.env_type = env_type
+        # Specifies whether the database is a logical database. Valid values:
+        # 
+        # *   **true.**: The database is a logical database
+        # *   **false**: The database is a physical database.
+        self.logic = logic
+        # The type of the owner. Valid values:
+        # 
+        # *   INSTANCE: an owner of an instance.
+        # *   DATABASE: an owner of a physical database.
+        # *   TABLE: an owner of a physical table.
+        # 
+        # This parameter is required.
+        self.owner_type = owner_type
+        # The page number.
+        self.page_number = page_number
+        # The number of entries to return on each page.
+        self.page_size = page_size
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+        self.tid = tid
+        # The ID of the user.
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.owner_type is not None:
+            result['OwnerType'] = self.owner_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('OwnerType') is not None:
+            self.owner_type = m.get('OwnerType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListUserOwnedResourcesResponseBodyDataResourceList(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        db_id: str = None,
+        db_instance_id: str = None,
+        db_type: str = None,
+        env_type: str = None,
+        host: str = None,
+        instance_id: str = None,
+        logic: bool = None,
+        port: int = None,
+        schema_name: str = None,
+        search_name: str = None,
+        table_id: str = None,
+        table_name: str = None,
+    ):
+        # The alias of the instance.
+        self.alias = alias
+        # The ID of the database in DMS.
+        self.db_id = db_id
+        # The ID of the instance to which the database belongs.
+        self.db_instance_id = db_instance_id
+        # The database engine type. For more information about the valid values of the DbType parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+        self.db_type = db_type
+        # The type of the environment to which the database instance belongs.
+        self.env_type = env_type
+        # The endpoint of the instance to which the database belongs.
+        self.host = host
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # Indicates whether the database is a logical database. Valid values:
+        # 
+        # *   **true**: The database is a logical database
+        # *   **false**: The database is a physical database.
+        self.logic = logic
+        # The connection port of the instance to which the database belongs.
+        self.port = port
+        # The name of the database.
+        self.schema_name = schema_name
+        # The query name of the database.
+        self.search_name = search_name
+        # The table ID.
+        self.table_id = table_id
+        # The table name.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.db_instance_id is not None:
+            result['DbInstanceId'] = self.db_instance_id
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.search_name is not None:
+            result['SearchName'] = self.search_name
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('DbInstanceId') is not None:
+            self.db_instance_id = m.get('DbInstanceId')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SearchName') is not None:
+            self.search_name = m.get('SearchName')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class ListUserOwnedResourcesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        resource_list: List[ListUserOwnedResourcesResponseBodyDataResourceList] = None,
+    ):
+        self.resource_list = resource_list
+
+    def validate(self):
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['resourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['resourceList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource_list = []
+        if m.get('resourceList') is not None:
+            for k in m.get('resourceList'):
+                temp_model = ListUserOwnedResourcesResponseBodyDataResourceList()
+                self.resource_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListUserOwnedResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListUserOwnedResourcesResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        # Indicates whether the request was successful. Valid values:
+        self.data = data
+        # The error code returned if the request failed.
+        self.error_code = error_code
+        # The error message that is returned if the request failed.
+        self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+        # The total number of entries returned. By default, this parameter is not returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListUserOwnedResourcesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUserOwnedResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserOwnedResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserOwnedResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserPermissionsRequest(TeaModel):
     def __init__(
         self,
@@ -61547,14 +64113,24 @@ class ListWorkspacesRequest(TeaModel):
         vpc_id: str = None,
         workspace_id: int = None,
     ):
+        # Specifies whether the current user has joined the workspace.
         self.already_joined = already_joined
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region in which the bucket is located.
         self.region = region
+        # The search keyword. Fuzzy match is supported.
         self.search_key = search_key
+        # The service account ID.
         self.service_account_id = service_account_id
+        # The virtual private cloud (VPC) ID.
+        # 
+        # > This parameter cannot be used as a filter.
         self.vpc_id = vpc_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -61632,24 +64208,43 @@ class ListWorkspacesResponseBodyDataBaseWorkspaces(TeaModel):
         workspace_id: int = None,
         workspace_name: str = None,
     ):
+        # Whether the current user has joined the workspace.
         self.already_joined = already_joined
+        # The ID of the creator.
         self.creator_id = creator_id
+        # The nickname of the creator.
         self.creator_nick_name = creator_nick_name
+        # The Alibaba Cloud account UID of the creator.
         self.creator_uid = creator_uid
+        # The description of the workspace.
         self.description = description
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The name of the workspace.
         self.name = name
+        # The owner ID.
         self.owner_id = owner_id
+        # The nickname of the owner.
         self.owner_nick_name = owner_nick_name
+        # The Alibaba Cloud UID of the owner.
         self.owner_uid = owner_uid
+        # The region ID.
         self.region = region
+        # The ID of the service account.
         self.service_account_id = service_account_id
+        # The nickname of the service account.
         self.service_account_nick_name = service_account_nick_name
+        # The Alibaba Cloud account UID of the service account.
         self.service_account_uid = service_account_uid
+        # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -61791,13 +64386,24 @@ class ListWorkspacesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The dataset.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The total number of workspaces that meet the condition, which is the same as the TotalCount parameter.
         self.max_results = max_results
+        # NextToken does not take effect.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
+        # The total number of workspaces that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -62427,36 +65033,138 @@ class ModifyInstanceRequest(TeaModel):
         use_ssl: int = None,
         vpc_id: str = None,
     ):
+        # The name of the database link for cross-database queries.
+        # 
+        # > 
+        # 
+        # *   This property must be specified when UseDsql is set to 1.
+        # 
+        # *   The name can contain only lowercase letters and underscores (_).
+        # 
+        # *   The name must be unique within a tenant.
         self.data_link_name = data_link_name
+        # The password of the account that is used to log on to the database instance.
         self.database_password = database_password
+        # The account that is used to log on to the database instance.
         self.database_user = database_user
+        # The ID of the user who assumes the database administrator (DBA) role. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to obtain the value of this parameter.
         self.dba_id = dba_id
+        # Specifies whether to enable lock-free schema change. Valid values:
+        # 
+        # *   **0**: Disable Lock-free Schema Change.
+        # *   **1**: MySQL native online DDL first.
+        # *   **2**: DMS native online DDL first.
+        # 
+        # > Supported databases include ApsaraDB RDS for MySQL, PolarDB for MySQL, ApsaraDB MyBase for MySQL, and third-party MySQL databases.
         self.ddl_online = ddl_online
+        # The ID of the ECS instance.
+        # 
+        # >  This parameter is required if InstanceSource is set to ECS_OWN.
         self.ecs_instance_id = ecs_instance_id
+        # The region in which the ECS instance resides.
+        # 
+        # >  This parameter is required if InstanceSource is set to RDS, ECS_OWN, or VPC_IDC.
         self.ecs_region = ecs_region
+        # Specifies whether to enable Security Collaboration for the database instance. Valid values:
+        # 
+        # *   Y: Enable.
+        # *   N: Disable.
         self.enable_sell_common = enable_sell_common
+        # Specifies whether to enable sensitive data protection. Valid values:
+        # 
+        # *   Y: Enable.
+        # *   N: Disable.
         self.enable_sell_sitd = enable_sell_sitd
+        # Specifies whether to enable Stable Change for the database instance. Valid values:
+        # 
+        # *   Y: Enable.
+        # *   N: Disable.
         self.enable_sell_stable = enable_sell_stable
+        # Specifies whether to enable the security hosting feature for the database instance. Valid values:
+        # 
+        # *   Y: Enable.
+        # *   N: Disable.
         self.enable_sell_trust = enable_sell_trust
+        # The type of the environment in which the database instance is deployed. Valid values:
+        # 
+        # *   **product**: production environment.
+        # *   **dev**: development environment.
+        # *   **pre**: pre-release environment.
+        # *   **test**: test environment.
+        # *   **sit**: system integration testing (SIT) environment.
+        # *   **uat**: user acceptance testing (UAT) environment.
+        # *   **pet**: stress testing environment.
+        # *   **stag**: staging environment.
         self.env_type = env_type
+        # The timeout period for exporting data from the database instance. Unit: seconds.
         self.export_timeout = export_timeout
+        # The endpoint that is used to connect to the database instance.
         self.host = host
+        # The alias of the database instance. Specify an alias that can help you quickly identify the database instance in Data Management (DMS).
         self.instance_alias = instance_alias
+        # The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The source of the database instance. Valid values:
+        # 
+        # *   **PUBLIC_OWN**: a self-managed database instance that is deployed on the Internet.
+        # *   **RDS**: an ApsaraDB RDS instance.
+        # *   **ECS_OWN**: a self-managed database instance that is deployed on an Elastic Compute Service (ECS) instance.
+        # *   **VPC_IDC**: a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC).
         self.instance_source = instance_source
+        # The type of the database instance. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.instance_type = instance_type
+        # The network type of the database instance. Valid values:
+        # 
+        # *   **CLASSIC**: the classic network.
+        # *   **VPC**: VPC.
         self.network_type = network_type
+        # The port that is used to connect to the database instance.
         self.port = port
+        # The timeout period for querying data from the database instance. Unit: seconds.
         self.query_timeout = query_timeout
+        # The name of the security rule set for the database instance. This parameter is required if Security Collaboration is enabled. You can call the[ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) or [GetInstance](https://help.aliyun.com/document_detail/465826.html) operation to obtain the name of the security rule set from GroupName.
         self.safe_rule = safe_rule
+        # The system ID (SID) of the database instance.
+        # 
+        # > This parameter is required if InstanceType is set to ORACLE.
         self.sid = sid
+        # Specifies whether to skip the connectivity test. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.skip_test = skip_test
+        # The ID of the classification and grading template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/465947.html) operation to query the template ID.
         self.template_id = template_id
+        # The type of the classification and grading template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/465947.html) operation to query the template type.
         self.template_type = template_type
+        # The ID of the tenant.
+        # 
+        # > You can move the pointer over the profile picture in the upper-right corner of the DMS console to obtain the tenant ID.
         self.tid = tid
+        # Specifies whether to enable cross-instance query for the database instance. Valid values:
+        # 
+        # *   **0**: Disables cross-database query.
+        # *   **1**: Enables cross-database query.
+        # 
+        # > Supported databases include MySQL, SQL Server, PostgreSQL, PolarDB for Oracle, and Redis.
         self.use_dsql = use_dsql
+        # Specifies whether to allow Data Management Service (DMS) to connect to the database instance by using SSL connections. Before you use SSL connections, make sure that the SSL encryption feature is enabled for the database instance. Valid values:
+        # 
+        # *   **0** (default): DMS automatically checks whether self-negotiation is enabled for the database instance. DMS automatically checks whether the SSL encryption feature is enabled for the database instance. If the SSL encryption feature is enabled, DMS connects to the database instance by using SSL connections. Otherwise, DMS connects to the database instance without encryption.
+        # *   **1**: DMS connects to the database instance by using SSL connections. This value is invalid if the SSL encryption feature is disabled for the database instance.
+        # *   **-1**: DMS does not connect to the database instance by using SSL connections.
+        # 
+        # > 
+        # 
+        # *   This parameter is available only for a MySQL or Redis database instance.
+        # 
+        # *   SSL encrypts network connections at the transport layer to improve the security and integrity of data in transmission. However, SSL increases the response time of network connections.
         self.use_ssl = use_ssl
+        # The VPC ID.
+        # 
+        # >  This parameter is required if InstanceSource is set to VPC_IDC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -62603,9 +65311,16 @@ class ModifyInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -62958,10 +65673,16 @@ class OptimizeSqlByMetaAgentRequest(TeaModel):
         query: str = None,
         sql: str = None,
     ):
+        # The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The name of the selected model. You can use only Qwen series models.
         self.model = model
+        # The remarks.
         self.query = query
+        # The SQL statement that you want to analyze.
+        # 
         # This parameter is required.
         self.sql = sql
 
@@ -63003,7 +65724,9 @@ class OptimizeSqlByMetaAgentResponseBodyData(TeaModel):
         content: str = None,
         session_id: str = None,
     ):
+        # The answer.
         self.content = content
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -63039,11 +65762,18 @@ class OptimizeSqlByMetaAgentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -63283,10 +66013,17 @@ class PauseDataExportJobRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the SQL result set export task. You can call the [GetDataExportOrderDetail](https://help.aliyun.com/document_detail/465911.html) operation to obtain the value of this parameter. If you set this parameter to Null, no SQL result set export task is suspended.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -63325,9 +66062,16 @@ class PauseDataExportJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -63409,8 +66153,13 @@ class PreviewWorkflowRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -63444,8 +66193,11 @@ class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAudit
         real_name: str = None,
         user_id: int = None,
     ):
+        # The nickname of the approver.
         self.nick_name = nick_name
+        # The name of the approver.
         self.real_name = real_name
+        # The ID of the approver.
         self.user_id = user_id
 
     def validate(self):
@@ -63519,9 +66271,19 @@ class PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode(TeaM
         node_name: str = None,
         node_type: str = None,
     ):
+        # The approvers.
         self.audit_user_list = audit_user_list
+        # The remarks of the approval node.
         self.comment = comment
+        # The name of the approval node.
         self.node_name = node_name
+        # The type of the approval node.
+        # 
+        # Valid values:
+        # 
+        # *   USER_LIST: The approval node is created by a user.
+        # *   UNKNOWN: The source of the approval node is unknown.
+        # *   SYS: The approval node is predefined by the system.
         self.node_type = node_type
 
     def validate(self):
@@ -63600,8 +66362,11 @@ class PreviewWorkflowResponseBodyWorkflowDetail(TeaModel):
         wf_cate_name: str = None,
         workflow_node_list: PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList = None,
     ):
+        # The remarks of the approval template.
         self.comment = comment
+        # The name of the approval template.
         self.wf_cate_name = wf_cate_name
+        # The approval nodes.
         self.workflow_node_list = workflow_node_list
 
     def validate(self):
@@ -63643,10 +66408,18 @@ class PreviewWorkflowResponseBody(TeaModel):
         success: bool = None,
         workflow_detail: PreviewWorkflowResponseBodyWorkflowDetail = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The details of the workflow.
         self.workflow_detail = workflow_detail
 
     def validate(self):
@@ -65241,10 +68014,17 @@ class RemoveDataExportJobRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the SQL result set export task. You can call the [GetDataExportOrderDetail](https://help.aliyun.com/document_detail/465911.html) operation to obtain the value of this parameter. If you set this parameter to Null, no SQL result set export task is suspended.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -65283,9 +68063,16 @@ class RemoveDataExportJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -65370,13 +68157,27 @@ class RemoveTableFromCategoryRequest(TeaModel):
         table_schema_name: str = None,
         tid: int = None,
     ):
+        # The category ID.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The database ID. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the ID of a physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the ID of a logical database.
+        # 
+        # >  The value of DatabaseId is that of DbId.
+        # 
         # This parameter is required.
         self.db_id = db_id
+        # The table name.
+        # 
+        # > You can also call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The schema name of the table, which is required only for SQL Server instances.
         self.table_schema_name = table_schema_name
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -65423,9 +68224,16 @@ class RemoveTableFromCategoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -65665,10 +68473,17 @@ class RestartDataExportJobRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the SQL result set export task. You can call the [GetDataExportOrderDetail](https://help.aliyun.com/document_detail/465911.html) operation to obtain the value of this parameter. If you set this parameter to Null, no SQL result set export task is suspended.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -65707,9 +68522,16 @@ class RestartDataExportJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -68045,14 +70867,41 @@ class SetWorkflowExtraInfoRequest(TeaModel):
         tid: int = None,
         workflow_instance_id: int = None,
     ):
+        # Specifies whether the Sign button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+        # 
+        # *   **true** (default): The Sign button is displayed.
+        # *   **false**: The Sign button is not displayed.
         self.render_add_approval_node = render_add_approval_node
+        # Specifies whether the Agree button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+        # 
+        # *   **true** (default): The Agree button is displayed.
+        # *   **false**: The Agree button is not displayed.
         self.render_agree = render_agree
+        # Specifies whether the Revoke button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+        # 
+        # *   **true** (default): The Revoke button is displayed.
+        # *   **false**: The Revoke button is not displayed.
         self.render_cancel = render_cancel
+        # Specifies whether the Reject button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+        # 
+        # *   **true** (default): The Reject button is displayed.
+        # *   **false**: The Reject button is not displayed.
         self.render_reject = render_reject
+        # Specifies whether the Forward button is displayed in the ticket approval section of the DMS console for a third-party approval workflow. Valid values:
+        # 
+        # *   **true** (default): The Forward button is displayed.
+        # *   **false**: The Forward button is not displayed.
         self.render_transfer = render_transfer
+        # The remarks of approval workflow for third parties.
         self.thirdparty_workflow_comment = thirdparty_workflow_comment
+        # The link of approval workflow for third parties.
         self.thirdparty_workflow_url = thirdparty_workflow_url
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The ID of the approval workflow. You can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/144642.html) operation to query the ID of the approval workflow.
+        # 
         # This parameter is required.
         self.workflow_instance_id = workflow_instance_id
 
@@ -68117,10 +70966,18 @@ class SetWorkflowExtraInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the call was successful.
         self.data = data
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -68963,10 +71820,17 @@ class SuspendDataExportJobRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the SQL result set export task. You can call the [GetDataExportOrderDetail](https://help.aliyun.com/document_detail/465911.html) operation to obtain the value of this parameter. If you set this parameter to Null, no SQL result set export task is suspended.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -69005,9 +71869,16 @@ class SuspendDataExportJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -69507,6 +72378,7 @@ class TryRunTaskFlowRequest(TeaModel):
         self,
         dag_id: int = None,
     ):
+        # The task flow ID. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the ID of the task flow.
         self.dag_id = dag_id
 
     def validate(self):
@@ -69538,10 +72410,21 @@ class TryRunTaskFlowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the request failed. Value values:
+        # 
+        # *   If the request was successful, the **ErrorCode** parameter is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The instance ID of the order.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -69630,11 +72513,19 @@ class UpdateAbacPolicyRequest(TeaModel):
         abac_policy_name: str = None,
         tid: int = None,
     ):
+        # The content of the policy.
         self.abac_policy_content = abac_policy_content
+        # The description of the policy.
         self.abac_policy_desc = abac_policy_desc
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.abac_policy_id = abac_policy_id
+        # The name of the permission policy.
         self.abac_policy_name = abac_policy_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -69682,10 +72573,18 @@ class UpdateAbacPolicyResponseBody(TeaModel):
         success: bool = None,
         update_policy_result: int = None,
     ):
+        # The error code that is returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # Indicates whether the policy is updated.
         self.update_policy_result = update_policy_result
 
     def validate(self):
@@ -69994,17 +72893,31 @@ class UpdateDataLakeDatabaseRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The description of the database.
         self.description = description
+        # The storage path of the database. Supports the OSS, S3, and S3A protocols.
+        # 
         # This parameter is required.
         self.location = location
+        # The key-value pairs of the database attributes.
         self.parameters = parameters
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70067,17 +72980,31 @@ class UpdateDataLakeDatabaseShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The description of the database.
         self.description = description
+        # The storage path of the database. Supports the OSS, S3, and S3A protocols.
+        # 
         # This parameter is required.
         self.location = location
+        # The key-value pairs of the database attributes.
         self.parameters_shrink = parameters_shrink
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70137,10 +73064,18 @@ class UpdateDataLakeDatabaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The database details.
         self.database = database
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -70233,17 +73168,31 @@ class UpdateDataLakeFunctionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The details about the function.
+        # 
         # This parameter is required.
         self.function_input = function_input
+        # The function name.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70303,17 +73252,31 @@ class UpdateDataLakeFunctionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The catalog name.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The details about the function.
+        # 
         # This parameter is required.
         self.function_input_shrink = function_input_shrink
+        # The function name.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The ID of the tenant.
+        # 
+        # > To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70369,10 +73332,18 @@ class UpdateDataLakeFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The details about the function.
         self.function = function
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request succeeded.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -70465,17 +73436,31 @@ class UpdateDataLakePartitionRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the created partition.
+        # 
         # This parameter is required.
         self.partition_input = partition_input
+        # The name of the table
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70535,17 +73520,31 @@ class UpdateDataLakePartitionShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The name of the database that you want to query.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the created partition.
+        # 
         # This parameter is required.
         self.partition_input_shrink = partition_input_shrink
+        # The name of the table
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70600,9 +73599,16 @@ class UpdateDataLakePartitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -70689,16 +73695,29 @@ class UpdateDataLakeTableRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the table.
+        # 
         # This parameter is required.
         self.table_input = table_input
+        # The name of the updated table. If you do not need to update the table name, set the TableName and TableInput parameters to the same value.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70758,16 +73777,29 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The region where the data lake resides.
+        # 
         # This parameter is required.
         self.data_region = data_region
+        # The database name.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The information about the table.
+        # 
         # This parameter is required.
         self.table_input_shrink = table_input_shrink
+        # The name of the updated table. If you do not need to update the table name, set the TableName and TableInput parameters to the same value.
         self.table_name = table_name
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, go to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -70823,10 +73855,18 @@ class UpdateDataLakeTableResponseBody(TeaModel):
         success: bool = None,
         table: DLTable = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The information about the table.
         self.table = table
 
     def validate(self):
@@ -71274,9 +74314,13 @@ class UpdateMetaCategoryRequest(TeaModel):
         name: str = None,
         tid: int = None,
     ):
+        # The category ID.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The updated name of the category.
         self.name = name
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -71316,10 +74360,18 @@ class UpdateMetaCategoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the category.
         self.category = category
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -72310,7 +75362,11 @@ class UpdateTaskContentV2Request(TeaModel):
         node_content: str = None,
         node_id: str = None,
     ):
+        # The node configurations after modification.
+        # 
+        # >  We recommend that you change the SQL type from SELECT to INSERT/CREATE.
         self.node_content = node_content
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -72345,10 +75401,16 @@ class UpdateTaskContentV2ResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
-        # Id of the request
+        # Id of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -74708,10 +77770,15 @@ class UpdateWorkspaceRequest(TeaModel):
         workspace_id: int = None,
         workspace_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The new description of the workspace.
         self.description = description
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The new name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -74753,8 +77820,14 @@ class UpdateWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Indicates whether the call is successful.
         self.data = data
+        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
