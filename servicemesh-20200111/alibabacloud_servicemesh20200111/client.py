@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('servicemesh', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -47,12 +46,23 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.AddClusterIntoServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.AddClusterIntoServiceMeshResponse:
+        """
+        @summary Adds a cluster to an ASM instance.
+        
+        @param request: AddClusterIntoServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddClusterIntoServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.discovery_only):
+            body['DiscoveryOnly'] = request.discovery_only
         if not UtilClient.is_unset(request.ignore_namespace_check):
             body['IgnoreNamespaceCheck'] = request.ignore_namespace_check
+        if not UtilClient.is_unset(request.kubeconfig):
+            body['Kubeconfig'] = request.kubeconfig
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -79,12 +89,23 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.AddClusterIntoServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.AddClusterIntoServiceMeshResponse:
+        """
+        @summary Adds a cluster to an ASM instance.
+        
+        @param request: AddClusterIntoServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddClusterIntoServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.discovery_only):
+            body['DiscoveryOnly'] = request.discovery_only
         if not UtilClient.is_unset(request.ignore_namespace_check):
             body['IgnoreNamespaceCheck'] = request.ignore_namespace_check
+        if not UtilClient.is_unset(request.kubeconfig):
+            body['Kubeconfig'] = request.kubeconfig
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -110,6 +131,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.AddClusterIntoServiceMeshRequest,
     ) -> servicemesh_20200111_models.AddClusterIntoServiceMeshResponse:
+        """
+        @summary Adds a cluster to an ASM instance.
+        
+        @param request: AddClusterIntoServiceMeshRequest
+        @return: AddClusterIntoServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_cluster_into_service_mesh_with_options(request, runtime)
 
@@ -117,6 +144,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.AddClusterIntoServiceMeshRequest,
     ) -> servicemesh_20200111_models.AddClusterIntoServiceMeshResponse:
+        """
+        @summary Adds a cluster to an ASM instance.
+        
+        @param request: AddClusterIntoServiceMeshRequest
+        @return: AddClusterIntoServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_cluster_into_service_mesh_with_options_async(request, runtime)
 
@@ -126,7 +159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI AddVMIntoServiceMesh is deprecated
+        
+        @summary Adds a virtual machine (VM) to a Service Mesh (ASM) instance.
         
         @param request: AddVMIntoServiceMeshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -164,7 +199,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI AddVMIntoServiceMesh is deprecated
+        
+        @summary Adds a virtual machine (VM) to a Service Mesh (ASM) instance.
         
         @param request: AddVMIntoServiceMeshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -201,7 +238,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.AddVMIntoServiceMeshRequest,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI AddVMIntoServiceMesh is deprecated
+        
+        @summary Adds a virtual machine (VM) to a Service Mesh (ASM) instance.
         
         @param request: AddVMIntoServiceMeshRequest
         @return: AddVMIntoServiceMeshResponse
@@ -215,7 +254,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.AddVMIntoServiceMeshRequest,
     ) -> servicemesh_20200111_models.AddVMIntoServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI AddVMIntoServiceMesh is deprecated
+        
+        @summary Adds a virtual machine (VM) to a Service Mesh (ASM) instance.
         
         @param request: AddVMIntoServiceMeshRequest
         @return: AddVMIntoServiceMeshResponse
@@ -229,6 +270,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateASMGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        """
+        @summary Creates a Service Mesh (ASM) gateway.
+        
+        @param request: CreateASMGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateASMGatewayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body):
@@ -261,6 +309,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateASMGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        """
+        @summary Creates a Service Mesh (ASM) gateway.
+        
+        @param request: CreateASMGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateASMGatewayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body):
@@ -292,6 +347,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateASMGatewayRequest,
     ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        """
+        @summary Creates a Service Mesh (ASM) gateway.
+        
+        @param request: CreateASMGatewayRequest
+        @return: CreateASMGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_asmgateway_with_options(request, runtime)
 
@@ -299,6 +360,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateASMGatewayRequest,
     ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        """
+        @summary Creates a Service Mesh (ASM) gateway.
+        
+        @param request: CreateASMGatewayRequest
+        @return: CreateASMGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_asmgateway_with_options_async(request, runtime)
 
@@ -307,6 +374,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateGatewaySecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateGatewaySecretResponse:
+        """
+        @summary Creates a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateGatewaySecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewaySecretResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cert):
@@ -343,6 +417,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateGatewaySecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateGatewaySecretResponse:
+        """
+        @summary Creates a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateGatewaySecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewaySecretResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cert):
@@ -378,6 +459,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateGatewaySecretRequest,
     ) -> servicemesh_20200111_models.CreateGatewaySecretResponse:
+        """
+        @summary Creates a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateGatewaySecretRequest
+        @return: CreateGatewaySecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_gateway_secret_with_options(request, runtime)
 
@@ -385,6 +472,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateGatewaySecretRequest,
     ) -> servicemesh_20200111_models.CreateGatewaySecretResponse:
+        """
+        @summary Creates a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateGatewaySecretRequest
+        @return: CreateGatewaySecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_gateway_secret_with_options_async(request, runtime)
 
@@ -393,6 +486,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateIstioGatewayDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateIstioGatewayDomainsResponse:
+        """
+        @summary Adds domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateIstioGatewayDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIstioGatewayDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.credential):
@@ -439,6 +539,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateIstioGatewayDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateIstioGatewayDomainsResponse:
+        """
+        @summary Adds domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateIstioGatewayDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIstioGatewayDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.credential):
@@ -484,6 +591,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateIstioGatewayDomainsRequest,
     ) -> servicemesh_20200111_models.CreateIstioGatewayDomainsResponse:
+        """
+        @summary Adds domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateIstioGatewayDomainsRequest
+        @return: CreateIstioGatewayDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_istio_gateway_domains_with_options(request, runtime)
 
@@ -491,6 +604,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateIstioGatewayDomainsRequest,
     ) -> servicemesh_20200111_models.CreateIstioGatewayDomainsResponse:
+        """
+        @summary Adds domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateIstioGatewayDomainsRequest
+        @return: CreateIstioGatewayDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_istio_gateway_domains_with_options_async(request, runtime)
 
@@ -499,6 +618,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.CreateIstioGatewayRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateIstioGatewayRoutesResponse:
+        """
+        @summary Creates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param tmp_req: CreateIstioGatewayRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIstioGatewayRoutesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.CreateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -541,6 +667,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.CreateIstioGatewayRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateIstioGatewayRoutesResponse:
+        """
+        @summary Creates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param tmp_req: CreateIstioGatewayRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIstioGatewayRoutesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.CreateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -582,6 +715,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateIstioGatewayRoutesRequest,
     ) -> servicemesh_20200111_models.CreateIstioGatewayRoutesResponse:
+        """
+        @summary Creates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateIstioGatewayRoutesRequest
+        @return: CreateIstioGatewayRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_istio_gateway_routes_with_options(request, runtime)
 
@@ -589,6 +728,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateIstioGatewayRoutesRequest,
     ) -> servicemesh_20200111_models.CreateIstioGatewayRoutesResponse:
+        """
+        @summary Creates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: CreateIstioGatewayRoutesRequest
+        @return: CreateIstioGatewayRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_istio_gateway_routes_with_options_async(request, runtime)
 
@@ -597,6 +742,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateServiceMeshResponse:
+        """
+        @summary Creates a Service Mesh (ASM) instance.
+        
+        @param request: CreateServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -628,6 +780,8 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.cert_chain):
+            body['CertChain'] = request.cert_chain
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_domain):
@@ -652,6 +806,8 @@ class Client(OpenApiClient):
             body['DubboFilterEnabled'] = request.dubbo_filter_enabled
         if not UtilClient.is_unset(request.edition):
             body['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enable_acmg):
+            body['EnableACMG'] = request.enable_acmg
         if not UtilClient.is_unset(request.enable_ambient):
             body['EnableAmbient'] = request.enable_ambient
         if not UtilClient.is_unset(request.enable_audit):
@@ -720,6 +876,8 @@ class Client(OpenApiClient):
             body['Period'] = request.period
         if not UtilClient.is_unset(request.pilot_load_balancer_spec):
             body['PilotLoadBalancerSpec'] = request.pilot_load_balancer_spec
+        if not UtilClient.is_unset(request.playground_scene):
+            body['PlaygroundScene'] = request.playground_scene
         if not UtilClient.is_unset(request.prometheus_url):
             body['PrometheusUrl'] = request.prometheus_url
         if not UtilClient.is_unset(request.proxy_limit_cpu):
@@ -775,6 +933,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateServiceMeshResponse:
+        """
+        @summary Creates a Service Mesh (ASM) instance.
+        
+        @param request: CreateServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -806,6 +971,8 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.cert_chain):
+            body['CertChain'] = request.cert_chain
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_domain):
@@ -830,6 +997,8 @@ class Client(OpenApiClient):
             body['DubboFilterEnabled'] = request.dubbo_filter_enabled
         if not UtilClient.is_unset(request.edition):
             body['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enable_acmg):
+            body['EnableACMG'] = request.enable_acmg
         if not UtilClient.is_unset(request.enable_ambient):
             body['EnableAmbient'] = request.enable_ambient
         if not UtilClient.is_unset(request.enable_audit):
@@ -898,6 +1067,8 @@ class Client(OpenApiClient):
             body['Period'] = request.period
         if not UtilClient.is_unset(request.pilot_load_balancer_spec):
             body['PilotLoadBalancerSpec'] = request.pilot_load_balancer_spec
+        if not UtilClient.is_unset(request.playground_scene):
+            body['PlaygroundScene'] = request.playground_scene
         if not UtilClient.is_unset(request.prometheus_url):
             body['PrometheusUrl'] = request.prometheus_url
         if not UtilClient.is_unset(request.proxy_limit_cpu):
@@ -952,6 +1123,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateServiceMeshRequest,
     ) -> servicemesh_20200111_models.CreateServiceMeshResponse:
+        """
+        @summary Creates a Service Mesh (ASM) instance.
+        
+        @param request: CreateServiceMeshRequest
+        @return: CreateServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_service_mesh_with_options(request, runtime)
 
@@ -959,6 +1136,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateServiceMeshRequest,
     ) -> servicemesh_20200111_models.CreateServiceMeshResponse:
+        """
+        @summary Creates a Service Mesh (ASM) instance.
+        
+        @param request: CreateServiceMeshRequest
+        @return: CreateServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_mesh_with_options_async(request, runtime)
 
@@ -967,6 +1150,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateSwimLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        """
+        @summary Creates a lane.
+        
+        @param request: CreateSwimLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSwimLaneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1005,6 +1195,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateSwimLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        """
+        @summary Creates a lane.
+        
+        @param request: CreateSwimLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSwimLaneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1042,6 +1239,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateSwimLaneRequest,
     ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        """
+        @summary Creates a lane.
+        
+        @param request: CreateSwimLaneRequest
+        @return: CreateSwimLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_swim_lane_with_options(request, runtime)
 
@@ -1049,6 +1252,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateSwimLaneRequest,
     ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        """
+        @summary Creates a lane.
+        
+        @param request: CreateSwimLaneRequest
+        @return: CreateSwimLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_swim_lane_with_options_async(request, runtime)
 
@@ -1057,12 +1266,21 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        """
+        @summary Creates a lane group.
+        
+        @param request: CreateSwimLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSwimLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
             body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.ingress_gateway_name):
             body['IngressGatewayName'] = request.ingress_gateway_name
+        if not UtilClient.is_unset(request.ingress_gateway_namespace):
+            body['IngressGatewayNamespace'] = request.ingress_gateway_namespace
         if not UtilClient.is_unset(request.ingress_type):
             body['IngressType'] = request.ingress_type
         if not UtilClient.is_unset(request.is_permissive):
@@ -1099,12 +1317,21 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        """
+        @summary Creates a lane group.
+        
+        @param request: CreateSwimLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSwimLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
             body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.ingress_gateway_name):
             body['IngressGatewayName'] = request.ingress_gateway_name
+        if not UtilClient.is_unset(request.ingress_gateway_namespace):
+            body['IngressGatewayNamespace'] = request.ingress_gateway_namespace
         if not UtilClient.is_unset(request.ingress_type):
             body['IngressType'] = request.ingress_type
         if not UtilClient.is_unset(request.is_permissive):
@@ -1140,6 +1367,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
     ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        """
+        @summary Creates a lane group.
+        
+        @param request: CreateSwimLaneGroupRequest
+        @return: CreateSwimLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_swim_lane_group_with_options(request, runtime)
 
@@ -1147,6 +1380,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
     ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        """
+        @summary Creates a lane group.
+        
+        @param request: CreateSwimLaneGroupRequest
+        @return: CreateSwimLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_swim_lane_group_with_options_async(request, runtime)
 
@@ -1155,6 +1394,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateWaypointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        """
+        @summary 创建Waypoint
+        
+        @param request: CreateWaypointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWaypointResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1211,6 +1457,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.CreateWaypointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        """
+        @summary 创建Waypoint
+        
+        @param request: CreateWaypointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWaypointResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1266,6 +1519,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateWaypointRequest,
     ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        """
+        @summary 创建Waypoint
+        
+        @param request: CreateWaypointRequest
+        @return: CreateWaypointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_waypoint_with_options(request, runtime)
 
@@ -1273,6 +1532,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.CreateWaypointRequest,
     ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        """
+        @summary 创建Waypoint
+        
+        @param request: CreateWaypointRequest
+        @return: CreateWaypointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_waypoint_with_options_async(request, runtime)
 
@@ -1281,6 +1546,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -1313,6 +1585,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -1344,6 +1623,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteGatewayRouteRequest,
     ) -> servicemesh_20200111_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @return: DeleteGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_route_with_options(request, runtime)
 
@@ -1351,6 +1636,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteGatewayRouteRequest,
     ) -> servicemesh_20200111_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @return: DeleteGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_route_with_options_async(request, runtime)
 
@@ -1359,6 +1650,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteGatewaySecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteGatewaySecretResponse:
+        """
+        @summary Deletes a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewaySecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewaySecretResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -1391,6 +1689,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteGatewaySecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteGatewaySecretResponse:
+        """
+        @summary Deletes a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewaySecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewaySecretResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -1422,6 +1727,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteGatewaySecretRequest,
     ) -> servicemesh_20200111_models.DeleteGatewaySecretResponse:
+        """
+        @summary Deletes a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewaySecretRequest
+        @return: DeleteGatewaySecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_secret_with_options(request, runtime)
 
@@ -1429,6 +1740,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteGatewaySecretRequest,
     ) -> servicemesh_20200111_models.DeleteGatewaySecretResponse:
+        """
+        @summary Deletes a secret for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteGatewaySecretRequest
+        @return: DeleteGatewaySecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_secret_with_options_async(request, runtime)
 
@@ -1437,6 +1754,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteIstioGatewayDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteIstioGatewayDomainsResponse:
+        """
+        @summary Deletes one or more domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteIstioGatewayDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIstioGatewayDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hosts):
@@ -1475,6 +1799,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteIstioGatewayDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteIstioGatewayDomainsResponse:
+        """
+        @summary Deletes one or more domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteIstioGatewayDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIstioGatewayDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hosts):
@@ -1512,6 +1843,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteIstioGatewayDomainsRequest,
     ) -> servicemesh_20200111_models.DeleteIstioGatewayDomainsResponse:
+        """
+        @summary Deletes one or more domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteIstioGatewayDomainsRequest
+        @return: DeleteIstioGatewayDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_istio_gateway_domains_with_options(request, runtime)
 
@@ -1519,6 +1856,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteIstioGatewayDomainsRequest,
     ) -> servicemesh_20200111_models.DeleteIstioGatewayDomainsResponse:
+        """
+        @summary Deletes one or more domain names for a Service Mesh (ASM) gateway.
+        
+        @param request: DeleteIstioGatewayDomainsRequest
+        @return: DeleteIstioGatewayDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_istio_gateway_domains_with_options_async(request, runtime)
 
@@ -1527,6 +1870,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteServiceMeshResponse:
+        """
+        @summary Deletes a Service Mesh (ASM) instance.
+        
+        @param request: DeleteServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.force):
@@ -1559,6 +1909,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteServiceMeshResponse:
+        """
+        @summary Deletes a Service Mesh (ASM) instance.
+        
+        @param request: DeleteServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.force):
@@ -1590,6 +1947,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteServiceMeshRequest,
     ) -> servicemesh_20200111_models.DeleteServiceMeshResponse:
+        """
+        @summary Deletes a Service Mesh (ASM) instance.
+        
+        @param request: DeleteServiceMeshRequest
+        @return: DeleteServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_service_mesh_with_options(request, runtime)
 
@@ -1597,6 +1960,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteServiceMeshRequest,
     ) -> servicemesh_20200111_models.DeleteServiceMeshResponse:
+        """
+        @summary Deletes a Service Mesh (ASM) instance.
+        
+        @param request: DeleteServiceMeshRequest
+        @return: DeleteServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_service_mesh_with_options_async(request, runtime)
 
@@ -1605,6 +1974,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteSwimLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimLaneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1637,6 +2013,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteSwimLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimLaneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1668,6 +2051,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteSwimLaneRequest,
     ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimLaneRequest
+        @return: DeleteSwimLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_swim_lane_with_options(request, runtime)
 
@@ -1675,6 +2064,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteSwimLaneRequest,
     ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimLaneRequest
+        @return: DeleteSwimLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_swim_lane_with_options_async(request, runtime)
 
@@ -1683,6 +2078,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        """
+        @summary Deletes a lane group. If a lane group is deleted, the lanes in the group and the traffic routing rules attached to the lanes are deleted.
+        
+        @param request: DeleteSwimLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1713,6 +2115,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        """
+        @summary Deletes a lane group. If a lane group is deleted, the lanes in the group and the traffic routing rules attached to the lanes are deleted.
+        
+        @param request: DeleteSwimLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1742,6 +2151,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
     ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        """
+        @summary Deletes a lane group. If a lane group is deleted, the lanes in the group and the traffic routing rules attached to the lanes are deleted.
+        
+        @param request: DeleteSwimLaneGroupRequest
+        @return: DeleteSwimLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_swim_lane_group_with_options(request, runtime)
 
@@ -1749,6 +2164,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
     ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        """
+        @summary Deletes a lane group. If a lane group is deleted, the lanes in the group and the traffic routing rules attached to the lanes are deleted.
+        
+        @param request: DeleteSwimLaneGroupRequest
+        @return: DeleteSwimLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_swim_lane_group_with_options_async(request, runtime)
 
@@ -1757,6 +2178,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteWaypointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        """
+        @summary 删除Waypoint资源
+        
+        @param request: DeleteWaypointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWaypointResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1791,6 +2219,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DeleteWaypointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        """
+        @summary 删除Waypoint资源
+        
+        @param request: DeleteWaypointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWaypointResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1824,6 +2259,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteWaypointRequest,
     ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        """
+        @summary 删除Waypoint资源
+        
+        @param request: DeleteWaypointRequest
+        @return: DeleteWaypointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_waypoint_with_options(request, runtime)
 
@@ -1831,6 +2272,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DeleteWaypointRequest,
     ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        """
+        @summary 删除Waypoint资源
+        
+        @param request: DeleteWaypointRequest
+        @return: DeleteWaypointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_waypoint_with_options_async(request, runtime)
 
@@ -1839,6 +2286,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeASMGatewayImportedServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeASMGatewayImportedServicesResponse:
+        """
+        @summary Queries the information about imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeASMGatewayImportedServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeASMGatewayImportedServicesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_name):
@@ -1871,6 +2325,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeASMGatewayImportedServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeASMGatewayImportedServicesResponse:
+        """
+        @summary Queries the information about imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeASMGatewayImportedServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeASMGatewayImportedServicesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_name):
@@ -1902,6 +2363,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeASMGatewayImportedServicesRequest,
     ) -> servicemesh_20200111_models.DescribeASMGatewayImportedServicesResponse:
+        """
+        @summary Queries the information about imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeASMGatewayImportedServicesRequest
+        @return: DescribeASMGatewayImportedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_asmgateway_imported_services_with_options(request, runtime)
 
@@ -1909,6 +2376,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeASMGatewayImportedServicesRequest,
     ) -> servicemesh_20200111_models.DescribeASMGatewayImportedServicesResponse:
+        """
+        @summary Queries the information about imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeASMGatewayImportedServicesRequest
+        @return: DescribeASMGatewayImportedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_asmgateway_imported_services_with_options_async(request, runtime)
 
@@ -1917,6 +2390,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeCCMVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeCCMVersionResponse:
+        """
+        @summary Queries the versions of the Cloud Controller Manager (CCM) component.
+        
+        @param request: DescribeCCMVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCCMVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -1945,6 +2425,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeCCMVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeCCMVersionResponse:
+        """
+        @summary Queries the versions of the Cloud Controller Manager (CCM) component.
+        
+        @param request: DescribeCCMVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCCMVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -1972,6 +2459,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeCCMVersionRequest,
     ) -> servicemesh_20200111_models.DescribeCCMVersionResponse:
+        """
+        @summary Queries the versions of the Cloud Controller Manager (CCM) component.
+        
+        @param request: DescribeCCMVersionRequest
+        @return: DescribeCCMVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ccmversion_with_options(request, runtime)
 
@@ -1979,6 +2472,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeCCMVersionRequest,
     ) -> servicemesh_20200111_models.DescribeCCMVersionResponse:
+        """
+        @summary Queries the versions of the Cloud Controller Manager (CCM) component.
+        
+        @param request: DescribeCCMVersionRequest
+        @return: DescribeCCMVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ccmversion_with_options_async(request, runtime)
 
@@ -1987,6 +2486,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeCensRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeCensResponse:
+        """
+        @summary Queries the network connectivity between clusters that are deployed across virtual private clouds (VPCs) in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeCensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCensResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -2015,6 +2521,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeCensRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeCensResponse:
+        """
+        @summary Queries the network connectivity between clusters that are deployed across virtual private clouds (VPCs) in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeCensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCensResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -2042,6 +2555,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeCensRequest,
     ) -> servicemesh_20200111_models.DescribeCensResponse:
+        """
+        @summary Queries the network connectivity between clusters that are deployed across virtual private clouds (VPCs) in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeCensRequest
+        @return: DescribeCensResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cens_with_options(request, runtime)
 
@@ -2049,6 +2568,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeCensRequest,
     ) -> servicemesh_20200111_models.DescribeCensResponse:
+        """
+        @summary Queries the network connectivity between clusters that are deployed across virtual private clouds (VPCs) in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeCensRequest
+        @return: DescribeCensResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cens_with_options_async(request, runtime)
 
@@ -2057,10 +2582,19 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeClusterGrafanaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeClusterGrafanaResponse:
+        """
+        @summary Queries the information about Grafana dashboards of a cluster in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterGrafanaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterGrafanaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
             query['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.re_add_prometheus_integration):
+            query['ReAddPrometheusIntegration'] = request.re_add_prometheus_integration
         if not UtilClient.is_unset(request.service_mesh_id):
             query['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -2087,10 +2621,19 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeClusterGrafanaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeClusterGrafanaResponse:
+        """
+        @summary Queries the information about Grafana dashboards of a cluster in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterGrafanaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterGrafanaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
             query['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.re_add_prometheus_integration):
+            query['ReAddPrometheusIntegration'] = request.re_add_prometheus_integration
         if not UtilClient.is_unset(request.service_mesh_id):
             query['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -2116,6 +2659,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeClusterGrafanaRequest,
     ) -> servicemesh_20200111_models.DescribeClusterGrafanaResponse:
+        """
+        @summary Queries the information about Grafana dashboards of a cluster in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterGrafanaRequest
+        @return: DescribeClusterGrafanaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_grafana_with_options(request, runtime)
 
@@ -2123,6 +2672,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeClusterGrafanaRequest,
     ) -> servicemesh_20200111_models.DescribeClusterGrafanaResponse:
+        """
+        @summary Queries the information about Grafana dashboards of a cluster in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterGrafanaRequest
+        @return: DescribeClusterGrafanaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_grafana_with_options_async(request, runtime)
 
@@ -2131,6 +2686,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeClusterPrometheusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeClusterPrometheusResponse:
+        """
+        @summary Queries the public endpoint of the Prometheus service that is used to monitor a cluster in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterPrometheusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterPrometheusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -2163,6 +2725,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeClusterPrometheusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeClusterPrometheusResponse:
+        """
+        @summary Queries the public endpoint of the Prometheus service that is used to monitor a cluster in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterPrometheusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterPrometheusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -2194,6 +2763,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeClusterPrometheusRequest,
     ) -> servicemesh_20200111_models.DescribeClusterPrometheusResponse:
+        """
+        @summary Queries the public endpoint of the Prometheus service that is used to monitor a cluster in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterPrometheusRequest
+        @return: DescribeClusterPrometheusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_prometheus_with_options(request, runtime)
 
@@ -2201,6 +2776,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeClusterPrometheusRequest,
     ) -> servicemesh_20200111_models.DescribeClusterPrometheusResponse:
+        """
+        @summary Queries the public endpoint of the Prometheus service that is used to monitor a cluster in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: DescribeClusterPrometheusRequest
+        @return: DescribeClusterPrometheusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_prometheus_with_options_async(request, runtime)
 
@@ -2209,6 +2790,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeClustersInServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeClustersInServiceMeshResponse:
+        """
+        @summary Queries the information about clusters in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClustersInServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersInServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -2237,6 +2825,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeClustersInServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeClustersInServiceMeshResponse:
+        """
+        @summary Queries the information about clusters in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClustersInServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersInServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -2264,6 +2859,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeClustersInServiceMeshRequest,
     ) -> servicemesh_20200111_models.DescribeClustersInServiceMeshResponse:
+        """
+        @summary Queries the information about clusters in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClustersInServiceMeshRequest
+        @return: DescribeClustersInServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_clusters_in_service_mesh_with_options(request, runtime)
 
@@ -2271,6 +2872,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeClustersInServiceMeshRequest,
     ) -> servicemesh_20200111_models.DescribeClustersInServiceMeshResponse:
+        """
+        @summary Queries the information about clusters in a Service Mesh (ASM) instance.
+        
+        @param request: DescribeClustersInServiceMeshRequest
+        @return: DescribeClustersInServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_clusters_in_service_mesh_with_options_async(request, runtime)
 
@@ -2279,6 +2886,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeCrTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeCrTemplatesResponse:
+        """
+        @summary Queries the common YAML templates of Istio resources used by Service Mesh (ASM) instances.
+        
+        @param request: DescribeCrTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCrTemplatesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_version):
@@ -2309,6 +2923,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeCrTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeCrTemplatesResponse:
+        """
+        @summary Queries the common YAML templates of Istio resources used by Service Mesh (ASM) instances.
+        
+        @param request: DescribeCrTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCrTemplatesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_version):
@@ -2338,6 +2959,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeCrTemplatesRequest,
     ) -> servicemesh_20200111_models.DescribeCrTemplatesResponse:
+        """
+        @summary Queries the common YAML templates of Istio resources used by Service Mesh (ASM) instances.
+        
+        @param request: DescribeCrTemplatesRequest
+        @return: DescribeCrTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cr_templates_with_options(request, runtime)
 
@@ -2345,6 +2972,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeCrTemplatesRequest,
     ) -> servicemesh_20200111_models.DescribeCrTemplatesResponse:
+        """
+        @summary Queries the common YAML templates of Istio resources used by Service Mesh (ASM) instances.
+        
+        @param request: DescribeCrTemplatesRequest
+        @return: DescribeCrTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cr_templates_with_options_async(request, runtime)
 
@@ -2353,6 +2986,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeEipResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        """
+        @summary DescribeEipResources
+        
+        @param request: DescribeEipResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEipResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_num):
@@ -2385,6 +3025,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeEipResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        """
+        @summary DescribeEipResources
+        
+        @param request: DescribeEipResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEipResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_num):
@@ -2416,6 +3063,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeEipResourcesRequest,
     ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        """
+        @summary DescribeEipResources
+        
+        @param request: DescribeEipResourcesRequest
+        @return: DescribeEipResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_eip_resources_with_options(request, runtime)
 
@@ -2423,6 +3076,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeEipResourcesRequest,
     ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        """
+        @summary DescribeEipResources
+        
+        @param request: DescribeEipResourcesRequest
+        @return: DescribeEipResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_eip_resources_with_options_async(request, runtime)
 
@@ -2431,6 +3090,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGatewaySecretDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGatewaySecretDetailsResponse:
+        """
+        @summary Queries the detailed information about a secret of a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeGatewaySecretDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGatewaySecretDetailsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2461,6 +3127,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGatewaySecretDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGatewaySecretDetailsResponse:
+        """
+        @summary Queries the detailed information about a secret of a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeGatewaySecretDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGatewaySecretDetailsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2490,6 +3163,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGatewaySecretDetailsRequest,
     ) -> servicemesh_20200111_models.DescribeGatewaySecretDetailsResponse:
+        """
+        @summary Queries the detailed information about a secret of a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeGatewaySecretDetailsRequest
+        @return: DescribeGatewaySecretDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gateway_secret_details_with_options(request, runtime)
 
@@ -2497,6 +3176,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGatewaySecretDetailsRequest,
     ) -> servicemesh_20200111_models.DescribeGatewaySecretDetailsResponse:
+        """
+        @summary Queries the detailed information about a secret of a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeGatewaySecretDetailsRequest
+        @return: DescribeGatewaySecretDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gateway_secret_details_with_options_async(request, runtime)
 
@@ -2505,6 +3190,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsResponse:
+        """
+        @summary Queries the access log dashboards of a cluster on the data plane.
+        
+        @param request: DescribeGuestClusterAccessLogDashboardsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestClusterAccessLogDashboardsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -2533,6 +3225,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsResponse:
+        """
+        @summary Queries the access log dashboards of a cluster on the data plane.
+        
+        @param request: DescribeGuestClusterAccessLogDashboardsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestClusterAccessLogDashboardsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -2560,6 +3259,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsRequest,
     ) -> servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsResponse:
+        """
+        @summary Queries the access log dashboards of a cluster on the data plane.
+        
+        @param request: DescribeGuestClusterAccessLogDashboardsRequest
+        @return: DescribeGuestClusterAccessLogDashboardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_guest_cluster_access_log_dashboards_with_options(request, runtime)
 
@@ -2567,6 +3272,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsRequest,
     ) -> servicemesh_20200111_models.DescribeGuestClusterAccessLogDashboardsResponse:
+        """
+        @summary Queries the access log dashboards of a cluster on the data plane.
+        
+        @param request: DescribeGuestClusterAccessLogDashboardsRequest
+        @return: DescribeGuestClusterAccessLogDashboardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_guest_cluster_access_log_dashboards_with_options_async(request, runtime)
 
@@ -2575,6 +3286,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGuestClusterNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGuestClusterNamespacesResponse:
+        """
+        @summary Queries a list of the namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestClusterNamespacesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.guest_cluster_id):
@@ -2607,6 +3325,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGuestClusterNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGuestClusterNamespacesResponse:
+        """
+        @summary Queries a list of the namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestClusterNamespacesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.guest_cluster_id):
@@ -2638,6 +3363,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGuestClusterNamespacesRequest,
     ) -> servicemesh_20200111_models.DescribeGuestClusterNamespacesResponse:
+        """
+        @summary Queries a list of the namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterNamespacesRequest
+        @return: DescribeGuestClusterNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_guest_cluster_namespaces_with_options(request, runtime)
 
@@ -2645,6 +3376,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGuestClusterNamespacesRequest,
     ) -> servicemesh_20200111_models.DescribeGuestClusterNamespacesResponse:
+        """
+        @summary Queries a list of the namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterNamespacesRequest
+        @return: DescribeGuestClusterNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_guest_cluster_namespaces_with_options_async(request, runtime)
 
@@ -2653,6 +3390,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGuestClusterPodsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGuestClusterPodsResponse:
+        """
+        @summary Queries a list of the pods in a specified namespace of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterPodsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestClusterPodsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.guest_cluster_id):
@@ -2685,6 +3429,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeGuestClusterPodsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeGuestClusterPodsResponse:
+        """
+        @summary Queries a list of the pods in a specified namespace of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterPodsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestClusterPodsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.guest_cluster_id):
@@ -2716,6 +3467,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGuestClusterPodsRequest,
     ) -> servicemesh_20200111_models.DescribeGuestClusterPodsResponse:
+        """
+        @summary Queries a list of the pods in a specified namespace of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterPodsRequest
+        @return: DescribeGuestClusterPodsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_guest_cluster_pods_with_options(request, runtime)
 
@@ -2723,6 +3480,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeGuestClusterPodsRequest,
     ) -> servicemesh_20200111_models.DescribeGuestClusterPodsResponse:
+        """
+        @summary Queries a list of the pods in a specified namespace of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeGuestClusterPodsRequest
+        @return: DescribeGuestClusterPodsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_guest_cluster_pods_with_options_async(request, runtime)
 
@@ -2731,6 +3494,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeImportedServicesDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeImportedServicesDetailResponse:
+        """
+        @summary Queries the details of the imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeImportedServicesDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImportedServicesDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_name):
@@ -2763,6 +3533,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeImportedServicesDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeImportedServicesDetailResponse:
+        """
+        @summary Queries the details of the imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeImportedServicesDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImportedServicesDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_name):
@@ -2794,6 +3571,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeImportedServicesDetailRequest,
     ) -> servicemesh_20200111_models.DescribeImportedServicesDetailResponse:
+        """
+        @summary Queries the details of the imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeImportedServicesDetailRequest
+        @return: DescribeImportedServicesDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_imported_services_detail_with_options(request, runtime)
 
@@ -2801,6 +3584,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeImportedServicesDetailRequest,
     ) -> servicemesh_20200111_models.DescribeImportedServicesDetailResponse:
+        """
+        @summary Queries the details of the imported services on a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeImportedServicesDetailRequest
+        @return: DescribeImportedServicesDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_imported_services_detail_with_options_async(request, runtime)
 
@@ -2809,6 +3598,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeIstioGatewayDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayDomainsResponse:
+        """
+        @summary Queries a list of the domain names that are exposed by a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIstioGatewayDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2843,6 +3639,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeIstioGatewayDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayDomainsResponse:
+        """
+        @summary Queries a list of the domain names that are exposed by a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIstioGatewayDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2876,6 +3679,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayDomainsRequest,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayDomainsResponse:
+        """
+        @summary Queries a list of the domain names that are exposed by a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayDomainsRequest
+        @return: DescribeIstioGatewayDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_istio_gateway_domains_with_options(request, runtime)
 
@@ -2883,6 +3692,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayDomainsRequest,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayDomainsResponse:
+        """
+        @summary Queries a list of the domain names that are exposed by a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayDomainsRequest
+        @return: DescribeIstioGatewayDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_istio_gateway_domains_with_options_async(request, runtime)
 
@@ -2891,6 +3706,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeIstioGatewayRouteDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRouteDetailResponse:
+        """
+        @summary Queries the detailed information about a routing rule of an Alibaba Cloud Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRouteDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIstioGatewayRouteDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2923,6 +3745,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeIstioGatewayRouteDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRouteDetailResponse:
+        """
+        @summary Queries the detailed information about a routing rule of an Alibaba Cloud Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRouteDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIstioGatewayRouteDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2954,6 +3783,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayRouteDetailRequest,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRouteDetailResponse:
+        """
+        @summary Queries the detailed information about a routing rule of an Alibaba Cloud Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRouteDetailRequest
+        @return: DescribeIstioGatewayRouteDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_istio_gateway_route_detail_with_options(request, runtime)
 
@@ -2961,6 +3796,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayRouteDetailRequest,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRouteDetailResponse:
+        """
+        @summary Queries the detailed information about a routing rule of an Alibaba Cloud Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRouteDetailRequest
+        @return: DescribeIstioGatewayRouteDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_istio_gateway_route_detail_with_options_async(request, runtime)
 
@@ -2969,6 +3810,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeIstioGatewayRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRoutesResponse:
+        """
+        @summary Queries the routing rules for a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIstioGatewayRoutesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -2999,6 +3847,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeIstioGatewayRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRoutesResponse:
+        """
+        @summary Queries the routing rules for a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIstioGatewayRoutesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
@@ -3028,6 +3883,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayRoutesRequest,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRoutesResponse:
+        """
+        @summary Queries the routing rules for a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRoutesRequest
+        @return: DescribeIstioGatewayRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_istio_gateway_routes_with_options(request, runtime)
 
@@ -3035,13 +3896,122 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeIstioGatewayRoutesRequest,
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRoutesResponse:
+        """
+        @summary Queries the routing rules for a Service Mesh (ASM) gateway.
+        
+        @param request: DescribeIstioGatewayRoutesRequest
+        @return: DescribeIstioGatewayRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_istio_gateway_routes_with_options_async(request, runtime)
+
+    def describe_mesh_multi_cluster_network_with_options(
+        self,
+        request: servicemesh_20200111_models.DescribeMeshMultiClusterNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DescribeMeshMultiClusterNetworkResponse:
+        """
+        @summary 获取ASM网格网络分区设置
+        
+        @param request: DescribeMeshMultiClusterNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeshMultiClusterNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeshMultiClusterNetwork',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DescribeMeshMultiClusterNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mesh_multi_cluster_network_with_options_async(
+        self,
+        request: servicemesh_20200111_models.DescribeMeshMultiClusterNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DescribeMeshMultiClusterNetworkResponse:
+        """
+        @summary 获取ASM网格网络分区设置
+        
+        @param request: DescribeMeshMultiClusterNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeshMultiClusterNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeshMultiClusterNetwork',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DescribeMeshMultiClusterNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mesh_multi_cluster_network(
+        self,
+        request: servicemesh_20200111_models.DescribeMeshMultiClusterNetworkRequest,
+    ) -> servicemesh_20200111_models.DescribeMeshMultiClusterNetworkResponse:
+        """
+        @summary 获取ASM网格网络分区设置
+        
+        @param request: DescribeMeshMultiClusterNetworkRequest
+        @return: DescribeMeshMultiClusterNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_mesh_multi_cluster_network_with_options(request, runtime)
+
+    async def describe_mesh_multi_cluster_network_async(
+        self,
+        request: servicemesh_20200111_models.DescribeMeshMultiClusterNetworkRequest,
+    ) -> servicemesh_20200111_models.DescribeMeshMultiClusterNetworkResponse:
+        """
+        @summary 获取ASM网格网络分区设置
+        
+        @param request: DescribeMeshMultiClusterNetworkRequest
+        @return: DescribeMeshMultiClusterNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_mesh_multi_cluster_network_with_options_async(request, runtime)
 
     def describe_metadata_with_options(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        """
+        @summary Queries basic information about a Service Mesh (ASM) instance.
+        
+        @param request: DescribeMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetadataResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeMetadata',
@@ -3063,6 +4033,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        """
+        @summary Queries basic information about a Service Mesh (ASM) instance.
+        
+        @param request: DescribeMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetadataResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeMetadata',
@@ -3081,10 +4058,20 @@ class Client(OpenApiClient):
         )
 
     def describe_metadata(self) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        """
+        @summary Queries basic information about a Service Mesh (ASM) instance.
+        
+        @return: DescribeMetadataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metadata_with_options(runtime)
 
     async def describe_metadata_async(self) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        """
+        @summary Queries basic information about a Service Mesh (ASM) instance.
+        
+        @return: DescribeMetadataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metadata_with_options_async(runtime)
 
@@ -3093,6 +4080,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigResponse:
+        """
+        @summary Queries the configurations of sidecar proxies at the namespace level.
+        
+        @param request: DescribeNamespaceScopeSidecarConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceScopeSidecarConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.namespace):
@@ -3123,6 +4117,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigResponse:
+        """
+        @summary Queries the configurations of sidecar proxies at the namespace level.
+        
+        @param request: DescribeNamespaceScopeSidecarConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceScopeSidecarConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.namespace):
@@ -3152,6 +4153,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigRequest,
     ) -> servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigResponse:
+        """
+        @summary Queries the configurations of sidecar proxies at the namespace level.
+        
+        @param request: DescribeNamespaceScopeSidecarConfigRequest
+        @return: DescribeNamespaceScopeSidecarConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_namespace_scope_sidecar_config_with_options(request, runtime)
 
@@ -3159,6 +4166,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigRequest,
     ) -> servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigResponse:
+        """
+        @summary Queries the configurations of sidecar proxies at the namespace level.
+        
+        @param request: DescribeNamespaceScopeSidecarConfigRequest
+        @return: DescribeNamespaceScopeSidecarConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_namespace_scope_sidecar_config_with_options_async(request, runtime)
 
@@ -3167,6 +4180,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeNodesInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeNodesInstanceTypeResponse:
+        """
+        @summary Queries the instance types of nodes on the data plane and whether the instance types support Multi-Buffer acceleration.
+        
+        @param request: DescribeNodesInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodesInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3195,6 +4215,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeNodesInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeNodesInstanceTypeResponse:
+        """
+        @summary Queries the instance types of nodes on the data plane and whether the instance types support Multi-Buffer acceleration.
+        
+        @param request: DescribeNodesInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodesInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3222,6 +4249,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeNodesInstanceTypeRequest,
     ) -> servicemesh_20200111_models.DescribeNodesInstanceTypeResponse:
+        """
+        @summary Queries the instance types of nodes on the data plane and whether the instance types support Multi-Buffer acceleration.
+        
+        @param request: DescribeNodesInstanceTypeRequest
+        @return: DescribeNodesInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_nodes_instance_type_with_options(request, runtime)
 
@@ -3229,6 +4262,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeNodesInstanceTypeRequest,
     ) -> servicemesh_20200111_models.DescribeNodesInstanceTypeResponse:
+        """
+        @summary Queries the instance types of nodes on the data plane and whether the instance types support Multi-Buffer acceleration.
+        
+        @param request: DescribeNodesInstanceTypeRequest
+        @return: DescribeNodesInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nodes_instance_type_with_options_async(request, runtime)
 
@@ -3237,12 +4276,23 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeReusableSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeReusableSlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that can be reused.
+        
+        @param request: DescribeReusableSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReusableSlbResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
             body['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.lb_type):
+            body['LbType'] = request.lb_type
         if not UtilClient.is_unset(request.network_type):
             body['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3267,12 +4317,23 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeReusableSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeReusableSlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that can be reused.
+        
+        @param request: DescribeReusableSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReusableSlbResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
             body['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.lb_type):
+            body['LbType'] = request.lb_type
         if not UtilClient.is_unset(request.network_type):
             body['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3296,6 +4357,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeReusableSlbRequest,
     ) -> servicemesh_20200111_models.DescribeReusableSlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that can be reused.
+        
+        @param request: DescribeReusableSlbRequest
+        @return: DescribeReusableSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_reusable_slb_with_options(request, runtime)
 
@@ -3303,6 +4370,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeReusableSlbRequest,
     ) -> servicemesh_20200111_models.DescribeReusableSlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that can be reused.
+        
+        @param request: DescribeReusableSlbRequest
+        @return: DescribeReusableSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_reusable_slb_with_options_async(request, runtime)
 
@@ -3311,6 +4384,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusResponse:
+        """
+        @summary Queries the check results of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshAdditionalStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshAdditionalStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_mode):
@@ -3341,6 +4421,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusResponse:
+        """
+        @summary Queries the check results of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshAdditionalStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshAdditionalStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_mode):
@@ -3370,6 +4457,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusResponse:
+        """
+        @summary Queries the check results of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshAdditionalStatusRequest
+        @return: DescribeServiceMeshAdditionalStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_additional_status_with_options(request, runtime)
 
@@ -3377,6 +4470,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshAdditionalStatusResponse:
+        """
+        @summary Queries the check results of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshAdditionalStatusRequest
+        @return: DescribeServiceMeshAdditionalStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_additional_status_with_options_async(request, runtime)
 
@@ -3385,6 +4484,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshClustersResponse:
+        """
+        @summary Queries the clusters that can be added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3419,6 +4525,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshClustersResponse:
+        """
+        @summary Queries the clusters that can be added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3452,6 +4565,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshClustersRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshClustersResponse:
+        """
+        @summary Queries the clusters that can be added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshClustersRequest
+        @return: DescribeServiceMeshClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_clusters_with_options(request, runtime)
 
@@ -3459,6 +4578,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshClustersRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshClustersResponse:
+        """
+        @summary Queries the clusters that can be added to a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshClustersRequest
+        @return: DescribeServiceMeshClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_clusters_with_options_async(request, runtime)
 
@@ -3467,6 +4592,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshDetailResponse:
+        """
+        @summary Queries the details of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3495,6 +4627,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshDetailResponse:
+        """
+        @summary Queries the details of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3522,6 +4661,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshDetailRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshDetailResponse:
+        """
+        @summary Queries the details of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshDetailRequest
+        @return: DescribeServiceMeshDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_detail_with_options(request, runtime)
 
@@ -3529,6 +4674,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshDetailRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshDetailResponse:
+        """
+        @summary Queries the details of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshDetailRequest
+        @return: DescribeServiceMeshDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_detail_with_options_async(request, runtime)
 
@@ -3537,6 +4688,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshKubeconfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshKubeconfigResponse:
+        """
+        @summary Queries the content of the kubeconfig file of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshKubeconfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshKubeconfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -3567,6 +4725,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshKubeconfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshKubeconfigResponse:
+        """
+        @summary Queries the content of the kubeconfig file of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshKubeconfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshKubeconfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -3596,6 +4761,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshKubeconfigRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshKubeconfigResponse:
+        """
+        @summary Queries the content of the kubeconfig file of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshKubeconfigRequest
+        @return: DescribeServiceMeshKubeconfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_kubeconfig_with_options(request, runtime)
 
@@ -3603,6 +4774,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshKubeconfigRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshKubeconfigResponse:
+        """
+        @summary Queries the content of the kubeconfig file of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshKubeconfigRequest
+        @return: DescribeServiceMeshKubeconfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_kubeconfig_with_options_async(request, runtime)
 
@@ -3611,6 +4788,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshLogsResponse:
+        """
+        @summary Queries the logs of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3639,6 +4823,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshLogsResponse:
+        """
+        @summary Queries the logs of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3666,6 +4857,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshLogsRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshLogsResponse:
+        """
+        @summary Queries the logs of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshLogsRequest
+        @return: DescribeServiceMeshLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_logs_with_options(request, runtime)
 
@@ -3673,6 +4870,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshLogsRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshLogsResponse:
+        """
+        @summary Queries the logs of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshLogsRequest
+        @return: DescribeServiceMeshLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_logs_with_options_async(request, runtime)
 
@@ -3681,6 +4884,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshProxyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshProxyStatusResponse:
+        """
+        @summary Queries the status of proxies on the data plane of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshProxyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshProxyStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3709,6 +4919,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshProxyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshProxyStatusResponse:
+        """
+        @summary Queries the status of proxies on the data plane of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshProxyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshProxyStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3736,6 +4953,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshProxyStatusRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshProxyStatusResponse:
+        """
+        @summary Queries the status of proxies on the data plane of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshProxyStatusRequest
+        @return: DescribeServiceMeshProxyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_proxy_status_with_options(request, runtime)
 
@@ -3743,6 +4966,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshProxyStatusRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshProxyStatusResponse:
+        """
+        @summary Queries the status of proxies on the data plane of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeServiceMeshProxyStatusRequest
+        @return: DescribeServiceMeshProxyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_proxy_status_with_options_async(request, runtime)
 
@@ -3751,6 +4980,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusResponse:
+        """
+        @summary Queries the upgrade details of a Service Mesh (ASM) instance and its ingress gateways.
+        
+        @param request: DescribeServiceMeshUpgradeStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshUpgradeStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3785,6 +5021,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusResponse:
+        """
+        @summary Queries the upgrade details of a Service Mesh (ASM) instance and its ingress gateways.
+        
+        @param request: DescribeServiceMeshUpgradeStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshUpgradeStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -3818,6 +5061,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusResponse:
+        """
+        @summary Queries the upgrade details of a Service Mesh (ASM) instance and its ingress gateways.
+        
+        @param request: DescribeServiceMeshUpgradeStatusRequest
+        @return: DescribeServiceMeshUpgradeStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_mesh_upgrade_status_with_options(request, runtime)
 
@@ -3825,6 +5074,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshUpgradeStatusResponse:
+        """
+        @summary Queries the upgrade details of a Service Mesh (ASM) instance and its ingress gateways.
+        
+        @param request: DescribeServiceMeshUpgradeStatusRequest
+        @return: DescribeServiceMeshUpgradeStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_upgrade_status_with_options_async(request, runtime)
 
@@ -3834,7 +5089,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeServiceMeshVMs is deprecated
+        
+        @summary Queries the Elastic Compute Service (ECS) instances that reside in the same virtual private cloud (VPC) as a Service Mesh (ASM) instance.
         
         @param request: DescribeServiceMeshVMsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3870,7 +5127,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeServiceMeshVMs is deprecated
+        
+        @summary Queries the Elastic Compute Service (ECS) instances that reside in the same virtual private cloud (VPC) as a Service Mesh (ASM) instance.
         
         @param request: DescribeServiceMeshVMsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3905,7 +5164,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshVMsRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeServiceMeshVMs is deprecated
+        
+        @summary Queries the Elastic Compute Service (ECS) instances that reside in the same virtual private cloud (VPC) as a Service Mesh (ASM) instance.
         
         @param request: DescribeServiceMeshVMsRequest
         @return: DescribeServiceMeshVMsResponse
@@ -3919,7 +5180,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshVMsRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshVMsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeServiceMeshVMs is deprecated
+        
+        @summary Queries the Elastic Compute Service (ECS) instances that reside in the same virtual private cloud (VPC) as a Service Mesh (ASM) instance.
         
         @param request: DescribeServiceMeshVMsRequest
         @return: DescribeServiceMeshVMsResponse
@@ -3933,6 +5196,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
+        """
+        @summary Queries ASM instances.
+        
+        @param request: DescribeServiceMeshesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3959,6 +5229,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
+        """
+        @summary Queries ASM instances.
+        
+        @param request: DescribeServiceMeshesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMeshesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3984,6 +5261,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
+        """
+        @summary Queries ASM instances.
+        
+        @param request: DescribeServiceMeshesRequest
+        @return: DescribeServiceMeshesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_meshes_with_options(request, runtime)
 
@@ -3991,6 +5274,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeServiceMeshesRequest,
     ) -> servicemesh_20200111_models.DescribeServiceMeshesResponse:
+        """
+        @summary Queries ASM instances.
+        
+        @param request: DescribeServiceMeshesRequest
+        @return: DescribeServiceMeshesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_meshes_with_options_async(request, runtime)
 
@@ -3999,6 +5288,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeUpgradeVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeUpgradeVersionResponse:
+        """
+        @summary Queries the update status of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeUpgradeVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUpgradeVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4027,6 +5323,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeUpgradeVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeUpgradeVersionResponse:
+        """
+        @summary Queries the update status of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeUpgradeVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUpgradeVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4054,6 +5357,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeUpgradeVersionRequest,
     ) -> servicemesh_20200111_models.DescribeUpgradeVersionResponse:
+        """
+        @summary Queries the update status of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeUpgradeVersionRequest
+        @return: DescribeUpgradeVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_upgrade_version_with_options(request, runtime)
 
@@ -4061,6 +5370,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeUpgradeVersionRequest,
     ) -> servicemesh_20200111_models.DescribeUpgradeVersionResponse:
+        """
+        @summary Queries the update status of a Service Mesh (ASM) instance.
+        
+        @param request: DescribeUpgradeVersionRequest
+        @return: DescribeUpgradeVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_upgrade_version_with_options_async(request, runtime)
 
@@ -4069,6 +5384,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeUserPermissionsResponse:
+        """
+        @summary Obtains role-based access control (RBAC) permissions.
+        
+        @param request: DescribeUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sub_account_user_id):
@@ -4097,6 +5419,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeUserPermissionsResponse:
+        """
+        @summary Obtains role-based access control (RBAC) permissions.
+        
+        @param request: DescribeUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sub_account_user_id):
@@ -4124,6 +5453,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeUserPermissionsRequest,
     ) -> servicemesh_20200111_models.DescribeUserPermissionsResponse:
+        """
+        @summary Obtains role-based access control (RBAC) permissions.
+        
+        @param request: DescribeUserPermissionsRequest
+        @return: DescribeUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_permissions_with_options(request, runtime)
 
@@ -4131,6 +5466,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeUserPermissionsRequest,
     ) -> servicemesh_20200111_models.DescribeUserPermissionsResponse:
+        """
+        @summary Obtains role-based access control (RBAC) permissions.
+        
+        @param request: DescribeUserPermissionsRequest
+        @return: DescribeUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_permissions_with_options_async(request, runtime)
 
@@ -4139,6 +5480,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeUsersWithPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeUsersWithPermissionsResponse:
+        """
+        @summary Queries the IDs of all RAM users or RAM roles to which a Role-based Access Control (RBAC) role is assigned.
+        
+        @param request: DescribeUsersWithPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsersWithPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_type):
@@ -4167,6 +5515,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeUsersWithPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeUsersWithPermissionsResponse:
+        """
+        @summary Queries the IDs of all RAM users or RAM roles to which a Role-based Access Control (RBAC) role is assigned.
+        
+        @param request: DescribeUsersWithPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsersWithPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_type):
@@ -4194,6 +5549,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeUsersWithPermissionsRequest,
     ) -> servicemesh_20200111_models.DescribeUsersWithPermissionsResponse:
+        """
+        @summary Queries the IDs of all RAM users or RAM roles to which a Role-based Access Control (RBAC) role is assigned.
+        
+        @param request: DescribeUsersWithPermissionsRequest
+        @return: DescribeUsersWithPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_users_with_permissions_with_options(request, runtime)
 
@@ -4201,6 +5562,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeUsersWithPermissionsRequest,
     ) -> servicemesh_20200111_models.DescribeUsersWithPermissionsResponse:
+        """
+        @summary Queries the IDs of all RAM users or RAM roles to which a Role-based Access Control (RBAC) role is assigned.
+        
+        @param request: DescribeUsersWithPermissionsRequest
+        @return: DescribeUsersWithPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_users_with_permissions_with_options_async(request, runtime)
 
@@ -4210,7 +5577,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeVMsInServiceMesh is deprecated
+        
+        @summary Queries the virtual machines (VMs) that are added to a Service Mesh (ASM) instance.
         
         @param request: DescribeVMsInServiceMeshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4246,7 +5615,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeVMsInServiceMesh is deprecated
+        
+        @summary Queries the virtual machines (VMs) that are added to a Service Mesh (ASM) instance.
         
         @param request: DescribeVMsInServiceMeshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4281,7 +5652,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVMsInServiceMeshRequest,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeVMsInServiceMesh is deprecated
+        
+        @summary Queries the virtual machines (VMs) that are added to a Service Mesh (ASM) instance.
         
         @param request: DescribeVMsInServiceMeshRequest
         @return: DescribeVMsInServiceMeshResponse
@@ -4295,7 +5668,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVMsInServiceMeshRequest,
     ) -> servicemesh_20200111_models.DescribeVMsInServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeVMsInServiceMesh is deprecated
+        
+        @summary Queries the virtual machines (VMs) that are added to a Service Mesh (ASM) instance.
         
         @param request: DescribeVMsInServiceMeshRequest
         @return: DescribeVMsInServiceMeshResponse
@@ -4309,6 +5684,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVSwitchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries a list of vSwitches that are deployed in a specified virtual private cloud (VPC) in a region.
+        
+        @param request: DescribeVSwitchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4339,6 +5721,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVSwitchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries a list of vSwitches that are deployed in a specified virtual private cloud (VPC) in a region.
+        
+        @param request: DescribeVSwitchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4368,6 +5757,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeVSwitchesRequest,
     ) -> servicemesh_20200111_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries a list of vSwitches that are deployed in a specified virtual private cloud (VPC) in a region.
+        
+        @param request: DescribeVSwitchesRequest
+        @return: DescribeVSwitchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vswitches_with_options(request, runtime)
 
@@ -4375,6 +5770,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeVSwitchesRequest,
     ) -> servicemesh_20200111_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries a list of vSwitches that are deployed in a specified virtual private cloud (VPC) in a region.
+        
+        @param request: DescribeVSwitchesRequest
+        @return: DescribeVSwitchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
 
@@ -4382,6 +5783,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVersionsResponse:
+        """
+        @summary Queries available Service Mesh (ASM) versions when you create an ASM instance.
+        
+        @param request: DescribeVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVersionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeVersions',
@@ -4403,6 +5811,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVersionsResponse:
+        """
+        @summary Queries available Service Mesh (ASM) versions when you create an ASM instance.
+        
+        @param request: DescribeVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVersionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeVersions',
@@ -4421,10 +5836,20 @@ class Client(OpenApiClient):
         )
 
     def describe_versions(self) -> servicemesh_20200111_models.DescribeVersionsResponse:
+        """
+        @summary Queries available Service Mesh (ASM) versions when you create an ASM instance.
+        
+        @return: DescribeVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_versions_with_options(runtime)
 
     async def describe_versions_async(self) -> servicemesh_20200111_models.DescribeVersionsResponse:
+        """
+        @summary Queries available Service Mesh (ASM) versions when you create an ASM instance.
+        
+        @return: DescribeVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_versions_with_options_async(runtime)
 
@@ -4433,6 +5858,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVpcsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVpcsResponse:
+        """
+        @summary Queries the virtual private clouds (VPCs) that are available in a specified region.
+        
+        @param request: DescribeVpcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4461,6 +5893,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.DescribeVpcsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.DescribeVpcsResponse:
+        """
+        @summary Queries the virtual private clouds (VPCs) that are available in a specified region.
+        
+        @param request: DescribeVpcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4488,6 +5927,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeVpcsRequest,
     ) -> servicemesh_20200111_models.DescribeVpcsResponse:
+        """
+        @summary Queries the virtual private clouds (VPCs) that are available in a specified region.
+        
+        @param request: DescribeVpcsRequest
+        @return: DescribeVpcsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vpcs_with_options(request, runtime)
 
@@ -4495,6 +5940,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.DescribeVpcsRequest,
     ) -> servicemesh_20200111_models.DescribeVpcsResponse:
+        """
+        @summary Queries the virtual private clouds (VPCs) that are available in a specified region.
+        
+        @param request: DescribeVpcsRequest
+        @return: DescribeVpcsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpcs_with_options_async(request, runtime)
 
@@ -4503,6 +5954,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetCaCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetCaCertResponse:
+        """
+        @summary Obtains a certificate issued by a certificate authority (CA).
+        
+        @param request: GetCaCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCaCertResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4531,6 +5989,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetCaCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetCaCertResponse:
+        """
+        @summary Obtains a certificate issued by a certificate authority (CA).
+        
+        @param request: GetCaCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCaCertResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4558,6 +6023,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetCaCertRequest,
     ) -> servicemesh_20200111_models.GetCaCertResponse:
+        """
+        @summary Obtains a certificate issued by a certificate authority (CA).
+        
+        @param request: GetCaCertRequest
+        @return: GetCaCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ca_cert_with_options(request, runtime)
 
@@ -4565,6 +6036,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetCaCertRequest,
     ) -> servicemesh_20200111_models.GetCaCertResponse:
+        """
+        @summary Obtains a certificate issued by a certificate authority (CA).
+        
+        @param request: GetCaCertRequest
+        @return: GetCaCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ca_cert_with_options_async(request, runtime)
 
@@ -4573,6 +6050,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        """
+        @summary Queries a list of workloads specified by a label selector.
+        
+        @param tmp_req: GetDeploymentBySelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentBySelectorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.GetDeploymentBySelectorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4615,6 +6099,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        """
+        @summary Queries a list of workloads specified by a label selector.
+        
+        @param tmp_req: GetDeploymentBySelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentBySelectorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.GetDeploymentBySelectorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4656,6 +6147,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
     ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        """
+        @summary Queries a list of workloads specified by a label selector.
+        
+        @param request: GetDeploymentBySelectorRequest
+        @return: GetDeploymentBySelectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_deployment_by_selector_with_options(request, runtime)
 
@@ -4663,6 +6160,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
     ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        """
+        @summary Queries a list of workloads specified by a label selector.
+        
+        @param request: GetDeploymentBySelectorRequest
+        @return: GetDeploymentBySelectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_deployment_by_selector_with_options_async(request, runtime)
 
@@ -4671,6 +6174,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        """
+        @summary Queries the Grafana dashboard URL from Application Real-Time Monitoring Service (ARMS).
+        
+        @param request: GetGrafanaDashboardUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGrafanaDashboardUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -4703,6 +6213,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        """
+        @summary Queries the Grafana dashboard URL from Application Real-Time Monitoring Service (ARMS).
+        
+        @param request: GetGrafanaDashboardUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGrafanaDashboardUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -4734,6 +6251,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
     ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        """
+        @summary Queries the Grafana dashboard URL from Application Real-Time Monitoring Service (ARMS).
+        
+        @param request: GetGrafanaDashboardUrlRequest
+        @return: GetGrafanaDashboardUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_grafana_dashboard_url_with_options(request, runtime)
 
@@ -4741,6 +6264,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
     ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        """
+        @summary Queries the Grafana dashboard URL from Application Real-Time Monitoring Service (ARMS).
+        
+        @param request: GetGrafanaDashboardUrlRequest
+        @return: GetGrafanaDashboardUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_grafana_dashboard_url_with_options_async(request, runtime)
 
@@ -4749,6 +6278,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetRegisteredServiceEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetRegisteredServiceEndpointsResponse:
+        """
+        @summary 描述ServiceEndpoints信息
+        
+        @param request: GetRegisteredServiceEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegisteredServiceEndpointsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_ids):
@@ -4785,6 +6321,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetRegisteredServiceEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetRegisteredServiceEndpointsResponse:
+        """
+        @summary 描述ServiceEndpoints信息
+        
+        @param request: GetRegisteredServiceEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegisteredServiceEndpointsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_ids):
@@ -4820,6 +6363,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetRegisteredServiceEndpointsRequest,
     ) -> servicemesh_20200111_models.GetRegisteredServiceEndpointsResponse:
+        """
+        @summary 描述ServiceEndpoints信息
+        
+        @param request: GetRegisteredServiceEndpointsRequest
+        @return: GetRegisteredServiceEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_registered_service_endpoints_with_options(request, runtime)
 
@@ -4827,6 +6376,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetRegisteredServiceEndpointsRequest,
     ) -> servicemesh_20200111_models.GetRegisteredServiceEndpointsResponse:
+        """
+        @summary 描述ServiceEndpoints信息
+        
+        @param request: GetRegisteredServiceEndpointsRequest
+        @return: GetRegisteredServiceEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_registered_service_endpoints_with_options_async(request, runtime)
 
@@ -4835,6 +6390,11 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetRegisteredServiceNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetRegisteredServiceNamespacesResponse:
+        """
+        @param request: GetRegisteredServiceNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegisteredServiceNamespacesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4863,6 +6423,11 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetRegisteredServiceNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetRegisteredServiceNamespacesResponse:
+        """
+        @param request: GetRegisteredServiceNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegisteredServiceNamespacesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -4890,6 +6455,10 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetRegisteredServiceNamespacesRequest,
     ) -> servicemesh_20200111_models.GetRegisteredServiceNamespacesResponse:
+        """
+        @param request: GetRegisteredServiceNamespacesRequest
+        @return: GetRegisteredServiceNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_registered_service_namespaces_with_options(request, runtime)
 
@@ -4897,6 +6466,10 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetRegisteredServiceNamespacesRequest,
     ) -> servicemesh_20200111_models.GetRegisteredServiceNamespacesResponse:
+        """
+        @param request: GetRegisteredServiceNamespacesRequest
+        @return: GetRegisteredServiceNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_registered_service_namespaces_with_options_async(request, runtime)
 
@@ -4905,6 +6478,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        """
+        @summary Queries detailed information about a lane.
+        
+        @param request: GetSwimLaneDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSwimLaneDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4937,6 +6517,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        """
+        @summary Queries detailed information about a lane.
+        
+        @param request: GetSwimLaneDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSwimLaneDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4968,6 +6555,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
     ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        """
+        @summary Queries detailed information about a lane.
+        
+        @param request: GetSwimLaneDetailRequest
+        @return: GetSwimLaneDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_swim_lane_detail_with_options(request, runtime)
 
@@ -4975,6 +6568,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
     ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        """
+        @summary Queries detailed information about a lane.
+        
+        @param request: GetSwimLaneDetailRequest
+        @return: GetSwimLaneDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_swim_lane_detail_with_options_async(request, runtime)
 
@@ -4983,6 +6582,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        """
+        @summary Queries a list of all lane groups in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: GetSwimLaneGroupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSwimLaneGroupListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -5011,6 +6617,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        """
+        @summary Queries a list of all lane groups in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: GetSwimLaneGroupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSwimLaneGroupListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -5038,6 +6651,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
     ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        """
+        @summary Queries a list of all lane groups in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: GetSwimLaneGroupListRequest
+        @return: GetSwimLaneGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_swim_lane_group_list_with_options(request, runtime)
 
@@ -5045,6 +6664,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
     ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        """
+        @summary Queries a list of all lane groups in an Alibaba Cloud Service Mesh (ASM) instance.
+        
+        @param request: GetSwimLaneGroupListRequest
+        @return: GetSwimLaneGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_swim_lane_group_list_with_options_async(request, runtime)
 
@@ -5053,6 +6678,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetSwimLaneListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        """
+        @summary Queries a list of all the lanes in a lane group.
+        
+        @param request: GetSwimLaneListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSwimLaneListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -5083,6 +6715,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetSwimLaneListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        """
+        @summary Queries a list of all the lanes in a lane group.
+        
+        @param request: GetSwimLaneListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSwimLaneListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -5112,6 +6751,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetSwimLaneListRequest,
     ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        """
+        @summary Queries a list of all the lanes in a lane group.
+        
+        @param request: GetSwimLaneListRequest
+        @return: GetSwimLaneListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_swim_lane_list_with_options(request, runtime)
 
@@ -5119,6 +6764,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GetSwimLaneListRequest,
     ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        """
+        @summary Queries a list of all the lanes in a lane group.
+        
+        @param request: GetSwimLaneListRequest
+        @return: GetSwimLaneListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_swim_lane_list_with_options_async(request, runtime)
 
@@ -5128,7 +6779,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmAppMeshInfo is deprecated
+        
+        @summary Queries the information about VMs that are added to a Service Mesh (ASM) instance.
         
         @param request: GetVmAppMeshInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5162,7 +6815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmAppMeshInfo is deprecated
+        
+        @summary Queries the information about VMs that are added to a Service Mesh (ASM) instance.
         
         @param request: GetVmAppMeshInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5195,7 +6850,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmAppMeshInfoRequest,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmAppMeshInfo is deprecated
+        
+        @summary Queries the information about VMs that are added to a Service Mesh (ASM) instance.
         
         @param request: GetVmAppMeshInfoRequest
         @return: GetVmAppMeshInfoResponse
@@ -5209,7 +6866,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmAppMeshInfoRequest,
     ) -> servicemesh_20200111_models.GetVmAppMeshInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmAppMeshInfo is deprecated
+        
+        @summary Queries the information about VMs that are added to a Service Mesh (ASM) instance.
         
         @param request: GetVmAppMeshInfoRequest
         @return: GetVmAppMeshInfoResponse
@@ -5224,7 +6883,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmMeta is deprecated
+        
+        @summary Queries the metadata that is required to add a non-containerized application to a Service Mesh (ASM) instance.
         
         @param request: GetVmMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5258,7 +6919,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmMeta is deprecated
+        
+        @summary Queries the metadata that is required to add a non-containerized application to a Service Mesh (ASM) instance.
         
         @param request: GetVmMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5291,7 +6954,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmMetaRequest,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmMeta is deprecated
+        
+        @summary Queries the metadata that is required to add a non-containerized application to a Service Mesh (ASM) instance.
         
         @param request: GetVmMetaRequest
         @return: GetVmMetaResponse
@@ -5305,7 +6970,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.GetVmMetaRequest,
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetVmMeta is deprecated
+        
+        @summary Queries the metadata that is required to add a non-containerized application to a Service Mesh (ASM) instance.
         
         @param request: GetVmMetaRequest
         @return: GetVmMetaResponse
@@ -5319,6 +6986,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.GrantUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GrantUserPermissionsResponse:
+        """
+        @summary Grants permissions to a Resource Access Management (RAM) user.
+        
+        @param tmp_req: GrantUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantUserPermissionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.GrantUserPermissionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5355,6 +7029,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.GrantUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.GrantUserPermissionsResponse:
+        """
+        @summary Grants permissions to a Resource Access Management (RAM) user.
+        
+        @param tmp_req: GrantUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantUserPermissionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.GrantUserPermissionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5390,6 +7071,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GrantUserPermissionsRequest,
     ) -> servicemesh_20200111_models.GrantUserPermissionsResponse:
+        """
+        @summary Grants permissions to a Resource Access Management (RAM) user.
+        
+        @param request: GrantUserPermissionsRequest
+        @return: GrantUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_user_permissions_with_options(request, runtime)
 
@@ -5397,6 +7084,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.GrantUserPermissionsRequest,
     ) -> servicemesh_20200111_models.GrantUserPermissionsResponse:
+        """
+        @summary Grants permissions to a Resource Access Management (RAM) user.
+        
+        @param request: GrantUserPermissionsRequest
+        @return: GrantUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_user_permissions_with_options_async(request, runtime)
 
@@ -5405,6 +7098,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ListServiceAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        """
+        @summary 列举所有服务账号
+        
+        @param request: ListServiceAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceAccountsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5437,6 +7137,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ListServiceAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        """
+        @summary 列举所有服务账号
+        
+        @param request: ListServiceAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceAccountsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5468,6 +7175,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ListServiceAccountsRequest,
     ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        """
+        @summary 列举所有服务账号
+        
+        @param request: ListServiceAccountsRequest
+        @return: ListServiceAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_service_accounts_with_options(request, runtime)
 
@@ -5475,6 +7188,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ListServiceAccountsRequest,
     ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        """
+        @summary 列举所有服务账号
+        
+        @param request: ListServiceAccountsRequest
+        @return: ListServiceAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_accounts_with_options_async(request, runtime)
 
@@ -5483,6 +7202,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        """
+        @summary Queries user tags on a Service Mesh (ASM) instance.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -5519,6 +7245,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        """
+        @summary Queries user tags on a Service Mesh (ASM) instance.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -5554,6 +7287,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ListTagResourcesRequest,
     ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        """
+        @summary Queries user tags on a Service Mesh (ASM) instance.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -5561,6 +7300,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ListTagResourcesRequest,
     ) -> servicemesh_20200111_models.ListTagResourcesResponse:
+        """
+        @summary Queries user tags on a Service Mesh (ASM) instance.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -5569,6 +7314,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ListWaypointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        """
+        @summary Queries the configurations of all waypoint proxies in a namespace of a cluster on the data plane.
+        
+        @param request: ListWaypointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWaypointsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5607,6 +7359,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ListWaypointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        """
+        @summary Queries the configurations of all waypoint proxies in a namespace of a cluster on the data plane.
+        
+        @param request: ListWaypointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWaypointsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5644,6 +7403,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ListWaypointsRequest,
     ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        """
+        @summary Queries the configurations of all waypoint proxies in a namespace of a cluster on the data plane.
+        
+        @param request: ListWaypointsRequest
+        @return: ListWaypointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_waypoints_with_options(request, runtime)
 
@@ -5651,6 +7416,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ListWaypointsRequest,
     ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        """
+        @summary Queries the configurations of all waypoint proxies in a namespace of a cluster on the data plane.
+        
+        @param request: ListWaypointsRequest
+        @return: ListWaypointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_waypoints_with_options_async(request, runtime)
 
@@ -5659,6 +7430,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        """
+        @summary ModifyApiServerEipResource
+        
+        @param request: ModifyApiServerEipResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiServerEipResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_server_eip_id):
@@ -5691,6 +7469,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        """
+        @summary ModifyApiServerEipResource
+        
+        @param request: ModifyApiServerEipResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiServerEipResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_server_eip_id):
@@ -5722,6 +7507,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
     ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        """
+        @summary ModifyApiServerEipResource
+        
+        @param request: ModifyApiServerEipResourceRequest
+        @return: ModifyApiServerEipResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_api_server_eip_resource_with_options(request, runtime)
 
@@ -5729,14 +7520,135 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
     ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        """
+        @summary ModifyApiServerEipResource
+        
+        @param request: ModifyApiServerEipResourceRequest
+        @return: ModifyApiServerEipResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_server_eip_resource_with_options_async(request, runtime)
+
+    def modify_pilot_eip_resource_with_options(
+        self,
+        request: servicemesh_20200111_models.ModifyPilotEipResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ModifyPilotEipResourceResponse:
+        """
+        @summary ModifyPilotEipResource
+        
+        @param request: ModifyPilotEipResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPilotEipResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eip_id):
+            body['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.is_canary):
+            body['IsCanary'] = request.is_canary
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyPilotEipResource',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ModifyPilotEipResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_pilot_eip_resource_with_options_async(
+        self,
+        request: servicemesh_20200111_models.ModifyPilotEipResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ModifyPilotEipResourceResponse:
+        """
+        @summary ModifyPilotEipResource
+        
+        @param request: ModifyPilotEipResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPilotEipResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.eip_id):
+            body['EipId'] = request.eip_id
+        if not UtilClient.is_unset(request.is_canary):
+            body['IsCanary'] = request.is_canary
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyPilotEipResource',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ModifyPilotEipResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_pilot_eip_resource(
+        self,
+        request: servicemesh_20200111_models.ModifyPilotEipResourceRequest,
+    ) -> servicemesh_20200111_models.ModifyPilotEipResourceResponse:
+        """
+        @summary ModifyPilotEipResource
+        
+        @param request: ModifyPilotEipResourceRequest
+        @return: ModifyPilotEipResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_pilot_eip_resource_with_options(request, runtime)
+
+    async def modify_pilot_eip_resource_async(
+        self,
+        request: servicemesh_20200111_models.ModifyPilotEipResourceRequest,
+    ) -> servicemesh_20200111_models.ModifyPilotEipResourceResponse:
+        """
+        @summary ModifyPilotEipResource
+        
+        @param request: ModifyPilotEipResourceRequest
+        @return: ModifyPilotEipResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_pilot_eip_resource_with_options_async(request, runtime)
 
     def modify_service_mesh_name_with_options(
         self,
         request: servicemesh_20200111_models.ModifyServiceMeshNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ModifyServiceMeshNameResponse:
+        """
+        @summary Modifies the name of a Service Mesh (ASM) instance.
+        
+        @param request: ModifyServiceMeshNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyServiceMeshNameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.name):
@@ -5767,6 +7679,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ModifyServiceMeshNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ModifyServiceMeshNameResponse:
+        """
+        @summary Modifies the name of a Service Mesh (ASM) instance.
+        
+        @param request: ModifyServiceMeshNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyServiceMeshNameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.name):
@@ -5796,6 +7715,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ModifyServiceMeshNameRequest,
     ) -> servicemesh_20200111_models.ModifyServiceMeshNameResponse:
+        """
+        @summary Modifies the name of a Service Mesh (ASM) instance.
+        
+        @param request: ModifyServiceMeshNameRequest
+        @return: ModifyServiceMeshNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_service_mesh_name_with_options(request, runtime)
 
@@ -5803,6 +7728,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.ModifyServiceMeshNameRequest,
     ) -> servicemesh_20200111_models.ModifyServiceMeshNameResponse:
+        """
+        @summary Modifies the name of a Service Mesh (ASM) instance.
+        
+        @param request: ModifyServiceMeshNameRequest
+        @return: ModifyServiceMeshNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_service_mesh_name_with_options_async(request, runtime)
 
@@ -5812,7 +7743,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        @summary Recreates a project that is used to store audit logs. After mesh audit is enabled, if you delete the log project that stores audit logs by mistake, you can recreate a project for storing audit logs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.44e6b91aaSp2M7#/commodity/vm_intl).
         
         @param request: ReActivateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5849,7 +7782,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        @summary Recreates a project that is used to store audit logs. After mesh audit is enabled, if you delete the log project that stores audit logs by mistake, you can recreate a project for storing audit logs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.44e6b91aaSp2M7#/commodity/vm_intl).
         
         @param request: ReActivateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5885,7 +7820,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ReActivateAuditRequest,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        @summary Recreates a project that is used to store audit logs. After mesh audit is enabled, if you delete the log project that stores audit logs by mistake, you can recreate a project for storing audit logs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.44e6b91aaSp2M7#/commodity/vm_intl).
         
         @param request: ReActivateAuditRequest
         @return: ReActivateAuditResponse
@@ -5898,7 +7835,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ReActivateAuditRequest,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        @summary Recreates a project that is used to store audit logs. After mesh audit is enabled, if you delete the log project that stores audit logs by mistake, you can recreate a project for storing audit logs.
+        
+        @description Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.44e6b91aaSp2M7#/commodity/vm_intl).
         
         @param request: ReActivateAuditRequest
         @return: ReActivateAuditResponse
@@ -5911,6 +7850,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RemoveClusterFromServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RemoveClusterFromServiceMeshResponse:
+        """
+        @summary Removes a cluster from a Service Mesh (ASM) instance.
+        
+        @param request: RemoveClusterFromServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveClusterFromServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5943,6 +7889,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RemoveClusterFromServiceMeshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RemoveClusterFromServiceMeshResponse:
+        """
+        @summary Removes a cluster from a Service Mesh (ASM) instance.
+        
+        @param request: RemoveClusterFromServiceMeshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveClusterFromServiceMeshResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5974,6 +7927,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.RemoveClusterFromServiceMeshRequest,
     ) -> servicemesh_20200111_models.RemoveClusterFromServiceMeshResponse:
+        """
+        @summary Removes a cluster from a Service Mesh (ASM) instance.
+        
+        @param request: RemoveClusterFromServiceMeshRequest
+        @return: RemoveClusterFromServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_cluster_from_service_mesh_with_options(request, runtime)
 
@@ -5981,6 +7940,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.RemoveClusterFromServiceMeshRequest,
     ) -> servicemesh_20200111_models.RemoveClusterFromServiceMeshResponse:
+        """
+        @summary Removes a cluster from a Service Mesh (ASM) instance.
+        
+        @param request: RemoveClusterFromServiceMeshRequest
+        @return: RemoveClusterFromServiceMeshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_cluster_from_service_mesh_with_options_async(request, runtime)
 
@@ -5990,7 +7955,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI RemoveVMFromServiceMesh is deprecated
+        
+        @summary Removes a virtual machine (VM) from a Service Mesh (ASM) instance.
         
         @param request: RemoveVMFromServiceMeshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6028,7 +7995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI RemoveVMFromServiceMesh is deprecated
+        
+        @summary Removes a virtual machine (VM) from a Service Mesh (ASM) instance.
         
         @param request: RemoveVMFromServiceMeshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6065,7 +8034,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RemoveVMFromServiceMeshRequest,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI RemoveVMFromServiceMesh is deprecated
+        
+        @summary Removes a virtual machine (VM) from a Service Mesh (ASM) instance.
         
         @param request: RemoveVMFromServiceMeshRequest
         @return: RemoveVMFromServiceMeshResponse
@@ -6079,7 +8050,9 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RemoveVMFromServiceMeshRequest,
     ) -> servicemesh_20200111_models.RemoveVMFromServiceMeshResponse:
         """
-        @deprecated
+        @deprecated OpenAPI RemoveVMFromServiceMesh is deprecated
+        
+        @summary Removes a virtual machine (VM) from a Service Mesh (ASM) instance.
         
         @param request: RemoveVMFromServiceMeshRequest
         @return: RemoveVMFromServiceMeshResponse
@@ -6093,6 +8066,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RevokeKubeconfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RevokeKubeconfigResponse:
+        """
+        @summary Revokes the kubeconfig file of a Service Mesh (ASM) instance and generates a new kubeconfig file.
+        
+        @param request: RevokeKubeconfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeKubeconfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -6123,6 +8103,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.RevokeKubeconfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.RevokeKubeconfigResponse:
+        """
+        @summary Revokes the kubeconfig file of a Service Mesh (ASM) instance and generates a new kubeconfig file.
+        
+        @param request: RevokeKubeconfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeKubeconfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.private_ip_address):
@@ -6152,6 +8139,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.RevokeKubeconfigRequest,
     ) -> servicemesh_20200111_models.RevokeKubeconfigResponse:
+        """
+        @summary Revokes the kubeconfig file of a Service Mesh (ASM) instance and generates a new kubeconfig file.
+        
+        @param request: RevokeKubeconfigRequest
+        @return: RevokeKubeconfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_kubeconfig_with_options(request, runtime)
 
@@ -6159,6 +8152,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.RevokeKubeconfigRequest,
     ) -> servicemesh_20200111_models.RevokeKubeconfigResponse:
+        """
+        @summary Revokes the kubeconfig file of a Service Mesh (ASM) instance and generates a new kubeconfig file.
+        
+        @param request: RevokeKubeconfigRequest
+        @return: RevokeKubeconfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_kubeconfig_with_options_async(request, runtime)
 
@@ -6167,6 +8166,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.TagResourcesResponse:
+        """
+        @summary Adds or modifies user tags on a resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6201,6 +8207,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.TagResourcesResponse:
+        """
+        @summary Adds or modifies user tags on a resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6234,6 +8247,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.TagResourcesRequest,
     ) -> servicemesh_20200111_models.TagResourcesResponse:
+        """
+        @summary Adds or modifies user tags on a resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -6241,6 +8260,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.TagResourcesRequest,
     ) -> servicemesh_20200111_models.TagResourcesResponse:
+        """
+        @summary Adds or modifies user tags on a resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -6249,6 +8274,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        """
+        @summary Deletes user tags on a Service Mesh (ASM) instance.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -6285,6 +8317,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        """
+        @summary Deletes user tags on a Service Mesh (ASM) instance.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -6320,6 +8359,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UntagResourcesRequest,
     ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        """
+        @summary Deletes user tags on a Service Mesh (ASM) instance.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -6327,6 +8372,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UntagResourcesRequest,
     ) -> servicemesh_20200111_models.UntagResourcesResponse:
+        """
+        @summary Deletes user tags on a Service Mesh (ASM) instance.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -6335,6 +8386,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateASMGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        """
+        @summary Updates a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateASMGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateASMGatewayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body):
@@ -6367,6 +8425,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateASMGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        """
+        @summary Updates a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateASMGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateASMGatewayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body):
@@ -6398,6 +8463,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateASMGatewayRequest,
     ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        """
+        @summary Updates a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateASMGatewayRequest
+        @return: UpdateASMGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_asmgateway_with_options(request, runtime)
 
@@ -6405,6 +8476,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateASMGatewayRequest,
     ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        """
+        @summary Updates a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateASMGatewayRequest
+        @return: UpdateASMGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_asmgateway_with_options_async(request, runtime)
 
@@ -6413,6 +8490,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateASMGatewayImportedServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateASMGatewayImportedServicesResponse:
+        """
+        @summary Updates imported services on a Service Mesh (ASM) gateway to import or delete upstream services associated with the gateway.
+        
+        @param request: UpdateASMGatewayImportedServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateASMGatewayImportedServicesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_name):
@@ -6447,6 +8531,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateASMGatewayImportedServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateASMGatewayImportedServicesResponse:
+        """
+        @summary Updates imported services on a Service Mesh (ASM) gateway to import or delete upstream services associated with the gateway.
+        
+        @param request: UpdateASMGatewayImportedServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateASMGatewayImportedServicesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_name):
@@ -6480,6 +8571,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateASMGatewayImportedServicesRequest,
     ) -> servicemesh_20200111_models.UpdateASMGatewayImportedServicesResponse:
+        """
+        @summary Updates imported services on a Service Mesh (ASM) gateway to import or delete upstream services associated with the gateway.
+        
+        @param request: UpdateASMGatewayImportedServicesRequest
+        @return: UpdateASMGatewayImportedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_asmgateway_imported_services_with_options(request, runtime)
 
@@ -6487,6 +8584,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateASMGatewayImportedServicesRequest,
     ) -> servicemesh_20200111_models.UpdateASMGatewayImportedServicesResponse:
+        """
+        @summary Updates imported services on a Service Mesh (ASM) gateway to import or delete upstream services associated with the gateway.
+        
+        @param request: UpdateASMGatewayImportedServicesRequest
+        @return: UpdateASMGatewayImportedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_asmgateway_imported_services_with_options_async(request, runtime)
 
@@ -6495,6 +8598,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        """
+        @summary Synchronizes namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: UpdateASMNamespaceFromGuestClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateASMNamespaceFromGuestClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -6525,6 +8635,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        """
+        @summary Synchronizes namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: UpdateASMNamespaceFromGuestClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateASMNamespaceFromGuestClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.k_8s_cluster_id):
@@ -6554,6 +8671,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
     ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        """
+        @summary Synchronizes namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: UpdateASMNamespaceFromGuestClusterRequest
+        @return: UpdateASMNamespaceFromGuestClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_asmnamespace_from_guest_cluster_with_options(request, runtime)
 
@@ -6561,6 +8684,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
     ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        """
+        @summary Synchronizes namespaces of a Kubernetes cluster that is added to a Service Mesh (ASM) instance.
+        
+        @param request: UpdateASMNamespaceFromGuestClusterRequest
+        @return: UpdateASMNamespaceFromGuestClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_asmnamespace_from_guest_cluster_with_options_async(request, runtime)
 
@@ -6569,6 +8698,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        """
+        @summary Modifies the configuration for collecting control plane logs.
+        
+        @param request: UpdateControlPlaneLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPlaneLogConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enabled):
@@ -6603,6 +8739,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        """
+        @summary Modifies the configuration for collecting control plane logs.
+        
+        @param request: UpdateControlPlaneLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPlaneLogConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enabled):
@@ -6636,6 +8779,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
     ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        """
+        @summary Modifies the configuration for collecting control plane logs.
+        
+        @param request: UpdateControlPlaneLogConfigRequest
+        @return: UpdateControlPlaneLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_control_plane_log_config_with_options(request, runtime)
 
@@ -6643,14 +8792,131 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateControlPlaneLogConfigRequest,
     ) -> servicemesh_20200111_models.UpdateControlPlaneLogConfigResponse:
+        """
+        @summary Modifies the configuration for collecting control plane logs.
+        
+        @param request: UpdateControlPlaneLogConfigRequest
+        @return: UpdateControlPlaneLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_control_plane_log_config_with_options_async(request, runtime)
+
+    def update_guest_cluster_config_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateGuestClusterConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateGuestClusterConfigResponse:
+        """
+        @summary 更新Guest Cluster配置
+        
+        @param request: UpdateGuestClusterConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGuestClusterConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.guest_cluster_id):
+            body['GuestClusterId'] = request.guest_cluster_id
+        if not UtilClient.is_unset(request.smcenabled):
+            body['SMCEnabled'] = request.smcenabled
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGuestClusterConfig',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateGuestClusterConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_guest_cluster_config_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateGuestClusterConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateGuestClusterConfigResponse:
+        """
+        @summary 更新Guest Cluster配置
+        
+        @param request: UpdateGuestClusterConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGuestClusterConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.guest_cluster_id):
+            body['GuestClusterId'] = request.guest_cluster_id
+        if not UtilClient.is_unset(request.smcenabled):
+            body['SMCEnabled'] = request.smcenabled
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGuestClusterConfig',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateGuestClusterConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_guest_cluster_config(
+        self,
+        request: servicemesh_20200111_models.UpdateGuestClusterConfigRequest,
+    ) -> servicemesh_20200111_models.UpdateGuestClusterConfigResponse:
+        """
+        @summary 更新Guest Cluster配置
+        
+        @param request: UpdateGuestClusterConfigRequest
+        @return: UpdateGuestClusterConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_guest_cluster_config_with_options(request, runtime)
+
+    async def update_guest_cluster_config_async(
+        self,
+        request: servicemesh_20200111_models.UpdateGuestClusterConfigRequest,
+    ) -> servicemesh_20200111_models.UpdateGuestClusterConfigResponse:
+        """
+        @summary 更新Guest Cluster配置
+        
+        @param request: UpdateGuestClusterConfigRequest
+        @return: UpdateGuestClusterConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_guest_cluster_config_with_options_async(request, runtime)
 
     def update_istio_gateway_routes_with_options(
         self,
         tmp_req: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateIstioGatewayRoutesResponse:
+        """
+        @summary Updates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param tmp_req: UpdateIstioGatewayRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIstioGatewayRoutesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.UpdateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6693,6 +8959,13 @@ class Client(OpenApiClient):
         tmp_req: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateIstioGatewayRoutesResponse:
+        """
+        @summary Updates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param tmp_req: UpdateIstioGatewayRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIstioGatewayRoutesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = servicemesh_20200111_models.UpdateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6734,6 +9007,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
     ) -> servicemesh_20200111_models.UpdateIstioGatewayRoutesResponse:
+        """
+        @summary Updates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateIstioGatewayRoutesRequest
+        @return: UpdateIstioGatewayRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_istio_gateway_routes_with_options(request, runtime)
 
@@ -6741,6 +9020,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
     ) -> servicemesh_20200111_models.UpdateIstioGatewayRoutesResponse:
+        """
+        @summary Updates a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateIstioGatewayRoutesRequest
+        @return: UpdateIstioGatewayRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_istio_gateway_routes_with_options_async(request, runtime)
 
@@ -6749,6 +9034,11 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        """
+        @param request: UpdateIstioInjectionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIstioInjectionConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_plane_mode):
@@ -6787,6 +9077,11 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        """
+        @param request: UpdateIstioInjectionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIstioInjectionConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_plane_mode):
@@ -6824,6 +9119,10 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
     ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        """
+        @param request: UpdateIstioInjectionConfigRequest
+        @return: UpdateIstioInjectionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_istio_injection_config_with_options(request, runtime)
 
@@ -6831,6 +9130,10 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
     ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        """
+        @param request: UpdateIstioInjectionConfigRequest
+        @return: UpdateIstioInjectionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_istio_injection_config_with_options_async(request, runtime)
 
@@ -6839,6 +9142,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusResponse:
+        """
+        @summary Updates the information about a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateIstioRouteAdditionalStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIstioRouteAdditionalStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6879,6 +9189,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusResponse:
+        """
+        @summary Updates the information about a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateIstioRouteAdditionalStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIstioRouteAdditionalStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6918,6 +9235,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusRequest,
     ) -> servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusResponse:
+        """
+        @summary Updates the information about a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateIstioRouteAdditionalStatusRequest
+        @return: UpdateIstioRouteAdditionalStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_istio_route_additional_status_with_options(request, runtime)
 
@@ -6925,6 +9248,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusRequest,
     ) -> servicemesh_20200111_models.UpdateIstioRouteAdditionalStatusResponse:
+        """
+        @summary Updates the information about a routing rule for a Service Mesh (ASM) gateway.
+        
+        @param request: UpdateIstioRouteAdditionalStatusRequest
+        @return: UpdateIstioRouteAdditionalStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_istio_route_additional_status_with_options_async(request, runtime)
 
@@ -6933,6 +9262,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateMeshCRAggregationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateMeshCRAggregationResponse:
+        """
+        @summary Updates the settings of whether to enable the Kubernetes API on the data plane to access Istio resources.
+        
+        @param request: UpdateMeshCRAggregationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeshCRAggregationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpulimit):
@@ -6973,6 +9309,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateMeshCRAggregationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateMeshCRAggregationResponse:
+        """
+        @summary Updates the settings of whether to enable the Kubernetes API on the data plane to access Istio resources.
+        
+        @param request: UpdateMeshCRAggregationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeshCRAggregationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpulimit):
@@ -7012,6 +9355,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateMeshCRAggregationRequest,
     ) -> servicemesh_20200111_models.UpdateMeshCRAggregationResponse:
+        """
+        @summary Updates the settings of whether to enable the Kubernetes API on the data plane to access Istio resources.
+        
+        @param request: UpdateMeshCRAggregationRequest
+        @return: UpdateMeshCRAggregationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_mesh_craggregation_with_options(request, runtime)
 
@@ -7019,6 +9368,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateMeshCRAggregationRequest,
     ) -> servicemesh_20200111_models.UpdateMeshCRAggregationResponse:
+        """
+        @summary Updates the settings of whether to enable the Kubernetes API on the data plane to access Istio resources.
+        
+        @param request: UpdateMeshCRAggregationRequest
+        @return: UpdateMeshCRAggregationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_mesh_craggregation_with_options_async(request, runtime)
 
@@ -7027,12 +9382,21 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateMeshFeatureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateMeshFeatureResponse:
+        """
+        @summary Updates the configuration of a Service Mesh (ASM) instance.
+        
+        @param request: UpdateMeshFeatureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeshFeatureResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_log_gateway_enabled):
             query['AccessLogGatewayEnabled'] = request.access_log_gateway_enabled
         if not UtilClient.is_unset(request.access_log_sidecar_enabled):
             query['AccessLogSidecarEnabled'] = request.access_log_sidecar_enabled
+        if not UtilClient.is_unset(request.labels_for_offloaded_workloads):
+            query['LabelsForOffloadedWorkloads'] = request.labels_for_offloaded_workloads
         body = {}
         if not UtilClient.is_unset(request.access_log_enabled):
             body['AccessLogEnabled'] = request.access_log_enabled
@@ -7058,6 +9422,8 @@ class Client(OpenApiClient):
             body['AutoInjectionPolicyEnabled'] = request.auto_injection_policy_enabled
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.cert_chain):
+            body['CertChain'] = request.cert_chain
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cni_enabled):
@@ -7100,6 +9466,12 @@ class Client(OpenApiClient):
             body['ExcludeInboundPorts'] = request.exclude_inbound_ports
         if not UtilClient.is_unset(request.exclude_outbound_ports):
             body['ExcludeOutboundPorts'] = request.exclude_outbound_ports
+        if not UtilClient.is_unset(request.existing_ca_cert):
+            body['ExistingCaCert'] = request.existing_ca_cert
+        if not UtilClient.is_unset(request.existing_ca_key):
+            body['ExistingCaKey'] = request.existing_ca_key
+        if not UtilClient.is_unset(request.existing_root_ca_cert):
+            body['ExistingRootCaCert'] = request.existing_root_ca_cert
         if not UtilClient.is_unset(request.filter_gateway_cluster_config):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
@@ -7170,6 +9542,8 @@ class Client(OpenApiClient):
             body['OpenAgentPolicy'] = request.open_agent_policy
         if not UtilClient.is_unset(request.outbound_traffic_policy):
             body['OutboundTrafficPolicy'] = request.outbound_traffic_policy
+        if not UtilClient.is_unset(request.pilot_enable_quic_listeners):
+            body['PilotEnableQuicListeners'] = request.pilot_enable_quic_listeners
         if not UtilClient.is_unset(request.prometheus_url):
             body['PrometheusUrl'] = request.prometheus_url
         if not UtilClient.is_unset(request.proxy_init_cpuresource_limit):
@@ -7192,6 +9566,8 @@ class Client(OpenApiClient):
             body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.redis_filter_enabled):
             body['RedisFilterEnabled'] = request.redis_filter_enabled
+        if not UtilClient.is_unset(request.smcenabled):
+            body['SMCEnabled'] = request.smcenabled
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_injector_limit_cpu):
@@ -7222,6 +9598,8 @@ class Client(OpenApiClient):
             body['TracingOnExtZipkinLimitCPU'] = request.tracing_on_ext_zipkin_limit_cpu
         if not UtilClient.is_unset(request.tracing_on_ext_zipkin_limit_memory):
             body['TracingOnExtZipkinLimitMemory'] = request.tracing_on_ext_zipkin_limit_memory
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_replica_count):
+            body['TracingOnExtZipkinReplicaCount'] = request.tracing_on_ext_zipkin_replica_count
         if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_cpu):
             body['TracingOnExtZipkinRequestCPU'] = request.tracing_on_ext_zipkin_request_cpu
         if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_memory):
@@ -7253,12 +9631,21 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateMeshFeatureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateMeshFeatureResponse:
+        """
+        @summary Updates the configuration of a Service Mesh (ASM) instance.
+        
+        @param request: UpdateMeshFeatureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeshFeatureResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_log_gateway_enabled):
             query['AccessLogGatewayEnabled'] = request.access_log_gateway_enabled
         if not UtilClient.is_unset(request.access_log_sidecar_enabled):
             query['AccessLogSidecarEnabled'] = request.access_log_sidecar_enabled
+        if not UtilClient.is_unset(request.labels_for_offloaded_workloads):
+            query['LabelsForOffloadedWorkloads'] = request.labels_for_offloaded_workloads
         body = {}
         if not UtilClient.is_unset(request.access_log_enabled):
             body['AccessLogEnabled'] = request.access_log_enabled
@@ -7284,6 +9671,8 @@ class Client(OpenApiClient):
             body['AutoInjectionPolicyEnabled'] = request.auto_injection_policy_enabled
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.cert_chain):
+            body['CertChain'] = request.cert_chain
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cni_enabled):
@@ -7326,6 +9715,12 @@ class Client(OpenApiClient):
             body['ExcludeInboundPorts'] = request.exclude_inbound_ports
         if not UtilClient.is_unset(request.exclude_outbound_ports):
             body['ExcludeOutboundPorts'] = request.exclude_outbound_ports
+        if not UtilClient.is_unset(request.existing_ca_cert):
+            body['ExistingCaCert'] = request.existing_ca_cert
+        if not UtilClient.is_unset(request.existing_ca_key):
+            body['ExistingCaKey'] = request.existing_ca_key
+        if not UtilClient.is_unset(request.existing_root_ca_cert):
+            body['ExistingRootCaCert'] = request.existing_root_ca_cert
         if not UtilClient.is_unset(request.filter_gateway_cluster_config):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
@@ -7396,6 +9791,8 @@ class Client(OpenApiClient):
             body['OpenAgentPolicy'] = request.open_agent_policy
         if not UtilClient.is_unset(request.outbound_traffic_policy):
             body['OutboundTrafficPolicy'] = request.outbound_traffic_policy
+        if not UtilClient.is_unset(request.pilot_enable_quic_listeners):
+            body['PilotEnableQuicListeners'] = request.pilot_enable_quic_listeners
         if not UtilClient.is_unset(request.prometheus_url):
             body['PrometheusUrl'] = request.prometheus_url
         if not UtilClient.is_unset(request.proxy_init_cpuresource_limit):
@@ -7418,6 +9815,8 @@ class Client(OpenApiClient):
             body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.redis_filter_enabled):
             body['RedisFilterEnabled'] = request.redis_filter_enabled
+        if not UtilClient.is_unset(request.smcenabled):
+            body['SMCEnabled'] = request.smcenabled
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_injector_limit_cpu):
@@ -7448,6 +9847,8 @@ class Client(OpenApiClient):
             body['TracingOnExtZipkinLimitCPU'] = request.tracing_on_ext_zipkin_limit_cpu
         if not UtilClient.is_unset(request.tracing_on_ext_zipkin_limit_memory):
             body['TracingOnExtZipkinLimitMemory'] = request.tracing_on_ext_zipkin_limit_memory
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_replica_count):
+            body['TracingOnExtZipkinReplicaCount'] = request.tracing_on_ext_zipkin_replica_count
         if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_cpu):
             body['TracingOnExtZipkinRequestCPU'] = request.tracing_on_ext_zipkin_request_cpu
         if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_memory):
@@ -7478,6 +9879,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateMeshFeatureRequest,
     ) -> servicemesh_20200111_models.UpdateMeshFeatureResponse:
+        """
+        @summary Updates the configuration of a Service Mesh (ASM) instance.
+        
+        @param request: UpdateMeshFeatureRequest
+        @return: UpdateMeshFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_mesh_feature_with_options(request, runtime)
 
@@ -7485,15 +9892,140 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateMeshFeatureRequest,
     ) -> servicemesh_20200111_models.UpdateMeshFeatureResponse:
+        """
+        @summary Updates the configuration of a Service Mesh (ASM) instance.
+        
+        @param request: UpdateMeshFeatureRequest
+        @return: UpdateMeshFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_mesh_feature_with_options_async(request, runtime)
 
+    def update_mesh_multi_cluster_network_with_options(
+        self,
+        tmp_req: servicemesh_20200111_models.UpdateMeshMultiClusterNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateMeshMultiClusterNetworkResponse:
+        """
+        @summary Updates the network configurations of multiple Kubernetes clusters in a Service Mesh (ASM) instance.
+        
+        @param tmp_req: UpdateMeshMultiClusterNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeshMultiClusterNetworkResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.UpdateMeshMultiClusterNetworkShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.multi_cluster_networks):
+            request.multi_cluster_networks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_cluster_networks, 'MultiClusterNetworks', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.multi_cluster_networks_shrink):
+            body['MultiClusterNetworks'] = request.multi_cluster_networks_shrink
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMeshMultiClusterNetwork',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateMeshMultiClusterNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mesh_multi_cluster_network_with_options_async(
+        self,
+        tmp_req: servicemesh_20200111_models.UpdateMeshMultiClusterNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateMeshMultiClusterNetworkResponse:
+        """
+        @summary Updates the network configurations of multiple Kubernetes clusters in a Service Mesh (ASM) instance.
+        
+        @param tmp_req: UpdateMeshMultiClusterNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeshMultiClusterNetworkResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.UpdateMeshMultiClusterNetworkShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.multi_cluster_networks):
+            request.multi_cluster_networks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_cluster_networks, 'MultiClusterNetworks', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.multi_cluster_networks_shrink):
+            body['MultiClusterNetworks'] = request.multi_cluster_networks_shrink
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMeshMultiClusterNetwork',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateMeshMultiClusterNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mesh_multi_cluster_network(
+        self,
+        request: servicemesh_20200111_models.UpdateMeshMultiClusterNetworkRequest,
+    ) -> servicemesh_20200111_models.UpdateMeshMultiClusterNetworkResponse:
+        """
+        @summary Updates the network configurations of multiple Kubernetes clusters in a Service Mesh (ASM) instance.
+        
+        @param request: UpdateMeshMultiClusterNetworkRequest
+        @return: UpdateMeshMultiClusterNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_mesh_multi_cluster_network_with_options(request, runtime)
+
+    async def update_mesh_multi_cluster_network_async(
+        self,
+        request: servicemesh_20200111_models.UpdateMeshMultiClusterNetworkRequest,
+    ) -> servicemesh_20200111_models.UpdateMeshMultiClusterNetworkResponse:
+        """
+        @summary Updates the network configurations of multiple Kubernetes clusters in a Service Mesh (ASM) instance.
+        
+        @param request: UpdateMeshMultiClusterNetworkRequest
+        @return: UpdateMeshMultiClusterNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_mesh_multi_cluster_network_with_options_async(request, runtime)
+
     def update_namespace_scope_sidecar_config_with_options(
         self,
-        request: servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigRequest,
+        tmp_req: servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary Updates the configurations of sidecar proxies at the namespace level.
+        
+        @param tmp_req: UpdateNamespaceScopeSidecarConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceScopeSidecarConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scaled_sidecar_resource):
+            request.scaled_sidecar_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scaled_sidecar_resource, 'ScaledSidecarResource', 'json')
         body = {}
         if not UtilClient.is_unset(request.concurrency):
             body['Concurrency'] = request.concurrency
@@ -7555,6 +10087,12 @@ class Client(OpenApiClient):
             body['ReadinessInitialDelaySeconds'] = request.readiness_initial_delay_seconds
         if not UtilClient.is_unset(request.readiness_period_seconds):
             body['ReadinessPeriodSeconds'] = request.readiness_period_seconds
+        if not UtilClient.is_unset(request.runtime_values):
+            body['RuntimeValues'] = request.runtime_values
+        if not UtilClient.is_unset(request.smcenabled):
+            body['SMCEnabled'] = request.smcenabled
+        if not UtilClient.is_unset(request.scaled_sidecar_resource_shrink):
+            body['ScaledSidecarResource'] = request.scaled_sidecar_resource_shrink
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_limit):
@@ -7598,10 +10136,21 @@ class Client(OpenApiClient):
 
     async def update_namespace_scope_sidecar_config_with_options_async(
         self,
-        request: servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigRequest,
+        tmp_req: servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary Updates the configurations of sidecar proxies at the namespace level.
+        
+        @param tmp_req: UpdateNamespaceScopeSidecarConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceScopeSidecarConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scaled_sidecar_resource):
+            request.scaled_sidecar_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scaled_sidecar_resource, 'ScaledSidecarResource', 'json')
         body = {}
         if not UtilClient.is_unset(request.concurrency):
             body['Concurrency'] = request.concurrency
@@ -7663,6 +10212,12 @@ class Client(OpenApiClient):
             body['ReadinessInitialDelaySeconds'] = request.readiness_initial_delay_seconds
         if not UtilClient.is_unset(request.readiness_period_seconds):
             body['ReadinessPeriodSeconds'] = request.readiness_period_seconds
+        if not UtilClient.is_unset(request.runtime_values):
+            body['RuntimeValues'] = request.runtime_values
+        if not UtilClient.is_unset(request.smcenabled):
+            body['SMCEnabled'] = request.smcenabled
+        if not UtilClient.is_unset(request.scaled_sidecar_resource_shrink):
+            body['ScaledSidecarResource'] = request.scaled_sidecar_resource_shrink
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_proxy_ack_slo_cpuresource_limit):
@@ -7708,6 +10263,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigRequest,
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
+        """
+        @summary Updates the configurations of sidecar proxies at the namespace level.
+        
+        @param request: UpdateNamespaceScopeSidecarConfigRequest
+        @return: UpdateNamespaceScopeSidecarConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_namespace_scope_sidecar_config_with_options(request, runtime)
 
@@ -7715,6 +10276,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigRequest,
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
+        """
+        @summary Updates the configurations of sidecar proxies at the namespace level.
+        
+        @param request: UpdateNamespaceScopeSidecarConfigRequest
+        @return: UpdateNamespaceScopeSidecarConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_namespace_scope_sidecar_config_with_options_async(request, runtime)
 
@@ -7723,6 +10290,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateSwimLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        """
+        @summary Updates the information about a lane.
+        
+        @param request: UpdateSwimLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSwimLaneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -7761,6 +10335,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateSwimLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        """
+        @summary Updates the information about a lane.
+        
+        @param request: UpdateSwimLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSwimLaneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name):
@@ -7798,6 +10379,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateSwimLaneRequest,
     ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        """
+        @summary Updates the information about a lane.
+        
+        @param request: UpdateSwimLaneRequest
+        @return: UpdateSwimLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_swim_lane_with_options(request, runtime)
 
@@ -7805,6 +10392,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateSwimLaneRequest,
     ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        """
+        @summary Updates the information about a lane.
+        
+        @param request: UpdateSwimLaneRequest
+        @return: UpdateSwimLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_swim_lane_with_options_async(request, runtime)
 
@@ -7813,16 +10406,29 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        """
+        @summary Updates the information of a lane group.
+        
+        @param request: UpdateSwimLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSwimLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.fallback_target):
             body['FallbackTarget'] = request.fallback_target
         if not UtilClient.is_unset(request.group_name):
             body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.ingress_routing_strategy):
+            body['IngressRoutingStrategy'] = request.ingress_routing_strategy
+        if not UtilClient.is_unset(request.service_level_fallback_target):
+            body['ServiceLevelFallbackTarget'] = request.service_level_fallback_target
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.services_list):
             body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.weighted_ingress_rule):
+            body['WeightedIngressRule'] = request.weighted_ingress_rule
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7847,16 +10453,29 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        """
+        @summary Updates the information of a lane group.
+        
+        @param request: UpdateSwimLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSwimLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.fallback_target):
             body['FallbackTarget'] = request.fallback_target
         if not UtilClient.is_unset(request.group_name):
             body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.ingress_routing_strategy):
+            body['IngressRoutingStrategy'] = request.ingress_routing_strategy
+        if not UtilClient.is_unset(request.service_level_fallback_target):
+            body['ServiceLevelFallbackTarget'] = request.service_level_fallback_target
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.services_list):
             body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.weighted_ingress_rule):
+            body['WeightedIngressRule'] = request.weighted_ingress_rule
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7880,6 +10499,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        """
+        @summary Updates the information of a lane group.
+        
+        @param request: UpdateSwimLaneGroupRequest
+        @return: UpdateSwimLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_swim_lane_group_with_options(request, runtime)
 
@@ -7887,6 +10512,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        """
+        @summary Updates the information of a lane group.
+        
+        @param request: UpdateSwimLaneGroupRequest
+        @return: UpdateSwimLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_swim_lane_group_with_options_async(request, runtime)
 
@@ -7895,6 +10526,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateWaypointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        """
+        @summary 更新Waypoint
+        
+        @param request: UpdateWaypointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWaypointResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7951,6 +10589,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpdateWaypointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        """
+        @summary 更新Waypoint
+        
+        @param request: UpdateWaypointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWaypointResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8006,6 +10651,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateWaypointRequest,
     ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        """
+        @summary 更新Waypoint
+        
+        @param request: UpdateWaypointRequest
+        @return: UpdateWaypointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_waypoint_with_options(request, runtime)
 
@@ -8013,6 +10664,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpdateWaypointRequest,
     ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        """
+        @summary 更新Waypoint
+        
+        @param request: UpdateWaypointRequest
+        @return: UpdateWaypointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_waypoint_with_options_async(request, runtime)
 
@@ -8021,6 +10678,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpgradeMeshEditionPartiallyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpgradeMeshEditionPartiallyResponse:
+        """
+        @summary Upgrades a Service Mesh (ASM) instance to Professional Edition that is commercially released.
+        
+        @param request: UpgradeMeshEditionPartiallyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMeshEditionPartiallyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_continue):
@@ -8059,6 +10723,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpgradeMeshEditionPartiallyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpgradeMeshEditionPartiallyResponse:
+        """
+        @summary Upgrades a Service Mesh (ASM) instance to Professional Edition that is commercially released.
+        
+        @param request: UpgradeMeshEditionPartiallyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMeshEditionPartiallyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asmgateway_continue):
@@ -8096,6 +10767,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpgradeMeshEditionPartiallyRequest,
     ) -> servicemesh_20200111_models.UpgradeMeshEditionPartiallyResponse:
+        """
+        @summary Upgrades a Service Mesh (ASM) instance to Professional Edition that is commercially released.
+        
+        @param request: UpgradeMeshEditionPartiallyRequest
+        @return: UpgradeMeshEditionPartiallyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_mesh_edition_partially_with_options(request, runtime)
 
@@ -8103,6 +10780,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpgradeMeshEditionPartiallyRequest,
     ) -> servicemesh_20200111_models.UpgradeMeshEditionPartiallyResponse:
+        """
+        @summary Upgrades a Service Mesh (ASM) instance to Professional Edition that is commercially released.
+        
+        @param request: UpgradeMeshEditionPartiallyRequest
+        @return: UpgradeMeshEditionPartiallyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_mesh_edition_partially_with_options_async(request, runtime)
 
@@ -8111,6 +10794,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpgradeMeshVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpgradeMeshVersionResponse:
+        """
+        @summary Updates the version of a Service Mesh (ASM) instance.
+        
+        @param request: UpgradeMeshVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMeshVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pre_check):
@@ -8141,6 +10831,13 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.UpgradeMeshVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.UpgradeMeshVersionResponse:
+        """
+        @summary Updates the version of a Service Mesh (ASM) instance.
+        
+        @param request: UpgradeMeshVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMeshVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pre_check):
@@ -8170,6 +10867,12 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpgradeMeshVersionRequest,
     ) -> servicemesh_20200111_models.UpgradeMeshVersionResponse:
+        """
+        @summary Updates the version of a Service Mesh (ASM) instance.
+        
+        @param request: UpgradeMeshVersionRequest
+        @return: UpgradeMeshVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_mesh_version_with_options(request, runtime)
 
@@ -8177,5 +10880,11 @@ class Client(OpenApiClient):
         self,
         request: servicemesh_20200111_models.UpgradeMeshVersionRequest,
     ) -> servicemesh_20200111_models.UpgradeMeshVersionResponse:
+        """
+        @summary Updates the version of a Service Mesh (ASM) instance.
+        
+        @param request: UpgradeMeshVersionRequest
+        @return: UpgradeMeshVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_mesh_version_with_options_async(request, runtime)

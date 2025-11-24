@@ -1,3 +1,59 @@
+2025-11-24 Version: 3.4.0
+- Support API DescribeMeshMultiClusterNetwork.
+- Support API ModifyPilotEipResource.
+- Support API UpdateGuestClusterConfig.
+- Support API UpdateMeshMultiClusterNetwork.
+- Update API AddClusterIntoServiceMesh: add request parameters DiscoveryOnly.
+- Update API AddClusterIntoServiceMesh: add request parameters Kubeconfig.
+- Update API CreateServiceMesh: add request parameters CertChain.
+- Update API CreateServiceMesh: add request parameters EnableACMG.
+- Update API CreateServiceMesh: add request parameters PlaygroundScene.
+- Update API CreateSwimLaneGroup: add request parameters IngressGatewayNamespace.
+- Update API DescribeCCMVersion: add response parameters Body.CCMVersions.SLBGracefulDrainSupported.
+- Update API DescribeClusterGrafana: add request parameters ReAddPrometheusIntegration.
+- Update API DescribeClustersInServiceMesh: add response parameters Body.Clusters.$.GuestClusterConfig.
+- Update API DescribeMetadata: add response parameters Body.MetaData.CompatibilityInfoList.
+- Update API DescribeMetadata: add response parameters Body.MetaData.PlaygroundScene.
+- Update API DescribeNamespaceScopeSidecarConfig: add response parameters Body.ConfigPatches.RuntimeValues.
+- Update API DescribeNamespaceScopeSidecarConfig: add response parameters Body.ConfigPatches.SMCConfiguration.
+- Update API DescribeNamespaceScopeSidecarConfig: add response parameters Body.ConfigPatches.ScaledSidecarResource.
+- Update API DescribeReusableSlb: add request parameters LbType.
+- Update API DescribeReusableSlb: add request parameters ServiceMeshId.
+- Update API DescribeServiceMeshAdditionalStatus: add response parameters Body.ClusterStatus.CanaryPilotEIPStatus.
+- Update API DescribeServiceMeshAdditionalStatus: add response parameters Body.ClusterStatus.PilotEIPStatus.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Endpoints.IntranetCanaryPilotEndpoint.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Endpoints.PublicCanaryPilotEndpoint.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.LoadBalancer.ApiServerPublicEipId.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.LoadBalancer.CanaryPilotLoadBalancerId.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.LoadBalancer.CanaryPilotPublicEipId.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.LoadBalancer.PilotPublicEipId.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.MeshConfig.ExtraConfiguration.IstiodExtraConfiguration.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.MeshConfig.ExtraConfiguration.Playground.
+- Update API DescribeServiceMeshDetail: add response parameters Body.ServiceMesh.Spec.MeshConfig.LocalityLB.FailoverPriority.
+- Update API DescribeServiceMeshes: add response parameters Body.ServiceMeshes.$.Spec.MeshConfig.ExtraConfiguration.
+- Update API GetSwimLaneDetail: add response parameters Body.ValidationMessage.
+- Update API GetSwimLaneDetail: add response parameters Body.WeightedIngressDestination.
+- Update API GetSwimLaneGroupList: add response parameters Body.SwimLaneGroupList.$.IngressRoutingStrategy.
+- Update API GetSwimLaneGroupList: add response parameters Body.SwimLaneGroupList.$.ServiceLevelFallbackTarget.
+- Update API GetSwimLaneGroupList: add response parameters Body.SwimLaneGroupList.$.WeightedIngressRule.
+- Update API GetSwimLaneList: add response parameters Body.SwimLaneList.$.ValidationMessage.
+- Update API GetSwimLaneList: add response parameters Body.SwimLaneList.$.WeightedIngressDestinatin.
+- Update API UpdateMeshFeature: add request parameters CertChain.
+- Update API UpdateMeshFeature: add request parameters ExistingCaCert.
+- Update API UpdateMeshFeature: add request parameters ExistingCaKey.
+- Update API UpdateMeshFeature: add request parameters ExistingRootCaCert.
+- Update API UpdateMeshFeature: add request parameters LabelsForOffloadedWorkloads.
+- Update API UpdateMeshFeature: add request parameters PilotEnableQuicListeners.
+- Update API UpdateMeshFeature: add request parameters SMCEnabled.
+- Update API UpdateMeshFeature: add request parameters TracingOnExtZipkinReplicaCount.
+- Update API UpdateNamespaceScopeSidecarConfig: add request parameters RuntimeValues.
+- Update API UpdateNamespaceScopeSidecarConfig: add request parameters SMCEnabled.
+- Update API UpdateNamespaceScopeSidecarConfig: add request parameters ScaledSidecarResource.
+- Update API UpdateSwimLaneGroup: add request parameters IngressRoutingStrategy.
+- Update API UpdateSwimLaneGroup: add request parameters ServiceLevelFallbackTarget.
+- Update API UpdateSwimLaneGroup: add request parameters WeightedIngressRule.
+
+
 2023-11-13 Version: 3.3.1
 - Generated python 2020-01-11 for servicemesh.
 
