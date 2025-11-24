@@ -1,3 +1,7 @@
+2025-11-24 Version: 5.2.0
+- Support API UpdateProjectModelTier.
+
+
 2025-11-06 Version: 5.1.0
 - Support API DeleteProject.
 

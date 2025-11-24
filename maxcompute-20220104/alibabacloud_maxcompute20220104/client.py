@@ -10181,6 +10181,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_project_ip_white_list_with_options_async(project_name, request, headers, runtime)
 
+    def update_project_model_tier_with_options(
+        self,
+        project_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateProjectModelTierResponse:
+        """
+        @summary 将project的二层模型升级为三层模型
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectModelTierResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectModelTier',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/modelTier',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectModelTierResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_model_tier_with_options_async(
+        self,
+        project_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateProjectModelTierResponse:
+        """
+        @summary 将project的二层模型升级为三层模型
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectModelTierResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectModelTier',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/projects/{OpenApiUtilClient.get_encode_param(project_name)}/modelTier',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateProjectModelTierResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_model_tier(
+        self,
+        project_name: str,
+    ) -> max_compute_20220104_models.UpdateProjectModelTierResponse:
+        """
+        @summary 将project的二层模型升级为三层模型
+        
+        @return: UpdateProjectModelTierResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_project_model_tier_with_options(project_name, headers, runtime)
+
+    async def update_project_model_tier_async(
+        self,
+        project_name: str,
+    ) -> max_compute_20220104_models.UpdateProjectModelTierResponse:
+        """
+        @summary 将project的二层模型升级为三层模型
+        
+        @return: UpdateProjectModelTierResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_project_model_tier_with_options_async(project_name, headers, runtime)
+
     def update_quota_plan_with_options(
         self,
         nickname: str,
