@@ -1,3 +1,10 @@
+2025-11-24 Version: 4.0.0
+- Support API DeleteSandbox.
+- Update API ListTemplates: add request parameters status.
+- Update API ListTemplates: add request parameters templateName.
+- Update API StopSandbox: update response parameters Body' ref has changed.
+
+
 2025-11-20 Version: 3.1.0
 - Support API ActivateTemplateMCP.
 - Support API CreateCredential.

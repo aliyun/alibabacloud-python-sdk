@@ -4132,9 +4132,11 @@ class CreateModelServiceInput(TeaModel):
 class CreateSandboxInput(TeaModel):
     def __init__(
         self,
+        sandbox_id: str = None,
         sandbox_idle_timeout_seconds: int = None,
         template_name: str = None,
     ):
+        self.sandbox_id = sandbox_id
         # 沙箱空闲超时时间（秒）
         self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
         # 模板名称（系统内部通过 templateName 查询 template_id）
@@ -4151,6 +4153,8 @@ class CreateSandboxInput(TeaModel):
             return _map
 
         result = dict()
+        if self.sandbox_id is not None:
+            result['sandboxId'] = self.sandbox_id
         if self.sandbox_idle_timeout_seconds is not None:
             result['sandboxIdleTimeoutSeconds'] = self.sandbox_idle_timeout_seconds
         if self.template_name is not None:
@@ -4159,6 +4163,8 @@ class CreateSandboxInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('sandboxId') is not None:
+            self.sandbox_id = m.get('sandboxId')
         if m.get('sandboxIdleTimeoutSeconds') is not None:
             self.sandbox_idle_timeout_seconds = m.get('sandboxIdleTimeoutSeconds')
         if m.get('templateName') is not None:
@@ -5309,19 +5315,18 @@ class DeleteModelServiceResult(TeaModel):
 class Sandbox(TeaModel):
     def __init__(
         self,
-        sandbox_idle_ttlin_seconds: int = None,
         created_at: str = None,
         ended_at: str = None,
         last_updated_at: str = None,
         metadata: Dict[str, Any] = None,
         sandbox_arn: str = None,
         sandbox_id: str = None,
+        sandbox_idle_ttlin_seconds: int = None,
         sandbox_idle_timeout_seconds: int = None,
         status: str = None,
         template_id: str = None,
         template_name: str = None,
     ):
-        self.sandbox_idle_ttlin_seconds = sandbox_idle_ttlin_seconds
         # 沙箱创建时间
         # 
         # This parameter is required.
@@ -5333,6 +5338,7 @@ class Sandbox(TeaModel):
         self.sandbox_arn = sandbox_arn
         # This parameter is required.
         self.sandbox_id = sandbox_id
+        self.sandbox_idle_ttlin_seconds = sandbox_idle_ttlin_seconds
         # 沙箱空闲超时时间（秒）
         self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
         # This parameter is required.
@@ -5350,8 +5356,6 @@ class Sandbox(TeaModel):
             return _map
 
         result = dict()
-        if self.sandbox_idle_ttlin_seconds is not None:
-            result['SandboxIdleTTLInSeconds'] = self.sandbox_idle_ttlin_seconds
         if self.created_at is not None:
             result['createdAt'] = self.created_at
         if self.ended_at is not None:
@@ -5364,6 +5368,8 @@ class Sandbox(TeaModel):
             result['sandboxArn'] = self.sandbox_arn
         if self.sandbox_id is not None:
             result['sandboxId'] = self.sandbox_id
+        if self.sandbox_idle_ttlin_seconds is not None:
+            result['sandboxIdleTTLInSeconds'] = self.sandbox_idle_ttlin_seconds
         if self.sandbox_idle_timeout_seconds is not None:
             result['sandboxIdleTimeoutSeconds'] = self.sandbox_idle_timeout_seconds
         if self.status is not None:
@@ -5376,8 +5382,6 @@ class Sandbox(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SandboxIdleTTLInSeconds') is not None:
-            self.sandbox_idle_ttlin_seconds = m.get('SandboxIdleTTLInSeconds')
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
         if m.get('endedAt') is not None:
@@ -5390,6 +5394,8 @@ class Sandbox(TeaModel):
             self.sandbox_arn = m.get('sandboxArn')
         if m.get('sandboxId') is not None:
             self.sandbox_id = m.get('sandboxId')
+        if m.get('sandboxIdleTTLInSeconds') is not None:
+            self.sandbox_idle_ttlin_seconds = m.get('sandboxIdleTTLInSeconds')
         if m.get('sandboxIdleTimeoutSeconds') is not None:
             self.sandbox_idle_timeout_seconds = m.get('sandboxIdleTimeoutSeconds')
         if m.get('status') is not None:
@@ -8879,6 +8885,47 @@ class StopCodeInterpreterSessionResult(TeaModel):
         return self
 
 
+class StopSandboxResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Sandbox = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = Sandbox()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
 class Target(TeaModel):
     def __init__(
         self,
@@ -11348,6 +11395,47 @@ class DeleteModelServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteModelServiceResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSandboxResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSandboxResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSandboxResult()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13941,12 +14029,16 @@ class ListTemplatesRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        status: str = None,
+        template_name: str = None,
         template_type: str = None,
     ):
         # 当前页码，从1开始计数
         self.page_number = page_number
         # 每页返回的记录数量
         self.page_size = page_size
+        self.status = status
+        self.template_name = template_name
         # 按模板类型过滤
         self.template_type = template_type
 
@@ -13963,6 +14055,10 @@ class ListTemplatesRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
         if self.template_type is not None:
             result['templateType'] = self.template_type
         return result
@@ -13973,6 +14069,10 @@ class ListTemplatesRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
         if m.get('templateType') is not None:
             self.template_type = m.get('templateType')
         return self
@@ -14310,7 +14410,7 @@ class StopSandboxResponse(TeaModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: DeleteSandboxResult = None,
+        body: StopSandboxResult = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -14341,7 +14441,7 @@ class StopSandboxResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = DeleteSandboxResult()
+            temp_model = StopSandboxResult()
             self.body = temp_model.from_map(m['body'])
         return self
 

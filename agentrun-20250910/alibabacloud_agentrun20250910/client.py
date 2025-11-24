@@ -2059,6 +2059,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_model_service_with_options_async(model_service_name, headers, runtime)
 
+    def delete_sandbox_with_options(
+        self,
+        sandbox_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.DeleteSandboxResponse:
+        """
+        @summary 删除Sandbox
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSandboxResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSandbox',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/sandboxes/{OpenApiUtilClient.get_encode_param(sandbox_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.DeleteSandboxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sandbox_with_options_async(
+        self,
+        sandbox_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> agent_run_20250910_models.DeleteSandboxResponse:
+        """
+        @summary 删除Sandbox
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSandboxResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSandbox',
+            version='2025-09-10',
+            protocol='HTTPS',
+            pathname=f'/2025-09-10/sandboxes/{OpenApiUtilClient.get_encode_param(sandbox_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agent_run_20250910_models.DeleteSandboxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sandbox(
+        self,
+        sandbox_id: str,
+    ) -> agent_run_20250910_models.DeleteSandboxResponse:
+        """
+        @summary 删除Sandbox
+        
+        @return: DeleteSandboxResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_sandbox_with_options(sandbox_id, headers, runtime)
+
+    async def delete_sandbox_async(
+        self,
+        sandbox_id: str,
+    ) -> agent_run_20250910_models.DeleteSandboxResponse:
+        """
+        @summary 删除Sandbox
+        
+        @return: DeleteSandboxResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_sandbox_with_options_async(sandbox_id, headers, runtime)
+
     def delete_template_with_options(
         self,
         template_name: str,
@@ -5085,6 +5175,10 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.template_name):
+            query['templateName'] = request.template_name
         if not UtilClient.is_unset(request.template_type):
             query['templateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
@@ -5129,6 +5223,10 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.template_name):
+            query['templateName'] = request.template_name
         if not UtilClient.is_unset(request.template_type):
             query['templateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
@@ -5424,7 +5522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agent_run_20250910_models.StopSandboxResponse:
         """
-        @summary 停止沙箱
+        @summary 删除沙箱
         
         @description 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
         
@@ -5439,8 +5537,8 @@ class Client(OpenApiClient):
             action='StopSandbox',
             version='2025-09-10',
             protocol='HTTPS',
-            pathname=f'/2025-09-10/sandboxes/{OpenApiUtilClient.get_encode_param(sandbox_id)}',
-            method='DELETE',
+            pathname=f'/2025-09-10/sandboxes/{OpenApiUtilClient.get_encode_param(sandbox_id)}/stop',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
@@ -5458,7 +5556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agent_run_20250910_models.StopSandboxResponse:
         """
-        @summary 停止沙箱
+        @summary 删除沙箱
         
         @description 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
         
@@ -5473,8 +5571,8 @@ class Client(OpenApiClient):
             action='StopSandbox',
             version='2025-09-10',
             protocol='HTTPS',
-            pathname=f'/2025-09-10/sandboxes/{OpenApiUtilClient.get_encode_param(sandbox_id)}',
-            method='DELETE',
+            pathname=f'/2025-09-10/sandboxes/{OpenApiUtilClient.get_encode_param(sandbox_id)}/stop',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
@@ -5490,7 +5588,7 @@ class Client(OpenApiClient):
         sandbox_id: str,
     ) -> agent_run_20250910_models.StopSandboxResponse:
         """
-        @summary 停止沙箱
+        @summary 删除沙箱
         
         @description 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
         
@@ -5505,7 +5603,7 @@ class Client(OpenApiClient):
         sandbox_id: str,
     ) -> agent_run_20250910_models.StopSandboxResponse:
         """
-        @summary 停止沙箱
+        @summary 删除沙箱
         
         @description 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
         
