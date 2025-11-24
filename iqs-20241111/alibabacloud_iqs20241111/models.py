@@ -135,6 +135,7 @@ class ScorePageItem(TeaModel):
         snippet: str = None,
         summary: str = None,
         title: str = None,
+        website_authority_score: int = None,
     ):
         # This parameter is required.
         self.card_type = card_type
@@ -163,6 +164,7 @@ class ScorePageItem(TeaModel):
         self.summary = summary
         # This parameter is required.
         self.title = title
+        self.website_authority_score = website_authority_score
 
     def validate(self):
         if self.images:
@@ -218,6 +220,8 @@ class ScorePageItem(TeaModel):
             result['summary'] = self.summary
         if self.title is not None:
             result['title'] = self.title
+        if self.website_authority_score is not None:
+            result['websiteAuthorityScore'] = self.website_authority_score
         return result
 
     def from_map(self, m: dict = None):
@@ -265,6 +269,8 @@ class ScorePageItem(TeaModel):
             self.summary = m.get('summary')
         if m.get('title') is not None:
             self.title = m.get('title')
+        if m.get('websiteAuthorityScore') is not None:
+            self.website_authority_score = m.get('websiteAuthorityScore')
         return self
 
 
@@ -1472,6 +1478,7 @@ class UnifiedPageItem(TeaModel):
         snippet: str = None,
         summary: str = None,
         title: str = None,
+        website_authority_score: int = None,
     ):
         self.host_authority_score = host_authority_score
         self.host_logo = host_logo
@@ -1486,6 +1493,7 @@ class UnifiedPageItem(TeaModel):
         self.snippet = snippet
         self.summary = summary
         self.title = title
+        self.website_authority_score = website_authority_score
 
     def validate(self):
         pass
@@ -1522,6 +1530,8 @@ class UnifiedPageItem(TeaModel):
             result['summary'] = self.summary
         if self.title is not None:
             result['title'] = self.title
+        if self.website_authority_score is not None:
+            result['websiteAuthorityScore'] = self.website_authority_score
         return result
 
     def from_map(self, m: dict = None):
@@ -1552,6 +1562,8 @@ class UnifiedPageItem(TeaModel):
             self.summary = m.get('summary')
         if m.get('title') is not None:
             self.title = m.get('title')
+        if m.get('websiteAuthorityScore') is not None:
+            self.website_authority_score = m.get('websiteAuthorityScore')
         return self
 
 
