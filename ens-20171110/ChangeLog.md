@@ -1,3 +1,12 @@
+2025-11-25 Version: 9.5.0
+- Support API CreateSecurityGroupPermissions.
+- Support API DeleteSecurityGroupPermissions.
+- Support API DescribeForwardEntryAttribute.
+- Support API ModifyInstanceNetworkAttribute.
+- Update API DescribeSDG: add response parameters Body.SDGs.$.BillingType.
+- Update API DescribeSDGs: add response parameters Body.SDGs.$.BillingType.
+
+
 2025-11-04 Version: 9.4.1
 - Update API DescribeInstances: add request parameters EipAddresses.
 

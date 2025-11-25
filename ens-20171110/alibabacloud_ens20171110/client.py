@@ -6089,6 +6089,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_security_group_with_options_async(request, runtime)
 
+    def create_security_group_permissions_with_options(
+        self,
+        tmp_req: ens_20171110_models.CreateSecurityGroupPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
+        """
+        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        
+        @param tmp_req: CreateSecurityGroupPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityGroupPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateSecurityGroupPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.permissions_shrink):
+            query['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityGroupPermissions',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSecurityGroupPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_security_group_permissions_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CreateSecurityGroupPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
+        """
+        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        
+        @param tmp_req: CreateSecurityGroupPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityGroupPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateSecurityGroupPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.permissions_shrink):
+            query['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityGroupPermissions',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSecurityGroupPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_security_group_permissions(
+        self,
+        request: ens_20171110_models.CreateSecurityGroupPermissionsRequest,
+    ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
+        """
+        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        
+        @param request: CreateSecurityGroupPermissionsRequest
+        @return: CreateSecurityGroupPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_security_group_permissions_with_options(request, runtime)
+
+    async def create_security_group_permissions_async(
+        self,
+        request: ens_20171110_models.CreateSecurityGroupPermissionsRequest,
+    ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
+        """
+        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        
+        @param request: CreateSecurityGroupPermissionsRequest
+        @return: CreateSecurityGroupPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_security_group_permissions_with_options_async(request, runtime)
+
     def create_snapshot_with_options(
         self,
         request: ens_20171110_models.CreateSnapshotRequest,
@@ -9256,6 +9364,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_group_with_options_async(request, runtime)
+
+    def delete_security_group_permissions_with_options(
+        self,
+        tmp_req: ens_20171110_models.DeleteSecurityGroupPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
+        """
+        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        
+        @param tmp_req: DeleteSecurityGroupPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteSecurityGroupPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.permissions_shrink):
+            query['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityGroupPermissions',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSecurityGroupPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_security_group_permissions_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeleteSecurityGroupPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
+        """
+        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        
+        @param tmp_req: DeleteSecurityGroupPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteSecurityGroupPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.permissions_shrink):
+            query['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityGroupPermissions',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSecurityGroupPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_security_group_permissions(
+        self,
+        request: ens_20171110_models.DeleteSecurityGroupPermissionsRequest,
+    ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
+        """
+        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        
+        @param request: DeleteSecurityGroupPermissionsRequest
+        @return: DeleteSecurityGroupPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_security_group_permissions_with_options(request, runtime)
+
+    async def delete_security_group_permissions_async(
+        self,
+        request: ens_20171110_models.DeleteSecurityGroupPermissionsRequest,
+    ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
+        """
+        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        
+        @param request: DeleteSecurityGroupPermissionsRequest
+        @return: DeleteSecurityGroupPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_security_group_permissions_with_options_async(request, runtime)
 
     def delete_snapshot_with_options(
         self,
@@ -14456,6 +14672,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_file_systems_with_options_async(request, runtime)
+
+    def describe_forward_entry_attribute_with_options(
+        self,
+        request: ens_20171110_models.DescribeForwardEntryAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
+        """
+        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        
+        @param request: DescribeForwardEntryAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeForwardEntryAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeForwardEntryAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeForwardEntryAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_forward_entry_attribute_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeForwardEntryAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
+        """
+        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        
+        @param request: DescribeForwardEntryAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeForwardEntryAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeForwardEntryAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeForwardEntryAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_forward_entry_attribute(
+        self,
+        request: ens_20171110_models.DescribeForwardEntryAttributeRequest,
+    ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
+        """
+        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        
+        @param request: DescribeForwardEntryAttributeRequest
+        @return: DescribeForwardEntryAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_forward_entry_attribute_with_options(request, runtime)
+
+    async def describe_forward_entry_attribute_async(
+        self,
+        request: ens_20171110_models.DescribeForwardEntryAttributeRequest,
+    ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
+        """
+        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        
+        @param request: DescribeForwardEntryAttributeRequest
+        @return: DescribeForwardEntryAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_forward_entry_attribute_with_options_async(request, runtime)
 
     def describe_forward_table_entries_with_options(
         self,
@@ -25370,6 +25682,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_charge_type_with_options_async(request, runtime)
+
+    def modify_instance_network_attribute_with_options(
+        self,
+        request: ens_20171110_models.ModifyInstanceNetworkAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
+        """
+        @summary 修改实例网络
+        
+        @param request: ModifyInstanceNetworkAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNetworkAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceNetworkAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyInstanceNetworkAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_network_attribute_with_options_async(
+        self,
+        request: ens_20171110_models.ModifyInstanceNetworkAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
+        """
+        @summary 修改实例网络
+        
+        @param request: ModifyInstanceNetworkAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNetworkAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceNetworkAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyInstanceNetworkAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_network_attribute(
+        self,
+        request: ens_20171110_models.ModifyInstanceNetworkAttributeRequest,
+    ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
+        """
+        @summary 修改实例网络
+        
+        @param request: ModifyInstanceNetworkAttributeRequest
+        @return: ModifyInstanceNetworkAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_network_attribute_with_options(request, runtime)
+
+    async def modify_instance_network_attribute_async(
+        self,
+        request: ens_20171110_models.ModifyInstanceNetworkAttributeRequest,
+    ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
+        """
+        @summary 修改实例网络
+        
+        @param request: ModifyInstanceNetworkAttributeRequest
+        @return: ModifyInstanceNetworkAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_network_attribute_with_options_async(request, runtime)
 
     def modify_load_balancer_attribute_with_options(
         self,
