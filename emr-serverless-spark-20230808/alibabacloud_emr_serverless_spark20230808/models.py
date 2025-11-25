@@ -1756,6 +1756,321 @@ class CancelJobRunResponse(TeaModel):
         return self
 
 
+class CancelKyuubiSparkApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CancelKyuubiSparkApplicationResponseBodyBody(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        success: bool = None,
+    ):
+        self.application_id = application_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['applicationId'] = self.application_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationId') is not None:
+            self.application_id = m.get('applicationId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CancelKyuubiSparkApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        body: CancelKyuubiSparkApplicationResponseBodyBody = None,
+        request_id: str = None,
+    ):
+        self.body = body
+        self.request_id = request_id
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = CancelKyuubiSparkApplicationResponseBodyBody()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CancelKyuubiSparkApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelKyuubiSparkApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelKyuubiSparkApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateKyuubiServiceRequest(TeaModel):
+    def __init__(
+        self,
+        compute_instance: str = None,
+        kyuubi_configs: str = None,
+        kyuubi_release_version: str = None,
+        name: str = None,
+        public_endpoint_enabled: bool = None,
+        queue: str = None,
+        release_version: str = None,
+        replica: int = None,
+        spark_configs: str = None,
+    ):
+        self.compute_instance = compute_instance
+        self.kyuubi_configs = kyuubi_configs
+        self.kyuubi_release_version = kyuubi_release_version
+        self.name = name
+        self.public_endpoint_enabled = public_endpoint_enabled
+        self.queue = queue
+        self.release_version = release_version
+        self.replica = replica
+        self.spark_configs = spark_configs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_instance is not None:
+            result['computeInstance'] = self.compute_instance
+        if self.kyuubi_configs is not None:
+            result['kyuubiConfigs'] = self.kyuubi_configs
+        if self.kyuubi_release_version is not None:
+            result['kyuubiReleaseVersion'] = self.kyuubi_release_version
+        if self.name is not None:
+            result['name'] = self.name
+        if self.public_endpoint_enabled is not None:
+            result['publicEndpointEnabled'] = self.public_endpoint_enabled
+        if self.queue is not None:
+            result['queue'] = self.queue
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.spark_configs is not None:
+            result['sparkConfigs'] = self.spark_configs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('computeInstance') is not None:
+            self.compute_instance = m.get('computeInstance')
+        if m.get('kyuubiConfigs') is not None:
+            self.kyuubi_configs = m.get('kyuubiConfigs')
+        if m.get('kyuubiReleaseVersion') is not None:
+            self.kyuubi_release_version = m.get('kyuubiReleaseVersion')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('publicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('publicEndpointEnabled')
+        if m.get('queue') is not None:
+            self.queue = m.get('queue')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('replica') is not None:
+            self.replica = m.get('replica')
+        if m.get('sparkConfigs') is not None:
+            self.spark_configs = m.get('sparkConfigs')
+        return self
+
+
+class CreateKyuubiServiceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        kyuubi_service_id: str = None,
+    ):
+        # Kyuubi Service ID。
+        self.kyuubi_service_id = kyuubi_service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kyuubi_service_id is not None:
+            result['kyuubiServiceId'] = self.kyuubi_service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('kyuubiServiceId') is not None:
+            self.kyuubi_service_id = m.get('kyuubiServiceId')
+        return self
+
+
+class CreateKyuubiServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateKyuubiServiceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateKyuubiServiceResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateKyuubiServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateKyuubiServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateKyuubiServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateKyuubiTokenRequestAutoExpireConfiguration(TeaModel):
     def __init__(
         self,
@@ -4210,6 +4525,80 @@ class CreateWorkspaceResponse(TeaModel):
         return self
 
 
+class DeleteKyuubiServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteKyuubiServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteKyuubiServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteKyuubiServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteKyuubiTokenRequest(TeaModel):
     def __init__(
         self,
@@ -4523,8 +4912,10 @@ class EditWorkspaceQueueRequestResourceSpec(TeaModel):
     def __init__(
         self,
         cu: int = None,
+        max_cu: int = None,
     ):
         self.cu = cu
+        self.max_cu = max_cu
 
     def validate(self):
         pass
@@ -4537,12 +4928,16 @@ class EditWorkspaceQueueRequestResourceSpec(TeaModel):
         result = dict()
         if self.cu is not None:
             result['cu'] = self.cu
+        if self.max_cu is not None:
+            result['maxCu'] = self.max_cu
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cu') is not None:
             self.cu = m.get('cu')
+        if m.get('maxCu') is not None:
+            self.max_cu = m.get('maxCu')
         return self
 
 
@@ -4664,6 +5059,151 @@ class EditWorkspaceQueueResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EditWorkspaceQueueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateTaskCodesRequest(TeaModel):
+    def __init__(
+        self,
+        gen_num: int = None,
+        product_namespace: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.gen_num = gen_num
+        # This parameter is required.
+        self.product_namespace = product_namespace
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gen_num is not None:
+            result['genNum'] = self.gen_num
+        if self.product_namespace is not None:
+            result['productNamespace'] = self.product_namespace
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('genNum') is not None:
+            self.gen_num = m.get('genNum')
+        if m.get('productNamespace') is not None:
+            self.product_namespace = m.get('productNamespace')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GenerateTaskCodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[int] = None,
+        failed: bool = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.failed = failed
+        self.http_status_code = http_status_code
+        self.msg = msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.failed is not None:
+            result['failed'] = self.failed
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('failed') is not None:
+            self.failed = m.get('failed')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GenerateTaskCodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateTaskCodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateTaskCodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5067,6 +5607,7 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         job_run_id: str = None,
         log: RunLog = None,
         name: str = None,
+        notebook_access_url: str = None,
         release_version: str = None,
         resource_owner_id: str = None,
         resource_queue_id: str = None,
@@ -5103,6 +5644,7 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         self.log = log
         # The job name.
         self.name = name
+        self.notebook_access_url = notebook_access_url
         # The version of the Spark engine on which the job runs.
         self.release_version = release_version
         # The ID of the user who created the job.
@@ -5164,6 +5706,8 @@ class GetJobRunResponseBodyJobRun(TeaModel):
             result['log'] = self.log.to_map()
         if self.name is not None:
             result['name'] = self.name
+        if self.notebook_access_url is not None:
+            result['notebookAccessUrl'] = self.notebook_access_url
         if self.release_version is not None:
             result['releaseVersion'] = self.release_version
         if self.resource_owner_id is not None:
@@ -5213,6 +5757,8 @@ class GetJobRunResponseBodyJobRun(TeaModel):
             self.log = temp_model.from_map(m['log'])
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('notebookAccessUrl') is not None:
+            self.notebook_access_url = m.get('notebookAccessUrl')
         if m.get('releaseVersion') is not None:
             self.release_version = m.get('releaseVersion')
         if m.get('resourceOwnerId') is not None:
@@ -5312,6 +5858,200 @@ class GetJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetKyuubiServiceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        compute_instance: str = None,
+        create_time: str = None,
+        creator: str = None,
+        inner_endpoint: str = None,
+        kyuubi_configs: str = None,
+        kyuubi_release_version: str = None,
+        kyuubi_service_id: str = None,
+        name: str = None,
+        public_endpoint: str = None,
+        public_endpoint_enabled: bool = None,
+        queue: str = None,
+        release_version: str = None,
+        replica: int = None,
+        spark_configs: str = None,
+        start_time: str = None,
+        state: str = None,
+    ):
+        self.compute_instance = compute_instance
+        self.create_time = create_time
+        self.creator = creator
+        self.inner_endpoint = inner_endpoint
+        self.kyuubi_configs = kyuubi_configs
+        self.kyuubi_release_version = kyuubi_release_version
+        # Kyuubi Service ID。
+        self.kyuubi_service_id = kyuubi_service_id
+        self.name = name
+        self.public_endpoint = public_endpoint
+        self.public_endpoint_enabled = public_endpoint_enabled
+        self.queue = queue
+        self.release_version = release_version
+        self.replica = replica
+        self.spark_configs = spark_configs
+        self.start_time = start_time
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_instance is not None:
+            result['computeInstance'] = self.compute_instance
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.inner_endpoint is not None:
+            result['innerEndpoint'] = self.inner_endpoint
+        if self.kyuubi_configs is not None:
+            result['kyuubiConfigs'] = self.kyuubi_configs
+        if self.kyuubi_release_version is not None:
+            result['kyuubiReleaseVersion'] = self.kyuubi_release_version
+        if self.kyuubi_service_id is not None:
+            result['kyuubiServiceId'] = self.kyuubi_service_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.public_endpoint is not None:
+            result['publicEndpoint'] = self.public_endpoint
+        if self.public_endpoint_enabled is not None:
+            result['publicEndpointEnabled'] = self.public_endpoint_enabled
+        if self.queue is not None:
+            result['queue'] = self.queue
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.spark_configs is not None:
+            result['sparkConfigs'] = self.spark_configs
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('computeInstance') is not None:
+            self.compute_instance = m.get('computeInstance')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('innerEndpoint') is not None:
+            self.inner_endpoint = m.get('innerEndpoint')
+        if m.get('kyuubiConfigs') is not None:
+            self.kyuubi_configs = m.get('kyuubiConfigs')
+        if m.get('kyuubiReleaseVersion') is not None:
+            self.kyuubi_release_version = m.get('kyuubiReleaseVersion')
+        if m.get('kyuubiServiceId') is not None:
+            self.kyuubi_service_id = m.get('kyuubiServiceId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('publicEndpoint') is not None:
+            self.public_endpoint = m.get('publicEndpoint')
+        if m.get('publicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('publicEndpointEnabled')
+        if m.get('queue') is not None:
+            self.queue = m.get('queue')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('replica') is not None:
+            self.replica = m.get('replica')
+        if m.get('sparkConfigs') is not None:
+            self.spark_configs = m.get('sparkConfigs')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class GetKyuubiServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetKyuubiServiceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetKyuubiServiceResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetKyuubiServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKyuubiServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKyuubiServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7997,6 +8737,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         mb_seconds: int = None,
         name: str = None,
         release_version: str = None,
+        resource_queue_id: str = None,
         state: str = None,
         state_change_reason: ListJobRunsResponseBodyJobRunsStateChangeReason = None,
         submit_time: int = None,
@@ -8039,6 +8780,7 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.name = name
         # The version of Spark on which the jobs run.
         self.release_version = release_version
+        self.resource_queue_id = resource_queue_id
         # The job state.
         self.state = state
         # The reason of the job status change.
@@ -8102,6 +8844,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             result['name'] = self.name
         if self.release_version is not None:
             result['releaseVersion'] = self.release_version
+        if self.resource_queue_id is not None:
+            result['resourceQueueId'] = self.resource_queue_id
         if self.state is not None:
             result['state'] = self.state
         if self.state_change_reason is not None:
@@ -8153,6 +8897,8 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             self.name = m.get('name')
         if m.get('releaseVersion') is not None:
             self.release_version = m.get('releaseVersion')
+        if m.get('resourceQueueId') is not None:
+            self.resource_queue_id = m.get('resourceQueueId')
         if m.get('state') is not None:
             self.state = m.get('state')
         if m.get('stateChangeReason') is not None:
@@ -8707,9 +9453,11 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         cu_hours: float = None,
         end_time: str = None,
         exit_reason: str = None,
+        kyuubi_service_id: str = None,
         latest_sql_statement_status: str = None,
         mb_seconds: int = None,
         resource_queue_id: str = None,
+        run_log: RunLog = None,
         start_time: str = None,
         state: str = None,
         vcore_seconds: int = None,
@@ -8724,11 +9472,13 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         # The time when the task ended.
         self.end_time = end_time
         self.exit_reason = exit_reason
+        self.kyuubi_service_id = kyuubi_service_id
         self.latest_sql_statement_status = latest_sql_statement_status
         # The total amount of memory allocated to the job multiplied by the running duration (seconds).
         self.mb_seconds = mb_seconds
         # The name of the resource queue on which the Spark jobs run.
         self.resource_queue_id = resource_queue_id
+        self.run_log = run_log
         # The time when the task started.
         self.start_time = start_time
         # The status of the Spark application.
@@ -8743,7 +9493,8 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         self.web_ui = web_ui
 
     def validate(self):
-        pass
+        if self.run_log:
+            self.run_log.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8761,12 +9512,16 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
             result['endTime'] = self.end_time
         if self.exit_reason is not None:
             result['exitReason'] = self.exit_reason
+        if self.kyuubi_service_id is not None:
+            result['kyuubiServiceId'] = self.kyuubi_service_id
         if self.latest_sql_statement_status is not None:
             result['latestSqlStatementStatus'] = self.latest_sql_statement_status
         if self.mb_seconds is not None:
             result['mbSeconds'] = self.mb_seconds
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
+        if self.run_log is not None:
+            result['runLog'] = self.run_log.to_map()
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.state is not None:
@@ -8789,12 +9544,17 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
             self.end_time = m.get('endTime')
         if m.get('exitReason') is not None:
             self.exit_reason = m.get('exitReason')
+        if m.get('kyuubiServiceId') is not None:
+            self.kyuubi_service_id = m.get('kyuubiServiceId')
         if m.get('latestSqlStatementStatus') is not None:
             self.latest_sql_statement_status = m.get('latestSqlStatementStatus')
         if m.get('mbSeconds') is not None:
             self.mb_seconds = m.get('mbSeconds')
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')
+        if m.get('runLog') is not None:
+            temp_model = RunLog()
+            self.run_log = temp_model.from_map(m['runLog'])
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('state') is not None:
@@ -11378,6 +12138,7 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
         max_resource: str = None,
         min_resource: str = None,
         payment_type: str = None,
+        preheat: bool = None,
         properties: str = None,
         queue_name: str = None,
         queue_scope: str = None,
@@ -11404,6 +12165,7 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
         # *   PayAsYouGo
         # *   Pre
         self.payment_type = payment_type
+        self.preheat = preheat
         # The queue label.
         self.properties = properties
         # The name of the queue.
@@ -11452,6 +12214,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
             result['minResource'] = self.min_resource
         if self.payment_type is not None:
             result['paymentType'] = self.payment_type
+        if self.preheat is not None:
+            result['preheat'] = self.preheat
         if self.properties is not None:
             result['properties'] = self.properties
         if self.queue_name is not None:
@@ -11489,6 +12253,8 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
             self.min_resource = m.get('minResource')
         if m.get('paymentType') is not None:
             self.payment_type = m.get('paymentType')
+        if m.get('preheat') is not None:
+            self.preheat = m.get('preheat')
         if m.get('properties') is not None:
             self.properties = m.get('properties')
         if m.get('queueName') is not None:
@@ -12676,6 +13442,80 @@ class StartJobRunResponse(TeaModel):
         return self
 
 
+class StartKyuubiServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class StartKyuubiServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartKyuubiServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartKyuubiServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartLivyComputeRequest(TeaModel):
     def __init__(
         self,
@@ -13110,6 +13950,80 @@ class StartSessionClusterResponse(TeaModel):
         return self
 
 
+class StopKyuubiServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class StopKyuubiServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopKyuubiServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopKyuubiServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopLivyComputeRequest(TeaModel):
     def __init__(
         self,
@@ -13428,6 +14342,161 @@ class TerminateSqlStatementResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TerminateSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateKyuubiServiceRequest(TeaModel):
+    def __init__(
+        self,
+        compute_instance: str = None,
+        kyuubi_configs: str = None,
+        kyuubi_release_version: str = None,
+        name: str = None,
+        public_endpoint_enabled: bool = None,
+        queue: str = None,
+        release_version: str = None,
+        replica: int = None,
+        restart: bool = None,
+        spark_configs: str = None,
+    ):
+        self.compute_instance = compute_instance
+        self.kyuubi_configs = kyuubi_configs
+        self.kyuubi_release_version = kyuubi_release_version
+        self.name = name
+        self.public_endpoint_enabled = public_endpoint_enabled
+        self.queue = queue
+        self.release_version = release_version
+        self.replica = replica
+        self.restart = restart
+        self.spark_configs = spark_configs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_instance is not None:
+            result['computeInstance'] = self.compute_instance
+        if self.kyuubi_configs is not None:
+            result['kyuubiConfigs'] = self.kyuubi_configs
+        if self.kyuubi_release_version is not None:
+            result['kyuubiReleaseVersion'] = self.kyuubi_release_version
+        if self.name is not None:
+            result['name'] = self.name
+        if self.public_endpoint_enabled is not None:
+            result['publicEndpointEnabled'] = self.public_endpoint_enabled
+        if self.queue is not None:
+            result['queue'] = self.queue
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.restart is not None:
+            result['restart'] = self.restart
+        if self.spark_configs is not None:
+            result['sparkConfigs'] = self.spark_configs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('computeInstance') is not None:
+            self.compute_instance = m.get('computeInstance')
+        if m.get('kyuubiConfigs') is not None:
+            self.kyuubi_configs = m.get('kyuubiConfigs')
+        if m.get('kyuubiReleaseVersion') is not None:
+            self.kyuubi_release_version = m.get('kyuubiReleaseVersion')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('publicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('publicEndpointEnabled')
+        if m.get('queue') is not None:
+            self.queue = m.get('queue')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
+        if m.get('replica') is not None:
+            self.replica = m.get('replica')
+        if m.get('restart') is not None:
+            self.restart = m.get('restart')
+        if m.get('sparkConfigs') is not None:
+            self.spark_configs = m.get('sparkConfigs')
+        return self
+
+
+class UpdateKyuubiServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateKyuubiServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateKyuubiServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateKyuubiServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

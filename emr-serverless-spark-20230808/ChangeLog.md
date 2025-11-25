@@ -1,3 +1,20 @@
+2025-11-25 Version: 1.17.0
+- Support API CancelKyuubiSparkApplication.
+- Support API CreateKyuubiService.
+- Support API DeleteKyuubiService.
+- Support API GenerateTaskCodes.
+- Support API GetKyuubiService.
+- Support API StartKyuubiService.
+- Support API StopKyuubiService.
+- Support API UpdateKyuubiService.
+- Update API EditWorkspaceQueue: add request parameters body.resourceSpec.maxCu.
+- Update API GetJobRun: add response parameters Body.jobRun.notebookAccessUrl.
+- Update API ListJobRuns: add response parameters Body.jobRuns.$.resourceQueueId.
+- Update API ListKyuubiSparkApplications: add response parameters Body.applications.$.kyuubiServiceId.
+- Update API ListKyuubiSparkApplications: add response parameters Body.applications.$.runLog.
+- Update API ListWorkspaceQueues: add response parameters Body.queues.$.preheat.
+
+
 2025-10-17 Version: 1.16.0
 - Support API ListCatalogs.
 - Support API ListJobExecutors.

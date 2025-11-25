@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_emr-serverless-spark20230808.
+setup module for alibabacloud_emr_serverless_spark20230808.
 
-Created on 17/10/2025
+Created on 25/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_emr_serverless_spark20230808"
-NAME = "alibabacloud_emr-serverless-spark20230808" or "alibabacloud-package"
+NAME = "alibabacloud_emr_serverless_spark20230808" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud emr-serverless-spark (20230808) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
