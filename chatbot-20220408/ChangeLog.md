@@ -1,3 +1,7 @@
+2025-11-25 Version: 2.4.2
+- Update API ListTongyiConversationLogs: add response parameters Body.SessionFlowDebugInfo.
+
+
 2025-11-11 Version: 2.4.1
 - Update API DescribeFaq: add response parameters Body.Solutions.$.TagIdList.
 
