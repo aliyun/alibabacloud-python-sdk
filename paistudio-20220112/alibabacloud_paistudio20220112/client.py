@@ -800,6 +800,8 @@ class Client(OpenApiClient):
             body['AlgorithmSpec'] = request.algorithm_spec
         if not UtilClient.is_unset(request.algorithm_version):
             body['AlgorithmVersion'] = request.algorithm_version
+        if not UtilClient.is_unset(request.assign_node_spec):
+            body['AssignNodeSpec'] = request.assign_node_spec
         if not UtilClient.is_unset(request.code_dir):
             body['CodeDir'] = request.code_dir
         if not UtilClient.is_unset(request.compute_resource):
@@ -878,6 +880,8 @@ class Client(OpenApiClient):
             body['AlgorithmSpec'] = request.algorithm_spec
         if not UtilClient.is_unset(request.algorithm_version):
             body['AlgorithmVersion'] = request.algorithm_version
+        if not UtilClient.is_unset(request.assign_node_spec):
+            body['AssignNodeSpec'] = request.assign_node_spec
         if not UtilClient.is_unset(request.code_dir):
             body['CodeDir'] = request.code_dir
         if not UtilClient.is_unset(request.compute_resource):

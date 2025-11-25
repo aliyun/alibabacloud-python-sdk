@@ -7236,6 +7236,7 @@ class CreateTrainingJobRequest(TeaModel):
         algorithm_provider: str = None,
         algorithm_spec: AlgorithmSpec = None,
         algorithm_version: str = None,
+        assign_node_spec: AssignNodeSpec = None,
         code_dir: Location = None,
         compute_resource: CreateTrainingJobRequestComputeResource = None,
         environments: Dict[str, str] = None,
@@ -7258,6 +7259,7 @@ class CreateTrainingJobRequest(TeaModel):
         self.algorithm_provider = algorithm_provider
         self.algorithm_spec = algorithm_spec
         self.algorithm_version = algorithm_version
+        self.assign_node_spec = assign_node_spec
         self.code_dir = code_dir
         self.compute_resource = compute_resource
         self.environments = environments
@@ -7281,6 +7283,8 @@ class CreateTrainingJobRequest(TeaModel):
     def validate(self):
         if self.algorithm_spec:
             self.algorithm_spec.validate()
+        if self.assign_node_spec:
+            self.assign_node_spec.validate()
         if self.code_dir:
             self.code_dir.validate()
         if self.compute_resource:
@@ -7324,6 +7328,8 @@ class CreateTrainingJobRequest(TeaModel):
             result['AlgorithmSpec'] = self.algorithm_spec.to_map()
         if self.algorithm_version is not None:
             result['AlgorithmVersion'] = self.algorithm_version
+        if self.assign_node_spec is not None:
+            result['AssignNodeSpec'] = self.assign_node_spec.to_map()
         if self.code_dir is not None:
             result['CodeDir'] = self.code_dir.to_map()
         if self.compute_resource is not None:
@@ -7379,6 +7385,9 @@ class CreateTrainingJobRequest(TeaModel):
             self.algorithm_spec = temp_model.from_map(m['AlgorithmSpec'])
         if m.get('AlgorithmVersion') is not None:
             self.algorithm_version = m.get('AlgorithmVersion')
+        if m.get('AssignNodeSpec') is not None:
+            temp_model = AssignNodeSpec()
+            self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
         if m.get('CodeDir') is not None:
             temp_model = Location()
             self.code_dir = temp_model.from_map(m['CodeDir'])
@@ -10809,6 +10818,7 @@ class GetTrainingJobResponseBody(TeaModel):
         algorithm_provider: str = None,
         algorithm_spec: AlgorithmSpec = None,
         algorithm_version: str = None,
+        assign_node_spec: AssignNodeSpec = None,
         compute_resource: GetTrainingJobResponseBodyComputeResource = None,
         duration: int = None,
         environments: Dict[str, str] = None,
@@ -10847,6 +10857,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.algorithm_provider = algorithm_provider
         self.algorithm_spec = algorithm_spec
         self.algorithm_version = algorithm_version
+        self.assign_node_spec = assign_node_spec
         self.compute_resource = compute_resource
         self.duration = duration
         self.environments = environments
@@ -10883,6 +10894,8 @@ class GetTrainingJobResponseBody(TeaModel):
     def validate(self):
         if self.algorithm_spec:
             self.algorithm_spec.validate()
+        if self.assign_node_spec:
+            self.assign_node_spec.validate()
         if self.compute_resource:
             self.compute_resource.validate()
         if self.experiment_config:
@@ -10942,6 +10955,8 @@ class GetTrainingJobResponseBody(TeaModel):
             result['AlgorithmSpec'] = self.algorithm_spec.to_map()
         if self.algorithm_version is not None:
             result['AlgorithmVersion'] = self.algorithm_version
+        if self.assign_node_spec is not None:
+            result['AssignNodeSpec'] = self.assign_node_spec.to_map()
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
         if self.duration is not None:
@@ -11035,6 +11050,9 @@ class GetTrainingJobResponseBody(TeaModel):
             self.algorithm_spec = temp_model.from_map(m['AlgorithmSpec'])
         if m.get('AlgorithmVersion') is not None:
             self.algorithm_version = m.get('AlgorithmVersion')
+        if m.get('AssignNodeSpec') is not None:
+            temp_model = AssignNodeSpec()
+            self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
         if m.get('ComputeResource') is not None:
             temp_model = GetTrainingJobResponseBodyComputeResource()
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
@@ -14714,6 +14732,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         algorithm_name: str = None,
         algorithm_provider: str = None,
         algorithm_version: str = None,
+        assign_node_spec: AssignNodeSpec = None,
         compute_resource: ListTrainingJobsResponseBodyTrainingJobsComputeResource = None,
         dlc_job_id: str = None,
         environments: Dict[str, str] = None,
@@ -14742,6 +14761,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         self.algorithm_name = algorithm_name
         self.algorithm_provider = algorithm_provider
         self.algorithm_version = algorithm_version
+        self.assign_node_spec = assign_node_spec
         self.compute_resource = compute_resource
         self.dlc_job_id = dlc_job_id
         self.environments = environments
@@ -14768,6 +14788,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.assign_node_spec:
+            self.assign_node_spec.validate()
         if self.compute_resource:
             self.compute_resource.validate()
         if self.experiment_config:
@@ -14809,6 +14831,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
             result['AlgorithmProvider'] = self.algorithm_provider
         if self.algorithm_version is not None:
             result['AlgorithmVersion'] = self.algorithm_version
+        if self.assign_node_spec is not None:
+            result['AssignNodeSpec'] = self.assign_node_spec.to_map()
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
         if self.dlc_job_id is not None:
@@ -14877,6 +14901,9 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
             self.algorithm_provider = m.get('AlgorithmProvider')
         if m.get('AlgorithmVersion') is not None:
             self.algorithm_version = m.get('AlgorithmVersion')
+        if m.get('AssignNodeSpec') is not None:
+            temp_model = AssignNodeSpec()
+            self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
         if m.get('ComputeResource') is not None:
             temp_model = ListTrainingJobsResponseBodyTrainingJobsComputeResource()
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
