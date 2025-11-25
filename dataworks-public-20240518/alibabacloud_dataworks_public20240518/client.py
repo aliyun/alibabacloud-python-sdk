@@ -1236,6 +1236,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_component_with_options_async(request, runtime)
 
+    def create_compute_resource_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateComputeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_compute_resource_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateComputeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_compute_resource(
+        self,
+        request: dataworks_public_20240518_models.CreateComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.CreateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateComputeResourceRequest
+        @return: CreateComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_compute_resource_with_options(request, runtime)
+
+    async def create_compute_resource_async(
+        self,
+        request: dataworks_public_20240518_models.CreateComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.CreateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateComputeResourceRequest
+        @return: CreateComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_compute_resource_with_options_async(request, runtime)
+
     def create_dialarm_rule_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
@@ -5948,6 +6064,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_component_with_options_async(request, runtime)
 
+    def delete_compute_resource_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteComputeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_compute_resource_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteComputeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_compute_resource(
+        self,
+        request: dataworks_public_20240518_models.DeleteComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.DeleteComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteComputeResourceRequest
+        @return: DeleteComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_compute_resource_with_options(request, runtime)
+
+    async def delete_compute_resource_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.DeleteComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteComputeResourceRequest
+        @return: DeleteComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_compute_resource_with_options_async(request, runtime)
+
     def delete_dialarm_rule_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
@@ -9943,6 +10159,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_component_with_options_async(request, runtime)
+
+    def get_compute_resource_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetComputeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_resource_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetComputeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_resource(
+        self,
+        request: dataworks_public_20240518_models.GetComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.GetComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetComputeResourceRequest
+        @return: GetComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_compute_resource_with_options(request, runtime)
+
+    async def get_compute_resource_async(
+        self,
+        request: dataworks_public_20240518_models.GetComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.GetComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetComputeResourceRequest
+        @return: GetComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_compute_resource_with_options_async(request, runtime)
 
     def get_create_workflow_instances_result_with_options(
         self,
@@ -15261,6 +15577,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_components_with_options_async(request, runtime)
+
+    def list_compute_resources_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListComputeResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListComputeResourcesResponse:
+        """
+        @summary 验证用
+        
+        @param tmp_req: ListComputeResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComputeResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListComputeResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListComputeResources',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListComputeResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compute_resources_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListComputeResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListComputeResourcesResponse:
+        """
+        @summary 验证用
+        
+        @param tmp_req: ListComputeResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComputeResourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListComputeResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.types_shrink):
+            query['Types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListComputeResources',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListComputeResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compute_resources(
+        self,
+        request: dataworks_public_20240518_models.ListComputeResourcesRequest,
+    ) -> dataworks_public_20240518_models.ListComputeResourcesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListComputeResourcesRequest
+        @return: ListComputeResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_compute_resources_with_options(request, runtime)
+
+    async def list_compute_resources_async(
+        self,
+        request: dataworks_public_20240518_models.ListComputeResourcesRequest,
+    ) -> dataworks_public_20240518_models.ListComputeResourcesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListComputeResourcesRequest
+        @return: ListComputeResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_compute_resources_with_options_async(request, runtime)
 
     def list_crawler_types_with_options(
         self,
@@ -24871,6 +25319,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_component_with_options_async(request, runtime)
+
+    def update_compute_resource_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateComputeResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_resource_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateComputeResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateComputeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeResource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateComputeResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_resource(
+        self,
+        request: dataworks_public_20240518_models.UpdateComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.UpdateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateComputeResourceRequest
+        @return: UpdateComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_compute_resource_with_options(request, runtime)
+
+    async def update_compute_resource_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateComputeResourceRequest,
+    ) -> dataworks_public_20240518_models.UpdateComputeResourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateComputeResourceRequest
+        @return: UpdateComputeResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_compute_resource_with_options_async(request, runtime)
 
     def update_dialarm_rule_with_options(
         self,

@@ -2246,6 +2246,110 @@ class Database(TeaModel):
         return self
 
 
+class IdentifyCredentialDataSource(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        password: str = None,
+        role: str = None,
+        type: str = None,
+        user_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.password = password
+        self.role = role
+        self.type = type
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class IdentifyCredential(TeaModel):
+    def __init__(
+        self,
+        data_source: IdentifyCredentialDataSource = None,
+        project_id: str = None,
+        user_id: str = None,
+        user_type: str = None,
+    ):
+        self.data_source = data_source
+        self.project_id = project_id
+        self.user_id = user_id
+        self.user_type = user_type
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSource') is not None:
+            temp_model = IdentifyCredentialDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        return self
+
+
 class LineageEntity(TeaModel):
     def __init__(
         self,
@@ -5127,6 +5231,142 @@ class CreateComponentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateComponentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateComputeResourceRequest(TeaModel):
+    def __init__(
+        self,
+        connection_properties: str = None,
+        connection_properties_mode: str = None,
+        description: str = None,
+        name: str = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.connection_properties = connection_properties
+        # This parameter is required.
+        self.connection_properties_mode = connection_properties_mode
+        self.description = description
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+        if self.connection_properties_mode is not None:
+            result['ConnectionPropertiesMode'] = self.connection_properties_mode
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
+        if m.get('ConnectionPropertiesMode') is not None:
+            self.connection_properties_mode = m.get('ConnectionPropertiesMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateComputeResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateComputeResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateComputeResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateComputeResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15374,6 +15614,114 @@ class DeleteComponentResponse(TeaModel):
         return self
 
 
+class DeleteComputeResourceRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class DeleteComputeResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteComputeResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteComputeResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteComputeResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDIAlarmRuleRequest(TeaModel):
     def __init__(
         self,
@@ -21450,6 +21798,216 @@ class GetComponentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetComponentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetComputeResourceRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetComputeResourceResponseBodyComputeResource(TeaModel):
+    def __init__(
+        self,
+        connection_properties: Any = None,
+        connection_properties_mode: str = None,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        project_id: int = None,
+        qualified_name: str = None,
+        type: str = None,
+        whether_default: bool = None,
+    ):
+        self.connection_properties = connection_properties
+        self.connection_properties_mode = connection_properties_mode
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.project_id = project_id
+        self.qualified_name = qualified_name
+        self.type = type
+        self.whether_default = whether_default
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+        if self.connection_properties_mode is not None:
+            result['ConnectionPropertiesMode'] = self.connection_properties_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.qualified_name is not None:
+            result['QualifiedName'] = self.qualified_name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.whether_default is not None:
+            result['WhetherDefault'] = self.whether_default
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
+        if m.get('ConnectionPropertiesMode') is not None:
+            self.connection_properties_mode = m.get('ConnectionPropertiesMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('QualifiedName') is not None:
+            self.qualified_name = m.get('QualifiedName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WhetherDefault') is not None:
+            self.whether_default = m.get('WhetherDefault')
+        return self
+
+
+class GetComputeResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        compute_resource: GetComputeResourceResponseBodyComputeResource = None,
+        request_id: str = None,
+    ):
+        self.compute_resource = compute_resource
+        self.request_id = request_id
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            temp_model = GetComputeResourceResponseBodyComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetComputeResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetComputeResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetComputeResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39996,6 +40554,397 @@ class ListComponentsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListComponentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListComputeResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        sort_by: str = None,
+        types: List[str] = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.sort_by = sort_by
+        self.types = types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.types is not None:
+            result['Types'] = self.types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Types') is not None:
+            self.types = m.get('Types')
+        return self
+
+
+class ListComputeResourcesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        sort_by: str = None,
+        types_shrink: str = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.sort_by = sort_by
+        self.types_shrink = types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.types_shrink is not None:
+            result['Types'] = self.types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Types') is not None:
+            self.types_shrink = m.get('Types')
+        return self
+
+
+class ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource(TeaModel):
+    def __init__(
+        self,
+        connection_properties: Any = None,
+        connection_properties_mode: str = None,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        whether_default: bool = None,
+    ):
+        self.connection_properties = connection_properties
+        self.connection_properties_mode = connection_properties_mode
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.whether_default = whether_default
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+        if self.connection_properties_mode is not None:
+            result['ConnectionPropertiesMode'] = self.connection_properties_mode
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.whether_default is not None:
+            result['WhetherDefault'] = self.whether_default
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
+        if m.get('ConnectionPropertiesMode') is not None:
+            self.connection_properties_mode = m.get('ConnectionPropertiesMode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('WhetherDefault') is not None:
+            self.whether_default = m.get('WhetherDefault')
+        return self
+
+
+class ListComputeResourcesResponseBodyPagingInfoComputeResources(TeaModel):
+    def __init__(
+        self,
+        compute_resource: List[ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource] = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.compute_resource = compute_resource
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        if self.compute_resource:
+            for k in self.compute_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComputeResource'] = []
+        if self.compute_resource is not None:
+            for k in self.compute_resource:
+                result['ComputeResource'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compute_resource = []
+        if m.get('ComputeResource') is not None:
+            for k in m.get('ComputeResource'):
+                temp_model = ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource()
+                self.compute_resource.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListComputeResourcesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        compute_resources: List[ListComputeResourcesResponseBodyPagingInfoComputeResources] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.compute_resources = compute_resources
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.compute_resources:
+            for k in self.compute_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComputeResources'] = []
+        if self.compute_resources is not None:
+            for k in self.compute_resources:
+                result['ComputeResources'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compute_resources = []
+        if m.get('ComputeResources') is not None:
+            for k in m.get('ComputeResources'):
+                temp_model = ListComputeResourcesResponseBodyPagingInfoComputeResources()
+                self.compute_resources.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListComputeResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListComputeResourcesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListComputeResourcesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListComputeResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListComputeResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListComputeResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -58974,12 +59923,57 @@ class ListResourceGroupMetricDataRequest(TeaModel):
         period: str = None,
         resource_group_id: str = None,
     ):
+        # Start Time
+        # 
+        # Supported format:
+        # 
+        # *   Unix timestamp, representing the number of milliseconds that have elapsed since January 1, 1970.
+        # 
+        # The interval between BeginTime and EndTime must be 31 days or less.
+        # 
+        # Default: The current time minus 2 hours, expressed as a millisecond Unix timestamp.
         self.begin_time = begin_time
+        # End Time
+        # 
+        # Supported format:
+        # 
+        # *   Unix timestamp, representing the number of milliseconds that have elapsed since January 1, 1970.
+        # 
+        # The interval between BeginTime and EndTime must be 31 days or less.
+        # 
+        # Default: The current time, expressed as a millisecond Unix timestamp.
         self.end_time = end_time
         self.length = length
+        # The metric name. Available metrics include:
+        # 
+        # *   CUSpec: Maximum CU capacity of the resource group, in CUs.
+        # *   CUUsage: CU usage of the resource group, in CUs.
+        # *   CUUtilization: CU utilization of the resource group, in %.
+        # *   SlotSpec: Maximum concurrency for resource group scheduling, in slots.
+        # *   SlotUsage: Used concurrency for resource group scheduling, in slots.
+        # *   SchedulerCUMaxSpec: Maximum CU quota for data computing, in CUs.
+        # *   SchedulerCUUsage: CU usage for data computing, in CUs.
+        # *   SchedulerCUMinSpec: Minimum guaranteed CUs for data computing, in CUs.
+        # *   DataIntegrationCUMaxSpec: Maximum CU quota for Data Integration, in CUs.
+        # *   DataIntegrationCUUsage: CU usage for Data Integration, in CUs.
+        # *   DataIntegrationCUMinSpec: Minimum guaranteed CUs for Data Integration, in CUs.
+        # *   DataServiceCUMaxSpec: Maximum CU quota for dataservice, in CUs.
+        # *   DataServiceCUUsage: CU usage for DataService Studio, in CUs.
+        # *   DataServiceCUMinSpec: Minimum guaranteed CUs for DataService Studio, in CUs.
+        # *   ServerIdeCUMaxSpec: Maximum CU quota for personal development environment, in CUs.
+        # *   ServerIdeCUUsage: CU usage for personal development environment, in CUs.
+        # *   ServerIdeCUMinSpec: Minimum guaranteed CUs for personal development environment, in CUs.
+        # 
         # This parameter is required.
         self.metric_name = metric_name
         self.next_token = next_token
+        # The statistical period for monitoring data.
+        # 
+        # Value: A multiple of 60.
+        # 
+        # Unit: Seconds.
+        # 
+        # Default: 60
         self.period = period
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -59070,6 +60064,25 @@ class ListResourceGroupMetricDataResponseBodyMetricData(TeaModel):
         next_token: str = None,
     ):
         self.id = id
+        # The metric name. Available metrics include:
+        # 
+        # *   CUSpec: Maximum CU capacity of the resource group, in CUs.
+        # *   CUUsage: CU usage of the resource group, in CUs.
+        # *   CUUtilization: CU utilization of the resource group, in %.
+        # *   SlotSpec: Maximum concurrency for resource group scheduling, in slots.
+        # *   SlotUsage: Used concurrency for resource group scheduling, in slots.
+        # *   SchedulerCUMaxSpec: Maximum CU quota for data computing, in CUs.
+        # *   SchedulerCUUsage: CU usage for data computing, in CUs.
+        # *   SchedulerCUMinSpec: Minimum guaranteed CUs for data computing, in CUs.
+        # *   DataIntegrationCUMaxSpec: Maximum CU quota for Data Integration, in CUs.
+        # *   DataIntegrationCUUsage: CU usage for Data Integration, in CUs.
+        # *   DataIntegrationCUMinSpec: Minimum guaranteed CUs for Data Integration, in CUs.
+        # *   DataServiceCUMaxSpec: Maximum CU quota for DataService Studio, in CUs.
+        # *   DataServiceCUUsage: CU usage for DataService Studio, in CUs.
+        # *   DataServiceCUMinSpec: Minimum guaranteed CUs for DataService Studio, in CUs.
+        # *   ServerIdeCUMaxSpec: Maximum CU quota for personal development environment, in CUs.
+        # *   ServerIdeCUUsage: CU usage for personal development environment, in CUs.
+        # *   ServerIdeCUMinSpec: Minimum guaranteed CUs for personal development environment, in CUs.
         self.metric_name = metric_name
         self.metrics = metrics
         self.next_token = next_token
@@ -59121,6 +60134,7 @@ class ListResourceGroupMetricDataResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Monitoring metric data.
         self.metric_data = metric_data
         self.request_id = request_id
         self.success = success
@@ -72481,6 +73495,134 @@ class UpdateComponentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateComponentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateComputeResourceRequest(TeaModel):
+    def __init__(
+        self,
+        connection_properties: str = None,
+        connection_properties_mode: str = None,
+        description: str = None,
+        id: int = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.connection_properties = connection_properties
+        self.connection_properties_mode = connection_properties_mode
+        self.description = description
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_properties is not None:
+            result['ConnectionProperties'] = self.connection_properties
+        if self.connection_properties_mode is not None:
+            result['ConnectionPropertiesMode'] = self.connection_properties_mode
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionProperties') is not None:
+            self.connection_properties = m.get('ConnectionProperties')
+        if m.get('ConnectionPropertiesMode') is not None:
+            self.connection_properties_mode = m.get('ConnectionPropertiesMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class UpdateComputeResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateComputeResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateComputeResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateComputeResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
