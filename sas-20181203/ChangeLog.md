@@ -1,3 +1,16 @@
+2025-11-25 Version: 7.0.0
+- Support API CreateCheckPolicy.
+- Support API GetInstanceAuthRange.
+- Support API ListCloudAssetMatchOperators.
+- Support API ListCloudAssetSchemas.
+- Support API ListMultiUserInstances.
+- Support API UpdateCheckPolicy.
+- Support API UpdateMultiUserInstances.
+- Update API DescribeExposedStatisticsDetail: add request parameters ExposureIp.
+- Update API DescribeExposedStatisticsDetail: add request parameters InstanceId.
+- Update API DescribeVulList: update response parameters Body.VulRecords.$.GroupId' format has changed.
+
+
 2025-11-13 Version: 6.1.0
 - Support API CreateCheckItem.
 - Support API DeleteCheckItem.
