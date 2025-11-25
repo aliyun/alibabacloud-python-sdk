@@ -20912,6 +20912,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.bizdate):
             body['Bizdate'] = request.bizdate
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.ids_shrink):
@@ -20944,6 +20946,8 @@ class Client(OpenApiClient):
             body['TriggerRecurrence'] = request.trigger_recurrence
         if not UtilClient.is_unset(request.trigger_type):
             body['TriggerType'] = request.trigger_type
+        if not UtilClient.is_unset(request.unified_workflow_instance_id):
+            body['UnifiedWorkflowInstanceId'] = request.unified_workflow_instance_id
         if not UtilClient.is_unset(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -20993,6 +20997,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.bizdate):
             body['Bizdate'] = request.bizdate
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.ids_shrink):
@@ -21025,6 +21031,8 @@ class Client(OpenApiClient):
             body['TriggerRecurrence'] = request.trigger_recurrence
         if not UtilClient.is_unset(request.trigger_type):
             body['TriggerType'] = request.trigger_type
+        if not UtilClient.is_unset(request.unified_workflow_instance_id):
+            body['UnifiedWorkflowInstanceId'] = request.unified_workflow_instance_id
         if not UtilClient.is_unset(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -21639,9 +21647,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ids):
             request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.biz_date):
             body['BizDate'] = request.biz_date
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
         if not UtilClient.is_unset(request.ids_shrink):
             body['Ids'] = request.ids_shrink
         if not UtilClient.is_unset(request.name):
@@ -21656,8 +21668,12 @@ class Client(OpenApiClient):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.sort_by):
             body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
+        if not UtilClient.is_unset(request.unified_workflow_instance_id):
+            body['UnifiedWorkflowInstanceId'] = request.unified_workflow_instance_id
         if not UtilClient.is_unset(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
@@ -21698,9 +21714,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ids):
             request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.biz_date):
             body['BizDate'] = request.biz_date
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
         if not UtilClient.is_unset(request.ids_shrink):
             body['Ids'] = request.ids_shrink
         if not UtilClient.is_unset(request.name):
@@ -21715,8 +21735,12 @@ class Client(OpenApiClient):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.sort_by):
             body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
+        if not UtilClient.is_unset(request.unified_workflow_instance_id):
+            body['UnifiedWorkflowInstanceId'] = request.unified_workflow_instance_id
         if not UtilClient.is_unset(request.workflow_id):
             body['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
@@ -21787,6 +21811,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ids):
             request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.env_type):
             body['EnvType'] = request.env_type
@@ -21804,6 +21830,8 @@ class Client(OpenApiClient):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.sort_by):
             body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.trigger_type):
             body['TriggerType'] = request.trigger_type
         req = open_api_models.OpenApiRequest(
@@ -21844,6 +21872,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ids):
             request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.env_type):
             body['EnvType'] = request.env_type
@@ -21861,6 +21891,8 @@ class Client(OpenApiClient):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.sort_by):
             body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.trigger_type):
             body['TriggerType'] = request.trigger_type
         req = open_api_models.OpenApiRequest(

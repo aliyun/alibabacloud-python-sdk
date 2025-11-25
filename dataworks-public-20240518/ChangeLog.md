@@ -1,3 +1,17 @@
+2025-11-25 Version: 7.6.1
+- Update API GetCreateWorkflowInstancesResult: add response parameters Body.Result.UnifiedWorkflowInstanceIds.
+- Update API GetTaskInstance: add response parameters Body.TaskInstance.UnifiedWorkflowInstanceId.
+- Update API GetWorkflowInstance: add response parameters Body.WorkflowInstance.UnifiedWorkflowInstanceId.
+- Update API ListTaskInstances: add request parameters Filter.
+- Update API ListTaskInstances: add request parameters UnifiedWorkflowInstanceId.
+- Update API ListTaskInstances: add response parameters Body.PagingInfo.TaskInstances.$.UnifiedWorkflowInstanceId.
+- Update API ListWorkflowInstances: add request parameters Filter.
+- Update API ListWorkflowInstances: add request parameters Tags.
+- Update API ListWorkflowInstances: add request parameters UnifiedWorkflowInstanceId.
+- Update API ListWorkflowInstances: add response parameters Body.PagingInfo.WorkflowInstances.$.UnifiedWorkflowInstanceId.
+- Update API ListWorkflows: add request parameters Tags.
+
+
 2025-11-25 Version: 7.6.0
 - Support API CreateComputeResource.
 - Support API DeleteComputeResource.

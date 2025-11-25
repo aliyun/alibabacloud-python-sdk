@@ -15622,6 +15622,7 @@ class DeleteComputeResourceRequest(TeaModel):
     ):
         # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -22047,6 +22048,7 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
         self,
         failure_message: str = None,
         status: str = None,
+        unified_workflow_instance_ids: List[int] = None,
         workflow_instance_ids: List[int] = None,
         workflow_task_instance_ids: List[int] = None,
     ):
@@ -22058,6 +22060,7 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
         # *   Created
         # *   CreateFailure
         self.status = status
+        self.unified_workflow_instance_ids = unified_workflow_instance_ids
         # The workflow instance IDs. This parameter is returned only if the creation is successful.
         self.workflow_instance_ids = workflow_instance_ids
         self.workflow_task_instance_ids = workflow_task_instance_ids
@@ -22075,6 +22078,8 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
             result['FailureMessage'] = self.failure_message
         if self.status is not None:
             result['Status'] = self.status
+        if self.unified_workflow_instance_ids is not None:
+            result['UnifiedWorkflowInstanceIds'] = self.unified_workflow_instance_ids
         if self.workflow_instance_ids is not None:
             result['WorkflowInstanceIds'] = self.workflow_instance_ids
         if self.workflow_task_instance_ids is not None:
@@ -22087,6 +22092,8 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
             self.failure_message = m.get('FailureMessage')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('UnifiedWorkflowInstanceIds') is not None:
+            self.unified_workflow_instance_ids = m.get('UnifiedWorkflowInstanceIds')
         if m.get('WorkflowInstanceIds') is not None:
             self.workflow_instance_ids = m.get('WorkflowInstanceIds')
         if m.get('WorkflowTaskInstanceIds') is not None:
@@ -35826,6 +35833,7 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
         trigger_recurrence: str = None,
         trigger_time: int = None,
         trigger_type: str = None,
+        unified_workflow_instance_id: int = None,
         waiting_resource_time: int = None,
         waiting_trigger_time: int = None,
         workflow_id: int = None,
@@ -35922,6 +35930,7 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
         # *   Scheduler
         # *   Manual
         self.trigger_type = trigger_type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         self.waiting_resource_time = waiting_resource_time
         self.waiting_trigger_time = waiting_trigger_time
         # The ID of the workflow to which the instance belongs.
@@ -36030,6 +36039,8 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
             result['TriggerTime'] = self.trigger_time
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.waiting_resource_time is not None:
             result['WaitingResourceTime'] = self.waiting_resource_time
         if self.waiting_trigger_time is not None:
@@ -36119,6 +36130,8 @@ class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
             self.trigger_time = m.get('TriggerTime')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WaitingResourceTime') is not None:
             self.waiting_resource_time = m.get('WaitingResourceTime')
         if m.get('WaitingTriggerTime') is not None:
@@ -37372,6 +37385,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         status: str = None,
         tags: List[GetWorkflowInstanceResponseBodyWorkflowInstanceTags] = None,
         type: str = None,
+        unified_workflow_instance_id: int = None,
         workflow_id: int = None,
         workflow_parameters: str = None,
         workflow_task_instance_id: int = None,
@@ -37424,6 +37438,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         # *   ManualWorkflow: Manually triggered workflow
         # *   TriggerWorkflow: Triggered Workflow
         self.type = type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow parameters.
@@ -37474,6 +37489,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         if self.workflow_parameters is not None:
@@ -37517,6 +37534,8 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowParameters') is not None:
@@ -62494,6 +62513,7 @@ class ListTaskInstancesRequest(TeaModel):
     def __init__(
         self,
         bizdate: int = None,
+        filter: str = None,
         id: int = None,
         ids: List[int] = None,
         owner: str = None,
@@ -62510,6 +62530,7 @@ class ListTaskInstancesRequest(TeaModel):
         task_type: str = None,
         trigger_recurrence: str = None,
         trigger_type: str = None,
+        unified_workflow_instance_id: int = None,
         workflow_id: int = None,
         workflow_instance_id: int = None,
         workflow_instance_type: str = None,
@@ -62518,6 +62539,7 @@ class ListTaskInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.bizdate = bizdate
+        self.filter = filter
         # The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
         self.id = id
         # The IDs of the instances. You can query multiple instances at a time by instance ID.
@@ -62581,6 +62603,7 @@ class ListTaskInstancesRequest(TeaModel):
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow instance ID.
@@ -62605,6 +62628,8 @@ class ListTaskInstancesRequest(TeaModel):
         result = dict()
         if self.bizdate is not None:
             result['Bizdate'] = self.bizdate
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.id is not None:
             result['Id'] = self.id
         if self.ids is not None:
@@ -62637,6 +62662,8 @@ class ListTaskInstancesRequest(TeaModel):
             result['TriggerRecurrence'] = self.trigger_recurrence
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         if self.workflow_instance_id is not None:
@@ -62649,6 +62676,8 @@ class ListTaskInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('Bizdate') is not None:
             self.bizdate = m.get('Bizdate')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Ids') is not None:
@@ -62681,6 +62710,8 @@ class ListTaskInstancesRequest(TeaModel):
             self.trigger_recurrence = m.get('TriggerRecurrence')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowInstanceId') is not None:
@@ -62694,6 +62725,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
     def __init__(
         self,
         bizdate: int = None,
+        filter: str = None,
         id: int = None,
         ids_shrink: str = None,
         owner: str = None,
@@ -62710,6 +62742,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         task_type: str = None,
         trigger_recurrence: str = None,
         trigger_type: str = None,
+        unified_workflow_instance_id: int = None,
         workflow_id: int = None,
         workflow_instance_id: int = None,
         workflow_instance_type: str = None,
@@ -62718,6 +62751,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.bizdate = bizdate
+        self.filter = filter
         # The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
         self.id = id
         # The IDs of the instances. You can query multiple instances at a time by instance ID.
@@ -62781,6 +62815,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow instance ID.
@@ -62805,6 +62840,8 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         result = dict()
         if self.bizdate is not None:
             result['Bizdate'] = self.bizdate
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.id is not None:
             result['Id'] = self.id
         if self.ids_shrink is not None:
@@ -62837,6 +62874,8 @@ class ListTaskInstancesShrinkRequest(TeaModel):
             result['TriggerRecurrence'] = self.trigger_recurrence
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         if self.workflow_instance_id is not None:
@@ -62849,6 +62888,8 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Bizdate') is not None:
             self.bizdate = m.get('Bizdate')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Ids') is not None:
@@ -62881,6 +62922,8 @@ class ListTaskInstancesShrinkRequest(TeaModel):
             self.trigger_recurrence = m.get('TriggerRecurrence')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowInstanceId') is not None:
@@ -63027,6 +63070,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         trigger_recurrence: str = None,
         trigger_time: int = None,
         trigger_type: str = None,
+        unified_workflow_instance_id: int = None,
         waiting_resource_time: int = None,
         waiting_trigger_time: int = None,
         workflow_id: int = None,
@@ -63127,6 +63171,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The timestamp for when it started waiting for resources.
         self.waiting_resource_time = waiting_resource_time
         # The timestamp for when it started waiting for the scheduled time.
@@ -63221,6 +63266,8 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
             result['TriggerTime'] = self.trigger_time
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.waiting_resource_time is not None:
             result['WaitingResourceTime'] = self.waiting_resource_time
         if self.waiting_trigger_time is not None:
@@ -63298,6 +63345,8 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
             self.trigger_time = m.get('TriggerTime')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WaitingResourceTime') is not None:
             self.waiting_resource_time = m.get('WaitingResourceTime')
         if m.get('WaitingTriggerTime') is not None:
@@ -66837,6 +66886,7 @@ class ListWorkflowInstancesRequest(TeaModel):
     def __init__(
         self,
         biz_date: int = None,
+        filter: str = None,
         ids: List[int] = None,
         name: str = None,
         owner: str = None,
@@ -66844,13 +66894,16 @@ class ListWorkflowInstancesRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
         sort_by: str = None,
+        tags: List[str] = None,
         type: str = None,
+        unified_workflow_instance_id: int = None,
         workflow_id: int = None,
     ):
         # The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
         # 
         # This parameter is required.
         self.biz_date = biz_date
+        self.filter = filter
         # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
         self.ids = ids
         # The instance name. Fuzzy match is supported.
@@ -66875,6 +66928,7 @@ class ListWorkflowInstancesRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
+        self.tags = tags
         # The type of the workflow instance. Valid values:
         # 
         # *   Normal: Scheduled execution
@@ -66884,6 +66938,7 @@ class ListWorkflowInstancesRequest(TeaModel):
         # *   ManualWorkflow: Manually triggered workflow
         # *   TriggerWorkflow: Triggered Workflow
         self.type = type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
 
@@ -66898,6 +66953,8 @@ class ListWorkflowInstancesRequest(TeaModel):
         result = dict()
         if self.biz_date is not None:
             result['BizDate'] = self.biz_date
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.ids is not None:
             result['Ids'] = self.ids
         if self.name is not None:
@@ -66912,8 +66969,12 @@ class ListWorkflowInstancesRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.type is not None:
             result['Type'] = self.type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         return result
@@ -66922,6 +66983,8 @@ class ListWorkflowInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('BizDate') is not None:
             self.biz_date = m.get('BizDate')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('Ids') is not None:
             self.ids = m.get('Ids')
         if m.get('Name') is not None:
@@ -66936,8 +66999,12 @@ class ListWorkflowInstancesRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         return self
@@ -66947,6 +67014,7 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
     def __init__(
         self,
         biz_date: int = None,
+        filter: str = None,
         ids_shrink: str = None,
         name: str = None,
         owner: str = None,
@@ -66954,13 +67022,16 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
         sort_by: str = None,
+        tags_shrink: str = None,
         type: str = None,
+        unified_workflow_instance_id: int = None,
         workflow_id: int = None,
     ):
         # The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
         # 
         # This parameter is required.
         self.biz_date = biz_date
+        self.filter = filter
         # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
         self.ids_shrink = ids_shrink
         # The instance name. Fuzzy match is supported.
@@ -66985,6 +67056,7 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
+        self.tags_shrink = tags_shrink
         # The type of the workflow instance. Valid values:
         # 
         # *   Normal: Scheduled execution
@@ -66994,6 +67066,7 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         # *   ManualWorkflow: Manually triggered workflow
         # *   TriggerWorkflow: Triggered Workflow
         self.type = type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
 
@@ -67008,6 +67081,8 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         result = dict()
         if self.biz_date is not None:
             result['BizDate'] = self.biz_date
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.ids_shrink is not None:
             result['Ids'] = self.ids_shrink
         if self.name is not None:
@@ -67022,8 +67097,12 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
         if self.type is not None:
             result['Type'] = self.type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         return result
@@ -67032,6 +67111,8 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('BizDate') is not None:
             self.biz_date = m.get('BizDate')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('Ids') is not None:
             self.ids_shrink = m.get('Ids')
         if m.get('Name') is not None:
@@ -67046,8 +67127,12 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         return self
@@ -67106,6 +67191,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         status: str = None,
         tags: List[ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags] = None,
         type: str = None,
+        unified_workflow_instance_id: int = None,
         workflow_id: int = None,
         workflow_parameters: str = None,
         workflow_task_instance_id: int = None,
@@ -67157,6 +67243,7 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         # *   ManualWorkflow: Manually triggered workflow
         # *   TriggerWorkflow: Triggered Workflow
         self.type = type
+        self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow parameters.
@@ -67207,6 +67294,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
+        if self.unified_workflow_instance_id is not None:
+            result['UnifiedWorkflowInstanceId'] = self.unified_workflow_instance_id
         if self.workflow_id is not None:
             result['WorkflowId'] = self.workflow_id
         if self.workflow_parameters is not None:
@@ -67250,6 +67339,8 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UnifiedWorkflowInstanceId') is not None:
+            self.unified_workflow_instance_id = m.get('UnifiedWorkflowInstanceId')
         if m.get('WorkflowId') is not None:
             self.workflow_id = m.get('WorkflowId')
         if m.get('WorkflowParameters') is not None:
@@ -67405,6 +67496,7 @@ class ListWorkflowsRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
         sort_by: str = None,
+        tags: List[str] = None,
         trigger_type: str = None,
     ):
         # The environment of the workspace. Valid values:
@@ -67434,6 +67526,7 @@ class ListWorkflowsRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
+        self.tags = tags
         # The trigger type.
         # 
         # *   Scheduler
@@ -67465,6 +67558,8 @@ class ListWorkflowsRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
         return result
@@ -67487,6 +67582,8 @@ class ListWorkflowsRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
         return self
@@ -67503,6 +67600,7 @@ class ListWorkflowsShrinkRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
         sort_by: str = None,
+        tags_shrink: str = None,
         trigger_type: str = None,
     ):
         # The environment of the workspace. Valid values:
@@ -67532,6 +67630,7 @@ class ListWorkflowsShrinkRequest(TeaModel):
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
+        self.tags_shrink = tags_shrink
         # The trigger type.
         # 
         # *   Scheduler
@@ -67563,6 +67662,8 @@ class ListWorkflowsShrinkRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
         return result
@@ -67585,6 +67686,8 @@ class ListWorkflowsShrinkRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
         return self
