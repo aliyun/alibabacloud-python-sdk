@@ -1,3 +1,12 @@
+2025-11-25 Version: 7.0.2
+- Update API CreateCloudResource: add request parameters Redirect.MaxBodySize.
+- Update API CreateDomain: add request parameters Redirect.MaxBodySize.
+- Update API DescribeCloudResourceAccessPortDetails: add response parameters Body.AccessPortDetails.$.MaxBodySize.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.MaxBodySize.
+- Update API ModifyCloudResource: add request parameters Redirect.MaxBodySize.
+- Update API ModifyDomain: add request parameters Redirect.MaxBodySize.
+
+
 2025-11-19 Version: 7.0.1
 - Update API DeleteCloudResource: add request parameters CloudResourceId.
 - Update API DescribeAbnormalCloudResources: add response parameters Body.AbnormalCloudResources.$.CloudResourceId.

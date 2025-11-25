@@ -929,6 +929,7 @@ class CreateCloudResourceRequestRedirect(TeaModel):
         keepalive: bool = None,
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
+        max_body_size: int = None,
         read_timeout: int = None,
         request_headers: List[CreateCloudResourceRequestRedirectRequestHeaders] = None,
         write_timeout: int = None,
@@ -949,6 +950,7 @@ class CreateCloudResourceRequestRedirect(TeaModel):
         # 
         # >  This parameter specifies the period of time after which an idle persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
+        self.max_body_size = max_body_size
         # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
         # The custom header fields. Specify the value in the [**{"k":"*key*","v":"*value*"}**] format. ***key*** specifies the key of a custom header field. ***value*** specifies the value of a custom header field.
@@ -991,6 +993,8 @@ class CreateCloudResourceRequestRedirect(TeaModel):
             result['KeepaliveRequests'] = self.keepalive_requests
         if self.keepalive_timeout is not None:
             result['KeepaliveTimeout'] = self.keepalive_timeout
+        if self.max_body_size is not None:
+            result['MaxBodySize'] = self.max_body_size
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
         result['RequestHeaders'] = []
@@ -1015,6 +1019,8 @@ class CreateCloudResourceRequestRedirect(TeaModel):
             self.keepalive_requests = m.get('KeepaliveRequests')
         if m.get('KeepaliveTimeout') is not None:
             self.keepalive_timeout = m.get('KeepaliveTimeout')
+        if m.get('MaxBodySize') is not None:
+            self.max_body_size = m.get('MaxBodySize')
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
         self.request_headers = []
@@ -2506,6 +2512,7 @@ class CreateDomainRequestRedirect(TeaModel):
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
         loadbalance: str = None,
+        max_body_size: int = None,
         read_timeout: int = None,
         request_headers: List[CreateDomainRequestRedirectRequestHeaders] = None,
         retry: bool = None,
@@ -2557,6 +2564,7 @@ class CreateDomainRequestRedirect(TeaModel):
         # 
         # This parameter is required.
         self.loadbalance = loadbalance
+        self.max_body_size = max_body_size
         # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
         # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
@@ -2633,6 +2641,8 @@ class CreateDomainRequestRedirect(TeaModel):
             result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
+        if self.max_body_size is not None:
+            result['MaxBodySize'] = self.max_body_size
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
         result['RequestHeaders'] = []
@@ -2686,6 +2696,8 @@ class CreateDomainRequestRedirect(TeaModel):
             self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
+        if m.get('MaxBodySize') is not None:
+            self.max_body_size = m.get('MaxBodySize')
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
         self.request_headers = []
@@ -13302,6 +13314,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
         log_headers: List[DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders] = None,
+        max_body_size: int = None,
         owner_user_id: str = None,
         port: int = None,
         protocol: str = None,
@@ -13353,6 +13366,7 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         # 
         # >  This parameter is returned only when the traffic marking feature is enabled for the domain name.
         self.log_headers = log_headers
+        self.max_body_size = max_body_size
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
         # The port of the cloud service that is added to WAF.
@@ -13441,6 +13455,8 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
         if self.log_headers is not None:
             for k in self.log_headers:
                 result['LogHeaders'].append(k.to_map() if k else None)
+        if self.max_body_size is not None:
+            result['MaxBodySize'] = self.max_body_size
         if self.owner_user_id is not None:
             result['OwnerUserId'] = self.owner_user_id
         if self.port is not None:
@@ -13497,6 +13513,8 @@ class DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails(TeaMod
             for k in m.get('LogHeaders'):
                 temp_model = DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders()
                 self.log_headers.append(temp_model.from_map(k))
+        if m.get('MaxBodySize') is not None:
+            self.max_body_size = m.get('MaxBodySize')
         if m.get('OwnerUserId') is not None:
             self.owner_user_id = m.get('OwnerUserId')
         if m.get('Port') is not None:
@@ -19463,6 +19481,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
         loadbalance: str = None,
+        max_body_size: int = None,
         read_timeout: int = None,
         request_headers: List[DescribeDomainDetailResponseBodyRedirectRequestHeaders] = None,
         retry: bool = None,
@@ -19508,6 +19527,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         # *   **roundRobin:** the round-robin algorithm.
         # *   **leastTime:** the least response time algorithm.
         self.loadbalance = loadbalance
+        self.max_body_size = max_body_size
         # The read timeout period. Unit: seconds. Valid values: 5 to 1800.
         self.read_timeout = read_timeout
         # An array of key-value pairs that are used to mark the requests that pass through the WAF instance.
@@ -19588,6 +19608,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
+        if self.max_body_size is not None:
+            result['MaxBodySize'] = self.max_body_size
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
         result['RequestHeaders'] = []
@@ -19647,6 +19669,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
+        if m.get('MaxBodySize') is not None:
+            self.max_body_size = m.get('MaxBodySize')
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
         self.request_headers = []
@@ -41743,6 +41767,7 @@ class ModifyCloudResourceRequestRedirect(TeaModel):
         keepalive: bool = None,
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
+        max_body_size: int = None,
         read_timeout: int = None,
         request_headers: List[ModifyCloudResourceRequestRedirectRequestHeaders] = None,
         write_timeout: int = None,
@@ -41763,6 +41788,7 @@ class ModifyCloudResourceRequestRedirect(TeaModel):
         # 
         # >  This parameter specifies the period of time after which an idle persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
+        self.max_body_size = max_body_size
         # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
         # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
@@ -41803,6 +41829,8 @@ class ModifyCloudResourceRequestRedirect(TeaModel):
             result['KeepaliveRequests'] = self.keepalive_requests
         if self.keepalive_timeout is not None:
             result['KeepaliveTimeout'] = self.keepalive_timeout
+        if self.max_body_size is not None:
+            result['MaxBodySize'] = self.max_body_size
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
         result['RequestHeaders'] = []
@@ -41827,6 +41855,8 @@ class ModifyCloudResourceRequestRedirect(TeaModel):
             self.keepalive_requests = m.get('KeepaliveRequests')
         if m.get('KeepaliveTimeout') is not None:
             self.keepalive_timeout = m.get('KeepaliveTimeout')
+        if m.get('MaxBodySize') is not None:
+            self.max_body_size = m.get('MaxBodySize')
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
         self.request_headers = []
@@ -43906,6 +43936,7 @@ class ModifyDomainRequestRedirect(TeaModel):
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
         loadbalance: str = None,
+        max_body_size: int = None,
         read_timeout: int = None,
         request_headers: List[ModifyDomainRequestRedirectRequestHeaders] = None,
         retry: bool = None,
@@ -43960,6 +43991,7 @@ class ModifyDomainRequestRedirect(TeaModel):
         # 
         # This parameter is required.
         self.loadbalance = loadbalance
+        self.max_body_size = max_body_size
         # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
         # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
@@ -44036,6 +44068,8 @@ class ModifyDomainRequestRedirect(TeaModel):
             result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
+        if self.max_body_size is not None:
+            result['MaxBodySize'] = self.max_body_size
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
         result['RequestHeaders'] = []
@@ -44089,6 +44123,8 @@ class ModifyDomainRequestRedirect(TeaModel):
             self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
+        if m.get('MaxBodySize') is not None:
+            self.max_body_size = m.get('MaxBodySize')
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
         self.request_headers = []
