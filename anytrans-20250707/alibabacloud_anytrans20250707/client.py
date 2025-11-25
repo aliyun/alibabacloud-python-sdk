@@ -185,6 +185,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_translate_with_options_async(request, headers, runtime)
 
+    def batch_translate_for_html_with_options(
+        self,
+        tmp_req: any_trans_20250707_models.BatchTranslateForHtmlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.BatchTranslateForHtmlResponse:
+        """
+        @summary 通义多模态翻译批量翻译(供js sdk使用)
+        
+        @param tmp_req: BatchTranslateForHtmlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchTranslateForHtmlResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = any_trans_20250707_models.BatchTranslateForHtmlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'ext', 'json')
+        if not UtilClient.is_unset(tmp_req.text):
+            request.text_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text, 'text', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['appName'] = request.app_name
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.format):
+            body['format'] = request.format
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.text_shrink):
+            body['text'] = request.text_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchTranslateForHtml',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/batchForHtml',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.BatchTranslateForHtmlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_translate_for_html_with_options_async(
+        self,
+        tmp_req: any_trans_20250707_models.BatchTranslateForHtmlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> any_trans_20250707_models.BatchTranslateForHtmlResponse:
+        """
+        @summary 通义多模态翻译批量翻译(供js sdk使用)
+        
+        @param tmp_req: BatchTranslateForHtmlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchTranslateForHtmlResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = any_trans_20250707_models.BatchTranslateForHtmlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext):
+            request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'ext', 'json')
+        if not UtilClient.is_unset(tmp_req.text):
+            request.text_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text, 'text', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['appName'] = request.app_name
+        if not UtilClient.is_unset(request.ext_shrink):
+            body['ext'] = request.ext_shrink
+        if not UtilClient.is_unset(request.format):
+            body['format'] = request.format
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['sourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['targetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.text_shrink):
+            body['text'] = request.text_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchTranslateForHtml',
+            version='2025-07-07',
+            protocol='HTTPS',
+            pathname=f'/anytrans/translate/batchForHtml',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            any_trans_20250707_models.BatchTranslateForHtmlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_translate_for_html(
+        self,
+        request: any_trans_20250707_models.BatchTranslateForHtmlRequest,
+    ) -> any_trans_20250707_models.BatchTranslateForHtmlResponse:
+        """
+        @summary 通义多模态翻译批量翻译(供js sdk使用)
+        
+        @param request: BatchTranslateForHtmlRequest
+        @return: BatchTranslateForHtmlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_translate_for_html_with_options(request, headers, runtime)
+
+    async def batch_translate_for_html_async(
+        self,
+        request: any_trans_20250707_models.BatchTranslateForHtmlRequest,
+    ) -> any_trans_20250707_models.BatchTranslateForHtmlResponse:
+        """
+        @summary 通义多模态翻译批量翻译(供js sdk使用)
+        
+        @param request: BatchTranslateForHtmlRequest
+        @return: BatchTranslateForHtmlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_translate_for_html_with_options_async(request, headers, runtime)
+
     def get_doc_translate_task_with_options(
         self,
         request: any_trans_20250707_models.GetDocTranslateTaskRequest,

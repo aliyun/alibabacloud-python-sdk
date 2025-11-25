@@ -1,3 +1,9 @@
+2025-11-25 Version: 2.1.0
+- Support API BatchTranslateForHtml.
+- Update API SubmitHtmlTranslateTask: add request parameters ext.config.callbackUrl.
+- Update API TextTranslate: add request parameters ext.agent.
+
+
 2025-10-14 Version: 2.0.1
 - Update API SubmitDocTranslateTask: add request parameters ext.config.
 
