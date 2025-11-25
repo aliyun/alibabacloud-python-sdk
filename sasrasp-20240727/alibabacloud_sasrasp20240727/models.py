@@ -344,6 +344,8 @@ class DescribeAttacksResponseBodyAttacks(TeaModel):
         content_length: int = None,
         count: int = None,
         data: str = None,
+        handle_status: int = None,
+        handle_timestamp: int = None,
         headers: str = None,
         host_id: str = None,
         hostname: str = None,
@@ -388,6 +390,8 @@ class DescribeAttacksResponseBodyAttacks(TeaModel):
         self.content_length = content_length
         self.count = count
         self.data = data
+        self.handle_status = handle_status
+        self.handle_timestamp = handle_timestamp
         self.headers = headers
         self.host_id = host_id
         self.hostname = hostname
@@ -455,6 +459,10 @@ class DescribeAttacksResponseBodyAttacks(TeaModel):
             result['Count'] = self.count
         if self.data is not None:
             result['Data'] = self.data
+        if self.handle_status is not None:
+            result['HandleStatus'] = self.handle_status
+        if self.handle_timestamp is not None:
+            result['HandleTimestamp'] = self.handle_timestamp
         if self.headers is not None:
             result['Headers'] = self.headers
         if self.host_id is not None:
@@ -547,6 +555,10 @@ class DescribeAttacksResponseBodyAttacks(TeaModel):
             self.count = m.get('Count')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('HandleStatus') is not None:
+            self.handle_status = m.get('HandleStatus')
+        if m.get('HandleTimestamp') is not None:
+            self.handle_timestamp = m.get('HandleTimestamp')
         if m.get('Headers') is not None:
             self.headers = m.get('Headers')
         if m.get('HostId') is not None:
