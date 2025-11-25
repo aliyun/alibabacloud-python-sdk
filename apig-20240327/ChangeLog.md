@@ -1,3 +1,8 @@
+2025-11-25 Version: 5.1.1
+- Update API ListGateways: add response parameters Body.data.items.$.loadBalancers.$.ipv4Addresses.
+- Update API ListGateways: add response parameters Body.data.items.$.loadBalancers.$.ipv6Addresses.
+
+
 2025-11-20 Version: 5.1.0
 - Support API ListGatewayFeatures.
 
