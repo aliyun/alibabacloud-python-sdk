@@ -1,3 +1,12 @@
+2025-11-25 Version: 6.1.1
+- Update API CreateClusterNodePool: add request parameters body.scaling_group.system_disk_snapshot_policy_id.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.scaling_group.system_disk_snapshot_policy_id.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.status.conditions.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.scaling_group.system_disk_snapshot_policy_id.
+- Update API ListOperationPlansForRegion: add response parameters Body.plans.$.state_reason.
+- Update API ModifyClusterNodePool: add request parameters body.scaling_group.system_disk_snapshot_policy_id.
+
+
 2025-11-05 Version: 6.1.0
 - Support API ListOperationPlansForRegion.
 - Update API CreateClusterNodePool: add request parameters body.node_components.

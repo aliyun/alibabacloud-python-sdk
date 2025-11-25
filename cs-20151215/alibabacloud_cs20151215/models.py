@@ -6495,6 +6495,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         system_disk_performance_level: str = None,
         system_disk_provisioned_iops: int = None,
         system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
         tags: List[CreateClusterNodePoolRequestScalingGroupTags] = None,
         vswitch_ids: List[str] = None,
     ):
@@ -6711,6 +6712,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # Valid values: 20 to 20248.
         self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
         # The tags that you want to add only to ECS instances.
         # 
         # The tag key must be unique and cannot exceed 128 characters in length. The tag key and value cannot start with aliyun or acs: or contain https:// or http://.
@@ -6850,6 +6852,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
         if self.system_disk_size is not None:
             result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -6964,6 +6968,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
         if m.get('system_disk_size') is not None:
             self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -12053,6 +12059,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         system_disk_performance_level: str = None,
         system_disk_provisioned_iops: int = None,
         system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
         tags: List[Tag] = None,
         vswitch_ids: List[str] = None,
     ):
@@ -12228,6 +12235,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # 
         # Valid values: 20 to 500.
         self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
         # The labels that you want to add only to ECS instances.
         # 
         # The label key must be unique and cannot exceed 128 characters in length. The label key and value cannot start with aliyun or acs: or contain https:// or http://.
@@ -12369,6 +12377,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
         if self.system_disk_size is not None:
             result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -12487,6 +12497,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
         if m.get('system_disk_size') is not None:
             self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -12497,9 +12509,61 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         return self
 
 
+class DescribeClusterNodePoolDetailResponseBodyStatusConditions(TeaModel):
+    def __init__(
+        self,
+        last_transition_time: str = None,
+        message: str = None,
+        reason: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.last_transition_time = last_transition_time
+        self.message = message
+        self.reason = reason
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_transition_time is not None:
+            result['last_transition_time'] = self.last_transition_time
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('last_transition_time') is not None:
+            self.last_transition_time = m.get('last_transition_time')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
     def __init__(
         self,
+        conditions: List[DescribeClusterNodePoolDetailResponseBodyStatusConditions] = None,
         failed_nodes: int = None,
         healthy_nodes: int = None,
         initial_nodes: int = None,
@@ -12509,6 +12573,7 @@ class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
         state: str = None,
         total_nodes: int = None,
     ):
+        self.conditions = conditions
         # The number of failed nodes.
         self.failed_nodes = failed_nodes
         # The number of healthy nodes.
@@ -12533,7 +12598,10 @@ class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
         self.total_nodes = total_nodes
 
     def validate(self):
-        pass
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12541,6 +12609,10 @@ class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
             return _map
 
         result = dict()
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['conditions'].append(k.to_map() if k else None)
         if self.failed_nodes is not None:
             result['failed_nodes'] = self.failed_nodes
         if self.healthy_nodes is not None:
@@ -12561,6 +12633,11 @@ class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k in m.get('conditions'):
+                temp_model = DescribeClusterNodePoolDetailResponseBodyStatusConditions()
+                self.conditions.append(temp_model.from_map(k))
         if m.get('failed_nodes') is not None:
             self.failed_nodes = m.get('failed_nodes')
         if m.get('healthy_nodes') is not None:
@@ -13816,6 +13893,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         system_disk_performance_level: str = None,
         system_disk_provisioned_iops: int = None,
         system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
         tags: List[Tag] = None,
         vswitch_ids: List[str] = None,
     ):
@@ -14010,6 +14088,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # 
         # Valid values: 20 to 2048.
         self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
         # The label to be added to the ECS instances.
         self.tags = tags
         # The vSwitch IDs.
@@ -14143,6 +14222,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
         if self.system_disk_size is not None:
             result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -14258,6 +14339,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
         if m.get('system_disk_size') is not None:
             self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -24793,6 +24876,39 @@ class ListOperationPlansForRegionRequest(TeaModel):
         return self
 
 
+class ListOperationPlansForRegionResponseBodyPlansStateReason(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
 class ListOperationPlansForRegionResponseBodyPlans(TeaModel):
     def __init__(
         self,
@@ -24802,6 +24918,7 @@ class ListOperationPlansForRegionResponseBodyPlans(TeaModel):
         plan_id: str = None,
         start_time: str = None,
         state: str = None,
+        state_reason: ListOperationPlansForRegionResponseBodyPlansStateReason = None,
         target_id: str = None,
         target_type: str = None,
         task_id: str = None,
@@ -24813,13 +24930,15 @@ class ListOperationPlansForRegionResponseBodyPlans(TeaModel):
         self.plan_id = plan_id
         self.start_time = start_time
         self.state = state
+        self.state_reason = state_reason
         self.target_id = target_id
         self.target_type = target_type
         self.task_id = task_id
         self.type = type
 
     def validate(self):
-        pass
+        if self.state_reason:
+            self.state_reason.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24839,6 +24958,8 @@ class ListOperationPlansForRegionResponseBodyPlans(TeaModel):
             result['start_time'] = self.start_time
         if self.state is not None:
             result['state'] = self.state
+        if self.state_reason is not None:
+            result['state_reason'] = self.state_reason.to_map()
         if self.target_id is not None:
             result['target_id'] = self.target_id
         if self.target_type is not None:
@@ -24863,6 +24984,9 @@ class ListOperationPlansForRegionResponseBodyPlans(TeaModel):
             self.start_time = m.get('start_time')
         if m.get('state') is not None:
             self.state = m.get('state')
+        if m.get('state_reason') is not None:
+            temp_model = ListOperationPlansForRegionResponseBodyPlansStateReason()
+            self.state_reason = temp_model.from_map(m['state_reason'])
         if m.get('target_id') is not None:
             self.target_id = m.get('target_id')
         if m.get('target_type') is not None:
@@ -27102,6 +27226,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         system_disk_performance_level: str = None,
         system_disk_provisioned_iops: int = None,
         system_disk_size: int = None,
+        system_disk_snapshot_policy_id: str = None,
         tags: List[Tag] = None,
         vswitch_ids: List[str] = None,
     ):
@@ -27288,6 +27413,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # Default value: the greater value between 40 and the image size.
         self.system_disk_size = system_disk_size
+        self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
         # The tags that you want to add only to ECS instances.
         # 
         # The tag key must be unique and cannot exceed 128 characters in length. The tag key and value cannot start with aliyun or acs: or contain https:// or http://.
@@ -27409,6 +27535,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             result['system_disk_provisioned_iops'] = self.system_disk_provisioned_iops
         if self.system_disk_size is not None:
             result['system_disk_size'] = self.system_disk_size
+        if self.system_disk_snapshot_policy_id is not None:
+            result['system_disk_snapshot_policy_id'] = self.system_disk_snapshot_policy_id
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -27508,6 +27636,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             self.system_disk_provisioned_iops = m.get('system_disk_provisioned_iops')
         if m.get('system_disk_size') is not None:
             self.system_disk_size = m.get('system_disk_size')
+        if m.get('system_disk_snapshot_policy_id') is not None:
+            self.system_disk_snapshot_policy_id = m.get('system_disk_snapshot_policy_id')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
