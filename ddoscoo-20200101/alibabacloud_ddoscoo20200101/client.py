@@ -5341,6 +5341,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_block_status_with_options_async(request, runtime)
 
+    def describe_cdn_linkage_rules_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeCdnLinkageRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeCdnLinkageRulesResponse:
+        """
+        @param request: DescribeCdnLinkageRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnLinkageRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnLinkageRules',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeCdnLinkageRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_linkage_rules_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeCdnLinkageRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeCdnLinkageRulesResponse:
+        """
+        @param request: DescribeCdnLinkageRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnLinkageRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnLinkageRules',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeCdnLinkageRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_linkage_rules(
+        self,
+        request: ddoscoo_20200101_models.DescribeCdnLinkageRulesRequest,
+    ) -> ddoscoo_20200101_models.DescribeCdnLinkageRulesResponse:
+        """
+        @param request: DescribeCdnLinkageRulesRequest
+        @return: DescribeCdnLinkageRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_linkage_rules_with_options(request, runtime)
+
+    async def describe_cdn_linkage_rules_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeCdnLinkageRulesRequest,
+    ) -> ddoscoo_20200101_models.DescribeCdnLinkageRulesResponse:
+        """
+        @param request: DescribeCdnLinkageRulesRequest
+        @return: DescribeCdnLinkageRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_linkage_rules_with_options_async(request, runtime)
+
     def describe_certs_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeCertsRequest,
