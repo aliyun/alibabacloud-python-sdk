@@ -1,3 +1,8 @@
+2025-11-25 Version: 1.2.1
+- Update API ModifyNodeNumber: add request parameters Parallelism.
+- Update API ModifyNodeNumber: add request parameters TerminationGracePeriodSeconds.
+
+
 2025-10-22 Version: 1.2.0
 - Support API DescribeNodeGroups.
 

@@ -1479,10 +1479,14 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_group_id):
             query['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
         if not UtilClient.is_unset(request.promotion_option_no):
             query['PromotionOptionNo'] = request.promotion_option_no
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
+        if not UtilClient.is_unset(request.termination_grace_period_seconds):
+            query['TerminationGracePeriodSeconds'] = request.termination_grace_period_seconds
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1531,10 +1535,14 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_group_id):
             query['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
         if not UtilClient.is_unset(request.promotion_option_no):
             query['PromotionOptionNo'] = request.promotion_option_no
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
+        if not UtilClient.is_unset(request.termination_grace_period_seconds):
+            query['TerminationGracePeriodSeconds'] = request.termination_grace_period_seconds
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
