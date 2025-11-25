@@ -13576,6 +13576,7 @@ class ListJobInfosRequest(TeaModel):
         self,
         asc_order: bool = None,
         ext_node_id_list: List[str] = None,
+        ext_node_name_list: List[str] = None,
         from_: int = None,
         instance_id_list: List[str] = None,
         job_owner_list: List[str] = None,
@@ -13587,6 +13588,7 @@ class ListJobInfosRequest(TeaModel):
         sort_by_list: List[str] = None,
         sort_order_list: List[str] = None,
         status_list: List[str] = None,
+        task_name_list: List[str] = None,
         to: int = None,
         type_list: List[str] = None,
         order_column: str = None,
@@ -13599,6 +13601,7 @@ class ListJobInfosRequest(TeaModel):
         self.asc_order = asc_order
         # The ancestor node IDs.
         self.ext_node_id_list = ext_node_id_list
+        self.ext_node_name_list = ext_node_name_list
         # The start timestamp.
         # 
         # This parameter is required.
@@ -13623,6 +13626,7 @@ class ListJobInfosRequest(TeaModel):
         self.sort_order_list = sort_order_list
         # The job states.
         self.status_list = status_list
+        self.task_name_list = task_name_list
         # The end timestamp.
         # 
         # This parameter is required.
@@ -13653,6 +13657,8 @@ class ListJobInfosRequest(TeaModel):
             result['ascOrder'] = self.asc_order
         if self.ext_node_id_list is not None:
             result['extNodeIdList'] = self.ext_node_id_list
+        if self.ext_node_name_list is not None:
+            result['extNodeNameList'] = self.ext_node_name_list
         if self.from_ is not None:
             result['from'] = self.from_
         if self.instance_id_list is not None:
@@ -13675,6 +13681,8 @@ class ListJobInfosRequest(TeaModel):
             result['sortOrderList'] = self.sort_order_list
         if self.status_list is not None:
             result['statusList'] = self.status_list
+        if self.task_name_list is not None:
+            result['taskNameList'] = self.task_name_list
         if self.to is not None:
             result['to'] = self.to
         if self.type_list is not None:
@@ -13697,6 +13705,8 @@ class ListJobInfosRequest(TeaModel):
             self.asc_order = m.get('ascOrder')
         if m.get('extNodeIdList') is not None:
             self.ext_node_id_list = m.get('extNodeIdList')
+        if m.get('extNodeNameList') is not None:
+            self.ext_node_name_list = m.get('extNodeNameList')
         if m.get('from') is not None:
             self.from_ = m.get('from')
         if m.get('instanceIdList') is not None:
@@ -13719,6 +13729,8 @@ class ListJobInfosRequest(TeaModel):
             self.sort_order_list = m.get('sortOrderList')
         if m.get('statusList') is not None:
             self.status_list = m.get('statusList')
+        if m.get('taskNameList') is not None:
+            self.task_name_list = m.get('taskNameList')
         if m.get('to') is not None:
             self.to = m.get('to')
         if m.get('typeList') is not None:
@@ -13807,8 +13819,10 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         cu_usage: int = None,
         end_at_time: int = None,
         ext_node_id: str = None,
+        ext_node_name: str = None,
         ext_node_on_duty: str = None,
         ext_plant_from: str = None,
+        ext_platform_id: str = None,
         input_bytes: float = None,
         instance_id: str = None,
         job_owner: str = None,
@@ -13828,6 +13842,7 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         status_snapshot: str = None,
         submitted_at_time: int = None,
         tags: str = None,
+        task_name: str = None,
         tenant_id: str = None,
         total_time: int = None,
         waiting_time: int = None,
@@ -13842,10 +13857,12 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         self.end_at_time = end_at_time
         # The node ID of DataWorks.
         self.ext_node_id = ext_node_id
+        self.ext_node_name = ext_node_name
         # The account of the node owner.
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
+        self.ext_platform_id = ext_platform_id
         # The amount of scanned data for the job. Unit: byte.
         self.input_bytes = input_bytes
         # The instance ID.
@@ -13884,6 +13901,7 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         self.submitted_at_time = submitted_at_time
         # The tags.
         self.tags = tags
+        self.task_name = task_name
         # The tenant ID.
         self.tenant_id = tenant_id
         # The total period for which the job runs.
@@ -13913,10 +13931,14 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
             result['endAtTime'] = self.end_at_time
         if self.ext_node_id is not None:
             result['extNodeId'] = self.ext_node_id
+        if self.ext_node_name is not None:
+            result['extNodeName'] = self.ext_node_name
         if self.ext_node_on_duty is not None:
             result['extNodeOnDuty'] = self.ext_node_on_duty
         if self.ext_plant_from is not None:
             result['extPlantFrom'] = self.ext_plant_from
+        if self.ext_platform_id is not None:
+            result['extPlatformId'] = self.ext_platform_id
         if self.input_bytes is not None:
             result['inputBytes'] = self.input_bytes
         if self.instance_id is not None:
@@ -13957,6 +13979,8 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
             result['submittedAtTime'] = self.submitted_at_time
         if self.tags is not None:
             result['tags'] = self.tags
+        if self.task_name is not None:
+            result['taskName'] = self.task_name
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
         if self.total_time is not None:
@@ -13977,10 +14001,14 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
             self.end_at_time = m.get('endAtTime')
         if m.get('extNodeId') is not None:
             self.ext_node_id = m.get('extNodeId')
+        if m.get('extNodeName') is not None:
+            self.ext_node_name = m.get('extNodeName')
         if m.get('extNodeOnDuty') is not None:
             self.ext_node_on_duty = m.get('extNodeOnDuty')
         if m.get('extPlantFrom') is not None:
             self.ext_plant_from = m.get('extPlantFrom')
+        if m.get('extPlatformId') is not None:
+            self.ext_platform_id = m.get('extPlatformId')
         if m.get('inputBytes') is not None:
             self.input_bytes = m.get('inputBytes')
         if m.get('instanceId') is not None:
@@ -14022,6 +14050,8 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
             self.submitted_at_time = m.get('submittedAtTime')
         if m.get('tags') is not None:
             self.tags = m.get('tags')
+        if m.get('taskName') is not None:
+            self.task_name = m.get('taskName')
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
         if m.get('totalTime') is not None:
@@ -14622,6 +14652,7 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
         ext_node_id: str = None,
         ext_node_on_duty: str = None,
         ext_plant_from: str = None,
+        ext_platform_id: str = None,
         instance_id: str = None,
         job_owner: str = None,
         job_type: str = None,
@@ -14659,6 +14690,7 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
+        self.ext_platform_id = ext_platform_id
         # The instance ID.
         self.instance_id = instance_id
         # The account that commits the job.
@@ -14732,6 +14764,8 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
             result['extNodeOnDuty'] = self.ext_node_on_duty
         if self.ext_plant_from is not None:
             result['extPlantFrom'] = self.ext_plant_from
+        if self.ext_platform_id is not None:
+            result['extPlatformId'] = self.ext_platform_id
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
         if self.job_owner is not None:
@@ -14796,6 +14830,8 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
             self.ext_node_on_duty = m.get('extNodeOnDuty')
         if m.get('extPlantFrom') is not None:
             self.ext_plant_from = m.get('extPlantFrom')
+        if m.get('extPlatformId') is not None:
+            self.ext_platform_id = m.get('extPlatformId')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
         if m.get('jobOwner') is not None:

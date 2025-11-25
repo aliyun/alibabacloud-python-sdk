@@ -5140,6 +5140,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.ext_node_id_list):
             body['extNodeIdList'] = request.ext_node_id_list
+        if not UtilClient.is_unset(request.ext_node_name_list):
+            body['extNodeNameList'] = request.ext_node_name_list
         if not UtilClient.is_unset(request.from_):
             body['from'] = request.from_
         if not UtilClient.is_unset(request.instance_id_list):
@@ -5162,6 +5164,8 @@ class Client(OpenApiClient):
             body['sortOrderList'] = request.sort_order_list
         if not UtilClient.is_unset(request.status_list):
             body['statusList'] = request.status_list
+        if not UtilClient.is_unset(request.task_name_list):
+            body['taskNameList'] = request.task_name_list
         if not UtilClient.is_unset(request.to):
             body['to'] = request.to
         if not UtilClient.is_unset(request.type_list):
@@ -5218,6 +5222,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.ext_node_id_list):
             body['extNodeIdList'] = request.ext_node_id_list
+        if not UtilClient.is_unset(request.ext_node_name_list):
+            body['extNodeNameList'] = request.ext_node_name_list
         if not UtilClient.is_unset(request.from_):
             body['from'] = request.from_
         if not UtilClient.is_unset(request.instance_id_list):
@@ -5240,6 +5246,8 @@ class Client(OpenApiClient):
             body['sortOrderList'] = request.sort_order_list
         if not UtilClient.is_unset(request.status_list):
             body['statusList'] = request.status_list
+        if not UtilClient.is_unset(request.task_name_list):
+            body['taskNameList'] = request.task_name_list
         if not UtilClient.is_unset(request.to):
             body['to'] = request.to
         if not UtilClient.is_unset(request.type_list):

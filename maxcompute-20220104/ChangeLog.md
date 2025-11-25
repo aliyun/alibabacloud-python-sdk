@@ -1,3 +1,12 @@
+2025-11-25 Version: 5.2.1
+- Update API ListJobInfos: add request parameters body.extNodeNameList.
+- Update API ListJobInfos: add request parameters body.taskNameList.
+- Update API ListJobInfos: add response parameters Body.data.jobInfoList.$.extNodeName.
+- Update API ListJobInfos: add response parameters Body.data.jobInfoList.$.extPlatformId.
+- Update API ListJobInfos: add response parameters Body.data.jobInfoList.$.taskName.
+- Update API ListJobSnapshotInfos: add response parameters Body.data.jobInfoList.$.extPlatformId.
+
+
 2025-11-24 Version: 5.2.0
 - Support API UpdateProjectModelTier.
 
