@@ -12489,6 +12489,7 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
         expire_time: str = None,
         expired: bool = None,
         internal_ip: str = None,
+        kvcache_instance_id: str = None,
         kube_cluster_id: str = None,
         lock_mode: str = None,
         max_qpm: str = None,
@@ -12516,6 +12517,7 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
         self.expire_time = expire_time
         self.expired = expired
         self.internal_ip = internal_ip
+        self.kvcache_instance_id = kvcache_instance_id
         self.kube_cluster_id = kube_cluster_id
         self.lock_mode = lock_mode
         self.max_qpm = max_qpm
@@ -12579,6 +12581,8 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
             result['Expired'] = self.expired
         if self.internal_ip is not None:
             result['InternalIp'] = self.internal_ip
+        if self.kvcache_instance_id is not None:
+            result['KVCacheInstanceId'] = self.kvcache_instance_id
         if self.kube_cluster_id is not None:
             result['KubeClusterId'] = self.kube_cluster_id
         if self.lock_mode is not None:
@@ -12643,6 +12647,8 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
             self.expired = m.get('Expired')
         if m.get('InternalIp') is not None:
             self.internal_ip = m.get('InternalIp')
+        if m.get('KVCacheInstanceId') is not None:
+            self.kvcache_instance_id = m.get('KVCacheInstanceId')
         if m.get('KubeClusterId') is not None:
             self.kube_cluster_id = m.get('KubeClusterId')
         if m.get('LockMode') is not None:
@@ -40818,12 +40824,14 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
         accelerating_enable: str = None,
         bandwidth: float = None,
         bandwidth_base_line: float = None,
+        bucket_id: str = None,
         category: str = None,
         client_download_path: str = None,
         create_time: str = None,
         dbtype: str = None,
         expire_time: str = None,
         expired: str = None,
+        file_system_id: str = None,
         lock_mode: str = None,
         meta_url: str = None,
         minor_version: str = None,
@@ -40836,6 +40844,7 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
         polar_fs_version: str = None,
         region_id: str = None,
         relative_db_cluster_id: str = None,
+        relative_pfs_cluster_id: str = None,
         request_id: str = None,
         security_group_id: str = None,
         storage_space: float = None,
@@ -40849,12 +40858,14 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
         self.accelerating_enable = accelerating_enable
         self.bandwidth = bandwidth
         self.bandwidth_base_line = bandwidth_base_line
+        self.bucket_id = bucket_id
         self.category = category
         self.client_download_path = client_download_path
         self.create_time = create_time
         self.dbtype = dbtype
         self.expire_time = expire_time
         self.expired = expired
+        self.file_system_id = file_system_id
         self.lock_mode = lock_mode
         self.meta_url = meta_url
         self.minor_version = minor_version
@@ -40867,6 +40878,7 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
         self.polar_fs_version = polar_fs_version
         self.region_id = region_id
         self.relative_db_cluster_id = relative_db_cluster_id
+        self.relative_pfs_cluster_id = relative_pfs_cluster_id
         # Id of the request
         self.request_id = request_id
         self.security_group_id = security_group_id
@@ -40895,6 +40907,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.bandwidth_base_line is not None:
             result['BandwidthBaseLine'] = self.bandwidth_base_line
+        if self.bucket_id is not None:
+            result['BucketId'] = self.bucket_id
         if self.category is not None:
             result['Category'] = self.category
         if self.client_download_path is not None:
@@ -40907,6 +40921,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             result['ExpireTime'] = self.expire_time
         if self.expired is not None:
             result['Expired'] = self.expired
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.meta_url is not None:
@@ -40931,6 +40947,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.relative_db_cluster_id is not None:
             result['RelativeDbClusterId'] = self.relative_db_cluster_id
+        if self.relative_pfs_cluster_id is not None:
+            result['RelativePfsClusterId'] = self.relative_pfs_cluster_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.security_group_id is not None:
@@ -40959,6 +40977,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('BandwidthBaseLine') is not None:
             self.bandwidth_base_line = m.get('BandwidthBaseLine')
+        if m.get('BucketId') is not None:
+            self.bucket_id = m.get('BucketId')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('ClientDownloadPath') is not None:
@@ -40971,6 +40991,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             self.expire_time = m.get('ExpireTime')
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('MetaUrl') is not None:
@@ -40996,6 +41018,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RelativeDbClusterId') is not None:
             self.relative_db_cluster_id = m.get('RelativeDbClusterId')
+        if m.get('RelativePfsClusterId') is not None:
+            self.relative_pfs_cluster_id = m.get('RelativePfsClusterId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SecurityGroupId') is not None:

@@ -1,3 +1,10 @@
+2025-11-25 Version: 6.1.6
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.KVCacheInstanceId.
+- Update API DescribePolarFsAttribute: add response parameters Body.BucketId.
+- Update API DescribePolarFsAttribute: add response parameters Body.FileSystemId.
+- Update API DescribePolarFsAttribute: add response parameters Body.RelativePfsClusterId.
+
+
 2025-11-14 Version: 6.1.5
 - Update API DescribeApplicationAttribute: add response parameters Body.Endpoints.$.PortDescription.
 
