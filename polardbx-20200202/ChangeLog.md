@@ -1,3 +1,7 @@
+2025-11-25 Version: 3.1.1
+- Update API DescribeComponentPropeties: add request parameters StorageType.
+
+
 2025-10-14 Version: 3.1.0
 - Support API AttachColumnarInstance.
 - Support API CheckSqlAuditSlsStatus.

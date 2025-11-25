@@ -8477,6 +8477,7 @@ class DescribeComponentPropetiesRequest(TeaModel):
         commodity_code: str = None,
         component_name: str = None,
         region_id: str = None,
+        storage_type: str = None,
     ):
         # This parameter is required.
         self.commodity_code = commodity_code
@@ -8484,6 +8485,7 @@ class DescribeComponentPropetiesRequest(TeaModel):
         self.component_name = component_name
         # This parameter is required.
         self.region_id = region_id
+        self.storage_type = storage_type
 
     def validate(self):
         pass
@@ -8500,6 +8502,8 @@ class DescribeComponentPropetiesRequest(TeaModel):
             result['ComponentName'] = self.component_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         return result
 
     def from_map(self, m: dict = None):
@@ -8510,6 +8514,8 @@ class DescribeComponentPropetiesRequest(TeaModel):
             self.component_name = m.get('ComponentName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         return self
 
 

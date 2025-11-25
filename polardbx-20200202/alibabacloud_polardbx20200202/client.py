@@ -5132,6 +5132,8 @@ class Client(OpenApiClient):
             query['ComponentName'] = request.component_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5171,6 +5173,8 @@ class Client(OpenApiClient):
             query['ComponentName'] = request.component_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
