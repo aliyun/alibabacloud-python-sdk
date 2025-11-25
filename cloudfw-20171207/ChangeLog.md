@@ -64,6 +64,72 @@
 - Support API UseAclBackupData.
 
 
+2025-11-25 Version: 7.2.0
+- Support API AddAclBackupData.
+- Support API AddDomainResolveRealtimeTask.
+- Support API ClearLogStoreStorage.
+- Support API CreateInstanceSyncTask.
+- Support API CreateIpsPrivateAssoc.
+- Support API CreateNatFirewallSyncTask.
+- Support API DescribeAclBackupList.
+- Support API DescribeAttackAppCategory.
+- Support API DescribeBatchSlsDispatchStatus.
+- Support API DescribeConfiguredDestinationIP.
+- Support API DescribeConfiguredDomainNames.
+- Support API DescribeControlPolicyDomainResolve.
+- Support API DescribeCreatedNatFirewall.
+- Support API DescribeFirewallVswitchResources.
+- Support API DescribeInstanceRdAccounts.
+- Support API DescribeInternetOpenDetail.
+- Support API DescribeInternetOpenStatistic.
+- Support API DescribeInternetServiceNameList.
+- Support API DescribeInternetSlb.
+- Support API DescribeInternetTimeTop.
+- Support API DescribeInternetTrafficTop.
+- Support API DescribeInvadeEcsTrend.
+- Support API DescribeInvadeEventDetail.
+- Support API DescribeIpsPrivateAssoc.
+- Support API DescribeIspInfo.
+- Support API DescribeLocationInfo.
+- Support API DescribeMemberInfo.
+- Support API DescribeNatFirewallAclGroupList.
+- Support API DescribeNatFirewallPrecheckDetail.
+- Support API DescribeNatFirewallTimeTop.
+- Support API DescribeOutgoingDestination.
+- Support API DescribeOutgoingDestinationCategory.
+- Support API DescribeOutgoingDestinationIPDetail.
+- Support API DescribeOutgoingRiskDomainAndIpCount.
+- Support API DescribeOutgoingRiskTrend.
+- Support API DescribePostpayEnabledProtection.
+- Support API DescribePrivateDnsStatistics.
+- Support API DescribeRiskEventStatistic.
+- Support API DescribeRiskEventTopAttackApp.
+- Support API DescribeRiskEventTopAttackType.
+- Support API DescribeSdlEventDetail.
+- Support API DescribeSdlEventList.
+- Support API DescribeSdlEventSdList.
+- Support API DescribeSdlEventStatistic.
+- Support API DescribeSdlStatistic.
+- Support API DescribeSecurityProxyResources.
+- Support API DescribeSensitiveSwitch.
+- Support API DescribeSlrGrant.
+- Support API DescribeTrafficLog.
+- Support API DescribeTransitRouterResourcesList.
+- Support API DescribeUnprotectedPortTrend.
+- Support API DescribeVfwIPSConfigList.
+- Support API DescribeVpcFirewallAssetList.
+- Support API DescribeVpcFirewallAssetRegionList.
+- Support API DescribeVpcFirewallDropTrafficTrend.
+- Support API DescribeVpcFirewallManualVSwitchList.
+- Support API DescribeVpcFirewallPrecheckDetail.
+- Support API DescribeVpcFirewallZone.
+- Support API DisableSdlProtectedAsset.
+- Support API ModifyIpsRules.
+- Support API ModifyResourceTypeAutoEnable.
+- Support API ModifyUserAlarmConfig.
+- Support API UseAclBackupData.
+
+
 2025-11-06 Version: 7.1.4
 - Update API DescribeAssetStatistic: add response parameters Body.GeneralInstanceSpecStatistic.CfwTotalGeneralInstanceRegionStatistic.
 
