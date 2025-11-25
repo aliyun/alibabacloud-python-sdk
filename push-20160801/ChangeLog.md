@@ -1,3 +1,12 @@
+2025-11-25 Version: 2.1.1
+- Update API MassPush: add request parameters PushTask.$.AndroidOppoDeleteIntentData.
+- Update API MassPush: add request parameters PushTask.$.AndroidOppoIntelligentIntent.
+- Update API MassPush: add request parameters PushTask.$.AndroidOppoIntentEnv.
+- Update API Push: add request parameters AndroidOppoDeleteIntentData.
+- Update API Push: add request parameters AndroidOppoIntelligentIntent.
+- Update API Push: add request parameters AndroidOppoIntentEnv.
+
+
 2025-10-27 Version: 2.1.0
 - Support API MassPushV2.
 - Support API PushV2.

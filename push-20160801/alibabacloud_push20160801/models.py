@@ -209,12 +209,16 @@ class PushTaskNotificationAndroidOptionsOppo(TeaModel):
     def __init__(
         self,
         category: str = None,
+        delete_intent_data: str = None,
+        intelligent_intent: str = None,
         notify_level: int = None,
         private_content_parameters: str = None,
         private_msg_template_id: str = None,
         private_title_parameters: str = None,
     ):
         self.category = category
+        self.delete_intent_data = delete_intent_data
+        self.intelligent_intent = intelligent_intent
         self.notify_level = notify_level
         self.private_content_parameters = private_content_parameters
         self.private_msg_template_id = private_msg_template_id
@@ -231,6 +235,10 @@ class PushTaskNotificationAndroidOptionsOppo(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.delete_intent_data is not None:
+            result['DeleteIntentData'] = self.delete_intent_data
+        if self.intelligent_intent is not None:
+            result['IntelligentIntent'] = self.intelligent_intent
         if self.notify_level is not None:
             result['NotifyLevel'] = self.notify_level
         if self.private_content_parameters is not None:
@@ -245,6 +253,10 @@ class PushTaskNotificationAndroidOptionsOppo(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('DeleteIntentData') is not None:
+            self.delete_intent_data = m.get('DeleteIntentData')
+        if m.get('IntelligentIntent') is not None:
+            self.intelligent_intent = m.get('IntelligentIntent')
         if m.get('NotifyLevel') is not None:
             self.notify_level = m.get('NotifyLevel')
         if m.get('PrivateContentParameters') is not None:
@@ -2579,6 +2591,9 @@ class MassPushRequestPushTask(TeaModel):
         android_notify_type: str = None,
         android_open_type: str = None,
         android_open_url: str = None,
+        android_oppo_delete_intent_data: str = None,
+        android_oppo_intelligent_intent: str = None,
+        android_oppo_intent_env: int = None,
         android_oppo_private_content_parameters: Dict[str, str] = None,
         android_oppo_private_msg_template_id: str = None,
         android_oppo_private_title_parameters: Dict[str, str] = None,
@@ -2685,6 +2700,9 @@ class MassPushRequestPushTask(TeaModel):
         self.android_notify_type = android_notify_type
         self.android_open_type = android_open_type
         self.android_open_url = android_open_url
+        self.android_oppo_delete_intent_data = android_oppo_delete_intent_data
+        self.android_oppo_intelligent_intent = android_oppo_intelligent_intent
+        self.android_oppo_intent_env = android_oppo_intent_env
         self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
         self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
         self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
@@ -2838,6 +2856,12 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidOpenType'] = self.android_open_type
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_oppo_delete_intent_data is not None:
+            result['AndroidOppoDeleteIntentData'] = self.android_oppo_delete_intent_data
+        if self.android_oppo_intelligent_intent is not None:
+            result['AndroidOppoIntelligentIntent'] = self.android_oppo_intelligent_intent
+        if self.android_oppo_intent_env is not None:
+            result['AndroidOppoIntentEnv'] = self.android_oppo_intent_env
         if self.android_oppo_private_content_parameters is not None:
             result['AndroidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
         if self.android_oppo_private_msg_template_id is not None:
@@ -3052,6 +3076,12 @@ class MassPushRequestPushTask(TeaModel):
             self.android_open_type = m.get('AndroidOpenType')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidOppoDeleteIntentData') is not None:
+            self.android_oppo_delete_intent_data = m.get('AndroidOppoDeleteIntentData')
+        if m.get('AndroidOppoIntelligentIntent') is not None:
+            self.android_oppo_intelligent_intent = m.get('AndroidOppoIntelligentIntent')
+        if m.get('AndroidOppoIntentEnv') is not None:
+            self.android_oppo_intent_env = m.get('AndroidOppoIntentEnv')
         if m.get('AndroidOppoPrivateContentParameters') is not None:
             self.android_oppo_private_content_parameters = m.get('AndroidOppoPrivateContentParameters')
         if m.get('AndroidOppoPrivateMsgTemplateId') is not None:
@@ -3550,6 +3580,9 @@ class PushRequest(TeaModel):
         android_notify_type: str = None,
         android_open_type: str = None,
         android_open_url: str = None,
+        android_oppo_delete_intent_data: str = None,
+        android_oppo_intelligent_intent: str = None,
+        android_oppo_intent_env: int = None,
         android_oppo_private_content_parameters: Dict[str, str] = None,
         android_oppo_private_msg_template_id: str = None,
         android_oppo_private_title_parameters: Dict[str, str] = None,
@@ -3663,6 +3696,9 @@ class PushRequest(TeaModel):
         self.android_notify_type = android_notify_type
         self.android_open_type = android_open_type
         self.android_open_url = android_open_url
+        self.android_oppo_delete_intent_data = android_oppo_delete_intent_data
+        self.android_oppo_intelligent_intent = android_oppo_intelligent_intent
+        self.android_oppo_intent_env = android_oppo_intent_env
         self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
         self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
         self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
@@ -3824,6 +3860,12 @@ class PushRequest(TeaModel):
             result['AndroidOpenType'] = self.android_open_type
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_oppo_delete_intent_data is not None:
+            result['AndroidOppoDeleteIntentData'] = self.android_oppo_delete_intent_data
+        if self.android_oppo_intelligent_intent is not None:
+            result['AndroidOppoIntelligentIntent'] = self.android_oppo_intelligent_intent
+        if self.android_oppo_intent_env is not None:
+            result['AndroidOppoIntentEnv'] = self.android_oppo_intent_env
         if self.android_oppo_private_content_parameters is not None:
             result['AndroidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
         if self.android_oppo_private_msg_template_id is not None:
@@ -4052,6 +4094,12 @@ class PushRequest(TeaModel):
             self.android_open_type = m.get('AndroidOpenType')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidOppoDeleteIntentData') is not None:
+            self.android_oppo_delete_intent_data = m.get('AndroidOppoDeleteIntentData')
+        if m.get('AndroidOppoIntelligentIntent') is not None:
+            self.android_oppo_intelligent_intent = m.get('AndroidOppoIntelligentIntent')
+        if m.get('AndroidOppoIntentEnv') is not None:
+            self.android_oppo_intent_env = m.get('AndroidOppoIntentEnv')
         if m.get('AndroidOppoPrivateContentParameters') is not None:
             self.android_oppo_private_content_parameters = m.get('AndroidOppoPrivateContentParameters')
         if m.get('AndroidOppoPrivateMsgTemplateId') is not None:
@@ -4248,6 +4296,9 @@ class PushShrinkRequest(TeaModel):
         android_notify_type: str = None,
         android_open_type: str = None,
         android_open_url: str = None,
+        android_oppo_delete_intent_data: str = None,
+        android_oppo_intelligent_intent: str = None,
+        android_oppo_intent_env: int = None,
         android_oppo_private_content_parameters_shrink: str = None,
         android_oppo_private_msg_template_id: str = None,
         android_oppo_private_title_parameters_shrink: str = None,
@@ -4361,6 +4412,9 @@ class PushShrinkRequest(TeaModel):
         self.android_notify_type = android_notify_type
         self.android_open_type = android_open_type
         self.android_open_url = android_open_url
+        self.android_oppo_delete_intent_data = android_oppo_delete_intent_data
+        self.android_oppo_intelligent_intent = android_oppo_intelligent_intent
+        self.android_oppo_intent_env = android_oppo_intent_env
         self.android_oppo_private_content_parameters_shrink = android_oppo_private_content_parameters_shrink
         self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
         self.android_oppo_private_title_parameters_shrink = android_oppo_private_title_parameters_shrink
@@ -4522,6 +4576,12 @@ class PushShrinkRequest(TeaModel):
             result['AndroidOpenType'] = self.android_open_type
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_oppo_delete_intent_data is not None:
+            result['AndroidOppoDeleteIntentData'] = self.android_oppo_delete_intent_data
+        if self.android_oppo_intelligent_intent is not None:
+            result['AndroidOppoIntelligentIntent'] = self.android_oppo_intelligent_intent
+        if self.android_oppo_intent_env is not None:
+            result['AndroidOppoIntentEnv'] = self.android_oppo_intent_env
         if self.android_oppo_private_content_parameters_shrink is not None:
             result['AndroidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters_shrink
         if self.android_oppo_private_msg_template_id is not None:
@@ -4750,6 +4810,12 @@ class PushShrinkRequest(TeaModel):
             self.android_open_type = m.get('AndroidOpenType')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidOppoDeleteIntentData') is not None:
+            self.android_oppo_delete_intent_data = m.get('AndroidOppoDeleteIntentData')
+        if m.get('AndroidOppoIntelligentIntent') is not None:
+            self.android_oppo_intelligent_intent = m.get('AndroidOppoIntelligentIntent')
+        if m.get('AndroidOppoIntentEnv') is not None:
+            self.android_oppo_intent_env = m.get('AndroidOppoIntentEnv')
         if m.get('AndroidOppoPrivateContentParameters') is not None:
             self.android_oppo_private_content_parameters_shrink = m.get('AndroidOppoPrivateContentParameters')
         if m.get('AndroidOppoPrivateMsgTemplateId') is not None:

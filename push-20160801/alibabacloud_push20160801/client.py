@@ -1511,6 +1511,12 @@ class Client(OpenApiClient):
             query['AndroidOpenType'] = request.android_open_type
         if not UtilClient.is_unset(request.android_open_url):
             query['AndroidOpenUrl'] = request.android_open_url
+        if not UtilClient.is_unset(request.android_oppo_delete_intent_data):
+            query['AndroidOppoDeleteIntentData'] = request.android_oppo_delete_intent_data
+        if not UtilClient.is_unset(request.android_oppo_intelligent_intent):
+            query['AndroidOppoIntelligentIntent'] = request.android_oppo_intelligent_intent
+        if not UtilClient.is_unset(request.android_oppo_intent_env):
+            query['AndroidOppoIntentEnv'] = request.android_oppo_intent_env
         if not UtilClient.is_unset(request.android_oppo_private_content_parameters_shrink):
             query['AndroidOppoPrivateContentParameters'] = request.android_oppo_private_content_parameters_shrink
         if not UtilClient.is_unset(request.android_oppo_private_msg_template_id):
@@ -1774,6 +1780,12 @@ class Client(OpenApiClient):
             query['AndroidOpenType'] = request.android_open_type
         if not UtilClient.is_unset(request.android_open_url):
             query['AndroidOpenUrl'] = request.android_open_url
+        if not UtilClient.is_unset(request.android_oppo_delete_intent_data):
+            query['AndroidOppoDeleteIntentData'] = request.android_oppo_delete_intent_data
+        if not UtilClient.is_unset(request.android_oppo_intelligent_intent):
+            query['AndroidOppoIntelligentIntent'] = request.android_oppo_intelligent_intent
+        if not UtilClient.is_unset(request.android_oppo_intent_env):
+            query['AndroidOppoIntentEnv'] = request.android_oppo_intent_env
         if not UtilClient.is_unset(request.android_oppo_private_content_parameters_shrink):
             query['AndroidOppoPrivateContentParameters'] = request.android_oppo_private_content_parameters_shrink
         if not UtilClient.is_unset(request.android_oppo_private_msg_template_id):
