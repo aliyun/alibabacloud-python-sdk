@@ -481,6 +481,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_alert_strategy_with_options_async(request, headers, runtime)
 
+    def describe_metric_list_with_options(
+        self,
+        request: sys_om20231230_models.DescribeMetricListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.DescribeMetricListResponse:
+        """
+        @summary 查询指标
+        
+        @param request: DescribeMetricListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.metric_name):
+            query['metricName'] = request.metric_name
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricList',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/get/describeMetricList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.DescribeMetricListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_list_with_options_async(
+        self,
+        request: sys_om20231230_models.DescribeMetricListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.DescribeMetricListResponse:
+        """
+        @summary 查询指标
+        
+        @param request: DescribeMetricListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.metric_name):
+            query['metricName'] = request.metric_name
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricList',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/get/describeMetricList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.DescribeMetricListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_list(
+        self,
+        request: sys_om20231230_models.DescribeMetricListRequest,
+    ) -> sys_om20231230_models.DescribeMetricListResponse:
+        """
+        @summary 查询指标
+        
+        @param request: DescribeMetricListRequest
+        @return: DescribeMetricListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_metric_list_with_options(request, headers, runtime)
+
+    async def describe_metric_list_async(
+        self,
+        request: sys_om20231230_models.DescribeMetricListRequest,
+    ) -> sys_om20231230_models.DescribeMetricListResponse:
+        """
+        @summary 查询指标
+        
+        @param request: DescribeMetricListRequest
+        @return: DescribeMetricListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_metric_list_with_options_async(request, headers, runtime)
+
     def generate_copilot_response_with_options(
         self,
         request: sys_om20231230_models.GenerateCopilotResponseRequest,

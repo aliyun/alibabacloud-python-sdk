@@ -622,6 +622,185 @@ class DeleteAlertStrategyResponse(TeaModel):
         return self
 
 
+class DescribeMetricListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance: str = None,
+        metric_name: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.instance = instance
+        self.metric_name = metric_name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.instance is not None:
+            result['instance'] = self.instance
+        if self.metric_name is not None:
+            result['metricName'] = self.metric_name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('instance') is not None:
+            self.instance = m.get('instance')
+        if m.get('metricName') is not None:
+            self.metric_name = m.get('metricName')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class DescribeMetricListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        labels: str = None,
+        metric_name: str = None,
+        values: List[List[str]] = None,
+    ):
+        self.labels = labels
+        self.metric_name = metric_name
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.metric_name is not None:
+            result['metricName'] = self.metric_name
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('labels') is not None:
+            self.labels = m.get('labels')
+        if m.get('metricName') is not None:
+            self.metric_name = m.get('metricName')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class DescribeMetricListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[DescribeMetricListResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeMetricListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DescribeMetricListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetricListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetricListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateCopilotResponseRequest(TeaModel):
     def __init__(
         self,
