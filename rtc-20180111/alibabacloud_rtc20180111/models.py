@@ -26874,9 +26874,11 @@ class StartCloudNoteRequestRealtimeSubtitleTranslation(TeaModel):
 class StartCloudNoteRequestRealtimeSubtitle(TeaModel):
     def __init__(
         self,
+        asr_callback: bool = None,
         enabled: bool = None,
         translation: StartCloudNoteRequestRealtimeSubtitleTranslation = None,
     ):
+        self.asr_callback = asr_callback
         self.enabled = enabled
         self.translation = translation
 
@@ -26890,6 +26892,8 @@ class StartCloudNoteRequestRealtimeSubtitle(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_callback is not None:
+            result['AsrCallback'] = self.asr_callback
         if self.enabled is not None:
             result['Enabled'] = self.enabled
         if self.translation is not None:
@@ -26898,6 +26902,8 @@ class StartCloudNoteRequestRealtimeSubtitle(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrCallback') is not None:
+            self.asr_callback = m.get('AsrCallback')
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')
         if m.get('Translation') is not None:

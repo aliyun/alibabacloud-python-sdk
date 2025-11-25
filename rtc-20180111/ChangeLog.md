@@ -1,3 +1,7 @@
+2025-11-25 Version: 5.3.2
+- Update API StartCloudNote: add request parameters RealtimeSubtitle.AsrCallback.
+
+
 2025-11-19 Version: 5.3.1
 - Update API RtcSipInviteMember: add request parameters TaskId.
 
