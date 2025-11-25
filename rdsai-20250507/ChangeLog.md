@@ -1,3 +1,8 @@
+2025-11-25 Version: 1.4.1
+- Update API CreateAppInstance: add request parameters PublicEndpointEnabled.
+- Update API ResetInstancePassword: add request parameters DatabasePassword.
+
+
 2025-11-18 Version: 1.4.0
 - Support API ModifyInstanceConfig.
 - Update API DescribeAppInstanceAttribute: add response parameters Body.EipStatus.

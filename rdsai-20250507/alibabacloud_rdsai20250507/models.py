@@ -55,6 +55,7 @@ class CreateAppInstanceRequest(TeaModel):
         dashboard_username: str = None,
         database_password: str = None,
         instance_class: str = None,
+        public_endpoint_enabled: bool = None,
         public_network_access_enabled: bool = None,
         ragenabled: bool = None,
         region_id: str = None,
@@ -69,6 +70,7 @@ class CreateAppInstanceRequest(TeaModel):
         self.dashboard_username = dashboard_username
         self.database_password = database_password
         self.instance_class = instance_class
+        self.public_endpoint_enabled = public_endpoint_enabled
         self.public_network_access_enabled = public_network_access_enabled
         self.ragenabled = ragenabled
         self.region_id = region_id
@@ -102,6 +104,8 @@ class CreateAppInstanceRequest(TeaModel):
             result['DatabasePassword'] = self.database_password
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
+        if self.public_endpoint_enabled is not None:
+            result['PublicEndpointEnabled'] = self.public_endpoint_enabled
         if self.public_network_access_enabled is not None:
             result['PublicNetworkAccessEnabled'] = self.public_network_access_enabled
         if self.ragenabled is not None:
@@ -133,6 +137,8 @@ class CreateAppInstanceRequest(TeaModel):
             self.database_password = m.get('DatabasePassword')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
+        if m.get('PublicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('PublicEndpointEnabled')
         if m.get('PublicNetworkAccessEnabled') is not None:
             self.public_network_access_enabled = m.get('PublicNetworkAccessEnabled')
         if m.get('RAGEnabled') is not None:
@@ -156,6 +162,7 @@ class CreateAppInstanceShrinkRequest(TeaModel):
         dashboard_username: str = None,
         database_password: str = None,
         instance_class: str = None,
+        public_endpoint_enabled: bool = None,
         public_network_access_enabled: bool = None,
         ragenabled: bool = None,
         region_id: str = None,
@@ -170,6 +177,7 @@ class CreateAppInstanceShrinkRequest(TeaModel):
         self.dashboard_username = dashboard_username
         self.database_password = database_password
         self.instance_class = instance_class
+        self.public_endpoint_enabled = public_endpoint_enabled
         self.public_network_access_enabled = public_network_access_enabled
         self.ragenabled = ragenabled
         self.region_id = region_id
@@ -202,6 +210,8 @@ class CreateAppInstanceShrinkRequest(TeaModel):
             result['DatabasePassword'] = self.database_password
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
+        if self.public_endpoint_enabled is not None:
+            result['PublicEndpointEnabled'] = self.public_endpoint_enabled
         if self.public_network_access_enabled is not None:
             result['PublicNetworkAccessEnabled'] = self.public_network_access_enabled
         if self.ragenabled is not None:
@@ -232,6 +242,8 @@ class CreateAppInstanceShrinkRequest(TeaModel):
             self.database_password = m.get('DatabasePassword')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
+        if m.get('PublicEndpointEnabled') is not None:
+            self.public_endpoint_enabled = m.get('PublicEndpointEnabled')
         if m.get('PublicNetworkAccessEnabled') is not None:
             self.public_network_access_enabled = m.get('PublicNetworkAccessEnabled')
         if m.get('RAGEnabled') is not None:
@@ -2846,11 +2858,12 @@ class ResetInstancePasswordRequest(TeaModel):
     def __init__(
         self,
         dashboard_password: str = None,
+        database_password: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
-        # This parameter is required.
         self.dashboard_password = dashboard_password
+        self.database_password = database_password
         # This parameter is required.
         self.instance_name = instance_name
         self.region_id = region_id
@@ -2866,6 +2879,8 @@ class ResetInstancePasswordRequest(TeaModel):
         result = dict()
         if self.dashboard_password is not None:
             result['DashboardPassword'] = self.dashboard_password
+        if self.database_password is not None:
+            result['DatabasePassword'] = self.database_password
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.region_id is not None:
@@ -2876,6 +2891,8 @@ class ResetInstancePasswordRequest(TeaModel):
         m = m or dict()
         if m.get('DashboardPassword') is not None:
             self.dashboard_password = m.get('DashboardPassword')
+        if m.get('DatabasePassword') is not None:
+            self.database_password = m.get('DatabasePassword')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('RegionId') is not None:

@@ -77,6 +77,8 @@ class Client(OpenApiClient):
             query['DatabasePassword'] = request.database_password
         if not UtilClient.is_unset(request.instance_class):
             query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.public_endpoint_enabled):
+            query['PublicEndpointEnabled'] = request.public_endpoint_enabled
         if not UtilClient.is_unset(request.public_network_access_enabled):
             query['PublicNetworkAccessEnabled'] = request.public_network_access_enabled
         if not UtilClient.is_unset(request.ragenabled):
@@ -140,6 +142,8 @@ class Client(OpenApiClient):
             query['DatabasePassword'] = request.database_password
         if not UtilClient.is_unset(request.instance_class):
             query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.public_endpoint_enabled):
+            query['PublicEndpointEnabled'] = request.public_endpoint_enabled
         if not UtilClient.is_unset(request.public_network_access_enabled):
             query['PublicNetworkAccessEnabled'] = request.public_network_access_enabled
         if not UtilClient.is_unset(request.ragenabled):
@@ -1817,6 +1821,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dashboard_password):
             query['DashboardPassword'] = request.dashboard_password
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.region_id):
@@ -1856,6 +1862,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dashboard_password):
             query['DashboardPassword'] = request.dashboard_password
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.region_id):
