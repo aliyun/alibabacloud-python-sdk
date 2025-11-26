@@ -1,3 +1,15 @@
+2025-11-26 Version: 3.4.0
+- Support API CreateCloudResource.
+- Support API DeleteCloudResource.
+- Support API DescribeRegions.
+- Support API GetCloudResource.
+- Support API GetCloudResourceData.
+- Support API GetCmsService.
+- Support API GetPrometheusUserSetting.
+- Support API ListIntegrationPolicyServiceMonitors.
+- Support API UpdatePrometheusUserSetting.
+
+
 2025-11-10 Version: 3.3.0
 - Support API DeleteUmodelCommonSchemaRef.
 - Support API GetUmodelCommonSchemaRef.

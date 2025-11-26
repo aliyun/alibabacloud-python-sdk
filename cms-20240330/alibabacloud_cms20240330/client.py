@@ -369,6 +369,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_agg_task_group_with_options_async(instance_id, request, headers, runtime)
 
+    def create_cloud_resource_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateCloudResourceResponse:
+        """
+        @summary 创建云资源中心
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateCloudResource',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_resource_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateCloudResourceResponse:
+        """
+        @summary 创建云资源中心
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateCloudResource',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_resource(self) -> cms_20240330_models.CreateCloudResourceResponse:
+        """
+        @summary 创建云资源中心
+        
+        @return: CreateCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_cloud_resource_with_options(headers, runtime)
+
+    async def create_cloud_resource_async(self) -> cms_20240330_models.CreateCloudResourceResponse:
+        """
+        @summary 创建云资源中心
+        
+        @return: CreateCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_cloud_resource_with_options_async(headers, runtime)
+
     def create_entity_store_with_options(
         self,
         workspace_name: str,
@@ -1565,6 +1647,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
 
+    def delete_cloud_resource_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteCloudResourceResponse:
+        """
+        @summary 删除云资源中心
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudResource',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_resource_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteCloudResourceResponse:
+        """
+        @summary 删除云资源中心
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudResource',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_resource(self) -> cms_20240330_models.DeleteCloudResourceResponse:
+        """
+        @summary 删除云资源中心
+        
+        @return: DeleteCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_cloud_resource_with_options(headers, runtime)
+
+    async def delete_cloud_resource_async(self) -> cms_20240330_models.DeleteCloudResourceResponse:
+        """
+        @summary 删除云资源中心
+        
+        @return: DeleteCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_cloud_resource_with_options_async(headers, runtime)
+
     def delete_entity_store_with_options(
         self,
         workspace_name: str,
@@ -2473,6 +2637,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_workspace_with_options_async(workspace_name, headers, runtime)
 
+    def describe_regions_with_options(
+        self,
+        request: cms_20240330_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: cms_20240330_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: cms_20240330_models.DescribeRegionsRequest,
+    ) -> cms_20240330_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(request, headers, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: cms_20240330_models.DescribeRegionsRequest,
+    ) -> cms_20240330_models.DescribeRegionsResponse:
+        """
+        @summary 查询地域信息列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(request, headers, runtime)
+
     def get_addon_release_with_options(
         self,
         release_name: str,
@@ -2660,6 +2928,308 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
+
+    def get_cloud_resource_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetCloudResourceResponse:
+        """
+        @summary 查询云资源中心
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCloudResource',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetCloudResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cloud_resource_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetCloudResourceResponse:
+        """
+        @summary 查询云资源中心
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetCloudResource',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetCloudResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cloud_resource(self) -> cms_20240330_models.GetCloudResourceResponse:
+        """
+        @summary 查询云资源中心
+        
+        @return: GetCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cloud_resource_with_options(headers, runtime)
+
+    async def get_cloud_resource_async(self) -> cms_20240330_models.GetCloudResourceResponse:
+        """
+        @summary 查询云资源中心
+        
+        @return: GetCloudResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cloud_resource_with_options_async(headers, runtime)
+
+    def get_cloud_resource_data_with_options(
+        self,
+        request: cms_20240330_models.GetCloudResourceDataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetCloudResourceDataResponse:
+        """
+        @summary 查询云资源中心数据
+        
+        @param request: GetCloudResourceDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudResourceDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCloudResourceData',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource/data',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetCloudResourceDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cloud_resource_data_with_options_async(
+        self,
+        request: cms_20240330_models.GetCloudResourceDataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetCloudResourceDataResponse:
+        """
+        @summary 查询云资源中心数据
+        
+        @param request: GetCloudResourceDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudResourceDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCloudResourceData',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cloudresource/data',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetCloudResourceDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cloud_resource_data(
+        self,
+        request: cms_20240330_models.GetCloudResourceDataRequest,
+    ) -> cms_20240330_models.GetCloudResourceDataResponse:
+        """
+        @summary 查询云资源中心数据
+        
+        @param request: GetCloudResourceDataRequest
+        @return: GetCloudResourceDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cloud_resource_data_with_options(request, headers, runtime)
+
+    async def get_cloud_resource_data_async(
+        self,
+        request: cms_20240330_models.GetCloudResourceDataRequest,
+    ) -> cms_20240330_models.GetCloudResourceDataResponse:
+        """
+        @summary 查询云资源中心数据
+        
+        @param request: GetCloudResourceDataRequest
+        @return: GetCloudResourceDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cloud_resource_data_with_options_async(request, headers, runtime)
+
+    def get_cms_service_with_options(
+        self,
+        request: cms_20240330_models.GetCmsServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetCmsServiceResponse:
+        """
+        @summary 获取云监控开通状态
+        
+        @param request: GetCmsServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCmsServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.service):
+            query['service'] = request.service
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCmsService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cmsservice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetCmsServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cms_service_with_options_async(
+        self,
+        request: cms_20240330_models.GetCmsServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetCmsServiceResponse:
+        """
+        @summary 获取云监控开通状态
+        
+        @param request: GetCmsServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCmsServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.service):
+            query['service'] = request.service
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCmsService',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/cmsservice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetCmsServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cms_service(
+        self,
+        request: cms_20240330_models.GetCmsServiceRequest,
+    ) -> cms_20240330_models.GetCmsServiceResponse:
+        """
+        @summary 获取云监控开通状态
+        
+        @param request: GetCmsServiceRequest
+        @return: GetCmsServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cms_service_with_options(request, headers, runtime)
+
+    async def get_cms_service_async(
+        self,
+        request: cms_20240330_models.GetCmsServiceRequest,
+    ) -> cms_20240330_models.GetCmsServiceResponse:
+        """
+        @summary 获取云监控开通状态
+        
+        @param request: GetCmsServiceRequest
+        @return: GetCmsServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cms_service_with_options_async(request, headers, runtime)
 
     def get_entity_store_with_options(
         self,
@@ -3086,6 +3656,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_prometheus_instance_with_options_async(prometheus_instance_id, request, headers, runtime)
+
+    def get_prometheus_user_setting_with_options(
+        self,
+        request: cms_20240330_models.GetPrometheusUserSettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetPrometheusUserSettingResponse:
+        """
+        @summary 查询指定环境实例
+        
+        @param request: GetPrometheusUserSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrometheusUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrometheusUserSetting',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/prometheus-user-setting',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetPrometheusUserSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prometheus_user_setting_with_options_async(
+        self,
+        request: cms_20240330_models.GetPrometheusUserSettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetPrometheusUserSettingResponse:
+        """
+        @summary 查询指定环境实例
+        
+        @param request: GetPrometheusUserSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrometheusUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrometheusUserSetting',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/prometheus-user-setting',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetPrometheusUserSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prometheus_user_setting(
+        self,
+        request: cms_20240330_models.GetPrometheusUserSettingRequest,
+    ) -> cms_20240330_models.GetPrometheusUserSettingResponse:
+        """
+        @summary 查询指定环境实例
+        
+        @param request: GetPrometheusUserSettingRequest
+        @return: GetPrometheusUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_prometheus_user_setting_with_options(request, headers, runtime)
+
+    async def get_prometheus_user_setting_async(
+        self,
+        request: cms_20240330_models.GetPrometheusUserSettingRequest,
+    ) -> cms_20240330_models.GetPrometheusUserSettingResponse:
+        """
+        @summary 查询指定环境实例
+        
+        @param request: GetPrometheusUserSettingRequest
+        @return: GetPrometheusUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_prometheus_user_setting_with_options_async(request, headers, runtime)
 
     def get_prometheus_view_with_options(
         self,
@@ -4725,6 +5399,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_integration_policy_pod_monitors_with_options_async(policy_id, request, headers, runtime)
 
+    def list_integration_policy_service_monitors_with_options(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyServiceMonitorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyServiceMonitorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyServiceMonitorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyServiceMonitorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_release_name):
+            query['addonReleaseName'] = request.addon_release_name
+        if not UtilClient.is_unset(request.encrypt_yaml):
+            query['encryptYaml'] = request.encrypt_yaml
+        if not UtilClient.is_unset(request.namespace):
+            query['namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyServiceMonitors',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/service-monitors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyServiceMonitorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_integration_policy_service_monitors_with_options_async(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyServiceMonitorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyServiceMonitorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyServiceMonitorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyServiceMonitorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_release_name):
+            query['addonReleaseName'] = request.addon_release_name
+        if not UtilClient.is_unset(request.encrypt_yaml):
+            query['encryptYaml'] = request.encrypt_yaml
+        if not UtilClient.is_unset(request.namespace):
+            query['namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyServiceMonitors',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/service-monitors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyServiceMonitorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_integration_policy_service_monitors(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyServiceMonitorsRequest,
+    ) -> cms_20240330_models.ListIntegrationPolicyServiceMonitorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyServiceMonitorsRequest
+        @return: ListIntegrationPolicyServiceMonitorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_integration_policy_service_monitors_with_options(policy_id, request, headers, runtime)
+
+    async def list_integration_policy_service_monitors_async(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyServiceMonitorsRequest,
+    ) -> cms_20240330_models.ListIntegrationPolicyServiceMonitorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyServiceMonitorsRequest
+        @return: ListIntegrationPolicyServiceMonitorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_integration_policy_service_monitors_with_options_async(policy_id, request, headers, runtime)
+
     def list_integration_policy_storage_requirements_with_options(
         self,
         policy_id: str,
@@ -6293,7 +7083,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
         """
-        @summary 更新订阅
+        @summary 更新通知策略
         
         @param request: UpdateNotifyStrategyRequest
         @param headers: map
@@ -6333,7 +7123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
         """
-        @summary 更新订阅
+        @summary 更新通知策略
         
         @param request: UpdateNotifyStrategyRequest
         @param headers: map
@@ -6371,7 +7161,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateNotifyStrategyRequest,
     ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
         """
-        @summary 更新订阅
+        @summary 更新通知策略
         
         @param request: UpdateNotifyStrategyRequest
         @return: UpdateNotifyStrategyResponse
@@ -6386,7 +7176,7 @@ class Client(OpenApiClient):
         request: cms_20240330_models.UpdateNotifyStrategyRequest,
     ) -> cms_20240330_models.UpdateNotifyStrategyResponse:
         """
-        @summary 更新订阅
+        @summary 更新通知策略
         
         @param request: UpdateNotifyStrategyRequest
         @return: UpdateNotifyStrategyResponse
@@ -6550,6 +7340,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_prometheus_instance_with_options_async(prometheus_instance_id, request, headers, runtime)
+
+    def update_prometheus_user_setting_with_options(
+        self,
+        setting_key: str,
+        request: cms_20240330_models.UpdatePrometheusUserSettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdatePrometheusUserSettingResponse:
+        """
+        @summary 更新Prom实例信息
+        
+        @param request: UpdatePrometheusUserSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrometheusUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.setting_value):
+            query['settingValue'] = request.setting_value
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePrometheusUserSetting',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/prometheus-user-setting/{OpenApiUtilClient.get_encode_param(setting_key)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdatePrometheusUserSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prometheus_user_setting_with_options_async(
+        self,
+        setting_key: str,
+        request: cms_20240330_models.UpdatePrometheusUserSettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdatePrometheusUserSettingResponse:
+        """
+        @summary 更新Prom实例信息
+        
+        @param request: UpdatePrometheusUserSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrometheusUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.setting_value):
+            query['settingValue'] = request.setting_value
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePrometheusUserSetting',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/prometheus-user-setting/{OpenApiUtilClient.get_encode_param(setting_key)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdatePrometheusUserSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prometheus_user_setting(
+        self,
+        setting_key: str,
+        request: cms_20240330_models.UpdatePrometheusUserSettingRequest,
+    ) -> cms_20240330_models.UpdatePrometheusUserSettingResponse:
+        """
+        @summary 更新Prom实例信息
+        
+        @param request: UpdatePrometheusUserSettingRequest
+        @return: UpdatePrometheusUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_prometheus_user_setting_with_options(setting_key, request, headers, runtime)
+
+    async def update_prometheus_user_setting_async(
+        self,
+        setting_key: str,
+        request: cms_20240330_models.UpdatePrometheusUserSettingRequest,
+    ) -> cms_20240330_models.UpdatePrometheusUserSettingResponse:
+        """
+        @summary 更新Prom实例信息
+        
+        @param request: UpdatePrometheusUserSettingRequest
+        @return: UpdatePrometheusUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_prometheus_user_setting_with_options_async(setting_key, request, headers, runtime)
 
     def update_prometheus_view_with_options(
         self,
