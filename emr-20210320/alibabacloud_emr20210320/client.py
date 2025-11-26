@@ -1255,6 +1255,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ExportApplicationConfigsResponse:
         """
+        @summary 导出应用服务配置
+        
         @param request: ExportApplicationConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExportApplicationConfigsResponse
@@ -1265,10 +1267,16 @@ class Client(OpenApiClient):
             query['ApplicationConfigFiles'] = request.application_config_files
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.config_scope):
+            query['ConfigScope'] = request.config_scope
         if not UtilClient.is_unset(request.export_mode):
             query['ExportMode'] = request.export_mode
         if not UtilClient.is_unset(request.file_format):
             query['FileFormat'] = request.file_format
+        if not UtilClient.is_unset(request.node_group_ids):
+            query['NodeGroupIds'] = request.node_group_ids
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1296,6 +1304,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ExportApplicationConfigsResponse:
         """
+        @summary 导出应用服务配置
+        
         @param request: ExportApplicationConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExportApplicationConfigsResponse
@@ -1306,10 +1316,16 @@ class Client(OpenApiClient):
             query['ApplicationConfigFiles'] = request.application_config_files
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.config_scope):
+            query['ConfigScope'] = request.config_scope
         if not UtilClient.is_unset(request.export_mode):
             query['ExportMode'] = request.export_mode
         if not UtilClient.is_unset(request.file_format):
             query['FileFormat'] = request.file_format
+        if not UtilClient.is_unset(request.node_group_ids):
+            query['NodeGroupIds'] = request.node_group_ids
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1336,6 +1352,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ExportApplicationConfigsRequest,
     ) -> emr_20210320_models.ExportApplicationConfigsResponse:
         """
+        @summary 导出应用服务配置
+        
         @param request: ExportApplicationConfigsRequest
         @return: ExportApplicationConfigsResponse
         """
@@ -1347,6 +1365,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ExportApplicationConfigsRequest,
     ) -> emr_20210320_models.ExportApplicationConfigsResponse:
         """
+        @summary 导出应用服务配置
+        
         @param request: ExportApplicationConfigsRequest
         @return: ExportApplicationConfigsResponse
         """
@@ -8614,6 +8634,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_cluster_attribute_with_options_async(request, runtime)
+
+    def update_cluster_auto_renew_with_options(
+        self,
+        request: emr_20210320_models.UpdateClusterAutoRenewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UpdateClusterAutoRenewResponse:
+        """
+        @param request: UpdateClusterAutoRenewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterAutoRenewResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_instances):
+            query['AutoRenewInstances'] = request.auto_renew_instances
+        if not UtilClient.is_unset(request.cluster_auto_renew):
+            query['ClusterAutoRenew'] = request.cluster_auto_renew
+        if not UtilClient.is_unset(request.cluster_auto_renew_duration):
+            query['ClusterAutoRenewDuration'] = request.cluster_auto_renew_duration
+        if not UtilClient.is_unset(request.cluster_auto_renew_duration_unit):
+            query['ClusterAutoRenewDurationUnit'] = request.cluster_auto_renew_duration_unit
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renew_all_instances):
+            query['RenewAllInstances'] = request.renew_all_instances
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterAutoRenew',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UpdateClusterAutoRenewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cluster_auto_renew_with_options_async(
+        self,
+        request: emr_20210320_models.UpdateClusterAutoRenewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UpdateClusterAutoRenewResponse:
+        """
+        @param request: UpdateClusterAutoRenewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterAutoRenewResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_instances):
+            query['AutoRenewInstances'] = request.auto_renew_instances
+        if not UtilClient.is_unset(request.cluster_auto_renew):
+            query['ClusterAutoRenew'] = request.cluster_auto_renew
+        if not UtilClient.is_unset(request.cluster_auto_renew_duration):
+            query['ClusterAutoRenewDuration'] = request.cluster_auto_renew_duration
+        if not UtilClient.is_unset(request.cluster_auto_renew_duration_unit):
+            query['ClusterAutoRenewDurationUnit'] = request.cluster_auto_renew_duration_unit
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renew_all_instances):
+            query['RenewAllInstances'] = request.renew_all_instances
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterAutoRenew',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UpdateClusterAutoRenewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cluster_auto_renew(
+        self,
+        request: emr_20210320_models.UpdateClusterAutoRenewRequest,
+    ) -> emr_20210320_models.UpdateClusterAutoRenewResponse:
+        """
+        @param request: UpdateClusterAutoRenewRequest
+        @return: UpdateClusterAutoRenewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cluster_auto_renew_with_options(request, runtime)
+
+    async def update_cluster_auto_renew_async(
+        self,
+        request: emr_20210320_models.UpdateClusterAutoRenewRequest,
+    ) -> emr_20210320_models.UpdateClusterAutoRenewResponse:
+        """
+        @param request: UpdateClusterAutoRenewRequest
+        @return: UpdateClusterAutoRenewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cluster_auto_renew_with_options_async(request, runtime)
 
     def update_script_with_options(
         self,

@@ -2848,6 +2848,39 @@ class ClusterSummary(TeaModel):
         return self
 
 
+class CollationTimeZone(TeaModel):
+    def __init__(
+        self,
+        current_time_offset: str = None,
+        time_zone: str = None,
+    ):
+        self.current_time_offset = current_time_offset
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_time_offset is not None:
+            result['CurrentTimeOffset'] = self.current_time_offset
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentTimeOffset') is not None:
+            self.current_time_offset = m.get('CurrentTimeOffset')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
 class ComponentInstanceSelectorComponentInstances(TeaModel):
     def __init__(
         self,
@@ -4899,6 +4932,7 @@ class DRPlanConfigurationDetail(TeaModel):
         release_version: str = None,
         resource_group_id: str = None,
         scaling_policies: List[ScalingPolicy] = None,
+        scaling_time_zone: str = None,
         security_mode: str = None,
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
@@ -4929,6 +4963,7 @@ class DRPlanConfigurationDetail(TeaModel):
         self.release_version = release_version
         self.resource_group_id = resource_group_id
         self.scaling_policies = scaling_policies
+        self.scaling_time_zone = scaling_time_zone
         # This parameter is required.
         self.security_mode = security_mode
         self.subscription_config = subscription_config
@@ -5018,6 +5053,8 @@ class DRPlanConfigurationDetail(TeaModel):
         if self.scaling_policies is not None:
             for k in self.scaling_policies:
                 result['ScalingPolicies'].append(k.to_map() if k else None)
+        if self.scaling_time_zone is not None:
+            result['ScalingTimeZone'] = self.scaling_time_zone
         if self.security_mode is not None:
             result['SecurityMode'] = self.security_mode
         if self.subscription_config is not None:
@@ -5083,6 +5120,8 @@ class DRPlanConfigurationDetail(TeaModel):
             for k in m.get('ScalingPolicies'):
                 temp_model = ScalingPolicy()
                 self.scaling_policies.append(temp_model.from_map(k))
+        if m.get('ScalingTimeZone') is not None:
+            self.scaling_time_zone = m.get('ScalingTimeZone')
         if m.get('SecurityMode') is not None:
             self.security_mode = m.get('SecurityMode')
         if m.get('SubscriptionConfig') is not None:
@@ -10506,8 +10545,11 @@ class ExportApplicationConfigsRequest(TeaModel):
         self,
         application_config_files: List[ApplicationConfigFile] = None,
         cluster_id: str = None,
+        config_scope: str = None,
         export_mode: str = None,
         file_format: str = None,
+        node_group_ids: List[str] = None,
+        node_ids: List[str] = None,
         region_id: str = None,
     ):
         # 导出应用配置。
@@ -10516,9 +10558,12 @@ class ExportApplicationConfigsRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        self.config_scope = config_scope
         self.export_mode = export_mode
         # 导出应用配置的文件格式。
         self.file_format = file_format
+        self.node_group_ids = node_group_ids
+        self.node_ids = node_ids
         # 区域ID。
         # 
         # This parameter is required.
@@ -10542,10 +10587,16 @@ class ExportApplicationConfigsRequest(TeaModel):
                 result['ApplicationConfigFiles'].append(k.to_map() if k else None)
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.config_scope is not None:
+            result['ConfigScope'] = self.config_scope
         if self.export_mode is not None:
             result['ExportMode'] = self.export_mode
         if self.file_format is not None:
             result['FileFormat'] = self.file_format
+        if self.node_group_ids is not None:
+            result['NodeGroupIds'] = self.node_group_ids
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -10559,10 +10610,16 @@ class ExportApplicationConfigsRequest(TeaModel):
                 self.application_config_files.append(temp_model.from_map(k))
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ConfigScope') is not None:
+            self.config_scope = m.get('ConfigScope')
         if m.get('ExportMode') is not None:
             self.export_mode = m.get('ExportMode')
         if m.get('FileFormat') is not None:
             self.file_format = m.get('FileFormat')
+        if m.get('NodeGroupIds') is not None:
+            self.node_group_ids = m.get('NodeGroupIds')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -11542,6 +11599,7 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         activity_type: str = None,
         adjustment_type: str = None,
         adjustment_value: int = None,
+        collation_time_zone: CollationTimeZone = None,
         metrics_trigger: MetricsTrigger = None,
         rule_name: str = None,
         time_trigger: TimeTrigger = None,
@@ -11556,6 +11614,7 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         self.adjustment_type = adjustment_type
         # The adjustment value. The parameter value must be a positive integer, which indicates the number of instances that you want to add or remove.
         self.adjustment_value = adjustment_value
+        self.collation_time_zone = collation_time_zone
         # The description of load-based scaling.
         self.metrics_trigger = metrics_trigger
         # The name of the auto scaling rule.
@@ -11569,6 +11628,8 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         self.trigger_type = trigger_type
 
     def validate(self):
+        if self.collation_time_zone:
+            self.collation_time_zone.validate()
         if self.metrics_trigger:
             self.metrics_trigger.validate()
         if self.time_trigger:
@@ -11586,6 +11647,8 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
             result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
+        if self.collation_time_zone is not None:
+            result['CollationTimeZone'] = self.collation_time_zone.to_map()
         if self.metrics_trigger is not None:
             result['MetricsTrigger'] = self.metrics_trigger.to_map()
         if self.rule_name is not None:
@@ -11604,6 +11667,9 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
             self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
+        if m.get('CollationTimeZone') is not None:
+            temp_model = CollationTimeZone()
+            self.collation_time_zone = temp_model.from_map(m['CollationTimeZone'])
         if m.get('MetricsTrigger') is not None:
             temp_model = MetricsTrigger()
             self.metrics_trigger = temp_model.from_map(m['MetricsTrigger'])
@@ -12125,6 +12191,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         cluster_name: str = None,
         cluster_state: str = None,
         cluster_type: str = None,
+        collation_time_zone: CollationTimeZone = None,
         deletion_protection: bool = None,
         deploy_mode: str = None,
         emr_default_role: str = None,
@@ -12170,6 +12237,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         # *   CUSTOM
         # *   HADOOP
         self.cluster_type = cluster_type
+        self.collation_time_zone = collation_time_zone
         # Indicates whether release protection is enabled for the cluster. Valid values:
         # 
         # *   true: Release protection is enabled for the cluster.
@@ -12229,6 +12297,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
             for k in self.bootstrap_scripts:
                 if k:
                     k.validate()
+        if self.collation_time_zone:
+            self.collation_time_zone.validate()
         if self.node_attributes:
             self.node_attributes.validate()
         if self.node_groups:
@@ -12272,6 +12342,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
             result['ClusterState'] = self.cluster_state
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.collation_time_zone is not None:
+            result['CollationTimeZone'] = self.collation_time_zone.to_map()
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
         if self.deploy_mode is not None:
@@ -12333,6 +12405,9 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
             self.cluster_state = m.get('ClusterState')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('CollationTimeZone') is not None:
+            temp_model = CollationTimeZone()
+            self.collation_time_zone = temp_model.from_map(m['CollationTimeZone'])
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
         if m.get('DeployMode') is not None:
@@ -49502,8 +49577,6 @@ class ListTagResourcesRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs. Number of array elements N Valid values: 1 to 1
-        # 
-        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource. Set the value to cluster.
         # 
@@ -51953,6 +52026,163 @@ class UpdateClusterAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateClusterAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateClusterAutoRenewRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew_instances: List[AutoRenewInstance] = None,
+        cluster_auto_renew: bool = None,
+        cluster_auto_renew_duration: int = None,
+        cluster_auto_renew_duration_unit: str = None,
+        cluster_id: str = None,
+        region_id: str = None,
+        renew_all_instances: bool = None,
+    ):
+        # 自动续费ECS实例列表。
+        self.auto_renew_instances = auto_renew_instances
+        # 集群是否自动续费。
+        self.cluster_auto_renew = cluster_auto_renew
+        # 集群自动续费时长。
+        self.cluster_auto_renew_duration = cluster_auto_renew_duration
+        # 集群续费时长单位。
+        self.cluster_auto_renew_duration_unit = cluster_auto_renew_duration_unit
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # 续费所有ECS实例。
+        self.renew_all_instances = renew_all_instances
+
+    def validate(self):
+        if self.auto_renew_instances:
+            for k in self.auto_renew_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AutoRenewInstances'] = []
+        if self.auto_renew_instances is not None:
+            for k in self.auto_renew_instances:
+                result['AutoRenewInstances'].append(k.to_map() if k else None)
+        if self.cluster_auto_renew is not None:
+            result['ClusterAutoRenew'] = self.cluster_auto_renew
+        if self.cluster_auto_renew_duration is not None:
+            result['ClusterAutoRenewDuration'] = self.cluster_auto_renew_duration
+        if self.cluster_auto_renew_duration_unit is not None:
+            result['ClusterAutoRenewDurationUnit'] = self.cluster_auto_renew_duration_unit
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.renew_all_instances is not None:
+            result['RenewAllInstances'] = self.renew_all_instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auto_renew_instances = []
+        if m.get('AutoRenewInstances') is not None:
+            for k in m.get('AutoRenewInstances'):
+                temp_model = AutoRenewInstance()
+                self.auto_renew_instances.append(temp_model.from_map(k))
+        if m.get('ClusterAutoRenew') is not None:
+            self.cluster_auto_renew = m.get('ClusterAutoRenew')
+        if m.get('ClusterAutoRenewDuration') is not None:
+            self.cluster_auto_renew_duration = m.get('ClusterAutoRenewDuration')
+        if m.get('ClusterAutoRenewDurationUnit') is not None:
+            self.cluster_auto_renew_duration_unit = m.get('ClusterAutoRenewDurationUnit')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RenewAllInstances') is not None:
+            self.renew_all_instances = m.get('RenewAllInstances')
+        return self
+
+
+class UpdateClusterAutoRenewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateClusterAutoRenewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateClusterAutoRenewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateClusterAutoRenewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,12 @@
+2025-11-26 Version: 3.3.0
+- Support API UpdateClusterAutoRenew.
+- Update API ExportApplicationConfigs: add request parameters ConfigScope.
+- Update API ExportApplicationConfigs: add request parameters NodeGroupIds.
+- Update API ExportApplicationConfigs: add request parameters NodeIds.
+- Update API GetAutoScalingPolicy: add response parameters Body.ScalingPolicy.ScalingRules.$.CollationTimeZone.
+- Update API GetClusterCloneMeta: add response parameters Body.ClusterCloneMeta.CollationTimeZone.
+
+
 2025-09-18 Version: 3.2.0
 - Support API ExportApplicationConfigs.
 - Update API ListAutoScalingActivities: add request parameters InstanceChargeTypes.
