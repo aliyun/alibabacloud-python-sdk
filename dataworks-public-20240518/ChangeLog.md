@@ -1,3 +1,6 @@
+2025-11-26 Version: 7.6.2
+- Generated python 2024-05-18 for dataworks-public.
+
 2025-11-25 Version: 7.6.1
 - Update API GetCreateWorkflowInstancesResult: add response parameters Body.Result.UnifiedWorkflowInstanceIds.
 - Update API GetTaskInstance: add response parameters Body.TaskInstance.UnifiedWorkflowInstanceId.
