@@ -1,3 +1,14 @@
+2025-11-26 Version: 8.0.1
+- Update API CreateEventStreaming: add request parameters Sink.SinkOSSParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourcePostgreSQLParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkOSSParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourcePostgreSQLParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkOSSParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourcePostgreSQLParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkOSSParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourcePostgreSQLParameters.
+
+
 2025-11-03 Version: 8.0.0
 - Update API CreateEventStreaming: add request parameters Sink.SinkApiDestinationParameters.
 - Update API CreateEventStreaming: add request parameters Sink.SinkHttpsParameters.
