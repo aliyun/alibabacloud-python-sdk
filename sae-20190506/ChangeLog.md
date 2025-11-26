@@ -1,3 +1,8 @@
+2025-11-26 Version: 2.9.2
+- Update API RescaleApplicationVertically: add request parameters Deploy.
+- Update API UpdateApplicationVswitches: add request parameters Deploy.
+
+
 2025-11-04 Version: 2.9.1
 - Update API CreateApplication: add request parameters AgentVersion.
 - Update API CreateApplication: add request parameters EnableNamespaceAgentVersion.

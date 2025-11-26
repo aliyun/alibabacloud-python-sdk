@@ -260,7 +260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchRestartApplicationsResponse:
         """
-        @summary 批量重启应用
+        @summary Restarts applications in batches.
         
         @param request: BatchRestartApplicationsRequest
         @param headers: map
@@ -300,7 +300,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchRestartApplicationsResponse:
         """
-        @summary 批量重启应用
+        @summary Restarts applications in batches.
         
         @param request: BatchRestartApplicationsRequest
         @param headers: map
@@ -338,7 +338,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchRestartApplicationsRequest,
     ) -> sae_20190506_models.BatchRestartApplicationsResponse:
         """
-        @summary 批量重启应用
+        @summary Restarts applications in batches.
         
         @param request: BatchRestartApplicationsRequest
         @return: BatchRestartApplicationsResponse
@@ -352,7 +352,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchRestartApplicationsRequest,
     ) -> sae_20190506_models.BatchRestartApplicationsResponse:
         """
-        @summary 批量重启应用
+        @summary Restarts applications in batches.
         
         @param request: BatchRestartApplicationsRequest
         @return: BatchRestartApplicationsResponse
@@ -5636,6 +5636,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
         """
+        @summary Queries the information of the associated MSE microservice governance application.
+        
         @param request: DescribeApplicationMseServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5674,6 +5676,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
         """
+        @summary Queries the information of the associated MSE microservice governance application.
+        
         @param request: DescribeApplicationMseServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5710,6 +5714,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationMseServiceRequest,
     ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
         """
+        @summary Queries the information of the associated MSE microservice governance application.
+        
         @param request: DescribeApplicationMseServiceRequest
         @return: DescribeApplicationMseServiceResponse
         """
@@ -5722,6 +5728,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationMseServiceRequest,
     ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
         """
+        @summary Queries the information of the associated MSE microservice governance application.
+        
         @param request: DescribeApplicationMseServiceRequest
         @return: DescribeApplicationMseServiceResponse
         """
@@ -13654,6 +13662,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.QueryArmsEnableResponse:
         """
+        @summary Queries whether ARMS monitoring is enabled for a specified application.
+        
         @param request: QueryArmsEnableRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13690,6 +13700,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.QueryArmsEnableResponse:
         """
+        @summary Queries whether ARMS monitoring is enabled for a specified application.
+        
         @param request: QueryArmsEnableRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13724,6 +13736,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.QueryArmsEnableRequest,
     ) -> sae_20190506_models.QueryArmsEnableResponse:
         """
+        @summary Queries whether ARMS monitoring is enabled for a specified application.
+        
         @param request: QueryArmsEnableRequest
         @return: QueryArmsEnableResponse
         """
@@ -13736,6 +13750,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.QueryArmsEnableRequest,
     ) -> sae_20190506_models.QueryArmsEnableResponse:
         """
+        @summary Queries whether ARMS monitoring is enabled for a specified application.
+        
         @param request: QueryArmsEnableRequest
         @return: QueryArmsEnableResponse
         """
@@ -14095,6 +14111,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cpu):
             query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.deploy):
+            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.disk_size):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.memory):
@@ -14149,6 +14167,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cpu):
             query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.deploy):
+            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.disk_size):
             query['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.memory):
@@ -16065,6 +16085,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.deploy):
+            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -16105,6 +16127,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.deploy):
+            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
