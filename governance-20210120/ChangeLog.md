@@ -1,3 +1,7 @@
+2025-11-26 Version: 0.3.9
+- Update API ListEvaluationResults: add response parameters Body.Results.MetricResults.$.AvailableRemediation.
+
+
 2025-10-30 Version: 0.3.8
 - Update API ListEvaluationMetadata: add request parameters TopicCode.
 - Update API ListEvaluationMetadata: add response parameters Body.EvaluationMetadata.$.Metadata.$.TopicCode.

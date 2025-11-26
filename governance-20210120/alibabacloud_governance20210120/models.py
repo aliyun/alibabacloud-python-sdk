@@ -3417,6 +3417,33 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary(TeaMod
         return self
 
 
+class ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation(TeaModel):
+    def __init__(
+        self,
+        remediation_template_id: str = None,
+    ):
+        self.remediation_template_id = remediation_template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remediation_template_id is not None:
+            result['RemediationTemplateId'] = self.remediation_template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemediationTemplateId') is not None:
+            self.remediation_template_id = m.get('RemediationTemplateId')
+        return self
+
+
 class ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo(TeaModel):
     def __init__(
         self,
@@ -3484,6 +3511,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
     def __init__(
         self,
         account_summary: ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary = None,
+        available_remediation: List[ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation] = None,
         error_info: ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo = None,
         evaluation_time: str = None,
         id: str = None,
@@ -3494,6 +3522,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         status: str = None,
     ):
         self.account_summary = account_summary
+        self.available_remediation = available_remediation
         # The error information.
         # 
         # >  This parameter is returned only if the value of `Status` is `Failed`.
@@ -3523,6 +3552,10 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
     def validate(self):
         if self.account_summary:
             self.account_summary.validate()
+        if self.available_remediation:
+            for k in self.available_remediation:
+                if k:
+                    k.validate()
         if self.error_info:
             self.error_info.validate()
         if self.resources_summary:
@@ -3536,6 +3569,10 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         result = dict()
         if self.account_summary is not None:
             result['AccountSummary'] = self.account_summary.to_map()
+        result['AvailableRemediation'] = []
+        if self.available_remediation is not None:
+            for k in self.available_remediation:
+                result['AvailableRemediation'].append(k.to_map() if k else None)
         if self.error_info is not None:
             result['ErrorInfo'] = self.error_info.to_map()
         if self.evaluation_time is not None:
@@ -3559,6 +3596,11 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         if m.get('AccountSummary') is not None:
             temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary()
             self.account_summary = temp_model.from_map(m['AccountSummary'])
+        self.available_remediation = []
+        if m.get('AvailableRemediation') is not None:
+            for k in m.get('AvailableRemediation'):
+                temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation()
+                self.available_remediation.append(temp_model.from_map(k))
         if m.get('ErrorInfo') is not None:
             temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo()
             self.error_info = temp_model.from_map(m['ErrorInfo'])
