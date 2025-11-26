@@ -1,3 +1,7 @@
+2025-11-26 Version: 6.22.0
+- Support API QueryNacosGrayConfig.
+
+
 2025-11-06 Version: 6.21.3
 - Update API GetNacosMcpServer: add response parameters Body.Data.ToolSpec.ToolDecryptStatus.
 

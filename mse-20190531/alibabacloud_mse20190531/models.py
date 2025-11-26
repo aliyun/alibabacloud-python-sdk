@@ -60457,6 +60457,234 @@ class QueryMonitorResponse(TeaModel):
         return self
 
 
+class QueryNacosGrayConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        data_id: str = None,
+        gray_name: str = None,
+        group: str = None,
+        instance_id: str = None,
+        namespace_id: str = None,
+        region_id: str = None,
+        request_pars: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.data_id = data_id
+        self.gray_name = gray_name
+        self.group = group
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.namespace_id = namespace_id
+        self.region_id = region_id
+        self.request_pars = request_pars
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.gray_name is not None:
+            result['GrayName'] = self.gray_name
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_pars is not None:
+            result['RequestPars'] = self.request_pars
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('GrayName') is not None:
+            self.gray_name = m.get('GrayName')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestPars') is not None:
+            self.request_pars = m.get('RequestPars')
+        return self
+
+
+class QueryNacosGrayConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        content: str = None,
+        data_id: str = None,
+        gray_rule: str = None,
+        gray_rule_name: str = None,
+        gray_rule_priority: str = None,
+        gray_type: str = None,
+        group: str = None,
+        last_modified: str = None,
+        md_5: str = None,
+    ):
+        self.app_name = app_name
+        self.content = content
+        self.data_id = data_id
+        self.gray_rule = gray_rule
+        self.gray_rule_name = gray_rule_name
+        self.gray_rule_priority = gray_rule_priority
+        self.gray_type = gray_type
+        self.group = group
+        self.last_modified = last_modified
+        self.md_5 = md_5
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.gray_rule is not None:
+            result['GrayRule'] = self.gray_rule
+        if self.gray_rule_name is not None:
+            result['GrayRuleName'] = self.gray_rule_name
+        if self.gray_rule_priority is not None:
+            result['GrayRulePriority'] = self.gray_rule_priority
+        if self.gray_type is not None:
+            result['GrayType'] = self.gray_type
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('GrayRule') is not None:
+            self.gray_rule = m.get('GrayRule')
+        if m.get('GrayRuleName') is not None:
+            self.gray_rule_name = m.get('GrayRuleName')
+        if m.get('GrayRulePriority') is not None:
+            self.gray_rule_priority = m.get('GrayRulePriority')
+        if m.get('GrayType') is not None:
+            self.gray_type = m.get('GrayType')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        return self
+
+
+class QueryNacosGrayConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryNacosGrayConfigResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = QueryNacosGrayConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryNacosGrayConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryNacosGrayConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryNacosGrayConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryNamespaceRequest(TeaModel):
     def __init__(
         self,
