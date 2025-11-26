@@ -1,3 +1,7 @@
+2025-11-26 Version: 6.1.7
+- Update API DescribeExtensions: add request parameters ExtensionName.
+
+
 2025-11-25 Version: 6.1.6
 - Update API DescribeAIDBClusterAttribute: add response parameters Body.KVCacheInstanceId.
 - Update API DescribePolarFsAttribute: add response parameters Body.BucketId.

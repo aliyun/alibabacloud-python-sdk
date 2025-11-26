@@ -17145,6 +17145,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.extension_name):
+            query['ExtensionName'] = request.extension_name
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -17190,6 +17192,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.extension_name):
+            query['ExtensionName'] = request.extension_name
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

@@ -34254,6 +34254,7 @@ class DescribeExtensionsRequest(TeaModel):
         self,
         dbcluster_id: str = None,
         dbname: str = None,
+        extension_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -34263,6 +34264,7 @@ class DescribeExtensionsRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
         self.dbname = dbname
+        self.extension_name = extension_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -34281,6 +34283,8 @@ class DescribeExtensionsRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbname is not None:
             result['DBName'] = self.dbname
+        if self.extension_name is not None:
+            result['ExtensionName'] = self.extension_name
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -34297,6 +34301,8 @@ class DescribeExtensionsRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBName') is not None:
             self.dbname = m.get('DBName')
+        if m.get('ExtensionName') is not None:
+            self.extension_name = m.get('ExtensionName')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
