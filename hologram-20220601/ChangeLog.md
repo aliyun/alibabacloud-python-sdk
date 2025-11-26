@@ -1,3 +1,8 @@
+2025-11-26 Version: 1.7.1
+- Update API GetInstance: add response parameters Body.Instance.EnableSSL.
+- Update API ListInstances: add response parameters Body.InstanceList.$.EnableSSL.
+
+
 2025-11-05 Version: 1.7.0
 - Support API GrantDatabasePermission.
 - Support API GrantSchemaPermission.

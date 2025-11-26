@@ -1756,6 +1756,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         creation_time: str = None,
         disk: str = None,
         enable_hive_access: str = None,
+        enable_ssl: bool = None,
         enable_serverless: bool = None,
         endpoints: List[GetInstanceResponseBodyInstanceEndpoints] = None,
         expiration_time: str = None,
@@ -1923,6 +1924,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.disk = disk
         # Indicates whether data lake acceleration is enabled.
         self.enable_hive_access = enable_hive_access
+        self.enable_ssl = enable_ssl
         # EnableServerless
         self.enable_serverless = enable_serverless
         # The list of endpoints.
@@ -2144,6 +2146,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['Disk'] = self.disk
         if self.enable_hive_access is not None:
             result['EnableHiveAccess'] = self.enable_hive_access
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
         if self.enable_serverless is not None:
             result['EnableServerless'] = self.enable_serverless
         result['Endpoints'] = []
@@ -2212,6 +2216,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.disk = m.get('Disk')
         if m.get('EnableHiveAccess') is not None:
             self.enable_hive_access = m.get('EnableHiveAccess')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
         if m.get('EnableServerless') is not None:
             self.enable_serverless = m.get('EnableServerless')
         self.endpoints = []
@@ -3940,6 +3946,7 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         commodity_code: str = None,
         creation_time: str = None,
         enable_hive_access: str = None,
+        enable_ssl: str = None,
         endpoints: List[ListInstancesResponseBodyInstanceListEndpoints] = None,
         expiration_time: str = None,
         instance_charge_type: str = None,
@@ -3980,6 +3987,7 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         # 
         #     <!-- -->
         self.enable_hive_access = enable_hive_access
+        self.enable_ssl = enable_ssl
         # The list of endpoints.
         self.endpoints = endpoints
         # The time when the cluster expires.
@@ -4124,6 +4132,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.enable_hive_access is not None:
             result['EnableHiveAccess'] = self.enable_hive_access
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
         result['Endpoints'] = []
         if self.endpoints is not None:
             for k in self.endpoints:
@@ -4168,6 +4178,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('EnableHiveAccess') is not None:
             self.enable_hive_access = m.get('EnableHiveAccess')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
         self.endpoints = []
         if m.get('Endpoints') is not None:
             for k in m.get('Endpoints'):
