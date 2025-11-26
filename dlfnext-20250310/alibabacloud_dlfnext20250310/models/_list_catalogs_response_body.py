@@ -12,13 +12,19 @@ class ListCatalogsResponseBody(DaraModel):
         self,
         catalogs: List[main_models.Catalog] = None,
         next_page_token: str = None,
+        prepay_resource: List[main_models.PrepayResource] = None,
     ):
         self.catalogs = catalogs
         self.next_page_token = next_page_token
+        self.prepay_resource = prepay_resource
 
     def validate(self):
         if self.catalogs:
             for v1 in self.catalogs:
+                 if v1:
+                    v1.validate()
+        if self.prepay_resource:
+            for v1 in self.prepay_resource:
                  if v1:
                     v1.validate()
 
@@ -35,6 +41,11 @@ class ListCatalogsResponseBody(DaraModel):
         if self.next_page_token is not None:
             result['nextPageToken'] = self.next_page_token
 
+        result['prepayResource'] = []
+        if self.prepay_resource is not None:
+            for k1 in self.prepay_resource:
+                result['prepayResource'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +58,12 @@ class ListCatalogsResponseBody(DaraModel):
 
         if m.get('nextPageToken') is not None:
             self.next_page_token = m.get('nextPageToken')
+
+        self.prepay_resource = []
+        if m.get('prepayResource') is not None:
+            for k1 in m.get('prepayResource'):
+                temp_model = main_models.PrepayResource()
+                self.prepay_resource.append(temp_model.from_map(k1))
 
         return self
 

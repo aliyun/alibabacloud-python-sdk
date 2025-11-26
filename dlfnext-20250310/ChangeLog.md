@@ -1,3 +1,7 @@
+2025-11-26 Version: 3.4.1
+- Update API ListCatalogs: add response parameters Body.prepayResource.
+
+
 2025-10-29 Version: 3.4.0
 - Support API GetTableCompaction.
 

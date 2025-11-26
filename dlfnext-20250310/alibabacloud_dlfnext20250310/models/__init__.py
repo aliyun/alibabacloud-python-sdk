@@ -31,6 +31,7 @@ from ._partition import Partition
 from ._partition_summaries import PartitionSummaries
 from ._partition_summary import PartitionSummary
 from ._permission import Permission
+from ._prepay_resource import PrepayResource
 from ._received_share import ReceivedShare
 from ._receiver import Receiver
 from ._role import Role
@@ -228,6 +229,7 @@ __all__ = [
     PartitionSummaries,
     PartitionSummary,
     Permission,
+    PrepayResource,
     ReceivedShare,
     Receiver,
     Role,

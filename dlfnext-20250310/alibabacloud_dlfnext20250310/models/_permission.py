@@ -13,6 +13,7 @@ class Permission(DaraModel):
         access: str = None,
         columns: main_models.PermissionColumns = None,
         database: str = None,
+        expire_time: str = None,
         function: str = None,
         principal: str = None,
         resource_type: str = None,
@@ -22,6 +23,7 @@ class Permission(DaraModel):
         self.access = access
         self.columns = columns
         self.database = database
+        self.expire_time = expire_time
         self.function = function
         self.principal = principal
         self.resource_type = resource_type
@@ -45,6 +47,9 @@ class Permission(DaraModel):
 
         if self.database is not None:
             result['database'] = self.database
+
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
 
         if self.function is not None:
             result['function'] = self.function
@@ -74,6 +79,9 @@ class Permission(DaraModel):
 
         if m.get('database') is not None:
             self.database = m.get('database')
+
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
 
         if m.get('function') is not None:
             self.function = m.get('function')
