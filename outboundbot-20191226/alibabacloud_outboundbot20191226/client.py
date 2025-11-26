@@ -41,102 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def apply_number_district_info_parsing_result_with_options(
-        self,
-        request: outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 生效号码库解析结果
-        
-        @param request: ApplyNumberDistrictInfoParsingResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ApplyNumberDistrictInfoParsingResultResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ApplyNumberDistrictInfoParsingResult',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def apply_number_district_info_parsing_result_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 生效号码库解析结果
-        
-        @param request: ApplyNumberDistrictInfoParsingResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ApplyNumberDistrictInfoParsingResultResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ApplyNumberDistrictInfoParsingResult',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def apply_number_district_info_parsing_result(
-        self,
-        request: outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultRequest,
-    ) -> outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 生效号码库解析结果
-        
-        @param request: ApplyNumberDistrictInfoParsingResultRequest
-        @return: ApplyNumberDistrictInfoParsingResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.apply_number_district_info_parsing_result_with_options(request, runtime)
-
-    async def apply_number_district_info_parsing_result_async(
-        self,
-        request: outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultRequest,
-    ) -> outbound_bot_20191226_models.ApplyNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 生效号码库解析结果
-        
-        @param request: ApplyNumberDistrictInfoParsingResultRequest
-        @return: ApplyNumberDistrictInfoParsingResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.apply_number_district_info_parsing_result_with_options_async(request, runtime)
-
     def assign_jobs_with_options(
         self,
         request: outbound_bot_20191226_models.AssignJobsRequest,
@@ -731,6 +635,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateAnnotationMissionResponse:
         """
+        @summary 创建标注任务
+        
         @param tmp_req: CreateAnnotationMissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAnnotationMissionResponse
@@ -802,6 +708,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateAnnotationMissionResponse:
         """
+        @summary 创建标注任务
+        
         @param tmp_req: CreateAnnotationMissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAnnotationMissionResponse
@@ -872,6 +780,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateAnnotationMissionRequest,
     ) -> outbound_bot_20191226_models.CreateAnnotationMissionResponse:
         """
+        @summary 创建标注任务
+        
         @param request: CreateAnnotationMissionRequest
         @return: CreateAnnotationMissionResponse
         """
@@ -883,6 +793,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateAnnotationMissionRequest,
     ) -> outbound_bot_20191226_models.CreateAnnotationMissionResponse:
         """
+        @summary 创建标注任务
+        
         @param request: CreateAnnotationMissionRequest
         @return: CreateAnnotationMissionResponse
         """
@@ -895,6 +807,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateBatchJobsResponse:
         """
+        @summary 创建任务
+        
         @param request: CreateBatchJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateBatchJobsResponse
@@ -944,6 +858,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateBatchJobsResponse:
         """
+        @summary 创建任务
+        
         @param request: CreateBatchJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateBatchJobsResponse
@@ -992,6 +908,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateBatchJobsRequest,
     ) -> outbound_bot_20191226_models.CreateBatchJobsResponse:
         """
+        @summary 创建任务
+        
         @param request: CreateBatchJobsRequest
         @return: CreateBatchJobsResponse
         """
@@ -1003,6 +921,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateBatchJobsRequest,
     ) -> outbound_bot_20191226_models.CreateBatchJobsResponse:
         """
+        @summary 创建任务
+        
         @param request: CreateBatchJobsRequest
         @return: CreateBatchJobsResponse
         """
@@ -2199,6 +2119,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateJobGroupResponse:
         """
+        @summary 创建任务组
+        
         @param request: CreateJobGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateJobGroupResponse
@@ -2256,6 +2178,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateJobGroupResponse:
         """
+        @summary 创建任务组
+        
         @param request: CreateJobGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateJobGroupResponse
@@ -2312,6 +2236,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateJobGroupRequest,
     ) -> outbound_bot_20191226_models.CreateJobGroupResponse:
         """
+        @summary 创建任务组
+        
         @param request: CreateJobGroupRequest
         @return: CreateJobGroupResponse
         """
@@ -2323,6 +2249,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateJobGroupRequest,
     ) -> outbound_bot_20191226_models.CreateJobGroupResponse:
         """
+        @summary 创建任务组
+        
         @param request: CreateJobGroupRequest
         @return: CreateJobGroupResponse
         """
@@ -2335,6 +2263,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateJobGroupExportTaskResponse:
         """
+        @summary 创建任务组到处任务
+        
         @param request: CreateJobGroupExportTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateJobGroupExportTaskResponse
@@ -2372,6 +2302,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.CreateJobGroupExportTaskResponse:
         """
+        @summary 创建任务组到处任务
+        
         @param request: CreateJobGroupExportTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateJobGroupExportTaskResponse
@@ -2408,6 +2340,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateJobGroupExportTaskRequest,
     ) -> outbound_bot_20191226_models.CreateJobGroupExportTaskResponse:
         """
+        @summary 创建任务组到处任务
+        
         @param request: CreateJobGroupExportTaskRequest
         @return: CreateJobGroupExportTaskResponse
         """
@@ -2419,315 +2353,13 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.CreateJobGroupExportTaskRequest,
     ) -> outbound_bot_20191226_models.CreateJobGroupExportTaskResponse:
         """
+        @summary 创建任务组到处任务
+        
         @param request: CreateJobGroupExportTaskRequest
         @return: CreateJobGroupExportTaskResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_job_group_export_task_with_options_async(request, runtime)
-
-    def create_number_district_info_download_url_with_options(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlResponse:
-        """
-        @summary 创建号码库下载链接
-        
-        @param request: CreateNumberDistrictInfoDownloadUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNumberDistrictInfoDownloadUrlResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateNumberDistrictInfoDownloadUrl',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_number_district_info_download_url_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlResponse:
-        """
-        @summary 创建号码库下载链接
-        
-        @param request: CreateNumberDistrictInfoDownloadUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNumberDistrictInfoDownloadUrlResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateNumberDistrictInfoDownloadUrl',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_number_district_info_download_url(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlRequest,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlResponse:
-        """
-        @summary 创建号码库下载链接
-        
-        @param request: CreateNumberDistrictInfoDownloadUrlRequest
-        @return: CreateNumberDistrictInfoDownloadUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_number_district_info_download_url_with_options(request, runtime)
-
-    async def create_number_district_info_download_url_async(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlRequest,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoDownloadUrlResponse:
-        """
-        @summary 创建号码库下载链接
-        
-        @param request: CreateNumberDistrictInfoDownloadUrlRequest
-        @return: CreateNumberDistrictInfoDownloadUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_number_district_info_download_url_with_options_async(request, runtime)
-
-    def create_number_district_info_parsing_task_with_options(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskResponse:
-        """
-        @summary 创建号码库解析任务
-        
-        @param request: CreateNumberDistrictInfoParsingTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNumberDistrictInfoParsingTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_path):
-            query['FilePath'] = request.file_path
-        if not UtilClient.is_unset(request.file_size):
-            query['FileSize'] = request.file_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateNumberDistrictInfoParsingTask',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_number_district_info_parsing_task_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskResponse:
-        """
-        @summary 创建号码库解析任务
-        
-        @param request: CreateNumberDistrictInfoParsingTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNumberDistrictInfoParsingTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_path):
-            query['FilePath'] = request.file_path
-        if not UtilClient.is_unset(request.file_size):
-            query['FileSize'] = request.file_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateNumberDistrictInfoParsingTask',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_number_district_info_parsing_task(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskRequest,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskResponse:
-        """
-        @summary 创建号码库解析任务
-        
-        @param request: CreateNumberDistrictInfoParsingTaskRequest
-        @return: CreateNumberDistrictInfoParsingTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_number_district_info_parsing_task_with_options(request, runtime)
-
-    async def create_number_district_info_parsing_task_async(
-        self,
-        request: outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskRequest,
-    ) -> outbound_bot_20191226_models.CreateNumberDistrictInfoParsingTaskResponse:
-        """
-        @summary 创建号码库解析任务
-        
-        @param request: CreateNumberDistrictInfoParsingTaskRequest
-        @return: CreateNumberDistrictInfoParsingTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_number_district_info_parsing_task_with_options_async(request, runtime)
-
-    def create_outbound_call_number_with_options(
-        self,
-        request: outbound_bot_20191226_models.CreateOutboundCallNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.CreateOutboundCallNumberResponse:
-        """
-        @summary CreateOutboundCallNumber
-        
-        @param request: CreateOutboundCallNumberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOutboundCallNumberResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.number):
-            query['Number'] = request.number
-        if not UtilClient.is_unset(request.rate_limit_count):
-            query['RateLimitCount'] = request.rate_limit_count
-        if not UtilClient.is_unset(request.rate_limit_period):
-            query['RateLimitPeriod'] = request.rate_limit_period
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateOutboundCallNumber',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.CreateOutboundCallNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_outbound_call_number_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.CreateOutboundCallNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.CreateOutboundCallNumberResponse:
-        """
-        @summary CreateOutboundCallNumber
-        
-        @param request: CreateOutboundCallNumberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOutboundCallNumberResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.number):
-            query['Number'] = request.number
-        if not UtilClient.is_unset(request.rate_limit_count):
-            query['RateLimitCount'] = request.rate_limit_count
-        if not UtilClient.is_unset(request.rate_limit_period):
-            query['RateLimitPeriod'] = request.rate_limit_period
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateOutboundCallNumber',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.CreateOutboundCallNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_outbound_call_number(
-        self,
-        request: outbound_bot_20191226_models.CreateOutboundCallNumberRequest,
-    ) -> outbound_bot_20191226_models.CreateOutboundCallNumberResponse:
-        """
-        @summary CreateOutboundCallNumber
-        
-        @param request: CreateOutboundCallNumberRequest
-        @return: CreateOutboundCallNumberResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_outbound_call_number_with_options(request, runtime)
-
-    async def create_outbound_call_number_async(
-        self,
-        request: outbound_bot_20191226_models.CreateOutboundCallNumberRequest,
-    ) -> outbound_bot_20191226_models.CreateOutboundCallNumberResponse:
-        """
-        @summary CreateOutboundCallNumber
-        
-        @param request: CreateOutboundCallNumberRequest
-        @return: CreateOutboundCallNumberResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_outbound_call_number_with_options_async(request, runtime)
 
     def create_script_with_options(
         self,
@@ -5421,6 +5053,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.DescribeIntentStatisticsResponse:
         """
+        @summary DescribeIntentStatistics
+        
         @param request: DescribeIntentStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeIntentStatisticsResponse
@@ -5458,6 +5092,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.DescribeIntentStatisticsResponse:
         """
+        @summary DescribeIntentStatistics
+        
         @param request: DescribeIntentStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeIntentStatisticsResponse
@@ -5494,6 +5130,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.DescribeIntentStatisticsRequest,
     ) -> outbound_bot_20191226_models.DescribeIntentStatisticsResponse:
         """
+        @summary DescribeIntentStatistics
+        
         @param request: DescribeIntentStatisticsRequest
         @return: DescribeIntentStatisticsResponse
         """
@@ -5505,6 +5143,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.DescribeIntentStatisticsRequest,
     ) -> outbound_bot_20191226_models.DescribeIntentStatisticsResponse:
         """
+        @summary DescribeIntentStatistics
+        
         @param request: DescribeIntentStatisticsRequest
         @return: DescribeIntentStatisticsResponse
         """
@@ -5902,80 +5542,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_group_export_task_progress_with_options_async(request, runtime)
-
-    def describe_number_district_info_status_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.DescribeNumberDistrictInfoStatusResponse:
-        """
-        @summary 查询号码库状态
-        
-        @param request: DescribeNumberDistrictInfoStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeNumberDistrictInfoStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeNumberDistrictInfoStatus',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.DescribeNumberDistrictInfoStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_number_district_info_status_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.DescribeNumberDistrictInfoStatusResponse:
-        """
-        @summary 查询号码库状态
-        
-        @param request: DescribeNumberDistrictInfoStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeNumberDistrictInfoStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeNumberDistrictInfoStatus',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.DescribeNumberDistrictInfoStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_number_district_info_status(self) -> outbound_bot_20191226_models.DescribeNumberDistrictInfoStatusResponse:
-        """
-        @summary 查询号码库状态
-        
-        @return: DescribeNumberDistrictInfoStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_number_district_info_status_with_options(runtime)
-
-    async def describe_number_district_info_status_async(self) -> outbound_bot_20191226_models.DescribeNumberDistrictInfoStatusResponse:
-        """
-        @summary 查询号码库状态
-        
-        @return: DescribeNumberDistrictInfoStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_number_district_info_status_with_options_async(runtime)
 
     def describe_script_with_options(
         self,
@@ -6716,102 +6282,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.dialogue_with_options_async(request, runtime)
-
-    def dismiss_number_district_info_parsing_result_with_options(
-        self,
-        request: outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 取消号码库解析结果
-        
-        @param request: DismissNumberDistrictInfoParsingResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DismissNumberDistrictInfoParsingResultResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DismissNumberDistrictInfoParsingResult',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def dismiss_number_district_info_parsing_result_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 取消号码库解析结果
-        
-        @param request: DismissNumberDistrictInfoParsingResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DismissNumberDistrictInfoParsingResultResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DismissNumberDistrictInfoParsingResult',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def dismiss_number_district_info_parsing_result(
-        self,
-        request: outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultRequest,
-    ) -> outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 取消号码库解析结果
-        
-        @param request: DismissNumberDistrictInfoParsingResultRequest
-        @return: DismissNumberDistrictInfoParsingResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.dismiss_number_district_info_parsing_result_with_options(request, runtime)
-
-    async def dismiss_number_district_info_parsing_result_async(
-        self,
-        request: outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultRequest,
-    ) -> outbound_bot_20191226_models.DismissNumberDistrictInfoParsingResultResponse:
-        """
-        @summary 取消号码库解析结果
-        
-        @param request: DismissNumberDistrictInfoParsingResultRequest
-        @return: DismissNumberDistrictInfoParsingResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.dismiss_number_district_info_parsing_result_with_options_async(request, runtime)
 
     def download_recording_with_options(
         self,
@@ -8415,98 +7885,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_current_concurrency_with_options_async(request, runtime)
 
-    def get_effective_days_with_options(
-        self,
-        request: outbound_bot_20191226_models.GetEffectiveDaysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.GetEffectiveDaysResponse:
-        """
-        @param request: GetEffectiveDaysRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetEffectiveDaysResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.entry_id):
-            query['EntryId'] = request.entry_id
-        if not UtilClient.is_unset(request.strategy_level):
-            query['StrategyLevel'] = request.strategy_level
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetEffectiveDays',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.GetEffectiveDaysResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_effective_days_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.GetEffectiveDaysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.GetEffectiveDaysResponse:
-        """
-        @param request: GetEffectiveDaysRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetEffectiveDaysResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.entry_id):
-            query['EntryId'] = request.entry_id
-        if not UtilClient.is_unset(request.strategy_level):
-            query['StrategyLevel'] = request.strategy_level
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetEffectiveDays',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.GetEffectiveDaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_effective_days(
-        self,
-        request: outbound_bot_20191226_models.GetEffectiveDaysRequest,
-    ) -> outbound_bot_20191226_models.GetEffectiveDaysResponse:
-        """
-        @param request: GetEffectiveDaysRequest
-        @return: GetEffectiveDaysResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_effective_days_with_options(request, runtime)
-
-    async def get_effective_days_async(
-        self,
-        request: outbound_bot_20191226_models.GetEffectiveDaysRequest,
-    ) -> outbound_bot_20191226_models.GetEffectiveDaysResponse:
-        """
-        @param request: GetEffectiveDaysRequest
-        @return: GetEffectiveDaysResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_effective_days_with_options_async(request, runtime)
-
     def get_empty_number_no_more_calls_info_with_options(
         self,
         request: outbound_bot_20191226_models.GetEmptyNumberNoMoreCallsInfoRequest,
@@ -9087,6 +8465,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetTaskByUuidResponse:
         """
+        @summary 根据TaskId获取Task信息
+        
         @param request: GetTaskByUuidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskByUuidResponse
@@ -9118,6 +8498,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.GetTaskByUuidResponse:
         """
+        @summary 根据TaskId获取Task信息
+        
         @param request: GetTaskByUuidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskByUuidResponse
@@ -9148,6 +8530,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetTaskByUuidRequest,
     ) -> outbound_bot_20191226_models.GetTaskByUuidResponse:
         """
+        @summary 根据TaskId获取Task信息
+        
         @param request: GetTaskByUuidRequest
         @return: GetTaskByUuidResponse
         """
@@ -9159,6 +8543,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.GetTaskByUuidRequest,
     ) -> outbound_bot_20191226_models.GetTaskByUuidResponse:
         """
+        @summary 根据TaskId获取Task信息
+        
         @param request: GetTaskByUuidRequest
         @return: GetTaskByUuidResponse
         """
@@ -9615,6 +9001,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionResponse:
         """
+        @summary 标注中心
+        
         @param request: ListAnnotationMissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAnnotationMissionResponse
@@ -9664,6 +9052,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionResponse:
         """
+        @summary 标注中心
+        
         @param request: ListAnnotationMissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAnnotationMissionResponse
@@ -9712,6 +9102,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ListAnnotationMissionRequest,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionResponse:
         """
+        @summary 标注中心
+        
         @param request: ListAnnotationMissionRequest
         @return: ListAnnotationMissionResponse
         """
@@ -9723,6 +9115,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ListAnnotationMissionRequest,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionResponse:
         """
+        @summary 标注中心
+        
         @param request: ListAnnotationMissionRequest
         @return: ListAnnotationMissionResponse
         """
@@ -9735,6 +9129,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionSessionResponse:
         """
+        @summary ListAnnotationMissionSession
+        
         @param request: ListAnnotationMissionSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAnnotationMissionSessionResponse
@@ -9778,6 +9174,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionSessionResponse:
         """
+        @summary ListAnnotationMissionSession
+        
         @param request: ListAnnotationMissionSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAnnotationMissionSessionResponse
@@ -9820,6 +9218,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ListAnnotationMissionSessionRequest,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionSessionResponse:
         """
+        @summary ListAnnotationMissionSession
+        
         @param request: ListAnnotationMissionSessionRequest
         @return: ListAnnotationMissionSessionResponse
         """
@@ -9831,6 +9231,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ListAnnotationMissionSessionRequest,
     ) -> outbound_bot_20191226_models.ListAnnotationMissionSessionResponse:
         """
+        @summary ListAnnotationMissionSession
+        
         @param request: ListAnnotationMissionSessionRequest
         @return: ListAnnotationMissionSessionResponse
         """
@@ -11676,94 +11078,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_tags_with_options_async(request, runtime)
-
-    def list_scheduler_instances_with_options(
-        self,
-        request: outbound_bot_20191226_models.ListSchedulerInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.ListSchedulerInstancesResponse:
-        """
-        @param request: ListSchedulerInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListSchedulerInstancesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_owner_id):
-            query['InstanceOwnerId'] = request.instance_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSchedulerInstances',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.ListSchedulerInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_scheduler_instances_with_options_async(
-        self,
-        request: outbound_bot_20191226_models.ListSchedulerInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> outbound_bot_20191226_models.ListSchedulerInstancesResponse:
-        """
-        @param request: ListSchedulerInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListSchedulerInstancesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_owner_id):
-            query['InstanceOwnerId'] = request.instance_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSchedulerInstances',
-            version='2019-12-26',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            outbound_bot_20191226_models.ListSchedulerInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_scheduler_instances(
-        self,
-        request: outbound_bot_20191226_models.ListSchedulerInstancesRequest,
-    ) -> outbound_bot_20191226_models.ListSchedulerInstancesResponse:
-        """
-        @param request: ListSchedulerInstancesRequest
-        @return: ListSchedulerInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_scheduler_instances_with_options(request, runtime)
-
-    async def list_scheduler_instances_async(
-        self,
-        request: outbound_bot_20191226_models.ListSchedulerInstancesRequest,
-    ) -> outbound_bot_20191226_models.ListSchedulerInstancesResponse:
-        """
-        @param request: ListSchedulerInstancesRequest
-        @return: ListSchedulerInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_scheduler_instances_with_options_async(request, runtime)
 
     def list_script_publish_histories_with_options(
         self,
@@ -13639,6 +12953,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ModifyJobGroupResponse:
         """
+        @summary 修改任务组
+        
         @param request: ModifyJobGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyJobGroupResponse
@@ -13700,6 +13016,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.ModifyJobGroupResponse:
         """
+        @summary 修改任务组
+        
         @param request: ModifyJobGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyJobGroupResponse
@@ -13760,6 +13078,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ModifyJobGroupRequest,
     ) -> outbound_bot_20191226_models.ModifyJobGroupResponse:
         """
+        @summary 修改任务组
+        
         @param request: ModifyJobGroupRequest
         @return: ModifyJobGroupResponse
         """
@@ -13771,6 +13091,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.ModifyJobGroupRequest,
     ) -> outbound_bot_20191226_models.ModifyJobGroupResponse:
         """
+        @summary 修改任务组
+        
         @param request: ModifyJobGroupRequest
         @return: ModifyJobGroupResponse
         """
@@ -14747,6 +14069,8 @@ class Client(OpenApiClient):
             query['JobGroupId'] = request.job_group_id
         if not UtilClient.is_unset(request.job_status_filter):
             query['JobStatusFilter'] = request.job_status_filter
+        if not UtilClient.is_unset(request.labels_json):
+            query['LabelsJson'] = request.labels_json
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -14806,6 +14130,8 @@ class Client(OpenApiClient):
             query['JobGroupId'] = request.job_group_id
         if not UtilClient.is_unset(request.job_status_filter):
             query['JobStatusFilter'] = request.job_status_filter
+        if not UtilClient.is_unset(request.labels_json):
+            query['LabelsJson'] = request.labels_json
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -15383,6 +14709,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveAfterAnswerDelayPlaybackResponse:
         """
+        @summary 保存接听后延迟播报时间
+        
         @param request: SaveAfterAnswerDelayPlaybackRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveAfterAnswerDelayPlaybackResponse
@@ -15420,6 +14748,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveAfterAnswerDelayPlaybackResponse:
         """
+        @summary 保存接听后延迟播报时间
+        
         @param request: SaveAfterAnswerDelayPlaybackRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveAfterAnswerDelayPlaybackResponse
@@ -15456,6 +14786,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveAfterAnswerDelayPlaybackRequest,
     ) -> outbound_bot_20191226_models.SaveAfterAnswerDelayPlaybackResponse:
         """
+        @summary 保存接听后延迟播报时间
+        
         @param request: SaveAfterAnswerDelayPlaybackRequest
         @return: SaveAfterAnswerDelayPlaybackResponse
         """
@@ -15467,6 +14799,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveAfterAnswerDelayPlaybackRequest,
     ) -> outbound_bot_20191226_models.SaveAfterAnswerDelayPlaybackResponse:
         """
+        @summary 保存接听后延迟播报时间
+        
         @param request: SaveAfterAnswerDelayPlaybackRequest
         @return: SaveAfterAnswerDelayPlaybackResponse
         """
@@ -15691,6 +15025,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveBaseStrategyPeriodResponse:
         """
+        @summary 编辑基础策略有效时间窗口
+        
         @param request: SaveBaseStrategyPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveBaseStrategyPeriodResponse
@@ -15734,6 +15070,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveBaseStrategyPeriodResponse:
         """
+        @summary 编辑基础策略有效时间窗口
+        
         @param request: SaveBaseStrategyPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveBaseStrategyPeriodResponse
@@ -15776,6 +15114,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveBaseStrategyPeriodRequest,
     ) -> outbound_bot_20191226_models.SaveBaseStrategyPeriodResponse:
         """
+        @summary 编辑基础策略有效时间窗口
+        
         @param request: SaveBaseStrategyPeriodRequest
         @return: SaveBaseStrategyPeriodResponse
         """
@@ -15787,6 +15127,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveBaseStrategyPeriodRequest,
     ) -> outbound_bot_20191226_models.SaveBaseStrategyPeriodResponse:
         """
+        @summary 编辑基础策略有效时间窗口
+        
         @param request: SaveBaseStrategyPeriodRequest
         @return: SaveBaseStrategyPeriodResponse
         """
@@ -15799,6 +15141,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveContactBlockListResponse:
         """
+        @summary 保存外呼黑名单列表
+        
         @param request: SaveContactBlockListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveContactBlockListResponse
@@ -15836,6 +15180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveContactBlockListResponse:
         """
+        @summary 保存外呼黑名单列表
+        
         @param request: SaveContactBlockListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveContactBlockListResponse
@@ -15872,6 +15218,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveContactBlockListRequest,
     ) -> outbound_bot_20191226_models.SaveContactBlockListResponse:
         """
+        @summary 保存外呼黑名单列表
+        
         @param request: SaveContactBlockListRequest
         @return: SaveContactBlockListResponse
         """
@@ -15883,6 +15231,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveContactBlockListRequest,
     ) -> outbound_bot_20191226_models.SaveContactBlockListResponse:
         """
+        @summary 保存外呼黑名单列表
+        
         @param request: SaveContactBlockListRequest
         @return: SaveContactBlockListResponse
         """
@@ -15895,6 +15245,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveContactWhiteListResponse:
         """
+        @summary 保存外呼白名单
+        
         @param request: SaveContactWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveContactWhiteListResponse
@@ -15932,6 +15284,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveContactWhiteListResponse:
         """
+        @summary 保存外呼白名单
+        
         @param request: SaveContactWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveContactWhiteListResponse
@@ -15968,6 +15322,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveContactWhiteListRequest,
     ) -> outbound_bot_20191226_models.SaveContactWhiteListResponse:
         """
+        @summary 保存外呼白名单
+        
         @param request: SaveContactWhiteListRequest
         @return: SaveContactWhiteListResponse
         """
@@ -15979,6 +15335,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveContactWhiteListRequest,
     ) -> outbound_bot_20191226_models.SaveContactWhiteListResponse:
         """
+        @summary 保存外呼白名单
+        
         @param request: SaveContactWhiteListRequest
         @return: SaveContactWhiteListResponse
         """
@@ -16087,6 +15445,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveMaxAttemptsPerDayResponse:
         """
+        @summary 保存每日最大外呼量
+        
         @param request: SaveMaxAttemptsPerDayRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveMaxAttemptsPerDayResponse
@@ -16124,6 +15484,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SaveMaxAttemptsPerDayResponse:
         """
+        @summary 保存每日最大外呼量
+        
         @param request: SaveMaxAttemptsPerDayRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveMaxAttemptsPerDayResponse
@@ -16160,6 +15522,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveMaxAttemptsPerDayRequest,
     ) -> outbound_bot_20191226_models.SaveMaxAttemptsPerDayResponse:
         """
+        @summary 保存每日最大外呼量
+        
         @param request: SaveMaxAttemptsPerDayRequest
         @return: SaveMaxAttemptsPerDayResponse
         """
@@ -16171,6 +15535,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SaveMaxAttemptsPerDayRequest,
     ) -> outbound_bot_20191226_models.SaveMaxAttemptsPerDayResponse:
         """
+        @summary 保存每日最大外呼量
+        
         @param request: SaveMaxAttemptsPerDayRequest
         @return: SaveMaxAttemptsPerDayResponse
         """
@@ -16275,6 +15641,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.StartJobResponse:
         """
+        @summary 开启一个任务
+        
         @param request: StartJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartJobResponse
@@ -16318,6 +15686,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.StartJobResponse:
         """
+        @summary 开启一个任务
+        
         @param request: StartJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartJobResponse
@@ -16360,6 +15730,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.StartJobRequest,
     ) -> outbound_bot_20191226_models.StartJobResponse:
         """
+        @summary 开启一个任务
+        
         @param request: StartJobRequest
         @return: StartJobResponse
         """
@@ -16371,6 +15743,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.StartJobRequest,
     ) -> outbound_bot_20191226_models.StartJobResponse:
         """
+        @summary 开启一个任务
+        
         @param request: StartJobRequest
         @return: StartJobResponse
         """
@@ -16675,6 +16049,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SuspendCallResponse:
         """
+        @summary 止呼
+        
         @param request: SuspendCallRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendCallResponse
@@ -16712,6 +16088,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SuspendCallResponse:
         """
+        @summary 止呼
+        
         @param request: SuspendCallRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendCallResponse
@@ -16748,6 +16126,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SuspendCallRequest,
     ) -> outbound_bot_20191226_models.SuspendCallResponse:
         """
+        @summary 止呼
+        
         @param request: SuspendCallRequest
         @return: SuspendCallResponse
         """
@@ -16759,6 +16139,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SuspendCallRequest,
     ) -> outbound_bot_20191226_models.SuspendCallResponse:
         """
+        @summary 止呼
+        
         @param request: SuspendCallRequest
         @return: SuspendCallResponse
         """
@@ -16771,6 +16153,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SuspendCallWithFileResponse:
         """
+        @summary SuspendCallWithFile
+        
         @param request: SuspendCallWithFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendCallWithFileResponse
@@ -16808,6 +16192,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> outbound_bot_20191226_models.SuspendCallWithFileResponse:
         """
+        @summary SuspendCallWithFile
+        
         @param request: SuspendCallWithFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendCallWithFileResponse
@@ -16844,6 +16230,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SuspendCallWithFileRequest,
     ) -> outbound_bot_20191226_models.SuspendCallWithFileResponse:
         """
+        @summary SuspendCallWithFile
+        
         @param request: SuspendCallWithFileRequest
         @return: SuspendCallWithFileResponse
         """
@@ -16855,6 +16243,8 @@ class Client(OpenApiClient):
         request: outbound_bot_20191226_models.SuspendCallWithFileRequest,
     ) -> outbound_bot_20191226_models.SuspendCallWithFileResponse:
         """
+        @summary SuspendCallWithFile
+        
         @param request: SuspendCallWithFileRequest
         @return: SuspendCallWithFileResponse
         """

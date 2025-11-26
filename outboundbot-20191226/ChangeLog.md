@@ -1,3 +1,22 @@
+2025-11-26 Version: 2.0.0
+- Delete API ApplyNumberDistrictInfoParsingResult.
+- Delete API CreateNumberDistrictInfoDownloadUrl.
+- Delete API CreateNumberDistrictInfoParsingTask.
+- Delete API CreateOutboundCallNumber.
+- Delete API DescribeNumberDistrictInfoStatus.
+- Delete API DismissNumberDistrictInfoParsingResult.
+- Delete API GetEffectiveDays.
+- Delete API ListSchedulerInstances.
+- Update API GetTaskByUuid: update response parameters Body.Task.EndReason' type has changed.
+- Update API GetTaskByUuid: update response parameters Body.Task.EndReason' format has changed.
+- Update API QueryJobsWithResult: add request parameters LabelsJson.
+- Update API QueryJobsWithResult: add response parameters Body.Labels.
+- Update API SearchTask: add request parameters LabelsJson.
+- Update API SearchTask: add response parameters Body.Labels.
+- Update API SearchTask: add response parameters Body.VariableNames.
+- Update API SearchTask: add response parameters Body.SearchTaskInfoList.$.Labels.
+
+
 2025-07-22 Version: 1.3.0
 - Support API AssignJobsAsync.
 - Support API GetAssignJobsAsyncResult.
