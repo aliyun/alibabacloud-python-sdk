@@ -1,3 +1,8 @@
+2025-11-26 Version: 1.3.0
+- Support API ActiveInteractionEuCreate.
+- Support API OmniRealtimeConversationEU.
+
+
 2025-11-07 Version: 1.2.0
 - Support API ModelTypeDetermine.
 

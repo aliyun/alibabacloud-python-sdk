@@ -172,6 +172,174 @@ class ActiveInteractionCreateResponse(TeaModel):
         return self
 
 
+class ActiveInteractionEuCreateRequest(TeaModel):
+    def __init__(
+        self,
+        image: str = None,
+    ):
+        # This parameter is required.
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        return self
+
+
+class ActiveInteractionEuCreateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gesture: str = None,
+        person: str = None,
+        scene: str = None,
+    ):
+        self.gesture = gesture
+        self.person = person
+        self.scene = scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gesture is not None:
+            result['gesture'] = self.gesture
+        if self.person is not None:
+            result['person'] = self.person
+        if self.scene is not None:
+            result['scene'] = self.scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gesture') is not None:
+            self.gesture = m.get('gesture')
+        if m.get('person') is not None:
+            self.person = m.get('person')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        return self
+
+
+class ActiveInteractionEuCreateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ActiveInteractionEuCreateResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ActiveInteractionEuCreateResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ActiveInteractionEuCreateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ActiveInteractionEuCreateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ActiveInteractionEuCreateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeviceRegisterRequest(TeaModel):
     def __init__(
         self,
@@ -844,6 +1012,174 @@ class ModelTypeDetermineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModelTypeDetermineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OmniRealtimeConversationEURequest(TeaModel):
+    def __init__(
+        self,
+        input_audio: str = None,
+        user_prompt: str = None,
+        voice: str = None,
+    ):
+        # This parameter is required.
+        self.input_audio = input_audio
+        self.user_prompt = user_prompt
+        self.voice = voice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_audio is not None:
+            result['inputAudio'] = self.input_audio
+        if self.user_prompt is not None:
+            result['userPrompt'] = self.user_prompt
+        if self.voice is not None:
+            result['voice'] = self.voice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputAudio') is not None:
+            self.input_audio = m.get('inputAudio')
+        if m.get('userPrompt') is not None:
+            self.user_prompt = m.get('userPrompt')
+        if m.get('voice') is not None:
+            self.voice = m.get('voice')
+        return self
+
+
+class OmniRealtimeConversationEUResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audio_result: str = None,
+    ):
+        self.audio_result = audio_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_result is not None:
+            result['audioResult'] = self.audio_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioResult') is not None:
+            self.audio_result = m.get('audioResult')
+        return self
+
+
+class OmniRealtimeConversationEUResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: OmniRealtimeConversationEUResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = OmniRealtimeConversationEUResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class OmniRealtimeConversationEUResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OmniRealtimeConversationEUResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OmniRealtimeConversationEUResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

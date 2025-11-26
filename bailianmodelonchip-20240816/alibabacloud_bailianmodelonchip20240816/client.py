@@ -145,6 +145,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.active_interaction_create_with_options_async(request, headers, runtime)
 
+    def active_interaction_eu_create_with_options(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateResponse:
+        """
+        @summary 主动交互消息生成eu
+        
+        @param request: ActiveInteractionEuCreateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveInteractionEuCreateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image):
+            body['image'] = request.image
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActiveInteractionEuCreate',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/eu/active/interaction/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def active_interaction_eu_create_with_options_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateResponse:
+        """
+        @summary 主动交互消息生成eu
+        
+        @param request: ActiveInteractionEuCreateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveInteractionEuCreateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image):
+            body['image'] = request.image
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActiveInteractionEuCreate',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/eu/active/interaction/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def active_interaction_eu_create(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateRequest,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateResponse:
+        """
+        @summary 主动交互消息生成eu
+        
+        @param request: ActiveInteractionEuCreateRequest
+        @return: ActiveInteractionEuCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.active_interaction_eu_create_with_options(request, headers, runtime)
+
+    async def active_interaction_eu_create_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateRequest,
+    ) -> bailian_model_on_chip_20240816_models.ActiveInteractionEuCreateResponse:
+        """
+        @summary 主动交互消息生成eu
+        
+        @param request: ActiveInteractionEuCreateRequest
+        @return: ActiveInteractionEuCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.active_interaction_eu_create_with_options_async(request, headers, runtime)
+
     def device_register_with_options(
         self,
         request: bailian_model_on_chip_20240816_models.DeviceRegisterRequest,
@@ -504,3 +608,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.model_type_determine_with_options_async(request, headers, runtime)
+
+    def omni_realtime_conversation_euwith_options(
+        self,
+        request: bailian_model_on_chip_20240816_models.OmniRealtimeConversationEURequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.OmniRealtimeConversationEUResponse:
+        """
+        @summary 音频-供机械臂调用
+        
+        @param request: OmniRealtimeConversationEURequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OmniRealtimeConversationEUResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input_audio):
+            body['inputAudio'] = request.input_audio
+        if not UtilClient.is_unset(request.user_prompt):
+            body['userPrompt'] = request.user_prompt
+        if not UtilClient.is_unset(request.voice):
+            body['voice'] = request.voice
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OmniRealtimeConversationEU',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/eu/active/interaction/audio',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.OmniRealtimeConversationEUResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def omni_realtime_conversation_euwith_options_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.OmniRealtimeConversationEURequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.OmniRealtimeConversationEUResponse:
+        """
+        @summary 音频-供机械臂调用
+        
+        @param request: OmniRealtimeConversationEURequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OmniRealtimeConversationEUResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input_audio):
+            body['inputAudio'] = request.input_audio
+        if not UtilClient.is_unset(request.user_prompt):
+            body['userPrompt'] = request.user_prompt
+        if not UtilClient.is_unset(request.voice):
+            body['voice'] = request.voice
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OmniRealtimeConversationEU',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/eu/active/interaction/audio',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.OmniRealtimeConversationEUResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def omni_realtime_conversation_eu(
+        self,
+        request: bailian_model_on_chip_20240816_models.OmniRealtimeConversationEURequest,
+    ) -> bailian_model_on_chip_20240816_models.OmniRealtimeConversationEUResponse:
+        """
+        @summary 音频-供机械臂调用
+        
+        @param request: OmniRealtimeConversationEURequest
+        @return: OmniRealtimeConversationEUResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.omni_realtime_conversation_euwith_options(request, headers, runtime)
+
+    async def omni_realtime_conversation_eu_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.OmniRealtimeConversationEURequest,
+    ) -> bailian_model_on_chip_20240816_models.OmniRealtimeConversationEUResponse:
+        """
+        @summary 音频-供机械臂调用
+        
+        @param request: OmniRealtimeConversationEURequest
+        @return: OmniRealtimeConversationEUResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.omni_realtime_conversation_euwith_options_async(request, headers, runtime)
