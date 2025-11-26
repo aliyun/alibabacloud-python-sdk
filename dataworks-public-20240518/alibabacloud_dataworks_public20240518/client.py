@@ -3556,6 +3556,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_function_with_options_async(request, runtime)
 
+    def create_identify_credential_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateIdentifyCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateIdentifyCredentialResponse:
+        """
+        @summary 创建身份凭证
+        
+        @param tmp_req: CreateIdentifyCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentifyCredentialResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateIdentifyCredentialShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.identify_credential):
+            request.identify_credential_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.identify_credential, 'IdentifyCredential', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.identify_credential_shrink):
+            body['IdentifyCredential'] = request.identify_credential_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentifyCredential',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateIdentifyCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_identify_credential_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateIdentifyCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateIdentifyCredentialResponse:
+        """
+        @summary 创建身份凭证
+        
+        @param tmp_req: CreateIdentifyCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentifyCredentialResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateIdentifyCredentialShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.identify_credential):
+            request.identify_credential_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.identify_credential, 'IdentifyCredential', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.identify_credential_shrink):
+            body['IdentifyCredential'] = request.identify_credential_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentifyCredential',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateIdentifyCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_identify_credential(
+        self,
+        request: dataworks_public_20240518_models.CreateIdentifyCredentialRequest,
+    ) -> dataworks_public_20240518_models.CreateIdentifyCredentialResponse:
+        """
+        @summary 创建身份凭证
+        
+        @param request: CreateIdentifyCredentialRequest
+        @return: CreateIdentifyCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_identify_credential_with_options(request, runtime)
+
+    async def create_identify_credential_async(
+        self,
+        request: dataworks_public_20240518_models.CreateIdentifyCredentialRequest,
+    ) -> dataworks_public_20240518_models.CreateIdentifyCredentialResponse:
+        """
+        @summary 创建身份凭证
+        
+        @param request: CreateIdentifyCredentialRequest
+        @return: CreateIdentifyCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_identify_credential_with_options_async(request, runtime)
+
     def create_lineage_relationship_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateLineageRelationshipRequest,

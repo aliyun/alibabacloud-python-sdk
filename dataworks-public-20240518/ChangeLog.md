@@ -1,3 +1,7 @@
+2025-11-26 Version: 7.7.0
+- Support API CreateIdentifyCredential.
+
+
 2025-11-26 Version: 7.6.2
 - Generated python 2024-05-18 for dataworks-public.
 
