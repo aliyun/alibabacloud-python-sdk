@@ -778,12 +778,42 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
         session_type: str = None,
         session_user_generation_mode: str = None,
     ):
+        # Specifies whether to enable the debugging mode. If you want to call the `GetDebugAppInstance` and `CreateImageFromAppInstanceGroup` operations, you must set this parameter to `ON`.
+        # 
+        # Valid values:
+        # 
+        # *   OFF
+        # *   ON
         self.debug_mode = debug_mode
+        # Specifies whether only one app can be opened in a session.
+        # 
+        # *   After you enable this feature, the system assigns a session to each app if you open multiple apps in a delivery group. This consumes a larger number of sessions.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.per_session_per_app = per_session_per_app
         self.persistent_app_instance_schedule_mode = persistent_app_instance_schedule_mode
+        # Specifies whether to enable pre-open for sessions.
+        # 
+        # *   Default value: true
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.session_pre_open = session_pre_open
-        # 会话类型。
+        # The session type.
+        # 
+        # Valid values:
+        # 
+        # *   CONSOLE: console session
+        # *   NORMAL: Remote Desktop Protocol (RDP)-based O\\&M session
         self.session_type = session_type
+        # The generation mode of the session users. Valid value:
+        # 
+        # *   wyid. In this case, you must set sessionPreOpen to false.
         self.session_user_generation_mode = session_user_generation_mode
 
     def validate(self):
@@ -1071,6 +1101,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         storage_policy: CreateAppInstanceGroupRequestStoragePolicy = None,
         sub_pay_type: str = None,
         user_define_policy: CreateAppInstanceGroupRequestUserDefinePolicy = None,
+        user_group_ids: List[str] = None,
         user_info: CreateAppInstanceGroupRequestUserInfo = None,
         users: List[str] = None,
         video_policy: CreateAppInstanceGroupRequestVideoPolicy = None,
@@ -1080,6 +1111,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         self.app_instance_group_name = app_instance_group_name
         self.app_package_type = app_package_type
         self.app_policy_id = app_policy_id
+        # The authentication mode of the delivery group.
         self.auth_mode = auth_mode
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -1100,6 +1132,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         # This parameter is required.
         self.product_type = product_type
         self.promotion_id = promotion_id
+        # The runtime policy.
         self.runtime_policy = runtime_policy
         self.security_policy = security_policy
         # This parameter is required.
@@ -1107,6 +1140,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         self.storage_policy = storage_policy
         self.sub_pay_type = sub_pay_type
         self.user_define_policy = user_define_policy
+        self.user_group_ids = user_group_ids
         self.user_info = user_info
         self.users = users
         self.video_policy = video_policy
@@ -1183,6 +1217,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             result['SubPayType'] = self.sub_pay_type
         if self.user_define_policy is not None:
             result['UserDefinePolicy'] = self.user_define_policy.to_map()
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
         if self.user_info is not None:
             result['UserInfo'] = self.user_info.to_map()
         if self.users is not None:
@@ -1247,6 +1283,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
         if m.get('UserDefinePolicy') is not None:
             temp_model = CreateAppInstanceGroupRequestUserDefinePolicy()
             self.user_define_policy = temp_model.from_map(m['UserDefinePolicy'])
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserInfo') is not None:
             temp_model = CreateAppInstanceGroupRequestUserInfo()
             self.user_info = temp_model.from_map(m['UserInfo'])
@@ -1285,6 +1323,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         storage_policy_shrink: str = None,
         sub_pay_type: str = None,
         user_define_policy_shrink: str = None,
+        user_group_ids: List[str] = None,
         user_info_shrink: str = None,
         users: List[str] = None,
         video_policy_shrink: str = None,
@@ -1294,6 +1333,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         self.app_instance_group_name = app_instance_group_name
         self.app_package_type = app_package_type
         self.app_policy_id = app_policy_id
+        # The authentication mode of the delivery group.
         self.auth_mode = auth_mode
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -1314,6 +1354,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         # This parameter is required.
         self.product_type = product_type
         self.promotion_id = promotion_id
+        # The runtime policy.
         self.runtime_policy_shrink = runtime_policy_shrink
         self.security_policy_shrink = security_policy_shrink
         # This parameter is required.
@@ -1321,6 +1362,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         self.storage_policy_shrink = storage_policy_shrink
         self.sub_pay_type = sub_pay_type
         self.user_define_policy_shrink = user_define_policy_shrink
+        self.user_group_ids = user_group_ids
         self.user_info_shrink = user_info_shrink
         self.users = users
         self.video_policy_shrink = video_policy_shrink
@@ -1382,6 +1424,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             result['SubPayType'] = self.sub_pay_type
         if self.user_define_policy_shrink is not None:
             result['UserDefinePolicy'] = self.user_define_policy_shrink
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
         if self.user_info_shrink is not None:
             result['UserInfo'] = self.user_info_shrink
         if self.users is not None:
@@ -1440,6 +1484,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             self.sub_pay_type = m.get('SubPayType')
         if m.get('UserDefinePolicy') is not None:
             self.user_define_policy_shrink = m.get('UserDefinePolicy')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserInfo') is not None:
             self.user_info_shrink = m.get('UserInfo')
         if m.get('Users') is not None:
@@ -1577,14 +1623,38 @@ class CreateImageByInstanceRequest(TeaModel):
         product_type: str = None,
         sub_instance_id: str = None,
     ):
+        # This parameter is applicable only to scenarios in which the instance type is Cloud Desktop. Specifies whether to clear private data of users. If this parameter is set to true, the created image clears data in directories other than Administrator and Public in the C:\\Users directory.
+        # 
+        # Valid values:
+        # 
+        # *   true: cleanup.
+        # *   false: does not clear.
         self.auto_clean_userdata = auto_clean_userdata
+        # This parameter is not publicly available.
         self.biz_type = biz_type
+        # The description of the image.
         self.description = description
+        # The type of disk data contained in the image. By default, the system disk and data disk of the instance are included.
+        # 
+        # Valid values:
+        # 
+        # *   SYSTEM: only system disk.
+        # *   ALL: system disk + data disk
         self.disk_type = disk_type
+        # The name of the image.
         self.image_name = image_name
+        # The ID of the RDS instance. The instance can be a CloudDesktop instance, a workstation instance. To ensure data consistency in the image, we recommend that you shut down the instance before you create an image.
         self.instance_id = instance_id
+        # The instance type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudDesktop: Cloud Desktop.
+        # *   WuyingServer: Workstation
         self.instance_type = instance_type
+        # This parameter is not publicly available.
         self.product_type = product_type
+        # The ID of the child instance. This parameter is not used in cloud computing scenarios. Workstation scenarios, you need to specify a persistent session ID to ensure that a specific instance is located.
         self.sub_instance_id = sub_instance_id
 
     def validate(self):
@@ -1646,8 +1716,11 @@ class CreateImageByInstanceResponseBodyData(TeaModel):
         task_id: str = None,
         version_id: str = None,
     ):
+        # The ID of the RDS image.
         self.image_id = image_id
+        # The ID of the image creation task.
         self.task_id = task_id
+        # The version of the image.
         self.version_id = version_id
 
     def validate(self):
@@ -1687,10 +1760,15 @@ class CreateImageByInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -1907,8 +1985,15 @@ class CreateWuyingServerRequestDataDisk(TeaModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
+        # The data disk category.
+        # 
+        # Valid values:
+        # 
+        # *   cloud_auto.
         self.data_disk_category = data_disk_category
+        # The PL of the data disk.
         self.data_disk_performance_level = data_disk_performance_level
+        # The data disk size.
         self.data_disk_size = data_disk_size
 
     def validate(self):
@@ -1957,6 +2042,7 @@ class CreateWuyingServerRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
+        saving_plan_id: str = None,
         server_instance_type: str = None,
         server_port_range: str = None,
         system_disk_category: str = None,
@@ -1966,28 +2052,65 @@ class CreateWuyingServerRequest(TeaModel):
         virtual_node_pool_id: str = None,
         wuying_server_name: str = None,
     ):
+        # Quantity.
         self.amount = amount
+        # Auto payment.
         self.auto_pay = auto_pay
+        # Auto-renewal.
         self.auto_renew = auto_renew
+        # bandwidth value, the NetworkStrategyType is valid for DirectIp. Unit: Mbps, range 2~100
         self.bandwidth = bandwidth
+        # Region.
         self.biz_region_id = biz_region_id
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PrePaid: subscription
         self.charge_type = charge_type
+        # The list of data disks.
         self.data_disk = data_disk
+        # Idempotence token to ensure operation uniqueness
         self.idempotence_token = idempotence_token
+        # The ID of the image.
         self.image_id = image_id
+        # The type of the network policy (in invitational preview).
         self.network_strategy_type = network_strategy_type
+        # The office network IDs.
         self.office_site_id = office_site_id
+        # Workstation login password.
         self.password = password
+        # The subscription period.
         self.period = period
+        # The time unit.
+        # 
+        # Valid values:
+        # 
+        # *   Month
+        # *   Year
         self.period_unit = period_unit
+        # The ID of the discount.
+        # 
+        # >  If PromotionId is set, it will try to apply the corresponding discount.
         self.promotion_id = promotion_id
+        self.saving_plan_id = saving_plan_id
+        # Workstation specifications.
         self.server_instance_type = server_instance_type
         self.server_port_range = server_port_range
+        # The system disk category.
+        # 
+        # Valid values:
+        # 
+        # *   cloud_auto.
         self.system_disk_category = system_disk_category
+        # The performance level (PL) of the system disk.
         self.system_disk_performance_level = system_disk_performance_level
+        # The size of the system disk. Unit: GB.
         self.system_disk_size = system_disk_size
+        # The list of office network vSwitches.
         self.v_switch_ids = v_switch_ids
         self.virtual_node_pool_id = virtual_node_pool_id
+        # The name of the workstation. The numeric suffix is automatically added when multiple workstations are created.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -2034,6 +2157,8 @@ class CreateWuyingServerRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+        if self.saving_plan_id is not None:
+            result['SavingPlanId'] = self.saving_plan_id
         if self.server_instance_type is not None:
             result['ServerInstanceType'] = self.server_instance_type
         if self.server_port_range is not None:
@@ -2087,6 +2212,8 @@ class CreateWuyingServerRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+        if m.get('SavingPlanId') is not None:
+            self.saving_plan_id = m.get('SavingPlanId')
         if m.get('ServerInstanceType') is not None:
             self.server_instance_type = m.get('ServerInstanceType')
         if m.get('ServerPortRange') is not None:
@@ -2112,7 +2239,9 @@ class CreateWuyingServerResponseBodyData(TeaModel):
         order_id: str = None,
         wuying_server_id_list: List[str] = None,
     ):
+        # The order ID.
         self.order_id = order_id
+        # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
 
     def validate(self):
@@ -2145,7 +2274,9 @@ class CreateWuyingServerResponseBody(TeaModel):
         data: CreateWuyingServerResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2522,6 +2653,7 @@ class DeleteImageRequest(TeaModel):
         self,
         image_id: str = None,
     ):
+        # The ID of the RDS image.
         self.image_id = image_id
 
     def validate(self):
@@ -2553,10 +2685,23 @@ class DeleteImageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code:
+        # 
+        # *   `200`: Success.
+        # *   `400`: An error occurred.
         self.code = code
+        # Whether the deletion is successful.
+        # 
+        # Enumerated values:
+        # 
+        # *   true:Deleted successfully.
+        # *   false:Deletion failure.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2641,6 +2786,8 @@ class DeleteWuyingServerRequest(TeaModel):
         self,
         wuying_server_id: str = None,
     ):
+        # The ID of the workstation.
+        # 
         # This parameter is required.
         self.wuying_server_id = wuying_server_id
 
@@ -2739,7 +2886,14 @@ class DescribeWuyingServerEipInfoRequest(TeaModel):
         isp: str = None,
         wuying_server_id: str = None,
     ):
+        # The Internet service provider (ISP). Valid values:
+        # 
+        # *   ChinaMobile: China Mobile
+        # *   ChinaTelecom: China Telecom
+        # *   ChinaUnicom: China Unicom
         self.isp = isp
+        # The ID of the workstation.
+        # 
         # This parameter is required.
         self.wuying_server_id = wuying_server_id
 
@@ -2774,8 +2928,11 @@ class DescribeWuyingServerEipInfoResponseBodyEipInfoModel(TeaModel):
         network_interface_id: str = None,
         server_port_range: str = None,
     ):
+        # The public IP address.
         self.ip_address = ip_address
+        # The ID of the elastic network interface (ENI).
         self.network_interface_id = network_interface_id
+        # The port range.
         self.server_port_range = server_port_range
 
     def validate(self):
@@ -2812,6 +2969,7 @@ class DescribeWuyingServerEipInfoResponseBody(TeaModel):
         eip_info_model: DescribeWuyingServerEipInfoResponseBodyEipInfoModel = None,
         request_id: str = None,
     ):
+        # The information about the associated EIP.
         self.eip_info_model = eip_info_model
         # Id of the request
         self.request_id = request_id
@@ -2889,8 +3047,16 @@ class GetAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group. You can call the [listAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -2927,10 +3093,15 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps(TeaModel):
         app_version: str = None,
         app_version_name: str = None,
     ):
+        # The application icon.
         self.app_icon = app_icon
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The application version.
         self.app_version = app_version
+        # The name of the application version.
         self.app_version_name = app_version_name
 
     def validate(self):
@@ -2976,8 +3147,11 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSch
         end_time: str = None,
         start_time: str = None,
     ):
+        # The number of destination resources.
         self.amount = amount
+        # The end time of the scaling policy. Format: HH:mm.
         self.end_time = end_time
+        # The start time of the scaling policy. Format: HH:mm.
         self.start_time = start_time
 
     def validate(self):
@@ -3015,8 +3189,11 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSch
         recurrence_values: List[int] = None,
         timer_periods: List[GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods] = None,
     ):
+        # The schedule type of the scaling policy. This parameter must be configured together with `RecurrenceValues`.``
         self.recurrence_type = recurrence_type
+        # The days of each week on which the scaling policy is executed.
         self.recurrence_values = recurrence_values
+        # The time periods during which the scaling policy can be executed.
         self.timer_periods = timer_periods
 
     def validate(self):
@@ -3078,24 +3255,57 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
+        # The number of resources purchased when the delivery group was created.
         self.amount = amount
+        # 空闲会话数上限。指定该值时，当会话使用率超过`ScalingUsageThreshold`且当前交付组空闲会话数小于`MaxIdleAppInstanceAmount`时，才会触发自动扩容，否则认为交付组空闲会话已足够使用，不自动扩容。该参数可用于灵活控制弹性扩容行为和降低使用成本。
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
+        # The maximum number of resources that can be created for scale-out.
         self.max_scaling_amount = max_scaling_amount
+        # The total number of subscription resources.
         self.node_amount = node_amount
+        # The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+        # 
+        # *   appstreaming.general.4c8g: 1 to 2
+        # *   appstreaming.general.8c16g: 1 to 4
+        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
+        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
+        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
         self.node_capacity = node_capacity
+        # The ID of the resource type that you purchase.
         self.node_instance_type = node_instance_type
+        # The ID of the resource group.
         self.node_pool_id = node_pool_id
+        # The name of the resource type.
         self.node_type_name = node_type_name
+        # The number of subscription resources that are in use.
         self.node_used = node_used
+        # The schedules of the scaling policy.
         self.recurrence_schedules = recurrence_schedules
+        # The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, automatic scale-in is triggered. Default value: 5.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        # The total number of scalable resources.
         self.scaling_node_amount = scaling_node_amount
+        # The number of scalable resources that are in use.
         self.scaling_node_used = scaling_node_used
+        # The number of resources that are created each time resources are scaled out. Valid values: 1 to 10.
         self.scaling_step = scaling_step
+        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scaling is automatically triggered. The session usage is calculated by using the following formula: `Session usage = Number of current sessions/(Total number of resources × Number of concurrent sessions) × 100%`.
         self.scaling_usage_threshold = scaling_usage_threshold
+        # The expiration date of the scaling policy. Format: yyyy-MM-dd.
         self.strategy_disable_date = strategy_disable_date
+        # The effective date of the scaling policy. Format: yyyy-MM-dd.
         self.strategy_enable_date = strategy_enable_date
+        # The type of the scaling policy.
+        # 
+        # >  `NODE_SCALING_BY_USAGE` is returned for this parameter only if ChargeType is set to `PrePaid`. `NODE_SCALING_BY_SCHEDULE` is returned for this parameter only if ChargeType is set to `PostPaid`.
+        # 
+        # Valid values:
+        # 
+        # *   NODE_FIXED: No scalable resources are used.
+        # *   NODE_SCALING_BY_SCHEDULE: Scheduled scaling is used.
+        # *   NODE_SCALING_BY_USAGE: Resources are scaled based on usage.
         self.strategy_type = strategy_type
+        # Indicates whether the warmup policy is enabled for resources.
         self.warm_up = warm_up
 
     def validate(self):
@@ -3205,8 +3415,11 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo(TeaModel):
         ota_version: str = None,
         task_id: str = None,
     ):
+        # The new OTA version. A null value indicates that no new version is available.
         self.new_ota_version = new_ota_version
+        # The current OTA version.
         self.ota_version = ota_version
+        # The ID of the OTA update task.
         self.task_id = task_id
 
     def validate(self):
@@ -3244,8 +3457,11 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags(TeaModel):
         scope: str = None,
         value: str = None,
     ):
+        # 标签键。
         self.key = key
+        # 标签类型。
         self.scope = scope
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -3314,44 +3530,110 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         skip_user_auth_check: bool = None,
         spec_id: str = None,
         status: str = None,
+        support_user_group_mixed_auth: bool = None,
         tags: List[GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags] = None,
+        user_group_auth_mode: str = None,
     ):
+        # 接入类型。
         self.access_type = access_type
+        # The number of subscription resources. Minimum value: 1.
         self.amount = amount
+        # The image ID of the application.
         self.app_center_image_id = app_center_image_id
+        # The image name of the application.
         self.app_center_image_name = app_center_image_name
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
+        # The resource type of the delivery group.
         self.app_instance_type = app_instance_type
+        # The name of the resource type of the delivery group.
         self.app_instance_type_name = app_instance_type_name
+        # The policy ID of the application.
         self.app_policy_id = app_policy_id
+        # The applications.
         self.apps = apps
+        # 授权模式。
         self.auth_mode = auth_mode
+        # The sales mode.
+        # 
+        # Valid values:
+        # 
+        # *   AppInstance: by session
+        # *   Node: by resource
         self.charge_resource_mode = charge_resource_mode
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
         self.charge_type = charge_type
+        # The time when the delivery group expires.
         self.expired_time = expired_time
+        # The time when the delivery group was created.
         self.gmt_create = gmt_create
+        # The maximum number of instances. Minimum value: 1.
         self.max_amount = max_amount
+        # The minimum number of instances. Minimum value: 1.
         self.min_amount = min_amount
+        # The information about the resource group.
         self.node_pool = node_pool
+        # 办公网络ID。
         self.office_site_id = office_site_id
+        # The type of the operating system.
         self.os_type = os_type
+        # The information about the over-the-air (OTA) update task.
         self.ota_info = ota_info
+        # The product type.
         self.product_type = product_type
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
+        # The percentage of reserved instances. The value indicates the percentage of unused sessions in the delivery group. Valid values: 0 to 99.
         self.reserve_amount_ratio = reserve_amount_ratio
+        # The maximum number of reserved instances. The value indicates the maximum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_max_amount = reserve_max_amount
+        # The minimum number of reserved instances. The value indicates the minimum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_min_amount = reserve_min_amount
+        # The resource status.
         self.resource_status = resource_status
+        # The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, automatic scale-in is triggered. Minimum value: 0.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        # The number of sessions that are created each time the delivery group is scaled out. Minimum value: 1.
         self.scaling_step = scaling_step
+        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scaling is automatically triggered. The session usage rate is calculated by using the following formula: Session usage rate = Number of sessions in use/Total number of sessions × 100%. Valid values: 0 to 99.
         self.scaling_usage_threshold = scaling_usage_threshold
+        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
+        # 会话类型。
         self.session_type = session_type
+        # Indicates whether user permission verification is skipped.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: This is the default value.
         self.skip_user_auth_check = skip_user_auth_check
+        # The specification ID that uniquely corresponds to the ID of the delivery group.
         self.spec_id = spec_id
+        # The status of the delivery group.
+        # 
+        # Valid values:
+        # 
+        # *   PUBLISHED: The delivery group is published.
+        # *   FAILED: The delivery group failed to be published.
+        # *   MAINTAIN_FAILED: The delivery group failed to be updated.
+        # *   EXPIRED: The delivery group is expired.
+        # *   MAINTAINING: The delivery group is being updated.
+        # *   CEASED: The delivery group has overdue payments.
+        # *   EXPIRED_RECYCLING: The delivery group is expired and being recycled.
+        # *   DEPLOYING: The delivery group is being published.
         self.status = status
+        self.support_user_group_mixed_auth = support_user_group_mixed_auth
+        # 资源标签列表。
         self.tags = tags
+        self.user_group_auth_mode = user_group_auth_mode
 
     def validate(self):
         if self.apps:
@@ -3449,10 +3731,14 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             result['SpecId'] = self.spec_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_user_group_mixed_auth is not None:
+            result['SupportUserGroupMixedAuth'] = self.support_user_group_mixed_auth
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.user_group_auth_mode is not None:
+            result['UserGroupAuthMode'] = self.user_group_auth_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -3534,11 +3820,15 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.spec_id = m.get('SpecId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportUserGroupMixedAuth') is not None:
+            self.support_user_group_mixed_auth = m.get('SupportUserGroupMixedAuth')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
                 temp_model = GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UserGroupAuthMode') is not None:
+            self.user_group_auth_mode = m.get('UserGroupAuthMode')
         return self
 
 
@@ -3550,6 +3840,7 @@ class GetAppInstanceGroupResponseBody(TeaModel):
     ):
         # AppInstanceGroupModels
         self.app_instance_group_models = app_instance_group_models
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3632,6 +3923,7 @@ class GetConnectionTicketRequest(TeaModel):
         app_version: str = None,
         biz_region_id: str = None,
         end_user_id: str = None,
+        environment_config: str = None,
         product_type: str = None,
         task_id: str = None,
     ):
@@ -3665,6 +3957,8 @@ class GetConnectionTicketRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The environment configuration.
+        self.environment_config = environment_config
         # The product type.
         # 
         # Valid values:
@@ -3708,6 +4002,8 @@ class GetConnectionTicketRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.environment_config is not None:
+            result['EnvironmentConfig'] = self.environment_config
         if self.product_type is not None:
             result['ProductType'] = self.product_type
         if self.task_id is not None:
@@ -3736,6 +4032,8 @@ class GetConnectionTicketRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('EnvironmentConfig') is not None:
+            self.environment_config = m.get('EnvironmentConfig')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
         if m.get('TaskId') is not None:
@@ -3764,6 +4062,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         self.app_instance_id = app_instance_id
         # The ID of the persistent session.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The avatar ID.
         self.avatar_id = avatar_id
         # The region ID.
         self.biz_region_id = biz_region_id
@@ -5241,6 +5540,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         app_instance_group_name: str = None,
         biz_region_id: str = None,
+        excluded_user_group_ids: List[str] = None,
         node_instance_type: str = None,
         office_site_id: str = None,
         page_number: int = None,
@@ -5249,6 +5549,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         region_id: str = None,
         status: List[str] = None,
         tag: List[ListAppInstanceGroupRequestTag] = None,
+        user_group_ids: List[str] = None,
     ):
         # The image ID of the app. You can obtain the ID from the Images page in the App Streaming console.
         self.app_center_image_id = app_center_image_id
@@ -5263,6 +5564,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         # *   cn-shanghai: China (Shanghai)
         # *   cn-hangzhou: China (Hangzhou)
         self.biz_region_id = biz_region_id
+        self.excluded_user_group_ids = excluded_user_group_ids
         # The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
         self.node_instance_type = node_instance_type
         self.office_site_id = office_site_id
@@ -5283,6 +5585,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         # The status of the delivery groups.
         self.status = status
         self.tag = tag
+        self.user_group_ids = user_group_ids
 
     def validate(self):
         if self.tag:
@@ -5304,6 +5607,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             result['AppInstanceGroupName'] = self.app_instance_group_name
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+        if self.excluded_user_group_ids is not None:
+            result['ExcludedUserGroupIds'] = self.excluded_user_group_ids
         if self.node_instance_type is not None:
             result['NodeInstanceType'] = self.node_instance_type
         if self.office_site_id is not None:
@@ -5322,6 +5627,8 @@ class ListAppInstanceGroupRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -5334,6 +5641,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             self.app_instance_group_name = m.get('AppInstanceGroupName')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+        if m.get('ExcludedUserGroupIds') is not None:
+            self.excluded_user_group_ids = m.get('ExcludedUserGroupIds')
         if m.get('NodeInstanceType') is not None:
             self.node_instance_type = m.get('NodeInstanceType')
         if m.get('OfficeSiteId') is not None:
@@ -5353,6 +5662,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = ListAppInstanceGroupRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
         return self
 
 
@@ -5845,7 +6156,9 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         skip_user_auth_check: bool = None,
         spec_id: str = None,
         status: str = None,
+        support_user_group_mixed_auth: bool = None,
         tags: List[ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags] = None,
+        user_group_auth_mode: str = None,
     ):
         self.access_type = access_type
         # The number of subscription resources. Minimum value: 1.
@@ -5955,7 +6268,9 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         # *   EXPIRED_RECYCLING: The delivery group is expired and being recycled.
         # *   DEPLOYING: The delivery group is being published.
         self.status = status
+        self.support_user_group_mixed_auth = support_user_group_mixed_auth
         self.tags = tags
+        self.user_group_auth_mode = user_group_auth_mode
 
     def validate(self):
         if self.apps:
@@ -6059,10 +6374,14 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             result['SpecId'] = self.spec_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_user_group_mixed_auth is not None:
+            result['SupportUserGroupMixedAuth'] = self.support_user_group_mixed_auth
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.user_group_auth_mode is not None:
+            result['UserGroupAuthMode'] = self.user_group_auth_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -6147,11 +6466,15 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.spec_id = m.get('SpecId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportUserGroupMixedAuth') is not None:
+            self.support_user_group_mixed_auth = m.get('SupportUserGroupMixedAuth')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
                 temp_model = ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UserGroupAuthMode') is not None:
+            self.user_group_auth_mode = m.get('UserGroupAuthMode')
         return self
 
 
@@ -6605,14 +6928,28 @@ class ListAuthorizedUserGroupsRequest(TeaModel):
         page_size: int = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the user group (exact match).
         self.group_id = group_id
+        # The name of the user group (fuzzy match).
         self.group_name = group_name
+        # The page number. Pages start from page 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The maximum number of entries returned per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The product type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -6664,9 +7001,19 @@ class ListAuthorizedUserGroupsResponseBodyUserGroups(TeaModel):
         group_id: str = None,
         group_name: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The authorization mode.
+        # 
+        # Valid values:
+        # 
+        # *   App: authorizes access to apps.
+        # *   AppInstanceGroup: authorizes access to delivery groups.
+        # *   Session: authorizes access to sessions.
         self.auth_mode = auth_mode
+        # The ID of the user group.
         self.group_id = group_id
+        # The name of the user group.
         self.group_name = group_name
 
     def validate(self):
@@ -6710,10 +7057,15 @@ class ListAuthorizedUserGroupsResponseBody(TeaModel):
         total_count: int = None,
         user_groups: List[ListAuthorizedUserGroupsResponseBodyUserGroups] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The maximum number of entries returned on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The information about the user groups.
         self.user_groups = user_groups
 
     def validate(self):
@@ -6812,12 +7164,29 @@ class ListBindInfoRequest(TeaModel):
         user_id_list: List[str] = None,
         wy_id_list: List[str] = None,
     ):
+        # The app IDs. You can specify 1 to 100 IDs.
+        # 
+        # >  If you specify this parameter, only the bindings of the specified apps are returned.
         self.app_id_list = app_id_list
+        # The IDs of the delivery groups. You can specify 1 to 100 IDs.
+        # 
+        # >  If you specify this parameter, only the bindings of the specified delivery groups are returned.
         self.app_instance_group_id_list = app_instance_group_id_list
+        # The IDs of app instances. You can specify 1 to 100 IDs.
+        # 
+        # >  If you specify this parameter, only the bindings of the specified app instances are returned.
         self.app_instance_id_list = app_instance_id_list
+        # The page number. Default value: `1`. We recommend that you specify this parameter.
         self.page_number = page_number
+        # The number of entries per page. The value cannot be greater than `100`. Default value: `20`. We recommend that you specify this parameter.
         self.page_size = page_size
+        # The user IDs. You can specify 1 to 100 IDs.
+        # 
+        # >  If you specify this parameter, only the bindings of the specified users are returned.
         self.user_id_list = user_id_list
+        # The IDs of the Alibaba Cloud Workspace users. You can specify 1 to 100 IDs.
+        # 
+        # >  If you specify this parameter, only the bindings of the specified Alibaba Cloud Workspace users are returned.
         self.wy_id_list = wy_id_list
 
     def validate(self):
@@ -6877,14 +7246,34 @@ class ListBindInfoResponseBodyBindInfoModels(TeaModel):
         user_id: str = None,
         wy_id: str = None,
     ):
+        # The account type.
+        # 
+        # Valid values:
+        # 
+        # *   ad: Active Directory (AD) account
+        # *   simple: convenience account
         self.account_type = account_type
+        # The app ID.
         self.app_id = app_id
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the app instance.
         self.app_instance_id = app_instance_id
+        # The app version.
         self.app_version = app_version
+        # The product type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudApp: App Streaming
+        # *   CloudBrowser: Cloud-based Browser
+        # *   AndroidCloud: Cloud Phone
         self.product_type = product_type
+        # The region ID.
         self.region_id = region_id
+        # The user ID.
         self.user_id = user_id
+        # The ID of the Alibaba Cloud Workspace user.
         self.wy_id = wy_id
 
     def validate(self):
@@ -6948,10 +7337,15 @@ class ListBindInfoResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The bindings.
         self.bind_info_models = bind_info_models
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7045,7 +7439,9 @@ class ListImageRequestTagList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the custom tag.
         self.key = key
+        # The value of the custom tag.
         self.value = value
 
     def validate(self):
@@ -7097,26 +7493,105 @@ class ListImageRequest(TeaModel):
         status: str = None,
         tag_list: List[ListImageRequestTagList] = None,
     ):
+        # The regions that are supported. The EDS images are centralized. Use this parameter to query the regions where the image is deployed.
         self.biz_region_id_list = biz_region_id_list
+        # The service type. This parameter is not available publicly.
+        # 
+        # Valid value:
+        # 
+        # *   1 (default)
         self.biz_type = biz_type
+        # The list of all service types. It is not available publicly.
         self.biz_type_list = biz_type_list
+        # The features supported by the image.
         self.feature_list = feature_list
+        # The image version.
         self.fota_version = fota_version
+        # The image ID.
         self.image_id = image_id
+        # The image name. Fuzzy match is supported.
         self.image_name = image_name
+        # The type of the images.
+        # 
+        # Valid values:
+        # 
+        # *   User: a custom image.
+        # *   Shared: a shared image.
+        # *   System: a system image.
+        # *   Community: a community image.
         self.image_type = image_type
+        # The language.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English.
+        # *   zh-HK: Chinese, Traditional (Hong Kong, China).
+        # *   zh-CN: Simplified Chinese.
+        # *   ja-JP: Japanese.
         self.language_type = language_type
+        # The OS type of the image.
+        # 
+        # Valid values:
+        # 
+        # *   Linux
+        # *   Unknown
+        # *   Windows
+        # *   Android
         self.os_type = os_type
+        # The image encapsulation type.
+        # 
+        # Valid values:
+        # 
+        # *   Ecs_Container: ECS and Docker image
+        # *   Ecs: ECS image
         self.package_type = package_type
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
+        # The name of the operating system platform.
+        # 
+        # Valid values:
+        # 
+        # *   Ubuntu
+        # *   Debian
+        # *   Windows Server 2022
+        # *   Windows Server 2019
+        # *   Windows Server 2016
+        # *   Windows 11
+        # *   Windows 10
         self.platform_name = platform_name
+        # The list of supported platform types. For valid values, refer to PlatformName above.
         self.platform_name_list = platform_name_list
+        # The product type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudDesktop: Elastic Desktop Service
+        # *   CloudApp: App Streaming
+        # *   WuyingServer: Workstation
         self.product_type = product_type
+        # The list of products that are supported when the image supports multiple products.
         self.product_type_list = product_type_list
+        # The protocol type of the image.
+        # 
+        # Valid values:
+        # 
+        # *   HDX: the High-definition Experience (HDX) protocol
+        # *   ASP: the Alibaba Cloud-developed ASP protocol
         self.protocol_type = protocol_type
+        # Find images with certain fixed specifications.
         self.resource_instance_type = resource_instance_type
+        # The status of the image. You can query images in the specified status. By default, all images in the Not Deleted state are queried.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE: The image is available.
+        # *   INIT: The image is being initialized.
+        # *   CREATE_FAILED: The image failed to be created.
+        # *   CREATING: The image is being created.
         self.status = status
+        # The tags to query.
         self.tag_list = tag_list
 
     def validate(self):
@@ -7233,7 +7708,9 @@ class ListImageResponseBodyDataAppList(TeaModel):
         app_id: str = None,
         app_name: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
 
     def validate(self):
@@ -7269,10 +7746,15 @@ class ListImageResponseBodyDataImageRegionDistributeList(TeaModel):
         status: str = None,
         version_id: str = None,
     ):
+        # System image IDs follow a descriptive, human-readable format, while custom image IDs are automatically generated by the system.
         self.image_id = image_id
+        # The progress.
         self.progress = progress
+        # The supported region.
         self.region_id = region_id
+        # The status.
         self.status = status
+        # The version of the image.
         self.version_id = version_id
 
     def validate(self):
@@ -7357,47 +7839,105 @@ class ListImageResponseBodyData(TeaModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
+        # The tenant ID.
         self.ali_uid = ali_uid
+        # The application configuration.
         self.app_list = app_list
+        # The base image ID.
         self.base_image_id = base_image_id
+        # The version of the base image.
         self.base_image_version = base_image_version
+        # The service type.
         self.biz_type = biz_type
+        # Specifies whether to use the compatibility mode.
         self.compatible_mode = compatible_mode
+        # The size of the data disk. Unit: GiB.
         self.data_disk_size = data_disk_size
+        # The description of the image.
         self.description = description
+        # The name of the release.
         self.distro = distro
+        # The information about each driver.
         self.driver_list = driver_list
+        # The image feature tags.
         self.feature_list = feature_list
+        # >  This parameter is not available for public use.
         self.fota_channel = fota_channel
+        # The FOTA version.
         self.fota_version = fota_version
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The image creation type.
+        # 
+        # Valid values:
+        # 
+        # *   BY_SNAPSHOT_ID: The image is created from the snapshot or contains only a system disk.
+        # *   BUILDER_MANUAL: The image is manually generated.
+        # *   INSTANCE_AUTO: The image is automatically generated based on an instance.
+        # *   BY_INSTANCE_ID: The image is created from an instance or contains both a system disk and data disks.
         self.image_create_mode = image_create_mode
+        # System image IDs follow a descriptive, human-readable format, while custom image IDs are automatically generated by the system.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # Layered supported regions information.
         self.image_region_distribute_list = image_region_distribute_list
+        # The region ID.
         self.image_region_list = image_region_list
+        # The type of the image.
         self.image_type = image_type
+        # The image language. When the packaging type is VHD or Container, the image inherits its properties from the ECS-type image within the same image bundle.
         self.language = language
+        # The latest sub-version of the image. (An image consists of multiple sub-versions.)
         self.latest_version_id = latest_version_id
+        # Indicates whether the current version is the active version.
         self.online_version = online_version
+        # This image tag currently points to the specified sub-version of the parent image. (An image consists of multiple sub-versions.)
         self.online_version_id = online_version_id
+        # The type of the image.
         self.os_type = os_type
+        # The image encapsulation type.
         self.package_type = package_type
+        # The ID of the parent image from which this image is derived. Note: This field is only applicable to custom images, as system images do not have a parent.
         self.parent_image_id = parent_image_id
+        # The version of the parent image.
         self.parent_image_version = parent_image_version
+        # The operating system platform of the image.
+        # 
+        # >  When the packaging type is VHD or Container, the image inherits its properties from the ECS-type image within the same image bundle.
         self.platform = platform
+        # The name of the operating system platform.
         self.platform_name = platform_name
+        # The product type.
         self.product_type = product_type
+        # The protocol type.
         self.protocol_type = protocol_type
+        # The types of resources that are supported by the images.
         self.resource_instance_category = resource_instance_category
+        # The type of the session.
+        # 
+        # Valid values:
+        # 
+        # *   SINGLE_SESSION
+        # *   MULTIPLE_SESSION
         self.session_type = session_type
+        # The state of the image.
         self.status = status
+        # The supported languages.
         self.supported_language_list = supported_language_list
+        # The size of the system disk. Unit: GiB.
+        # 
+        # >  The system disk must be at least as large as the image.
         self.system_disk_size = system_disk_size
+        # The version of the image.
         self.version_id = version_id
+        # The version number.
         self.version_name = version_name
+        # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
+        # The ID of the Key Management Service (KMS) key that is used to encrypt the disk.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -7613,13 +8153,26 @@ class ListImageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The total number of entries.
         self.count = count
+        # The returned data.
         self.data = data
+        # The message that is returned for the request.
         self.message = message
+        # The page number returned.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true: The request is successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -8493,11 +9046,24 @@ class ListPersistentAppInstancesRequest(TeaModel):
         page_size: int = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The IDs of the persistent sessions.
         self.app_instance_persistent_ids = app_instance_persistent_ids
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. The value cannot be greater than **100**. Default value: **20**.
         self.page_size = page_size
+        # The product type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudApp: App Streaming
+        # *   CloudBrowser: Cloud-based Browser
+        # *   AndroidCloud: Cloud Phone
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -8549,13 +9115,45 @@ class ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels(TeaModel
         authorized_users: List[str] = None,
         gmt_create: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the app instance.
         self.app_instance_id = app_instance_id
+        # The ID of the app instance of the persistent session type.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The name of the app instance of the persistent session type.
         self.app_instance_persistent_name = app_instance_persistent_name
+        # The status of the app instance of the persistent session type.
+        # 
+        # Valid values:
+        # 
+        # *   STARTING
+        # *   RUNNING
+        # *   STOPPED
+        # *   UNAVAILABLE
+        # *   DELETING
+        # *   PENDING
+        # *   STOPPING
+        # *   DELETED
+        # *   REBUILDING
         self.app_instance_persistent_status = app_instance_persistent_status
+        # The status of the app instance.
+        # 
+        # Valid values:
+        # 
+        # *   INIT: The app instance is being initialized.
+        # *   STARTING: The app instance is being started.
+        # *   CLOSING: The app instance is being stopped.
+        # *   CLOSED: The app instance is closed.
+        # *   RUNNING: The app instance is running.
+        # *   idle: The app instance is idle.
+        # *   BOUND: The app instance is bound to an app instance group.
+        # *   UNAVAILABLE: The app instance is unavailable.
+        # *   DELETED: The app instance is deleted.
         self.app_instance_status = app_instance_status
+        # The authorized users.
         self.authorized_users = authorized_users
+        # The time when the app instance was created.
         self.gmt_create = gmt_create
 
     def validate(self):
@@ -8615,10 +9213,15 @@ class ListPersistentAppInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The app instances of the persistent session type.
         self.persistent_app_instance_models = persistent_app_instance_models
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9258,16 +9861,26 @@ class ListWuyingServerRequest(TeaModel):
         wuying_server_name_or_id: str = None,
     ):
         self.add_virtual_node_pool_status_list = add_virtual_node_pool_status_list
+        # The region ID.
         self.biz_region_id = biz_region_id
+        # The billing method of the Internet access package.
         self.charge_type = charge_type
+        # The image ID.
         self.image_id = image_id
+        # The office network IDs.
         self.office_site_id = office_site_id
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # Workstation specifications.
         self.server_instance_type = server_instance_type
+        # The status of the workstation.
         self.status = status
         self.virtual_node_pool_id = virtual_node_pool_id
+        # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
+        # The workstation name or workstation ID.
         self.wuying_server_name_or_id = wuying_server_name_or_id
 
     def validate(self):
@@ -9341,8 +9954,11 @@ class ListWuyingServerResponseBodyWuyingServerListDataDisk(TeaModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
+        # The category of data disk.
         self.data_disk_category = data_disk_category
+        # The PL of the data disk.
         self.data_disk_performance_level = data_disk_performance_level
+        # The size of the data disk. Unit: GB.
         self.data_disk_size = data_disk_size
 
     def validate(self):
@@ -9379,7 +9995,9 @@ class ListWuyingServerResponseBodyWuyingServerListInstanceInfoList(TeaModel):
         instance_id: str = None,
         network_interface_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the ENI.
         self.network_interface_id = network_interface_id
 
     def validate(self):
@@ -9415,10 +10033,15 @@ class ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo(TeaMode
         memory: int = None,
         server_instance_type: str = None,
     ):
+        # The number of vCPUs.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The memory size. Unit: MB.
         self.gpu_memory = gpu_memory
+        # The memory size. Unit: MB.
         self.memory = memory
+        # Workstation specifications.
         self.server_instance_type = server_instance_type
 
     def validate(self):
@@ -9485,27 +10108,47 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
         wuying_server_name: str = None,
     ):
         self.add_virtual_node_pool_status = add_virtual_node_pool_status
+        # Region.
         self.biz_region_id = biz_region_id
+        # The billing method.
         self.charge_type = charge_type
+        # The time when the storage resource was created.
         self.create_time = create_time
+        # The data disks.
         self.data_disk = data_disk
+        # The time when the subscription instance expires.
         self.expired_time = expired_time
+        # The ID of the custom image.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The list of information about the workstation instance.
         self.instance_info_list = instance_info_list
+        # The private IP address.
         self.network_interface_ip = network_interface_ip
+        # The ID of the office network.
         self.office_site_id = office_site_id
+        # The office network name.
         self.office_site_name = office_site_name
+        # The type of the office network.
         self.office_site_type = office_site_type
+        # The OS type.
         self.os_type = os_type
         self.security_group_ids = security_group_ids
+        # The specifications.
         self.server_instance_type_info = server_instance_type_info
+        # The status of the workstation.
         self.status = status
+        # The type of the system disk.
         self.system_disk_category = system_disk_category
+        # The performance level (PL) of the system disk.
         self.system_disk_performance_level = system_disk_performance_level
+        # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
         self.virtual_node_pool_id = virtual_node_pool_id
+        # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
+        # The name of the workstation.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -9645,10 +10288,15 @@ class ListWuyingServerResponseBody(TeaModel):
         total_count: int = None,
         wuying_server_list: List[ListWuyingServerResponseBodyWuyingServerList] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The list of workstation information.
         self.wuying_server_list = wuying_server_list
 
     def validate(self):
@@ -10488,12 +11136,41 @@ class ModifyAppPolicyRequestVideoPolicy(TeaModel):
         visual_quality_strategy: str = None,
         webrtc: bool = None,
     ):
+        # The frame rate (FPS).
+        # 
+        # Enumerated values:
+        # 
+        # *   30: 30 FPS
+        # *   60: 60 FPS
         self.frame_rate = frame_rate
+        # The height of the resolution, in pixels.
         self.session_resolution_height = session_resolution_height
+        # The width of the resolution, in pixels.
         self.session_resolution_width = session_resolution_width
+        # The stream mode. This parameter is used together with `Webrtc` to specify the protocol type.
+        # 
+        # *   If you set `Webrtc` to `true` and `StreamingMode` to `video`, Web Real-Time Communications (WebRTC) streams are used.
+        # *   If you set `Webrtc` to `false` and `StreamingMode` to `video`, video streams are used.
+        # *   If you set `Webrtc` to `false` and `StreamingMode` to `mix`, mixed streams are used.
         self.streaming_mode = streaming_mode
+        # Whether to use adaptive resolution.
+        # 
+        # *   `true`: The session resolution changes with the display area of the terminal. In this case, `SessionResolutionWidth` indicates the maximum resolution width and `SessionResolutionHeight` indicates the maximum resolution height.
+        # *   `false`: The session resolution does not change with the display area of the terminal. In this case, `SessionResolutionWidth` specifies the fixed resolution width and `SessionResolutionHeight` specifies the fixed resolution height.
         self.terminal_resolution_adaptive = terminal_resolution_adaptive
+        # The image quality policy.
+        # 
+        # Enumerated values:
+        # 
+        # *   adaptive: adaptive.
+        # *   smooth: smooth first.
+        # *   quality: quality first.
         self.visual_quality_strategy = visual_quality_strategy
+        # Specifies whether to enable WebRTC. This parameter is used together with `StreamingMode` to specify the protocol type.
+        # 
+        # *   If you set `Webrtc` to `true` and `StreamingMode` to `video`, WebRTC streams are used.
+        # *   If you set `Webrtc` to `false` and `StreamingMode` to `video`, video streams are used.
+        # *   If you set `Webrtc` to `false` and `StreamingMode` to `mix`, mixed streams are used.
         self.webrtc = webrtc
 
     def validate(self):
@@ -10547,10 +11224,19 @@ class ModifyAppPolicyRequest(TeaModel):
         product_type: str = None,
         video_policy: ModifyAppPolicyRequestVideoPolicy = None,
     ):
+        # The policy ID.
+        # 
         # This parameter is required.
         self.app_policy_id = app_policy_id
+        # The product type.
+        # 
+        # Enumerated values:
+        # 
+        # *   CloudApp: RDS Cloud App
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # Displays the policy.
         self.video_policy = video_policy
 
     def validate(self):
@@ -10590,10 +11276,19 @@ class ModifyAppPolicyShrinkRequest(TeaModel):
         product_type: str = None,
         video_policy_shrink: str = None,
     ):
+        # The policy ID.
+        # 
         # This parameter is required.
         self.app_policy_id = app_policy_id
+        # The product type.
+        # 
+        # Enumerated values:
+        # 
+        # *   CloudApp: RDS Cloud App
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # Displays the policy.
         self.video_policy_shrink = video_policy_shrink
 
     def validate(self):
@@ -10629,6 +11324,7 @@ class ModifyAppPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10688,6 +11384,737 @@ class ModifyAppPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAppPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks(TeaModel):
+    def __init__(
+        self,
+        bookmark_folder: str = None,
+        bookmark_id: str = None,
+        bookmark_name: str = None,
+        bookmark_url: str = None,
+    ):
+        # The folder where the bookmark is located.
+        self.bookmark_folder = bookmark_folder
+        # The ID of the bookmark. This parameter needs to be specified only to modify the bookmark.
+        self.bookmark_id = bookmark_id
+        # The name of the bookmark.
+        # 
+        # This parameter is required.
+        self.bookmark_name = bookmark_name
+        # The URL of the bookmark.
+        # 
+        # This parameter is required.
+        self.bookmark_url = bookmark_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bookmark_folder is not None:
+            result['BookmarkFolder'] = self.bookmark_folder
+        if self.bookmark_id is not None:
+            result['BookmarkId'] = self.bookmark_id
+        if self.bookmark_name is not None:
+            result['BookmarkName'] = self.bookmark_name
+        if self.bookmark_url is not None:
+            result['BookmarkURL'] = self.bookmark_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BookmarkFolder') is not None:
+            self.bookmark_folder = m.get('BookmarkFolder')
+        if m.get('BookmarkId') is not None:
+            self.bookmark_id = m.get('BookmarkId')
+        if m.get('BookmarkName') is not None:
+            self.bookmark_name = m.get('BookmarkName')
+        if m.get('BookmarkURL') is not None:
+            self.bookmark_url = m.get('BookmarkURL')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestBrowserConfig(TeaModel):
+    def __init__(
+        self,
+        bookmarks: List[ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks] = None,
+        browser_param: str = None,
+        homepage: str = None,
+        remove_bookmarks: List[str] = None,
+    ):
+        # The bookmark.
+        self.bookmarks = bookmarks
+        # The startup parameter.
+        self.browser_param = browser_param
+        # The home page.
+        self.homepage = homepage
+        # The removed bookmarks.
+        self.remove_bookmarks = remove_bookmarks
+
+    def validate(self):
+        if self.bookmarks:
+            for k in self.bookmarks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Bookmarks'] = []
+        if self.bookmarks is not None:
+            for k in self.bookmarks:
+                result['Bookmarks'].append(k.to_map() if k else None)
+        if self.browser_param is not None:
+            result['BrowserParam'] = self.browser_param
+        if self.homepage is not None:
+            result['Homepage'] = self.homepage
+        if self.remove_bookmarks is not None:
+            result['RemoveBookmarks'] = self.remove_bookmarks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bookmarks = []
+        if m.get('Bookmarks') is not None:
+            for k in m.get('Bookmarks'):
+                temp_model = ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks()
+                self.bookmarks.append(temp_model.from_map(k))
+        if m.get('BrowserParam') is not None:
+            self.browser_param = m.get('BrowserParam')
+        if m.get('Homepage') is not None:
+            self.homepage = m.get('Homepage')
+        if m.get('RemoveBookmarks') is not None:
+            self.remove_bookmarks = m.get('RemoveBookmarks')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs(TeaModel):
+    def __init__(
+        self,
+        restricted_urlid: str = None,
+        url: str = None,
+    ):
+        # The ID of the domain name. This parameter is required only when you want to modify the domain restriction configuration.
+        self.restricted_urlid = restricted_urlid
+        # The restricted domain name.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.restricted_urlid is not None:
+            result['RestrictedURLId'] = self.restricted_urlid
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RestrictedURLId') is not None:
+            self.restricted_urlid = m.get('RestrictedURLId')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestNetwork(TeaModel):
+    def __init__(
+        self,
+        access_restriction: str = None,
+        remove_restricted_urlids: List[str] = None,
+        restricted_urls: List[ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs] = None,
+    ):
+        # The type of the access control list.
+        # 
+        # Valid value:
+        # 
+        # *   ALLOW_LIST: The whitelist.
+        self.access_restriction = access_restriction
+        # The domain names to be removed.
+        self.remove_restricted_urlids = remove_restricted_urlids
+        # The domain restriction configurations.
+        self.restricted_urls = restricted_urls
+
+    def validate(self):
+        if self.restricted_urls:
+            for k in self.restricted_urls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_restriction is not None:
+            result['AccessRestriction'] = self.access_restriction
+        if self.remove_restricted_urlids is not None:
+            result['RemoveRestrictedURLIds'] = self.remove_restricted_urlids
+        result['RestrictedURLs'] = []
+        if self.restricted_urls is not None:
+            for k in self.restricted_urls:
+                result['RestrictedURLs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessRestriction') is not None:
+            self.access_restriction = m.get('AccessRestriction')
+        if m.get('RemoveRestrictedURLIds') is not None:
+            self.remove_restricted_urlids = m.get('RemoveRestrictedURLIds')
+        self.restricted_urls = []
+        if m.get('RestrictedURLs') is not None:
+            for k in m.get('RestrictedURLs'):
+                temp_model = ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs()
+                self.restricted_urls.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(TeaModel):
+    def __init__(
+        self,
+        clipboard: str = None,
+        clipboard_read_limit: int = None,
+        clipboard_scope: str = None,
+        clipboard_write_limit: int = None,
+        file_clipboard: str = None,
+        rich_text_clipboard: str = None,
+        text_clipboard: str = None,
+    ):
+        # The clipboard policy.
+        # 
+        # Valid values:
+        # 
+        # *   read: Allows copying from the local device to the cloud browser.
+        # *   readwrite: Allows copying in both directions.
+        # *   write: Allows copying from the cloud browser to the local device.
+        # *   off: Blocks copying in both directions.
+        self.clipboard = clipboard
+        # The maximum number of characters allowed when copying from the clipboard.
+        self.clipboard_read_limit = clipboard_read_limit
+        # The clipboard control scope.
+        # 
+        # Valid values:
+        # 
+        # *   grained: fine-grained control
+        # *   global: global control
+        self.clipboard_scope = clipboard_scope
+        # The maximum number of characters allowed when copying to the clipboard.
+        self.clipboard_write_limit = clipboard_write_limit
+        # The file clipboard policy.
+        # 
+        # Valid values:
+        # 
+        # *   read: Allows copying from the local device to the cloud browser.
+        # *   readwrite: Allows copying in both directions.
+        # *   write: Allows copying from the cloud browser to the local device.
+        # *   off: Blocks copying in both directions.
+        self.file_clipboard = file_clipboard
+        # The rich text clipboard policy.
+        # 
+        # Valid values:
+        # 
+        # *   read: Allows copying from the local device to the cloud browser.
+        # *   readwrite: Allows copying in both directions.
+        # *   write: Allows copying from the cloud browser to the local device.
+        # *   off: Blocks copying in both directions.
+        self.rich_text_clipboard = rich_text_clipboard
+        # The text clipboard policy.
+        # 
+        # Valid values:
+        # 
+        # *   read: Allows copying from the local device to the cloud browser.
+        # *   readwrite: Allows copying in both directions.
+        # *   write: Allows copying from the cloud browser to the local device.
+        # *   off: Blocks copying in both directions.
+        self.text_clipboard = text_clipboard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clipboard is not None:
+            result['Clipboard'] = self.clipboard
+        if self.clipboard_read_limit is not None:
+            result['ClipboardReadLimit'] = self.clipboard_read_limit
+        if self.clipboard_scope is not None:
+            result['ClipboardScope'] = self.clipboard_scope
+        if self.clipboard_write_limit is not None:
+            result['ClipboardWriteLimit'] = self.clipboard_write_limit
+        if self.file_clipboard is not None:
+            result['FileClipboard'] = self.file_clipboard
+        if self.rich_text_clipboard is not None:
+            result['RichTextClipboard'] = self.rich_text_clipboard
+        if self.text_clipboard is not None:
+            result['TextClipboard'] = self.text_clipboard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Clipboard') is not None:
+            self.clipboard = m.get('Clipboard')
+        if m.get('ClipboardReadLimit') is not None:
+            self.clipboard_read_limit = m.get('ClipboardReadLimit')
+        if m.get('ClipboardScope') is not None:
+            self.clipboard_scope = m.get('ClipboardScope')
+        if m.get('ClipboardWriteLimit') is not None:
+            self.clipboard_write_limit = m.get('ClipboardWriteLimit')
+        if m.get('FileClipboard') is not None:
+            self.file_clipboard = m.get('FileClipboard')
+        if m.get('RichTextClipboard') is not None:
+            self.rich_text_clipboard = m.get('RichTextClipboard')
+        if m.get('TextClipboard') is not None:
+            self.text_clipboard = m.get('TextClipboard')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestPolicyVideoPolicy(TeaModel):
+    def __init__(
+        self,
+        frame_rate: int = None,
+    ):
+        # The frame rate.
+        self.frame_rate = frame_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy(TeaModel):
+    def __init__(
+        self,
+        watermark_switch: str = None,
+        watermark_types: List[str] = None,
+    ):
+        # Specifies whether to enable the watermark.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
+        self.watermark_switch = watermark_switch
+        # The watermark types.
+        self.watermark_types = watermark_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watermark_switch is not None:
+            result['WatermarkSwitch'] = self.watermark_switch
+        if self.watermark_types is not None:
+            result['WatermarkTypes'] = self.watermark_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatermarkSwitch') is not None:
+            self.watermark_switch = m.get('WatermarkSwitch')
+        if m.get('WatermarkTypes') is not None:
+            self.watermark_types = m.get('WatermarkTypes')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestPolicy(TeaModel):
+    def __init__(
+        self,
+        clipboard_policy: ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy = None,
+        disconnect_keep_session: str = None,
+        disconnect_keep_session_time: int = None,
+        html_5file_transfer: str = None,
+        no_operation_disconnect: str = None,
+        no_operation_disconnect_time: int = None,
+        policy_id: str = None,
+        policy_version: str = None,
+        video_policy: ModifyBrowserInstanceGroupRequestPolicyVideoPolicy = None,
+        watermark_policy: ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy = None,
+    ):
+        # The settings related to clipboard control.
+        self.clipboard_policy = clipboard_policy
+        # Defines what happens to a session when a user disconnects.
+        # 
+        # Valid values:
+        # 
+        # *   customTime: The session will be terminated after a custom-defined timeout.
+        # *   persistent: The session will never be automatically terminated..
+        self.disconnect_keep_session = disconnect_keep_session
+        # The session persistence duration.
+        self.disconnect_keep_session_time = disconnect_keep_session_time
+        # The file transfer policy on the web client.
+        self.html_5file_transfer = html_5file_transfer
+        self.no_operation_disconnect = no_operation_disconnect
+        self.no_operation_disconnect_time = no_operation_disconnect_time
+        # The ID of the policy.
+        self.policy_id = policy_id
+        # The policy version.
+        # 
+        # Valid value:
+        # 
+        # *   Center: center policy
+        self.policy_version = policy_version
+        # The display policy.
+        self.video_policy = video_policy
+        # The watermark configuration.
+        self.watermark_policy = watermark_policy
+
+    def validate(self):
+        if self.clipboard_policy:
+            self.clipboard_policy.validate()
+        if self.video_policy:
+            self.video_policy.validate()
+        if self.watermark_policy:
+            self.watermark_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clipboard_policy is not None:
+            result['ClipboardPolicy'] = self.clipboard_policy.to_map()
+        if self.disconnect_keep_session is not None:
+            result['DisconnectKeepSession'] = self.disconnect_keep_session
+        if self.disconnect_keep_session_time is not None:
+            result['DisconnectKeepSessionTime'] = self.disconnect_keep_session_time
+        if self.html_5file_transfer is not None:
+            result['Html5FileTransfer'] = self.html_5file_transfer
+        if self.no_operation_disconnect is not None:
+            result['NoOperationDisconnect'] = self.no_operation_disconnect
+        if self.no_operation_disconnect_time is not None:
+            result['NoOperationDisconnectTime'] = self.no_operation_disconnect_time
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.policy_version is not None:
+            result['PolicyVersion'] = self.policy_version
+        if self.video_policy is not None:
+            result['VideoPolicy'] = self.video_policy.to_map()
+        if self.watermark_policy is not None:
+            result['WatermarkPolicy'] = self.watermark_policy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClipboardPolicy') is not None:
+            temp_model = ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy()
+            self.clipboard_policy = temp_model.from_map(m['ClipboardPolicy'])
+        if m.get('DisconnectKeepSession') is not None:
+            self.disconnect_keep_session = m.get('DisconnectKeepSession')
+        if m.get('DisconnectKeepSessionTime') is not None:
+            self.disconnect_keep_session_time = m.get('DisconnectKeepSessionTime')
+        if m.get('Html5FileTransfer') is not None:
+            self.html_5file_transfer = m.get('Html5FileTransfer')
+        if m.get('NoOperationDisconnect') is not None:
+            self.no_operation_disconnect = m.get('NoOperationDisconnect')
+        if m.get('NoOperationDisconnectTime') is not None:
+            self.no_operation_disconnect_time = m.get('NoOperationDisconnectTime')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('PolicyVersion') is not None:
+            self.policy_version = m.get('PolicyVersion')
+        if m.get('VideoPolicy') is not None:
+            temp_model = ModifyBrowserInstanceGroupRequestPolicyVideoPolicy()
+            self.video_policy = temp_model.from_map(m['VideoPolicy'])
+        if m.get('WatermarkPolicy') is not None:
+            temp_model = ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy()
+            self.watermark_policy = temp_model.from_map(m['WatermarkPolicy'])
+        return self
+
+
+class ModifyBrowserInstanceGroupRequestTimers(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        timer_type: str = None,
+    ):
+        # The interval.
+        self.interval = interval
+        # The timer type:
+        # 
+        # Valid value:
+        # 
+        # *   SESSION_TIMEOUT: Defines the timeout period before a disconnected session is terminated.
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
+class ModifyBrowserInstanceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        browser_config: ModifyBrowserInstanceGroupRequestBrowserConfig = None,
+        browser_instance_group_id: str = None,
+        cloud_browser_name: str = None,
+        network: ModifyBrowserInstanceGroupRequestNetwork = None,
+        policy: ModifyBrowserInstanceGroupRequestPolicy = None,
+        timers: List[ModifyBrowserInstanceGroupRequestTimers] = None,
+    ):
+        # The browser settings.
+        self.browser_config = browser_config
+        # The ID of the cloud browser to be modified.
+        # 
+        # This parameter is required.
+        self.browser_instance_group_id = browser_instance_group_id
+        # The name of the cloud browser.
+        self.cloud_browser_name = cloud_browser_name
+        # The network configurations.
+        self.network = network
+        # The access policy.
+        self.policy = policy
+        # The timer.
+        self.timers = timers
+
+    def validate(self):
+        if self.browser_config:
+            self.browser_config.validate()
+        if self.network:
+            self.network.validate()
+        if self.policy:
+            self.policy.validate()
+        if self.timers:
+            for k in self.timers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.browser_config is not None:
+            result['BrowserConfig'] = self.browser_config.to_map()
+        if self.browser_instance_group_id is not None:
+            result['BrowserInstanceGroupId'] = self.browser_instance_group_id
+        if self.cloud_browser_name is not None:
+            result['CloudBrowserName'] = self.cloud_browser_name
+        if self.network is not None:
+            result['Network'] = self.network.to_map()
+        if self.policy is not None:
+            result['Policy'] = self.policy.to_map()
+        result['Timers'] = []
+        if self.timers is not None:
+            for k in self.timers:
+                result['Timers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrowserConfig') is not None:
+            temp_model = ModifyBrowserInstanceGroupRequestBrowserConfig()
+            self.browser_config = temp_model.from_map(m['BrowserConfig'])
+        if m.get('BrowserInstanceGroupId') is not None:
+            self.browser_instance_group_id = m.get('BrowserInstanceGroupId')
+        if m.get('CloudBrowserName') is not None:
+            self.cloud_browser_name = m.get('CloudBrowserName')
+        if m.get('Network') is not None:
+            temp_model = ModifyBrowserInstanceGroupRequestNetwork()
+            self.network = temp_model.from_map(m['Network'])
+        if m.get('Policy') is not None:
+            temp_model = ModifyBrowserInstanceGroupRequestPolicy()
+            self.policy = temp_model.from_map(m['Policy'])
+        self.timers = []
+        if m.get('Timers') is not None:
+            for k in m.get('Timers'):
+                temp_model = ModifyBrowserInstanceGroupRequestTimers()
+                self.timers.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyBrowserInstanceGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        browser_config_shrink: str = None,
+        browser_instance_group_id: str = None,
+        cloud_browser_name: str = None,
+        network_shrink: str = None,
+        policy_shrink: str = None,
+        timers_shrink: str = None,
+    ):
+        # The browser settings.
+        self.browser_config_shrink = browser_config_shrink
+        # The ID of the cloud browser to be modified.
+        # 
+        # This parameter is required.
+        self.browser_instance_group_id = browser_instance_group_id
+        # The name of the cloud browser.
+        self.cloud_browser_name = cloud_browser_name
+        # The network configurations.
+        self.network_shrink = network_shrink
+        # The access policy.
+        self.policy_shrink = policy_shrink
+        # The timer.
+        self.timers_shrink = timers_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.browser_config_shrink is not None:
+            result['BrowserConfig'] = self.browser_config_shrink
+        if self.browser_instance_group_id is not None:
+            result['BrowserInstanceGroupId'] = self.browser_instance_group_id
+        if self.cloud_browser_name is not None:
+            result['CloudBrowserName'] = self.cloud_browser_name
+        if self.network_shrink is not None:
+            result['Network'] = self.network_shrink
+        if self.policy_shrink is not None:
+            result['Policy'] = self.policy_shrink
+        if self.timers_shrink is not None:
+            result['Timers'] = self.timers_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BrowserConfig') is not None:
+            self.browser_config_shrink = m.get('BrowserConfig')
+        if m.get('BrowserInstanceGroupId') is not None:
+            self.browser_instance_group_id = m.get('BrowserInstanceGroupId')
+        if m.get('CloudBrowserName') is not None:
+            self.cloud_browser_name = m.get('CloudBrowserName')
+        if m.get('Network') is not None:
+            self.network_shrink = m.get('Network')
+        if m.get('Policy') is not None:
+            self.policy_shrink = m.get('Policy')
+        if m.get('Timers') is not None:
+            self.timers_shrink = m.get('Timers')
+        return self
+
+
+class ModifyBrowserInstanceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyBrowserInstanceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBrowserInstanceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBrowserInstanceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11497,8 +12924,11 @@ class ModifyWuyingServerAttributeRequest(TeaModel):
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
+        # Workstation login password.
         self.password = password
+        # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
+        # The name.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -11534,6 +12964,7 @@ class ModifyWuyingServerAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12047,10 +13478,20 @@ class RenewWuyingServerRequest(TeaModel):
         promotion_id: str = None,
         wuying_server_id: str = None,
     ):
+        # Automatic payment.
         self.auto_pay = auto_pay
+        # The renewal duration.
         self.period = period
+        # The unit of the renewal time.
+        # 
+        # Valid values:
+        # 
+        # *   Month: month.
+        # *   Year: year.
         self.period_unit = period_unit
+        # The discount ID.
         self.promotion_id = promotion_id
+        # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
 
     def validate(self):
@@ -12095,7 +13536,9 @@ class RenewWuyingServerResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12168,6 +13611,7 @@ class RestartWuyingServerRequest(TeaModel):
         self,
         wuying_server_id_list: List[str] = None,
     ):
+        # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
 
     def validate(self):
@@ -12195,6 +13639,7 @@ class RestartWuyingServerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12268,12 +13713,25 @@ class StartTaskForDistributeImageRequest(TeaModel):
         source_region: str = None,
         version_id: str = None,
     ):
+        # The regions to which you want to replicate the image.
         self.destination_region_list = destination_region_list
+        # The image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The product type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudDesktop: Elastic Desktop Service
+        # *   CloudApp: App Streaming
+        # *   WuyingServer: Workstation
         self.product_type = product_type
+        # This parameter is not publicly available.
         self.retry_type = retry_type
+        # The region where the source image is located. If you leave this parameter empty, a random region is selected.
         self.source_region = source_region
+        # The ID of the image version. If you do not specify this parameter, the latest image version is used by default.
         self.version_id = version_id
 
     def validate(self):
@@ -12325,10 +13783,15 @@ class StartTaskForDistributeImageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code if an error occurred.
         self.code = code
+        # The ID of the image replication task.
         self.data = data
+        # The error message if an error occurred.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the task is successful.
         self.success = success
 
     def validate(self):
@@ -12413,6 +13876,7 @@ class StartWuyingServerRequest(TeaModel):
         self,
         wuying_server_id_list: List[str] = None,
     ):
+        # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
 
     def validate(self):
@@ -12440,6 +13904,7 @@ class StartWuyingServerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12509,7 +13974,14 @@ class StopWuyingServerRequest(TeaModel):
         force: bool = None,
         wuying_server_id_list: List[str] = None,
     ):
+        # Force restart.
+        # 
+        # Valid values:
+        # 
+        # *   True.
+        # *   False
         self.force = force
+        # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
 
     def validate(self):
@@ -12541,6 +14013,7 @@ class StopWuyingServerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12610,8 +14083,12 @@ class TagCloudResourcesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag. The value must be 1 to 128 characters in length and is case-sensitive. The name must be 1 to 128 characters in length.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of a tag. The value must be 1 to 128 characters in length and is case-sensitive. The name must be 1 to 128 characters in length.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -12646,9 +14123,31 @@ class TagCloudResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[TagCloudResourcesRequestTags] = None,
     ):
+        # The resource IDs. You can specify up to 50 resource IDs. You do not need to specify this parameter if you set ResourceType to AliUid.
         self.resource_ids = resource_ids
+        # The type of the cloud resource.
+        # 
+        # Valid values:
+        # 
+        # *   CenterImageId: center image ID.
+        # *   AppId: app ID.
+        # *   WyId: Alibaba Cloud Workspace user ID.
+        # *   AppInstanceGroupId: delivery group ID.
+        # *   AliUid: tenant ID.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags that you want to remove from the cloud resources. System and custom tags are supported.
+        # 
+        # *   Valid values for system tags:
+        # 
+        #     *   `System/Scheduler/GRAYSCALE`: canary tags.
+        #     *   `System/Scheduler/STOP_NEW_USER_CONNECTION`: tags used to stop new users bound to the delivery group from establishing a connection.
+        # 
+        # *   You can create up to 20 custom tags.
+        # 
+        # > Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+        # 
         # This parameter is required.
         self.tags = tags
 
@@ -12739,6 +14238,15 @@ class TagCloudResourcesResponseBodyFailedResources(TeaModel):
         self.code = code
         self.message = message
         self.resource_id = resource_id
+        # The type of the cloud resource.
+        # 
+        # Valid values:
+        # 
+        # *   CenterImageId: center image ID.
+        # *   AppId: app ID.
+        # *   WyId: Alibaba Cloud Workspace user ID.
+        # *   AppInstanceGroupId: delivery group ID.
+        # *   AliUid: tenant ID.
         self.resource_type = resource_type
         self.tags = tags
 
@@ -12792,6 +14300,7 @@ class TagCloudResourcesResponseBody(TeaModel):
         failed_resources: List[TagCloudResourcesResponseBodyFailedResources] = None,
         request_id: str = None,
     ):
+        # The cloud resources on which the operation failed and the corresponding tags.
         self.failed_resources = failed_resources
         self.request_id = request_id
 

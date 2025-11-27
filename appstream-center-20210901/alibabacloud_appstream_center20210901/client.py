@@ -301,7 +301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
         """
-        @summary 创建云应用交付组
+        @summary Creates a delivery group.
         
         @param tmp_req: CreateAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -376,6 +376,8 @@ class Client(OpenApiClient):
             body['StoragePolicy'] = request.storage_policy_shrink
         if not UtilClient.is_unset(request.sub_pay_type):
             body['SubPayType'] = request.sub_pay_type
+        if not UtilClient.is_unset(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
@@ -408,7 +410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
         """
-        @summary 创建云应用交付组
+        @summary Creates a delivery group.
         
         @param tmp_req: CreateAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -483,6 +485,8 @@ class Client(OpenApiClient):
             body['StoragePolicy'] = request.storage_policy_shrink
         if not UtilClient.is_unset(request.sub_pay_type):
             body['SubPayType'] = request.sub_pay_type
+        if not UtilClient.is_unset(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
@@ -514,7 +518,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
         """
-        @summary 创建云应用交付组
+        @summary Creates a delivery group.
         
         @param request: CreateAppInstanceGroupRequest
         @return: CreateAppInstanceGroupResponse
@@ -527,7 +531,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
         """
-        @summary 创建云应用交付组
+        @summary Creates a delivery group.
         
         @param request: CreateAppInstanceGroupRequest
         @return: CreateAppInstanceGroupResponse
@@ -541,7 +545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
         """
-        @summary 通过实例创建镜像
+        @summary Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
         
         @param request: CreateImageByInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -592,7 +596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
         """
-        @summary 通过实例创建镜像
+        @summary Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
         
         @param request: CreateImageByInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -642,7 +646,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateImageByInstanceRequest,
     ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
         """
-        @summary 通过实例创建镜像
+        @summary Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
         
         @param request: CreateImageByInstanceRequest
         @return: CreateImageByInstanceResponse
@@ -655,7 +659,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateImageByInstanceRequest,
     ) -> appstream_center_20210901_models.CreateImageByInstanceResponse:
         """
-        @summary 通过实例创建镜像
+        @summary Create a custom image from a deployed instance. This allows you to quickly create more instances with the same configurations and avoid repeatedly configuring the instance environment each time you create the instance.
         
         @param request: CreateImageByInstanceRequest
         @return: CreateImageByInstanceResponse
@@ -773,13 +777,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
         """
-        @summary 创建一台或多台研发主机
+        @summary Create one or more workstations.
+        
+        @description 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+        2.  If there are multiple versions behind the input parameter ContentId:
+        *\
+        *Note** The default version is used.
+        Bind simultaneously
+        3.  You can call the current interface only if the default version of Content is available.
         
         @param request: CreateWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWuyingServerResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.saving_plan_id):
+            query['SavingPlanId'] = request.saving_plan_id
         body = {}
         if not UtilClient.is_unset(request.amount):
             body['Amount'] = request.amount
@@ -831,6 +845,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -855,13 +870,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
         """
-        @summary 创建一台或多台研发主机
+        @summary Create one or more workstations.
+        
+        @description 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+        2.  If there are multiple versions behind the input parameter ContentId:
+        *\
+        *Note** The default version is used.
+        Bind simultaneously
+        3.  You can call the current interface only if the default version of Content is available.
         
         @param request: CreateWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWuyingServerResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.saving_plan_id):
+            query['SavingPlanId'] = request.saving_plan_id
         body = {}
         if not UtilClient.is_unset(request.amount):
             body['Amount'] = request.amount
@@ -913,6 +938,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -936,7 +962,14 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateWuyingServerRequest,
     ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
         """
-        @summary 创建一台或多台研发主机
+        @summary Create one or more workstations.
+        
+        @description 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+        2.  If there are multiple versions behind the input parameter ContentId:
+        *\
+        *Note** The default version is used.
+        Bind simultaneously
+        3.  You can call the current interface only if the default version of Content is available.
         
         @param request: CreateWuyingServerRequest
         @return: CreateWuyingServerResponse
@@ -949,7 +982,14 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateWuyingServerRequest,
     ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
         """
-        @summary 创建一台或多台研发主机
+        @summary Create one or more workstations.
+        
+        @description 1.  Project is equivalent to the Resource Configuration module of the Cloud Flow console
+        2.  If there are multiple versions behind the input parameter ContentId:
+        *\
+        *Note** The default version is used.
+        Bind simultaneously
+        3.  You can call the current interface only if the default version of Content is available.
         
         @param request: CreateWuyingServerRequest
         @return: CreateWuyingServerResponse
@@ -1183,6 +1223,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteImageResponse:
         """
+        @summary Delete a custom RDS image
+        
+        @description    You can only delete custom images to which a user belongs.
+        If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+        The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+        If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+        
         @param request: DeleteImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteImageResponse
@@ -1216,6 +1263,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteImageResponse:
         """
+        @summary Delete a custom RDS image
+        
+        @description    You can only delete custom images to which a user belongs.
+        If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+        The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+        If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+        
         @param request: DeleteImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteImageResponse
@@ -1248,6 +1302,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteImageRequest,
     ) -> appstream_center_20210901_models.DeleteImageResponse:
         """
+        @summary Delete a custom RDS image
+        
+        @description    You can only delete custom images to which a user belongs.
+        If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+        The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+        If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+        
         @param request: DeleteImageRequest
         @return: DeleteImageResponse
         """
@@ -1259,6 +1320,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteImageRequest,
     ) -> appstream_center_20210901_models.DeleteImageResponse:
         """
+        @summary Delete a custom RDS image
+        
+        @description    You can only delete custom images to which a user belongs.
+        If the product line is an image of the RDS cloud computer pool, RDS cloud application, and RDS workstation, make sure that no RDS instances use the image before you delete it.
+        The RDS CloudDesktop template references an image. When you delete an image, the template is also deleted.
+        If the image contains multiple regions, the images in all regions are deleted when the image is deleted.
+        
         @param request: DeleteImageRequest
         @return: DeleteImageResponse
         """
@@ -1272,6 +1340,8 @@ class Client(OpenApiClient):
     ) -> appstream_center_20210901_models.DeleteWuyingServerResponse:
         """
         @summary 删除工作站
+        
+        @description Deletes a workstation.
         
         @param request: DeleteWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1308,6 +1378,8 @@ class Client(OpenApiClient):
         """
         @summary 删除工作站
         
+        @description Deletes a workstation.
+        
         @param request: DeleteWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteWuyingServerResponse
@@ -1342,6 +1414,8 @@ class Client(OpenApiClient):
         """
         @summary 删除工作站
         
+        @description Deletes a workstation.
+        
         @param request: DeleteWuyingServerRequest
         @return: DeleteWuyingServerResponse
         """
@@ -1355,6 +1429,8 @@ class Client(OpenApiClient):
         """
         @summary 删除工作站
         
+        @description Deletes a workstation.
+        
         @param request: DeleteWuyingServerRequest
         @return: DeleteWuyingServerResponse
         """
@@ -1367,7 +1443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
         """
-        @summary 查询无影工作站EIP信息
+        @summary Queries the Elastic IP Addresses (EIPs) of workstations.
         
         @param request: DescribeWuyingServerEipInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1404,7 +1480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
         """
-        @summary 查询无影工作站EIP信息
+        @summary Queries the Elastic IP Addresses (EIPs) of workstations.
         
         @param request: DescribeWuyingServerEipInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1440,7 +1516,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DescribeWuyingServerEipInfoRequest,
     ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
         """
-        @summary 查询无影工作站EIP信息
+        @summary Queries the Elastic IP Addresses (EIPs) of workstations.
         
         @param request: DescribeWuyingServerEipInfoRequest
         @return: DescribeWuyingServerEipInfoResponse
@@ -1453,7 +1529,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DescribeWuyingServerEipInfoRequest,
     ) -> appstream_center_20210901_models.DescribeWuyingServerEipInfoResponse:
         """
-        @summary 查询无影工作站EIP信息
+        @summary Queries the Elastic IP Addresses (EIPs) of workstations.
         
         @param request: DescribeWuyingServerEipInfoRequest
         @return: DescribeWuyingServerEipInfoResponse
@@ -1467,7 +1543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
         """
-        @summary 获取交付组详情
+        @summary Queries the details of a delivery group.
         
         @param request: GetAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1504,7 +1580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
         """
-        @summary 获取交付组详情
+        @summary Queries the details of a delivery group.
         
         @param request: GetAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1540,7 +1616,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
         """
-        @summary 获取交付组详情
+        @summary Queries the details of a delivery group.
         
         @param request: GetAppInstanceGroupRequest
         @return: GetAppInstanceGroupResponse
@@ -1553,7 +1629,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
         """
-        @summary 获取交付组详情
+        @summary Queries the details of a delivery group.
         
         @param request: GetAppInstanceGroupRequest
         @return: GetAppInstanceGroupResponse
@@ -1599,6 +1675,8 @@ class Client(OpenApiClient):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.environment_config):
+            body['EnvironmentConfig'] = request.environment_config
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.task_id):
@@ -1660,6 +1738,8 @@ class Client(OpenApiClient):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.environment_config):
+            body['EnvironmentConfig'] = request.environment_config
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.task_id):
@@ -2182,8 +2262,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         body = {}
+        if not UtilClient.is_unset(request.excluded_user_group_ids):
+            body['ExcludedUserGroupIds'] = request.excluded_user_group_ids
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2241,8 +2325,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         body = {}
+        if not UtilClient.is_unset(request.excluded_user_group_ids):
+            body['ExcludedUserGroupIds'] = request.excluded_user_group_ids
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2423,7 +2511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
         """
-        @summary 通过交付组查询展示授权的用户组列表
+        @summary Queries the user groups authorized by a delivery group.
         
         @param request: ListAuthorizedUserGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2468,7 +2556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
         """
-        @summary 通过交付组查询展示授权的用户组列表
+        @summary Queries the user groups authorized by a delivery group.
         
         @param request: ListAuthorizedUserGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2512,7 +2600,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAuthorizedUserGroupsRequest,
     ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
         """
-        @summary 通过交付组查询展示授权的用户组列表
+        @summary Queries the user groups authorized by a delivery group.
         
         @param request: ListAuthorizedUserGroupsRequest
         @return: ListAuthorizedUserGroupsResponse
@@ -2525,7 +2613,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAuthorizedUserGroupsRequest,
     ) -> appstream_center_20210901_models.ListAuthorizedUserGroupsResponse:
         """
-        @summary 通过交付组查询展示授权的用户组列表
+        @summary Queries the user groups authorized by a delivery group.
         
         @param request: ListAuthorizedUserGroupsRequest
         @return: ListAuthorizedUserGroupsResponse
@@ -2539,7 +2627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListBindInfoResponse:
         """
-        @summary 查询绑定信息，支持分页
+        @summary Queries the bindings between users and resources.
         
         @param request: ListBindInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2586,7 +2674,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListBindInfoResponse:
         """
-        @summary 查询绑定信息，支持分页
+        @summary Queries the bindings between users and resources.
         
         @param request: ListBindInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2632,7 +2720,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListBindInfoRequest,
     ) -> appstream_center_20210901_models.ListBindInfoResponse:
         """
-        @summary 查询绑定信息，支持分页
+        @summary Queries the bindings between users and resources.
         
         @param request: ListBindInfoRequest
         @return: ListBindInfoResponse
@@ -2645,7 +2733,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListBindInfoRequest,
     ) -> appstream_center_20210901_models.ListBindInfoResponse:
         """
-        @summary 查询绑定信息，支持分页
+        @summary Queries the bindings between users and resources.
         
         @param request: ListBindInfoRequest
         @return: ListBindInfoResponse
@@ -2659,7 +2747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListImageResponse:
         """
-        @summary 列表显示镜像
+        @summary Queries the image information about an ECS instance.
         
         @param request: ListImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2736,7 +2824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListImageResponse:
         """
-        @summary 列表显示镜像
+        @summary Queries the image information about an ECS instance.
         
         @param request: ListImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2812,7 +2900,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListImageRequest,
     ) -> appstream_center_20210901_models.ListImageResponse:
         """
-        @summary 列表显示镜像
+        @summary Queries the image information about an ECS instance.
         
         @param request: ListImageRequest
         @return: ListImageResponse
@@ -2825,7 +2913,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListImageRequest,
     ) -> appstream_center_20210901_models.ListImageResponse:
         """
-        @summary 列表显示镜像
+        @summary Queries the image information about an ECS instance.
         
         @param request: ListImageRequest
         @return: ListImageResponse
@@ -3203,7 +3291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
         """
-        @summary 查询交付组内持久会话列表
+        @summary Queries app instances of the persistent session type in a delivery group.
         
         @param request: ListPersistentAppInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3246,7 +3334,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
         """
-        @summary 查询交付组内持久会话列表
+        @summary Queries app instances of the persistent session type in a delivery group.
         
         @param request: ListPersistentAppInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3288,7 +3376,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListPersistentAppInstancesRequest,
     ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
         """
-        @summary 查询交付组内持久会话列表
+        @summary Queries app instances of the persistent session type in a delivery group.
         
         @param request: ListPersistentAppInstancesRequest
         @return: ListPersistentAppInstancesResponse
@@ -3301,7 +3389,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListPersistentAppInstancesRequest,
     ) -> appstream_center_20210901_models.ListPersistentAppInstancesResponse:
         """
-        @summary 查询交付组内持久会话列表
+        @summary Queries app instances of the persistent session type in a delivery group.
         
         @param request: ListPersistentAppInstancesRequest
         @return: ListPersistentAppInstancesResponse
@@ -3609,7 +3697,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListWuyingServerResponse:
         """
-        @summary 查询研发主机列表
+        @summary Queries the list of workstations.
         
         @param request: ListWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3669,7 +3757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListWuyingServerResponse:
         """
-        @summary 查询研发主机列表
+        @summary Queries the list of workstations.
         
         @param request: ListWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3728,7 +3816,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListWuyingServerRequest,
     ) -> appstream_center_20210901_models.ListWuyingServerResponse:
         """
-        @summary 查询研发主机列表
+        @summary Queries the list of workstations.
         
         @param request: ListWuyingServerRequest
         @return: ListWuyingServerResponse
@@ -3741,7 +3829,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListWuyingServerRequest,
     ) -> appstream_center_20210901_models.ListWuyingServerResponse:
         """
-        @summary 查询研发主机列表
+        @summary Queries the list of workstations.
         
         @param request: ListWuyingServerRequest
         @return: ListWuyingServerResponse
@@ -4023,7 +4111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
         """
-        @summary 修改策略信息
+        @summary Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
         
         @param tmp_req: ModifyAppPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4066,7 +4154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
         """
-        @summary 修改策略信息
+        @summary Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
         
         @param tmp_req: ModifyAppPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4108,7 +4196,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyAppPolicyRequest,
     ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
         """
-        @summary 修改策略信息
+        @summary Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
         
         @param request: ModifyAppPolicyRequest
         @return: ModifyAppPolicyResponse
@@ -4121,13 +4209,161 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyAppPolicyRequest,
     ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
         """
-        @summary 修改策略信息
+        @summary Modify the delivery group display policy, including settings such as frame rate, resolution, and protocol type.
         
         @param request: ModifyAppPolicyRequest
         @return: ModifyAppPolicyResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_policy_with_options_async(request, runtime)
+
+    def modify_browser_instance_group_with_options(
+        self,
+        tmp_req: appstream_center_20210901_models.ModifyBrowserInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyBrowserInstanceGroupResponse:
+        """
+        @summary Modifies the properties of the cloud browser.
+        
+        @description Modifies the properties of the cloud browser.
+        
+        @param tmp_req: ModifyBrowserInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBrowserInstanceGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.ModifyBrowserInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.browser_config):
+            request.browser_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.browser_config, 'BrowserConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.network):
+            request.network_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
+        if not UtilClient.is_unset(tmp_req.policy):
+            request.policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        if not UtilClient.is_unset(tmp_req.timers):
+            request.timers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timers, 'Timers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.browser_config_shrink):
+            query['BrowserConfig'] = request.browser_config_shrink
+        if not UtilClient.is_unset(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not UtilClient.is_unset(request.policy_shrink):
+            query['Policy'] = request.policy_shrink
+        if not UtilClient.is_unset(request.timers_shrink):
+            query['Timers'] = request.timers_shrink
+        body = {}
+        if not UtilClient.is_unset(request.cloud_browser_name):
+            body['CloudBrowserName'] = request.cloud_browser_name
+        if not UtilClient.is_unset(request.network_shrink):
+            body['Network'] = request.network_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyBrowserInstanceGroup',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ModifyBrowserInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_browser_instance_group_with_options_async(
+        self,
+        tmp_req: appstream_center_20210901_models.ModifyBrowserInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyBrowserInstanceGroupResponse:
+        """
+        @summary Modifies the properties of the cloud browser.
+        
+        @description Modifies the properties of the cloud browser.
+        
+        @param tmp_req: ModifyBrowserInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBrowserInstanceGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.ModifyBrowserInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.browser_config):
+            request.browser_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.browser_config, 'BrowserConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.network):
+            request.network_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
+        if not UtilClient.is_unset(tmp_req.policy):
+            request.policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        if not UtilClient.is_unset(tmp_req.timers):
+            request.timers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timers, 'Timers', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.browser_config_shrink):
+            query['BrowserConfig'] = request.browser_config_shrink
+        if not UtilClient.is_unset(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not UtilClient.is_unset(request.policy_shrink):
+            query['Policy'] = request.policy_shrink
+        if not UtilClient.is_unset(request.timers_shrink):
+            query['Timers'] = request.timers_shrink
+        body = {}
+        if not UtilClient.is_unset(request.cloud_browser_name):
+            body['CloudBrowserName'] = request.cloud_browser_name
+        if not UtilClient.is_unset(request.network_shrink):
+            body['Network'] = request.network_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyBrowserInstanceGroup',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ModifyBrowserInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_browser_instance_group(
+        self,
+        request: appstream_center_20210901_models.ModifyBrowserInstanceGroupRequest,
+    ) -> appstream_center_20210901_models.ModifyBrowserInstanceGroupResponse:
+        """
+        @summary Modifies the properties of the cloud browser.
+        
+        @description Modifies the properties of the cloud browser.
+        
+        @param request: ModifyBrowserInstanceGroupRequest
+        @return: ModifyBrowserInstanceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_browser_instance_group_with_options(request, runtime)
+
+    async def modify_browser_instance_group_async(
+        self,
+        request: appstream_center_20210901_models.ModifyBrowserInstanceGroupRequest,
+    ) -> appstream_center_20210901_models.ModifyBrowserInstanceGroupResponse:
+        """
+        @summary Modifies the properties of the cloud browser.
+        
+        @description Modifies the properties of the cloud browser.
+        
+        @param request: ModifyBrowserInstanceGroupRequest
+        @return: ModifyBrowserInstanceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_browser_instance_group_with_options_async(request, runtime)
 
     def modify_node_pool_amount_with_options(
         self,
@@ -4487,7 +4723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
         """
-        @summary 修改研发主机属性
+        @summary Modify workstation properties.
         
         @param request: ModifyWuyingServerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4526,7 +4762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
         """
-        @summary 修改研发主机属性
+        @summary Modify workstation properties.
         
         @param request: ModifyWuyingServerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4564,7 +4800,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyWuyingServerAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
         """
-        @summary 修改研发主机属性
+        @summary Modify workstation properties.
         
         @param request: ModifyWuyingServerAttributeRequest
         @return: ModifyWuyingServerAttributeResponse
@@ -4577,7 +4813,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyWuyingServerAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
         """
-        @summary 修改研发主机属性
+        @summary Modify workstation properties.
         
         @param request: ModifyWuyingServerAttributeRequest
         @return: ModifyWuyingServerAttributeResponse
@@ -4843,7 +5079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
         """
-        @summary 续费研发主机
+        @summary Renew one workstation.
         
         @param request: RenewWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4886,7 +5122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
         """
-        @summary 续费研发主机
+        @summary Renew one workstation.
         
         @param request: RenewWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4928,7 +5164,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewWuyingServerRequest,
     ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
         """
-        @summary 续费研发主机
+        @summary Renew one workstation.
         
         @param request: RenewWuyingServerRequest
         @return: RenewWuyingServerResponse
@@ -4941,7 +5177,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewWuyingServerRequest,
     ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
         """
-        @summary 续费研发主机
+        @summary Renew one workstation.
         
         @param request: RenewWuyingServerRequest
         @return: RenewWuyingServerResponse
@@ -4955,7 +5191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
         """
-        @summary 重启研发主机
+        @summary Restarts the workstation.
         
         @param request: RestartWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4993,7 +5229,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
         """
-        @summary 重启研发主机
+        @summary Restarts the workstation.
         
         @param request: RestartWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5030,7 +5266,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RestartWuyingServerRequest,
     ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
         """
-        @summary 重启研发主机
+        @summary Restarts the workstation.
         
         @param request: RestartWuyingServerRequest
         @return: RestartWuyingServerResponse
@@ -5043,7 +5279,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RestartWuyingServerRequest,
     ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
         """
-        @summary 重启研发主机
+        @summary Restarts the workstation.
         
         @param request: RestartWuyingServerRequest
         @return: RestartWuyingServerResponse
@@ -5057,6 +5293,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
         """
+        @summary Initiates a task to replicate an image to another region.
+        
         @param request: StartTaskForDistributeImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartTaskForDistributeImageResponse
@@ -5100,6 +5338,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
         """
+        @summary Initiates a task to replicate an image to another region.
+        
         @param request: StartTaskForDistributeImageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartTaskForDistributeImageResponse
@@ -5142,6 +5382,8 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.StartTaskForDistributeImageRequest,
     ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
         """
+        @summary Initiates a task to replicate an image to another region.
+        
         @param request: StartTaskForDistributeImageRequest
         @return: StartTaskForDistributeImageResponse
         """
@@ -5153,6 +5395,8 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.StartTaskForDistributeImageRequest,
     ) -> appstream_center_20210901_models.StartTaskForDistributeImageResponse:
         """
+        @summary Initiates a task to replicate an image to another region.
+        
         @param request: StartTaskForDistributeImageRequest
         @return: StartTaskForDistributeImageResponse
         """
@@ -5165,7 +5409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.StartWuyingServerResponse:
         """
-        @summary 启动研发主机
+        @summary Start the workstation.
         
         @param request: StartWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5203,7 +5447,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.StartWuyingServerResponse:
         """
-        @summary 启动研发主机
+        @summary Start the workstation.
         
         @param request: StartWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5240,7 +5484,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.StartWuyingServerRequest,
     ) -> appstream_center_20210901_models.StartWuyingServerResponse:
         """
-        @summary 启动研发主机
+        @summary Start the workstation.
         
         @param request: StartWuyingServerRequest
         @return: StartWuyingServerResponse
@@ -5253,7 +5497,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.StartWuyingServerRequest,
     ) -> appstream_center_20210901_models.StartWuyingServerResponse:
         """
-        @summary 启动研发主机
+        @summary Start the workstation.
         
         @param request: StartWuyingServerRequest
         @return: StartWuyingServerResponse
@@ -5267,7 +5511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.StopWuyingServerResponse:
         """
-        @summary 停止研发主机
+        @summary Stops the workstation.
         
         @param request: StopWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5307,7 +5551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.StopWuyingServerResponse:
         """
-        @summary 停止研发主机
+        @summary Stops the workstation.
         
         @param request: StopWuyingServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5346,7 +5590,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.StopWuyingServerRequest,
     ) -> appstream_center_20210901_models.StopWuyingServerResponse:
         """
-        @summary 停止研发主机
+        @summary Stops the workstation.
         
         @param request: StopWuyingServerRequest
         @return: StopWuyingServerResponse
@@ -5359,7 +5603,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.StopWuyingServerRequest,
     ) -> appstream_center_20210901_models.StopWuyingServerResponse:
         """
-        @summary 停止研发主机
+        @summary Stops the workstation.
         
         @param request: StopWuyingServerRequest
         @return: StopWuyingServerResponse

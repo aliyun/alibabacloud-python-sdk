@@ -1,3 +1,16 @@
+2025-11-27 Version: 4.6.0
+- Support API ModifyBrowserInstanceGroup.
+- Update API CreateAppInstanceGroup: add request parameters UserGroupIds.
+- Update API CreateWuyingServer: add request parameters SavingPlanId.
+- Update API GetAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.SupportUserGroupMixedAuth.
+- Update API GetAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.UserGroupAuthMode.
+- Update API GetConnectionTicket: add request parameters EnvironmentConfig.
+- Update API ListAppInstanceGroup: add request parameters ExcludedUserGroupIds.
+- Update API ListAppInstanceGroup: add request parameters UserGroupIds.
+- Update API ListAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.$.SupportUserGroupMixedAuth.
+- Update API ListAppInstanceGroup: add response parameters Body.AppInstanceGroupModels.$.UserGroupAuthMode.
+
+
 2025-10-20 Version: 4.5.0
 - Support API DeleteImage.
 - Support API StartTaskForDistributeImage.

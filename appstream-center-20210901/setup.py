@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_appstream-center20210901.
+setup module for alibabacloud_appstream_center20210901.
 
-Created on 20/10/2025
+Created on 27/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_appstream_center20210901"
-NAME = "alibabacloud_appstream-center20210901" or "alibabacloud-package"
+NAME = "alibabacloud_appstream_center20210901" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud appstream-center (20210901) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
