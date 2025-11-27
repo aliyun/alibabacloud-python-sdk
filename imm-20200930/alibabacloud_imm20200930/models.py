@@ -6638,6 +6638,7 @@ class TargetVideoTranscodeVideo(TeaModel):
         resolution_option: str = None,
         rotation: int = None,
         scale_type: str = None,
+        video_slim: int = None,
     ):
         self.adaptive_resolution_direction = adaptive_resolution_direction
         self.bframes = bframes
@@ -6656,6 +6657,7 @@ class TargetVideoTranscodeVideo(TeaModel):
         self.resolution_option = resolution_option
         self.rotation = rotation
         self.scale_type = scale_type
+        self.video_slim = video_slim
 
     def validate(self):
         pass
@@ -6700,6 +6702,8 @@ class TargetVideoTranscodeVideo(TeaModel):
             result['Rotation'] = self.rotation
         if self.scale_type is not None:
             result['ScaleType'] = self.scale_type
+        if self.video_slim is not None:
+            result['VideoSlim'] = self.video_slim
         return result
 
     def from_map(self, m: dict = None):
@@ -6738,6 +6742,8 @@ class TargetVideoTranscodeVideo(TeaModel):
             self.rotation = m.get('Rotation')
         if m.get('ScaleType') is not None:
             self.scale_type = m.get('ScaleType')
+        if m.get('VideoSlim') is not None:
+            self.video_slim = m.get('VideoSlim')
         return self
 
 
@@ -8527,6 +8533,7 @@ class BatchIndexFileMetaRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_name = project_name
+        # The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -8599,6 +8606,7 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_name = project_name
+        # The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum information length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -9167,9 +9175,16 @@ class ContextualAnswerRequest(TeaModel):
         messages: List[ContextualMessage] = None,
         project_name: str = None,
     ):
+        # The content of the files involved in the current Q&A. It is recommended to use the return value of the ContextualRetrieval interface as input.
         self.files = files
+        # Yes, the history of conversations and tool invocations. The latest message is at the end (index n-1), and the oldest message is at the beginning (index 0).
+        # It must be in the form of user-assistant pairs, with a total count of 2*n+1, and the length of the latest question should not exceed 1000 characters.
+        # The length of the historical conversation is limited to 100.
+        # 
         # This parameter is required.
         self.messages = messages
+        # Project name. For how to obtain it, see [Creating a Project](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.help-menu-search-62354.d_0).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -9225,9 +9240,16 @@ class ContextualAnswerShrinkRequest(TeaModel):
         messages_shrink: str = None,
         project_name: str = None,
     ):
+        # The content of the files involved in the current Q&A. It is recommended to use the return value of the ContextualRetrieval interface as input.
         self.files_shrink = files_shrink
+        # Yes, the history of conversations and tool invocations. The latest message is at the end (index n-1), and the oldest message is at the beginning (index 0).
+        # It must be in the form of user-assistant pairs, with a total count of 2*n+1, and the length of the latest question should not exceed 1000 characters.
+        # The length of the historical conversation is limited to 100.
+        # 
         # This parameter is required.
         self.messages_shrink = messages_shrink
+        # Project name. For how to obtain it, see [Creating a Project](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.help-menu-search-62354.d_0).
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -9267,9 +9289,13 @@ class ContextualAnswerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Content of the response from the large model.
         self.answer = answer
+        # Error code.
         self.code = code
+        # Error message.
         self.message = message
+        # Request ID of the current request.
         self.request_id = request_id
 
     def validate(self):
@@ -9356,13 +9382,21 @@ class ContextualRetrievalRequest(TeaModel):
         recall_only: bool = None,
         smart_cluster_ids: List[str] = None,
     ):
+        # The dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The conversation or tool invocation history. The latest message is at the end of the list (with an index number of n-1), whereas the earliest message is at the beginning of the list (with an index number of 0). Historical messages must be provided in user-assistant pairs. The maximum number of messages that you can specify is 2\\*n+1. The current question cannot exceed 1,000 characters in length. The maximum number of historical messages allowed is 100.
+        # 
         # This parameter is required.
         self.messages = messages
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.help-menu-search-62354.d_0).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Indicates whether to enable recall-only (embedding-based search). If you set this parameter to true, returned results have not been re-ranked and can be ranked in custom order. Default value: false.
         self.recall_only = recall_only
+        # The IDs of clusters from which results are retrieved.
         self.smart_cluster_ids = smart_cluster_ids
 
     def validate(self):
@@ -9418,13 +9452,21 @@ class ContextualRetrievalShrinkRequest(TeaModel):
         recall_only: bool = None,
         smart_cluster_ids_shrink: str = None,
     ):
+        # The dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The conversation or tool invocation history. The latest message is at the end of the list (with an index number of n-1), whereas the earliest message is at the beginning of the list (with an index number of 0). Historical messages must be provided in user-assistant pairs. The maximum number of messages that you can specify is 2\\*n+1. The current question cannot exceed 1,000 characters in length. The maximum number of historical messages allowed is 100.
+        # 
         # This parameter is required.
         self.messages_shrink = messages_shrink
+        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.help-menu-search-62354.d_0).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Indicates whether to enable recall-only (embedding-based search). If you set this parameter to true, returned results have not been re-ranked and can be ranked in custom order. Default value: false.
         self.recall_only = recall_only
+        # The IDs of clusters from which results are retrieved.
         self.smart_cluster_ids_shrink = smart_cluster_ids_shrink
 
     def validate(self):
@@ -9469,7 +9511,9 @@ class ContextualRetrievalResponseBody(TeaModel):
         request_id: str = None,
         results: List[File] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of files retrieved. The document structure and content are contained in File.Elements.
         self.results = results
 
     def validate(self):
@@ -9560,6 +9604,8 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
         # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # 
+        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
         self.notification = notification
         # The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
         self.password = password
@@ -9634,6 +9680,8 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
         # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # 
+        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
         self.notification_shrink = notification_shrink
         # The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
         self.password = password
@@ -10143,7 +10191,7 @@ class CreateBindingResponseBody(TeaModel):
         binding: Binding = None,
         request_id: str = None,
     ):
-        # The binding relationship.
+        # The information about the binding.
         self.binding = binding
         # The request ID.
         self.request_id = request_id
@@ -10245,6 +10293,8 @@ class CreateCompressPointCloudTaskRequest(TeaModel):
         # The k-d tree compression options.
         self.kdtree_option = kdtree_option
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # 
+        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
         self.notification = notification
         # The octree compression options.
         self.octree_option = octree_option
@@ -10383,6 +10433,8 @@ class CreateCompressPointCloudTaskShrinkRequest(TeaModel):
         # The k-d tree compression options.
         self.kdtree_option_shrink = kdtree_option_shrink
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # 
+        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
         self.notification_shrink = notification_shrink
         # The octree compression options.
         self.octree_option_shrink = octree_option_shrink
@@ -10906,32 +10958,32 @@ class CreateDatasetRequest(TeaModel):
         template_id: str = None,
         workflow_parameters: List[WorkflowParameter] = None,
     ):
-        # The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
+        # The maximum number of bindings per dataset. The range is 1~10, with a default value of 10.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities in the dataset. Default value: 10000000000.
+        # The maximum number of metadata entities in each dataset. The default value is 10000000000.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files in the dataset. Valid values: 1 to 100000000. Default value: 100000000.
+        # The maximum number of files in each dataset. The range is 1~100000000, with a default value of 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships in the dataset. Default value: 100000000000.
+        # The maximum number of metadata relationships in each dataset. The default value is 100000000000.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total file size for the dataset. If the total file size of the dataset exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+        # The maximum total size of files in each dataset. Once the limit is exceeded, no more indexes can be added. The default value is 90000000000000000, in bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The name of the dataset. The dataset name must be unique in the same project. The name must meet the following requirements:
-        # 
-        # *   The name must be 1 to 128 characters in length.
-        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
-        # *   The name must start with a letter or underscore (_).
+        # The name of the dataset, which must be unique under the same Project. Naming rules are as follows:
+        # - Length should be 1~128 characters.
+        # - Can only contain English letters, numbers, hyphens (-), and underscores (_).
+        # - Must start with an English letter or underscore (_).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The description of the dataset. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+        # Description of the dataset. The length should be 1~256 English or Chinese characters, with a default value of empty.
         self.description = description
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information on how to obtain it, see [Create Project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        # Workflow template ID. For more information, see [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html). The default value is empty.
         self.template_id = template_id
+        # Invalid parameter.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -11012,32 +11064,32 @@ class CreateDatasetShrinkRequest(TeaModel):
         template_id: str = None,
         workflow_parameters_shrink: str = None,
     ):
-        # The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
+        # The maximum number of bindings per dataset. The range is 1~10, with a default value of 10.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities in the dataset. Default value: 10000000000.
+        # The maximum number of metadata entities in each dataset. The default value is 10000000000.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files in the dataset. Valid values: 1 to 100000000. Default value: 100000000.
+        # The maximum number of files in each dataset. The range is 1~100000000, with a default value of 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships in the dataset. Default value: 100000000000.
+        # The maximum number of metadata relationships in each dataset. The default value is 100000000000.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total file size for the dataset. If the total file size of the dataset exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+        # The maximum total size of files in each dataset. Once the limit is exceeded, no more indexes can be added. The default value is 90000000000000000, in bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The name of the dataset. The dataset name must be unique in the same project. The name must meet the following requirements:
-        # 
-        # *   The name must be 1 to 128 characters in length.
-        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
-        # *   The name must start with a letter or underscore (_).
+        # The name of the dataset, which must be unique under the same Project. Naming rules are as follows:
+        # - Length should be 1~128 characters.
+        # - Can only contain English letters, numbers, hyphens (-), and underscores (_).
+        # - Must start with an English letter or underscore (_).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The description of the dataset. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+        # Description of the dataset. The length should be 1~256 English or Chinese characters, with a default value of empty.
         self.description = description
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information on how to obtain it, see [Create Project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        # Workflow template ID. For more information, see [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html). The default value is empty.
         self.template_id = template_id
+        # Invalid parameter.
         self.workflow_parameters_shrink = workflow_parameters_shrink
 
     def validate(self):
@@ -11102,9 +11154,9 @@ class CreateDatasetResponseBody(TeaModel):
         dataset: Dataset = None,
         request_id: str = None,
     ):
-        # The information about the dataset.
+        # Dataset information.
         self.dataset = dataset
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11215,7 +11267,11 @@ class CreateDecodeBlindWatermarkTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_uri = source_uri
-        # The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
+        # The level of watermark extraction. A higher level indicates a longer time and a higher quality. Valid values:
+        # 
+        # *   low
+        # *   medium
+        # *   high
         self.strength_level = strength_level
         # The OSS URI of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
         # 
@@ -11321,7 +11377,11 @@ class CreateDecodeBlindWatermarkTaskShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_uri = source_uri
-        # The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
+        # The level of watermark extraction. A higher level indicates a longer time and a higher quality. Valid values:
+        # 
+        # *   low
+        # *   medium
+        # *   high
         self.strength_level = strength_level
         # The OSS URI of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
         # 
@@ -12251,9 +12311,9 @@ class CreateFileCompressionTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
-        # The format of the package. Default value: zip.
+        # The format of the output file.
         # 
-        # >  Only the ZIP format is supported.
+        # > Only the ZIP format is supported.
         self.compressed_format = compressed_format
         # **If you have no special requirements, leave this parameter empty.**\
         # 
@@ -12358,9 +12418,9 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
-        # The format of the package. Default value: zip.
+        # The format of the output file.
         # 
-        # >  Only the ZIP format is supported.
+        # > Only the ZIP format is supported.
         self.compressed_format = compressed_format
         # **If you have no special requirements, leave this parameter empty.**\
         # 
@@ -12534,11 +12594,13 @@ class CreateFileUncompressionTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If you do not have special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # 
+        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
         self.notification = notification
         # The password that protects the package.
         self.password = password
@@ -12626,11 +12688,13 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If you do not have special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # 
+        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
         self.notification_shrink = notification_shrink
         # The password that protects the package.
         self.password = password
@@ -12797,13 +12861,13 @@ class CreateImageModerationTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
-        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The time interval between two consecutive frames in a GIF or long image. Default value: 1.
         self.interval = interval
         # The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
         self.max_frames = max_frames
-        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -12892,13 +12956,13 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
-        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The time interval between two consecutive frames in a GIF or long image. Default value: 1.
         self.interval = interval
         # The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
         self.max_frames = max_frames
-        # The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -13556,7 +13620,7 @@ class CreateImageToPDFTaskRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
@@ -13650,7 +13714,7 @@ class CreateImageToPDFTaskShrinkRequest(TeaModel):
     ):
         # **If you have no special requirements, leave this parameter empty.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
@@ -14154,11 +14218,12 @@ class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
         time_offset: float = None,
         uri: str = None,
     ):
-        # The subtitle language. If you specify this parameter, comply with the ISO 639-2 standard. This parameter is left empty by default.
+        # The language of the subtitle, referenced by ISO 639-2, with a default value of empty.
         self.language = language
-        # The time offset of the subtitle. Unit: seconds. Default value: 0.
+        # The subtitle delay time, in seconds, with a default value of 0.
         self.time_offset = time_offset
-        # The URI of the Object Storage Service (OSS) bucket. Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension. The following subtitle formats are supported: srt, vtt, mov_text, ass, dvd_sub, and pgs.
+        # The OSS address rule is `oss://${Bucket}/${Object}`, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+        # Supported subtitle formats include: srt, vtt, mov_text, ass, dvd_sub, pgs.
         self.uri = uri
 
     def validate(self):
@@ -14201,20 +14266,35 @@ class CreateMediaConvertTaskRequestSources(TeaModel):
         subtitles: List[CreateMediaConvertTaskRequestSourcesSubtitles] = None,
         uri: str = None,
     ):
+        # The alignment strategy for adding audio and video streams, with the following value range:
+        # - false (default): No alignment.
+        # - loop: Loop the audio and video content to align.
+        # - pad: Align by padding silent frames and black video frames.
+        # > - Only valid when the Attached parameter is true.
         self.align_mode = align_mode
-        self.attached = attached
-        self.disable_audio = disable_audio
-        self.disable_video = disable_video
-        # The transcoding duration of the media. Unit: seconds. Default value: 0. A value of 0 specifies that the transcoding duration lasts until the end of the video.
-        self.duration = duration
-        # The start time of the media transcoding task. Unit: seconds. Valid values:
+        # Add the current source media file as a synchronized audio or video stream to the output media file, with a default value of false.
         # 
-        # *   0 (default): starts transcoding when the media starts playing.
-        # *   n: starts transcoding n seconds after the media starts playing. n must be greater than 0.
+        # > - The AlignmentIndex parameter pointing to the Attached parameter of the Source cannot be true.
+        self.attached = attached
+        # Whether to disable the audio in the source media file. The value range is as follows:
+        # 
+        # - true: Disable.
+        # - false (default): Do not disable.
+        self.disable_audio = disable_audio
+        # Whether to disable the video in the source media file. The value range is as follows:
+        # 
+        # - true: Disable.
+        # - false (default): Do not disable.
+        self.disable_video = disable_video
+        # The duration of media transcoding, in seconds. The default value is 0, indicating until the end of the video.
+        self.duration = duration
+        # The start time for media transcoding, in seconds. The value range is as follows:
+        # - 0 (default): Start transcoding from the beginning of the media.
+        # - n (greater than 0): Start transcoding n seconds after the beginning of the media.
         self.start_time = start_time
-        # The subtitles. By default, this parameter is left empty.
+        # A list of subtitles to add, which is empty by default.
         self.subtitles = subtitles
-        # The URI of the Object Storage Service (OSS) bucket. Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension.
+        # The OSS address rule is `oss://${Bucket}/${Object}`, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
         self.uri = uri
 
     def validate(self):
@@ -14280,14 +14360,13 @@ class CreateMediaConvertTaskRequestTargetsSegment(TeaModel):
         format: str = None,
         start_number: int = None,
     ):
-        # The duration of the segment. Unit: seconds.
+        # Segment length. Unit: seconds.
         self.duration = duration
-        # The media segmentation mode. Valid values:
-        # 
-        # *   hls
-        # *   dash
+        # Media slicing method. The value range is as follows:
+        # - hls
+        # - dash
         self.format = format
-        # The start sequence number. You can specify this parameter only if you set Format to hls. Default value: 0.
+        # Starting sequence number, supported only for hls, default is 0.
         self.start_number = start_number
 
     def validate(self):
@@ -14331,48 +14410,36 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
         uri: str = None,
         video: TargetVideo = None,
     ):
-        # The audio processing settings.
-        # 
-        # >  If you leave Audio empty and the first audio stream exists, the first audio stream is directly copied to the output file.
+        # Audio processing parameter configuration.
+        # >Notice: If Audio is null, the first audio stream (if present) will be directly copied to the output file.</notice>
         self.audio = audio
-        # The type of the media container.
-        # 
-        # *   Valid values for audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, and flv.
-        # 
-        # *   Valid values only for audio containers: mp3, aac, flac, oga, ac3, and opus.
-        # 
-        #     **\
-        # 
-        #     **Note** Specify Container and URI at the same time. If you want to extract subtitles, capture frames, capture image sprites, or rotate media images, set Container and URI to null. In this case, Segment, Video, Audio, and Speed do not take effect.
+        # Media container type. Available container types are as follows:
+        # - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv
+        # - Audio containers: mp3, aac, flac, oga, ac3, opus
+        # >Notice: Both Container and URI parameters need to be set. If only subtitle extraction, frame capture, sprite image capture, or media-to-gif conversion is performed, both Container and URI should be set to null, making the Segment, Video, Audio, and Speed parameters meaningless.</notice>
         self.container = container
-        # The frame capturing, sprite capturing, and media rotation settings.
+        # Configuration for frame capture, sprite image capture, and media to animated image conversion.
         self.image = image
-        # The media segmentation settings. By default, no segmentation is performed.
+        # Media segment settings, no segmentation by default.
         self.segment = segment
-        # The playback speed of the media. Valid values: 0.5 to 2. Default value: 1.0.
-        # 
-        # >  This parameter specifies the ratio of the non-regular playback speed of the transcoded media file to the default playback speed of the source media file.
+        # Media playback speed setting, with a value range of [0.5,1.0], default is 1.0.
+        # > The ratio of the playback speed of the transcoded media file to the original media file, not a speed-up transcoding.
         self.speed = speed
-        # Specifies whether to remove the metadata, such as `title` and `album`, from the media file. Default value: false.
+        # Removes metadata from the media file, such as `title`, `album`, etc. The default value is false.
         self.strip_metadata = strip_metadata
-        # The subtitle processing settings.
-        # 
-        # >  If you leave Subtitle empty and the first subtitle stream exists, the first subtitle stream is directly copied to the output file.
+        # Subtitle processing parameter configuration.
+        # >Notice: If Subtitle is null, the first subtitle stream (if present) will be directly copied to the output file.</notice>
         self.subtitle = subtitle
-        # The URI of the OSS bucket in which you want to store the media transcoding output file.
+        # OSS address for the output file of media transcoding.
         # 
-        # Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension.
-        # 
-        # *   If the value of **URI** contains an extension, the endpoint of the OSS bucket matches the URI. If multiple media transcoding output files exist, the endpoints of the correspodning OSS buckets may be overwritten.****\
-        # 
-        # *   If the value of **URI** does not contain an extension, the endpoint of the OSS bucket consists of the following parameters: **URI**, **Container**, and **Segment**. In the following examples, the value of **URI** is `oss://examplebucket/outputVideo`.
-        # 
-        #     *   If the value of **Container** is `mp4` and the value of **Segment** is null, the endpoint of the OSS bucket is `oss://examplebucket/outputVideo.mp4`.
-        #     *   If the value of **Container** is `ts` and the value of **Format** in **Segment** is `hls`, the endpoint of the OSS bucket is `oss://examplebucket/outputVideo.m3u8`. In addition, multiple ts files prefixed with `oss://examplebucket/outputVideo` are generated.
+        # The OSS address rule is `oss://${Bucket}/${Object}`, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+        # - When **URI** has an extension, the OSS address for the transcoded media file will be **URI**. If there are multiple output files, they may overwrite each other.
+        # - When **URI** does not have an extension, the OSS address for the transcoded media file is determined by the **URI**, **Container**, and **Segment** parameters. For example, if **URI** is `oss://examplebucket/outputVideo`:
+        #    -  When **Container** is `mp4` and **Segment** is empty, the generated media file\\"s OSS address will be `oss://examplebucket/outputVideo.mp4`.
+        #    -  When **Container** is `ts` and **Segment**\\"s **Format** is `hls`, it will generate an m3u8 file with the OSS address `oss://examplebucket/outputVideo.m3u8` and multiple ts files with the prefix `oss://examplebucket/outputVideo`.
         self.uri = uri
-        # The video processing settings.
-        # 
-        # >  If you leave Video empty and the first video stream exists, the first video stream is directly copied to the output file.
+        # Video processing parameter configuration.
+        # >Notice: If Video is null, the first video stream (if present) will be directly copied to the output file.</notice>
         self.video = video
 
     def validate(self):
@@ -14453,29 +14520,29 @@ class CreateMediaConvertTaskRequest(TeaModel):
         targets: List[CreateMediaConvertTaskRequestTargets] = None,
         user_data: str = None,
     ):
-        # The sequence number of the main media file in the concatenation list of media files. The main media file provides the default transcoding settings, such as the resolution and the frame rate, for videos and audios. Default value: `0`. A value of `0` specifies that the main media file is aligned with the first media file in the concatenation list.
+        # When performing media concatenation, the index of the primary media file (which provides the default transcoding parameters for `Video` and `Audio`, including resolution, frame rate, etc.) in the concatenation list. The default value is 0 (aligning with the first media file in the concatenation list).
         self.alignment_index = alignment_index
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, please leave this blank.**\
         # 
-        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chain authorization configuration. For more information, see [Using Chain Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The notification settings. For more information, see "Notification". For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+        # Notification configuration. For details, click Notification. The format of asynchronous notification messages can be found in [Asynchronous Notification Message Format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The name of the project. For how to obtain it, see [Creating a Project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The source media files. If multiple files exist at the same time, the Concat feature is enabled. The video files are concatenated in the order of their URI inputs.
+        # A list of media files. If the list contains more than one element, it indicates that the Concat (concatenation) function is enabled. The Concat order follows the sequence of the input video file URIs.
         # 
         # This parameter is required.
         self.sources = sources
-        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
+        # Custom tags used for searching and filtering asynchronous tasks.
         self.tags = tags
-        # The media processing tasks. You can specify multiple values for this parameter.
+        # List of media processing tasks, supporting multiple task configurations.
         # 
         # This parameter is required.
         self.targets = targets
-        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+        # User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -14561,29 +14628,29 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         targets_shrink: str = None,
         user_data: str = None,
     ):
-        # The sequence number of the main media file in the concatenation list of media files. The main media file provides the default transcoding settings, such as the resolution and the frame rate, for videos and audios. Default value: `0`. A value of `0` specifies that the main media file is aligned with the first media file in the concatenation list.
+        # When performing media concatenation, the index of the primary media file (which provides the default transcoding parameters for `Video` and `Audio`, including resolution, frame rate, etc.) in the concatenation list. The default value is 0 (aligning with the first media file in the concatenation list).
         self.alignment_index = alignment_index
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, please leave this blank.**\
         # 
-        # The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chain authorization configuration. For more information, see [Using Chain Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # The notification settings. For more information, see "Notification". For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
+        # Notification configuration. For details, click Notification. The format of asynchronous notification messages can be found in [Asynchronous Notification Message Format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The name of the project. For how to obtain it, see [Creating a Project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The source media files. If multiple files exist at the same time, the Concat feature is enabled. The video files are concatenated in the order of their URI inputs.
+        # A list of media files. If the list contains more than one element, it indicates that the Concat (concatenation) function is enabled. The Concat order follows the sequence of the input video file URIs.
         # 
         # This parameter is required.
         self.sources_shrink = sources_shrink
-        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
+        # Custom tags used for searching and filtering asynchronous tasks.
         self.tags_shrink = tags_shrink
-        # The media processing tasks. You can specify multiple values for this parameter.
+        # List of media processing tasks, supporting multiple task configurations.
         # 
         # This parameter is required.
         self.targets_shrink = targets_shrink
-        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+        # User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -14641,11 +14708,11 @@ class CreateMediaConvertTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The event ID.
+        # Event ID.
         self.event_id = event_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The task ID.
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -14723,7 +14790,18 @@ class CreateOfficeConversionTaskRequestSources(TeaModel):
         rotate: int = None,
         uri: str = None,
     ):
+        # The rotation angle. Valid values:
+        # 
+        # *   0 (default)
+        # *   90
+        # *   180
+        # *   270
         self.rotate = rotate
+        # The OSS URI of the input image.
+        # 
+        # The URI must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+        # 
+        # The operation supports the following image formats: JPG, JP2, PNG, TIFF, WebP, BMP, and SVG.
         self.uri = uri
 
     def validate(self):
@@ -14872,9 +14950,9 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.project_name = project_name
         # The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
         self.quality = quality
-        # The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+        # The percentage scale relative to the source document. Valid values: 20 to 199. The default value is 100, which indicates that the document is not scaled.
         # 
-        # >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+        # > A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
         self.scale_percentage = scale_percentage
         # The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
         self.sheet_count = sheet_count
@@ -14896,6 +14974,7 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         # 
         # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
+        # The list of images. The sequence of image URIs in the list determines the order in which they are converted. (**This parameter is not officially available and is not recommended.**)
         self.sources = sources
         # The starting page for document conversion. Default value: 1.
         # 
@@ -15216,9 +15295,9 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         self.project_name = project_name
         # The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
         self.quality = quality
-        # The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+        # The percentage scale relative to the source document. Valid values: 20 to 199. The default value is 100, which indicates that the document is not scaled.
         # 
-        # >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+        # > A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
         self.scale_percentage = scale_percentage
         # The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
         self.sheet_count = sheet_count
@@ -15240,6 +15319,7 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         # 
         # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         self.source_uri = source_uri
+        # The list of images. The sequence of image URIs in the list determines the order in which they are converted. (**This parameter is not officially available and is not recommended.**)
         self.sources_shrink = sources_shrink
         # The starting page for document conversion. Default value: 1.
         # 
@@ -16073,7 +16153,7 @@ class CreateStoryRequest(TeaModel):
     ):
         # The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
         # 
-        # >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
+        # >  If the caller of the operation is located in Hong Kong (China), Macao (China), Taiwan (China), or another region outside the Chinese mainland, the system cannot convert the GPS information in the Chinese mainland into the textual address version.
         self.address = address
         # The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
         self.custom_id = custom_id
@@ -16230,7 +16310,7 @@ class CreateStoryShrinkRequest(TeaModel):
     ):
         # The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
         # 
-        # >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
+        # >  If the caller of the operation is located in Hong Kong (China), Macao (China), Taiwan (China), or another region outside the Chinese mainland, the system cannot convert the GPS information in the Chinese mainland into the textual address version.
         self.address_shrink = address_shrink
         # The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
         self.custom_id = custom_id
@@ -20458,24 +20538,25 @@ class ExtractDocumentTextRequest(TeaModel):
         source_type: str = None,
         source_uri: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, leave it blank.**\
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chain authorization configuration, optional. For more information, see [Using Chain Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
+        # Project name. For how to obtain it, see [Creating a Project](https://help.aliyun.com/document_detail/477051.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The type of the filename extension of the source data. By default, the filename extension of the source data is the same as the filename extension of the input document. If the input document has no extension, you can specify this parameter. Valid values:
+        # Suffix type of the source data. By default, the type of the source data is determined based on the suffix of the input object. When the input object does not have a suffix, you can set this parameter. The available values are as follows:
         # 
-        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
-        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
-        # *   Table documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
-        # *   PDF documents: pdf.
+        # - Word Documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, html
+        # - Presentation Documents (PPT): pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, dpss
+        # - Spreadsheet Documents (Excel): xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, ets
+        # - PDF Documents: pdf
         self.source_type = source_type
-        # The URI of the Object Storage Service (OSS) bucket in which the document is stored.
+        # Storage address of the source data.
         # 
-        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # The OSS address rule is oss://${Bucket}/${Object}, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+        # >Notice: Currently, only HTTP protocol addresses are supported.
         # 
         # This parameter is required.
         self.source_uri = source_uri
@@ -20522,24 +20603,25 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
         source_type: str = None,
         source_uri: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, leave it blank.**\
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chain authorization configuration, optional. For more information, see [Using Chain Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
+        # Project name. For how to obtain it, see [Creating a Project](https://help.aliyun.com/document_detail/477051.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The type of the filename extension of the source data. By default, the filename extension of the source data is the same as the filename extension of the input document. If the input document has no extension, you can specify this parameter. Valid values:
+        # Suffix type of the source data. By default, the type of the source data is determined based on the suffix of the input object. When the input object does not have a suffix, you can set this parameter. The available values are as follows:
         # 
-        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
-        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
-        # *   Table documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
-        # *   PDF documents: pdf.
+        # - Word Documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, html
+        # - Presentation Documents (PPT): pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, dpss
+        # - Spreadsheet Documents (Excel): xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, ets
+        # - PDF Documents: pdf
         self.source_type = source_type
-        # The URI of the Object Storage Service (OSS) bucket in which the document is stored.
+        # Storage address of the source data.
         # 
-        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+        # The OSS address rule is oss://${Bucket}/${Object}, where `${Bucket}` is the name of the OSS Bucket in the same region (Region) as the current project, and `${Object}` is the complete path of the file including the file extension.
+        # >Notice: Currently, only HTTP protocol addresses are supported.
         # 
         # This parameter is required.
         self.source_uri = source_uri
@@ -20582,7 +20664,9 @@ class ExtractDocumentTextResponseBody(TeaModel):
         document_text: str = None,
         request_id: str = None,
     ):
+        # The text content of the document.
         self.document_text = document_text
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21022,11 +21106,11 @@ class GenerateVideoPlaylistRequestTargets(TeaModel):
     ):
         # The audio processing configuration. If you set this parameter to null (default), audio processing is disabled. The generated TS files do not contain audio streams.
         # 
-        # >  The Audio and Subtitle parameters in the same output are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio information.
+        # >  The Audio and Subtitle parameters in the same element are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio.
         self.audio = audio
         # The playback duration of a single TS file. Unit: seconds. Default value: 10. Valid values: 5 to 15.
         self.duration = duration
-        # The array of the durations of the pre-transcoded TS files. The array can contain the durations of up to six pre-transcoded TS files. By default, this parameter is left empty. This parameter is independent of the **Duration** parameter.
+        # The array of the durations of the pre-transcoded TS files. The maximum length of the array is 6. By default, this parameter is left empty. This parameter is independent of the **Duration** parameter.
         self.initial_segments = initial_segments
         # The pre-transcoding duration. Unit: seconds. Default value: 30.
         # 
@@ -21034,31 +21118,31 @@ class GenerateVideoPlaylistRequestTargets(TeaModel):
         # *   If you set this parameter to a value that is less than 0 or greater than the duration of a source video, the entire video is pre-transcoded.
         # *   If you set this parameter to a value that is within the middle of the playback duration of a TS file, the transcoding continues until the end of the playback duration.
         # 
-        # >  This parameter is used to reduce the time spent in waiting for the initial playback of a video and improve the playback experience. If you want to replace the traditional video on demand (VOD) business scenario, you can try to pre-transcode the entire video.
+        # >  This parameter reduces the time required to start the first playback, which enhances the viewing experience. If you want to use live transcoding in traditional video-on-demand scenarios, you can pre-transcode entire videos.
         self.initial_transcode = initial_transcode
         # The subtitle processing configuration.
         # 
-        # >  The Subtitle and Video or Audio parameters in the same output are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
+        # >  The Subtitle and Video or Audio parameters in the same element are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
         self.subtitle = subtitle
         # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
         # 
-        # >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, use the value of the Tags parameter in the current level.
+        # >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, the value of the Tags parameter in the current level is used.
         self.tags = tags
         # The number of TS files that are pre-transcoded when the live transcoding is triggered. By default, a 2-minute video is pre-transcoded.
         # 
-        # *   Example: If you set the **Duration** parameter to 10, the value of the **TranscodeAhead** parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files in an asynchronous manner. Valid values: 10 to 30.
+        # *   Example: If you set the **Duration** parameter to 10, the value of the **TranscodeAhead** parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files. Valid values: 10 to 30.
         self.transcode_ahead = transcode_ahead
         # The prefix of the OSS path that is used to store the live transcoding files. The live transcoding files include a M3U8 file and multiple TS files.
         # 
-        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path of the file that does not contain the file name extension.
+        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path that does not contain the file name extension.
         # 
         # *   Example: If the URI is oss://test-bucket/test-object/output-video, the output-video.m3u8 file and multiple output-video-${token}-${index}.ts files are generated in the oss://test-bucket/test-object/ directory. ${token} is a unique string generated based on the transcoding parameters. The ${token} parameter is included in the response of the operation. ${index} is the serial number of the generated TS files that are numbered starting from 0.
         # 
-        # >  If the **MasterURI** parameter is not left empty, the URI specified by this parameter must be in the directory specified by the **MasterURI** parameter or its subdirectory.
+        # >  If the **MasterURI** parameter is not left empty, the path specified by this parameter must be in the directory specified by the **MasterURI** parameter or its subdirectory.
         self.uri = uri
         # The video processing configuration. If you set this parameter to null (default), video processing is disabled. The generated TS files do not contain video streams.
         # 
-        # >  The Video and Subtitle parameters in the same output are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
+        # >  The Video and Subtitle parameters in the same element are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
         self.video = video
 
     def validate(self):
@@ -21137,7 +21221,7 @@ class GenerateVideoPlaylistRequest(TeaModel):
         targets: List[GenerateVideoPlaylistRequestTargets] = None,
         user_data: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
         # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
@@ -21147,7 +21231,7 @@ class GenerateVideoPlaylistRequest(TeaModel):
         # 
         # >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
         self.master_uri = master_uri
-        # The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The overwrite policy when the media playlist exists. Valid values:
         # 
@@ -21184,9 +21268,9 @@ class GenerateVideoPlaylistRequest(TeaModel):
         self.source_uri = source_uri
         # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
         self.tags = tags
-        # The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+        # The array of live transcoding playlists. The maximum length of the array is 6. Each element corresponds to at most one video media playlist and one or more subtitle media playlists.
         # 
-        # >  If more than one output is configured, the **MasterURI** parameter is required.
+        # >  If the array contains more than one element, the **MasterURI** parameter cannot be left empty.
         # 
         # This parameter is required.
         self.targets = targets
@@ -21296,7 +21380,7 @@ class GenerateVideoPlaylistShrinkRequest(TeaModel):
         targets_shrink: str = None,
         user_data: str = None,
     ):
-        # **If you do not have special requirements, leave this parameter empty.**\
+        # **If you have no special requirements, leave this parameter empty.**\
         # 
         # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
@@ -21306,7 +21390,7 @@ class GenerateVideoPlaylistShrinkRequest(TeaModel):
         # 
         # >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
         self.master_uri = master_uri
-        # The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The overwrite policy when the media playlist exists. Valid values:
         # 
@@ -21343,9 +21427,9 @@ class GenerateVideoPlaylistShrinkRequest(TeaModel):
         self.source_uri = source_uri
         # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
         self.tags_shrink = tags_shrink
-        # The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+        # The array of live transcoding playlists. The maximum length of the array is 6. Each element corresponds to at most one video media playlist and one or more subtitle media playlists.
         # 
-        # >  If more than one output is configured, the **MasterURI** parameter is required.
+        # >  If the array contains more than one element, the **MasterURI** parameter cannot be left empty.
         # 
         # This parameter is required.
         self.targets_shrink = targets_shrink
@@ -21719,69 +21803,84 @@ class GenerateWebofficeTokenRequest(TeaModel):
         user_data: str = None,
         watermark: WebofficeWatermark = None,
     ):
-        # Specifies whether to enable cache preview.
-        # 
-        # *   true: enables cache preview. The document can be previewed only and cannot be collaboratively edited.
-        # *   false: does not enable cache preview. The document can be collaboratively edited when it is being previewed.
-        # 
-        # >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
-        # 
-        # >  During a cache preview, document content search and printing are not supported.
+        # Cache preview flag: 
+        # - true: When enabled, the document preview will no longer update collaborative editing content, suitable for scenarios where only preview is needed. 
+        # - false: When disabled, it defaults to collaborative preview, allowing the preview to synchronously update collaborative editing content.
+        # >Notice: The price for cache preview and non-cache preview differs. Please refer to the billing item description for more details.</notice> >Notice: Search and print functions are not supported during cache preview.</notice> <notice>Updating cached content is currently not supported in cache preview mode.</notice>
         self.cache_preview = cache_preview
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, leave this blank.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chained authorization configuration, not required. For more information, see [Using Chained Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # Specifies whether to allow an upload of a document to the Object Storage Service (OSS) bucket. Valid values:
+        # Indicates whether uploading a file with the same name to OSS is an expected behavior. Possible values are as follows:
         # 
-        # *   true: Documents can be directly uploaded to OSS. The uploaded document overwrites the existing document and a new version is generated for the document. Before you upload a new document, close the existing document if it is being edited. After the document is uploaded, wait for approximately 5 minutes before you open the document again so that the new version can successfully load. Upload a new document only when the existing is closed. Otherwise, the uploaded document is overwritten when the existing document is saved.
-        # *   false: Documents cannot be directly uploaded to OSS. If you try to upload a document, an error is returned. This is the default value.
+        # - true: Uploading a file with the same name to OSS is an expected behavior. The uploaded document will overwrite the original document and generate a new version. After setting it to true, you still need to close the currently editing document and wait for about 5 minutes before reopening it to load the new document. The upload is only effective when the document is closed; if the document is open, the new save will overwrite the uploaded file.
+        # - false (default): Uploading a file with the same name to OSS is not an expected behavior, and the interface will return an error.
         self.external_uploaded = external_uploaded
-        # The name of the file. The extension must be included in the file name. By default, this parameter is set to the last depth level of the **SourceURI** parameter value.
-        # 
-        # Supported extensions (only preview supported for .pdf):
-        # 
-        # *   Word documents: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
-        # *   Presentation documents: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
-        # *   Table documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
-        # *   PDF documents: .pdf
+        # Filename, which must include the file extension. By default, it is the last segment of the **SourceURI** parameter.
+        # Supported file extensions (PDF is only supported for preview):
+        # - Text documents (Word): doc, docx, txt, dot, wps, wpt, dotx, docm, dotm, rtf 
+        # - Presentation documents (PPT): ppt, pptx, pptm, ppsx, ppsm, pps, potx, potm, dpt, dps - Spreadsheet documents (Excel): et, xls, xlt, xlsx, xlsm, xltx, xltm, csv 
+        # - PDF documents: pdf
         self.filename = filename
+        # Whether to hide the toolbar. This parameter can be set in document preview mode. Possible values are as follows:
+        # 
+        # - false (default): Do not hide the toolbar.
+        # - true: Hide the toolbar.
         self.hidecmb = hidecmb
-        # The notification settings. Only SMQ messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+        # Notification message configuration, currently supporting only MNS. For the asynchronous notification message format, refer to [WebOffice Message Notification Format](https://help.aliyun.com/document_detail/2743999.html).
         # 
-        # >  A notification is sent after the document is saved or renamed.
+        # > There will be message notifications when the file is saved or renamed.
         self.notification = notification
+        # Supports notifying some events to customers via MNS messages. This parameter is the topic for MNS asynchronous message notifications.
         self.notify_topic_name = notify_topic_name
+        # The password to open the document.
+        # > If you need to preview or edit a password-protected document, set this parameter.
         self.password = password
-        # The user permission settings in the JSON format.
+        # User permission information, represented in JSON format.
         # 
-        # The parameter supports the following permission fields:
+        # User permissions include the following options:
         # 
-        # Each field is of type Boolean and can have a value of true and false (the default value):
+        # Each option is of type Boolean, with a default value of false, and can be set to true or false.
         # 
-        # *   Readonly: grants the permission to preview the document. This field is optional.
-        # *   Rename: grants the permission to rename the document. Notification messages of a rename event can be sent only by using SMQ. This field is optional.
-        # *   History: grants the permission to view historical versions. This field is optional.
-        # *   Copy: grants the permission to copy the document. This field is optional.
-        # *   Export: grants the permission to export the document as a PDF file. This field is optional.
-        # *   Print: grants the permission to print the document. This field is optional.
+        # - Readonly (optional): Preview mode.
+        # - Rename (optional): File renaming permission, which only provides message notification functionality. The renaming event will be sent to MNS.
+        # - History (optional): Permission to view historical versions.
+        # - Copy (optional): Copy permission.
+        # - Export (optional): PDF export permission.
+        # - Print (optional): Print permission.
         # 
-        # >  Only online preview is supported for PDF documents. When you call the operation on a PDF document, you can set Readonly only to true.
-        # 
-        # >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
-        # 
-        # >  Printing is not supported during cache preview.
+        # >PDF only supports preview functionality, so the "Readonly" parameter must be set to true.
+        # >
+        # >PDF files do not support exporting.
+        # > 
+        # >To use the multi-version feature, you must first enable the multi-version feature in OSS and then set the "History" parameter to true.
+        # >
+        # >Notice: Printing is not supported in cached preview.
+        # >Notice: Historical versions can be viewed in edit mode but not in preview mode.
         self.permission = permission
+        # Limits the number of pages that can be previewed. By default, there is no limit. The maximum cannot exceed 5000.
         self.preview_pages = preview_pages
+        # Project name, for how to obtain it, please refer to [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # OSS anti-leeching. IMM needs to obtain the source file from OSS. If OSS has set up anti-leeching, IMM must pass the corresponding header to OSS to get the source file.
+        # > If the Bucket where the document is located has Referer set, please configure this parameter.
         self.referer = referer
+        # OSS address of the document to be previewed or edited. The OSS address follows the rule `oss://${Bucket}/${Object}`, where `Bucket` is the name of the OSS Bucket in the same region as the current project, and `Object` is the full path of the file including the file extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
-        # The user information. The user information that you want to display on the WebOffice page. If you do not specify this parameter, the user name displayed is Unknown.
+        # User information. You can pass in user information from the business side, which will be displayed on the WebOffice page.
+        # 
+        # The system distinguishes different users by User.Id, and User.Name is used only for front-end display. If User.Id is not provided, the backend will generate a random ID. Users with different IDs are considered different entities and cannot modify or delete each other\\"s comments.
+        # 
+        # The default format is: Unknown_random string. If User.Id is not provided, the user information will default to "Unknown".
         self.user = user
-        # The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum length of the value is 2,048 bytes.
+        # User-defined information. It only takes effect when Notification parameters are filled in for MNS configuration. It will be returned in asynchronous message notifications, which can help you correlate and process messages within your system. The maximum length is 2048 bytes.
         self.user_data = user_data
+        # Watermark information. The watermark is generated on the front end and is not written into the source document. The same document with different parameters will result in different watermarks.
         self.watermark = watermark
 
     def validate(self):
@@ -21898,69 +21997,84 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         user_data: str = None,
         watermark_shrink: str = None,
     ):
-        # Specifies whether to enable cache preview.
-        # 
-        # *   true: enables cache preview. The document can be previewed only and cannot be collaboratively edited.
-        # *   false: does not enable cache preview. The document can be collaboratively edited when it is being previewed.
-        # 
-        # >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
-        # 
-        # >  During a cache preview, document content search and printing are not supported.
+        # Cache preview flag: 
+        # - true: When enabled, the document preview will no longer update collaborative editing content, suitable for scenarios where only preview is needed. 
+        # - false: When disabled, it defaults to collaborative preview, allowing the preview to synchronously update collaborative editing content.
+        # >Notice: The price for cache preview and non-cache preview differs. Please refer to the billing item description for more details.</notice> >Notice: Search and print functions are not supported during cache preview.</notice> <notice>Updating cached content is currently not supported in cache preview mode.</notice>
         self.cache_preview = cache_preview
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, leave this blank.**\
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chained authorization configuration, not required. For more information, see [Using Chained Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # Specifies whether to allow an upload of a document to the Object Storage Service (OSS) bucket. Valid values:
+        # Indicates whether uploading a file with the same name to OSS is an expected behavior. Possible values are as follows:
         # 
-        # *   true: Documents can be directly uploaded to OSS. The uploaded document overwrites the existing document and a new version is generated for the document. Before you upload a new document, close the existing document if it is being edited. After the document is uploaded, wait for approximately 5 minutes before you open the document again so that the new version can successfully load. Upload a new document only when the existing is closed. Otherwise, the uploaded document is overwritten when the existing document is saved.
-        # *   false: Documents cannot be directly uploaded to OSS. If you try to upload a document, an error is returned. This is the default value.
+        # - true: Uploading a file with the same name to OSS is an expected behavior. The uploaded document will overwrite the original document and generate a new version. After setting it to true, you still need to close the currently editing document and wait for about 5 minutes before reopening it to load the new document. The upload is only effective when the document is closed; if the document is open, the new save will overwrite the uploaded file.
+        # - false (default): Uploading a file with the same name to OSS is not an expected behavior, and the interface will return an error.
         self.external_uploaded = external_uploaded
-        # The name of the file. The extension must be included in the file name. By default, this parameter is set to the last depth level of the **SourceURI** parameter value.
-        # 
-        # Supported extensions (only preview supported for .pdf):
-        # 
-        # *   Word documents: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
-        # *   Presentation documents: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
-        # *   Table documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
-        # *   PDF documents: .pdf
+        # Filename, which must include the file extension. By default, it is the last segment of the **SourceURI** parameter.
+        # Supported file extensions (PDF is only supported for preview):
+        # - Text documents (Word): doc, docx, txt, dot, wps, wpt, dotx, docm, dotm, rtf 
+        # - Presentation documents (PPT): ppt, pptx, pptm, ppsx, ppsm, pps, potx, potm, dpt, dps - Spreadsheet documents (Excel): et, xls, xlt, xlsx, xlsm, xltx, xltm, csv 
+        # - PDF documents: pdf
         self.filename = filename
+        # Whether to hide the toolbar. This parameter can be set in document preview mode. Possible values are as follows:
+        # 
+        # - false (default): Do not hide the toolbar.
+        # - true: Hide the toolbar.
         self.hidecmb = hidecmb
-        # The notification settings. Only SMQ messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+        # Notification message configuration, currently supporting only MNS. For the asynchronous notification message format, refer to [WebOffice Message Notification Format](https://help.aliyun.com/document_detail/2743999.html).
         # 
-        # >  A notification is sent after the document is saved or renamed.
+        # > There will be message notifications when the file is saved or renamed.
         self.notification_shrink = notification_shrink
+        # Supports notifying some events to customers via MNS messages. This parameter is the topic for MNS asynchronous message notifications.
         self.notify_topic_name = notify_topic_name
+        # The password to open the document.
+        # > If you need to preview or edit a password-protected document, set this parameter.
         self.password = password
-        # The user permission settings in the JSON format.
+        # User permission information, represented in JSON format.
         # 
-        # The parameter supports the following permission fields:
+        # User permissions include the following options:
         # 
-        # Each field is of type Boolean and can have a value of true and false (the default value):
+        # Each option is of type Boolean, with a default value of false, and can be set to true or false.
         # 
-        # *   Readonly: grants the permission to preview the document. This field is optional.
-        # *   Rename: grants the permission to rename the document. Notification messages of a rename event can be sent only by using SMQ. This field is optional.
-        # *   History: grants the permission to view historical versions. This field is optional.
-        # *   Copy: grants the permission to copy the document. This field is optional.
-        # *   Export: grants the permission to export the document as a PDF file. This field is optional.
-        # *   Print: grants the permission to print the document. This field is optional.
+        # - Readonly (optional): Preview mode.
+        # - Rename (optional): File renaming permission, which only provides message notification functionality. The renaming event will be sent to MNS.
+        # - History (optional): Permission to view historical versions.
+        # - Copy (optional): Copy permission.
+        # - Export (optional): PDF export permission.
+        # - Print (optional): Print permission.
         # 
-        # >  Only online preview is supported for PDF documents. When you call the operation on a PDF document, you can set Readonly only to true.
-        # 
-        # >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
-        # 
-        # >  Printing is not supported during cache preview.
+        # >PDF only supports preview functionality, so the "Readonly" parameter must be set to true.
+        # >
+        # >PDF files do not support exporting.
+        # > 
+        # >To use the multi-version feature, you must first enable the multi-version feature in OSS and then set the "History" parameter to true.
+        # >
+        # >Notice: Printing is not supported in cached preview.
+        # >Notice: Historical versions can be viewed in edit mode but not in preview mode.
         self.permission_shrink = permission_shrink
+        # Limits the number of pages that can be previewed. By default, there is no limit. The maximum cannot exceed 5000.
         self.preview_pages = preview_pages
+        # Project name, for how to obtain it, please refer to [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # OSS anti-leeching. IMM needs to obtain the source file from OSS. If OSS has set up anti-leeching, IMM must pass the corresponding header to OSS to get the source file.
+        # > If the Bucket where the document is located has Referer set, please configure this parameter.
         self.referer = referer
+        # OSS address of the document to be previewed or edited. The OSS address follows the rule `oss://${Bucket}/${Object}`, where `Bucket` is the name of the OSS Bucket in the same region as the current project, and `Object` is the full path of the file including the file extension.
+        # 
         # This parameter is required.
         self.source_uri = source_uri
-        # The user information. The user information that you want to display on the WebOffice page. If you do not specify this parameter, the user name displayed is Unknown.
+        # User information. You can pass in user information from the business side, which will be displayed on the WebOffice page.
+        # 
+        # The system distinguishes different users by User.Id, and User.Name is used only for front-end display. If User.Id is not provided, the backend will generate a random ID. Users with different IDs are considered different entities and cannot modify or delete each other\\"s comments.
+        # 
+        # The default format is: Unknown_random string. If User.Id is not provided, the user information will default to "Unknown".
         self.user_shrink = user_shrink
-        # The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum length of the value is 2,048 bytes.
+        # User-defined information. It only takes effect when Notification parameters are filled in for MNS configuration. It will be returned in asynchronous message notifications, which can help you correlate and process messages within your system. The maximum length is 2048 bytes.
         self.user_data = user_data
+        # Watermark information. The watermark is generated on the front end and is not written into the source document. The same document with different parameters will result in different watermarks.
         self.watermark_shrink = watermark_shrink
 
     def validate(self):
@@ -22053,11 +22167,18 @@ class GenerateWebofficeTokenResponseBody(TeaModel):
         request_id: str = None,
         weboffice_url: str = None,
     ):
+        # Weboffice access token.
         self.access_token = access_token
+        # Expiration time of the access token. The expiration time is 30 minutes.
         self.access_token_expired_time = access_token_expired_time
+        # Weboffice refresh token.
         self.refresh_token = refresh_token
+        # Expiration time of the refresh token. The expiration time is 1 day.
         self.refresh_token_expired_time = refresh_token_expired_time
+        # Request ID.
         self.request_id = request_id
+        # Weboffice entry URL. Used for online preview or editing of documents.
+        # > Cannot be opened directly in a browser; it needs to be used with the Weboffice JS-SDK and access token (AccessToken) to preview or edit documents. For more information, see [Getting Started](https://help.aliyun.com/document_detail/468066.html).
         self.weboffice_url = weboffice_url
 
     def validate(self):
@@ -22996,6 +23117,9 @@ class GetFileMetaRequest(TeaModel):
         # 
         # This parameter is required.
         self.uri = uri
+        # The metadata fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+        # 
+        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields of the file.
         self.with_fields = with_fields
 
     def validate(self):
@@ -23054,6 +23178,9 @@ class GetFileMetaShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.uri = uri
+        # The metadata fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+        # 
+        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields of the file.
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
@@ -23895,7 +24022,25 @@ class GetTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_name = project_name
-        # Specifies whether to return the initial request parameters that are used to create the task. Default value: False.
+        # Specifies whether to return original request parameters specified to create the task.
+        # 
+        # *   true
+        # *   false (default)
+        # 
+        # This parameter applies only to the following tasks:
+        # 
+        # *   MediaConvert
+        # *   VideoLabelClassification
+        # *   FaceClustering
+        # *   FileCompression
+        # *   ArchiveFileInspection
+        # *   FileUncompression
+        # *   PointCloudCompress
+        # *   ImageToPDF
+        # *   StoryCreation
+        # *   LocationDateClustering
+        # *   ImageSplicing
+        # *   FacesSearching
         self.request_definition = request_definition
         # The ID of the task. You can obtain the ID of a task after you create the task.
         # 
@@ -24430,10 +24575,16 @@ class GetVideoModerationResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The project name.[](~~478153~~)
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The task type.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -24472,8 +24623,11 @@ class GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames(TeaM
         offset: int = None,
         rate: float = None,
     ):
+        # The label of the violation.
         self.label = label
+        # The offset of the frame.
         self.offset = offset
+        # The confidence level of the violation.
         self.rate = rate
 
     def validate(self):
@@ -24510,7 +24664,9 @@ class GetVideoModerationResultResponseBodyModerationResultFrames(TeaModel):
         block_frames: List[GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames] = None,
         total_count: int = None,
     ):
+        # The information about violated frames.
         self.block_frames = block_frames
+        # The total number of detected frames.
         self.total_count = total_count
 
     def validate(self):
@@ -24553,9 +24709,17 @@ class GetVideoModerationResultResponseBodyModerationResult(TeaModel):
         suggestion: str = None,
         uri: str = None,
     ):
+        # The category list.
         self.categories = categories
+        # The information about video and motion detection frames.
         self.frames = frames
+        # The recommended operation. Valid values:
+        # 
+        # *   pass: The image has passed the check. No action is required.
+        # *   review: The image contains suspected violations and requires human review.
+        # *   block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
         self.suggestion = suggestion
+        # The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
         self.uri = uri
 
     def validate(self):
@@ -24608,17 +24772,33 @@ class GetVideoModerationResultResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
+        # The error code of the task.
         self.code = code
+        # The end time of the task.
         self.end_time = end_time
+        # The event ID.
         self.event_id = event_id
+        # The error message of the task.
         self.message = message
+        # The result of the image compliance detection task.
         self.moderation_result = moderation_result
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The start time of the task.
         self.start_time = start_time
+        # The task status. Valid values:
+        # 
+        # *   Running: The task is running.
+        # *   Succeeded: The task is successful.
+        # *   Failed: The task failed.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The type of the task.
         self.task_type = task_type
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -24745,12 +24925,13 @@ class IndexFileMetaRequest(TeaModel):
         # 
         # This parameter is required.
         self.file = file
-        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom user information, which is returned in an asynchronous notification. The maximum length of a notification is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -24811,12 +24992,13 @@ class IndexFileMetaShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_shrink = file_shrink
-        # The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
+        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
         # This parameter is required.
         self.project_name = project_name
+        # The custom user information, which is returned in an asynchronous notification. The maximum length of a notification is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -24927,6 +25109,210 @@ class IndexFileMetaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IndexFileMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAttachedOSSBucketsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        project_name: str = None,
+    ):
+        # The maximum number of tasks in the returned result list. The value range is (0, 200], with a default value of 100.
+        self.max_results = max_results
+        # Pagination token.
+        # 
+        # When the total number of files exceeds the set MaxResults, this token is used for pagination. It returns the list of file information in lexicographical order starting from NextToken.
+        # 
+        # > When calling this interface for the first time in a single query, set this value to empty.
+        self.next_token = next_token
+        # Project name, for more information on how to obtain it, see [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
+        # This parameter is required.
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ListAttachedOSSBucketsResponseBodyAttachedOSSBuckets(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        ossbucket: str = None,
+        owner_id: str = None,
+        project_name: str = None,
+        update_time: str = None,
+    ):
+        # Timestamp of the project creation time, formatted as RFC3339Nano.
+        self.create_time = create_time
+        # Description
+        self.description = description
+        # OSS Bucket name.
+        self.ossbucket = ossbucket
+        # User ID.
+        self.owner_id = owner_id
+        # Project name.
+        self.project_name = project_name
+        # Timestamp of the project modification time, formatted as RFC3339Nano.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListAttachedOSSBucketsResponseBody(TeaModel):
+    def __init__(
+        self,
+        attached_ossbuckets: List[ListAttachedOSSBucketsResponseBodyAttachedOSSBuckets] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        # List of bound OSS Buckets.
+        self.attached_ossbuckets = attached_ossbuckets
+        # Pagination token. When the total number of tasks in the list exceeds the set MaxResults, this token is used for pagination. This parameter has a value only when not all matching task lists are returned.
+        # 
+        # Use this value as NextToken in the next call to return the subsequent task list.
+        self.next_token = next_token
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.attached_ossbuckets:
+            for k in self.attached_ossbuckets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachedOSSBuckets'] = []
+        if self.attached_ossbuckets is not None:
+            for k in self.attached_ossbuckets:
+                result['AttachedOSSBuckets'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attached_ossbuckets = []
+        if m.get('AttachedOSSBuckets') is not None:
+            for k in m.get('AttachedOSSBuckets'):
+                temp_model = ListAttachedOSSBucketsResponseBodyAttachedOSSBuckets()
+                self.attached_ossbuckets.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAttachedOSSBucketsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAttachedOSSBucketsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAttachedOSSBucketsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25327,7 +25713,7 @@ class ListDatasetsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The list of datasets.
+        # The datasets.
         self.datasets = datasets
         # The pagination token. If the total number of datasets is greater than the value of MaxResults, you must specify this parameter. This parameter has a value only if not all the datasets that meet the conditions are returned.
         # 
@@ -25650,11 +26036,10 @@ class ListRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
-        # The language. Valid values:
-        # 
-        # *   zh-CN: Chinese.
-        # *   en-US: English.
-        # *   ja: Japanese.
+        # Language type. The range of values is as follows:
+        # - zh-CN: Chinese
+        # - en-US: English
+        # - ja: Japanese
         # 
         # This parameter is required.
         self.accept_language = accept_language
@@ -25685,9 +26070,9 @@ class ListRegionsResponseBody(TeaModel):
         regions: List[RegionType] = None,
         request_id: str = None,
     ):
-        # The regions.
+        # List of Regions.
         self.regions = regions
-        # The request ID.
+        # Request ID for the interface.
         self.request_id = request_id
 
     def validate(self):
@@ -26638,15 +27023,15 @@ class QueryLocationDateClustersRequest(TeaModel):
         self.address = address
         # The time range during which the spatiotemporal clusters were generated.
         self.create_time_range = create_time_range
-        # The custom labels, which can be used as query conditions.
+        # The custom labels.
         self.custom_labels = custom_labels
-        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # The name of the dataset. For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
         # The time range during which the latest photo in a cluster was taken.
         self.location_date_cluster_end_time_range = location_date_cluster_end_time_range
-        # The administrative level of the spatiotemporal clustering groups to be queried.
+        # The container for the administrative division level of the spatiotemporal clusters to be queried.
         self.location_date_cluster_levels = location_date_cluster_levels
         # The time range during which the earliest photo in a cluster was taken.
         self.location_date_cluster_start_time_range = location_date_cluster_start_time_range
@@ -26654,29 +27039,29 @@ class QueryLocationDateClustersRequest(TeaModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
+        # The ID of the cluster that you want to query. Specify this parameter if you want to query a specific spatiotemporal cluster. Otherwise, leave this parameter empty to query spatiotemporal clusters that meet the specified conditions.
         self.object_id = object_id
-        # The sorting order.
-        # 
-        # Default value: asc. Valid values:
-        # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
-        self.order = order
-        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
-        # 
-        # This parameter is required.
-        self.project_name = project_name
-        # The condition by which the results are sorted.
+        # The order that you use to sort the query results.
         # 
         # Valid values:
         # 
-        # *   LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
-        # *   CreateTime: by the creation time of the spatiotemporal clustering groups.
-        # *   UpdateTime: by the update time of the spatiotemporal clustering groups.
-        # *   LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
+        # *   asc: ascending order. This is the default value.
+        # *   desc: descending order.
+        self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
+        # This parameter is required.
+        self.project_name = project_name
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   LocationDateClusterEndTime: by the time at which the latest photo in a cluster was taken.
+        # *   CreateTime: by the creation time of a spatiotemporal cluster.
+        # *   UpdateTime: by the update time of a spatiotemporal cluster.
+        # *   LocationDateClusterStartTime: by the time at which the earliest photo in a cluster was taken. This is the default value.
         self.sort = sort
-        # The title of spatiotemporal clustering. Fuzzy matching is performed.
+        # The characters that are included in the titles of spatiotemporal clusters to be queried. Matches are found by using fuzzy matching.
         self.title = title
         # The time range during which the spatiotemporal clusters were updated.
         self.update_time_range = update_time_range
@@ -26794,15 +27179,15 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         self.address_shrink = address_shrink
         # The time range during which the spatiotemporal clusters were generated.
         self.create_time_range_shrink = create_time_range_shrink
-        # The custom labels, which can be used as query conditions.
+        # The custom labels.
         self.custom_labels = custom_labels
-        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # The name of the dataset. For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
         # The time range during which the latest photo in a cluster was taken.
         self.location_date_cluster_end_time_range_shrink = location_date_cluster_end_time_range_shrink
-        # The administrative level of the spatiotemporal clustering groups to be queried.
+        # The container for the administrative division level of the spatiotemporal clusters to be queried.
         self.location_date_cluster_levels_shrink = location_date_cluster_levels_shrink
         # The time range during which the earliest photo in a cluster was taken.
         self.location_date_cluster_start_time_range_shrink = location_date_cluster_start_time_range_shrink
@@ -26810,29 +27195,29 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
+        # The ID of the cluster that you want to query. Specify this parameter if you want to query a specific spatiotemporal cluster. Otherwise, leave this parameter empty to query spatiotemporal clusters that meet the specified conditions.
         self.object_id = object_id
-        # The sorting order.
-        # 
-        # Default value: asc. Valid values:
-        # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
-        self.order = order
-        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
-        # 
-        # This parameter is required.
-        self.project_name = project_name
-        # The condition by which the results are sorted.
+        # The order that you use to sort the query results.
         # 
         # Valid values:
         # 
-        # *   LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
-        # *   CreateTime: by the creation time of the spatiotemporal clustering groups.
-        # *   UpdateTime: by the update time of the spatiotemporal clustering groups.
-        # *   LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
+        # *   asc: ascending order. This is the default value.
+        # *   desc: descending order.
+        self.order = order
+        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # 
+        # This parameter is required.
+        self.project_name = project_name
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   LocationDateClusterEndTime: by the time at which the latest photo in a cluster was taken.
+        # *   CreateTime: by the creation time of a spatiotemporal cluster.
+        # *   UpdateTime: by the update time of a spatiotemporal cluster.
+        # *   LocationDateClusterStartTime: by the time at which the earliest photo in a cluster was taken. This is the default value.
         self.sort = sort
-        # The title of spatiotemporal clustering. Fuzzy matching is performed.
+        # The characters that are included in the titles of spatiotemporal clusters to be queried. Matches are found by using fuzzy matching.
         self.title = title
         # The time range during which the spatiotemporal clusters were updated.
         self.update_time_range_shrink = update_time_range_shrink
@@ -26922,7 +27307,7 @@ class QueryLocationDateClustersResponseBody(TeaModel):
     ):
         # The list of spatiotemporal clusters.
         self.location_date_clusters = location_date_clusters
-        # The pagination token.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -27584,14 +27969,20 @@ class RefreshWebofficeTokenRequest(TeaModel):
         project_name: str = None,
         refresh_token: str = None,
     ):
+        # Weboffice access token. Obtain it through the [GenerateWebofficeToken](https://help.aliyun.com/document_detail/478226.html) or [RefreshWebofficeToken](https://help.aliyun.com/document_detail/478227.html) interfaces.
+        # 
         # This parameter is required.
         self.access_token = access_token
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, leave it blank.**\
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chained authorization configuration, optional. For more information, see [Access Other Entity Resources Using Chained Authorization](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
+        # Project name. For more information on how to obtain it, see [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Weboffice refresh token. Obtain it through the [GenerateWebofficeToken](https://help.aliyun.com/document_detail/478226.html) or [RefreshWebofficeToken](https://help.aliyun.com/document_detail/478227.html) interfaces.
+        # 
         # This parameter is required.
         self.refresh_token = refresh_token
 
@@ -27637,14 +28028,20 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
         project_name: str = None,
         refresh_token: str = None,
     ):
+        # Weboffice access token. Obtain it through the [GenerateWebofficeToken](https://help.aliyun.com/document_detail/478226.html) or [RefreshWebofficeToken](https://help.aliyun.com/document_detail/478227.html) interfaces.
+        # 
         # This parameter is required.
         self.access_token = access_token
-        # **If you have no special requirements, leave this parameter empty.**\
+        # **If there are no special requirements, leave it blank.**\
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # Chained authorization configuration, optional. For more information, see [Access Other Entity Resources Using Chained Authorization](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
+        # Project name. For more information on how to obtain it, see [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Weboffice refresh token. Obtain it through the [GenerateWebofficeToken](https://help.aliyun.com/document_detail/478226.html) or [RefreshWebofficeToken](https://help.aliyun.com/document_detail/478227.html) interfaces.
+        # 
         # This parameter is required.
         self.refresh_token = refresh_token
 
@@ -27689,10 +28086,15 @@ class RefreshWebofficeTokenResponseBody(TeaModel):
         refresh_token_expired_time: str = None,
         request_id: str = None,
     ):
+        # Weboffice access token.
         self.access_token = access_token
+        # Expiration time of the access token. The expiration period is 30 minutes.
         self.access_token_expired_time = access_token_expired_time
+        # Weboffice refresh token.
         self.refresh_token = refresh_token
+        # Expiration time of the refresh token. The expiration period is 1 day.
         self.refresh_token_expired_time = refresh_token_expired_time
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29676,17 +30078,31 @@ class UpdateDatasetRequest(TeaModel):
         template_id: str = None,
         workflow_parameters: List[WorkflowParameter] = None,
     ):
+        # The maximum number of bindings per dataset. The value range is from 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities (including data files, file relationships, clustering groups, etc.) per dataset, with a maximum value of 2^63-1.
+        # >Reserved parameter, no actual restriction in use.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files per dataset. The value range is from 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships per dataset, with a maximum value of 2^63-1.
+        # >Reserved parameter, no actual restriction in use.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum total size of files in each dataset. Once the limit is exceeded, no more indexes can be added. The maximum value is 2^63-1, measured in bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # Dataset name, for how to obtain it, please refer to [Create Dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # Description of the dataset.
         self.description = description
+        # Project name, for how to obtain it, please refer to [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Workflow template ID. For more information, please refer to [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
+        # Invalid parameter.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -29767,17 +30183,31 @@ class UpdateDatasetShrinkRequest(TeaModel):
         template_id: str = None,
         workflow_parameters_shrink: str = None,
     ):
+        # The maximum number of bindings per dataset. The value range is from 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
+        # The maximum number of metadata entities (including data files, file relationships, clustering groups, etc.) per dataset, with a maximum value of 2^63-1.
+        # >Reserved parameter, no actual restriction in use.
         self.dataset_max_entity_count = dataset_max_entity_count
+        # The maximum number of files per dataset. The value range is from 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
+        # The maximum number of metadata relationships per dataset, with a maximum value of 2^63-1.
+        # >Reserved parameter, no actual restriction in use.
         self.dataset_max_relation_count = dataset_max_relation_count
+        # The maximum total size of files in each dataset. Once the limit is exceeded, no more indexes can be added. The maximum value is 2^63-1, measured in bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # Dataset name, for how to obtain it, please refer to [Create Dataset](https://help.aliyun.com/document_detail/478160.html).
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # Description of the dataset.
         self.description = description
+        # Project name, for how to obtain it, please refer to [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Workflow template ID. For more information, please refer to [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
+        # Invalid parameter.
         self.workflow_parameters_shrink = workflow_parameters_shrink
 
     def validate(self):
@@ -29842,8 +30272,9 @@ class UpdateDatasetResponseBody(TeaModel):
         dataset: Dataset = None,
         request_id: str = None,
     ):
-        # The dataset.
+        # 数据集。
         self.dataset = dataset
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):

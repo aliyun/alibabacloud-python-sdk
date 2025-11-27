@@ -1,3 +1,7 @@
+2025-11-27 Version: 4.7.0
+- Support API ListAttachedOSSBuckets.
+
+
 2025-09-20 Version: 4.6.5
 - Generated python 2020-09-30 for imm.
 
