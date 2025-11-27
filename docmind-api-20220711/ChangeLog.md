@@ -1,3 +1,14 @@
+2025-11-27 Version: 1.4.13
+- Update API SubmitConvertImageToExcelJob: add request parameters EnableEventCallback.
+- Update API SubmitConvertImageToPdfJob: add request parameters EnableEventCallback.
+- Update API SubmitConvertImageToWordJob: add request parameters EnableEventCallback.
+- Update API SubmitConvertPdfToExcelJob: add request parameters EnableEventCallback.
+- Update API SubmitConvertPdfToImageJob: add request parameters EnableEventCallback.
+- Update API SubmitConvertPdfToWordJob: add request parameters EnableEventCallback.
+- Update API SubmitDocParserJob: add request parameters EnableEventCallback.
+- Update API SubmitDocStructureJob: add request parameters EnableEventCallback.
+
+
 2025-10-16 Version: 1.4.12
 - Update API SubmitDocParserJob: add request parameters NeedHeaderFooter.
 

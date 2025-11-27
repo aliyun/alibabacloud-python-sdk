@@ -9,11 +9,13 @@ from darabonba.model import DaraModel
 class SubmitConvertPdfToImageJobAdvanceRequest(DaraModel):
     def __init__(
         self,
+        enable_event_callback: bool = None,
         file_name: str = None,
         file_url_object: BinaryIO = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
     ):
+        self.enable_event_callback = enable_event_callback
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.oss_bucket = oss_bucket
@@ -27,6 +29,9 @@ class SubmitConvertPdfToImageJobAdvanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_event_callback is not None:
+            result['EnableEventCallback'] = self.enable_event_callback
+
         if self.file_name is not None:
             result['FileName'] = self.file_name
 
@@ -43,6 +48,9 @@ class SubmitConvertPdfToImageJobAdvanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableEventCallback') is not None:
+            self.enable_event_callback = m.get('EnableEventCallback')
+
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
 

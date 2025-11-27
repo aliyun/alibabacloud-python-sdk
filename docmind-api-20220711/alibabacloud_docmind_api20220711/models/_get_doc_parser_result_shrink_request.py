@@ -2,19 +2,17 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class GetDocParserResultRequest(DaraModel):
+class GetDocParserResultShrinkRequest(DaraModel):
     def __init__(
         self,
-        exclude_fields: List[str] = None,
+        exclude_fields_shrink: str = None,
         id: str = None,
         layout_num: int = None,
         layout_step_size: int = None,
     ):
-        self.exclude_fields = exclude_fields
+        self.exclude_fields_shrink = exclude_fields_shrink
         self.id = id
         self.layout_num = layout_num
         self.layout_step_size = layout_step_size
@@ -27,8 +25,8 @@ class GetDocParserResultRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.exclude_fields is not None:
-            result['ExcludeFields'] = self.exclude_fields
+        if self.exclude_fields_shrink is not None:
+            result['ExcludeFields'] = self.exclude_fields_shrink
 
         if self.id is not None:
             result['Id'] = self.id
@@ -44,7 +42,7 @@ class GetDocParserResultRequest(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ExcludeFields') is not None:
-            self.exclude_fields = m.get('ExcludeFields')
+            self.exclude_fields_shrink = m.get('ExcludeFields')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')

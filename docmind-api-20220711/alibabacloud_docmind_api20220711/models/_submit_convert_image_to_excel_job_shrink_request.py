@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class SubmitConvertImageToExcelJobShrinkRequest(DaraModel):
     def __init__(
         self,
+        enable_event_callback: bool = None,
         force_merge_excel: bool = None,
         image_name_extension: str = None,
         image_names_shrink: str = None,
@@ -14,6 +15,7 @@ class SubmitConvertImageToExcelJobShrinkRequest(DaraModel):
         oss_bucket: str = None,
         oss_endpoint: str = None,
     ):
+        self.enable_event_callback = enable_event_callback
         self.force_merge_excel = force_merge_excel
         self.image_name_extension = image_name_extension
         self.image_names_shrink = image_names_shrink
@@ -29,6 +31,9 @@ class SubmitConvertImageToExcelJobShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_event_callback is not None:
+            result['EnableEventCallback'] = self.enable_event_callback
+
         if self.force_merge_excel is not None:
             result['ForceMergeExcel'] = self.force_merge_excel
 
@@ -51,6 +56,9 @@ class SubmitConvertImageToExcelJobShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableEventCallback') is not None:
+            self.enable_event_callback = m.get('EnableEventCallback')
+
         if m.get('ForceMergeExcel') is not None:
             self.force_merge_excel = m.get('ForceMergeExcel')
 

@@ -10,6 +10,7 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
     def __init__(
         self,
         allow_ppt_format: bool = None,
+        enable_event_callback: bool = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
@@ -20,6 +21,7 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
         structure_type: str = None,
     ):
         self.allow_ppt_format = allow_ppt_format
+        self.enable_event_callback = enable_event_callback
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
@@ -39,6 +41,9 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
             result = _map
         if self.allow_ppt_format is not None:
             result['AllowPptFormat'] = self.allow_ppt_format
+
+        if self.enable_event_callback is not None:
+            result['EnableEventCallback'] = self.enable_event_callback
 
         if self.file_name is not None:
             result['FileName'] = self.file_name
@@ -70,6 +75,9 @@ class SubmitDocStructureJobAdvanceRequest(DaraModel):
         m = m or dict()
         if m.get('AllowPptFormat') is not None:
             self.allow_ppt_format = m.get('AllowPptFormat')
+
+        if m.get('EnableEventCallback') is not None:
+            self.enable_event_callback = m.get('EnableEventCallback')
 
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')

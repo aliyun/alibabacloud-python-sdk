@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class SubmitConvertImageToPdfJobShrinkRequest(DaraModel):
     def __init__(
         self,
+        enable_event_callback: bool = None,
         image_name_extension: str = None,
         image_names_shrink: str = None,
         image_urls_shrink: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
     ):
+        self.enable_event_callback = enable_event_callback
         self.image_name_extension = image_name_extension
         self.image_names_shrink = image_names_shrink
         self.image_urls_shrink = image_urls_shrink
@@ -27,6 +29,9 @@ class SubmitConvertImageToPdfJobShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_event_callback is not None:
+            result['EnableEventCallback'] = self.enable_event_callback
+
         if self.image_name_extension is not None:
             result['ImageNameExtension'] = self.image_name_extension
 
@@ -46,6 +51,9 @@ class SubmitConvertImageToPdfJobShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableEventCallback') is not None:
+            self.enable_event_callback = m.get('EnableEventCallback')
+
         if m.get('ImageNameExtension') is not None:
             self.image_name_extension = m.get('ImageNameExtension')
 

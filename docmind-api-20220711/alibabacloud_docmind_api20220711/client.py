@@ -11,6 +11,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore
 from darabonba.core import DaraCore as DaraCore
+from darabonba.exceptions import UnretryableException
+from darabonba.policy.retry import RetryPolicyContext
 from darabonba.request import DaraRequest
 from darabonba.runtime import RuntimeOptions
 from darabonba.utils.form import FileField
@@ -93,73 +95,153 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         form: dict,
+        runtime: RuntimeOptions,
     ) -> dict:
-        _request = DaraRequest()
-        boundary = DaraForm.get_boundary()
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': str(form.get("host")),
-            'date': Utils.get_date_utcstring(),
-            'user-agent': Utils.get_user_agent('')
+        _runtime = {
+            'key': runtime.key or self._key,
+            'cert': runtime.cert or self._cert,
+            'ca': runtime.ca or self._ca,
+            'readTimeout': DaraCore.to_number(runtime.read_timeout or self._read_timeout),
+            'connectTimeout': DaraCore.to_number(runtime.connect_timeout or self._connect_timeout),
+            'httpProxy': runtime.http_proxy or self._http_proxy,
+            'httpsProxy': runtime.https_proxy or self._https_proxy,
+            'noProxy': runtime.no_proxy or self._no_proxy,
+            'socks5Proxy': runtime.socks_5proxy or self._socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work or self._socks_5net_work,
+            'maxIdleConns': DaraCore.to_number(runtime.max_idle_conns or self._max_idle_conns),
+            'retryOptions': self._retry_options,
+            'ignoreSSL': bool(runtime.ignore_ssl or False),
+            'tlsMinVersion': self._tls_min_version,
         }
-        _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
-        _request.body = DaraForm.to_file_form(form, boundary)
-        _last_request = _request
-        _response = DaraCore.do_action(_request)
-        resp_map = None
-        body_str = DaraStream.read_as_string(_response.body)
-        if (_response.status_code >= 400) and (_response.status_code < 600):
-            resp_map = DaraXML.parse_xml(body_str, None)
-            err = resp_map.get("Error")
-            raise open_api_exceptions.ClientException(
-                code = str(err.get("Code")),
-                message = str(err.get("Message")),
-                data = {
-                    'httpCode': _response.status_code,
-                    'requestId': str(err.get("RequestId")),
-                    'hostId': str(err.get("HostId"))
+        _last_request = None
+        _last_response = None
+        _retries_attempted = 0
+        _context = RetryPolicyContext(
+            retries_attempted= _retries_attempted
+        )
+        while DaraCore.should_retry(_runtime.get('retryOptions'), _context):
+            if _retries_attempted > 0:
+                _backoff_time = DaraCore.get_backoff_time(_runtime.get('retryOptions'), _context)
+                if _backoff_time > 0:
+                    DaraCore.sleep(_backoff_time)
+            _retries_attempted = _retries_attempted + 1
+            try:
+                _request = DaraRequest()
+                boundary = DaraForm.get_boundary()
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': str(form.get("host")),
+                    'date': Utils.get_date_utcstring(),
+                    'user-agent': Utils.get_user_agent('')
                 }
-            )
-        resp_map = DaraXML.parse_xml(body_str, None)
-        return DaraCore.merge({}, resp_map)
+                _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
+                _request.body = DaraForm.to_file_form(form, boundary)
+                _last_request = _request
+                _response = DaraCore.do_action(_request, _runtime)
+                _last_response = _response
+                resp_map = None
+                body_str = DaraStream.read_as_string(_response.body)
+                if (_response.status_code >= 400) and (_response.status_code < 600):
+                    resp_map = DaraXML.parse_xml(body_str, None)
+                    err = resp_map.get("Error")
+                    raise open_api_exceptions.ClientException(
+                        code = str(err.get("Code")),
+                        message = str(err.get("Message")),
+                        data = {
+                            'httpCode': _response.status_code,
+                            'requestId': str(err.get("RequestId")),
+                            'hostId': str(err.get("HostId"))
+                        }
+                    )
+                resp_map = DaraXML.parse_xml(body_str, None)
+                return DaraCore.merge({}, resp_map)
+            except Exception as e:
+                _context = RetryPolicyContext(
+                    retries_attempted= _retries_attempted,
+                    http_request = _last_request,
+                    http_response = _last_response,
+                    exception = e
+                )
+                continue
+        raise UnretryableException(_context)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         form: dict,
+        runtime: RuntimeOptions,
     ) -> dict:
-        _request = DaraRequest()
-        boundary = DaraForm.get_boundary()
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': str(form.get("host")),
-            'date': Utils.get_date_utcstring(),
-            'user-agent': Utils.get_user_agent('')
+        _runtime = {
+            'key': runtime.key or self._key,
+            'cert': runtime.cert or self._cert,
+            'ca': runtime.ca or self._ca,
+            'readTimeout': DaraCore.to_number(runtime.read_timeout or self._read_timeout),
+            'connectTimeout': DaraCore.to_number(runtime.connect_timeout or self._connect_timeout),
+            'httpProxy': runtime.http_proxy or self._http_proxy,
+            'httpsProxy': runtime.https_proxy or self._https_proxy,
+            'noProxy': runtime.no_proxy or self._no_proxy,
+            'socks5Proxy': runtime.socks_5proxy or self._socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work or self._socks_5net_work,
+            'maxIdleConns': DaraCore.to_number(runtime.max_idle_conns or self._max_idle_conns),
+            'retryOptions': self._retry_options,
+            'ignoreSSL': bool(runtime.ignore_ssl or False),
+            'tlsMinVersion': self._tls_min_version,
         }
-        _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
-        _request.body = DaraForm.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await DaraCore.async_do_action(_request)
-        resp_map = None
-        body_str = await DaraStream.read_as_string_async(_response.body)
-        if (_response.status_code >= 400) and (_response.status_code < 600):
-            resp_map = DaraXML.parse_xml(body_str, None)
-            err = resp_map.get("Error")
-            raise open_api_exceptions.ClientException(
-                code = str(err.get("Code")),
-                message = str(err.get("Message")),
-                data = {
-                    'httpCode': _response.status_code,
-                    'requestId': str(err.get("RequestId")),
-                    'hostId': str(err.get("HostId"))
+        _last_request = None
+        _last_response = None
+        _retries_attempted = 0
+        _context = RetryPolicyContext(
+            retries_attempted= _retries_attempted
+        )
+        while DaraCore.should_retry(_runtime.get('retryOptions'), _context):
+            if _retries_attempted > 0:
+                _backoff_time = DaraCore.get_backoff_time(_runtime.get('retryOptions'), _context)
+                if _backoff_time > 0:
+                    DaraCore.sleep(_backoff_time)
+            _retries_attempted = _retries_attempted + 1
+            try:
+                _request = DaraRequest()
+                boundary = DaraForm.get_boundary()
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': str(form.get("host")),
+                    'date': Utils.get_date_utcstring(),
+                    'user-agent': Utils.get_user_agent('')
                 }
-            )
-        resp_map = DaraXML.parse_xml(body_str, None)
-        return DaraCore.merge({}, resp_map)
+                _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
+                _request.body = DaraForm.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await DaraCore.async_do_action(_request, _runtime)
+                _last_response = _response
+                resp_map = None
+                body_str = await DaraStream.read_as_string_async(_response.body)
+                if (_response.status_code >= 400) and (_response.status_code < 600):
+                    resp_map = DaraXML.parse_xml(body_str, None)
+                    err = resp_map.get("Error")
+                    raise open_api_exceptions.ClientException(
+                        code = str(err.get("Code")),
+                        message = str(err.get("Message")),
+                        data = {
+                            'httpCode': _response.status_code,
+                            'requestId': str(err.get("RequestId")),
+                            'hostId': str(err.get("HostId"))
+                        }
+                    )
+                resp_map = DaraXML.parse_xml(body_str, None)
+                return DaraCore.merge({}, resp_map)
+            except Exception as e:
+                _context = RetryPolicyContext(
+                    retries_attempted= _retries_attempted,
+                    http_request = _last_request,
+                    http_response = _last_response,
+                    exception = e
+                )
+                continue
+        raise UnretryableException(_context)
 
     def get_endpoint(
         self,
@@ -273,11 +355,17 @@ class Client(OpenApiClient):
 
     def get_doc_parser_result_with_options(
         self,
-        request: main_models.GetDocParserResultRequest,
+        tmp_req: main_models.GetDocParserResultRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetDocParserResultResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GetDocParserResultShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exclude_fields):
+            request.exclude_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_fields, 'ExcludeFields', 'simple')
         query = {}
+        if not DaraCore.is_null(request.exclude_fields_shrink):
+            query['ExcludeFields'] = request.exclude_fields_shrink
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
         if not DaraCore.is_null(request.layout_num):
@@ -305,11 +393,17 @@ class Client(OpenApiClient):
 
     async def get_doc_parser_result_with_options_async(
         self,
-        request: main_models.GetDocParserResultRequest,
+        tmp_req: main_models.GetDocParserResultRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetDocParserResultResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GetDocParserResultShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exclude_fields):
+            request.exclude_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_fields, 'ExcludeFields', 'simple')
         query = {}
+        if not DaraCore.is_null(request.exclude_fields_shrink):
+            query['ExcludeFields'] = request.exclude_fields_shrink
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
         if not DaraCore.is_null(request.layout_num):
@@ -864,6 +958,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.image_urls):
             request.image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.force_merge_excel):
             query['ForceMergeExcel'] = request.force_merge_excel
         if not DaraCore.is_null(request.image_name_extension):
@@ -908,6 +1004,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.image_urls):
             request.image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.force_merge_excel):
             query['ForceMergeExcel'] = request.force_merge_excel
         if not DaraCore.is_null(request.image_name_extension):
@@ -1064,6 +1162,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.image_urls):
             request.image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.image_name_extension):
             query['ImageNameExtension'] = request.image_name_extension
         if not DaraCore.is_null(request.image_names_shrink):
@@ -1106,6 +1206,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.image_urls):
             request.image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.image_name_extension):
             query['ImageNameExtension'] = request.image_name_extension
         if not DaraCore.is_null(request.image_names_shrink):
@@ -1162,6 +1264,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.image_urls):
             request.image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.image_name_extension):
             query['ImageNameExtension'] = request.image_name_extension
         if not DaraCore.is_null(request.image_names_shrink):
@@ -1204,6 +1308,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.image_urls):
             request.image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.image_name_extension):
             query['ImageNameExtension'] = request.image_name_extension
         if not DaraCore.is_null(request.image_names_shrink):
@@ -1254,6 +1360,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitConvertPdfToExcelJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -1292,6 +1400,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitConvertPdfToExcelJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -1413,7 +1523,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_excel_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_excel_job_resp = self.submit_convert_pdf_to_excel_job_with_options(submit_convert_pdf_to_excel_job_req, runtime)
         return submit_convert_pdf_to_excel_job_resp
@@ -1494,7 +1604,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_excel_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_excel_job_resp = await self.submit_convert_pdf_to_excel_job_with_options_async(submit_convert_pdf_to_excel_job_req, runtime)
         return submit_convert_pdf_to_excel_job_resp
@@ -1506,6 +1616,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitConvertPdfToImageJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -1540,6 +1652,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitConvertPdfToImageJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -1657,7 +1771,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_image_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_image_job_resp = self.submit_convert_pdf_to_image_job_with_options(submit_convert_pdf_to_image_job_req, runtime)
         return submit_convert_pdf_to_image_job_resp
@@ -1738,7 +1852,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_image_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_image_job_resp = await self.submit_convert_pdf_to_image_job_with_options_async(submit_convert_pdf_to_image_job_req, runtime)
         return submit_convert_pdf_to_image_job_resp
@@ -1901,7 +2015,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_markdown_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_markdown_job_resp = self.submit_convert_pdf_to_markdown_job_with_options(submit_convert_pdf_to_markdown_job_req, runtime)
         return submit_convert_pdf_to_markdown_job_resp
@@ -1982,7 +2096,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_markdown_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_markdown_job_resp = await self.submit_convert_pdf_to_markdown_job_with_options_async(submit_convert_pdf_to_markdown_job_req, runtime)
         return submit_convert_pdf_to_markdown_job_resp
@@ -1994,6 +2108,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitConvertPdfToWordJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -2034,6 +2150,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitConvertPdfToWordJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -2157,7 +2275,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_word_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_word_job_resp = self.submit_convert_pdf_to_word_job_with_options(submit_convert_pdf_to_word_job_req, runtime)
         return submit_convert_pdf_to_word_job_resp
@@ -2238,7 +2356,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_convert_pdf_to_word_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_convert_pdf_to_word_job_resp = await self.submit_convert_pdf_to_word_job_with_options_async(submit_convert_pdf_to_word_job_req, runtime)
         return submit_convert_pdf_to_word_job_resp
@@ -2417,7 +2535,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_digital_doc_structure_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_digital_doc_structure_job_resp = self.submit_digital_doc_structure_job_with_options(submit_digital_doc_structure_job_req, runtime)
         return submit_digital_doc_structure_job_resp
@@ -2498,7 +2616,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_digital_doc_structure_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_digital_doc_structure_job_resp = await self.submit_digital_doc_structure_job_with_options_async(submit_digital_doc_structure_job_req, runtime)
         return submit_digital_doc_structure_job_resp
@@ -2520,6 +2638,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.custom_oss_config_shrink):
             query['CustomOssConfig'] = request.custom_oss_config_shrink
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.enhancement_mode):
             query['EnhancementMode'] = request.enhancement_mode
         if not DaraCore.is_null(request.file_name):
@@ -2584,6 +2704,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.custom_oss_config_shrink):
             query['CustomOssConfig'] = request.custom_oss_config_shrink
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.enhancement_mode):
             query['EnhancementMode'] = request.enhancement_mode
         if not DaraCore.is_null(request.file_name):
@@ -2721,7 +2843,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_doc_parser_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_doc_parser_job_resp = self.submit_doc_parser_job_with_options(submit_doc_parser_job_req, runtime)
         return submit_doc_parser_job_resp
@@ -2802,7 +2924,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_doc_parser_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_doc_parser_job_resp = await self.submit_doc_parser_job_with_options_async(submit_doc_parser_job_req, runtime)
         return submit_doc_parser_job_resp
@@ -2816,6 +2938,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.allow_ppt_format):
             query['AllowPptFormat'] = request.allow_ppt_format
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_name_extension):
@@ -2860,6 +2984,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.allow_ppt_format):
             query['AllowPptFormat'] = request.allow_ppt_format
+        if not DaraCore.is_null(request.enable_event_callback):
+            query['EnableEventCallback'] = request.enable_event_callback
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_name_extension):
@@ -2985,7 +3111,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_doc_structure_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_doc_structure_job_resp = self.submit_doc_structure_job_with_options(submit_doc_structure_job_req, runtime)
         return submit_doc_structure_job_resp
@@ -3066,7 +3192,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_doc_structure_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_doc_structure_job_resp = await self.submit_doc_structure_job_with_options_async(submit_doc_structure_job_req, runtime)
         return submit_doc_structure_job_resp
@@ -3233,7 +3359,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_document_extract_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_document_extract_job_resp = self.submit_document_extract_job_with_options(submit_document_extract_job_req, runtime)
         return submit_document_extract_job_resp
@@ -3314,7 +3440,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_document_extract_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_document_extract_job_resp = await self.submit_document_extract_job_with_options_async(submit_document_extract_job_req, runtime)
         return submit_document_extract_job_resp
@@ -3481,7 +3607,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_table_understanding_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_table_understanding_job_resp = self.submit_table_understanding_job_with_options(submit_table_understanding_job_req, runtime)
         return submit_table_understanding_job_resp
@@ -3562,7 +3688,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             submit_table_understanding_job_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         submit_table_understanding_job_resp = await self.submit_table_understanding_job_with_options_async(submit_table_understanding_job_req, runtime)
         return submit_table_understanding_job_resp

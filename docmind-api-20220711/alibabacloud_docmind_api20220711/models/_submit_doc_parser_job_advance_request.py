@@ -11,6 +11,7 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
     def __init__(
         self,
         custom_oss_config: main_models.SubmitDocParserJobAdvanceRequestCustomOssConfig = None,
+        enable_event_callback: bool = None,
         enhancement_mode: str = None,
         file_name: str = None,
         file_name_extension: str = None,
@@ -27,6 +28,7 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         page_index: str = None,
     ):
         self.custom_oss_config = custom_oss_config
+        self.enable_event_callback = enable_event_callback
         self.enhancement_mode = enhancement_mode
         self.file_name = file_name
         self.file_name_extension = file_name_extension
@@ -57,6 +59,9 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
             result = _map
         if self.custom_oss_config is not None:
             result['CustomOssConfig'] = self.custom_oss_config.to_map()
+
+        if self.enable_event_callback is not None:
+            result['EnableEventCallback'] = self.enable_event_callback
 
         if self.enhancement_mode is not None:
             result['EnhancementMode'] = self.enhancement_mode
@@ -107,6 +112,9 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         if m.get('CustomOssConfig') is not None:
             temp_model = main_models.SubmitDocParserJobAdvanceRequestCustomOssConfig()
             self.custom_oss_config = temp_model.from_map(m.get('CustomOssConfig'))
+
+        if m.get('EnableEventCallback') is not None:
+            self.enable_event_callback = m.get('EnableEventCallback')
 
         if m.get('EnhancementMode') is not None:
             self.enhancement_mode = m.get('EnhancementMode')

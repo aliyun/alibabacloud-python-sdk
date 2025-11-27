@@ -7,6 +7,7 @@ from ._aync_trade_document_package_extract_smart_app_shrink_request import AyncT
 from ._aync_trade_document_package_extract_smart_app_response_body import AyncTradeDocumentPackageExtractSmartAppResponseBody
 from ._aync_trade_document_package_extract_smart_app_response import AyncTradeDocumentPackageExtractSmartAppResponse
 from ._get_doc_parser_result_request import GetDocParserResultRequest
+from ._get_doc_parser_result_shrink_request import GetDocParserResultShrinkRequest
 from ._get_doc_parser_result_response_body import GetDocParserResultResponseBody
 from ._get_doc_parser_result_response import GetDocParserResultResponse
 from ._get_doc_structure_result_request import GetDocStructureResultRequest
@@ -111,6 +112,7 @@ __all__ = [
     AyncTradeDocumentPackageExtractSmartAppResponseBody,
     AyncTradeDocumentPackageExtractSmartAppResponse,
     GetDocParserResultRequest,
+    GetDocParserResultShrinkRequest,
     GetDocParserResultResponseBody,
     GetDocParserResultResponse,
     GetDocStructureResultRequest,

@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_docmind-api20220711.
+setup module for alibabacloud_docmind_api20220711.
 
-Created on 16/10/2025
+Created on 27/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_docmind_api20220711"
-NAME = "alibabacloud_docmind-api20220711"
+NAME = "alibabacloud_docmind_api20220711"
 DESCRIPTION = "Alibaba Cloud docmind-api (20220711) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
