@@ -1,3 +1,18 @@
+2025-11-27 Version: 3.5.0
+- Support API CreateBizTrace.
+- Support API DeleteBizTrace.
+- Support API GetAddon.
+- Support API GetAddonCodeTemplate.
+- Support API GetAddonSchema.
+- Support API GetBizTrace.
+- Support API GetIntegrationVersionForCS.
+- Support API ListAddons.
+- Support API ListBizTraces.
+- Support API ListIntegrationPolicyAddons.
+- Support API ListIntegrationPolicyCollectors.
+- Support API UpdateBizTrace.
+
+
 2025-11-26 Version: 3.4.0
 - Support API CreateCloudResource.
 - Support API DeleteCloudResource.

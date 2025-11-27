@@ -2131,6 +2131,39 @@ class AlertRuleNotificationFilter(TeaModel):
         return self
 
 
+class AlertRuleQueryEntityFields(TeaModel):
+    def __init__(
+        self,
+        field: str = None,
+        value: str = None,
+    ):
+        self.field = field
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['field'] = self.field
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class AlertRuleQueryEntityFilterFilters(TeaModel):
     def __init__(
         self,
@@ -2214,6 +2247,45 @@ class AlertRuleQueryEntityFilter(TeaModel):
                 self.filters.append(temp_model.from_map(k))
         if m.get('type') is not None:
             self.type = m.get('type')
+        return self
+
+
+class AlertRuleQueryLabelFilters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -2447,12 +2519,14 @@ class AlertRuleQuery(TeaModel):
         dimensions: List[Dict[str, str]] = None,
         domain: str = None,
         duration: int = None,
+        entity_fields: List[AlertRuleQueryEntityFields] = None,
         entity_filter: AlertRuleQueryEntityFilter = None,
         expr: str = None,
         first_join: AlertRuleSlsQueryJoin = None,
         group_field_list: List[str] = None,
         group_id: str = None,
         group_type: str = None,
+        label_filters: List[AlertRuleQueryLabelFilters] = None,
         metric: str = None,
         metric_set: str = None,
         namespace: str = None,
@@ -2466,12 +2540,14 @@ class AlertRuleQuery(TeaModel):
         self.dimensions = dimensions
         self.domain = domain
         self.duration = duration
+        self.entity_fields = entity_fields
         self.entity_filter = entity_filter
         self.expr = expr
         self.first_join = first_join
         self.group_field_list = group_field_list
         self.group_id = group_id
         self.group_type = group_type
+        self.label_filters = label_filters
         self.metric = metric
         self.metric_set = metric_set
         self.namespace = namespace
@@ -2485,10 +2561,18 @@ class AlertRuleQuery(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.entity_fields:
+            for k in self.entity_fields:
+                if k:
+                    k.validate()
         if self.entity_filter:
             self.entity_filter.validate()
         if self.first_join:
             self.first_join.validate()
+        if self.label_filters:
+            for k in self.label_filters:
+                if k:
+                    k.validate()
         if self.queries:
             for k in self.queries:
                 if k:
@@ -2510,6 +2594,10 @@ class AlertRuleQuery(TeaModel):
             result['domain'] = self.domain
         if self.duration is not None:
             result['duration'] = self.duration
+        result['entityFields'] = []
+        if self.entity_fields is not None:
+            for k in self.entity_fields:
+                result['entityFields'].append(k.to_map() if k else None)
         if self.entity_filter is not None:
             result['entityFilter'] = self.entity_filter.to_map()
         if self.expr is not None:
@@ -2522,6 +2610,10 @@ class AlertRuleQuery(TeaModel):
             result['groupId'] = self.group_id
         if self.group_type is not None:
             result['groupType'] = self.group_type
+        result['labelFilters'] = []
+        if self.label_filters is not None:
+            for k in self.label_filters:
+                result['labelFilters'].append(k.to_map() if k else None)
         if self.metric is not None:
             result['metric'] = self.metric
         if self.metric_set is not None:
@@ -2552,6 +2644,11 @@ class AlertRuleQuery(TeaModel):
             self.domain = m.get('domain')
         if m.get('duration') is not None:
             self.duration = m.get('duration')
+        self.entity_fields = []
+        if m.get('entityFields') is not None:
+            for k in m.get('entityFields'):
+                temp_model = AlertRuleQueryEntityFields()
+                self.entity_fields.append(temp_model.from_map(k))
         if m.get('entityFilter') is not None:
             temp_model = AlertRuleQueryEntityFilter()
             self.entity_filter = temp_model.from_map(m['entityFilter'])
@@ -2566,6 +2663,11 @@ class AlertRuleQuery(TeaModel):
             self.group_id = m.get('groupId')
         if m.get('groupType') is not None:
             self.group_type = m.get('groupType')
+        self.label_filters = []
+        if m.get('labelFilters') is not None:
+            for k in m.get('labelFilters'):
+                temp_model = AlertRuleQueryLabelFilters()
+                self.label_filters.append(temp_model.from_map(k))
         if m.get('metric') is not None:
             self.metric = m.get('metric')
         if m.get('metricSet') is not None:
@@ -8431,6 +8533,131 @@ class CreateAggTaskGroupResponse(TeaModel):
         return self
 
 
+class CreateBizTraceRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_config: str = None,
+        biz_trace_code: str = None,
+        biz_trace_name: str = None,
+        rule_config: str = None,
+        workspace: str = None,
+    ):
+        self.advanced_config = advanced_config
+        self.biz_trace_code = biz_trace_code
+        self.biz_trace_name = biz_trace_name
+        self.rule_config = rule_config
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_config is not None:
+            result['advancedConfig'] = self.advanced_config
+        if self.biz_trace_code is not None:
+            result['bizTraceCode'] = self.biz_trace_code
+        if self.biz_trace_name is not None:
+            result['bizTraceName'] = self.biz_trace_name
+        if self.rule_config is not None:
+            result['ruleConfig'] = self.rule_config
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('advancedConfig') is not None:
+            self.advanced_config = m.get('advancedConfig')
+        if m.get('bizTraceCode') is not None:
+            self.biz_trace_code = m.get('bizTraceCode')
+        if m.get('bizTraceName') is not None:
+            self.biz_trace_name = m.get('bizTraceName')
+        if m.get('ruleConfig') is not None:
+            self.rule_config = m.get('ruleConfig')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateBizTraceResponseBody(TeaModel):
+    def __init__(
+        self,
+        biz_trace_id: str = None,
+        request_id: str = None,
+    ):
+        self.biz_trace_id = biz_trace_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_trace_id is not None:
+            result['bizTraceId'] = self.biz_trace_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizTraceId') is not None:
+            self.biz_trace_id = m.get('bizTraceId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateBizTraceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBizTraceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBizTraceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCloudResourceResponseBody(TeaModel):
     def __init__(
         self,
@@ -10123,6 +10350,74 @@ class DeleteAggTaskGroupResponse(TeaModel):
         return self
 
 
+class DeleteBizTraceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteBizTraceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBizTraceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBizTraceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteCloudResourceResponseBody(TeaModel):
     def __init__(
         self,
@@ -11053,6 +11348,733 @@ class DescribeRegionsResponse(TeaModel):
         return self
 
 
+class GetAddonRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        version: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetAddonResponseBodyDataDashboards(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        url: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        version: str = None,
+    ):
+        self.group = group
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetAddonResponseBodyDataEnvironmentsDependencies(TeaModel):
+    def __init__(
+        self,
+        cluster_types: List[str] = None,
+        features: Dict[str, bool] = None,
+        services: List[str] = None,
+    ):
+        self.cluster_types = cluster_types
+        self.features = features
+        self.services = services
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_types is not None:
+            result['clusterTypes'] = self.cluster_types
+        if self.features is not None:
+            result['features'] = self.features
+        if self.services is not None:
+            result['services'] = self.services
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterTypes') is not None:
+            self.cluster_types = m.get('clusterTypes')
+        if m.get('features') is not None:
+            self.features = m.get('features')
+        if m.get('services') is not None:
+            self.services = m.get('services')
+        return self
+
+
+class GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule(TeaModel):
+    def __init__(
+        self,
+        prom_ql: List[str] = None,
+    ):
+        self.prom_ql = prom_ql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prom_ql is not None:
+            result['promQL'] = self.prom_ql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('promQL') is not None:
+            self.prom_ql = m.get('promQL')
+        return self
+
+
+class GetAddonResponseBodyDataEnvironmentsPoliciesProtocols(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        icon: str = None,
+        label: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.icon = icon
+        self.label = label
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetAddonResponseBodyDataEnvironmentsPolicies(TeaModel):
+    def __init__(
+        self,
+        alert_default_status: str = None,
+        default_install: bool = None,
+        enable_service_account: bool = None,
+        metric_check_rule: GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule = None,
+        need_restart_after_integration: bool = None,
+        protocols: List[GetAddonResponseBodyDataEnvironmentsPoliciesProtocols] = None,
+        target_addon_name: str = None,
+    ):
+        self.alert_default_status = alert_default_status
+        self.default_install = default_install
+        self.enable_service_account = enable_service_account
+        self.metric_check_rule = metric_check_rule
+        self.need_restart_after_integration = need_restart_after_integration
+        self.protocols = protocols
+        self.target_addon_name = target_addon_name
+
+    def validate(self):
+        if self.metric_check_rule:
+            self.metric_check_rule.validate()
+        if self.protocols:
+            for k in self.protocols:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_default_status is not None:
+            result['alertDefaultStatus'] = self.alert_default_status
+        if self.default_install is not None:
+            result['defaultInstall'] = self.default_install
+        if self.enable_service_account is not None:
+            result['enableServiceAccount'] = self.enable_service_account
+        if self.metric_check_rule is not None:
+            result['metricCheckRule'] = self.metric_check_rule.to_map()
+        if self.need_restart_after_integration is not None:
+            result['needRestartAfterIntegration'] = self.need_restart_after_integration
+        result['protocols'] = []
+        if self.protocols is not None:
+            for k in self.protocols:
+                result['protocols'].append(k.to_map() if k else None)
+        if self.target_addon_name is not None:
+            result['targetAddonName'] = self.target_addon_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertDefaultStatus') is not None:
+            self.alert_default_status = m.get('alertDefaultStatus')
+        if m.get('defaultInstall') is not None:
+            self.default_install = m.get('defaultInstall')
+        if m.get('enableServiceAccount') is not None:
+            self.enable_service_account = m.get('enableServiceAccount')
+        if m.get('metricCheckRule') is not None:
+            temp_model = GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule()
+            self.metric_check_rule = temp_model.from_map(m['metricCheckRule'])
+        if m.get('needRestartAfterIntegration') is not None:
+            self.need_restart_after_integration = m.get('needRestartAfterIntegration')
+        self.protocols = []
+        if m.get('protocols') is not None:
+            for k in m.get('protocols'):
+                temp_model = GetAddonResponseBodyDataEnvironmentsPoliciesProtocols()
+                self.protocols.append(temp_model.from_map(k))
+        if m.get('targetAddonName') is not None:
+            self.target_addon_name = m.get('targetAddonName')
+        return self
+
+
+class GetAddonResponseBodyDataEnvironments(TeaModel):
+    def __init__(
+        self,
+        common_schema_refs: List[GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs] = None,
+        dependencies: GetAddonResponseBodyDataEnvironmentsDependencies = None,
+        description: str = None,
+        enable: bool = None,
+        label: str = None,
+        name: str = None,
+        policies: GetAddonResponseBodyDataEnvironmentsPolicies = None,
+        policy_type: str = None,
+    ):
+        self.common_schema_refs = common_schema_refs
+        self.dependencies = dependencies
+        self.description = description
+        self.enable = enable
+        self.label = label
+        self.name = name
+        self.policies = policies
+        self.policy_type = policy_type
+
+    def validate(self):
+        if self.common_schema_refs:
+            for k in self.common_schema_refs:
+                if k:
+                    k.validate()
+        if self.dependencies:
+            self.dependencies.validate()
+        if self.policies:
+            self.policies.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['commonSchemaRefs'] = []
+        if self.common_schema_refs is not None:
+            for k in self.common_schema_refs:
+                result['commonSchemaRefs'].append(k.to_map() if k else None)
+        if self.dependencies is not None:
+            result['dependencies'] = self.dependencies.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policies is not None:
+            result['policies'] = self.policies.to_map()
+        if self.policy_type is not None:
+            result['policyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.common_schema_refs = []
+        if m.get('commonSchemaRefs') is not None:
+            for k in m.get('commonSchemaRefs'):
+                temp_model = GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs()
+                self.common_schema_refs.append(temp_model.from_map(k))
+        if m.get('dependencies') is not None:
+            temp_model = GetAddonResponseBodyDataEnvironmentsDependencies()
+            self.dependencies = temp_model.from_map(m['dependencies'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('policies') is not None:
+            temp_model = GetAddonResponseBodyDataEnvironmentsPolicies()
+            self.policies = temp_model.from_map(m['policies'])
+        if m.get('policyType') is not None:
+            self.policy_type = m.get('policyType')
+        return self
+
+
+class GetAddonResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        categories: List[str] = None,
+        dashboards: List[GetAddonResponseBodyDataDashboards] = None,
+        description: str = None,
+        environments: List[GetAddonResponseBodyDataEnvironments] = None,
+        icon: str = None,
+        keywords: List[str] = None,
+        language: str = None,
+        latest_release_create_time: str = None,
+        name: str = None,
+        once: bool = None,
+        scene: str = None,
+        version: str = None,
+        weight: str = None,
+    ):
+        self.alias = alias
+        self.categories = categories
+        self.dashboards = dashboards
+        self.description = description
+        self.environments = environments
+        self.icon = icon
+        self.keywords = keywords
+        self.language = language
+        self.latest_release_create_time = latest_release_create_time
+        self.name = name
+        self.once = once
+        self.scene = scene
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        if self.dashboards:
+            for k in self.dashboards:
+                if k:
+                    k.validate()
+        if self.environments:
+            for k in self.environments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.categories is not None:
+            result['categories'] = self.categories
+        result['dashboards'] = []
+        if self.dashboards is not None:
+            for k in self.dashboards:
+                result['dashboards'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['description'] = self.description
+        result['environments'] = []
+        if self.environments is not None:
+            for k in self.environments:
+                result['environments'].append(k.to_map() if k else None)
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.keywords is not None:
+            result['keywords'] = self.keywords
+        if self.language is not None:
+            result['language'] = self.language
+        if self.latest_release_create_time is not None:
+            result['latestReleaseCreateTime'] = self.latest_release_create_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.once is not None:
+            result['once'] = self.once
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('categories') is not None:
+            self.categories = m.get('categories')
+        self.dashboards = []
+        if m.get('dashboards') is not None:
+            for k in m.get('dashboards'):
+                temp_model = GetAddonResponseBodyDataDashboards()
+                self.dashboards.append(temp_model.from_map(k))
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        self.environments = []
+        if m.get('environments') is not None:
+            for k in m.get('environments'):
+                temp_model = GetAddonResponseBodyDataEnvironments()
+                self.environments.append(temp_model.from_map(k))
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('keywords') is not None:
+            self.keywords = m.get('keywords')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('latestReleaseCreateTime') is not None:
+            self.latest_release_create_time = m.get('latestReleaseCreateTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('once') is not None:
+            self.once = m.get('once')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAddonResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetAddonResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetAddonResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetAddonResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAddonResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAddonResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAddonCodeTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        environment_type: str = None,
+        version: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.environment_type = environment_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.environment_type is not None:
+            result['environmentType'] = self.environment_type
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('environmentType') is not None:
+            self.environment_type = m.get('environmentType')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetAddonCodeTemplateResponseBodyCodes(TeaModel):
+    def __init__(
+        self,
+        code_template: str = None,
+        name: str = None,
+    ):
+        self.code_template = code_template
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_template is not None:
+            result['codeTemplate'] = self.code_template
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('codeTemplate') is not None:
+            self.code_template = m.get('codeTemplate')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetAddonCodeTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        codes: List[GetAddonCodeTemplateResponseBodyCodes] = None,
+        request_id: str = None,
+    ):
+        self.codes = codes
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.codes:
+            for k in self.codes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['codes'] = []
+        if self.codes is not None:
+            for k in self.codes:
+                result['codes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.codes = []
+        if m.get('codes') is not None:
+            for k in m.get('codes'):
+                temp_model = GetAddonCodeTemplateResponseBodyCodes()
+                self.codes.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetAddonCodeTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAddonCodeTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAddonCodeTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAddonReleaseResponseBodyReleaseConditions(TeaModel):
     def __init__(
         self,
@@ -11401,6 +12423,429 @@ class GetAddonReleaseResponse(TeaModel):
         return self
 
 
+class GetAddonSchemaRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        environment_type: str = None,
+        version: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.environment_type = environment_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.environment_type is not None:
+            result['environmentType'] = self.environment_type
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('environmentType') is not None:
+            self.environment_type = m.get('environmentType')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetAddonSchemaResponseBodyFieldsConditions(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        field: str = None,
+        op: str = None,
+        value: Any = None,
+    ):
+        self.action = action
+        self.field = field
+        self.op = op
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.field is not None:
+            result['field'] = self.field
+        if self.op is not None:
+            result['op'] = self.op
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('field') is not None:
+            self.field = m.get('field')
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAddonSchemaResponseBodyFieldsPropsDataSource(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        value: str = None,
+    ):
+        self.label = label
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['label'] = self.label
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAddonSchemaResponseBodyFieldsProps(TeaModel):
+    def __init__(
+        self,
+        data_source: List[GetAddonSchemaResponseBodyFieldsPropsDataSource] = None,
+        related: List[str] = None,
+        select_mode: str = None,
+    ):
+        # AK
+        self.data_source = data_source
+        self.related = related
+        self.select_mode = select_mode
+
+    def validate(self):
+        if self.data_source:
+            for k in self.data_source:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dataSource'] = []
+        if self.data_source is not None:
+            for k in self.data_source:
+                result['dataSource'].append(k.to_map() if k else None)
+        if self.related is not None:
+            result['related'] = self.related
+        if self.select_mode is not None:
+            result['selectMode'] = self.select_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_source = []
+        if m.get('dataSource') is not None:
+            for k in m.get('dataSource'):
+                temp_model = GetAddonSchemaResponseBodyFieldsPropsDataSource()
+                self.data_source.append(temp_model.from_map(k))
+        if m.get('related') is not None:
+            self.related = m.get('related')
+        if m.get('selectMode') is not None:
+            self.select_mode = m.get('selectMode')
+        return self
+
+
+class GetAddonSchemaResponseBodyFieldsValidation(TeaModel):
+    def __init__(
+        self,
+        max: int = None,
+        max_length: int = None,
+        message: str = None,
+        min: int = None,
+        min_length: int = None,
+        regular: str = None,
+        required: bool = None,
+    ):
+        self.max = max
+        self.max_length = max_length
+        self.message = message
+        self.min = min
+        self.min_length = min_length
+        self.regular = regular
+        self.required = required
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max is not None:
+            result['max'] = self.max
+        if self.max_length is not None:
+            result['maxLength'] = self.max_length
+        if self.message is not None:
+            result['message'] = self.message
+        if self.min is not None:
+            result['min'] = self.min
+        if self.min_length is not None:
+            result['minLength'] = self.min_length
+        if self.regular is not None:
+            result['regular'] = self.regular
+        if self.required is not None:
+            result['required'] = self.required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('max') is not None:
+            self.max = m.get('max')
+        if m.get('maxLength') is not None:
+            self.max_length = m.get('maxLength')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('min') is not None:
+            self.min = m.get('min')
+        if m.get('minLength') is not None:
+            self.min_length = m.get('minLength')
+        if m.get('regular') is not None:
+            self.regular = m.get('regular')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        return self
+
+
+class GetAddonSchemaResponseBodyFields(TeaModel):
+    def __init__(
+        self,
+        conditions: List[GetAddonSchemaResponseBodyFieldsConditions] = None,
+        default_value: Any = None,
+        description: str = None,
+        disabled: bool = None,
+        element: str = None,
+        field_path: str = None,
+        label: str = None,
+        name: str = None,
+        placeholder: str = None,
+        props: GetAddonSchemaResponseBodyFieldsProps = None,
+        type: str = None,
+        validation: GetAddonSchemaResponseBodyFieldsValidation = None,
+    ):
+        self.conditions = conditions
+        self.default_value = default_value
+        self.description = description
+        self.disabled = disabled
+        self.element = element
+        self.field_path = field_path
+        self.label = label
+        self.name = name
+        self.placeholder = placeholder
+        self.props = props
+        self.type = type
+        self.validation = validation
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.props:
+            self.props.validate()
+        if self.validation:
+            self.validation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['conditions'].append(k.to_map() if k else None)
+        if self.default_value is not None:
+            result['defaultValue'] = self.default_value
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disabled is not None:
+            result['disabled'] = self.disabled
+        if self.element is not None:
+            result['element'] = self.element
+        if self.field_path is not None:
+            result['fieldPath'] = self.field_path
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        if self.placeholder is not None:
+            result['placeholder'] = self.placeholder
+        if self.props is not None:
+            result['props'] = self.props.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        if self.validation is not None:
+            result['validation'] = self.validation.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k in m.get('conditions'):
+                temp_model = GetAddonSchemaResponseBodyFieldsConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('defaultValue') is not None:
+            self.default_value = m.get('defaultValue')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('disabled') is not None:
+            self.disabled = m.get('disabled')
+        if m.get('element') is not None:
+            self.element = m.get('element')
+        if m.get('fieldPath') is not None:
+            self.field_path = m.get('fieldPath')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('placeholder') is not None:
+            self.placeholder = m.get('placeholder')
+        if m.get('props') is not None:
+            temp_model = GetAddonSchemaResponseBodyFieldsProps()
+            self.props = temp_model.from_map(m['props'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('validation') is not None:
+            temp_model = GetAddonSchemaResponseBodyFieldsValidation()
+            self.validation = temp_model.from_map(m['validation'])
+        return self
+
+
+class GetAddonSchemaResponseBody(TeaModel):
+    def __init__(
+        self,
+        fields: List[GetAddonSchemaResponseBodyFields] = None,
+        request_id: str = None,
+        type: str = None,
+    ):
+        self.fields = fields
+        self.request_id = request_id
+        self.type = type
+
+    def validate(self):
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['fields'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.fields = []
+        if m.get('fields') is not None:
+            for k in m.get('fields'):
+                temp_model = GetAddonSchemaResponseBodyFields()
+                self.fields.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAddonSchemaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAddonSchemaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAddonSchemaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAggTaskGroupResponseBodyAggTaskGroupTags(TeaModel):
     def __init__(
         self,
@@ -11693,6 +13138,82 @@ class GetAggTaskGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggTaskGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetBizTraceResponseBody(TeaModel):
+    def __init__(
+        self,
+        item: BizTraceConfig = None,
+        request_id: str = None,
+    ):
+        self.item = item
+        self.request_id = request_id
+
+    def validate(self):
+        if self.item:
+            self.item.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item is not None:
+            result['item'] = self.item.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('item') is not None:
+            temp_model = BizTraceConfig()
+            self.item = temp_model.from_map(m['item'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetBizTraceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBizTraceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBizTraceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13100,6 +14621,116 @@ class GetIntegrationPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetIntegrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIntegrationVersionForCSRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_type: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.cluster_type = cluster_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        if self.cluster_type is not None:
+            result['clusterType'] = self.cluster_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        if m.get('clusterType') is not None:
+            self.cluster_type = m.get('clusterType')
+        return self
+
+
+class GetIntegrationVersionForCSResponseBody(TeaModel):
+    def __init__(
+        self,
+        integration_version: str = None,
+        request_id: str = None,
+    ):
+        self.integration_version = integration_version
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.integration_version is not None:
+            result['integrationVersion'] = self.integration_version
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('integrationVersion') is not None:
+            self.integration_version = m.get('integrationVersion')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetIntegrationVersionForCSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIntegrationVersionForCSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIntegrationVersionForCSResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15419,6 +17050,596 @@ class ListAddonReleasesResponse(TeaModel):
         return self
 
 
+class ListAddonsRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        category: str = None,
+        regexp: bool = None,
+        search: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.category = category
+        self.regexp = regexp
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.category is not None:
+            result['category'] = self.category
+        if self.regexp is not None:
+            result['regexp'] = self.regexp
+        if self.search is not None:
+            result['search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('regexp') is not None:
+            self.regexp = m.get('regexp')
+        if m.get('search') is not None:
+            self.search = m.get('search')
+        return self
+
+
+class ListAddonsResponseBodyAddonsDashboards(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        url: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        version: str = None,
+    ):
+        self.group = group
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class ListAddonsResponseBodyAddonsEnvironmentsDependencies(TeaModel):
+    def __init__(
+        self,
+        cluster_types: List[str] = None,
+        features: Dict[str, bool] = None,
+        services: List[str] = None,
+    ):
+        self.cluster_types = cluster_types
+        self.features = features
+        self.services = services
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_types is not None:
+            result['clusterTypes'] = self.cluster_types
+        if self.features is not None:
+            result['features'] = self.features
+        if self.services is not None:
+            result['services'] = self.services
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterTypes') is not None:
+            self.cluster_types = m.get('clusterTypes')
+        if m.get('features') is not None:
+            self.features = m.get('features')
+        if m.get('services') is not None:
+            self.services = m.get('services')
+        return self
+
+
+class ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule(TeaModel):
+    def __init__(
+        self,
+        prom_ql: List[str] = None,
+    ):
+        self.prom_ql = prom_ql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prom_ql is not None:
+            result['promQL'] = self.prom_ql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('promQL') is not None:
+            self.prom_ql = m.get('promQL')
+        return self
+
+
+class ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        icon: str = None,
+        label: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.icon = icon
+        self.label = label
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListAddonsResponseBodyAddonsEnvironmentsPolicies(TeaModel):
+    def __init__(
+        self,
+        alert_default_status: str = None,
+        default_install: bool = None,
+        enable_service_account: bool = None,
+        metric_check_rule: ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule = None,
+        need_restart_after_integration: bool = None,
+        protocols: List[ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols] = None,
+        target_addon_name: str = None,
+    ):
+        self.alert_default_status = alert_default_status
+        self.default_install = default_install
+        self.enable_service_account = enable_service_account
+        self.metric_check_rule = metric_check_rule
+        self.need_restart_after_integration = need_restart_after_integration
+        self.protocols = protocols
+        self.target_addon_name = target_addon_name
+
+    def validate(self):
+        if self.metric_check_rule:
+            self.metric_check_rule.validate()
+        if self.protocols:
+            for k in self.protocols:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_default_status is not None:
+            result['alertDefaultStatus'] = self.alert_default_status
+        if self.default_install is not None:
+            result['defaultInstall'] = self.default_install
+        if self.enable_service_account is not None:
+            result['enableServiceAccount'] = self.enable_service_account
+        if self.metric_check_rule is not None:
+            result['metricCheckRule'] = self.metric_check_rule.to_map()
+        if self.need_restart_after_integration is not None:
+            result['needRestartAfterIntegration'] = self.need_restart_after_integration
+        result['protocols'] = []
+        if self.protocols is not None:
+            for k in self.protocols:
+                result['protocols'].append(k.to_map() if k else None)
+        if self.target_addon_name is not None:
+            result['targetAddonName'] = self.target_addon_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertDefaultStatus') is not None:
+            self.alert_default_status = m.get('alertDefaultStatus')
+        if m.get('defaultInstall') is not None:
+            self.default_install = m.get('defaultInstall')
+        if m.get('enableServiceAccount') is not None:
+            self.enable_service_account = m.get('enableServiceAccount')
+        if m.get('metricCheckRule') is not None:
+            temp_model = ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule()
+            self.metric_check_rule = temp_model.from_map(m['metricCheckRule'])
+        if m.get('needRestartAfterIntegration') is not None:
+            self.need_restart_after_integration = m.get('needRestartAfterIntegration')
+        self.protocols = []
+        if m.get('protocols') is not None:
+            for k in m.get('protocols'):
+                temp_model = ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols()
+                self.protocols.append(temp_model.from_map(k))
+        if m.get('targetAddonName') is not None:
+            self.target_addon_name = m.get('targetAddonName')
+        return self
+
+
+class ListAddonsResponseBodyAddonsEnvironments(TeaModel):
+    def __init__(
+        self,
+        common_schema_refs: List[ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs] = None,
+        dependencies: ListAddonsResponseBodyAddonsEnvironmentsDependencies = None,
+        description: str = None,
+        enable: bool = None,
+        label: str = None,
+        name: str = None,
+        policies: ListAddonsResponseBodyAddonsEnvironmentsPolicies = None,
+        policy_type: str = None,
+    ):
+        self.common_schema_refs = common_schema_refs
+        self.dependencies = dependencies
+        self.description = description
+        self.enable = enable
+        self.label = label
+        self.name = name
+        self.policies = policies
+        self.policy_type = policy_type
+
+    def validate(self):
+        if self.common_schema_refs:
+            for k in self.common_schema_refs:
+                if k:
+                    k.validate()
+        if self.dependencies:
+            self.dependencies.validate()
+        if self.policies:
+            self.policies.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['commonSchemaRefs'] = []
+        if self.common_schema_refs is not None:
+            for k in self.common_schema_refs:
+                result['commonSchemaRefs'].append(k.to_map() if k else None)
+        if self.dependencies is not None:
+            result['dependencies'] = self.dependencies.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policies is not None:
+            result['policies'] = self.policies.to_map()
+        if self.policy_type is not None:
+            result['policyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.common_schema_refs = []
+        if m.get('commonSchemaRefs') is not None:
+            for k in m.get('commonSchemaRefs'):
+                temp_model = ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs()
+                self.common_schema_refs.append(temp_model.from_map(k))
+        if m.get('dependencies') is not None:
+            temp_model = ListAddonsResponseBodyAddonsEnvironmentsDependencies()
+            self.dependencies = temp_model.from_map(m['dependencies'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('policies') is not None:
+            temp_model = ListAddonsResponseBodyAddonsEnvironmentsPolicies()
+            self.policies = temp_model.from_map(m['policies'])
+        if m.get('policyType') is not None:
+            self.policy_type = m.get('policyType')
+        return self
+
+
+class ListAddonsResponseBodyAddons(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        categories: List[str] = None,
+        dashboards: List[ListAddonsResponseBodyAddonsDashboards] = None,
+        description: str = None,
+        environments: List[ListAddonsResponseBodyAddonsEnvironments] = None,
+        icon: str = None,
+        keywords: List[str] = None,
+        language: str = None,
+        latest_release_create_time: str = None,
+        name: str = None,
+        once: bool = None,
+        scene: str = None,
+        version: str = None,
+        weight: str = None,
+    ):
+        self.alias = alias
+        self.categories = categories
+        self.dashboards = dashboards
+        self.description = description
+        self.environments = environments
+        self.icon = icon
+        self.keywords = keywords
+        self.language = language
+        self.latest_release_create_time = latest_release_create_time
+        self.name = name
+        self.once = once
+        self.scene = scene
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        if self.dashboards:
+            for k in self.dashboards:
+                if k:
+                    k.validate()
+        if self.environments:
+            for k in self.environments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.categories is not None:
+            result['categories'] = self.categories
+        result['dashboards'] = []
+        if self.dashboards is not None:
+            for k in self.dashboards:
+                result['dashboards'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['description'] = self.description
+        result['environments'] = []
+        if self.environments is not None:
+            for k in self.environments:
+                result['environments'].append(k.to_map() if k else None)
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.keywords is not None:
+            result['keywords'] = self.keywords
+        if self.language is not None:
+            result['language'] = self.language
+        if self.latest_release_create_time is not None:
+            result['latestReleaseCreateTime'] = self.latest_release_create_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.once is not None:
+            result['once'] = self.once
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('categories') is not None:
+            self.categories = m.get('categories')
+        self.dashboards = []
+        if m.get('dashboards') is not None:
+            for k in m.get('dashboards'):
+                temp_model = ListAddonsResponseBodyAddonsDashboards()
+                self.dashboards.append(temp_model.from_map(k))
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        self.environments = []
+        if m.get('environments') is not None:
+            for k in m.get('environments'):
+                temp_model = ListAddonsResponseBodyAddonsEnvironments()
+                self.environments.append(temp_model.from_map(k))
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('keywords') is not None:
+            self.keywords = m.get('keywords')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('latestReleaseCreateTime') is not None:
+            self.latest_release_create_time = m.get('latestReleaseCreateTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('once') is not None:
+            self.once = m.get('once')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class ListAddonsResponseBody(TeaModel):
+    def __init__(
+        self,
+        addons: List[ListAddonsResponseBodyAddons] = None,
+        request_id: str = None,
+    ):
+        self.addons = addons
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.addons:
+            for k in self.addons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['addons'] = []
+        if self.addons is not None:
+            for k in self.addons:
+                result['addons'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.addons = []
+        if m.get('addons') is not None:
+            for k in m.get('addons'):
+                temp_model = ListAddonsResponseBodyAddons()
+                self.addons.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListAddonsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAddonsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAddonsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAggTaskGroupsRequestTags(TeaModel):
     def __init__(
         self,
@@ -16602,6 +18823,145 @@ class ListAlertActionsResponse(TeaModel):
         return self
 
 
+class ListBizTracesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        workspace: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListBizTracesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[BizTraceConfig] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.items = items
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = BizTraceConfig()
+                self.items.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListBizTracesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBizTracesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBizTracesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListIntegrationPoliciesRequestTag(TeaModel):
     def __init__(
         self,
@@ -17692,6 +20052,905 @@ class ListIntegrationPoliciesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListIntegrationPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddonsDashboards(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        url: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies(TeaModel):
+    def __init__(
+        self,
+        cluster_types: List[str] = None,
+        features: Dict[str, bool] = None,
+        services: List[str] = None,
+    ):
+        self.cluster_types = cluster_types
+        self.features = features
+        self.services = services
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_types is not None:
+            result['clusterTypes'] = self.cluster_types
+        if self.features is not None:
+            result['features'] = self.features
+        if self.services is not None:
+            result['services'] = self.services
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterTypes') is not None:
+            self.cluster_types = m.get('clusterTypes')
+        if m.get('features') is not None:
+            self.features = m.get('features')
+        if m.get('services') is not None:
+            self.services = m.get('services')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule(TeaModel):
+    def __init__(
+        self,
+        prom_ql: List[str] = None,
+    ):
+        self.prom_ql = prom_ql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prom_ql is not None:
+            result['promQl'] = self.prom_ql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('promQl') is not None:
+            self.prom_ql = m.get('promQl')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        icon: str = None,
+        label: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.icon = icon
+        self.label = label
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies(TeaModel):
+    def __init__(
+        self,
+        alert_default_status: str = None,
+        default_install: bool = None,
+        enable_service_account: bool = None,
+        metric_check_rule: ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule = None,
+        need_restart_after_integration: bool = None,
+        protocols: List[ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols] = None,
+        target_addon_name: str = None,
+    ):
+        self.alert_default_status = alert_default_status
+        self.default_install = default_install
+        self.enable_service_account = enable_service_account
+        self.metric_check_rule = metric_check_rule
+        self.need_restart_after_integration = need_restart_after_integration
+        self.protocols = protocols
+        self.target_addon_name = target_addon_name
+
+    def validate(self):
+        if self.metric_check_rule:
+            self.metric_check_rule.validate()
+        if self.protocols:
+            for k in self.protocols:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_default_status is not None:
+            result['alertDefaultStatus'] = self.alert_default_status
+        if self.default_install is not None:
+            result['defaultInstall'] = self.default_install
+        if self.enable_service_account is not None:
+            result['enableServiceAccount'] = self.enable_service_account
+        if self.metric_check_rule is not None:
+            result['metricCheckRule'] = self.metric_check_rule.to_map()
+        if self.need_restart_after_integration is not None:
+            result['needRestartAfterIntegration'] = self.need_restart_after_integration
+        result['protocols'] = []
+        if self.protocols is not None:
+            for k in self.protocols:
+                result['protocols'].append(k.to_map() if k else None)
+        if self.target_addon_name is not None:
+            result['targetAddonName'] = self.target_addon_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertDefaultStatus') is not None:
+            self.alert_default_status = m.get('alertDefaultStatus')
+        if m.get('defaultInstall') is not None:
+            self.default_install = m.get('defaultInstall')
+        if m.get('enableServiceAccount') is not None:
+            self.enable_service_account = m.get('enableServiceAccount')
+        if m.get('metricCheckRule') is not None:
+            temp_model = ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule()
+            self.metric_check_rule = temp_model.from_map(m['metricCheckRule'])
+        if m.get('needRestartAfterIntegration') is not None:
+            self.need_restart_after_integration = m.get('needRestartAfterIntegration')
+        self.protocols = []
+        if m.get('protocols') is not None:
+            for k in m.get('protocols'):
+                temp_model = ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols()
+                self.protocols.append(temp_model.from_map(k))
+        if m.get('targetAddonName') is not None:
+            self.target_addon_name = m.get('targetAddonName')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments(TeaModel):
+    def __init__(
+        self,
+        dependencies: ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies = None,
+        description: str = None,
+        enable: bool = None,
+        label: str = None,
+        name: str = None,
+        policies: ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies = None,
+    ):
+        self.dependencies = dependencies
+        self.description = description
+        self.enable = enable
+        self.label = label
+        self.name = name
+        self.policies = policies
+
+    def validate(self):
+        if self.dependencies:
+            self.dependencies.validate()
+        if self.policies:
+            self.policies.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dependencies is not None:
+            result['dependencies'] = self.dependencies.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        if self.policies is not None:
+            result['policies'] = self.policies.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dependencies') is not None:
+            temp_model = ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies()
+            self.dependencies = temp_model.from_map(m['dependencies'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('policies') is not None:
+            temp_model = ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies()
+            self.policies = temp_model.from_map(m['policies'])
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBodyAddons(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        categories: List[str] = None,
+        dashboards: List[ListIntegrationPolicyAddonsResponseBodyAddonsDashboards] = None,
+        description: str = None,
+        environments: List[ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments] = None,
+        icon: str = None,
+        keywords: List[str] = None,
+        language: str = None,
+        latest_release_create_time: str = None,
+        name: str = None,
+        once: bool = None,
+        scene: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.alias = alias
+        self.categories = categories
+        self.dashboards = dashboards
+        self.description = description
+        self.environments = environments
+        self.icon = icon
+        self.keywords = keywords
+        self.language = language
+        self.latest_release_create_time = latest_release_create_time
+        self.name = name
+        self.once = once
+        self.scene = scene
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        if self.dashboards:
+            for k in self.dashboards:
+                if k:
+                    k.validate()
+        if self.environments:
+            for k in self.environments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.categories is not None:
+            result['categories'] = self.categories
+        result['dashboards'] = []
+        if self.dashboards is not None:
+            for k in self.dashboards:
+                result['dashboards'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['description'] = self.description
+        result['environments'] = []
+        if self.environments is not None:
+            for k in self.environments:
+                result['environments'].append(k.to_map() if k else None)
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.keywords is not None:
+            result['keywords'] = self.keywords
+        if self.language is not None:
+            result['language'] = self.language
+        if self.latest_release_create_time is not None:
+            result['latestReleaseCreateTime'] = self.latest_release_create_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.once is not None:
+            result['once'] = self.once
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('categories') is not None:
+            self.categories = m.get('categories')
+        self.dashboards = []
+        if m.get('dashboards') is not None:
+            for k in m.get('dashboards'):
+                temp_model = ListIntegrationPolicyAddonsResponseBodyAddonsDashboards()
+                self.dashboards.append(temp_model.from_map(k))
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        self.environments = []
+        if m.get('environments') is not None:
+            for k in m.get('environments'):
+                temp_model = ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments()
+                self.environments.append(temp_model.from_map(k))
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('keywords') is not None:
+            self.keywords = m.get('keywords')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('latestReleaseCreateTime') is not None:
+            self.latest_release_create_time = m.get('latestReleaseCreateTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('once') is not None:
+            self.once = m.get('once')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponseBody(TeaModel):
+    def __init__(
+        self,
+        addons: List[ListIntegrationPolicyAddonsResponseBodyAddons] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.addons = addons
+        # Id of the request
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.addons:
+            for k in self.addons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['addons'] = []
+        if self.addons is not None:
+            for k in self.addons:
+                result['addons'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.addons = []
+        if m.get('addons') is not None:
+            for k in m.get('addons'):
+                temp_model = ListIntegrationPolicyAddonsResponseBodyAddons()
+                self.addons.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListIntegrationPolicyAddonsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIntegrationPolicyAddonsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIntegrationPolicyAddonsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIntegrationPolicyCollectorsRequest(TeaModel):
+    def __init__(
+        self,
+        addon_release_name: str = None,
+        collector_type: str = None,
+        language: str = None,
+    ):
+        self.addon_release_name = addon_release_name
+        # This parameter is required.
+        self.collector_type = collector_type
+        self.language = language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_release_name is not None:
+            result['addonReleaseName'] = self.addon_release_name
+        if self.collector_type is not None:
+            result['collectorType'] = self.collector_type
+        if self.language is not None:
+            result['language'] = self.language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonReleaseName') is not None:
+            self.addon_release_name = m.get('addonReleaseName')
+        if m.get('collectorType') is not None:
+            self.collector_type = m.get('collectorType')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        return self
+
+
+class ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions(TeaModel):
+    def __init__(
+        self,
+        first_transition_time: str = None,
+        last_transition_time: str = None,
+        message: str = None,
+        reason: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.first_transition_time = first_transition_time
+        self.last_transition_time = last_transition_time
+        self.message = message
+        self.reason = reason
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.first_transition_time is not None:
+            result['firstTransitionTime'] = self.first_transition_time
+        if self.last_transition_time is not None:
+            result['lastTransitionTime'] = self.last_transition_time
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('firstTransitionTime') is not None:
+            self.first_transition_time = m.get('firstTransitionTime')
+        if m.get('lastTransitionTime') is not None:
+            self.last_transition_time = m.get('lastTransitionTime')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+        vswitch_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        return self
+
+
+class ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads(TeaModel):
+    def __init__(
+        self,
+        host_ip: str = None,
+        ip: str = None,
+        managed: bool = None,
+        managed_info: ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo = None,
+        message: str = None,
+        name: str = None,
+        namespace: str = None,
+        owner_reference_kind: str = None,
+        owner_reference_name: str = None,
+        start_time: str = None,
+        status: str = None,
+        version: str = None,
+    ):
+        self.host_ip = host_ip
+        self.ip = ip
+        self.managed = managed
+        self.managed_info = managed_info
+        self.message = message
+        self.name = name
+        self.namespace = namespace
+        self.owner_reference_kind = owner_reference_kind
+        self.owner_reference_name = owner_reference_name
+        self.start_time = start_time
+        self.status = status
+        self.version = version
+
+    def validate(self):
+        if self.managed_info:
+            self.managed_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_ip is not None:
+            result['hostIp'] = self.host_ip
+        if self.ip is not None:
+            result['ip'] = self.ip
+        if self.managed is not None:
+            result['managed'] = self.managed
+        if self.managed_info is not None:
+            result['managedInfo'] = self.managed_info.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.owner_reference_kind is not None:
+            result['ownerReferenceKind'] = self.owner_reference_kind
+        if self.owner_reference_name is not None:
+            result['ownerReferenceName'] = self.owner_reference_name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hostIp') is not None:
+            self.host_ip = m.get('hostIp')
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        if m.get('managed') is not None:
+            self.managed = m.get('managed')
+        if m.get('managedInfo') is not None:
+            temp_model = ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo()
+            self.managed_info = temp_model.from_map(m['managedInfo'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('ownerReferenceKind') is not None:
+            self.owner_reference_kind = m.get('ownerReferenceKind')
+        if m.get('ownerReferenceName') is not None:
+            self.owner_reference_name = m.get('ownerReferenceName')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class ListIntegrationPolicyCollectorsResponseBodyCollectors(TeaModel):
+    def __init__(
+        self,
+        addon_meta: AddonMeta = None,
+        collector_name: str = None,
+        collector_type: str = None,
+        conditions: List[ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions] = None,
+        managed: bool = None,
+        release_name: str = None,
+        state: str = None,
+        version: str = None,
+        workloads: List[ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads] = None,
+    ):
+        self.addon_meta = addon_meta
+        self.collector_name = collector_name
+        self.collector_type = collector_type
+        self.conditions = conditions
+        self.managed = managed
+        self.release_name = release_name
+        self.state = state
+        self.version = version
+        self.workloads = workloads
+
+    def validate(self):
+        if self.addon_meta:
+            self.addon_meta.validate()
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.workloads:
+            for k in self.workloads:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_meta is not None:
+            result['addonMeta'] = self.addon_meta.to_map()
+        if self.collector_name is not None:
+            result['collectorName'] = self.collector_name
+        if self.collector_type is not None:
+            result['collectorType'] = self.collector_type
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['conditions'].append(k.to_map() if k else None)
+        if self.managed is not None:
+            result['managed'] = self.managed
+        if self.release_name is not None:
+            result['releaseName'] = self.release_name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.version is not None:
+            result['version'] = self.version
+        result['workloads'] = []
+        if self.workloads is not None:
+            for k in self.workloads:
+                result['workloads'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonMeta') is not None:
+            temp_model = AddonMeta()
+            self.addon_meta = temp_model.from_map(m['addonMeta'])
+        if m.get('collectorName') is not None:
+            self.collector_name = m.get('collectorName')
+        if m.get('collectorType') is not None:
+            self.collector_type = m.get('collectorType')
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k in m.get('conditions'):
+                temp_model = ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('managed') is not None:
+            self.managed = m.get('managed')
+        if m.get('releaseName') is not None:
+            self.release_name = m.get('releaseName')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        self.workloads = []
+        if m.get('workloads') is not None:
+            for k in m.get('workloads'):
+                temp_model = ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads()
+                self.workloads.append(temp_model.from_map(k))
+        return self
+
+
+class ListIntegrationPolicyCollectorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        collectors: List[ListIntegrationPolicyCollectorsResponseBodyCollectors] = None,
+        request_id: str = None,
+    ):
+        self.collectors = collectors
+        self.request_id = request_id
+
+    def validate(self):
+        if self.collectors:
+            for k in self.collectors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['collectors'] = []
+        if self.collectors is not None:
+            for k in self.collectors:
+                result['collectors'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.collectors = []
+        if m.get('collectors') is not None:
+            for k in m.get('collectors'):
+                temp_model = ListIntegrationPolicyCollectorsResponseBodyCollectors()
+                self.collectors.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListIntegrationPolicyCollectorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIntegrationPolicyCollectorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIntegrationPolicyCollectorsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21782,6 +25041,125 @@ class UpdateAggTaskGroupStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAggTaskGroupStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateBizTraceRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_config: str = None,
+        biz_trace_name: str = None,
+        rule_config: str = None,
+        workspace: str = None,
+    ):
+        self.advanced_config = advanced_config
+        self.biz_trace_name = biz_trace_name
+        self.rule_config = rule_config
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_config is not None:
+            result['advancedConfig'] = self.advanced_config
+        if self.biz_trace_name is not None:
+            result['bizTraceName'] = self.biz_trace_name
+        if self.rule_config is not None:
+            result['ruleConfig'] = self.rule_config
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('advancedConfig') is not None:
+            self.advanced_config = m.get('advancedConfig')
+        if m.get('bizTraceName') is not None:
+            self.biz_trace_name = m.get('bizTraceName')
+        if m.get('ruleConfig') is not None:
+            self.rule_config = m.get('ruleConfig')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateBizTraceResponseBody(TeaModel):
+    def __init__(
+        self,
+        biz_trace_id: str = None,
+        request_id: str = None,
+    ):
+        self.biz_trace_id = biz_trace_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_trace_id is not None:
+            result['bizTraceId'] = self.biz_trace_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizTraceId') is not None:
+            self.biz_trace_id = m.get('bizTraceId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateBizTraceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateBizTraceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateBizTraceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

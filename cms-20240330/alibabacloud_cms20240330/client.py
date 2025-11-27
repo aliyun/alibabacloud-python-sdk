@@ -369,6 +369,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_agg_task_group_with_options_async(instance_id, request, headers, runtime)
 
+    def create_biz_trace_with_options(
+        self,
+        request: cms_20240330_models.CreateBizTraceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateBizTraceResponse:
+        """
+        @summary 创建业务链路
+        
+        @param request: CreateBizTraceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBizTraceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_config):
+            body['advancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.biz_trace_code):
+            body['bizTraceCode'] = request.biz_trace_code
+        if not UtilClient.is_unset(request.biz_trace_name):
+            body['bizTraceName'] = request.biz_trace_name
+        if not UtilClient.is_unset(request.rule_config):
+            body['ruleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateBizTraceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_biz_trace_with_options_async(
+        self,
+        request: cms_20240330_models.CreateBizTraceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.CreateBizTraceResponse:
+        """
+        @summary 创建业务链路
+        
+        @param request: CreateBizTraceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBizTraceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_config):
+            body['advancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.biz_trace_code):
+            body['bizTraceCode'] = request.biz_trace_code
+        if not UtilClient.is_unset(request.biz_trace_name):
+            body['bizTraceName'] = request.biz_trace_name
+        if not UtilClient.is_unset(request.rule_config):
+            body['ruleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.CreateBizTraceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_biz_trace(
+        self,
+        request: cms_20240330_models.CreateBizTraceRequest,
+    ) -> cms_20240330_models.CreateBizTraceResponse:
+        """
+        @summary 创建业务链路
+        
+        @param request: CreateBizTraceRequest
+        @return: CreateBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_biz_trace_with_options(request, headers, runtime)
+
+    async def create_biz_trace_async(
+        self,
+        request: cms_20240330_models.CreateBizTraceRequest,
+    ) -> cms_20240330_models.CreateBizTraceResponse:
+        """
+        @summary 创建业务链路
+        
+        @param request: CreateBizTraceRequest
+        @return: CreateBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_biz_trace_with_options_async(request, headers, runtime)
+
     def create_cloud_resource_with_options(
         self,
         headers: Dict[str, str],
@@ -1647,6 +1767,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
 
+    def delete_biz_trace_with_options(
+        self,
+        biz_trace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteBizTraceResponse:
+        """
+        @summary 删除业务链路
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBizTraceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace/{OpenApiUtilClient.get_encode_param(biz_trace_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteBizTraceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_biz_trace_with_options_async(
+        self,
+        biz_trace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.DeleteBizTraceResponse:
+        """
+        @summary 删除业务链路
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBizTraceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace/{OpenApiUtilClient.get_encode_param(biz_trace_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.DeleteBizTraceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_biz_trace(
+        self,
+        biz_trace_id: str,
+    ) -> cms_20240330_models.DeleteBizTraceResponse:
+        """
+        @summary 删除业务链路
+        
+        @return: DeleteBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_biz_trace_with_options(biz_trace_id, headers, runtime)
+
+    async def delete_biz_trace_async(
+        self,
+        biz_trace_id: str,
+    ) -> cms_20240330_models.DeleteBizTraceResponse:
+        """
+        @summary 删除业务链路
+        
+        @return: DeleteBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_biz_trace_with_options_async(biz_trace_id, headers, runtime)
+
     def delete_cloud_resource_with_options(
         self,
         headers: Dict[str, str],
@@ -2741,6 +2951,234 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
 
+    def get_addon_with_options(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetAddonResponse:
+        """
+        @summary 插件详情(Addon)
+        
+        @param request: GetAddonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAddonResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAddon',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons/{OpenApiUtilClient.get_encode_param(addon_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetAddonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_addon_with_options_async(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetAddonResponse:
+        """
+        @summary 插件详情(Addon)
+        
+        @param request: GetAddonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAddonResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAddon',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons/{OpenApiUtilClient.get_encode_param(addon_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetAddonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_addon(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonRequest,
+    ) -> cms_20240330_models.GetAddonResponse:
+        """
+        @summary 插件详情(Addon)
+        
+        @param request: GetAddonRequest
+        @return: GetAddonResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_addon_with_options(addon_name, request, headers, runtime)
+
+    async def get_addon_async(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonRequest,
+    ) -> cms_20240330_models.GetAddonResponse:
+        """
+        @summary 插件详情(Addon)
+        
+        @param request: GetAddonRequest
+        @return: GetAddonResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_addon_with_options_async(addon_name, request, headers, runtime)
+
+    def get_addon_code_template_with_options(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonCodeTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetAddonCodeTemplateResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonCodeTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAddonCodeTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.environment_type):
+            query['environmentType'] = request.environment_type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAddonCodeTemplate',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons/{OpenApiUtilClient.get_encode_param(addon_name)}/alert-code-template',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetAddonCodeTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_addon_code_template_with_options_async(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonCodeTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetAddonCodeTemplateResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonCodeTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAddonCodeTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.environment_type):
+            query['environmentType'] = request.environment_type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAddonCodeTemplate',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons/{OpenApiUtilClient.get_encode_param(addon_name)}/alert-code-template',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetAddonCodeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_addon_code_template(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonCodeTemplateRequest,
+    ) -> cms_20240330_models.GetAddonCodeTemplateResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonCodeTemplateRequest
+        @return: GetAddonCodeTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_addon_code_template_with_options(addon_name, request, headers, runtime)
+
+    async def get_addon_code_template_async(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonCodeTemplateRequest,
+    ) -> cms_20240330_models.GetAddonCodeTemplateResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonCodeTemplateRequest
+        @return: GetAddonCodeTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_addon_code_template_with_options_async(addon_name, request, headers, runtime)
+
     def get_addon_release_with_options(
         self,
         release_name: str,
@@ -2835,6 +3273,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_addon_release_with_options_async(release_name, policy_id, headers, runtime)
 
+    def get_addon_schema_with_options(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonSchemaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetAddonSchemaResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonSchemaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAddonSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.environment_type):
+            query['environmentType'] = request.environment_type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAddonSchema',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons/{OpenApiUtilClient.get_encode_param(addon_name)}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetAddonSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_addon_schema_with_options_async(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonSchemaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetAddonSchemaResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonSchemaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAddonSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.environment_type):
+            query['environmentType'] = request.environment_type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAddonSchema',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons/{OpenApiUtilClient.get_encode_param(addon_name)}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetAddonSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_addon_schema(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonSchemaRequest,
+    ) -> cms_20240330_models.GetAddonSchemaResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonSchemaRequest
+        @return: GetAddonSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_addon_schema_with_options(addon_name, request, headers, runtime)
+
+    async def get_addon_schema_async(
+        self,
+        addon_name: str,
+        request: cms_20240330_models.GetAddonSchemaRequest,
+    ) -> cms_20240330_models.GetAddonSchemaResponse:
+        """
+        @summary 插件schema详情(Addon)
+        
+        @param request: GetAddonSchemaRequest
+        @return: GetAddonSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_addon_schema_with_options_async(addon_name, request, headers, runtime)
+
     def get_agg_task_group_with_options(
         self,
         instance_id: str,
@@ -2928,6 +3482,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
+
+    def get_biz_trace_with_options(
+        self,
+        biz_trace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetBizTraceResponse:
+        """
+        @summary 查询业务链路
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBizTraceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace/{OpenApiUtilClient.get_encode_param(biz_trace_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetBizTraceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_biz_trace_with_options_async(
+        self,
+        biz_trace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetBizTraceResponse:
+        """
+        @summary 查询业务链路
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBizTraceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace/{OpenApiUtilClient.get_encode_param(biz_trace_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetBizTraceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_biz_trace(
+        self,
+        biz_trace_id: str,
+    ) -> cms_20240330_models.GetBizTraceResponse:
+        """
+        @summary 查询业务链路
+        
+        @return: GetBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_biz_trace_with_options(biz_trace_id, headers, runtime)
+
+    async def get_biz_trace_async(
+        self,
+        biz_trace_id: str,
+    ) -> cms_20240330_models.GetBizTraceResponse:
+        """
+        @summary 查询业务链路
+        
+        @return: GetBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_biz_trace_with_options_async(biz_trace_id, headers, runtime)
 
     def get_cloud_resource_with_options(
         self,
@@ -3536,6 +4180,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_integration_policy_with_options_async(policy_id, headers, runtime)
+
+    def get_integration_version_for_cswith_options(
+        self,
+        request: cms_20240330_models.GetIntegrationVersionForCSRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetIntegrationVersionForCSResponse:
+        """
+        @summary 查询接入中心在CS的版本
+        
+        @param request: GetIntegrationVersionForCSRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntegrationVersionForCSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['clusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_type):
+            query['clusterType'] = request.cluster_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIntegrationVersionForCS',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-version/cs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetIntegrationVersionForCSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_integration_version_for_cswith_options_async(
+        self,
+        request: cms_20240330_models.GetIntegrationVersionForCSRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.GetIntegrationVersionForCSResponse:
+        """
+        @summary 查询接入中心在CS的版本
+        
+        @param request: GetIntegrationVersionForCSRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntegrationVersionForCSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['clusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_type):
+            query['clusterType'] = request.cluster_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIntegrationVersionForCS',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-version/cs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.GetIntegrationVersionForCSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_integration_version_for_cs(
+        self,
+        request: cms_20240330_models.GetIntegrationVersionForCSRequest,
+    ) -> cms_20240330_models.GetIntegrationVersionForCSResponse:
+        """
+        @summary 查询接入中心在CS的版本
+        
+        @param request: GetIntegrationVersionForCSRequest
+        @return: GetIntegrationVersionForCSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_integration_version_for_cswith_options(request, headers, runtime)
+
+    async def get_integration_version_for_cs_async(
+        self,
+        request: cms_20240330_models.GetIntegrationVersionForCSRequest,
+    ) -> cms_20240330_models.GetIntegrationVersionForCSResponse:
+        """
+        @summary 查询接入中心在CS的版本
+        
+        @param request: GetIntegrationVersionForCSRequest
+        @return: GetIntegrationVersionForCSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_integration_version_for_cswith_options_async(request, headers, runtime)
 
     def get_prometheus_instance_with_options(
         self,
@@ -4591,6 +5343,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_addon_releases_with_options_async(policy_id, request, headers, runtime)
 
+    def list_addons_with_options(
+        self,
+        request: cms_20240330_models.ListAddonsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListAddonsResponse:
+        """
+        @summary 新版接入中心产品列表(分组)
+        
+        @param request: ListAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAddonsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.regexp):
+            query['regexp'] = request.regexp
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAddons',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_addons_with_options_async(
+        self,
+        request: cms_20240330_models.ListAddonsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListAddonsResponse:
+        """
+        @summary 新版接入中心产品列表(分组)
+        
+        @param request: ListAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAddonsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.regexp):
+            query['regexp'] = request.regexp
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAddons',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/addons',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_addons(
+        self,
+        request: cms_20240330_models.ListAddonsRequest,
+    ) -> cms_20240330_models.ListAddonsResponse:
+        """
+        @summary 新版接入中心产品列表(分组)
+        
+        @param request: ListAddonsRequest
+        @return: ListAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_addons_with_options(request, headers, runtime)
+
+    async def list_addons_async(
+        self,
+        request: cms_20240330_models.ListAddonsRequest,
+    ) -> cms_20240330_models.ListAddonsResponse:
+        """
+        @summary 新版接入中心产品列表(分组)
+        
+        @param request: ListAddonsRequest
+        @return: ListAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_addons_with_options_async(request, headers, runtime)
+
     def list_agg_task_groups_with_options(
         self,
         instance_id: str,
@@ -4863,6 +5731,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
 
+    def list_biz_traces_with_options(
+        self,
+        request: cms_20240330_models.ListBizTracesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListBizTracesResponse:
+        """
+        @summary 业务链路列表
+        
+        @param request: ListBizTracesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBizTracesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBizTraces',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTraces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListBizTracesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_biz_traces_with_options_async(
+        self,
+        request: cms_20240330_models.ListBizTracesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListBizTracesResponse:
+        """
+        @summary 业务链路列表
+        
+        @param request: ListBizTracesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBizTracesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBizTraces',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTraces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListBizTracesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_biz_traces(
+        self,
+        request: cms_20240330_models.ListBizTracesRequest,
+    ) -> cms_20240330_models.ListBizTracesResponse:
+        """
+        @summary 业务链路列表
+        
+        @param request: ListBizTracesRequest
+        @return: ListBizTracesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_biz_traces_with_options(request, headers, runtime)
+
+    async def list_biz_traces_async(
+        self,
+        request: cms_20240330_models.ListBizTracesRequest,
+    ) -> cms_20240330_models.ListBizTracesResponse:
+        """
+        @summary 业务链路列表
+        
+        @param request: ListBizTracesRequest
+        @return: ListBizTracesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_biz_traces_with_options_async(request, headers, runtime)
+
     def list_integration_policies_with_options(
         self,
         tmp_req: cms_20240330_models.ListIntegrationPoliciesRequest,
@@ -5034,6 +6014,212 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_integration_policies_with_options_async(request, headers, runtime)
+
+    def list_integration_policy_addons_with_options(
+        self,
+        policy_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyAddonsResponse:
+        """
+        @summary 策略addon列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyAddonsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyAddons',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/addons',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_integration_policy_addons_with_options_async(
+        self,
+        policy_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyAddonsResponse:
+        """
+        @summary 策略addon列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyAddonsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyAddons',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/addons',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_integration_policy_addons(
+        self,
+        policy_id: str,
+    ) -> cms_20240330_models.ListIntegrationPolicyAddonsResponse:
+        """
+        @summary 策略addon列表
+        
+        @return: ListIntegrationPolicyAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_integration_policy_addons_with_options(policy_id, headers, runtime)
+
+    async def list_integration_policy_addons_async(
+        self,
+        policy_id: str,
+    ) -> cms_20240330_models.ListIntegrationPolicyAddonsResponse:
+        """
+        @summary 策略addon列表
+        
+        @return: ListIntegrationPolicyAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_integration_policy_addons_with_options_async(policy_id, headers, runtime)
+
+    def list_integration_policy_collectors_with_options(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyCollectorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyCollectorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyCollectorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyCollectorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_release_name):
+            query['addonReleaseName'] = request.addon_release_name
+        if not UtilClient.is_unset(request.collector_type):
+            query['collectorType'] = request.collector_type
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyCollectors',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/collectors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyCollectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_integration_policy_collectors_with_options_async(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyCollectorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.ListIntegrationPolicyCollectorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyCollectorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegrationPolicyCollectorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.addon_release_name):
+            query['addonReleaseName'] = request.addon_release_name
+        if not UtilClient.is_unset(request.collector_type):
+            query['collectorType'] = request.collector_type
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIntegrationPolicyCollectors',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/integration-policies/{OpenApiUtilClient.get_encode_param(policy_id)}/collectors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.ListIntegrationPolicyCollectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_integration_policy_collectors(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyCollectorsRequest,
+    ) -> cms_20240330_models.ListIntegrationPolicyCollectorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyCollectorsRequest
+        @return: ListIntegrationPolicyCollectorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_integration_policy_collectors_with_options(policy_id, request, headers, runtime)
+
+    async def list_integration_policy_collectors_async(
+        self,
+        policy_id: str,
+        request: cms_20240330_models.ListIntegrationPolicyCollectorsRequest,
+    ) -> cms_20240330_models.ListIntegrationPolicyCollectorsResponse:
+        """
+        @summary 获取接入中心策略的存储要求信息
+        
+        @param request: ListIntegrationPolicyCollectorsRequest
+        @return: ListIntegrationPolicyCollectorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_integration_policy_collectors_with_options_async(policy_id, request, headers, runtime)
 
     def list_integration_policy_custom_scrape_job_rules_with_options(
         self,
@@ -6954,6 +8140,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_agg_task_group_status_with_options_async(instance_id, group_id, request, headers, runtime)
+
+    def update_biz_trace_with_options(
+        self,
+        biz_trace_id: str,
+        request: cms_20240330_models.UpdateBizTraceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateBizTraceResponse:
+        """
+        @summary 修改业务链路
+        
+        @param request: UpdateBizTraceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBizTraceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_config):
+            body['advancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.biz_trace_name):
+            body['bizTraceName'] = request.biz_trace_name
+        if not UtilClient.is_unset(request.rule_config):
+            body['ruleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace/{OpenApiUtilClient.get_encode_param(biz_trace_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateBizTraceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_biz_trace_with_options_async(
+        self,
+        biz_trace_id: str,
+        request: cms_20240330_models.UpdateBizTraceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20240330_models.UpdateBizTraceResponse:
+        """
+        @summary 修改业务链路
+        
+        @param request: UpdateBizTraceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBizTraceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_config):
+            body['advancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.biz_trace_name):
+            body['bizTraceName'] = request.biz_trace_name
+        if not UtilClient.is_unset(request.rule_config):
+            body['ruleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateBizTrace',
+            version='2024-03-30',
+            protocol='HTTPS',
+            pathname=f'/bizTrace/{OpenApiUtilClient.get_encode_param(biz_trace_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20240330_models.UpdateBizTraceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_biz_trace(
+        self,
+        biz_trace_id: str,
+        request: cms_20240330_models.UpdateBizTraceRequest,
+    ) -> cms_20240330_models.UpdateBizTraceResponse:
+        """
+        @summary 修改业务链路
+        
+        @param request: UpdateBizTraceRequest
+        @return: UpdateBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_biz_trace_with_options(biz_trace_id, request, headers, runtime)
+
+    async def update_biz_trace_async(
+        self,
+        biz_trace_id: str,
+        request: cms_20240330_models.UpdateBizTraceRequest,
+    ) -> cms_20240330_models.UpdateBizTraceResponse:
+        """
+        @summary 修改业务链路
+        
+        @param request: UpdateBizTraceRequest
+        @return: UpdateBizTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
 
     def update_integration_policy_with_options(
         self,
