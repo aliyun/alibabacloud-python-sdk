@@ -1,3 +1,7 @@
+2025-11-27 Version: 2.1.0
+- Support API ChatWithDesensitizeSSE.
+
+
 2025-11-27 Version: 2.0.0
 - Support API CheckBatchTableAccessPermission.
 - Update API ChatWithDesensitize: add request parameters AudioJson.

@@ -2587,6 +2587,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.chat_with_desensitize_with_options_async(request, runtime)
 
+    def chat_with_desensitize_ssewith_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.ChatWithDesensitizeSSERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeSSEResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天SSE API接口
+        
+        @description 带有DMS脱敏能力的聊天SSE API接口
+        
+        @param tmp_req: ChatWithDesensitizeSSERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithDesensitizeSSEResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.ChatWithDesensitizeSSEShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.messages):
+            request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        if not UtilClient.is_unset(tmp_req.modalities_list):
+            request.modalities_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.modalities_list, 'ModalitiesList', 'json')
+        if not UtilClient.is_unset(tmp_req.search_options):
+            request.search_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_options, 'SearchOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.stop):
+            request.stop_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stop, 'Stop', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.audio_json):
+            query['AudioJson'] = request.audio_json
+        if not UtilClient.is_unset(request.desensitization_rule):
+            query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.enable_code_interpreter):
+            query['EnableCodeInterpreter'] = request.enable_code_interpreter
+        if not UtilClient.is_unset(request.enable_search):
+            query['EnableSearch'] = request.enable_search
+        if not UtilClient.is_unset(request.enable_thinking):
+            query['EnableThinking'] = request.enable_thinking
+        if not UtilClient.is_unset(request.include_usage):
+            query['IncludeUsage'] = request.include_usage
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logprobs):
+            query['Logprobs'] = request.logprobs
+        if not UtilClient.is_unset(request.max_tokens):
+            query['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.modalities_list_shrink):
+            query['ModalitiesList'] = request.modalities_list_shrink
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.need_desensitization):
+            query['NeedDesensitization'] = request.need_desensitization
+        if not UtilClient.is_unset(request.presence_penalty):
+            query['PresencePenalty'] = request.presence_penalty
+        if not UtilClient.is_unset(request.response_format):
+            query['ResponseFormat'] = request.response_format
+        if not UtilClient.is_unset(request.search_options_shrink):
+            query['SearchOptions'] = request.search_options_shrink
+        if not UtilClient.is_unset(request.seed):
+            query['Seed'] = request.seed
+        if not UtilClient.is_unset(request.stop_shrink):
+            query['Stop'] = request.stop_shrink
+        if not UtilClient.is_unset(request.stream):
+            query['Stream'] = request.stream
+        if not UtilClient.is_unset(request.temperature):
+            query['Temperature'] = request.temperature
+        if not UtilClient.is_unset(request.thinking_budget):
+            query['ThinkingBudget'] = request.thinking_budget
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.top_logprobs):
+            query['TopLogprobs'] = request.top_logprobs
+        if not UtilClient.is_unset(request.top_p):
+            query['TopP'] = request.top_p
+        if not UtilClient.is_unset(request.vl_high_resolution_images):
+            query['VlHighResolutionImages'] = request.vl_high_resolution_images
+        if not UtilClient.is_unset(request.xdash_scope_data_inspection):
+            query['XDashScopeDataInspection'] = request.xdash_scope_data_inspection
+        body = {}
+        if not UtilClient.is_unset(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatWithDesensitizeSSE',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChatWithDesensitizeSSEResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_with_desensitize_ssewith_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.ChatWithDesensitizeSSERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeSSEResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天SSE API接口
+        
+        @description 带有DMS脱敏能力的聊天SSE API接口
+        
+        @param tmp_req: ChatWithDesensitizeSSERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatWithDesensitizeSSEResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.ChatWithDesensitizeSSEShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.messages):
+            request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        if not UtilClient.is_unset(tmp_req.modalities_list):
+            request.modalities_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.modalities_list, 'ModalitiesList', 'json')
+        if not UtilClient.is_unset(tmp_req.search_options):
+            request.search_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_options, 'SearchOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.stop):
+            request.stop_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stop, 'Stop', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.audio_json):
+            query['AudioJson'] = request.audio_json
+        if not UtilClient.is_unset(request.desensitization_rule):
+            query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.enable_code_interpreter):
+            query['EnableCodeInterpreter'] = request.enable_code_interpreter
+        if not UtilClient.is_unset(request.enable_search):
+            query['EnableSearch'] = request.enable_search
+        if not UtilClient.is_unset(request.enable_thinking):
+            query['EnableThinking'] = request.enable_thinking
+        if not UtilClient.is_unset(request.include_usage):
+            query['IncludeUsage'] = request.include_usage
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logprobs):
+            query['Logprobs'] = request.logprobs
+        if not UtilClient.is_unset(request.max_tokens):
+            query['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.modalities_list_shrink):
+            query['ModalitiesList'] = request.modalities_list_shrink
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.need_desensitization):
+            query['NeedDesensitization'] = request.need_desensitization
+        if not UtilClient.is_unset(request.presence_penalty):
+            query['PresencePenalty'] = request.presence_penalty
+        if not UtilClient.is_unset(request.response_format):
+            query['ResponseFormat'] = request.response_format
+        if not UtilClient.is_unset(request.search_options_shrink):
+            query['SearchOptions'] = request.search_options_shrink
+        if not UtilClient.is_unset(request.seed):
+            query['Seed'] = request.seed
+        if not UtilClient.is_unset(request.stop_shrink):
+            query['Stop'] = request.stop_shrink
+        if not UtilClient.is_unset(request.stream):
+            query['Stream'] = request.stream
+        if not UtilClient.is_unset(request.temperature):
+            query['Temperature'] = request.temperature
+        if not UtilClient.is_unset(request.thinking_budget):
+            query['ThinkingBudget'] = request.thinking_budget
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.top_logprobs):
+            query['TopLogprobs'] = request.top_logprobs
+        if not UtilClient.is_unset(request.top_p):
+            query['TopP'] = request.top_p
+        if not UtilClient.is_unset(request.vl_high_resolution_images):
+            query['VlHighResolutionImages'] = request.vl_high_resolution_images
+        if not UtilClient.is_unset(request.xdash_scope_data_inspection):
+            query['XDashScopeDataInspection'] = request.xdash_scope_data_inspection
+        body = {}
+        if not UtilClient.is_unset(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChatWithDesensitizeSSE',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChatWithDesensitizeSSEResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_with_desensitize_sse(
+        self,
+        request: dms_enterprise_20181101_models.ChatWithDesensitizeSSERequest,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeSSEResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天SSE API接口
+        
+        @description 带有DMS脱敏能力的聊天SSE API接口
+        
+        @param request: ChatWithDesensitizeSSERequest
+        @return: ChatWithDesensitizeSSEResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_with_desensitize_ssewith_options(request, runtime)
+
+    async def chat_with_desensitize_sse_async(
+        self,
+        request: dms_enterprise_20181101_models.ChatWithDesensitizeSSERequest,
+    ) -> dms_enterprise_20181101_models.ChatWithDesensitizeSSEResponse:
+        """
+        @summary 带有DMS脱敏能力的聊天SSE API接口
+        
+        @description 带有DMS脱敏能力的聊天SSE API接口
+        
+        @param request: ChatWithDesensitizeSSERequest
+        @return: ChatWithDesensitizeSSEResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_with_desensitize_ssewith_options_async(request, runtime)
+
     def check_batch_table_access_permission_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CheckBatchTableAccessPermissionRequest,
