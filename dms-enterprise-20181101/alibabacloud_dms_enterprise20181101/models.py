@@ -6367,34 +6367,47 @@ class ChangeLhDagOwnerResponse(TeaModel):
 class ChatWithDesensitizeRequest(TeaModel):
     def __init__(
         self,
+        audio_json: str = None,
         desensitization_rule: str = None,
+        enable_code_interpreter: bool = None,
+        enable_search: bool = None,
         enable_thinking: bool = None,
         instance_id: int = None,
+        logprobs: bool = None,
         max_tokens: int = None,
-        messages: List[Dict[str, Any]] = None,
+        messages: List[Any] = None,
+        modalities_list: List[str] = None,
         model: str = None,
         need_desensitization: bool = None,
-        presence_penalty: float = None,
+        presence_penalty: str = None,
         response_format: str = None,
+        search_options: Dict[str, str] = None,
         seed: int = None,
         stop: List[str] = None,
-        temperature: float = None,
+        temperature: str = None,
         thinking_budget: int = None,
         top_k: int = None,
         top_logprobs: int = None,
-        top_p: float = None,
+        top_p: str = None,
+        vl_high_resolution_images: bool = None,
+        xdash_scope_data_inspection: str = None,
     ):
+        self.audio_json = audio_json
         self.desensitization_rule = desensitization_rule
+        self.enable_code_interpreter = enable_code_interpreter
+        self.enable_search = enable_search
         self.enable_thinking = enable_thinking
         # This parameter is required.
         self.instance_id = instance_id
+        self.logprobs = logprobs
         self.max_tokens = max_tokens
-        # This parameter is required.
         self.messages = messages
+        self.modalities_list = modalities_list
         self.model = model
         self.need_desensitization = need_desensitization
         self.presence_penalty = presence_penalty
         self.response_format = response_format
+        self.search_options = search_options
         self.seed = seed
         self.stop = stop
         self.temperature = temperature
@@ -6402,6 +6415,8 @@ class ChatWithDesensitizeRequest(TeaModel):
         self.top_k = top_k
         self.top_logprobs = top_logprobs
         self.top_p = top_p
+        self.vl_high_resolution_images = vl_high_resolution_images
+        self.xdash_scope_data_inspection = xdash_scope_data_inspection
 
     def validate(self):
         pass
@@ -6412,16 +6427,26 @@ class ChatWithDesensitizeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_json is not None:
+            result['AudioJson'] = self.audio_json
         if self.desensitization_rule is not None:
             result['DesensitizationRule'] = self.desensitization_rule
+        if self.enable_code_interpreter is not None:
+            result['EnableCodeInterpreter'] = self.enable_code_interpreter
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
         if self.enable_thinking is not None:
             result['EnableThinking'] = self.enable_thinking
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.logprobs is not None:
+            result['Logprobs'] = self.logprobs
         if self.max_tokens is not None:
             result['MaxTokens'] = self.max_tokens
         if self.messages is not None:
             result['Messages'] = self.messages
+        if self.modalities_list is not None:
+            result['ModalitiesList'] = self.modalities_list
         if self.model is not None:
             result['Model'] = self.model
         if self.need_desensitization is not None:
@@ -6430,6 +6455,8 @@ class ChatWithDesensitizeRequest(TeaModel):
             result['PresencePenalty'] = self.presence_penalty
         if self.response_format is not None:
             result['ResponseFormat'] = self.response_format
+        if self.search_options is not None:
+            result['SearchOptions'] = self.search_options
         if self.seed is not None:
             result['Seed'] = self.seed
         if self.stop is not None:
@@ -6444,20 +6471,34 @@ class ChatWithDesensitizeRequest(TeaModel):
             result['TopLogprobs'] = self.top_logprobs
         if self.top_p is not None:
             result['TopP'] = self.top_p
+        if self.vl_high_resolution_images is not None:
+            result['VlHighResolutionImages'] = self.vl_high_resolution_images
+        if self.xdash_scope_data_inspection is not None:
+            result['XDashScopeDataInspection'] = self.xdash_scope_data_inspection
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioJson') is not None:
+            self.audio_json = m.get('AudioJson')
         if m.get('DesensitizationRule') is not None:
             self.desensitization_rule = m.get('DesensitizationRule')
+        if m.get('EnableCodeInterpreter') is not None:
+            self.enable_code_interpreter = m.get('EnableCodeInterpreter')
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
         if m.get('EnableThinking') is not None:
             self.enable_thinking = m.get('EnableThinking')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Logprobs') is not None:
+            self.logprobs = m.get('Logprobs')
         if m.get('MaxTokens') is not None:
             self.max_tokens = m.get('MaxTokens')
         if m.get('Messages') is not None:
             self.messages = m.get('Messages')
+        if m.get('ModalitiesList') is not None:
+            self.modalities_list = m.get('ModalitiesList')
         if m.get('Model') is not None:
             self.model = m.get('Model')
         if m.get('NeedDesensitization') is not None:
@@ -6466,6 +6507,8 @@ class ChatWithDesensitizeRequest(TeaModel):
             self.presence_penalty = m.get('PresencePenalty')
         if m.get('ResponseFormat') is not None:
             self.response_format = m.get('ResponseFormat')
+        if m.get('SearchOptions') is not None:
+            self.search_options = m.get('SearchOptions')
         if m.get('Seed') is not None:
             self.seed = m.get('Seed')
         if m.get('Stop') is not None:
@@ -6480,40 +6523,57 @@ class ChatWithDesensitizeRequest(TeaModel):
             self.top_logprobs = m.get('TopLogprobs')
         if m.get('TopP') is not None:
             self.top_p = m.get('TopP')
+        if m.get('VlHighResolutionImages') is not None:
+            self.vl_high_resolution_images = m.get('VlHighResolutionImages')
+        if m.get('XDashScopeDataInspection') is not None:
+            self.xdash_scope_data_inspection = m.get('XDashScopeDataInspection')
         return self
 
 
 class ChatWithDesensitizeShrinkRequest(TeaModel):
     def __init__(
         self,
+        audio_json: str = None,
         desensitization_rule: str = None,
+        enable_code_interpreter: bool = None,
+        enable_search: bool = None,
         enable_thinking: bool = None,
         instance_id: int = None,
+        logprobs: bool = None,
         max_tokens: int = None,
         messages_shrink: str = None,
+        modalities_list_shrink: str = None,
         model: str = None,
         need_desensitization: bool = None,
-        presence_penalty: float = None,
+        presence_penalty: str = None,
         response_format: str = None,
+        search_options_shrink: str = None,
         seed: int = None,
         stop_shrink: str = None,
-        temperature: float = None,
+        temperature: str = None,
         thinking_budget: int = None,
         top_k: int = None,
         top_logprobs: int = None,
-        top_p: float = None,
+        top_p: str = None,
+        vl_high_resolution_images: bool = None,
+        xdash_scope_data_inspection: str = None,
     ):
+        self.audio_json = audio_json
         self.desensitization_rule = desensitization_rule
+        self.enable_code_interpreter = enable_code_interpreter
+        self.enable_search = enable_search
         self.enable_thinking = enable_thinking
         # This parameter is required.
         self.instance_id = instance_id
+        self.logprobs = logprobs
         self.max_tokens = max_tokens
-        # This parameter is required.
         self.messages_shrink = messages_shrink
+        self.modalities_list_shrink = modalities_list_shrink
         self.model = model
         self.need_desensitization = need_desensitization
         self.presence_penalty = presence_penalty
         self.response_format = response_format
+        self.search_options_shrink = search_options_shrink
         self.seed = seed
         self.stop_shrink = stop_shrink
         self.temperature = temperature
@@ -6521,6 +6581,8 @@ class ChatWithDesensitizeShrinkRequest(TeaModel):
         self.top_k = top_k
         self.top_logprobs = top_logprobs
         self.top_p = top_p
+        self.vl_high_resolution_images = vl_high_resolution_images
+        self.xdash_scope_data_inspection = xdash_scope_data_inspection
 
     def validate(self):
         pass
@@ -6531,16 +6593,26 @@ class ChatWithDesensitizeShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_json is not None:
+            result['AudioJson'] = self.audio_json
         if self.desensitization_rule is not None:
             result['DesensitizationRule'] = self.desensitization_rule
+        if self.enable_code_interpreter is not None:
+            result['EnableCodeInterpreter'] = self.enable_code_interpreter
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
         if self.enable_thinking is not None:
             result['EnableThinking'] = self.enable_thinking
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.logprobs is not None:
+            result['Logprobs'] = self.logprobs
         if self.max_tokens is not None:
             result['MaxTokens'] = self.max_tokens
         if self.messages_shrink is not None:
             result['Messages'] = self.messages_shrink
+        if self.modalities_list_shrink is not None:
+            result['ModalitiesList'] = self.modalities_list_shrink
         if self.model is not None:
             result['Model'] = self.model
         if self.need_desensitization is not None:
@@ -6549,6 +6621,8 @@ class ChatWithDesensitizeShrinkRequest(TeaModel):
             result['PresencePenalty'] = self.presence_penalty
         if self.response_format is not None:
             result['ResponseFormat'] = self.response_format
+        if self.search_options_shrink is not None:
+            result['SearchOptions'] = self.search_options_shrink
         if self.seed is not None:
             result['Seed'] = self.seed
         if self.stop_shrink is not None:
@@ -6563,20 +6637,34 @@ class ChatWithDesensitizeShrinkRequest(TeaModel):
             result['TopLogprobs'] = self.top_logprobs
         if self.top_p is not None:
             result['TopP'] = self.top_p
+        if self.vl_high_resolution_images is not None:
+            result['VlHighResolutionImages'] = self.vl_high_resolution_images
+        if self.xdash_scope_data_inspection is not None:
+            result['XDashScopeDataInspection'] = self.xdash_scope_data_inspection
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioJson') is not None:
+            self.audio_json = m.get('AudioJson')
         if m.get('DesensitizationRule') is not None:
             self.desensitization_rule = m.get('DesensitizationRule')
+        if m.get('EnableCodeInterpreter') is not None:
+            self.enable_code_interpreter = m.get('EnableCodeInterpreter')
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
         if m.get('EnableThinking') is not None:
             self.enable_thinking = m.get('EnableThinking')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Logprobs') is not None:
+            self.logprobs = m.get('Logprobs')
         if m.get('MaxTokens') is not None:
             self.max_tokens = m.get('MaxTokens')
         if m.get('Messages') is not None:
             self.messages_shrink = m.get('Messages')
+        if m.get('ModalitiesList') is not None:
+            self.modalities_list_shrink = m.get('ModalitiesList')
         if m.get('Model') is not None:
             self.model = m.get('Model')
         if m.get('NeedDesensitization') is not None:
@@ -6585,6 +6673,8 @@ class ChatWithDesensitizeShrinkRequest(TeaModel):
             self.presence_penalty = m.get('PresencePenalty')
         if m.get('ResponseFormat') is not None:
             self.response_format = m.get('ResponseFormat')
+        if m.get('SearchOptions') is not None:
+            self.search_options_shrink = m.get('SearchOptions')
         if m.get('Seed') is not None:
             self.seed = m.get('Seed')
         if m.get('Stop') is not None:
@@ -6599,6 +6689,10 @@ class ChatWithDesensitizeShrinkRequest(TeaModel):
             self.top_logprobs = m.get('TopLogprobs')
         if m.get('TopP') is not None:
             self.top_p = m.get('TopP')
+        if m.get('VlHighResolutionImages') is not None:
+            self.vl_high_resolution_images = m.get('VlHighResolutionImages')
+        if m.get('XDashScopeDataInspection') is not None:
+            self.xdash_scope_data_inspection = m.get('XDashScopeDataInspection')
         return self
 
 
@@ -6645,9 +6739,11 @@ class ChatWithDesensitizeResponseBodyDataChoices(TeaModel):
     def __init__(
         self,
         finish_reason: str = None,
+        logprobs: Dict[str, Any] = None,
         message: ChatWithDesensitizeResponseBodyDataChoicesMessage = None,
     ):
         self.finish_reason = finish_reason
+        self.logprobs = logprobs
         self.message = message
 
     def validate(self):
@@ -6662,6 +6758,8 @@ class ChatWithDesensitizeResponseBodyDataChoices(TeaModel):
         result = dict()
         if self.finish_reason is not None:
             result['FinishReason'] = self.finish_reason
+        if self.logprobs is not None:
+            result['Logprobs'] = self.logprobs
         if self.message is not None:
             result['Message'] = self.message.to_map()
         return result
@@ -6670,6 +6768,8 @@ class ChatWithDesensitizeResponseBodyDataChoices(TeaModel):
         m = m or dict()
         if m.get('FinishReason') is not None:
             self.finish_reason = m.get('FinishReason')
+        if m.get('Logprobs') is not None:
+            self.logprobs = m.get('Logprobs')
         if m.get('Message') is not None:
             temp_model = ChatWithDesensitizeResponseBodyDataChoicesMessage()
             self.message = temp_model.from_map(m['Message'])
@@ -6680,11 +6780,15 @@ class ChatWithDesensitizeResponseBodyDataUsage(TeaModel):
     def __init__(
         self,
         completion_tokens: str = None,
+        completion_tokens_details: Dict[str, str] = None,
         prompt_tokens: str = None,
+        prompt_tokens_details: Dict[str, str] = None,
         total_tokens: str = None,
     ):
         self.completion_tokens = completion_tokens
+        self.completion_tokens_details = completion_tokens_details
         self.prompt_tokens = prompt_tokens
+        self.prompt_tokens_details = prompt_tokens_details
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -6698,8 +6802,12 @@ class ChatWithDesensitizeResponseBodyDataUsage(TeaModel):
         result = dict()
         if self.completion_tokens is not None:
             result['CompletionTokens'] = self.completion_tokens
+        if self.completion_tokens_details is not None:
+            result['CompletionTokensDetails'] = self.completion_tokens_details
         if self.prompt_tokens is not None:
             result['PromptTokens'] = self.prompt_tokens
+        if self.prompt_tokens_details is not None:
+            result['PromptTokensDetails'] = self.prompt_tokens_details
         if self.total_tokens is not None:
             result['TotalTokens'] = self.total_tokens
         return result
@@ -6708,8 +6816,12 @@ class ChatWithDesensitizeResponseBodyDataUsage(TeaModel):
         m = m or dict()
         if m.get('CompletionTokens') is not None:
             self.completion_tokens = m.get('CompletionTokens')
+        if m.get('CompletionTokensDetails') is not None:
+            self.completion_tokens_details = m.get('CompletionTokensDetails')
         if m.get('PromptTokens') is not None:
             self.prompt_tokens = m.get('PromptTokens')
+        if m.get('PromptTokensDetails') is not None:
+            self.prompt_tokens_details = m.get('PromptTokensDetails')
         if m.get('TotalTokens') is not None:
             self.total_tokens = m.get('TotalTokens')
         return self
@@ -6720,12 +6832,18 @@ class ChatWithDesensitizeResponseBodyData(TeaModel):
         self,
         choices: List[ChatWithDesensitizeResponseBodyDataChoices] = None,
         created: str = None,
+        message: str = None,
         model: str = None,
+        status_code: str = None,
+        type: str = None,
         usage: ChatWithDesensitizeResponseBodyDataUsage = None,
     ):
         self.choices = choices
         self.created = created
+        self.message = message
         self.model = model
+        self.status_code = status_code
+        self.type = type
         self.usage = usage
 
     def validate(self):
@@ -6748,8 +6866,14 @@ class ChatWithDesensitizeResponseBodyData(TeaModel):
                 result['Choices'].append(k.to_map() if k else None)
         if self.created is not None:
             result['Created'] = self.created
+        if self.message is not None:
+            result['Message'] = self.message
         if self.model is not None:
             result['Model'] = self.model
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.type is not None:
+            result['Type'] = self.type
         if self.usage is not None:
             result['Usage'] = self.usage.to_map()
         return result
@@ -6763,8 +6887,14 @@ class ChatWithDesensitizeResponseBodyData(TeaModel):
                 self.choices.append(temp_model.from_map(k))
         if m.get('Created') is not None:
             self.created = m.get('Created')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('Model') is not None:
             self.model = m.get('Model')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Usage') is not None:
             temp_model = ChatWithDesensitizeResponseBodyDataUsage()
             self.usage = temp_model.from_map(m['Usage'])
@@ -6783,6 +6913,7 @@ class ChatWithDesensitizeResponseBody(TeaModel):
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -6861,6 +6992,248 @@ class ChatWithDesensitizeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ChatWithDesensitizeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckBatchTableAccessPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+        permission_type: str = None,
+        table_name_list: List[str] = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        self.logic = logic
+        # This parameter is required.
+        self.permission_type = permission_type
+        # This parameter is required.
+        self.table_name_list = table_name_list
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.permission_type is not None:
+            result['PermissionType'] = self.permission_type
+        if self.table_name_list is not None:
+            result['TableNameList'] = self.table_name_list
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('PermissionType') is not None:
+            self.permission_type = m.get('PermissionType')
+        if m.get('TableNameList') is not None:
+            self.table_name_list = m.get('TableNameList')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CheckBatchTableAccessPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+        permission_type: str = None,
+        table_name_list_shrink: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        self.logic = logic
+        # This parameter is required.
+        self.permission_type = permission_type
+        # This parameter is required.
+        self.table_name_list_shrink = table_name_list_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.permission_type is not None:
+            result['PermissionType'] = self.permission_type
+        if self.table_name_list_shrink is not None:
+            result['TableNameList'] = self.table_name_list_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('PermissionType') is not None:
+            self.permission_type = m.get('PermissionType')
+        if m.get('TableNameList') is not None:
+            self.table_name_list_shrink = m.get('TableNameList')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CheckBatchTableAccessPermissionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        success: str = None,
+        table_name: str = None,
+    ):
+        self.error_message = error_message
+        self.success = success
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class CheckBatchTableAccessPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[CheckBatchTableAccessPermissionResponseBodyData] = None,
+        error_code: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = CheckBatchTableAccessPermissionResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CheckBatchTableAccessPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckBatchTableAccessPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckBatchTableAccessPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

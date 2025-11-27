@@ -2386,17 +2386,31 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.messages):
             request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        if not UtilClient.is_unset(tmp_req.modalities_list):
+            request.modalities_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.modalities_list, 'ModalitiesList', 'json')
+        if not UtilClient.is_unset(tmp_req.search_options):
+            request.search_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_options, 'SearchOptions', 'json')
         if not UtilClient.is_unset(tmp_req.stop):
             request.stop_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stop, 'Stop', 'json')
         query = {}
+        if not UtilClient.is_unset(request.audio_json):
+            query['AudioJson'] = request.audio_json
         if not UtilClient.is_unset(request.desensitization_rule):
             query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.enable_code_interpreter):
+            query['EnableCodeInterpreter'] = request.enable_code_interpreter
+        if not UtilClient.is_unset(request.enable_search):
+            query['EnableSearch'] = request.enable_search
         if not UtilClient.is_unset(request.enable_thinking):
             query['EnableThinking'] = request.enable_thinking
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logprobs):
+            query['Logprobs'] = request.logprobs
         if not UtilClient.is_unset(request.max_tokens):
             query['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.modalities_list_shrink):
+            query['ModalitiesList'] = request.modalities_list_shrink
         if not UtilClient.is_unset(request.model):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.need_desensitization):
@@ -2405,6 +2419,8 @@ class Client(OpenApiClient):
             query['PresencePenalty'] = request.presence_penalty
         if not UtilClient.is_unset(request.response_format):
             query['ResponseFormat'] = request.response_format
+        if not UtilClient.is_unset(request.search_options_shrink):
+            query['SearchOptions'] = request.search_options_shrink
         if not UtilClient.is_unset(request.seed):
             query['Seed'] = request.seed
         if not UtilClient.is_unset(request.stop_shrink):
@@ -2419,6 +2435,10 @@ class Client(OpenApiClient):
             query['TopLogprobs'] = request.top_logprobs
         if not UtilClient.is_unset(request.top_p):
             query['TopP'] = request.top_p
+        if not UtilClient.is_unset(request.vl_high_resolution_images):
+            query['VlHighResolutionImages'] = request.vl_high_resolution_images
+        if not UtilClient.is_unset(request.xdash_scope_data_inspection):
+            query['XDashScopeDataInspection'] = request.xdash_scope_data_inspection
         body = {}
         if not UtilClient.is_unset(request.messages_shrink):
             body['Messages'] = request.messages_shrink
@@ -2461,17 +2481,31 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.messages):
             request.messages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        if not UtilClient.is_unset(tmp_req.modalities_list):
+            request.modalities_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.modalities_list, 'ModalitiesList', 'json')
+        if not UtilClient.is_unset(tmp_req.search_options):
+            request.search_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_options, 'SearchOptions', 'json')
         if not UtilClient.is_unset(tmp_req.stop):
             request.stop_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stop, 'Stop', 'json')
         query = {}
+        if not UtilClient.is_unset(request.audio_json):
+            query['AudioJson'] = request.audio_json
         if not UtilClient.is_unset(request.desensitization_rule):
             query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.enable_code_interpreter):
+            query['EnableCodeInterpreter'] = request.enable_code_interpreter
+        if not UtilClient.is_unset(request.enable_search):
+            query['EnableSearch'] = request.enable_search
         if not UtilClient.is_unset(request.enable_thinking):
             query['EnableThinking'] = request.enable_thinking
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logprobs):
+            query['Logprobs'] = request.logprobs
         if not UtilClient.is_unset(request.max_tokens):
             query['MaxTokens'] = request.max_tokens
+        if not UtilClient.is_unset(request.modalities_list_shrink):
+            query['ModalitiesList'] = request.modalities_list_shrink
         if not UtilClient.is_unset(request.model):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.need_desensitization):
@@ -2480,6 +2514,8 @@ class Client(OpenApiClient):
             query['PresencePenalty'] = request.presence_penalty
         if not UtilClient.is_unset(request.response_format):
             query['ResponseFormat'] = request.response_format
+        if not UtilClient.is_unset(request.search_options_shrink):
+            query['SearchOptions'] = request.search_options_shrink
         if not UtilClient.is_unset(request.seed):
             query['Seed'] = request.seed
         if not UtilClient.is_unset(request.stop_shrink):
@@ -2494,6 +2530,10 @@ class Client(OpenApiClient):
             query['TopLogprobs'] = request.top_logprobs
         if not UtilClient.is_unset(request.top_p):
             query['TopP'] = request.top_p
+        if not UtilClient.is_unset(request.vl_high_resolution_images):
+            query['VlHighResolutionImages'] = request.vl_high_resolution_images
+        if not UtilClient.is_unset(request.xdash_scope_data_inspection):
+            query['XDashScopeDataInspection'] = request.xdash_scope_data_inspection
         body = {}
         if not UtilClient.is_unset(request.messages_shrink):
             body['Messages'] = request.messages_shrink
@@ -2546,6 +2586,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.chat_with_desensitize_with_options_async(request, runtime)
+
+    def check_batch_table_access_permission_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CheckBatchTableAccessPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CheckBatchTableAccessPermissionResponse:
+        """
+        @summary 批量校验是否有表访问权限
+        
+        @param tmp_req: CheckBatchTableAccessPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckBatchTableAccessPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CheckBatchTableAccessPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_name_list):
+            request.table_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_name_list, 'TableNameList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.permission_type):
+            query['PermissionType'] = request.permission_type
+        if not UtilClient.is_unset(request.table_name_list_shrink):
+            query['TableNameList'] = request.table_name_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckBatchTableAccessPermission',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CheckBatchTableAccessPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_batch_table_access_permission_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CheckBatchTableAccessPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CheckBatchTableAccessPermissionResponse:
+        """
+        @summary 批量校验是否有表访问权限
+        
+        @param tmp_req: CheckBatchTableAccessPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckBatchTableAccessPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CheckBatchTableAccessPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.table_name_list):
+            request.table_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_name_list, 'TableNameList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.permission_type):
+            query['PermissionType'] = request.permission_type
+        if not UtilClient.is_unset(request.table_name_list_shrink):
+            query['TableNameList'] = request.table_name_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckBatchTableAccessPermission',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CheckBatchTableAccessPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_batch_table_access_permission(
+        self,
+        request: dms_enterprise_20181101_models.CheckBatchTableAccessPermissionRequest,
+    ) -> dms_enterprise_20181101_models.CheckBatchTableAccessPermissionResponse:
+        """
+        @summary 批量校验是否有表访问权限
+        
+        @param request: CheckBatchTableAccessPermissionRequest
+        @return: CheckBatchTableAccessPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_batch_table_access_permission_with_options(request, runtime)
+
+    async def check_batch_table_access_permission_async(
+        self,
+        request: dms_enterprise_20181101_models.CheckBatchTableAccessPermissionRequest,
+    ) -> dms_enterprise_20181101_models.CheckBatchTableAccessPermissionResponse:
+        """
+        @summary 批量校验是否有表访问权限
+        
+        @param request: CheckBatchTableAccessPermissionRequest
+        @return: CheckBatchTableAccessPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_batch_table_access_permission_with_options_async(request, runtime)
 
     def close_order_with_options(
         self,

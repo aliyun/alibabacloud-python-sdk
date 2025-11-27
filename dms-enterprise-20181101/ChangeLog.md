@@ -1,3 +1,29 @@
+2025-11-27 Version: 2.0.0
+- Support API CheckBatchTableAccessPermission.
+- Update API ChatWithDesensitize: add request parameters AudioJson.
+- Update API ChatWithDesensitize: add request parameters EnableCodeInterpreter.
+- Update API ChatWithDesensitize: add request parameters EnableSearch.
+- Update API ChatWithDesensitize: add request parameters Logprobs.
+- Update API ChatWithDesensitize: add request parameters ModalitiesList.
+- Update API ChatWithDesensitize: add request parameters SearchOptions.
+- Update API ChatWithDesensitize: add request parameters VlHighResolutionImages.
+- Update API ChatWithDesensitize: add request parameters XDashScopeDataInspection.
+- Update API ChatWithDesensitize: add response parameters Body.Data.Message.
+- Update API ChatWithDesensitize: add response parameters Body.Data.StatusCode.
+- Update API ChatWithDesensitize: add response parameters Body.Data.Type.
+- Update API ChatWithDesensitize: add response parameters Body.Data.Choices.$.Logprobs.
+- Update API ChatWithDesensitize: add response parameters Body.Data.Usage.CompletionTokensDetails.
+- Update API ChatWithDesensitize: add response parameters Body.Data.Usage.PromptTokensDetails.
+- Update API ChatWithDesensitize: update request parameters Messages.$' type has changed.
+- Update API ChatWithDesensitize: update request parameters Messages.$' parseType has changed.
+- Update API ChatWithDesensitize: update request parameters PresencePenalty' type has changed.
+- Update API ChatWithDesensitize: update request parameters PresencePenalty' format has changed.
+- Update API ChatWithDesensitize: update request parameters Temperature' type has changed.
+- Update API ChatWithDesensitize: update request parameters Temperature' format has changed.
+- Update API ChatWithDesensitize: update request parameters TopP' type has changed.
+- Update API ChatWithDesensitize: update request parameters TopP' format has changed.
+
+
 2025-11-23 Version: 1.77.0
 - Support API ChatWithDesensitize.
 - Support API ListUserOwnedResources.
