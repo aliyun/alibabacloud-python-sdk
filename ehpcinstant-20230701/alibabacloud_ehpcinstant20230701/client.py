@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
         """
-        @summary 添加托管侧用户自定义镜像
+        @summary Add a custom image.
         
         @param tmp_req: AddImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -98,7 +98,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
         """
-        @summary 添加托管侧用户自定义镜像
+        @summary Add a custom image.
         
         @param tmp_req: AddImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -148,7 +148,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.AddImageRequest,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
         """
-        @summary 添加托管侧用户自定义镜像
+        @summary Add a custom image.
         
         @param request: AddImageRequest
         @return: AddImageResponse
@@ -161,7 +161,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.AddImageRequest,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
         """
-        @summary 添加托管侧用户自定义镜像
+        @summary Add a custom image.
         
         @param request: AddImageRequest
         @return: AddImageResponse
@@ -175,7 +175,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
         """
-        @summary 创建执行计划创建执行计划
+        @summary Create a E-HPC execution plan.
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
         
         @param tmp_req: CreateActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -234,7 +236,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
         """
-        @summary 创建执行计划创建执行计划
+        @summary Create a E-HPC execution plan.
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
         
         @param tmp_req: CreateActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -292,7 +296,9 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.CreateActionPlanRequest,
     ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
         """
-        @summary 创建执行计划创建执行计划
+        @summary Create a E-HPC execution plan.
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
         
         @param request: CreateActionPlanRequest
         @return: CreateActionPlanResponse
@@ -305,7 +311,9 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.CreateActionPlanRequest,
     ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
         """
-        @summary 创建执行计划创建执行计划
+        @summary Create a E-HPC execution plan.
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).
         
         @param request: CreateActionPlanRequest
         @return: CreateActionPlanResponse
@@ -319,7 +327,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
         """
-        @summary 提交任务
+        @summary Create a E-HPC Instant job.
         
         @param tmp_req: CreateJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -376,7 +384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
         """
-        @summary 提交任务
+        @summary Create a E-HPC Instant job.
         
         @param tmp_req: CreateJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -432,7 +440,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.CreateJobRequest,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
         """
-        @summary 提交任务
+        @summary Create a E-HPC Instant job.
         
         @param request: CreateJobRequest
         @return: CreateJobResponse
@@ -445,7 +453,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.CreateJobRequest,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
         """
-        @summary 提交任务
+        @summary Create a E-HPC Instant job.
         
         @param request: CreateJobRequest
         @return: CreateJobResponse
@@ -459,7 +467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreatePoolResponse:
         """
-        @summary 创建资源池
+        @summary Creates a resource pool.
         
         @param tmp_req: CreatePoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -502,7 +510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreatePoolResponse:
         """
-        @summary 创建资源池
+        @summary Creates a resource pool.
         
         @param tmp_req: CreatePoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -544,7 +552,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.CreatePoolRequest,
     ) -> ehpc_instant_20230701_models.CreatePoolResponse:
         """
-        @summary 创建资源池
+        @summary Creates a resource pool.
         
         @param request: CreatePoolRequest
         @return: CreatePoolResponse
@@ -557,7 +565,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.CreatePoolRequest,
     ) -> ehpc_instant_20230701_models.CreatePoolResponse:
         """
-        @summary 创建资源池
+        @summary Creates a resource pool.
         
         @param request: CreatePoolRequest
         @return: CreatePoolResponse
@@ -571,7 +579,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
         """
-        @summary 删除执行计划
+        @summary Delete an execution plan
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).**\
+        This operation stops all Instant jobs that are managed by ActionPlanId.
         
         @param request: DeleteActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -606,7 +617,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
         """
-        @summary 删除执行计划
+        @summary Delete an execution plan
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).**\
+        This operation stops all Instant jobs that are managed by ActionPlanId.
         
         @param request: DeleteActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -640,7 +654,10 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DeleteActionPlanRequest,
     ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
         """
-        @summary 删除执行计划
+        @summary Delete an execution plan
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).**\
+        This operation stops all Instant jobs that are managed by ActionPlanId.
         
         @param request: DeleteActionPlanRequest
         @return: DeleteActionPlanResponse
@@ -653,7 +670,10 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DeleteActionPlanRequest,
     ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
         """
-        @summary 删除执行计划
+        @summary Delete an execution plan
+        
+        @description *Make sure that you fully understand E-HPC Instnat billing methods and [prices](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO).**\
+        This operation stops all Instant jobs that are managed by ActionPlanId.
         
         @param request: DeleteActionPlanRequest
         @return: DeleteActionPlanResponse
@@ -661,13 +681,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_action_plan_with_options_async(request, runtime)
 
+    def delete_job_records_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.DeleteJobRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.DeleteJobRecordsResponse:
+        """
+        @summary Deletes one or more job records that are in the final state from a specified cluster.
+        
+        @param tmp_req: DeleteJobRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.DeleteJobRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_ids):
+            request.job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.job_ids_shrink):
+            query['JobIds'] = request.job_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteJobRecords',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.DeleteJobRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_job_records_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.DeleteJobRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.DeleteJobRecordsResponse:
+        """
+        @summary Deletes one or more job records that are in the final state from a specified cluster.
+        
+        @param tmp_req: DeleteJobRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.DeleteJobRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_ids):
+            request.job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.job_ids_shrink):
+            query['JobIds'] = request.job_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteJobRecords',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.DeleteJobRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_job_records(
+        self,
+        request: ehpc_instant_20230701_models.DeleteJobRecordsRequest,
+    ) -> ehpc_instant_20230701_models.DeleteJobRecordsResponse:
+        """
+        @summary Deletes one or more job records that are in the final state from a specified cluster.
+        
+        @param request: DeleteJobRecordsRequest
+        @return: DeleteJobRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_job_records_with_options(request, runtime)
+
+    async def delete_job_records_async(
+        self,
+        request: ehpc_instant_20230701_models.DeleteJobRecordsRequest,
+    ) -> ehpc_instant_20230701_models.DeleteJobRecordsResponse:
+        """
+        @summary Deletes one or more job records that are in the final state from a specified cluster.
+        
+        @param request: DeleteJobRecordsRequest
+        @return: DeleteJobRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_job_records_with_options_async(request, runtime)
+
     def delete_jobs_with_options(
         self,
         tmp_req: ehpc_instant_20230701_models.DeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
         """
-        @summary 删除作业
+        @summary Deletes one or more jobs from a specified cluster.
         
         @param tmp_req: DeleteJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -712,7 +836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
         """
-        @summary 删除作业
+        @summary Deletes one or more jobs from a specified cluster.
         
         @param tmp_req: DeleteJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -756,7 +880,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DeleteJobsRequest,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
         """
-        @summary 删除作业
+        @summary Deletes one or more jobs from a specified cluster.
         
         @param request: DeleteJobsRequest
         @return: DeleteJobsResponse
@@ -769,7 +893,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DeleteJobsRequest,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
         """
-        @summary 删除作业
+        @summary Deletes one or more jobs from a specified cluster.
         
         @param request: DeleteJobsRequest
         @return: DeleteJobsResponse
@@ -783,7 +907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeletePoolResponse:
         """
-        @summary 删除资源池
+        @summary You can execute this statement to delete a resource pool.
         
         @param request: DeletePoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -818,7 +942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeletePoolResponse:
         """
-        @summary 删除资源池
+        @summary You can execute this statement to delete a resource pool.
         
         @param request: DeletePoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -852,7 +976,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DeletePoolRequest,
     ) -> ehpc_instant_20230701_models.DeletePoolResponse:
         """
-        @summary 删除资源池
+        @summary You can execute this statement to delete a resource pool.
         
         @param request: DeletePoolRequest
         @return: DeletePoolResponse
@@ -865,7 +989,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DeletePoolRequest,
     ) -> ehpc_instant_20230701_models.DeletePoolResponse:
         """
-        @summary 删除资源池
+        @summary You can execute this statement to delete a resource pool.
         
         @param request: DeletePoolRequest
         @return: DeletePoolResponse
@@ -879,7 +1003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
         """
-        @summary 查询作业性能数据
+        @summary You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
         
         @param tmp_req: DescribeJobMetricDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -924,7 +1048,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
         """
-        @summary 查询作业性能数据
+        @summary You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
         
         @param tmp_req: DescribeJobMetricDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -968,7 +1092,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DescribeJobMetricDataRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
         """
-        @summary 查询作业性能数据
+        @summary You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
         
         @param request: DescribeJobMetricDataRequest
         @return: DescribeJobMetricDataResponse
@@ -981,7 +1105,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DescribeJobMetricDataRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
         """
-        @summary 查询作业性能数据
+        @summary You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
         
         @param request: DescribeJobMetricDataRequest
         @return: DescribeJobMetricDataResponse
@@ -995,7 +1119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
         """
-        @summary 查询作业即时监控项
+        @summary Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
         
         @param tmp_req: DescribeJobMetricLastRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1038,7 +1162,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
         """
-        @summary 查询作业即时监控项
+        @summary Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
         
         @param tmp_req: DescribeJobMetricLastRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1080,7 +1204,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DescribeJobMetricLastRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
         """
-        @summary 查询作业即时监控项
+        @summary Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
         
         @param request: DescribeJobMetricLastRequest
         @return: DescribeJobMetricLastResponse
@@ -1093,7 +1217,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.DescribeJobMetricLastRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
         """
-        @summary 查询作业即时监控项
+        @summary Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
         
         @param request: DescribeJobMetricLastRequest
         @return: DescribeJobMetricLastResponse
@@ -1107,7 +1231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
         """
-        @summary 查询执行计划详情
+        @summary Querying Execution Plan Details
         
         @param request: GetActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1142,7 +1266,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
         """
-        @summary 查询执行计划详情
+        @summary Querying Execution Plan Details
         
         @param request: GetActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1176,7 +1300,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetActionPlanRequest,
     ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
         """
-        @summary 查询执行计划详情
+        @summary Querying Execution Plan Details
         
         @param request: GetActionPlanRequest
         @return: GetActionPlanResponse
@@ -1189,7 +1313,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetActionPlanRequest,
     ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
         """
-        @summary 查询执行计划详情
+        @summary Querying Execution Plan Details
         
         @param request: GetActionPlanRequest
         @return: GetActionPlanResponse
@@ -1203,7 +1327,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
         """
-        @summary 查看应用版本列表
+        @summary Obtains the application version list.
         
         @param request: GetAppVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1246,7 +1370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
         """
-        @summary 查看应用版本列表
+        @summary Obtains the application version list.
         
         @param request: GetAppVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1288,7 +1412,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetAppVersionsRequest,
     ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
         """
-        @summary 查看应用版本列表
+        @summary Obtains the application version list.
         
         @param request: GetAppVersionsRequest
         @return: GetAppVersionsResponse
@@ -1301,7 +1425,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetAppVersionsRequest,
     ) -> ehpc_instant_20230701_models.GetAppVersionsResponse:
         """
-        @summary 查看应用版本列表
+        @summary Obtains the application version list.
         
         @param request: GetAppVersionsRequest
         @return: GetAppVersionsResponse
@@ -1315,7 +1439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
         """
-        @summary 查询托管侧镜像详情。
+        @summary Obtains the information about an image.
         
         @param tmp_req: GetImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1360,7 +1484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
         """
-        @summary 查询托管侧镜像详情。
+        @summary Obtains the information about an image.
         
         @param tmp_req: GetImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1404,7 +1528,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetImageRequest,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
         """
-        @summary 查询托管侧镜像详情。
+        @summary Obtains the information about an image.
         
         @param request: GetImageRequest
         @return: GetImageResponse
@@ -1417,7 +1541,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetImageRequest,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
         """
-        @summary 查询托管侧镜像详情。
+        @summary Obtains the information about an image.
         
         @param request: GetImageRequest
         @return: GetImageResponse
@@ -1431,7 +1555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
         """
-        @summary 查询作业详情
+        @summary Obtains the details of an execution job.
         
         @param request: GetJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1466,7 +1590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
         """
-        @summary 查询作业详情
+        @summary Obtains the details of an execution job.
         
         @param request: GetJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1500,7 +1624,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetJobRequest,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
         """
-        @summary 查询作业详情
+        @summary Obtains the details of an execution job.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -1513,7 +1637,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetJobRequest,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
         """
-        @summary 查询作业详情
+        @summary Obtains the details of an execution job.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -1527,7 +1651,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetPoolResponse:
         """
-        @summary 查询队列详细信息
+        @summary Obtains the details of a resource pool.
         
         @param request: GetPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1562,7 +1686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetPoolResponse:
         """
-        @summary 查询队列详细信息
+        @summary Obtains the details of a resource pool.
         
         @param request: GetPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1596,7 +1720,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetPoolRequest,
     ) -> ehpc_instant_20230701_models.GetPoolResponse:
         """
-        @summary 查询队列详细信息
+        @summary Obtains the details of a resource pool.
         
         @param request: GetPoolRequest
         @return: GetPoolResponse
@@ -1609,7 +1733,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetPoolRequest,
     ) -> ehpc_instant_20230701_models.GetPoolResponse:
         """
-        @summary 查询队列详细信息
+        @summary Obtains the details of a resource pool.
         
         @param request: GetPoolRequest
         @return: GetPoolResponse
@@ -1623,7 +1747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
         """
-        @summary 查询执行计划的执行情况。
+        @summary Queries the execution status of an execution plan.
         
         @param request: ListActionPlanActivitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1662,7 +1786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
         """
-        @summary 查询执行计划的执行情况。
+        @summary Queries the execution status of an execution plan.
         
         @param request: ListActionPlanActivitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1700,7 +1824,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListActionPlanActivitiesRequest,
     ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
         """
-        @summary 查询执行计划的执行情况。
+        @summary Queries the execution status of an execution plan.
         
         @param request: ListActionPlanActivitiesRequest
         @return: ListActionPlanActivitiesResponse
@@ -1713,7 +1837,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListActionPlanActivitiesRequest,
     ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
         """
-        @summary 查询执行计划的执行情况。
+        @summary Queries the execution status of an execution plan.
         
         @param request: ListActionPlanActivitiesRequest
         @return: ListActionPlanActivitiesResponse
@@ -1727,7 +1851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
         """
-        @summary 查询执行计划列表
+        @summary Queries the list of execution plans.
         
         @param tmp_req: ListActionPlansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1770,7 +1894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
         """
-        @summary 查询执行计划列表
+        @summary Queries the list of execution plans.
         
         @param tmp_req: ListActionPlansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1812,7 +1936,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListActionPlansRequest,
     ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
         """
-        @summary 查询执行计划列表
+        @summary Queries the list of execution plans.
         
         @param request: ListActionPlansRequest
         @return: ListActionPlansResponse
@@ -1825,7 +1949,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListActionPlansRequest,
     ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
         """
-        @summary 查询执行计划列表
+        @summary Queries the list of execution plans.
         
         @param request: ListActionPlansRequest
         @return: ListActionPlansResponse
@@ -1839,7 +1963,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
         """
-        @summary 查询全局Executor信息
+        @summary Querying Global Executor Information
         
         @param tmp_req: ListExecutorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1882,7 +2006,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
         """
-        @summary 查询全局Executor信息
+        @summary Querying Global Executor Information
         
         @param tmp_req: ListExecutorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,7 +2048,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
         """
-        @summary 查询全局Executor信息
+        @summary Querying Global Executor Information
         
         @param request: ListExecutorsRequest
         @return: ListExecutorsResponse
@@ -1937,7 +2061,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
         """
-        @summary 查询全局Executor信息
+        @summary Querying Global Executor Information
         
         @param request: ListExecutorsRequest
         @return: ListExecutorsResponse
@@ -1951,7 +2075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
         """
-        @summary 查看托管侧镜像列表
+        @summary Queries the image list.
         
         @param tmp_req: ListImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2004,7 +2128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
         """
-        @summary 查看托管侧镜像列表
+        @summary Queries the image list.
         
         @param tmp_req: ListImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2056,7 +2180,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListImagesRequest,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
         """
-        @summary 查看托管侧镜像列表
+        @summary Queries the image list.
         
         @param request: ListImagesRequest
         @return: ListImagesResponse
@@ -2069,7 +2193,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListImagesRequest,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
         """
-        @summary 查看托管侧镜像列表
+        @summary Queries the image list.
         
         @param request: ListImagesRequest
         @return: ListImagesResponse
@@ -2083,7 +2207,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
         """
-        @summary 查询作业Executor信息
+        @summary Queries job executor information.
+        
+        @description Queries job executor information.
         
         @param request: ListJobExecutorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2124,7 +2250,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
         """
-        @summary 查询作业Executor信息
+        @summary Queries job executor information.
+        
+        @description Queries job executor information.
         
         @param request: ListJobExecutorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2164,7 +2292,9 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListJobExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
         """
-        @summary 查询作业Executor信息
+        @summary Queries job executor information.
+        
+        @description Queries job executor information.
         
         @param request: ListJobExecutorsRequest
         @return: ListJobExecutorsResponse
@@ -2177,7 +2307,9 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListJobExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
         """
-        @summary 查询作业Executor信息
+        @summary Queries job executor information.
+        
+        @description Queries job executor information.
         
         @param request: ListJobExecutorsRequest
         @return: ListJobExecutorsResponse
@@ -2191,7 +2323,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
         """
-        @summary 查询作业列表
+        @summary Queries the jobs in a cluster.
         
         @param tmp_req: ListJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2238,7 +2370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
         """
-        @summary 查询作业列表
+        @summary Queries the jobs in a cluster.
         
         @param tmp_req: ListJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2284,7 +2416,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListJobsRequest,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
         """
-        @summary 查询作业列表
+        @summary Queries the jobs in a cluster.
         
         @param request: ListJobsRequest
         @return: ListJobsResponse
@@ -2297,7 +2429,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListJobsRequest,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
         """
-        @summary 查询作业列表
+        @summary Queries the jobs in a cluster.
         
         @param request: ListJobsRequest
         @return: ListJobsResponse
@@ -2311,7 +2443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListPoolsResponse:
         """
-        @summary 查询资源池列表
+        @summary Queries the resource pool list.
         
         @param tmp_req: ListPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2354,7 +2486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListPoolsResponse:
         """
-        @summary 查询资源池列表
+        @summary Queries the resource pool list.
         
         @param tmp_req: ListPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2396,7 +2528,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListPoolsRequest,
     ) -> ehpc_instant_20230701_models.ListPoolsResponse:
         """
-        @summary 查询资源池列表
+        @summary Queries the resource pool list.
         
         @param request: ListPoolsRequest
         @return: ListPoolsResponse
@@ -2409,7 +2541,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListPoolsRequest,
     ) -> ehpc_instant_20230701_models.ListPoolsResponse:
         """
-        @summary 查询资源池列表
+        @summary Queries the resource pool list.
         
         @param request: ListPoolsRequest
         @return: ListPoolsResponse
@@ -2423,7 +2555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
         """
-        @summary 查询一个或多个资源已经绑定的标签列表
+        @summary Queries the tags that are bound to one or more Instant resources.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2466,7 +2598,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
         """
-        @summary 查询一个或多个资源已经绑定的标签列表
+        @summary Queries the tags that are bound to one or more Instant resources.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2508,7 +2640,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListTagResourcesRequest,
     ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
         """
-        @summary 查询一个或多个资源已经绑定的标签列表
+        @summary Queries the tags that are bound to one or more Instant resources.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2521,7 +2653,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListTagResourcesRequest,
     ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
         """
-        @summary 查询一个或多个资源已经绑定的标签列表
+        @summary Queries the tags that are bound to one or more Instant resources.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2535,7 +2667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
         """
-        @summary 移除托管侧镜像信息。
+        @summary Remove a custom image
         
         @param request: RemoveImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2572,7 +2704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
         """
-        @summary 移除托管侧镜像信息。
+        @summary Remove a custom image
         
         @param request: RemoveImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2608,7 +2740,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.RemoveImageRequest,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
         """
-        @summary 移除托管侧镜像信息。
+        @summary Remove a custom image
         
         @param request: RemoveImageRequest
         @return: RemoveImageResponse
@@ -2621,7 +2753,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.RemoveImageRequest,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
         """
-        @summary 移除托管侧镜像信息。
+        @summary Remove a custom image
         
         @param request: RemoveImageRequest
         @return: RemoveImageResponse
@@ -2635,7 +2767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
         """
-        @summary 应用跨地域同步
+        @summary Application cross-region synchronization
         
         @param tmp_req: SynchronizeAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2676,7 +2808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
         """
-        @summary 应用跨地域同步
+        @summary Application cross-region synchronization
         
         @param tmp_req: SynchronizeAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2716,7 +2848,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.SynchronizeAppRequest,
     ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
         """
-        @summary 应用跨地域同步
+        @summary Application cross-region synchronization
         
         @param request: SynchronizeAppRequest
         @return: SynchronizeAppResponse
@@ -2729,7 +2861,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.SynchronizeAppRequest,
     ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
         """
-        @summary 应用跨地域同步
+        @summary Application cross-region synchronization
         
         @param request: SynchronizeAppRequest
         @return: SynchronizeAppResponse
@@ -2743,7 +2875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.TagResourcesResponse:
         """
-        @summary 为指定的资源列表统一创建并绑定标签
+        @summary Create and bind tags to Instant resource list
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2782,7 +2914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.TagResourcesResponse:
         """
-        @summary 为指定的资源列表统一创建并绑定标签
+        @summary Create and bind tags to Instant resource list
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2820,7 +2952,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.TagResourcesRequest,
     ) -> ehpc_instant_20230701_models.TagResourcesResponse:
         """
-        @summary 为指定的资源列表统一创建并绑定标签
+        @summary Create and bind tags to Instant resource list
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -2833,7 +2965,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.TagResourcesRequest,
     ) -> ehpc_instant_20230701_models.TagResourcesResponse:
         """
-        @summary 为指定的资源列表统一创建并绑定标签
+        @summary Create and bind tags to Instant resource list
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -2847,7 +2979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
         """
-        @summary 为指定的ECS资源列表统一解绑标签
+        @summary Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
         
         @param request: UnTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2888,7 +3020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
         """
-        @summary 为指定的ECS资源列表统一解绑标签
+        @summary Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
         
         @param request: UnTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2928,7 +3060,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.UnTagResourcesRequest,
     ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
         """
-        @summary 为指定的ECS资源列表统一解绑标签
+        @summary Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
         
         @param request: UnTagResourcesRequest
         @return: UnTagResourcesResponse
@@ -2941,7 +3073,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.UnTagResourcesRequest,
     ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
         """
-        @summary 为指定的ECS资源列表统一解绑标签
+        @summary Unbind tags from Instant resource list. If the tag is not bound to other resources, the tag is automatically deleted.
         
         @param request: UnTagResourcesRequest
         @return: UnTagResourcesResponse
@@ -2955,7 +3087,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
         """
-        @summary 更新执行计划
+        @summary Adjust the resource scale of the execution plan or modify the execution status
         
         @param request: UpdateActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2994,7 +3126,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
         """
-        @summary 更新执行计划
+        @summary Adjust the resource scale of the execution plan or modify the execution status
         
         @param request: UpdateActionPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3032,7 +3164,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.UpdateActionPlanRequest,
     ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
         """
-        @summary 更新执行计划
+        @summary Adjust the resource scale of the execution plan or modify the execution status
         
         @param request: UpdateActionPlanRequest
         @return: UpdateActionPlanResponse
@@ -3045,7 +3177,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.UpdateActionPlanRequest,
     ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
         """
-        @summary 更新执行计划
+        @summary Adjust the resource scale of the execution plan or modify the execution status
         
         @param request: UpdateActionPlanRequest
         @return: UpdateActionPlanResponse
@@ -3059,7 +3191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
         """
-        @summary 更新资源池
+        @summary Update the resource pool configuration.
         
         @param tmp_req: UpdatePoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3102,7 +3234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
         """
-        @summary 更新资源池
+        @summary Update the resource pool configuration.
         
         @param tmp_req: UpdatePoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3144,7 +3276,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.UpdatePoolRequest,
     ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
         """
-        @summary 更新资源池
+        @summary Update the resource pool configuration.
         
         @param request: UpdatePoolRequest
         @return: UpdatePoolResponse
@@ -3157,7 +3289,7 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.UpdatePoolRequest,
     ) -> ehpc_instant_20230701_models.UpdatePoolResponse:
         """
-        @summary 更新资源池
+        @summary Update the resource pool configuration.
         
         @param request: UpdatePoolRequest
         @return: UpdatePoolResponse

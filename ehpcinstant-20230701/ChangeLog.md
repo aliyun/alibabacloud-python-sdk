@@ -1,3 +1,9 @@
+2025-11-27 Version: 3.3.0
+- Support API DeleteJobRecords.
+- Update API ListExecutors: add request parameters Filter.VpcId.
+- Update API ListExecutors: add response parameters Body.Executors.$.VpcId.
+
+
 2025-09-28 Version: 3.2.1
 - Update API CreateJob: add request parameters Tasks.$.TaskSpec.Resource.EnableHT.
 - Update API CreateJob: add request parameters Tasks.$.TaskSpec.Resource.HostNamePrefix.

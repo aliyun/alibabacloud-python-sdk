@@ -11,8 +11,11 @@ class AddImageRequestContainerImageSpecRegistryCredential(TeaModel):
         server: str = None,
         user_name: str = None,
     ):
+        # The password of the logon user.
         self.password = password
+        # The registered address of the image repository.
         self.server = server
+        # The username of the logon user.
         self.user_name = user_name
 
     def validate(self):
@@ -52,10 +55,21 @@ class AddImageRequestContainerImageSpec(TeaModel):
         registry_cri_id: str = None,
         registry_url: str = None,
     ):
+        # Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+        # 
+        # *   True
+        # *   False
         self.is_acrenterprise = is_acrenterprise
+        # Whether it is an Alibaba Cloud image repository.
+        # 
+        # *   True
+        # *   False
         self.is_acrregistry = is_acrregistry
+        # The authentication of the private image repository.
         self.registry_credential = registry_credential
+        # The ID of the Container Registry Enterprise Edition image repository.
         self.registry_cri_id = registry_cri_id
+        # The endpoint of the container image.
         self.registry_url = registry_url
 
     def validate(self):
@@ -101,6 +115,7 @@ class AddImageRequestVMImageSpec(TeaModel):
         self,
         image_id: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
 
     def validate(self):
@@ -133,12 +148,22 @@ class AddImageRequest(TeaModel):
         name: str = None,
         vmimage_spec: AddImageRequestVMImageSpec = None,
     ):
+        # The configurations of the container image.
         self.container_image_spec = container_image_spec
+        # The description of the image.
         self.description = description
+        # The type of the images. Valid values:
+        # 
+        # *   VM: virtual machine image.
+        # *   Container: the container image.
         self.image_type = image_type
+        # The version of the image.
         self.image_version = image_version
+        # The name of the custom image.
+        # 
         # This parameter is required.
         self.name = name
+        # The image configuration of the virtual machine.
         self.vmimage_spec = vmimage_spec
 
     def validate(self):
@@ -196,12 +221,22 @@ class AddImageShrinkRequest(TeaModel):
         name: str = None,
         vmimage_spec_shrink: str = None,
     ):
+        # The configurations of the container image.
         self.container_image_spec_shrink = container_image_spec_shrink
+        # The description of the image.
         self.description = description
+        # The type of the images. Valid values:
+        # 
+        # *   VM: virtual machine image.
+        # *   Container: the container image.
         self.image_type = image_type
+        # The version of the image.
         self.image_version = image_version
+        # The name of the custom image.
+        # 
         # This parameter is required.
         self.name = name
+        # The image configuration of the virtual machine.
         self.vmimage_spec_shrink = vmimage_spec_shrink
 
     def validate(self):
@@ -251,8 +286,14 @@ class AddImageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -332,9 +373,12 @@ class CreateActionPlanRequestRegions(TeaModel):
         security_group_ids: List[str] = None,
         v_switch_ids: List[str] = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The list of security groups available for the execution plan in the region. You can have 0 to 5 security groups.
         self.security_group_id = security_group_id
         self.security_group_ids = security_group_ids
+        # The list of VSwitches available for the execution plan in the region. Supports 0 to 5 VSwitches.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -375,7 +419,9 @@ class CreateActionPlanRequestResources(TeaModel):
         cores: float = None,
         memory: float = None,
     ):
+        # The number of CPUs in the running environment.
         self.cores = cores
+        # The memory size of the running environment. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -416,15 +462,37 @@ class CreateActionPlanRequest(TeaModel):
         resources: List[CreateActionPlanRequestResources] = None,
         script: str = None,
     ):
+        # The name of the execution plan.
         self.action_plan_name = action_plan_name
+        # The type of the resource.
+        # 
+        # *   Standard
+        # *   Dedicated: You must enable a whitelist for use.
+        # *   Economic: You must enable a whitelist for use.
         self.allocation_spec = allocation_spec
+        # The ID of the application.
         self.app_id = app_id
+        # The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
         self.desired_capacity = desired_capacity
+        # The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
+        # 
+        # *   General
+        # *   Performance
+        # 
+        # Default value: General
         self.level = level
+        # The pre-processing script. Base64 encoding is required.
         self.prolog_script = prolog_script
+        # The list of resource configurations in the region where the execution plan runs.
         self.regions = regions
+        # Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+        # 
+        # *   VCpuCapacity
+        # *   ExecutorCapacity
         self.resource_type = resource_type
+        # The list of resource configurations of the execution plan runtime environment. You can configure 1 to 10 resources.
         self.resources = resources
+        # The running-job script. Base64 encoding is required.
         self.script = script
 
     def validate(self):
@@ -514,15 +582,37 @@ class CreateActionPlanShrinkRequest(TeaModel):
         resources_shrink: str = None,
         script: str = None,
     ):
+        # The name of the execution plan.
         self.action_plan_name = action_plan_name
+        # The type of the resource.
+        # 
+        # *   Standard
+        # *   Dedicated: You must enable a whitelist for use.
+        # *   Economic: You must enable a whitelist for use.
         self.allocation_spec = allocation_spec
+        # The ID of the application.
         self.app_id = app_id
+        # The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
         self.desired_capacity = desired_capacity
+        # The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
+        # 
+        # *   General
+        # *   Performance
+        # 
+        # Default value: General
         self.level = level
+        # The pre-processing script. Base64 encoding is required.
         self.prolog_script = prolog_script
+        # The list of resource configurations in the region where the execution plan runs.
         self.regions_shrink = regions_shrink
+        # Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+        # 
+        # *   VCpuCapacity
+        # *   ExecutorCapacity
         self.resource_type = resource_type
+        # The list of resource configurations of the execution plan runtime environment. You can configure 1 to 10 resources.
         self.resources_shrink = resources_shrink
+        # The running-job script. Base64 encoding is required.
         self.script = script
 
     def validate(self):
@@ -587,7 +677,9 @@ class CreateActionPlanResponseBody(TeaModel):
         action_plan_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -661,8 +753,18 @@ class CreateJobRequestDependencyPolicyJobDependency(TeaModel):
         job_id: str = None,
         type: str = None,
     ):
+        # The ID of the job.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The type of the dependency. Valid values:
+        # 
+        # *   AfterSucceeded: **All subtasks** of the dependent job or array job succeed. The exit code is 0.
+        # *   AfterFailed: **All subtasks** of the dependent job or array job fail. The exit code is not 0.
+        # *   AfterAny: The dependent job completes (succeeds or fails).
+        # *   AfterCorresponding: The subtask corresponding to the dependent array job succeeds. The exit code is 0.
+        # 
+        # Default value: AfterSucceeded.
         self.type = type
 
     def validate(self):
@@ -694,6 +796,7 @@ class CreateJobRequestDependencyPolicy(TeaModel):
         self,
         job_dependency: List[CreateJobRequestDependencyPolicyJobDependency] = None,
     ):
+        # The job dependency. A maximum of 10 groups.
         self.job_dependency = job_dependency
 
     def validate(self):
@@ -730,7 +833,14 @@ class CreateJobRequestDeploymentPolicyNetwork(TeaModel):
         enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
+        # Whether the job creates a public IP address.
+        # 
+        # *   true: creates a public IP address.
+        # *   false: does not create a public IP address.
+        # 
+        # Default value: false.
         self.enable_external_ip_address = enable_external_ip_address
+        # The VSwitch array.
         self.vswitch = vswitch
 
     def validate(self):
@@ -763,8 +873,11 @@ class CreateJobRequestDeploymentPolicyTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the job tag. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the job tag. You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -801,11 +914,26 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         priority: int = None,
         tag: List[CreateJobRequestDeploymentPolicyTag] = None,
     ):
+        # The resource type,
+        # 
+        # *   Standard
+        # *   Dedicated: You must enable a whitelist for use.
+        # *   Economic: You must enable a whitelist for use.
         self.allocation_spec = allocation_spec
+        # The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
+        # 
+        # *   General
+        # *   Performance
+        # 
+        # Default value: General.
         self.level = level
+        # The network configuration information.
         self.network = network
+        # The resource pool of the job.
         self.pool = pool
+        # The priorities of the jobs. A larger value indicates a higher job scheduling priority. Valid values: 1 to 100.
         self.priority = priority
+        # The tag information of the job. A maximum of 20 groups.
         self.tag = tag
 
     def validate(self):
@@ -864,6 +992,7 @@ class CreateJobRequestSecurityPolicySecurityGroup(TeaModel):
         self,
         security_group_ids: List[str] = None,
     ):
+        # The array of security group IDs.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -891,6 +1020,7 @@ class CreateJobRequestSecurityPolicy(TeaModel):
         self,
         security_group: CreateJobRequestSecurityPolicySecurityGroup = None,
     ):
+        # The security group ID.
         self.security_group = security_group
 
     def validate(self):
@@ -922,8 +1052,13 @@ class CreateJobRequestTasksExecutorPolicyArraySpec(TeaModel):
         index_start: int = None,
         index_step: int = None,
     ):
+        # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
         self.index_end = index_end
+        # The starting value of the array job index. Valid values: 0 to 4999.
         self.index_start = index_start
+        # The interval of the array job index.
+        # 
+        # > If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three sub-jobs. The index values of the sub-jobs are 1,3, and 5. You can access the sub-jobs by using environment variables.
         self.index_step = index_step
 
     def validate(self):
@@ -960,7 +1095,21 @@ class CreateJobRequestTasksExecutorPolicy(TeaModel):
         array_spec: CreateJobRequestTasksExecutorPolicyArraySpec = None,
         max_count: int = None,
     ):
+        # The details of the array job. The index value of the sub-job is passed to the running environment through environment variables to support user business program reference. Environment variables include:
+        # 
+        # *   EHPC_JOB_NAME: the name of the job. This parameter corresponds to the JobName parameter.
+        # *   EHPC_JOB_ID: The ID of the job.
+        # *   EHPC_TASK_NAME: the name of the task. This parameter corresponds to the TaskName parameter.
+        # *   EHPC_EXECUTOR_ID: The ID of the execution unit.
+        # *   EHPC_ARRAY_TASK_ID: the sub-job index value.
+        # *   EHPC_ARRAY_TASK_COUNT: the total number of sub-jobs.
+        # *   EHPC_ARRAY_TASK_MAX: the maximum sub-job index, which corresponds to the IndexStart parameter.
+        # *   EHPC_ARRAY_TASK_MIN: the minimum value of the sub-job index, which corresponds to the IndexEnd parameter.
+        # *   EHPC_ARRAY_TASK_STEP: the index step size of the sub-job, which corresponds to the IndexStep parameter.
         self.array_spec = array_spec
+        # The maximum number of nodes to run the job.
+        # 
+        # > Follow the calculation formula: `MaxCount = (IndexEnd - IndexStart) / IndexStep +1`
         self.max_count = max_count
 
     def validate(self):
@@ -995,7 +1144,9 @@ class CreateJobRequestTasksTaskSpecResourceDisks(TeaModel):
         size: int = None,
         type: str = None,
     ):
+        # The size of the disk. Unit: GiB.
         self.size = size
+        # The type of the disk. Currently, only System is supported, which indicates the system disk.
         self.type = type
 
     def validate(self):
@@ -1032,11 +1183,15 @@ class CreateJobRequestTasksTaskSpecResource(TeaModel):
         instance_types: List[str] = None,
         memory: float = None,
     ):
+        # The number of CPUs in the running environment.
         self.cores = cores
+        # The array of the disks.
         self.disks = disks
         self.enable_ht = enable_ht
         self.host_name_prefix = host_name_prefix
+        # The instance type of the running environment. A maximum of 5 groups.
         self.instance_types = instance_types
+        # The memory size of the running environment. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -1093,8 +1248,15 @@ class CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions(TeaModel):
         action: str = None,
         exit_code: int = None,
     ):
+        # The next step behavior of the task.
+        # 
+        # *   Retry: The job starts a retry when a specific exit code is hit.
+        # *   Exit: The job exits when a specific exit code is hit.
+        # 
         # This parameter is required.
         self.action = action
+        # The task exit code, which is used together with the action to form a job retry rule. Valid values: 0 to 255.
+        # 
         # This parameter is required.
         self.exit_code = exit_code
 
@@ -1128,7 +1290,9 @@ class CreateJobRequestTasksTaskSpecRetryPolicy(TeaModel):
         exit_code_actions: List[CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions] = None,
         retry_count: int = None,
     ):
+        # The retry rule. A maximum of 10 groups.
         self.exit_code_actions = exit_code_actions
+        # The maximum number of retries. Valid values: 1 to 10. Default value: 3.
         self.retry_count = retry_count
 
     def validate(self):
@@ -1169,7 +1333,9 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars(TeaModel
         name: str = None,
         value: str = None,
     ):
+        # The name of the environment variable for the container. It can be 1 to 128 characters in length. Format requirement: [0-9a-zA-Z], and underscores, cannot start with a number.
         self.name = name
+        # The value of the environment variable for the container. The value must be 0 to 256 bits in length.
         self.value = value
 
     def validate(self):
@@ -1206,12 +1372,25 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
         image: str = None,
         working_dir: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The startup argument of the init container. A maximum of 10 groups.
         self.arg = arg
+        # The container startup commands. You can specify up to 20 commands. Each command can be up to 256 characters in length.
+        # 
+        # > 
+        # 
+        # *   If the start command contains spaces (for example, `sleep 60s` ), the input JSON format parameter is `["sleep", "60s"]`.
+        # 
+        # *   If the startup command is complex, the parameter format may be a combination of `Command: ["/bin/bash"]` and `Arg:["-c", "<customized command>"]`. The `<customized command>` is a user-defined combination of commands and can contain characters such as spaces.
         self.command = command
+        # The environment variables of the container. A maximum of 20 groups.
         self.environment_vars = environment_vars
+        # The image of the container.
+        # 
         # This parameter is required.
         self.image = image
+        # The working directory of the container.
         self.working_dir = working_dir
 
     def validate(self):
@@ -1271,11 +1450,21 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
         prolog_script: str = None,
         script: str = None,
     ):
+        # The ID of the virtual machine application.
         self.app_id = app_id
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.image = image
+        # The logon password of the virtual machine environment. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+        # 
+        # ()\\`~!@#$%^&\\*-_+=|{}[]:;\\"<>,.?/ In Windows, the password cannot contain a forward slash (/) as the first character.
+        # 
+        # > We recommend that you use HTTPS to send requests if you specify Password to avoid password leakage.
         self.password = password
+        # The pre-processing script. Base64 encoding is required.
         self.prolog_script = prolog_script
+        # The running-job script. Base64 encoding is required.
         self.script = script
 
     def validate(self):
@@ -1320,7 +1509,9 @@ class CreateJobRequestTasksTaskSpecTaskExecutor(TeaModel):
         container: CreateJobRequestTasksTaskSpecTaskExecutorContainer = None,
         vm: CreateJobRequestTasksTaskSpecTaskExecutorVM = None,
     ):
+        # Use the container environment.
         self.container = container
+        # Use a virtual machine environment.
         self.vm = vm
 
     def validate(self):
@@ -1360,9 +1551,26 @@ class CreateJobRequestTasksTaskSpecVolumeMount(TeaModel):
         read_only: bool = None,
         volume_driver: str = None,
     ):
+        # The list of data volume mount parameters. Each option is a key-value pair in a JSON string.
+        # 
+        # *   Format for mounting a NAS file system:{"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
+        # 
+        # > server indicates the address of the mount point of the NAS file system. path indicates the subdirectory of the NAS file system. The subdirectory must start with a (/) and must already exist. vers indicates the version number of the NFS protocol used to mount the file system. We recommend that you use v3. options indicates the custom parameters in the format of "xxx,xxx,xxx".
+        # 
+        # *   OSS mount format:{"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
+        # 
+        # > bucket indicates the name of the OSS bucket. url indicates the endpoint of the OSS bucket. You can log on to the OSS console and obtain the endpoint on the Overview page of the destination bucket. path indicates the directory structure of the root file of the bucket. The default value is /, which requires that the directory already exists. akId indicates the AccessKey ID. akSecret indicates the AccessKey secret.
         self.mount_options = mount_options
+        # The directory where the task mounts the data volume.
+        # 
+        # > The content of the mounted directory is overwritten by the content of the volume. Exercise caution when you use the directory.
         self.mount_path = mount_path
+        # Specifies whether the volume is read-only. Default value: false.
         self.read_only = read_only
+        # Currently supported data volume types.
+        # 
+        # *   alicloud/nas: mounts NAS.
+        # *   alicloud/oss: mounts OSS.
         self.volume_driver = volume_driver
 
     def validate(self):
@@ -1405,10 +1613,15 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
         task_executor: List[CreateJobRequestTasksTaskSpecTaskExecutor] = None,
         volume_mount: List[CreateJobRequestTasksTaskSpecVolumeMount] = None,
     ):
+        # The resource information of the running environment.
         self.resource = resource
+        # Task retry policy.
         self.retry_policy = retry_policy
+        # The task execution configurations.
+        # 
         # This parameter is required.
         self.task_executor = task_executor
+        # The list of data volumes mounted to the task. A maximum of 10 groups.
         self.volume_mount = volume_mount
 
     def validate(self):
@@ -1474,9 +1687,18 @@ class CreateJobRequestTasks(TeaModel):
         task_spec: CreateJobRequestTasksTaskSpec = None,
         task_sustainable: bool = None,
     ):
+        # The task execution policy.
         self.executor_policy = executor_policy
+        # The job name. It must be 2 to 32 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
         self.task_name = task_name
+        # The details of the task specification.
         self.task_spec = task_spec
+        # Indicate whether the job is a long-running job.
+        # 
+        # *   true: background service the job.
+        # *   false: batch jobs.
+        # 
+        # Default value: false.
         self.task_sustainable = task_sustainable
 
     def validate(self):
@@ -1527,13 +1749,27 @@ class CreateJobRequest(TeaModel):
         security_policy: CreateJobRequestSecurityPolicy = None,
         tasks: List[CreateJobRequestTasks] = None,
     ):
+        # Dependency policy.
         self.dependency_policy = dependency_policy
+        # The resource deployment policy.
         self.deployment_policy = deployment_policy
+        # The description of the job.
         self.job_description = job_description
+        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The type of the job scheduler.
+        # 
+        # *   HPC
+        # *   K8S
+        # 
+        # Default value: HPC
         self.job_scheduler = job_scheduler
+        # The security policy.
         self.security_policy = security_policy
+        # The list of tasks. Only one task is supported.
+        # 
         # This parameter is required.
         self.tasks = tasks
 
@@ -1609,13 +1845,27 @@ class CreateJobShrinkRequest(TeaModel):
         security_policy_shrink: str = None,
         tasks_shrink: str = None,
     ):
+        # Dependency policy.
         self.dependency_policy_shrink = dependency_policy_shrink
+        # The resource deployment policy.
         self.deployment_policy_shrink = deployment_policy_shrink
+        # The description of the job.
         self.job_description = job_description
+        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The type of the job scheduler.
+        # 
+        # *   HPC
+        # *   K8S
+        # 
+        # Default value: HPC
         self.job_scheduler = job_scheduler
+        # The security policy.
         self.security_policy_shrink = security_policy_shrink
+        # The list of tasks. Only one task is supported.
+        # 
         # This parameter is required.
         self.tasks_shrink = tasks_shrink
 
@@ -1669,7 +1919,9 @@ class CreateJobResponseBodyTasks(TeaModel):
         executor_ids: List[str] = None,
         task_name: str = None,
     ):
+        # The list of executor IDs contained in the task.
         self.executor_ids = executor_ids
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -1703,8 +1955,11 @@ class CreateJobResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[CreateJobResponseBodyTasks] = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -1789,6 +2044,7 @@ class CreatePoolRequestResourceLimits(TeaModel):
         self,
         max_exector_num: int = None,
     ):
+        # The maximum number of concurrent execution nodes in a resource pool.
         self.max_exector_num = max_exector_num
 
     def validate(self):
@@ -1818,9 +2074,19 @@ class CreatePoolRequest(TeaModel):
         priority: int = None,
         resource_limits: CreatePoolRequestResourceLimits = None,
     ):
+        # The name of the resource pool.
+        # 
+        # *   The name can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # 
         # This parameter is required.
         self.pool_name = pool_name
+        # The priority of the resource pool.
+        # 
+        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
         self.priority = priority
+        # The quota of resources that users are allowed to concurrently use in a resource pool.
         self.resource_limits = resource_limits
 
     def validate(self):
@@ -1860,9 +2126,19 @@ class CreatePoolShrinkRequest(TeaModel):
         priority: int = None,
         resource_limits_shrink: str = None,
     ):
+        # The name of the resource pool.
+        # 
+        # *   The name can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # 
         # This parameter is required.
         self.pool_name = pool_name
+        # The priority of the resource pool.
+        # 
+        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
         self.priority = priority
+        # The quota of resources that users are allowed to concurrently use in a resource pool.
         self.resource_limits_shrink = resource_limits_shrink
 
     def validate(self):
@@ -1967,6 +2243,7 @@ class DeleteActionPlanRequest(TeaModel):
         self,
         action_plan_id: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
 
     def validate(self):
@@ -1994,6 +2271,7 @@ class DeleteActionPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2057,13 +2335,140 @@ class DeleteActionPlanResponse(TeaModel):
         return self
 
 
+class DeleteJobRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        job_ids: List[str] = None,
+    ):
+        # The list of job IDs.
+        self.job_ids = job_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
+        return self
+
+
+class DeleteJobRecordsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        job_ids_shrink: str = None,
+    ):
+        # The list of job IDs.
+        self.job_ids_shrink = job_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_ids_shrink is not None:
+            result['JobIds'] = self.job_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobIds') is not None:
+            self.job_ids_shrink = m.get('JobIds')
+        return self
+
+
+class DeleteJobRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteJobRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteJobRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteJobRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteJobsRequestJobSpecTaskSpec(TeaModel):
     def __init__(
         self,
         array_index: List[int] = None,
         task_name: str = None,
     ):
+        # The list of array job indexes to be deleted.
         self.array_index = array_index
+        # The name of the task to be deleted.
         self.task_name = task_name
 
     def validate(self):
@@ -2096,7 +2501,10 @@ class DeleteJobsRequestJobSpec(TeaModel):
         job_id: str = None,
         task_spec: List[DeleteJobsRequestJobSpecTaskSpec] = None,
     ):
+        # The ID of the job to be deleted.\\
+        # You can call the ListJobs operation to query job IDs.
         self.job_id = job_id
+        # The task details of the job to be deleted.
         self.task_spec = task_spec
 
     def validate(self):
@@ -2138,8 +2546,16 @@ class DeleteJobsRequest(TeaModel):
         job_scheduler: str = None,
         job_spec: List[DeleteJobsRequestJobSpec] = None,
     ):
+        # The list of executor IDs. A maximum of 100 IDs are supported.
         self.executor_ids = executor_ids
+        # The type of the job scheduler.
+        # 
+        # *   HPC
+        # *   K8S
+        # 
+        # Default value: HPC
         self.job_scheduler = job_scheduler
+        # The information about the job to be deleted.
         self.job_spec = job_spec
 
     def validate(self):
@@ -2185,8 +2601,16 @@ class DeleteJobsShrinkRequest(TeaModel):
         job_scheduler: str = None,
         job_spec_shrink: str = None,
     ):
+        # The list of executor IDs. A maximum of 100 IDs are supported.
         self.executor_ids_shrink = executor_ids_shrink
+        # The type of the job scheduler.
+        # 
+        # *   HPC
+        # *   K8S
+        # 
+        # Default value: HPC
         self.job_scheduler = job_scheduler
+        # The information about the job to be deleted.
         self.job_spec_shrink = job_spec_shrink
 
     def validate(self):
@@ -2222,6 +2646,7 @@ class DeleteJobsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2290,6 +2715,11 @@ class DeletePoolRequest(TeaModel):
         self,
         pool_name: str = None,
     ):
+        # The name of the resource pool.
+        # 
+        # *   The value can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # 
         # This parameter is required.
         self.pool_name = pool_name
 
@@ -2390,9 +2820,13 @@ class DescribeJobMetricDataRequest(TeaModel):
         metric_name: str = None,
         task_name: str = None,
     ):
+        # The list of array job indexes.
         self.array_index = array_index
+        # The job ID.
         self.job_id = job_id
+        # The metrics of the job.
         self.metric_name = metric_name
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -2435,9 +2869,13 @@ class DescribeJobMetricDataShrinkRequest(TeaModel):
         metric_name: str = None,
         task_name: str = None,
     ):
+        # The list of array job indexes.
         self.array_index_shrink = array_index_shrink
+        # The job ID.
         self.job_id = job_id
+        # The metrics of the job.
         self.metric_name = metric_name
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -2479,8 +2917,11 @@ class DescribeJobMetricDataResponseBody(TeaModel):
         period: int = None,
         request_id: str = None,
     ):
+        # Monitoring statistics points.
         self.data_points = data_points
+        # The statistical period of the monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds.
         self.period = period
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2559,8 +3000,11 @@ class DescribeJobMetricLastRequest(TeaModel):
         job_id: str = None,
         task_name: str = None,
     ):
+        # The list of array job indexes.
         self.array_index = array_index
+        # The job ID.
         self.job_id = job_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -2598,8 +3042,11 @@ class DescribeJobMetricLastShrinkRequest(TeaModel):
         job_id: str = None,
         task_name: str = None,
     ):
+        # The list of array job indexes.
         self.array_index_shrink = array_index_shrink
+        # The job ID.
         self.job_id = job_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -2636,7 +3083,9 @@ class DescribeJobMetricLastResponseBodyMetrics(TeaModel):
         array_index: int = None,
         metric: str = None,
     ):
+        # The index of the array job.
         self.array_index = array_index
+        # The monitoring item information corresponding to the array job index.
         self.metric = metric
 
     def validate(self):
@@ -2669,7 +3118,9 @@ class DescribeJobMetricLastResponseBody(TeaModel):
         metrics: List[DescribeJobMetricLastResponseBodyMetrics] = None,
         request_id: str = None,
     ):
+        # The list of the JobMetric details.
         self.metrics = metrics
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2750,6 +3201,7 @@ class GetActionPlanRequest(TeaModel):
         self,
         action_plan_id: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
 
     def validate(self):
@@ -2779,8 +3231,11 @@ class GetActionPlanResponseBodyRegions(TeaModel):
         security_group_ids: List[str] = None,
         v_switch_ids: List[str] = None,
     ):
+        # The region ID of the instance.
         self.region_id = region_id
+        # The list of security groups available for the execution plan in the region.
         self.security_group_ids = security_group_ids
+        # The list of VSwitches available for the execution plan in the region.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -2817,7 +3272,9 @@ class GetActionPlanResponseBodyResources(TeaModel):
         cores: float = None,
         memory: float = None,
     ):
+        # The number of CPUs in the running environment.
         self.cores = cores
+        # The memory size of the running environment. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -2863,20 +3320,42 @@ class GetActionPlanResponseBody(TeaModel):
         total_capacity: float = None,
         update_time: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
+        # The name of the execution plan.
         self.action_plan_name = action_plan_name
+        # The type of the resource.
         self.allocation_spec = allocation_spec
+        # The ID of the application.
         self.app_id = app_id
+        # The time when the execution plan was created.
         self.create_time = create_time
+        # The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
         self.desired_capacity = desired_capacity
+        # The computing power level.
         self.level = level
+        # The pre-processing script. Base64 encoding is required.
         self.prolog_script = prolog_script
+        # The list of resource configurations in the region where the execution plan runs.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
+        # Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+        # 
+        # *   VCpuCapacity
+        # *   ExecutorCapacity
         self.resource_type = resource_type
+        # The list of resource configurations of the execution plan runtime environment.
         self.resources = resources
+        # The status of the execution plan. The possible values are as follows:
+        # 
+        # *   Active Instant tasks are dynamically managed only when the execution plan is in the Active state.
+        # *   Inactive Instant tasks are no longer managed by execution plans in the Inactive state.
+        # *   Deleting You cannot modify the parameters of an execution plan in this state.
         self.status = status
+        # The size of the resources currently managed by the execution plan.
         self.total_capacity = total_capacity
+        # The time when the execution plan was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -3022,11 +3501,25 @@ class GetAppVersionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The source of the image. Valid values:
+        # 
+        # Public: public images provided by Alibaba Cloud.
+        # 
+        # Custom: the custom image that you added.
         self.image_category = image_category
+        # The type of the images. Valid values:
+        # 
+        # VM: Virtual Machine Image
+        # 
+        # Container: container image
         self.image_type = image_type
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -3072,9 +3565,13 @@ class GetAppVersionsResponseBodyAppVersions(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # The image ID of the application.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The application name.
         self.name = name
+        # The application version.
         self.version = version
 
     def validate(self):
@@ -3115,11 +3612,21 @@ class GetAppVersionsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of application versions.
         self.app_versions = app_versions
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true
+        # 
+        # false
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3220,8 +3727,19 @@ class GetImageRequest(TeaModel):
         image_type: str = None,
     ):
         self.additional_region_ids = additional_region_ids
+        # The source of the image. Valid values:
+        # 
+        # *   Public: public images provided by Alibaba Cloud.
+        # *   Custom: the custom image that you added.
         self.image_category = image_category
+        # The image ID.
         self.image_id = image_id
+        # The type of the images. Valid values:
+        # 
+        # *   VM: virtual machine image.
+        # *   Container: the container image.
+        # 
+        # Default value: VM
         self.image_type = image_type
 
     def validate(self):
@@ -3265,8 +3783,19 @@ class GetImageShrinkRequest(TeaModel):
         image_type: str = None,
     ):
         self.additional_region_ids_shrink = additional_region_ids_shrink
+        # The source of the image. Valid values:
+        # 
+        # *   Public: public images provided by Alibaba Cloud.
+        # *   Custom: the custom image that you added.
         self.image_category = image_category
+        # The image ID.
         self.image_id = image_id
+        # The type of the images. Valid values:
+        # 
+        # *   VM: virtual machine image.
+        # *   Container: the container image.
+        # 
+        # Default value: VM
         self.image_type = image_type
 
     def validate(self):
@@ -3347,8 +3876,11 @@ class GetImageResponseBodyImageContainerImageSpecRegistryCredential(TeaModel):
         server: str = None,
         user_name: str = None,
     ):
+        # The password of the logon user.
         self.password = password
+        # The registered address of the image repository.
         self.server = server
+        # The username of the logon user.
         self.user_name = user_name
 
     def validate(self):
@@ -3392,12 +3924,23 @@ class GetImageResponseBodyImageContainerImageSpec(TeaModel):
         registry_url: str = None,
     ):
         self.architecture = architecture
+        # Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+        # 
+        # *   True
+        # *   False
         self.is_acrenterprise = is_acrenterprise
+        # Whether it is an Alibaba Cloud image repository.
+        # 
+        # *   True
+        # *   False
         self.is_acrregistry = is_acrregistry
         self.os_tag = os_tag
         self.platform = platform
+        # The authentication of the private image repository.
         self.registry_credential = registry_credential
+        # The ID of the Container Registry Enterprise Edition image repository.
         self.registry_cri_id = registry_cri_id
+        # The endpoint of the container image.
         self.registry_url = registry_url
 
     def validate(self):
@@ -3497,9 +4040,13 @@ class GetImageResponseBodyImageVMImageSpec(TeaModel):
         os_tag: str = None,
         platform: str = None,
     ):
+        # The type of the architecture.
         self.architecture = architecture
+        # The image ID.
         self.image_id = image_id
+        # The ID of the specific OS version.
         self.os_tag = os_tag
+        # The type of the platform.
         self.platform = platform
 
     def validate(self):
@@ -3552,16 +4099,25 @@ class GetImageResponseBodyImage(TeaModel):
     ):
         self.additional_regions_info = additional_regions_info
         self.app_id = app_id
+        # The configuration details of the container image.
         self.container_image_spec = container_image_spec
+        # The time when the image was created.
         self.create_time = create_time
+        # The description of the image.
         self.description = description
         self.document_info = document_info
+        # The type of the image.
+        # 
         # This parameter is required.
         self.image_type = image_type
+        # The name of the image.
         self.name = name
+        # The size of the image. Unit: GiB.
         self.size = size
         self.status = status
+        # The configuration details of the virtual machine image.
         self.vmimage_spec = vmimage_spec
+        # The version.
         self.version = version
 
     def validate(self):
@@ -3653,9 +4209,16 @@ class GetImageResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The details of the image.
         self.image = image
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The task is successful.
+        # *   false: The error occurred.
         self.success = success
+        # The total amount of data in this request.
         self.total_count = total_count
 
     def validate(self):
@@ -3738,6 +4301,7 @@ class GetJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the job.
         self.job_id = job_id
 
     def validate(self):
@@ -3835,8 +4399,19 @@ class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
         enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
+        # Whether the resource is created in the zone corresponding to the passed-in VSwitch parameter.
+        # 
+        # *   true: The resource is created in the zone corresponding to the passed-in VSwitch parameter.
+        # *   false: The resource is created in any zone that has resources.
         self.enable_enimapping = enable_enimapping
+        # Whether to create a public IP address.
+        # 
+        # Valid values:
+        # 
+        # *   false: false.
+        # *   true: true.
         self.enable_external_ip_address = enable_external_ip_address
+        # The VSwitch array.
         self.vswitch = vswitch
 
     def validate(self):
@@ -3873,7 +4448,9 @@ class GetJobResponseBodyJobInfoDeploymentPolicyTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the job tag.
         self.tag_key = tag_key
+        # The value of the job tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -3908,9 +4485,18 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
         network: GetJobResponseBodyJobInfoDeploymentPolicyNetwork = None,
         tags: List[GetJobResponseBodyJobInfoDeploymentPolicyTags] = None,
     ):
+        # The type of the resource. Only Dedicated is supported. You must enable a whitelist.
         self.allocation_spec = allocation_spec
+        # The computing power level. The following disk categories are supported:
+        # 
+        # *   General
+        # *   Performance
+        # 
+        # Default value: General
         self.level = level
+        # The network configuration information.
         self.network = network
+        # The list of job tags.
         self.tags = tags
 
     def validate(self):
@@ -3963,8 +4549,13 @@ class GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec(TeaModel):
         index_start: int = None,
         index_step: int = None,
     ):
+        # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
         self.index_end = index_end
+        # The starting value of the array job index. Valid values: 0 to 4999.
         self.index_start = index_start
+        # The interval of the array job index.
+        # 
+        # > If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three subtasks. The values of the subtask indexes are 1,3, and 5.
         self.index_step = index_step
 
     def validate(self):
@@ -4001,7 +4592,9 @@ class GetJobResponseBodyJobInfoTasksExecutorPolicy(TeaModel):
         array_spec: GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec = None,
         max_count: int = None,
     ):
+        # The details of the array job.
         self.array_spec = array_spec
+        # The maximum number of nodes to run the job.
         self.max_count = max_count
 
     def validate(self):
@@ -4040,11 +4633,17 @@ class GetJobResponseBodyJobInfoTasksExecutorStatus(TeaModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # Sub-job ID
         self.array_id = array_id
+        # The time when the job was created.
         self.create_time = create_time
+        # The end time of the scaling plan job.
         self.end_time = end_time
+        # The start time of the scaling plan job.
         self.start_time = start_time
+        # The status of the job.
         self.status = status
+        # The reason why the stack instance is in the OUTDATED state.
         self.status_reason = status_reason
 
     def validate(self):
@@ -4093,7 +4692,12 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks(TeaModel):
         size: int = None,
         type: str = None,
     ):
+        # The size of the disk.
         self.size = size
+        # The type of the disk. The following disk categories are supported:
+        # 
+        # *   System: system disk.
+        # *   Data: data disk.
         self.type = type
 
     def validate(self):
@@ -4130,11 +4734,14 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(TeaModel):
         instance_types: List[str] = None,
         memory: int = None,
     ):
+        # The number of CPUs on which the job is run.
         self.cores = cores
+        # The array of the disks.
         self.disks = disks
         self.enable_ht = enable_ht
         self.host_name_prefix = host_name_prefix
         self.instance_types = instance_types
+        # The memory capacity. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -4266,8 +4873,11 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
         prolog_script: str = None,
         script: str = None,
     ):
+        # The image ID.
         self.image = image
+        # The pre-processing script. Base64 encoding is required.
         self.prolog_script = prolog_script
+        # The running-job script. Base64 encoding is required.
         self.script = script
 
     def validate(self):
@@ -4303,6 +4913,7 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor(TeaModel):
         self,
         vm: GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM = None,
     ):
+        # Use ECS instances.
         self.vm = vm
 
     def validate(self):
@@ -4334,8 +4945,10 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(TeaModel):
         retry_policy: GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy = None,
         task_executor: List[GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor] = None,
     ):
+        # The resource information.
         self.resource = resource
         self.retry_policy = retry_policy
+        # The task execution configurations.
         self.task_executor = task_executor
 
     def validate(self):
@@ -4389,10 +5002,15 @@ class GetJobResponseBodyJobInfoTasks(TeaModel):
         task_spec: GetJobResponseBodyJobInfoTasksTaskSpec = None,
         task_sustainable: bool = None,
     ):
+        # The task execution policy.
         self.executor_policy = executor_policy
+        # The execution status of the task.
         self.executor_status = executor_status
+        # The name of the task.
         self.task_name = task_name
+        # The details of the task specification.
         self.task_spec = task_spec
+        # Indicate whether the job is a long-running job.
         self.task_sustainable = task_sustainable
 
     def validate(self):
@@ -4461,17 +5079,40 @@ class GetJobResponseBodyJobInfo(TeaModel):
         status: str = None,
         tasks: List[GetJobResponseBodyJobInfoTasks] = None,
     ):
+        # The additional information about the application.
         self.app_extra_info = app_extra_info
+        # The time when the job was submitted.
         self.create_time = create_time
         self.dependency_policy = dependency_policy
+        # The resource deployment policy.
         self.deployment_policy = deployment_policy
+        # The time when the job is complete.
         self.end_time = end_time
+        # The description of the job.
         self.job_description = job_description
+        # The ID of the job.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
+        # The type of the job scheduler.
         self.job_scheduler = job_scheduler
+        # The time when the job started.
         self.start_time = start_time
+        # The job status. Valid values:
+        # 
+        # *   Pending: The job is being queued.
+        # *   Initing: The job is being initialized.
+        # *   Succeed: The job is successfully run.
+        # *   Failed: The job failed to run.
+        # *   Running: The job is running.
+        # *   Exception: scheduling exception
+        # *   Retrying: The job is being retried.
+        # *   Expired: The job timed out.
+        # *   Deleted: The job is deleted.
+        # *   Suspended: job hibernation
+        # *   Restarting: The job is being restarted.
         self.status = status
+        # The list of tasks. Only one task is supported.
         self.tasks = tasks
 
     def validate(self):
@@ -4558,7 +5199,9 @@ class GetJobResponseBody(TeaModel):
         job_info: GetJobResponseBodyJobInfo = None,
         request_id: str = None,
     ):
+        # The job details.
         self.job_info = job_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4633,6 +5276,11 @@ class GetPoolRequest(TeaModel):
         self,
         pool_name: str = None,
     ):
+        # The name of the resource pool.
+        # 
+        # *   The value can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # 
         # This parameter is required.
         self.pool_name = pool_name
 
@@ -4669,14 +5317,38 @@ class GetPoolResponseBodyPoolInfo(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The time when the resource pool is created.
         self.create_time = create_time
+        # The usage of execution nodes that are running in a resource pool.
         self.exector_usage = exector_usage
+        # Indices whether the resource pool is the default resource pool. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_default = is_default
+        # The maximum number of execution nodes that can run concurrently in a resource pool.
         self.max_exector_num = max_exector_num
+        # The name of the resource group.
+        # 
+        # *   The value can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
         self.pool_name = pool_name
+        # The priority of the resource pool.
+        # 
+        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
         self.priority = priority
+        # The cause of the error.
         self.reason = reason
+        # The status of the resource pool. Valid values:
+        # 
+        # *   Creating: The resource pool is being created.
+        # *   Updating: The resource pool is being updated.
+        # *   Deleting: The resource pool is being deleted.
+        # *   Working: The resource pool is working.
+        # *   Deleted: The resource pool is deleted.
         self.status = status
+        # The time when the resource pool was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -4737,6 +5409,7 @@ class GetPoolResponseBody(TeaModel):
         pool_info: GetPoolResponseBodyPoolInfo = None,
         request_id: str = None,
     ):
+        # The information about the resource pool.
         self.pool_info = pool_info
         # Id of the request
         self.request_id = request_id
@@ -4815,8 +5488,15 @@ class ListActionPlanActivitiesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
 
     def validate(self):
@@ -4854,8 +5534,14 @@ class ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs(TeaModel):
         job_operation_type: str = None,
         region_id: str = None,
     ):
+        # The ID of the job.
         self.job_id = job_id
+        # The operation type of the execution plan activity on the job. Possible values are as follows:
+        # 
+        # *   Create
+        # *   Delete
         self.job_operation_type = job_operation_type
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4897,12 +5583,23 @@ class ListActionPlanActivitiesResponseBodyActionPlanActivities(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The activity ID of the execution plan.
         self.action_plan_activity_id = action_plan_activity_id
+        # The increased capacity of this execution plan activity.
         self.created_capacity = created_capacity
+        # The capacity released by this execution plan activity.
         self.destroy_capacity = destroy_capacity
+        # The end time of the execution plan activity.
         self.end_time = end_time
+        # The list of Instant jobs involved in the execution plan.
         self.jobs = jobs
+        # The start time of the implementation of the planned activity.
         self.start_time = start_time
+        # The implementation status of the execution plan activity. Valid values:
+        # 
+        # *   InProcess
+        # *   Completed
+        # *   Failed
         self.status = status
 
     def validate(self):
@@ -4966,11 +5663,17 @@ class ListActionPlanActivitiesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of execution details of the execution plan.
         self.action_plan_activities = action_plan_activities
+        # The maximum number of records returned in this request.
         self.max_results = max_results
+        # Indicates the read position returned by the current call. An empty value means all data has been read.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Total data count under the current request conditions (optional; not returned by default).
         self.total_count = total_count
 
     def validate(self):
@@ -5065,8 +5768,15 @@ class ListActionPlansRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The IDs of the execution plans to be queried.
         self.action_plan_ids = action_plan_ids
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
 
     def validate(self):
@@ -5104,8 +5814,15 @@ class ListActionPlansShrinkRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The IDs of the execution plans to be queried.
         self.action_plan_ids_shrink = action_plan_ids_shrink
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
 
     def validate(self):
@@ -5145,10 +5862,19 @@ class ListActionPlansResponseBodyActionPlans(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
+        # The name of the execution plan.
         self.action_plan_name = action_plan_name
+        # The time when the execution plan was created.
         self.create_time = create_time
+        # The status of the execution plan. The possible values are as follows:
+        # 
+        # *   Active Instant tasks are dynamically managed only when the execution plan is in the Active state.
+        # *   Inactive Instant tasks are no longer managed by execution plans in the Inactive state.
+        # *   Deleting: The execution plan is being deleted. You cannot modify the parameters of an execution plan in this state.
         self.status = status
+        # The time when the execution plan was last modified. The time follows the ISO 8601 standard and UTC +0. The format is yyyy-MM-ddTHH:mmZ.
         self.update_time = update_time
 
     def validate(self):
@@ -5196,11 +5922,17 @@ class ListActionPlansResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of execution plan results.
         self.action_plans = action_plans
+        # The maximum number of records returned in this request.
         self.max_results = max_results
+        # Indicates the read position returned by the current call. An empty value means all data has been read.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Total data count under the current request conditions (optional; not returned by default).
         self.total_count = total_count
 
     def validate(self):
@@ -5298,15 +6030,25 @@ class ListExecutorsRequestFilter(TeaModel):
         status: List[str] = None,
         time_created_after: int = None,
         time_created_before: int = None,
+        vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The list of executor IDs. A maximum of 100 IDs are supported.
         self.executor_ids = executor_ids
+        # Executor image.
         self.image = image
+        # The list of internal IP addresses. A maximum of 100 IP addresses are supported.
         self.ip_addresses = ip_addresses
+        # The job name. Exact filtering. Fuzzy query is not supported.
         self.job_name = job_name
+        # Executor status list.
         self.status = status
+        # For jobs submitted after this time, the time in the region is converted into a UNIX timestamp (UI8).
         self.time_created_after = time_created_after
+        # For jobs submitted before this time, the time in the region is converted into a Unix timestamp (for domestic sites, the UI8 region).
         self.time_created_before = time_created_before
+        self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -5332,6 +6074,8 @@ class ListExecutorsRequestFilter(TeaModel):
             result['TimeCreatedAfter'] = self.time_created_after
         if self.time_created_before is not None:
             result['TimeCreatedBefore'] = self.time_created_before
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
             result['VswitchId'] = self.vswitch_id
         return result
@@ -5352,6 +6096,8 @@ class ListExecutorsRequestFilter(TeaModel):
             self.time_created_after = m.get('TimeCreatedAfter')
         if m.get('TimeCreatedBefore') is not None:
             self.time_created_before = m.get('TimeCreatedBefore')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
         return self
@@ -5364,8 +6110,13 @@ class ListExecutorsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Queries the Executor filter conditions.
         self.filter = filter
+        # The current page number.\\
+        # Starting value: 1\\
+        # Default value: 1
         self.page_number = page_number
+        # The number of entries per page. The number of entries returned per page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -5405,8 +6156,13 @@ class ListExecutorsShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Queries the Executor filter conditions.
         self.filter_shrink = filter_shrink
+        # The current page number.\\
+        # Starting value: 1\\
+        # Default value: 1
         self.page_number = page_number
+        # The number of entries per page. The number of entries returned per page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -5443,7 +6199,12 @@ class ListExecutorsResponseBodyExecutorsResourceDisks(TeaModel):
         size: int = None,
         type: str = None,
     ):
+        # The size of the disk.
         self.size = size
+        # The category of the disk. The following disk categories are supported:
+        # 
+        # *   System: system disk.
+        # *   Data: data disk.
         self.type = type
 
     def validate(self):
@@ -5478,9 +6239,12 @@ class ListExecutorsResponseBodyExecutorsResource(TeaModel):
         instance_type: str = None,
         memory: float = None,
     ):
+        # The number of running CPUs.
         self.cores = cores
+        # The array of the disks.
         self.disks = disks
         self.instance_type = instance_type
+        # The total amount of memory resources. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -5529,7 +6293,9 @@ class ListExecutorsResponseBodyExecutorsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the executor tag.
         self.tag_key = tag_key
+        # The value of the executor tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -5582,31 +6348,63 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         tags: List[ListExecutorsResponseBodyExecutorsTags] = None,
         task_name: str = None,
         task_sustainable: bool = None,
+        vpc_id: str = None,
         vswitch_id: str = None,
     ):
         self.allocation_spec = allocation_spec
         self.app_name = app_name
+        # The executor number.
         self.array_index = array_index
         self.block_duration = block_duration
+        # The time when the instance was created.
         self.create_time = create_time
+        # The end time.
         self.end_time = end_time
+        # The executor ID. The format is JobId-TaskName-ArrayIndex.
         self.executor_id = executor_id
         self.expiration_time = expiration_time
+        # The list of public IP addresses of the nodes.
         self.external_ip_address = external_ip_address
+        # The list of hostnames.
         self.host_name = host_name
+        # Executor image.
         self.image = image
+        # The list of internal IP addresses.
         self.ip_address = ip_address
+        # The job ID.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
         self.preemptible = preemptible
+        # The resource information.
         self.resource = resource
+        # The type of the resource.
         self.resource_type = resource_type
+        # The start time.
         self.start_time = start_time
+        # The status of the executor. Valid values:
+        # 
+        # *   Pending
+        # *   Initing
+        # *   Succeed
+        # *   Failed
+        # *   Running
+        # *   Unknown
+        # *   Exception
+        # *   Retrying
+        # *   Expired
+        # *   Deleted
         self.status = status
+        # The description of the status reason.
         self.status_reason = status_reason
+        # The list of executor tags.
         self.tags = tags
+        # The name of the task.
         self.task_name = task_name
+        # Indicate whether the job is a long-running job.
         self.task_sustainable = task_sustainable
+        self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -5671,6 +6469,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['TaskName'] = self.task_name
         if self.task_sustainable is not None:
             result['TaskSustainable'] = self.task_sustainable
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
             result['VswitchId'] = self.vswitch_id
         return result
@@ -5727,6 +6527,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.task_name = m.get('TaskName')
         if m.get('TaskSustainable') is not None:
             self.task_sustainable = m.get('TaskSustainable')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
         return self
@@ -5741,10 +6543,15 @@ class ListExecutorsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # Executor list.
         self.executors = executors
+        # The current page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5843,12 +6650,32 @@ class ListImagesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The source of the image. Valid values:
+        # 
+        # *   Public: public images provided by Alibaba Cloud.
+        # *   Custom: the custom image that you added.
         self.image_category = image_category
+        # The array of image IDs.
         self.image_ids = image_ids
+        # The array of image names.
         self.image_names = image_names
+        # The type of the images. Valid values:
+        # 
+        # *   VM: virtual machine image.
+        # *   Container: the container image.
+        # 
+        # Default value: VM
         self.image_type = image_type
+        # The query mode. Valid values:
+        # 
+        # *   List: queries the list of all corresponding image versions.
+        # *   Merge: merges images to query the latest version list.
         self.mode = mode
+        # The number of the page to return.\\
+        # Default value: 1.
         self.page_number = page_number
+        # The number of pieces per page.\\
+        # Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -5906,12 +6733,32 @@ class ListImagesShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The source of the image. Valid values:
+        # 
+        # *   Public: public images provided by Alibaba Cloud.
+        # *   Custom: the custom image that you added.
         self.image_category = image_category
+        # The array of image IDs.
         self.image_ids_shrink = image_ids_shrink
+        # The array of image names.
         self.image_names_shrink = image_names_shrink
+        # The type of the images. Valid values:
+        # 
+        # *   VM: virtual machine image.
+        # *   Container: the container image.
+        # 
+        # Default value: VM
         self.image_type = image_type
+        # The query mode. Valid values:
+        # 
+        # *   List: queries the list of all corresponding image versions.
+        # *   Merge: merges images to query the latest version list.
         self.mode = mode
+        # The number of the page to return.\\
+        # Default value: 1.
         self.page_number = page_number
+        # The number of pieces per page.\\
+        # Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -5973,19 +6820,33 @@ class ListImagesResponseBodyImages(TeaModel):
         version: str = None,
         weight: int = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The time when the storage resource was created.
         self.create_time = create_time
+        # The description of the image.
         self.description = description
+        # The document ID.
         self.document_id = document_id
+        # The image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The type of the image.
+        # 
         # This parameter is required.
         self.image_type = image_type
+        # The name of the image.
         self.name = name
+        # The ID of the specific OS version.
         self.os_tag = os_tag
+        # The time when the image was updated.
         self.update_time = update_time
+        # The version of the image.
         self.version = version
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -6058,11 +6919,20 @@ class ListImagesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of image information.
         self.images = images
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6162,9 +7032,13 @@ class ListJobExecutorsRequest(TeaModel):
         page_size: int = None,
         task_name: str = None,
     ):
+        # The ID of the job.
         self.job_id = job_id
+        # The page number of the page to return.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The job name.
         self.task_name = task_name
 
     def validate(self):
@@ -6212,13 +7086,20 @@ class ListJobExecutorsResponseBodyExecutorStatus(TeaModel):
         succeeded: int = None,
         suspended: int = None,
     ):
+        # The number of executers in the Deleted state.
         self.deleted = deleted
+        # The number of executers in the abnormal state.
         self.exception = exception
+        # The number of executers in the Failed state.
         self.failed = failed
+        # The number of executers in the initialized state.
         self.initing = initing
+        # The number of executers in the queued state.
         self.pending = pending
         self.restarting = restarting
+        # The number of executers in the running state.
         self.running = running
+        # The number of executoresin the Successful state.
         self.succeeded = succeeded
         self.suspended = suspended
 
@@ -6280,7 +7161,9 @@ class ListJobExecutorsResponseBodyExecutorsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the executor tag.
         self.tag_key = tag_key
+        # The value of the executor tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6327,19 +7210,41 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         tags: List[ListJobExecutorsResponseBodyExecutorsTags] = None,
     ):
         self.allocation_spec = allocation_spec
+        # The executor index number.
         self.array_index = array_index
         self.block_duration = block_duration
+        # The time when the storage resource was created.
         self.create_time = create_time
+        # The end time.
         self.end_time = end_time
+        # The executor ID. The format is JobId-TaskName-ArrayIndex.
         self.executor_id = executor_id
         self.expiration_time = expiration_time
+        # The list of public IP addresses of the nodes.
         self.external_ip_address = external_ip_address
+        # An array of node hostnames.
         self.host_name = host_name
+        # The list of node IP addresses.
         self.ip_address = ip_address
         self.preemptible = preemptible
+        # The create time.
         self.start_time = start_time
+        # The status of the executor. Valid values:
+        # 
+        # *   Pending
+        # *   Initing
+        # *   Succeed
+        # *   Failed
+        # *   Running
+        # *   Unknown
+        # *   Exception
+        # *   Retrying
+        # *   Expired
+        # *   Deleted
         self.status = status
+        # The description of the status reason.
         self.status_reason = status_reason
+        # The list of executor tags.
         self.tags = tags
 
     def validate(self):
@@ -6438,13 +7343,21 @@ class ListJobExecutorsResponseBody(TeaModel):
         task_name: str = None,
         total_count: str = None,
     ):
+        # Executor status statistics.
         self.executor_status = executor_status
+        # The executor list.
         self.executors = executors
+        # The job ID.
         self.job_id = job_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The job name.
         self.task_name = task_name
+        # The total number of list entries.
         self.total_count = total_count
 
     def validate(self):
@@ -6556,10 +7469,27 @@ class ListJobsRequestFilter(TeaModel):
         time_created_after: int = None,
         time_created_before: int = None,
     ):
+        # The ID of the job.
         self.job_id = job_id
+        # The job name. Fuzzy search is supported.
         self.job_name = job_name
+        # The job status. Valid values:
+        # 
+        # *   Pending
+        # *   initing
+        # *   Succeed
+        # *   Failed
+        # *   Running
+        # *   Exception
+        # *   Retrying
+        # *   Expired
+        # *   Suspended
+        # *   Restarting
+        # *   Deleted
         self.status = status
+        # For jobs submitted after this time, the time in the region is converted into a UNIX timestamp (UI8).
         self.time_created_after = time_created_after
+        # For jobs submitted before this time, the time in the region is converted into a Unix timestamp (for domestic sites, the UI8 region).
         self.time_created_before = time_created_before
 
     def validate(self):
@@ -6604,7 +7534,15 @@ class ListJobsRequestSortBy(TeaModel):
         label: str = None,
         order: str = None,
     ):
+        # The sorting label. Valid values:
+        # 
+        # *   time_start
+        # *   job_name
         self.label = label
+        # The sorting order. Valid values:
+        # 
+        # *   ASC (default): ascending order
+        # *   DESC: descending order
         self.order = order
 
     def validate(self):
@@ -6639,9 +7577,17 @@ class ListJobsRequest(TeaModel):
         page_size: int = None,
         sort_by: ListJobsRequestSortBy = None,
     ):
+        # Queries job filter conditions.
         self.filter = filter
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries on the current page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
+        # The sorting method.
         self.sort_by = sort_by
 
     def validate(self):
@@ -6689,9 +7635,17 @@ class ListJobsShrinkRequest(TeaModel):
         page_size: int = None,
         sort_by_shrink: str = None,
     ):
+        # Queries job filter conditions.
         self.filter_shrink = filter_shrink
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries on the current page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
+        # The sorting method.
         self.sort_by_shrink = sort_by_shrink
 
     def validate(self):
@@ -6732,7 +7686,9 @@ class ListJobsResponseBodyJobListTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the job tag.
         self.tag_key = tag_key
+        # The value of the job tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6777,19 +7733,43 @@ class ListJobsResponseBodyJobList(TeaModel):
         task_count: int = None,
         task_sustainable: bool = None,
     ):
+        # The additional information about the application.
         self.app_extra_info = app_extra_info
         self.app_name = app_name
+        # The time when the job was submitted.
         self.create_time = create_time
+        # The end time of the job.
         self.end_time = end_time
+        # The number of running nodes.
         self.executor_count = executor_count
+        # The description of the job.
         self.job_description = job_description
+        # The ID of the job.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
+        # The UID of the creator.
         self.owner_uid = owner_uid
+        # The start time of the job.
         self.start_time = start_time
+        # The status of the job. Valid values:
+        # 
+        # *   Pending
+        # *   Initing
+        # *   Succeed
+        # *   Failed
+        # *   Running
+        # *   Exception
+        # *   Retrying
+        # *   Expired
+        # *   Deleting
+        # *   Deleted
         self.status = status
+        # The list of job tags.
         self.tags = tags
+        # The number of tasks.
         self.task_count = task_count
+        # Indicate whether the job is a long-running job.
         self.task_sustainable = task_sustainable
 
     def validate(self):
@@ -6881,10 +7861,15 @@ class ListJobsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of jobs.
         self.job_list = job_list
+        # The current page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -6980,9 +7965,13 @@ class ListPoolsRequestFilter(TeaModel):
         time_created_after: int = None,
         time_created_before: int = None,
     ):
+        # Queries the list of resource pool names.
         self.pool_name = pool_name
+        # Queries resource pool status list.
         self.status = status
+        # For node pools created after this time, the time in the region is converted into a UNIX timestamp.
         self.time_created_after = time_created_after
+        # For node pools created before this time, the time in the region is converted into a UNIX timestamp.
         self.time_created_before = time_created_before
 
     def validate(self):
@@ -7024,8 +8013,11 @@ class ListPoolsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Queries the filter conditions of a resource pool.
         self.filter = filter
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries on each page. Maximum value: 50. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -7065,8 +8057,11 @@ class ListPoolsShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Queries the filter conditions of a resource pool.
         self.filter_shrink = filter_shrink
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries on each page. Maximum value: 50. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -7106,10 +8101,30 @@ class ListPoolsResponseBodyPoolList(TeaModel):
         priority: int = None,
         status: str = None,
     ):
+        # Indices whether the resource pool is the default resource pool. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_default = is_default
+        # The maximum number of execution nodes that can run concurrently in a resource pool.
         self.max_exector_num = max_exector_num
+        # The name of the resource pool.
+        # 
+        # *   The value can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
         self.pool_name = pool_name
+        # The priority of the resource pool.
+        # 
+        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
         self.priority = priority
+        # The status of the resource pool. Valid values:
+        # 
+        # *   Creating: The resource pool is being created.
+        # *   Updating: The resource pool is being updated.
+        # *   Deleting: The resource pool is being deleted.
+        # *   Working: The resource pool is working.
+        # *   Deleted: The resource pool is deleted.
         self.status = status
 
     def validate(self):
@@ -7157,11 +8172,15 @@ class ListPoolsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries on each page. Maximum value: 50. Default value: 10.
         self.page_size = page_size
+        # Queries the resource pool list.
         self.pool_list = pool_list
         # Id of the request
         self.request_id = request_id
+        # The total number of list entries.
         self.total_count = total_count
 
     def validate(self):
@@ -7255,7 +8274,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -7291,11 +8312,20 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The number of records per page.
         self.max_result = max_result
+        # A pagination token.
         self.next_token = next_token
+        # The list of resource IDs. Valid values of N: 1 to 50.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   Job
+        # *   Executor
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -7350,9 +8380,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The key of the tag that is added to the resource.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -7429,8 +8463,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resource list.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -7510,8 +8547,14 @@ class RemoveImageRequest(TeaModel):
         image_id: str = None,
         image_type: str = None,
     ):
+        # The image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The type of the images. Valid values:
+        # 
+        # *   VM: Virtual Machine Image
+        # *   Container: container image
         self.image_type = image_type
 
     def validate(self):
@@ -7544,7 +8587,12 @@ class RemoveImageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7618,8 +8666,11 @@ class SynchronizeAppRequest(TeaModel):
         app_id: str = None,
         target_region_ids: List[str] = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The list of arrays that are synchronized to the specified region. If \\"all\\" is included, it is synchronized to all other unsynchronized regions by default.
         self.target_region_ids = target_region_ids
 
     def validate(self):
@@ -7652,8 +8703,11 @@ class SynchronizeAppShrinkRequest(TeaModel):
         app_id: str = None,
         target_region_ids_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The list of arrays that are synchronized to the specified region. If \\"all\\" is included, it is synchronized to all other unsynchronized regions by default.
         self.target_region_ids_shrink = target_region_ids_shrink
 
     def validate(self):
@@ -7685,6 +8739,7 @@ class SynchronizeAppResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7754,8 +8809,11 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the tag. You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -7789,10 +8847,19 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The list of resource IDs. Valid values of N: 1 to 50.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   Job
+        # *   Executor
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -7837,6 +8904,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7908,11 +8976,20 @@ class UnTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Whether to delete all tags of the target resource. This field takes effect only when TagKey.N is left empty. Default False
         self.all = all
+        # The list of resource IDs. Valid values of N: 1 to 50.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   Job
+        # *   Executor
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of tag keys, which can contain a maximum of 20 child items.
         self.tag_key = tag_key
 
     def validate(self):
@@ -7952,6 +9029,7 @@ class UnTagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8022,8 +9100,19 @@ class UpdateActionPlanRequest(TeaModel):
         desired_capacity: float = None,
         enabled: str = None,
     ):
+        # The ID of the execution plan.
         self.action_plan_id = action_plan_id
+        # The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
         self.desired_capacity = desired_capacity
+        # Whether to enable the execution plan. Valid values:
+        # 
+        # *   true: enables the execution plan.
+        # 
+        # *   false: The execution plan is disabled.
+        # 
+        #     **\
+        # 
+        #     **Note:** After an execution plan is disabled, the created Instant jobs are not automatically managed by the execution plan.
         self.enabled = enabled
 
     def validate(self):
@@ -8059,6 +9148,7 @@ class UpdateActionPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8127,6 +9217,7 @@ class UpdatePoolRequestResourceLimits(TeaModel):
         self,
         max_exector_num: int = None,
     ):
+        # The maximum number of concurrent execution nodes in a resource pool.
         self.max_exector_num = max_exector_num
 
     def validate(self):
@@ -8156,9 +9247,19 @@ class UpdatePoolRequest(TeaModel):
         priority: int = None,
         resource_limits: UpdatePoolRequestResourceLimits = None,
     ):
+        # The name of the resource pool.
+        # 
+        # *   The value can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # 
         # This parameter is required.
         self.pool_name = pool_name
+        # The priority of the resource pool.
+        # 
+        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
         self.priority = priority
+        # The quota of resources that users are allowed to concurrently use in a resource pool.
         self.resource_limits = resource_limits
 
     def validate(self):
@@ -8198,9 +9299,19 @@ class UpdatePoolShrinkRequest(TeaModel):
         priority: int = None,
         resource_limits_shrink: str = None,
     ):
+        # The name of the resource pool.
+        # 
+        # *   The value can be up to 15 characters in length.
+        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # 
         # This parameter is required.
         self.pool_name = pool_name
+        # The priority of the resource pool.
+        # 
+        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
+        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
         self.priority = priority
+        # The quota of resources that users are allowed to concurrently use in a resource pool.
         self.resource_limits_shrink = resource_limits_shrink
 
     def validate(self):
