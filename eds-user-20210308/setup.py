@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_eds-user20210308.
+setup module for alibabacloud_eds_user20210308.
 
-Created on 25/08/2025
+Created on 27/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_eds_user20210308"
-NAME = "alibabacloud_eds-user20210308" or "alibabacloud-package"
+NAME = "alibabacloud_eds_user20210308" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud eds-user (20210308) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

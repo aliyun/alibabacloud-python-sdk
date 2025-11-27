@@ -355,7 +355,15 @@ class BatchSetDesktopManagerRequest(TeaModel):
         is_desktop_manager: str = None,
         users: List[str] = None,
     ):
+        # Whether the convenience account has the local administrator permissions on cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   0: no
+        # *   1 (default): yes
         self.is_desktop_manager = is_desktop_manager
+        # The convenience accounts.
+        # 
         # This parameter is required.
         self.users = users
 
@@ -388,6 +396,7 @@ class BatchSetDesktopManagerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -783,9 +792,12 @@ class CreateGroupRequest(TeaModel):
         solution_id: str = None,
     ):
         self.biz_type = biz_type
+        # The description of the user group.
         self.description = description
         self.group_name = group_name
+        # > This parameter is not publicly available.
         self.parent_group_id = parent_group_id
+        # > This parameter is not publicly available.
         self.solution_id = solution_id
 
     def validate(self):
@@ -830,6 +842,7 @@ class CreateGroupResponseBody(TeaModel):
         group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the user group.
         self.group_id = group_id
         self.request_id = request_id
 
@@ -904,8 +917,12 @@ class CreateOrgRequest(TeaModel):
         org_name: str = None,
         parent_org_id: str = None,
     ):
+        # The name of the organization.
+        # 
         # This parameter is required.
         self.org_name = org_name
+        # The ID of the parent organization.
+        # 
         # This parameter is required.
         self.parent_org_id = parent_org_id
 
@@ -939,7 +956,9 @@ class CreateOrgResponseBody(TeaModel):
         org_id: str = None,
         request_id: str = None,
     ):
+        # The organization ID.
         self.org_id = org_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1309,8 +1328,13 @@ class CreateResourceGroupRequest(TeaModel):
         platform: str = None,
         resource_group_name: str = None,
     ):
+        # >  This parameter is not publicly available.
         self.is_resource_group_with_office_site = is_resource_group_with_office_site
+        # >  Set the value to AliyunConsole.
+        # 
+        # *   This parameter is not publicly available in other platforms.
         self.platform = platform
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -1347,7 +1371,9 @@ class CreateResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1420,6 +1446,7 @@ class CreateUsersRequestUsers(TeaModel):
         self,
         email: str = None,
         end_user_id: str = None,
+        group_id_list: List[str] = None,
         org_id: str = None,
         owner_type: str = None,
         password: str = None,
@@ -1433,6 +1460,7 @@ class CreateUsersRequestUsers(TeaModel):
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        self.group_id_list = group_id_list
         # The organization to which the convenience user belongs.
         self.org_id = org_id
         # The type of the account ownership.
@@ -1466,6 +1494,8 @@ class CreateUsersRequestUsers(TeaModel):
             result['Email'] = self.email
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.group_id_list is not None:
+            result['GroupIdList'] = self.group_id_list
         if self.org_id is not None:
             result['OrgId'] = self.org_id
         if self.owner_type is not None:
@@ -1486,6 +1516,8 @@ class CreateUsersRequestUsers(TeaModel):
             self.email = m.get('Email')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('GroupIdList') is not None:
+            self.group_id_list = m.get('GroupIdList')
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
         if m.get('OwnerType') is not None:
@@ -2048,11 +2080,17 @@ class DescribeGroupUserRequest(TeaModel):
         next_token: str = None,
         solution_id: str = None,
     ):
+        # >  This parameter is not available for public use.
         self.biz_type = biz_type
+        # The fuzzy search string that matches the username (EndUserId) and email address (Email) of the regular user.
         self.filter = filter
+        # The ID of the user group.
         self.group_id = group_id
+        # The number of entries to return on each page.
         self.max_results = max_results
+        # The token for the next query. You can obtain this parameter from the response parameters of the last call to this operation.
         self.next_token = next_token
+        # >  This parameter is not available for public use.
         self.solution_id = solution_id
 
     def validate(self):
@@ -2102,8 +2140,11 @@ class DescribeGroupUserResponseBodyGroups(TeaModel):
         group_name: str = None,
         user_count: str = None,
     ):
+        # The user group ID.
         self.group_id = group_id
+        # The name of the user group.
         self.group_name = group_name
+        # The number of members in the user group.
         self.user_count = user_count
 
     def validate(self):
@@ -2148,15 +2189,25 @@ class DescribeGroupUserResponseBodyUsers(TeaModel):
         phone: str = None,
         remark: str = None,
     ):
+        # >  This field is deprecated.
         self.address = address
+        # >  This field is deprecated.
         self.avatar = avatar
+        # The email address.
         self.email = email
+        # The user name.
         self.end_user_id = end_user_id
+        # The time when the user was created.
         self.gmt_created = gmt_created
+        # The time when the user was added to the user group.
         self.gmt_join_group = gmt_join_group
+        # >  This field is deprecated.
         self.job_number = job_number
+        # The display name.
         self.nick_name = nick_name
+        # The mobile number.
         self.phone = phone
+        # The remarks on the user.
         self.remark = remark
 
     def validate(self):
@@ -2223,9 +2274,13 @@ class DescribeGroupUserResponseBody(TeaModel):
         request_id: str = None,
         users: List[DescribeGroupUserResponseBodyUsers] = None,
     ):
+        # >  This field is deprecated.
         self.groups = groups
+        # The token for the next query. If NextToken is empty, all results have been queried.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The members.
         self.users = users
 
     def validate(self):
@@ -2322,19 +2377,34 @@ class DescribeGroupsRequest(TeaModel):
     def __init__(
         self,
         biz_type: str = None,
+        exclude_attached_login_policy_groups: bool = None,
         group_id: str = None,
         group_name: str = None,
+        idp_id: str = None,
+        login_policy_id: str = None,
         page_number: int = None,
         page_size: int = None,
         solution_id: str = None,
         transfer_file_need_approval: bool = None,
     ):
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
+        # 是否排除已关联登录策略的用户组。
+        self.exclude_attached_login_policy_groups = exclude_attached_login_policy_groups
+        # The ID of the user group.
         self.group_id = group_id
+        # The name of the user group.
         self.group_name = group_name
+        self.idp_id = idp_id
+        # 指定关联的登录策略筛选。
+        self.login_policy_id = login_policy_id
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # > This parameter is not publicly available.
         self.solution_id = solution_id
+        # Indicates whether the file approval feature is enabled.
         self.transfer_file_need_approval = transfer_file_need_approval
 
     def validate(self):
@@ -2348,10 +2418,16 @@ class DescribeGroupsRequest(TeaModel):
         result = dict()
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.exclude_attached_login_policy_groups is not None:
+            result['ExcludeAttachedLoginPolicyGroups'] = self.exclude_attached_login_policy_groups
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.idp_id is not None:
+            result['IdpId'] = self.idp_id
+        if self.login_policy_id is not None:
+            result['LoginPolicyId'] = self.login_policy_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -2366,10 +2442,16 @@ class DescribeGroupsRequest(TeaModel):
         m = m or dict()
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('ExcludeAttachedLoginPolicyGroups') is not None:
+            self.exclude_attached_login_policy_groups = m.get('ExcludeAttachedLoginPolicyGroups')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('IdpId') is not None:
+            self.idp_id = m.get('IdpId')
+        if m.get('LoginPolicyId') is not None:
+            self.login_policy_id = m.get('LoginPolicyId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -2381,24 +2463,14 @@ class DescribeGroupsRequest(TeaModel):
         return self
 
 
-class DescribeGroupsResponseBodyGroups(TeaModel):
+class DescribeGroupsResponseBodyGroupsAttachedLoginPolicy(TeaModel):
     def __init__(
         self,
-        authed_resources: Dict[str, str] = None,
-        create_time: str = None,
-        description: str = None,
-        group_id: str = None,
-        group_name: str = None,
-        transfer_file_need_approval: bool = None,
-        user_count: int = None,
+        name: str = None,
+        policy_id: str = None,
     ):
-        self.authed_resources = authed_resources
-        self.create_time = create_time
-        self.description = description
-        self.group_id = group_id
-        self.group_name = group_name
-        self.transfer_file_need_approval = transfer_file_need_approval
-        self.user_count = user_count
+        self.name = name
+        self.policy_id = policy_id
 
     def validate(self):
         pass
@@ -2409,6 +2481,60 @@ class DescribeGroupsResponseBodyGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        return self
+
+
+class DescribeGroupsResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        attached_login_policy: DescribeGroupsResponseBodyGroupsAttachedLoginPolicy = None,
+        authed_resources: Dict[str, str] = None,
+        create_time: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        transfer_file_need_approval: bool = None,
+        user_count: int = None,
+    ):
+        self.attached_login_policy = attached_login_policy
+        # The type of the resource assigned to the user group.
+        self.authed_resources = authed_resources
+        # The time when the user group is created.
+        self.create_time = create_time
+        # The description of the user group.
+        self.description = description
+        self.group_id = group_id
+        # The name of the user group.
+        self.group_name = group_name
+        # Indicates whether the file approval feature is enabled.
+        self.transfer_file_need_approval = transfer_file_need_approval
+        # The number of users in the user group.
+        self.user_count = user_count
+
+    def validate(self):
+        if self.attached_login_policy:
+            self.attached_login_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attached_login_policy is not None:
+            result['AttachedLoginPolicy'] = self.attached_login_policy.to_map()
         if self.authed_resources is not None:
             result['AuthedResources'] = self.authed_resources
         if self.create_time is not None:
@@ -2427,6 +2553,9 @@ class DescribeGroupsResponseBodyGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AttachedLoginPolicy') is not None:
+            temp_model = DescribeGroupsResponseBodyGroupsAttachedLoginPolicy()
+            self.attached_login_policy = temp_model.from_map(m['AttachedLoginPolicy'])
         if m.get('AuthedResources') is not None:
             self.authed_resources = m.get('AuthedResources')
         if m.get('CreateTime') is not None:
@@ -2451,7 +2580,9 @@ class DescribeGroupsResponseBody(TeaModel):
         groups: List[DescribeGroupsResponseBodyGroups] = None,
         request_id: str = None,
     ):
+        # The number of the entries returned.
         self.count = count
+        # The user groups.
         self.groups = groups
         self.request_id = request_id
 
@@ -2542,9 +2673,9 @@ class DescribeMfaDevicesRequest(TeaModel):
         next_token: str = None,
         serial_numbers: List[str] = None,
     ):
-        # The domain of the Active Directory (AD) workspace.
+        # The address of the AD office network.
         self.ad_domain = ad_domain
-        # The usernames of the convenience users.
+        # The usernames of the convenience accounts.
         self.end_user_ids = end_user_ids
         self.filter = filter
         # The maximum number of entries to return. Valid values: 1 to 500.\\
@@ -2657,19 +2788,19 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
         self.ad_user = ad_user
         # The number of consecutive failures to bind the virtual MFA device, or the number of authentication failures based on the virtual MFA device.
         self.consecutive_fails = consecutive_fails
-        # The type of the virtual MFA device. The value can only be TOTP_VIRTUAL. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
+        # The type of the virtual MFA device. The value can only be `TOTP_VIRTUAL`. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
         self.device_type = device_type
         # >  This parameter is not publicly available.
         self.email = email
-        # The username of the convenience user that uses the virtual MFA device.
+        # The username of the convenience account that uses the virtual MFA device.
         self.end_user_id = end_user_id
-        # The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.gmt_enabled = gmt_enabled
-        # The time when the locked virtual MFA device was automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the locked virtual MFA device was automatically unlocked. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.gmt_unlock = gmt_unlock
-        # >  This parameter is not publicly available.
+        # The ID of the virtual MFA device.
         self.id = id
-        # The serial number of the virtual MFA device. The serial number is unique for each device.
+        # The serial number of the virtual MFA device.
         self.serial_number = serial_number
         # The status of the virtual MFA device.
         # 
@@ -2855,7 +2986,9 @@ class DescribeOrgByLayerRequest(TeaModel):
         org_name: str = None,
         parent_org_id: str = None,
     ):
+        # The name of the organization.
         self.org_name = org_name
+        # The ID of the parent organization.
         self.parent_org_id = parent_org_id
 
     def validate(self):
@@ -2889,8 +3022,11 @@ class DescribeOrgByLayerResponseBodyOrgs(TeaModel):
         org_name: str = None,
         parent_org_id: str = None,
     ):
+        # The ID of the organization.
         self.org_id = org_id
+        # The name of the organization.
         self.org_name = org_name
+        # The ID of the parent organization.
         self.parent_org_id = parent_org_id
 
     def validate(self):
@@ -2927,7 +3063,9 @@ class DescribeOrgByLayerResponseBody(TeaModel):
         orgs: List[DescribeOrgByLayerResponseBodyOrgs] = None,
         request_id: str = None,
     ):
+        # The organizations.
         self.orgs = orgs
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3264,11 +3402,19 @@ class DescribeResourceGroupsRequest(TeaModel):
         resource_group_ids: List[str] = None,
         resource_group_name: str = None,
     ):
+        # >  This parameter is not publicly available.
         self.need_contain_resource_group_with_office_site = need_contain_resource_group_with_office_site
+        # The page number. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # >  Set the value to AliyunConsole.
+        # 
+        # *   This parameter is not publicly available on other platforms.
         self.platform = platform
+        # The IDs of the resource groups that you want to query.
         self.resource_group_ids = resource_group_ids
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -3357,8 +3503,11 @@ class DescribeResourceGroupsResponseBodyResourceGroupPolicies(TeaModel):
         is_default: bool = None,
         name: str = None,
     ):
+        # The policy ID.
         self.id = id
+        # Specifies whether to use the default policy.
         self.is_default = is_default
+        # The policy name.
         self.name = name
 
     def validate(self):
@@ -3398,7 +3547,9 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(TeaModel):
         timer_status: str = None,
     ):
         self.bind_status = bind_status
+        # The ID of the scheduled task.
         self.id = id
+        # The name of the scheduled task.
         self.name = name
         self.timer_status = timer_status
 
@@ -3447,12 +3598,25 @@ class DescribeResourceGroupsResponseBodyResourceGroup(TeaModel):
         timers: List[DescribeResourceGroupsResponseBodyResourceGroupTimers] = None,
     ):
         self.app_rules = app_rules
+        # The number of administrators that are authorized to access the resource group.
         self.auth_count = auth_count
+        # The time when the resource group was created.
         self.create_time = create_time
+        # >  The policy that is associated with the resource group.
+        # 
+        # *   The policy applies to cloud computers in the resource group. If multiple policies exist, they are enforced in order of priority.
+        # 
+        # *   If any of these cloud computers are already associated with other policies, the resource group\\"s policy takes precedence.
         self.policies = policies
+        # The number of resources in the resource group.
         self.resource_count = resource_count
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
+        # >  The associated scheduled task.
+        # 
+        # *   The scheduled task applies to all cloud computers in the resource group. If any of these cloud computers are already associated with other scheduled tasks, the resource group\\"s scheduled task takes precedence.
         self.timers = timers
 
     def validate(self):
@@ -3536,8 +3700,11 @@ class DescribeResourceGroupsResponseBody(TeaModel):
         resource_group: List[DescribeResourceGroupsResponseBodyResourceGroup] = None,
         total_count: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resource groups.
         self.resource_group = resource_group
+        # The total number of resource groups.
         self.total_count = total_count
 
     def validate(self):
@@ -3661,6 +3828,7 @@ class DescribeUsersRequest(TeaModel):
         self.org_id = org_id
         self.show_extras = show_extras
         self.solution_id = solution_id
+        # The status.
         self.status = status
 
     def validate(self):
@@ -3783,6 +3951,7 @@ class DescribeUsersShrinkRequest(TeaModel):
         self.org_id = org_id
         self.show_extras_shrink = show_extras_shrink
         self.solution_id = solution_id
+        # The status.
         self.status = status
 
     def validate(self):
@@ -4015,6 +4184,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         org_id: str = None,
         orgs: List[DescribeUsersResponseBodyUsersOrgs] = None,
         owner_type: str = None,
+        password_expire_days: int = None,
+        password_expire_rest_days: int = None,
         phone: str = None,
         properties: List[DescribeUsersResponseBodyUsersProperties] = None,
         real_nick_name: str = None,
@@ -4028,6 +4199,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         self.avatar = avatar
         # The email address of the convenience user.
         self.email = email
+        # Enables the administrator permissions.
         self.enable_admin_access = enable_admin_access
         # The username of the convenience user.
         self.end_user_id = end_user_id
@@ -4080,6 +4252,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         self.owner_type = owner_type
+        self.password_expire_days = password_expire_days
+        self.password_expire_rest_days = password_expire_rest_days
         # The mobile number of the convenience user. If you leave this parameter empty, the value of this parameter is not returned.
         self.phone = phone
         self.properties = properties
@@ -4165,6 +4339,10 @@ class DescribeUsersResponseBodyUsers(TeaModel):
                 result['Orgs'].append(k.to_map() if k else None)
         if self.owner_type is not None:
             result['OwnerType'] = self.owner_type
+        if self.password_expire_days is not None:
+            result['PasswordExpireDays'] = self.password_expire_days
+        if self.password_expire_rest_days is not None:
+            result['PasswordExpireRestDays'] = self.password_expire_rest_days
         if self.phone is not None:
             result['Phone'] = self.phone
         result['Properties'] = []
@@ -4220,6 +4398,10 @@ class DescribeUsersResponseBodyUsers(TeaModel):
                 self.orgs.append(temp_model.from_map(k))
         if m.get('OwnerType') is not None:
             self.owner_type = m.get('OwnerType')
+        if m.get('PasswordExpireDays') is not None:
+            self.password_expire_days = m.get('PasswordExpireDays')
+        if m.get('PasswordExpireRestDays') is not None:
+            self.password_expire_rest_days = m.get('PasswordExpireRestDays')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
         self.properties = []
@@ -4249,7 +4431,7 @@ class DescribeUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The convenience accounts.
+        # The information about the convenience accounts.
         self.users = users
 
     def validate(self):
@@ -4508,8 +4690,11 @@ class FilterUsersRequest(TeaModel):
         # 
         #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
+        # Specifies whether to return the organization information.
         self.include_org_info = include_org_info
+        # Specifies whether to return the supported logon types.
         self.include_support_idps = include_support_idps
+        # Specifies whether to query all sub-organizations.
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
@@ -4530,6 +4715,7 @@ class FilterUsersRequest(TeaModel):
         self.property_filter_param = property_filter_param
         # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
+        # The status.
         self.status = status
 
     def validate(self):
@@ -4761,8 +4947,11 @@ class FilterUsersShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
+        # Specifies whether to return the organization information.
         self.include_org_info = include_org_info
+        # Specifies whether to return the supported logon types.
         self.include_support_idps = include_support_idps
+        # Specifies whether to query all sub-organizations.
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
@@ -4783,6 +4972,7 @@ class FilterUsersShrinkRequest(TeaModel):
         self.property_filter_param = property_filter_param
         # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
+        # The status.
         self.status = status
 
     def validate(self):
@@ -4913,6 +5103,39 @@ class FilterUsersResponseBodyUsersExternalInfo(TeaModel):
         return self
 
 
+class FilterUsersResponseBodyUsersGroups(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        group_name: str = None,
+    ):
+        self.group_id = group_id
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
 class FilterUsersResponseBodyUsersOrgList(TeaModel):
     def __init__(
         self,
@@ -4920,8 +5143,11 @@ class FilterUsersResponseBodyUsersOrgList(TeaModel):
         org_name: str = None,
         org_name_path: str = None,
     ):
+        # The organization ID.
         self.org_id = org_id
+        # The organization name.
         self.org_name = org_name
+        # The organization name path.
         self.org_name_path = org_name_path
 
     def validate(self):
@@ -4958,7 +5184,9 @@ class FilterUsersResponseBodyUsersSupportLoginIdps(TeaModel):
         idp_id: str = None,
         idp_name: str = None,
     ):
+        # The enterprise identity provider ID.
         self.idp_id = idp_id
+        # The enterprise identity provider name.
         self.idp_name = idp_name
 
     def validate(self):
@@ -5101,6 +5329,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         enable_admin_access: bool = None,
         end_user_id: str = None,
         external_info: FilterUsersResponseBodyUsersExternalInfo = None,
+        groups: List[FilterUsersResponseBodyUsersGroups] = None,
         id: int = None,
         is_tenant_manager: bool = None,
         org_list: List[FilterUsersResponseBodyUsersOrgList] = None,
@@ -5146,6 +5375,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         self.end_user_id = end_user_id
         # The additional information about the convenience user.
         self.external_info = external_info
+        self.groups = groups
         # The ID of the convenience user.
         self.id = id
         # Indicates whether the convenience user is a tenant administrator.
@@ -5168,6 +5398,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         self.is_tenant_manager = is_tenant_manager
+        # The organizations to which the user belongs.
         self.org_list = org_list
         # The type of the account ownership.
         # 
@@ -5195,6 +5426,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # *   0: The convenience account is normal.
         # *   9: The convenience account is locked.
         self.status = status
+        # The supported identity provider logon methods.
         self.support_login_idps = support_login_idps
         # The information about the properties.
         self.user_set_properties_models = user_set_properties_models
@@ -5202,6 +5434,10 @@ class FilterUsersResponseBodyUsers(TeaModel):
     def validate(self):
         if self.external_info:
             self.external_info.validate()
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
         if self.org_list:
             for k in self.org_list:
                 if k:
@@ -5235,6 +5471,10 @@ class FilterUsersResponseBodyUsers(TeaModel):
             result['EndUserId'] = self.end_user_id
         if self.external_info is not None:
             result['ExternalInfo'] = self.external_info.to_map()
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
         if self.id is not None:
             result['Id'] = self.id
         if self.is_tenant_manager is not None:
@@ -5284,6 +5524,11 @@ class FilterUsersResponseBodyUsers(TeaModel):
         if m.get('ExternalInfo') is not None:
             temp_model = FilterUsersResponseBodyUsersExternalInfo()
             self.external_info = temp_model.from_map(m['ExternalInfo'])
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = FilterUsersResponseBodyUsersGroups()
+                self.groups.append(temp_model.from_map(k))
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('IsTenantManager') is not None:
@@ -5331,7 +5576,7 @@ class FilterUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The convenience accounts.
+        # The information about the convenience accounts.
         self.users = users
 
     def validate(self):
@@ -5553,9 +5798,18 @@ class InitTenantAliasResponseBodyAliasInfo(TeaModel):
         alias_source_type: str = None,
         next_modify_time: str = None,
     ):
+        # The reason why modification is not allowed.
         self.alias_edit_disabled_reason = alias_edit_disabled_reason
+        # Indicates whether modification is allowed.
         self.alias_editable = alias_editable
+        # The source of the organization ID.
+        # 
+        # Valid values:
+        # 
+        # *   Generated: auto-generated.
+        # *   Customized: user-defined.
         self.alias_source_type = alias_source_type
+        # The time window during which modification is allowed.
         self.next_modify_time = next_modify_time
 
     def validate(self):
@@ -5597,8 +5851,11 @@ class InitTenantAliasResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.alias_info = alias_info
+        # The generated ID of the organization.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6307,9 +6564,14 @@ class ModifyGroupRequest(TeaModel):
         group_id: str = None,
         new_group_name: str = None,
     ):
+        # The new description of the user group.
         self.description = description
+        # The ID of the user group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The name of the new user group.
+        # 
         # This parameter is required.
         self.new_group_name = new_group_name
 
@@ -6346,6 +6608,7 @@ class ModifyGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6415,8 +6678,12 @@ class ModifyOrgRequest(TeaModel):
         org_id: str = None,
         org_name: str = None,
     ):
+        # The ID of the organization.
+        # 
         # This parameter is required.
         self.org_id = org_id
+        # The name of the organization.
+        # 
         # This parameter is required.
         self.org_name = org_name
 
@@ -6449,6 +6716,7 @@ class ModifyOrgResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6633,8 +6901,12 @@ class MoveOrgRequest(TeaModel):
         new_parent_org_id: str = None,
         org_id: str = None,
     ):
+        # The ID of the parent organization.
+        # 
         # This parameter is required.
         self.new_parent_org_id = new_parent_org_id
+        # The ID of the organization that you want to move.
+        # 
         # This parameter is required.
         self.org_id = org_id
 
@@ -6667,6 +6939,7 @@ class MoveOrgResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6736,8 +7009,12 @@ class MoveUserOrgRequest(TeaModel):
         end_user_ids: List[str] = None,
         org_id: str = None,
     ):
+        # The user IDs.
+        # 
         # This parameter is required.
         self.end_user_ids = end_user_ids
+        # The organization ID.
+        # 
         # This parameter is required.
         self.org_id = org_id
 
@@ -6770,6 +7047,7 @@ class MoveUserOrgResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7014,7 +7292,9 @@ class RemoveGroupRequest(TeaModel):
         group_id: str = None,
         group_ids: List[str] = None,
     ):
+        # The ID of the user group to be deleted.
         self.group_id = group_id
+        # The IDs of the user groups to be deleted.
         self.group_ids = group_ids
 
     def validate(self):
@@ -7115,9 +7395,9 @@ class RemoveMfaDeviceRequest(TeaModel):
         ad_domain: str = None,
         serial_number: str = None,
     ):
-        # The domain of the Active Directory (AD) workspace.
+        # The address of the AD office network.
         self.ad_domain = ad_domain
-        # The serial number of the virtual MFA device. The serial number is unique for each device.
+        # The serial number of the virtual MFA device. You can call the [DescribeMfaDevices](~~DescribeMfaDevices~~) operation to get this information.
         # 
         # This parameter is required.
         self.serial_number = serial_number
@@ -7220,6 +7500,8 @@ class RemoveOrgRequest(TeaModel):
         self,
         org_id: str = None,
     ):
+        # The organization ID.
+        # 
         # This parameter is required.
         self.org_id = org_id
 
@@ -7248,6 +7530,7 @@ class RemoveOrgResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8682,7 +8965,10 @@ class UserBatchJoinGroupRequest(TeaModel):
         end_user_ids: List[str] = None,
         group_id: str = None,
     ):
+        # The list of user IDs.
         self.end_user_ids = end_user_ids
+        # The ID of the user group.
+        # 
         # This parameter is required.
         self.group_id = group_id
 
@@ -8715,6 +9001,7 @@ class UserBatchJoinGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8784,7 +9071,9 @@ class UserBatchQuitGroupRequest(TeaModel):
         end_user_ids: List[str] = None,
         group_id: str = None,
     ):
+        # The user IDs.
         self.end_user_ids = end_user_ids
+        # The ID of the user group.
         self.group_id = group_id
 
     def validate(self):
@@ -8816,6 +9105,7 @@ class UserBatchQuitGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

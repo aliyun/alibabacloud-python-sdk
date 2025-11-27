@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.BatchSetDesktopManagerResponse:
         """
-        @summary 批量设置桌面管理员
+        @summary Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+        
+        @description Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
         
         @param request: BatchSetDesktopManagerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -84,7 +86,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.BatchSetDesktopManagerResponse:
         """
-        @summary 批量设置桌面管理员
+        @summary Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+        
+        @description Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
         
         @param request: BatchSetDesktopManagerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -120,7 +124,9 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.BatchSetDesktopManagerRequest,
     ) -> eds_user_20210308_models.BatchSetDesktopManagerResponse:
         """
-        @summary 批量设置桌面管理员
+        @summary Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+        
+        @description Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
         
         @param request: BatchSetDesktopManagerRequest
         @return: BatchSetDesktopManagerResponse
@@ -133,7 +139,9 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.BatchSetDesktopManagerRequest,
     ) -> eds_user_20210308_models.BatchSetDesktopManagerResponse:
         """
-        @summary 批量设置桌面管理员
+        @summary Grants or revokes the local administrator permissions on cloud computers for convenience accounts.
+        
+        @description Convenience accounts with the local administrator permissions on cloud computers can install software and modify system settings on cloud computers.
         
         @param request: BatchSetDesktopManagerRequest
         @return: BatchSetDesktopManagerResponse
@@ -451,7 +459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateGroupResponse:
         """
-        @summary 创建角色.
+        @summary Creates a user group.
         
         @param request: CreateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -494,7 +502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateGroupResponse:
         """
-        @summary 创建角色.
+        @summary Creates a user group.
         
         @param request: CreateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -536,7 +544,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateGroupRequest,
     ) -> eds_user_20210308_models.CreateGroupResponse:
         """
-        @summary 创建角色.
+        @summary Creates a user group.
         
         @param request: CreateGroupRequest
         @return: CreateGroupResponse
@@ -549,7 +557,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateGroupRequest,
     ) -> eds_user_20210308_models.CreateGroupResponse:
         """
-        @summary 创建角色.
+        @summary Creates a user group.
         
         @param request: CreateGroupRequest
         @return: CreateGroupResponse
@@ -563,7 +571,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateOrgResponse:
         """
-        @summary 创建组织
+        @summary Creates an organization.
         
         @param request: CreateOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -600,7 +608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateOrgResponse:
         """
-        @summary 创建组织
+        @summary Creates an organization.
         
         @param request: CreateOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -636,7 +644,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateOrgRequest,
     ) -> eds_user_20210308_models.CreateOrgResponse:
         """
-        @summary 创建组织
+        @summary Creates an organization.
         
         @param request: CreateOrgRequest
         @return: CreateOrgResponse
@@ -649,7 +657,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateOrgRequest,
     ) -> eds_user_20210308_models.CreateOrgResponse:
         """
-        @summary 创建组织
+        @summary Creates an organization.
         
         @param request: CreateOrgRequest
         @return: CreateOrgResponse
@@ -763,7 +771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateResourceGroupResponse:
         """
-        @summary 创建资源组
+        @summary Creates a resource group.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -802,7 +810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.CreateResourceGroupResponse:
         """
-        @summary 创建资源组
+        @summary Creates a resource group.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -840,7 +848,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateResourceGroupRequest,
     ) -> eds_user_20210308_models.CreateResourceGroupResponse:
         """
-        @summary 创建资源组
+        @summary Creates a resource group.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -853,7 +861,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.CreateResourceGroupRequest,
     ) -> eds_user_20210308_models.CreateResourceGroupResponse:
         """
-        @summary 创建资源组
+        @summary Creates a resource group.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -1203,7 +1211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeGroupUserResponse:
         """
-        @summary 全量同步初始化
+        @summary Queries the members of a user group.
         
         @param request: DescribeGroupUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1248,7 +1256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeGroupUserResponse:
         """
-        @summary 全量同步初始化
+        @summary Queries the members of a user group.
         
         @param request: DescribeGroupUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1292,7 +1300,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeGroupUserRequest,
     ) -> eds_user_20210308_models.DescribeGroupUserResponse:
         """
-        @summary 全量同步初始化
+        @summary Queries the members of a user group.
         
         @param request: DescribeGroupUserRequest
         @return: DescribeGroupUserResponse
@@ -1305,7 +1313,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeGroupUserRequest,
     ) -> eds_user_20210308_models.DescribeGroupUserResponse:
         """
-        @summary 全量同步初始化
+        @summary Queries the members of a user group.
         
         @param request: DescribeGroupUserRequest
         @return: DescribeGroupUserResponse
@@ -1319,7 +1327,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeGroupsResponse:
         """
-        @summary 全量同步初始化.
+        @summary Queries user groups.
         
         @param request: DescribeGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1329,10 +1337,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.exclude_attached_login_policy_groups):
+            query['ExcludeAttachedLoginPolicyGroups'] = request.exclude_attached_login_policy_groups
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.idp_id):
+            query['IdpId'] = request.idp_id
+        if not UtilClient.is_unset(request.login_policy_id):
+            query['LoginPolicyId'] = request.login_policy_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1366,7 +1380,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeGroupsResponse:
         """
-        @summary 全量同步初始化.
+        @summary Queries user groups.
         
         @param request: DescribeGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1376,10 +1390,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.exclude_attached_login_policy_groups):
+            query['ExcludeAttachedLoginPolicyGroups'] = request.exclude_attached_login_policy_groups
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.idp_id):
+            query['IdpId'] = request.idp_id
+        if not UtilClient.is_unset(request.login_policy_id):
+            query['LoginPolicyId'] = request.login_policy_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1412,7 +1432,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeGroupsRequest,
     ) -> eds_user_20210308_models.DescribeGroupsResponse:
         """
-        @summary 全量同步初始化.
+        @summary Queries user groups.
         
         @param request: DescribeGroupsRequest
         @return: DescribeGroupsResponse
@@ -1425,7 +1445,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeGroupsRequest,
     ) -> eds_user_20210308_models.DescribeGroupsResponse:
         """
-        @summary 全量同步初始化.
+        @summary Queries user groups.
         
         @param request: DescribeGroupsRequest
         @return: DescribeGroupsResponse
@@ -1439,7 +1459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeMfaDevicesResponse:
         """
-        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience users.
+        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
         
         @param request: DescribeMfaDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1484,7 +1504,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeMfaDevicesResponse:
         """
-        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience users.
+        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
         
         @param request: DescribeMfaDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1528,7 +1548,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeMfaDevicesRequest,
     ) -> eds_user_20210308_models.DescribeMfaDevicesResponse:
         """
-        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience users.
+        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
         
         @param request: DescribeMfaDevicesRequest
         @return: DescribeMfaDevicesResponse
@@ -1541,7 +1561,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeMfaDevicesRequest,
     ) -> eds_user_20210308_models.DescribeMfaDevicesResponse:
         """
-        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience users.
+        @summary Queries the information about virtual multi-factor authentication (MFA) devices that are bound to convenience accounts.
         
         @param request: DescribeMfaDevicesRequest
         @return: DescribeMfaDevicesResponse
@@ -1555,7 +1575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeOrgByLayerResponse:
         """
-        @summary 查找下级组织
+        @summary Queries subordinate organizations.
         
         @param request: DescribeOrgByLayerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1592,7 +1612,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeOrgByLayerResponse:
         """
-        @summary 查找下级组织
+        @summary Queries subordinate organizations.
         
         @param request: DescribeOrgByLayerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1628,7 +1648,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeOrgByLayerRequest,
     ) -> eds_user_20210308_models.DescribeOrgByLayerResponse:
         """
-        @summary 查找下级组织
+        @summary Queries subordinate organizations.
         
         @param request: DescribeOrgByLayerRequest
         @return: DescribeOrgByLayerResponse
@@ -1641,7 +1661,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeOrgByLayerRequest,
     ) -> eds_user_20210308_models.DescribeOrgByLayerResponse:
         """
-        @summary 查找下级组织
+        @summary Queries subordinate organizations.
         
         @param request: DescribeOrgByLayerRequest
         @return: DescribeOrgByLayerResponse
@@ -1783,7 +1803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
         """
-        @summary 查看资源组
+        @summary Queries resource groups.
         
         @param request: DescribeResourceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1828,7 +1848,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
         """
-        @summary 查看资源组
+        @summary Queries resource groups.
         
         @param request: DescribeResourceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1872,7 +1892,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeResourceGroupsRequest,
     ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
         """
-        @summary 查看资源组
+        @summary Queries resource groups.
         
         @param request: DescribeResourceGroupsRequest
         @return: DescribeResourceGroupsResponse
@@ -1885,7 +1905,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.DescribeResourceGroupsRequest,
     ) -> eds_user_20210308_models.DescribeResourceGroupsResponse:
         """
-        @summary 查看资源组
+        @summary Queries resource groups.
         
         @param request: DescribeResourceGroupsRequest
         @return: DescribeResourceGroupsResponse
@@ -2326,7 +2346,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.InitTenantAliasResponse:
         """
-        @summary 初始化TenantAlias
+        @summary Initializes an organization ID.
         
         @param request: InitTenantAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2354,7 +2374,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.InitTenantAliasResponse:
         """
-        @summary 初始化TenantAlias
+        @summary Initializes an organization ID.
         
         @param request: InitTenantAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2379,7 +2399,7 @@ class Client(OpenApiClient):
 
     def init_tenant_alias(self) -> eds_user_20210308_models.InitTenantAliasResponse:
         """
-        @summary 初始化TenantAlias
+        @summary Initializes an organization ID.
         
         @return: InitTenantAliasResponse
         """
@@ -2388,7 +2408,7 @@ class Client(OpenApiClient):
 
     async def init_tenant_alias_async(self) -> eds_user_20210308_models.InitTenantAliasResponse:
         """
-        @summary 初始化TenantAlias
+        @summary Initializes an organization ID.
         
         @return: InitTenantAliasResponse
         """
@@ -2783,7 +2803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.ModifyGroupResponse:
         """
-        @summary 修改角色.
+        @summary Modifies the name and description of a user group.
         
         @param request: ModifyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2822,7 +2842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.ModifyGroupResponse:
         """
-        @summary 修改角色.
+        @summary Modifies the name and description of a user group.
         
         @param request: ModifyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2860,7 +2880,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.ModifyGroupRequest,
     ) -> eds_user_20210308_models.ModifyGroupResponse:
         """
-        @summary 修改角色.
+        @summary Modifies the name and description of a user group.
         
         @param request: ModifyGroupRequest
         @return: ModifyGroupResponse
@@ -2873,7 +2893,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.ModifyGroupRequest,
     ) -> eds_user_20210308_models.ModifyGroupResponse:
         """
-        @summary 修改角色.
+        @summary Modifies the name and description of a user group.
         
         @param request: ModifyGroupRequest
         @return: ModifyGroupResponse
@@ -2887,7 +2907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.ModifyOrgResponse:
         """
-        @summary 修改组织
+        @summary Modifies an organization.
         
         @param request: ModifyOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2924,7 +2944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.ModifyOrgResponse:
         """
-        @summary 修改组织
+        @summary Modifies an organization.
         
         @param request: ModifyOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2960,7 +2980,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.ModifyOrgRequest,
     ) -> eds_user_20210308_models.ModifyOrgResponse:
         """
-        @summary 修改组织
+        @summary Modifies an organization.
         
         @param request: ModifyOrgRequest
         @return: ModifyOrgResponse
@@ -2973,7 +2993,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.ModifyOrgRequest,
     ) -> eds_user_20210308_models.ModifyOrgResponse:
         """
-        @summary 修改组织
+        @summary Modifies an organization.
         
         @param request: ModifyOrgRequest
         @return: ModifyOrgResponse
@@ -3091,7 +3111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.MoveOrgResponse:
         """
-        @summary 移动组织
+        @summary Moves an organization.
         
         @param request: MoveOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3128,7 +3148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.MoveOrgResponse:
         """
-        @summary 移动组织
+        @summary Moves an organization.
         
         @param request: MoveOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3164,7 +3184,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.MoveOrgRequest,
     ) -> eds_user_20210308_models.MoveOrgResponse:
         """
-        @summary 移动组织
+        @summary Moves an organization.
         
         @param request: MoveOrgRequest
         @return: MoveOrgResponse
@@ -3177,7 +3197,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.MoveOrgRequest,
     ) -> eds_user_20210308_models.MoveOrgResponse:
         """
-        @summary 移动组织
+        @summary Moves an organization.
         
         @param request: MoveOrgRequest
         @return: MoveOrgResponse
@@ -3191,7 +3211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.MoveUserOrgResponse:
         """
-        @summary 移动用户组织
+        @summary Moves users to a specific organization.
         
         @param request: MoveUserOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3228,7 +3248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.MoveUserOrgResponse:
         """
-        @summary 移动用户组织
+        @summary Moves users to a specific organization.
         
         @param request: MoveUserOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3264,7 +3284,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.MoveUserOrgRequest,
     ) -> eds_user_20210308_models.MoveUserOrgResponse:
         """
-        @summary 移动用户组织
+        @summary Moves users to a specific organization.
         
         @param request: MoveUserOrgRequest
         @return: MoveUserOrgResponse
@@ -3277,7 +3297,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.MoveUserOrgRequest,
     ) -> eds_user_20210308_models.MoveUserOrgResponse:
         """
-        @summary 移动用户组织
+        @summary Moves users to a specific organization.
         
         @param request: MoveUserOrgRequest
         @return: MoveUserOrgResponse
@@ -3365,7 +3385,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.RemoveGroupResponse:
         """
-        @summary 删除角色.
+        @summary Deletes a single user group or multiple user groups at a time.
         
         @param request: RemoveGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3402,7 +3422,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.RemoveGroupResponse:
         """
-        @summary 删除角色.
+        @summary Deletes a single user group or multiple user groups at a time.
         
         @param request: RemoveGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3438,7 +3458,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.RemoveGroupRequest,
     ) -> eds_user_20210308_models.RemoveGroupResponse:
         """
-        @summary 删除角色.
+        @summary Deletes a single user group or multiple user groups at a time.
         
         @param request: RemoveGroupRequest
         @return: RemoveGroupResponse
@@ -3451,7 +3471,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.RemoveGroupRequest,
     ) -> eds_user_20210308_models.RemoveGroupResponse:
         """
-        @summary 删除角色.
+        @summary Deletes a single user group or multiple user groups at a time.
         
         @param request: RemoveGroupRequest
         @return: RemoveGroupResponse
@@ -3465,9 +3485,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.RemoveMfaDeviceResponse:
         """
-        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
         
-        @description If you remove a virtual MFA device that is bound to a convenience user, the convenience user can no longer use the virtual MFA device to log on to cloud desktops. Before the convenience user can log on to cloud desktops again, a new virtual MFA device must be bound to the convenience user.
+        @description If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
         
         @param request: RemoveMfaDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3504,9 +3524,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.RemoveMfaDeviceResponse:
         """
-        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
         
-        @description If you remove a virtual MFA device that is bound to a convenience user, the convenience user can no longer use the virtual MFA device to log on to cloud desktops. Before the convenience user can log on to cloud desktops again, a new virtual MFA device must be bound to the convenience user.
+        @description If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
         
         @param request: RemoveMfaDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3542,9 +3562,9 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.RemoveMfaDeviceRequest,
     ) -> eds_user_20210308_models.RemoveMfaDeviceResponse:
         """
-        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
         
-        @description If you remove a virtual MFA device that is bound to a convenience user, the convenience user can no longer use the virtual MFA device to log on to cloud desktops. Before the convenience user can log on to cloud desktops again, a new virtual MFA device must be bound to the convenience user.
+        @description If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
         
         @param request: RemoveMfaDeviceRequest
         @return: RemoveMfaDeviceResponse
@@ -3557,9 +3577,9 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.RemoveMfaDeviceRequest,
     ) -> eds_user_20210308_models.RemoveMfaDeviceResponse:
         """
-        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience user.
+        @summary Removes a virtual multi-factor authentication (MFA) device that is bound to a convenience account.
         
-        @description If you remove a virtual MFA device that is bound to a convenience user, the convenience user can no longer use the virtual MFA device to log on to cloud desktops. Before the convenience user can log on to cloud desktops again, a new virtual MFA device must be bound to the convenience user.
+        @description If you remove a virtual MFA device that is bound to a convenience account, the convenience account can no longer use the virtual MFA device to log on to cloud computers. Before the convenience account can log on to Alibaba Cloud Workspace terminals again, a new virtual MFA device must be bound to the convenience account.
         
         @param request: RemoveMfaDeviceRequest
         @return: RemoveMfaDeviceResponse
@@ -3573,7 +3593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.RemoveOrgResponse:
         """
-        @summary 移除组织
+        @summary Removes an organization.
         
         @param request: RemoveOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3608,7 +3628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.RemoveOrgResponse:
         """
-        @summary 移除组织
+        @summary Removes an organization.
         
         @param request: RemoveOrgRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3642,7 +3662,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.RemoveOrgRequest,
     ) -> eds_user_20210308_models.RemoveOrgResponse:
         """
-        @summary 移除组织
+        @summary Removes an organization.
         
         @param request: RemoveOrgRequest
         @return: RemoveOrgResponse
@@ -3655,7 +3675,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.RemoveOrgRequest,
     ) -> eds_user_20210308_models.RemoveOrgResponse:
         """
-        @summary 移除组织
+        @summary Removes an organization.
         
         @param request: RemoveOrgRequest
         @return: RemoveOrgResponse
@@ -4451,7 +4471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
         """
-        @summary 用户批量分配角色
+        @summary Add multiple users to a user group at a time.
         
         @param request: UserBatchJoinGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4488,7 +4508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
         """
-        @summary 用户批量分配角色
+        @summary Add multiple users to a user group at a time.
         
         @param request: UserBatchJoinGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4524,7 +4544,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.UserBatchJoinGroupRequest,
     ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
         """
-        @summary 用户批量分配角色
+        @summary Add multiple users to a user group at a time.
         
         @param request: UserBatchJoinGroupRequest
         @return: UserBatchJoinGroupResponse
@@ -4537,7 +4557,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.UserBatchJoinGroupRequest,
     ) -> eds_user_20210308_models.UserBatchJoinGroupResponse:
         """
-        @summary 用户批量分配角色
+        @summary Add multiple users to a user group at a time.
         
         @param request: UserBatchJoinGroupRequest
         @return: UserBatchJoinGroupResponse
@@ -4551,7 +4571,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
         """
-        @summary 用户批量移出角色
+        @summary Removes multiple users from a user group at a time.
         
         @param request: UserBatchQuitGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4588,7 +4608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
         """
-        @summary 用户批量移出角色
+        @summary Removes multiple users from a user group at a time.
         
         @param request: UserBatchQuitGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4624,7 +4644,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.UserBatchQuitGroupRequest,
     ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
         """
-        @summary 用户批量移出角色
+        @summary Removes multiple users from a user group at a time.
         
         @param request: UserBatchQuitGroupRequest
         @return: UserBatchQuitGroupResponse
@@ -4637,7 +4657,7 @@ class Client(OpenApiClient):
         request: eds_user_20210308_models.UserBatchQuitGroupRequest,
     ) -> eds_user_20210308_models.UserBatchQuitGroupResponse:
         """
-        @summary 用户批量移出角色
+        @summary Removes multiple users from a user group at a time.
         
         @param request: UserBatchQuitGroupRequest
         @return: UserBatchQuitGroupResponse
