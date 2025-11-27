@@ -2553,6 +2553,298 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sasl_users_with_options_async(request, runtime)
 
+    def downgrade_post_pay_order_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.DowngradePostPayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.DowngradePostPayOrderResponse:
+        """
+        @summary 降配后付费实例
+        
+        @param tmp_req: DowngradePostPayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DowngradePostPayOrderResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.DowngradePostPayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.eip_model):
+            query['EipModel'] = request.eip_model
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.io_max):
+            query['IoMax'] = request.io_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.topic_quota):
+            query['TopicQuota'] = request.topic_quota
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DowngradePostPayOrder',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DowngradePostPayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def downgrade_post_pay_order_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.DowngradePostPayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.DowngradePostPayOrderResponse:
+        """
+        @summary 降配后付费实例
+        
+        @param tmp_req: DowngradePostPayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DowngradePostPayOrderResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.DowngradePostPayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.eip_model):
+            query['EipModel'] = request.eip_model
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.io_max):
+            query['IoMax'] = request.io_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.topic_quota):
+            query['TopicQuota'] = request.topic_quota
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DowngradePostPayOrder',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DowngradePostPayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def downgrade_post_pay_order(
+        self,
+        request: alikafka_20190916_models.DowngradePostPayOrderRequest,
+    ) -> alikafka_20190916_models.DowngradePostPayOrderResponse:
+        """
+        @summary 降配后付费实例
+        
+        @param request: DowngradePostPayOrderRequest
+        @return: DowngradePostPayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.downgrade_post_pay_order_with_options(request, runtime)
+
+    async def downgrade_post_pay_order_async(
+        self,
+        request: alikafka_20190916_models.DowngradePostPayOrderRequest,
+    ) -> alikafka_20190916_models.DowngradePostPayOrderResponse:
+        """
+        @summary 降配后付费实例
+        
+        @param request: DowngradePostPayOrderRequest
+        @return: DowngradePostPayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.downgrade_post_pay_order_with_options_async(request, runtime)
+
+    def downgrade_pre_pay_order_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.DowngradePrePayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.DowngradePrePayOrderResponse:
+        """
+        @summary 降配预付费实例
+        
+        @param tmp_req: DowngradePrePayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DowngradePrePayOrderResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.DowngradePrePayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.eip_model):
+            query['EipModel'] = request.eip_model
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.io_max):
+            query['IoMax'] = request.io_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.topic_quota):
+            query['TopicQuota'] = request.topic_quota
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DowngradePrePayOrder',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DowngradePrePayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def downgrade_pre_pay_order_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.DowngradePrePayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.DowngradePrePayOrderResponse:
+        """
+        @summary 降配预付费实例
+        
+        @param tmp_req: DowngradePrePayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DowngradePrePayOrderResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.DowngradePrePayOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.eip_model):
+            query['EipModel'] = request.eip_model
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.io_max):
+            query['IoMax'] = request.io_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.topic_quota):
+            query['TopicQuota'] = request.topic_quota
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DowngradePrePayOrder',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DowngradePrePayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def downgrade_pre_pay_order(
+        self,
+        request: alikafka_20190916_models.DowngradePrePayOrderRequest,
+    ) -> alikafka_20190916_models.DowngradePrePayOrderResponse:
+        """
+        @summary 降配预付费实例
+        
+        @param request: DowngradePrePayOrderRequest
+        @return: DowngradePrePayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.downgrade_pre_pay_order_with_options(request, runtime)
+
+    async def downgrade_pre_pay_order_async(
+        self,
+        request: alikafka_20190916_models.DowngradePrePayOrderRequest,
+    ) -> alikafka_20190916_models.DowngradePrePayOrderResponse:
+        """
+        @summary 降配预付费实例
+        
+        @param request: DowngradePrePayOrderRequest
+        @return: DowngradePrePayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.downgrade_pre_pay_order_with_options_async(request, runtime)
+
     def enable_auto_group_creation_with_options(
         self,
         request: alikafka_20190916_models.EnableAutoGroupCreationRequest,

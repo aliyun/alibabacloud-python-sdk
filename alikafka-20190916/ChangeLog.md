@@ -1,3 +1,9 @@
+2025-11-27 Version: 2.14.0
+- Support API DowngradePostPayOrder.
+- Support API DowngradePrePayOrder.
+- Update API GetInstanceList: add response parameters Body.InstanceList.$.ScheduledRetirement.
+
+
 2025-10-09 Version: 2.13.1
 - Update API GetConsumerProgress: add response parameters Body.ConsumerProgress.TopicList.$.OffsetList.$.Accumulate.
 
