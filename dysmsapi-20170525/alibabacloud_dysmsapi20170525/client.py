@@ -3051,6 +3051,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_qualification_oss_info_with_options_async(request, runtime)
 
+    def get_sms_ocr_oss_info_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetSmsOcrOssInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetSmsOcrOssInfoResponse:
+        """
+        @summary 获取OCR的OSS信息
+        
+        @param request: GetSmsOcrOssInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsOcrOssInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsOcrOssInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetSmsOcrOssInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sms_ocr_oss_info_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetSmsOcrOssInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetSmsOcrOssInfoResponse:
+        """
+        @summary 获取OCR的OSS信息
+        
+        @param request: GetSmsOcrOssInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsOcrOssInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsOcrOssInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetSmsOcrOssInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sms_ocr_oss_info(
+        self,
+        request: dysmsapi_20170525_models.GetSmsOcrOssInfoRequest,
+    ) -> dysmsapi_20170525_models.GetSmsOcrOssInfoResponse:
+        """
+        @summary 获取OCR的OSS信息
+        
+        @param request: GetSmsOcrOssInfoRequest
+        @return: GetSmsOcrOssInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_sms_ocr_oss_info_with_options(request, runtime)
+
+    async def get_sms_ocr_oss_info_async(
+        self,
+        request: dysmsapi_20170525_models.GetSmsOcrOssInfoRequest,
+    ) -> dysmsapi_20170525_models.GetSmsOcrOssInfoResponse:
+        """
+        @summary 获取OCR的OSS信息
+        
+        @param request: GetSmsOcrOssInfoRequest
+        @return: GetSmsOcrOssInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sms_ocr_oss_info_with_options_async(request, runtime)
+
     def get_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.GetSmsSignRequest,

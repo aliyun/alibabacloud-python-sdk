@@ -5063,6 +5063,215 @@ class GetQualificationOssInfoResponse(TeaModel):
         return self
 
 
+class GetSmsOcrOssInfoRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_type: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # OCR任务类型
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetSmsOcrOssInfoResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        bucket: str = None,
+        expire_time: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+        start_path: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.bucket = bucket
+        self.expire_time = expire_time
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+        self.start_path = start_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.start_path is not None:
+            result['StartPath'] = self.start_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('StartPath') is not None:
+            self.start_path = m.get('StartPath')
+        return self
+
+
+class GetSmsOcrOssInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: GetSmsOcrOssInfoResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = GetSmsOcrOssInfoResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSmsOcrOssInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSmsOcrOssInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSmsOcrOssInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSmsSignRequest(TeaModel):
     def __init__(
         self,
@@ -10475,6 +10684,7 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         template_content: str = None,
         template_name: str = None,
         template_type: int = None,
+        traffic_driving: str = None,
     ):
         # The approval status of the message template. Valid values:
         # 
@@ -10519,6 +10729,7 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         # *   **6**: message sent to countries or regions outside the Chinese mainland
         # *   **7**: digital message
         self.template_type = template_type
+        self.traffic_driving = traffic_driving
 
     def validate(self):
         if self.reason:
@@ -10550,6 +10761,8 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
             result['TemplateName'] = self.template_name
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.traffic_driving is not None:
+            result['TrafficDriving'] = self.traffic_driving
         return result
 
     def from_map(self, m: dict = None):
@@ -10575,6 +10788,8 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
             self.template_name = m.get('TemplateName')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('TrafficDriving') is not None:
+            self.traffic_driving = m.get('TrafficDriving')
         return self
 
 

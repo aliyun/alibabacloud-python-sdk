@@ -1,3 +1,8 @@
+2025-11-27 Version: 4.3.0
+- Support API GetSmsOcrOssInfo.
+- Update API QuerySmsTemplateList: add response parameters Body.SmsTemplateList.$.TrafficDriving.
+
+
 2025-09-17 Version: 4.2.0
 - Support API SendLogisticsSms.
 - Support API VerifyLogisticsSmsMailNo.
