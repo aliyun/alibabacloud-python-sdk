@@ -4207,6 +4207,7 @@ class OssConfiguration(TeaModel):
         mount_point: str = None,
         permission: str = None,
         prefix: str = None,
+        region: str = None,
     ):
         # This parameter is required.
         self.bucket_name = bucket_name
@@ -4215,6 +4216,7 @@ class OssConfiguration(TeaModel):
         self.permission = permission
         # This parameter is required.
         self.prefix = prefix
+        self.region = region
 
     def validate(self):
         pass
@@ -4233,6 +4235,8 @@ class OssConfiguration(TeaModel):
             result['permission'] = self.permission
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.region is not None:
+            result['region'] = self.region
         return result
 
     def from_map(self, m: dict = None):
@@ -4245,6 +4249,8 @@ class OssConfiguration(TeaModel):
             self.permission = m.get('permission')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('region') is not None:
+            self.region = m.get('region')
         return self
 
 
@@ -5529,6 +5535,7 @@ class Template(TeaModel):
         cpu: float = None,
         created_at: str = None,
         credential_configuration: CredentialConfiguration = None,
+        description: str = None,
         disk_size: int = None,
         environment_variables: str = None,
         execution_role_arn: str = None,
@@ -5556,6 +5563,7 @@ class Template(TeaModel):
         self.cpu = cpu
         self.created_at = created_at
         self.credential_configuration = credential_configuration
+        self.description = description
         self.disk_size = disk_size
         self.environment_variables = environment_variables
         self.execution_role_arn = execution_role_arn
@@ -5613,6 +5621,8 @@ class Template(TeaModel):
             result['createdAt'] = self.created_at
         if self.credential_configuration is not None:
             result['credentialConfiguration'] = self.credential_configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
         if self.environment_variables is not None:
@@ -5671,6 +5681,8 @@ class Template(TeaModel):
         if m.get('credentialConfiguration') is not None:
             temp_model = CredentialConfiguration()
             self.credential_configuration = temp_model.from_map(m['credentialConfiguration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
         if m.get('environmentVariables') is not None:
@@ -12631,6 +12643,7 @@ class ListAgentRuntimesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         search_mode: str = None,
+        status: str = None,
     ):
         # 根据智能体运行时名称进行模糊匹配过滤
         self.agent_runtime_name = agent_runtime_name
@@ -12640,6 +12653,8 @@ class ListAgentRuntimesRequest(TeaModel):
         self.page_size = page_size
         # 查询模式，支持精确查询和模糊查询
         self.search_mode = search_mode
+        # 根据状态进行过滤，多个状态用逗号分隔，支持精确匹配
+        self.status = status
 
     def validate(self):
         pass
@@ -12658,6 +12673,8 @@ class ListAgentRuntimesRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.search_mode is not None:
             result['searchMode'] = self.search_mode
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -12670,6 +12687,8 @@ class ListAgentRuntimesRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('searchMode') is not None:
             self.search_mode = m.get('searchMode')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 

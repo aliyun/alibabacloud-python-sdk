@@ -3835,6 +3835,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.search_mode):
             query['searchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3881,6 +3883,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.search_mode):
             query['searchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
