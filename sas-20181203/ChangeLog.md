@@ -1,3 +1,7 @@
+2025-11-27 Version: 7.0.2
+- Update API DescribeVulList: add response parameters Body.VulRecords.$.ContainerId.
+
+
 2025-11-26 Version: 7.0.1
 - Update API ChangeCheckConfig: add request parameters ResourceDirectoryAccountId.
 
