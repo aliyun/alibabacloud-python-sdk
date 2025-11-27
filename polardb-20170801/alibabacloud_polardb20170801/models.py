@@ -16755,6 +16755,7 @@ class DescribeApplicationsResponseBodyItemsApplications(TeaModel):
         application_id: str = None,
         application_type: str = None,
         creation_time: str = None,
+        dbcluster_id: str = None,
         description: str = None,
         endpoints: DescribeApplicationsResponseBodyItemsApplicationsEndpoints = None,
         engine_version: str = None,
@@ -16769,6 +16770,7 @@ class DescribeApplicationsResponseBodyItemsApplications(TeaModel):
         self.application_id = application_id
         self.application_type = application_type
         self.creation_time = creation_time
+        self.dbcluster_id = dbcluster_id
         self.description = description
         self.endpoints = endpoints
         self.engine_version = engine_version
@@ -16796,6 +16798,8 @@ class DescribeApplicationsResponseBodyItemsApplications(TeaModel):
             result['ApplicationType'] = self.application_type
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
         if self.description is not None:
             result['Description'] = self.description
         if self.endpoints is not None:
@@ -16826,6 +16830,8 @@ class DescribeApplicationsResponseBodyItemsApplications(TeaModel):
             self.application_type = m.get('ApplicationType')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Endpoints') is not None:

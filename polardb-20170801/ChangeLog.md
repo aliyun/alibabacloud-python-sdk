@@ -1,3 +1,7 @@
+2025-11-27 Version: 6.1.8
+- Update API DescribeApplications: add response parameters Body.Items.$.DBClusterId.
+
+
 2025-11-26 Version: 6.1.7
 - Update API DescribeExtensions: add request parameters ExtensionName.
 
