@@ -1,3 +1,8 @@
+2025-11-27 Version: 1.2.4
+- Update API DescribeCACertificate: add response parameters Body.Certificate.ClusterId.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.KeyIndex.
+
+
 2025-10-31 Version: 1.2.3
 - Generated python 2020-06-30 for cas.
 

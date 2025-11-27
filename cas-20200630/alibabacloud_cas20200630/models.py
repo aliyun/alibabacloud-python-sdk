@@ -3169,6 +3169,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         cert_remaining_count: int = None,
         cert_total_count: int = None,
         certificate_type: str = None,
+        cluster_id: str = None,
         common_name: str = None,
         country_code: str = None,
         crl_day: int = None,
@@ -3177,6 +3178,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         full_algorithm: str = None,
         identifier: str = None,
         issuer_type: str = None,
+        key_index: int = None,
         key_size: int = None,
         locality: str = None,
         md_5: str = None,
@@ -3218,6 +3220,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         # *   **ROOT**: root CA certificate
         # *   **SUB_ROOT**: intermediate CA certificate
         self.certificate_type = certificate_type
+        self.cluster_id = cluster_id
         # The common name or abbreviation of the organization that is associated with the CA certificate.
         self.common_name = common_name
         # The code of the country in which the organization is located.
@@ -3234,6 +3237,7 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         # The unique identifier of the CA certificate.
         self.identifier = identifier
         self.issuer_type = issuer_type
+        self.key_index = key_index
         # The key length of the CA certificate.
         self.key_size = key_size
         # The name of the city in which the organization is located.
@@ -3306,6 +3310,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             result['CertTotalCount'] = self.cert_total_count
         if self.certificate_type is not None:
             result['CertificateType'] = self.certificate_type
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.common_name is not None:
             result['CommonName'] = self.common_name
         if self.country_code is not None:
@@ -3322,6 +3328,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             result['Identifier'] = self.identifier
         if self.issuer_type is not None:
             result['IssuerType'] = self.issuer_type
+        if self.key_index is not None:
+            result['KeyIndex'] = self.key_index
         if self.key_size is not None:
             result['KeySize'] = self.key_size
         if self.locality is not None:
@@ -3378,6 +3386,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             self.cert_total_count = m.get('CertTotalCount')
         if m.get('CertificateType') is not None:
             self.certificate_type = m.get('CertificateType')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
@@ -3394,6 +3404,8 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
             self.identifier = m.get('Identifier')
         if m.get('IssuerType') is not None:
             self.issuer_type = m.get('IssuerType')
+        if m.get('KeyIndex') is not None:
+            self.key_index = m.get('KeyIndex')
         if m.get('KeySize') is not None:
             self.key_size = m.get('KeySize')
         if m.get('Locality') is not None:
