@@ -1,3 +1,7 @@
+2025-11-27 Version: 3.4.5
+- Update API DescribeRenderingInstance: add response parameters Body.ResourceAttributes.
+
+
 2025-08-21 Version: 3.4.3
 - Update API DescribeRenderingSession: add response parameters Body.PatchId.
 - Update API InstallCloudApp: add request parameters PatchId.

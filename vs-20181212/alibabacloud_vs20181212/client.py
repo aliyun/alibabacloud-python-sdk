@@ -3544,9 +3544,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = vs_20181212_models.CreateRenderingInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         if not UtilClient.is_unset(tmp_req.client_info):
             request.client_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.client_info, 'ClientInfo', 'json')
         query = {}
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['Attributes'] = request.attributes_shrink
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_info_shrink):
@@ -3599,9 +3603,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = vs_20181212_models.CreateRenderingInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         if not UtilClient.is_unset(tmp_req.client_info):
             request.client_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.client_info, 'ClientInfo', 'json')
         query = {}
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['Attributes'] = request.attributes_shrink
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_info_shrink):
@@ -11953,6 +11961,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_app_installations_with_options_async(request, runtime)
 
+    def list_cloud_app_patches_with_options(
+        self,
+        request: vs_20181212_models.ListCloudAppPatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListCloudAppPatchesResponse:
+        """
+        @summary 查询一个云应用的Patch列表。
+        
+        @param request: ListCloudAppPatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudAppPatchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
+        if not UtilClient.is_unset(request.patch_name):
+            query['PatchName'] = request.patch_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudAppPatches',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListCloudAppPatchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_app_patches_with_options_async(
+        self,
+        request: vs_20181212_models.ListCloudAppPatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListCloudAppPatchesResponse:
+        """
+        @summary 查询一个云应用的Patch列表。
+        
+        @param request: ListCloudAppPatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudAppPatchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
+        if not UtilClient.is_unset(request.patch_name):
+            query['PatchName'] = request.patch_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudAppPatches',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListCloudAppPatchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_app_patches(
+        self,
+        request: vs_20181212_models.ListCloudAppPatchesRequest,
+    ) -> vs_20181212_models.ListCloudAppPatchesResponse:
+        """
+        @summary 查询一个云应用的Patch列表。
+        
+        @param request: ListCloudAppPatchesRequest
+        @return: ListCloudAppPatchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_app_patches_with_options(request, runtime)
+
+    async def list_cloud_app_patches_async(
+        self,
+        request: vs_20181212_models.ListCloudAppPatchesRequest,
+    ) -> vs_20181212_models.ListCloudAppPatchesResponse:
+        """
+        @summary 查询一个云应用的Patch列表。
+        
+        @param request: ListCloudAppPatchesRequest
+        @return: ListCloudAppPatchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_app_patches_with_options_async(request, runtime)
+
     def list_cloud_apps_with_options(
         self,
         request: vs_20181212_models.ListCloudAppsRequest,
@@ -14124,6 +14252,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_rendering_instance_with_options_async(request, runtime)
+
+    def modify_rendering_instance_attribute_with_options(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ModifyRenderingInstanceAttributeResponse:
+        """
+        @summary 修改云应用服务实例密码
+        
+        @param request: ModifyRenderingInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRenderingInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRenderingInstanceAttribute',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyRenderingInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rendering_instance_attribute_with_options_async(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ModifyRenderingInstanceAttributeResponse:
+        """
+        @summary 修改云应用服务实例密码
+        
+        @param request: ModifyRenderingInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRenderingInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRenderingInstanceAttribute',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyRenderingInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rendering_instance_attribute(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceAttributeRequest,
+    ) -> vs_20181212_models.ModifyRenderingInstanceAttributeResponse:
+        """
+        @summary 修改云应用服务实例密码
+        
+        @param request: ModifyRenderingInstanceAttributeRequest
+        @return: ModifyRenderingInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_rendering_instance_attribute_with_options(request, runtime)
+
+    async def modify_rendering_instance_attribute_async(
+        self,
+        request: vs_20181212_models.ModifyRenderingInstanceAttributeRequest,
+    ) -> vs_20181212_models.ModifyRenderingInstanceAttributeResponse:
+        """
+        @summary 修改云应用服务实例密码
+        
+        @param request: ModifyRenderingInstanceAttributeRequest
+        @return: ModifyRenderingInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_rendering_instance_attribute_with_options_async(request, runtime)
 
     def modify_rendering_instance_bandwidth_with_options(
         self,

@@ -5414,6 +5414,51 @@ class CreateRenderingDataPackageResponse(TeaModel):
         return self
 
 
+class CreateRenderingInstanceRequestAttributes(TeaModel):
+    def __init__(
+        self,
+        edge_media_service: str = None,
+        in_access: str = None,
+        out_access: str = None,
+        zone: str = None,
+    ):
+        self.edge_media_service = edge_media_service
+        self.in_access = in_access
+        self.out_access = out_access
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.edge_media_service is not None:
+            result['EdgeMediaService'] = self.edge_media_service
+        if self.in_access is not None:
+            result['InAccess'] = self.in_access
+        if self.out_access is not None:
+            result['OutAccess'] = self.out_access
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EdgeMediaService') is not None:
+            self.edge_media_service = m.get('EdgeMediaService')
+        if m.get('InAccess') is not None:
+            self.in_access = m.get('InAccess')
+        if m.get('OutAccess') is not None:
+            self.out_access = m.get('OutAccess')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
 class CreateRenderingInstanceRequestClientInfo(TeaModel):
     def __init__(
         self,
@@ -5444,6 +5489,7 @@ class CreateRenderingInstanceRequestClientInfo(TeaModel):
 class CreateRenderingInstanceRequest(TeaModel):
     def __init__(
         self,
+        attributes: CreateRenderingInstanceRequestAttributes = None,
         auto_renew: bool = None,
         client_info: CreateRenderingInstanceRequestClientInfo = None,
         instance_billing_cycle: str = None,
@@ -5454,6 +5500,7 @@ class CreateRenderingInstanceRequest(TeaModel):
         rendering_spec: str = None,
         storage_size: str = None,
     ):
+        self.attributes = attributes
         self.auto_renew = auto_renew
         self.client_info = client_info
         self.instance_billing_cycle = instance_billing_cycle
@@ -5466,6 +5513,8 @@ class CreateRenderingInstanceRequest(TeaModel):
         self.storage_size = storage_size
 
     def validate(self):
+        if self.attributes:
+            self.attributes.validate()
         if self.client_info:
             self.client_info.validate()
 
@@ -5475,6 +5524,8 @@ class CreateRenderingInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes.to_map()
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.client_info is not None:
@@ -5497,6 +5548,9 @@ class CreateRenderingInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Attributes') is not None:
+            temp_model = CreateRenderingInstanceRequestAttributes()
+            self.attributes = temp_model.from_map(m['Attributes'])
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientInfo') is not None:
@@ -5522,6 +5576,7 @@ class CreateRenderingInstanceRequest(TeaModel):
 class CreateRenderingInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
+        attributes_shrink: str = None,
         auto_renew: bool = None,
         client_info_shrink: str = None,
         instance_billing_cycle: str = None,
@@ -5532,6 +5587,7 @@ class CreateRenderingInstanceShrinkRequest(TeaModel):
         rendering_spec: str = None,
         storage_size: str = None,
     ):
+        self.attributes_shrink = attributes_shrink
         self.auto_renew = auto_renew
         self.client_info_shrink = client_info_shrink
         self.instance_billing_cycle = instance_billing_cycle
@@ -5552,6 +5608,8 @@ class CreateRenderingInstanceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes_shrink is not None:
+            result['Attributes'] = self.attributes_shrink
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.client_info_shrink is not None:
@@ -5574,6 +5632,8 @@ class CreateRenderingInstanceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes_shrink = m.get('Attributes')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientInfo') is not None:
@@ -12690,6 +12750,51 @@ class DescribeRenderingInstanceResponseBodyRenderingStatus(TeaModel):
         return self
 
 
+class DescribeRenderingInstanceResponseBodyResourceAttributes(TeaModel):
+    def __init__(
+        self,
+        edge_media_service: str = None,
+        in_access: str = None,
+        out_access: str = None,
+        zone: str = None,
+    ):
+        self.edge_media_service = edge_media_service
+        self.in_access = in_access
+        self.out_access = out_access
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.edge_media_service is not None:
+            result['EdgeMediaService'] = self.edge_media_service
+        if self.in_access is not None:
+            result['InAccess'] = self.in_access
+        if self.out_access is not None:
+            result['OutAccess'] = self.out_access
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EdgeMediaService') is not None:
+            self.edge_media_service = m.get('EdgeMediaService')
+        if m.get('InAccess') is not None:
+            self.in_access = m.get('InAccess')
+        if m.get('OutAccess') is not None:
+            self.out_access = m.get('OutAccess')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
 class DescribeRenderingInstanceResponseBodySystemInfo(TeaModel):
     def __init__(
         self,
@@ -12738,6 +12843,7 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         rendering_spec: str = None,
         rendering_status: DescribeRenderingInstanceResponseBodyRenderingStatus = None,
         request_id: str = None,
+        resource_attributes: DescribeRenderingInstanceResponseBodyResourceAttributes = None,
         storage_size: int = None,
         system_info: DescribeRenderingInstanceResponseBodySystemInfo = None,
     ):
@@ -12753,6 +12859,7 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
         self.rendering_spec = rendering_spec
         self.rendering_status = rendering_status
         self.request_id = request_id
+        self.resource_attributes = resource_attributes
         self.storage_size = storage_size
         self.system_info = system_info
 
@@ -12769,6 +12876,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
                     k.validate()
         if self.rendering_status:
             self.rendering_status.validate()
+        if self.resource_attributes:
+            self.resource_attributes.validate()
         if self.system_info:
             self.system_info.validate()
 
@@ -12806,6 +12915,8 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             result['RenderingStatus'] = self.rendering_status.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_attributes is not None:
+            result['ResourceAttributes'] = self.resource_attributes.to_map()
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         if self.system_info is not None:
@@ -12846,6 +12957,9 @@ class DescribeRenderingInstanceResponseBody(TeaModel):
             self.rendering_status = temp_model.from_map(m['RenderingStatus'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceAttributes') is not None:
+            temp_model = DescribeRenderingInstanceResponseBodyResourceAttributes()
+            self.resource_attributes = temp_model.from_map(m['ResourceAttributes'])
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         if m.get('SystemInfo') is not None:
@@ -21947,6 +22061,228 @@ class ListCloudAppInstallationsResponse(TeaModel):
         return self
 
 
+class ListCloudAppPatchesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        patch_id: str = None,
+        patch_name: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.end_time = end_time
+        self.page_number = page_number
+        self.page_size = page_size
+        self.patch_id = patch_id
+        self.patch_name = patch_name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
+        if self.patch_name is not None:
+            result['PatchName'] = self.patch_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
+        if m.get('PatchName') is not None:
+            self.patch_name = m.get('PatchName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListCloudAppPatchesResponseBodyPatches(TeaModel):
+    def __init__(
+        self,
+        patch_id: str = None,
+        patch_name: str = None,
+        status: str = None,
+        status_description: str = None,
+        update_time: str = None,
+        upload_time: str = None,
+    ):
+        self.patch_id = patch_id
+        self.patch_name = patch_name
+        self.status = status
+        self.status_description = status_description
+        self.update_time = update_time
+        self.upload_time = upload_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
+        if self.patch_name is not None:
+            result['PatchName'] = self.patch_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_description is not None:
+            result['StatusDescription'] = self.status_description
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.upload_time is not None:
+            result['UploadTime'] = self.upload_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
+        if m.get('PatchName') is not None:
+            self.patch_name = m.get('PatchName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusDescription') is not None:
+            self.status_description = m.get('StatusDescription')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UploadTime') is not None:
+            self.upload_time = m.get('UploadTime')
+        return self
+
+
+class ListCloudAppPatchesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        patches: List[ListCloudAppPatchesResponseBodyPatches] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.patches = patches
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.patches:
+            for k in self.patches:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Patches'] = []
+        if self.patches is not None:
+            for k in self.patches:
+                result['Patches'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.patches = []
+        if m.get('Patches') is not None:
+            for k in m.get('Patches'):
+                temp_model = ListCloudAppPatchesResponseBodyPatches()
+                self.patches.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCloudAppPatchesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudAppPatchesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudAppPatchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListCloudAppsRequest(TeaModel):
     def __init__(
         self,
@@ -25510,6 +25846,109 @@ class ModifyRenderingInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyRenderingInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyRenderingInstanceAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        rendering_instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.password = password
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class ModifyRenderingInstanceAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyRenderingInstanceAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyRenderingInstanceAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyRenderingInstanceAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
