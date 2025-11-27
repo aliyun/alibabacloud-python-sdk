@@ -12651,6 +12651,7 @@ class CreateApplicationRequest(TeaModel):
         service_tags: str = None,
         sidecar_containers_config: List[SidecarContainerConfig] = None,
         sls_configs: str = None,
+        sls_log_env_tags: str = None,
         startup_probe: str = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
@@ -13024,6 +13025,7 @@ class CreateApplicationRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        self.sls_log_env_tags = sls_log_env_tags
         # Enable application startup probe.
         # 
         # Check succeeded: Indicates that the application has started successfully. If you have configured Liveness and Readiness checks, they will be performed after the application startup is successful.
@@ -13230,6 +13232,8 @@ class CreateApplicationRequest(TeaModel):
                 result['SidecarContainersConfig'].append(k.to_map() if k else None)
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.sls_log_env_tags is not None:
+            result['SlsLogEnvTags'] = self.sls_log_env_tags
         if self.startup_probe is not None:
             result['StartupProbe'] = self.startup_probe
         if self.termination_grace_period_seconds is not None:
@@ -13408,6 +13412,8 @@ class CreateApplicationRequest(TeaModel):
                 self.sidecar_containers_config.append(temp_model.from_map(k))
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SlsLogEnvTags') is not None:
+            self.sls_log_env_tags = m.get('SlsLogEnvTags')
         if m.get('StartupProbe') is not None:
             self.startup_probe = m.get('StartupProbe')
         if m.get('TerminationGracePeriodSeconds') is not None:
@@ -13506,6 +13512,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         service_tags: str = None,
         sidecar_containers_config_shrink: str = None,
         sls_configs: str = None,
+        sls_log_env_tags: str = None,
         startup_probe: str = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
@@ -13879,6 +13886,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        self.sls_log_env_tags = sls_log_env_tags
         # Enable application startup probe.
         # 
         # Check succeeded: Indicates that the application has started successfully. If you have configured Liveness and Readiness checks, they will be performed after the application startup is successful.
@@ -14074,6 +14082,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['SidecarContainersConfig'] = self.sidecar_containers_config_shrink
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.sls_log_env_tags is not None:
+            result['SlsLogEnvTags'] = self.sls_log_env_tags
         if self.startup_probe is not None:
             result['StartupProbe'] = self.startup_probe
         if self.termination_grace_period_seconds is not None:
@@ -14246,6 +14256,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.sidecar_containers_config_shrink = m.get('SidecarContainersConfig')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SlsLogEnvTags') is not None:
+            self.sls_log_env_tags = m.get('SlsLogEnvTags')
         if m.get('StartupProbe') is not None:
             self.startup_probe = m.get('StartupProbe')
         if m.get('TerminationGracePeriodSeconds') is not None:
@@ -20455,6 +20467,7 @@ class DeployApplicationRequest(TeaModel):
         service_tags: str = None,
         sidecar_containers_config: List[SidecarContainerConfig] = None,
         sls_configs: str = None,
+        sls_log_env_tags: str = None,
         startup_probe: str = None,
         swimlane_pvtz_discovery_svc: str = None,
         termination_grace_period_seconds: int = None,
@@ -20848,6 +20861,7 @@ class DeployApplicationRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        self.sls_log_env_tags = sls_log_env_tags
         # Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
         # 
         # Note: 
@@ -21081,6 +21095,8 @@ class DeployApplicationRequest(TeaModel):
                 result['SidecarContainersConfig'].append(k.to_map() if k else None)
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.sls_log_env_tags is not None:
+            result['SlsLogEnvTags'] = self.sls_log_env_tags
         if self.startup_probe is not None:
             result['StartupProbe'] = self.startup_probe
         if self.swimlane_pvtz_discovery_svc is not None:
@@ -21255,6 +21271,8 @@ class DeployApplicationRequest(TeaModel):
                 self.sidecar_containers_config.append(temp_model.from_map(k))
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SlsLogEnvTags') is not None:
+            self.sls_log_env_tags = m.get('SlsLogEnvTags')
         if m.get('StartupProbe') is not None:
             self.startup_probe = m.get('StartupProbe')
         if m.get('SwimlanePvtzDiscoverySvc') is not None:
@@ -21352,6 +21370,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         service_tags: str = None,
         sidecar_containers_config_shrink: str = None,
         sls_configs: str = None,
+        sls_log_env_tags: str = None,
         startup_probe: str = None,
         swimlane_pvtz_discovery_svc: str = None,
         termination_grace_period_seconds: int = None,
@@ -21745,6 +21764,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        self.sls_log_env_tags = sls_log_env_tags
         # Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
         # 
         # Note: 
@@ -21967,6 +21987,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['SidecarContainersConfig'] = self.sidecar_containers_config_shrink
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.sls_log_env_tags is not None:
+            result['SlsLogEnvTags'] = self.sls_log_env_tags
         if self.startup_probe is not None:
             result['StartupProbe'] = self.startup_probe
         if self.swimlane_pvtz_discovery_svc is not None:
@@ -22135,6 +22157,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.sidecar_containers_config_shrink = m.get('SidecarContainersConfig')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SlsLogEnvTags') is not None:
+            self.sls_log_env_tags = m.get('SlsLogEnvTags')
         if m.get('StartupProbe') is not None:
             self.startup_probe = m.get('StartupProbe')
         if m.get('SwimlanePvtzDiscoverySvc') is not None:
@@ -23581,6 +23605,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         service_tags: Dict[str, str] = None,
         sidecar_containers_config: List[DescribeApplicationConfigResponseBodyDataSidecarContainersConfig] = None,
         sls_configs: str = None,
+        sls_log_env_tags: str = None,
         startup_probe: str = None,
         swimlane_pvtz_discovery: str = None,
         tags: List[DescribeApplicationConfigResponseBodyDataTags] = None,
@@ -23947,6 +23972,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # 
         # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
         self.sls_configs = sls_configs
+        self.sls_log_env_tags = sls_log_env_tags
         # Enable startup probe.
         self.startup_probe = startup_probe
         # Configuration of K8s Service discovery and registration, and full-chain gray-release feature.
@@ -24225,6 +24251,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
                 result['SidecarContainersConfig'].append(k.to_map() if k else None)
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.sls_log_env_tags is not None:
+            result['SlsLogEnvTags'] = self.sls_log_env_tags
         if self.startup_probe is not None:
             result['StartupProbe'] = self.startup_probe
         if self.swimlane_pvtz_discovery is not None:
@@ -24448,6 +24476,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
                 self.sidecar_containers_config.append(temp_model.from_map(k))
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SlsLogEnvTags') is not None:
+            self.sls_log_env_tags = m.get('SlsLogEnvTags')
         if m.get('StartupProbe') is not None:
             self.startup_probe = m.get('StartupProbe')
         if m.get('SwimlanePvtzDiscovery') is not None:

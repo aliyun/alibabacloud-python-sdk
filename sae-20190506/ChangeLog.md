@@ -1,3 +1,9 @@
+2025-11-27 Version: 2.9.3
+- Update API CreateApplication: add request parameters SlsLogEnvTags.
+- Update API DeployApplication: add request parameters SlsLogEnvTags.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.SlsLogEnvTags.
+
+
 2025-11-26 Version: 2.9.2
 - Update API RescaleApplicationVertically: add request parameters Deploy.
 - Update API UpdateApplicationVswitches: add request parameters Deploy.
