@@ -1,3 +1,9 @@
+2025-11-27 Version: 1.8.0
+- Support API GetPurchaseControlRecord.
+- Support API GetShutdownPolicyRecord.
+- Update API ListExportTasks: add request parameters Id.
+
+
 2025-11-05 Version: 1.7.0
 - Support API ExportReversedDeductionHistory.
 - Support API GetCommissionableProducts.

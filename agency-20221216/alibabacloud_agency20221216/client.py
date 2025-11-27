@@ -2447,6 +2447,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_monthly_bill_with_options_async(request, runtime)
 
+    def get_purchase_control_record_with_options(
+        self,
+        request: agency_20221216_models.GetPurchaseControlRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetPurchaseControlRecordResponse:
+        """
+        @summary 下单控制记录查询
+        
+        @param request: GetPurchaseControlRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPurchaseControlRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_uid):
+            query['CustomerUID'] = request.customer_uid
+        if not UtilClient.is_unset(request.operation_time):
+            query['OperationTime'] = request.operation_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPurchaseControlRecord',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetPurchaseControlRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_purchase_control_record_with_options_async(
+        self,
+        request: agency_20221216_models.GetPurchaseControlRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetPurchaseControlRecordResponse:
+        """
+        @summary 下单控制记录查询
+        
+        @param request: GetPurchaseControlRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPurchaseControlRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_uid):
+            query['CustomerUID'] = request.customer_uid
+        if not UtilClient.is_unset(request.operation_time):
+            query['OperationTime'] = request.operation_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPurchaseControlRecord',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetPurchaseControlRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_purchase_control_record(
+        self,
+        request: agency_20221216_models.GetPurchaseControlRecordRequest,
+    ) -> agency_20221216_models.GetPurchaseControlRecordResponse:
+        """
+        @summary 下单控制记录查询
+        
+        @param request: GetPurchaseControlRecordRequest
+        @return: GetPurchaseControlRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_purchase_control_record_with_options(request, runtime)
+
+    async def get_purchase_control_record_async(
+        self,
+        request: agency_20221216_models.GetPurchaseControlRecordRequest,
+    ) -> agency_20221216_models.GetPurchaseControlRecordResponse:
+        """
+        @summary 下单控制记录查询
+        
+        @param request: GetPurchaseControlRecordRequest
+        @return: GetPurchaseControlRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_purchase_control_record_with_options_async(request, runtime)
+
+    def get_shutdown_policy_record_with_options(
+        self,
+        request: agency_20221216_models.GetShutdownPolicyRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetShutdownPolicyRecordResponse:
+        """
+        @summary 查询延停策略修改记录
+        
+        @param request: GetShutdownPolicyRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShutdownPolicyRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_uid):
+            query['CustomerUID'] = request.customer_uid
+        if not UtilClient.is_unset(request.operation_time):
+            query['OperationTime'] = request.operation_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetShutdownPolicyRecord',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetShutdownPolicyRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_shutdown_policy_record_with_options_async(
+        self,
+        request: agency_20221216_models.GetShutdownPolicyRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetShutdownPolicyRecordResponse:
+        """
+        @summary 查询延停策略修改记录
+        
+        @param request: GetShutdownPolicyRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShutdownPolicyRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_uid):
+            query['CustomerUID'] = request.customer_uid
+        if not UtilClient.is_unset(request.operation_time):
+            query['OperationTime'] = request.operation_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetShutdownPolicyRecord',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetShutdownPolicyRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_shutdown_policy_record(
+        self,
+        request: agency_20221216_models.GetShutdownPolicyRecordRequest,
+    ) -> agency_20221216_models.GetShutdownPolicyRecordResponse:
+        """
+        @summary 查询延停策略修改记录
+        
+        @param request: GetShutdownPolicyRecordRequest
+        @return: GetShutdownPolicyRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_shutdown_policy_record_with_options(request, runtime)
+
+    async def get_shutdown_policy_record_async(
+        self,
+        request: agency_20221216_models.GetShutdownPolicyRecordRequest,
+    ) -> agency_20221216_models.GetShutdownPolicyRecordResponse:
+        """
+        @summary 查询延停策略修改记录
+        
+        @param request: GetShutdownPolicyRecordRequest
+        @return: GetShutdownPolicyRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_shutdown_policy_record_with_options_async(request, runtime)
+
     def get_unassociated_customer_with_options(
         self,
         request: agency_20221216_models.GetUnassociatedCustomerRequest,
@@ -2963,6 +3179,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.page_no):
@@ -3004,6 +3222,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.page_no):

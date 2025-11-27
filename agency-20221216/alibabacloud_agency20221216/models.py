@@ -4810,6 +4810,423 @@ class GetMonthlyBillResponse(TeaModel):
         return self
 
 
+class GetPurchaseControlRecordRequest(TeaModel):
+    def __init__(
+        self,
+        customer_uid: int = None,
+        operation_time: str = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.customer_uid = customer_uid
+        self.operation_time = operation_time
+        # This parameter is required.
+        self.page_no = page_no
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_uid is not None:
+            result['CustomerUID'] = self.customer_uid
+        if self.operation_time is not None:
+            result['OperationTime'] = self.operation_time
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerUID') is not None:
+            self.customer_uid = m.get('CustomerUID')
+        if m.get('OperationTime') is not None:
+            self.operation_time = m.get('OperationTime')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetPurchaseControlRecordResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        changed_type: str = None,
+        operation_path: str = None,
+        operation_time: str = None,
+        operator: str = None,
+    ):
+        self.changed_type = changed_type
+        self.operation_path = operation_path
+        self.operation_time = operation_time
+        self.operator = operator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.changed_type is not None:
+            result['ChangedType'] = self.changed_type
+        if self.operation_path is not None:
+            result['OperationPath'] = self.operation_path
+        if self.operation_time is not None:
+            result['OperationTime'] = self.operation_time
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangedType') is not None:
+            self.changed_type = m.get('ChangedType')
+        if m.get('OperationPath') is not None:
+            self.operation_path = m.get('OperationPath')
+        if m.get('OperationTime') is not None:
+            self.operation_time = m.get('OperationTime')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        return self
+
+
+class GetPurchaseControlRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetPurchaseControlRecordResponseBodyData] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.page_no = page_no
+        self.page_size = page_size
+        # RequestId
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetPurchaseControlRecordResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetPurchaseControlRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPurchaseControlRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPurchaseControlRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetShutdownPolicyRecordRequest(TeaModel):
+    def __init__(
+        self,
+        customer_uid: int = None,
+        operation_time: str = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.customer_uid = customer_uid
+        self.operation_time = operation_time
+        # This parameter is required.
+        self.page_no = page_no
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_uid is not None:
+            result['CustomerUID'] = self.customer_uid
+        if self.operation_time is not None:
+            result['OperationTime'] = self.operation_time
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerUID') is not None:
+            self.customer_uid = m.get('CustomerUID')
+        if m.get('OperationTime') is not None:
+            self.operation_time = m.get('OperationTime')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetShutdownPolicyRecordResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_policy: str = None,
+        operation_path: str = None,
+        operation_time: str = None,
+        operator: str = None,
+        previous_policy: str = None,
+    ):
+        self.current_policy = current_policy
+        self.operation_path = operation_path
+        self.operation_time = operation_time
+        self.operator = operator
+        self.previous_policy = previous_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_policy is not None:
+            result['CurrentPolicy'] = self.current_policy
+        if self.operation_path is not None:
+            result['OperationPath'] = self.operation_path
+        if self.operation_time is not None:
+            result['OperationTime'] = self.operation_time
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.previous_policy is not None:
+            result['PreviousPolicy'] = self.previous_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPolicy') is not None:
+            self.current_policy = m.get('CurrentPolicy')
+        if m.get('OperationPath') is not None:
+            self.operation_path = m.get('OperationPath')
+        if m.get('OperationTime') is not None:
+            self.operation_time = m.get('OperationTime')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('PreviousPolicy') is not None:
+            self.previous_policy = m.get('PreviousPolicy')
+        return self
+
+
+class GetShutdownPolicyRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetShutdownPolicyRecordResponseBodyData] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetShutdownPolicyRecordResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetShutdownPolicyRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetShutdownPolicyRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetShutdownPolicyRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUnassociatedCustomerRequest(TeaModel):
     def __init__(
         self,
@@ -6030,11 +6447,13 @@ class ListCouponUsageResponse(TeaModel):
 class ListExportTasksRequest(TeaModel):
     def __init__(
         self,
+        id: int = None,
         language: str = None,
         page_no: int = None,
         page_size: int = None,
         scene_code: str = None,
     ):
+        self.id = id
         self.language = language
         # This parameter is required.
         self.page_no = page_no
@@ -6052,6 +6471,8 @@ class ListExportTasksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
         if self.language is not None:
             result['Language'] = self.language
         if self.page_no is not None:
@@ -6064,6 +6485,8 @@ class ListExportTasksRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('PageNo') is not None:
