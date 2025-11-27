@@ -1,3 +1,55 @@
+2025-11-27 Version: 13.0.0
+- Support API CheckRdsCustomInit.
+- Support API DeleteRCVCluster.
+- Support API DescribeRCAvailableResource.
+- Support API DescribeRCElasticScaling.
+- Support API DescribeRCResourcesModification.
+- Support API ListRCVClusters.
+- Support API ModifyRCElasticScaling.
+- Support API ModifyRCInstanceVpcAttribute.
+- Support API ModifyRCVCluster.
+- Support API PrecheckDuckDBDependency.
+- Support API RdsCustomInit.
+- Delete API CreateDiagnosticReport.
+- Delete API DescribeDiagnosticReportList.
+- Update API CloneDBInstance: add request parameters CustomExtraInfo.
+- Update API CreateDBInstance: add request parameters CustomExtraInfo.
+- Update API CreateReadOnlyDBInstance: add request parameters CustomExtraInfo.
+- Update API CreateReadOnlyDBInstance: add request parameters IsAnalyticReadOnlyIns.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.IsAnalyticIns.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.IsAnalyticReadOnlyIns.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.VectorSupportStatus.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.DBClusterNodes.$.DisasterRecoveryNode.
+- Update API DescribeDBInstanceReplication: add response parameters Body.ReplicationIp.
+- Update API DescribeDBInstanceReplication: add response parameters Body.ReplicationPort.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.IsAnalyticIns.
+- Update API DescribeDBInstances: add response parameters Body.Items.$.IsAnalyticReadOnlyIns.
+- Update API DescribeDBProxy: add response parameters Body.DBProxyInstanceMinorVersions.
+- Update API DescribeDBProxyPerformance: add response parameters Body.PerformanceKeys.$.Server.
+- Update API DescribeDatabases: add response parameters Body.Databases.$.DuckDBEnabled.
+- Update API DescribeErrorLogs: add response parameters Body.Items.$.Database.
+- Update API DescribeErrorLogs: add response parameters Body.Items.$.User.
+- Update API DescribeErrorLogs: add response parameters Body.Items.$.UserIp.
+- Update API DescribeRCInstanceAttribute: add request parameters InstanceName.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.DataDisks.$.Device.
+- Update API DescribeRCInstanceAttribute: add response parameters Body.DataDisks.$.SnapshotId.
+- Update API DescribeRCInstanceTypes: add response parameters Body.InstanceTypes.InstanceType.$.DiskQuantity.
+- Update API DescribeRCInstances: add request parameters Description.
+- Update API DescribeRCInstances: add request parameters ImageId.
+- Update API DescribeRCInstances: add request parameters InstanceName.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.InstanceName.
+- Update API MigrateToOtherZone: add request parameters CustomExtraInfo.
+- Update API ModifyDBInstanceConnectionString: add request parameters RetainVip.
+- Update API ModifyDBInstanceConnectionString: add request parameters TargetDBInstanceId.
+- Update API ModifyRCInstanceAttribute: add request parameters InstanceName.
+- Update API RunRCInstances: add request parameters AcuType.
+- Update API RunRCInstances: add request parameters PasswordInherit.
+- Update API RunRCInstances: add request parameters ScheduledRule.
+- Update API UpgradeDBInstanceMajorVersion: add request parameters AllowDDL.
+- Update API UpgradeDBInstanceMajorVersion: add request parameters CustomExtraInfo.
+- Update API UpgradeDBProxyInstanceKernelVersion: add request parameters TargetMinorVersion.
+
+
 2025-07-04 Version: 12.0.0
 - Support API CreateDiagnosticReport.
 - Support API DescribeComputeBurstConfig.
