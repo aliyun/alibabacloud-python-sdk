@@ -3778,6 +3778,7 @@ class DocOcrResponse(TeaModel):
 class DocOcrMaxRequest(TeaModel):
     def __init__(
         self,
+        authorize: str = None,
         doc_page: str = None,
         doc_type: str = None,
         id_ocr_picture_base_64: str = None,
@@ -3793,6 +3794,7 @@ class DocOcrMaxRequest(TeaModel):
         scene_code: str = None,
         spoof: str = None,
     ):
+        self.authorize = authorize
         # Page expected to be recognized
         # 
         # - 01 (default): ID portrait.
@@ -3852,6 +3854,8 @@ class DocOcrMaxRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authorize is not None:
+            result['Authorize'] = self.authorize
         if self.doc_page is not None:
             result['DocPage'] = self.doc_page
         if self.doc_type is not None:
@@ -3884,6 +3888,8 @@ class DocOcrMaxRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Authorize') is not None:
+            self.authorize = m.get('Authorize')
         if m.get('DocPage') is not None:
             self.doc_page = m.get('DocPage')
         if m.get('DocType') is not None:

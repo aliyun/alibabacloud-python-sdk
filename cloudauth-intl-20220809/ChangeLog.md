@@ -1,3 +1,7 @@
+2025-11-28 Version: 3.15.2
+- Update API DocOcrMax: add request parameters Authorize.
+
+
 2025-10-17 Version: 3.15.1
 - Update API DocOcrMax: add request parameters OcrValueStandard.
 

@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_cloudauth-intl20220809.
+setup module for alibabacloud_cloudauth_intl20220809.
 
-Created on 17/10/2025
+Created on 28/11/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_cloudauth_intl20220809"
-NAME = "alibabacloud_cloudauth-intl20220809" or "alibabacloud-package"
+NAME = "alibabacloud_cloudauth_intl20220809" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud Cloudauth-intl (20220809) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
