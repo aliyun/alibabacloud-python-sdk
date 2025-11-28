@@ -663,6 +663,361 @@ class CreateBackgroundPicResponse(TeaModel):
         return self
 
 
+class CreateBroadcastStickerRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        oss_key: str = None,
+    ):
+        self.file_name = file_name
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class CreateBroadcastStickerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class CreateBroadcastStickerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateBroadcastStickerResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateBroadcastStickerResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateBroadcastStickerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBroadcastStickerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBroadcastStickerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBroadcastVideoFromTemplateRequestVideoOptions(TeaModel):
+    def __init__(
+        self,
+        fps: int = None,
+        resolution: str = None,
+        watermark: bool = None,
+    ):
+        self.fps = fps
+        self.resolution = resolution
+        self.watermark = watermark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fps is not None:
+            result['fps'] = self.fps
+        if self.resolution is not None:
+            result['resolution'] = self.resolution
+        if self.watermark is not None:
+            result['watermark'] = self.watermark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fps') is not None:
+            self.fps = m.get('fps')
+        if m.get('resolution') is not None:
+            self.resolution = m.get('resolution')
+        if m.get('watermark') is not None:
+            self.watermark = m.get('watermark')
+        return self
+
+
+class CreateBroadcastVideoFromTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        template_id: str = None,
+        variables: List[TemplateVariable] = None,
+        video_options: CreateBroadcastVideoFromTemplateRequestVideoOptions = None,
+    ):
+        self.name = name
+        self.template_id = template_id
+        self.variables = variables
+        self.video_options = video_options
+
+    def validate(self):
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+        if self.video_options:
+            self.video_options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        result['variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['variables'].append(k.to_map() if k else None)
+        if self.video_options is not None:
+            result['videoOptions'] = self.video_options.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        self.variables = []
+        if m.get('variables') is not None:
+            for k in m.get('variables'):
+                temp_model = TemplateVariable()
+                self.variables.append(temp_model.from_map(k))
+        if m.get('videoOptions') is not None:
+            temp_model = CreateBroadcastVideoFromTemplateRequestVideoOptions()
+            self.video_options = temp_model.from_map(m['videoOptions'])
+        return self
+
+
+class CreateBroadcastVideoFromTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: BroadcastVideo = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = BroadcastVideo()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateBroadcastVideoFromTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBroadcastVideoFromTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBroadcastVideoFromTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateChatConfigRequest(TeaModel):
     def __init__(
         self,
@@ -1800,6 +2155,134 @@ class CreateTrainPicAvatarResponse(TeaModel):
         return self
 
 
+class GetBroadcastTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class GetBroadcastTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: BroadcastTemplate = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = BroadcastTemplate()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetBroadcastTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBroadcastTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBroadcastTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTrainPicAvatarStatusRequest(TeaModel):
     def __init__(
         self,
@@ -2189,6 +2672,341 @@ class GetUploadPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUploadPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBroadcastTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page: int = None,
+        size: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page = page
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page is not None:
+            result['page'] = self.page
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListBroadcastTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[BroadcastTemplate] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        page: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.page = page
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.message is not None:
+            result['message'] = self.message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page is not None:
+            result['page'] = self.page
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = BroadcastTemplate()
+                self.data.append(temp_model.from_map(k))
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListBroadcastTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBroadcastTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBroadcastTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBroadcastVideosByIdRequest(TeaModel):
+    def __init__(
+        self,
+        video_ids: List[str] = None,
+    ):
+        self.video_ids = video_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_ids is not None:
+            result['videoIds'] = self.video_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('videoIds') is not None:
+            self.video_ids = m.get('videoIds')
+        return self
+
+
+class ListBroadcastVideosByIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        video_ids_shrink: str = None,
+    ):
+        self.video_ids_shrink = video_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_ids_shrink is not None:
+            result['videoIds'] = self.video_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('videoIds') is not None:
+            self.video_ids_shrink = m.get('videoIds')
+        return self
+
+
+class ListBroadcastVideosByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[BroadcastVideo] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = BroadcastVideo()
+                self.data.append(temp_model.from_map(k))
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListBroadcastVideosByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBroadcastVideosByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBroadcastVideosByIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

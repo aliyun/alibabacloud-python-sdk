@@ -373,6 +373,230 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_background_pic_with_options_async(request, headers, runtime)
 
+    def create_broadcast_sticker_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastStickerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateBroadcastStickerResponse:
+        """
+        @summary 创建播报贴图
+        
+        @param request: CreateBroadcastStickerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBroadcastStickerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.oss_key):
+            body['ossKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBroadcastSticker',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/customer/broadcast/material/sticker/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateBroadcastStickerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_broadcast_sticker_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastStickerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateBroadcastStickerResponse:
+        """
+        @summary 创建播报贴图
+        
+        @param request: CreateBroadcastStickerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBroadcastStickerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.oss_key):
+            body['ossKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBroadcastSticker',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/customer/broadcast/material/sticker/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateBroadcastStickerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_broadcast_sticker(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastStickerRequest,
+    ) -> ling_mou_20250527_models.CreateBroadcastStickerResponse:
+        """
+        @summary 创建播报贴图
+        
+        @param request: CreateBroadcastStickerRequest
+        @return: CreateBroadcastStickerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_broadcast_sticker_with_options(request, headers, runtime)
+
+    async def create_broadcast_sticker_async(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastStickerRequest,
+    ) -> ling_mou_20250527_models.CreateBroadcastStickerResponse:
+        """
+        @summary 创建播报贴图
+        
+        @param request: CreateBroadcastStickerRequest
+        @return: CreateBroadcastStickerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_broadcast_sticker_with_options_async(request, headers, runtime)
+
+    def create_broadcast_video_from_template_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastVideoFromTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateBroadcastVideoFromTemplateResponse:
+        """
+        @summary 基于模板创建播报视频
+        
+        @param request: CreateBroadcastVideoFromTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBroadcastVideoFromTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            body['templateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
+        if not UtilClient.is_unset(request.video_options):
+            body['videoOptions'] = request.video_options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBroadcastVideoFromTemplate',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/api/v1/amp/customer/broadcast/video/createFromTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateBroadcastVideoFromTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_broadcast_video_from_template_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastVideoFromTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateBroadcastVideoFromTemplateResponse:
+        """
+        @summary 基于模板创建播报视频
+        
+        @param request: CreateBroadcastVideoFromTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBroadcastVideoFromTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            body['templateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables):
+            body['variables'] = request.variables
+        if not UtilClient.is_unset(request.video_options):
+            body['videoOptions'] = request.video_options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBroadcastVideoFromTemplate',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/api/v1/amp/customer/broadcast/video/createFromTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateBroadcastVideoFromTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_broadcast_video_from_template(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastVideoFromTemplateRequest,
+    ) -> ling_mou_20250527_models.CreateBroadcastVideoFromTemplateResponse:
+        """
+        @summary 基于模板创建播报视频
+        
+        @param request: CreateBroadcastVideoFromTemplateRequest
+        @return: CreateBroadcastVideoFromTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_broadcast_video_from_template_with_options(request, headers, runtime)
+
+    async def create_broadcast_video_from_template_async(
+        self,
+        request: ling_mou_20250527_models.CreateBroadcastVideoFromTemplateRequest,
+    ) -> ling_mou_20250527_models.CreateBroadcastVideoFromTemplateResponse:
+        """
+        @summary 基于模板创建播报视频
+        
+        @param request: CreateBroadcastVideoFromTemplateRequest
+        @return: CreateBroadcastVideoFromTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_broadcast_video_from_template_with_options_async(request, headers, runtime)
+
     def create_chat_config_with_options(
         self,
         request: ling_mou_20250527_models.CreateChatConfigRequest,
@@ -965,6 +1189,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_train_pic_avatar_with_options_async(request, headers, runtime)
 
+    def get_broadcast_template_with_options(
+        self,
+        request: ling_mou_20250527_models.GetBroadcastTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.GetBroadcastTemplateResponse:
+        """
+        @summary 查询播报模板详情
+        
+        @param request: GetBroadcastTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBroadcastTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBroadcastTemplate',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/customer/broadcast/template/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.GetBroadcastTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_broadcast_template_with_options_async(
+        self,
+        request: ling_mou_20250527_models.GetBroadcastTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.GetBroadcastTemplateResponse:
+        """
+        @summary 查询播报模板详情
+        
+        @param request: GetBroadcastTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBroadcastTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBroadcastTemplate',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/customer/broadcast/template/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.GetBroadcastTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_broadcast_template(
+        self,
+        request: ling_mou_20250527_models.GetBroadcastTemplateRequest,
+    ) -> ling_mou_20250527_models.GetBroadcastTemplateResponse:
+        """
+        @summary 查询播报模板详情
+        
+        @param request: GetBroadcastTemplateRequest
+        @return: GetBroadcastTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_broadcast_template_with_options(request, headers, runtime)
+
+    async def get_broadcast_template_async(
+        self,
+        request: ling_mou_20250527_models.GetBroadcastTemplateRequest,
+    ) -> ling_mou_20250527_models.GetBroadcastTemplateResponse:
+        """
+        @summary 查询播报模板详情
+        
+        @param request: GetBroadcastTemplateRequest
+        @return: GetBroadcastTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_broadcast_template_with_options_async(request, headers, runtime)
+
     def get_train_pic_avatar_status_with_options(
         self,
         request: ling_mou_20250527_models.GetTrainPicAvatarStatusRequest,
@@ -1176,6 +1504,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_upload_policy_with_options_async(request, headers, runtime)
+
+    def list_broadcast_templates_with_options(
+        self,
+        request: ling_mou_20250527_models.ListBroadcastTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListBroadcastTemplatesResponse:
+        """
+        @summary 列举播报模板
+        
+        @param request: ListBroadcastTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBroadcastTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBroadcastTemplates',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/customer/broadcast/template/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListBroadcastTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_broadcast_templates_with_options_async(
+        self,
+        request: ling_mou_20250527_models.ListBroadcastTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListBroadcastTemplatesResponse:
+        """
+        @summary 列举播报模板
+        
+        @param request: ListBroadcastTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBroadcastTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBroadcastTemplates',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/customer/broadcast/template/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListBroadcastTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_broadcast_templates(
+        self,
+        request: ling_mou_20250527_models.ListBroadcastTemplatesRequest,
+    ) -> ling_mou_20250527_models.ListBroadcastTemplatesResponse:
+        """
+        @summary 列举播报模板
+        
+        @param request: ListBroadcastTemplatesRequest
+        @return: ListBroadcastTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_broadcast_templates_with_options(request, headers, runtime)
+
+    async def list_broadcast_templates_async(
+        self,
+        request: ling_mou_20250527_models.ListBroadcastTemplatesRequest,
+    ) -> ling_mou_20250527_models.ListBroadcastTemplatesResponse:
+        """
+        @summary 列举播报模板
+        
+        @param request: ListBroadcastTemplatesRequest
+        @return: ListBroadcastTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_broadcast_templates_with_options_async(request, headers, runtime)
+
+    def list_broadcast_videos_by_id_with_options(
+        self,
+        tmp_req: ling_mou_20250527_models.ListBroadcastVideosByIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListBroadcastVideosByIdResponse:
+        """
+        @summary 根据视频id批量查询播报视频（最多查询100个）
+        
+        @param tmp_req: ListBroadcastVideosByIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBroadcastVideosByIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ling_mou_20250527_models.ListBroadcastVideosByIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.video_ids):
+            request.video_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_ids, 'videoIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.video_ids_shrink):
+            query['videoIds'] = request.video_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBroadcastVideosById',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/api/v1/amp/customer/broadcast/video/batchQuery',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListBroadcastVideosByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_broadcast_videos_by_id_with_options_async(
+        self,
+        tmp_req: ling_mou_20250527_models.ListBroadcastVideosByIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListBroadcastVideosByIdResponse:
+        """
+        @summary 根据视频id批量查询播报视频（最多查询100个）
+        
+        @param tmp_req: ListBroadcastVideosByIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBroadcastVideosByIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ling_mou_20250527_models.ListBroadcastVideosByIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.video_ids):
+            request.video_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_ids, 'videoIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.video_ids_shrink):
+            query['videoIds'] = request.video_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBroadcastVideosById',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/api/v1/amp/customer/broadcast/video/batchQuery',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListBroadcastVideosByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_broadcast_videos_by_id(
+        self,
+        request: ling_mou_20250527_models.ListBroadcastVideosByIdRequest,
+    ) -> ling_mou_20250527_models.ListBroadcastVideosByIdResponse:
+        """
+        @summary 根据视频id批量查询播报视频（最多查询100个）
+        
+        @param request: ListBroadcastVideosByIdRequest
+        @return: ListBroadcastVideosByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_broadcast_videos_by_id_with_options(request, headers, runtime)
+
+    async def list_broadcast_videos_by_id_async(
+        self,
+        request: ling_mou_20250527_models.ListBroadcastVideosByIdRequest,
+    ) -> ling_mou_20250527_models.ListBroadcastVideosByIdResponse:
+        """
+        @summary 根据视频id批量查询播报视频（最多查询100个）
+        
+        @param request: ListBroadcastVideosByIdRequest
+        @return: ListBroadcastVideosByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_broadcast_videos_by_id_with_options_async(request, headers, runtime)
 
     def list_private_ttsvoices_custom_with_options(
         self,
