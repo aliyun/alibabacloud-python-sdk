@@ -1,3 +1,15 @@
+2025-11-28 Version: 2.1.0
+- Support API CreateScanRule.
+- Support API CreateStorageDomainRoutingRule.
+- Support API DeleteScanRule.
+- Support API DeleteStorageDomainRoutingRule.
+- Support API GetScanRule.
+- Support API GetStorageDomainRoutingRule.
+- Support API ListScanRule.
+- Support API UpdateScanRule.
+- Support API UpdateStorageDomainRoutingRule.
+
+
 2025-11-03 Version: 2.0.6
 - Update API GetArtifactSubscriptionRule: add response parameters Body.SourceDomain.
 - Update API ListArtifactSubscriptionRule: add response parameters Body.Rules.$.SourceDomain.

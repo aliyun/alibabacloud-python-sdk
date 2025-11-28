@@ -2937,6 +2937,250 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_repository_with_options_async(request, runtime)
 
+    def create_scan_rule_with_options(
+        self,
+        tmp_req: cr_20181201_models.CreateScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateScanRuleResponse:
+        """
+        @summary 创建扫描规则
+        
+        @param tmp_req: CreateScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScanRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateScanRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not UtilClient.is_unset(tmp_req.repo_names):
+            request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.repo_names_shrink):
+            query['RepoNames'] = request.repo_names_shrink
+        if not UtilClient.is_unset(request.repo_tag_filter_pattern):
+            query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.scan_scope):
+            query['ScanScope'] = request.scan_scope
+        if not UtilClient.is_unset(request.scan_type):
+            query['ScanType'] = request.scan_type
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateScanRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scan_rule_with_options_async(
+        self,
+        tmp_req: cr_20181201_models.CreateScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateScanRuleResponse:
+        """
+        @summary 创建扫描规则
+        
+        @param tmp_req: CreateScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScanRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateScanRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not UtilClient.is_unset(tmp_req.repo_names):
+            request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.repo_names_shrink):
+            query['RepoNames'] = request.repo_names_shrink
+        if not UtilClient.is_unset(request.repo_tag_filter_pattern):
+            query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.scan_scope):
+            query['ScanScope'] = request.scan_scope
+        if not UtilClient.is_unset(request.scan_type):
+            query['ScanType'] = request.scan_type
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateScanRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scan_rule(
+        self,
+        request: cr_20181201_models.CreateScanRuleRequest,
+    ) -> cr_20181201_models.CreateScanRuleResponse:
+        """
+        @summary 创建扫描规则
+        
+        @param request: CreateScanRuleRequest
+        @return: CreateScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_scan_rule_with_options(request, runtime)
+
+    async def create_scan_rule_async(
+        self,
+        request: cr_20181201_models.CreateScanRuleRequest,
+    ) -> cr_20181201_models.CreateScanRuleResponse:
+        """
+        @summary 创建扫描规则
+        
+        @param request: CreateScanRuleRequest
+        @return: CreateScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_scan_rule_with_options_async(request, runtime)
+
+    def create_storage_domain_routing_rule_with_options(
+        self,
+        tmp_req: cr_20181201_models.CreateStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateStorageDomainRoutingRuleResponse:
+        """
+        @summary 创建实例域名路由规则
+        
+        @param tmp_req: CreateStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateStorageDomainRoutingRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routes):
+            request.routes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routes, 'Routes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.routes_shrink):
+            query['Routes'] = request.routes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateStorageDomainRoutingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_storage_domain_routing_rule_with_options_async(
+        self,
+        tmp_req: cr_20181201_models.CreateStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateStorageDomainRoutingRuleResponse:
+        """
+        @summary 创建实例域名路由规则
+        
+        @param tmp_req: CreateStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateStorageDomainRoutingRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routes):
+            request.routes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routes, 'Routes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.routes_shrink):
+            query['Routes'] = request.routes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateStorageDomainRoutingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_storage_domain_routing_rule(
+        self,
+        request: cr_20181201_models.CreateStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.CreateStorageDomainRoutingRuleResponse:
+        """
+        @summary 创建实例域名路由规则
+        
+        @param request: CreateStorageDomainRoutingRuleRequest
+        @return: CreateStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_storage_domain_routing_rule_with_options(request, runtime)
+
+    async def create_storage_domain_routing_rule_async(
+        self,
+        request: cr_20181201_models.CreateStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.CreateStorageDomainRoutingRuleResponse:
+        """
+        @summary 创建实例域名路由规则
+        
+        @param request: CreateStorageDomainRoutingRuleRequest
+        @return: CreateStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_storage_domain_routing_rule_with_options_async(request, runtime)
+
     def delete_artifact_lifecycle_rule_with_options(
         self,
         request: cr_20181201_models.DeleteArtifactLifecycleRuleRequest,
@@ -4512,6 +4756,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_repository_with_options_async(request, runtime)
+
+    def delete_scan_rule_with_options(
+        self,
+        request: cr_20181201_models.DeleteScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteScanRuleResponse:
+        """
+        @summary 删除扫描规则
+        
+        @param request: DeleteScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScanRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scan_rule_id):
+            query['ScanRuleId'] = request.scan_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteScanRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scan_rule_with_options_async(
+        self,
+        request: cr_20181201_models.DeleteScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteScanRuleResponse:
+        """
+        @summary 删除扫描规则
+        
+        @param request: DeleteScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScanRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scan_rule_id):
+            query['ScanRuleId'] = request.scan_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteScanRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scan_rule(
+        self,
+        request: cr_20181201_models.DeleteScanRuleRequest,
+    ) -> cr_20181201_models.DeleteScanRuleResponse:
+        """
+        @summary 删除扫描规则
+        
+        @param request: DeleteScanRuleRequest
+        @return: DeleteScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_scan_rule_with_options(request, runtime)
+
+    async def delete_scan_rule_async(
+        self,
+        request: cr_20181201_models.DeleteScanRuleRequest,
+    ) -> cr_20181201_models.DeleteScanRuleResponse:
+        """
+        @summary 删除扫描规则
+        
+        @param request: DeleteScanRuleRequest
+        @return: DeleteScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_scan_rule_with_options_async(request, runtime)
+
+    def delete_storage_domain_routing_rule_with_options(
+        self,
+        request: cr_20181201_models.DeleteStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteStorageDomainRoutingRuleResponse:
+        """
+        @summary 删除实例存储域名映射规则
+        
+        @param request: DeleteStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteStorageDomainRoutingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_storage_domain_routing_rule_with_options_async(
+        self,
+        request: cr_20181201_models.DeleteStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteStorageDomainRoutingRuleResponse:
+        """
+        @summary 删除实例存储域名映射规则
+        
+        @param request: DeleteStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteStorageDomainRoutingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_storage_domain_routing_rule(
+        self,
+        request: cr_20181201_models.DeleteStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.DeleteStorageDomainRoutingRuleResponse:
+        """
+        @summary 删除实例存储域名映射规则
+        
+        @param request: DeleteStorageDomainRoutingRuleRequest
+        @return: DeleteStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_storage_domain_routing_rule_with_options(request, runtime)
+
+    async def delete_storage_domain_routing_rule_async(
+        self,
+        request: cr_20181201_models.DeleteStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.DeleteStorageDomainRoutingRuleResponse:
+        """
+        @summary 删除实例存储域名映射规则
+        
+        @param request: DeleteStorageDomainRoutingRuleRequest
+        @return: DeleteStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_storage_domain_routing_rule_with_options_async(request, runtime)
 
     def get_artifact_build_rule_with_options(
         self,
@@ -6870,6 +7314,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_repository_with_options_async(request, runtime)
+
+    def get_scan_rule_with_options(
+        self,
+        request: cr_20181201_models.GetScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: GetScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScanRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scan_rule_id):
+            query['ScanRuleId'] = request.scan_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetScanRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scan_rule_with_options_async(
+        self,
+        request: cr_20181201_models.GetScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: GetScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScanRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scan_rule_id):
+            query['ScanRuleId'] = request.scan_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetScanRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scan_rule(
+        self,
+        request: cr_20181201_models.GetScanRuleRequest,
+    ) -> cr_20181201_models.GetScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: GetScanRuleRequest
+        @return: GetScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_scan_rule_with_options(request, runtime)
+
+    async def get_scan_rule_async(
+        self,
+        request: cr_20181201_models.GetScanRuleRequest,
+    ) -> cr_20181201_models.GetScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: GetScanRuleRequest
+        @return: GetScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_scan_rule_with_options_async(request, runtime)
+
+    def get_storage_domain_routing_rule_with_options(
+        self,
+        request: cr_20181201_models.GetStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetStorageDomainRoutingRuleResponse:
+        """
+        @summary 查询实例存储域名路由规则
+        
+        @param request: GetStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetStorageDomainRoutingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_storage_domain_routing_rule_with_options_async(
+        self,
+        request: cr_20181201_models.GetStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetStorageDomainRoutingRuleResponse:
+        """
+        @summary 查询实例存储域名路由规则
+        
+        @param request: GetStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetStorageDomainRoutingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_storage_domain_routing_rule(
+        self,
+        request: cr_20181201_models.GetStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.GetStorageDomainRoutingRuleResponse:
+        """
+        @summary 查询实例存储域名路由规则
+        
+        @param request: GetStorageDomainRoutingRuleRequest
+        @return: GetStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_storage_domain_routing_rule_with_options(request, runtime)
+
+    async def get_storage_domain_routing_rule_async(
+        self,
+        request: cr_20181201_models.GetStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.GetStorageDomainRoutingRuleResponse:
+        """
+        @summary 查询实例存储域名路由规则
+        
+        @param request: GetStorageDomainRoutingRuleRequest
+        @return: GetStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_storage_domain_routing_rule_with_options_async(request, runtime)
 
     def list_artifact_build_task_log_with_options(
         self,
@@ -9639,6 +10283,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_scan_malicious_file_by_task_with_options_async(request, runtime)
 
+    def list_scan_rule_with_options(
+        self,
+        request: cr_20181201_models.ListScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: ListScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScanRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListScanRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_scan_rule_with_options_async(
+        self,
+        request: cr_20181201_models.ListScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: ListScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScanRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListScanRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_scan_rule(
+        self,
+        request: cr_20181201_models.ListScanRuleRequest,
+    ) -> cr_20181201_models.ListScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: ListScanRuleRequest
+        @return: ListScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_scan_rule_with_options(request, runtime)
+
+    async def list_scan_rule_async(
+        self,
+        request: cr_20181201_models.ListScanRuleRequest,
+    ) -> cr_20181201_models.ListScanRuleResponse:
+        """
+        @summary 查询扫描规则
+        
+        @param request: ListScanRuleRequest
+        @return: ListScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_scan_rule_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: cr_20181201_models.ListTagResourcesRequest,
@@ -11554,3 +12290,251 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_repository_with_options_async(request, runtime)
+
+    def update_scan_rule_with_options(
+        self,
+        tmp_req: cr_20181201_models.UpdateScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateScanRuleResponse:
+        """
+        @summary 更新扫描规则
+        
+        @param tmp_req: UpdateScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScanRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateScanRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not UtilClient.is_unset(tmp_req.repo_names):
+            request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.repo_names_shrink):
+            query['RepoNames'] = request.repo_names_shrink
+        if not UtilClient.is_unset(request.repo_tag_filter_pattern):
+            query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.scan_rule_id):
+            query['ScanRuleId'] = request.scan_rule_id
+        if not UtilClient.is_unset(request.scan_scope):
+            query['ScanScope'] = request.scan_scope
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateScanRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_scan_rule_with_options_async(
+        self,
+        tmp_req: cr_20181201_models.UpdateScanRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateScanRuleResponse:
+        """
+        @summary 更新扫描规则
+        
+        @param tmp_req: UpdateScanRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScanRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateScanRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not UtilClient.is_unset(tmp_req.repo_names):
+            request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.repo_names_shrink):
+            query['RepoNames'] = request.repo_names_shrink
+        if not UtilClient.is_unset(request.repo_tag_filter_pattern):
+            query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.scan_rule_id):
+            query['ScanRuleId'] = request.scan_rule_id
+        if not UtilClient.is_unset(request.scan_scope):
+            query['ScanScope'] = request.scan_scope
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateScanRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateScanRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_scan_rule(
+        self,
+        request: cr_20181201_models.UpdateScanRuleRequest,
+    ) -> cr_20181201_models.UpdateScanRuleResponse:
+        """
+        @summary 更新扫描规则
+        
+        @param request: UpdateScanRuleRequest
+        @return: UpdateScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_scan_rule_with_options(request, runtime)
+
+    async def update_scan_rule_async(
+        self,
+        request: cr_20181201_models.UpdateScanRuleRequest,
+    ) -> cr_20181201_models.UpdateScanRuleResponse:
+        """
+        @summary 更新扫描规则
+        
+        @param request: UpdateScanRuleRequest
+        @return: UpdateScanRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_scan_rule_with_options_async(request, runtime)
+
+    def update_storage_domain_routing_rule_with_options(
+        self,
+        tmp_req: cr_20181201_models.UpdateStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateStorageDomainRoutingRuleResponse:
+        """
+        @summary 更新实例域名路由规则
+        
+        @param tmp_req: UpdateStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateStorageDomainRoutingRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routes):
+            request.routes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routes, 'Routes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.routes_shrink):
+            query['Routes'] = request.routes_shrink
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateStorageDomainRoutingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_storage_domain_routing_rule_with_options_async(
+        self,
+        tmp_req: cr_20181201_models.UpdateStorageDomainRoutingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateStorageDomainRoutingRuleResponse:
+        """
+        @summary 更新实例域名路由规则
+        
+        @param tmp_req: UpdateStorageDomainRoutingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStorageDomainRoutingRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateStorageDomainRoutingRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.routes):
+            request.routes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.routes, 'Routes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.routes_shrink):
+            query['Routes'] = request.routes_shrink
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateStorageDomainRoutingRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateStorageDomainRoutingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_storage_domain_routing_rule(
+        self,
+        request: cr_20181201_models.UpdateStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.UpdateStorageDomainRoutingRuleResponse:
+        """
+        @summary 更新实例域名路由规则
+        
+        @param request: UpdateStorageDomainRoutingRuleRequest
+        @return: UpdateStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_storage_domain_routing_rule_with_options(request, runtime)
+
+    async def update_storage_domain_routing_rule_async(
+        self,
+        request: cr_20181201_models.UpdateStorageDomainRoutingRuleRequest,
+    ) -> cr_20181201_models.UpdateStorageDomainRoutingRuleResponse:
+        """
+        @summary 更新实例域名路由规则
+        
+        @param request: UpdateStorageDomainRoutingRuleRequest
+        @return: UpdateStorageDomainRoutingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_storage_domain_routing_rule_with_options_async(request, runtime)

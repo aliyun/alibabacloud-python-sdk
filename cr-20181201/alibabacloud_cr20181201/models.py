@@ -4331,6 +4331,399 @@ class CreateRepositoryResponse(TeaModel):
         return self
 
 
+class CreateScanRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespaces: List[str] = None,
+        repo_names: List[str] = None,
+        repo_tag_filter_pattern: str = None,
+        rule_name: str = None,
+        scan_scope: str = None,
+        scan_type: str = None,
+        trigger_type: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.namespaces = namespaces
+        self.repo_names = repo_names
+        # This parameter is required.
+        self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scan_scope = scan_scope
+        self.scan_type = scan_type
+        # This parameter is required.
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+        if self.repo_names is not None:
+            result['RepoNames'] = self.repo_names
+        if self.repo_tag_filter_pattern is not None:
+            result['RepoTagFilterPattern'] = self.repo_tag_filter_pattern
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scan_scope is not None:
+            result['ScanScope'] = self.scan_scope
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+        if m.get('RepoNames') is not None:
+            self.repo_names = m.get('RepoNames')
+        if m.get('RepoTagFilterPattern') is not None:
+            self.repo_tag_filter_pattern = m.get('RepoTagFilterPattern')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScanScope') is not None:
+            self.scan_scope = m.get('ScanScope')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class CreateScanRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespaces_shrink: str = None,
+        repo_names_shrink: str = None,
+        repo_tag_filter_pattern: str = None,
+        rule_name: str = None,
+        scan_scope: str = None,
+        scan_type: str = None,
+        trigger_type: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.namespaces_shrink = namespaces_shrink
+        self.repo_names_shrink = repo_names_shrink
+        # This parameter is required.
+        self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scan_scope = scan_scope
+        self.scan_type = scan_type
+        # This parameter is required.
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespaces_shrink is not None:
+            result['Namespaces'] = self.namespaces_shrink
+        if self.repo_names_shrink is not None:
+            result['RepoNames'] = self.repo_names_shrink
+        if self.repo_tag_filter_pattern is not None:
+            result['RepoTagFilterPattern'] = self.repo_tag_filter_pattern
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scan_scope is not None:
+            result['ScanScope'] = self.scan_scope
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespaces') is not None:
+            self.namespaces_shrink = m.get('Namespaces')
+        if m.get('RepoNames') is not None:
+            self.repo_names_shrink = m.get('RepoNames')
+        if m.get('RepoTagFilterPattern') is not None:
+            self.repo_tag_filter_pattern = m.get('RepoTagFilterPattern')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScanScope') is not None:
+            self.scan_scope = m.get('ScanScope')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class CreateScanRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        request_id: str = None,
+        scan_rule_id: str = None,
+    ):
+        self.code = code
+        # Request Id
+        self.request_id = request_id
+        self.scan_rule_id = scan_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        return self
+
+
+class CreateScanRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateScanRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateScanRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateStorageDomainRoutingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        routes: List[RouteItem] = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.routes = routes
+
+    def validate(self):
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['Routes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.routes = []
+        if m.get('Routes') is not None:
+            for k in m.get('Routes'):
+                temp_model = RouteItem()
+                self.routes.append(temp_model.from_map(k))
+        return self
+
+
+class CreateStorageDomainRoutingRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        routes_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.routes_shrink = routes_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.routes_shrink is not None:
+            result['Routes'] = self.routes_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Routes') is not None:
+            self.routes_shrink = m.get('Routes')
+        return self
+
+
+class CreateStorageDomainRoutingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        request_id: str = None,
+        rule_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.request_id = request_id
+        self.rule_id = rule_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateStorageDomainRoutingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateStorageDomainRoutingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateStorageDomainRoutingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteArtifactLifecycleRuleRequest(TeaModel):
     def __init__(
         self,
@@ -6283,6 +6676,229 @@ class DeleteRepositoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRepositoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteScanRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        scan_rule_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.scan_rule_id = scan_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        return self
+
+
+class DeleteScanRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        # Request Id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteScanRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteScanRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteScanRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteStorageDomainRoutingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        rule_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DeleteStorageDomainRoutingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteStorageDomainRoutingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteStorageDomainRoutingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteStorageDomainRoutingRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11784,6 +12400,362 @@ class GetRepositoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRepositoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetScanRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        scan_rule_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.scan_rule_id = scan_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        return self
+
+
+class GetScanRuleResponseBodyScanRule(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        instance_id: str = None,
+        namespaces: List[str] = None,
+        repo_names: List[str] = None,
+        repo_tag_filter_pattern: str = None,
+        rule_name: str = None,
+        scan_rule_id: str = None,
+        scan_scope: str = None,
+        scan_type: str = None,
+        trigger_type: str = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.namespaces = namespaces
+        self.repo_names = repo_names
+        self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        self.rule_name = rule_name
+        self.scan_rule_id = scan_rule_id
+        self.scan_scope = scan_scope
+        self.scan_type = scan_type
+        self.trigger_type = trigger_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+        if self.repo_names is not None:
+            result['RepoNames'] = self.repo_names
+        if self.repo_tag_filter_pattern is not None:
+            result['RepoTagFilterPattern'] = self.repo_tag_filter_pattern
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        if self.scan_scope is not None:
+            result['ScanScope'] = self.scan_scope
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+        if m.get('RepoNames') is not None:
+            self.repo_names = m.get('RepoNames')
+        if m.get('RepoTagFilterPattern') is not None:
+            self.repo_tag_filter_pattern = m.get('RepoTagFilterPattern')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        if m.get('ScanScope') is not None:
+            self.scan_scope = m.get('ScanScope')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetScanRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        is_success: bool = None,
+        request_id: str = None,
+        scan_rule: GetScanRuleResponseBodyScanRule = None,
+    ):
+        self.code = code
+        self.is_success = is_success
+        self.request_id = request_id
+        self.scan_rule = scan_rule
+
+    def validate(self):
+        if self.scan_rule:
+            self.scan_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scan_rule is not None:
+            result['ScanRule'] = self.scan_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScanRule') is not None:
+            temp_model = GetScanRuleResponseBodyScanRule()
+            self.scan_rule = temp_model.from_map(m['ScanRule'])
+        return self
+
+
+class GetScanRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetScanRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetScanRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStorageDomainRoutingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        rule_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class GetStorageDomainRoutingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        create_time: int = None,
+        modify_time: int = None,
+        request_id: str = None,
+        routes: List[RouteItem] = None,
+        rule_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.create_time = create_time
+        self.modify_time = modify_time
+        self.request_id = request_id
+        self.routes = routes
+        self.rule_id = rule_id
+        self.success = success
+
+    def validate(self):
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['Routes'].append(k.to_map() if k else None)
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.routes = []
+        if m.get('Routes') is not None:
+            for k in m.get('Routes'):
+                temp_model = RouteItem()
+                self.routes.append(temp_model.from_map(k))
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetStorageDomainRoutingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStorageDomainRoutingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStorageDomainRoutingRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19175,6 +20147,245 @@ class ListScanMaliciousFileByTaskResponse(TeaModel):
         return self
 
 
+class ListScanRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        scan_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.scan_type = scan_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
+        return self
+
+
+class ListScanRuleResponseBodyScanRules(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        namespaces: List[str] = None,
+        repo_names: List[str] = None,
+        repo_tag_filter_pattern: str = None,
+        rule_name: str = None,
+        scan_rule_id: str = None,
+        scan_scope: str = None,
+        scan_type: str = None,
+        trigger_type: str = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.namespaces = namespaces
+        self.repo_names = repo_names
+        self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        self.rule_name = rule_name
+        self.scan_rule_id = scan_rule_id
+        self.scan_scope = scan_scope
+        self.scan_type = scan_type
+        self.trigger_type = trigger_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+        if self.repo_names is not None:
+            result['RepoNames'] = self.repo_names
+        if self.repo_tag_filter_pattern is not None:
+            result['RepoTagFilterPattern'] = self.repo_tag_filter_pattern
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        if self.scan_scope is not None:
+            result['ScanScope'] = self.scan_scope
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+        if m.get('RepoNames') is not None:
+            self.repo_names = m.get('RepoNames')
+        if m.get('RepoTagFilterPattern') is not None:
+            self.repo_tag_filter_pattern = m.get('RepoTagFilterPattern')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        if m.get('ScanScope') is not None:
+            self.scan_scope = m.get('ScanScope')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListScanRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        is_success: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        scan_rules: List[ListScanRuleResponseBodyScanRules] = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.is_success = is_success
+        self.page_no = page_no
+        self.page_size = page_size
+        # Request Id
+        self.request_id = request_id
+        self.scan_rules = scan_rules
+        self.total_count = total_count
+
+    def validate(self):
+        if self.scan_rules:
+            for k in self.scan_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ScanRules'] = []
+        if self.scan_rules is not None:
+            for k in self.scan_rules:
+                result['ScanRules'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scan_rules = []
+        if m.get('ScanRules') is not None:
+            for k in m.get('ScanRules'):
+                temp_model = ListScanRuleResponseBodyScanRules()
+                self.scan_rules.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListScanRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListScanRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListScanRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -22068,6 +23279,409 @@ class UpdateRepositoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateRepositoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateScanRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespaces: List[str] = None,
+        repo_names: List[str] = None,
+        repo_tag_filter_pattern: str = None,
+        rule_name: str = None,
+        scan_rule_id: str = None,
+        scan_scope: str = None,
+        trigger_type: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.namespaces = namespaces
+        self.repo_names = repo_names
+        # This parameter is required.
+        self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scan_rule_id = scan_rule_id
+        # This parameter is required.
+        self.scan_scope = scan_scope
+        # This parameter is required.
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+        if self.repo_names is not None:
+            result['RepoNames'] = self.repo_names
+        if self.repo_tag_filter_pattern is not None:
+            result['RepoTagFilterPattern'] = self.repo_tag_filter_pattern
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        if self.scan_scope is not None:
+            result['ScanScope'] = self.scan_scope
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+        if m.get('RepoNames') is not None:
+            self.repo_names = m.get('RepoNames')
+        if m.get('RepoTagFilterPattern') is not None:
+            self.repo_tag_filter_pattern = m.get('RepoTagFilterPattern')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        if m.get('ScanScope') is not None:
+            self.scan_scope = m.get('ScanScope')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class UpdateScanRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespaces_shrink: str = None,
+        repo_names_shrink: str = None,
+        repo_tag_filter_pattern: str = None,
+        rule_name: str = None,
+        scan_rule_id: str = None,
+        scan_scope: str = None,
+        trigger_type: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.namespaces_shrink = namespaces_shrink
+        self.repo_names_shrink = repo_names_shrink
+        # This parameter is required.
+        self.repo_tag_filter_pattern = repo_tag_filter_pattern
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scan_rule_id = scan_rule_id
+        # This parameter is required.
+        self.scan_scope = scan_scope
+        # This parameter is required.
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespaces_shrink is not None:
+            result['Namespaces'] = self.namespaces_shrink
+        if self.repo_names_shrink is not None:
+            result['RepoNames'] = self.repo_names_shrink
+        if self.repo_tag_filter_pattern is not None:
+            result['RepoTagFilterPattern'] = self.repo_tag_filter_pattern
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        if self.scan_scope is not None:
+            result['ScanScope'] = self.scan_scope
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespaces') is not None:
+            self.namespaces_shrink = m.get('Namespaces')
+        if m.get('RepoNames') is not None:
+            self.repo_names_shrink = m.get('RepoNames')
+        if m.get('RepoTagFilterPattern') is not None:
+            self.repo_tag_filter_pattern = m.get('RepoTagFilterPattern')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        if m.get('ScanScope') is not None:
+            self.scan_scope = m.get('ScanScope')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class UpdateScanRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        request_id: str = None,
+        scan_rule_id: str = None,
+    ):
+        self.code = code
+        # Request Id
+        self.request_id = request_id
+        self.scan_rule_id = scan_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scan_rule_id is not None:
+            result['ScanRuleId'] = self.scan_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScanRuleId') is not None:
+            self.scan_rule_id = m.get('ScanRuleId')
+        return self
+
+
+class UpdateScanRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateScanRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateScanRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateStorageDomainRoutingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        routes: List[RouteItem] = None,
+        rule_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.routes = routes
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['Routes'].append(k.to_map() if k else None)
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.routes = []
+        if m.get('Routes') is not None:
+            for k in m.get('Routes'):
+                temp_model = RouteItem()
+                self.routes.append(temp_model.from_map(k))
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class UpdateStorageDomainRoutingRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        routes_shrink: str = None,
+        rule_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.routes_shrink = routes_shrink
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.routes_shrink is not None:
+            result['Routes'] = self.routes_shrink
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Routes') is not None:
+            self.routes_shrink = m.get('Routes')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class UpdateStorageDomainRoutingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateStorageDomainRoutingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateStorageDomainRoutingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateStorageDomainRoutingRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
