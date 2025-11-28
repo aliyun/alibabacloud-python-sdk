@@ -4684,8 +4684,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.instance_types):
             request.instance_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_types, 'InstanceTypes', 'simple')
         query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_types_shrink):
             query['InstanceTypes'] = request.instance_types_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4726,8 +4730,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.instance_types):
             request.instance_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_types, 'InstanceTypes', 'simple')
         query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_types_shrink):
             query['InstanceTypes'] = request.instance_types_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -9007,6 +9015,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_virtual_resource_with_options_async(request, headers, runtime)
+
+    def migrate_resource_instance_with_options(
+        self,
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.MigrateResourceInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.MigrateResourceInstanceResponse:
+        """
+        @summary Migrates resource group instances.
+        
+        @param request: MigrateResourceInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateResourceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dest_resource_id):
+            body['DestResourceId'] = request.dest_resource_id
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.migrate_to_hybrid):
+            body['MigrateToHybrid'] = request.migrate_to_hybrid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MigrateResourceInstance',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances/migrate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.MigrateResourceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def migrate_resource_instance_with_options_async(
+        self,
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.MigrateResourceInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.MigrateResourceInstanceResponse:
+        """
+        @summary Migrates resource group instances.
+        
+        @param request: MigrateResourceInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateResourceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dest_resource_id):
+            body['DestResourceId'] = request.dest_resource_id
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.migrate_to_hybrid):
+            body['MigrateToHybrid'] = request.migrate_to_hybrid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MigrateResourceInstance',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances/migrate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.MigrateResourceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def migrate_resource_instance(
+        self,
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.MigrateResourceInstanceRequest,
+    ) -> eas_20210701_models.MigrateResourceInstanceResponse:
+        """
+        @summary Migrates resource group instances.
+        
+        @param request: MigrateResourceInstanceRequest
+        @return: MigrateResourceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.migrate_resource_instance_with_options(cluster_id, resource_id, request, headers, runtime)
+
+    async def migrate_resource_instance_async(
+        self,
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.MigrateResourceInstanceRequest,
+    ) -> eas_20210701_models.MigrateResourceInstanceResponse:
+        """
+        @summary Migrates resource group instances.
+        
+        @param request: MigrateResourceInstanceRequest
+        @return: MigrateResourceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.migrate_resource_instance_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def reinstall_tenant_addon_with_options(
         self,

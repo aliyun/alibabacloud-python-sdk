@@ -7186,10 +7186,14 @@ class DescribeGroupEndpointsResponse(TeaModel):
 class DescribeMachineSpecRequest(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         instance_types: List[str] = None,
+        resource_type: str = None,
     ):
+        self.charge_type = charge_type
         # This parameter is deprecated.
         self.instance_types = instance_types
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -7200,24 +7204,36 @@ class DescribeMachineSpecRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('InstanceTypes') is not None:
             self.instance_types = m.get('InstanceTypes')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
 class DescribeMachineSpecShrinkRequest(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         instance_types_shrink: str = None,
+        resource_type: str = None,
     ):
+        self.charge_type = charge_type
         # This parameter is deprecated.
         self.instance_types_shrink = instance_types_shrink
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -7228,14 +7244,22 @@ class DescribeMachineSpecShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.instance_types_shrink is not None:
             result['InstanceTypes'] = self.instance_types_shrink
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('InstanceTypes') is not None:
             self.instance_types_shrink = m.get('InstanceTypes')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -15126,6 +15150,134 @@ class ListVirtualResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListVirtualResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MigrateResourceInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        dest_resource_id: str = None,
+        instance_ids: List[str] = None,
+        migrate_to_hybrid: bool = None,
+    ):
+        # The ID of the destination resource group.
+        # 
+        # This parameter is required.
+        self.dest_resource_id = dest_resource_id
+        # The instance ID.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        self.migrate_to_hybrid = migrate_to_hybrid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_resource_id is not None:
+            result['DestResourceId'] = self.dest_resource_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.migrate_to_hybrid is not None:
+            result['MigrateToHybrid'] = self.migrate_to_hybrid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestResourceId') is not None:
+            self.dest_resource_id = m.get('DestResourceId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('MigrateToHybrid') is not None:
+            self.migrate_to_hybrid = m.get('MigrateToHybrid')
+        return self
+
+
+class MigrateResourceInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The instance ID.
+        self.instance_ids = instance_ids
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MigrateResourceInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MigrateResourceInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MigrateResourceInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

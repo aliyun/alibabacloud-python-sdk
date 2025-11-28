@@ -1,3 +1,9 @@
+2025-11-28 Version: 6.10.0
+- Support API MigrateResourceInstance.
+- Update API DescribeMachineSpec: add request parameters ChargeType.
+- Update API DescribeMachineSpec: add request parameters ResourceType.
+
+
 2025-11-06 Version: 6.9.0
 - Support API CreateFaultInjection.
 - Support API DeleteFaultInjection.
