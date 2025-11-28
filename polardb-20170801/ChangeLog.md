@@ -1,3 +1,6 @@
+2025-11-28 Version: 6.1.9
+- Generated python 2017-08-01 for polardb.
+
 2025-11-27 Version: 6.1.8
 - Update API DescribeApplications: add response parameters Body.Items.$.DBClusterId.
 
