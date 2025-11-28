@@ -15,12 +15,22 @@ class DescribeIndexResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The name of the collection.
         self.collection = collection
+        # The definition of the index.
         self.index_def = index_def
+        # The name of the index.
         self.index_name = index_name
+        # The returned message.
         self.message = message
+        # The namespace.
         self.namespace = namespace
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **false**: The operation fails.
+        # *   **true**: The operation is successful.
         self.status = status
 
     def validate(self):

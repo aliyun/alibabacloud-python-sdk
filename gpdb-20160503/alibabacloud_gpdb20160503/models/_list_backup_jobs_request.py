@@ -10,7 +10,17 @@ class ListBackupJobsRequest(DaraModel):
         backup_mode: str = None,
         dbinstance_id: str = None,
     ):
+        # The backup mode. Valid values:
+        # 
+        # *   Automated
+        # *   Manual
+        # 
+        # If you do not specify this parameter, all backup sets are returned.
         self.backup_mode = backup_mode
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
 

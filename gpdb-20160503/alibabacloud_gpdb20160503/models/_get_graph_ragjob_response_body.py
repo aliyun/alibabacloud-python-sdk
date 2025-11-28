@@ -14,10 +14,18 @@ class GetGraphRAGJobResponseBody(DaraModel):
         status: str = None,
         usage: main_models.GetGraphRAGJobResponseBodyUsage = None,
     ):
+        # The details of the task for building a knowledge graph.
         self.job = job
+        # The additional information that is returned.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
+        # The number of tokens that are consumed by document understanding or embedding.
         self.usage = usage
 
     def validate(self):
@@ -76,8 +84,13 @@ class GetGraphRAGJobResponseBodyUsage(DaraModel):
         llminput_tokens: int = None,
         llmoutput_tokens: int = None,
     ):
+        # The number of tokens that are consumed during vectorization.
+        # 
+        # > A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
         self.embedding_tokens = embedding_tokens
+        # The number of tokens used by the large model input.
         self.llminput_tokens = llminput_tokens
+        # The number of tokens used for large model output.
         self.llmoutput_tokens = llmoutput_tokens
 
     def validate(self):
@@ -123,12 +136,24 @@ class GetGraphRAGJobResponseBodyJob(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # Indicates whether the operation is complete.
         self.completed = completed
+        # The job creation time.
         self.create_time = create_time
+        # The error message that is returned when the current operation is abnormal or fails.
         self.error = error
+        # The job ID.
         self.id = id
+        # The progress of the document upload job. Unit: %. A value of 100 indicates that the job is complete.
         self.progress = progress
+        # The state of the job. Valid values:
+        # 
+        # *   **Success**
+        # *   **Failed** (See the Error parameter for failure reasons.)
+        # *   **Running**
+        # *   **Pending**
         self.status = status
+        # The job last updated time.
         self.update_time = update_time
 
     def validate(self):

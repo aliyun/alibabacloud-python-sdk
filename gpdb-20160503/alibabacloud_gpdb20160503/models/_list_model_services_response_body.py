@@ -16,10 +16,15 @@ class ListModelServicesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # Model services.
         self.model_services = model_services
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # Request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -89,16 +94,34 @@ class ListModelServicesResponseBodyModelServices(DaraModel):
         security_iplist: str = None,
         status: str = None,
     ):
+        # A list of AI nodes for model deployment.
         self.ai_nodes = ai_nodes
+        # The API key.
         self.api_key = api_key
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The model name.
         self.model_name = model_name
+        # Model service parameters (not available).
         self.model_params = model_params
+        # Model service ID.
         self.model_service_id = model_service_id
+        # Private Endpoint.
         self.private_conn_url = private_conn_url
+        # Public endpoint.
         self.public_conn_url = public_conn_url
+        # The IP addresses listed in the whitelist. Up to 1,000 IP addresses are contained in a whitelist and separated by commas (,). The IP addresses must use one of the following formats:
+        # 
+        # *   0.0.0.0/0
+        # *   10.23.12.24(IP)
+        # *   10.23.12.24/24 (This is a CIDR block. The value`/24`indicates the network prefix length, which must be an integer and in the range of `[1,32]`.)
         self.security_iplist = security_iplist
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
 
     def validate(self):

@@ -31,6 +31,7 @@ class DeleteSecretRequest(DaraModel):
         # 
         # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_name = secret_name
+        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -11,8 +11,13 @@ class ListSupabaseProjectsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The maximum number of instances to return per page. Default value: 10.
         self.max_results = max_results
+        # A pagination token returned from a previous call. Use it to retrieve the next page of results.
         self.next_token = next_token
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
         self.region_id = region_id
 
     def validate(self):

@@ -10,8 +10,14 @@ class DescribeModelServiceRequest(DaraModel):
         dbinstance_id: str = None,
         model_service_id: str = None,
     ):
+        # The ID of the instance.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The model service ID.
+        # 
         # This parameter is required.
         self.model_service_id = model_service_id
 

@@ -16,10 +16,18 @@ class TextEmbeddingResponseBody(DaraModel):
         status: str = None,
         text_tokens: int = None,
     ):
+        # The returned message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The embedding results.
         self.results = results
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
+        # The total number of tokens consumed.
         self.text_tokens = text_tokens
 
     def validate(self):
@@ -109,7 +117,9 @@ class TextEmbeddingResponseBodyResultsResults(DaraModel):
         embedding: main_models.TextEmbeddingResponseBodyResultsResultsEmbedding = None,
         index: int = None,
     ):
+        # The embedding values.
         self.embedding = embedding
+        # The number of the embedding in the Input request parameter, which starts from 0.
         self.index = index
 
     def validate(self):

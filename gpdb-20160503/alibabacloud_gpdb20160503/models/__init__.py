@@ -60,12 +60,19 @@ from ._create_collection_response import CreateCollectionResponse
 from ._create_dbinstance_request import CreateDBInstanceRequest
 from ._create_dbinstance_response_body import CreateDBInstanceResponseBody
 from ._create_dbinstance_response import CreateDBInstanceResponse
+from ._create_dbinstance_iparray_request import CreateDBInstanceIPArrayRequest
+from ._create_dbinstance_iparray_shrink_request import CreateDBInstanceIPArrayShrinkRequest
+from ._create_dbinstance_iparray_response_body import CreateDBInstanceIPArrayResponseBody
+from ._create_dbinstance_iparray_response import CreateDBInstanceIPArrayResponse
 from ._create_dbinstance_plan_request import CreateDBInstancePlanRequest
 from ._create_dbinstance_plan_response_body import CreateDBInstancePlanResponseBody
 from ._create_dbinstance_plan_response import CreateDBInstancePlanResponse
 from ._create_dbresource_group_request import CreateDBResourceGroupRequest
 from ._create_dbresource_group_response_body import CreateDBResourceGroupResponseBody
 from ._create_dbresource_group_response import CreateDBResourceGroupResponse
+from ._create_database_request import CreateDatabaseRequest
+from ._create_database_response_body import CreateDatabaseResponseBody
+from ._create_database_response import CreateDatabaseResponse
 from ._create_document_collection_request import CreateDocumentCollectionRequest
 from ._create_document_collection_shrink_request import CreateDocumentCollectionShrinkRequest
 from ._create_document_collection_response_body import CreateDocumentCollectionResponseBody
@@ -138,12 +145,18 @@ from ._delete_collection_data_response import DeleteCollectionDataResponse
 from ._delete_dbinstance_request import DeleteDBInstanceRequest
 from ._delete_dbinstance_response_body import DeleteDBInstanceResponseBody
 from ._delete_dbinstance_response import DeleteDBInstanceResponse
+from ._delete_dbinstance_iparray_request import DeleteDBInstanceIPArrayRequest
+from ._delete_dbinstance_iparray_response_body import DeleteDBInstanceIPArrayResponseBody
+from ._delete_dbinstance_iparray_response import DeleteDBInstanceIPArrayResponse
 from ._delete_dbinstance_plan_request import DeleteDBInstancePlanRequest
 from ._delete_dbinstance_plan_response_body import DeleteDBInstancePlanResponseBody
 from ._delete_dbinstance_plan_response import DeleteDBInstancePlanResponse
 from ._delete_dbresource_group_request import DeleteDBResourceGroupRequest
 from ._delete_dbresource_group_response_body import DeleteDBResourceGroupResponseBody
 from ._delete_dbresource_group_response import DeleteDBResourceGroupResponse
+from ._delete_database_request import DeleteDatabaseRequest
+from ._delete_database_response_body import DeleteDatabaseResponseBody
+from ._delete_database_response import DeleteDatabaseResponse
 from ._delete_document_request import DeleteDocumentRequest
 from ._delete_document_response_body import DeleteDocumentResponseBody
 from ._delete_document_response import DeleteDocumentResponse
@@ -171,6 +184,9 @@ from ._delete_model_service_response import DeleteModelServiceResponse
 from ._delete_namespace_request import DeleteNamespaceRequest
 from ._delete_namespace_response_body import DeleteNamespaceResponseBody
 from ._delete_namespace_response import DeleteNamespaceResponse
+from ._delete_private_ragservice_request import DeletePrivateRAGServiceRequest
+from ._delete_private_ragservice_response_body import DeletePrivateRAGServiceResponseBody
+from ._delete_private_ragservice_response import DeletePrivateRAGServiceResponse
 from ._delete_remote_adbdata_source_request import DeleteRemoteADBDataSourceRequest
 from ._delete_remote_adbdata_source_response_body import DeleteRemoteADBDataSourceResponseBody
 from ._delete_remote_adbdata_source_response import DeleteRemoteADBDataSourceResponse
@@ -192,6 +208,9 @@ from ._delete_supabase_project_response import DeleteSupabaseProjectResponse
 from ._delete_vector_index_request import DeleteVectorIndexRequest
 from ._delete_vector_index_response_body import DeleteVectorIndexResponseBody
 from ._delete_vector_index_response import DeleteVectorIndexResponse
+from ._deploy_private_ragservice_request import DeployPrivateRAGServiceRequest
+from ._deploy_private_ragservice_response_body import DeployPrivateRAGServiceResponseBody
+from ._deploy_private_ragservice_response import DeployPrivateRAGServiceResponse
 from ._describe_accounts_request import DescribeAccountsRequest
 from ._describe_accounts_response_body import DescribeAccountsResponseBody
 from ._describe_accounts_response import DescribeAccountsResponse
@@ -280,6 +299,9 @@ from ._describe_data_share_instances_response import DescribeDataShareInstancesR
 from ._describe_data_share_performance_request import DescribeDataSharePerformanceRequest
 from ._describe_data_share_performance_response_body import DescribeDataSharePerformanceResponseBody
 from ._describe_data_share_performance_response import DescribeDataSharePerformanceResponse
+from ._describe_database_request import DescribeDatabaseRequest
+from ._describe_database_response_body import DescribeDatabaseResponseBody
+from ._describe_database_response import DescribeDatabaseResponse
 from ._describe_diagnosis_dimensions_request import DescribeDiagnosisDimensionsRequest
 from ._describe_diagnosis_dimensions_response_body import DescribeDiagnosisDimensionsResponseBody
 from ._describe_diagnosis_dimensions_response import DescribeDiagnosisDimensionsResponse
@@ -301,6 +323,9 @@ from ._describe_download_records_response import DescribeDownloadRecordsResponse
 from ._describe_download_sqllogs_request import DescribeDownloadSQLLogsRequest
 from ._describe_download_sqllogs_response_body import DescribeDownloadSQLLogsResponseBody
 from ._describe_download_sqllogs_response import DescribeDownloadSQLLogsResponse
+from ._describe_extension_request import DescribeExtensionRequest
+from ._describe_extension_response_body import DescribeExtensionResponseBody
+from ._describe_extension_response import DescribeExtensionResponse
 from ._describe_external_data_service_request import DescribeExternalDataServiceRequest
 from ._describe_external_data_service_response_body import DescribeExternalDataServiceResponseBody
 from ._describe_external_data_service_response import DescribeExternalDataServiceResponse
@@ -340,12 +365,18 @@ from ._describe_namespace_response import DescribeNamespaceResponse
 from ._describe_parameters_request import DescribeParametersRequest
 from ._describe_parameters_response_body import DescribeParametersResponseBody
 from ._describe_parameters_response import DescribeParametersResponse
+from ._describe_private_ragservice_request import DescribePrivateRAGServiceRequest
+from ._describe_private_ragservice_response_body import DescribePrivateRAGServiceResponseBody
+from ._describe_private_ragservice_response import DescribePrivateRAGServiceResponse
 from ._describe_rds_vswitchs_request import DescribeRdsVSwitchsRequest
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBody
 from ._describe_rds_vswitchs_response import DescribeRdsVSwitchsResponse
 from ._describe_rds_vpcs_request import DescribeRdsVpcsRequest
 from ._describe_rds_vpcs_response_body import DescribeRdsVpcsResponseBody
 from ._describe_rds_vpcs_response import DescribeRdsVpcsResponse
+from ._describe_rebalance_status_request import DescribeRebalanceStatusRequest
+from ._describe_rebalance_status_response_body import DescribeRebalanceStatusResponseBody
+from ._describe_rebalance_status_response import DescribeRebalanceStatusResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
@@ -391,6 +422,9 @@ from ._describe_waiting_sqlinfo_response import DescribeWaitingSQLInfoResponse
 from ._describe_waiting_sqlrecords_request import DescribeWaitingSQLRecordsRequest
 from ._describe_waiting_sqlrecords_response_body import DescribeWaitingSQLRecordsResponseBody
 from ._describe_waiting_sqlrecords_response import DescribeWaitingSQLRecordsResponse
+from ._describe_zones_private_ragservice_request import DescribeZonesPrivateRAGServiceRequest
+from ._describe_zones_private_ragservice_response_body import DescribeZonesPrivateRAGServiceResponseBody
+from ._describe_zones_private_ragservice_response import DescribeZonesPrivateRAGServiceResponse
 from ._disable_dbresource_group_request import DisableDBResourceGroupRequest
 from ._disable_dbresource_group_response_body import DisableDBResourceGroupResponseBody
 from ._disable_dbresource_group_response import DisableDBResourceGroupResponse
@@ -400,6 +434,9 @@ from ._download_diagnosis_records_response import DownloadDiagnosisRecordsRespon
 from ._download_sqllogs_records_request import DownloadSQLLogsRecordsRequest
 from ._download_sqllogs_records_response_body import DownloadSQLLogsRecordsResponseBody
 from ._download_sqllogs_records_response import DownloadSQLLogsRecordsResponse
+from ._download_slow_sqlrecords_request import DownloadSlowSQLRecordsRequest
+from ._download_slow_sqlrecords_response_body import DownloadSlowSQLRecordsResponseBody
+from ._download_slow_sqlrecords_response import DownloadSlowSQLRecordsResponse
 from ._enable_collection_graph_ragrequest import EnableCollectionGraphRAGRequest
 from ._enable_collection_graph_ragshrink_request import EnableCollectionGraphRAGShrinkRequest
 from ._enable_collection_graph_ragresponse_body import EnableCollectionGraphRAGResponseBody
@@ -456,6 +493,9 @@ from ._list_backup_jobs_response import ListBackupJobsResponse
 from ._list_collections_request import ListCollectionsRequest
 from ._list_collections_response_body import ListCollectionsResponseBody
 from ._list_collections_response import ListCollectionsResponse
+from ._list_database_extensions_request import ListDatabaseExtensionsRequest
+from ._list_database_extensions_response_body import ListDatabaseExtensionsResponseBody
+from ._list_database_extensions_response import ListDatabaseExtensionsResponse
 from ._list_databases_request import ListDatabasesRequest
 from ._list_databases_response_body import ListDatabasesResponseBody
 from ._list_databases_response import ListDatabasesResponse
@@ -474,6 +514,9 @@ from ._list_external_data_sources_response import ListExternalDataSourcesRespons
 from ._list_indices_request import ListIndicesRequest
 from ._list_indices_response_body import ListIndicesResponseBody
 from ._list_indices_response import ListIndicesResponse
+from ._list_instance_databases_request import ListInstanceDatabasesRequest
+from ._list_instance_databases_response_body import ListInstanceDatabasesResponseBody
+from ._list_instance_databases_response import ListInstanceDatabasesResponse
 from ._list_instance_extensions_request import ListInstanceExtensionsRequest
 from ._list_instance_extensions_response_body import ListInstanceExtensionsResponseBody
 from ._list_instance_extensions_response import ListInstanceExtensionsResponse
@@ -492,6 +535,9 @@ from ._list_schemas_response import ListSchemasResponse
 from ._list_secrets_request import ListSecretsRequest
 from ._list_secrets_response_body import ListSecretsResponseBody
 from ._list_secrets_response import ListSecretsResponse
+from ._list_slow_sqlrecords_request import ListSlowSQLRecordsRequest
+from ._list_slow_sqlrecords_response_body import ListSlowSQLRecordsResponseBody
+from ._list_slow_sqlrecords_response import ListSlowSQLRecordsResponse
 from ._list_streaming_data_services_request import ListStreamingDataServicesRequest
 from ._list_streaming_data_services_response_body import ListStreamingDataServicesResponseBody
 from ._list_streaming_data_services_response import ListStreamingDataServicesResponse
@@ -864,6 +910,7 @@ from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodeP
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItemsBackupJob
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItems
 from ._list_collections_response_body import ListCollectionsResponseBodyCollections
+from ._list_database_extensions_response_body import ListDatabaseExtensionsResponseBodyExtensions
 from ._list_databases_response_body import ListDatabasesResponseBodyDatabases
 from ._list_document_collections_response_body import ListDocumentCollectionsResponseBodyItemsCollectionList
 from ._list_document_collections_response_body import ListDocumentCollectionsResponseBodyItems
@@ -873,6 +920,7 @@ from ._list_external_data_services_response_body import ListExternalDataServices
 from ._list_external_data_sources_response_body import ListExternalDataSourcesResponseBodyItems
 from ._list_indices_response_body import ListIndicesResponseBodyIndicesIndices
 from ._list_indices_response_body import ListIndicesResponseBodyIndices
+from ._list_instance_databases_response_body import ListInstanceDatabasesResponseBodyDatabases
 from ._list_instance_extensions_response_body import ListInstanceExtensionsResponseBodyItems
 from ._list_model_services_response_body import ListModelServicesResponseBodyModelServices
 from ._list_namespaces_response_body import ListNamespacesResponseBodyNamespaces
@@ -881,6 +929,7 @@ from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSources
 from ._list_schemas_response_body import ListSchemasResponseBodySchemas
 from ._list_secrets_response_body import ListSecretsResponseBodySecretsSecrets
 from ._list_secrets_response_body import ListSecretsResponseBodySecrets
+from ._list_slow_sqlrecords_response_body import ListSlowSQLRecordsResponseBodyItems
 from ._list_streaming_data_services_response_body import ListStreamingDataServicesResponseBodyServiceItems
 from ._list_streaming_data_sources_response_body import ListStreamingDataSourcesResponseBodyDataSourceItems
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBodyJobItems
@@ -996,12 +1045,19 @@ __all__ = [
     CreateDBInstanceRequest,
     CreateDBInstanceResponseBody,
     CreateDBInstanceResponse,
+    CreateDBInstanceIPArrayRequest,
+    CreateDBInstanceIPArrayShrinkRequest,
+    CreateDBInstanceIPArrayResponseBody,
+    CreateDBInstanceIPArrayResponse,
     CreateDBInstancePlanRequest,
     CreateDBInstancePlanResponseBody,
     CreateDBInstancePlanResponse,
     CreateDBResourceGroupRequest,
     CreateDBResourceGroupResponseBody,
     CreateDBResourceGroupResponse,
+    CreateDatabaseRequest,
+    CreateDatabaseResponseBody,
+    CreateDatabaseResponse,
     CreateDocumentCollectionRequest,
     CreateDocumentCollectionShrinkRequest,
     CreateDocumentCollectionResponseBody,
@@ -1074,12 +1130,18 @@ __all__ = [
     DeleteDBInstanceRequest,
     DeleteDBInstanceResponseBody,
     DeleteDBInstanceResponse,
+    DeleteDBInstanceIPArrayRequest,
+    DeleteDBInstanceIPArrayResponseBody,
+    DeleteDBInstanceIPArrayResponse,
     DeleteDBInstancePlanRequest,
     DeleteDBInstancePlanResponseBody,
     DeleteDBInstancePlanResponse,
     DeleteDBResourceGroupRequest,
     DeleteDBResourceGroupResponseBody,
     DeleteDBResourceGroupResponse,
+    DeleteDatabaseRequest,
+    DeleteDatabaseResponseBody,
+    DeleteDatabaseResponse,
     DeleteDocumentRequest,
     DeleteDocumentResponseBody,
     DeleteDocumentResponse,
@@ -1107,6 +1169,9 @@ __all__ = [
     DeleteNamespaceRequest,
     DeleteNamespaceResponseBody,
     DeleteNamespaceResponse,
+    DeletePrivateRAGServiceRequest,
+    DeletePrivateRAGServiceResponseBody,
+    DeletePrivateRAGServiceResponse,
     DeleteRemoteADBDataSourceRequest,
     DeleteRemoteADBDataSourceResponseBody,
     DeleteRemoteADBDataSourceResponse,
@@ -1128,6 +1193,9 @@ __all__ = [
     DeleteVectorIndexRequest,
     DeleteVectorIndexResponseBody,
     DeleteVectorIndexResponse,
+    DeployPrivateRAGServiceRequest,
+    DeployPrivateRAGServiceResponseBody,
+    DeployPrivateRAGServiceResponse,
     DescribeAccountsRequest,
     DescribeAccountsResponseBody,
     DescribeAccountsResponse,
@@ -1216,6 +1284,9 @@ __all__ = [
     DescribeDataSharePerformanceRequest,
     DescribeDataSharePerformanceResponseBody,
     DescribeDataSharePerformanceResponse,
+    DescribeDatabaseRequest,
+    DescribeDatabaseResponseBody,
+    DescribeDatabaseResponse,
     DescribeDiagnosisDimensionsRequest,
     DescribeDiagnosisDimensionsResponseBody,
     DescribeDiagnosisDimensionsResponse,
@@ -1237,6 +1308,9 @@ __all__ = [
     DescribeDownloadSQLLogsRequest,
     DescribeDownloadSQLLogsResponseBody,
     DescribeDownloadSQLLogsResponse,
+    DescribeExtensionRequest,
+    DescribeExtensionResponseBody,
+    DescribeExtensionResponse,
     DescribeExternalDataServiceRequest,
     DescribeExternalDataServiceResponseBody,
     DescribeExternalDataServiceResponse,
@@ -1276,12 +1350,18 @@ __all__ = [
     DescribeParametersRequest,
     DescribeParametersResponseBody,
     DescribeParametersResponse,
+    DescribePrivateRAGServiceRequest,
+    DescribePrivateRAGServiceResponseBody,
+    DescribePrivateRAGServiceResponse,
     DescribeRdsVSwitchsRequest,
     DescribeRdsVSwitchsResponseBody,
     DescribeRdsVSwitchsResponse,
     DescribeRdsVpcsRequest,
     DescribeRdsVpcsResponseBody,
     DescribeRdsVpcsResponse,
+    DescribeRebalanceStatusRequest,
+    DescribeRebalanceStatusResponseBody,
+    DescribeRebalanceStatusResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
@@ -1327,6 +1407,9 @@ __all__ = [
     DescribeWaitingSQLRecordsRequest,
     DescribeWaitingSQLRecordsResponseBody,
     DescribeWaitingSQLRecordsResponse,
+    DescribeZonesPrivateRAGServiceRequest,
+    DescribeZonesPrivateRAGServiceResponseBody,
+    DescribeZonesPrivateRAGServiceResponse,
     DisableDBResourceGroupRequest,
     DisableDBResourceGroupResponseBody,
     DisableDBResourceGroupResponse,
@@ -1336,6 +1419,9 @@ __all__ = [
     DownloadSQLLogsRecordsRequest,
     DownloadSQLLogsRecordsResponseBody,
     DownloadSQLLogsRecordsResponse,
+    DownloadSlowSQLRecordsRequest,
+    DownloadSlowSQLRecordsResponseBody,
+    DownloadSlowSQLRecordsResponse,
     EnableCollectionGraphRAGRequest,
     EnableCollectionGraphRAGShrinkRequest,
     EnableCollectionGraphRAGResponseBody,
@@ -1392,6 +1478,9 @@ __all__ = [
     ListCollectionsRequest,
     ListCollectionsResponseBody,
     ListCollectionsResponse,
+    ListDatabaseExtensionsRequest,
+    ListDatabaseExtensionsResponseBody,
+    ListDatabaseExtensionsResponse,
     ListDatabasesRequest,
     ListDatabasesResponseBody,
     ListDatabasesResponse,
@@ -1410,6 +1499,9 @@ __all__ = [
     ListIndicesRequest,
     ListIndicesResponseBody,
     ListIndicesResponse,
+    ListInstanceDatabasesRequest,
+    ListInstanceDatabasesResponseBody,
+    ListInstanceDatabasesResponse,
     ListInstanceExtensionsRequest,
     ListInstanceExtensionsResponseBody,
     ListInstanceExtensionsResponse,
@@ -1428,6 +1520,9 @@ __all__ = [
     ListSecretsRequest,
     ListSecretsResponseBody,
     ListSecretsResponse,
+    ListSlowSQLRecordsRequest,
+    ListSlowSQLRecordsResponseBody,
+    ListSlowSQLRecordsResponse,
     ListStreamingDataServicesRequest,
     ListStreamingDataServicesResponseBody,
     ListStreamingDataServicesResponse,
@@ -1800,6 +1895,7 @@ __all__ = [
     ListBackupJobsResponseBodyItemsBackupJob,
     ListBackupJobsResponseBodyItems,
     ListCollectionsResponseBodyCollections,
+    ListDatabaseExtensionsResponseBodyExtensions,
     ListDatabasesResponseBodyDatabases,
     ListDocumentCollectionsResponseBodyItemsCollectionList,
     ListDocumentCollectionsResponseBodyItems,
@@ -1809,6 +1905,7 @@ __all__ = [
     ListExternalDataSourcesResponseBodyItems,
     ListIndicesResponseBodyIndicesIndices,
     ListIndicesResponseBodyIndices,
+    ListInstanceDatabasesResponseBodyDatabases,
     ListInstanceExtensionsResponseBodyItems,
     ListModelServicesResponseBodyModelServices,
     ListNamespacesResponseBodyNamespaces,
@@ -1817,6 +1914,7 @@ __all__ = [
     ListSchemasResponseBodySchemas,
     ListSecretsResponseBodySecretsSecrets,
     ListSecretsResponseBodySecrets,
+    ListSlowSQLRecordsResponseBodyItems,
     ListStreamingDataServicesResponseBodyServiceItems,
     ListStreamingDataSourcesResponseBodyDataSourceItems,
     ListStreamingJobsResponseBodyJobItems,

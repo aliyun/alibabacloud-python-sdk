@@ -1,3 +1,21 @@
+2025-11-28 Version: 4.15.0
+- Support API CreateDBInstanceIPArray.
+- Support API CreateDatabase.
+- Support API DeleteDBInstanceIPArray.
+- Support API DeleteDatabase.
+- Support API DeletePrivateRAGService.
+- Support API DeployPrivateRAGService.
+- Support API DescribeDatabase.
+- Support API DescribeExtension.
+- Support API DescribePrivateRAGService.
+- Support API DescribeRebalanceStatus.
+- Support API DescribeZonesPrivateRAGService.
+- Support API DownloadSlowSQLRecords.
+- Support API ListDatabaseExtensions.
+- Support API ListInstanceDatabases.
+- Support API ListSlowSQLRecords.
+
+
 2025-10-30 Version: 4.14.0
 - Support API QueryKnowledgeBasesContent.
 - Update API ChatWithKnowledgeBase: add request parameters RegionId.

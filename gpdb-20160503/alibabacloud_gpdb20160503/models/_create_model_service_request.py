@@ -21,19 +21,36 @@ class CreateModelServiceRequest(DaraModel):
         resource_group_id: str = None,
         security_iplist: str = None,
     ):
+        # A list of AI nodes for model deployment.
+        # 
         # This parameter is required.
         self.ai_nodes = ai_nodes
+        # The client token that is used to ensure the idempotence of the request. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/327176.html)
         self.client_token = client_token
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description.
         self.description = description
         self.enable_public_connection = enable_public_connection
+        # The inference engine. Only vllm is supported.
         self.inference_engine = inference_engine
+        # The name of the model.
+        # 
         # This parameter is required.
         self.model_name = model_name
+        # Model parameters (to be supported).
         self.model_params = model_params
+        # The number of model service replicas.
         self.replicas = replicas
+        # The ID of the resource group to which the instance belongs. For more information about how to get the ID of a resource group, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
+        # The IP address whitelist.
+        # 
+        # 127.0.0.1 indicates that access from any external IP address is prohibited. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after the instance is created.
         self.security_iplist = security_iplist
 
     def validate(self):

@@ -9,6 +9,7 @@ class ListSupportModelsRequest(DaraModel):
         self,
         region_id: str = None,
     ):
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

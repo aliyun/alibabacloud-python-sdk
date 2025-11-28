@@ -12,9 +12,22 @@ class ModifyCollectionResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # 
+        # > 
+        # 
+        # *   For information about the supported data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
+        # 
+        # *   The money data type is not supported.
         self.metadata = metadata
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **false**
+        # *   **true**
         self.status = status
 
     def validate(self):

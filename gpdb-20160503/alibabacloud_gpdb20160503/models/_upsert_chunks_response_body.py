@@ -13,18 +13,22 @@ class UpsertChunksResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Number of tokens used during vectorization.
+        # The number of tokens that are consumed during vectorization.
         # 
-        # > A token refers to the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, a character, etc.
+        # > A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
         self.embedding_tokens = embedding_tokens
+        # The job ID. You can use the `GetGraphRAGJob` to view the job status.
+        # 
+        # > This parameter is returned only when the knowledge base is enabled.
         self.job_id = job_id
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # API execution status, with the following values:
-        # - **success**: Execution succeeded.
-        # - **fail**: Execution failed.
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
 
     def validate(self):

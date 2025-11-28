@@ -12,9 +12,16 @@ class CreateIndexResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The job ID. It can be used to query the job status or cancel the job.
         self.job_id = job_id
+        # The returned message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
 
     def validate(self):

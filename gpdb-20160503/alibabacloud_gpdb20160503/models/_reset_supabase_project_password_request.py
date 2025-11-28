@@ -11,10 +11,19 @@ class ResetSupabaseProjectPasswordRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # The password of the database account.
+        # 
+        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # *   The password must be 8 to 32 characters in length.
+        # 
         # This parameter is required.
         self.account_password = account_password
+        # Supabase Instance ID
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

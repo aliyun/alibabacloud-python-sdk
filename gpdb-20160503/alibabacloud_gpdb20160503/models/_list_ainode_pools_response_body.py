@@ -13,7 +13,9 @@ class ListAINodePoolsResponseBody(DaraModel):
         ainode_pool_infos: List[main_models.ListAINodePoolsResponseBodyAINodePoolInfos] = None,
         request_id: str = None,
     ):
+        # Details of the AI node resource pool.
         self.ainode_pool_infos = ainode_pool_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class ListAINodePoolsResponseBodyAINodePoolInfos(DaraModel):
         ainode_pool_id: str = None,
         node_num: str = None,
     ):
+        # AI node details.
         self.ainode_infos = ainode_infos
+        # The ID of the resource pool to which the AI node belongs.
         self.ainode_pool_id = ainode_pool_id
+        # The number of nodes.
         self.node_num = node_num
 
     def validate(self):
@@ -112,12 +117,50 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
         node_spec: str = None,
         update_time: str = None,
     ):
+        # The binding type of the AI node.
         self.bind_object = bind_object
+        # The status of the AI node.
+        # 
+        # *   unbound: The node is not bound.
+        # *   bound: The node is bound.
         self.bind_status = bind_status
+        # The creation time.
         self.create_time = create_time
+        # The namespace.
         self.namespace = namespace
+        # The name of the AI node.
         self.node_name = node_name
+        # The AI node specifications. The list of supported specifications is shown below.
+        # 
+        #     ADB.AIMedium.1
+        #     ADB.AILarge.1
+        #     ADB.AIStandard.2
+        #     ADB.AIMedium.2
+        #     ADB.AILarge.2
+        #     ADB.AIXLarge.2
+        #     ADB.AIStandard.6
+        #     ADB.AIMedium.6
+        #     ADB.AILarge.6
+        #     ADB.AIXLarge.6
+        #     ADB.AIStandard.3
+        #     ADB.AIMedium.3
+        #     ADB.AILarge.3
+        #     ADB.AIXLarge.3
+        #     ADB.AIStandard.4
+        #     ADB.AIMedium.4
+        #     ADB.AILarge.4
+        #     ADB.AIXLarge.4
+        #     ADB.AIStandard.5
+        #     ADB.AIMedium.5
+        #     ADB.AILarge.5
+        #     ADB.AIXLarge.5
+        #     ADB.AIStandard.8
+        #     ADB.AIMedium.8
+        #     ADB.AILarge.8
+        #     ADB.AIXLarge.8
+        #     ADB.AI2XLarge.8
         self.node_spec = node_spec
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

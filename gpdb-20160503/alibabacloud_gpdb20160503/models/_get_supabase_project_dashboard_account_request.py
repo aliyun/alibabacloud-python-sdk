@@ -10,8 +10,11 @@ class GetSupabaseProjectDashboardAccountRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # The Supabase project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

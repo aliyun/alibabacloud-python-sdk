@@ -13,9 +13,16 @@ class DescribeCreateIndexJobResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The details of the index creation job.
         self.job = job
+        # The returned message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**.
+        # *   **fail**.
         self.status = status
 
     def validate(self):
@@ -69,13 +76,28 @@ class DescribeCreateIndexJobResponseBodyJob(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # Indicates whether the operation is complete.
         self.completed = completed
+        # The job creation time.
         self.create_time = create_time
+        # The error message that is returned when the current operation is abnormal or fails.
         self.error = error
-        # Job ID。
+        # The job ID.
         self.id = id
+        # The progress of the index creation job. Unit: %. A value of 100 indicates that the job is complete.
+        # 
+        # > 
+        # 
+        # *   Only AnalyticDB for PostgreSQL V7.0 supports the Progress parameter.
         self.progress = progress
+        # The status of the job. Valid values:
+        # 
+        # *   **Success.**
+        # *   **Failed** (See the Error parameter for failure reasons).
+        # *   **Cancelled.**
+        # *   **Running.
         self.status = status
+        # The job last updated time.
         self.update_time = update_time
 
     def validate(self):

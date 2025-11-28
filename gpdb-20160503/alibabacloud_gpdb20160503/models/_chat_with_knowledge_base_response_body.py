@@ -16,10 +16,18 @@ class ChatWithKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # model response.
         self.chat_completion = chat_completion
+        # The returned information.
         self.message = message
+        # Retrieve information from multiple knowledge bases.
         self.multi_collection_recall_result = multi_collection_recall_result
+        # The unique ID of the request.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
 
     def validate(self):
@@ -82,12 +90,22 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult(DaraModel):
         tokens: int = None,
         usage: main_models.ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage = None,
     ):
+        # The details of the entity.
         self.entities = entities
+        # The retrieved items.
         self.matches = matches
+        # The name of the file.
         self.relations = relations
+        # Request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
+        # The number of tokens that are consumed.
         self.tokens = tokens
+        # The number of tokens that are consumed during document understanding or embedding.
         self.usage = usage
 
     def validate(self):
@@ -162,6 +180,9 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage(DaraMode
         self,
         embedding_tokens: int = None,
     ):
+        # The number of tokens that are used during vectorization.
+        # 
+        # >  A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
         self.embedding_tokens = embedding_tokens
 
     def validate(self):
@@ -198,15 +219,27 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
         score: float = None,
         vector: List[float] = None,
     ):
+        # The content of the document.
         self.content = content
+        # The file name.
         self.file_name = file_name
+        # The URL of the image result. By default, the URL is valid for 2 hours.
+        # 
+        # You can use the UrlExpiration parameter to specify a validity period.
         self.file_url = file_url
+        # The unique ID of the vector data.
         self.id = id
+        # Document loader metadata.
         self.loader_metadata = loader_metadata
+        # The metadata.
         self.metadata = metadata
+        # The rerank score.
         self.rerank_score = rerank_score
+        # The source of the retrieved results. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path retrieval.
         self.retrieval_source = retrieval_source
+        # The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
         self.score = score
+        # The vector data.
         self.vector = vector
 
     def validate(self):
@@ -290,6 +323,7 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadat
         self,
         source: int = None,
     ):
+        # The source of the document.
         self.source = source
 
     def validate(self):
@@ -321,10 +355,15 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletion(DaraModel):
         model: str = None,
         usage: main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionUsage = None,
     ):
+        # Text content generated in real time.
         self.choices = choices
+        # The creation time.
         self.created = created
+        # The ID of the response.
         self.id = id
+        # The name of the model.
         self.model = model
+        # The number of tokens used in LLM output.
         self.usage = usage
 
     def validate(self):
@@ -390,9 +429,13 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionUsage(DaraModel):
         prompt_tokens_details: main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails = None,
         total_tokens: int = None,
     ):
+        # The number of tokens consumed by the generated content.
         self.completion_tokens = completion_tokens
+        # The number of tokens consumed by the prompt.
         self.prompt_tokens = prompt_tokens
+        # The details about the prompt token.
         self.prompt_tokens_details = prompt_tokens_details
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -440,6 +483,7 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails(Da
         self,
         cached_tokens: int = None,
     ):
+        # The number of tokens from cache hits.
         self.cached_tokens = cached_tokens
 
     def validate(self):
@@ -469,8 +513,11 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoices(DaraModel):
         index: int = None,
         message: main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage = None,
     ):
+        # Finish reason.
         self.finish_reason = finish_reason
+        # The sequence number of the reply.
         self.index = index
+        # LLM response.
         self.message = message
 
     def validate(self):
@@ -515,9 +562,17 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage(DaraModel):
         role: str = None,
         tool_calls: List[main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls] = None,
     ):
+        # The content of the document.
         self.content = content
+        # 模型思维内容
         self.reasoning_content = reasoning_content
+        # Message role:
+        # 
+        # *   system
+        # *   user
+        # *   assistant
         self.role = role
+        # Tool call response.
         self.tool_calls = tool_calls
 
     def validate(self):
@@ -573,9 +628,11 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls(Dar
         id: str = None,
         index: int = None,
     ):
+        # Function call information.
         self.function = function
         # ID
         self.id = id
+        # The position of this tool in the \\"input\\" request parameter.
         self.index = index
 
     def validate(self):
@@ -618,7 +675,9 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunc
         arguments: str = None,
         name: str = None,
     ):
+        # Arguments of the called function.
         self.arguments = arguments
+        # The name of the called function.
         self.name = name
 
     def validate(self):

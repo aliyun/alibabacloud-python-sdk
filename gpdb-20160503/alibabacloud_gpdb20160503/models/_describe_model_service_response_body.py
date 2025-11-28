@@ -22,17 +22,29 @@ class DescribeModelServiceResponseBody(DaraModel):
         security_ip_list: str = None,
         status: str = None,
     ):
+        # The list of AI nodes.
         self.ai_nodes = ai_nodes
+        # The API key.
         self.api_key = api_key
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The model name.
         self.model_name = model_name
+        # Model parameters.
         self.model_params = model_params
+        # The model service ID.
         self.model_service_id = model_service_id
+        # The internal endpoint.
         self.private_connect_url = private_connect_url
+        # The public endpoint.
         self.public_connect_url = public_connect_url
+        # Request ID.
         self.request_id = request_id
+        # A comma-separated list of IP addresses and CIDR blocks allowed to connect.
         self.security_ip_list = security_ip_list
+        # The status of the model service.
         self.status = status
 
     def validate(self):

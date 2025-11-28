@@ -10,8 +10,13 @@ class GetSupabaseProjectApiKeysRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # The Supabase project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

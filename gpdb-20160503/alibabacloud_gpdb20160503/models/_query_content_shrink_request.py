@@ -59,7 +59,9 @@ class QueryContentShrinkRequest(DaraModel):
         # > 
         # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
         self.filter = filter
+        # Whether to enable knowledge graph enhancement. Default value: false.
         self.graph_enhance = graph_enhance
+        # The search parameters of the knowledge graph.
         self.graph_search_args_shrink = graph_search_args_shrink
         # Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
         # 
@@ -116,7 +118,13 @@ class QueryContentShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
+        # Offset, used for paginated queries.
         self.offset = offset
+        # The fields by which to sort the results. This parameter is empty by default.
+        # 
+        # The field must be either a metadata field or a default field in the table (e.g., id). Supported formats include:
+        # 
+        # Single field, such as chunk_id. Multiple fields that are separated by commas (,), such as block_id,chunk_id. Descending order is supported, e.g., block_id DESC, chunk_id DESC.
         self.order_by = order_by
         self.owner_id = owner_id
         # Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
@@ -131,8 +139,17 @@ class QueryContentShrinkRequest(DaraModel):
         # > - Re-ranking is slower when documents are sparsely split.
         # > - It is recommended that the re-ranked count (TopK * Factor, rounded up) does not exceed 50.
         self.rerank_factor = rerank_factor
-        # Set the number of top results to return.
+        # The number of the returned top results.
         self.top_k = top_k
+        # The validity period of the returned image URL.
+        # 
+        # >  Value Description
+        # 
+        # *   Supported units are seconds (s) and days (d). For example, 300s specifies that the URL is valid for 300 seconds, and 60d specifies that the URL is valid for 60 days.
+        # 
+        # *   Valid values: 60s to 365d.
+        # 
+        # *   Default value: 7200s, that is, 2 hours.
         self.url_expiration = url_expiration
         # Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
         self.use_full_text_retrieval = use_full_text_retrieval

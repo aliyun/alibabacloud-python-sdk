@@ -10,7 +10,9 @@ class CreateBackupResponseBody(DaraModel):
         backup_job_id: int = None,
         request_id: str = None,
     ):
+        # The backup job ID.
         self.backup_job_id = backup_job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -43,32 +43,33 @@ class UploadDocumentAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the document loader. You do not need to specify this parameter. A document loader is automatically specified based on the file extension. Valid values:
+        # Specifies the document loader to use for processing the file. If this parameter is omitted, the system automatically selects a loader based on the file\\"s extension.Valid Values:[List of valid loader names would go here] Valid values:
         # 
-        # *   UnstructuredHTMLLoader: `.html`
-        # *   UnstructuredMarkdownLoader: `.md`
-        # *   PyMuPDFLoader: `.pdf`
-        # *   PyPDFLoader: `.pdf`
-        # *   RapidOCRPDFLoader: `.pdf`
-        # *   PDFWithImageRefLoader: `.pdf` (with the text-image association feature)
-        # *   JSONLoader: `.json`
-        # *   CSVLoader: `.csv`
-        # *   RapidOCRLoader: `.png`, `.jpg`, `.jpeg`, and `.bmp`
-        # *   UnstructuredFileLoader: `.eml`, `.msg`, `.rst`, `.txt`, `.docx`, `.epub`, `.odt`, `.pptx`, and `.tsv`
+        # *   UnstructuredHTMLLoader: .html
+        # *   UnstructuredMarkdownLoader: .md
+        # *   PyMuPDFLoader: .pdf
+        # *   PyPDFLoader: .pdf
+        # *   RapidOCRPDFLoader: .pdf
+        # *   PDFWithImageRefLoader: .pdf (with the text-image association feature)
+        # *   JSONLoader: .json
+        # *   CSVLoader: .csv
+        # *   RapidOCRLoader: .png, .jpg, .jpeg, and .bmp
+        # *   UnstructuredFileLoader: .eml, .msg, .rst, .txt, .docx, .epub, .odt, .pptx, and .tsv
+        # *   ADBPGLoader (free of charge for the first 3,000 pages): .pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .xlsm, .csv, .txt, .jpg, .jpeg, .png, .bmp, .gif, .md, .html, .epub, .mobi, and .rtf
         self.document_loader_name = document_loader_name
         # Specifies whether to perform only document understanding and chunking, but not vectorization and storage. Default value: false.
         # 
         # >  You can set this parameter to true, check the chunking effect, and then perform optimization if needed.
         self.dry_run = dry_run
-        # The file name of the document.
+        # The name of the file being uploaded.
         # 
         # > 
         # 
-        # *   We recommend that you add an extension to the file name. Examples: `.json`, `.md`, and `.pdf`. If you do not add an extension, the default loader designed for unstructured data is used.
+        # *   File name: .json, .md, and .pdf.
         # 
-        # *   If an image file is involved, the file name must contain an extension. The following extensions are supported: `.bmp`, `.jpg`, `.jpeg`, `.png`, and `.tiff`.
+        # *   Images: .bmp,. jpg,. jpeg,. png, and. tiff.
         # 
-        # *   You can use a compressed package to upload images. The package file name must contain an extension. Supported package file extensions: `.tar`, `.gz`, and `.zip`.
+        # *   Compressed packages. The package file name must contain an extension: .tar, .gz, and .zip.
         # 
         # This parameter is required.
         self.file_name = file_name
@@ -98,14 +99,27 @@ class UploadDocumentAsyncRequest(DaraModel):
         # 
         # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators = separators
-        self.splitter_model = splitter_model
-        # The name of the splitter. Valid values:
+        # When DocumentLoaderName is set to ADBPGLoader and TextSplitterName is set to LLMSplitter, you can specify the splitting model. Default Value: qwen3-8b.
         # 
-        # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
-        # *   **RecursiveCharacterTextSplitter**: uses `["\\n\\n", "\\n", " ", ""]` as separators by default. The splitter supports splitting code in languages such as `C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp`.
-        # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
-        # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
+        # >  Supported splitting models: qwq-plus, qwq-plus-latest, qwen-max, qwen-max-latest, qwen-plus, qwen-plus-latest, qwen-turbo, qwen-turbo-latest, qwen3-235b-a22b, qwen3-32b,qwen3-30b-a3b, qwen3-14b, qwen3-8b, qwen3-4b, qwen3-1.7b, qwen3-0.6b, qwq-32b qwen2.5-14b-instruct-1m, qwen2.5-7b-instruct-1m, qwen2.5-72b-Instruct, qwen2.5-32b-Instruct, qwen2.5-14b-Instruct, qwen2.5-7b-Instruct, qwen2.5-3b-instruct, qwen2.5-1.5b-instruct, qwen2.5-0.5b-instruct.
+        self.splitter_model = splitter_model
+        # The name of the separator. Valid values:
+        # 
+        # *   **ChineseRecursiveTextSplitter**: Inherits from RecursiveCharacterTextSplitter and, by default, uses the delimiters` ["\\n\\n","\\n", "。 |! |?", "\\.\\s|\\! \\s|\\?\\s", ";|;\\s", ",|,\\s"]  `, employing regular expressions to match text.
+        # *   **RecursiveCharacterTextSplitter**: Uses the delimiters `["\\n\\n", "\\n", " ", ""]` by default. The splitter supports splitting code in languages such as C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp.
+        # *   **SpacyTextSplitter**: Uses the delimiters `\\n\\n` by default and leverages the spaCy en_core_web_sm model. The splitter can achieve better text splitting performance.
+        # *   **MarkdownHeaderTextSplitter**: Splits text in the [("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4") format. This splitter works well with Markdown text.
+        # *   **LLMSplitter**: Use LLM to split text. The default model is qwen3-8b. Currently, this splitter works only when ADBPGLoader is selected.
         self.text_splitter_name = text_splitter_name
+        # Specifies whether to enable VL-enhanced content recognition for complex documents. Default value: false.
+        # 
+        # > 
+        # 
+        # *   For complex documents with confusing typesetting and formatting, we recommend that you enable VL-enhanced content recognition.
+        # 
+        # *   Document processing time is longer after VL-enhanced content recognition is enabled.
+        # 
+        # *   After VL-enhanced content recognition is enabled, images in documents cannot be stored or recalled.
         self.vl_enhance = vl_enhance
         # Specifies whether to enable title enhancement.
         # 

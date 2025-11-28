@@ -17,18 +17,41 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         source_collection_shrink: str = None,
         top_k: int = None,
     ):
+        # The text content for retrieval.
+        # 
         # This parameter is required.
         self.content = content
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The method used to merge multiple knowledge bases. Default value: RRF. Valid values:
+        # 
+        # *   RRF
+        # *   Weight
         self.merge_method = merge_method
+        # The parameters of the merge method for each SourceCollection.
         self.merge_method_args_shrink = merge_method_args_shrink
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The rerank factor. If you specify this parameter, the vector retrieval results are reranked once more. Valid values: 1\\<RerankFactor<=5.
+        # 
+        # > 
+        # 
+        # *   If the document is segmented into sparse parts, reranking is inefficient.
+        # 
+        # *   We recommend that the number of reranked results (the ceiling of TopK × RerankFactor) not exceed 50.
         self.rerank_factor = rerank_factor
+        # The information about collections to retrieve from.
+        # 
         # This parameter is required.
         self.source_collection_shrink = source_collection_shrink
+        # Set the number of top results to be returned after merging results from multiple path retrieval.
         self.top_k = top_k
 
     def validate(self):

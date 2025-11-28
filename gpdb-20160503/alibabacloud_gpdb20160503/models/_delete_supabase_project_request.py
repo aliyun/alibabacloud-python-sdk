@@ -10,8 +10,11 @@ class DeleteSupabaseProjectRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # The Supabase project ID. You can go to the Supabase page in the AnalyticDB for PostgreSQL console to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

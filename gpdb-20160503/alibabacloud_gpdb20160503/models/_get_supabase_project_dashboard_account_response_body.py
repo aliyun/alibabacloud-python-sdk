@@ -13,10 +13,15 @@ class GetSupabaseProjectDashboardAccountResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
+        # The username for accessing the project\\"s dashboard.
         self.dashboard_password = dashboard_password
+        # The password associated with the dashboard username.
         self.dashboard_username = dashboard_username
+        # The ID of the Supabase project.
         self.project_id = project_id
+        # The name of the Supabase project.
         self.project_name = project_name
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

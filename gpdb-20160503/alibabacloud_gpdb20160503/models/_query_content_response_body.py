@@ -24,11 +24,13 @@ class QueryContentResponseBody(DaraModel):
         # 
         # > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
         self.embedding_tokens = embedding_tokens
+        # The entities.
         self.entities = entities
         # The retrieved data.
         self.matches = matches
         # Return message.
         self.message = message
+        # The list of relationship edges.
         self.relations = relations
         # The request ID.
         self.request_id = request_id
@@ -372,10 +374,15 @@ class QueryContentResponseBodyRelationsRelations(DaraModel):
         source_entity: str = None,
         target_entity: str = None,
     ):
+        # The description of the relationship edge.
         self.description = description
+        # The file name.
         self.file_name = file_name
+        # The ID of the relationship edge.
         self.id = id
+        # The source entity.
         self.source_entity = source_entity
+        # The destination entity.
         self.target_entity = target_entity
 
     def validate(self):
@@ -649,10 +656,15 @@ class QueryContentResponseBodyEntitiesEntities(DaraModel):
         id: str = None,
         type: str = None,
     ):
+        # Entity description.
         self.description = description
+        # The entity name.
         self.entity = entity
+        # The file name.
         self.file_name = file_name
+        # The entity ID.
         self.id = id
+        # The entity type.
         self.type = type
 
     def validate(self):

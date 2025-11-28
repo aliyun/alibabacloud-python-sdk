@@ -13,7 +13,9 @@ class ListSupportModelsResponseBody(DaraModel):
         model_names: main_models.ListSupportModelsResponseBodyModelNames = None,
         request_id: str = None,
     ):
+        # The list of supported model names.
         self.model_names = model_names
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

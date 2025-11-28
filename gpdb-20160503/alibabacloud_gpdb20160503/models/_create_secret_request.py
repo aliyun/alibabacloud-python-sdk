@@ -40,6 +40,7 @@ class CreateSecretRequest(DaraModel):
         # 
         # This parameter is required.
         self.username = username
+        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

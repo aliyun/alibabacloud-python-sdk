@@ -12,9 +12,16 @@ class EnableCollectionGraphRAGResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The ID of the job. You can use the `GetGraphRAGJob` to view the job status.
         self.job_id = job_id
+        # The response message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
 
     def validate(self):

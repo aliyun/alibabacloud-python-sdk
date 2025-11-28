@@ -12,11 +12,36 @@ class ModifyDBInstanceDeploymentModeRequest(DaraModel):
         standby_vswitch_id: str = None,
         standby_zone_id: str = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The deployment mode. Valid values:
+        # 
+        # *   multiple: Multi-zone development.
+        # *   single: Single-zone deployment.
+        # 
         # This parameter is required.
         self.deploy_mode = deploy_mode
+        # The vSwitch ID of the secondary zone.
+        # 
+        # > 
+        # 
+        # *   This parameter must be specified only when DeployMode is set to multiple.
+        # 
+        # *   The vSwitch must be deployed in the zone that is specified by the StandbyZoneId parameter.
         self.standby_vswitch_id = standby_vswitch_id
+        # The ID of the secondary zone.
+        # 
+        # > 
+        # 
+        # *   This parameter must be specified only when DeployMode is set to multiple.
+        # 
+        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available zone list.
+        # 
+        # *   The ID of the secondary zone must be different from the ID of the primary zone.
         self.standby_zone_id = standby_zone_id
 
     def validate(self):

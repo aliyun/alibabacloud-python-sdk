@@ -10,6 +10,8 @@ class ListAINodePoolsRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Region ID

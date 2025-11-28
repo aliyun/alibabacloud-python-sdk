@@ -27,24 +27,56 @@ class GetSupabaseProjectResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The Supabase Dashboard password (Not Used)
         self.dashboard_password = dashboard_password
+        # The Supabase Dashboard user name (Not Used)
         self.dashboard_user_name = dashboard_user_name
+        # The Enterprise SSD (ESSD) performance level of the cluster. Valid values:
+        # 
+        # *   PL0
+        # *   PL1
         self.disk_performance_level = disk_performance_level
+        # The type of the database engine.
         self.engine = engine
+        # The version of the database engine.
         self.engine_version = engine_version
+        # The private (VPC) connection URL for the Supabase Dashboard.
         self.private_connect_url = private_connect_url
+        # The Supabase instance ID.
         self.project_id = project_id
+        # The name of the Supabase project.
         self.project_name = project_name
+        # The performance level of the Supabase instance.
         self.project_spec = project_spec
+        # The public connection URL for the Supabase Dashboard.
         self.public_connect_url = public_connect_url
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The unique ID of the request.
         self.request_id = request_id
+        # A comma-separated list of IP addresses and CIDR blocks allowed to connect.
         self.security_ip_list = security_ip_list
+        # The status of the Supabase instance.
         self.status = status
+        # The storage capacity of the instance. Unit: GB.
         self.storage_size = storage_size
+        # The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
+        # 
+        # *   This parameter is required.
         self.vpc_id = vpc_id
+        # The zone ID.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
         self.zone_id = zone_id
 
     def validate(self):

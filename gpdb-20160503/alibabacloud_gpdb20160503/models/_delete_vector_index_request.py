@@ -47,6 +47,10 @@ class DeleteVectorIndexRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The vector type. Valid values:
+        # 
+        # *   Dense (default)
+        # *   Sparse
         self.type = type
 
     def validate(self):

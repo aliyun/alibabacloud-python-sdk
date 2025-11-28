@@ -10,8 +10,16 @@ class DeleteBackupRequest(DaraModel):
         backup_id: str = None,
         dbinstance_id: str = None,
     ):
+        # The backup set ID.
+        # 
+        # >  You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the IDs of all backup sets in an instance.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
 

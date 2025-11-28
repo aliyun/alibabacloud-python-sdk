@@ -15,10 +15,16 @@ class ListIndicesResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The queried indexes.
         self.indices = indices
+        # The returned message.
         self.message = message
         # Request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**.
+        # *   **fail**.
         self.status = status
 
     def validate(self):
@@ -104,9 +110,13 @@ class ListIndicesResponseBodyIndicesIndices(DaraModel):
         index_name: str = None,
         namespace: str = None,
     ):
+        # The name of the collection.
         self.collection = collection
+        # The definition of the index.
         self.index_def = index_def
+        # The name of the index.
         self.index_name = index_name
+        # The namespace to which the pod belongs.
         self.namespace = namespace
 
     def validate(self):

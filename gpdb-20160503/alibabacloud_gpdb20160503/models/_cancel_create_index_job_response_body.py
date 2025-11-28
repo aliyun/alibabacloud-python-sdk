@@ -11,8 +11,14 @@ class CancelCreateIndexJobResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**
+        # *   **fail**
         self.status = status
 
     def validate(self):

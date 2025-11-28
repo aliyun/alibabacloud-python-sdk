@@ -13,7 +13,9 @@ class ListBackupJobsResponseBody(DaraModel):
         items: main_models.ListBackupJobsResponseBodyItems = None,
         request_id: str = None,
     ):
+        # The queried backup jobs.
         self.items = items
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,10 +90,21 @@ class ListBackupJobsResponseBodyItemsBackupJob(DaraModel):
         process: str = None,
         start_time: str = None,
     ):
+        # The backup job ID.
         self.backup_job_id = backup_job_id
+        # The backup mode. Valid values:
+        # 
+        # *   **Automated**
+        # *   **Manual**
         self.backup_mode = backup_mode
+        # The backup status. Valid values:
+        # 
+        # *   **Success**
+        # *   **Failure**
         self.backup_status = backup_status
+        # The progress of the backup job.
         self.process = process
+        # The time when the backup job started. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

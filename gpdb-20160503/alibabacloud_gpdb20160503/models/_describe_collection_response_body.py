@@ -47,12 +47,14 @@ class DescribeCollectionResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        # The method that is used to create sparse vector indexes.
         self.sparse_vector_metrics = sparse_vector_metrics
         # Indicates whether the request was successful. Valid values:
         # 
         # *   **success**
         # *   **fail**
         self.status = status
+        # Indicates whether sparse vectors are supported.
         self.support_sparse = support_sparse
 
     def validate(self):

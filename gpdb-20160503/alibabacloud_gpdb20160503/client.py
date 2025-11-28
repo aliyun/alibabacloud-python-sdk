@@ -13,6 +13,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore
 from darabonba.core import DaraCore as DaraCore
+from darabonba.exceptions import UnretryableException
+from darabonba.policy.retry import RetryPolicyContext
 from darabonba.request import DaraRequest
 from darabonba.runtime import RuntimeOptions
 from darabonba.utils.form import FileField
@@ -52,73 +54,153 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         form: dict,
+        runtime: RuntimeOptions,
     ) -> dict:
-        _request = DaraRequest()
-        boundary = DaraForm.get_boundary()
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': str(form.get("host")),
-            'date': Utils.get_date_utcstring(),
-            'user-agent': Utils.get_user_agent('')
+        _runtime = {
+            'key': runtime.key or self._key,
+            'cert': runtime.cert or self._cert,
+            'ca': runtime.ca or self._ca,
+            'readTimeout': DaraCore.to_number(runtime.read_timeout or self._read_timeout),
+            'connectTimeout': DaraCore.to_number(runtime.connect_timeout or self._connect_timeout),
+            'httpProxy': runtime.http_proxy or self._http_proxy,
+            'httpsProxy': runtime.https_proxy or self._https_proxy,
+            'noProxy': runtime.no_proxy or self._no_proxy,
+            'socks5Proxy': runtime.socks_5proxy or self._socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work or self._socks_5net_work,
+            'maxIdleConns': DaraCore.to_number(runtime.max_idle_conns or self._max_idle_conns),
+            'retryOptions': self._retry_options,
+            'ignoreSSL': bool(runtime.ignore_ssl or False),
+            'tlsMinVersion': self._tls_min_version,
         }
-        _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
-        _request.body = DaraForm.to_file_form(form, boundary)
-        _last_request = _request
-        _response = DaraCore.do_action(_request)
-        resp_map = None
-        body_str = DaraStream.read_as_string(_response.body)
-        if (_response.status_code >= 400) and (_response.status_code < 600):
-            resp_map = DaraXML.parse_xml(body_str, None)
-            err = resp_map.get("Error")
-            raise open_api_exceptions.ClientException(
-                code = str(err.get("Code")),
-                message = str(err.get("Message")),
-                data = {
-                    'httpCode': _response.status_code,
-                    'requestId': str(err.get("RequestId")),
-                    'hostId': str(err.get("HostId"))
+        _last_request = None
+        _last_response = None
+        _retries_attempted = 0
+        _context = RetryPolicyContext(
+            retries_attempted= _retries_attempted
+        )
+        while DaraCore.should_retry(_runtime.get('retryOptions'), _context):
+            if _retries_attempted > 0:
+                _backoff_time = DaraCore.get_backoff_time(_runtime.get('retryOptions'), _context)
+                if _backoff_time > 0:
+                    DaraCore.sleep(_backoff_time)
+            _retries_attempted = _retries_attempted + 1
+            try:
+                _request = DaraRequest()
+                boundary = DaraForm.get_boundary()
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': str(form.get("host")),
+                    'date': Utils.get_date_utcstring(),
+                    'user-agent': Utils.get_user_agent('')
                 }
-            )
-        resp_map = DaraXML.parse_xml(body_str, None)
-        return DaraCore.merge({}, resp_map)
+                _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
+                _request.body = DaraForm.to_file_form(form, boundary)
+                _last_request = _request
+                _response = DaraCore.do_action(_request, _runtime)
+                _last_response = _response
+                resp_map = None
+                body_str = DaraStream.read_as_string(_response.body)
+                if (_response.status_code >= 400) and (_response.status_code < 600):
+                    resp_map = DaraXML.parse_xml(body_str, None)
+                    err = resp_map.get("Error")
+                    raise open_api_exceptions.ClientException(
+                        code = str(err.get("Code")),
+                        message = str(err.get("Message")),
+                        data = {
+                            'httpCode': _response.status_code,
+                            'requestId': str(err.get("RequestId")),
+                            'hostId': str(err.get("HostId"))
+                        }
+                    )
+                resp_map = DaraXML.parse_xml(body_str, None)
+                return DaraCore.merge({}, resp_map)
+            except Exception as e:
+                _context = RetryPolicyContext(
+                    retries_attempted= _retries_attempted,
+                    http_request = _last_request,
+                    http_response = _last_response,
+                    exception = e
+                )
+                continue
+        raise UnretryableException(_context)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         form: dict,
+        runtime: RuntimeOptions,
     ) -> dict:
-        _request = DaraRequest()
-        boundary = DaraForm.get_boundary()
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': str(form.get("host")),
-            'date': Utils.get_date_utcstring(),
-            'user-agent': Utils.get_user_agent('')
+        _runtime = {
+            'key': runtime.key or self._key,
+            'cert': runtime.cert or self._cert,
+            'ca': runtime.ca or self._ca,
+            'readTimeout': DaraCore.to_number(runtime.read_timeout or self._read_timeout),
+            'connectTimeout': DaraCore.to_number(runtime.connect_timeout or self._connect_timeout),
+            'httpProxy': runtime.http_proxy or self._http_proxy,
+            'httpsProxy': runtime.https_proxy or self._https_proxy,
+            'noProxy': runtime.no_proxy or self._no_proxy,
+            'socks5Proxy': runtime.socks_5proxy or self._socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work or self._socks_5net_work,
+            'maxIdleConns': DaraCore.to_number(runtime.max_idle_conns or self._max_idle_conns),
+            'retryOptions': self._retry_options,
+            'ignoreSSL': bool(runtime.ignore_ssl or False),
+            'tlsMinVersion': self._tls_min_version,
         }
-        _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
-        _request.body = DaraForm.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await DaraCore.async_do_action(_request)
-        resp_map = None
-        body_str = await DaraStream.read_as_string_async(_response.body)
-        if (_response.status_code >= 400) and (_response.status_code < 600):
-            resp_map = DaraXML.parse_xml(body_str, None)
-            err = resp_map.get("Error")
-            raise open_api_exceptions.ClientException(
-                code = str(err.get("Code")),
-                message = str(err.get("Message")),
-                data = {
-                    'httpCode': _response.status_code,
-                    'requestId': str(err.get("RequestId")),
-                    'hostId': str(err.get("HostId"))
+        _last_request = None
+        _last_response = None
+        _retries_attempted = 0
+        _context = RetryPolicyContext(
+            retries_attempted= _retries_attempted
+        )
+        while DaraCore.should_retry(_runtime.get('retryOptions'), _context):
+            if _retries_attempted > 0:
+                _backoff_time = DaraCore.get_backoff_time(_runtime.get('retryOptions'), _context)
+                if _backoff_time > 0:
+                    DaraCore.sleep(_backoff_time)
+            _retries_attempted = _retries_attempted + 1
+            try:
+                _request = DaraRequest()
+                boundary = DaraForm.get_boundary()
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': str(form.get("host")),
+                    'date': Utils.get_date_utcstring(),
+                    'user-agent': Utils.get_user_agent('')
                 }
-            )
-        resp_map = DaraXML.parse_xml(body_str, None)
-        return DaraCore.merge({}, resp_map)
+                _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
+                _request.body = DaraForm.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await DaraCore.async_do_action(_request, _runtime)
+                _last_response = _response
+                resp_map = None
+                body_str = await DaraStream.read_as_string_async(_response.body)
+                if (_response.status_code >= 400) and (_response.status_code < 600):
+                    resp_map = DaraXML.parse_xml(body_str, None)
+                    err = resp_map.get("Error")
+                    raise open_api_exceptions.ClientException(
+                        code = str(err.get("Code")),
+                        message = str(err.get("Message")),
+                        data = {
+                            'httpCode': _response.status_code,
+                            'requestId': str(err.get("RequestId")),
+                            'hostId': str(err.get("HostId"))
+                        }
+                    )
+                resp_map = DaraXML.parse_xml(body_str, None)
+                return DaraCore.merge({}, resp_map)
+            except Exception as e:
+                _context = RetryPolicyContext(
+                    retries_attempted= _retries_attempted,
+                    http_request = _last_request,
+                    http_response = _last_response,
+                    exception = e
+                )
+                continue
+        raise UnretryableException(_context)
 
     def get_endpoint(
         self,
@@ -1980,6 +2062,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
 
+    def create_dbinstance_iparray_with_options(
+        self,
+        tmp_req: main_models.CreateDBInstanceIPArrayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBInstanceIPArrayResponse:
+        tmp_req.validate()
+        request = main_models.CreateDBInstanceIPArrayShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.security_iplist):
+            request.security_iplist_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_iplist, 'SecurityIPList', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.iparray_attribute):
+            query['IPArrayAttribute'] = request.iparray_attribute
+        if not DaraCore.is_null(request.iparray_name):
+            query['IPArrayName'] = request.iparray_name
+        if not DaraCore.is_null(request.security_iplist_shrink):
+            query['SecurityIPList'] = request.security_iplist_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDBInstanceIPArray',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDBInstanceIPArrayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dbinstance_iparray_with_options_async(
+        self,
+        tmp_req: main_models.CreateDBInstanceIPArrayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBInstanceIPArrayResponse:
+        tmp_req.validate()
+        request = main_models.CreateDBInstanceIPArrayShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.security_iplist):
+            request.security_iplist_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_iplist, 'SecurityIPList', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.iparray_attribute):
+            query['IPArrayAttribute'] = request.iparray_attribute
+        if not DaraCore.is_null(request.iparray_name):
+            query['IPArrayName'] = request.iparray_name
+        if not DaraCore.is_null(request.security_iplist_shrink):
+            query['SecurityIPList'] = request.security_iplist_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDBInstanceIPArray',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDBInstanceIPArrayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dbinstance_iparray(
+        self,
+        request: main_models.CreateDBInstanceIPArrayRequest,
+    ) -> main_models.CreateDBInstanceIPArrayResponse:
+        runtime = RuntimeOptions()
+        return self.create_dbinstance_iparray_with_options(request, runtime)
+
+    async def create_dbinstance_iparray_async(
+        self,
+        request: main_models.CreateDBInstanceIPArrayRequest,
+    ) -> main_models.CreateDBInstanceIPArrayResponse:
+        runtime = RuntimeOptions()
+        return await self.create_dbinstance_iparray_with_options_async(request, runtime)
+
     def create_dbinstance_plan_with_options(
         self,
         request: main_models.CreateDBInstancePlanRequest,
@@ -2163,6 +2335,100 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDBResourceGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_dbresource_group_with_options_async(request, runtime)
+
+    def create_database_with_options(
+        self,
+        request: main_models.CreateDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.character_set_name):
+            query['CharacterSetName'] = request.character_set_name
+        if not DaraCore.is_null(request.collate):
+            query['Collate'] = request.collate
+        if not DaraCore.is_null(request.ctype):
+            query['Ctype'] = request.ctype
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDatabase',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_database_with_options_async(
+        self,
+        request: main_models.CreateDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.character_set_name):
+            query['CharacterSetName'] = request.character_set_name
+        if not DaraCore.is_null(request.collate):
+            query['Collate'] = request.collate
+        if not DaraCore.is_null(request.ctype):
+            query['Ctype'] = request.ctype
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDatabase',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_database(
+        self,
+        request: main_models.CreateDatabaseRequest,
+    ) -> main_models.CreateDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.create_database_with_options(request, runtime)
+
+    async def create_database_async(
+        self,
+        request: main_models.CreateDatabaseRequest,
+    ) -> main_models.CreateDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_database_with_options_async(request, runtime)
 
     def create_document_collection_with_options(
         self,
@@ -4498,6 +4764,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
+    def delete_dbinstance_iparray_with_options(
+        self,
+        request: main_models.DeleteDBInstanceIPArrayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBInstanceIPArrayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.iparray_name):
+            query['IPArrayName'] = request.iparray_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDBInstanceIPArray',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDBInstanceIPArrayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dbinstance_iparray_with_options_async(
+        self,
+        request: main_models.DeleteDBInstanceIPArrayRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBInstanceIPArrayResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.iparray_name):
+            query['IPArrayName'] = request.iparray_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDBInstanceIPArray',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDBInstanceIPArrayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dbinstance_iparray(
+        self,
+        request: main_models.DeleteDBInstanceIPArrayRequest,
+    ) -> main_models.DeleteDBInstanceIPArrayResponse:
+        runtime = RuntimeOptions()
+        return self.delete_dbinstance_iparray_with_options(request, runtime)
+
+    async def delete_dbinstance_iparray_async(
+        self,
+        request: main_models.DeleteDBInstanceIPArrayRequest,
+    ) -> main_models.DeleteDBInstanceIPArrayResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_dbinstance_iparray_with_options_async(request, runtime)
+
     def delete_dbinstance_plan_with_options(
         self,
         request: main_models.DeleteDBInstancePlanRequest,
@@ -4653,6 +4993,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDBResourceGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_dbresource_group_with_options_async(request, runtime)
+
+    def delete_database_with_options(
+        self,
+        request: main_models.DeleteDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDatabase',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_database_with_options_async(
+        self,
+        request: main_models.DeleteDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDatabase',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_database(
+        self,
+        request: main_models.DeleteDatabaseRequest,
+    ) -> main_models.DeleteDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_database_with_options(request, runtime)
+
+    async def delete_database_async(
+        self,
+        request: main_models.DeleteDatabaseRequest,
+    ) -> main_models.DeleteDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_database_with_options_async(request, runtime)
 
     def delete_document_with_options(
         self,
@@ -5420,6 +5834,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
+    def delete_private_ragservice_with_options(
+        self,
+        request: main_models.DeletePrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePrivateRAGServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_private_ragservice_with_options_async(
+        self,
+        request: main_models.DeletePrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePrivateRAGServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_private_ragservice(
+        self,
+        request: main_models.DeletePrivateRAGServiceRequest,
+    ) -> main_models.DeletePrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_private_ragservice_with_options(request, runtime)
+
+    async def delete_private_ragservice_async(
+        self,
+        request: main_models.DeletePrivateRAGServiceRequest,
+    ) -> main_models.DeletePrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_private_ragservice_with_options_async(request, runtime)
+
     def delete_remote_adbdata_source_with_options(
         self,
         request: main_models.DeleteRemoteADBDataSourceRequest,
@@ -5993,6 +6477,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVectorIndexResponse:
         runtime = RuntimeOptions()
         return await self.delete_vector_index_with_options_async(request, runtime)
+
+    def deploy_private_ragservice_with_options(
+        self,
+        request: main_models.DeployPrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeployPrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeployPrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeployPrivateRAGServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_private_ragservice_with_options_async(
+        self,
+        request: main_models.DeployPrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeployPrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeployPrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeployPrivateRAGServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_private_ragservice(
+        self,
+        request: main_models.DeployPrivateRAGServiceRequest,
+    ) -> main_models.DeployPrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return self.deploy_private_ragservice_with_options(request, runtime)
+
+    async def deploy_private_ragservice_async(
+        self,
+        request: main_models.DeployPrivateRAGServiceRequest,
+    ) -> main_models.DeployPrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.deploy_private_ragservice_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
@@ -8496,6 +9058,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_data_share_performance_with_options_async(request, runtime)
 
+    def describe_database_with_options(
+        self,
+        request: main_models.DescribeDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDatabase',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_database_with_options_async(
+        self,
+        request: main_models.DescribeDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDatabase',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_database(
+        self,
+        request: main_models.DescribeDatabaseRequest,
+    ) -> main_models.DescribeDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.describe_database_with_options(request, runtime)
+
+    async def describe_database_async(
+        self,
+        request: main_models.DescribeDatabaseRequest,
+    ) -> main_models.DescribeDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_database_with_options_async(request, runtime)
+
     def describe_diagnosis_dimensions_with_options(
         self,
         request: main_models.DescribeDiagnosisDimensionsRequest,
@@ -9077,6 +9713,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDownloadSQLLogsResponse:
         runtime = RuntimeOptions()
         return await self.describe_download_sqllogs_with_options_async(request, runtime)
+
+    def describe_extension_with_options(
+        self,
+        request: main_models.DescribeExtensionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeExtensionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.extension_name):
+            query['ExtensionName'] = request.extension_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeExtension',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeExtensionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_extension_with_options_async(
+        self,
+        request: main_models.DescribeExtensionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeExtensionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.extension_name):
+            query['ExtensionName'] = request.extension_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeExtension',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeExtensionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_extension(
+        self,
+        request: main_models.DescribeExtensionRequest,
+    ) -> main_models.DescribeExtensionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_extension_with_options(request, runtime)
+
+    async def describe_extension_async(
+        self,
+        request: main_models.DescribeExtensionRequest,
+    ) -> main_models.DescribeExtensionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_extension_with_options_async(request, runtime)
 
     def describe_external_data_service_with_options(
         self,
@@ -10116,6 +10830,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_parameters_with_options_async(request, runtime)
 
+    def describe_private_ragservice_with_options(
+        self,
+        request: main_models.DescribePrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrivateRAGServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_private_ragservice_with_options_async(
+        self,
+        request: main_models.DescribePrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrivateRAGServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_private_ragservice(
+        self,
+        request: main_models.DescribePrivateRAGServiceRequest,
+    ) -> main_models.DescribePrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_private_ragservice_with_options(request, runtime)
+
+    async def describe_private_ragservice_async(
+        self,
+        request: main_models.DescribePrivateRAGServiceRequest,
+    ) -> main_models.DescribePrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_private_ragservice_with_options_async(request, runtime)
+
     def describe_rds_vswitchs_with_options(
         self,
         request: main_models.DescribeRdsVSwitchsRequest,
@@ -10315,6 +11099,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRdsVpcsResponse:
         runtime = RuntimeOptions()
         return await self.describe_rds_vpcs_with_options_async(request, runtime)
+
+    def describe_rebalance_status_with_options(
+        self,
+        request: main_models.DescribeRebalanceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRebalanceStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRebalanceStatus',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRebalanceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rebalance_status_with_options_async(
+        self,
+        request: main_models.DescribeRebalanceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRebalanceStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRebalanceStatus',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRebalanceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rebalance_status(
+        self,
+        request: main_models.DescribeRebalanceStatusRequest,
+    ) -> main_models.DescribeRebalanceStatusResponse:
+        runtime = RuntimeOptions()
+        return self.describe_rebalance_status_with_options(request, runtime)
+
+    async def describe_rebalance_status_async(
+        self,
+        request: main_models.DescribeRebalanceStatusRequest,
+    ) -> main_models.DescribeRebalanceStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_rebalance_status_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -11674,6 +12528,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_waiting_sqlrecords_with_options_async(request, runtime)
 
+    def describe_zones_private_ragservice_with_options(
+        self,
+        request: main_models.DescribeZonesPrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZonesPrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeZonesPrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeZonesPrivateRAGServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_zones_private_ragservice_with_options_async(
+        self,
+        request: main_models.DescribeZonesPrivateRAGServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZonesPrivateRAGServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeZonesPrivateRAGService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeZonesPrivateRAGServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_zones_private_ragservice(
+        self,
+        request: main_models.DescribeZonesPrivateRAGServiceRequest,
+    ) -> main_models.DescribeZonesPrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_zones_private_ragservice_with_options(request, runtime)
+
+    async def describe_zones_private_ragservice_async(
+        self,
+        request: main_models.DescribeZonesPrivateRAGServiceRequest,
+    ) -> main_models.DescribeZonesPrivateRAGServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_zones_private_ragservice_with_options_async(request, runtime)
+
     def disable_dbresource_group_with_options(
         self,
         request: main_models.DisableDBResourceGroupRequest,
@@ -11975,6 +12903,112 @@ class Client(OpenApiClient):
     ) -> main_models.DownloadSQLLogsRecordsResponse:
         runtime = RuntimeOptions()
         return await self.download_sqllogs_records_with_options_async(request, runtime)
+
+    def download_slow_sqlrecords_with_options(
+        self,
+        request: main_models.DownloadSlowSQLRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSlowSQLRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_duration):
+            query['MaxDuration'] = request.max_duration
+        if not DaraCore.is_null(request.min_duration):
+            query['MinDuration'] = request.min_duration
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSlowSQLRecords',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSlowSQLRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_slow_sqlrecords_with_options_async(
+        self,
+        request: main_models.DownloadSlowSQLRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadSlowSQLRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_duration):
+            query['MaxDuration'] = request.max_duration
+        if not DaraCore.is_null(request.min_duration):
+            query['MinDuration'] = request.min_duration
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadSlowSQLRecords',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadSlowSQLRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_slow_sqlrecords(
+        self,
+        request: main_models.DownloadSlowSQLRecordsRequest,
+    ) -> main_models.DownloadSlowSQLRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.download_slow_sqlrecords_with_options(request, runtime)
+
+    async def download_slow_sqlrecords_async(
+        self,
+        request: main_models.DownloadSlowSQLRecordsRequest,
+    ) -> main_models.DownloadSlowSQLRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.download_slow_sqlrecords_with_options_async(request, runtime)
 
     def enable_collection_graph_ragwith_options(
         self,
@@ -13588,6 +14622,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_collections_with_options_async(request, runtime)
 
+    def list_database_extensions_with_options(
+        self,
+        request: main_models.ListDatabaseExtensionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatabaseExtensionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatabaseExtensions',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatabaseExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_database_extensions_with_options_async(
+        self,
+        request: main_models.ListDatabaseExtensionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatabaseExtensionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatabaseExtensions',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatabaseExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_database_extensions(
+        self,
+        request: main_models.ListDatabaseExtensionsRequest,
+    ) -> main_models.ListDatabaseExtensionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_database_extensions_with_options(request, runtime)
+
+    async def list_database_extensions_async(
+        self,
+        request: main_models.ListDatabaseExtensionsRequest,
+    ) -> main_models.ListDatabaseExtensionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_database_extensions_with_options_async(request, runtime)
+
     def list_databases_with_options(
         self,
         request: main_models.ListDatabasesRequest,
@@ -14124,6 +15232,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_indices_with_options_async(request, runtime)
 
+    def list_instance_databases_with_options(
+        self,
+        request: main_models.ListInstanceDatabasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceDatabasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceDatabases',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_databases_with_options_async(
+        self,
+        request: main_models.ListInstanceDatabasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceDatabasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceDatabases',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_databases(
+        self,
+        request: main_models.ListInstanceDatabasesRequest,
+    ) -> main_models.ListInstanceDatabasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_instance_databases_with_options(request, runtime)
+
+    async def list_instance_databases_async(
+        self,
+        request: main_models.ListInstanceDatabasesRequest,
+    ) -> main_models.ListInstanceDatabasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instance_databases_with_options_async(request, runtime)
+
     def list_instance_extensions_with_options(
         self,
         request: main_models.ListInstanceExtensionsRequest,
@@ -14643,6 +15829,120 @@ class Client(OpenApiClient):
     ) -> main_models.ListSecretsResponse:
         runtime = RuntimeOptions()
         return await self.list_secrets_with_options_async(request, runtime)
+
+    def list_slow_sqlrecords_with_options(
+        self,
+        request: main_models.ListSlowSQLRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSlowSQLRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_duration):
+            query['MaxDuration'] = request.max_duration
+        if not DaraCore.is_null(request.min_duration):
+            query['MinDuration'] = request.min_duration
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSlowSQLRecords',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSlowSQLRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_slow_sqlrecords_with_options_async(
+        self,
+        request: main_models.ListSlowSQLRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSlowSQLRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_duration):
+            query['MaxDuration'] = request.max_duration
+        if not DaraCore.is_null(request.min_duration):
+            query['MinDuration'] = request.min_duration
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSlowSQLRecords',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSlowSQLRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_slow_sqlrecords(
+        self,
+        request: main_models.ListSlowSQLRecordsRequest,
+    ) -> main_models.ListSlowSQLRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.list_slow_sqlrecords_with_options(request, runtime)
+
+    async def list_slow_sqlrecords_async(
+        self,
+        request: main_models.ListSlowSQLRecordsRequest,
+    ) -> main_models.ListSlowSQLRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_slow_sqlrecords_with_options_async(request, runtime)
 
     def list_streaming_data_services_with_options(
         self,
@@ -18150,7 +19450,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             query_content_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         query_content_resp = self.query_content_with_options(query_content_req, runtime)
         return query_content_resp
@@ -18231,7 +19531,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             query_content_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         query_content_resp = await self.query_content_with_options_async(query_content_req, runtime)
         return query_content_resp
@@ -20536,7 +21836,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             upload_document_async_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upload_document_async_resp = self.upload_document_async_with_options(upload_document_async_req, runtime)
         return upload_document_async_resp
@@ -20617,7 +21917,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             upload_document_async_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upload_document_async_resp = await self.upload_document_async_with_options_async(upload_document_async_req, runtime)
         return upload_document_async_resp
@@ -21028,7 +22328,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             upsert_collection_data_async_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upsert_collection_data_async_resp = self.upsert_collection_data_async_with_options(upsert_collection_data_async_req, runtime)
         return upsert_collection_data_async_resp
@@ -21109,7 +22409,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             upsert_collection_data_async_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upsert_collection_data_async_resp = await self.upsert_collection_data_async_with_options_async(upsert_collection_data_async_req, runtime)
         return upsert_collection_data_async_resp

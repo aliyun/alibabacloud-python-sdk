@@ -21,40 +21,54 @@ class UpsertChunksRequest(DaraModel):
         should_replace_file: bool = None,
         text_chunks: List[main_models.UpsertChunksRequestTextChunks] = None,
     ):
-        self.allow_insert_with_filter = allow_insert_with_filter
-        # Document collection name.
+        # Based on the Filter input specified under TextChunks, this parameter controls whether data insertion is allowed when a Filter is provided.
         # 
-        # > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
+        # If AllowInsertWithFilter = true, the insert operation is performed when the filter does not match any data.
+        # 
+        # If AllowInsertWithFilter = false, no action is performed if the filter does not match any data.
+        # 
+        # Default value: true.
+        self.allow_insert_with_filter = allow_insert_with_filter
+        # The name of the document collection.
+        # 
+        # > You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
         # 
         # This parameter is required.
         self.collection = collection
-        # Instance ID.
+        # The cluster ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # File name.
+        # The file name of the document.
         # 
-        # > If a file name is specified and not empty, it will overwrite the data for this file name; if empty, the chunks data will be appended directly to the document collection.
+        # > When a non-empty filename is specified, the system will decide whether to overwrite the data associated with that filename based on the value of the ShouldReplaceFile parameter. If you leave this parameter empty, the data of chunks is appended to the document collection.
         self.file_name = file_name
-        # Namespace, default is public.
+        # The name of the namespace. Default value: public.
         # 
-        # > You can create it using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
+        # > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
-        # Password corresponding to the namespace.
+        # The password of the namespace.
         # 
-        # > This value is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
+        # > The value of this parameter is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
-        # Region ID where the instance is located.
+        # The region ID of the cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether to overwrite the data associated with the file name specified by the FileName parameter.
+        # 
+        # If you set ShouldReplaceFile to true, the system deletes all data associated with the file name and then inserts new data.
+        # 
+        # If you set ShouldReplaceFile to false, the system does not delete the data associated with the file name, but inserts or updates the data of chunks based on the TextChunks parameter.
+        # 
+        # Default value: true.
         self.should_replace_file = should_replace_file
-        # List of split documents.
+        # List of document chunks after splitting.
         self.text_chunks = text_chunks
 
     def validate(self):
@@ -147,13 +161,15 @@ class UpsertChunksRequestTextChunks(DaraModel):
         id: str = None,
         metadata: Dict[str, Any] = None,
     ):
-        # Document content.
+        # The content of the document.
         # 
         # This parameter is required.
         self.content = content
+        # The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause.
         self.filter = filter
+        # The unique ID of the vector data.
         self.id = id
-        # Metadata.
+        # The metadata.
         self.metadata = metadata
 
     def validate(self):

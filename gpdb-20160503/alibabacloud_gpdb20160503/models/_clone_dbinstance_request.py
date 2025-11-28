@@ -11,10 +11,22 @@ class CloneDBInstanceRequest(DaraModel):
         dbinstance_id: str = None,
         src_db_instance_name: str = None,
     ):
+        # The ID of the backup set.
+        # 
+        # > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the IDs of all backup sets of the instance. Only snapshot backup sets are supported.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The ID of the new instance.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The ID of the source instance.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.src_db_instance_name = src_db_instance_name
 
