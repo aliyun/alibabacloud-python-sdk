@@ -1,3 +1,35 @@
+2025-11-28 Version: 8.0.2
+- Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQMetaParameters.
+- Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQMsgSyncParameters.
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.CompressionType.
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslTruststoreCertificates.
+- Update API CreateEventStreaming: add request parameters Sink.SinkKafkaParameters.CompressionType.
+- Update API CreateEventStreaming: add request parameters Source.SourceRabbitMQMetaParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourceRabbitMQMsgSyncParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslTruststoreCertificates.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkRabbitMQMetaParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkRabbitMQMsgSyncParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.CompressionType.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.SslTruststoreCertificates.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkKafkaParameters.CompressionType.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceRabbitMQMetaParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceRabbitMQMsgSyncParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceApacheKafkaParameters.SslTruststoreCertificates.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkRabbitMQMetaParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkRabbitMQMsgSyncParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkKafkaParameters.CompressionType.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceRabbitMQMetaParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceRabbitMQMsgSyncParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkRabbitMQMetaParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkRabbitMQMsgSyncParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.CompressionType.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.SslTruststoreCertificates.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkKafkaParameters.CompressionType.
+- Update API UpdateEventStreaming: add request parameters Source.SourceRabbitMQMetaParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourceRabbitMQMsgSyncParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.SslTruststoreCertificates.
+
+
 2025-11-26 Version: 8.0.1
 - Update API CreateEventStreaming: add request parameters Sink.SinkOSSParameters.
 - Update API CreateEventStreaming: add request parameters Source.SourcePostgreSQLParameters.
