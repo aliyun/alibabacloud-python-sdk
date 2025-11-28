@@ -1,3 +1,8 @@
+2025-11-28 Version: 4.18.1
+- Update API CreateAndroidInstanceGroup: add request parameters StreamMode.
+- Update API ModifyAndroidInstanceGroup: add request parameters StreamMode.
+
+
 2025-11-17 Version: 4.18.0
 - Support API DescribeMetricList.
 - Support API DescribeMetricTop.

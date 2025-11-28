@@ -1412,6 +1412,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        stream_mode: int = None,
         tag: List[CreateAndroidInstanceGroupRequestTag] = None,
         v_switch_id: str = None,
     ):
@@ -1510,6 +1511,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
         self.policy_group_id = policy_group_id
         self.promotion_id = promotion_id
+        self.stream_mode = stream_mode
         # The tags
         self.tag = tag
         # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
@@ -1578,6 +1580,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1635,6 +1639,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -1706,6 +1712,7 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
         period_unit: str = None,
         policy_group_id: str = None,
         promotion_id: str = None,
+        stream_mode: int = None,
         tag: List[CreateAndroidInstanceGroupShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
@@ -1804,6 +1811,7 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
         # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
         self.policy_group_id = policy_group_id
         self.promotion_id = promotion_id
+        self.stream_mode = stream_mode
         # The tags
         self.tag = tag
         # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
@@ -1870,6 +1878,8 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1926,6 +1936,8 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -14858,6 +14870,7 @@ class ModifyAndroidInstanceGroupRequest(TeaModel):
         instance_group_id: str = None,
         new_instance_group_name: str = None,
         policy_group_id: str = None,
+        stream_mode: int = None,
     ):
         # The ID of the instance group.
         self.instance_group_id = instance_group_id
@@ -14869,6 +14882,7 @@ class ModifyAndroidInstanceGroupRequest(TeaModel):
         self.new_instance_group_name = new_instance_group_name
         # The ID of the policy.
         self.policy_group_id = policy_group_id
+        self.stream_mode = stream_mode
 
     def validate(self):
         pass
@@ -14885,6 +14899,8 @@ class ModifyAndroidInstanceGroupRequest(TeaModel):
             result['NewInstanceGroupName'] = self.new_instance_group_name
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.stream_mode is not None:
+            result['StreamMode'] = self.stream_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -14895,6 +14911,8 @@ class ModifyAndroidInstanceGroupRequest(TeaModel):
             self.new_instance_group_name = m.get('NewInstanceGroupName')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('StreamMode') is not None:
+            self.stream_mode = m.get('StreamMode')
         return self
 
 

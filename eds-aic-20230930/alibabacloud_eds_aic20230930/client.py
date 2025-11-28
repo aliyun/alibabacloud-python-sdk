@@ -833,6 +833,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -924,6 +926,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.promotion_id):
             query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -6937,6 +6941,8 @@ class Client(OpenApiClient):
             query['NewInstanceGroupName'] = request.new_instance_group_name
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6976,6 +6982,8 @@ class Client(OpenApiClient):
             query['NewInstanceGroupName'] = request.new_instance_group_name
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.stream_mode):
+            query['StreamMode'] = request.stream_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
