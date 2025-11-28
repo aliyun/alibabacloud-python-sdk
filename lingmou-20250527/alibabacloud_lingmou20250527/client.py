@@ -157,6 +157,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.close_chat_instance_sessions_with_options_async(instance_id, request, headers, runtime)
 
+    def confirm_train_pic_avatar_with_options(
+        self,
+        request: ling_mou_20250527_models.ConfirmTrainPicAvatarRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ConfirmTrainPicAvatarResponse:
+        """
+        @summary 用户确认
+        
+        @param request: ConfirmTrainPicAvatarRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmTrainPicAvatarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['avatarId'] = request.avatar_id
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmTrainPicAvatar',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/confirmTrainPicAvatar',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ConfirmTrainPicAvatarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_train_pic_avatar_with_options_async(
+        self,
+        request: ling_mou_20250527_models.ConfirmTrainPicAvatarRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ConfirmTrainPicAvatarResponse:
+        """
+        @summary 用户确认
+        
+        @param request: ConfirmTrainPicAvatarRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmTrainPicAvatarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['avatarId'] = request.avatar_id
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmTrainPicAvatar',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/confirmTrainPicAvatar',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ConfirmTrainPicAvatarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_train_pic_avatar(
+        self,
+        request: ling_mou_20250527_models.ConfirmTrainPicAvatarRequest,
+    ) -> ling_mou_20250527_models.ConfirmTrainPicAvatarResponse:
+        """
+        @summary 用户确认
+        
+        @param request: ConfirmTrainPicAvatarRequest
+        @return: ConfirmTrainPicAvatarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.confirm_train_pic_avatar_with_options(request, headers, runtime)
+
+    async def confirm_train_pic_avatar_async(
+        self,
+        request: ling_mou_20250527_models.ConfirmTrainPicAvatarRequest,
+    ) -> ling_mou_20250527_models.ConfirmTrainPicAvatarResponse:
+        """
+        @summary 用户确认
+        
+        @param request: ConfirmTrainPicAvatarRequest
+        @return: ConfirmTrainPicAvatarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.confirm_train_pic_avatar_with_options_async(request, headers, runtime)
+
     def create_background_pic_with_options(
         self,
         request: ling_mou_20250527_models.CreateBackgroundPicRequest,
@@ -617,6 +725,350 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_no_train_pic_avatar_with_options_async(request, headers, runtime)
 
+    def create_ttsvoice_custom_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateTTSVoiceCustomRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateTTSVoiceCustomResponse:
+        """
+        @summary 创建TTS音色
+        
+        @param request: CreateTTSVoiceCustomRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTTSVoiceCustomResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.gender):
+            query['gender'] = request.gender
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.oss_key):
+            query['ossKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTTSVoiceCustom',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/voice/createTTSVoiceCustom',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateTTSVoiceCustomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ttsvoice_custom_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateTTSVoiceCustomRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateTTSVoiceCustomResponse:
+        """
+        @summary 创建TTS音色
+        
+        @param request: CreateTTSVoiceCustomRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTTSVoiceCustomResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.gender):
+            query['gender'] = request.gender
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.oss_key):
+            query['ossKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTTSVoiceCustom',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/voice/createTTSVoiceCustom',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateTTSVoiceCustomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ttsvoice_custom(
+        self,
+        request: ling_mou_20250527_models.CreateTTSVoiceCustomRequest,
+    ) -> ling_mou_20250527_models.CreateTTSVoiceCustomResponse:
+        """
+        @summary 创建TTS音色
+        
+        @param request: CreateTTSVoiceCustomRequest
+        @return: CreateTTSVoiceCustomResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_ttsvoice_custom_with_options(request, headers, runtime)
+
+    async def create_ttsvoice_custom_async(
+        self,
+        request: ling_mou_20250527_models.CreateTTSVoiceCustomRequest,
+    ) -> ling_mou_20250527_models.CreateTTSVoiceCustomResponse:
+        """
+        @summary 创建TTS音色
+        
+        @param request: CreateTTSVoiceCustomRequest
+        @return: CreateTTSVoiceCustomResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_ttsvoice_custom_with_options_async(request, headers, runtime)
+
+    def create_train_pic_avatar_with_options(
+        self,
+        request: ling_mou_20250527_models.CreateTrainPicAvatarRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateTrainPicAvatarResponse:
+        """
+        @summary 创建图片训练数字人
+        
+        @param request: CreateTrainPicAvatarRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrainPicAvatarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gender):
+            query['gender'] = request.gender
+        if not UtilClient.is_unset(request.generate_assets):
+            query['generateAssets'] = request.generate_assets
+        if not UtilClient.is_unset(request.image_oss_path):
+            query['imageOssPath'] = request.image_oss_path
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        if not UtilClient.is_unset(request.transparent):
+            query['transparent'] = request.transparent
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTrainPicAvatar',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/createTrainPicAvatar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateTrainPicAvatarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_train_pic_avatar_with_options_async(
+        self,
+        request: ling_mou_20250527_models.CreateTrainPicAvatarRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CreateTrainPicAvatarResponse:
+        """
+        @summary 创建图片训练数字人
+        
+        @param request: CreateTrainPicAvatarRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrainPicAvatarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gender):
+            query['gender'] = request.gender
+        if not UtilClient.is_unset(request.generate_assets):
+            query['generateAssets'] = request.generate_assets
+        if not UtilClient.is_unset(request.image_oss_path):
+            query['imageOssPath'] = request.image_oss_path
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        if not UtilClient.is_unset(request.transparent):
+            query['transparent'] = request.transparent
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTrainPicAvatar',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/createTrainPicAvatar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CreateTrainPicAvatarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_train_pic_avatar(
+        self,
+        request: ling_mou_20250527_models.CreateTrainPicAvatarRequest,
+    ) -> ling_mou_20250527_models.CreateTrainPicAvatarResponse:
+        """
+        @summary 创建图片训练数字人
+        
+        @param request: CreateTrainPicAvatarRequest
+        @return: CreateTrainPicAvatarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_train_pic_avatar_with_options(request, headers, runtime)
+
+    async def create_train_pic_avatar_async(
+        self,
+        request: ling_mou_20250527_models.CreateTrainPicAvatarRequest,
+    ) -> ling_mou_20250527_models.CreateTrainPicAvatarResponse:
+        """
+        @summary 创建图片训练数字人
+        
+        @param request: CreateTrainPicAvatarRequest
+        @return: CreateTrainPicAvatarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_train_pic_avatar_with_options_async(request, headers, runtime)
+
+    def get_train_pic_avatar_status_with_options(
+        self,
+        request: ling_mou_20250527_models.GetTrainPicAvatarStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.GetTrainPicAvatarStatusResponse:
+        """
+        @summary 查询图片训练数字人的状态
+        
+        @param request: GetTrainPicAvatarStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainPicAvatarStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['avatarId'] = request.avatar_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTrainPicAvatarStatus',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/getTrainPicAvatarStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.GetTrainPicAvatarStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_train_pic_avatar_status_with_options_async(
+        self,
+        request: ling_mou_20250527_models.GetTrainPicAvatarStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.GetTrainPicAvatarStatusResponse:
+        """
+        @summary 查询图片训练数字人的状态
+        
+        @param request: GetTrainPicAvatarStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainPicAvatarStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            query['avatarId'] = request.avatar_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTrainPicAvatarStatus',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/getTrainPicAvatarStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.GetTrainPicAvatarStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_train_pic_avatar_status(
+        self,
+        request: ling_mou_20250527_models.GetTrainPicAvatarStatusRequest,
+    ) -> ling_mou_20250527_models.GetTrainPicAvatarStatusResponse:
+        """
+        @summary 查询图片训练数字人的状态
+        
+        @param request: GetTrainPicAvatarStatusRequest
+        @return: GetTrainPicAvatarStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_train_pic_avatar_status_with_options(request, headers, runtime)
+
+    async def get_train_pic_avatar_status_async(
+        self,
+        request: ling_mou_20250527_models.GetTrainPicAvatarStatusRequest,
+    ) -> ling_mou_20250527_models.GetTrainPicAvatarStatusResponse:
+        """
+        @summary 查询图片训练数字人的状态
+        
+        @param request: GetTrainPicAvatarStatusRequest
+        @return: GetTrainPicAvatarStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_train_pic_avatar_status_with_options_async(request, headers, runtime)
+
     def get_upload_policy_with_options(
         self,
         request: ling_mou_20250527_models.GetUploadPolicyRequest,
@@ -724,6 +1176,246 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_upload_policy_with_options_async(request, headers, runtime)
+
+    def list_private_ttsvoices_custom_with_options(
+        self,
+        request: ling_mou_20250527_models.ListPrivateTTSVoicesCustomRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListPrivateTTSVoicesCustomResponse:
+        """
+        @summary 列举私有TTS音色
+        
+        @param request: ListPrivateTTSVoicesCustomRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateTTSVoicesCustomResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateTTSVoicesCustom',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/voice/listPrivateTTSVoicesCustom',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListPrivateTTSVoicesCustomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_private_ttsvoices_custom_with_options_async(
+        self,
+        request: ling_mou_20250527_models.ListPrivateTTSVoicesCustomRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListPrivateTTSVoicesCustomResponse:
+        """
+        @summary 列举私有TTS音色
+        
+        @param request: ListPrivateTTSVoicesCustomRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateTTSVoicesCustomResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateTTSVoicesCustom',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/voice/listPrivateTTSVoicesCustom',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListPrivateTTSVoicesCustomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_private_ttsvoices_custom(
+        self,
+        request: ling_mou_20250527_models.ListPrivateTTSVoicesCustomRequest,
+    ) -> ling_mou_20250527_models.ListPrivateTTSVoicesCustomResponse:
+        """
+        @summary 列举私有TTS音色
+        
+        @param request: ListPrivateTTSVoicesCustomRequest
+        @return: ListPrivateTTSVoicesCustomResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_private_ttsvoices_custom_with_options(request, headers, runtime)
+
+    async def list_private_ttsvoices_custom_async(
+        self,
+        request: ling_mou_20250527_models.ListPrivateTTSVoicesCustomRequest,
+    ) -> ling_mou_20250527_models.ListPrivateTTSVoicesCustomResponse:
+        """
+        @summary 列举私有TTS音色
+        
+        @param request: ListPrivateTTSVoicesCustomRequest
+        @return: ListPrivateTTSVoicesCustomResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_private_ttsvoices_custom_with_options_async(request, headers, runtime)
+
+    def list_template_material_with_options(
+        self,
+        request: ling_mou_20250527_models.ListTemplateMaterialRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListTemplateMaterialResponse:
+        """
+        @summary 查询底板素材
+        
+        @param request: ListTemplateMaterialRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateMaterialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        if not UtilClient.is_unset(request.template_ids):
+            query['templateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTemplateMaterial',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/listTemplateMaterial',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListTemplateMaterialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_template_material_with_options_async(
+        self,
+        request: ling_mou_20250527_models.ListTemplateMaterialRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.ListTemplateMaterialResponse:
+        """
+        @summary 查询底板素材
+        
+        @param request: ListTemplateMaterialRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateMaterialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        if not UtilClient.is_unset(request.template_ids):
+            query['templateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTemplateMaterial',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/train/listTemplateMaterial',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.ListTemplateMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_template_material(
+        self,
+        request: ling_mou_20250527_models.ListTemplateMaterialRequest,
+    ) -> ling_mou_20250527_models.ListTemplateMaterialResponse:
+        """
+        @summary 查询底板素材
+        
+        @param request: ListTemplateMaterialRequest
+        @return: ListTemplateMaterialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_template_material_with_options(request, headers, runtime)
+
+    async def list_template_material_async(
+        self,
+        request: ling_mou_20250527_models.ListTemplateMaterialRequest,
+    ) -> ling_mou_20250527_models.ListTemplateMaterialResponse:
+        """
+        @summary 查询底板素材
+        
+        @param request: ListTemplateMaterialRequest
+        @return: ListTemplateMaterialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_template_material_with_options_async(request, headers, runtime)
 
     def query_chat_instance_sessions_with_options(
         self,

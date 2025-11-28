@@ -376,6 +376,133 @@ class CloseChatInstanceSessionsResponse(TeaModel):
         return self
 
 
+class ConfirmTrainPicAvatarRequest(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.avatar_id = avatar_id
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['avatarId'] = self.avatar_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarId') is not None:
+            self.avatar_id = m.get('avatarId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ConfirmTrainPicAvatarResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ConfirmTrainPicAvatarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfirmTrainPicAvatarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfirmTrainPicAvatarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBackgroundPicRequest(TeaModel):
     def __init__(
         self,
@@ -1202,6 +1329,644 @@ class CreateNoTrainPicAvatarResponse(TeaModel):
         return self
 
 
+class CreateTTSVoiceCustomRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        gender: str = None,
+        name: str = None,
+        oss_key: str = None,
+    ):
+        # This parameter is required.
+        self.file_name = file_name
+        self.gender = gender
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.name is not None:
+            result['name'] = self.name
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class CreateTTSVoiceCustomResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audio_url: str = None,
+        censor_status: str = None,
+        common: bool = None,
+        create_time: str = None,
+        description: str = None,
+        error_detail: str = None,
+        gender: str = None,
+        id: str = None,
+        language: str = None,
+        modified_time: str = None,
+        name: str = None,
+        pitch_rate: float = None,
+        remain_seconds: int = None,
+        speech_rate: float = None,
+        status: str = None,
+        text: str = None,
+        voice_key: str = None,
+    ):
+        self.audio_url = audio_url
+        self.censor_status = censor_status
+        self.common = common
+        self.create_time = create_time
+        self.description = description
+        self.error_detail = error_detail
+        self.gender = gender
+        self.id = id
+        self.language = language
+        self.modified_time = modified_time
+        self.name = name
+        self.pitch_rate = pitch_rate
+        self.remain_seconds = remain_seconds
+        self.speech_rate = speech_rate
+        self.status = status
+        self.text = text
+        self.voice_key = voice_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_url is not None:
+            result['audioURL'] = self.audio_url
+        if self.censor_status is not None:
+            result['censorStatus'] = self.censor_status
+        if self.common is not None:
+            result['common'] = self.common
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.error_detail is not None:
+            result['errorDetail'] = self.error_detail
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.id is not None:
+            result['id'] = self.id
+        if self.language is not None:
+            result['language'] = self.language
+        if self.modified_time is not None:
+            result['modifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pitch_rate is not None:
+            result['pitchRate'] = self.pitch_rate
+        if self.remain_seconds is not None:
+            result['remainSeconds'] = self.remain_seconds
+        if self.speech_rate is not None:
+            result['speechRate'] = self.speech_rate
+        if self.status is not None:
+            result['status'] = self.status
+        if self.text is not None:
+            result['text'] = self.text
+        if self.voice_key is not None:
+            result['voiceKey'] = self.voice_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioURL') is not None:
+            self.audio_url = m.get('audioURL')
+        if m.get('censorStatus') is not None:
+            self.censor_status = m.get('censorStatus')
+        if m.get('common') is not None:
+            self.common = m.get('common')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('errorDetail') is not None:
+            self.error_detail = m.get('errorDetail')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('modifiedTime') is not None:
+            self.modified_time = m.get('modifiedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pitchRate') is not None:
+            self.pitch_rate = m.get('pitchRate')
+        if m.get('remainSeconds') is not None:
+            self.remain_seconds = m.get('remainSeconds')
+        if m.get('speechRate') is not None:
+            self.speech_rate = m.get('speechRate')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('voiceKey') is not None:
+            self.voice_key = m.get('voiceKey')
+        return self
+
+
+class CreateTTSVoiceCustomResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateTTSVoiceCustomResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateTTSVoiceCustomResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateTTSVoiceCustomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTTSVoiceCustomResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTTSVoiceCustomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTrainPicAvatarRequest(TeaModel):
+    def __init__(
+        self,
+        gender: str = None,
+        generate_assets: bool = None,
+        image_oss_path: str = None,
+        name: str = None,
+        template_id: str = None,
+        transparent: bool = None,
+    ):
+        # This parameter is required.
+        self.gender = gender
+        self.generate_assets = generate_assets
+        # This parameter is required.
+        self.image_oss_path = image_oss_path
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.template_id = template_id
+        self.transparent = transparent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.generate_assets is not None:
+            result['generateAssets'] = self.generate_assets
+        if self.image_oss_path is not None:
+            result['imageOssPath'] = self.image_oss_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.transparent is not None:
+            result['transparent'] = self.transparent
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('generateAssets') is not None:
+            self.generate_assets = m.get('generateAssets')
+        if m.get('imageOssPath') is not None:
+            self.image_oss_path = m.get('imageOssPath')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('transparent') is not None:
+            self.transparent = m.get('transparent')
+        return self
+
+
+class CreateTrainPicAvatarResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        expected_completion_time: int = None,
+        pass_: bool = None,
+    ):
+        self.avatar_id = avatar_id
+        self.expected_completion_time = expected_completion_time
+        self.pass_ = pass_
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['avatarId'] = self.avatar_id
+        if self.expected_completion_time is not None:
+            result['expectedCompletionTime'] = self.expected_completion_time
+        if self.pass_ is not None:
+            result['pass'] = self.pass_
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarId') is not None:
+            self.avatar_id = m.get('avatarId')
+        if m.get('expectedCompletionTime') is not None:
+            self.expected_completion_time = m.get('expectedCompletionTime')
+        if m.get('pass') is not None:
+            self.pass_ = m.get('pass')
+        return self
+
+
+class CreateTrainPicAvatarResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateTrainPicAvatarResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateTrainPicAvatarResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateTrainPicAvatarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTrainPicAvatarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTrainPicAvatarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTrainPicAvatarStatusRequest(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+    ):
+        # This parameter is required.
+        self.avatar_id = avatar_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['avatarId'] = self.avatar_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarId') is not None:
+            self.avatar_id = m.get('avatarId')
+        return self
+
+
+class GetTrainPicAvatarStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        preview_url: str = None,
+        status: str = None,
+    ):
+        self.avatar_id = avatar_id
+        self.preview_url = preview_url
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['avatarId'] = self.avatar_id
+        if self.preview_url is not None:
+            result['previewURL'] = self.preview_url
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarId') is not None:
+            self.avatar_id = m.get('avatarId')
+        if m.get('previewURL') is not None:
+            self.preview_url = m.get('previewURL')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetTrainPicAvatarStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTrainPicAvatarStatusResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetTrainPicAvatarStatusResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetTrainPicAvatarStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTrainPicAvatarStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTrainPicAvatarStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUploadPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -1424,6 +2189,581 @@ class GetUploadPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUploadPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrivateTTSVoicesCustomRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        # This parameter is required.
+        self.page_index = page_index
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.name is not None:
+            result['name'] = self.name
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListPrivateTTSVoicesCustomResponseBodyDataData(TeaModel):
+    def __init__(
+        self,
+        audio_url: str = None,
+        censor_status: str = None,
+        common: bool = None,
+        create_time: str = None,
+        description: str = None,
+        error_detail: str = None,
+        gender: str = None,
+        id: str = None,
+        language: str = None,
+        modified_time: str = None,
+        name: str = None,
+        remain_seconds: int = None,
+        status: str = None,
+        text: str = None,
+        voice_key: str = None,
+    ):
+        self.audio_url = audio_url
+        self.censor_status = censor_status
+        self.common = common
+        self.create_time = create_time
+        self.description = description
+        self.error_detail = error_detail
+        self.gender = gender
+        self.id = id
+        self.language = language
+        self.modified_time = modified_time
+        self.name = name
+        self.remain_seconds = remain_seconds
+        self.status = status
+        self.text = text
+        self.voice_key = voice_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_url is not None:
+            result['audioURL'] = self.audio_url
+        if self.censor_status is not None:
+            result['censorStatus'] = self.censor_status
+        if self.common is not None:
+            result['common'] = self.common
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.error_detail is not None:
+            result['errorDetail'] = self.error_detail
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.id is not None:
+            result['id'] = self.id
+        if self.language is not None:
+            result['language'] = self.language
+        if self.modified_time is not None:
+            result['modifiedTime'] = self.modified_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.remain_seconds is not None:
+            result['remainSeconds'] = self.remain_seconds
+        if self.status is not None:
+            result['status'] = self.status
+        if self.text is not None:
+            result['text'] = self.text
+        if self.voice_key is not None:
+            result['voiceKey'] = self.voice_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioURL') is not None:
+            self.audio_url = m.get('audioURL')
+        if m.get('censorStatus') is not None:
+            self.censor_status = m.get('censorStatus')
+        if m.get('common') is not None:
+            self.common = m.get('common')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('errorDetail') is not None:
+            self.error_detail = m.get('errorDetail')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('modifiedTime') is not None:
+            self.modified_time = m.get('modifiedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('remainSeconds') is not None:
+            self.remain_seconds = m.get('remainSeconds')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('voiceKey') is not None:
+            self.voice_key = m.get('voiceKey')
+        return self
+
+
+class ListPrivateTTSVoicesCustomResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data: List[ListPrivateTTSVoicesCustomResponseBodyDataData] = None,
+        page: int = None,
+        pages: int = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.data = data
+        self.page = page
+        self.pages = pages
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.page is not None:
+            result['page'] = self.page
+        if self.pages is not None:
+            result['pages'] = self.pages
+        if self.size is not None:
+            result['size'] = self.size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListPrivateTTSVoicesCustomResponseBodyDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pages') is not None:
+            self.pages = m.get('pages')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListPrivateTTSVoicesCustomResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListPrivateTTSVoicesCustomResponseBodyData = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.message is not None:
+            result['message'] = self.message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListPrivateTTSVoicesCustomResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListPrivateTTSVoicesCustomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrivateTTSVoicesCustomResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrivateTTSVoicesCustomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTemplateMaterialRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page: int = None,
+        size: int = None,
+        template_ids: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.page = page
+        # This parameter is required.
+        self.size = size
+        self.template_ids = template_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page is not None:
+            result['page'] = self.page
+        if self.size is not None:
+            result['size'] = self.size
+        if self.template_ids is not None:
+            result['templateIds'] = self.template_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('templateIds') is not None:
+            self.template_ids = m.get('templateIds')
+        return self
+
+
+class ListTemplateMaterialResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_url: str = None,
+    ):
+        self.biz_type = biz_type
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_url = template_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
+        if self.template_url is not None:
+            result['templateURL'] = self.template_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
+        if m.get('templateURL') is not None:
+            self.template_url = m.get('templateURL')
+        return self
+
+
+class ListTemplateMaterialResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListTemplateMaterialResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        page: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.page = page
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.message is not None:
+            result['message'] = self.message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page is not None:
+            result['page'] = self.page
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListTemplateMaterialResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListTemplateMaterialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTemplateMaterialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTemplateMaterialResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
