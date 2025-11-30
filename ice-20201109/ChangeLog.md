@@ -1,3 +1,8 @@
+2025-11-30 Version: 6.8.3
+- Update API BatchGetMediaInfos: add response parameters Body.IgnoredList.
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MediaDynamicInfo.
+
+
 2025-11-18 Version: 6.8.2
 - Generated python 2020-11-09 for ICE.
 

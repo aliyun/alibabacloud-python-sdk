@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Any, Dict
+from typing import List, Dict, Any
 
 
 class AIAgentConfigAmbientSoundConfig(TeaModel):
@@ -3967,11 +3967,9 @@ class MediaObject(TeaModel):
         self,
         media: str = None,
         type: str = None,
-        url: str = None,
     ):
         self.media = media
         self.type = type
-        self.url = url
 
     def validate(self):
         pass
@@ -3986,8 +3984,6 @@ class MediaObject(TeaModel):
             result['Media'] = self.media
         if self.type is not None:
             result['Type'] = self.type
-        if self.url is not None:
-            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
@@ -3996,8 +3992,6 @@ class MediaObject(TeaModel):
             self.media = m.get('Media')
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
         return self
 
 
@@ -4036,63 +4030,14 @@ class MediaConvertInput(TeaModel):
         return self
 
 
-class MediaConvertOutputGroupConfig(TeaModel):
+class MediaConvertJobConfigInputsInputFile(TeaModel):
     def __init__(
         self,
-        manifest_name: str = None,
-        output_file_base: MediaObject = None,
+        media: str = None,
         type: str = None,
     ):
-        self.manifest_name = manifest_name
-        self.output_file_base = output_file_base
+        self.media = media
         self.type = type
-
-    def validate(self):
-        if self.output_file_base:
-            self.output_file_base.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.manifest_name is not None:
-            result['ManifestName'] = self.manifest_name
-        if self.output_file_base is not None:
-            result['OutputFileBase'] = self.output_file_base.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ManifestName') is not None:
-            self.manifest_name = m.get('ManifestName')
-        if m.get('OutputFileBase') is not None:
-            temp_model = MediaObject()
-            self.output_file_base = temp_model.from_map(m['OutputFileBase'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class MediaConvertOutputGroupOutput(TeaModel):
-    def __init__(
-        self,
-        features: str = None,
-        name: str = None,
-        output_file_name: str = None,
-        override_params: str = None,
-        priority: int = None,
-        template_id: str = None,
-    ):
-        self.features = features
-        self.name = name
-        self.output_file_name = output_file_name
-        self.override_params = override_params
-        self.priority = priority
-        self.template_id = template_id
 
     def validate(self):
         pass
@@ -4103,8 +4048,327 @@ class MediaConvertOutputGroupOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MediaConvertJobConfigInputs(TeaModel):
+    def __init__(
+        self,
+        input_file: MediaConvertJobConfigInputsInputFile = None,
+        name: str = None,
+    ):
+        self.input_file = input_file
+        self.name = name
+
+    def validate(self):
+        if self.input_file:
+            self.input_file.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_file is not None:
+            result['InputFile'] = self.input_file.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputFile') is not None:
+            temp_model = MediaConvertJobConfigInputsInputFile()
+            self.input_file = temp_model.from_map(m['InputFile'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+        language: str = None,
+    ):
+        self.name = name
+        self.type = type
+        self.language = language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.language is not None:
+            result['language'] = self.language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        return self
+
+
+class MediaConvertJobConfigOutputGroupsGroupConfigManifestExtend(TeaModel):
+    def __init__(
+        self,
+        excludes: List[MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes] = None,
+        input_ref: str = None,
+    ):
+        self.excludes = excludes
+        self.input_ref = input_ref
+
+    def validate(self):
+        if self.excludes:
+            for k in self.excludes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Excludes'] = []
+        if self.excludes is not None:
+            for k in self.excludes:
+                result['Excludes'].append(k.to_map() if k else None)
+        if self.input_ref is not None:
+            result['InputRef'] = self.input_ref
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.excludes = []
+        if m.get('Excludes') is not None:
+            for k in m.get('Excludes'):
+                temp_model = MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes()
+                self.excludes.append(temp_model.from_map(k))
+        if m.get('InputRef') is not None:
+            self.input_ref = m.get('InputRef')
+        return self
+
+
+class MediaConvertJobConfigOutputGroupsGroupConfigOutputFileBase(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MediaConvertJobConfigOutputGroupsGroupConfig(TeaModel):
+    def __init__(
+        self,
+        manifest_extend: MediaConvertJobConfigOutputGroupsGroupConfigManifestExtend = None,
+        manifest_name: str = None,
+        output_file_base: MediaConvertJobConfigOutputGroupsGroupConfigOutputFileBase = None,
+        type: str = None,
+    ):
+        self.manifest_extend = manifest_extend
+        self.manifest_name = manifest_name
+        self.output_file_base = output_file_base
+        self.type = type
+
+    def validate(self):
+        if self.manifest_extend:
+            self.manifest_extend.validate()
+        if self.output_file_base:
+            self.output_file_base.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.manifest_extend is not None:
+            result['ManifestExtend'] = self.manifest_extend.to_map()
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.output_file_base is not None:
+            result['OutputFileBase'] = self.output_file_base.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ManifestExtend') is not None:
+            temp_model = MediaConvertJobConfigOutputGroupsGroupConfigManifestExtend()
+            self.manifest_extend = temp_model.from_map(m['ManifestExtend'])
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('OutputFileBase') is not None:
+            temp_model = MediaConvertJobConfigOutputGroupsGroupConfigOutputFileBase()
+            self.output_file_base = temp_model.from_map(m['OutputFileBase'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MediaConvertJobConfigOutputGroupsOutputsHlsGroupConfig(TeaModel):
+    def __init__(
+        self,
+        audio_group: str = None,
+        auto_select: str = None,
+        forced: str = None,
+        group: str = None,
+        is_default: str = None,
+        language: str = None,
+        name: str = None,
+        subtitle_group: str = None,
+        type: str = None,
+    ):
+        self.audio_group = audio_group
+        self.auto_select = auto_select
+        self.forced = forced
+        self.group = group
+        self.is_default = is_default
+        self.language = language
+        self.name = name
+        self.subtitle_group = subtitle_group
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_group is not None:
+            result['AudioGroup'] = self.audio_group
+        if self.auto_select is not None:
+            result['AutoSelect'] = self.auto_select
+        if self.forced is not None:
+            result['Forced'] = self.forced
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subtitle_group is not None:
+            result['SubtitleGroup'] = self.subtitle_group
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioGroup') is not None:
+            self.audio_group = m.get('AudioGroup')
+        if m.get('AutoSelect') is not None:
+            self.auto_select = m.get('AutoSelect')
+        if m.get('Forced') is not None:
+            self.forced = m.get('Forced')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SubtitleGroup') is not None:
+            self.subtitle_group = m.get('SubtitleGroup')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MediaConvertJobConfigOutputGroupsOutputs(TeaModel):
+    def __init__(
+        self,
+        features: str = None,
+        hls_group_config: MediaConvertJobConfigOutputGroupsOutputsHlsGroupConfig = None,
+        name: str = None,
+        output_file_name: str = None,
+        override_params: str = None,
+        priority: int = None,
+        template_id: str = None,
+    ):
+        self.features = features
+        self.hls_group_config = hls_group_config
+        self.name = name
+        self.output_file_name = output_file_name
+        self.override_params = override_params
+        self.priority = priority
+        self.template_id = template_id
+
+    def validate(self):
+        if self.hls_group_config:
+            self.hls_group_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.features is not None:
             result['Features'] = self.features
+        if self.hls_group_config is not None:
+            result['HlsGroupConfig'] = self.hls_group_config.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.output_file_name is not None:
@@ -4121,6 +4385,9 @@ class MediaConvertOutputGroupOutput(TeaModel):
         m = m or dict()
         if m.get('Features') is not None:
             self.features = m.get('Features')
+        if m.get('HlsGroupConfig') is not None:
+            temp_model = MediaConvertJobConfigOutputGroupsOutputsHlsGroupConfig()
+            self.hls_group_config = temp_model.from_map(m['HlsGroupConfig'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OutputFileName') is not None:
@@ -4134,12 +4401,12 @@ class MediaConvertOutputGroupOutput(TeaModel):
         return self
 
 
-class MediaConvertOutputGroup(TeaModel):
+class MediaConvertJobConfigOutputGroups(TeaModel):
     def __init__(
         self,
-        group_config: MediaConvertOutputGroupConfig = None,
+        group_config: MediaConvertJobConfigOutputGroupsGroupConfig = None,
         name: str = None,
-        outputs: List[MediaConvertOutputGroupOutput] = None,
+        outputs: List[MediaConvertJobConfigOutputGroupsOutputs] = None,
     ):
         self.group_config = group_config
         self.name = name
@@ -4172,89 +4439,28 @@ class MediaConvertOutputGroup(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupConfig') is not None:
-            temp_model = MediaConvertOutputGroupConfig()
+            temp_model = MediaConvertJobConfigOutputGroupsGroupConfig()
             self.group_config = temp_model.from_map(m['GroupConfig'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         self.outputs = []
         if m.get('Outputs') is not None:
             for k in m.get('Outputs'):
-                temp_model = MediaConvertOutputGroupOutput()
+                temp_model = MediaConvertJobConfigOutputGroupsOutputs()
                 self.outputs.append(temp_model.from_map(k))
-        return self
-
-
-class MediaConvertOutput(TeaModel):
-    def __init__(
-        self,
-        features: str = None,
-        name: str = None,
-        output_file: MediaObject = None,
-        override_params: str = None,
-        priority: int = None,
-        template_id: str = None,
-    ):
-        self.features = features
-        self.name = name
-        self.output_file = output_file
-        self.override_params = override_params
-        self.priority = priority
-        self.template_id = template_id
-
-    def validate(self):
-        if self.output_file:
-            self.output_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.features is not None:
-            result['Features'] = self.features
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.output_file is not None:
-            result['OutputFile'] = self.output_file.to_map()
-        if self.override_params is not None:
-            result['OverrideParams'] = self.override_params
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Features') is not None:
-            self.features = m.get('Features')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('OutputFile') is not None:
-            temp_model = MediaObject()
-            self.output_file = temp_model.from_map(m['OutputFile'])
-        if m.get('OverrideParams') is not None:
-            self.override_params = m.get('OverrideParams')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
         return self
 
 
 class MediaConvertJobConfig(TeaModel):
     def __init__(
         self,
-        inputs: List[MediaConvertInput] = None,
+        inputs: List[MediaConvertJobConfigInputs] = None,
         job_name: str = None,
-        output_groups: List[MediaConvertOutputGroup] = None,
-        outputs: List[MediaConvertOutput] = None,
+        output_groups: List[MediaConvertJobConfigOutputGroups] = None,
     ):
         self.inputs = inputs
         self.job_name = job_name
         self.output_groups = output_groups
-        self.outputs = outputs
 
     def validate(self):
         if self.inputs:
@@ -4263,10 +4469,6 @@ class MediaConvertJobConfig(TeaModel):
                     k.validate()
         if self.output_groups:
             for k in self.output_groups:
-                if k:
-                    k.validate()
-        if self.outputs:
-            for k in self.outputs:
                 if k:
                     k.validate()
 
@@ -4286,10 +4488,6 @@ class MediaConvertJobConfig(TeaModel):
         if self.output_groups is not None:
             for k in self.output_groups:
                 result['OutputGroups'].append(k.to_map() if k else None)
-        result['Outputs'] = []
-        if self.outputs is not None:
-            for k in self.outputs:
-                result['Outputs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4297,20 +4495,15 @@ class MediaConvertJobConfig(TeaModel):
         self.inputs = []
         if m.get('Inputs') is not None:
             for k in m.get('Inputs'):
-                temp_model = MediaConvertInput()
+                temp_model = MediaConvertJobConfigInputs()
                 self.inputs.append(temp_model.from_map(k))
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
         self.output_groups = []
         if m.get('OutputGroups') is not None:
             for k in m.get('OutputGroups'):
-                temp_model = MediaConvertOutputGroup()
+                temp_model = MediaConvertJobConfigOutputGroups()
                 self.output_groups.append(temp_model.from_map(k))
-        self.outputs = []
-        if m.get('Outputs') is not None:
-            for k in m.get('Outputs'):
-                temp_model = MediaConvertOutput()
-                self.outputs.append(temp_model.from_map(k))
         return self
 
 
@@ -5083,6 +5276,504 @@ class MediaConvertJob(TeaModel):
             self.state = m.get('State')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        return self
+
+
+class MediaConvertJobFeatureClipTimeSpan(TeaModel):
+    def __init__(
+        self,
+        duration: str = None,
+        end: str = None,
+        seek: str = None,
+    ):
+        self.duration = duration
+        self.end = end
+        self.seek = seek
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.end is not None:
+            result['End'] = self.end
+        if self.seek is not None:
+            result['Seek'] = self.seek
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Seek') is not None:
+            self.seek = m.get('Seek')
+        return self
+
+
+class MediaConvertJobFeatureClip(TeaModel):
+    def __init__(
+        self,
+        config_to_clip_first_part: str = None,
+        time_span: MediaConvertJobFeatureClipTimeSpan = None,
+    ):
+        self.config_to_clip_first_part = config_to_clip_first_part
+        self.time_span = time_span
+
+    def validate(self):
+        if self.time_span:
+            self.time_span.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_to_clip_first_part is not None:
+            result['ConfigToClipFirstPart'] = self.config_to_clip_first_part
+        if self.time_span is not None:
+            result['TimeSpan'] = self.time_span.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigToClipFirstPart') is not None:
+            self.config_to_clip_first_part = m.get('ConfigToClipFirstPart')
+        if m.get('TimeSpan') is not None:
+            temp_model = MediaConvertJobFeatureClipTimeSpan()
+            self.time_span = temp_model.from_map(m['TimeSpan'])
+        return self
+
+
+class MediaConvertJobFeatureWatermarks(TeaModel):
+    def __init__(
+        self,
+        adaptive: str = None,
+        border_color: str = None,
+        border_width: str = None,
+        content: str = None,
+        font_alpha: str = None,
+        font_color: str = None,
+        font_name: str = None,
+        font_size: str = None,
+        height: str = None,
+        template_id: str = None,
+        type: str = None,
+        width: str = None,
+        x: str = None,
+        y: str = None,
+    ):
+        self.adaptive = adaptive
+        self.border_color = border_color
+        self.border_width = border_width
+        self.content = content
+        self.font_alpha = font_alpha
+        self.font_color = font_color
+        self.font_name = font_name
+        self.font_size = font_size
+        self.height = height
+        self.template_id = template_id
+        self.type = type
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adaptive is not None:
+            result['Adaptive'] = self.adaptive
+        if self.border_color is not None:
+            result['BorderColor'] = self.border_color
+        if self.border_width is not None:
+            result['BorderWidth'] = self.border_width
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.font_alpha is not None:
+            result['FontAlpha'] = self.font_alpha
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_name is not None:
+            result['FontName'] = self.font_name
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Adaptive') is not None:
+            self.adaptive = m.get('Adaptive')
+        if m.get('BorderColor') is not None:
+            self.border_color = m.get('BorderColor')
+        if m.get('BorderWidth') is not None:
+            self.border_width = m.get('BorderWidth')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FontAlpha') is not None:
+            self.font_alpha = m.get('FontAlpha')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontName') is not None:
+            self.font_name = m.get('FontName')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class MediaConvertJobFeature(TeaModel):
+    def __init__(
+        self,
+        clip: MediaConvertJobFeatureClip = None,
+        metadata: Dict[str, str] = None,
+        watermarks: List[MediaConvertJobFeatureWatermarks] = None,
+    ):
+        self.clip = clip
+        self.metadata = metadata
+        self.watermarks = watermarks
+
+    def validate(self):
+        if self.clip:
+            self.clip.validate()
+        if self.watermarks:
+            for k in self.watermarks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clip is not None:
+            result['Clip'] = self.clip.to_map()
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        result['Watermarks'] = []
+        if self.watermarks is not None:
+            for k in self.watermarks:
+                result['Watermarks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Clip') is not None:
+            temp_model = MediaConvertJobFeatureClip()
+            self.clip = temp_model.from_map(m['Clip'])
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        self.watermarks = []
+        if m.get('Watermarks') is not None:
+            for k in m.get('Watermarks'):
+                temp_model = MediaConvertJobFeatureWatermarks()
+                self.watermarks.append(temp_model.from_map(k))
+        return self
+
+
+class MediaConvertJobOverwiteParamsSubtitles(TeaModel):
+    def __init__(
+        self,
+        codec: str = None,
+    ):
+        self.codec = codec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codec is not None:
+            result['Codec'] = self.codec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Codec') is not None:
+            self.codec = m.get('Codec')
+        return self
+
+
+class MediaConvertJobOverwiteParams(TeaModel):
+    def __init__(
+        self,
+        subtitles: List[MediaConvertJobOverwiteParamsSubtitles] = None,
+    ):
+        self.subtitles = subtitles
+
+    def validate(self):
+        if self.subtitles:
+            for k in self.subtitles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Subtitles'] = []
+        if self.subtitles is not None:
+            for k in self.subtitles:
+                result['Subtitles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.subtitles = []
+        if m.get('Subtitles') is not None:
+            for k in m.get('Subtitles'):
+                temp_model = MediaConvertJobOverwiteParamsSubtitles()
+                self.subtitles.append(temp_model.from_map(k))
+        return self
+
+
+class MediaConvertOutputGroupConfig(TeaModel):
+    def __init__(
+        self,
+        manifest_name: str = None,
+        output_file_base: MediaObject = None,
+        type: str = None,
+    ):
+        self.manifest_name = manifest_name
+        self.output_file_base = output_file_base
+        self.type = type
+
+    def validate(self):
+        if self.output_file_base:
+            self.output_file_base.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.output_file_base is not None:
+            result['OutputFileBase'] = self.output_file_base.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('OutputFileBase') is not None:
+            temp_model = MediaObject()
+            self.output_file_base = temp_model.from_map(m['OutputFileBase'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MediaConvertOutputGroupOutput(TeaModel):
+    def __init__(
+        self,
+        features: str = None,
+        name: str = None,
+        output_file_name: str = None,
+        override_params: str = None,
+        priority: int = None,
+        template_id: str = None,
+    ):
+        self.features = features
+        self.name = name
+        self.output_file_name = output_file_name
+        self.override_params = override_params
+        self.priority = priority
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_file_name is not None:
+            result['OutputFileName'] = self.output_file_name
+        if self.override_params is not None:
+            result['OverrideParams'] = self.override_params
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputFileName') is not None:
+            self.output_file_name = m.get('OutputFileName')
+        if m.get('OverrideParams') is not None:
+            self.override_params = m.get('OverrideParams')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class MediaConvertOutputGroup(TeaModel):
+    def __init__(
+        self,
+        group_config: MediaConvertOutputGroupConfig = None,
+        name: str = None,
+        outputs: List[MediaConvertOutputGroupOutput] = None,
+    ):
+        self.group_config = group_config
+        self.name = name
+        self.outputs = outputs
+
+    def validate(self):
+        if self.group_config:
+            self.group_config.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_config is not None:
+            result['GroupConfig'] = self.group_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupConfig') is not None:
+            temp_model = MediaConvertOutputGroupConfig()
+            self.group_config = temp_model.from_map(m['GroupConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = MediaConvertOutputGroupOutput()
+                self.outputs.append(temp_model.from_map(k))
+        return self
+
+
+class MediaConvertOutput(TeaModel):
+    def __init__(
+        self,
+        features: str = None,
+        name: str = None,
+        output_file: MediaObject = None,
+        override_params: str = None,
+        priority: int = None,
+        template_id: str = None,
+    ):
+        self.features = features
+        self.name = name
+        self.output_file = output_file
+        self.override_params = override_params
+        self.priority = priority
+        self.template_id = template_id
+
+    def validate(self):
+        if self.output_file:
+            self.output_file.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_file is not None:
+            result['OutputFile'] = self.output_file.to_map()
+        if self.override_params is not None:
+            result['OverrideParams'] = self.override_params
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputFile') is not None:
+            temp_model = MediaObject()
+            self.output_file = temp_model.from_map(m['OutputFile'])
+        if m.get('OverrideParams') is not None:
+            self.override_params = m.get('OverrideParams')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -9449,17 +10140,75 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         return self
 
 
+class BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo(TeaModel):
+    def __init__(
+        self,
+        dynamic_meta_data: BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData = None,
+    ):
+        self.dynamic_meta_data = dynamic_meta_data
+
+    def validate(self):
+        if self.dynamic_meta_data:
+            self.dynamic_meta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_meta_data is not None:
+            result['DynamicMetaData'] = self.dynamic_meta_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicMetaData') is not None:
+            temp_model = BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData()
+            self.dynamic_meta_data = temp_model.from_map(m['DynamicMetaData'])
+        return self
+
+
 class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
     def __init__(
         self,
         file_info_list: List[BatchGetMediaInfosResponseBodyMediaInfosFileInfoList] = None,
         media_basic_info: BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo = None,
+        media_dynamic_info: BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo = None,
         media_id: str = None,
     ):
         # FileInfos
         self.file_info_list = file_info_list
         # The basic information of the media asset.
         self.media_basic_info = media_basic_info
+        self.media_dynamic_info = media_dynamic_info
         # The ID of the media asset.
         self.media_id = media_id
 
@@ -9470,6 +10219,8 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
                     k.validate()
         if self.media_basic_info:
             self.media_basic_info.validate()
+        if self.media_dynamic_info:
+            self.media_dynamic_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9483,6 +10234,8 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
                 result['FileInfoList'].append(k.to_map() if k else None)
         if self.media_basic_info is not None:
             result['MediaBasicInfo'] = self.media_basic_info.to_map()
+        if self.media_dynamic_info is not None:
+            result['MediaDynamicInfo'] = self.media_dynamic_info.to_map()
         if self.media_id is not None:
             result['MediaId'] = self.media_id
         return result
@@ -9497,6 +10250,9 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
         if m.get('MediaBasicInfo') is not None:
             temp_model = BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo()
             self.media_basic_info = temp_model.from_map(m['MediaBasicInfo'])
+        if m.get('MediaDynamicInfo') is not None:
+            temp_model = BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo()
+            self.media_dynamic_info = temp_model.from_map(m['MediaDynamicInfo'])
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
         return self
@@ -9505,9 +10261,11 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
 class BatchGetMediaInfosResponseBody(TeaModel):
     def __init__(
         self,
+        ignored_list: List[str] = None,
         media_infos: List[BatchGetMediaInfosResponseBodyMediaInfos] = None,
         request_id: str = None,
     ):
+        self.ignored_list = ignored_list
         # The queried media assets.
         self.media_infos = media_infos
         # The request ID.
@@ -9525,6 +10283,8 @@ class BatchGetMediaInfosResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.ignored_list is not None:
+            result['IgnoredList'] = self.ignored_list
         result['MediaInfos'] = []
         if self.media_infos is not None:
             for k in self.media_infos:
@@ -9535,6 +10295,8 @@ class BatchGetMediaInfosResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IgnoredList') is not None:
+            self.ignored_list = m.get('IgnoredList')
         self.media_infos = []
         if m.get('MediaInfos') is not None:
             for k in m.get('MediaInfos'):
