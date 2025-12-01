@@ -1,3 +1,8 @@
+2025-12-01 Version: 1.8.0
+- Support API QueryBuyerDomainTradeRecords.
+- Update API CreateFixedPriceSelectedOrder: add response parameters Body.Module.BizIds.
+
+
 2025-11-03 Version: 1.7.0
 - Support API WebsiteAddDnsRecord.
 - Support API WebsiteDeleteDnsRecord.

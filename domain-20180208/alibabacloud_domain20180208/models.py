@@ -1998,11 +1998,13 @@ class CreateFixedPriceSelectedOrderRequest(TeaModel):
 class CreateFixedPriceSelectedOrderResponseBodyModule(TeaModel):
     def __init__(
         self,
+        biz_ids: Dict[str, str] = None,
         domain: str = None,
         domain_block_trade: List[str] = None,
         order_no: str = None,
         price: int = None,
     ):
+        self.biz_ids = biz_ids
         self.domain = domain
         self.domain_block_trade = domain_block_trade
         self.order_no = order_no
@@ -2017,6 +2019,8 @@ class CreateFixedPriceSelectedOrderResponseBodyModule(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_ids is not None:
+            result['BizIds'] = self.biz_ids
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.domain_block_trade is not None:
@@ -2029,6 +2033,8 @@ class CreateFixedPriceSelectedOrderResponseBodyModule(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizIds') is not None:
+            self.biz_ids = m.get('BizIds')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('DomainBlockTrade') is not None:
@@ -4379,6 +4385,403 @@ class QueryBrokerDemandRecordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryBrokerDemandRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryBuyerDomainTradeRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id_list: List[str] = None,
+        domain_name_list: List[str] = None,
+        end_date: str = None,
+        end_price: float = None,
+        page_num: int = None,
+        page_size: int = None,
+        sorter: str = None,
+        start_date: str = None,
+        start_price: float = None,
+        status_list: List[str] = None,
+        suffix_list: List[str] = None,
+        trade_type_list: List[str] = None,
+    ):
+        self.biz_id_list = biz_id_list
+        self.domain_name_list = domain_name_list
+        self.end_date = end_date
+        self.end_price = end_price
+        self.page_num = page_num
+        self.page_size = page_size
+        self.sorter = sorter
+        self.start_date = start_date
+        self.start_price = start_price
+        self.status_list = status_list
+        self.suffix_list = suffix_list
+        self.trade_type_list = trade_type_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id_list is not None:
+            result['BizIdList'] = self.biz_id_list
+        if self.domain_name_list is not None:
+            result['DomainNameList'] = self.domain_name_list
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.end_price is not None:
+            result['EndPrice'] = self.end_price
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sorter is not None:
+            result['Sorter'] = self.sorter
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.start_price is not None:
+            result['StartPrice'] = self.start_price
+        if self.status_list is not None:
+            result['StatusList'] = self.status_list
+        if self.suffix_list is not None:
+            result['SuffixList'] = self.suffix_list
+        if self.trade_type_list is not None:
+            result['TradeTypeList'] = self.trade_type_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizIdList') is not None:
+            self.biz_id_list = m.get('BizIdList')
+        if m.get('DomainNameList') is not None:
+            self.domain_name_list = m.get('DomainNameList')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('EndPrice') is not None:
+            self.end_price = m.get('EndPrice')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Sorter') is not None:
+            self.sorter = m.get('Sorter')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('StartPrice') is not None:
+            self.start_price = m.get('StartPrice')
+        if m.get('StatusList') is not None:
+            self.status_list = m.get('StatusList')
+        if m.get('SuffixList') is not None:
+            self.suffix_list = m.get('SuffixList')
+        if m.get('TradeTypeList') is not None:
+            self.trade_type_list = m.get('TradeTypeList')
+        return self
+
+
+class QueryBuyerDomainTradeRecordsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id_list_shrink: str = None,
+        domain_name_list_shrink: str = None,
+        end_date: str = None,
+        end_price: float = None,
+        page_num: int = None,
+        page_size: int = None,
+        sorter: str = None,
+        start_date: str = None,
+        start_price: float = None,
+        status_list_shrink: str = None,
+        suffix_list_shrink: str = None,
+        trade_type_list_shrink: str = None,
+    ):
+        self.biz_id_list_shrink = biz_id_list_shrink
+        self.domain_name_list_shrink = domain_name_list_shrink
+        self.end_date = end_date
+        self.end_price = end_price
+        self.page_num = page_num
+        self.page_size = page_size
+        self.sorter = sorter
+        self.start_date = start_date
+        self.start_price = start_price
+        self.status_list_shrink = status_list_shrink
+        self.suffix_list_shrink = suffix_list_shrink
+        self.trade_type_list_shrink = trade_type_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id_list_shrink is not None:
+            result['BizIdList'] = self.biz_id_list_shrink
+        if self.domain_name_list_shrink is not None:
+            result['DomainNameList'] = self.domain_name_list_shrink
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.end_price is not None:
+            result['EndPrice'] = self.end_price
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sorter is not None:
+            result['Sorter'] = self.sorter
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.start_price is not None:
+            result['StartPrice'] = self.start_price
+        if self.status_list_shrink is not None:
+            result['StatusList'] = self.status_list_shrink
+        if self.suffix_list_shrink is not None:
+            result['SuffixList'] = self.suffix_list_shrink
+        if self.trade_type_list_shrink is not None:
+            result['TradeTypeList'] = self.trade_type_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizIdList') is not None:
+            self.biz_id_list_shrink = m.get('BizIdList')
+        if m.get('DomainNameList') is not None:
+            self.domain_name_list_shrink = m.get('DomainNameList')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('EndPrice') is not None:
+            self.end_price = m.get('EndPrice')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Sorter') is not None:
+            self.sorter = m.get('Sorter')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('StartPrice') is not None:
+            self.start_price = m.get('StartPrice')
+        if m.get('StatusList') is not None:
+            self.status_list_shrink = m.get('StatusList')
+        if m.get('SuffixList') is not None:
+            self.suffix_list_shrink = m.get('SuffixList')
+        if m.get('TradeTypeList') is not None:
+            self.trade_type_list_shrink = m.get('TradeTypeList')
+        return self
+
+
+class QueryBuyerDomainTradeRecordsResponseBodyModuleData(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        currency: str = None,
+        delivery_time: str = None,
+        domain_name: str = None,
+        pay_time: str = None,
+        status: str = None,
+        trade_id: str = None,
+        trade_price: float = None,
+        trade_type: str = None,
+    ):
+        self.biz_id = biz_id
+        self.currency = currency
+        self.delivery_time = delivery_time
+        self.domain_name = domain_name
+        self.pay_time = pay_time
+        self.status = status
+        self.trade_id = trade_id
+        self.trade_price = trade_price
+        self.trade_type = trade_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.delivery_time is not None:
+            result['DeliveryTime'] = self.delivery_time
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.pay_time is not None:
+            result['PayTime'] = self.pay_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.trade_id is not None:
+            result['TradeId'] = self.trade_id
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        if self.trade_type is not None:
+            result['TradeType'] = self.trade_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DeliveryTime') is not None:
+            self.delivery_time = m.get('DeliveryTime')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('PayTime') is not None:
+            self.pay_time = m.get('PayTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TradeId') is not None:
+            self.trade_id = m.get('TradeId')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        if m.get('TradeType') is not None:
+            self.trade_type = m.get('TradeType')
+        return self
+
+
+class QueryBuyerDomainTradeRecordsResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        current_page_num: int = None,
+        data: List[QueryBuyerDomainTradeRecordsResponseBodyModuleData] = None,
+        page_size: int = None,
+        total_item_num: int = None,
+        total_page_num: int = None,
+    ):
+        self.current_page_num = current_page_num
+        self.data = data
+        self.page_size = page_size
+        self.total_item_num = total_item_num
+        self.total_page_num = total_page_num
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page_num is not None:
+            result['CurrentPageNum'] = self.current_page_num
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_item_num is not None:
+            result['TotalItemNum'] = self.total_item_num
+        if self.total_page_num is not None:
+            result['TotalPageNum'] = self.total_page_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPageNum') is not None:
+            self.current_page_num = m.get('CurrentPageNum')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryBuyerDomainTradeRecordsResponseBodyModuleData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalItemNum') is not None:
+            self.total_item_num = m.get('TotalItemNum')
+        if m.get('TotalPageNum') is not None:
+            self.total_page_num = m.get('TotalPageNum')
+        return self
+
+
+class QueryBuyerDomainTradeRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: QueryBuyerDomainTradeRecordsResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = QueryBuyerDomainTradeRecordsResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryBuyerDomainTradeRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryBuyerDomainTradeRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryBuyerDomainTradeRecordsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

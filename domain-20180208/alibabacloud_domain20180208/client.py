@@ -2265,6 +2265,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_broker_demand_record_with_options_async(request, runtime)
 
+    def query_buyer_domain_trade_records_with_options(
+        self,
+        tmp_req: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
+        """
+        @summary 查询买家交易记录列表
+        
+        @param tmp_req: QueryBuyerDomainTradeRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBuyerDomainTradeRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.QueryBuyerDomainTradeRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_id_list):
+            request.biz_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_id_list, 'BizIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.domain_name_list):
+            request.domain_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_name_list, 'DomainNameList', 'json')
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not UtilClient.is_unset(tmp_req.suffix_list):
+            request.suffix_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
+        if not UtilClient.is_unset(tmp_req.trade_type_list):
+            request.trade_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trade_type_list, 'TradeTypeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_id_list_shrink):
+            query['BizIdList'] = request.biz_id_list_shrink
+        if not UtilClient.is_unset(request.domain_name_list_shrink):
+            query['DomainNameList'] = request.domain_name_list_shrink
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_price):
+            query['EndPrice'] = request.end_price
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sorter):
+            query['Sorter'] = request.sorter
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.start_price):
+            query['StartPrice'] = request.start_price
+        if not UtilClient.is_unset(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not UtilClient.is_unset(request.suffix_list_shrink):
+            query['SuffixList'] = request.suffix_list_shrink
+        if not UtilClient.is_unset(request.trade_type_list_shrink):
+            query['TradeTypeList'] = request.trade_type_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBuyerDomainTradeRecords',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryBuyerDomainTradeRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_buyer_domain_trade_records_with_options_async(
+        self,
+        tmp_req: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
+        """
+        @summary 查询买家交易记录列表
+        
+        @param tmp_req: QueryBuyerDomainTradeRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBuyerDomainTradeRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180208_models.QueryBuyerDomainTradeRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.biz_id_list):
+            request.biz_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_id_list, 'BizIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.domain_name_list):
+            request.domain_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_name_list, 'DomainNameList', 'json')
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not UtilClient.is_unset(tmp_req.suffix_list):
+            request.suffix_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
+        if not UtilClient.is_unset(tmp_req.trade_type_list):
+            request.trade_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trade_type_list, 'TradeTypeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_id_list_shrink):
+            query['BizIdList'] = request.biz_id_list_shrink
+        if not UtilClient.is_unset(request.domain_name_list_shrink):
+            query['DomainNameList'] = request.domain_name_list_shrink
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_price):
+            query['EndPrice'] = request.end_price
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sorter):
+            query['Sorter'] = request.sorter
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.start_price):
+            query['StartPrice'] = request.start_price
+        if not UtilClient.is_unset(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not UtilClient.is_unset(request.suffix_list_shrink):
+            query['SuffixList'] = request.suffix_list_shrink
+        if not UtilClient.is_unset(request.trade_type_list_shrink):
+            query['TradeTypeList'] = request.trade_type_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBuyerDomainTradeRecords',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryBuyerDomainTradeRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_buyer_domain_trade_records(
+        self,
+        request: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
+    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
+        """
+        @summary 查询买家交易记录列表
+        
+        @param request: QueryBuyerDomainTradeRecordsRequest
+        @return: QueryBuyerDomainTradeRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_buyer_domain_trade_records_with_options(request, runtime)
+
+    async def query_buyer_domain_trade_records_async(
+        self,
+        request: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
+    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
+        """
+        @summary 查询买家交易记录列表
+        
+        @param request: QueryBuyerDomainTradeRecordsRequest
+        @return: QueryBuyerDomainTradeRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_buyer_domain_trade_records_with_options_async(request, runtime)
+
     def query_domain_transfer_status_with_options(
         self,
         request: domain_20180208_models.QueryDomainTransferStatusRequest,
