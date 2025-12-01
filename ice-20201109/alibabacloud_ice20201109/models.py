@@ -94,6 +94,198 @@ class AIAgentConfigAsrConfig(TeaModel):
         return self
 
 
+class AIAgentConfigAutoSpeechConfigLlmPendingMessages(TeaModel):
+    def __init__(
+        self,
+        probability: float = None,
+        text: str = None,
+    ):
+        self.probability = probability
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probability is not None:
+            result['Probability'] = self.probability
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class AIAgentConfigAutoSpeechConfigLlmPending(TeaModel):
+    def __init__(
+        self,
+        messages: List[AIAgentConfigAutoSpeechConfigLlmPendingMessages] = None,
+        wait_time: int = None,
+    ):
+        self.messages = messages
+        self.wait_time = wait_time
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.wait_time is not None:
+            result['WaitTime'] = self.wait_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = AIAgentConfigAutoSpeechConfigLlmPendingMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('WaitTime') is not None:
+            self.wait_time = m.get('WaitTime')
+        return self
+
+
+class AIAgentConfigAutoSpeechConfigUserIdleMessages(TeaModel):
+    def __init__(
+        self,
+        probability: float = None,
+        text: str = None,
+    ):
+        self.probability = probability
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probability is not None:
+            result['Probability'] = self.probability
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class AIAgentConfigAutoSpeechConfigUserIdle(TeaModel):
+    def __init__(
+        self,
+        max_repeats: int = None,
+        messages: List[AIAgentConfigAutoSpeechConfigUserIdleMessages] = None,
+        wait_time: int = None,
+    ):
+        self.max_repeats = max_repeats
+        self.messages = messages
+        self.wait_time = wait_time
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_repeats is not None:
+            result['MaxRepeats'] = self.max_repeats
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.wait_time is not None:
+            result['WaitTime'] = self.wait_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxRepeats') is not None:
+            self.max_repeats = m.get('MaxRepeats')
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = AIAgentConfigAutoSpeechConfigUserIdleMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('WaitTime') is not None:
+            self.wait_time = m.get('WaitTime')
+        return self
+
+
+class AIAgentConfigAutoSpeechConfig(TeaModel):
+    def __init__(
+        self,
+        llm_pending: AIAgentConfigAutoSpeechConfigLlmPending = None,
+        user_idle: AIAgentConfigAutoSpeechConfigUserIdle = None,
+    ):
+        self.llm_pending = llm_pending
+        self.user_idle = user_idle
+
+    def validate(self):
+        if self.llm_pending:
+            self.llm_pending.validate()
+        if self.user_idle:
+            self.user_idle.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.llm_pending is not None:
+            result['LlmPending'] = self.llm_pending.to_map()
+        if self.user_idle is not None:
+            result['UserIdle'] = self.user_idle.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LlmPending') is not None:
+            temp_model = AIAgentConfigAutoSpeechConfigLlmPending()
+            self.llm_pending = temp_model.from_map(m['LlmPending'])
+        if m.get('UserIdle') is not None:
+            temp_model = AIAgentConfigAutoSpeechConfigUserIdle()
+            self.user_idle = temp_model.from_map(m['UserIdle'])
+        return self
+
+
 class AIAgentConfigAvatarConfig(TeaModel):
     def __init__(
         self,
@@ -225,6 +417,7 @@ class AIAgentConfigLlmConfig(TeaModel):
         self,
         bailian_app_params: str = None,
         function_map: List[AIAgentConfigLlmConfigFunctionMap] = None,
+        history_sync_with_tts: bool = None,
         llm_complete_reply: bool = None,
         llm_history: List[AIAgentConfigLlmConfigLlmHistory] = None,
         llm_history_limit: int = None,
@@ -235,6 +428,7 @@ class AIAgentConfigLlmConfig(TeaModel):
     ):
         self.bailian_app_params = bailian_app_params
         self.function_map = function_map
+        self.history_sync_with_tts = history_sync_with_tts
         self.llm_complete_reply = llm_complete_reply
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
@@ -265,6 +459,8 @@ class AIAgentConfigLlmConfig(TeaModel):
         if self.function_map is not None:
             for k in self.function_map:
                 result['FunctionMap'].append(k.to_map() if k else None)
+        if self.history_sync_with_tts is not None:
+            result['HistorySyncWithTTS'] = self.history_sync_with_tts
         if self.llm_complete_reply is not None:
             result['LlmCompleteReply'] = self.llm_complete_reply
         result['LlmHistory'] = []
@@ -292,6 +488,8 @@ class AIAgentConfigLlmConfig(TeaModel):
             for k in m.get('FunctionMap'):
                 temp_model = AIAgentConfigLlmConfigFunctionMap()
                 self.function_map.append(temp_model.from_map(k))
+        if m.get('HistorySyncWithTTS') is not None:
+            self.history_sync_with_tts = m.get('HistorySyncWithTTS')
         if m.get('LlmCompleteReply') is not None:
             self.llm_complete_reply = m.get('LlmCompleteReply')
         self.llm_history = []
@@ -747,6 +945,7 @@ class AIAgentConfig(TeaModel):
         self,
         ambient_sound_config: AIAgentConfigAmbientSoundConfig = None,
         asr_config: AIAgentConfigAsrConfig = None,
+        auto_speech_config: AIAgentConfigAutoSpeechConfig = None,
         avatar_config: AIAgentConfigAvatarConfig = None,
         avatar_url: str = None,
         avatar_url_type: str = None,
@@ -770,6 +969,7 @@ class AIAgentConfig(TeaModel):
     ):
         self.ambient_sound_config = ambient_sound_config
         self.asr_config = asr_config
+        self.auto_speech_config = auto_speech_config
         self.avatar_config = avatar_config
         self.avatar_url = avatar_url
         self.avatar_url_type = avatar_url_type
@@ -796,6 +996,8 @@ class AIAgentConfig(TeaModel):
             self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
+        if self.auto_speech_config:
+            self.auto_speech_config.validate()
         if self.avatar_config:
             self.avatar_config.validate()
         if self.interrupt_config:
@@ -821,6 +1023,8 @@ class AIAgentConfig(TeaModel):
             result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
+        if self.auto_speech_config is not None:
+            result['AutoSpeechConfig'] = self.auto_speech_config.to_map()
         if self.avatar_config is not None:
             result['AvatarConfig'] = self.avatar_config.to_map()
         if self.avatar_url is not None:
@@ -871,6 +1075,9 @@ class AIAgentConfig(TeaModel):
         if m.get('AsrConfig') is not None:
             temp_model = AIAgentConfigAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('AutoSpeechConfig') is not None:
+            temp_model = AIAgentConfigAutoSpeechConfig()
+            self.auto_speech_config = temp_model.from_map(m['AutoSpeechConfig'])
         if m.get('AvatarConfig') is not None:
             temp_model = AIAgentConfigAvatarConfig()
             self.avatar_config = temp_model.from_map(m['AvatarConfig'])
@@ -1011,6 +1218,198 @@ class AIAgentOutboundCallConfigAsrConfig(TeaModel):
         return self
 
 
+class AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages(TeaModel):
+    def __init__(
+        self,
+        probability: float = None,
+        text: str = None,
+    ):
+        self.probability = probability
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probability is not None:
+            result['Probability'] = self.probability
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class AIAgentOutboundCallConfigAutoSpeechConfigLlmPending(TeaModel):
+    def __init__(
+        self,
+        messages: List[AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages] = None,
+        wait_time: int = None,
+    ):
+        self.messages = messages
+        self.wait_time = wait_time
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.wait_time is not None:
+            result['WaitTime'] = self.wait_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = AIAgentOutboundCallConfigAutoSpeechConfigLlmPendingMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('WaitTime') is not None:
+            self.wait_time = m.get('WaitTime')
+        return self
+
+
+class AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages(TeaModel):
+    def __init__(
+        self,
+        probability: float = None,
+        text: str = None,
+    ):
+        self.probability = probability
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probability is not None:
+            result['Probability'] = self.probability
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class AIAgentOutboundCallConfigAutoSpeechConfigUserIdle(TeaModel):
+    def __init__(
+        self,
+        max_repeats: int = None,
+        messages: List[AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages] = None,
+        wait_time: int = None,
+    ):
+        self.max_repeats = max_repeats
+        self.messages = messages
+        self.wait_time = wait_time
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_repeats is not None:
+            result['MaxRepeats'] = self.max_repeats
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.wait_time is not None:
+            result['WaitTime'] = self.wait_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxRepeats') is not None:
+            self.max_repeats = m.get('MaxRepeats')
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = AIAgentOutboundCallConfigAutoSpeechConfigUserIdleMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('WaitTime') is not None:
+            self.wait_time = m.get('WaitTime')
+        return self
+
+
+class AIAgentOutboundCallConfigAutoSpeechConfig(TeaModel):
+    def __init__(
+        self,
+        llm_pending: AIAgentOutboundCallConfigAutoSpeechConfigLlmPending = None,
+        user_idle: AIAgentOutboundCallConfigAutoSpeechConfigUserIdle = None,
+    ):
+        self.llm_pending = llm_pending
+        self.user_idle = user_idle
+
+    def validate(self):
+        if self.llm_pending:
+            self.llm_pending.validate()
+        if self.user_idle:
+            self.user_idle.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.llm_pending is not None:
+            result['LlmPending'] = self.llm_pending.to_map()
+        if self.user_idle is not None:
+            result['UserIdle'] = self.user_idle.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LlmPending') is not None:
+            temp_model = AIAgentOutboundCallConfigAutoSpeechConfigLlmPending()
+            self.llm_pending = temp_model.from_map(m['LlmPending'])
+        if m.get('UserIdle') is not None:
+            temp_model = AIAgentOutboundCallConfigAutoSpeechConfigUserIdle()
+            self.user_idle = temp_model.from_map(m['UserIdle'])
+        return self
+
+
 class AIAgentOutboundCallConfigInterruptConfig(TeaModel):
     def __init__(
         self,
@@ -1115,6 +1514,7 @@ class AIAgentOutboundCallConfigLlmConfig(TeaModel):
         self,
         bailian_app_params: str = None,
         function_map: List[AIAgentOutboundCallConfigLlmConfigFunctionMap] = None,
+        history_sync_with_tts: bool = None,
         llm_complete_reply: bool = None,
         llm_history: List[AIAgentOutboundCallConfigLlmConfigLlmHistory] = None,
         llm_history_limit: int = None,
@@ -1125,6 +1525,7 @@ class AIAgentOutboundCallConfigLlmConfig(TeaModel):
     ):
         self.bailian_app_params = bailian_app_params
         self.function_map = function_map
+        self.history_sync_with_tts = history_sync_with_tts
         self.llm_complete_reply = llm_complete_reply
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
@@ -1155,6 +1556,8 @@ class AIAgentOutboundCallConfigLlmConfig(TeaModel):
         if self.function_map is not None:
             for k in self.function_map:
                 result['FunctionMap'].append(k.to_map() if k else None)
+        if self.history_sync_with_tts is not None:
+            result['HistorySyncWithTTS'] = self.history_sync_with_tts
         if self.llm_complete_reply is not None:
             result['LlmCompleteReply'] = self.llm_complete_reply
         result['LlmHistory'] = []
@@ -1182,6 +1585,8 @@ class AIAgentOutboundCallConfigLlmConfig(TeaModel):
             for k in m.get('FunctionMap'):
                 temp_model = AIAgentOutboundCallConfigLlmConfigFunctionMap()
                 self.function_map.append(temp_model.from_map(k))
+        if m.get('HistorySyncWithTTS') is not None:
+            self.history_sync_with_tts = m.get('HistorySyncWithTTS')
         if m.get('LlmCompleteReply') is not None:
             self.llm_complete_reply = m.get('LlmCompleteReply')
         self.llm_history = []
@@ -1356,23 +1761,27 @@ class AIAgentOutboundCallConfig(TeaModel):
         self,
         ambient_sound_config: AIAgentOutboundCallConfigAmbientSoundConfig = None,
         asr_config: AIAgentOutboundCallConfigAsrConfig = None,
+        auto_speech_config: AIAgentOutboundCallConfigAutoSpeechConfig = None,
         enable_intelligent_segment: bool = None,
         experimental_config: str = None,
         greeting: str = None,
         greeting_delay: int = None,
         interrupt_config: AIAgentOutboundCallConfigInterruptConfig = None,
         llm_config: AIAgentOutboundCallConfigLlmConfig = None,
+        max_idle_time: int = None,
         tts_config: AIAgentOutboundCallConfigTtsConfig = None,
         turn_detection_config: AIAgentOutboundCallConfigTurnDetectionConfig = None,
     ):
         self.ambient_sound_config = ambient_sound_config
         self.asr_config = asr_config
+        self.auto_speech_config = auto_speech_config
         self.enable_intelligent_segment = enable_intelligent_segment
         self.experimental_config = experimental_config
         self.greeting = greeting
         self.greeting_delay = greeting_delay
         self.interrupt_config = interrupt_config
         self.llm_config = llm_config
+        self.max_idle_time = max_idle_time
         self.tts_config = tts_config
         self.turn_detection_config = turn_detection_config
 
@@ -1381,6 +1790,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
+        if self.auto_speech_config:
+            self.auto_speech_config.validate()
         if self.interrupt_config:
             self.interrupt_config.validate()
         if self.llm_config:
@@ -1400,6 +1811,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
+        if self.auto_speech_config is not None:
+            result['AutoSpeechConfig'] = self.auto_speech_config.to_map()
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
         if self.experimental_config is not None:
@@ -1412,6 +1825,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             result['InterruptConfig'] = self.interrupt_config.to_map()
         if self.llm_config is not None:
             result['LlmConfig'] = self.llm_config.to_map()
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
         if self.tts_config is not None:
             result['TtsConfig'] = self.tts_config.to_map()
         if self.turn_detection_config is not None:
@@ -1426,6 +1841,9 @@ class AIAgentOutboundCallConfig(TeaModel):
         if m.get('AsrConfig') is not None:
             temp_model = AIAgentOutboundCallConfigAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('AutoSpeechConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigAutoSpeechConfig()
+            self.auto_speech_config = temp_model.from_map(m['AutoSpeechConfig'])
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
         if m.get('ExperimentalConfig') is not None:
@@ -1440,6 +1858,8 @@ class AIAgentOutboundCallConfig(TeaModel):
         if m.get('LlmConfig') is not None:
             temp_model = AIAgentOutboundCallConfigLlmConfig()
             self.llm_config = temp_model.from_map(m['LlmConfig'])
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
         if m.get('TtsConfig') is not None:
             temp_model = AIAgentOutboundCallConfigTtsConfig()
             self.tts_config = temp_model.from_map(m['TtsConfig'])
@@ -26268,11 +26688,13 @@ class ForwardAIAgentCallRequest(TeaModel):
     def __init__(
         self,
         called_number: str = None,
+        caller_number: str = None,
         error_prompt: str = None,
         instance_id: str = None,
         transfer_prompt: str = None,
     ):
         self.called_number = called_number
+        self.caller_number = caller_number
         self.error_prompt = error_prompt
         self.instance_id = instance_id
         self.transfer_prompt = transfer_prompt
@@ -26288,6 +26710,8 @@ class ForwardAIAgentCallRequest(TeaModel):
         result = dict()
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+        if self.caller_number is not None:
+            result['CallerNumber'] = self.caller_number
         if self.error_prompt is not None:
             result['ErrorPrompt'] = self.error_prompt
         if self.instance_id is not None:
@@ -26300,6 +26724,8 @@ class ForwardAIAgentCallRequest(TeaModel):
         m = m or dict()
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+        if m.get('CallerNumber') is not None:
+            self.caller_number = m.get('CallerNumber')
         if m.get('ErrorPrompt') is not None:
             self.error_prompt = m.get('ErrorPrompt')
         if m.get('InstanceId') is not None:

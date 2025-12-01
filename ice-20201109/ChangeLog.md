@@ -1,3 +1,7 @@
+2025-12-01 Version: 6.8.4
+- Update API ForwardAIAgentCall: add request parameters CallerNumber.
+
+
 2025-11-30 Version: 6.8.3
 - Update API BatchGetMediaInfos: add response parameters Body.IgnoredList.
 - Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MediaDynamicInfo.

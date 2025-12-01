@@ -12363,6 +12363,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.caller_number):
+            query['CallerNumber'] = request.caller_number
         if not UtilClient.is_unset(request.error_prompt):
             query['ErrorPrompt'] = request.error_prompt
         if not UtilClient.is_unset(request.instance_id):
@@ -12404,6 +12406,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.caller_number):
+            query['CallerNumber'] = request.caller_number
         if not UtilClient.is_unset(request.error_prompt):
             query['ErrorPrompt'] = request.error_prompt
         if not UtilClient.is_unset(request.instance_id):
