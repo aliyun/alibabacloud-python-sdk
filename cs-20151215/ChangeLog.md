@@ -1,3 +1,7 @@
+2025-12-01 Version: 6.1.2
+- Update API DescribeClusterAttachScripts: add request parameters body.one_time_token.
+
+
 2025-11-25 Version: 6.1.1
 - Update API CreateClusterNodePool: add request parameters body.scaling_group.system_disk_snapshot_policy_id.
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.scaling_group.system_disk_snapshot_policy_id.

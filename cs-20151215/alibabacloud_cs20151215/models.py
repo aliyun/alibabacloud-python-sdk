@@ -9823,6 +9823,7 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         format_disk: bool = None,
         keep_instance_name: bool = None,
         nodepool_id: str = None,
+        one_time_token: bool = None,
         options: str = None,
         rds_instances: List[str] = None,
     ):
@@ -9857,6 +9858,7 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         # 
         # >  If you do not specify a node pool ID, the node is added to the default node pool.
         self.nodepool_id = nodepool_id
+        self.one_time_token = one_time_token
         # The node configurations for the node that you want to add.
         # 
         # >  This parameter is required if you want to add a node to an ACK Edge cluster.
@@ -9883,6 +9885,8 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
             result['keep_instance_name'] = self.keep_instance_name
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
+        if self.one_time_token is not None:
+            result['one_time_token'] = self.one_time_token
         if self.options is not None:
             result['options'] = self.options
         if self.rds_instances is not None:
@@ -9901,6 +9905,8 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
             self.keep_instance_name = m.get('keep_instance_name')
         if m.get('nodepool_id') is not None:
             self.nodepool_id = m.get('nodepool_id')
+        if m.get('one_time_token') is not None:
+            self.one_time_token = m.get('one_time_token')
         if m.get('options') is not None:
             self.options = m.get('options')
         if m.get('rds_instances') is not None:

@@ -4780,6 +4780,8 @@ class Client(OpenApiClient):
             body['keep_instance_name'] = request.keep_instance_name
         if not UtilClient.is_unset(request.nodepool_id):
             body['nodepool_id'] = request.nodepool_id
+        if not UtilClient.is_unset(request.one_time_token):
+            body['one_time_token'] = request.one_time_token
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
         if not UtilClient.is_unset(request.rds_instances):
@@ -4831,6 +4833,8 @@ class Client(OpenApiClient):
             body['keep_instance_name'] = request.keep_instance_name
         if not UtilClient.is_unset(request.nodepool_id):
             body['nodepool_id'] = request.nodepool_id
+        if not UtilClient.is_unset(request.one_time_token):
+            body['one_time_token'] = request.one_time_token
         if not UtilClient.is_unset(request.options):
             body['options'] = request.options
         if not UtilClient.is_unset(request.rds_instances):
