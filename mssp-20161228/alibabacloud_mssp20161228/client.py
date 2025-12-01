@@ -275,6 +275,8 @@ class Client(OpenApiClient):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.owner_id):
             body['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.work_order_detail):
@@ -344,6 +346,8 @@ class Client(OpenApiClient):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.owner_id):
             body['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.work_order_detail):
@@ -751,17 +755,21 @@ class Client(OpenApiClient):
 
     def dispose_work_task_with_options(
         self,
-        request: mssp_20161228_models.DisposeWorkTaskRequest,
+        tmp_req: mssp_20161228_models.DisposeWorkTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mssp_20161228_models.DisposeWorkTaskResponse:
         """
         @summary Handle Alert Work Order
         
-        @param request: DisposeWorkTaskRequest
+        @param tmp_req: DisposeWorkTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisposeWorkTaskResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mssp_20161228_models.DisposeWorkTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.work_task_analysis_results):
+            request.work_task_analysis_results_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.work_task_analysis_results, 'WorkTaskAnalysisResults', 'json')
         body = {}
         if not UtilClient.is_unset(request.operator):
             body['Operator'] = request.operator
@@ -771,6 +779,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not UtilClient.is_unset(request.task_ids):
             body['TaskIds'] = request.task_ids
+        if not UtilClient.is_unset(request.work_task_analysis_results_shrink):
+            body['WorkTaskAnalysisResults'] = request.work_task_analysis_results_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -792,17 +802,21 @@ class Client(OpenApiClient):
 
     async def dispose_work_task_with_options_async(
         self,
-        request: mssp_20161228_models.DisposeWorkTaskRequest,
+        tmp_req: mssp_20161228_models.DisposeWorkTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mssp_20161228_models.DisposeWorkTaskResponse:
         """
         @summary Handle Alert Work Order
         
-        @param request: DisposeWorkTaskRequest
+        @param tmp_req: DisposeWorkTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisposeWorkTaskResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mssp_20161228_models.DisposeWorkTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.work_task_analysis_results):
+            request.work_task_analysis_results_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.work_task_analysis_results, 'WorkTaskAnalysisResults', 'json')
         body = {}
         if not UtilClient.is_unset(request.operator):
             body['Operator'] = request.operator
@@ -812,6 +826,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not UtilClient.is_unset(request.task_ids):
             body['TaskIds'] = request.task_ids
+        if not UtilClient.is_unset(request.work_task_analysis_results_shrink):
+            body['WorkTaskAnalysisResults'] = request.work_task_analysis_results_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

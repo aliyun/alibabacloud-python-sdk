@@ -1,3 +1,8 @@
+2025-12-01 Version: 1.2.3
+- Update API CreateServiceWorkOrder: add request parameters Priority.
+- Update API DisposeWorkTask: add request parameters WorkTaskAnalysisResults.
+
+
 2025-08-19 Version: 1.2.2
 - Update API GetDocumentDownloadUrl: add request parameters FileKey.
 

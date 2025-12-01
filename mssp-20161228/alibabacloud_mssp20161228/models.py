@@ -248,6 +248,7 @@ class CreateServiceWorkOrderRequest(TeaModel):
         operate_type: str = None,
         operator: str = None,
         owner_id: str = None,
+        priority: int = None,
         start_time: int = None,
         work_order_detail: str = None,
         work_order_name: str = None,
@@ -295,6 +296,7 @@ class CreateServiceWorkOrderRequest(TeaModel):
         self.operator = operator
         # This parameter is required.
         self.owner_id = owner_id
+        self.priority = priority
         # Start time.
         # 
         # This parameter is required.
@@ -353,6 +355,8 @@ class CreateServiceWorkOrderRequest(TeaModel):
             result['Operator'] = self.operator
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.work_order_detail is not None:
@@ -393,6 +397,8 @@ class CreateServiceWorkOrderRequest(TeaModel):
             self.operator = m.get('Operator')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('WorkOrderDetail') is not None:
@@ -1107,6 +1113,39 @@ class DisposeServiceWorkOrderResponse(TeaModel):
         return self
 
 
+class DisposeWorkTaskRequestWorkTaskAnalysisResults(TeaModel):
+    def __init__(
+        self,
+        analysis_result: str = None,
+        task_id: int = None,
+    ):
+        self.analysis_result = analysis_result
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_result is not None:
+            result['AnalysisResult'] = self.analysis_result
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalysisResult') is not None:
+            self.analysis_result = m.get('AnalysisResult')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
 class DisposeWorkTaskRequest(TeaModel):
     def __init__(
         self,
@@ -1114,6 +1153,7 @@ class DisposeWorkTaskRequest(TeaModel):
         opt_remark: str = None,
         status: int = None,
         task_ids: str = None,
+        work_task_analysis_results: List[DisposeWorkTaskRequestWorkTaskAnalysisResults] = None,
     ):
         # Operator.
         # 
@@ -1131,6 +1171,78 @@ class DisposeWorkTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.task_ids = task_ids
+        self.work_task_analysis_results = work_task_analysis_results
+
+    def validate(self):
+        if self.work_task_analysis_results:
+            for k in self.work_task_analysis_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.opt_remark is not None:
+            result['OptRemark'] = self.opt_remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        result['WorkTaskAnalysisResults'] = []
+        if self.work_task_analysis_results is not None:
+            for k in self.work_task_analysis_results:
+                result['WorkTaskAnalysisResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OptRemark') is not None:
+            self.opt_remark = m.get('OptRemark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        self.work_task_analysis_results = []
+        if m.get('WorkTaskAnalysisResults') is not None:
+            for k in m.get('WorkTaskAnalysisResults'):
+                temp_model = DisposeWorkTaskRequestWorkTaskAnalysisResults()
+                self.work_task_analysis_results.append(temp_model.from_map(k))
+        return self
+
+
+class DisposeWorkTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        opt_remark: str = None,
+        status: int = None,
+        task_ids: str = None,
+        work_task_analysis_results_shrink: str = None,
+    ):
+        # Operator.
+        # 
+        # This parameter is required.
+        self.operator = operator
+        # Operation remarks.
+        # 
+        # This parameter is required.
+        self.opt_remark = opt_remark
+        # Work order status.
+        # 
+        # This parameter is required.
+        self.status = status
+        # Work order ID, multiple IDs separated by commas.
+        # 
+        # This parameter is required.
+        self.task_ids = task_ids
+        self.work_task_analysis_results_shrink = work_task_analysis_results_shrink
 
     def validate(self):
         pass
@@ -1149,6 +1261,8 @@ class DisposeWorkTaskRequest(TeaModel):
             result['Status'] = self.status
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
+        if self.work_task_analysis_results_shrink is not None:
+            result['WorkTaskAnalysisResults'] = self.work_task_analysis_results_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1161,6 +1275,8 @@ class DisposeWorkTaskRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('TaskIds') is not None:
             self.task_ids = m.get('TaskIds')
+        if m.get('WorkTaskAnalysisResults') is not None:
+            self.work_task_analysis_results_shrink = m.get('WorkTaskAnalysisResults')
         return self
 
 
