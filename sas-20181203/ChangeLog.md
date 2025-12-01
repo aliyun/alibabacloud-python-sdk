@@ -1,3 +1,10 @@
+2025-12-01 Version: 7.0.3
+- Update API AddCheckResultWhiteList: add request parameters InstanceIds.
+- Update API RemoveCheckResultWhiteList: add request parameters InstanceIds.
+- Update API VerifyCheckInstanceResult: add request parameters CheckIds.
+- Update API VerifyCheckResult: add request parameters InstanceIds.
+
+
 2025-11-27 Version: 7.0.2
 - Update API DescribeVulList: add response parameters Body.VulRecords.$.ContainerId.
 

@@ -434,6 +434,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.rule_type):
@@ -473,6 +475,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.rule_type):
@@ -90206,6 +90210,8 @@ class Client(OpenApiClient):
             query['CheckGroupId'] = request.check_group_id
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.type):
@@ -90247,6 +90253,8 @@ class Client(OpenApiClient):
             query['CheckGroupId'] = request.check_group_id
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.type):
@@ -98680,6 +98688,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.check_ids):
+            query['CheckIds'] = request.check_ids
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.task_source):
@@ -98719,6 +98729,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.check_ids):
+            query['CheckIds'] = request.check_ids
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.task_source):
@@ -98784,6 +98796,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.task_source):
             query['TaskSource'] = request.task_source
         req = open_api_models.OpenApiRequest(
@@ -98821,6 +98835,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.task_source):
             query['TaskSource'] = request.task_source
         req = open_api_models.OpenApiRequest(
