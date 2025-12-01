@@ -1,3 +1,8 @@
+2025-12-01 Version: 2.9.4
+- Update API DescribeApplicationInstances: add response parameters Body.Data.Instances.$.TrafficStatus.
+- Update API ListApplications: add request parameters NewSaeVersion.
+
+
 2025-11-27 Version: 2.9.3
 - Update API CreateApplication: add request parameters SlsLogEnvTags.
 - Update API DeployApplication: add request parameters SlsLogEnvTags.

@@ -25311,6 +25311,7 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         package_version: str = None,
         sidecar_containers_status: List[DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus] = None,
         timestamp: int = None,
+        traffic_status: str = None,
         unhealthy_message: str = None,
         v_switch_id: str = None,
     ):
@@ -25365,6 +25366,7 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         # The status of the sidecar container.
         self.sidecar_containers_status = sidecar_containers_status
         self.timestamp = timestamp
+        self.traffic_status = traffic_status
         # If the health check of an application instance fails, the detailed failure cause or error message is returned. If the health check of an application instance passes, no response is returned.
         self.unhealthy_message = unhealthy_message
         # The ID of the zone where the instance is deployed.
@@ -25414,6 +25416,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
                 result['SidecarContainersStatus'].append(k.to_map() if k else None)
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
+        if self.traffic_status is not None:
+            result['TrafficStatus'] = self.traffic_status
         if self.unhealthy_message is not None:
             result['UnhealthyMessage'] = self.unhealthy_message
         if self.v_switch_id is not None:
@@ -25455,6 +25459,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
                 self.sidecar_containers_status.append(temp_model.from_map(k))
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
+        if m.get('TrafficStatus') is not None:
+            self.traffic_status = m.get('TrafficStatus')
         if m.get('UnhealthyMessage') is not None:
             self.unhealthy_message = m.get('UnhealthyMessage')
         if m.get('VSwitchId') is not None:
@@ -41795,6 +41801,7 @@ class ListApplicationsRequest(TeaModel):
         field_value: str = None,
         is_stateful: str = None,
         namespace_id: str = None,
+        new_sae_version: str = None,
         order_by: str = None,
         page_size: int = None,
         reverse: bool = None,
@@ -41822,6 +41829,7 @@ class ListApplicationsRequest(TeaModel):
         self.is_stateful = is_stateful
         # The namespace ID.
         self.namespace_id = namespace_id
+        self.new_sae_version = new_sae_version
         # Specifies how applications are sorted. Valid values:
         # 
         # *   **running**: The applications are sorted based on the number of running instances.
@@ -41866,6 +41874,8 @@ class ListApplicationsRequest(TeaModel):
             result['IsStateful'] = self.is_stateful
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
         if self.page_size is not None:
@@ -41892,6 +41902,8 @@ class ListApplicationsRequest(TeaModel):
             self.is_stateful = m.get('IsStateful')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
         if m.get('PageSize') is not None:

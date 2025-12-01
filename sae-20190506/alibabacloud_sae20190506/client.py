@@ -11209,6 +11209,8 @@ class Client(OpenApiClient):
             query['IsStateful'] = request.is_stateful
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.new_sae_version):
+            query['NewSaeVersion'] = request.new_sae_version
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_size):
@@ -11267,6 +11269,8 @@ class Client(OpenApiClient):
             query['IsStateful'] = request.is_stateful
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.new_sae_version):
+            query['NewSaeVersion'] = request.new_sae_version
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_size):
