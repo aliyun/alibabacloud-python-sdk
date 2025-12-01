@@ -1,3 +1,9 @@
+2025-12-01 Version: 2.2.0
+- Support API CompareRule.
+- Support API DescribeExpressionVariableVersionDetail.
+- Support API DescribeVariableVersionDetail.
+
+
 2025-10-30 Version: 2.1.2
 - Update API DescribeSafDeOrder: add response parameters Body.resultObject.regions.
 

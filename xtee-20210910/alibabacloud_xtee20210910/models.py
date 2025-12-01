@@ -1879,6 +1879,539 @@ class CompareCopyRuleVariableResponse(TeaModel):
         return self
 
 
+class CompareRuleRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        previous_rule_version_id: int = None,
+        reg_id: str = None,
+        rule_version_id: int = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Primary key ID of the previous policy version.
+        self.previous_rule_version_id = previous_rule_version_id
+        # Region code.
+        self.reg_id = reg_id
+        # Primary key ID of the policy version.
+        self.rule_version_id = rule_version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.previous_rule_version_id is not None:
+            result['previousRuleVersionId'] = self.previous_rule_version_id
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.rule_version_id is not None:
+            result['ruleVersionId'] = self.rule_version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('previousRuleVersionId') is not None:
+            self.previous_rule_version_id = m.get('previousRuleVersionId')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('ruleVersionId') is not None:
+            self.rule_version_id = m.get('ruleVersionId')
+        return self
+
+
+class CompareRuleResponseBodyResultObjectNewRule(TeaModel):
+    def __init__(
+        self,
+        audit_id: int = None,
+        auth_type: str = None,
+        console_rule_id: int = None,
+        create_type: str = None,
+        event_code: str = None,
+        event_name: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        logic_expression: str = None,
+        main_event_code: str = None,
+        memo: str = None,
+        rule_action_map: Dict[str, Any] = None,
+        rule_actions: str = None,
+        rule_auth_type: str = None,
+        rule_body: str = None,
+        rule_expressions: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_status: str = None,
+        rule_type: str = None,
+        rule_version_id: int = None,
+        user_id: int = None,
+        version: int = None,
+    ):
+        # Audit ID.
+        self.audit_id = audit_id
+        # Authorization type.
+        self.auth_type = auth_type
+        # Primary key ID of the rule.
+        self.console_rule_id = console_rule_id
+        # Creation type.
+        self.create_type = create_type
+        # Event code.
+        self.event_code = event_code
+        # Event name.
+        self.event_name = event_name
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Logic of the rule expression execution.
+        self.logic_expression = logic_expression
+        # Main event code.
+        self.main_event_code = main_event_code
+        # Memo.
+        self.memo = memo
+        # Returned rule action structure. Returned when the policy type is DEFAULT.
+        self.rule_action_map = rule_action_map
+        # Output actions of the rule execution. Returned when the rule type is DEFAULT.
+        self.rule_actions = rule_actions
+        # Authorization type of the rule.
+        self.rule_auth_type = rule_auth_type
+        # DSL logic for rule execution. Returned when the rule type is DSL.
+        self.rule_body = rule_body
+        # Policy expressions. Returned when the policy type is DEFAULT.
+        self.rule_expressions = rule_expressions
+        # Rule ID.
+        self.rule_id = rule_id
+        # Rule name.
+        self.rule_name = rule_name
+        # Policy status.
+        self.rule_status = rule_status
+        # Rule type.
+        self.rule_type = rule_type
+        # Primary key ID of the rule version.
+        self.rule_version_id = rule_version_id
+        # User UID.
+        self.user_id = user_id
+        # Version number.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_id is not None:
+            result['auditId'] = self.audit_id
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.console_rule_id is not None:
+            result['consoleRuleId'] = self.console_rule_id
+        if self.create_type is not None:
+            result['createType'] = self.create_type
+        if self.event_code is not None:
+            result['eventCode'] = self.event_code
+        if self.event_name is not None:
+            result['eventName'] = self.event_name
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.logic_expression is not None:
+            result['logicExpression'] = self.logic_expression
+        if self.main_event_code is not None:
+            result['mainEventCode'] = self.main_event_code
+        if self.memo is not None:
+            result['memo'] = self.memo
+        if self.rule_action_map is not None:
+            result['ruleActionMap'] = self.rule_action_map
+        if self.rule_actions is not None:
+            result['ruleActions'] = self.rule_actions
+        if self.rule_auth_type is not None:
+            result['ruleAuthType'] = self.rule_auth_type
+        if self.rule_body is not None:
+            result['ruleBody'] = self.rule_body
+        if self.rule_expressions is not None:
+            result['ruleExpressions'] = self.rule_expressions
+        if self.rule_id is not None:
+            result['ruleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['ruleName'] = self.rule_name
+        if self.rule_status is not None:
+            result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
+        if self.rule_version_id is not None:
+            result['ruleVersionId'] = self.rule_version_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auditId') is not None:
+            self.audit_id = m.get('auditId')
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('consoleRuleId') is not None:
+            self.console_rule_id = m.get('consoleRuleId')
+        if m.get('createType') is not None:
+            self.create_type = m.get('createType')
+        if m.get('eventCode') is not None:
+            self.event_code = m.get('eventCode')
+        if m.get('eventName') is not None:
+            self.event_name = m.get('eventName')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('logicExpression') is not None:
+            self.logic_expression = m.get('logicExpression')
+        if m.get('mainEventCode') is not None:
+            self.main_event_code = m.get('mainEventCode')
+        if m.get('memo') is not None:
+            self.memo = m.get('memo')
+        if m.get('ruleActionMap') is not None:
+            self.rule_action_map = m.get('ruleActionMap')
+        if m.get('ruleActions') is not None:
+            self.rule_actions = m.get('ruleActions')
+        if m.get('ruleAuthType') is not None:
+            self.rule_auth_type = m.get('ruleAuthType')
+        if m.get('ruleBody') is not None:
+            self.rule_body = m.get('ruleBody')
+        if m.get('ruleExpressions') is not None:
+            self.rule_expressions = m.get('ruleExpressions')
+        if m.get('ruleId') is not None:
+            self.rule_id = m.get('ruleId')
+        if m.get('ruleName') is not None:
+            self.rule_name = m.get('ruleName')
+        if m.get('ruleStatus') is not None:
+            self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
+        if m.get('ruleVersionId') is not None:
+            self.rule_version_id = m.get('ruleVersionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class CompareRuleResponseBodyResultObjectOldRule(TeaModel):
+    def __init__(
+        self,
+        audit_id: int = None,
+        auth_type: str = None,
+        console_rule_id: int = None,
+        create_type: str = None,
+        event_code: str = None,
+        event_name: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        logic_expression: str = None,
+        main_event_code: str = None,
+        memo: str = None,
+        rule_action_map: Dict[str, Any] = None,
+        rule_actions: str = None,
+        rule_auth_type: str = None,
+        rule_body: str = None,
+        rule_expressions: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_status: str = None,
+        rule_type: str = None,
+        rule_version_id: int = None,
+        user_id: int = None,
+        version: int = None,
+    ):
+        # Audit ID.
+        self.audit_id = audit_id
+        # Authorization type.
+        self.auth_type = auth_type
+        # Primary key ID of the policy.
+        self.console_rule_id = console_rule_id
+        # Creation type.
+        self.create_type = create_type
+        # Event code.
+        self.event_code = event_code
+        # Event name.
+        self.event_name = event_name
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Execution logic of the policy expression.
+        self.logic_expression = logic_expression
+        # Main event code.
+        self.main_event_code = main_event_code
+        # Description.
+        self.memo = memo
+        # Returned rule action structure. Returned when the policy type is DEFAULT.
+        self.rule_action_map = rule_action_map
+        # Policy execution output actions. Returned when the policy type is DEFAULT.
+        self.rule_actions = rule_actions
+        # Policy authorization type.
+        self.rule_auth_type = rule_auth_type
+        # DSL policy execution logic. Returned when the policy type is DSL.
+        self.rule_body = rule_body
+        # Policy expression. Returned when the policy type is DEFAULT.
+        self.rule_expressions = rule_expressions
+        # Policy ID.
+        self.rule_id = rule_id
+        # Policy name.
+        self.rule_name = rule_name
+        # Policy status.
+        self.rule_status = rule_status
+        # Policy type.
+        self.rule_type = rule_type
+        # Primary key ID of the policy version.
+        self.rule_version_id = rule_version_id
+        # User UID.
+        self.user_id = user_id
+        # Version number.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_id is not None:
+            result['auditId'] = self.audit_id
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.console_rule_id is not None:
+            result['consoleRuleId'] = self.console_rule_id
+        if self.create_type is not None:
+            result['createType'] = self.create_type
+        if self.event_code is not None:
+            result['eventCode'] = self.event_code
+        if self.event_name is not None:
+            result['eventName'] = self.event_name
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.logic_expression is not None:
+            result['logicExpression'] = self.logic_expression
+        if self.main_event_code is not None:
+            result['mainEventCode'] = self.main_event_code
+        if self.memo is not None:
+            result['memo'] = self.memo
+        if self.rule_action_map is not None:
+            result['ruleActionMap'] = self.rule_action_map
+        if self.rule_actions is not None:
+            result['ruleActions'] = self.rule_actions
+        if self.rule_auth_type is not None:
+            result['ruleAuthType'] = self.rule_auth_type
+        if self.rule_body is not None:
+            result['ruleBody'] = self.rule_body
+        if self.rule_expressions is not None:
+            result['ruleExpressions'] = self.rule_expressions
+        if self.rule_id is not None:
+            result['ruleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['ruleName'] = self.rule_name
+        if self.rule_status is not None:
+            result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
+        if self.rule_version_id is not None:
+            result['ruleVersionId'] = self.rule_version_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auditId') is not None:
+            self.audit_id = m.get('auditId')
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('consoleRuleId') is not None:
+            self.console_rule_id = m.get('consoleRuleId')
+        if m.get('createType') is not None:
+            self.create_type = m.get('createType')
+        if m.get('eventCode') is not None:
+            self.event_code = m.get('eventCode')
+        if m.get('eventName') is not None:
+            self.event_name = m.get('eventName')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('logicExpression') is not None:
+            self.logic_expression = m.get('logicExpression')
+        if m.get('mainEventCode') is not None:
+            self.main_event_code = m.get('mainEventCode')
+        if m.get('memo') is not None:
+            self.memo = m.get('memo')
+        if m.get('ruleActionMap') is not None:
+            self.rule_action_map = m.get('ruleActionMap')
+        if m.get('ruleActions') is not None:
+            self.rule_actions = m.get('ruleActions')
+        if m.get('ruleAuthType') is not None:
+            self.rule_auth_type = m.get('ruleAuthType')
+        if m.get('ruleBody') is not None:
+            self.rule_body = m.get('ruleBody')
+        if m.get('ruleExpressions') is not None:
+            self.rule_expressions = m.get('ruleExpressions')
+        if m.get('ruleId') is not None:
+            self.rule_id = m.get('ruleId')
+        if m.get('ruleName') is not None:
+            self.rule_name = m.get('ruleName')
+        if m.get('ruleStatus') is not None:
+            self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
+        if m.get('ruleVersionId') is not None:
+            self.rule_version_id = m.get('ruleVersionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class CompareRuleResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        new_rule: CompareRuleResponseBodyResultObjectNewRule = None,
+        old_rule: CompareRuleResponseBodyResultObjectOldRule = None,
+    ):
+        # New policy object.
+        self.new_rule = new_rule
+        # Old policy object.
+        self.old_rule = old_rule
+
+    def validate(self):
+        if self.new_rule:
+            self.new_rule.validate()
+        if self.old_rule:
+            self.old_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_rule is not None:
+            result['newRule'] = self.new_rule.to_map()
+        if self.old_rule is not None:
+            result['oldRule'] = self.old_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('newRule') is not None:
+            temp_model = CompareRuleResponseBodyResultObjectNewRule()
+            self.new_rule = temp_model.from_map(m['newRule'])
+        if m.get('oldRule') is not None:
+            temp_model = CompareRuleResponseBodyResultObjectOldRule()
+            self.old_rule = temp_model.from_map(m['oldRule'])
+        return self
+
+
+class CompareRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: CompareRuleResponseBodyResultObject = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Returned object.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('resultObject') is not None:
+            temp_model = CompareRuleResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['resultObject'])
+        return self
+
+
+class CompareRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CompareRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CompareRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAnalysisConditionFavoriteRequest(TeaModel):
     def __init__(
         self,
@@ -22993,6 +23526,324 @@ class DescribeExpressionVariablePageResponse(TeaModel):
         return self
 
 
+class DescribeExpressionVariableVersionDetailRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        object_code: str = None,
+        object_id: int = None,
+        reg_id: str = None,
+        type: str = None,
+        version: int = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Associated variable code.
+        self.object_code = object_code
+        # Associated variable primary key ID.
+        self.object_id = object_id
+        # Region code.
+        self.reg_id = reg_id
+        # Variable type.
+        self.type = type
+        # Version number.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.object_code is not None:
+            result['objectCode'] = self.object_code
+        if self.object_id is not None:
+            result['objectId'] = self.object_id
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('objectCode') is not None:
+            self.object_code = m.get('objectCode')
+        if m.get('objectId') is not None:
+            self.object_id = m.get('objectId')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeExpressionVariableVersionDetailResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        create_type: str = None,
+        description: str = None,
+        expression: str = None,
+        expression_title: str = None,
+        expression_variable: str = None,
+        field_rank: int = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        invoke_key: str = None,
+        name: str = None,
+        outlier: str = None,
+        outputs: str = None,
+        ref_obj_id: str = None,
+        ref_obj_type: str = None,
+        region: str = None,
+        source_type: str = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+        user_id: int = None,
+        version: int = None,
+    ):
+        # Creation type.
+        self.create_type = create_type
+        # Description information.
+        self.description = description
+        # Expression.
+        self.expression = expression
+        # Expression title.
+        self.expression_title = expression_title
+        # Expression variable.
+        self.expression_variable = expression_variable
+        # Field ranking.
+        self.field_rank = field_rank
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time.
+        self.gmt_modified = gmt_modified
+        # Custom variable primary key.
+        self.id = id
+        # Invoke key.
+        self.invoke_key = invoke_key
+        # Variable name, a uniquely generated identifier.
+        self.name = name
+        # Outlier.
+        self.outlier = outlier
+        # Variable return type.
+        self.outputs = outputs
+        # Variable associated event.
+        self.ref_obj_id = ref_obj_id
+        # Variable association type.
+        self.ref_obj_type = ref_obj_type
+        # Region ID.
+        self.region = region
+        # Source type.
+        self.source_type = source_type
+        # Status.
+        self.status = status
+        # Variable title.
+        self.title = title
+        # Variable type.
+        self.type = type
+        # User UID.
+        self.user_id = user_id
+        # Variable version.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_type is not None:
+            result['createType'] = self.create_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.expression is not None:
+            result['expression'] = self.expression
+        if self.expression_title is not None:
+            result['expressionTitle'] = self.expression_title
+        if self.expression_variable is not None:
+            result['expressionVariable'] = self.expression_variable
+        if self.field_rank is not None:
+            result['fieldRank'] = self.field_rank
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.invoke_key is not None:
+            result['invokeKey'] = self.invoke_key
+        if self.name is not None:
+            result['name'] = self.name
+        if self.outlier is not None:
+            result['outlier'] = self.outlier
+        if self.outputs is not None:
+            result['outputs'] = self.outputs
+        if self.ref_obj_id is not None:
+            result['refObjId'] = self.ref_obj_id
+        if self.ref_obj_type is not None:
+            result['refObjType'] = self.ref_obj_type
+        if self.region is not None:
+            result['region'] = self.region
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.status is not None:
+            result['status'] = self.status
+        if self.title is not None:
+            result['title'] = self.title
+        if self.type is not None:
+            result['type'] = self.type
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createType') is not None:
+            self.create_type = m.get('createType')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('expression') is not None:
+            self.expression = m.get('expression')
+        if m.get('expressionTitle') is not None:
+            self.expression_title = m.get('expressionTitle')
+        if m.get('expressionVariable') is not None:
+            self.expression_variable = m.get('expressionVariable')
+        if m.get('fieldRank') is not None:
+            self.field_rank = m.get('fieldRank')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('invokeKey') is not None:
+            self.invoke_key = m.get('invokeKey')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('outlier') is not None:
+            self.outlier = m.get('outlier')
+        if m.get('outputs') is not None:
+            self.outputs = m.get('outputs')
+        if m.get('refObjId') is not None:
+            self.ref_obj_id = m.get('refObjId')
+        if m.get('refObjType') is not None:
+            self.ref_obj_type = m.get('refObjType')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeExpressionVariableVersionDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeExpressionVariableVersionDetailResponseBodyResultObject = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Returned object.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('resultObject') is not None:
+            temp_model = DescribeExpressionVariableVersionDetailResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['resultObject'])
+        return self
+
+
+class DescribeExpressionVariableVersionDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExpressionVariableVersionDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExpressionVariableVersionDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeFieldByIdRequest(TeaModel):
     def __init__(
         self,
@@ -37487,8 +38338,16 @@ class DescribeSafDeOrderResponseBodyResultObjectRegions(TeaModel):
         region: str = None,
         specification: int = None,
     ):
+        # Expiration date (timestamp).
         self.expiration_date = expiration_date
+        # Region ID.
         self.region = region
+        # Specification model:
+        # 
+        # 1: Basic Edition 
+        # 2: Advanced Edition 
+        # 3: Premium Edition 
+        # 4: Flagship Edition
         self.specification = specification
 
     def validate(self):
@@ -37534,6 +38393,7 @@ class DescribeSafDeOrderResponseBodyResultObject(TeaModel):
         #      2. Old Customer (Subscription): Customers who have purchased the SAF product.
         #      3. Pay-As-You-Go: Customers who have purchased the SAF_BAG product or activated SAF_POS.
         self.open_user_type = open_user_type
+        # Activated region permission addresses.
         self.regions = regions
 
     def validate(self):
@@ -49002,6 +49862,282 @@ class DescribeVariableSceneListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeVariableSceneListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVariableVersionDetailRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        object_code: str = None,
+        object_id: int = None,
+        reg_id: str = None,
+        type: str = None,
+        version: int = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Associated variable name.
+        self.object_code = object_code
+        # Associated variable ID.
+        self.object_id = object_id
+        # Region code.
+        self.reg_id = reg_id
+        # Type.
+        self.type = type
+        # Version.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.object_code is not None:
+            result['objectCode'] = self.object_code
+        if self.object_id is not None:
+            result['objectId'] = self.object_id
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('objectCode') is not None:
+            self.object_code = m.get('objectCode')
+        if m.get('objectId') is not None:
+            self.object_id = m.get('objectId')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeVariableVersionDetailResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        data_version: int = None,
+        description: str = None,
+        event_codes: str = None,
+        global_: bool = None,
+        history_value_type: str = None,
+        id: int = None,
+        object: str = None,
+        status: str = None,
+        subject: str = None,
+        time_type: str = None,
+        title: str = None,
+        top_n: int = None,
+        tw_count: int = None,
+        velocity_fc: str = None,
+        velocity_tw: str = None,
+    ):
+        # Condition value.
+        self.condition = condition
+        # Data version.
+        self.data_version = data_version
+        # Variable description information.
+        self.description = description
+        # Event code.
+        self.event_codes = event_codes
+        # Global cumulative. Not currently available externally.
+        self.global_ = global_
+        # Historical value parameter type.
+        self.history_value_type = history_value_type
+        # Primary key ID of the version.
+        self.id = id
+        # Subordinate attribute (single selection, sourced from the event attribute list code).
+        self.object = object
+        # Status.
+        self.status = status
+        # Main attribute (multiple separated by commas, up to 5, sourced from the event attribute list code).
+        self.subject = subject
+        # Time slice type.
+        self.time_type = time_type
+        # Title.
+        self.title = title
+        # Top N.
+        self.top_n = top_n
+        # Number of time slices.
+        self.tw_count = tw_count
+        # Cumulative indicator processing function.
+        self.velocity_fc = velocity_fc
+        # Cumulative indicator time window.
+        self.velocity_tw = velocity_tw
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.data_version is not None:
+            result['dataVersion'] = self.data_version
+        if self.description is not None:
+            result['description'] = self.description
+        if self.event_codes is not None:
+            result['eventCodes'] = self.event_codes
+        if self.global_ is not None:
+            result['global'] = self.global_
+        if self.history_value_type is not None:
+            result['historyValueType'] = self.history_value_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.object is not None:
+            result['object'] = self.object
+        if self.status is not None:
+            result['status'] = self.status
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.time_type is not None:
+            result['timeType'] = self.time_type
+        if self.title is not None:
+            result['title'] = self.title
+        if self.top_n is not None:
+            result['topN'] = self.top_n
+        if self.tw_count is not None:
+            result['twCount'] = self.tw_count
+        if self.velocity_fc is not None:
+            result['velocityFC'] = self.velocity_fc
+        if self.velocity_tw is not None:
+            result['velocityTW'] = self.velocity_tw
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('dataVersion') is not None:
+            self.data_version = m.get('dataVersion')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('eventCodes') is not None:
+            self.event_codes = m.get('eventCodes')
+        if m.get('global') is not None:
+            self.global_ = m.get('global')
+        if m.get('historyValueType') is not None:
+            self.history_value_type = m.get('historyValueType')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('object') is not None:
+            self.object = m.get('object')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('timeType') is not None:
+            self.time_type = m.get('timeType')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('topN') is not None:
+            self.top_n = m.get('topN')
+        if m.get('twCount') is not None:
+            self.tw_count = m.get('twCount')
+        if m.get('velocityFC') is not None:
+            self.velocity_fc = m.get('velocityFC')
+        if m.get('velocityTW') is not None:
+            self.velocity_tw = m.get('velocityTW')
+        return self
+
+
+class DescribeVariableVersionDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeVariableVersionDetailResponseBodyResultObject = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Returned object.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('resultObject') is not None:
+            temp_model = DescribeVariableVersionDetailResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['resultObject'])
+        return self
+
+
+class DescribeVariableVersionDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVariableVersionDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVariableVersionDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

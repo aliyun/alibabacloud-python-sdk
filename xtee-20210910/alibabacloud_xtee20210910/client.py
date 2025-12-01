@@ -1165,6 +1165,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.compare_copy_rule_variable_with_options_async(request, runtime)
 
+    def compare_rule_with_options(
+        self,
+        request: xtee_20210910_models.CompareRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.CompareRuleResponse:
+        """
+        @summary Policy Comparison.
+        
+        @param request: CompareRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompareRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.previous_rule_version_id):
+            query['previousRuleVersionId'] = request.previous_rule_version_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.rule_version_id):
+            query['ruleVersionId'] = request.rule_version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CompareRule',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.CompareRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def compare_rule_with_options_async(
+        self,
+        request: xtee_20210910_models.CompareRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.CompareRuleResponse:
+        """
+        @summary Policy Comparison.
+        
+        @param request: CompareRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompareRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.previous_rule_version_id):
+            query['previousRuleVersionId'] = request.previous_rule_version_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.rule_version_id):
+            query['ruleVersionId'] = request.rule_version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CompareRule',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.CompareRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def compare_rule(
+        self,
+        request: xtee_20210910_models.CompareRuleRequest,
+    ) -> xtee_20210910_models.CompareRuleResponse:
+        """
+        @summary Policy Comparison.
+        
+        @param request: CompareRuleRequest
+        @return: CompareRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.compare_rule_with_options(request, runtime)
+
+    async def compare_rule_async(
+        self,
+        request: xtee_20210910_models.CompareRuleRequest,
+    ) -> xtee_20210910_models.CompareRuleResponse:
+        """
+        @summary Policy Comparison.
+        
+        @param request: CompareRuleRequest
+        @return: CompareRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.compare_rule_with_options_async(request, runtime)
+
     def create_analysis_condition_favorite_with_options(
         self,
         request: xtee_20210910_models.CreateAnalysisConditionFavoriteRequest,
@@ -11864,6 +11972,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_expression_variable_page_with_options_async(request, runtime)
+
+    def describe_expression_variable_version_detail_with_options(
+        self,
+        request: xtee_20210910_models.DescribeExpressionVariableVersionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeExpressionVariableVersionDetailResponse:
+        """
+        @summary Custom Variable Version Details.
+        
+        @param request: DescribeExpressionVariableVersionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressionVariableVersionDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_code):
+            query['objectCode'] = request.object_code
+        if not UtilClient.is_unset(request.object_id):
+            query['objectId'] = request.object_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressionVariableVersionDetail',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeExpressionVariableVersionDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_expression_variable_version_detail_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeExpressionVariableVersionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeExpressionVariableVersionDetailResponse:
+        """
+        @summary Custom Variable Version Details.
+        
+        @param request: DescribeExpressionVariableVersionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressionVariableVersionDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_code):
+            query['objectCode'] = request.object_code
+        if not UtilClient.is_unset(request.object_id):
+            query['objectId'] = request.object_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExpressionVariableVersionDetail',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeExpressionVariableVersionDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_expression_variable_version_detail(
+        self,
+        request: xtee_20210910_models.DescribeExpressionVariableVersionDetailRequest,
+    ) -> xtee_20210910_models.DescribeExpressionVariableVersionDetailResponse:
+        """
+        @summary Custom Variable Version Details.
+        
+        @param request: DescribeExpressionVariableVersionDetailRequest
+        @return: DescribeExpressionVariableVersionDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_expression_variable_version_detail_with_options(request, runtime)
+
+    async def describe_expression_variable_version_detail_async(
+        self,
+        request: xtee_20210910_models.DescribeExpressionVariableVersionDetailRequest,
+    ) -> xtee_20210910_models.DescribeExpressionVariableVersionDetailResponse:
+        """
+        @summary Custom Variable Version Details.
+        
+        @param request: DescribeExpressionVariableVersionDetailRequest
+        @return: DescribeExpressionVariableVersionDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_expression_variable_version_detail_with_options_async(request, runtime)
 
     def describe_field_by_id_with_options(
         self,
@@ -24892,6 +25116,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_variable_scene_list_with_options_async(request, runtime)
+
+    def describe_variable_version_detail_with_options(
+        self,
+        request: xtee_20210910_models.DescribeVariableVersionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeVariableVersionDetailResponse:
+        """
+        @summary Cumulative Variable Version Details.
+        
+        @param request: DescribeVariableVersionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVariableVersionDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_code):
+            query['objectCode'] = request.object_code
+        if not UtilClient.is_unset(request.object_id):
+            query['objectId'] = request.object_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVariableVersionDetail',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeVariableVersionDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_variable_version_detail_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeVariableVersionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeVariableVersionDetailResponse:
+        """
+        @summary Cumulative Variable Version Details.
+        
+        @param request: DescribeVariableVersionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVariableVersionDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_code):
+            query['objectCode'] = request.object_code
+        if not UtilClient.is_unset(request.object_id):
+            query['objectId'] = request.object_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVariableVersionDetail',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeVariableVersionDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_variable_version_detail(
+        self,
+        request: xtee_20210910_models.DescribeVariableVersionDetailRequest,
+    ) -> xtee_20210910_models.DescribeVariableVersionDetailResponse:
+        """
+        @summary Cumulative Variable Version Details.
+        
+        @param request: DescribeVariableVersionDetailRequest
+        @return: DescribeVariableVersionDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_variable_version_detail_with_options(request, runtime)
+
+    async def describe_variable_version_detail_async(
+        self,
+        request: xtee_20210910_models.DescribeVariableVersionDetailRequest,
+    ) -> xtee_20210910_models.DescribeVariableVersionDetailResponse:
+        """
+        @summary Cumulative Variable Version Details.
+        
+        @param request: DescribeVariableVersionDetailRequest
+        @return: DescribeVariableVersionDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_variable_version_detail_with_options_async(request, runtime)
 
     def describe_version_page_list_with_options(
         self,
