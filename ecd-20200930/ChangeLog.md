@@ -1,3 +1,14 @@
+2025-12-01 Version: 4.17.0
+- Support API BatchModifyEntitlement.
+- Update API CreateCenterPolicy: add request parameters ClientCreateSnapshot.
+- Update API CreateCenterPolicy: add request parameters WatermarkShadow.
+- Update API DescribeGlobalDesktopRecords: add response parameters Body.Sessions.$.OfficeSiteType.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientCreateSnapshot.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.WatermarkShadow.
+- Update API ModifyCenterPolicy: add request parameters ClientCreateSnapshot.
+- Update API ModifyCenterPolicy: add request parameters WatermarkShadow.
+
+
 2025-11-03 Version: 4.16.0
 - Support API DescribeCloudDiskGroupDrives.
 - Support API DescribeCloudDiskGroups.

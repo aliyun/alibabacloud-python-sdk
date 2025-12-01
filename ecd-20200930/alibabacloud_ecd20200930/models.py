@@ -2853,6 +2853,233 @@ class AttachEndUserResponse(TeaModel):
         return self
 
 
+class BatchModifyEntitlementRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_id: List[str] = None,
+        end_user_id: List[str] = None,
+        max_desktop_per_user: int = None,
+        max_user_per_desktop: int = None,
+        preview: bool = None,
+        region_id: str = None,
+        strategy: str = None,
+    ):
+        # This parameter is required.
+        self.desktop_id = desktop_id
+        self.end_user_id = end_user_id
+        self.max_desktop_per_user = max_desktop_per_user
+        self.max_user_per_desktop = max_user_per_desktop
+        self.preview = preview
+        # This parameter is required.
+        self.region_id = region_id
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.max_desktop_per_user is not None:
+            result['MaxDesktopPerUser'] = self.max_desktop_per_user
+        if self.max_user_per_desktop is not None:
+            result['MaxUserPerDesktop'] = self.max_user_per_desktop
+        if self.preview is not None:
+            result['Preview'] = self.preview
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('MaxDesktopPerUser') is not None:
+            self.max_desktop_per_user = m.get('MaxDesktopPerUser')
+        if m.get('MaxUserPerDesktop') is not None:
+            self.max_user_per_desktop = m.get('MaxUserPerDesktop')
+        if m.get('Preview') is not None:
+            self.preview = m.get('Preview')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
+class BatchModifyEntitlementResponseBodyEntitlementsAssignModels(TeaModel):
+    def __init__(
+        self,
+        desktop_id: str = None,
+        end_user_ids: List[str] = None,
+        inner_status: str = None,
+    ):
+        self.desktop_id = desktop_id
+        self.end_user_ids = end_user_ids
+        self.inner_status = inner_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.inner_status is not None:
+            result['InnerStatus'] = self.inner_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('InnerStatus') is not None:
+            self.inner_status = m.get('InnerStatus')
+        return self
+
+
+class BatchModifyEntitlementResponseBodyEntitlements(TeaModel):
+    def __init__(
+        self,
+        assign_models: List[BatchModifyEntitlementResponseBodyEntitlementsAssignModels] = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.assign_models = assign_models
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.assign_models:
+            for k in self.assign_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssignModels'] = []
+        if self.assign_models is not None:
+            for k in self.assign_models:
+                result['AssignModels'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assign_models = []
+        if m.get('AssignModels') is not None:
+            for k in m.get('AssignModels'):
+                temp_model = BatchModifyEntitlementResponseBodyEntitlementsAssignModels()
+                self.assign_models.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class BatchModifyEntitlementResponseBody(TeaModel):
+    def __init__(
+        self,
+        entitlements: BatchModifyEntitlementResponseBodyEntitlements = None,
+        request_id: str = None,
+    ):
+        self.entitlements = entitlements
+        self.request_id = request_id
+
+    def validate(self):
+        if self.entitlements:
+            self.entitlements.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entitlements is not None:
+            result['Entitlements'] = self.entitlements.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Entitlements') is not None:
+            temp_model = BatchModifyEntitlementResponseBodyEntitlements()
+            self.entitlements = temp_model.from_map(m['Entitlements'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchModifyEntitlementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchModifyEntitlementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchModifyEntitlementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindConfigGroupRequestResourceInfos(TeaModel):
     def __init__(
         self,
@@ -7179,6 +7406,7 @@ class CreateCenterPolicyRequest(TeaModel):
         business_type: int = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
+        client_create_snapshot: str = None,
         client_type: List[CreateCenterPolicyRequestClientType] = None,
         clipboard: str = None,
         clipboard_graineds: List[CreateCenterPolicyRequestClipboardGraineds] = None,
@@ -7284,6 +7512,7 @@ class CreateCenterPolicyRequest(TeaModel):
         watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
+        watermark_shadow: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
         wuying_keeper: str = None,
@@ -7328,6 +7557,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: disables device redirection.
         self.camera_redirect = camera_redirect
         self.client_control_menu = client_control_menu
+        self.client_create_snapshot = client_create_snapshot
         # The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
         self.client_type = client_type
         # The read/write permissions on the clipboard.
@@ -7764,6 +7994,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: disables security priority for invisible watermarks.
         # *   on: enables security priority for invisible watermarks.
         self.watermark_security = watermark_security
+        self.watermark_shadow = watermark_shadow
         # The watermark opacity. A higher value makes the watermark more opaque. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
         # The watermark type. You can specify up to three types. Separate multiple values with commas (,).
@@ -7859,6 +8090,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['CameraRedirect'] = self.camera_redirect
         if self.client_control_menu is not None:
             result['ClientControlMenu'] = self.client_control_menu
+        if self.client_create_snapshot is not None:
+            result['ClientCreateSnapshot'] = self.client_create_snapshot
         result['ClientType'] = []
         if self.client_type is not None:
             for k in self.client_type:
@@ -8085,6 +8318,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['WatermarkRowAmount'] = self.watermark_row_amount
         if self.watermark_security is not None:
             result['WatermarkSecurity'] = self.watermark_security
+        if self.watermark_shadow is not None:
+            result['WatermarkShadow'] = self.watermark_shadow
         if self.watermark_transparency_value is not None:
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
         if self.watermark_type is not None:
@@ -8119,6 +8354,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.camera_redirect = m.get('CameraRedirect')
         if m.get('ClientControlMenu') is not None:
             self.client_control_menu = m.get('ClientControlMenu')
+        if m.get('ClientCreateSnapshot') is not None:
+            self.client_create_snapshot = m.get('ClientCreateSnapshot')
         self.client_type = []
         if m.get('ClientType') is not None:
             for k in m.get('ClientType'):
@@ -8353,6 +8590,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.watermark_row_amount = m.get('WatermarkRowAmount')
         if m.get('WatermarkSecurity') is not None:
             self.watermark_security = m.get('WatermarkSecurity')
+        if m.get('WatermarkShadow') is not None:
+            self.watermark_shadow = m.get('WatermarkShadow')
         if m.get('WatermarkTransparencyValue') is not None:
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
         if m.get('WatermarkType') is not None:
@@ -16510,7 +16749,13 @@ class CreateTemplateRequestDataDiskList(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The PL of the data disk. Default value: `AutoPL`.
         self.performance_level = performance_level
+        # The size of the data disk. Unit: GiB. Valid values: 40 to 2040. Increments: 10 GiB.
+        # 
+        # **\
+        # 
+        # **Keep in mind** that the larger the ESSD disk capacity, the higher the available PL (for example, PL2 is available for disks larger than 460 GiB). A higher PL comes with a higher cost. Select an ESSD based on your specific needs.
         self.size = size
 
     def validate(self):
@@ -16548,12 +16793,24 @@ class CreateTemplateRequestRegionConfigList(TeaModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
+        # The office network ID.
         self.office_site_id = office_site_id
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
+        # The ID of the cloud computer type.
         self.resource_instance_type = resource_instance_type
+        # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
+        # The subnet ID.
         self.subnet_id = subnet_id
+        # Specifies whether to enable disk encryption.
+        # 
+        # Valid values:
+        # 
+        # *   false (default): disables disk encryption.
+        # *   true: enables disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt disks. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query KMS keys.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -16606,7 +16863,9 @@ class CreateTemplateRequestResourceTagList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -16639,7 +16898,9 @@ class CreateTemplateRequestSiteConfigList(TeaModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
+        # 应用管控策略ID
         self.app_rule_id = app_rule_id
+        # 站点ID。
         self.site_id = site_id
 
     def validate(self):
@@ -16694,25 +16955,66 @@ class CreateTemplateRequest(TeaModel):
     ):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        # >  This parameter is not publicly available.
+        # 
+        # Valid values:
+        # 
+        # *   1: the Enterprise edition.
         self.biz_type = biz_type
         self.charge_type = charge_type
+        # The data disks.
         self.data_disk_list = data_disk_list
+        # The default language of cloud computers during startup. This parameter takes effect only when cloud computers are created from system images.
         self.default_language = default_language
+        # The template description. It must meet the following criteria:
+        # 
+        # *   It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # *   It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
         self.description = description
+        # The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
         self.image_id = image_id
         self.period = period
         self.period_unit = period_unit
+        # The ID of the policy group.
         self.policy_group_id = policy_group_id
         self.post_paid_after_used_up = post_paid_after_used_up
+        # The service type. Set the value to `CloudDesktop`.
+        # 
+        # *\
         self.product_type = product_type
+        # The regions of the template. You can create cloud computers by using a template only within the same region as the template itself.
+        # 
+        # >  You can specify up to 20 regions.
         self.region_config_list = region_config_list
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags added to cloud computers. Specify tags in key-value pairs. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
+        # 区域配置管理
         self.site_config_list = site_config_list
+        # The performance level (PL) of the system disk.
+        # 
+        # >  Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
+        # 
+        # Valid values:
+        # 
+        # *   PL1: a PL1 ESSD.
+        # *   PL0: a PL0 ESSD.
+        # *   AutoPL: an AutoPL ESSD.
         self.system_disk_performance_level = system_disk_performance_level
+        # The size of the system disk. Unit: GiB. Valid values: 40 to 500. Increments: 10 GiB.
+        # 
+        # >  The system disk size must be at least as large as the configured image size.
         self.system_disk_size = system_disk_size
+        # The template name. It must meet the following criteria:
+        # 
+        # *   It can be 2 to 126 characters in length.
+        # *   It must begin with a letter and cannot start with `http://` or `https://`.
+        # *   It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
         self.user_duration = user_duration
 
@@ -16865,11 +17167,17 @@ class CreateTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
+        # The template ID.
         self.data = data
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The creation result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -34455,6 +34763,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(TeaModel):
         memory: int = None,
         office_site_id: str = None,
         office_site_name: str = None,
+        office_site_type: str = None,
         os_type: str = None,
         platform: str = None,
         protocol_type: str = None,
@@ -34495,6 +34804,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(TeaModel):
         self.office_site_id = office_site_id
         # The office network name.
         self.office_site_name = office_site_name
+        self.office_site_type = office_site_type
         # The OS type. Valid values:
         # 
         # *   Windows
@@ -34572,6 +34882,8 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.office_site_name is not None:
             result['OfficeSiteName'] = self.office_site_name
+        if self.office_site_type is not None:
+            result['OfficeSiteType'] = self.office_site_type
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.platform is not None:
@@ -34630,6 +34942,8 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('OfficeSiteName') is not None:
             self.office_site_name = m.get('OfficeSiteName')
+        if m.get('OfficeSiteType') is not None:
+            self.office_site_type = m.get('OfficeSiteType')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('Platform') is not None:
@@ -40066,6 +40380,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         auto_reconnect: str = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
+        client_create_snapshot: str = None,
         client_types: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
         color_enhancement: str = None,
@@ -40173,6 +40488,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
+        watermark_shadow: str = None,
         watermark_transparency: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
@@ -40204,6 +40520,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   on (default)
         self.camera_redirect = camera_redirect
         self.client_control_menu = client_control_menu
+        self.client_create_snapshot = client_create_snapshot
         # The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
         self.client_types = client_types
         # The permissions on the clipboard.
@@ -40645,6 +40962,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.watermark_security = watermark_security
+        self.watermark_shadow = watermark_shadow
         # The watermark transparency.
         # 
         # Valid values:
@@ -40739,6 +41057,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['CameraRedirect'] = self.camera_redirect
         if self.client_control_menu is not None:
             result['ClientControlMenu'] = self.client_control_menu
+        if self.client_create_snapshot is not None:
+            result['ClientCreateSnapshot'] = self.client_create_snapshot
         result['ClientTypes'] = []
         if self.client_types is not None:
             for k in self.client_types:
@@ -40967,6 +41287,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['WatermarkRowAmount'] = self.watermark_row_amount
         if self.watermark_security is not None:
             result['WatermarkSecurity'] = self.watermark_security
+        if self.watermark_shadow is not None:
+            result['WatermarkShadow'] = self.watermark_shadow
         if self.watermark_transparency is not None:
             result['WatermarkTransparency'] = self.watermark_transparency
         if self.watermark_transparency_value is not None:
@@ -41001,6 +41323,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.camera_redirect = m.get('CameraRedirect')
         if m.get('ClientControlMenu') is not None:
             self.client_control_menu = m.get('ClientControlMenu')
+        if m.get('ClientCreateSnapshot') is not None:
+            self.client_create_snapshot = m.get('ClientCreateSnapshot')
         self.client_types = []
         if m.get('ClientTypes') is not None:
             for k in m.get('ClientTypes'):
@@ -41236,6 +41560,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.watermark_row_amount = m.get('WatermarkRowAmount')
         if m.get('WatermarkSecurity') is not None:
             self.watermark_security = m.get('WatermarkSecurity')
+        if m.get('WatermarkShadow') is not None:
+            self.watermark_shadow = m.get('WatermarkShadow')
         if m.get('WatermarkTransparency') is not None:
             self.watermark_transparency = m.get('WatermarkTransparency')
         if m.get('WatermarkTransparencyValue') is not None:
@@ -45453,15 +45779,34 @@ class DescribeTemplatesRequest(TeaModel):
         template_name: str = None,
         template_type: str = None,
     ):
+        # The region that you can use to filter templates.
+        # 
+        # >  If you specify this parameter, only templates that are created in the specified region are returned.
         self.biz_region_id = biz_region_id
+        # >  This parameter is not publicly available.
         self.biz_type = biz_type
+        # The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
         self.image_id = image_id
+        # The keyword that you can use to search for the template. It can be the template ID or the template name. Fuzzy search is supported.
         self.keyword = keyword
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The service type. Set the value to `CloudDesktop`.
+        # 
+        # *\
         self.product_type = product_type
+        # The IDs of the templates that you want to query.
         self.template_ids = template_ids
+        # The name of the template. You can search for template by name.
         self.template_name = template_name
+        # The type of the template that you want to query. If you leave this parameter empty, all types of templates are queried.
+        # 
+        # Valid values:
+        # 
+        # *   USER_TEMPLATE: custom templates.
+        # *   SYSTEM_TEMPLATE: system templates provided by Alibaba Cloud.
         self.template_type = template_type
 
     def validate(self):
@@ -45526,7 +45871,15 @@ class DescribeTemplatesResponseBodyDataDataDiskList(TeaModel):
         performance_level: str = None,
         size: str = None,
     ):
+        # The PL of the data disk.
+        # 
+        # Valid values:
+        # 
+        # *   PL1: a PL1 ESSD.
+        # *   PL0: a PL0 ESSD.
+        # *   AutoPL: an AutoPL SSD.
         self.performance_level = performance_level
+        # The size of the data disk. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -45567,15 +45920,25 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(TeaModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
+        # The number of vCPUs.
         self.cpu_count = cpu_count
+        # The GPU memory information. This parameter is supported only by Graphics cloud computer types.
         self.gpu_spec = gpu_spec
+        # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        # The office network ID.
         self.office_site_id = office_site_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the cloud computer type.
         self.resource_instance_type = resource_instance_type
+        # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
+        # The subnet ID.
         self.subnet_id = subnet_id
+        # Indicates whether disk encryption is enabled.
         self.volume_encryption_enable = volume_encryption_enable
+        # The ID of the Key Management Service (KMS) key that is used to encrypt the disk.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -45640,7 +46003,9 @@ class DescribeTemplatesResponseBodyDataResourceTagList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -45673,7 +46038,9 @@ class DescribeTemplatesResponseBodyDataSiteConfigList(TeaModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
+        # 应用管控策略ID
         self.app_rule_id = app_rule_id
+        # 站点名称。
         self.site_id = site_id
 
     def validate(self):
@@ -45734,28 +46101,77 @@ class DescribeTemplatesResponseBodyData(TeaModel):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.charge_type = charge_type
+        # The sizes of the data disks.
         self.data_disk_list = data_disk_list
+        # The default language of the template.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English.
+        # *   zh-HK: Chinese, Traditional (Hong Kong, China).
+        # *   zh-CN: Simplified Chinese.
+        # *   ja-JP: Japanese.
         self.default_language = default_language
+        # The template description.
         self.description = description
+        # The time when the template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
         self.gmt_create = gmt_create
+        # The time when the template was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
+        # The image ID.
         self.image_id = image_id
+        # The image type.
+        # 
+        # Valid values:
+        # 
+        # *   User: a custom image.
+        # *   Shared: a shared image.
+        # *   System: a system image.
+        # *   Community: a community image.
         self.image_type = image_type
         self.period = period
         self.period_unit = period_unit
+        # The policy ID.
         self.policy_group_id = policy_group_id
         self.post_paid_after_used_up = post_paid_after_used_up
+        # The service type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudDesktop: cloud computers.
         self.product_type = product_type
+        # The region-related settings.
         self.region_config_list = region_config_list
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags added to cloud computers. A tag is a key-value pair.
         self.resource_tag_list = resource_tag_list
+        # 区域配置管理
         self.site_config_list = site_config_list
+        # The performance level (PL) of the system disk.
+        # 
+        # Valid value:
+        # 
+        # *   PL1: a PL1 Enterprise SSD (ESSD).
+        # *   PL0: a PL0 ESSD.
+        # *   AutoPL: an AutoPL SSD.
         self.system_disk_performance_level = system_disk_performance_level
+        # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The template type.
+        # 
+        # Valid values:
+        # 
+        # *   USER_TEMPLATE: custom templates.
+        # *   SYSTEM_TEMPLATE: system templates.
         self.template_type = template_type
+        # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
         self.user_duration = user_duration
 
@@ -45931,15 +46347,23 @@ class DescribeTemplatesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The modification result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
         # The templates.
         self.data = data
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned. This parameter is not returned if the value of Code is `success`.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of templates.
         self.total_count = total_count
 
     def validate(self):
@@ -52984,9 +53408,15 @@ class ListInstalledAppsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The cloud computer ID.
+        # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        # The page number.\\
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -53023,7 +53453,9 @@ class ListInstalledAppsResponseBodyApps(TeaModel):
         app_name: str = None,
         app_version: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The application version.
         self.app_version = app_version
 
     def validate(self):
@@ -53057,8 +53489,11 @@ class ListInstalledAppsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the application.
         self.apps = apps
+        # The unique ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -56855,6 +57290,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         business_type: int = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
+        client_create_snapshot: str = None,
         client_type: List[ModifyCenterPolicyRequestClientType] = None,
         clipboard: str = None,
         clipboard_graineds: List[ModifyCenterPolicyRequestClipboardGraineds] = None,
@@ -56963,6 +57399,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
+        watermark_shadow: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
         wuying_keeper: str = None,
@@ -57007,6 +57444,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: disables device redirection.
         self.camera_redirect = camera_redirect
         self.client_control_menu = client_control_menu
+        self.client_create_snapshot = client_create_snapshot
         # The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
         self.client_type = client_type
         # The read/write permissions on the clipboard.
@@ -57464,6 +57902,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off
         # *   on
         self.watermark_security = watermark_security
+        self.watermark_shadow = watermark_shadow
         # The watermark opacity. A higher value makes the watermark more opaque. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
         # The watermark type. You can specify up to three types. Separate multiple values with commas (,).
@@ -57572,6 +58011,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['CameraRedirect'] = self.camera_redirect
         if self.client_control_menu is not None:
             result['ClientControlMenu'] = self.client_control_menu
+        if self.client_create_snapshot is not None:
+            result['ClientCreateSnapshot'] = self.client_create_snapshot
         result['ClientType'] = []
         if self.client_type is not None:
             for k in self.client_type:
@@ -57808,6 +58249,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['WatermarkRowAmount'] = self.watermark_row_amount
         if self.watermark_security is not None:
             result['WatermarkSecurity'] = self.watermark_security
+        if self.watermark_shadow is not None:
+            result['WatermarkShadow'] = self.watermark_shadow
         if self.watermark_transparency_value is not None:
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
         if self.watermark_type is not None:
@@ -57842,6 +58285,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.camera_redirect = m.get('CameraRedirect')
         if m.get('ClientControlMenu') is not None:
             self.client_control_menu = m.get('ClientControlMenu')
+        if m.get('ClientCreateSnapshot') is not None:
+            self.client_create_snapshot = m.get('ClientCreateSnapshot')
         self.client_type = []
         if m.get('ClientType') is not None:
             for k in m.get('ClientType'):
@@ -58088,6 +58533,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.watermark_row_amount = m.get('WatermarkRowAmount')
         if m.get('WatermarkSecurity') is not None:
             self.watermark_security = m.get('WatermarkSecurity')
+        if m.get('WatermarkShadow') is not None:
+            self.watermark_shadow = m.get('WatermarkShadow')
         if m.get('WatermarkTransparencyValue') is not None:
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
         if m.get('WatermarkType') is not None:

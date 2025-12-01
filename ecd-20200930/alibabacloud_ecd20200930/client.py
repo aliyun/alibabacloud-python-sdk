@@ -1869,6 +1869,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_end_user_with_options_async(request, runtime)
 
+    def batch_modify_entitlement_with_options(
+        self,
+        request: ecd_20200930_models.BatchModifyEntitlementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
+        """
+        @param request: BatchModifyEntitlementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchModifyEntitlementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.max_desktop_per_user):
+            query['MaxDesktopPerUser'] = request.max_desktop_per_user
+        if not UtilClient.is_unset(request.max_user_per_desktop):
+            query['MaxUserPerDesktop'] = request.max_user_per_desktop
+        if not UtilClient.is_unset(request.preview):
+            query['Preview'] = request.preview
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchModifyEntitlement',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.BatchModifyEntitlementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_modify_entitlement_with_options_async(
+        self,
+        request: ecd_20200930_models.BatchModifyEntitlementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
+        """
+        @param request: BatchModifyEntitlementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchModifyEntitlementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.max_desktop_per_user):
+            query['MaxDesktopPerUser'] = request.max_desktop_per_user
+        if not UtilClient.is_unset(request.max_user_per_desktop):
+            query['MaxUserPerDesktop'] = request.max_user_per_desktop
+        if not UtilClient.is_unset(request.preview):
+            query['Preview'] = request.preview
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchModifyEntitlement',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.BatchModifyEntitlementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_modify_entitlement(
+        self,
+        request: ecd_20200930_models.BatchModifyEntitlementRequest,
+    ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
+        """
+        @param request: BatchModifyEntitlementRequest
+        @return: BatchModifyEntitlementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_modify_entitlement_with_options(request, runtime)
+
+    async def batch_modify_entitlement_async(
+        self,
+        request: ecd_20200930_models.BatchModifyEntitlementRequest,
+    ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
+        """
+        @param request: BatchModifyEntitlementRequest
+        @return: BatchModifyEntitlementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_modify_entitlement_with_options_async(request, runtime)
+
     def bind_config_group_with_options(
         self,
         request: ecd_20200930_models.BindConfigGroupRequest,
@@ -4359,6 +4471,8 @@ class Client(OpenApiClient):
             query['CameraRedirect'] = request.camera_redirect
         if not UtilClient.is_unset(request.client_control_menu):
             query['ClientControlMenu'] = request.client_control_menu
+        if not UtilClient.is_unset(request.client_create_snapshot):
+            query['ClientCreateSnapshot'] = request.client_create_snapshot
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
@@ -4569,6 +4683,8 @@ class Client(OpenApiClient):
             query['WatermarkRowAmount'] = request.watermark_row_amount
         if not UtilClient.is_unset(request.watermark_security):
             query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_shadow):
+            query['WatermarkShadow'] = request.watermark_shadow
         if not UtilClient.is_unset(request.watermark_transparency_value):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
@@ -4626,6 +4742,8 @@ class Client(OpenApiClient):
             query['CameraRedirect'] = request.camera_redirect
         if not UtilClient.is_unset(request.client_control_menu):
             query['ClientControlMenu'] = request.client_control_menu
+        if not UtilClient.is_unset(request.client_create_snapshot):
+            query['ClientCreateSnapshot'] = request.client_create_snapshot
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
@@ -4836,6 +4954,8 @@ class Client(OpenApiClient):
             query['WatermarkRowAmount'] = request.watermark_row_amount
         if not UtilClient.is_unset(request.watermark_security):
             query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_shadow):
+            query['WatermarkShadow'] = request.watermark_shadow
         if not UtilClient.is_unset(request.watermark_transparency_value):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
@@ -8417,6 +8537,10 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
+        @description When you call this operation, take note of the following item:
+        Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+        For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn’t match the region where the template is used to create a cloud computer, those parameters will not take effect.
+        
         @param request: CreateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTemplateResponse
@@ -8497,6 +8621,10 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
+        @description When you call this operation, take note of the following item:
+        Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+        For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn’t match the region where the template is used to create a cloud computer, those parameters will not take effect.
+        
         @param request: CreateTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTemplateResponse
@@ -8576,6 +8704,10 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
         
+        @description When you call this operation, take note of the following item:
+        Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+        For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn’t match the region where the template is used to create a cloud computer, those parameters will not take effect.
+        
         @param request: CreateTemplateRequest
         @return: CreateTemplateResponse
         """
@@ -8588,6 +8720,10 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.CreateTemplateResponse:
         """
         @summary Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
+        
+        @description When you call this operation, take note of the following item:
+        Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+        For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn’t match the region where the template is used to create a cloud computer, those parameters will not take effect.
         
         @param request: CreateTemplateRequest
         @return: CreateTemplateResponse
@@ -22825,7 +22961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListInstalledAppsResponse:
         """
-        @summary 查询桌面内安装的应用
+        @summary Queries applications installed on a cloud computer.
         
         @param request: ListInstalledAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22864,7 +23000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListInstalledAppsResponse:
         """
-        @summary 查询桌面内安装的应用
+        @summary Queries applications installed on a cloud computer.
         
         @param request: ListInstalledAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22902,7 +23038,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListInstalledAppsRequest,
     ) -> ecd_20200930_models.ListInstalledAppsResponse:
         """
-        @summary 查询桌面内安装的应用
+        @summary Queries applications installed on a cloud computer.
         
         @param request: ListInstalledAppsRequest
         @return: ListInstalledAppsResponse
@@ -22915,7 +23051,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListInstalledAppsRequest,
     ) -> ecd_20200930_models.ListInstalledAppsResponse:
         """
-        @summary 查询桌面内安装的应用
+        @summary Queries applications installed on a cloud computer.
         
         @param request: ListInstalledAppsRequest
         @return: ListInstalledAppsResponse
@@ -24797,6 +24933,8 @@ class Client(OpenApiClient):
             query['CameraRedirect'] = request.camera_redirect
         if not UtilClient.is_unset(request.client_control_menu):
             query['ClientControlMenu'] = request.client_control_menu
+        if not UtilClient.is_unset(request.client_create_snapshot):
+            query['ClientCreateSnapshot'] = request.client_create_snapshot
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
@@ -25013,6 +25151,8 @@ class Client(OpenApiClient):
             query['WatermarkRowAmount'] = request.watermark_row_amount
         if not UtilClient.is_unset(request.watermark_security):
             query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_shadow):
+            query['WatermarkShadow'] = request.watermark_shadow
         if not UtilClient.is_unset(request.watermark_transparency_value):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
@@ -25070,6 +25210,8 @@ class Client(OpenApiClient):
             query['CameraRedirect'] = request.camera_redirect
         if not UtilClient.is_unset(request.client_control_menu):
             query['ClientControlMenu'] = request.client_control_menu
+        if not UtilClient.is_unset(request.client_create_snapshot):
+            query['ClientCreateSnapshot'] = request.client_create_snapshot
         if not UtilClient.is_unset(request.client_type):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
@@ -25286,6 +25428,8 @@ class Client(OpenApiClient):
             query['WatermarkRowAmount'] = request.watermark_row_amount
         if not UtilClient.is_unset(request.watermark_security):
             query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_shadow):
+            query['WatermarkShadow'] = request.watermark_shadow
         if not UtilClient.is_unset(request.watermark_transparency_value):
             query['WatermarkTransparencyValue'] = request.watermark_transparency_value
         if not UtilClient.is_unset(request.watermark_type):
