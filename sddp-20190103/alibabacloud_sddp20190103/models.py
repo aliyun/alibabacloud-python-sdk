@@ -14118,6 +14118,141 @@ class ManualTriggerMaskingProcessResponse(TeaModel):
         return self
 
 
+class MaskOssImageRequest(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        is_always_upload: bool = None,
+        is_support_restore: bool = None,
+        lang: str = None,
+        mask_rule_id_list: str = None,
+        object_key: str = None,
+        service_region_id: str = None,
+    ):
+        # This parameter is required.
+        self.bucket_name = bucket_name
+        self.is_always_upload = is_always_upload
+        self.is_support_restore = is_support_restore
+        self.lang = lang
+        # This parameter is required.
+        self.mask_rule_id_list = mask_rule_id_list
+        # This parameter is required.
+        self.object_key = object_key
+        # This parameter is required.
+        self.service_region_id = service_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.is_always_upload is not None:
+            result['IsAlwaysUpload'] = self.is_always_upload
+        if self.is_support_restore is not None:
+            result['IsSupportRestore'] = self.is_support_restore
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.mask_rule_id_list is not None:
+            result['MaskRuleIdList'] = self.mask_rule_id_list
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('IsAlwaysUpload') is not None:
+            self.is_always_upload = m.get('IsAlwaysUpload')
+        if m.get('IsSupportRestore') is not None:
+            self.is_support_restore = m.get('IsSupportRestore')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('MaskRuleIdList') is not None:
+            self.mask_rule_id_list = m.get('MaskRuleIdList')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        return self
+
+
+class MaskOssImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MaskOssImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MaskOssImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MaskOssImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDataLimitRequest(TeaModel):
     def __init__(
         self,
@@ -15230,6 +15365,134 @@ class ModifyRuleStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyRuleStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestoreOssImageRequest(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        lang: str = None,
+        object_key: str = None,
+        service_region_id: str = None,
+        target_object_key: str = None,
+    ):
+        # This parameter is required.
+        self.bucket = bucket
+        self.lang = lang
+        # This parameter is required.
+        self.object_key = object_key
+        # This parameter is required.
+        self.service_region_id = service_region_id
+        self.target_object_key = target_object_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        if self.target_object_key is not None:
+            result['TargetObjectKey'] = self.target_object_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TargetObjectKey') is not None:
+            self.target_object_key = m.get('TargetObjectKey')
+        return self
+
+
+class RestoreOssImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        restored_image_key: str = None,
+    ):
+        self.request_id = request_id
+        self.restored_image_key = restored_image_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.restored_image_key is not None:
+            result['RestoredImageKey'] = self.restored_image_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RestoredImageKey') is not None:
+            self.restored_image_key = m.get('RestoredImageKey')
+        return self
+
+
+class RestoreOssImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestoreOssImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestoreOssImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

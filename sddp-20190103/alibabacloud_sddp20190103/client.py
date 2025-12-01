@@ -5672,6 +5672,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.manual_trigger_masking_process_with_options_async(request, runtime)
 
+    def mask_oss_image_with_options(
+        self,
+        request: sddp_20190103_models.MaskOssImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.MaskOssImageResponse:
+        """
+        @summary OSS图片脱敏
+        
+        @param request: MaskOssImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MaskOssImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.is_always_upload):
+            query['IsAlwaysUpload'] = request.is_always_upload
+        if not UtilClient.is_unset(request.is_support_restore):
+            query['IsSupportRestore'] = request.is_support_restore
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.mask_rule_id_list):
+            query['MaskRuleIdList'] = request.mask_rule_id_list
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MaskOssImage',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.MaskOssImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mask_oss_image_with_options_async(
+        self,
+        request: sddp_20190103_models.MaskOssImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.MaskOssImageResponse:
+        """
+        @summary OSS图片脱敏
+        
+        @param request: MaskOssImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MaskOssImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.is_always_upload):
+            query['IsAlwaysUpload'] = request.is_always_upload
+        if not UtilClient.is_unset(request.is_support_restore):
+            query['IsSupportRestore'] = request.is_support_restore
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.mask_rule_id_list):
+            query['MaskRuleIdList'] = request.mask_rule_id_list
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MaskOssImage',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.MaskOssImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mask_oss_image(
+        self,
+        request: sddp_20190103_models.MaskOssImageRequest,
+    ) -> sddp_20190103_models.MaskOssImageResponse:
+        """
+        @summary OSS图片脱敏
+        
+        @param request: MaskOssImageRequest
+        @return: MaskOssImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mask_oss_image_with_options(request, runtime)
+
+    async def mask_oss_image_async(
+        self,
+        request: sddp_20190103_models.MaskOssImageRequest,
+    ) -> sddp_20190103_models.MaskOssImageResponse:
+        """
+        @summary OSS图片脱敏
+        
+        @param request: MaskOssImageRequest
+        @return: MaskOssImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mask_oss_image_with_options_async(request, runtime)
+
     def modify_data_limit_with_options(
         self,
         request: sddp_20190103_models.ModifyDataLimitRequest,
@@ -6575,6 +6695,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_rule_status_with_options_async(request, runtime)
+
+    def restore_oss_image_with_options(
+        self,
+        request: sddp_20190103_models.RestoreOssImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.RestoreOssImageResponse:
+        """
+        @summary 图片复原
+        
+        @param request: RestoreOssImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreOssImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.target_object_key):
+            query['TargetObjectKey'] = request.target_object_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreOssImage',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.RestoreOssImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restore_oss_image_with_options_async(
+        self,
+        request: sddp_20190103_models.RestoreOssImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.RestoreOssImageResponse:
+        """
+        @summary 图片复原
+        
+        @param request: RestoreOssImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreOssImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.target_object_key):
+            query['TargetObjectKey'] = request.target_object_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreOssImage',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.RestoreOssImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restore_oss_image(
+        self,
+        request: sddp_20190103_models.RestoreOssImageRequest,
+    ) -> sddp_20190103_models.RestoreOssImageResponse:
+        """
+        @summary 图片复原
+        
+        @param request: RestoreOssImageRequest
+        @return: RestoreOssImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restore_oss_image_with_options(request, runtime)
+
+    async def restore_oss_image_async(
+        self,
+        request: sddp_20190103_models.RestoreOssImageRequest,
+    ) -> sddp_20190103_models.RestoreOssImageResponse:
+        """
+        @summary 图片复原
+        
+        @param request: RestoreOssImageRequest
+        @return: RestoreOssImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restore_oss_image_with_options_async(request, runtime)
 
     def scan_oss_object_v1with_options(
         self,

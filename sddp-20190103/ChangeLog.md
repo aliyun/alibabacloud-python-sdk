@@ -1,3 +1,8 @@
+2025-12-01 Version: 1.6.0
+- Support API MaskOssImage.
+- Support API RestoreOssImage.
+
+
 2025-10-10 Version: 1.5.2
 - Update API DescribeAuditLogs: add request parameters LogSource.
 - Update API DescribeAuditLogs: add request parameters RuleAggQuery.
