@@ -373,6 +373,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.begin_session_with_options_async(request, runtime)
 
+    def cancel_chat_with_options(
+        self,
+        request: chatbot_20220408_models.CancelChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CancelChatResponse:
+        """
+        @summary 取消对应对话
+        
+        @param request: CancelChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_key):
+            body['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.answer):
+            body['Answer'] = request.answer
+        if not UtilClient.is_unset(request.chat_id):
+            body['ChatId'] = request.chat_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelChat',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CancelChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_chat_with_options_async(
+        self,
+        request: chatbot_20220408_models.CancelChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CancelChatResponse:
+        """
+        @summary 取消对应对话
+        
+        @param request: CancelChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_key):
+            body['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.answer):
+            body['Answer'] = request.answer
+        if not UtilClient.is_unset(request.chat_id):
+            body['ChatId'] = request.chat_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelChat',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CancelChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_chat(
+        self,
+        request: chatbot_20220408_models.CancelChatRequest,
+    ) -> chatbot_20220408_models.CancelChatResponse:
+        """
+        @summary 取消对应对话
+        
+        @param request: CancelChatRequest
+        @return: CancelChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_chat_with_options(request, runtime)
+
+    async def cancel_chat_async(
+        self,
+        request: chatbot_20220408_models.CancelChatRequest,
+    ) -> chatbot_20220408_models.CancelChatResponse:
+        """
+        @summary 取消对应对话
+        
+        @param request: CancelChatRequest
+        @return: CancelChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_chat_with_options_async(request, runtime)
+
     def cancel_instance_publish_task_with_options(
         self,
         request: chatbot_20220408_models.CancelInstancePublishTaskRequest,

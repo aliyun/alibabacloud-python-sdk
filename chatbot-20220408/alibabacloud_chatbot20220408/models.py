@@ -497,6 +497,137 @@ class BeginSessionResponse(TeaModel):
         return self
 
 
+class CancelChatRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        answer: str = None,
+        chat_id: str = None,
+        instance_id: str = None,
+        session_id: str = None,
+        type: str = None,
+    ):
+        self.agent_key = agent_key
+        self.answer = answer
+        self.chat_id = chat_id
+        self.instance_id = instance_id
+        self.session_id = session_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.answer is not None:
+            result['Answer'] = self.answer
+        if self.chat_id is not None:
+            result['ChatId'] = self.chat_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Answer') is not None:
+            self.answer = m.get('Answer')
+        if m.get('ChatId') is not None:
+            self.chat_id = m.get('ChatId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CancelChatResponseBody(TeaModel):
+    def __init__(
+        self,
+        cancel_result: bool = None,
+        request_id: str = None,
+    ):
+        self.cancel_result = cancel_result
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cancel_result is not None:
+            result['CancelResult'] = self.cancel_result
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CancelResult') is not None:
+            self.cancel_result = m.get('CancelResult')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelChatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelChatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelChatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelInstancePublishTaskRequest(TeaModel):
     def __init__(
         self,

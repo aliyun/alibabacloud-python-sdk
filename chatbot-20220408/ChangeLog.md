@@ -1,3 +1,7 @@
+2025-12-01 Version: 2.5.0
+- Support API CancelChat.
+
+
 2025-11-25 Version: 2.4.2
 - Update API ListTongyiConversationLogs: add response parameters Body.SessionFlowDebugInfo.
 
