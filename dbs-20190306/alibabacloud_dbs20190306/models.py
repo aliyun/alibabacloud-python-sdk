@@ -39,36 +39,127 @@ class ConfigureBackupPlanRequest(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_user_name: str = None,
     ):
+        # Specifies whether to enable the automatic backup feature.
+        # 
+        # *   **true**: enables the automatic backup feature.
+        # *   **false**: disables the automatic backup feature.
         self.auto_start_backup = auto_start_backup
+        # The backup gateway ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to **Agent**, this parameter is required.
         self.backup_gateway_id = backup_gateway_id
+        # The interval at which you want to perform incremental log backups. Unit: seconds.
+        # 
+        # >  Only physical backup supports this parameter.
         self.backup_log_interval_seconds = backup_log_interval_seconds
+        # The objects to be backed up. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the objects.
         self.backup_objects = backup_objects
+        # The day of each week when the full backup task runs. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
         self.backup_period = backup_period
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The name of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the name.
+        # 
+        # This parameter is required.
         self.backup_plan_name = backup_plan_name
+        # The network bandwidth throttling. Unit: KB/s. DBS allows a maximum bandwidth of 10 GB/s.
+        # 
+        # > This parameter takes effect only when physical backups for MySQL databases are performed.
         self.backup_rate_limit = backup_rate_limit
+        # The number of days for which the backup data is retained. Valid values: 0 to 1825. Default value: 730.
         self.backup_retention_period = backup_retention_period
+        # The disk I/O limit. Unit: KB/s.
+        # 
+        # >  This parameter takes effect only during the physical backup of a MySQL database.
         self.backup_speed_limit = backup_speed_limit
+        # The start time of the full backup. Specify the time in the *HH:mm*Z format. The time must be in UTC. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the start time of full backup tasks.
         self.backup_start_time = backup_start_time
+        # The storage type. Valid values:
+        # 
+        # *   Empty: If you do not specify this parameter, the system stores backup data in your OSS bucket.
+        # *   system: The system stores backup data in the built-in OSS bucket of DBS.
         self.backup_storage_type = backup_storage_type
+        # The backup method that you want to use for full backups. Valid values:
+        # 
+        # *   **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+        # *   **Manual**: manual backup.
+        # 
+        # > Default value: **simple**.
         self.backup_strategy_type = backup_strategy_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The unique ID (UID) of the Alibaba Cloud account to which the backup schedule belongs. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to obtain the UID.
         self.cross_aliyun_id = cross_aliyun_id
+        # The name of the RAM role that is used to perform backup across Alibaba Cloud accounts. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to obtain the RAM role.
         self.cross_role_name = cross_role_name
+        # The number of days after which the storage class of the backup data is changed to Archive. Default value: 365.
         self.duplication_archive_period = duplication_archive_period
+        # The number of days after which the storage class of the backup data is changed to Infrequent Access (IA). Default value: 180.
         self.duplication_infrequent_access_period = duplication_infrequent_access_period
+        # Specifies whether to enable the incremental log backup feature. Valid values:
+        # 
+        # *   **true**: enables the incremental log backup feature.
+        # *   **false**: disables the incremental log backup feature.
         self.enable_backup_log = enable_backup_log
+        # The name of the OSS bucket.
+        # 
+        # >  By default, the system automatically generates an OSS bucket name.
         self.ossbucket_name = ossbucket_name
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The source database name. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # >  If the source database runs the **PostgreSQL** database engine or **MongoDB** database engine, this parameter is required.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The source database endpoint. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to **Express**, **Agent**, or **Other**, this parameter is required.
         self.source_endpoint_ip = source_endpoint_ip
+        # The database instance ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # >  If you set **SourceEndpoint****InstanceType** to **RDS**, **ECS**, **DDS**, or **Express**, this parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The location of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the location. Valid values:
+        # 
+        # *   **RDS**\
+        # *   **ECS**\
+        # *   **Express**: The database is connected to Database Backup (DBS) via Express Connect, VPN Gateway, or Smart Access Gateway.
+        # *   **Agent**: The database is connected over a DBS backup gateway.
+        # *   **DDS**: The database is an ApsaraDB for MongoDB database.
+        # *   **Other**: The database is connected to DBS by using the IP address and port of the database.
+        # 
+        # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The system ID (SID) of the Oracle database.
+        # 
+        # > This parameter is required if the database is an Oracle database.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The password of the account that is used to connect to the database.
+        # 
+        # > This parameter is required except that the database is an **SQL Server** database that is connected to DBS over a DBS backup gateway or a **Redis** database.
         self.source_endpoint_password = source_endpoint_password
+        # The port that is used to connect to the source database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the port.
+        # 
+        # >  If you set **SourceEndpoint****InstanceType** to **Express**, **Agent**, **Other**, or **ECS**, this parameter is required.
         self.source_endpoint_port = source_endpoint_port
+        # The region in which the source database resides. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the region.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to RDS, ECS, DDS, Express, or Agent, this parameter is required.
         self.source_endpoint_region = source_endpoint_region
+        # The username of the account that is used to connect to the database.
+        # 
+        # > This parameter is required except that the database is an **SQL Server** database that is connected to DBS over a DBS backup gateway or a **Redis** database.
         self.source_endpoint_user_name = source_endpoint_user_name
 
     def validate(self):
@@ -221,11 +312,20 @@ class ConfigureBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -280,9 +380,6 @@ class ConfigureBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -358,47 +455,200 @@ class CreateAndStartBackupPlanRequest(TeaModel):
         storage_type: str = None,
         used_time: int = None,
     ):
+        # The backup gateway ID.
+        # 
+        # > 
+        # 
+        # *   If **SourceEndpointInstanceType** is set to **Agent**, this parameter is required.****\
+        # 
+        # *   For more information about how to install a backup gateway, see [Install a backup gateway](https://help.aliyun.com/document_detail/93250.html).
+        # 
+        # *   You can query a list of existing backup gateways by calling the [DescribeBackupGatewayList](https://help.aliyun.com/document_detail/2869840.html) operation.
         self.backup_gateway_id = backup_gateway_id
+        # The interval at which you want to perform incremental log backups. Unit: seconds.
+        # 
+        # >  This parameter is required only if you set BackupMethod to **physical**.
         self.backup_log_interval_seconds = backup_log_interval_seconds
+        # The method that is used to generate the backup file. Valid values:
+        # 
+        # *   **logical**: logical backup
+        # *   **physical**: physical backup
+        # *   **duplication**: dump backup
+        # 
+        # This parameter is required.
         self.backup_method = backup_method
+        # The object to be backed up.
         self.backup_objects = backup_objects
+        # The day of the week on which you want to perform full backup. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >  You can specify multiple values. Separate multiple values with commas (,).
         self.backup_period = backup_period
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The name of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_name = backup_plan_name
+        # The network bandwidth throttling. Unit: KB/s. DBS allows a maximum bandwidth of 10 GB/s.
+        # 
+        # >  This parameter takes effect only when physical backups for MySQL databases are performed.
         self.backup_rate_limit = backup_rate_limit
+        # The number of days for which the backup data is retained. Valid values: 0 to 1825. Default value: 730.
         self.backup_retention_period = backup_retention_period
+        # The I/O limit for the disk. Unit: KB/s.
+        # 
+        # >  This parameter takes effect only when physical backups for MySQL databases are performed.
         self.backup_speed_limit = backup_speed_limit
+        # The start time of full backup tasks. Specify the value in the *HH:mm* format. The time must be in UTC.
         self.backup_start_time = backup_start_time
+        # The storage type. Valid values:
+        # 
+        # *   Empty: If you do not specify this parameter, the system stores backup data in your OSS bucket.
+        # *   system : The system stores backup data in the built-in OSS bucket of DBS.
         self.backup_storage_type = backup_storage_type
+        # The backup method that you want to use for full backups. Valid values:
+        # 
+        # *   **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+        # *   **Manual**: manual backup.
+        # 
+        # > Default value: **simple**.
         self.backup_strategy_type = backup_strategy_type
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The unique ID (UID) of the Alibaba Cloud account to which the source database belongs.
         self.cross_aliyun_id = cross_aliyun_id
+        # The name of the RAM role that is used to perform backups across Alibaba Cloud accounts.
         self.cross_role_name = cross_role_name
+        # The region in which the database that you want to back up resides.
+        # 
+        # > This parameter is required if the **PayType** parameter is set to **postpay**.
         self.database_region = database_region
+        # The type of the source database. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **MSSQL**\
+        # *   **Oracle**\
+        # *   **MariaDB**\
+        # *   **PostgreSQL**\
+        # *   **DRDS**\
+        # *   **MongoDB**\
+        # *   **Redis**\
+        # 
+        # This parameter is required.
         self.database_type = database_type
+        # The number of days after which the storage class of the backup data is changed to Archive. Default value: 365.
         self.duplication_archive_period = duplication_archive_period
+        # The number of days after which the storage class of the backup data is changed to Infrequent Access (IA). Default value: 180.
         self.duplication_infrequent_access_period = duplication_infrequent_access_period
+        # Specifies whether to enable the incremental log backup feature. Valid values:
+        # 
+        # *   **true**: enables the incremental log backup feature.
+        # *   **false**: disables the incremental log backup feature.
         self.enable_backup_log = enable_backup_log
+        # The request source. Default value: OpenApi. You do not need to set this parameter.
         self.from_app = from_app
+        # The type of the backup schedule. Valid values:
+        # 
+        # *   **micro**\
+        # *   **small**\
+        # *   **medium**\
+        # *   **large**\
+        # *   **xlarge**\
+        # 
+        # >  A backup schedule type with higher specifications offers higher backup and restoration performance. For more information, see [Select a backup schedule type](https://help.aliyun.com/document_detail/84372.html).
+        # 
+        # This parameter is required.
         self.instance_class = instance_class
+        # The type of the source database instance. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS.
+        # *   **PolarDB**: PolarDB.
+        # *   **DDS**: ApsaraDB for MongoDB.
+        # *   **Kvstore**: ApsaraDB for Redis.
+        # *   **Other**: Database connected by using an IP address and a port number.
+        # *   **dg**: Self-managed database that has no public IP address or port number and is connected over Database Gateway.
+        # 
+        # >  If **PayType** is set to **postpay**, this parameter is required.
         self.instance_type = instance_type
+        # The name of the Object Storage Service (OSS) bucket used to store backup files. By default, the system automatically generates a name for the OSS bucket.
         self.ossbucket_name = ossbucket_name
         self.owner_id = owner_id
+        # The billing method. Valid values:
+        # 
+        # *   **postpay**: pay-as-you-go.
+        # *   **prepay**: subscription.
+        # 
+        # >  The default value is **prepay**. You can set this parameter to **postpay** only if you set **BackupMethod** to **duplication**.
         self.pay_type = pay_type
+        # Specifies whether to use yearly subscription or monthly subscription for the instance. Valid values:
+        # 
+        # *   **Year**: yearly subscription
+        # *   **Month**: monthly subscription
         self.period = period
+        # The ID of the region in which you want to store the backup data. You can query the supported regions of DBS by calling the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) operation.
         self.region = region
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The name of the database.
+        # 
+        # > This parameter is required if the DatabaseType parameter is set to **PostgreSQL** or **MongoDB**.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The endpoint of the database.
+        # 
+        # > This parameter is required if the **SourceEndpointInstanceType** parameter is set to **Express**, **Agent**, or **Other**.
         self.source_endpoint_ip = source_endpoint_ip
+        # The ID of the database instance.
+        # 
+        # > This parameter is required if the **SourceEndpointInstanceType** parameter is set to **RDS**, **ECS**, **DDS**, or **Express**.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The location of the source database. Valid values:
+        # 
+        # *   **RDS**: The database is on an ApsaraDB RDS instance.
+        # *   **ECS**: The database is on an Elastic Compute Service (ECS) instance.
+        # *   **Express**: The database is connected to DBS by using Express Connect, VPN Gateway, or Smart Access Gateway.
+        # *   **Agent**: The database is connected to DBS over a DBS backup gateway.
+        # *   **DDS**: The database is on an ApsaraDB for MongoDB instance.
+        # *   **Other**: The database is connected to DBS by using an IP address and a port number.
+        # *   **dg**: The database is a self-managed database that has no public IP address or port number and is connected to DBS over Database Gateway.
+        # 
+        # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The system ID (SID) of the Oracle database. This parameter is required if the source database is an Oracle database.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The password of the account that is used to connect to the database.
+        # 
+        # > This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
         self.source_endpoint_password = source_endpoint_password
+        # The port of the database.
+        # 
+        # > This parameter is required if the **SourceEndpointInstanceType** parameter is set to **Express**, **Agent**, **Other**, or **ECS**.
         self.source_endpoint_port = source_endpoint_port
+        # The region in which the database that you want to back up resides.
+        # 
+        # > This parameter is required if the **SourceEndpointInstanceType** parameter is set to **RDS**, **ECS**, **DDS**, **Express**, or **Agent**.
         self.source_endpoint_region = source_endpoint_region
+        # The username of the account that is used to connect to the database.
+        # 
+        # > This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
         self.source_endpoint_user_name = source_endpoint_user_name
+        # The region in which you want to store the backup data.
+        # 
+        # > This parameter is required if the **PayType** parameter is set to **postpay**.
         self.storage_region = storage_region
+        # This parameter is unavailable.
         self.storage_type = storage_type
+        # The subscription duration. Valid values:
+        # 
+        # *   If **Period** is set to **Year**, the valid values of **UsedTime** range from 1 to 5.
+        # *   If **Period** is set to **Month**, the valid values of **UsedTime** range from 1 to 11.
         self.used_time = used_time
 
     def validate(self):
@@ -597,13 +847,24 @@ class CreateAndStartBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backup schedule ID.
         self.backup_plan_id = backup_plan_id
+        # Indicates whether a backup is performed immediately after the backup schedule is configured. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.create_backup_set = create_backup_set
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -666,9 +927,6 @@ class CreateAndStartBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -717,20 +975,87 @@ class CreateBackupPlanRequest(TeaModel):
         storage_type: str = None,
         used_time: int = None,
     ):
+        # The backup method of the backup schedule. Valid values:
+        # 
+        # *   **logical**: logical backup
+        # *   **physical**: physical backup
+        # *   **duplication**: dump backup
+        # 
+        # This parameter is required.
         self.backup_method = backup_method
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The region in which the database you want to back up resides.
+        # 
+        # > This parameter is required if the **PayType** parameter is set to **postpay**.
         self.database_region = database_region
+        # The type of the source database. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **MSSQL**\
+        # *   **Oracle**\
+        # *   **MariaDB**\
+        # *   **PostgreSQL**\
+        # *   **DRDS**\
+        # *   **MongoDB**\
+        # *   **Redis**\
+        # 
+        # This parameter is required.
         self.database_type = database_type
+        # The source of the request. The default value is OpenAPI and cannot be changed.
         self.from_app = from_app
+        # The type of the backup schedule. Valid values:
+        # 
+        # *   **micro**\
+        # *   **small**\
+        # *   **medium**\
+        # *   **large**\
+        # *   **xlarge**\
+        # 
+        # >  A backup schedule type with higher specifications offers higher backup and restoration performance. For more information, see [Select a backup schedule type](https://help.aliyun.com/document_detail/84372.html).
+        # 
+        # This parameter is required.
         self.instance_class = instance_class
+        # The type of the source database instance. Valid values:
+        # 
+        # *   **RDS**: ApsaraDB RDS.
+        # *   **PolarDB**: PolarDB.
+        # *   **DDS**: ApsaraDB for MongoDB.
+        # *   **Kvstore**: ApsaraDB for Redis.
+        # *   **Other**: Database connected by using an IP address and a port number.
+        # *   **dg**: Self-managed database that has no public IP address or port number and is connected over Database Gateway.
+        # 
+        # >  If **PayType** is set to **postpay**, this parameter is required.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # The billing method of the backup schedule. Valid values:
+        # 
+        # *   **postpay**: pay-as-you-go
+        # *   **prepay**: subscription
+        # 
+        # > The default value is **prepay**. If the **BackupMethod** parameter is set to **duplication**, **postpay** is supported.
         self.pay_type = pay_type
+        # The unit of the subscription period. Valid values:
+        # 
+        # *   **Year**: yearly subscription
+        # *   **Month**: monthly subscription
         self.period = period
+        # The ID of the region in which you can activate Data Disaster Recovery. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) operation to query the regions supported by Data Disaster Recovery.
+        # 
+        # >  For more information, see [Endpoints](https://help.aliyun.com/document_detail/2869810.html).
         self.region = region
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The region in which you want to store the backup data.
+        # 
+        # > This parameter is required if the **PayType** parameter is set to **postpay**.
         self.storage_region = storage_region
+        # This parameter is unavailable.
         self.storage_type = storage_type
+        # The subscription period. Valid values:
+        # 
+        # *   If **Period** is set to **Year**, the valid values of **UsedTime** range from 1 to 5.
+        # *   If **Period** is set to **Month**, the valid values of **UsedTime** range from 1 to 11.
         self.used_time = used_time
 
     def validate(self):
@@ -820,12 +1145,22 @@ class CreateBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -884,9 +1219,6 @@ class CreateBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -924,8 +1256,18 @@ class CreateFullBackupSetDownloadRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The format in which the full backup set is downloaded. Valid values:
+        # 
+        # *   **Native**\
+        # *   **SQL**\
+        # *   **CSV**(Default value)
+        # *   **JSON**\
         self.backup_set_data_format = backup_set_data_format
+        # The ID of the full backup set.
+        # 
+        # This parameter is required.
         self.backup_set_id = backup_set_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -971,11 +1313,17 @@ class CreateFullBackupSetDownloadResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup set download task.
         self.backup_set_download_task_id = backup_set_download_task_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -1030,9 +1378,6 @@ class CreateFullBackupSetDownloadResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1073,12 +1418,29 @@ class CreateGetDBListFromAgentTaskRequest(TeaModel):
         source_endpoint_port: int = None,
         source_endpoint_region: str = None,
     ):
+        # The ID of the backup gateway. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
+        # 
+        # >  This parameter is required.
         self.backup_gateway_id = backup_gateway_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The type of the database. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **MSSQL**\
+        # *   **Oracle**\
+        # *   **MariaDB**\
+        # *   **PostgreSQL**\
+        # *   **DRDS**\
+        # *   **MongoDB**\
+        # *   **Redis**\
         self.database_type = database_type
         self.owner_id = owner_id
+        # The URL that is used to access the database.
         self.source_endpoint_ip = source_endpoint_ip
+        # The port that is used to connect to the database.
         self.source_endpoint_port = source_endpoint_port
+        # The region in which the backup gateway resides.
         self.source_endpoint_region = source_endpoint_region
 
     def validate(self):
@@ -1135,11 +1497,17 @@ class CreateGetDBListFromAgentTaskResponseBody(TeaModel):
         success: bool = None,
         task_id: int = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The ID of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):
@@ -1194,9 +1562,6 @@ class CreateGetDBListFromAgentTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1235,9 +1600,24 @@ class CreateIncrementBackupSetDownloadRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The format in which the incremental backup set is downloaded. Valid values:
+        # 
+        # *   **Native**\
+        # *   **SQL**\
+        # *   **CSV**\
+        # *   **JSON**\
+        # 
+        # > Default value: Native.
         self.backup_set_data_format = backup_set_data_format
+        # The ID of the incremental backup task. To obtain the task ID, you can call the [DescribeIncrementBackupList](https://help.aliyun.com/document_detail/2869833.html) operation and view the value of the **BackupSetJobId** parameter in the response.
+        # 
+        # This parameter is required.
         self.backup_set_id = backup_set_id
+        # The ID of the incremental backup set. To obtain the backup set ID, you can call the [DescribeIncrementBackupList](https://help.aliyun.com/document_detail/2869833.html) operation and view the value of the **BackupSetId** parameter in the response.
+        # 
+        # This parameter is required.
         self.backup_set_name = backup_set_name
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -1287,11 +1667,17 @@ class CreateIncrementBackupSetDownloadResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup set download task.
         self.backup_set_download_task_id = backup_set_download_task_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -1346,9 +1732,6 @@ class CreateIncrementBackupSetDownloadResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1404,27 +1787,93 @@ class CreateRestoreTaskRequest(TeaModel):
         restore_task_name: str = None,
         restore_time: int = None,
     ):
+        # The ID of the backup gateway.
+        # 
+        # > This parameter is required if the DestinationEndpointInstanceType parameter is set to Agent.
         self.backup_gateway_id = backup_gateway_id
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The ID of the full backup set.
         self.backup_set_id = backup_set_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The unique ID (UID) of the Alibaba Cloud account to which the source database belongs.
         self.cross_aliyun_id = cross_aliyun_id
+        # The name of the RAM role that is used to perform backups across Alibaba Cloud accounts.
         self.cross_role_name = cross_role_name
+        # The name of the database.
+        # 
+        # 
+        # 
+        # > This parameter is required if the database is a PostgreSQL database or a MongoDB database.
         self.destination_endpoint_database_name = destination_endpoint_database_name
+        # The endpoint that is used to connect to the database.
+        # 
+        # > This parameter is required if the DestinationEndpointInstanceType parameter is set to Express, Agent, or Other.
         self.destination_endpoint_ip = destination_endpoint_ip
+        # The ID of the database instance.
+        # 
+        # > This parameter is required if the DestinationEndpointInstanceType parameter is set to RDS, ECS, DDS, or Express.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The location of the database. Valid values:
+        # 
+        # *   **RDS**: The database is deployed on an ApsaraDB RDS instance.
+        # *   **ECS**: The database is deployed on an Elastic Compute Service (ECS) instance.
+        # *   **Express**: The database is connected to Database Backup (DBS) by using Express Connect, VPN Gateway, or Smart Access Gateway.
+        # *   **Agent**: The database is connected over a DBS backup gateway.
+        # *   **DDS**: The database is an ApsaraDB for MongoDB database.
+        # *   **Other**: The database is connected to DBS by using the IP address and port of the database.
+        # *   **dg**: The database is a self-managed database that does not have public IP addresses or port numbers and is connected to DBS over Database Gateway.
+        # 
+        # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        # The system ID (SID) of the Oracle database.
+        # 
+        # 
+        # 
+        # > This parameter is required if the source database is an Oracle database.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        # The password of the account that is used to connect to the source database.
+        # 
+        # 
+        # 
+        # > This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
         self.destination_endpoint_password = destination_endpoint_password
+        # The port of the database.
+        # > This parameter is required if the DestinationEndpointInstanceType parameter is set to Express, Agent, Other, or ECS.
         self.destination_endpoint_port = destination_endpoint_port
+        # The region ID of the destination database instance.
+        # 
+        # >  You must specify this parameter if **DestinationEndpointInstanceType** is set to RDS, ECS, DDS, Express, or Agent.
         self.destination_endpoint_region = destination_endpoint_region
+        # The username of the account that is used to connect to the database.
+        # 
+        # 
+        # > This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        # The method of processing objects with the same name. Valid values:
+        # 
+        # - failure: The restore task fails if the system detects objects with the same name. This is the default value.
+        # - renamenew: The restore task renames objects with the same name starting from the second occurrence.
         self.duplicate_conflict = duplicate_conflict
         self.owner_id = owner_id
+        # This parameter is required if the DestinationEndpointInstanceType parameter is set to Agent and the backup object of the backup schedule is a MySQL database.
         self.restore_dir = restore_dir
+        # The program directory of the database.
         self.restore_home = restore_home
+        # The objects to be restored.
+        # 
+        # 
+        # 
+        # > This parameter is required except that the DestinationEndpointInstanceType parameter is set to Agent. For information about the parameter definition, see RestoreObjects.
         self.restore_objects = restore_objects
+        # The name of the restore task.
+        # 
+        # This parameter is required.
         self.restore_task_name = restore_task_name
+        # The time to run the restore task, such as 1554560477000.
         self.restore_time = restore_time
 
     def validate(self):
@@ -1541,11 +1990,20 @@ class CreateRestoreTaskResponseBody(TeaModel):
         restore_task_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the restore task.
         self.restore_task_id = restore_task_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -1600,9 +2058,6 @@ class CreateRestoreTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1642,11 +2097,35 @@ class DescribeBackupGatewayListRequest(TeaModel):
         page_size: int = None,
         region: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The unique identifier of the backup gateway. You can query multiple backup gateways. Separate multiple identifiers with commas (,).
         self.identifier = identifier
         self.owner_id = owner_id
+        # The number of the page to return. The value must be a positive integer. Default value: 0.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # > Default value: 30.
         self.page_size = page_size
+        # The region in which Database Backup (DBS) is activated. Valid values:
+        # 
+        # *   **cn-hangzhou**: China (Hangzhou)
+        # *   **cn-shanghai**: China (Shanghai)
+        # *   **cn-qingdao**: China (Qingdao)
+        # *   **cn-beijing**: China (Beijing)
+        # *   **cn-shenzhen**: China (Shenzhen)
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore (Singapore)
+        # *   **cn-hangzhou-finance**: China East 1 Finance
+        # *   **cn-shanghai-finance**: China East 2 Finance
+        # *   **cn-shenzhen-finance**: China South 1 Finance
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -1703,15 +2182,30 @@ class DescribeBackupGatewayListResponseBodyItemsBackupGateway(TeaModel):
         source_endpoint_internet_ip: str = None,
         source_endpoint_intranet_ip: str = None,
     ):
+        # The time when the backup gateway was created, such as 1554560477000.
         self.backup_gateway_create_time = backup_gateway_create_time
+        # The ID of the backup gateway.
         self.backup_gateway_id = backup_gateway_id
+        # The status of the backup gateway. Valid values:
+        # 
+        # *   ONLINE: The backup gateway is online.
+        # *   OFFLINE: The backup gateway is offline.
+        # *   STOPPED: The backup gateway is stopped.
+        # *   UPGRADING: The backup gateway is being upgraded.
         self.backup_gateway_status = backup_gateway_status
+        # The display name of the backup gateway.
         self.display_name = display_name
+        # The unique identifier of the backup gateway.
         self.identifier = identifier
+        # The last time when a heartbeat message was sent, such as 1554560477000.
         self.last_heartbeat_time = last_heartbeat_time
+        # The ID of the region.
         self.region = region
+        # The name of the host on which the backup gateway is installed.
         self.source_endpoint_hostname = source_endpoint_hostname
+        # The public IP address of the host on which the backup gateway is installed.
         self.source_endpoint_internet_ip = source_endpoint_internet_ip
+        # The private IP address of the host on which the backup gateway is installed.
         self.source_endpoint_intranet_ip = source_endpoint_intranet_ip
 
     def validate(self):
@@ -1819,15 +2313,25 @@ class DescribeBackupGatewayListResponseBody(TeaModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of backup gateways.
         self.items = items
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The total number of backup gateways.
         self.total_elements = total_elements
+        # The total number of returned pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -1900,9 +2404,6 @@ class DescribeBackupGatewayListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1940,9 +2441,14 @@ class DescribeBackupPlanBillingRequest(TeaModel):
         owner_id: str = None,
         show_storage_type: bool = None,
     ):
+        # The ID of the backup gateway.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
+        # Indicates whether the storage type is displayed.
         self.show_storage_type = show_storage_type
 
     def validate(self):
@@ -1991,25 +2497,46 @@ class DescribeBackupPlanBillingResponseBodyItem(TeaModel):
         paied_bytes: int = None,
         quota_end_timestamp: int = None,
         quota_start_timestamp: int = None,
-        resource_group_id: str = None,
         total_free_bytes: int = None,
         used_full_bytes: int = None,
         used_increment_bytes: int = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   PREPAY
+        # *   POSTPAY
         self.buy_charge_type = buy_charge_type
+        # The timestamp that indicates when the instance was purchased.
         self.buy_create_timestamp = buy_create_timestamp
+        # The timestamp that indicates when the instance expires.
+        # 
+        # > This parameter is available only if the value of the BuyChargeType parameter is PREPAY.
         self.buy_expired_timestamp = buy_expired_timestamp
+        # The specifications of the instance.
         self.buy_spec = buy_spec
+        # The size of the built-in storage for storing incremental backup data.
         self.cont_storage_size = cont_storage_size
+        # The size of the built-in storage for storing full backup data.
         self.full_storage_size = full_storage_size
+        # Indicates whether the instance expired.
+        # 
+        # > This parameter is available only if the value of the BuyChargeType parameter is PREPAY.
         self.is_expired = is_expired
+        # Indicates whether the instance has no backup traffic limit.
         self.is_free_bytes_unlimited = is_free_bytes_unlimited
+        # The total paid backup traffic in the current month.
         self.paied_bytes = paied_bytes
+        # The timestamp that indicates when the billing cycle of free backup traffic ends.
         self.quota_end_timestamp = quota_end_timestamp
+        # The timestamp that indicates when the billing cycle of free backup traffic starts.
         self.quota_start_timestamp = quota_start_timestamp
-        self.resource_group_id = resource_group_id
+        # The total free backup traffic in the current month.
+        # 
+        # > This parameter is available only if the value of the BuyChargeType parameter is PREPAY and the value of the IsFreeBytesUnlimited parameter is false.
         self.total_free_bytes = total_free_bytes
+        # The paid full backup traffic in the current month.
         self.used_full_bytes = used_full_bytes
+        # The paid incremental backup traffic in the current month.
         self.used_increment_bytes = used_increment_bytes
 
     def validate(self):
@@ -2043,8 +2570,6 @@ class DescribeBackupPlanBillingResponseBodyItem(TeaModel):
             result['QuotaEndTimestamp'] = self.quota_end_timestamp
         if self.quota_start_timestamp is not None:
             result['QuotaStartTimestamp'] = self.quota_start_timestamp
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.total_free_bytes is not None:
             result['TotalFreeBytes'] = self.total_free_bytes
         if self.used_full_bytes is not None:
@@ -2077,8 +2602,6 @@ class DescribeBackupPlanBillingResponseBodyItem(TeaModel):
             self.quota_end_timestamp = m.get('QuotaEndTimestamp')
         if m.get('QuotaStartTimestamp') is not None:
             self.quota_start_timestamp = m.get('QuotaStartTimestamp')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TotalFreeBytes') is not None:
             self.total_free_bytes = m.get('TotalFreeBytes')
         if m.get('UsedFullBytes') is not None:
@@ -2098,11 +2621,17 @@ class DescribeBackupPlanBillingResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The billing information of the backup schedule.
         self.item = item
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -2159,9 +2688,6 @@ class DescribeBackupPlanBillingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2204,14 +2730,32 @@ class DescribeBackupPlanListRequest(TeaModel):
         region: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the backup schedule. You can query multiple backup schedule IDs. Separate multiple IDs with commas (,).
         self.backup_plan_id = backup_plan_id
+        # Backup plan name.
         self.backup_plan_name = backup_plan_name
+        # Backup plan status, the values are as follows:
+        # 
+        # * **wait**: Not configured
+        # * **init**: Not started (pre-check failed)
+        # * **running**: Running
+        # * **stop**: Failed
+        # * **pause**: Paused
+        # * **locked**: Locked
+        # * **check_pass**: Pre-check passed
         self.backup_plan_status = backup_plan_status
+        # Used to ensure the idempotence of the request, preventing duplicate submissions.
         self.client_token = client_token
         self.owner_id = owner_id
+        # Page number, must be greater than or equal to 0 and not exceed the maximum value of Integer. The default value is 0.
         self.page_num = page_num
+        # Number of records per page, the value should be between 1 and 100.
+        # 
+        # > The default is **30**.
         self.page_size = page_size
+        # DBS region, you can view the supported DBS regions by calling the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) interface.
         self.region = region
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2288,6 +2832,7 @@ class DescribeBackupPlanListResponseBodyItemsBackupPlanDetail(TeaModel):
         begin_timestamp_for_restore: int = None,
         cross_aliyun_id: str = None,
         cross_role_name: str = None,
+        database_type: str = None,
         duplication_archive_period: int = None,
         duplication_infrequent_access_period: int = None,
         enable_backup_log: bool = None,
@@ -2306,41 +2851,123 @@ class DescribeBackupPlanListResponseBodyItemsBackupPlanDetail(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_user_name: str = None,
     ):
+        # Backup gateway ID.
         self.backup_gateway_id = backup_gateway_id
+        # Backup method. The return values are as follows:
+        # - **logical**: Logical backup
+        # - **physical**: Physical backup
+        # - **duplication**: Replication backup
         self.backup_method = backup_method
+        # Backup objects.
         self.backup_objects = backup_objects
+        # Full backup cycle. The return values are as follows:
+        # - **Monday**: Monday
+        # - **Tuesday**: Tuesday
+        # - **Wednesday**: Wednesday
+        # - **Thursday**: Thursday
+        # - **Friday**: Friday
+        # - **Saturday**: Saturday
+        # - **Sunday**: Sunday
         self.backup_period = backup_period
+        # Timestamp of the backup plan creation.
         self.backup_plan_create_time = backup_plan_create_time
+        # Backup plan ID.
         self.backup_plan_id = backup_plan_id
+        # Backup plan name.
         self.backup_plan_name = backup_plan_name
+        # Backup plan status. The return values are as follows:
+        # - **wait**: Not configured
+        # - **init**: Not started (pre-check failed)
+        # - **running**: Running
+        # - **stop**: Failed
+        # - **pause**: Paused
+        # - **locked**: Locked
+        # - **check_pass**: Pre-check passed
         self.backup_plan_status = backup_plan_status
+        # Backup data retention period, with a value range of 0 to 1825 days.
         self.backup_retention_period = backup_retention_period
+        # Download server directory of the backup set
         self.backup_set_download_dir = backup_set_download_dir
+        # Full data format for backup set download:
+        # * **Native**\
+        # * **SQL**\
+        # * **CSV**\
+        # * **JSON**\
         self.backup_set_download_full_data_format = backup_set_download_full_data_format
+        # Backup set download backup gateway ID.
         self.backup_set_download_gateway_id = backup_set_download_gateway_id
+        # Backup set download full data format:
+        # * **Native**\
+        # * **SQL**\
+        # * **CSV**\
+        # * **JSON**\
         self.backup_set_download_increment_data_format = backup_set_download_increment_data_format
+        # Backup set download target type.
+        # 
+        # > The only value is: agent, indicating that the backup gateway is installed.
         self.backup_set_download_target_type = backup_set_download_target_type
+        # Full backup start time, in the format HH:mm.
         self.backup_start_time = backup_start_time
+        # Built-in storage type. The return values are as follows:
+        # 
+        # - Empty (default): Backup data is stored on the user\\"s OSS.
+        # - system: Backup data is stored on the built-in OSS of DBS.
         self.backup_storage_type = backup_storage_type
+        # Start time for the database restore period, with a return value of 1554560477000.
         self.begin_timestamp_for_restore = begin_timestamp_for_restore
+        # UID for cross-Aliyun account backup.
         self.cross_aliyun_id = cross_aliyun_id
+        # RAM role name for cross-Aliyun account backup.
         self.cross_role_name = cross_role_name
+        # Database type.
+        self.database_type = database_type
+        # Time (in days) to convert to archive cold backup storage.
         self.duplication_archive_period = duplication_archive_period
+        # Time (in days) to convert to infrequent access storage.
         self.duplication_infrequent_access_period = duplication_infrequent_access_period
+        # Indicates whether incremental log backup is enabled, with return values as follows:
+        # - **true**: Enabled
+        # - **false**: Disabled
         self.enable_backup_log = enable_backup_log
+        # End time of the database restorable period, in timestamp format.
         self.end_timestamp_for_restore = end_timestamp_for_restore
+        # Pre-check task error message.
         self.err_message = err_message
+        # Instance class, with return values as follows:
+        # 
+        # - **micro**: Entry-level
+        # - **small**: Low-spec
+        # - **medium**: Medium-spec
+        # - **large**: High-spec
+        # - **xlarge**: High-spec (no traffic limit)
         self.instance_class = instance_class
+        # OSS Bucket name.
         self.ossbucket_name = ossbucket_name
+        # OSS Bucket region.
         self.ossbucket_region = ossbucket_region
+        # Indicates whether the automatic backup set download feature is enabled.
         self.open_backup_set_auto_download = open_backup_set_auto_download
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Database name.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # Database instance ID.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # Location of the database, the return values are as follows:
+        # - **rds**\
+        # - **ecs**\
+        # - **express**: Database connected via dedicated line/VPN gateway/smart gateway
+        # - **agent**: Database connected via backup gateway
+        # - **dds**: Cloud MongoDB
+        # - **other**: Database connected directly via IP:Port
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # Database connection address.
         self.source_endpoint_ip_port = source_endpoint_ip_port
+        # Oracle SID name.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # Database region.
         self.source_endpoint_region = source_endpoint_region
+        # Database username.
         self.source_endpoint_user_name = source_endpoint_user_name
 
     def validate(self):
@@ -2390,6 +3017,8 @@ class DescribeBackupPlanListResponseBodyItemsBackupPlanDetail(TeaModel):
             result['CrossAliyunId'] = self.cross_aliyun_id
         if self.cross_role_name is not None:
             result['CrossRoleName'] = self.cross_role_name
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
         if self.duplication_archive_period is not None:
             result['DuplicationArchivePeriod'] = self.duplication_archive_period
         if self.duplication_infrequent_access_period is not None:
@@ -2466,6 +3095,8 @@ class DescribeBackupPlanListResponseBodyItemsBackupPlanDetail(TeaModel):
             self.cross_aliyun_id = m.get('CrossAliyunId')
         if m.get('CrossRoleName') is not None:
             self.cross_role_name = m.get('CrossRoleName')
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
         if m.get('DuplicationArchivePeriod') is not None:
             self.duplication_archive_period = m.get('DuplicationArchivePeriod')
         if m.get('DuplicationInfrequentAccessPeriod') is not None:
@@ -2552,15 +3183,25 @@ class DescribeBackupPlanListResponseBody(TeaModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.err_message = err_message
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Details of the backup plans.
         self.items = items
+        # Page number.
         self.page_num = page_num
+        # Number of records per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Whether the operation was successful.
         self.success = success
+        # Total number of backup plans.
         self.total_elements = total_elements
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -2633,9 +3274,6 @@ class DescribeBackupPlanListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2675,11 +3313,23 @@ class DescribeBackupSetDownloadTaskListRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The backup schedule ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # >  You must configure the **BackupPlanId** or **BackupSetDownloadTaskId** parameter.
         self.backup_plan_id = backup_plan_id
+        # The ID of the backup set download task.
+        # 
+        # *   Full backup set download task: You can call the [CreateFullBackupSetDownload](https://help.aliyun.com/document_detail/2869842.html) operation to create a full backup set download task and obtain the task ID.
+        # *   Incremental backup set download task: You can call the [CreateIncrementBackupSetDownload](https://help.aliyun.com/document_detail/2869843.html) operation to create an incremental backup set download task and obtain the task ID.
         self.backup_set_download_task_id = backup_set_download_task_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The number of the page to return. The value must be a positive integer. Default value: 0.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: 30, 50, and 100.
+        # 
+        # > Default value: 30.
         self.page_size = page_size
 
     def validate(self):
@@ -2745,24 +3395,71 @@ class DescribeBackupSetDownloadTaskListResponseBodyItemsBackupSetDownloadTaskDet
         backup_set_job_type: str = None,
         err_message: str = None,
     ):
+        # The backup gateway that is used to download the backup set. This parameter is available only if the value of the BackupSetDownloadWay parameter is auto.
         self.backup_gateway_id = backup_gateway_id
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The code of the backup set.
         self.backup_set_code = backup_set_code
+        # The format in which the backup set is downloaded. Valid values:
+        # 
+        # *   **Native**\
+        # *   **SQL**\
+        # *   **CSV**\
+        # *   **JSON**\
         self.backup_set_data_format = backup_set_data_format
+        # The size of the data in the backup set.
         self.backup_set_data_size = backup_set_data_size
+        # The type of the database.
         self.backup_set_db_type = backup_set_db_type
+        # The timestamp that indicates when the backup set download task was created.
         self.backup_set_download_create_time = backup_set_download_create_time
+        # The server directory to which the backup set is downloaded.
+        # 
+        # > This parameter is available only if the value of the BackupSetDownloadWay parameter is auto.
         self.backup_set_download_dir = backup_set_download_dir
+        # The timestamp that indicates when the backup set download task is complete.
         self.backup_set_download_finish_time = backup_set_download_finish_time
+        # The public download URL of the backup set.
+        # 
+        # > This parameter is available only if the value of the BackupSetDownloadWay parameter is manual and the conversion is complete.
         self.backup_set_download_internet_url = backup_set_download_internet_url
+        # The internal download URL of the backup set.
+        # 
+        # > This parameter is available only if the value of the BackupSetDownloadWay parameter is manual and the conversion is complete.
         self.backup_set_download_intranet_url = backup_set_download_intranet_url
+        # The status of the backup set download task. Valid values:
+        # 
+        # *   **checking**: The backup set download task is being prechecked.
+        # *   **init**: The backup set download task is not started and fails to pass the precheck.
+        # *   **check_pass**: The backup set download task passes the precheck.
+        # *   **pause**: The backup set download task is paused.
+        # *   **schedule**: The backup set download task is waiting to be scheduled
+        # *   **running**: The backup set download task is running.
+        # *   **stop**: The backup set download task fails.
+        # *   **finish**: The backup set download task is complete.
         self.backup_set_download_status = backup_set_download_status
+        # The type of the destination server to which the backup set is downloaded.
+        # 
+        # > This parameter is available only if the value of the BackupSetDownloadWay parameter is auto. A value of agent indicates a server on which a backup gateway is installed.
         self.backup_set_download_target_type = backup_set_download_target_type
+        # The ID of the backup set download task.
         self.backup_set_download_task_id = backup_set_download_task_id
+        # The name of the backup set download task.
         self.backup_set_download_task_name = backup_set_download_task_name
+        # The method in which the backup set is downloaded. Valid values:
+        # 
+        # *   **manual**: The backup set is manually downloaded.
+        # *   **auto**: The backup set is automatically downloaded.
         self.backup_set_download_way = backup_set_download_way
+        # The ID of the backup set.
         self.backup_set_id = backup_set_id
+        # The type of the backup set task. Valid values:
+        # 
+        # *   **cbs_backup_sub_full**: logical full backup set download task
+        # *   **cbs_backup_sub_cont**: logical incremental backup set download task
         self.backup_set_job_type = backup_set_job_type
+        # The error message.
         self.err_message = err_message
 
     def validate(self):
@@ -2906,15 +3603,28 @@ class DescribeBackupSetDownloadTaskListResponseBody(TeaModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backup schedules.
         self.items = items
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
+        # The total number of backup set download tasks.
         self.total_elements = total_elements
+        # The total number of returned pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -2987,9 +3697,6 @@ class DescribeBackupSetDownloadTaskListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3026,7 +3733,11 @@ class DescribeDLAServiceRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -3070,13 +3781,31 @@ class DescribeDLAServiceResponseBody(TeaModel):
         state: str = None,
         success: bool = None,
     ):
+        # Specifies whether to enable the feature of automatically adding incremental data to a data lake. If this feature is enabled, DBS adds the backup sets that are newly generated to the data lake that is created for the backup schedule. Valid values:
+        # 
+        # *   **true**: enables the feature.
+        # *   **false**: disables the feature.
         self.auto_add = auto_add
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # Indicates whether a failed DLA task exists in the return result. Valid values:
+        # 
+        # *   **true**: A failed DLA task exists.
+        # *   **false**: No failed DLA task exists.
         self.have_job_failed = have_job_failed
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the DLA service for the backup schedule. Valid values:
+        # 
+        # *   **Running**: DLA is running.
+        # *   **Closing**: DLA is being disabled.
+        # *   **Closed**: DLA is disabled.
         self.state = state
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -3139,9 +3868,6 @@ class DescribeDLAServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3184,14 +3910,23 @@ class DescribeFullBackupListRequest(TeaModel):
         show_storage_type: bool = None,
         start_timestamp: int = None,
     ):
+        # The error code.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The end time of the backup task, such as 1554560477000.
         self.backup_set_id = backup_set_id
+        # The number of entries returned on each page.
         self.client_token = client_token
         self.end_timestamp = end_timestamp
         self.owner_id = owner_id
+        # The client token that is used to ensure the idempotence of the request.
         self.page_num = page_num
+        # The error message.
         self.page_size = page_size
+        # The ID of the request.
         self.show_storage_type = show_storage_type
+        # Queries full backup tasks.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -3469,9 +4204,6 @@ class DescribeFullBackupListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3513,13 +4245,29 @@ class DescribeIncrementBackupListRequest(TeaModel):
         show_storage_type: bool = None,
         start_timestamp: int = None,
     ):
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The end of the time range to query.
         self.end_timestamp = end_timestamp
         self.owner_id = owner_id
+        # The number of the page to return. The value must be a positive integer. Default value: 0.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values: 30, 50, and 100.
+        # 
+        # > Default value: 30.
         self.page_size = page_size
+        # Specifies whether to return the storage class. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # > Default value: true.
         self.show_storage_type = show_storage_type
+        # The beginning of the time range to query.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -3583,14 +4331,33 @@ class DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile(TeaModel):
         start_time: int = None,
         storage_method: str = None,
     ):
+        # The point in time when the backup set expires.
         self.backup_set_expired_time = backup_set_expired_time
+        # The ID of the backup set.
         self.backup_set_id = backup_set_id
+        # The ID of the incremental backup task.
         self.backup_set_job_id = backup_set_job_id
+        # The size of the backup set.
         self.backup_size = backup_size
+        # The status of the incremental backup task. Valid values:
+        # 
+        # *   **INIT**: The incremental backup task is not started.
+        # *   **FILLING**: The incremental backup task is in progress.
+        # *   **COMPLETED**: The incremental backup task is complete.
+        # *   **UNCOMPLETED**: The incremental backup task is not complete.
         self.backup_status = backup_status
+        # The end time of the incremental backup task.
         self.end_time = end_time
+        # The endpoint that is used to connect to the database.
         self.source_endpoint_ip_port = source_endpoint_ip_port
+        # The start time of the incremental backup task.
         self.start_time = start_time
+        # The storage class of the backup data. Valid values:
+        # 
+        # *   **Standard**: The storage class is Standard.
+        # *   **IA**: The storage class is Infrequent Access (IA).
+        # *   **Archive**: The storage class is Archive.
+        # *   **UNKNOWN**: The storage class is unknown. This value is returned because the task is not complete.
         self.storage_method = storage_method
 
     def validate(self):
@@ -3694,15 +4461,28 @@ class DescribeIncrementBackupListResponseBody(TeaModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of incremental backup tasks.
         self.items = items
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
+        # The total number of incremental backup tasks.
         self.total_elements = total_elements
+        # The total number of returned pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -3775,9 +4555,6 @@ class DescribeIncrementBackupListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3815,9 +4592,17 @@ class DescribeJobErrorCodeRequest(TeaModel):
         owner_id: str = None,
         task_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The language of the error message. Valid values:
+        # 
+        # *   **en** (default): English
+        # *   **cn**: Chinese
         self.language = language
         self.owner_id = owner_id
+        # The ID of the full backup or restore task.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3862,11 +4647,17 @@ class DescribeJobErrorCodeResponseBodyItem(TeaModel):
         job_type: str = None,
         language: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The standard error message.
         self.error_message = error_message
+        # The ID of the full backup or restore task.
         self.job_id = job_id
+        # The status of the task.
         self.job_state = job_state
+        # The internal ID of the DBS task type.
         self.job_type = job_type
+        # The language of the error message.
         self.language = language
 
     def validate(self):
@@ -3919,11 +4710,17 @@ class DescribeJobErrorCodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error information.
         self.item = item
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -3980,9 +4777,6 @@ class DescribeJobErrorCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4019,8 +4813,23 @@ class DescribeNodeCidrListRequest(TeaModel):
         owner_id: str = None,
         region: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The region in which DBS is activated. Valid values:
+        # 
+        # *   **cn-hangzhou**: China (Hangzhou)
+        # *   **cn-shanghai**: China (Shanghai)
+        # *   **cn-qingdao**: China (Qingdao)
+        # *   **cn-beijing**: China (Beijing)
+        # *   **cn-shenzhen**: China (Shenzhen)
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore (Singapore)
+        # *   **cn-hangzhou-finance**: China East 1 Finance
+        # *   **cn-shanghai-finance**: China East 2 Finance
+        # *   **cn-shenzhen-finance**: China South 1 Finance
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -4116,12 +4925,19 @@ class DescribeNodeCidrListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The public CIDR blocks.
         self.internet_ips = internet_ips
+        # The internal CIDR blocks.
         self.intranet_ips = intranet_ips
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -4185,9 +5001,6 @@ class DescribeNodeCidrListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4225,9 +5038,14 @@ class DescribePreCheckProgressListRequest(TeaModel):
         owner_id: str = None,
         restore_task_id: str = None,
     ):
+        # The backup schedule ID.
+        # 
+        # >  You must specify one of BackupPlanId and RestoreTaskId.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The restoration task ID.
         self.restore_task_id = restore_task_id
 
     def validate(self):
@@ -4274,13 +5092,28 @@ class DescribePreCheckProgressListResponseBodyItemsPreCheckProgressDetail(TeaMod
         order_num: str = None,
         state: str = None,
     ):
+        # The time when the check for the item started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.boot_time = boot_time
+        # The error message.
         self.err_msg = err_msg
+        # The time when the check for the item was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.finish_time = finish_time
+        # The name of the check item.
         self.item = item
+        # The ID of the job for the check item.
         self.job_id = job_id
+        # The name of the group to which the check item belongs.
         self.names = names
+        # The sequence number of the check item.
         self.order_num = order_num
+        # The state of the check for the item. Valid values:
+        # 
+        # *   **init**: The check for the item is being initialized.
+        # *   **warning**: A warning is reported.
+        # *   **catched**: An exception occurs.
+        # *   **running**: The check for the item is in progress.
+        # *   **failed**: The check for the item fails.
+        # *   **finish**: The check for the item is completed.
         self.state = state
 
     def validate(self):
@@ -4378,13 +5211,28 @@ class DescribePreCheckProgressListResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of check items.
         self.items = items
+        # The precheck progress. Valid values: 0 to 100.
         self.progress = progress
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the precheck. Valid values:
+        # 
+        # *   **running**: The precheck is in progress.
+        # *   **failed**: The precheck failed.
+        # *   **finish**: The precheck is complete.
         self.status = status
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -4449,9 +5297,6 @@ class DescribePreCheckProgressListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4487,6 +5332,7 @@ class DescribeRegionsRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -4551,11 +5397,17 @@ class DescribeRegionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The regions that DBS supports.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
+        # The status of the request.
         self.success = success
 
     def validate(self):
@@ -4612,9 +5464,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4654,11 +5503,22 @@ class DescribeRestoreRangeInfoRequest(TeaModel):
         owner_id: str = None,
         recently_restore: bool = None,
     ):
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The earliest point in time to which you can restore data. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of the parameter for each backup schedule.
+        # 
+        # This parameter is required.
         self.begin_timestamp_for_restore = begin_timestamp_for_restore
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The latest point in time to which you can restore data. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of the parameter for each backup schedule.
+        # 
+        # This parameter is required.
         self.end_timestamp_for_restore = end_timestamp_for_restore
         self.owner_id = owner_id
+        # Specifies whether to query the most recent point in time to which you can restore data.
         self.recently_restore = recently_restore
 
     def validate(self):
@@ -4708,8 +5568,11 @@ class DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRangeFullBackupListFull
         end_time: int = None,
         start_time: int = None,
     ):
+        # The ID of the backup set.
         self.backup_set_id = backup_set_id
+        # The end time of the full backup task. Example: 1646760308000.
         self.end_time = end_time
+        # The start time of the full backup task. Example: 1646760282000.
         self.start_time = start_time
 
     def validate(self):
@@ -4785,11 +5648,20 @@ class DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange(TeaModel):
         source_endpoint_instance_id: str = None,
         source_endpoint_instance_type: str = None,
     ):
+        # The beginning of the time range to which you can restore data.
         self.begin_timestamp_for_restore = begin_timestamp_for_restore
+        # The end of the time range to which you can restore data.
         self.end_timestamp_for_restore = end_timestamp_for_restore
+        # If the value of the RangeType parameter is point, this parameter is returned. The value of this parameter describes information about all backup points in the time range.
         self.full_backup_list = full_backup_list
+        # The type of the time range to which you can restore data.
+        # 
+        # *   **point**: The time range contains discrete points in time at which full backups were performed.
+        # *   **range**: The time range is a period of time for which continuous backup is performed. You can specify a random point in time in the time range to restore data.
         self.range_type = range_type
+        # The ID of the database instance.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The location of the database.
         self.source_endpoint_instance_type = source_endpoint_instance_type
 
     def validate(self):
@@ -4879,11 +5751,20 @@ class DescribeRestoreRangeInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The information about the time ranges to which you can restore data.
         self.items = items
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -4940,9 +5821,6 @@ class DescribeRestoreRangeInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4984,13 +5862,28 @@ class DescribeRestoreTaskListRequest(TeaModel):
         restore_task_id: str = None,
         start_timestamp: int = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The end of the time range to query.
         self.end_timestamp = end_timestamp
         self.owner_id = owner_id
+        # The number of the page to return. The value must be a positive integer. Default value: 0.
         self.page_num = page_num
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   30
+        # *   50
+        # *   100
+        # 
+        # > Default value: 30.
         self.page_size = page_size
+        # The restoration task ID. Separate multiple IDs with commas (,). You can call the [CreateRestoreTask](https://help.aliyun.com/document_detail/2869836.html) operation to obtain the ID.
+        # 
+        # >  Configure the BackupPlanId or RestoreTaskId parameter. If you configure the two parameters, an error is returned.
         self.restore_task_id = restore_task_id
+        # The beginning of the time range to query.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -5070,30 +5963,68 @@ class DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail(TeaModel):
         restore_task_name: str = None,
         restore_time: int = None,
     ):
+        # The ID of the backup gateway.
         self.backup_gateway_id = backup_gateway_id
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The ID of the full backup set that is used in the restore task.
         self.backup_set_id = backup_set_id
+        # The restore progress of the incremental log files.
         self.continuous_restore_progress = continuous_restore_progress
+        # The unique ID (UID) of the Alibaba Cloud account to which the backup schedule belongs.
         self.cross_aliyun_id = cross_aliyun_id
+        # The name of the RAM role that can be used to perform backups across Alibaba Cloud accounts.
         self.cross_role_name = cross_role_name
+        # The name of the database.
         self.destination_endpoint_database_name = destination_endpoint_database_name
+        # The ID of the database instance.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The location of the database. Valid values:
+        # 
+        # *   RDS
+        # *   ECS
+        # *   Express: The database is connected to DBS by using Express Connect, VPN Gateway, or Smart Access Gateway.
+        # *   Agent: The database is connected to DBS over a DBS backup gateway.
+        # *   DDS: The database is an ApsaraDB for MongoDB database.
+        # *   Other: The database is connected to DBS by using the IP address and port of the database.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        # The endpoint that is used to connect to the database.
         self.destination_endpoint_ip_port = destination_endpoint_ip_port
+        # The SID of the Oracle database.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        # The region in which the database is deployed.
         self.destination_endpoint_region = destination_endpoint_region
+        # The username of the account that is used to connect to the database.
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        # The error message.
         self.err_message = err_message
+        # The restore progress of the full backup data.
         self.full_data_restore_progress = full_data_restore_progress
+        # The progress of schema restore after full data restore.
         self.full_stru_after_restore_progress = full_stru_after_restore_progress
+        # The progress of schema restore before full data restore.
         self.full_strufore_restore_progress = full_strufore_restore_progress
+        # The directory of the destination database to which the objects were restored.
         self.restore_dir = restore_dir
+        # The objects to be restored.
         self.restore_objects = restore_objects
+        # The status of the restore task. Valid values:
+        # 
+        # *   init: The restore task is not started or does not pass the precheck.
+        # *   running: The restore task is running.
+        # *   stop: The restore task failed.
+        # *   pause: The restore task is stopped.
+        # *   check_pass: The restore task passed the precheck.
         self.restore_status = restore_status
+        # The time when the restore task was created, such as 1554560477000.
         self.restore_task_create_time = restore_task_create_time
+        # The time when the restore task was complete, such as 1554560477000.
         self.restore_task_finish_time = restore_task_finish_time
+        # The ID of the restore task.
         self.restore_task_id = restore_task_id
+        # The name of the restore task.
         self.restore_task_name = restore_task_name
+        # The time to run the restore task, such as 1554560477000.
         self.restore_time = restore_time
 
     def validate(self):
@@ -5261,15 +6192,25 @@ class DescribeRestoreTaskListResponseBody(TeaModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backup schedule.
         self.items = items
+        # The page number of the returned page.
         self.page_num = page_num
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The total number of restore tasks.
         self.total_elements = total_elements
+        # The total number of returned pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -5342,9 +6283,6 @@ class DescribeRestoreTaskListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5381,7 +6319,11 @@ class DisableBackupLogRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The backup schedule ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -5424,12 +6366,22 @@ class DisableBackupLogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backup schedule ID.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether a precheck is triggered. Valid values:
+        # 
+        # *   true: A precheck is triggered. You must call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup schedule.
+        # *   false: No precheck is triggered.
         self.need_precheck = need_precheck
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -5488,9 +6440,6 @@ class DisableBackupLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5527,7 +6476,11 @@ class EnableBackupLogRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The backup schedule ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -5570,12 +6523,25 @@ class EnableBackupLogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backup schedule ID.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether a precheck is triggered. Valid values:
+        # 
+        # *   true: A precheck is triggered. You must call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup schedule.
+        # *   false: No precheck is triggered.
         self.need_precheck = need_precheck
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request is successful.
+        # *   false: The request fails.
         self.success = success
 
     def validate(self):
@@ -5634,9 +6600,6 @@ class EnableBackupLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5675,10 +6638,14 @@ class GetDBListFromAgentRequest(TeaModel):
         source_endpoint_region: str = None,
         task_id: int = None,
     ):
+        # The ID of the backup gateway.
         self.backup_gateway_id = backup_gateway_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The region in which the backup gateway resides.
         self.source_endpoint_region = source_endpoint_region
+        # The ID of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):
@@ -5754,11 +6721,17 @@ class GetDBListFromAgentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the databases.
         self.db_list = db_list
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -5815,9 +6788,6 @@ class GetDBListFromAgentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5856,10 +6826,18 @@ class InitializeDbsServiceLinkedRoleResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The value is null.
         self.data = data
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The error code returned.
         self.error_code = error_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -5910,9 +6888,6 @@ class InitializeDbsServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5950,8 +6925,41 @@ class ModifyBackupObjectsRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The backup objects that are defined in a JSON string in the following format:
+        # 
+        #     [
+        #         {
+        #             "DBName":"The name of the database that you want to back up",
+        #             "SchemaName":"The name of the schema that you want to back up",
+        #             "TableIncludes":[{
+        #             	"TableName":"The name of the table that you want to back up"
+        #             }],
+        #             "TableExcludes":[{
+        #                 "TableName":"The name of the table that you want to exclude during the backup"
+        #             }]
+        #         }
+        #     ]
+        # 
+        # *   If you specify only `DBName` and do not specify objects of lower levels, all objects in the database are backed up.
+        # 
+        # *   If you specify `DBName` and some objects of lower levels, only the specified objects are backed up by default. You can use the following regular expressions to define object names:
+        # 
+        #     *   A period `.` matches any single character except `\\r\\n`.
+        #     *   An asterisk `*` matches zero or more occurrences of a preceding subexpression. For example, `h.*llo` matches strings such as `hllo` and `heeeello`.
+        #     *   A question mark `?` matches zero or one occurrence of a preceding subexpression. For example, `h.?llo` matches strings such as `hllo` and `hello`, but not `haello`.
+        #     *   Character set `[Characters]` matches a character included in the brackets ([ ]). For example, `h[ae]llo` matches `hallo` and `hello`.
+        #     *   Negative character set `[^Characters]` does not match a character in the brackets ([ ]). For example, `h[^ae]llo` matches `hcllo` and `hdllo`, but not `hallo` or `hello`.
+        #     *   Character range `[character1-character2]` matches any character included in the range from `character1 to character2`, such as `[0-9]` and `[a-z]`.
+        # 
+        # >  `SchemaName` and `NewSchemaName` apply only to SQL Server databases. Use `DBName` and `NewDBName` to specify the names of other databases.
+        # 
+        # This parameter is required.
         self.backup_objects = backup_objects
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -5998,12 +7006,22 @@ class ModifyBackupObjectsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether a precheck is triggered. If true is returned, you must call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup schedule.
         self.need_precheck = need_precheck
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -6062,9 +7080,6 @@ class ModifyBackupObjectsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6102,8 +7117,15 @@ class ModifyBackupPlanNameRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The name of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_name = backup_plan_name
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -6149,11 +7171,17 @@ class ModifyBackupPlanNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -6208,9 +7236,6 @@ class ModifyBackupPlanNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6254,14 +7279,48 @@ class ModifyBackupSetDownloadRulesRequest(TeaModel):
         open_auto_download: bool = None,
         owner_id: str = None,
     ):
+        # The ID of the backup gateway that is used to download the backup set.
         self.backup_gateway_id = backup_gateway_id
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The server directory to which the backup set is downloaded.
         self.backup_set_download_dir = backup_set_download_dir
+        # The type of the destination server to which the backup set is downloaded.
+        # 
+        # > Set the value to agent, which indicates a server on which a backup gateway is installed.
         self.backup_set_download_target_type = backup_set_download_target_type
+        # The type of the destination directory to which the backup set is downloaded. This parameter is required if the automatic download feature is enabled. Valid values:
+        # 
+        # *   local
+        # *   nas
+        # *   ftp
+        # *   minio
+        # 
+        # > Default value: local.
         self.backup_set_download_target_type_location = backup_set_download_target_type_location
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The format in which the full backup set is downloaded. Valid values:
+        # 
+        # *   Native
+        # *   SQL
+        # *   CSV
+        # *   JSON
+        # 
+        # > Default value: CSV.
         self.full_data_format = full_data_format
+        # The format in which the incremental backup set is downloaded. Valid values:
+        # 
+        # *   Native
+        # *   SQL
+        # *   CSV
+        # *   JSON
+        # 
+        # > Default value: Native.
         self.increment_data_format = increment_data_format
+        # Specifies whether to enable the automatic download feature. Default value: false.
         self.open_auto_download = open_auto_download
         self.owner_id = owner_id
 
@@ -6331,11 +7390,17 @@ class ModifyBackupSetDownloadRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -6390,9 +7455,6 @@ class ModifyBackupSetDownloadRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6442,21 +7504,64 @@ class ModifyBackupSourceEndpointRequest(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_user_name: str = None,
     ):
+        # The backup gateway ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to Agent, this parameter is required.
         self.backup_gateway_id = backup_gateway_id
+        # The backup object. If you set SourceEndpointInstanceType to Agent, this parameter is optional. Otherwise, it is required. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the backup object.
         self.backup_objects = backup_objects
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The unique ID (UID) of the Alibaba Cloud account to which the backup schedule belongs. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to obtain the UID.
         self.cross_aliyun_id = cross_aliyun_id
+        # The name of the RAM role that is used to perform backups across Alibaba Cloud accounts. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to obtain the RAM role.
         self.cross_role_name = cross_role_name
         self.owner_id = owner_id
+        # The name of the database.
+        # 
+        # *   This parameter is required if the database is a PostgreSQL or MongoDB database.
+        # *   This parameter is required if the database is an SQL Server database that is connected to DBS over a DBS backup gateway.
         self.source_endpoint_database_name = source_endpoint_database_name
+        # The endpoint of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the endpoint.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to Express, Agent, or Other, this parameter is required.
         self.source_endpoint_ip = source_endpoint_ip
+        # The database instance ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to RDS, ECS, DDS, or Express, this parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The location of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it. Valid values:
+        # 
+        # *   **RDS**\
+        # *   **ECS**\
+        # *   **Express**: The database is connected to DBS via Express Connect, VPN Gateway, or Smart Access Gateway.
+        # *   **Agent**: The database is connected to DBS over a DBS backup gateway.
+        # *   **DDS**: The database is an ApsaraDB for MongoDB database.
+        # *   **Other**: The database is connected to DBS using the IP address and port of the database.
+        # 
+        # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
+        # The SID of the Oracle source database. If the database is an Oracle database, this parameter is required.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The password of the account that is used to connect to the database.
+        # 
+        # This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
         self.source_endpoint_password = source_endpoint_password
+        # The port that is used to connect to the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the port.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to Express, Agent, Other, or ECS, this parameter is required.
         self.source_endpoint_port = source_endpoint_port
+        # The region in which the database you want to back up resides. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the region.
+        # 
+        # >  If you set **SourceEndpointInstanceType** to RDS, ECS, DDS, Express, or Agent, this parameter is required.
         self.source_endpoint_region = source_endpoint_region
+        # The account that is used to log on to the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the account.
+        # 
+        # If the database is an SQL Server database connected to DBS over a DBS backup gateway or a Redis database, this parameter is optional. Otherwise, it is required.
         self.source_endpoint_user_name = source_endpoint_user_name
 
     def validate(self):
@@ -6550,12 +7655,22 @@ class ModifyBackupSourceEndpointResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether a precheck is triggered. If the value of this parameter is true, you must start the backup schedule by calling the StartBackupPlan operation.
         self.need_precheck = need_precheck
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -6614,9 +7729,6 @@ class ModifyBackupSourceEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6657,11 +7769,36 @@ class ModifyBackupStrategyRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The interval at which you want to perform incremental log backups. Unit: seconds.
+        # 
+        # > This parameter takes effect only when physical backups are performed.
         self.backup_log_interval_seconds = backup_log_interval_seconds
+        # The day of each week when the full backup task runs. Valid values:
+        # 
+        # *   Monday
+        # *   Tuesday
+        # *   Wednesday
+        # *   Thursday
+        # *   Friday
+        # *   Saturday
+        # *   Sunday
+        # 
+        # This parameter is required.
         self.backup_period = backup_period
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The start time of the full backup task. Specify the time in the HH:mm format.
         self.backup_start_time = backup_start_time
+        # The backup method that you want to use for full backups. Valid values:
+        # 
+        # *   **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+        # *   **Manual**: manual backup.
+        # 
+        # > Default value: **simple**.
         self.backup_strategy_type = backup_strategy_type
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -6720,12 +7857,19 @@ class ModifyBackupStrategyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether a precheck is triggered. If the value of this parameter is true, you must start the backup schedule by calling the StartBackupPlan operation.
         self.need_precheck = need_precheck
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -6784,9 +7928,6 @@ class ModifyBackupStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6826,10 +7967,29 @@ class ModifyStorageStrategyRequest(TeaModel):
         duplication_infrequent_access_period: int = None,
         owner_id: str = None,
     ):
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The number of days for which the backup data is retained. Valid values: 0 to 1825.
+        # 
+        # > Default value: 730.
+        # 
+        # This parameter is required.
         self.backup_retention_period = backup_retention_period
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The number of days after which the storage class of the backup data is changed to Archive. The value of this parameter must be smaller than the value of the BackupRetentionPeriod parameter. For more information about the Archive storage class, see [Storage class overview](https://help.aliyun.com/document_detail/51374.html).
+        # 
+        # > Default value: 365.
+        # 
+        # This parameter is required.
         self.duplication_archive_period = duplication_archive_period
+        # The number of days after which the storage class of the backup data is changed to Infrequent Access (IA). The value of this parameter must be smaller than the value of the DuplicationArchivePeriod parameter. For more information about the IA storage class, see [Storage class overview](https://help.aliyun.com/document_detail/51374.html).
+        # 
+        # > Default value: 180.
+        # 
+        # This parameter is required.
         self.duplication_infrequent_access_period = duplication_infrequent_access_period
         self.owner_id = owner_id
 
@@ -6884,12 +8044,25 @@ class ModifyStorageStrategyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether a precheck is triggered. Valid values:
+        # 
+        # *   **true**: A precheck is triggered. You must manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869818.html) operation to start the backup schedule.
+        # *   **false**: No precheck is triggered.
         self.need_precheck = need_precheck
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -6948,9 +8121,6 @@ class ModifyStorageStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6987,7 +8157,11 @@ class ReleaseBackupPlanRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The backup schedule ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -7029,11 +8203,20 @@ class ReleaseBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7088,9 +8271,6 @@ class ReleaseBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7129,10 +8309,26 @@ class RenewBackupPlanRequest(TeaModel):
         period: str = None,
         used_time: int = None,
     ):
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
+        # Specifies whether to use yearly subscription or monthly subscription for the instance. Valid values:
+        # 
+        # *   Year
+        # *   Month
+        # 
+        # This parameter is required.
         self.period = period
+        # The subscription duration of the instance. Valid values:
+        # 
+        # *   If the Period parameter is set to Year, the value of the UsedTime parameter ranges from 1 to 9.
+        # *   If the Period parameter is set to Month, the value of the UsedTime parameter ranges from 1 to 11.
+        # 
+        # This parameter is required.
         self.used_time = used_time
 
     def validate(self):
@@ -7182,12 +8378,19 @@ class RenewBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -7246,9 +8449,6 @@ class RenewBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7285,7 +8485,11 @@ class StartBackupPlanRequest(TeaModel):
         client_token: str = None,
         owner_id: str = None,
     ):
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
 
@@ -7328,12 +8532,22 @@ class StartBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The ID of the full backup set.
         self.created_full_backupset_id = created_full_backupset_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -7392,9 +8606,6 @@ class StartBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7431,8 +8642,12 @@ class StartRestoreTaskRequest(TeaModel):
         owner_id: str = None,
         restore_task_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The ID of the restore task.
+        # 
+        # This parameter is required.
         self.restore_task_id = restore_task_id
 
     def validate(self):
@@ -7473,11 +8688,17 @@ class StartRestoreTaskResponseBody(TeaModel):
         restore_task_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the restore task.
         self.restore_task_id = restore_task_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -7532,9 +8753,6 @@ class StartRestoreTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7572,9 +8790,19 @@ class StopBackupPlanRequest(TeaModel):
         owner_id: str = None,
         stop_method: str = None,
     ):
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         self.owner_id = owner_id
+        # The method that is used to stop the backup schedule. Valid values:
+        # 
+        # *   ALL: stops the backup schedule, full data backup tasks, incremental log backup tasks, and restore tasks
+        # *   PLAN: stops only the backup schedule.
+        # 
+        # This parameter is required.
         self.stop_method = stop_method
 
     def validate(self):
@@ -7619,11 +8847,17 @@ class StopBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -7678,9 +8912,6 @@ class StopBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7718,8 +8949,21 @@ class UpgradeBackupPlanRequest(TeaModel):
         instance_class: str = None,
         owner_id: str = None,
     ):
+        # The ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The specifications of the instance. Valid values:
+        # 
+        # *   micro
+        # *   small
+        # *   medium
+        # *   large
+        # *   xlarge
+        # 
+        # This parameter is required.
         self.instance_class = instance_class
         self.owner_id = owner_id
 
@@ -7766,12 +9010,19 @@ class UpgradeBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the backup schedule.
         self.backup_plan_id = backup_plan_id
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -7830,9 +9081,6 @@ class UpgradeBackupPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

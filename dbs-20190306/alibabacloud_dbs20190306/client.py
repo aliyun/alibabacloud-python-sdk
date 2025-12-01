@@ -71,6 +71,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ConfigureBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ConfigureBackupPlanResponse:
+        """
+        @summary Configures a DBS backup schedule.
+        
+        @param request: ConfigureBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start_backup):
@@ -159,6 +166,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ConfigureBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ConfigureBackupPlanResponse:
+        """
+        @summary Configures a DBS backup schedule.
+        
+        @param request: ConfigureBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigureBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start_backup):
@@ -246,6 +260,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ConfigureBackupPlanRequest,
     ) -> dbs_20190306_models.ConfigureBackupPlanResponse:
+        """
+        @summary Configures a DBS backup schedule.
+        
+        @param request: ConfigureBackupPlanRequest
+        @return: ConfigureBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.configure_backup_plan_with_options(request, runtime)
 
@@ -253,6 +273,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ConfigureBackupPlanRequest,
     ) -> dbs_20190306_models.ConfigureBackupPlanResponse:
+        """
+        @summary Configures a DBS backup schedule.
+        
+        @param request: ConfigureBackupPlanRequest
+        @return: ConfigureBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.configure_backup_plan_with_options_async(request, runtime)
 
@@ -261,6 +287,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateAndStartBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateAndStartBackupPlanResponse:
+        """
+        @summary Creates, configures, and starts a backup schedule.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/70005.html) of Database Backup (DBS).
+        
+        @param request: CreateAndStartBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndStartBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -371,6 +406,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateAndStartBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateAndStartBackupPlanResponse:
+        """
+        @summary Creates, configures, and starts a backup schedule.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/70005.html) of Database Backup (DBS).
+        
+        @param request: CreateAndStartBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndStartBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -480,6 +524,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateAndStartBackupPlanRequest,
     ) -> dbs_20190306_models.CreateAndStartBackupPlanResponse:
+        """
+        @summary Creates, configures, and starts a backup schedule.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/70005.html) of Database Backup (DBS).
+        
+        @param request: CreateAndStartBackupPlanRequest
+        @return: CreateAndStartBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_and_start_backup_plan_with_options(request, runtime)
 
@@ -487,6 +539,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateAndStartBackupPlanRequest,
     ) -> dbs_20190306_models.CreateAndStartBackupPlanResponse:
+        """
+        @summary Creates, configures, and starts a backup schedule.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/70005.html) of Database Backup (DBS).
+        
+        @param request: CreateAndStartBackupPlanRequest
+        @return: CreateAndStartBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_and_start_backup_plan_with_options_async(request, runtime)
 
@@ -495,6 +555,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateBackupPlanResponse:
+        """
+        @summary Creates a backup schedule.
+        
+        @description For more information about how to create a backup schedule in the Database Backup (DBS) console, see [Purchase a backup schedule](https://help.aliyun.com/document_detail/65909.html).
+        
+        @param request: CreateBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_method):
@@ -551,6 +620,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateBackupPlanResponse:
+        """
+        @summary Creates a backup schedule.
+        
+        @description For more information about how to create a backup schedule in the Database Backup (DBS) console, see [Purchase a backup schedule](https://help.aliyun.com/document_detail/65909.html).
+        
+        @param request: CreateBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_method):
@@ -606,6 +684,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateBackupPlanRequest,
     ) -> dbs_20190306_models.CreateBackupPlanResponse:
+        """
+        @summary Creates a backup schedule.
+        
+        @description For more information about how to create a backup schedule in the Database Backup (DBS) console, see [Purchase a backup schedule](https://help.aliyun.com/document_detail/65909.html).
+        
+        @param request: CreateBackupPlanRequest
+        @return: CreateBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_plan_with_options(request, runtime)
 
@@ -613,6 +699,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateBackupPlanRequest,
     ) -> dbs_20190306_models.CreateBackupPlanResponse:
+        """
+        @summary Creates a backup schedule.
+        
+        @description For more information about how to create a backup schedule in the Database Backup (DBS) console, see [Purchase a backup schedule](https://help.aliyun.com/document_detail/65909.html).
+        
+        @param request: CreateBackupPlanRequest
+        @return: CreateBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_plan_with_options_async(request, runtime)
 
@@ -621,6 +715,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateFullBackupSetDownloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateFullBackupSetDownloadResponse:
+        """
+        @summary Creates and starts a full backup set download task.
+        
+        @param request: CreateFullBackupSetDownloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFullBackupSetDownloadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_data_format):
@@ -655,6 +756,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateFullBackupSetDownloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateFullBackupSetDownloadResponse:
+        """
+        @summary Creates and starts a full backup set download task.
+        
+        @param request: CreateFullBackupSetDownloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFullBackupSetDownloadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_data_format):
@@ -688,6 +796,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateFullBackupSetDownloadRequest,
     ) -> dbs_20190306_models.CreateFullBackupSetDownloadResponse:
+        """
+        @summary Creates and starts a full backup set download task.
+        
+        @param request: CreateFullBackupSetDownloadRequest
+        @return: CreateFullBackupSetDownloadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_full_backup_set_download_with_options(request, runtime)
 
@@ -695,6 +809,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateFullBackupSetDownloadRequest,
     ) -> dbs_20190306_models.CreateFullBackupSetDownloadResponse:
+        """
+        @summary Creates and starts a full backup set download task.
+        
+        @param request: CreateFullBackupSetDownloadRequest
+        @return: CreateFullBackupSetDownloadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_full_backup_set_download_with_options_async(request, runtime)
 
@@ -703,6 +823,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateGetDBListFromAgentTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateGetDBListFromAgentTaskResponse:
+        """
+        @summary Creates a task to obtain a database list by using a backup gateway.
+        
+        @description This API operation returns a task ID. You can call the [GetDBListFromAgent](https://help.aliyun.com/document_detail/2869852.html) operation to query the task result based on the task ID.
+        
+        @param request: CreateGetDBListFromAgentTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGetDBListFromAgentTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -743,6 +872,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateGetDBListFromAgentTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateGetDBListFromAgentTaskResponse:
+        """
+        @summary Creates a task to obtain a database list by using a backup gateway.
+        
+        @description This API operation returns a task ID. You can call the [GetDBListFromAgent](https://help.aliyun.com/document_detail/2869852.html) operation to query the task result based on the task ID.
+        
+        @param request: CreateGetDBListFromAgentTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGetDBListFromAgentTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -782,6 +920,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateGetDBListFromAgentTaskRequest,
     ) -> dbs_20190306_models.CreateGetDBListFromAgentTaskResponse:
+        """
+        @summary Creates a task to obtain a database list by using a backup gateway.
+        
+        @description This API operation returns a task ID. You can call the [GetDBListFromAgent](https://help.aliyun.com/document_detail/2869852.html) operation to query the task result based on the task ID.
+        
+        @param request: CreateGetDBListFromAgentTaskRequest
+        @return: CreateGetDBListFromAgentTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_get_dblist_from_agent_task_with_options(request, runtime)
 
@@ -789,6 +935,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateGetDBListFromAgentTaskRequest,
     ) -> dbs_20190306_models.CreateGetDBListFromAgentTaskResponse:
+        """
+        @summary Creates a task to obtain a database list by using a backup gateway.
+        
+        @description This API operation returns a task ID. You can call the [GetDBListFromAgent](https://help.aliyun.com/document_detail/2869852.html) operation to query the task result based on the task ID.
+        
+        @param request: CreateGetDBListFromAgentTaskRequest
+        @return: CreateGetDBListFromAgentTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_get_dblist_from_agent_task_with_options_async(request, runtime)
 
@@ -797,6 +951,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateIncrementBackupSetDownloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateIncrementBackupSetDownloadResponse:
+        """
+        @summary Creates and starts an incremental backup set download task.
+        
+        @param request: CreateIncrementBackupSetDownloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIncrementBackupSetDownloadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_data_format):
@@ -833,6 +994,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateIncrementBackupSetDownloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateIncrementBackupSetDownloadResponse:
+        """
+        @summary Creates and starts an incremental backup set download task.
+        
+        @param request: CreateIncrementBackupSetDownloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIncrementBackupSetDownloadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_data_format):
@@ -868,6 +1036,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateIncrementBackupSetDownloadRequest,
     ) -> dbs_20190306_models.CreateIncrementBackupSetDownloadResponse:
+        """
+        @summary Creates and starts an incremental backup set download task.
+        
+        @param request: CreateIncrementBackupSetDownloadRequest
+        @return: CreateIncrementBackupSetDownloadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_increment_backup_set_download_with_options(request, runtime)
 
@@ -875,6 +1049,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateIncrementBackupSetDownloadRequest,
     ) -> dbs_20190306_models.CreateIncrementBackupSetDownloadResponse:
+        """
+        @summary Creates and starts an incremental backup set download task.
+        
+        @param request: CreateIncrementBackupSetDownloadRequest
+        @return: CreateIncrementBackupSetDownloadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_increment_backup_set_download_with_options_async(request, runtime)
 
@@ -883,6 +1063,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateRestoreTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateRestoreTaskResponse:
+        """
+        @summary Creates a restoration task.
+        
+        @param request: CreateRestoreTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRestoreTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -953,6 +1140,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.CreateRestoreTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.CreateRestoreTaskResponse:
+        """
+        @summary Creates a restoration task.
+        
+        @param request: CreateRestoreTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRestoreTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -1022,6 +1216,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateRestoreTaskRequest,
     ) -> dbs_20190306_models.CreateRestoreTaskResponse:
+        """
+        @summary Creates a restoration task.
+        
+        @param request: CreateRestoreTaskRequest
+        @return: CreateRestoreTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_restore_task_with_options(request, runtime)
 
@@ -1029,6 +1229,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.CreateRestoreTaskRequest,
     ) -> dbs_20190306_models.CreateRestoreTaskResponse:
+        """
+        @summary Creates a restoration task.
+        
+        @param request: CreateRestoreTaskRequest
+        @return: CreateRestoreTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_restore_task_with_options_async(request, runtime)
 
@@ -1037,6 +1243,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupGatewayListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupGatewayListResponse:
+        """
+        @summary Queries backup gateways.
+        
+        @param request: DescribeBackupGatewayListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupGatewayListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1075,6 +1288,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupGatewayListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupGatewayListResponse:
+        """
+        @summary Queries backup gateways.
+        
+        @param request: DescribeBackupGatewayListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupGatewayListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1112,6 +1332,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupGatewayListRequest,
     ) -> dbs_20190306_models.DescribeBackupGatewayListResponse:
+        """
+        @summary Queries backup gateways.
+        
+        @param request: DescribeBackupGatewayListRequest
+        @return: DescribeBackupGatewayListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_gateway_list_with_options(request, runtime)
 
@@ -1119,6 +1345,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupGatewayListRequest,
     ) -> dbs_20190306_models.DescribeBackupGatewayListResponse:
+        """
+        @summary Queries backup gateways.
+        
+        @param request: DescribeBackupGatewayListRequest
+        @return: DescribeBackupGatewayListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_gateway_list_with_options_async(request, runtime)
 
@@ -1127,6 +1359,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupPlanBillingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupPlanBillingResponse:
+        """
+        @summary Queries the billing information of a backup schedule.
+        
+        @param request: DescribeBackupPlanBillingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlanBillingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1161,6 +1400,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupPlanBillingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupPlanBillingResponse:
+        """
+        @summary Queries the billing information of a backup schedule.
+        
+        @param request: DescribeBackupPlanBillingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlanBillingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1194,6 +1440,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupPlanBillingRequest,
     ) -> dbs_20190306_models.DescribeBackupPlanBillingResponse:
+        """
+        @summary Queries the billing information of a backup schedule.
+        
+        @param request: DescribeBackupPlanBillingRequest
+        @return: DescribeBackupPlanBillingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_plan_billing_with_options(request, runtime)
 
@@ -1201,6 +1453,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupPlanBillingRequest,
     ) -> dbs_20190306_models.DescribeBackupPlanBillingResponse:
+        """
+        @summary Queries the billing information of a backup schedule.
+        
+        @param request: DescribeBackupPlanBillingRequest
+        @return: DescribeBackupPlanBillingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_plan_billing_with_options_async(request, runtime)
 
@@ -1209,6 +1467,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupPlanListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupPlanListResponse:
+        """
+        @summary Query the list of backup plans
+        
+        @description Before using this interface, please activate the OSS service in advance. For more information, see [Object Storage Service (OSS)](https://help.aliyun.com/document_detail/31817.html).
+        
+        @param request: DescribeBackupPlanListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlanListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1253,6 +1520,15 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupPlanListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupPlanListResponse:
+        """
+        @summary Query the list of backup plans
+        
+        @description Before using this interface, please activate the OSS service in advance. For more information, see [Object Storage Service (OSS)](https://help.aliyun.com/document_detail/31817.html).
+        
+        @param request: DescribeBackupPlanListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlanListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1296,6 +1572,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupPlanListRequest,
     ) -> dbs_20190306_models.DescribeBackupPlanListResponse:
+        """
+        @summary Query the list of backup plans
+        
+        @description Before using this interface, please activate the OSS service in advance. For more information, see [Object Storage Service (OSS)](https://help.aliyun.com/document_detail/31817.html).
+        
+        @param request: DescribeBackupPlanListRequest
+        @return: DescribeBackupPlanListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_plan_list_with_options(request, runtime)
 
@@ -1303,6 +1587,14 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupPlanListRequest,
     ) -> dbs_20190306_models.DescribeBackupPlanListResponse:
+        """
+        @summary Query the list of backup plans
+        
+        @description Before using this interface, please activate the OSS service in advance. For more information, see [Object Storage Service (OSS)](https://help.aliyun.com/document_detail/31817.html).
+        
+        @param request: DescribeBackupPlanListRequest
+        @return: DescribeBackupPlanListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_plan_list_with_options_async(request, runtime)
 
@@ -1311,6 +1603,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupSetDownloadTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupSetDownloadTaskListResponse:
+        """
+        @summary Queries backup set download tasks.
+        
+        @param request: DescribeBackupSetDownloadTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetDownloadTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1349,6 +1648,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeBackupSetDownloadTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeBackupSetDownloadTaskListResponse:
+        """
+        @summary Queries backup set download tasks.
+        
+        @param request: DescribeBackupSetDownloadTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetDownloadTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1386,6 +1692,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupSetDownloadTaskListRequest,
     ) -> dbs_20190306_models.DescribeBackupSetDownloadTaskListResponse:
+        """
+        @summary Queries backup set download tasks.
+        
+        @param request: DescribeBackupSetDownloadTaskListRequest
+        @return: DescribeBackupSetDownloadTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_set_download_task_list_with_options(request, runtime)
 
@@ -1393,6 +1705,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeBackupSetDownloadTaskListRequest,
     ) -> dbs_20190306_models.DescribeBackupSetDownloadTaskListResponse:
+        """
+        @summary Queries backup set download tasks.
+        
+        @param request: DescribeBackupSetDownloadTaskListRequest
+        @return: DescribeBackupSetDownloadTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_set_download_task_list_with_options_async(request, runtime)
 
@@ -1401,6 +1719,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeDLAServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeDLAServiceResponse:
+        """
+        @summary Queries the status of the Data Lake Analytics (DLA) service for a backup schedule.
+        
+        @param request: DescribeDLAServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDLAServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1433,6 +1758,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeDLAServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeDLAServiceResponse:
+        """
+        @summary Queries the status of the Data Lake Analytics (DLA) service for a backup schedule.
+        
+        @param request: DescribeDLAServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDLAServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1464,6 +1796,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeDLAServiceRequest,
     ) -> dbs_20190306_models.DescribeDLAServiceResponse:
+        """
+        @summary Queries the status of the Data Lake Analytics (DLA) service for a backup schedule.
+        
+        @param request: DescribeDLAServiceRequest
+        @return: DescribeDLAServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dlaservice_with_options(request, runtime)
 
@@ -1471,6 +1809,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeDLAServiceRequest,
     ) -> dbs_20190306_models.DescribeDLAServiceResponse:
+        """
+        @summary Queries the status of the Data Lake Analytics (DLA) service for a backup schedule.
+        
+        @param request: DescribeDLAServiceRequest
+        @return: DescribeDLAServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dlaservice_with_options_async(request, runtime)
 
@@ -1479,6 +1823,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeFullBackupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeFullBackupListResponse:
+        """
+        @summary cn-hangzhou
+        
+        @param request: DescribeFullBackupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFullBackupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1523,6 +1874,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeFullBackupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeFullBackupListResponse:
+        """
+        @summary cn-hangzhou
+        
+        @param request: DescribeFullBackupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFullBackupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1566,6 +1924,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeFullBackupListRequest,
     ) -> dbs_20190306_models.DescribeFullBackupListResponse:
+        """
+        @summary cn-hangzhou
+        
+        @param request: DescribeFullBackupListRequest
+        @return: DescribeFullBackupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_full_backup_list_with_options(request, runtime)
 
@@ -1573,6 +1937,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeFullBackupListRequest,
     ) -> dbs_20190306_models.DescribeFullBackupListResponse:
+        """
+        @summary cn-hangzhou
+        
+        @param request: DescribeFullBackupListRequest
+        @return: DescribeFullBackupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_full_backup_list_with_options_async(request, runtime)
 
@@ -1581,6 +1951,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeIncrementBackupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeIncrementBackupListResponse:
+        """
+        @summary Queries incremental backup tasks.
+        
+        @param request: DescribeIncrementBackupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIncrementBackupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1623,6 +2000,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeIncrementBackupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeIncrementBackupListResponse:
+        """
+        @summary Queries incremental backup tasks.
+        
+        @param request: DescribeIncrementBackupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIncrementBackupListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1664,6 +2048,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeIncrementBackupListRequest,
     ) -> dbs_20190306_models.DescribeIncrementBackupListResponse:
+        """
+        @summary Queries incremental backup tasks.
+        
+        @param request: DescribeIncrementBackupListRequest
+        @return: DescribeIncrementBackupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_increment_backup_list_with_options(request, runtime)
 
@@ -1671,6 +2061,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeIncrementBackupListRequest,
     ) -> dbs_20190306_models.DescribeIncrementBackupListResponse:
+        """
+        @summary Queries incremental backup tasks.
+        
+        @param request: DescribeIncrementBackupListRequest
+        @return: DescribeIncrementBackupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_increment_backup_list_with_options_async(request, runtime)
 
@@ -1679,6 +2075,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeJobErrorCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeJobErrorCodeResponse:
+        """
+        @summary Queries the error information of a Database Backup (DBS) task.
+        
+        @param request: DescribeJobErrorCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobErrorCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1713,6 +2116,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeJobErrorCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeJobErrorCodeResponse:
+        """
+        @summary Queries the error information of a Database Backup (DBS) task.
+        
+        @param request: DescribeJobErrorCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobErrorCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1746,6 +2156,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeJobErrorCodeRequest,
     ) -> dbs_20190306_models.DescribeJobErrorCodeResponse:
+        """
+        @summary Queries the error information of a Database Backup (DBS) task.
+        
+        @param request: DescribeJobErrorCodeRequest
+        @return: DescribeJobErrorCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_job_error_code_with_options(request, runtime)
 
@@ -1753,6 +2169,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeJobErrorCodeRequest,
     ) -> dbs_20190306_models.DescribeJobErrorCodeResponse:
+        """
+        @summary Queries the error information of a Database Backup (DBS) task.
+        
+        @param request: DescribeJobErrorCodeRequest
+        @return: DescribeJobErrorCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_error_code_with_options_async(request, runtime)
 
@@ -1761,6 +2183,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeNodeCidrListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeNodeCidrListResponse:
+        """
+        @summary Queries the CIDR blocks of nodes on which Database Backup (DBS) is running.
+        
+        @param request: DescribeNodeCidrListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeCidrListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1793,6 +2222,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeNodeCidrListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeNodeCidrListResponse:
+        """
+        @summary Queries the CIDR blocks of nodes on which Database Backup (DBS) is running.
+        
+        @param request: DescribeNodeCidrListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeCidrListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1824,6 +2260,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeNodeCidrListRequest,
     ) -> dbs_20190306_models.DescribeNodeCidrListResponse:
+        """
+        @summary Queries the CIDR blocks of nodes on which Database Backup (DBS) is running.
+        
+        @param request: DescribeNodeCidrListRequest
+        @return: DescribeNodeCidrListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_node_cidr_list_with_options(request, runtime)
 
@@ -1831,6 +2273,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeNodeCidrListRequest,
     ) -> dbs_20190306_models.DescribeNodeCidrListResponse:
+        """
+        @summary Queries the CIDR blocks of nodes on which Database Backup (DBS) is running.
+        
+        @param request: DescribeNodeCidrListRequest
+        @return: DescribeNodeCidrListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_cidr_list_with_options_async(request, runtime)
 
@@ -1839,6 +2287,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribePreCheckProgressListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribePreCheckProgressListResponse:
+        """
+        @summary Queries the precheck progress of a backup schedule or a restore task.
+        
+        @param request: DescribePreCheckProgressListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePreCheckProgressListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1873,6 +2328,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribePreCheckProgressListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribePreCheckProgressListResponse:
+        """
+        @summary Queries the precheck progress of a backup schedule or a restore task.
+        
+        @param request: DescribePreCheckProgressListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePreCheckProgressListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -1906,6 +2368,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribePreCheckProgressListRequest,
     ) -> dbs_20190306_models.DescribePreCheckProgressListResponse:
+        """
+        @summary Queries the precheck progress of a backup schedule or a restore task.
+        
+        @param request: DescribePreCheckProgressListRequest
+        @return: DescribePreCheckProgressListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pre_check_progress_list_with_options(request, runtime)
 
@@ -1913,6 +2381,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribePreCheckProgressListRequest,
     ) -> dbs_20190306_models.DescribePreCheckProgressListResponse:
+        """
+        @summary Queries the precheck progress of a backup schedule or a restore task.
+        
+        @param request: DescribePreCheckProgressListRequest
+        @return: DescribePreCheckProgressListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pre_check_progress_list_with_options_async(request, runtime)
 
@@ -1921,6 +2395,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions that Database Backup (DBS) supports.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1951,6 +2432,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions that Database Backup (DBS) supports.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1980,6 +2468,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeRegionsRequest,
     ) -> dbs_20190306_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions that Database Backup (DBS) supports.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -1987,6 +2481,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeRegionsRequest,
     ) -> dbs_20190306_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions that Database Backup (DBS) supports.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -1995,6 +2495,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeRestoreRangeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeRestoreRangeInfoResponse:
+        """
+        @summary Queries the range of time to which you can restore data in a backup schedule.
+        
+        @param request: DescribeRestoreRangeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreRangeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2033,6 +2540,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeRestoreRangeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeRestoreRangeInfoResponse:
+        """
+        @summary Queries the range of time to which you can restore data in a backup schedule.
+        
+        @param request: DescribeRestoreRangeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreRangeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2070,6 +2584,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeRestoreRangeInfoRequest,
     ) -> dbs_20190306_models.DescribeRestoreRangeInfoResponse:
+        """
+        @summary Queries the range of time to which you can restore data in a backup schedule.
+        
+        @param request: DescribeRestoreRangeInfoRequest
+        @return: DescribeRestoreRangeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_range_info_with_options(request, runtime)
 
@@ -2077,6 +2597,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeRestoreRangeInfoRequest,
     ) -> dbs_20190306_models.DescribeRestoreRangeInfoResponse:
+        """
+        @summary Queries the range of time to which you can restore data in a backup schedule.
+        
+        @param request: DescribeRestoreRangeInfoRequest
+        @return: DescribeRestoreRangeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_range_info_with_options_async(request, runtime)
 
@@ -2085,6 +2611,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeRestoreTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeRestoreTaskListResponse:
+        """
+        @summary Queries restore tasks.
+        
+        @param request: DescribeRestoreTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2127,6 +2660,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DescribeRestoreTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DescribeRestoreTaskListResponse:
+        """
+        @summary Queries restore tasks.
+        
+        @param request: DescribeRestoreTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2168,6 +2708,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeRestoreTaskListRequest,
     ) -> dbs_20190306_models.DescribeRestoreTaskListResponse:
+        """
+        @summary Queries restore tasks.
+        
+        @param request: DescribeRestoreTaskListRequest
+        @return: DescribeRestoreTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_task_list_with_options(request, runtime)
 
@@ -2175,6 +2721,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DescribeRestoreTaskListRequest,
     ) -> dbs_20190306_models.DescribeRestoreTaskListResponse:
+        """
+        @summary Queries restore tasks.
+        
+        @param request: DescribeRestoreTaskListRequest
+        @return: DescribeRestoreTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_task_list_with_options_async(request, runtime)
 
@@ -2183,6 +2735,16 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DisableBackupLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DisableBackupLogResponse:
+        """
+        @summary Disables incremental backup for a backup schedule.
+        
+        @description ### Impact
+        After you disable the incremental log backup feature, your backup schedule no longer performs incremental log backups.
+        
+        @param request: DisableBackupLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableBackupLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2215,6 +2777,16 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.DisableBackupLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.DisableBackupLogResponse:
+        """
+        @summary Disables incremental backup for a backup schedule.
+        
+        @description ### Impact
+        After you disable the incremental log backup feature, your backup schedule no longer performs incremental log backups.
+        
+        @param request: DisableBackupLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableBackupLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2246,6 +2818,15 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DisableBackupLogRequest,
     ) -> dbs_20190306_models.DisableBackupLogResponse:
+        """
+        @summary Disables incremental backup for a backup schedule.
+        
+        @description ### Impact
+        After you disable the incremental log backup feature, your backup schedule no longer performs incremental log backups.
+        
+        @param request: DisableBackupLogRequest
+        @return: DisableBackupLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_backup_log_with_options(request, runtime)
 
@@ -2253,6 +2834,15 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.DisableBackupLogRequest,
     ) -> dbs_20190306_models.DisableBackupLogResponse:
+        """
+        @summary Disables incremental backup for a backup schedule.
+        
+        @description ### Impact
+        After you disable the incremental log backup feature, your backup schedule no longer performs incremental log backups.
+        
+        @param request: DisableBackupLogRequest
+        @return: DisableBackupLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_backup_log_with_options_async(request, runtime)
 
@@ -2261,6 +2851,16 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.EnableBackupLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.EnableBackupLogResponse:
+        """
+        @summary Enables incremental backup for a backup schedule.
+        
+        @description ## Impact
+        It is free to enable the incremental log backup feature. However, the backup traffic and storage capacity generated by the feature are billed in the same way as the full backup feature, and can be offset by the free quota of backup schedules or storage plans.
+        
+        @param request: EnableBackupLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableBackupLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2293,6 +2893,16 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.EnableBackupLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.EnableBackupLogResponse:
+        """
+        @summary Enables incremental backup for a backup schedule.
+        
+        @description ## Impact
+        It is free to enable the incremental log backup feature. However, the backup traffic and storage capacity generated by the feature are billed in the same way as the full backup feature, and can be offset by the free quota of backup schedules or storage plans.
+        
+        @param request: EnableBackupLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableBackupLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2324,6 +2934,15 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.EnableBackupLogRequest,
     ) -> dbs_20190306_models.EnableBackupLogResponse:
+        """
+        @summary Enables incremental backup for a backup schedule.
+        
+        @description ## Impact
+        It is free to enable the incremental log backup feature. However, the backup traffic and storage capacity generated by the feature are billed in the same way as the full backup feature, and can be offset by the free quota of backup schedules or storage plans.
+        
+        @param request: EnableBackupLogRequest
+        @return: EnableBackupLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_backup_log_with_options(request, runtime)
 
@@ -2331,6 +2950,15 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.EnableBackupLogRequest,
     ) -> dbs_20190306_models.EnableBackupLogResponse:
+        """
+        @summary Enables incremental backup for a backup schedule.
+        
+        @description ## Impact
+        It is free to enable the incremental log backup feature. However, the backup traffic and storage capacity generated by the feature are billed in the same way as the full backup feature, and can be offset by the free quota of backup schedules or storage plans.
+        
+        @param request: EnableBackupLogRequest
+        @return: EnableBackupLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_backup_log_with_options_async(request, runtime)
 
@@ -2339,6 +2967,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.GetDBListFromAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.GetDBListFromAgentResponse:
+        """
+        @summary Queries the result of a task that is used to query a database list by using a backup gateway based on the ID of the task.
+        
+        @param request: GetDBListFromAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBListFromAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -2375,6 +3010,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.GetDBListFromAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.GetDBListFromAgentResponse:
+        """
+        @summary Queries the result of a task that is used to query a database list by using a backup gateway based on the ID of the task.
+        
+        @param request: GetDBListFromAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBListFromAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -2410,6 +3052,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.GetDBListFromAgentRequest,
     ) -> dbs_20190306_models.GetDBListFromAgentResponse:
+        """
+        @summary Queries the result of a task that is used to query a database list by using a backup gateway based on the ID of the task.
+        
+        @param request: GetDBListFromAgentRequest
+        @return: GetDBListFromAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dblist_from_agent_with_options(request, runtime)
 
@@ -2417,6 +3065,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.GetDBListFromAgentRequest,
     ) -> dbs_20190306_models.GetDBListFromAgentResponse:
+        """
+        @summary Queries the result of a task that is used to query a database list by using a backup gateway based on the ID of the task.
+        
+        @param request: GetDBListFromAgentRequest
+        @return: GetDBListFromAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dblist_from_agent_with_options_async(request, runtime)
 
@@ -2424,6 +3078,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.InitializeDbsServiceLinkedRoleResponse:
+        """
+        @summary Grants the AliyunServiceRoleForDBS role to Database Backup (DBS).
+        
+        @param request: InitializeDbsServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeDbsServiceLinkedRoleResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='InitializeDbsServiceLinkedRole',
@@ -2445,6 +3106,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.InitializeDbsServiceLinkedRoleResponse:
+        """
+        @summary Grants the AliyunServiceRoleForDBS role to Database Backup (DBS).
+        
+        @param request: InitializeDbsServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeDbsServiceLinkedRoleResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='InitializeDbsServiceLinkedRole',
@@ -2463,10 +3131,20 @@ class Client(OpenApiClient):
         )
 
     def initialize_dbs_service_linked_role(self) -> dbs_20190306_models.InitializeDbsServiceLinkedRoleResponse:
+        """
+        @summary Grants the AliyunServiceRoleForDBS role to Database Backup (DBS).
+        
+        @return: InitializeDbsServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.initialize_dbs_service_linked_role_with_options(runtime)
 
     async def initialize_dbs_service_linked_role_async(self) -> dbs_20190306_models.InitializeDbsServiceLinkedRoleResponse:
+        """
+        @summary Grants the AliyunServiceRoleForDBS role to Database Backup (DBS).
+        
+        @return: InitializeDbsServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.initialize_dbs_service_linked_role_with_options_async(runtime)
 
@@ -2475,6 +3153,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupObjectsResponse:
+        """
+        @summary Modifies backup objects of a backup schedule in Database Backup (DBS).
+        
+        @param request: ModifyBackupObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_objects):
@@ -2509,6 +3194,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupObjectsResponse:
+        """
+        @summary Modifies backup objects of a backup schedule in Database Backup (DBS).
+        
+        @param request: ModifyBackupObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_objects):
@@ -2542,6 +3234,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupObjectsRequest,
     ) -> dbs_20190306_models.ModifyBackupObjectsResponse:
+        """
+        @summary Modifies backup objects of a backup schedule in Database Backup (DBS).
+        
+        @param request: ModifyBackupObjectsRequest
+        @return: ModifyBackupObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_objects_with_options(request, runtime)
 
@@ -2549,6 +3247,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupObjectsRequest,
     ) -> dbs_20190306_models.ModifyBackupObjectsResponse:
+        """
+        @summary Modifies backup objects of a backup schedule in Database Backup (DBS).
+        
+        @param request: ModifyBackupObjectsRequest
+        @return: ModifyBackupObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_objects_with_options_async(request, runtime)
 
@@ -2557,6 +3261,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupPlanNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupPlanNameResponse:
+        """
+        @summary Changes the name of a backup schedule.
+        
+        @param request: ModifyBackupPlanNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPlanNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2591,6 +3302,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupPlanNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupPlanNameResponse:
+        """
+        @summary Changes the name of a backup schedule.
+        
+        @param request: ModifyBackupPlanNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPlanNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -2624,6 +3342,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupPlanNameRequest,
     ) -> dbs_20190306_models.ModifyBackupPlanNameResponse:
+        """
+        @summary Changes the name of a backup schedule.
+        
+        @param request: ModifyBackupPlanNameRequest
+        @return: ModifyBackupPlanNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_plan_name_with_options(request, runtime)
 
@@ -2631,6 +3355,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupPlanNameRequest,
     ) -> dbs_20190306_models.ModifyBackupPlanNameResponse:
+        """
+        @summary Changes the name of a backup schedule.
+        
+        @param request: ModifyBackupPlanNameRequest
+        @return: ModifyBackupPlanNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_plan_name_with_options_async(request, runtime)
 
@@ -2639,6 +3369,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupSetDownloadRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupSetDownloadRulesResponse:
+        """
+        @summary Enables, configures, or disables the automatic download feature.
+        
+        @param request: ModifyBackupSetDownloadRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupSetDownloadRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -2685,6 +3422,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupSetDownloadRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupSetDownloadRulesResponse:
+        """
+        @summary Enables, configures, or disables the automatic download feature.
+        
+        @param request: ModifyBackupSetDownloadRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupSetDownloadRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -2730,6 +3474,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupSetDownloadRulesRequest,
     ) -> dbs_20190306_models.ModifyBackupSetDownloadRulesResponse:
+        """
+        @summary Enables, configures, or disables the automatic download feature.
+        
+        @param request: ModifyBackupSetDownloadRulesRequest
+        @return: ModifyBackupSetDownloadRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_set_download_rules_with_options(request, runtime)
 
@@ -2737,6 +3487,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupSetDownloadRulesRequest,
     ) -> dbs_20190306_models.ModifyBackupSetDownloadRulesResponse:
+        """
+        @summary Enables, configures, or disables the automatic download feature.
+        
+        @param request: ModifyBackupSetDownloadRulesRequest
+        @return: ModifyBackupSetDownloadRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_set_download_rules_with_options_async(request, runtime)
 
@@ -2745,6 +3501,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupSourceEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupSourceEndpointResponse:
+        """
+        @summary Modifies the data source of a backup schedule.
+        
+        @param request: ModifyBackupSourceEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupSourceEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -2803,6 +3566,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupSourceEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupSourceEndpointResponse:
+        """
+        @summary Modifies the data source of a backup schedule.
+        
+        @param request: ModifyBackupSourceEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupSourceEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_gateway_id):
@@ -2860,6 +3630,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupSourceEndpointRequest,
     ) -> dbs_20190306_models.ModifyBackupSourceEndpointResponse:
+        """
+        @summary Modifies the data source of a backup schedule.
+        
+        @param request: ModifyBackupSourceEndpointRequest
+        @return: ModifyBackupSourceEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_source_endpoint_with_options(request, runtime)
 
@@ -2867,6 +3643,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupSourceEndpointRequest,
     ) -> dbs_20190306_models.ModifyBackupSourceEndpointResponse:
+        """
+        @summary Modifies the data source of a backup schedule.
+        
+        @param request: ModifyBackupSourceEndpointRequest
+        @return: ModifyBackupSourceEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_source_endpoint_with_options_async(request, runtime)
 
@@ -2875,6 +3657,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupStrategyResponse:
+        """
+        @summary Modifies the backup time of a backup schedule.
+        
+        @param request: ModifyBackupStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_log_interval_seconds):
@@ -2915,6 +3704,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyBackupStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyBackupStrategyResponse:
+        """
+        @summary Modifies the backup time of a backup schedule.
+        
+        @param request: ModifyBackupStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_log_interval_seconds):
@@ -2954,6 +3750,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupStrategyRequest,
     ) -> dbs_20190306_models.ModifyBackupStrategyResponse:
+        """
+        @summary Modifies the backup time of a backup schedule.
+        
+        @param request: ModifyBackupStrategyRequest
+        @return: ModifyBackupStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_strategy_with_options(request, runtime)
 
@@ -2961,6 +3763,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyBackupStrategyRequest,
     ) -> dbs_20190306_models.ModifyBackupStrategyResponse:
+        """
+        @summary Modifies the backup time of a backup schedule.
+        
+        @param request: ModifyBackupStrategyRequest
+        @return: ModifyBackupStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_strategy_with_options_async(request, runtime)
 
@@ -2969,6 +3777,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyStorageStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyStorageStrategyResponse:
+        """
+        @summary Modifies the lifecycle of data that is backed up based on a backup schedule.
+        
+        @param request: ModifyStorageStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStorageStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3007,6 +3822,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ModifyStorageStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ModifyStorageStrategyResponse:
+        """
+        @summary Modifies the lifecycle of data that is backed up based on a backup schedule.
+        
+        @param request: ModifyStorageStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStorageStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3044,6 +3866,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyStorageStrategyRequest,
     ) -> dbs_20190306_models.ModifyStorageStrategyResponse:
+        """
+        @summary Modifies the lifecycle of data that is backed up based on a backup schedule.
+        
+        @param request: ModifyStorageStrategyRequest
+        @return: ModifyStorageStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_storage_strategy_with_options(request, runtime)
 
@@ -3051,6 +3879,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ModifyStorageStrategyRequest,
     ) -> dbs_20190306_models.ModifyStorageStrategyResponse:
+        """
+        @summary Modifies the lifecycle of data that is backed up based on a backup schedule.
+        
+        @param request: ModifyStorageStrategyRequest
+        @return: ModifyStorageStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_storage_strategy_with_options_async(request, runtime)
 
@@ -3059,6 +3893,16 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ReleaseBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ReleaseBackupPlanResponse:
+        """
+        @summary Releases a pay-as-you-go backup schedule.
+        
+        @description ## Impacts
+        After a pay-as-you-go backup schedule is released, it stops providing services. Database Backup (DBS) no longer charges you fees for this backup schedule.
+        
+        @param request: ReleaseBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3091,6 +3935,16 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.ReleaseBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.ReleaseBackupPlanResponse:
+        """
+        @summary Releases a pay-as-you-go backup schedule.
+        
+        @description ## Impacts
+        After a pay-as-you-go backup schedule is released, it stops providing services. Database Backup (DBS) no longer charges you fees for this backup schedule.
+        
+        @param request: ReleaseBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3122,6 +3976,15 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ReleaseBackupPlanRequest,
     ) -> dbs_20190306_models.ReleaseBackupPlanResponse:
+        """
+        @summary Releases a pay-as-you-go backup schedule.
+        
+        @description ## Impacts
+        After a pay-as-you-go backup schedule is released, it stops providing services. Database Backup (DBS) no longer charges you fees for this backup schedule.
+        
+        @param request: ReleaseBackupPlanRequest
+        @return: ReleaseBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_backup_plan_with_options(request, runtime)
 
@@ -3129,6 +3992,15 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.ReleaseBackupPlanRequest,
     ) -> dbs_20190306_models.ReleaseBackupPlanResponse:
+        """
+        @summary Releases a pay-as-you-go backup schedule.
+        
+        @description ## Impacts
+        After a pay-as-you-go backup schedule is released, it stops providing services. Database Backup (DBS) no longer charges you fees for this backup schedule.
+        
+        @param request: ReleaseBackupPlanRequest
+        @return: ReleaseBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_backup_plan_with_options_async(request, runtime)
 
@@ -3137,6 +4009,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.RenewBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.RenewBackupPlanResponse:
+        """
+        @summary Renews a backup schedule.
+        
+        @param request: RenewBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3173,6 +4052,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.RenewBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.RenewBackupPlanResponse:
+        """
+        @summary Renews a backup schedule.
+        
+        @param request: RenewBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3208,6 +4094,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.RenewBackupPlanRequest,
     ) -> dbs_20190306_models.RenewBackupPlanResponse:
+        """
+        @summary Renews a backup schedule.
+        
+        @param request: RenewBackupPlanRequest
+        @return: RenewBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_backup_plan_with_options(request, runtime)
 
@@ -3215,6 +4107,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.RenewBackupPlanRequest,
     ) -> dbs_20190306_models.RenewBackupPlanResponse:
+        """
+        @summary Renews a backup schedule.
+        
+        @param request: RenewBackupPlanRequest
+        @return: RenewBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_backup_plan_with_options_async(request, runtime)
 
@@ -3223,6 +4121,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.StartBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.StartBackupPlanResponse:
+        """
+        @summary Starts a backup schedule.
+        
+        @param request: StartBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3255,6 +4160,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.StartBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.StartBackupPlanResponse:
+        """
+        @summary Starts a backup schedule.
+        
+        @param request: StartBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3286,6 +4198,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.StartBackupPlanRequest,
     ) -> dbs_20190306_models.StartBackupPlanResponse:
+        """
+        @summary Starts a backup schedule.
+        
+        @param request: StartBackupPlanRequest
+        @return: StartBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_backup_plan_with_options(request, runtime)
 
@@ -3293,6 +4211,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.StartBackupPlanRequest,
     ) -> dbs_20190306_models.StartBackupPlanResponse:
+        """
+        @summary Starts a backup schedule.
+        
+        @param request: StartBackupPlanRequest
+        @return: StartBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_backup_plan_with_options_async(request, runtime)
 
@@ -3301,6 +4225,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.StartRestoreTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.StartRestoreTaskResponse:
+        """
+        @summary Starts a restore task.
+        
+        @param request: StartRestoreTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRestoreTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3333,6 +4264,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.StartRestoreTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.StartRestoreTaskResponse:
+        """
+        @summary Starts a restore task.
+        
+        @param request: StartRestoreTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRestoreTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3364,6 +4302,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.StartRestoreTaskRequest,
     ) -> dbs_20190306_models.StartRestoreTaskResponse:
+        """
+        @summary Starts a restore task.
+        
+        @param request: StartRestoreTaskRequest
+        @return: StartRestoreTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_restore_task_with_options(request, runtime)
 
@@ -3371,6 +4315,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.StartRestoreTaskRequest,
     ) -> dbs_20190306_models.StartRestoreTaskResponse:
+        """
+        @summary Starts a restore task.
+        
+        @param request: StartRestoreTaskRequest
+        @return: StartRestoreTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_restore_task_with_options_async(request, runtime)
 
@@ -3379,6 +4329,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.StopBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.StopBackupPlanResponse:
+        """
+        @summary Stops a backup schedule.
+        
+        @param request: StopBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3413,6 +4370,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.StopBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.StopBackupPlanResponse:
+        """
+        @summary Stops a backup schedule.
+        
+        @param request: StopBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3446,6 +4410,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.StopBackupPlanRequest,
     ) -> dbs_20190306_models.StopBackupPlanResponse:
+        """
+        @summary Stops a backup schedule.
+        
+        @param request: StopBackupPlanRequest
+        @return: StopBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_backup_plan_with_options(request, runtime)
 
@@ -3453,6 +4423,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.StopBackupPlanRequest,
     ) -> dbs_20190306_models.StopBackupPlanResponse:
+        """
+        @summary Stops a backup schedule.
+        
+        @param request: StopBackupPlanRequest
+        @return: StopBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_backup_plan_with_options_async(request, runtime)
 
@@ -3461,6 +4437,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.UpgradeBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.UpgradeBackupPlanResponse:
+        """
+        @summary Upgrades a backup schedule.
+        
+        @param request: UpgradeBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3495,6 +4478,13 @@ class Client(OpenApiClient):
         request: dbs_20190306_models.UpgradeBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20190306_models.UpgradeBackupPlanResponse:
+        """
+        @summary Upgrades a backup schedule.
+        
+        @param request: UpgradeBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_plan_id):
@@ -3528,6 +4518,12 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.UpgradeBackupPlanRequest,
     ) -> dbs_20190306_models.UpgradeBackupPlanResponse:
+        """
+        @summary Upgrades a backup schedule.
+        
+        @param request: UpgradeBackupPlanRequest
+        @return: UpgradeBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_backup_plan_with_options(request, runtime)
 
@@ -3535,5 +4531,11 @@ class Client(OpenApiClient):
         self,
         request: dbs_20190306_models.UpgradeBackupPlanRequest,
     ) -> dbs_20190306_models.UpgradeBackupPlanResponse:
+        """
+        @summary Upgrades a backup schedule.
+        
+        @param request: UpgradeBackupPlanRequest
+        @return: UpgradeBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_backup_plan_with_options_async(request, runtime)
