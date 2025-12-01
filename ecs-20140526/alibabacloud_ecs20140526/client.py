@@ -84,7 +84,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
+        @summary dubbo
         
         @param request: AcceptInquiredSystemEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -133,7 +133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
+        @summary dubbo
         
         @param request: AcceptInquiredSystemEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -181,7 +181,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AcceptInquiredSystemEventRequest,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
+        @summary dubbo
         
         @param request: AcceptInquiredSystemEventRequest
         @return: AcceptInquiredSystemEventResponse
@@ -194,7 +194,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AcceptInquiredSystemEventRequest,
     ) -> ecs_20140526_models.AcceptInquiredSystemEventResponse:
         """
-        @summary Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
+        @summary dubbo
         
         @param request: AcceptInquiredSystemEventRequest
         @return: AcceptInquiredSystemEventResponse
@@ -1154,8 +1154,17 @@ class Client(OpenApiClient):
         """
         @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
-        @description    Each disk can have only one automatic snapshot policy.
-        Each automatic snapshot policy can be applied to multiple disks.
+        @description ## [](#)Usage notes
+        When you call this operation, note that:
+        You can apply only one automatic snapshot policy to each disk.
+        You can apply a single automatic snapshot policy to multiple disks.
+        Feature changes:
+        By default, only one policy can be applied to a single disk. After the feature is upgraded, a maximum of 10 automatic snapshot policies can be applied to a single disk at the same time to meet the backup requirements of multiple scenarios.
+        If you need to apply for a whitelist to upgrade the feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+        After you upgrade the feature, take note of the following:
+        Each cloud disk supports up to 10 automatic snapshot policies.
+        If the target cloud disk already has an automatic snapshot policy applied, calling this operation will add to the existing policy rather than replace it.
+        > To avoid unexpected fees, cancel the automatic snapshot policies that you no longer need.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1202,8 +1211,17 @@ class Client(OpenApiClient):
         """
         @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
-        @description    Each disk can have only one automatic snapshot policy.
-        Each automatic snapshot policy can be applied to multiple disks.
+        @description ## [](#)Usage notes
+        When you call this operation, note that:
+        You can apply only one automatic snapshot policy to each disk.
+        You can apply a single automatic snapshot policy to multiple disks.
+        Feature changes:
+        By default, only one policy can be applied to a single disk. After the feature is upgraded, a maximum of 10 automatic snapshot policies can be applied to a single disk at the same time to meet the backup requirements of multiple scenarios.
+        If you need to apply for a whitelist to upgrade the feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+        After you upgrade the feature, take note of the following:
+        Each cloud disk supports up to 10 automatic snapshot policies.
+        If the target cloud disk already has an automatic snapshot policy applied, calling this operation will add to the existing policy rather than replace it.
+        > To avoid unexpected fees, cancel the automatic snapshot policies that you no longer need.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1249,8 +1267,17 @@ class Client(OpenApiClient):
         """
         @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
-        @description    Each disk can have only one automatic snapshot policy.
-        Each automatic snapshot policy can be applied to multiple disks.
+        @description ## [](#)Usage notes
+        When you call this operation, note that:
+        You can apply only one automatic snapshot policy to each disk.
+        You can apply a single automatic snapshot policy to multiple disks.
+        Feature changes:
+        By default, only one policy can be applied to a single disk. After the feature is upgraded, a maximum of 10 automatic snapshot policies can be applied to a single disk at the same time to meet the backup requirements of multiple scenarios.
+        If you need to apply for a whitelist to upgrade the feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+        After you upgrade the feature, take note of the following:
+        Each cloud disk supports up to 10 automatic snapshot policies.
+        If the target cloud disk already has an automatic snapshot policy applied, calling this operation will add to the existing policy rather than replace it.
+        > To avoid unexpected fees, cancel the automatic snapshot policies that you no longer need.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @return: ApplyAutoSnapshotPolicyResponse
@@ -1265,8 +1292,17 @@ class Client(OpenApiClient):
         """
         @summary Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
         
-        @description    Each disk can have only one automatic snapshot policy.
-        Each automatic snapshot policy can be applied to multiple disks.
+        @description ## [](#)Usage notes
+        When you call this operation, note that:
+        You can apply only one automatic snapshot policy to each disk.
+        You can apply a single automatic snapshot policy to multiple disks.
+        Feature changes:
+        By default, only one policy can be applied to a single disk. After the feature is upgraded, a maximum of 10 automatic snapshot policies can be applied to a single disk at the same time to meet the backup requirements of multiple scenarios.
+        If you need to apply for a whitelist to upgrade the feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+        After you upgrade the feature, take note of the following:
+        Each cloud disk supports up to 10 automatic snapshot policies.
+        If the target cloud disk already has an automatic snapshot policy applied, calling this operation will add to the existing policy rather than replace it.
+        > To avoid unexpected fees, cancel the automatic snapshot policies that you no longer need.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @return: ApplyAutoSnapshotPolicyResponse
@@ -17168,7 +17204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed the account verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17216,7 +17252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed the account verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17263,7 +17299,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccountAttributesRequest,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed the account verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17279,7 +17315,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccountAttributesRequest,
     ) -> ecs_20140526_models.DescribeAccountAttributesResponse:
         """
-        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
+        @summary Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed the account verification.
         
         @description After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
@@ -17860,7 +17896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
         """
-        @summary 查询自动快照策略的关联关系
+        @summary Queries association relationships of automatic snapshot policies.
         
         @param request: DescribeAutoSnapshotPolicyAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17911,7 +17947,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
         """
-        @summary 查询自动快照策略的关联关系
+        @summary Queries association relationships of automatic snapshot policies.
         
         @param request: DescribeAutoSnapshotPolicyAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17961,7 +17997,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsRequest,
     ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
         """
-        @summary 查询自动快照策略的关联关系
+        @summary Queries association relationships of automatic snapshot policies.
         
         @param request: DescribeAutoSnapshotPolicyAssociationsRequest
         @return: DescribeAutoSnapshotPolicyAssociationsResponse
@@ -17974,7 +18010,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsRequest,
     ) -> ecs_20140526_models.DescribeAutoSnapshotPolicyAssociationsResponse:
         """
-        @summary 查询自动快照策略的关联关系
+        @summary Queries association relationships of automatic snapshot policies.
         
         @param request: DescribeAutoSnapshotPolicyAssociationsRequest
         @return: DescribeAutoSnapshotPolicyAssociationsResponse
@@ -18124,37 +18160,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
-        
-        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
-        Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        Examples:
-        If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
-        If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
-        If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "Zone",
-        "InstanceType": "ecs.g5.large"
-        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
-        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "disk",
-        "DestinationResource": "DataDisk"
-        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "instance",
-        "InstanceType": "ecs.g7.large",
-        "DestinationResource": "SystemDisk",
-        "SystemDiskCategory": "cloud_essd"
+        @summary 查询可用资源
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18227,37 +18233,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
-        
-        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
-        Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        Examples:
-        If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
-        If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
-        If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "Zone",
-        "InstanceType": "ecs.g5.large"
-        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
-        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "disk",
-        "DestinationResource": "DataDisk"
-        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "instance",
-        "InstanceType": "ecs.g7.large",
-        "DestinationResource": "SystemDisk",
-        "SystemDiskCategory": "cloud_essd"
+        @summary 查询可用资源
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18329,37 +18305,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAvailableResourceRequest,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
-        
-        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
-        Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        Examples:
-        If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
-        If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
-        If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "Zone",
-        "InstanceType": "ecs.g5.large"
-        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
-        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "disk",
-        "DestinationResource": "DataDisk"
-        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "instance",
-        "InstanceType": "ecs.g7.large",
-        "DestinationResource": "SystemDisk",
-        "SystemDiskCategory": "cloud_essd"
+        @summary 查询可用资源
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -18372,37 +18318,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAvailableResourceRequest,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        @summary Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
-        
-        @description The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
-        Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        Examples:
-        If you set `DestinationResource` to `DataDisk`, take note of the following items:
-        If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
-        If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
-        If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
-        If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-        To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        *To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "Zone",
-        "InstanceType": "ecs.g5.large"
-        *To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
-        *To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "disk",
-        "DestinationResource": "DataDisk"
-        *To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**\
-        "RegionId": "cn-hangzhou",
-        "ZoneId": "cn-hangzhou-b",
-        "ResourceType": "instance",
-        "InstanceType": "ecs.g7.large",
-        "DestinationResource": "SystemDisk",
-        "SystemDiskCategory": "cloud_essd"
+        @summary 查询可用资源
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -23372,12 +23288,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
         """
-        @summary Queries the details of an image creation task.
+        @summary The key of tag N of the image creation task. Valid values of N: 1 to 20.
         
-        @description ## [](#)Usage notes
-        The image template that is specified by the `ImagePipelineId` parameter cannot be a deleted image template. When an image template is deleted, the corresponding image creation task is deleted.
-        You must specify `ImagePipelineId` or `ExecutionId`.
-        You can configure the query token by using the `NextToken` parameter. Set NextToken to the value of `NextToken` that was returned the previous call to the `DescribeImagePipelineExecutions` operation. Then, use the `MaxResults` parameter to specify the maximum number of entries to return on each page.
+        @description The status of the image creation task. Valid values:
+        PREPARING: Resources, such as intermediate instances, are being created.
+        REPAIRING: The source image is being repaired.
+        BUILDING: The user-defined commands are being run and an image is being created.
+        TESTING: The user-defined test commands are being run.
+        DISTRIBUTING: The created image is being copied and shared.
+        RELEASING: The temporary resources generated during the image creation process are being released.
+        SUCCESS The image creation task is completed.
+        PARTITION_SUCCESS: The image creation task is partially completed. The image is created, but exceptions may occur when the image was copied or shared or when temporary resources were released.
+        FAILED: The image creation task fails.
+        TEST_FAILED: The image is created, but the test fails.
+        CANCELLING: The image creation task is being canceled.
+        CANCELLED: The image creation task is canceled.
         
         @param request: DescribeImagePipelineExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23434,12 +23359,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
         """
-        @summary Queries the details of an image creation task.
+        @summary The key of tag N of the image creation task. Valid values of N: 1 to 20.
         
-        @description ## [](#)Usage notes
-        The image template that is specified by the `ImagePipelineId` parameter cannot be a deleted image template. When an image template is deleted, the corresponding image creation task is deleted.
-        You must specify `ImagePipelineId` or `ExecutionId`.
-        You can configure the query token by using the `NextToken` parameter. Set NextToken to the value of `NextToken` that was returned the previous call to the `DescribeImagePipelineExecutions` operation. Then, use the `MaxResults` parameter to specify the maximum number of entries to return on each page.
+        @description The status of the image creation task. Valid values:
+        PREPARING: Resources, such as intermediate instances, are being created.
+        REPAIRING: The source image is being repaired.
+        BUILDING: The user-defined commands are being run and an image is being created.
+        TESTING: The user-defined test commands are being run.
+        DISTRIBUTING: The created image is being copied and shared.
+        RELEASING: The temporary resources generated during the image creation process are being released.
+        SUCCESS The image creation task is completed.
+        PARTITION_SUCCESS: The image creation task is partially completed. The image is created, but exceptions may occur when the image was copied or shared or when temporary resources were released.
+        FAILED: The image creation task fails.
+        TEST_FAILED: The image is created, but the test fails.
+        CANCELLING: The image creation task is being canceled.
+        CANCELLED: The image creation task is canceled.
         
         @param request: DescribeImagePipelineExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23495,12 +23429,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagePipelineExecutionsRequest,
     ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
         """
-        @summary Queries the details of an image creation task.
+        @summary The key of tag N of the image creation task. Valid values of N: 1 to 20.
         
-        @description ## [](#)Usage notes
-        The image template that is specified by the `ImagePipelineId` parameter cannot be a deleted image template. When an image template is deleted, the corresponding image creation task is deleted.
-        You must specify `ImagePipelineId` or `ExecutionId`.
-        You can configure the query token by using the `NextToken` parameter. Set NextToken to the value of `NextToken` that was returned the previous call to the `DescribeImagePipelineExecutions` operation. Then, use the `MaxResults` parameter to specify the maximum number of entries to return on each page.
+        @description The status of the image creation task. Valid values:
+        PREPARING: Resources, such as intermediate instances, are being created.
+        REPAIRING: The source image is being repaired.
+        BUILDING: The user-defined commands are being run and an image is being created.
+        TESTING: The user-defined test commands are being run.
+        DISTRIBUTING: The created image is being copied and shared.
+        RELEASING: The temporary resources generated during the image creation process are being released.
+        SUCCESS The image creation task is completed.
+        PARTITION_SUCCESS: The image creation task is partially completed. The image is created, but exceptions may occur when the image was copied or shared or when temporary resources were released.
+        FAILED: The image creation task fails.
+        TEST_FAILED: The image is created, but the test fails.
+        CANCELLING: The image creation task is being canceled.
+        CANCELLED: The image creation task is canceled.
         
         @param request: DescribeImagePipelineExecutionsRequest
         @return: DescribeImagePipelineExecutionsResponse
@@ -23513,12 +23456,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagePipelineExecutionsRequest,
     ) -> ecs_20140526_models.DescribeImagePipelineExecutionsResponse:
         """
-        @summary Queries the details of an image creation task.
+        @summary The key of tag N of the image creation task. Valid values of N: 1 to 20.
         
-        @description ## [](#)Usage notes
-        The image template that is specified by the `ImagePipelineId` parameter cannot be a deleted image template. When an image template is deleted, the corresponding image creation task is deleted.
-        You must specify `ImagePipelineId` or `ExecutionId`.
-        You can configure the query token by using the `NextToken` parameter. Set NextToken to the value of `NextToken` that was returned the previous call to the `DescribeImagePipelineExecutions` operation. Then, use the `MaxResults` parameter to specify the maximum number of entries to return on each page.
+        @description The status of the image creation task. Valid values:
+        PREPARING: Resources, such as intermediate instances, are being created.
+        REPAIRING: The source image is being repaired.
+        BUILDING: The user-defined commands are being run and an image is being created.
+        TESTING: The user-defined test commands are being run.
+        DISTRIBUTING: The created image is being copied and shared.
+        RELEASING: The temporary resources generated during the image creation process are being released.
+        SUCCESS The image creation task is completed.
+        PARTITION_SUCCESS: The image creation task is partially completed. The image is created, but exceptions may occur when the image was copied or shared or when temporary resources were released.
+        FAILED: The image creation task fails.
+        TEST_FAILED: The image is created, but the test fails.
+        CANCELLING: The image creation task is being canceled.
+        CANCELLED: The image creation task is canceled.
         
         @param request: DescribeImagePipelineExecutionsRequest
         @return: DescribeImagePipelineExecutionsResponse
@@ -26660,21 +26612,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
         """
-        @summary Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances.
+        @summary The execution status of the command. Valid values:
+        Running:
+        Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
+        One-time task: If the command is being run on instances, the execution state is Running.
+        Finished:
+        Scheduled task: The execution state can never be Finished.
+        One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
+        Failed:
+        Scheduled task: The execution state can never be Failed.
+        One-time task: The execution failed on all instances.
+        PartialFailed:
+        Scheduled task: The execution state can never be PartialFailed.
+        One-time task: The execution failed on some instances.
+        Stopped: The task was stopped.
+        Stopping: The task is being stopped.
         
-        @description ## [](#)Usage notes
-        After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocationResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocationResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Comparison between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocationResults
         
         @param request: DescribeInvocationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26743,21 +26697,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
         """
-        @summary Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances.
+        @summary The execution status of the command. Valid values:
+        Running:
+        Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
+        One-time task: If the command is being run on instances, the execution state is Running.
+        Finished:
+        Scheduled task: The execution state can never be Finished.
+        One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
+        Failed:
+        Scheduled task: The execution state can never be Failed.
+        One-time task: The execution failed on all instances.
+        PartialFailed:
+        Scheduled task: The execution state can never be PartialFailed.
+        One-time task: The execution failed on some instances.
+        Stopped: The task was stopped.
+        Stopping: The task is being stopped.
         
-        @description ## [](#)Usage notes
-        After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocationResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocationResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Comparison between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocationResults
         
         @param request: DescribeInvocationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26825,21 +26781,23 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationResultsRequest,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
         """
-        @summary Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances.
+        @summary The execution status of the command. Valid values:
+        Running:
+        Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
+        One-time task: If the command is being run on instances, the execution state is Running.
+        Finished:
+        Scheduled task: The execution state can never be Finished.
+        One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
+        Failed:
+        Scheduled task: The execution state can never be Failed.
+        One-time task: The execution failed on all instances.
+        PartialFailed:
+        Scheduled task: The execution state can never be PartialFailed.
+        One-time task: The execution failed on some instances.
+        Stopped: The task was stopped.
+        Stopping: The task is being stopped.
         
-        @description ## [](#)Usage notes
-        After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocationResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocationResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Comparison between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocationResults
         
         @param request: DescribeInvocationResultsRequest
         @return: DescribeInvocationResultsResponse
@@ -26852,21 +26810,23 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationResultsRequest,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
         """
-        @summary Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances.
+        @summary The execution status of the command. Valid values:
+        Running:
+        Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
+        One-time task: If the command is being run on instances, the execution state is Running.
+        Finished:
+        Scheduled task: The execution state can never be Finished.
+        One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
+        Failed:
+        Scheduled task: The execution state can never be Failed.
+        One-time task: The execution failed on all instances.
+        PartialFailed:
+        Scheduled task: The execution state can never be PartialFailed.
+        One-time task: The execution failed on some instances.
+        Stopped: The task was stopped.
+        Stopping: The task is being stopped.
         
-        @description ## [](#)Usage notes
-        After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocationResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocationResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Comparison between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocationResults
         
         @param request: DescribeInvocationResultsRequest
         @return: DescribeInvocationResultsResponse
@@ -26880,20 +26840,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        @summary Queries the execution list and states of Cloud Assistant commands.
+        @summary The command type.
         
-        @description    After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocations operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocations operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Differences between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocations
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26970,20 +26919,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        @summary Queries the execution list and states of Cloud Assistant commands.
+        @summary The command type.
         
-        @description    After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocations operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocations operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Differences between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocations
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27059,20 +26997,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationsRequest,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        @summary Queries the execution list and states of Cloud Assistant commands.
+        @summary The command type.
         
-        @description    After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocations operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocations operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Differences between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocations
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -27085,20 +27012,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationsRequest,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        @summary Queries the execution list and states of Cloud Assistant commands.
+        @summary The command type.
         
-        @description    After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-        You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-        You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-        During a paged query, when you call the DescribeInvocations operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocations operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        Differences between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-        The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-        The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-        Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-        The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-        If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-        If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
+        @description DescribeInvocations
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -44812,7 +44728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary Modifies the network bandwidth weight of an instance.
+        @summary Modifies instance network configurations.
         
         @description When you call this operation, note that:
         This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
@@ -44860,7 +44776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary Modifies the network bandwidth weight of an instance.
+        @summary Modifies instance network configurations.
         
         @description When you call this operation, note that:
         This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
@@ -44907,7 +44823,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary Modifies the network bandwidth weight of an instance.
+        @summary Modifies instance network configurations.
         
         @description When you call this operation, note that:
         This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
@@ -44925,7 +44841,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary Modifies the network bandwidth weight of an instance.
+        @summary Modifies instance network configurations.
         
         @description When you call this operation, note that:
         This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
@@ -48956,7 +48872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
+        @summary Modifies the name or description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49005,7 +48921,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
+        @summary Modifies the name or description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49053,7 +48969,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyStorageCapacityUnitAttributeRequest,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
+        @summary Modifies the name or description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @return: ModifyStorageCapacityUnitAttributeResponse
@@ -49066,7 +48982,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyStorageCapacityUnitAttributeRequest,
     ) -> ecs_20140526_models.ModifyStorageCapacityUnitAttributeResponse:
         """
-        @summary Changes the name or modifies the description of a storage capacity unit (SCU).
+        @summary Modifies the name or description of a storage capacity unit (SCU).
         
         @param request: ModifyStorageCapacityUnitAttributeRequest
         @return: ModifyStorageCapacityUnitAttributeResponse
@@ -49913,6 +49829,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vpc_attribute_with_options_async(request, runtime)
+
+    def open_snapshot_service_with_options(
+        self,
+        request: ecs_20140526_models.OpenSnapshotServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.OpenSnapshotServiceResponse:
+        """
+        @summary Activate the snapshot service.
+        
+        @param request: OpenSnapshotServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenSnapshotServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenSnapshotService',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.OpenSnapshotServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_snapshot_service_with_options_async(
+        self,
+        request: ecs_20140526_models.OpenSnapshotServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.OpenSnapshotServiceResponse:
+        """
+        @summary Activate the snapshot service.
+        
+        @param request: OpenSnapshotServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenSnapshotServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenSnapshotService',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.OpenSnapshotServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_snapshot_service(
+        self,
+        request: ecs_20140526_models.OpenSnapshotServiceRequest,
+    ) -> ecs_20140526_models.OpenSnapshotServiceResponse:
+        """
+        @summary Activate the snapshot service.
+        
+        @param request: OpenSnapshotServiceRequest
+        @return: OpenSnapshotServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.open_snapshot_service_with_options(request, runtime)
+
+    async def open_snapshot_service_async(
+        self,
+        request: ecs_20140526_models.OpenSnapshotServiceRequest,
+    ) -> ecs_20140526_models.OpenSnapshotServiceResponse:
+        """
+        @summary Activate the snapshot service.
+        
+        @param request: OpenSnapshotServiceRequest
+        @return: OpenSnapshotServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.open_snapshot_service_with_options_async(request, runtime)
 
     def purchase_elasticity_assurance_with_options(
         self,
@@ -51640,7 +51664,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        @summary Releases a pay-as-you-go dedicated host.
+        @summary Releases a pay-as-you-go Dedicated Host or an expired subscription Dedicated Host.
         
         @description ## Usage notes
         Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
@@ -51690,7 +51714,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        @summary Releases a pay-as-you-go dedicated host.
+        @summary Releases a pay-as-you-go Dedicated Host or an expired subscription Dedicated Host.
         
         @description ## Usage notes
         Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
@@ -51739,7 +51763,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseDedicatedHostRequest,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        @summary Releases a pay-as-you-go dedicated host.
+        @summary Releases a pay-as-you-go Dedicated Host or an expired subscription Dedicated Host.
         
         @description ## Usage notes
         Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
@@ -51755,7 +51779,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseDedicatedHostRequest,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        @summary Releases a pay-as-you-go dedicated host.
+        @summary Releases a pay-as-you-go Dedicated Host or an expired subscription Dedicated Host.
         
         @description ## Usage notes
         Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
@@ -52880,13 +52904,11 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        
-        *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
-        The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
-        After you call the ReplaceSystemDisk operation, you can use one of the following methods to check whether the system disk is replaced:
-        Call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the status of the new system disk. If the new system disk is in the In Use state, the system disk is replaced.
-        Call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of the instance whose system disk is replaced. If the `OperationLocks` parameter is empty, the system disk is replaced.
+        *\
+        *Note:** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and economical mode by default is enabled, you can enable standard mode when stopping the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
+        You can use the parameter `SystemDisk.Size` to re-specify the size of the system disk (cannot be less than the original system disk capacity).
+        If the `OperationLocks` parameter value of the instance contains `"LockReason": "security"`, then the ECS instance is locked for security. You cannot replace the system disk. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+        After the system disk is replaced, you can query the status of the instance to check whether the replacement is successful by using the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) interface. If the `OperationLocks` parameter is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -52967,13 +52989,11 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        
-        *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
-        The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
-        After you call the ReplaceSystemDisk operation, you can use one of the following methods to check whether the system disk is replaced:
-        Call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the status of the new system disk. If the new system disk is in the In Use state, the system disk is replaced.
-        Call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of the instance whose system disk is replaced. If the `OperationLocks` parameter is empty, the system disk is replaced.
+        *\
+        *Note:** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and economical mode by default is enabled, you can enable standard mode when stopping the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
+        You can use the parameter `SystemDisk.Size` to re-specify the size of the system disk (cannot be less than the original system disk capacity).
+        If the `OperationLocks` parameter value of the instance contains `"LockReason": "security"`, then the ECS instance is locked for security. You cannot replace the system disk. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+        After the system disk is replaced, you can query the status of the instance to check whether the replacement is successful by using the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) interface. If the `OperationLocks` parameter is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -53053,13 +53073,11 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        
-        *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
-        The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
-        After you call the ReplaceSystemDisk operation, you can use one of the following methods to check whether the system disk is replaced:
-        Call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the status of the new system disk. If the new system disk is in the In Use state, the system disk is replaced.
-        Call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of the instance whose system disk is replaced. If the `OperationLocks` parameter is empty, the system disk is replaced.
+        *\
+        *Note:** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and economical mode by default is enabled, you can enable standard mode when stopping the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
+        You can use the parameter `SystemDisk.Size` to re-specify the size of the system disk (cannot be less than the original system disk capacity).
+        If the `OperationLocks` parameter value of the instance contains `"LockReason": "security"`, then the ECS instance is locked for security. You cannot replace the system disk. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+        After the system disk is replaced, you can query the status of the instance to check whether the replacement is successful by using the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) interface. If the `OperationLocks` parameter is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @return: ReplaceSystemDiskResponse
@@ -53080,13 +53098,11 @@ class Client(OpenApiClient):
         The category of the system disk cannot be changed.
         Make sure that no unpaid orders are associated with the instance.
         The instance must be in the `Stopped` state.
-        
-        *Note** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
-        The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
-        After you call the ReplaceSystemDisk operation, you can use one of the following methods to check whether the system disk is replaced:
-        Call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the status of the new system disk. If the new system disk is in the In Use state, the system disk is replaced.
-        Call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of the instance whose system disk is replaced. If the `OperationLocks` parameter is empty, the system disk is replaced.
+        *\
+        *Note:** The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and economical mode by default is enabled, you can enable standard mode when stopping the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
+        You can use the parameter `SystemDisk.Size` to re-specify the size of the system disk (cannot be less than the original system disk capacity).
+        If the `OperationLocks` parameter value of the instance contains `"LockReason": "security"`, then the ECS instance is locked for security. You cannot replace the system disk. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+        After the system disk is replaced, you can query the status of the instance to check whether the replacement is successful by using the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) interface. If the `OperationLocks` parameter is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @return: ReplaceSystemDiskResponse
@@ -53642,8 +53658,8 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
-        You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. If the format is MBR, you cannot resize the file to more than 2TiB. Otherwise, data loss may occur. If you want to resize an MBR partition, we recommend creating and mounting a data disk in the GPT partition format, and then copy the existing data to the new data disk. For more information, see [Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        The disk types that can be resized include basic disks (`cloud` ), ultra disks (`cloud_efficiency` ), SSDs (`cloud_ssd` ), Enterprise SSDs (ESSDs)(`cloud_essd` ), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), premium elastic ephemeral disks (elastic_ephemeral_disk_premium), and Regional ESSDs (cloud_regional_disk_auto).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
         You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
         If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
@@ -53703,8 +53719,8 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
-        You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. If the format is MBR, you cannot resize the file to more than 2TiB. Otherwise, data loss may occur. If you want to resize an MBR partition, we recommend creating and mounting a data disk in the GPT partition format, and then copy the existing data to the new data disk. For more information, see [Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        The disk types that can be resized include basic disks (`cloud` ), ultra disks (`cloud_efficiency` ), SSDs (`cloud_ssd` ), Enterprise SSDs (ESSDs)(`cloud_essd` ), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), premium elastic ephemeral disks (elastic_ephemeral_disk_premium), and Regional ESSDs (cloud_regional_disk_auto).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
         You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
         If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
@@ -53763,8 +53779,8 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
-        You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. If the format is MBR, you cannot resize the file to more than 2TiB. Otherwise, data loss may occur. If you want to resize an MBR partition, we recommend creating and mounting a data disk in the GPT partition format, and then copy the existing data to the new data disk. For more information, see [Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        The disk types that can be resized include basic disks (`cloud` ), ultra disks (`cloud_efficiency` ), SSDs (`cloud_ssd` ), Enterprise SSDs (ESSDs)(`cloud_essd` ), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), premium elastic ephemeral disks (elastic_ephemeral_disk_premium), and Regional ESSDs (cloud_regional_disk_auto).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
         You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
         If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:
@@ -53788,8 +53804,8 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description > Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend performing the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
-        You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. If the format is MBR, you cannot resize the file to more than 2TiB. Otherwise, data loss may occur. If you want to resize an MBR partition, we recommend creating and mounting a data disk in the GPT partition format, and then copy the existing data to the new data disk. For more information, see [Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
+        The disk types that can be resized include basic disks (`cloud` ), ultra disks (`cloud_efficiency` ), SSDs (`cloud_ssd` ), Enterprise SSDs (ESSDs)(`cloud_essd` ), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), premium elastic ephemeral disks (elastic_ephemeral_disk_premium), and Regional ESSDs (cloud_regional_disk_auto).
         You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
         You cannot call this operation to extend partitions or file systems. You must manually allocate partitions and file systems after the resize cloud disk capacity. For more information, see [Extend partitions and file systems (Linux)](~~2949817#bb3b1f02e51pj~~) and [Extend partitions and file systems (windows)](~~2932233#a9f9b78f3fujb~~).
         If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the ECS instances to which the disk is attached meet the following requirements:

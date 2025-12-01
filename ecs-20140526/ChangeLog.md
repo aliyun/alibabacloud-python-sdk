@@ -1,3 +1,8 @@
+2025-12-01 Version: 7.3.0
+- Support API OpenSnapshotService.
+- Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SecurityOptions.
+
+
 2025-10-29 Version: 7.2.5
 - Update API ReleaseDedicatedHost: add request parameters TerminateSubscription.
 
