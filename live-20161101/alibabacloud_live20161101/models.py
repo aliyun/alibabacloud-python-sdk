@@ -86232,6 +86232,7 @@ class StartRtcCloudRecordingRequest(TeaModel):
         mix_layout_params: StartRtcCloudRecordingRequestMixLayoutParams = None,
         mix_transcode_params: StartRtcCloudRecordingRequestMixTranscodeParams = None,
         notify_auth_key: str = None,
+        notify_file_uploaded_format: List[str] = None,
         notify_url: str = None,
         record_params: StartRtcCloudRecordingRequestRecordParams = None,
         storage_params: StartRtcCloudRecordingRequestStorageParams = None,
@@ -86245,6 +86246,7 @@ class StartRtcCloudRecordingRequest(TeaModel):
         self.mix_layout_params = mix_layout_params
         self.mix_transcode_params = mix_transcode_params
         self.notify_auth_key = notify_auth_key
+        self.notify_file_uploaded_format = notify_file_uploaded_format
         self.notify_url = notify_url
         # This parameter is required.
         self.record_params = record_params
@@ -86283,6 +86285,8 @@ class StartRtcCloudRecordingRequest(TeaModel):
             result['MixTranscodeParams'] = self.mix_transcode_params.to_map()
         if self.notify_auth_key is not None:
             result['NotifyAuthKey'] = self.notify_auth_key
+        if self.notify_file_uploaded_format is not None:
+            result['NotifyFileUploadedFormat'] = self.notify_file_uploaded_format
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.record_params is not None:
@@ -86309,6 +86313,8 @@ class StartRtcCloudRecordingRequest(TeaModel):
             self.mix_transcode_params = temp_model.from_map(m['MixTranscodeParams'])
         if m.get('NotifyAuthKey') is not None:
             self.notify_auth_key = m.get('NotifyAuthKey')
+        if m.get('NotifyFileUploadedFormat') is not None:
+            self.notify_file_uploaded_format = m.get('NotifyFileUploadedFormat')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('RecordParams') is not None:
@@ -86332,6 +86338,7 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
         mix_layout_params_shrink: str = None,
         mix_transcode_params_shrink: str = None,
         notify_auth_key: str = None,
+        notify_file_uploaded_format: List[str] = None,
         notify_url: str = None,
         record_params_shrink: str = None,
         storage_params_shrink: str = None,
@@ -86345,6 +86352,7 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
         self.mix_layout_params_shrink = mix_layout_params_shrink
         self.mix_transcode_params_shrink = mix_transcode_params_shrink
         self.notify_auth_key = notify_auth_key
+        self.notify_file_uploaded_format = notify_file_uploaded_format
         self.notify_url = notify_url
         # This parameter is required.
         self.record_params_shrink = record_params_shrink
@@ -86374,6 +86382,8 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
             result['MixTranscodeParams'] = self.mix_transcode_params_shrink
         if self.notify_auth_key is not None:
             result['NotifyAuthKey'] = self.notify_auth_key
+        if self.notify_file_uploaded_format is not None:
+            result['NotifyFileUploadedFormat'] = self.notify_file_uploaded_format
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.record_params_shrink is not None:
@@ -86398,6 +86408,8 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
             self.mix_transcode_params_shrink = m.get('MixTranscodeParams')
         if m.get('NotifyAuthKey') is not None:
             self.notify_auth_key = m.get('NotifyAuthKey')
+        if m.get('NotifyFileUploadedFormat') is not None:
+            self.notify_file_uploaded_format = m.get('NotifyFileUploadedFormat')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('RecordParams') is not None:

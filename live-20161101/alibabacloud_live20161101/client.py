@@ -50702,6 +50702,8 @@ class Client(OpenApiClient):
             query['MixTranscodeParams'] = request.mix_transcode_params_shrink
         if not UtilClient.is_unset(request.notify_auth_key):
             query['NotifyAuthKey'] = request.notify_auth_key
+        if not UtilClient.is_unset(request.notify_file_uploaded_format):
+            query['NotifyFileUploadedFormat'] = request.notify_file_uploaded_format
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.record_params_shrink):
@@ -50767,6 +50769,8 @@ class Client(OpenApiClient):
             query['MixTranscodeParams'] = request.mix_transcode_params_shrink
         if not UtilClient.is_unset(request.notify_auth_key):
             query['NotifyAuthKey'] = request.notify_auth_key
+        if not UtilClient.is_unset(request.notify_file_uploaded_format):
+            query['NotifyFileUploadedFormat'] = request.notify_file_uploaded_format
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.record_params_shrink):

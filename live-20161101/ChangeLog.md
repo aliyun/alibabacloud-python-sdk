@@ -1,3 +1,7 @@
+2025-12-02 Version: 2.3.3
+- Update API StartRtcCloudRecording: add request parameters NotifyFileUploadedFormat.
+
+
 2025-11-07 Version: 2.3.2
 - Update API DescribeLiveStreamsNotifyRecords: add response parameters Body.NotifyRecordsInfo.$.NotifyHeader.
 
