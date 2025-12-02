@@ -225,8 +225,11 @@ class AddImageLibRequest(TeaModel):
         lib_name: str = None,
         region_id: str = None,
     ):
+        # The remarks of the image library.
         self.comment = comment
+        # The name of image library
         self.lib_name = lib_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -267,11 +270,17 @@ class AddImageLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code. A return of 200 represents success.
         self.code = code
+        # The data returned.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # The message that is returned in response to the request.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator
         self.success = success
 
     def validate(self):
@@ -362,8 +371,11 @@ class AddImages2LibRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # URL of the image to be uploaded.
         self.img_url = img_url
+        # The ID of image library.
         self.lib_id = lib_id
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -399,6 +411,7 @@ class AddImages2LibResponseBodyData(TeaModel):
         self,
         img_id: str = None,
     ):
+        # The id of the uploaded image.
         self.img_id = img_id
 
     def validate(self):
@@ -431,11 +444,17 @@ class AddImages2LibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # The data returned.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -529,9 +548,13 @@ class AddKeywordLibRequest(TeaModel):
         lib_name: str = None,
         region_id: str = None,
     ):
+        # Keywords, with multiple keywords separated by \\n.
         self.keywords = keywords
+        # The name of the keywords file.
         self.keywords_object = keywords_object
+        # The name of the keyword library.
         self.lib_name = lib_name
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -580,15 +603,25 @@ class AddKeywordLibResponseBodyDataKeywordsResult(TeaModel):
         tips: str = None,
         total_count: int = None,
     ):
+        # Internationalization key.
         self.i_18n_key = i_18n_key
+        # List of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
+        # Invalid keyword count
         self.invalid_count = invalid_count
+        # List of invalid keywords
         self.invalid_keywords = invalid_keywords
+        # The id of the keyword library.
         self.lib_id = lib_id
+        # Duplicate keyword count
         self.repeat_count = repeat_count
+        # List of duplicate keywords
         self.repeat_keywords = repeat_keywords
+        # Successful keyword count
         self.success_count = success_count
+        # The tips.
         self.tips = tips
+        # The total number of keywords.
         self.total_count = total_count
 
     def validate(self):
@@ -654,8 +687,11 @@ class AddKeywordLibResponseBodyData(TeaModel):
         lib_id: str = None,
         task_id: str = None,
     ):
+        # Result.
         self.keywords_result = keywords_result
+        # The id of the keyword library.
         self.lib_id = lib_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -697,10 +733,15 @@ class AddKeywordLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -790,9 +831,13 @@ class AddKeywordsRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # The keywords to be added.
         self.keywords = keywords
+        # The name of the keyword file.
         self.keywords_object = keywords_object
+        # The id of keyword library.
         self.lib_id = lib_id
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -842,16 +887,27 @@ class AddKeywordsResponseBodyDataKeywordsResult(TeaModel):
         tips: str = None,
         total_count: int = None,
     ):
+        # Internationalization key.
         self.i_18n_key = i_18n_key
+        # List of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
+        # Invalid keyword count
         self.invalid_count = invalid_count
+        # List of invalid keywords
         self.invalid_keywords = invalid_keywords
+        # The keyword library ID.
         self.lib_id = lib_id
+        # The progress percentage of the task.
         self.progress = progress
+        # Duplicate keyword count
         self.repeat_count = repeat_count
+        # List of duplicate keywords
         self.repeat_keywords = repeat_keywords
+        # The success count of the keywords.
         self.success_count = success_count
+        # The tips.
         self.tips = tips
+        # The total count of the keywords.
         self.total_count = total_count
 
     def validate(self):
@@ -921,8 +977,11 @@ class AddKeywordsResponseBodyData(TeaModel):
         lib_id: str = None,
         task_id: str = None,
     ):
+        # Result.
         self.keywords_result = keywords_result
+        # The ID of the keyword library.
         self.lib_id = lib_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -964,10 +1023,15 @@ class AddKeywordsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return code. A return of 200 represents success.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -1057,9 +1121,13 @@ class AddKeywordsToLibRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # The keyword to be added.
         self.keywords = keywords
+        # The name of the keyword file.
         self.keywords_object = keywords_object
+        # The id of the keyword library.
         self.lib_id = lib_id
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -1108,15 +1176,25 @@ class AddKeywordsToLibResponseBodyDataKeywordsResult(TeaModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # Internationalization key.
         self.i_18n_key = i_18n_key
+        # List of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
+        # Invalid keyword count.
         self.invalid_count = invalid_count
+        # List of invalid keywords
         self.invalid_keywords = invalid_keywords
+        # The id of the keyword library.
         self.lib_id = lib_id
+        # The progress percentage of the task.
         self.progress = progress
+        # Duplicate keyword count
         self.repeat_count = repeat_count
+        # List of duplicate keywords
         self.repeat_keywords = repeat_keywords
+        # The success count of keywords.
         self.success_count = success_count
+        # The total count of keywords.
         self.total_count = total_count
 
     def validate(self):
@@ -1182,8 +1260,11 @@ class AddKeywordsToLibResponseBodyData(TeaModel):
         lib_id: str = None,
         task_id: str = None,
     ):
+        # Result.
         self.keywords_result = keywords_result
+        # The id of the keyword library.
         self.lib_id = lib_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1222,7 +1303,9 @@ class AddKeywordsToLibResponseBody(TeaModel):
         data: AddKeywordsToLibResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1298,7 +1381,9 @@ class CancelStockOssCheckTaskRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
+        # Region ID
         self.region_id = region_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1331,7 +1416,9 @@ class CancelStockOssCheckTaskResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1408,10 +1495,15 @@ class CopyServiceConfigRequest(TeaModel):
         service_desc: str = None,
         service_name: str = None,
     ):
+        # Region ID
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
+        # Service description
         self.service_desc = service_desc
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -1456,7 +1548,9 @@ class CopyServiceConfigResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1556,33 +1650,61 @@ class CreatStockOssCheckTaskRequest(TeaModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # OSS buckets
         self.buckets = buckets
+        # Callback ID
         self.callback_id = callback_id
+        # Flag for deduplicating against previously detected tasks.
         self.distinct_history_tasks = distinct_history_tasks
+        # The end time of the task.
         self.end_time = end_time
+        # Execute date of scheduled task.
         self.execute_date = execute_date
+        # Execute time of scheduled task.
         self.execute_time = execute_time
+        # Freeze indicator
         self.freeze = freeze
+        # Freeze High-Risk Images
         self.freeze_high_risk_1 = freeze_high_risk_1
+        # Freeze High-Risk Audio and Text
         self.freeze_high_risk_2 = freeze_high_risk_2
+        # Freeze Medium-Risk Images
         self.freeze_medium_risk_1 = freeze_medium_risk_1
+        # Freeze Medium-Risk Audio and Text
         self.freeze_medium_risk_2 = freeze_medium_risk_2
+        # Freeze Restore Path
         self.freeze_restore_path = freeze_restore_path
+        # Freeze type
         self.freeze_type = freeze_type
+        # Indicator for scheduled task.
         self.is_inc = is_inc
+        # Media type.
         self.media_type = media_type
+        # Prefix filter type.
         self.prefix_filter_type = prefix_filter_type
+        # Prefix filters
         self.prefix_filters = prefix_filters
+        # The priority of the task.
         self.priority = priority
+        # Referer.
         self.referer = referer
+        # Region ID
         self.region_id = region_id
+        # The scan limit of the task.
         self.scan_limit = scan_limit
+        # Indicator for scanning files without file type.
         self.scan_no_file_type = scan_no_file_type
+        # Scan resource type.
         self.scan_resource_type = scan_resource_type
+        # The code of scan service.
         self.scan_service = scan_service
+        # The start time of the task.
         self.start_time = start_time
+        # Task Cycle
         self.task_cycle = task_cycle
+        # The name of the task.
         self.task_name = task_name
+        # Task type.
         self.task_type = task_type
 
     def validate(self):
@@ -1719,7 +1841,9 @@ class CreatStockOssCheckTaskResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Returned data
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2016,10 +2140,15 @@ class CreateCallbackRequest(TeaModel):
         scope: str = None,
         url: str = None,
     ):
+        # Encryption algorithm.
         self.crypt_type = crypt_type
+        # Plan name.
         self.name = name
+        # Region ID.
         self.region_id = region_id
+        # Review result.
         self.scope = scope
+        # Callback URL.
         self.url = url
 
     def validate(self):
@@ -2064,7 +2193,9 @@ class CreateCallbackResponseBody(TeaModel):
         data: int = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -2140,9 +2271,13 @@ class CreateOnlineTestRequest(TeaModel):
         service_code: str = None,
         url: str = None,
     ):
+        # Data ID
         self.data_id = data_id
+        # Resource Type
         self.resource_type = resource_type
+        # Service Code
         self.service_code = service_code
+        # Detection URL
         self.url = url
 
     def validate(self):
@@ -2186,10 +2321,15 @@ class CreateOnlineTestResponseBody(TeaModel):
         task_status: str = None,
         url: str = None,
     ):
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Service Code
         self.service_code = service_code
+        # Detection Task ID
         self.task_id = task_id
+        # Detection Status
         self.task_status = task_status
+        # Detection URL
         self.url = url
 
     def validate(self):
@@ -2287,19 +2427,33 @@ class CreatePreCheckRequest(TeaModel):
         start_time: str = None,
         task_name: str = None,
     ):
+        # Buckets.
         self.buckets = buckets
+        # Whether to deduplicate historical detected tasks.
         self.distinct_history_tasks = distinct_history_tasks
+        # Task end time.
         self.end_time = end_time
+        # Whether it is a scheduled scan task.
         self.is_inc = is_inc
+        # Media type.
         self.media_type = media_type
+        # Prefix filter type.
         self.prefix_filter_type = prefix_filter_type
+        # Prefixes.
         self.prefix_filters = prefix_filters
+        # Priority.
         self.priority = priority
+        # Region ID.
         self.region_id = region_id
+        # Scan limit count.
         self.scan_limit = scan_limit
+        # Whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
+        # Scan service code.
         self.scan_service = scan_service
+        # Task start time.
         self.start_time = start_time
+        # Task name.
         self.task_name = task_name
 
     def validate(self):
@@ -2380,7 +2534,9 @@ class CreatePreCheckResponseBody(TeaModel):
         data: Dict[str, bool] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -2674,8 +2830,11 @@ class DeleteCallbackRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # callback id.
+        # 
         # This parameter is required.
         self.id = id
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -2708,7 +2867,9 @@ class DeleteCallbackResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -2943,8 +3104,11 @@ class DeleteImagesFromLibRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the images.
         self.image_ids = image_ids
+        # Library ID.
         self.lib_id = lib_id
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -2985,11 +3149,17 @@ class DeleteImagesFromLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -3081,9 +3251,13 @@ class DeleteKeywordRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # The ids\\" list of keywords.
         self.keyword_id_list = keyword_id_list
+        # The ids of keywords.
         self.keyword_ids = keyword_ids
+        # Library id
         self.lib_id = lib_id
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -3127,10 +3301,15 @@ class DeleteKeywordResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # Response message for this request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -3216,7 +3395,9 @@ class DeleteKeywordLibRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # Keyword library ID.
         self.lib_id = lib_id
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3252,10 +3433,15 @@ class DeleteKeywordLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # Request ID.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -3341,7 +3527,9 @@ class DeleteOnlineTestRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # Region ID
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3374,7 +3562,9 @@ class DeleteOnlineTestResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3843,15 +4033,25 @@ class ExportCipStatsRequest(TeaModel):
         sub_uid: str = None,
         type: str = None,
     ):
+        # Whether to support monthly indexing. Values: -**true**: Supported. -**false**: Not supported.
         self.by_month = by_month
+        # The end time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # Export type. Values: -**level**: Export by risk level. -**label**: Export by label.
         self.export_type = export_type
+        # The label of the task to be exported.
         self.label = label
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
+        # The start time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
+        # Sub-account UID.
         self.sub_uid = sub_uid
+        # Type, values: -**cip**: Content Security Invocation Count Statistics. -**risk_level**: Content Security Risk Level Statistics. -**content_moderation**: AI Safety Guardrail Content Compliance Risk Level and Label Statistics. -**sensitive_data**: AI Safety Guardrail Sensitive Data Risk Level and Label Statistics. -**prompt_attack**: AI Safety Guardrail Prompt Word Risk Level and Label Statistics.
         self.type = type
 
     def validate(self):
@@ -3920,11 +4120,17 @@ class ExportCipStatsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Export result.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -4014,7 +4220,9 @@ class ExportKeywordRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # Keyword library ID.
         self.lib_id = lib_id
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4050,10 +4258,15 @@ class ExportKeywordResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Export result.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # Request ID.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -4142,10 +4355,15 @@ class ExportOssCheckStatRequest(TeaModel):
         region_id: str = None,
         start_date: str = None,
     ):
+        # Whether to support monthly indexing. Values: -true: supported. -false: not supported.
         self.by_month = by_month
+        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # OSS detection task ID.
         self.parent_task_id = parent_task_id
+        # Region ID.
         self.region_id = region_id
+        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):
@@ -4190,7 +4408,9 @@ class ExportOssCheckStatResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Export result.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -4270,13 +4490,21 @@ class ExportResultRequest(TeaModel):
         source: str = None,
         start_date: str = None,
     ):
+        # Page number of the query result. Default is 1.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Number of items per page in the query result.
         self.page_size = page_size
+        # Query condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Operation source.
         self.source = source
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -4339,13 +4567,21 @@ class ExportResultShrinkRequest(TeaModel):
         source: str = None,
         start_date: str = None,
     ):
+        # Page number of the query result. Default is 1.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Number of items per page in the query result.
         self.page_size = page_size
+        # Query condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Operation source.
         self.source = source
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -4405,10 +4641,15 @@ class ExportResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # Request ID.
         self.request_id = request_id
+        # Success flag.
         self.success = success
 
     def validate(self):
@@ -4500,13 +4741,21 @@ class ExportScanResultRequest(TeaModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # Page size.
         self.page_size = page_size
+        # Query content.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Sort fields.
         self.sort = sort
+        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):
@@ -4569,13 +4818,21 @@ class ExportScanResultShrinkRequest(TeaModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # Page size.
         self.page_size = page_size
+        # Query content.
         self.query_shrink = query_shrink
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Sort fields.
         self.sort_shrink = sort_shrink
+        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):
@@ -4636,11 +4893,17 @@ class ExportScanResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Exported result.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator
         self.success = success
 
     def validate(self):
@@ -4732,9 +4995,13 @@ class ExportTextScanResultRequest(TeaModel):
         region_id: str = None,
         start_date: str = None,
     ):
+        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # Query conditions.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):
@@ -4777,9 +5044,13 @@ class ExportTextScanResultShrinkRequest(TeaModel):
         region_id: str = None,
         start_date: str = None,
     ):
+        # End time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
+        # Query conditions.
         self.query_shrink = query_shrink
+        # Region ID.
         self.region_id = region_id
+        # Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
 
     def validate(self):
@@ -4823,10 +5094,15 @@ class ExportTextScanResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Exported results.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -5078,6 +5354,7 @@ class GetBackupBucketsListRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5106,7 +5383,9 @@ class GetBackupBucketsListResponseBodyData(TeaModel):
         bucket: str = None,
         region: str = None,
     ):
+        # OSS file storage bucket name.
         self.bucket = bucket
+        # Region.
         self.region = region
 
     def validate(self):
@@ -5139,7 +5418,9 @@ class GetBackupBucketsListResponseBody(TeaModel):
         data: List[GetBackupBucketsListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -5222,8 +5503,11 @@ class GetBackupConfigRequest(TeaModel):
         resource_type: str = None,
         service_code: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
 
     def validate(self):
@@ -5272,20 +5556,35 @@ class GetBackupConfigResponseBody(TeaModel):
         service_code: str = None,
         uid: str = None,
     ):
+        # Backup scope.
         self.backup_mode = backup_mode
+        # File server OSS Bucket.
         self.bucket = bucket
+        # Whether it is enabled. Values:
+        # - **true**: Enabled
+        # - **false**: Disabled
         self.enable = enable
+        # Whether to enable backup.
         self.enable_backup = enable_backup
+        # Whether to enable audio backup.
         self.enable_backup_voice = enable_backup_voice
+        # Expiration time in seconds.
         self.expire_seconds = expire_seconds
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Path.
         self.path = path
+        # Audio backup path.
         self.path_voice = path_voice
+        # Region ID.
         self.region = region
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
-        # UID。
+        # UID.
         self.uid = uid
 
     def validate(self):
@@ -5406,6 +5705,7 @@ class GetBackupStatusRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5434,7 +5734,9 @@ class GetBackupStatusResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Audit result data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -5507,6 +5809,7 @@ class GetBucketsListRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5535,7 +5838,9 @@ class GetBucketsListResponseBodyData(TeaModel):
         bucket: str = None,
         region: str = None,
     ):
+        # OSS file storage bucket name.
         self.bucket = bucket
+        # Region ID.
         self.region = region
 
     def validate(self):
@@ -5568,7 +5873,9 @@ class GetBucketsListResponseBody(TeaModel):
         data: List[GetBucketsListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -6275,6 +6582,7 @@ class GetExecuteTimeRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -6303,7 +6611,9 @@ class GetExecuteTimeResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -6380,6 +6690,7 @@ class GetFeatureConfigRequest(TeaModel):
         service_code: str = None,
         type: str = None,
     ):
+        # Query conditions.
         self.query = query
         # Region ID
         self.region_id = region_id
@@ -6593,6 +6904,7 @@ class GetImageSceneLabelConfRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -6625,11 +6937,17 @@ class GetImageSceneLabelConfResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with the HTTP status.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator
         self.success = success
 
     def validate(self):
@@ -6719,7 +7037,9 @@ class GetImageSceneLabelListConfRequest(TeaModel):
         image_service_code: str = None,
         region_id: str = None,
     ):
+        # Service code.
         self.image_service_code = image_service_code
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -6752,7 +7072,9 @@ class GetImageSceneLabelListConfResponseBody(TeaModel):
         data: List[Any] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -6829,10 +7151,15 @@ class GetJobNameListRequest(TeaModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
+        # End date.
         self.end_date = end_date
+        # Query condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -6880,10 +7207,15 @@ class GetJobNameListShrinkRequest(TeaModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
+        # End date.
         self.end_date = end_date
+        # Query condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -6928,7 +7260,9 @@ class GetJobNameListResponseBody(TeaModel):
         data: List[str] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -7002,7 +7336,9 @@ class GetKeywordImportResultRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -7044,16 +7380,27 @@ class GetKeywordImportResultResponseBodyData(TeaModel):
         tips: str = None,
         total_count: int = None,
     ):
+        # Internationalization key.
         self.i_18n_key = i_18n_key
+        # List of keywords with illegal length (too long or too short).
         self.illegal_length_keywords = illegal_length_keywords
+        # Invalid count.
         self.invalid_count = invalid_count
+        # List of invalid keywords.
         self.invalid_keywords = invalid_keywords
+        # Keyword library ID.
         self.lib_id = lib_id
+        # Task progress percentage.
         self.progress = progress
+        # Repeat count.
         self.repeat_count = repeat_count
+        # List of repeated keywords.
         self.repeat_keywords = repeat_keywords
+        # Success count.
         self.success_count = success_count
+        # Tips message.
         self.tips = tips
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -7125,10 +7472,15 @@ class GetKeywordImportResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request, which can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -7216,7 +7568,9 @@ class GetKeywordLibRequest(TeaModel):
         lib_id: str = None,
         region_id: str = None,
     ):
+        # Keyword library ID.
         self.lib_id = lib_id
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -7252,10 +7606,15 @@ class GetKeywordLibResponseBodyData(TeaModel):
         lib_name: str = None,
         uid: str = None,
     ):
+        # Last modified time.
         self.gmt_modified = gmt_modified
+        # Number of keywords.
         self.keyword_count = keyword_count
+        # Keyword library ID.
         self.lib_id = lib_id
+        # Library name
         self.lib_name = lib_name
+        # Primary account ID
         self.uid = uid
 
     def validate(self):
@@ -7303,10 +7662,15 @@ class GetKeywordLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data content.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -7401,14 +7765,23 @@ class GetOssCheckFreezeResultRequest(TeaModel):
         start_date: str = None,
         status: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End time.
         self.end_date = end_date
+        # Number of completed tasks.
         self.finish_num = finish_num
+        # Page size.
         self.page_size = page_size
+        # Query condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Start time.
         self.start_date = start_date
+        # Task status.
         self.status = status
 
     def validate(self):
@@ -7476,14 +7849,23 @@ class GetOssCheckFreezeResultShrinkRequest(TeaModel):
         start_date: str = None,
         status: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End time.
         self.end_date = end_date
+        # Number of completed tasks.
         self.finish_num = finish_num
+        # Page size.
         self.page_size = page_size
+        # Query condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Start time.
         self.start_date = start_date
+        # Task status.
         self.status = status
 
     def validate(self):
@@ -7545,8 +7927,11 @@ class GetOssCheckFreezeResultResponseBodyItemsLabelDetails(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence.
         self.confidence = confidence
+        # Label description.
         self.description = description
+        # Label.
         self.label = label
 
     def validate(self):
@@ -7611,35 +7996,65 @@ class GetOssCheckFreezeResultResponseBodyItems(TeaModel):
         task_id: str = None,
         url: str = None,
     ):
+        # Storage space.
         self.bucket = bucket
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Audio and video detection type.
         self.content_type = content_type
+        # Primary service.
         self.copy_from = copy_from
+        # Feedback.
         self.feedback = feedback
+        # Whether frozen.
         self.freeze = freeze
+        # Freeze status.
         self.freeze_status = freeze_status
+        # Freeze type.
         self.freeze_type = freeze_type
+        # Image URL address.
         self.image_url = image_url
+        # Whether to copy.
         self.is_copy = is_copy
+        # Job name.
         self.job_name = job_name
+        # Labels.
         self.label_details = label_details
+        # Image labels.
         self.labels = labels
+        # Text labels.
         self.labels_2 = labels_2
+        # Manual disposal status.
         self.manual_freeze_action = manual_freeze_action
+        # Disposal time.
         self.manual_operate_time = manual_operate_time
+        # Operator.
         self.manual_operator = manual_operator
+        # File\\"s MD5.
         self.md_5 = md_5
+        # Further description of the error code.
         self.msg = msg
+        # Object name.
         self.object = object
+        # Request ID.
         self.request_id = request_id
+        # Image risk level.
         self.risk_level = risk_level
+        # Overall risk level.
         self.risk_level_0 = risk_level_0
+        # Text risk level.
         self.risk_level_2 = risk_level_2
+        # Details of the result.
         self.scan_result = scan_result
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
+        # System disposal status.
         self.sys_disposal_status = sys_disposal_status
+        # Task ID.
         self.task_id = task_id
+        # Task URL.
         self.url = url
 
     def validate(self):
@@ -7795,10 +8210,15 @@ class GetOssCheckFreezeResultResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data of the current page.
         self.items = items
+        # Page size.
         self.page_size = page_size
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -7897,12 +8317,19 @@ class GetOssCheckResultDetailRequest(TeaModel):
         region_id: str = None,
         service_code: str = None,
     ):
+        # Bucket name.
         self.bucket = bucket
+        # Media type.
         self.media_type = media_type
+        # Object name.
         self.object = object
+        # Parent task ID.
         self.parent_task_id = parent_task_id
+        # Query request ID.
         self.query_request_id = query_request_id
+        # Region ID.
         self.region_id = region_id
+        # Service code.
         self.service_code = service_code
 
     def validate(self):
@@ -7956,8 +8383,11 @@ class GetOssCheckResultDetailResponseBodyDataLabelDetails(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence score, 0 to 100, retained to two decimal places.
         self.confidence = confidence
+        # Label description.
         self.description = description
+        # Label.
         self.label = label
 
     def validate(self):
@@ -7995,8 +8425,11 @@ class GetOssCheckResultDetailResponseBodyDataLabelDetails2(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence score, 0 to 100, retained to two decimal places.
         self.confidence = confidence
+        # Label description.
         self.description = description
+        # Label.
         self.label = label
 
     def validate(self):
@@ -8035,9 +8468,13 @@ class GetOssCheckResultDetailResponseBodyDataScanServiceInfos(TeaModel):
         service_code: str = None,
         service_name: str = None,
     ):
+        # Main service.
         self.copy_from = copy_from
+        # Whether to copy.
         self.is_copy = is_copy
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
 
     def validate(self):
@@ -8104,33 +8541,61 @@ class GetOssCheckResultDetailResponseBodyData(TeaModel):
         task_id: str = None,
         url: str = None,
     ):
+        # Bucket name.
         self.bucket = bucket
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Audio and video detection type.
         self.content_type = content_type
+        # Primary service.
         self.copy_from = copy_from
+        # Freeze status.
         self.freeze_status = freeze_status
+        # Freeze type.
         self.freeze_type = freeze_type
+        # Image URL.
         self.image_url = image_url
+        # Whether to copy.
         self.is_copy = is_copy
+        # Job name.
         self.job_name = job_name
+        # Labels.
         self.label_details = label_details
+        # Labels.
         self.label_details_2 = label_details_2
+        # Image labels.
         self.labels = labels
+        # Text labels.
         self.labels_2 = labels_2
+        # Manual handling status.
         self.manual_freeze_action = manual_freeze_action
+        # Handling time.
         self.manual_operate_time = manual_operate_time
+        # Handler.
         self.manual_operator = manual_operator
+        # File MD5.
         self.md_5 = md_5
+        # Further description of the error code.
         self.msg = msg
+        # Object name.
         self.object = object
+        # Image risk level
         self.risk_level = risk_level
+        # Overall risk level.
         self.risk_level_0 = risk_level_0
+        # Text risk level
         self.risk_level_2 = risk_level_2
+        # Detailed scan results.
         self.scan_result = scan_result
+        # Detection service information
         self.scan_service_infos = scan_service_infos
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
+        # Task ID.
         self.task_id = task_id
+        # Task URL.
         self.url = url
 
     def validate(self):
@@ -8296,10 +8761,15 @@ class GetOssCheckResultDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Detailed data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -8390,10 +8860,15 @@ class GetOssCheckStatRequest(TeaModel):
         region_id: str = None,
         start_date: str = None,
     ):
+        # Whether to query by month.
         self.by_month = by_month
+        # End date.
         self.end_date = end_date
+        # Parent task ID.
         self.parent_task_id = parent_task_id
+        # Region ID.
         self.region_id = region_id
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -8438,7 +8913,9 @@ class GetOssCheckStatResponseBodyBarChartY(TeaModel):
         data: List[int] = None,
         name: str = None,
     ):
+        # Data.
         self.data = data
+        # Name.
         self.name = name
 
     def validate(self):
@@ -8471,7 +8948,9 @@ class GetOssCheckStatResponseBodyBarChart(TeaModel):
         x: List[str] = None,
         y: List[GetOssCheckStatResponseBodyBarChartY] = None,
     ):
+        # X values of the coordinates.
         self.x = x
+        # Y values of the coordinates.
         self.y = y
 
     def validate(self):
@@ -8512,7 +8991,9 @@ class GetOssCheckStatResponseBody(TeaModel):
         bar_chart: GetOssCheckStatResponseBodyBarChart = None,
         request_id: str = None,
     ):
+        # Bar chart
         self.bar_chart = bar_chart
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -8587,6 +9068,7 @@ class GetOssCheckStatusRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -8620,13 +9102,19 @@ class GetOssCheckStatusResponseBody(TeaModel):
         request_id: str = None,
         sls_status: str = None,
     ):
-        # Bid。
+        # Bid.
         self.bid = bid
+        # Whether a product has been activated on Alibaba Cloud.
         self.buy = buy
+        # Commodity code.
         self.commodity_code = commodity_code
+        # Whether there is an outstanding payment.
         self.indebt = indebt
+        # Whether internal security is authorized.
         self.ram_status = ram_status
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Whether log analysis function is authorized.
         self.sls_status = sls_status
 
     def validate(self):
@@ -9163,8 +9651,11 @@ class GetScanNumRequest(TeaModel):
         media_type: int = None,
         region_id: str = None,
     ):
+        # Storage space.
         self.buckets = buckets
+        # Media type.
         self.media_type = media_type
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -9204,10 +9695,15 @@ class GetScanNumResponseBody(TeaModel):
         sum_number: int = None,
         tag: bool = None,
     ):
+        # Upper limit of the quantity.
         self.limit_number = limit_number
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Total number of files pending inspection.
         self.scan_number = scan_number
+        # Total number of files.
         self.sum_number = sum_number
+        # Whether it is a whitelist user.
         self.tag = tag
 
     def validate(self):
@@ -9299,13 +9795,21 @@ class GetScanResultRequest(TeaModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # End time.
         self.end_date = end_date
+        # Page size.
         self.page_size = page_size
+        # Search criteria.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Sort fields.
         self.sort = sort
+        # Start time.
         self.start_date = start_date
 
     def validate(self):
@@ -9368,13 +9872,21 @@ class GetScanResultShrinkRequest(TeaModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # End time.
         self.end_date = end_date
+        # Page size.
         self.page_size = page_size
+        # Search criteria.
         self.query_shrink = query_shrink
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Sort fields.
         self.sort_shrink = sort_shrink
+        # Start time.
         self.start_date = start_date
 
     def validate(self):
@@ -9432,8 +9944,11 @@ class GetScanResultResponseBodyDataItemsResult(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence score, ranging from 0 to 100, with two decimal places.
         self.confidence = confidence
+        # Description of the Label field.
         self.description = description
+        # Label.
         self.label = label
 
     def validate(self):
@@ -9520,59 +10035,130 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         voice_scan_opened: bool = None,
         voice_service: str = None,
     ):
+        # Automated review labels.
         self.api_labels = api_labels
+        # Machine review time.
         self.api_request_time = api_request_time
+        # Automated review risk level.
         self.api_risk_level = api_risk_level
+        # Automated review service
         self.api_service = api_service
+        # Automated review task ID.
         self.api_task_id = api_task_id
+        # Attack level, returned based on the set high and low risk scores. The return values include:
+        # 
+        # - high: High risk
+        # 
+        # - medium: Medium risk
+        # 
+        # - low: Low risk
+        # 
+        # - none: No risk detected
         self.attack_level = attack_level
+        # Content.
         self.content = content
-        # dataId
+        # Data Id
         self.data_id = data_id
+        # Segment end time (in seconds).
         self.end_time = end_time
+        # Feedback information.
         self.ext_feedback = ext_feedback
+        # Additional parameters.
         self.extra = extra
+        # Frame count.
         self.frame_count = frame_count
+        # Creation time.
         self.gmt_create = gmt_create
+        # Multimodal file URLs.
         self.guard_file_urls = guard_file_urls
+        # Multimodal image URLs.
         self.guard_image_urls = guard_image_urls
+        # Image labels.
         self.image_labels = image_labels
+        # Image service.
         self.image_service = image_service
-        # url
+        # URL
         self.image_url = image_url
+        # Labels.
         self.labels = labels
+        # Malicious file risk level.
         self.malicious_file_level = malicious_file_level
+        # Malicious URL risk level.
         self.malicious_url_level = malicious_url_level
+        # Whether it is a pure manual review.
         self.manual_only = manual_only
+        # No labels
         self.no_labels = no_labels
+        # Frame offset value.
         self.offset = offset
+        # Page number.
         self.page_num = page_num
+        # Request source.
         self.request_from = request_from
+        # Request ID.
         self.request_id = request_id
+        # Request time.
         self.request_time = request_time
+        # Resource type.
         self.resource_type = resource_type
+        # Return collection.
         self.result = result
+        # Review labels.
         self.review_labels = review_labels
+        # Review status.
         self.review_risk_level = review_risk_level
+        # Review time.
         self.review_time = review_time
+        # Reviewer.
         self.review_uid = review_uid
+        # Whether it has been reviewed.
         self.reviewed = reviewed
+        # Risk level, returned based on the set high and low risk scores. The return values include:
+        # 
+        # - high: High risk
+        # 
+        # - medium: Medium risk
+        # 
+        # - low: Low risk
+        # 
+        # - none: No risk detected
         self.risk_level = risk_level
+        # Details of the detected risk.
         self.risk_tips = risk_tips
+        # Keywords of the detected risk.
         self.risk_words = risk_words
+        # Details of the result.
         self.scan_result = scan_result
+        # Score.
         self.score = score
+        # Sensitive level, returned based on the set high and low risk scores. The return values include:
+        # - **S1**: Indicates low sensitivity.
+        # - **S2**: Indicates medium sensitivity.
+        # - **S3**: Indicates high sensitivity.
+        # - **S4**: Indicates very high sensitivity.
+        # - **S0**: Indicates no sensitivity.
         self.sensitive_level = sensitive_level
+        # Service code.
         self.service_code = service_code
+        # Segment start time (in seconds).
         self.start_time = start_time
+        # Suggestion.
         self.suggestion = suggestion
+        # Task ID.
         self.task_id = task_id
+        # Text labels.
         self.text_labels = text_labels
+        # Thumbnail URL.
         self.thumbnail = thumbnail
+        # Timestamp.
         self.time_stamp = time_stamp
+        # Task URL
         self.url = url
+        # Voice labels.
         self.voice_labels = voice_labels
+        # Whether audio detection is enabled.
         self.voice_scan_opened = voice_scan_opened
+        # Voice service.
         self.voice_service = voice_service
 
     def validate(self):
@@ -9815,9 +10401,13 @@ class GetScanResultResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # Data for the current page.
         self.items = items
+        # Number of items per page.
         self.page_size = page_size
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -9870,11 +10460,17 @@ class GetScanResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator
         self.success = success
 
     def validate(self):
@@ -9969,10 +10565,15 @@ class GetServiceConfRequest(TeaModel):
         scene: str = None,
         service_code: str = None,
     ):
+        # Query default configuration
         self.by_default = by_default
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Audit scenario.
         self.scene = scene
+        # Service code.
         self.service_code = service_code
 
     def validate(self):
@@ -10027,18 +10628,29 @@ class GetServiceConfResponseBody(TeaModel):
         success: bool = None,
         uid: str = None,
     ):
+        # Classification.
         self.classify = classify
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Service details
         self.custom_service_conf = custom_service_conf
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Further description of the error code.
         self.msg = msg
+        # Options.
         self.option = option
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
+        # Service type.
         self.service_type = service_type
+        # Success indicator
         self.success = success
-        # UID。
+        # UID.
         self.uid = uid
 
     def validate(self):
@@ -10153,8 +10765,11 @@ class GetServiceConfigRequest(TeaModel):
         resource_type: str = None,
         service_code: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
 
     def validate(self):
@@ -10193,9 +10808,15 @@ class GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig(TeaMo
         enable: bool = None,
         manual_service: str = None,
     ):
+        # Risk levels.
         self.audit_risk_levels = audit_risk_levels
+        # Callback notification ID
         self.callback_id = callback_id
+        # Whether to enable. Values:
+        # - **true**: Enabled
+        # - **false**: Disabled
         self.enable = enable
+        # Manual review service
         self.manual_service = manual_service
 
     def validate(self):
@@ -10238,9 +10859,13 @@ class GetServiceConfigResponseBodyDataCustomServiceConf(TeaModel):
         manual_machine_config: GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig = None,
         similar_text_hit_libs: List[str] = None,
     ):
+        # Ignore word libraries.
         self.keyword_filter_libs = keyword_filter_libs
+        # Hit word libraries.
         self.keyword_hit_libs = keyword_hit_libs
+        # Human-machine review configuration.
         self.manual_machine_config = manual_machine_config
+        # Hit similar text libraries.
         self.similar_text_hit_libs = similar_text_hit_libs
 
     def validate(self):
@@ -10286,11 +10911,15 @@ class GetServiceConfigResponseBodyData(TeaModel):
         service_code: str = None,
         uid: str = None,
     ):
+        # Custom service details
         self.custom_service_conf = custom_service_conf
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
-        # UID。
+        # UID.
         self.uid = uid
 
     def validate(self):
@@ -10340,10 +10969,15 @@ class GetServiceConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # Request ID.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -10432,8 +11066,11 @@ class GetServiceLabelConfigRequest(TeaModel):
         resource_type: str = None,
         service_code: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
 
     def validate(self):
@@ -10470,7 +11107,9 @@ class GetServiceLabelConfigResponseBody(TeaModel):
         data: List[Any] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -10551,14 +11190,23 @@ class GetStockOssCheckTasksListRequest(TeaModel):
         start_time: str = None,
         task_type: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End time.
         self.end_time = end_time
+        # Whether it is a scheduled scan task.
         self.is_inc = is_inc
+        # Media type.
         self.media_type = media_type
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Start time.
         self.start_time = start_time
+        # Task type.
         self.task_type = task_type
 
     def validate(self):
@@ -10626,14 +11274,23 @@ class GetStockOssCheckTasksListShrinkRequest(TeaModel):
         start_time: str = None,
         task_type: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End time.
         self.end_time = end_time
+        # Whether it is a scheduled scan task.
         self.is_inc = is_inc
+        # Media type.
         self.media_type = media_type
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Start time.
         self.start_time = start_time
+        # Task type.
         self.task_type = task_type
 
     def validate(self):
@@ -10696,9 +11353,13 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos(TeaModel)
         service_code: str = None,
         service_name: str = None,
     ):
+        # Primary service.
         self.copy_from = copy_from
+        # Whether to copy.
         self.is_copy = is_copy
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
 
     def validate(self):
@@ -10739,7 +11400,9 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig(TeaModel)
         freeze_restore_path: str = None,
         freeze_type: str = None,
     ):
+        # Storage path for transfer
         self.freeze_restore_path = freeze_restore_path
+        # Freeze type
         self.freeze_type = freeze_type
 
     def validate(self):
@@ -10794,29 +11457,53 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(TeaModel):
         task_cycle: int = None,
         user_freeze_config: GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig = None,
     ):
+        # Callback notification ID
         self.callback_id = callback_id
+        # Whether to deduplicate historical detected tasks.
         self.distinct_history_tasks = distinct_history_tasks
+        # End time.
         self.end_time = end_time
+        # Scheduled task execution date.
         self.execute_date = execute_date
+        # Scheduled task expected execution time.
         self.execute_time = execute_time
+        # Whether to freeze
         self.freeze = freeze
+        # Freeze high-risk images
         self.freeze_high_risk_1 = freeze_high_risk_1
+        # Freeze high-risk audio and text
         self.freeze_high_risk_2 = freeze_high_risk_2
+        # Freeze medium-risk images
         self.freeze_medium_risk_1 = freeze_medium_risk_1
+        # Freeze medium-risk audio and text
         self.freeze_medium_risk_2 = freeze_medium_risk_2
+        # Storage path for transfer
         self.freeze_restore_path = freeze_restore_path
+        # Freeze type
         self.freeze_type = freeze_type
+        # Prefix filter type.
         self.prefix_filter_type = prefix_filter_type
+        # Prefixes.
         self.prefix_filters = prefix_filters
+        # Priority.
         self.priority = priority
+        # Referer
         self.referer = referer
+        # Scan limit quantity.
         self.scan_limit = scan_limit
+        # Whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
+        # Scanned file type.
         self.scan_resource_type = scan_resource_type
+        # Scan service code
         self.scan_service = scan_service
+        # Scan service information
         self.scan_service_infos = scan_service_infos
+        # Start time.
         self.start_time = start_time
+        # Scheduling date.
         self.task_cycle = task_cycle
+        # Manual freeze configuration
         self.user_freeze_config = user_freeze_config
 
     def validate(self):
@@ -10961,20 +11648,35 @@ class GetStockOssCheckTasksListResponseBodyItems(TeaModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # Storage space.
         self.buckets = buckets
+        # Configuration items.
         self.config = config
+        # End time.
         self.end_time = end_time
+        # Number of completed tasks.
         self.finish_num = finish_num
+        # Whether it is a scheduled scan task
         self.is_inc = is_inc
+        # Next execution time of the scheduled task
         self.last_execute_date = last_execute_date
+        # Media type.
         self.media_type = media_type
+        # Last execution time of the scheduled task
         self.next_execute_date = next_execute_date
+        # Total number of files in the bucket
         self.object_num = object_num
+        # Number of scan tasks.
         self.search_num = search_num
+        # Start time.
         self.start_time = start_time
+        # Task status.
         self.status = status
+        # Task ID.
         self.task_id = task_id
+        # Task name.
         self.task_name = task_name
+        # Task type
         self.task_type = task_type
 
     def validate(self):
@@ -11064,10 +11766,15 @@ class GetStockOssCheckTasksListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data of the current page.
         self.items = items
+        # Page size.
         self.page_size = page_size
+        # Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -11166,12 +11873,19 @@ class GetTextScanResultRequest(TeaModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End date and time.
         self.end_date = end_date
+        # Page size.
         self.page_size = page_size
+        # Search criteria.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort fields.
         self.sort = sort
+        # Start date and time.
         self.start_date = start_date
 
     def validate(self):
@@ -11229,12 +11943,19 @@ class GetTextScanResultShrinkRequest(TeaModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End date and time.
         self.end_date = end_date
+        # Page size.
         self.page_size = page_size
+        # Search criteria.
         self.query_shrink = query_shrink
+        # Region ID.
         self.region_id = region_id
+        # Sort fields.
         self.sort_shrink = sort_shrink
+        # Start date and time.
         self.start_date = start_date
 
     def validate(self):
@@ -11288,8 +12009,11 @@ class GetTextScanResultResponseBodyDataItemsResult(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence score, ranging from 0 to 100, with two decimal places retained.
         self.confidence = confidence
+        # Description.
         self.description = description
+        # Label.
         self.label = label
 
     def validate(self):
@@ -11339,20 +12063,43 @@ class GetTextScanResultResponseBodyDataItems(TeaModel):
         suggestion: str = None,
         task_id: str = None,
     ):
+        # Bailian Request ID
         self.bailian_request_id = bailian_request_id
+        # Content.
         self.content = content
+        # Feedback information.
         self.ext_feedback = ext_feedback
+        # Spare parameters.
         self.extra = extra
+        # Creation time.
         self.gmt_create = gmt_create
+        # Labels.
         self.labels = labels
+        # Request ID.
         self.request_id = request_id
+        # Request time.
         self.request_time = request_time
+        # Detection results.
         self.result = result
+        # Risk level, returned based on the set high and low risk scores. The return values include:
+        # 
+        # - high: High risk
+        # 
+        # - medium: Medium risk
+        #  
+        # - low: Low risk
+        # 
+        # - none: No risk detected
         self.risk_level = risk_level
+        # Details of the result.
         self.scan_result = scan_result
+        # Score.
         self.score = score
+        # Service code.
         self.service_code = service_code
+        # Suggestion for handling.
         self.suggestion = suggestion
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -11447,9 +12194,13 @@ class GetTextScanResultResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data for the current page.
         self.items = items
+        # Page size.
         self.page_size = page_size
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -11501,10 +12252,15 @@ class GetTextScanResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -11593,8 +12349,11 @@ class GetUploadInfoRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # Upload name.
         self.name = name
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -11642,18 +12401,31 @@ class GetUploadInfoResponseBody(TeaModel):
         signature: str = None,
         success: bool = None,
     ):
+        # Upload authorization ID.
         self.access_id = access_id
+        # Error code, consistent with HTTP status.
         self.code = code
+        # In seconds.
         self.expire = expire
+        # Folder name.
         self.folder = folder
+        # Upload host.
         self.host = host
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Key used for uploading files.
         self.key = key
+        # Further description of the error code.
         self.msg = msg
+        # Used for front-end image upload.
         self.name = name
+        # OSS upload file Policy.
         self.policy = policy
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Upload signature information.
         self.signature = signature
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -11872,7 +12644,9 @@ class GetUserBuyStatusRequest(TeaModel):
         commodity_code: str = None,
         region_id: str = None,
     ):
+        # Commodity code.
         self.commodity_code = commodity_code
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -11905,12 +12679,17 @@ class GetUserBuyStatusResponseBodyData(TeaModel):
         bid: int = None,
         buy: bool = None,
         indebt: bool = None,
+        instance_id: str = None,
         tag: str = None,
     ):
-        # Bid。
+        # Bid.
         self.bid = bid
+        # Indicates whether the product has been activated on Alibaba Cloud.
         self.buy = buy
+        # Indicates whether there is an outstanding payment.
         self.indebt = indebt
+        self.instance_id = instance_id
+        # Tag.
         self.tag = tag
 
     def validate(self):
@@ -11928,6 +12707,8 @@ class GetUserBuyStatusResponseBodyData(TeaModel):
             result['Buy'] = self.buy
         if self.indebt is not None:
             result['Indebt'] = self.indebt
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.tag is not None:
             result['Tag'] = self.tag
         return result
@@ -11940,6 +12721,8 @@ class GetUserBuyStatusResponseBodyData(TeaModel):
             self.buy = m.get('Buy')
         if m.get('Indebt') is not None:
             self.indebt = m.get('Indebt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         return self
@@ -11954,10 +12737,15 @@ class GetUserBuyStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -12205,6 +12993,7 @@ class ListCallbackRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -12240,16 +13029,23 @@ class ListCallbackResponseBodyData(TeaModel):
         uid: str = None,
         url: str = None,
     ):
+        # Encryption algorithm.
         self.crypt_type = crypt_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID.
         self.id = id
+        # Name.
         self.name = name
+        # Result scope.
         self.scope = scope
-        # Seed。
+        # Seed.
         self.seed = seed
-        # UID。
+        # UID.
         self.uid = uid
+        # Callback URL.
         self.url = url
 
     def validate(self):
@@ -12310,7 +13106,9 @@ class ListCallbackResponseBody(TeaModel):
         data: List[ListCallbackResponseBodyData] = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -12391,6 +13189,7 @@ class ListImageLibRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -12424,12 +13223,19 @@ class ListImageLibResponseBodyLibList(TeaModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
+        # Comment.
         self.comment = comment
+        # Exempt from inspection configuration.
         self.free_inspection = free_inspection
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Number of images in the library.
         self.image_num = image_num
+        # Library ID.
         self.lib_id = lib_id
+        # Library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -12486,11 +13292,17 @@ class ListImageLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # List of image library information.
         self.lib_list = lib_list
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -12594,13 +13406,21 @@ class ListImagesFromLibRequest(TeaModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Image ID.
         self.img_id = img_id
+        # Gallery ID.
         self.lib_id = lib_id
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -12663,13 +13483,21 @@ class ListImagesFromLibShrinkRequest(TeaModel):
         sort_shrink: str = None,
         start_date: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Image ID.
         self.img_id = img_id
+        # Gallery ID.
         self.lib_id = lib_id
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -12728,9 +13556,13 @@ class ListImagesFromLibResponseBodyItems(TeaModel):
         image_url: str = None,
         thumbnail_url: str = None,
     ):
+        # Creation time.
         self.gmt_create = gmt_create
+        # Image ID.
         self.image_id = image_id
+        # Image URL.
         self.image_url = image_url
+        # Thumbnail URL.
         self.thumbnail_url = thumbnail_url
 
     def validate(self):
@@ -12778,14 +13610,23 @@ class ListImagesFromLibResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Current page.
         self.current_page = current_page
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Data of the current page.
         self.items = items
+        # Further description of the error code.
         self.msg = msg
+        # Page size.
         self.page_size = page_size
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
+        # Total number of images.
         self.total_count = total_count
 
     def validate(self):
@@ -12894,6 +13735,7 @@ class ListKeywordLibsRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -12926,12 +13768,17 @@ class ListKeywordLibsResponseBodyData(TeaModel):
         service_codes: str = None,
         uid: str = None,
     ):
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Number of keywords.
         self.keyword_count = keyword_count
+        # Library ID.
         self.lib_id = lib_id
+        # Library name.
         self.lib_name = lib_name
+        # Service codes.
         self.service_codes = service_codes
-        # UID。
+        # UID.
         self.uid = uid
 
     def validate(self):
@@ -12983,10 +13830,15 @@ class ListKeywordLibsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -13084,11 +13936,17 @@ class ListKeywordsRequest(TeaModel):
         sort: Dict[str, str] = None,
         word: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Library ID.
         self.lib_id = lib_id
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Keyword.
         self.word = word
 
     def validate(self):
@@ -13141,11 +13999,17 @@ class ListKeywordsShrinkRequest(TeaModel):
         sort_shrink: str = None,
         word: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Library ID.
         self.lib_id = lib_id
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Keyword.
         self.word = word
 
     def validate(self):
@@ -13198,11 +14062,17 @@ class ListKeywordsResponseBodyDataItems(TeaModel):
         keyword_md_5id: int = None,
         word: str = None,
     ):
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID.
         self.id = id
+        # Keyword library ID.
         self.keyword_lib_id = keyword_lib_id
+        # Keyword data ID.
         self.keyword_md_5id = keyword_md_5id
+        # Keyword.
         self.word = word
 
     def validate(self):
@@ -13253,9 +14123,13 @@ class ListKeywordsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data of the current page.
         self.items = items
+        # Page size.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -13307,10 +14181,15 @@ class ListKeywordsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success flag.
         self.success = success
 
     def validate(self):
@@ -13405,14 +14284,23 @@ class ListOssCheckResultRequest(TeaModel):
         start_date: str = None,
         status: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Number of completed tasks.
         self.finish_num = finish_num
+        # Page size.
         self.page_size = page_size
+        # Search condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort = sort
+        # Start date.
         self.start_date = start_date
+        # Task status.
         self.status = status
 
     def validate(self):
@@ -13480,14 +14368,23 @@ class ListOssCheckResultShrinkRequest(TeaModel):
         start_date: str = None,
         status: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Number of completed tasks.
         self.finish_num = finish_num
+        # Page size.
         self.page_size = page_size
+        # Search condition.
         self.query = query
+        # Region ID.
         self.region_id = region_id
+        # Sort field.
         self.sort_shrink = sort_shrink
+        # Start date.
         self.start_date = start_date
+        # Task status.
         self.status = status
 
     def validate(self):
@@ -13568,27 +14465,49 @@ class ListOssCheckResultResponseBodyItems(TeaModel):
         task_id: str = None,
         url: str = None,
     ):
+        # Storage space.
         self.bucket = bucket
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Audio and video detection type.
         self.content_type = content_type
+        # Primary service.
         self.copy_from = copy_from
+        # Freeze status.
         self.freeze_status = freeze_status
+        # Freeze type.
         self.freeze_type = freeze_type
+        # Image URL address.
         self.image_url = image_url
+        # Whether to copy.
         self.is_copy = is_copy
+        # Job name.
         self.job_name = job_name
+        # Image labels.
         self.labels = labels
+        # Text labels.
         self.labels_2 = labels_2
+        # File MD5.
         self.md_5 = md_5
+        # Further description of the error code.
         self.msg = msg
+        # Object name.
         self.object = object
+        # Image risk level
         self.risk_level = risk_level
+        # Overall risk level
         self.risk_level_0 = risk_level_0
+        # Text risk level
         self.risk_level_2 = risk_level_2
+        # Details of the result.
         self.scan_result = scan_result
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
+        # Task ID.
         self.task_id = task_id
+        # Task URL.
         self.url = url
 
     def validate(self):
@@ -13704,10 +14623,15 @@ class ListOssCheckResultResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data of the current page.
         self.items = items
+        # Page size.
         self.page_size = page_size
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -13803,9 +14727,13 @@ class ListServiceConfigsRequest(TeaModel):
         resource_type: str = None,
         use_status: str = None,
     ):
+        # Category.
         self.classify = classify
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Usage status.
         self.use_status = use_status
 
     def validate(self):
@@ -13845,6 +14773,7 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule(TeaM
         self,
         services: List[str] = None,
     ):
+        # Image services.
         self.services = services
 
     def validate(self):
@@ -13872,6 +14801,7 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule(TeaMo
         self,
         services: List[str] = None,
     ):
+        # Text services.
         self.services = services
 
     def validate(self):
@@ -13901,8 +14831,11 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRules(TeaModel):
         index: int = None,
         text_scan_rule: ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule = None,
     ):
+        # Image review rule.
         self.image_scan_rule = image_scan_rule
+        # Index.
         self.index = index
+        # Text review rule.
         self.text_scan_rule = text_scan_rule
 
     def validate(self):
@@ -13948,11 +14881,17 @@ class ListServiceConfigsResponseBodyDataCustomServiceConf(TeaModel):
         rules: List[ListServiceConfigsResponseBodyDataCustomServiceConfRules] = None,
         similar_text_hit_libs: List[str] = None,
     ):
+        # Audio service.
         self.audio_service = audio_service
+        # Image services.
         self.image_service = image_service
+        # Ignored word libraries.
         self.keyword_filter_libs = keyword_filter_libs
+        # Hit word libraries.
         self.keyword_hit_libs = keyword_hit_libs
+        # Service rules
         self.rules = rules
+        # Hit similar text libraries.
         self.similar_text_hit_libs = similar_text_hit_libs
 
     def validate(self):
@@ -14019,18 +14958,29 @@ class ListServiceConfigsResponseBodyData(TeaModel):
         uid: str = None,
         use_status: str = None,
     ):
+        # Category.
         self.classify = classify
+        # Main service.
         self.copy_from = copy_from
+        # Service configuration.
         self.custom_service_conf = custom_service_conf
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Options.
         self.option = option
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
+        # Service description.
         self.service_desc = service_desc
+        # Service name.
         self.service_name = service_name
+        # Service type.
         self.service_type = service_type
-        # UID。
+        # UID.
         self.uid = uid
+        # Usage status
         self.use_status = use_status
 
     def validate(self):
@@ -14108,10 +15058,15 @@ class ListServiceConfigsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -14207,9 +15162,13 @@ class LlmStreamChatRequest(TeaModel):
         top_p: float = None,
         type: str = None,
     ):
+        # Conversation information
         self.messages = messages
+        # Temperature value for the large model
         self.temperature = temperature
+        # Top p parameter controlling the randomness of the large model\\"s output.
         self.top_p = top_p
+        # Type of conversation
         self.type = type
 
     def validate(self):
@@ -14250,7 +15209,9 @@ class LlmStreamChatResponseBodyChoicesDelta(TeaModel):
         content: str = None,
         role: str = None,
     ):
+        # Real-time generated text content
         self.content = content
+        # Role identifier
         self.role = role
 
     def validate(self):
@@ -14285,9 +15246,13 @@ class LlmStreamChatResponseBodyChoices(TeaModel):
         index: int = None,
         logprobs: str = None,
     ):
+        # Incremental content object
         self.delta = delta
+        # For streaming output, it is null while generating and becomes \\"stop\\" if the generation ends due to a stop token.
         self.finish_reason = finish_reason
+        # Stream sequence number
         self.index = index
+        # Token probability information
         self.logprobs = logprobs
 
     def validate(self):
@@ -14332,9 +15297,13 @@ class LlmStreamChatResponseBodyError(TeaModel):
         param: str = None,
         type: str = None,
     ):
+        # Error code
         self.code = code
+        # Error message
         self.message = message
+        # Parameter that caused the error
         self.param = param
+        # Error type
         self.type = type
 
     def validate(self):
@@ -14382,14 +15351,23 @@ class LlmStreamChatResponseBody(TeaModel):
         system_fingerprint: str = None,
         usage: str = None,
     ):
+        # List of model generation results
         self.choices = choices
+        # Timestamp of session creation
         self.created = created
+        # Streaming response error information content
         self.error = error
+        # Unique ID for this session
         self.id = id
+        # Model identifier
         self.model = model
+        # Response type
         self.object = object
+        # Unique request ID
         self.request_id = request_id
+        # System fingerprint
         self.system_fingerprint = system_fingerprint
+        # Token usage
         self.usage = usage
 
     def validate(self):
@@ -14619,12 +15597,19 @@ class ModifyCallbackRequest(TeaModel):
         scope: str = None,
         url: str = None,
     ):
+        # Encryption algorithm.
         self.crypt_type = crypt_type
+        # Primary key ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Name.
         self.name = name
+        # Region ID.
         self.region_id = region_id
+        # Result scope.
         self.scope = scope
+        # Callback URL.
         self.url = url
 
     def validate(self):
@@ -14673,7 +15658,9 @@ class ModifyCallbackResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Return result.
         self.data = data
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -14752,19 +15739,19 @@ class ModifyFeatureConfigRequest(TeaModel):
         service_code: str = None,
         type: str = None,
     ):
-        # Configuration, in JSON format
+        # query
         self.config = config
-        # Label meaning
+        # query
         self.description = description
-        # Label value, customer-defined
+        # query
         self.field = field
-        # Region
+        # query
         self.region_id = region_id
-        # Resource type.
+        # query
         self.resource_type = resource_type
-        # Service code.
+        # System-defined parameter. Value: **ModifyFeatureConfig**.
         self.service_code = service_code
-        # Type
+        # query
         self.type = type
 
     def validate(self):
@@ -14821,17 +15808,17 @@ class ModifyFeatureConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code.
-        self.code = code
-        # Returned data
-        self.data = data
-        # HTTP status code.
-        self.http_status_code = http_status_code
-        # Response message of this request.
-        self.msg = msg
-        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
-        self.request_id = request_id
         # Success indicator.
+        self.code = code
+        # query
+        self.data = data
+        # Status code.
+        self.http_status_code = http_status_code
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+        self.msg = msg
+        # Returned data
+        self.request_id = request_id
+        # Response message of this request.
         self.success = success
 
     def validate(self):
@@ -14924,10 +15911,15 @@ class ModifyServiceInfoRequest(TeaModel):
         service_desc: str = None,
         service_name: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
+        # Service description.
         self.service_desc = service_desc
+        # Service name.
         self.service_name = service_name
 
     def validate(self):
@@ -14972,7 +15964,9 @@ class ModifyServiceInfoResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -15053,14 +16047,23 @@ class OssCheckResultListRequest(TeaModel):
         start_date: str = None,
         status: int = None,
     ):
+        # Page size.
         self.current_page = current_page
+        # Start date.
         self.end_date = end_date
+        # Region ID.
         self.finish_num = finish_num
+        # Query condition.
         self.page_size = page_size
+        # End date.
         self.query = query
+        # Sort field.
         self.region_id = region_id
+        # Current page number.
         self.sort = sort
+        # System-defined parameter. Value: **OssCheckResultList**.
         self.start_date = start_date
+        # Number of completed items.
         self.status = status
 
     def validate(self):
@@ -15128,14 +16131,23 @@ class OssCheckResultListShrinkRequest(TeaModel):
         start_date: str = None,
         status: int = None,
     ):
+        # Page size.
         self.current_page = current_page
+        # Start date.
         self.end_date = end_date
+        # Region ID.
         self.finish_num = finish_num
+        # Query condition.
         self.page_size = page_size
+        # End date.
         self.query = query
+        # Sort field.
         self.region_id = region_id
+        # Current page number.
         self.sort_shrink = sort_shrink
+        # System-defined parameter. Value: **OssCheckResultList**.
         self.start_date = start_date
+        # Number of completed items.
         self.status = status
 
     def validate(self):
@@ -15211,22 +16223,39 @@ class OssCheckResultListResponseBodyItems(TeaModel):
         task_id: str = None,
         url: str = None,
     ):
+        # Data of the current page.
         self.bucket = bucket
+        # Service code.
         self.code = code
+        # Primary service.
         self.content_type = content_type
+        # Whether to copy.
         self.copy_from = copy_from
+        # Details of the result.
         self.image_url = image_url
+        # Service name.
         self.is_copy = is_copy
+        # Image URL.
         self.job_name = job_name
+        # Further description of the error code.
         self.labels = labels
+        # Job name.
         self.labels_2 = labels_2
+        # Object name.
         self.md_5 = md_5
+        # Status code. 200 indicates success.
         self.msg = msg
+        # OSS Bucket name.
         self.object = object
+        # Image labels.
         self.scan_result = scan_result
+        # File MD5.
         self.service_code = service_code
+        # Task ID.
         self.service_name = service_name
+        # Task URL.
         self.task_id = task_id
+        # Text labels.
         self.url = url
 
     def validate(self):
@@ -15323,11 +16352,17 @@ class OssCheckResultListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
         self.auth_status = auth_status
+        # Page size.
         self.current_page = current_page
+        # Current page number.
         self.items = items
+        # Total number of records.
         self.page_size = page_size
+        # Task status.
         self.request_id = request_id
+        # Authorization status.
         self.total_count = total_count
 
     def validate(self):
@@ -15692,9 +16727,13 @@ class QueryCallbackRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # Query data under the OSS detection task.
         self.check_for_oss = check_for_oss
+        # Primary key ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -15740,18 +16779,27 @@ class QueryCallbackResponseBody(TeaModel):
         uid: str = None,
         url: str = None,
     ):
+        # Encryption algorithm.
         self.crypt_type = crypt_type
+        # Whether there is an OSS detection task.
         self.exists_oss_check_task = exists_oss_check_task
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID.
         self.id = id
+        # Name.
         self.name = name
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Result scope.
         self.scope = scope
-        # Seed。
+        # Seed.
         self.seed = seed
-        # UID。
+        # UID.
         self.uid = uid
+        # Callback URL.
         self.url = url
 
     def validate(self):
@@ -15862,8 +16910,11 @@ class QueryCallbackByPageRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Page size.
         self.page_size = page_size
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -15907,16 +16958,23 @@ class QueryCallbackByPageResponseBodyItems(TeaModel):
         uid: str = None,
         url: str = None,
     ):
+        # Encryption algorithm.
         self.crypt_type = crypt_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID.
         self.id = id
+        # Name.
         self.name = name
+        # Result scope.
         self.scope = scope
-        # Seed。
+        # Seed.
         self.seed = seed
-        # UID。
+        # UID.
         self.uid = uid
+        # Callback URL.
         self.url = url
 
     def validate(self):
@@ -15980,10 +17038,15 @@ class QueryCallbackByPageResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Data of the current page.
         self.items = items
+        # Page size.
         self.page_size = page_size
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -16210,9 +17273,13 @@ class UpdateBackupConfigRequest(TeaModel):
         resource_type: str = None,
         service_code: str = None,
     ):
+        # Evidence backup configuration.
         self.backup_config = backup_config
+        # Region ID.
         self.region_id = region_id
+        # Resource type.
         self.resource_type = resource_type
+        # Service code.
         self.service_code = service_code
 
     def validate(self):
@@ -16253,7 +17320,9 @@ class UpdateBackupConfigResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -16330,10 +17399,15 @@ class UpdateImageLibRequest(TeaModel):
         lib_name: str = None,
         region_id: str = None,
     ):
+        # Comment information for the library.
         self.comment = comment
+        # Exemption from review configuration.
         self.free_inspection = free_inspection
+        # Library ID.
         self.lib_id = lib_id
+        # Library name.
         self.lib_name = lib_name
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -16382,11 +17456,17 @@ class UpdateImageLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with HTTP status.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator
         self.success = success
 
     def validate(self):
@@ -16476,7 +17556,9 @@ class UpdateImageLibFreeInspectionRequest(TeaModel):
         config: Dict[str, int] = None,
         region_id: str = None,
     ):
+        # Configuration.
         self.config = config
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -16509,7 +17591,9 @@ class UpdateImageLibFreeInspectionShrinkRequest(TeaModel):
         config_shrink: str = None,
         region_id: str = None,
     ):
+        # Configuration.
         self.config_shrink = config_shrink
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -16546,11 +17630,17 @@ class UpdateImageLibFreeInspectionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code, consistent with the HTTP status.
         self.code = code
+        # Return result.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -16641,8 +17731,11 @@ class UpdateKeywordLibRequest(TeaModel):
         lib_name: str = None,
         region_id: str = None,
     ):
+        # Library ID.
         self.lib_id = lib_id
+        # Keyword library name.
         self.lib_name = lib_name
+        # Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -16682,10 +17775,15 @@ class UpdateKeywordLibResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Further description of the error code.
         self.msg = msg
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
+        # Success indicator.
         self.success = success
 
     def validate(self):
@@ -17393,11 +18491,17 @@ class UpdateScanResultFeedbackRequest(TeaModel):
         resource_type: str = None,
         risk_level: str = None,
     ):
+        # Feedback
         self.feedback = feedback
+        # Labels.
         self.labels = labels
+        # Request ID
         self.query_request_id = query_request_id
+        # Region ID.
         self.region_id = region_id
+        # Resource Type
         self.resource_type = resource_type
+        # Risk Level
         self.risk_level = risk_level
 
     def validate(self):
@@ -17446,7 +18550,9 @@ class UpdateScanResultFeedbackResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Returned data.
         self.data = data
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

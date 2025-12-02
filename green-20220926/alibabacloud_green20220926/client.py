@@ -175,7 +175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddImageLibResponse:
         """
-        @summary 创建图库
+        @summary Create Image Library
         
         @param request: AddImageLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -216,7 +216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddImageLibResponse:
         """
-        @summary 创建图库
+        @summary Create Image Library
         
         @param request: AddImageLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -256,7 +256,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddImageLibRequest,
     ) -> green_20220926_models.AddImageLibResponse:
         """
-        @summary 创建图库
+        @summary Create Image Library
         
         @param request: AddImageLibRequest
         @return: AddImageLibResponse
@@ -269,7 +269,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddImageLibRequest,
     ) -> green_20220926_models.AddImageLibResponse:
         """
-        @summary 创建图库
+        @summary Create Image Library
         
         @param request: AddImageLibRequest
         @return: AddImageLibResponse
@@ -283,7 +283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddImages2LibResponse:
         """
-        @summary 批量添加图片
+        @summary Add image to image lib
         
         @param request: AddImages2LibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -324,7 +324,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddImages2LibResponse:
         """
-        @summary 批量添加图片
+        @summary Add image to image lib
         
         @param request: AddImages2LibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -364,7 +364,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddImages2LibRequest,
     ) -> green_20220926_models.AddImages2LibResponse:
         """
-        @summary 批量添加图片
+        @summary Add image to image lib
         
         @param request: AddImages2LibRequest
         @return: AddImages2LibResponse
@@ -377,7 +377,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddImages2LibRequest,
     ) -> green_20220926_models.AddImages2LibResponse:
         """
-        @summary 批量添加图片
+        @summary Add image to image lib
         
         @param request: AddImages2LibRequest
         @return: AddImages2LibResponse
@@ -391,7 +391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddKeywordLibResponse:
         """
-        @summary 创建关键词库
+        @summary Create keyword library
         
         @param request: AddKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -434,7 +434,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddKeywordLibResponse:
         """
-        @summary 创建关键词库
+        @summary Create keyword library
         
         @param request: AddKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -476,7 +476,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddKeywordLibRequest,
     ) -> green_20220926_models.AddKeywordLibResponse:
         """
-        @summary 创建关键词库
+        @summary Create keyword library
         
         @param request: AddKeywordLibRequest
         @return: AddKeywordLibResponse
@@ -489,7 +489,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddKeywordLibRequest,
     ) -> green_20220926_models.AddKeywordLibResponse:
         """
-        @summary 创建关键词库
+        @summary Create keyword library
         
         @param request: AddKeywordLibRequest
         @return: AddKeywordLibResponse
@@ -503,7 +503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddKeywordsResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords
         
         @param request: AddKeywordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -546,7 +546,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddKeywordsResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords
         
         @param request: AddKeywordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -588,7 +588,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddKeywordsRequest,
     ) -> green_20220926_models.AddKeywordsResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords
         
         @param request: AddKeywordsRequest
         @return: AddKeywordsResponse
@@ -601,7 +601,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddKeywordsRequest,
     ) -> green_20220926_models.AddKeywordsResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords
         
         @param request: AddKeywordsRequest
         @return: AddKeywordsResponse
@@ -615,7 +615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddKeywordsToLibResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords to keyword library.
         
         @param request: AddKeywordsToLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -658,7 +658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.AddKeywordsToLibResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords to keyword library.
         
         @param request: AddKeywordsToLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -700,7 +700,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddKeywordsToLibRequest,
     ) -> green_20220926_models.AddKeywordsToLibResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords to keyword library.
         
         @param request: AddKeywordsToLibRequest
         @return: AddKeywordsToLibResponse
@@ -713,7 +713,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.AddKeywordsToLibRequest,
     ) -> green_20220926_models.AddKeywordsToLibResponse:
         """
-        @summary 添加关键词
+        @summary Add keywords to keyword library.
         
         @param request: AddKeywordsToLibRequest
         @return: AddKeywordsToLibResponse
@@ -727,7 +727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CancelStockOssCheckTaskResponse:
         """
-        @summary 取消oss扫描任务
+        @summary Cancel OSS detection task
         
         @param request: CancelStockOssCheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -764,7 +764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CancelStockOssCheckTaskResponse:
         """
-        @summary 取消oss扫描任务
+        @summary Cancel OSS detection task
         
         @param request: CancelStockOssCheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -800,7 +800,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CancelStockOssCheckTaskRequest,
     ) -> green_20220926_models.CancelStockOssCheckTaskResponse:
         """
-        @summary 取消oss扫描任务
+        @summary Cancel OSS detection task
         
         @param request: CancelStockOssCheckTaskRequest
         @return: CancelStockOssCheckTaskResponse
@@ -813,7 +813,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CancelStockOssCheckTaskRequest,
     ) -> green_20220926_models.CancelStockOssCheckTaskResponse:
         """
-        @summary 取消oss扫描任务
+        @summary Cancel OSS detection task
         
         @param request: CancelStockOssCheckTaskRequest
         @return: CancelStockOssCheckTaskResponse
@@ -827,7 +827,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CopyServiceConfigResponse:
         """
-        @summary 复制服务
+        @summary copy service config
         
         @param request: CopyServiceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -872,7 +872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CopyServiceConfigResponse:
         """
-        @summary 复制服务
+        @summary copy service config
         
         @param request: CopyServiceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -916,7 +916,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CopyServiceConfigRequest,
     ) -> green_20220926_models.CopyServiceConfigResponse:
         """
-        @summary 复制服务
+        @summary copy service config
         
         @param request: CopyServiceConfigRequest
         @return: CopyServiceConfigResponse
@@ -929,7 +929,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CopyServiceConfigRequest,
     ) -> green_20220926_models.CopyServiceConfigResponse:
         """
-        @summary 复制服务
+        @summary copy service config
         
         @param request: CopyServiceConfigRequest
         @return: CopyServiceConfigResponse
@@ -943,7 +943,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CreatStockOssCheckTaskResponse:
         """
-        @summary 创建oss扫描任务
+        @summary Create stock oss check task
         
         @param request: CreatStockOssCheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1032,7 +1032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CreatStockOssCheckTaskResponse:
         """
-        @summary 创建oss扫描任务
+        @summary Create stock oss check task
         
         @param request: CreatStockOssCheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1120,7 +1120,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CreatStockOssCheckTaskRequest,
     ) -> green_20220926_models.CreatStockOssCheckTaskResponse:
         """
-        @summary 创建oss扫描任务
+        @summary Create stock oss check task
         
         @param request: CreatStockOssCheckTaskRequest
         @return: CreatStockOssCheckTaskResponse
@@ -1133,7 +1133,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CreatStockOssCheckTaskRequest,
     ) -> green_20220926_models.CreatStockOssCheckTaskResponse:
         """
-        @summary 创建oss扫描任务
+        @summary Create stock oss check task
         
         @param request: CreatStockOssCheckTaskRequest
         @return: CreatStockOssCheckTaskResponse
@@ -1263,7 +1263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CreateCallbackResponse:
         """
-        @summary 新建消息通知
+        @summary Create a new message notification
         
         @param request: CreateCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1308,7 +1308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CreateCallbackResponse:
         """
-        @summary 新建消息通知
+        @summary Create a new message notification
         
         @param request: CreateCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1352,7 +1352,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CreateCallbackRequest,
     ) -> green_20220926_models.CreateCallbackResponse:
         """
-        @summary 新建消息通知
+        @summary Create a new message notification
         
         @param request: CreateCallbackRequest
         @return: CreateCallbackResponse
@@ -1365,7 +1365,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CreateCallbackRequest,
     ) -> green_20220926_models.CreateCallbackResponse:
         """
-        @summary 新建消息通知
+        @summary Create a new message notification
         
         @param request: CreateCallbackRequest
         @return: CreateCallbackResponse
@@ -1487,7 +1487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CreatePreCheckResponse:
         """
-        @summary 创建oss扫描任务前检查
+        @summary Check before creating an OSS scan task
         
         @param request: CreatePreCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1550,7 +1550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.CreatePreCheckResponse:
         """
-        @summary 创建oss扫描任务前检查
+        @summary Check before creating an OSS scan task
         
         @param request: CreatePreCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1612,7 +1612,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CreatePreCheckRequest,
     ) -> green_20220926_models.CreatePreCheckResponse:
         """
-        @summary 创建oss扫描任务前检查
+        @summary Check before creating an OSS scan task
         
         @param request: CreatePreCheckRequest
         @return: CreatePreCheckResponse
@@ -1625,7 +1625,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.CreatePreCheckRequest,
     ) -> green_20220926_models.CreatePreCheckResponse:
         """
-        @summary 创建oss扫描任务前检查
+        @summary Check before creating an OSS scan task
         
         @param request: CreatePreCheckRequest
         @return: CreatePreCheckResponse
@@ -1847,7 +1847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteCallbackResponse:
         """
-        @summary 删除消息通知
+        @summary delete callback
         
         @param request: DeleteCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1886,7 +1886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteCallbackResponse:
         """
-        @summary 删除消息通知
+        @summary delete callback
         
         @param request: DeleteCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,7 +1924,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteCallbackRequest,
     ) -> green_20220926_models.DeleteCallbackResponse:
         """
-        @summary 删除消息通知
+        @summary delete callback
         
         @param request: DeleteCallbackRequest
         @return: DeleteCallbackResponse
@@ -1937,7 +1937,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteCallbackRequest,
     ) -> green_20220926_models.DeleteCallbackResponse:
         """
-        @summary 删除消息通知
+        @summary delete callback
         
         @param request: DeleteCallbackRequest
         @return: DeleteCallbackResponse
@@ -2067,7 +2067,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteImagesFromLibResponse:
         """
-        @summary 批量删除
+        @summary Delete images from library.
         
         @param request: DeleteImagesFromLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2108,7 +2108,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteImagesFromLibResponse:
         """
-        @summary 批量删除
+        @summary Delete images from library.
         
         @param request: DeleteImagesFromLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2148,7 +2148,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteImagesFromLibRequest,
     ) -> green_20220926_models.DeleteImagesFromLibResponse:
         """
-        @summary 批量删除
+        @summary Delete images from library.
         
         @param request: DeleteImagesFromLibRequest
         @return: DeleteImagesFromLibResponse
@@ -2161,7 +2161,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteImagesFromLibRequest,
     ) -> green_20220926_models.DeleteImagesFromLibResponse:
         """
-        @summary 批量删除
+        @summary Delete images from library.
         
         @param request: DeleteImagesFromLibRequest
         @return: DeleteImagesFromLibResponse
@@ -2175,7 +2175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteKeywordResponse:
         """
-        @summary 删除关键词
+        @summary Delete keyword
         
         @param request: DeleteKeywordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2218,7 +2218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteKeywordResponse:
         """
-        @summary 删除关键词
+        @summary Delete keyword
         
         @param request: DeleteKeywordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2260,7 +2260,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteKeywordRequest,
     ) -> green_20220926_models.DeleteKeywordResponse:
         """
-        @summary 删除关键词
+        @summary Delete keyword
         
         @param request: DeleteKeywordRequest
         @return: DeleteKeywordResponse
@@ -2273,7 +2273,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteKeywordRequest,
     ) -> green_20220926_models.DeleteKeywordResponse:
         """
-        @summary 删除关键词
+        @summary Delete keyword
         
         @param request: DeleteKeywordRequest
         @return: DeleteKeywordResponse
@@ -2287,7 +2287,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteKeywordLibResponse:
         """
-        @summary 删除关键词库
+        @summary Delete Keyword Library
         
         @param request: DeleteKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2326,7 +2326,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.DeleteKeywordLibResponse:
         """
-        @summary 删除关键词库
+        @summary Delete Keyword Library
         
         @param request: DeleteKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2364,7 +2364,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteKeywordLibRequest,
     ) -> green_20220926_models.DeleteKeywordLibResponse:
         """
-        @summary 删除关键词库
+        @summary Delete Keyword Library
         
         @param request: DeleteKeywordLibRequest
         @return: DeleteKeywordLibResponse
@@ -2377,7 +2377,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.DeleteKeywordLibRequest,
     ) -> green_20220926_models.DeleteKeywordLibResponse:
         """
-        @summary 删除关键词库
+        @summary Delete Keyword Library
         
         @param request: DeleteKeywordLibRequest
         @return: DeleteKeywordLibResponse
@@ -2699,7 +2699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportCipStatsResponse:
         """
-        @summary 导出调用量
+        @summary Export Call Volume
         
         @param request: ExportCipStatsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2754,7 +2754,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportCipStatsResponse:
         """
-        @summary 导出调用量
+        @summary Export Call Volume
         
         @param request: ExportCipStatsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2808,7 +2808,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportCipStatsRequest,
     ) -> green_20220926_models.ExportCipStatsResponse:
         """
-        @summary 导出调用量
+        @summary Export Call Volume
         
         @param request: ExportCipStatsRequest
         @return: ExportCipStatsResponse
@@ -2821,7 +2821,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportCipStatsRequest,
     ) -> green_20220926_models.ExportCipStatsResponse:
         """
-        @summary 导出调用量
+        @summary Export Call Volume
         
         @param request: ExportCipStatsRequest
         @return: ExportCipStatsResponse
@@ -2835,7 +2835,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportKeywordResponse:
         """
-        @summary 导出关键词
+        @summary Export Keywords
         
         @param request: ExportKeywordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2874,7 +2874,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportKeywordResponse:
         """
-        @summary 导出关键词
+        @summary Export Keywords
         
         @param request: ExportKeywordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2912,7 +2912,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportKeywordRequest,
     ) -> green_20220926_models.ExportKeywordResponse:
         """
-        @summary 导出关键词
+        @summary Export Keywords
         
         @param request: ExportKeywordRequest
         @return: ExportKeywordResponse
@@ -2925,7 +2925,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportKeywordRequest,
     ) -> green_20220926_models.ExportKeywordResponse:
         """
-        @summary 导出关键词
+        @summary Export Keywords
         
         @param request: ExportKeywordRequest
         @return: ExportKeywordResponse
@@ -2939,7 +2939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportOssCheckStatResponse:
         """
-        @summary oss用量统计导出
+        @summary OSS Usage Statistics Export
         
         @param request: ExportOssCheckStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2984,7 +2984,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportOssCheckStatResponse:
         """
-        @summary oss用量统计导出
+        @summary OSS Usage Statistics Export
         
         @param request: ExportOssCheckStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3028,7 +3028,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportOssCheckStatRequest,
     ) -> green_20220926_models.ExportOssCheckStatResponse:
         """
-        @summary oss用量统计导出
+        @summary OSS Usage Statistics Export
         
         @param request: ExportOssCheckStatRequest
         @return: ExportOssCheckStatResponse
@@ -3041,7 +3041,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportOssCheckStatRequest,
     ) -> green_20220926_models.ExportOssCheckStatResponse:
         """
-        @summary oss用量统计导出
+        @summary OSS Usage Statistics Export
         
         @param request: ExportOssCheckStatRequest
         @return: ExportOssCheckStatResponse
@@ -3055,7 +3055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportResultResponse:
         """
-        @summary 导出oss扫描结果
+        @summary Export OSS scan results
         
         @param tmp_req: ExportResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3110,7 +3110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportResultResponse:
         """
-        @summary 导出oss扫描结果
+        @summary Export OSS scan results
         
         @param tmp_req: ExportResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3164,7 +3164,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportResultRequest,
     ) -> green_20220926_models.ExportResultResponse:
         """
-        @summary 导出oss扫描结果
+        @summary Export OSS scan results
         
         @param request: ExportResultRequest
         @return: ExportResultResponse
@@ -3177,7 +3177,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportResultRequest,
     ) -> green_20220926_models.ExportResultResponse:
         """
-        @summary 导出oss扫描结果
+        @summary Export OSS scan results
         
         @param request: ExportResultRequest
         @return: ExportResultResponse
@@ -3191,7 +3191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export scan results, Excel file
         
         @param tmp_req: ExportScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3248,7 +3248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export scan results, Excel file
         
         @param tmp_req: ExportScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3304,7 +3304,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportScanResultRequest,
     ) -> green_20220926_models.ExportScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export scan results, Excel file
         
         @param request: ExportScanResultRequest
         @return: ExportScanResultResponse
@@ -3317,7 +3317,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportScanResultRequest,
     ) -> green_20220926_models.ExportScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export scan results, Excel file
         
         @param request: ExportScanResultRequest
         @return: ExportScanResultResponse
@@ -3331,7 +3331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportTextScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export text scan results, Excel file
         
         @param tmp_req: ExportTextScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3378,7 +3378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ExportTextScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export text scan results, Excel file
         
         @param tmp_req: ExportTextScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3424,7 +3424,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportTextScanResultRequest,
     ) -> green_20220926_models.ExportTextScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export text scan results, Excel file
         
         @param request: ExportTextScanResultRequest
         @return: ExportTextScanResultResponse
@@ -3437,7 +3437,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ExportTextScanResultRequest,
     ) -> green_20220926_models.ExportTextScanResultResponse:
         """
-        @summary 导出调用结果，excel文件
+        @summary Export text scan results, Excel file
         
         @param request: ExportTextScanResultRequest
         @return: ExportTextScanResultResponse
@@ -3551,7 +3551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBackupBucketsListResponse:
         """
-        @summary 证据转存获取用户bucket列表
+        @summary Evidence Transfer to Get User\\"s Bucket List
         
         @param request: GetBackupBucketsListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3586,7 +3586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBackupBucketsListResponse:
         """
-        @summary 证据转存获取用户bucket列表
+        @summary Evidence Transfer to Get User\\"s Bucket List
         
         @param request: GetBackupBucketsListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3620,7 +3620,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBackupBucketsListRequest,
     ) -> green_20220926_models.GetBackupBucketsListResponse:
         """
-        @summary 证据转存获取用户bucket列表
+        @summary Evidence Transfer to Get User\\"s Bucket List
         
         @param request: GetBackupBucketsListRequest
         @return: GetBackupBucketsListResponse
@@ -3633,7 +3633,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBackupBucketsListRequest,
     ) -> green_20220926_models.GetBackupBucketsListResponse:
         """
-        @summary 证据转存获取用户bucket列表
+        @summary Evidence Transfer to Get User\\"s Bucket List
         
         @param request: GetBackupBucketsListRequest
         @return: GetBackupBucketsListResponse
@@ -3647,7 +3647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBackupConfigResponse:
         """
-        @summary 获取证据转存配置
+        @summary Get Evidence Backup Configuration
         
         @param request: GetBackupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3686,7 +3686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBackupConfigResponse:
         """
-        @summary 获取证据转存配置
+        @summary Get Evidence Backup Configuration
         
         @param request: GetBackupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3724,7 +3724,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBackupConfigRequest,
     ) -> green_20220926_models.GetBackupConfigResponse:
         """
-        @summary 获取证据转存配置
+        @summary Get Evidence Backup Configuration
         
         @param request: GetBackupConfigRequest
         @return: GetBackupConfigResponse
@@ -3737,7 +3737,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBackupConfigRequest,
     ) -> green_20220926_models.GetBackupConfigResponse:
         """
-        @summary 获取证据转存配置
+        @summary Get Evidence Backup Configuration
         
         @param request: GetBackupConfigRequest
         @return: GetBackupConfigResponse
@@ -3751,7 +3751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBackupStatusResponse:
         """
-        @summary 用户授权校验
+        @summary User Backup Authorization Verification
         
         @param request: GetBackupStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3786,7 +3786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBackupStatusResponse:
         """
-        @summary 用户授权校验
+        @summary User Backup Authorization Verification
         
         @param request: GetBackupStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3820,7 +3820,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBackupStatusRequest,
     ) -> green_20220926_models.GetBackupStatusResponse:
         """
-        @summary 用户授权校验
+        @summary User Backup Authorization Verification
         
         @param request: GetBackupStatusRequest
         @return: GetBackupStatusResponse
@@ -3833,7 +3833,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBackupStatusRequest,
     ) -> green_20220926_models.GetBackupStatusResponse:
         """
-        @summary 用户授权校验
+        @summary User Backup Authorization Verification
         
         @param request: GetBackupStatusRequest
         @return: GetBackupStatusResponse
@@ -3847,7 +3847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBucketsListResponse:
         """
-        @summary bucket列表
+        @summary Get User OSS Scan Bucket List
         
         @param request: GetBucketsListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3882,7 +3882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetBucketsListResponse:
         """
-        @summary bucket列表
+        @summary Get User OSS Scan Bucket List
         
         @param request: GetBucketsListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3916,7 +3916,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBucketsListRequest,
     ) -> green_20220926_models.GetBucketsListResponse:
         """
-        @summary bucket列表
+        @summary Get User OSS Scan Bucket List
         
         @param request: GetBucketsListRequest
         @return: GetBucketsListResponse
@@ -3929,7 +3929,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetBucketsListRequest,
     ) -> green_20220926_models.GetBucketsListResponse:
         """
-        @summary bucket列表
+        @summary Get User OSS Scan Bucket List
         
         @param request: GetBucketsListRequest
         @return: GetBucketsListResponse
@@ -4075,7 +4075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetExecuteTimeResponse:
         """
-        @summary 获取定时任务预计执行时间
+        @summary Get Scheduled  OSS Scan  Task Estimated Execution Time
         
         @param request: GetExecuteTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4110,7 +4110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetExecuteTimeResponse:
         """
-        @summary 获取定时任务预计执行时间
+        @summary Get Scheduled  OSS Scan  Task Estimated Execution Time
         
         @param request: GetExecuteTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4144,7 +4144,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetExecuteTimeRequest,
     ) -> green_20220926_models.GetExecuteTimeResponse:
         """
-        @summary 获取定时任务预计执行时间
+        @summary Get Scheduled  OSS Scan  Task Estimated Execution Time
         
         @param request: GetExecuteTimeRequest
         @return: GetExecuteTimeResponse
@@ -4157,7 +4157,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetExecuteTimeRequest,
     ) -> green_20220926_models.GetExecuteTimeResponse:
         """
-        @summary 获取定时任务预计执行时间
+        @summary Get Scheduled  OSS Scan  Task Estimated Execution Time
         
         @param request: GetExecuteTimeRequest
         @return: GetExecuteTimeResponse
@@ -4287,7 +4287,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetImageSceneLabelConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4322,7 +4322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetImageSceneLabelConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4356,7 +4356,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetImageSceneLabelConfRequest,
     ) -> green_20220926_models.GetImageSceneLabelConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelConfRequest
         @return: GetImageSceneLabelConfResponse
@@ -4369,7 +4369,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetImageSceneLabelConfRequest,
     ) -> green_20220926_models.GetImageSceneLabelConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelConfRequest
         @return: GetImageSceneLabelConfResponse
@@ -4383,7 +4383,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetImageSceneLabelListConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelListConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4420,7 +4420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetImageSceneLabelListConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelListConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4456,7 +4456,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetImageSceneLabelListConfRequest,
     ) -> green_20220926_models.GetImageSceneLabelListConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelListConfRequest
         @return: GetImageSceneLabelListConfResponse
@@ -4469,7 +4469,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetImageSceneLabelListConfRequest,
     ) -> green_20220926_models.GetImageSceneLabelListConfResponse:
         """
-        @summary 获取图片规则标签信息
+        @summary Get Image Rule Label Information
         
         @param request: GetImageSceneLabelListConfRequest
         @return: GetImageSceneLabelListConfResponse
@@ -4483,7 +4483,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetJobNameListResponse:
         """
-        @summary oss定时扫描检测周期查询
+        @summary OSS scheduled scan detection cycle query
         
         @param tmp_req: GetJobNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4530,7 +4530,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetJobNameListResponse:
         """
-        @summary oss定时扫描检测周期查询
+        @summary OSS scheduled scan detection cycle query
         
         @param tmp_req: GetJobNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4576,7 +4576,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetJobNameListRequest,
     ) -> green_20220926_models.GetJobNameListResponse:
         """
-        @summary oss定时扫描检测周期查询
+        @summary OSS scheduled scan detection cycle query
         
         @param request: GetJobNameListRequest
         @return: GetJobNameListResponse
@@ -4589,7 +4589,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetJobNameListRequest,
     ) -> green_20220926_models.GetJobNameListResponse:
         """
-        @summary oss定时扫描检测周期查询
+        @summary OSS scheduled scan detection cycle query
         
         @param request: GetJobNameListRequest
         @return: GetJobNameListResponse
@@ -4603,7 +4603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetKeywordImportResultResponse:
         """
-        @summary 查询导入关键词结果
+        @summary Query the result of keyword import
         
         @param request: GetKeywordImportResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4642,7 +4642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetKeywordImportResultResponse:
         """
-        @summary 查询导入关键词结果
+        @summary Query the result of keyword import
         
         @param request: GetKeywordImportResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4680,7 +4680,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetKeywordImportResultRequest,
     ) -> green_20220926_models.GetKeywordImportResultResponse:
         """
-        @summary 查询导入关键词结果
+        @summary Query the result of keyword import
         
         @param request: GetKeywordImportResultRequest
         @return: GetKeywordImportResultResponse
@@ -4693,7 +4693,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetKeywordImportResultRequest,
     ) -> green_20220926_models.GetKeywordImportResultResponse:
         """
-        @summary 查询导入关键词结果
+        @summary Query the result of keyword import
         
         @param request: GetKeywordImportResultRequest
         @return: GetKeywordImportResultResponse
@@ -4707,7 +4707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetKeywordLibResponse:
         """
-        @summary 关键词库信息
+        @summary Keyword Library Information
         
         @param request: GetKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4746,7 +4746,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetKeywordLibResponse:
         """
-        @summary 关键词库信息
+        @summary Keyword Library Information
         
         @param request: GetKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4784,7 +4784,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetKeywordLibRequest,
     ) -> green_20220926_models.GetKeywordLibResponse:
         """
-        @summary 关键词库信息
+        @summary Keyword Library Information
         
         @param request: GetKeywordLibRequest
         @return: GetKeywordLibResponse
@@ -4797,7 +4797,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetKeywordLibRequest,
     ) -> green_20220926_models.GetKeywordLibResponse:
         """
-        @summary 关键词库信息
+        @summary Keyword Library Information
         
         @param request: GetKeywordLibRequest
         @return: GetKeywordLibResponse
@@ -4811,7 +4811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
         """
-        @summary oss冻结结果查询
+        @summary Query OSS freeze result
         
         @param tmp_req: GetOssCheckFreezeResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4866,7 +4866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
         """
-        @summary oss冻结结果查询
+        @summary Query OSS freeze result
         
         @param tmp_req: GetOssCheckFreezeResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4920,7 +4920,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckFreezeResultRequest,
     ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
         """
-        @summary oss冻结结果查询
+        @summary Query OSS freeze result
         
         @param request: GetOssCheckFreezeResultRequest
         @return: GetOssCheckFreezeResultResponse
@@ -4933,7 +4933,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckFreezeResultRequest,
     ) -> green_20220926_models.GetOssCheckFreezeResultResponse:
         """
-        @summary oss冻结结果查询
+        @summary Query OSS freeze result
         
         @param request: GetOssCheckFreezeResultRequest
         @return: GetOssCheckFreezeResultResponse
@@ -4947,7 +4947,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckResultDetailResponse:
         """
-        @summary oss结果详情
+        @summary OSS result details
         
         @param request: GetOssCheckResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4994,7 +4994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckResultDetailResponse:
         """
-        @summary oss结果详情
+        @summary OSS result details
         
         @param request: GetOssCheckResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5040,7 +5040,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckResultDetailRequest,
     ) -> green_20220926_models.GetOssCheckResultDetailResponse:
         """
-        @summary oss结果详情
+        @summary OSS result details
         
         @param request: GetOssCheckResultDetailRequest
         @return: GetOssCheckResultDetailResponse
@@ -5053,7 +5053,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckResultDetailRequest,
     ) -> green_20220926_models.GetOssCheckResultDetailResponse:
         """
-        @summary oss结果详情
+        @summary OSS result details
         
         @param request: GetOssCheckResultDetailRequest
         @return: GetOssCheckResultDetailResponse
@@ -5067,7 +5067,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckStatResponse:
         """
-        @summary oss用量统计
+        @summary OSS Check Usage Statistics
         
         @param request: GetOssCheckStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5112,7 +5112,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckStatResponse:
         """
-        @summary oss用量统计
+        @summary OSS Check Usage Statistics
         
         @param request: GetOssCheckStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5156,7 +5156,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckStatRequest,
     ) -> green_20220926_models.GetOssCheckStatResponse:
         """
-        @summary oss用量统计
+        @summary OSS Check Usage Statistics
         
         @param request: GetOssCheckStatRequest
         @return: GetOssCheckStatResponse
@@ -5169,7 +5169,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckStatRequest,
     ) -> green_20220926_models.GetOssCheckStatResponse:
         """
-        @summary oss用量统计
+        @summary OSS Check Usage Statistics
         
         @param request: GetOssCheckStatRequest
         @return: GetOssCheckStatResponse
@@ -5183,7 +5183,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckStatusResponse:
         """
-        @summary 获取OSS检测用户状态
+        @summary Get User OSS check user status
         
         @param request: GetOssCheckStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5218,7 +5218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetOssCheckStatusResponse:
         """
-        @summary 获取OSS检测用户状态
+        @summary Get User OSS check user status
         
         @param request: GetOssCheckStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5252,7 +5252,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckStatusRequest,
     ) -> green_20220926_models.GetOssCheckStatusResponse:
         """
-        @summary 获取OSS检测用户状态
+        @summary Get User OSS check user status
         
         @param request: GetOssCheckStatusRequest
         @return: GetOssCheckStatusResponse
@@ -5265,7 +5265,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetOssCheckStatusRequest,
     ) -> green_20220926_models.GetOssCheckStatusResponse:
         """
-        @summary 获取OSS检测用户状态
+        @summary Get User OSS check user status
         
         @param request: GetOssCheckStatusRequest
         @return: GetOssCheckStatusResponse
@@ -5375,7 +5375,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetScanNumResponse:
         """
-        @summary 用户待检测信息
+        @summary User OSS Check Task Pending Inspection Information
         
         @param request: GetScanNumRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5414,7 +5414,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetScanNumResponse:
         """
-        @summary 用户待检测信息
+        @summary User OSS Check Task Pending Inspection Information
         
         @param request: GetScanNumRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5452,7 +5452,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetScanNumRequest,
     ) -> green_20220926_models.GetScanNumResponse:
         """
-        @summary 用户待检测信息
+        @summary User OSS Check Task Pending Inspection Information
         
         @param request: GetScanNumRequest
         @return: GetScanNumResponse
@@ -5465,7 +5465,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetScanNumRequest,
     ) -> green_20220926_models.GetScanNumResponse:
         """
-        @summary 用户待检测信息
+        @summary User OSS Check Task Pending Inspection Information
         
         @param request: GetScanNumRequest
         @return: GetScanNumResponse
@@ -5479,7 +5479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the Scan results
         
         @param tmp_req: GetScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5536,7 +5536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the Scan results
         
         @param tmp_req: GetScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5592,7 +5592,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetScanResultRequest,
     ) -> green_20220926_models.GetScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the Scan results
         
         @param request: GetScanResultRequest
         @return: GetScanResultResponse
@@ -5605,7 +5605,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetScanResultRequest,
     ) -> green_20220926_models.GetScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the Scan results
         
         @param request: GetScanResultRequest
         @return: GetScanResultResponse
@@ -5619,7 +5619,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetServiceConfResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5664,7 +5664,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetServiceConfResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5708,7 +5708,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetServiceConfRequest,
     ) -> green_20220926_models.GetServiceConfResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfRequest
         @return: GetServiceConfResponse
@@ -5721,7 +5721,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetServiceConfRequest,
     ) -> green_20220926_models.GetServiceConfResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfRequest
         @return: GetServiceConfResponse
@@ -5735,7 +5735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetServiceConfigResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5776,7 +5776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetServiceConfigResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5816,7 +5816,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetServiceConfigRequest,
     ) -> green_20220926_models.GetServiceConfigResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfigRequest
         @return: GetServiceConfigResponse
@@ -5829,7 +5829,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetServiceConfigRequest,
     ) -> green_20220926_models.GetServiceConfigResponse:
         """
-        @summary 获取单个服务
+        @summary Get a Single Service Configuration
         
         @param request: GetServiceConfigRequest
         @return: GetServiceConfigResponse
@@ -5843,7 +5843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetServiceLabelConfigResponse:
         """
-        @summary 获取单个服务的标签配置
+        @summary Get the label configuration of a single service
         
         @param request: GetServiceLabelConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5884,7 +5884,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetServiceLabelConfigResponse:
         """
-        @summary 获取单个服务的标签配置
+        @summary Get the label configuration of a single service
         
         @param request: GetServiceLabelConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5924,7 +5924,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetServiceLabelConfigRequest,
     ) -> green_20220926_models.GetServiceLabelConfigResponse:
         """
-        @summary 获取单个服务的标签配置
+        @summary Get the label configuration of a single service
         
         @param request: GetServiceLabelConfigRequest
         @return: GetServiceLabelConfigResponse
@@ -5937,7 +5937,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetServiceLabelConfigRequest,
     ) -> green_20220926_models.GetServiceLabelConfigResponse:
         """
-        @summary 获取单个服务的标签配置
+        @summary Get the label configuration of a single service
         
         @param request: GetServiceLabelConfigRequest
         @return: GetServiceLabelConfigResponse
@@ -5951,7 +5951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetStockOssCheckTasksListResponse:
         """
-        @summary 查询oss扫描任务列表
+        @summary Query OSS Scan Task List
         
         @param tmp_req: GetStockOssCheckTasksListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6008,7 +6008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetStockOssCheckTasksListResponse:
         """
-        @summary 查询oss扫描任务列表
+        @summary Query OSS Scan Task List
         
         @param tmp_req: GetStockOssCheckTasksListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6064,7 +6064,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetStockOssCheckTasksListRequest,
     ) -> green_20220926_models.GetStockOssCheckTasksListResponse:
         """
-        @summary 查询oss扫描任务列表
+        @summary Query OSS Scan Task List
         
         @param request: GetStockOssCheckTasksListRequest
         @return: GetStockOssCheckTasksListResponse
@@ -6077,7 +6077,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetStockOssCheckTasksListRequest,
     ) -> green_20220926_models.GetStockOssCheckTasksListResponse:
         """
-        @summary 查询oss扫描任务列表
+        @summary Query OSS Scan Task List
         
         @param request: GetStockOssCheckTasksListRequest
         @return: GetStockOssCheckTasksListResponse
@@ -6091,7 +6091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetTextScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the invocation result
         
         @param tmp_req: GetTextScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6146,7 +6146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetTextScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the invocation result
         
         @param tmp_req: GetTextScanResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6200,7 +6200,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetTextScanResultRequest,
     ) -> green_20220926_models.GetTextScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the invocation result
         
         @param request: GetTextScanResultRequest
         @return: GetTextScanResultResponse
@@ -6213,7 +6213,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetTextScanResultRequest,
     ) -> green_20220926_models.GetTextScanResultResponse:
         """
-        @summary 查询调用结果
+        @summary Query the invocation result
         
         @param request: GetTextScanResultRequest
         @return: GetTextScanResultResponse
@@ -6227,7 +6227,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetUploadInfoResponse:
         """
-        @summary 文件上传获取相应信息
+        @summary Get the corresponding information for file upload
         
         @param request: GetUploadInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6268,7 +6268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetUploadInfoResponse:
         """
-        @summary 文件上传获取相应信息
+        @summary Get the corresponding information for file upload
         
         @param request: GetUploadInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6308,7 +6308,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetUploadInfoRequest,
     ) -> green_20220926_models.GetUploadInfoResponse:
         """
-        @summary 文件上传获取相应信息
+        @summary Get the corresponding information for file upload
         
         @param request: GetUploadInfoRequest
         @return: GetUploadInfoResponse
@@ -6321,7 +6321,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetUploadInfoRequest,
     ) -> green_20220926_models.GetUploadInfoResponse:
         """
-        @summary 文件上传获取相应信息
+        @summary Get the corresponding information for file upload
         
         @param request: GetUploadInfoRequest
         @return: GetUploadInfoResponse
@@ -6431,7 +6431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
-        @summary 获取用户购买状态
+        @summary Get User Purchase Status
         
         @param request: GetUserBuyStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6470,7 +6470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
-        @summary 获取用户购买状态
+        @summary Get User Purchase Status
         
         @param request: GetUserBuyStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6508,7 +6508,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetUserBuyStatusRequest,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
-        @summary 获取用户购买状态
+        @summary Get User Purchase Status
         
         @param request: GetUserBuyStatusRequest
         @return: GetUserBuyStatusResponse
@@ -6521,7 +6521,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetUserBuyStatusRequest,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
-        @summary 获取用户购买状态
+        @summary Get User Purchase Status
         
         @param request: GetUserBuyStatusRequest
         @return: GetUserBuyStatusResponse
@@ -6631,7 +6631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListCallbackResponse:
         """
-        @summary 消息通知列表
+        @summary Get Callback List
         
         @param request: ListCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6666,7 +6666,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListCallbackResponse:
         """
-        @summary 消息通知列表
+        @summary Get Callback List
         
         @param request: ListCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6700,7 +6700,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListCallbackRequest,
     ) -> green_20220926_models.ListCallbackResponse:
         """
-        @summary 消息通知列表
+        @summary Get Callback List
         
         @param request: ListCallbackRequest
         @return: ListCallbackResponse
@@ -6713,7 +6713,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListCallbackRequest,
     ) -> green_20220926_models.ListCallbackResponse:
         """
-        @summary 消息通知列表
+        @summary Get Callback List
         
         @param request: ListCallbackRequest
         @return: ListCallbackResponse
@@ -6727,7 +6727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListImageLibResponse:
         """
-        @summary 图库列表
+        @summary Image Library List
         
         @param request: ListImageLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6762,7 +6762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListImageLibResponse:
         """
-        @summary 图库列表
+        @summary Image Library List
         
         @param request: ListImageLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6796,7 +6796,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListImageLibRequest,
     ) -> green_20220926_models.ListImageLibResponse:
         """
-        @summary 图库列表
+        @summary Image Library List
         
         @param request: ListImageLibRequest
         @return: ListImageLibResponse
@@ -6809,7 +6809,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListImageLibRequest,
     ) -> green_20220926_models.ListImageLibResponse:
         """
-        @summary 图库列表
+        @summary Image Library List
         
         @param request: ListImageLibRequest
         @return: ListImageLibResponse
@@ -6823,7 +6823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListImagesFromLibResponse:
         """
-        @summary 图片列表 分页
+        @summary Paged Image List
         
         @param tmp_req: ListImagesFromLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6878,7 +6878,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListImagesFromLibResponse:
         """
-        @summary 图片列表 分页
+        @summary Paged Image List
         
         @param tmp_req: ListImagesFromLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6932,7 +6932,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListImagesFromLibRequest,
     ) -> green_20220926_models.ListImagesFromLibResponse:
         """
-        @summary 图片列表 分页
+        @summary Paged Image List
         
         @param request: ListImagesFromLibRequest
         @return: ListImagesFromLibResponse
@@ -6945,7 +6945,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListImagesFromLibRequest,
     ) -> green_20220926_models.ListImagesFromLibResponse:
         """
-        @summary 图片列表 分页
+        @summary Paged Image List
         
         @param request: ListImagesFromLibRequest
         @return: ListImagesFromLibResponse
@@ -6959,7 +6959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListKeywordLibsResponse:
         """
-        @summary 关键词库列表
+        @summary Keyword Library List
         
         @param request: ListKeywordLibsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6994,7 +6994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListKeywordLibsResponse:
         """
-        @summary 关键词库列表
+        @summary Keyword Library List
         
         @param request: ListKeywordLibsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7028,7 +7028,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListKeywordLibsRequest,
     ) -> green_20220926_models.ListKeywordLibsResponse:
         """
-        @summary 关键词库列表
+        @summary Keyword Library List
         
         @param request: ListKeywordLibsRequest
         @return: ListKeywordLibsResponse
@@ -7041,7 +7041,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListKeywordLibsRequest,
     ) -> green_20220926_models.ListKeywordLibsResponse:
         """
-        @summary 关键词库列表
+        @summary Keyword Library List
         
         @param request: ListKeywordLibsRequest
         @return: ListKeywordLibsResponse
@@ -7055,7 +7055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListKeywordsResponse:
         """
-        @summary 查询关键词列表
+        @summary Query Keyword List
         
         @param tmp_req: ListKeywordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7106,7 +7106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListKeywordsResponse:
         """
-        @summary 查询关键词列表
+        @summary Query Keyword List
         
         @param tmp_req: ListKeywordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7156,7 +7156,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListKeywordsRequest,
     ) -> green_20220926_models.ListKeywordsResponse:
         """
-        @summary 查询关键词列表
+        @summary Query Keyword List
         
         @param request: ListKeywordsRequest
         @return: ListKeywordsResponse
@@ -7169,7 +7169,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListKeywordsRequest,
     ) -> green_20220926_models.ListKeywordsResponse:
         """
-        @summary 查询关键词列表
+        @summary Query Keyword List
         
         @param request: ListKeywordsRequest
         @return: ListKeywordsResponse
@@ -7183,7 +7183,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListOssCheckResultResponse:
         """
-        @summary oss扫描结果查询
+        @summary query OSS scan result list
         
         @param tmp_req: ListOssCheckResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7238,7 +7238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListOssCheckResultResponse:
         """
-        @summary oss扫描结果查询
+        @summary query OSS scan result list
         
         @param tmp_req: ListOssCheckResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7292,7 +7292,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListOssCheckResultRequest,
     ) -> green_20220926_models.ListOssCheckResultResponse:
         """
-        @summary oss扫描结果查询
+        @summary query OSS scan result list
         
         @param request: ListOssCheckResultRequest
         @return: ListOssCheckResultResponse
@@ -7305,7 +7305,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListOssCheckResultRequest,
     ) -> green_20220926_models.ListOssCheckResultResponse:
         """
-        @summary oss扫描结果查询
+        @summary query OSS scan result list
         
         @param request: ListOssCheckResultRequest
         @return: ListOssCheckResultResponse
@@ -7319,7 +7319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListServiceConfigsResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServiceConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7362,7 +7362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ListServiceConfigsResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServiceConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7404,7 +7404,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListServiceConfigsRequest,
     ) -> green_20220926_models.ListServiceConfigsResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServiceConfigsRequest
         @return: ListServiceConfigsResponse
@@ -7417,7 +7417,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ListServiceConfigsRequest,
     ) -> green_20220926_models.ListServiceConfigsResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServiceConfigsRequest
         @return: ListServiceConfigsResponse
@@ -7431,7 +7431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.LlmStreamChatResponse:
         """
-        @summary 使用SSE接口流式调用大模型
+        @summary Use SSE interface to stream large model calls
         
         @param request: LlmStreamChatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7472,7 +7472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.LlmStreamChatResponse:
         """
-        @summary 使用SSE接口流式调用大模型
+        @summary Use SSE interface to stream large model calls
         
         @param request: LlmStreamChatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7512,7 +7512,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.LlmStreamChatRequest,
     ) -> green_20220926_models.LlmStreamChatResponse:
         """
-        @summary 使用SSE接口流式调用大模型
+        @summary Use SSE interface to stream large model calls
         
         @param request: LlmStreamChatRequest
         @return: LlmStreamChatResponse
@@ -7525,7 +7525,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.LlmStreamChatRequest,
     ) -> green_20220926_models.LlmStreamChatResponse:
         """
-        @summary 使用SSE接口流式调用大模型
+        @summary Use SSE interface to stream large model calls
         
         @param request: LlmStreamChatRequest
         @return: LlmStreamChatResponse
@@ -7643,7 +7643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ModifyCallbackResponse:
         """
-        @summary 修改消息通知
+        @summary Modify Message Notification
         
         @param request: ModifyCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7690,7 +7690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ModifyCallbackResponse:
         """
-        @summary 修改消息通知
+        @summary Modify Message Notification
         
         @param request: ModifyCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7736,7 +7736,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ModifyCallbackRequest,
     ) -> green_20220926_models.ModifyCallbackResponse:
         """
-        @summary 修改消息通知
+        @summary Modify Message Notification
         
         @param request: ModifyCallbackRequest
         @return: ModifyCallbackResponse
@@ -7749,7 +7749,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ModifyCallbackRequest,
     ) -> green_20220926_models.ModifyCallbackResponse:
         """
-        @summary 修改消息通知
+        @summary Modify Message Notification
         
         @param request: ModifyCallbackRequest
         @return: ModifyCallbackResponse
@@ -7763,7 +7763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ModifyFeatureConfigResponse:
         """
-        @summary Save Feature Configuration
+        @summary 保存特性配置
         
         @param request: ModifyFeatureConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7812,7 +7812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ModifyFeatureConfigResponse:
         """
-        @summary Save Feature Configuration
+        @summary 保存特性配置
         
         @param request: ModifyFeatureConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7860,7 +7860,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ModifyFeatureConfigRequest,
     ) -> green_20220926_models.ModifyFeatureConfigResponse:
         """
-        @summary Save Feature Configuration
+        @summary 保存特性配置
         
         @param request: ModifyFeatureConfigRequest
         @return: ModifyFeatureConfigResponse
@@ -7873,7 +7873,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ModifyFeatureConfigRequest,
     ) -> green_20220926_models.ModifyFeatureConfigResponse:
         """
-        @summary Save Feature Configuration
+        @summary 保存特性配置
         
         @param request: ModifyFeatureConfigRequest
         @return: ModifyFeatureConfigResponse
@@ -7887,7 +7887,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ModifyServiceInfoResponse:
         """
-        @summary 编辑服务
+        @summary Edit Service
         
         @param request: ModifyServiceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7932,7 +7932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.ModifyServiceInfoResponse:
         """
-        @summary 编辑服务
+        @summary Edit Service
         
         @param request: ModifyServiceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7976,7 +7976,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ModifyServiceInfoRequest,
     ) -> green_20220926_models.ModifyServiceInfoResponse:
         """
-        @summary 编辑服务
+        @summary Edit Service
         
         @param request: ModifyServiceInfoRequest
         @return: ModifyServiceInfoResponse
@@ -7989,7 +7989,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.ModifyServiceInfoRequest,
     ) -> green_20220926_models.ModifyServiceInfoResponse:
         """
-        @summary 编辑服务
+        @summary Edit Service
         
         @param request: ModifyServiceInfoRequest
         @return: ModifyServiceInfoResponse
@@ -8263,7 +8263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.QueryCallbackResponse:
         """
-        @summary 查询单个回调配置
+        @summary Query a Single Callback Configuration
         
         @param request: QueryCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8304,7 +8304,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.QueryCallbackResponse:
         """
-        @summary 查询单个回调配置
+        @summary Query a Single Callback Configuration
         
         @param request: QueryCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8344,7 +8344,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.QueryCallbackRequest,
     ) -> green_20220926_models.QueryCallbackResponse:
         """
-        @summary 查询单个回调配置
+        @summary Query a Single Callback Configuration
         
         @param request: QueryCallbackRequest
         @return: QueryCallbackResponse
@@ -8357,7 +8357,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.QueryCallbackRequest,
     ) -> green_20220926_models.QueryCallbackResponse:
         """
-        @summary 查询单个回调配置
+        @summary Query a Single Callback Configuration
         
         @param request: QueryCallbackRequest
         @return: QueryCallbackResponse
@@ -8371,7 +8371,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.QueryCallbackByPageResponse:
         """
-        @summary 消息通知
+        @summary Paginated Query of Message Notification List
         
         @param request: QueryCallbackByPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8412,7 +8412,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.QueryCallbackByPageResponse:
         """
-        @summary 消息通知
+        @summary Paginated Query of Message Notification List
         
         @param request: QueryCallbackByPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8452,7 +8452,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.QueryCallbackByPageRequest,
     ) -> green_20220926_models.QueryCallbackByPageResponse:
         """
-        @summary 消息通知
+        @summary Paginated Query of Message Notification List
         
         @param request: QueryCallbackByPageRequest
         @return: QueryCallbackByPageResponse
@@ -8465,7 +8465,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.QueryCallbackByPageRequest,
     ) -> green_20220926_models.QueryCallbackByPageResponse:
         """
-        @summary 消息通知
+        @summary Paginated Query of Message Notification List
         
         @param request: QueryCallbackByPageRequest
         @return: QueryCallbackByPageResponse
@@ -8583,7 +8583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateBackupConfigResponse:
         """
-        @summary 更新证据转存配置
+        @summary Update Evidence Backup Configuration
         
         @param request: UpdateBackupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8624,7 +8624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateBackupConfigResponse:
         """
-        @summary 更新证据转存配置
+        @summary Update Evidence Backup Configuration
         
         @param request: UpdateBackupConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8664,7 +8664,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateBackupConfigRequest,
     ) -> green_20220926_models.UpdateBackupConfigResponse:
         """
-        @summary 更新证据转存配置
+        @summary Update Evidence Backup Configuration
         
         @param request: UpdateBackupConfigRequest
         @return: UpdateBackupConfigResponse
@@ -8677,7 +8677,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateBackupConfigRequest,
     ) -> green_20220926_models.UpdateBackupConfigResponse:
         """
-        @summary 更新证据转存配置
+        @summary Update Evidence Backup Configuration
         
         @param request: UpdateBackupConfigRequest
         @return: UpdateBackupConfigResponse
@@ -8691,7 +8691,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateImageLibResponse:
         """
-        @summary 编辑图库
+        @summary Edit Image Library
         
         @param request: UpdateImageLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8736,7 +8736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateImageLibResponse:
         """
-        @summary 编辑图库
+        @summary Edit Image Library
         
         @param request: UpdateImageLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8780,7 +8780,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateImageLibRequest,
     ) -> green_20220926_models.UpdateImageLibResponse:
         """
-        @summary 编辑图库
+        @summary Edit Image Library
         
         @param request: UpdateImageLibRequest
         @return: UpdateImageLibResponse
@@ -8793,7 +8793,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateImageLibRequest,
     ) -> green_20220926_models.UpdateImageLibResponse:
         """
-        @summary 编辑图库
+        @summary Edit Image Library
         
         @param request: UpdateImageLibRequest
         @return: UpdateImageLibResponse
@@ -8807,7 +8807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateImageLibFreeInspectionResponse:
         """
-        @summary 编辑图库免检配置
+        @summary Edit Image Library Free Inspection Configuration
         
         @param tmp_req: UpdateImageLibFreeInspectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8850,7 +8850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateImageLibFreeInspectionResponse:
         """
-        @summary 编辑图库免检配置
+        @summary Edit Image Library Free Inspection Configuration
         
         @param tmp_req: UpdateImageLibFreeInspectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8892,7 +8892,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateImageLibFreeInspectionRequest,
     ) -> green_20220926_models.UpdateImageLibFreeInspectionResponse:
         """
-        @summary 编辑图库免检配置
+        @summary Edit Image Library Free Inspection Configuration
         
         @param request: UpdateImageLibFreeInspectionRequest
         @return: UpdateImageLibFreeInspectionResponse
@@ -8905,7 +8905,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateImageLibFreeInspectionRequest,
     ) -> green_20220926_models.UpdateImageLibFreeInspectionResponse:
         """
-        @summary 编辑图库免检配置
+        @summary Edit Image Library Free Inspection Configuration
         
         @param request: UpdateImageLibFreeInspectionRequest
         @return: UpdateImageLibFreeInspectionResponse
@@ -8919,7 +8919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateKeywordLibResponse:
         """
-        @summary 编辑关键词库
+        @summary Edit Keyword Library
         
         @param request: UpdateKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8960,7 +8960,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateKeywordLibResponse:
         """
-        @summary 编辑关键词库
+        @summary Edit Keyword Library
         
         @param request: UpdateKeywordLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9000,7 +9000,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateKeywordLibRequest,
     ) -> green_20220926_models.UpdateKeywordLibResponse:
         """
-        @summary 编辑关键词库
+        @summary Edit Keyword Library
         
         @param request: UpdateKeywordLibRequest
         @return: UpdateKeywordLibResponse
@@ -9013,7 +9013,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateKeywordLibRequest,
     ) -> green_20220926_models.UpdateKeywordLibResponse:
         """
-        @summary 编辑关键词库
+        @summary Edit Keyword Library
         
         @param request: UpdateKeywordLibRequest
         @return: UpdateKeywordLibResponse
@@ -9475,7 +9475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateScanResultFeedbackResponse:
         """
-        @summary 检测结果反馈
+        @summary Feedback on Scan Results
         
         @param request: UpdateScanResultFeedbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9522,7 +9522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.UpdateScanResultFeedbackResponse:
         """
-        @summary 检测结果反馈
+        @summary Feedback on Scan Results
         
         @param request: UpdateScanResultFeedbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9568,7 +9568,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateScanResultFeedbackRequest,
     ) -> green_20220926_models.UpdateScanResultFeedbackResponse:
         """
-        @summary 检测结果反馈
+        @summary Feedback on Scan Results
         
         @param request: UpdateScanResultFeedbackRequest
         @return: UpdateScanResultFeedbackResponse
@@ -9581,7 +9581,7 @@ class Client(OpenApiClient):
         request: green_20220926_models.UpdateScanResultFeedbackRequest,
     ) -> green_20220926_models.UpdateScanResultFeedbackResponse:
         """
-        @summary 检测结果反馈
+        @summary Feedback on Scan Results
         
         @param request: UpdateScanResultFeedbackRequest
         @return: UpdateScanResultFeedbackResponse

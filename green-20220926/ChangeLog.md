@@ -1,3 +1,7 @@
+2025-12-02 Version: 1.5.2
+- Update API GetUserBuyStatus: add response parameters Body.Data.InstanceId.
+
+
 2025-08-12 Version: 1.5.1
 - Update API LlmStreamChat: add request parameters Type.
 
