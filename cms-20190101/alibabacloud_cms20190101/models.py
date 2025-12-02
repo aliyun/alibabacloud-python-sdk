@@ -37208,6 +37208,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         dns_server: str = None,
         dns_type: str = None,
         empty_message: bool = None,
+        enable_packet_capture: bool = None,
         expect_exist_string: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString = None,
         expect_non_exist_string: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString = None,
         expect_value: str = None,
@@ -37304,6 +37305,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.dns_type = dns_type
         # Indicates whether the WebSocket task is allowed to return no response or return an empty response. Default value: false. Valid values: false and true.
         self.empty_message = empty_message
+        self.enable_packet_capture = enable_packet_capture
         # The string that is expected to exist on the page.
         self.expect_exist_string = expect_exist_string
         # The string that is not expected to exist on the page.
@@ -37472,6 +37474,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['dns_type'] = self.dns_type
         if self.empty_message is not None:
             result['empty_message'] = self.empty_message
+        if self.enable_packet_capture is not None:
+            result['enable_packet_capture'] = self.enable_packet_capture
         if self.expect_exist_string is not None:
             result['expect_exist_string'] = self.expect_exist_string.to_map()
         if self.expect_non_exist_string is not None:
@@ -37599,6 +37603,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.dns_type = m.get('dns_type')
         if m.get('empty_message') is not None:
             self.empty_message = m.get('empty_message')
+        if m.get('enable_packet_capture') is not None:
+            self.enable_packet_capture = m.get('enable_packet_capture')
         if m.get('expect_exist_string') is not None:
             temp_model = DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString()
             self.expect_exist_string = temp_model.from_map(m['expect_exist_string'])

@@ -1,3 +1,7 @@
+2025-12-02 Version: 4.0.6
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.enable_packet_capture.
+
+
 2025-11-14 Version: 4.0.5
 - Update API DescribeMonitoringAgentStatuses: add response parameters Body.NodeStatusList.$.LoongCollectorVersion.
 
