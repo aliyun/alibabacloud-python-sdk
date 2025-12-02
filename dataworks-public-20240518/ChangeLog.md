@@ -1,3 +1,7 @@
+2025-12-02 Version: 7.7.1
+- Update API ListDataQualityScanRuns: add request parameters Filter.
+
+
 2025-11-26 Version: 7.7.0
 - Support API CreateIdentifyCredential.
 

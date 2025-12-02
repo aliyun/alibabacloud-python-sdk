@@ -17206,7 +17206,7 @@ class Client(OpenApiClient):
 
     def list_data_quality_scan_runs_with_options(
         self,
-        request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
+        tmp_req: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
         """
@@ -17214,11 +17214,15 @@ class Client(OpenApiClient):
         
         @description This API operation is available for all DataWorks editions.
         
-        @param request: ListDataQualityScanRunsRequest
+        @param tmp_req: ListDataQualityScanRunsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityScanRunsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDataQualityScanRunsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
         query = {}
         if not UtilClient.is_unset(request.create_time_from):
             query['CreateTimeFrom'] = request.create_time_from
@@ -17226,6 +17230,8 @@ class Client(OpenApiClient):
             query['CreateTimeTo'] = request.create_time_to
         if not UtilClient.is_unset(request.data_quality_scan_id):
             query['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -17257,7 +17263,7 @@ class Client(OpenApiClient):
 
     async def list_data_quality_scan_runs_with_options_async(
         self,
-        request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
+        tmp_req: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
         """
@@ -17265,11 +17271,15 @@ class Client(OpenApiClient):
         
         @description This API operation is available for all DataWorks editions.
         
-        @param request: ListDataQualityScanRunsRequest
+        @param tmp_req: ListDataQualityScanRunsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataQualityScanRunsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDataQualityScanRunsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
         query = {}
         if not UtilClient.is_unset(request.create_time_from):
             query['CreateTimeFrom'] = request.create_time_from
@@ -17277,6 +17287,8 @@ class Client(OpenApiClient):
             query['CreateTimeTo'] = request.create_time_to
         if not UtilClient.is_unset(request.data_quality_scan_id):
             query['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
