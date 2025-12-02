@@ -567,6 +567,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -646,6 +648,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_description):

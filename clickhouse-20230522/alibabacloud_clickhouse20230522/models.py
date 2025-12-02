@@ -826,6 +826,7 @@ class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
         backup_set_id: str = None,
+        category: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
         dbtime_zone: str = None,
@@ -849,6 +850,7 @@ class CreateDBInstanceRequest(TeaModel):
     ):
         # The backup set ID.
         self.backup_set_id = backup_set_id
+        self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cluster description.
@@ -899,6 +901,8 @@ class CreateDBInstanceRequest(TeaModel):
         result = dict()
         if self.backup_set_id is not None:
             result['BackupSetId'] = self.backup_set_id
+        if self.category is not None:
+            result['Category'] = self.category
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
@@ -947,6 +951,8 @@ class CreateDBInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('BackupSetId') is not None:
             self.backup_set_id = m.get('BackupSetId')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
@@ -997,6 +1003,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         backup_set_id: str = None,
+        category: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
         dbtime_zone: str = None,
@@ -1020,6 +1027,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
     ):
         # The backup set ID.
         self.backup_set_id = backup_set_id
+        self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cluster description.
@@ -1067,6 +1075,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.backup_set_id is not None:
             result['BackupSetId'] = self.backup_set_id
+        if self.category is not None:
+            result['Category'] = self.category
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
@@ -1113,6 +1123,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('BackupSetId') is not None:
             self.backup_set_id = m.get('BackupSetId')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:

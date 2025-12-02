@@ -1,3 +1,7 @@
+2025-12-02 Version: 2.1.3
+- Update API CreateDBInstance: add request parameters Category.
+
+
 2025-11-04 Version: 2.1.2
 - Update API DescribeEndpoints: add response parameters Body.Data.Endpoints.$.ComputingGroupId.
 
