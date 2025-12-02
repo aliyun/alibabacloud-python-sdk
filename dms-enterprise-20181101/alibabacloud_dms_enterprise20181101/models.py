@@ -7001,10 +7001,12 @@ class ChatWithDesensitizeSSERequest(TeaModel):
         self,
         audio_json: str = None,
         desensitization_rule: str = None,
+        dimensions: int = None,
         enable_code_interpreter: bool = None,
         enable_search: bool = None,
         enable_thinking: bool = None,
         include_usage: bool = None,
+        input: str = None,
         instance_id: int = None,
         logprobs: bool = None,
         max_tokens: int = None,
@@ -7028,10 +7030,12 @@ class ChatWithDesensitizeSSERequest(TeaModel):
     ):
         self.audio_json = audio_json
         self.desensitization_rule = desensitization_rule
+        self.dimensions = dimensions
         self.enable_code_interpreter = enable_code_interpreter
         self.enable_search = enable_search
         self.enable_thinking = enable_thinking
         self.include_usage = include_usage
+        self.input = input
         # This parameter is required.
         self.instance_id = instance_id
         self.logprobs = logprobs
@@ -7067,6 +7071,8 @@ class ChatWithDesensitizeSSERequest(TeaModel):
             result['AudioJson'] = self.audio_json
         if self.desensitization_rule is not None:
             result['DesensitizationRule'] = self.desensitization_rule
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions
         if self.enable_code_interpreter is not None:
             result['EnableCodeInterpreter'] = self.enable_code_interpreter
         if self.enable_search is not None:
@@ -7075,6 +7081,8 @@ class ChatWithDesensitizeSSERequest(TeaModel):
             result['EnableThinking'] = self.enable_thinking
         if self.include_usage is not None:
             result['IncludeUsage'] = self.include_usage
+        if self.input is not None:
+            result['Input'] = self.input
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.logprobs is not None:
@@ -7123,6 +7131,8 @@ class ChatWithDesensitizeSSERequest(TeaModel):
             self.audio_json = m.get('AudioJson')
         if m.get('DesensitizationRule') is not None:
             self.desensitization_rule = m.get('DesensitizationRule')
+        if m.get('Dimensions') is not None:
+            self.dimensions = m.get('Dimensions')
         if m.get('EnableCodeInterpreter') is not None:
             self.enable_code_interpreter = m.get('EnableCodeInterpreter')
         if m.get('EnableSearch') is not None:
@@ -7131,6 +7141,8 @@ class ChatWithDesensitizeSSERequest(TeaModel):
             self.enable_thinking = m.get('EnableThinking')
         if m.get('IncludeUsage') is not None:
             self.include_usage = m.get('IncludeUsage')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Logprobs') is not None:
@@ -7179,10 +7191,12 @@ class ChatWithDesensitizeSSEShrinkRequest(TeaModel):
         self,
         audio_json: str = None,
         desensitization_rule: str = None,
+        dimensions: int = None,
         enable_code_interpreter: bool = None,
         enable_search: bool = None,
         enable_thinking: bool = None,
         include_usage: bool = None,
+        input: str = None,
         instance_id: int = None,
         logprobs: bool = None,
         max_tokens: int = None,
@@ -7206,10 +7220,12 @@ class ChatWithDesensitizeSSEShrinkRequest(TeaModel):
     ):
         self.audio_json = audio_json
         self.desensitization_rule = desensitization_rule
+        self.dimensions = dimensions
         self.enable_code_interpreter = enable_code_interpreter
         self.enable_search = enable_search
         self.enable_thinking = enable_thinking
         self.include_usage = include_usage
+        self.input = input
         # This parameter is required.
         self.instance_id = instance_id
         self.logprobs = logprobs
@@ -7245,6 +7261,8 @@ class ChatWithDesensitizeSSEShrinkRequest(TeaModel):
             result['AudioJson'] = self.audio_json
         if self.desensitization_rule is not None:
             result['DesensitizationRule'] = self.desensitization_rule
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions
         if self.enable_code_interpreter is not None:
             result['EnableCodeInterpreter'] = self.enable_code_interpreter
         if self.enable_search is not None:
@@ -7253,6 +7271,8 @@ class ChatWithDesensitizeSSEShrinkRequest(TeaModel):
             result['EnableThinking'] = self.enable_thinking
         if self.include_usage is not None:
             result['IncludeUsage'] = self.include_usage
+        if self.input is not None:
+            result['Input'] = self.input
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.logprobs is not None:
@@ -7301,6 +7321,8 @@ class ChatWithDesensitizeSSEShrinkRequest(TeaModel):
             self.audio_json = m.get('AudioJson')
         if m.get('DesensitizationRule') is not None:
             self.desensitization_rule = m.get('DesensitizationRule')
+        if m.get('Dimensions') is not None:
+            self.dimensions = m.get('Dimensions')
         if m.get('EnableCodeInterpreter') is not None:
             self.enable_code_interpreter = m.get('EnableCodeInterpreter')
         if m.get('EnableSearch') is not None:
@@ -7309,6 +7331,8 @@ class ChatWithDesensitizeSSEShrinkRequest(TeaModel):
             self.enable_thinking = m.get('EnableThinking')
         if m.get('IncludeUsage') is not None:
             self.include_usage = m.get('IncludeUsage')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Logprobs') is not None:
@@ -12375,6 +12399,7 @@ class CreateDifyInstanceRequest(TeaModel):
         model_id: str = None,
         model_option: str = None,
         nat_gateway_option: str = None,
+        only_intranet: bool = None,
         oss_path: str = None,
         oss_resource_id: int = None,
         pay_period: int = None,
@@ -12435,6 +12460,7 @@ class CreateDifyInstanceRequest(TeaModel):
         self.model_id = model_id
         self.model_option = model_option
         self.nat_gateway_option = nat_gateway_option
+        self.only_intranet = only_intranet
         self.oss_path = oss_path
         self.oss_resource_id = oss_resource_id
         self.pay_period = pay_period
@@ -12538,6 +12564,8 @@ class CreateDifyInstanceRequest(TeaModel):
             result['ModelOption'] = self.model_option
         if self.nat_gateway_option is not None:
             result['NatGatewayOption'] = self.nat_gateway_option
+        if self.only_intranet is not None:
+            result['OnlyIntranet'] = self.only_intranet
         if self.oss_path is not None:
             result['OssPath'] = self.oss_path
         if self.oss_resource_id is not None:
@@ -12658,6 +12686,8 @@ class CreateDifyInstanceRequest(TeaModel):
             self.model_option = m.get('ModelOption')
         if m.get('NatGatewayOption') is not None:
             self.nat_gateway_option = m.get('NatGatewayOption')
+        if m.get('OnlyIntranet') is not None:
+            self.only_intranet = m.get('OnlyIntranet')
         if m.get('OssPath') is not None:
             self.oss_path = m.get('OssPath')
         if m.get('OssResourceId') is not None:

@@ -1,3 +1,9 @@
+2025-12-02 Version: 2.1.1
+- Update API ChatWithDesensitizeSSE: add request parameters Dimensions.
+- Update API ChatWithDesensitizeSSE: add request parameters Input.
+- Update API CreateDifyInstance: add request parameters OnlyIntranet.
+
+
 2025-11-27 Version: 2.1.0
 - Support API ChatWithDesensitizeSSE.
 

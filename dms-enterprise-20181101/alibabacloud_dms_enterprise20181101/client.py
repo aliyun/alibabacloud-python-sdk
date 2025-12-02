@@ -2617,6 +2617,8 @@ class Client(OpenApiClient):
             query['AudioJson'] = request.audio_json
         if not UtilClient.is_unset(request.desensitization_rule):
             query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.enable_code_interpreter):
             query['EnableCodeInterpreter'] = request.enable_code_interpreter
         if not UtilClient.is_unset(request.enable_search):
@@ -2625,6 +2627,8 @@ class Client(OpenApiClient):
             query['EnableThinking'] = request.enable_thinking
         if not UtilClient.is_unset(request.include_usage):
             query['IncludeUsage'] = request.include_usage
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.logprobs):
@@ -2716,6 +2720,8 @@ class Client(OpenApiClient):
             query['AudioJson'] = request.audio_json
         if not UtilClient.is_unset(request.desensitization_rule):
             query['DesensitizationRule'] = request.desensitization_rule
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.enable_code_interpreter):
             query['EnableCodeInterpreter'] = request.enable_code_interpreter
         if not UtilClient.is_unset(request.enable_search):
@@ -2724,6 +2730,8 @@ class Client(OpenApiClient):
             query['EnableThinking'] = request.enable_thinking
         if not UtilClient.is_unset(request.include_usage):
             query['IncludeUsage'] = request.include_usage
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.logprobs):
@@ -4922,6 +4930,8 @@ class Client(OpenApiClient):
             query['ModelOption'] = request.model_option
         if not UtilClient.is_unset(request.nat_gateway_option):
             query['NatGatewayOption'] = request.nat_gateway_option
+        if not UtilClient.is_unset(request.only_intranet):
+            query['OnlyIntranet'] = request.only_intranet
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
         if not UtilClient.is_unset(request.oss_resource_id):
@@ -5080,6 +5090,8 @@ class Client(OpenApiClient):
             query['ModelOption'] = request.model_option
         if not UtilClient.is_unset(request.nat_gateway_option):
             query['NatGatewayOption'] = request.nat_gateway_option
+        if not UtilClient.is_unset(request.only_intranet):
+            query['OnlyIntranet'] = request.only_intranet
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
         if not UtilClient.is_unset(request.oss_resource_id):
