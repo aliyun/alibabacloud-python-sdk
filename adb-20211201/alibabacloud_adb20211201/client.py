@@ -1185,7 +1185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ConfigureResultExportResponse:
         """
-        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        @summary Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
         
         @param tmp_req: ConfigureResultExportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1234,7 +1234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ConfigureResultExportResponse:
         """
-        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        @summary Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
         
         @param tmp_req: ConfigureResultExportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1282,7 +1282,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ConfigureResultExportRequest,
     ) -> adb_20211201_models.ConfigureResultExportResponse:
         """
-        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        @summary Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
         
         @param request: ConfigureResultExportRequest
         @return: ConfigureResultExportResponse
@@ -1295,7 +1295,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ConfigureResultExportRequest,
     ) -> adb_20211201_models.ConfigureResultExportResponse:
         """
-        @summary 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+        @summary Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
         
         @param request: ConfigureResultExportRequest
         @return: ConfigureResultExportResponse
@@ -2037,7 +2037,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
         """
-        @summary 创建Kafka到Huid的APS链路
+        @summary Creates a data ingestion task to load data from an Apache Kafka topic into an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @param tmp_req: CreateApsKafkaHudiJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2132,7 +2132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
         """
-        @summary 创建Kafka到Huid的APS链路
+        @summary Creates a data ingestion task to load data from an Apache Kafka topic into an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @param tmp_req: CreateApsKafkaHudiJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2226,7 +2226,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsKafkaHudiJobRequest,
     ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
         """
-        @summary 创建Kafka到Huid的APS链路
+        @summary Creates a data ingestion task to load data from an Apache Kafka topic into an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @param request: CreateApsKafkaHudiJobRequest
         @return: CreateApsKafkaHudiJobResponse
@@ -2239,7 +2239,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsKafkaHudiJobRequest,
     ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
         """
-        @summary 创建Kafka到Huid的APS链路
+        @summary Creates a data ingestion task to load data from an Apache Kafka topic into an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @param request: CreateApsKafkaHudiJobRequest
         @return: CreateApsKafkaHudiJobResponse
@@ -2489,7 +2489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsWebhookResponse:
         """
-        @summary CreateApsWebhook
+        @summary Creates a new webhook for the specified cluster or task type.
         
         @param tmp_req: CreateApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2534,7 +2534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsWebhookResponse:
         """
-        @summary CreateApsWebhook
+        @summary Creates a new webhook for the specified cluster or task type.
         
         @param tmp_req: CreateApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2578,7 +2578,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsWebhookRequest,
     ) -> adb_20211201_models.CreateApsWebhookResponse:
         """
-        @summary CreateApsWebhook
+        @summary Creates a new webhook for the specified cluster or task type.
         
         @param request: CreateApsWebhookRequest
         @return: CreateApsWebhookResponse
@@ -2591,7 +2591,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsWebhookRequest,
     ) -> adb_20211201_models.CreateApsWebhookResponse:
         """
-        @summary CreateApsWebhook
+        @summary Creates a new webhook for the specified cluster or task type.
         
         @param request: CreateApsWebhookRequest
         @return: CreateApsWebhookResponse
@@ -2605,7 +2605,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateBackupResponse:
         """
-        @summary 手动创建备份集
+        @summary Creates a data backup for an AnalyticDB for MySQL instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.** Temporary backups are the same as regular backups in terms of price and retention period of backup sets.
         
         @param request: CreateBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2650,7 +2652,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateBackupResponse:
         """
-        @summary 手动创建备份集
+        @summary Creates a data backup for an AnalyticDB for MySQL instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.** Temporary backups are the same as regular backups in terms of price and retention period of backup sets.
         
         @param request: CreateBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2694,7 +2698,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateBackupRequest,
     ) -> adb_20211201_models.CreateBackupResponse:
         """
-        @summary 手动创建备份集
+        @summary Creates a data backup for an AnalyticDB for MySQL instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.** Temporary backups are the same as regular backups in terms of price and retention period of backup sets.
         
         @param request: CreateBackupRequest
         @return: CreateBackupResponse
@@ -2707,7 +2713,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateBackupRequest,
     ) -> adb_20211201_models.CreateBackupResponse:
         """
-        @summary 手动创建备份集
+        @summary Creates a data backup for an AnalyticDB for MySQL instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.** Temporary backups are the same as regular backups in terms of price and retention period of backup sets.
         
         @param request: CreateBackupRequest
         @return: CreateBackupResponse
@@ -2950,6 +2958,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.gpu_elastic_plan):
+            request.gpu_elastic_plan_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gpu_elastic_plan, 'GpuElasticPlan', 'json')
         if not UtilClient.is_unset(tmp_req.ray_config):
             request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
@@ -2969,6 +2979,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_params_shrink):
             query['EngineParams'] = request.engine_params_shrink
+        if not UtilClient.is_unset(request.gpu_elastic_plan_shrink):
+            query['GpuElasticPlan'] = request.gpu_elastic_plan_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -3033,6 +3045,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.gpu_elastic_plan):
+            request.gpu_elastic_plan_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gpu_elastic_plan, 'GpuElasticPlan', 'json')
         if not UtilClient.is_unset(tmp_req.ray_config):
             request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
@@ -3052,6 +3066,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_params_shrink):
             query['EngineParams'] = request.engine_params_shrink
+        if not UtilClient.is_unset(request.gpu_elastic_plan_shrink):
+            query['GpuElasticPlan'] = request.gpu_elastic_plan_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -3397,7 +3413,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
         """
-        @summary 创建物化视图自动推荐任务
+        @summary Creates a materialized view recommendation task.
         
         @param request: CreateMaterializedViewRecommendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3460,7 +3476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
         """
-        @summary 创建物化视图自动推荐任务
+        @summary Creates a materialized view recommendation task.
         
         @param request: CreateMaterializedViewRecommendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3522,7 +3538,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateMaterializedViewRecommendRequest,
     ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
         """
-        @summary 创建物化视图自动推荐任务
+        @summary Creates a materialized view recommendation task.
         
         @param request: CreateMaterializedViewRecommendRequest
         @return: CreateMaterializedViewRecommendResponse
@@ -3535,7 +3551,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateMaterializedViewRecommendRequest,
     ) -> adb_20211201_models.CreateMaterializedViewRecommendResponse:
         """
-        @summary 创建物化视图自动推荐任务
+        @summary Creates a materialized view recommendation task.
         
         @param request: CreateMaterializedViewRecommendRequest
         @return: CreateMaterializedViewRecommendResponse
@@ -4273,7 +4289,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteApsWebhookResponse:
         """
-        @summary DeleteApsWebhook
+        @summary Deletes a specific webhook in a specified cluster.
+        
+        @description This API allows users to delete an existing webhook configuration by providing `RegionId`, `DBClusterId`, and `WebhookId`. Make sure that the provided parameter values are accurate to avoid deleting important settings by mistake.
         
         @param request: DeleteApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4312,7 +4330,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteApsWebhookResponse:
         """
-        @summary DeleteApsWebhook
+        @summary Deletes a specific webhook in a specified cluster.
+        
+        @description This API allows users to delete an existing webhook configuration by providing `RegionId`, `DBClusterId`, and `WebhookId`. Make sure that the provided parameter values are accurate to avoid deleting important settings by mistake.
         
         @param request: DeleteApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4350,7 +4370,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteApsWebhookRequest,
     ) -> adb_20211201_models.DeleteApsWebhookResponse:
         """
-        @summary DeleteApsWebhook
+        @summary Deletes a specific webhook in a specified cluster.
+        
+        @description This API allows users to delete an existing webhook configuration by providing `RegionId`, `DBClusterId`, and `WebhookId`. Make sure that the provided parameter values are accurate to avoid deleting important settings by mistake.
         
         @param request: DeleteApsWebhookRequest
         @return: DeleteApsWebhookResponse
@@ -4363,7 +4385,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteApsWebhookRequest,
     ) -> adb_20211201_models.DeleteApsWebhookResponse:
         """
-        @summary DeleteApsWebhook
+        @summary Deletes a specific webhook in a specified cluster.
+        
+        @description This API allows users to delete an existing webhook configuration by providing `RegionId`, `DBClusterId`, and `WebhookId`. Make sure that the provided parameter values are accurate to avoid deleting important settings by mistake.
         
         @param request: DeleteApsWebhookRequest
         @return: DeleteApsWebhookResponse
@@ -4950,6 +4974,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_lake_storage_with_options_async(request, runtime)
+
+    def delete_materialized_view_recommend_with_options(
+        self,
+        request: adb_20211201_models.DeleteMaterializedViewRecommendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteMaterializedViewRecommendResponse:
+        """
+        @summary Deletes a materialized view recommendation task.
+        
+        @param request: DeleteMaterializedViewRecommendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMaterializedViewRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMaterializedViewRecommend',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeleteMaterializedViewRecommendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_materialized_view_recommend_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteMaterializedViewRecommendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteMaterializedViewRecommendResponse:
+        """
+        @summary Deletes a materialized view recommendation task.
+        
+        @param request: DeleteMaterializedViewRecommendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMaterializedViewRecommendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMaterializedViewRecommend',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeleteMaterializedViewRecommendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_materialized_view_recommend(
+        self,
+        request: adb_20211201_models.DeleteMaterializedViewRecommendRequest,
+    ) -> adb_20211201_models.DeleteMaterializedViewRecommendResponse:
+        """
+        @summary Deletes a materialized view recommendation task.
+        
+        @param request: DeleteMaterializedViewRecommendRequest
+        @return: DeleteMaterializedViewRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_materialized_view_recommend_with_options(request, runtime)
+
+    async def delete_materialized_view_recommend_async(
+        self,
+        request: adb_20211201_models.DeleteMaterializedViewRecommendRequest,
+    ) -> adb_20211201_models.DeleteMaterializedViewRecommendResponse:
+        """
+        @summary Deletes a materialized view recommendation task.
+        
+        @param request: DeleteMaterializedViewRecommendRequest
+        @return: DeleteMaterializedViewRecommendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_materialized_view_recommend_with_options_async(request, runtime)
 
     def delete_performance_view_with_options(
         self,
@@ -9937,7 +10081,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
         """
-        @summary 获取SSL配置信息
+        @summary Queries the SSL configurations of a cluster.
         
         @param request: DescribeDBClusterSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9974,7 +10118,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
         """
-        @summary 获取SSL配置信息
+        @summary Queries the SSL configurations of a cluster.
         
         @param request: DescribeDBClusterSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10010,7 +10154,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterSSLRequest,
     ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
         """
-        @summary 获取SSL配置信息
+        @summary Queries the SSL configurations of a cluster.
         
         @param request: DescribeDBClusterSSLRequest
         @return: DescribeDBClusterSSLResponse
@@ -10023,7 +10167,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterSSLRequest,
     ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
         """
-        @summary 获取SSL配置信息
+        @summary Queries the SSL configurations of a cluster.
         
         @param request: DescribeDBClusterSSLRequest
         @return: DescribeDBClusterSSLResponse
@@ -11997,7 +12141,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeHistoryTasksResponse:
         """
-        @summary 任务中心任务列表
+        @summary Retrieve historical task records.
+        
+        @description Only supports viewing tasks within the last 30 days.
         
         @param request: DescribeHistoryTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12060,7 +12206,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeHistoryTasksResponse:
         """
-        @summary 任务中心任务列表
+        @summary Retrieve historical task records.
+        
+        @description Only supports viewing tasks within the last 30 days.
         
         @param request: DescribeHistoryTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12122,7 +12270,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeHistoryTasksRequest,
     ) -> adb_20211201_models.DescribeHistoryTasksResponse:
         """
-        @summary 任务中心任务列表
+        @summary Retrieve historical task records.
+        
+        @description Only supports viewing tasks within the last 30 days.
         
         @param request: DescribeHistoryTasksRequest
         @return: DescribeHistoryTasksResponse
@@ -12135,7 +12285,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeHistoryTasksRequest,
     ) -> adb_20211201_models.DescribeHistoryTasksResponse:
         """
-        @summary 任务中心任务列表
+        @summary Retrieve historical task records.
+        
+        @description Only supports viewing tasks within the last 30 days.
         
         @param request: DescribeHistoryTasksRequest
         @return: DescribeHistoryTasksResponse
@@ -12149,7 +12301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Queries task statistics.
         
         @param request: DescribeHistoryTasksStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12210,7 +12362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Queries task statistics.
         
         @param request: DescribeHistoryTasksStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12270,7 +12422,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeHistoryTasksStatRequest,
     ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Queries task statistics.
         
         @param request: DescribeHistoryTasksStatRequest
         @return: DescribeHistoryTasksStatResponse
@@ -12283,7 +12435,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeHistoryTasksStatRequest,
     ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Queries task statistics.
         
         @param request: DescribeHistoryTasksStatRequest
         @return: DescribeHistoryTasksStatResponse
@@ -13110,6 +13262,394 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_lake_cache_size_with_options_async(request, runtime)
+
+    def describe_mvrecommend_results_with_options(
+        self,
+        request: adb_20211201_models.DescribeMVRecommendResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeMVRecommendResultsResponse:
+        """
+        @summary Retrieves the result of a recommendation task for a materialized view.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeMVRecommendResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMVRecommendResultsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_inner):
+            query['ActionInner'] = request.action_inner
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sub_query_id):
+            query['SubQueryId'] = request.sub_query_id
+        if not UtilClient.is_unset(request.subtask_id):
+            query['SubtaskId'] = request.subtask_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMVRecommendResults',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeMVRecommendResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mvrecommend_results_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeMVRecommendResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeMVRecommendResultsResponse:
+        """
+        @summary Retrieves the result of a recommendation task for a materialized view.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeMVRecommendResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMVRecommendResultsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_inner):
+            query['ActionInner'] = request.action_inner
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sub_query_id):
+            query['SubQueryId'] = request.sub_query_id
+        if not UtilClient.is_unset(request.subtask_id):
+            query['SubtaskId'] = request.subtask_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMVRecommendResults',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeMVRecommendResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mvrecommend_results(
+        self,
+        request: adb_20211201_models.DescribeMVRecommendResultsRequest,
+    ) -> adb_20211201_models.DescribeMVRecommendResultsResponse:
+        """
+        @summary Retrieves the result of a recommendation task for a materialized view.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeMVRecommendResultsRequest
+        @return: DescribeMVRecommendResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_mvrecommend_results_with_options(request, runtime)
+
+    async def describe_mvrecommend_results_async(
+        self,
+        request: adb_20211201_models.DescribeMVRecommendResultsRequest,
+    ) -> adb_20211201_models.DescribeMVRecommendResultsResponse:
+        """
+        @summary Retrieves the result of a recommendation task for a materialized view.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeMVRecommendResultsRequest
+        @return: DescribeMVRecommendResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_mvrecommend_results_with_options_async(request, runtime)
+
+    def describe_mv_recommend_sub_tasks_with_options(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendSubTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeMvRecommendSubTasksResponse:
+        """
+        @summary 查看物化视图子任务
+        
+        @param request: DescribeMvRecommendSubTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMvRecommendSubTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_inner):
+            query['ActionInner'] = request.action_inner
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subtask_id):
+            query['SubtaskId'] = request.subtask_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMvRecommendSubTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeMvRecommendSubTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mv_recommend_sub_tasks_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendSubTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeMvRecommendSubTasksResponse:
+        """
+        @summary 查看物化视图子任务
+        
+        @param request: DescribeMvRecommendSubTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMvRecommendSubTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_inner):
+            query['ActionInner'] = request.action_inner
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subtask_id):
+            query['SubtaskId'] = request.subtask_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMvRecommendSubTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeMvRecommendSubTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mv_recommend_sub_tasks(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendSubTasksRequest,
+    ) -> adb_20211201_models.DescribeMvRecommendSubTasksResponse:
+        """
+        @summary 查看物化视图子任务
+        
+        @param request: DescribeMvRecommendSubTasksRequest
+        @return: DescribeMvRecommendSubTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_mv_recommend_sub_tasks_with_options(request, runtime)
+
+    async def describe_mv_recommend_sub_tasks_async(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendSubTasksRequest,
+    ) -> adb_20211201_models.DescribeMvRecommendSubTasksResponse:
+        """
+        @summary 查看物化视图子任务
+        
+        @param request: DescribeMvRecommendSubTasksRequest
+        @return: DescribeMvRecommendSubTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_mv_recommend_sub_tasks_with_options_async(request, runtime)
+
+    def describe_mv_recommend_tasks_with_options(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeMvRecommendTasksResponse:
+        """
+        @summary 查看物化视图推荐任务
+        
+        @param request: DescribeMvRecommendTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMvRecommendTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_inner):
+            query['ActionInner'] = request.action_inner
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMvRecommendTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeMvRecommendTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mv_recommend_tasks_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeMvRecommendTasksResponse:
+        """
+        @summary 查看物化视图推荐任务
+        
+        @param request: DescribeMvRecommendTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMvRecommendTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_inner):
+            query['ActionInner'] = request.action_inner
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMvRecommendTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeMvRecommendTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mv_recommend_tasks(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendTasksRequest,
+    ) -> adb_20211201_models.DescribeMvRecommendTasksResponse:
+        """
+        @summary 查看物化视图推荐任务
+        
+        @param request: DescribeMvRecommendTasksRequest
+        @return: DescribeMvRecommendTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_mv_recommend_tasks_with_options(request, runtime)
+
+    async def describe_mv_recommend_tasks_async(
+        self,
+        request: adb_20211201_models.DescribeMvRecommendTasksRequest,
+    ) -> adb_20211201_models.DescribeMvRecommendTasksResponse:
+        """
+        @summary 查看物化视图推荐任务
+        
+        @param request: DescribeMvRecommendTasksRequest
+        @return: DescribeMvRecommendTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_mv_recommend_tasks_with_options_async(request, runtime)
 
     def describe_operator_permission_with_options(
         self,
@@ -13973,7 +14513,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeResultExportConfigResponse:
         """
-        @summary 获取用户配置的导出信息
+        @summary Queries the user-configured result set export settings.
         
         @param request: DescribeResultExportConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14012,7 +14552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeResultExportConfigResponse:
         """
-        @summary 获取用户配置的导出信息
+        @summary Queries the user-configured result set export settings.
         
         @param request: DescribeResultExportConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14050,7 +14590,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeResultExportConfigRequest,
     ) -> adb_20211201_models.DescribeResultExportConfigResponse:
         """
-        @summary 获取用户配置的导出信息
+        @summary Queries the user-configured result set export settings.
         
         @param request: DescribeResultExportConfigRequest
         @return: DescribeResultExportConfigResponse
@@ -14063,7 +14603,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeResultExportConfigRequest,
     ) -> adb_20211201_models.DescribeResultExportConfigResponse:
         """
-        @summary 获取用户配置的导出信息
+        @summary Queries the user-configured result set export settings.
         
         @param request: DescribeResultExportConfigRequest
         @return: DescribeResultExportConfigResponse
@@ -14653,7 +15193,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
         """
-        @summary 查询Spark审计日志
+        @summary Queries the SQL audit logs for a Spark Interactive resource group.
+        
+        @description SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL auditing is turned off midway, when it is re-enabled, you can only query the SQL audit logs generated after it was turned back on.
+        >  You can query only SQL audit logs that are executed by using Spark Interactive Resource Group.
         
         @param request: DescribeSparkAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14728,7 +15271,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
         """
-        @summary 查询Spark审计日志
+        @summary Queries the SQL audit logs for a Spark Interactive resource group.
+        
+        @description SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL auditing is turned off midway, when it is re-enabled, you can only query the SQL audit logs generated after it was turned back on.
+        >  You can query only SQL audit logs that are executed by using Spark Interactive Resource Group.
         
         @param request: DescribeSparkAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14802,7 +15348,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkAuditLogRecordsRequest,
     ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
         """
-        @summary 查询Spark审计日志
+        @summary Queries the SQL audit logs for a Spark Interactive resource group.
+        
+        @description SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL auditing is turned off midway, when it is re-enabled, you can only query the SQL audit logs generated after it was turned back on.
+        >  You can query only SQL audit logs that are executed by using Spark Interactive Resource Group.
         
         @param request: DescribeSparkAuditLogRecordsRequest
         @return: DescribeSparkAuditLogRecordsResponse
@@ -14815,7 +15364,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkAuditLogRecordsRequest,
     ) -> adb_20211201_models.DescribeSparkAuditLogRecordsResponse:
         """
-        @summary 查询Spark审计日志
+        @summary Queries the SQL audit logs for a Spark Interactive resource group.
+        
+        @description SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL auditing is turned off midway, when it is re-enabled, you can only query the SQL audit logs generated after it was turned back on.
+        >  You can query only SQL audit logs that are executed by using Spark Interactive Resource Group.
         
         @param request: DescribeSparkAuditLogRecordsRequest
         @return: DescribeSparkAuditLogRecordsResponse
@@ -16339,6 +16891,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_quota_with_options_async(request, runtime)
 
+    def describe_view_jobs_with_options(
+        self,
+        request: adb_20211201_models.DescribeViewJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeViewJobsResponse:
+        """
+        @summary Retrieves materialized view refresh tasks.
+        
+        @param request: DescribeViewJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeViewJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_view_name):
+            query['FilterViewName'] = request.filter_view_name
+        if not UtilClient.is_unset(request.filter_view_type):
+            query['FilterViewType'] = request.filter_view_type
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeViewJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeViewJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_view_jobs_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeViewJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeViewJobsResponse:
+        """
+        @summary Retrieves materialized view refresh tasks.
+        
+        @param request: DescribeViewJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeViewJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_view_name):
+            query['FilterViewName'] = request.filter_view_name
+        if not UtilClient.is_unset(request.filter_view_type):
+            query['FilterViewType'] = request.filter_view_type
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeViewJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeViewJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_view_jobs(
+        self,
+        request: adb_20211201_models.DescribeViewJobsRequest,
+    ) -> adb_20211201_models.DescribeViewJobsResponse:
+        """
+        @summary Retrieves materialized view refresh tasks.
+        
+        @param request: DescribeViewJobsRequest
+        @return: DescribeViewJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_view_jobs_with_options(request, runtime)
+
+    async def describe_view_jobs_async(
+        self,
+        request: adb_20211201_models.DescribeViewJobsRequest,
+    ) -> adb_20211201_models.DescribeViewJobsResponse:
+        """
+        @summary Retrieves materialized view refresh tasks.
+        
+        @param request: DescribeViewJobsRequest
+        @return: DescribeViewJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_view_jobs_with_options_async(request, runtime)
+
     def describe_worker_detection_with_options(
         self,
         request: adb_20211201_models.DescribeWorkerDetectionRequest,
@@ -17621,7 +18301,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
         """
-        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        @summary View the Spark basic permission diagnosis report of the current user.
+        
+        @description The API diagnosis report contains whether the current user has all permissions required by the AnalyticDB for Spark related features. The scope of the permissions may exceed the minimum requirements of the business. The diagnostic report of the current API is used to quickly initialize the environment of AnalyticDB for Spark. If fine-grained permission configuration is needed, see [Configure fine-grained permissions in AnalyDB for Spark.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
         
         @param request: GetADBSparkNecessaryRAMPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17656,7 +18338,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
         """
-        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        @summary View the Spark basic permission diagnosis report of the current user.
+        
+        @description The API diagnosis report contains whether the current user has all permissions required by the AnalyticDB for Spark related features. The scope of the permissions may exceed the minimum requirements of the business. The diagnostic report of the current API is used to quickly initialize the environment of AnalyticDB for Spark. If fine-grained permission configuration is needed, see [Configure fine-grained permissions in AnalyDB for Spark.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
         
         @param request: GetADBSparkNecessaryRAMPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17690,7 +18374,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetADBSparkNecessaryRAMPermissionsRequest,
     ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
         """
-        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        @summary View the Spark basic permission diagnosis report of the current user.
+        
+        @description The API diagnosis report contains whether the current user has all permissions required by the AnalyticDB for Spark related features. The scope of the permissions may exceed the minimum requirements of the business. The diagnostic report of the current API is used to quickly initialize the environment of AnalyticDB for Spark. If fine-grained permission configuration is needed, see [Configure fine-grained permissions in AnalyDB for Spark.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
         
         @param request: GetADBSparkNecessaryRAMPermissionsRequest
         @return: GetADBSparkNecessaryRAMPermissionsResponse
@@ -17703,7 +18389,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetADBSparkNecessaryRAMPermissionsRequest,
     ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
         """
-        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        @summary View the Spark basic permission diagnosis report of the current user.
+        
+        @description The API diagnosis report contains whether the current user has all permissions required by the AnalyticDB for Spark related features. The scope of the permissions may exceed the minimum requirements of the business. The diagnostic report of the current API is used to quickly initialize the environment of AnalyticDB for Spark. If fine-grained permission configuration is needed, see [Configure fine-grained permissions in AnalyDB for Spark.](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-mysql/user-guide/create-the-aliyunadbsparkprocessingdatarole-role-for-a-ram-user-and-grant-permissions-to-the-role?spm=a2c63.p38356.help-menu-92664.d_2_5_0.48362a487dMzm9#section-y2z-ucd-1ko)
         
         @param request: GetADBSparkNecessaryRAMPermissionsRequest
         @return: GetADBSparkNecessaryRAMPermissionsResponse
@@ -21597,7 +22285,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListApsWebhookResponse:
         """
-        @summary ListApsWebhook
+        @summary Queries the Webhook configurations of a specified database cluster.
+        
+        @description This API allows you to obtain a list of configured webhooks based on `RegionId`, `DBClusterId`, and optional `JobType`. The `JobType` parameter specifies the task type, such as SLS/OSS export task. If the parameter is provided, webhooks related to the task type are returned. If the parameter is not provided, all types of webhooks are returned.
+        Note: Make sure that the `RegionId` and `DBClusterId` you provided are correct. Otherwise, the webhook information may not be obtained correctly.
         
         @param request: ListApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21636,7 +22327,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListApsWebhookResponse:
         """
-        @summary ListApsWebhook
+        @summary Queries the Webhook configurations of a specified database cluster.
+        
+        @description This API allows you to obtain a list of configured webhooks based on `RegionId`, `DBClusterId`, and optional `JobType`. The `JobType` parameter specifies the task type, such as SLS/OSS export task. If the parameter is provided, webhooks related to the task type are returned. If the parameter is not provided, all types of webhooks are returned.
+        Note: Make sure that the `RegionId` and `DBClusterId` you provided are correct. Otherwise, the webhook information may not be obtained correctly.
         
         @param request: ListApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21674,7 +22368,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListApsWebhookRequest,
     ) -> adb_20211201_models.ListApsWebhookResponse:
         """
-        @summary ListApsWebhook
+        @summary Queries the Webhook configurations of a specified database cluster.
+        
+        @description This API allows you to obtain a list of configured webhooks based on `RegionId`, `DBClusterId`, and optional `JobType`. The `JobType` parameter specifies the task type, such as SLS/OSS export task. If the parameter is provided, webhooks related to the task type are returned. If the parameter is not provided, all types of webhooks are returned.
+        Note: Make sure that the `RegionId` and `DBClusterId` you provided are correct. Otherwise, the webhook information may not be obtained correctly.
         
         @param request: ListApsWebhookRequest
         @return: ListApsWebhookResponse
@@ -21687,7 +22384,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListApsWebhookRequest,
     ) -> adb_20211201_models.ListApsWebhookResponse:
         """
-        @summary ListApsWebhook
+        @summary Queries the Webhook configurations of a specified database cluster.
+        
+        @description This API allows you to obtain a list of configured webhooks based on `RegionId`, `DBClusterId`, and optional `JobType`. The `JobType` parameter specifies the task type, such as SLS/OSS export task. If the parameter is provided, webhooks related to the task type are returned. If the parameter is not provided, all types of webhooks are returned.
+        Note: Make sure that the `RegionId` and `DBClusterId` you provided are correct. Otherwise, the webhook information may not be obtained correctly.
         
         @param request: ListApsWebhookRequest
         @return: ListApsWebhookResponse
@@ -24745,7 +25445,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
         """
-        @summary 配置SSL
+        @summary Modifies the SSL link configuration of a cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24786,7 +25486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
         """
-        @summary 配置SSL
+        @summary Modifies the SSL link configuration of a cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24826,7 +25526,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterSSLRequest,
     ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
         """
-        @summary 配置SSL
+        @summary Modifies the SSL link configuration of a cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @return: ModifyDBClusterSSLResponse
@@ -24839,7 +25539,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterSSLRequest,
     ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
         """
-        @summary 配置SSL
+        @summary Modifies the SSL link configuration of a cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @return: ModifyDBClusterSSLResponse
@@ -24974,6 +25674,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.gpu_elastic_plan):
+            request.gpu_elastic_plan_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gpu_elastic_plan, 'GpuElasticPlan', 'json')
         if not UtilClient.is_unset(tmp_req.ray_config):
             request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
@@ -24991,6 +25693,8 @@ class Client(OpenApiClient):
             query['EnableSpot'] = request.enable_spot
         if not UtilClient.is_unset(request.engine_params_shrink):
             query['EngineParams'] = request.engine_params_shrink
+        if not UtilClient.is_unset(request.gpu_elastic_plan_shrink):
+            query['GpuElasticPlan'] = request.gpu_elastic_plan_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -25057,6 +25761,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.engine_params):
             request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
+        if not UtilClient.is_unset(tmp_req.gpu_elastic_plan):
+            request.gpu_elastic_plan_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gpu_elastic_plan, 'GpuElasticPlan', 'json')
         if not UtilClient.is_unset(tmp_req.ray_config):
             request.ray_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ray_config, 'RayConfig', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
@@ -25074,6 +25780,8 @@ class Client(OpenApiClient):
             query['EnableSpot'] = request.enable_spot
         if not UtilClient.is_unset(request.engine_params_shrink):
             query['EngineParams'] = request.engine_params_shrink
+        if not UtilClient.is_unset(request.gpu_elastic_plan_shrink):
+            query['GpuElasticPlan'] = request.gpu_elastic_plan_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -25489,7 +26197,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyMaterializedViewResponse:
         """
-        @summary 修改物化视图
+        @summary Modifies materialized views.
         
         @param request: ModifyMaterializedViewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25548,7 +26256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyMaterializedViewResponse:
         """
-        @summary 修改物化视图
+        @summary Modifies materialized views.
         
         @param request: ModifyMaterializedViewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25606,7 +26314,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyMaterializedViewRequest,
     ) -> adb_20211201_models.ModifyMaterializedViewResponse:
         """
-        @summary 修改物化视图
+        @summary Modifies materialized views.
         
         @param request: ModifyMaterializedViewRequest
         @return: ModifyMaterializedViewResponse
@@ -25619,7 +26327,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyMaterializedViewRequest,
     ) -> adb_20211201_models.ModifyMaterializedViewResponse:
         """
-        @summary 修改物化视图
+        @summary Modifies materialized views.
         
         @param request: ModifyMaterializedViewRequest
         @return: ModifyMaterializedViewResponse
@@ -25633,7 +26341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
         """
-        @summary 修改物化视图自动推荐任务
+        @summary Modifies a materialized view recommendation task.
         
         @param request: ModifyMaterializedViewRecommendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25696,7 +26404,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
         """
-        @summary 修改物化视图自动推荐任务
+        @summary Modifies a materialized view recommendation task.
         
         @param request: ModifyMaterializedViewRecommendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25758,7 +26466,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyMaterializedViewRecommendRequest,
     ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
         """
-        @summary 修改物化视图自动推荐任务
+        @summary Modifies a materialized view recommendation task.
         
         @param request: ModifyMaterializedViewRecommendRequest
         @return: ModifyMaterializedViewRecommendResponse
@@ -25771,7 +26479,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyMaterializedViewRecommendRequest,
     ) -> adb_20211201_models.ModifyMaterializedViewRecommendResponse:
         """
-        @summary 修改物化视图自动推荐任务
+        @summary Modifies a materialized view recommendation task.
         
         @param request: ModifyMaterializedViewRecommendRequest
         @return: ModifyMaterializedViewRecommendResponse
@@ -25917,7 +26625,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
         """
-        @summary 修改SQL脚本模板位置
+        @summary Modifies the directory location of SQL templates.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifySqlTemplatePositionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25958,7 +26668,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
         """
-        @summary 修改SQL脚本模板位置
+        @summary Modifies the directory location of SQL templates.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifySqlTemplatePositionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25998,7 +26710,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifySqlTemplatePositionRequest,
     ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
         """
-        @summary 修改SQL脚本模板位置
+        @summary Modifies the directory location of SQL templates.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifySqlTemplatePositionRequest
         @return: ModifySqlTemplatePositionResponse
@@ -26011,7 +26725,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifySqlTemplatePositionRequest,
     ) -> adb_20211201_models.ModifySqlTemplatePositionResponse:
         """
-        @summary 修改SQL脚本模板位置
+        @summary Modifies the directory location of SQL templates.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifySqlTemplatePositionRequest
         @return: ModifySqlTemplatePositionResponse
@@ -27773,7 +28489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UpdateApsWebhookResponse:
         """
-        @summary UpdateApsWebhook
+        @summary Updates the webhook configuration of a specified cluster.
         
         @param tmp_req: UpdateApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27816,7 +28532,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UpdateApsWebhookResponse:
         """
-        @summary UpdateApsWebhook
+        @summary Updates the webhook configuration of a specified cluster.
         
         @param tmp_req: UpdateApsWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27858,7 +28574,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UpdateApsWebhookRequest,
     ) -> adb_20211201_models.UpdateApsWebhookResponse:
         """
-        @summary UpdateApsWebhook
+        @summary Updates the webhook configuration of a specified cluster.
         
         @param request: UpdateApsWebhookRequest
         @return: UpdateApsWebhookResponse
@@ -27871,7 +28587,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UpdateApsWebhookRequest,
     ) -> adb_20211201_models.UpdateApsWebhookResponse:
         """
-        @summary UpdateApsWebhook
+        @summary Updates the webhook configuration of a specified cluster.
         
         @param request: UpdateApsWebhookRequest
         @return: UpdateApsWebhookResponse

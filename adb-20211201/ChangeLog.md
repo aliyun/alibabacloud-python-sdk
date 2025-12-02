@@ -1,3 +1,14 @@
+2025-12-02 Version: 3.6.0
+- Support API DeleteMaterializedViewRecommend.
+- Support API DescribeMVRecommendResults.
+- Support API DescribeMvRecommendSubTasks.
+- Support API DescribeMvRecommendTasks.
+- Support API DescribeViewJobs.
+- Update API CreateDBResourceGroup: add request parameters GpuElasticPlan.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.GpuElasticPlan.
+- Update API ModifyDBResourceGroup: add request parameters GpuElasticPlan.
+
+
 2025-10-27 Version: 3.5.1
 - Update API DescribeAuditLogRecords: add response parameters Body.Items.$.ExecuteTimestamp.
 
