@@ -10334,6 +10334,8 @@ class Client(OpenApiClient):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.ntp_servers):
             query['NtpServers'] = request.ntp_servers
+        if not UtilClient.is_unset(request.override):
+            query['Override'] = request.override
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.ram_role_name):
@@ -10472,6 +10474,8 @@ class Client(OpenApiClient):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.ntp_servers):
             query['NtpServers'] = request.ntp_servers
+        if not UtilClient.is_unset(request.override):
+            query['Override'] = request.override
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.ram_role_name):

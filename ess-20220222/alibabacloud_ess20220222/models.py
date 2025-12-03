@@ -1989,9 +1989,10 @@ class CreateAlarmRequestDimensions(TeaModel):
         # *   If you set MetricType to system, this parameter has the following valid values:
         # 
         #     *   user_id: the ID of your Alibaba Cloud account.
-        #     *   scaling_group: the scaling group that you want to monitor by using the event-triggered task.
+        #     *   scaling_group: the scaling group that is monitored by the event-triggered task.
         #     *   device: the NIC type.
         #     *   state: the status of the TCP connection.
+        #     *   rulePool: the specified server group for the ALB qps metric.
         self.dimension_key = dimension_key
         # The dimension value of the metric. The valid values of this parameter vary based on the value of Dimensions.DimensionKey.
         # 
@@ -2003,15 +2004,17 @@ class CreateAlarmRequestDimensions(TeaModel):
         # 
         #     *   scaling_group: The system specifies the value.
         # 
-        #     *   device: You can set this parameter to eth0 or eth1.
+        #     *   device:
         # 
-        #         *   For instances of the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in VPCs.
-        #         *   For instances of the classic network type, eth1 specifies the public NIC.
+        #         *   eth0: For classic network instances, eth0 indicates the internal network network interface controller. Only one eth0 NIC exists on each instance that resides in VPCs.
+        #         *   eth1: For classic network instances, eth1 represents the Internet network interface controller.
         # 
-        #     *   state: You can set this parameter to TCP_TOTAL or ESTABLISHED.
+        #     *   state:
         # 
         #         *   TCP_TOTAL specifies the total number of TCP connections.
-        #         *   ESTABLISHED specifies the number of TCP connections that are established.
+        #         *   ESTABLISHED indicates the number of TCP connections that are established.
+        # 
+        #     *   rulePool: the ID of the ALB server group. Example: sgp-xxxxx.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -2174,7 +2177,7 @@ class CreateAlarmRequest(TeaModel):
     ):
         # The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
         self.alarm_actions = alarm_actions
-        # The operator that you want to use to compare the metric value and the threshold. Valid values:
+        # The operator that you want to use to compare the metric value and the threshold. Valid Values:
         # 
         # *   If the metric value is greater than or equal to the threshold, set the value to >=.
         # *   If the metric value is less than or equal to the metric threshold, set the value to <=.
@@ -2204,7 +2207,7 @@ class CreateAlarmRequest(TeaModel):
         self.effective = effective
         # The number of consecutive times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before the scaling rule is executed.
         # 
-        # Default value: 3.
+        # Default value: 3
         self.evaluation_count = evaluation_count
         # The information about the multi-metric alert rules.
         self.expressions = expressions
@@ -2251,7 +2254,7 @@ class CreateAlarmRequest(TeaModel):
         # 
         # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The metric type. Valid values:
+        # The metric type. Valid Values:
         # 
         # *   system: a system metric of CloudMonitor.
         # *   custom: a custom metric that is reported to CloudMonitor.
@@ -2259,7 +2262,7 @@ class CreateAlarmRequest(TeaModel):
         # The name of the event-triggered task.
         self.name = name
         self.owner_id = owner_id
-        # The statistical period of the metric data. Unit: seconds. Valid values:
+        # The statistical period of the metric data. Unit: seconds. Valid Values:
         # 
         # *   15
         # *   60
@@ -2267,7 +2270,7 @@ class CreateAlarmRequest(TeaModel):
         # *   300
         # *   900
         # 
-        # >  You can set this parameter to 15 seconds only for scaling groups of the ECS type.
+        # > You can set this parameter to 15 seconds only for scaling groups of the ECS type.
         # 
         # Default value: 300.
         self.period = period
@@ -2280,7 +2283,7 @@ class CreateAlarmRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The statistical method of the metric data. Valid values:
+        # The statistical method of the metric data. Valid Values:
         # 
         # *   Average: calculates the average value of the metric data.
         # *   Minimum: calculates the minimum value of the metric data.
@@ -8813,16 +8816,16 @@ class CreateScalingGroupRequestTags(TeaModel):
         propagate: bool = None,
         value: str = None,
     ):
-        # The tag key that you want to add to the scaling group.
+        # The tag key of the scaling group.
         self.key = key
-        # Specifies whether to propagate the tag that you want to add to the scaling group. Valid values:
+        # Identifies whether the tag is a propagatable tag. Valid values:
         # 
         # *   true: propagates the tag to only instances that are newly created.
         # *   false: does not propagate the tag to any instances.
         # 
         # Default value: false.
         self.propagate = propagate
-        # The tag value that you want to add to the scaling group.
+        # The tag value of the scaling group.
         self.value = value
 
     def validate(self):
@@ -9002,6 +9005,12 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: priority.
         self.allocation_strategy = allocation_strategy
+        # Whether to enable automatic rebalancing for the scaling group. This takes effect only when BalancedOnly is enabled for the scaling group. Valid values:
+        # 
+        # *   false: Auto rebalancing is disabled for the scaling group.
+        # *   true: If Auto rebalancing is enabled, the scaling group automatically detects the capacity of the zone. If the capacity of the zone is unbalanced, the scaling group actively scales out the zone and re-balances the capacity of the zone.
+        # 
+        # Default value: false.
         self.auto_rebalance = auto_rebalance
         # Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
@@ -9012,6 +9021,12 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        # The zone balancing mode. This mode takes effect only when the zone balancing mode is enabled. Valid values:
+        # 
+        # *   BalancedBestEffort: If a resource fails to be created in a zone, it is downgraded to another zone to ensure best-effort delivery of the resource.
+        # *   BalancedOnly: If a resource fails to be created in a zone, it is not downgraded to another zone. The scale-out activity is partially successful to avoid excessive imbalance of resources in different zones.
+        # 
+        # Default value: BalancedBestEffort.
         self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
@@ -9211,7 +9226,7 @@ class CreateScalingGroupRequest(TeaModel):
         self.stop_instance_timeout = stop_instance_timeout
         # > This parameter is unavailable.
         self.sync_alarm_rule_to_cms = sync_alarm_rule_to_cms
-        # The tags that you want to add to the scaling group.
+        # The information about the tags of the scaling group.
         self.tags = tags
         # The backend vServer group that you want to associate with the scaling group.
         self.vserver_groups = vserver_groups
@@ -23127,11 +23142,11 @@ class DescribeScalingGroupsRequest(TeaModel):
         self.group_type = group_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number. Page starts from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 50.
+        # The number of entries to return on each page. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -23733,12 +23748,20 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # *   priority: Auto Scaling adopts the predefined instance type sequence to create the required number of preemptible instances.
         # *   lowestPrice: Auto Scaling selects instance types that have the most economical vCPU pricing to create the required number of instances.
         self.allocation_strategy = allocation_strategy
+        # Whether to enable automatic rebalancing for the scaling group. This takes effect only when BalancedOnly is enabled for the scaling group. Valid value:
+        # 
+        # *   false: Auto rebalancing is disabled for the scaling group.
+        # *   true: If Auto rebalancing is enabled, the scaling group automatically detects the capacity of the zone. If the capacity of the zone is unbalanced, the scaling group actively scales out the zone and re-balances the capacity of the zone.
         self.auto_rebalance = auto_rebalance
         # Indicates whether instances in the scaling group are evenly distributed across the specified zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
         # *   true
         # *   false
         self.az_balance = az_balance
+        # The zone balancing mode. This mode takes effect only when the zone balancing mode is enabled. Valid value:
+        # 
+        # *   Default value: BalancedBestEffort. If a resource fails to be created in a zone, the resource is downgraded to another zone. This ensures best-effort delivery of the resource.
+        # *   BalancedOnly: If a resource fails to be created in a zone, the resource is not downgraded to another zone. The scale-out activity is partially successful to avoid excessive imbalance of resources in different zones.
         self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
@@ -31349,6 +31372,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         load_balancer_weight: int = None,
         memory: float = None,
         ntp_servers: List[str] = None,
+        override: bool = None,
         owner_id: int = None,
         ram_role_name: str = None,
         resource_group_id: str = None,
@@ -31485,6 +31509,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         self.memory = memory
         # The endpoints of Network Time Protocol (NTP) servers.
         self.ntp_servers = ntp_servers
+        self.override = override
         self.owner_id = owner_id
         # The name of the instance Resource Access Management (RAM) role. You can use the same RAM role to access elastic container instances and Elastic Compute Service (ECS) instances. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
         self.ram_role_name = ram_role_name
@@ -31662,6 +31687,8 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
             result['Memory'] = self.memory
         if self.ntp_servers is not None:
             result['NtpServers'] = self.ntp_servers
+        if self.override is not None:
+            result['Override'] = self.override
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.ram_role_name is not None:
@@ -31792,6 +31819,8 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
             self.memory = m.get('Memory')
         if m.get('NtpServers') is not None:
             self.ntp_servers = m.get('NtpServers')
+        if m.get('Override') is not None:
+            self.override = m.get('Override')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RamRoleName') is not None:
@@ -35648,6 +35677,12 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: priority.
         self.allocation_strategy = allocation_strategy
+        # Whether to enable automatic rebalancing for the scaling group. This takes effect only when BalancedOnly is enabled for the scaling group. Valid values:
+        # 
+        # *   false: Auto rebalancing is disabled for the scaling group.
+        # *   true: If Auto rebalancing is enabled, the scaling group automatically detects the capacity of the zone. If the capacity of the zone is unbalanced, the scaling group actively scales out the zone and re-balances the capacity of the zone.
+        # 
+        # Default value: false.
         self.auto_rebalance = auto_rebalance
         # Specifies whether to evenly distribute instances in the scaling group across zones. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
@@ -35656,6 +35691,12 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
+        # The zone balancing mode. This mode takes effect only when the zone balancing mode is enabled. Valid values:
+        # 
+        # *   BalancedBestEffort: If a resource fails to be created in a zone, the resource is downgraded to another zone. This ensures best-effort delivery of the resource.
+        # *   BalancedOnly: If a resource fails to be created in a zone, the resource is not downgraded to another zone. The scale-out activity is partially successful to avoid excessive imbalance of resources in different zones.
+        # 
+        # Default value: BalancedBestEffort.
         self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
@@ -39024,6 +39065,9 @@ class StartInstanceRefreshRequestCheckpoints(TeaModel):
         self,
         percentage: int = None,
     ):
+        # The percentage of new instances in the scaling group to the total number of instances. When this percentage is reached, the task is automatically suspended. Valid values: 1 to 100 (%).
+        # 
+        # >  Requires a small to large setting, and the last progress percentage needs to be 100.
         self.percentage = percentage
 
     def validate(self):
@@ -39053,8 +39097,11 @@ class StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars(T
         key: str = None,
         value: str = None,
     ):
+        # >  This parameter is unavailable for use.
         self.field_ref_field_path = field_ref_field_path
+        # The name of the environment variable. It can be 1 to 128 characters in length. Format requirement:[0-9a-zA-Z], and underscores, cannot start with a number.
         self.key = key
+        # The value of the environment variable. The value must be 0 to 256 bits in length.
         self.value = value
 
     def validate(self):
@@ -39094,10 +39141,15 @@ class StartInstanceRefreshRequestDesiredConfigurationContainers(TeaModel):
         image: str = None,
         name: str = None,
     ):
+        # The argument that corresponds to the startup command of the container. You can specify up to 10 arguments.
         self.args = args
+        # The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
         self.commands = commands
+        # The environment variables.
         self.environment_vars = environment_vars
+        # The image in the container.
         self.image = image
+        # The custom name of the container.
         self.name = name
 
     def validate(self):
@@ -39149,6 +39201,9 @@ class StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides(Tea
         self,
         instance_type: str = None,
     ):
+        # The instance type specified by using this parameter overwrites the instance type of the launch template.
+        # 
+        # >  This parameter takes effect only if you specify LaunchTemplateId.
         self.instance_type = instance_type
 
     def validate(self):
@@ -39181,6 +39236,13 @@ class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
         launch_template_version: str = None,
         scaling_configuration_id: str = None,
     ):
+        # The containers in the elastic container instance.
+        # 
+        # > 
+        # 
+        # *   This parameter supports only scaling groups of the ECI type.
+        # 
+        # *   Only the containers in the scaling configuration list that are the same as those in the `Container.Name` are refreshed.
         self.containers = containers
         # The image ID.
         # 
@@ -39190,12 +39252,19 @@ class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
         # 
         # *   If the instance configuration source of the scaling group is a launch template, you cannot specify this parameter.
         self.image_id = image_id
+        # The ID of the launch template that you want to enable in the scaling group.
         self.launch_template_id = launch_template_id
+        # The information about the instance types that are extended in the launch template.
         self.launch_template_overrides = launch_template_overrides
+        # The version number of the launch template. Valid value:
+        # 
+        # *   A fixed template version number.
+        # *   Default: the default version of the template.
+        # *   Latest: the latest version of the template.
+        # 
+        # >  If you set the version to Default or Latest, the instance refresh task cannot be rolled back.
         self.launch_template_version = launch_template_version
         # The ID of the scaling configuration.
-        # 
-        # >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
         self.scaling_configuration_id = scaling_configuration_id
 
     def validate(self):
@@ -39270,7 +39339,13 @@ class StartInstanceRefreshRequest(TeaModel):
         scaling_group_id: str = None,
         skip_matching: bool = None,
     ):
+        # The duration of the pause when the refresh task checkpoint is entered.
+        # 
+        # *   Unit: minutes
+        # *   Valid values: 1 to 2880.
+        # *   Default: 60.
         self.checkpoint_pause_time = checkpoint_pause_time
+        # Refresh Task Checkpoint: specifies that the task is automatically suspended for CheckpointPauseTime minutes when the proportion of new instances reaches the specified value during instance refresh.
         self.checkpoints = checkpoints
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
@@ -39278,9 +39353,9 @@ class StartInstanceRefreshRequest(TeaModel):
         # 
         # > 
         # 
-        # *   When you call this operation, you must specify one of the following parameters: ScalingConfigurationId and ImageId.
+        # *   ScalingConfigurationId, ImageId, LaunchTemplateId, and Containers cannot be set at the same time. If you do not specify this parameter, the scaling group is refreshed based on the configurations that are in effect.
         # 
-        # *   Instances whose configurations match the desired configurations of the task are ignored during instance refresh.
+        # *   After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
         self.desired_configuration = desired_configuration
         # The ratio of instances that can exceed the upper limit of the scaling group capacity to all instances in the scaling group during instance refresh. Valid values: 100 to 200. Default value: 120.
         # 

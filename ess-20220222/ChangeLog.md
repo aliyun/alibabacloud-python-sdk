@@ -1,3 +1,7 @@
+2025-12-03 Version: 1.10.21
+- Update API ModifyEciScalingConfiguration: add request parameters Override.
+
+
 2025-11-04 Version: 1.10.20
 - Update API CreateScalingGroup: add request parameters AutoRebalance.
 - Update API CreateScalingGroup: add request parameters BalanceMode.
