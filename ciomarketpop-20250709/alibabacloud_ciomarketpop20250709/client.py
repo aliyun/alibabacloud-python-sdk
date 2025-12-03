@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('ciomarketpop', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -72,7 +71,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cio_market_pop_20250709_models.GetEveryOneSellsFormListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_every_one_sells_form_list_with_options_async(
@@ -105,7 +104,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cio_market_pop_20250709_models.GetEveryOneSellsFormListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_every_one_sells_form_list(
@@ -174,7 +173,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cio_market_pop_20250709_models.PushEveryOneSellMsgResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def push_every_one_sell_msg_with_options_async(
@@ -217,7 +216,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cio_market_pop_20250709_models.PushEveryOneSellMsgResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def push_every_one_sell_msg(
