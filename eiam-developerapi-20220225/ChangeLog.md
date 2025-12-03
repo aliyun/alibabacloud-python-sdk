@@ -1,3 +1,6 @@
+2025-12-03 Version: 1.0.10
+- Update SDK.
+
 2023-10-24 Version: 1.0.8
 - Generated python 2022-02-25 for Eiam-developerapi.
 

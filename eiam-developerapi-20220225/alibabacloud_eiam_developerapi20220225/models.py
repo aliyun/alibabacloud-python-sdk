@@ -11,6 +11,7 @@ class AddUserToOrganizationalUnitsHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -42,6 +43,7 @@ class AddUserToOrganizationalUnitsRequest(TeaModel):
         self,
         organizational_unit_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
 
     def validate(self):
@@ -74,8 +76,7 @@ class AddUserToOrganizationalUnitsResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -98,6 +99,247 @@ class AddUserToOrganizationalUnitsResponse(TeaModel):
         return self
 
 
+class AddUsersToGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AddUsersToGroupRequest(TeaModel):
+    def __init__(
+        self,
+        user_ids: List[str] = None,
+    ):
+        # The account IDs.
+        # 
+        # This parameter is required.
+        self.user_ids = user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_ids is not None:
+            result['userIds'] = self.user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('userIds') is not None:
+            self.user_ids = m.get('userIds')
+        return self
+
+
+class AddUsersToGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CreateGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class CreateGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_external_id: str = None,
+        group_name: str = None,
+    ):
+        # The external ID.
+        self.group_external_id = group_external_id
+        # The organization name.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_external_id is not None:
+            result['groupExternalId'] = self.group_external_id
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupExternalId') is not None:
+            self.group_external_id = m.get('groupExternalId')
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+        return self
+
+
+class CreateGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+    ):
+        # The group ID.
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        return self
+
+
+class CreateGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrganizationalUnitHeaders(TeaModel):
     def __init__(
         self,
@@ -105,6 +347,9 @@ class CreateOrganizationalUnitHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -139,9 +384,19 @@ class CreateOrganizationalUnitRequest(TeaModel):
         organizational_unit_name: str = None,
         parent_id: str = None,
     ):
+        # The description of the organizational unit.
         self.description = description
+        # The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
+        # 
+        # For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
         self.organizational_unit_external_id = organizational_unit_external_id
+        # The name of the organizational unit.
+        # 
+        # This parameter is required.
         self.organizational_unit_name = organizational_unit_name
+        # The ID of the parent organizational unit.
+        # 
+        # This parameter is required.
         self.parent_id = parent_id
 
     def validate(self):
@@ -181,6 +436,7 @@ class CreateOrganizationalUnitResponseBody(TeaModel):
         self,
         organizational_unit_id: str = None,
     ):
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -215,9 +471,6 @@ class CreateOrganizationalUnitResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -254,6 +507,9 @@ class CreateUserHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -286,7 +542,9 @@ class CreateUserRequestCustomFields(TeaModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # Field name
         self.field_name = field_name
+        # Filed value
         self.field_value = field_value
 
     def validate(self):
@@ -321,9 +579,13 @@ class CreateUserRequestPasswordInitializationConfig(TeaModel):
         password_initialization_type: str = None,
         user_notification_channels: List[str] = None,
     ):
+        # Password  forced update
         self.password_forced_update_status = password_forced_update_status
+        # Password policy
         self.password_initialization_policy_priority = password_initialization_policy_priority
+        # Password Initialization Type
         self.password_initialization_type = password_initialization_type
+        # User Notification Channels
         self.user_notification_channels = user_notification_channels
 
     def validate(self):
@@ -375,18 +637,35 @@ class CreateUserRequest(TeaModel):
         user_external_id: str = None,
         username: str = None,
     ):
+        # Custom fields
         self.custom_fields = custom_fields
+        # The description of the account. The description can be up to 256 characters in length.
         self.description = description
+        # The display name of the account. The display name can be up to 64 characters in length.
         self.display_name = display_name
+        # The email address of the user who owns the account.
         self.email = email
+        # Indicates whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true.
         self.email_verified = email_verified
+        # The password of the account. For information about the password rules, go to the Create User panel in the Identity as a Service (IDaaS) console.
         self.password = password
+        # Configure the initial password
         self.password_initialization_config = password_initialization_config
+        # The mobile number of the user who owns the account.
         self.phone_number = phone_number
+        # Indicates whether the mobile number is verified. This field is required if a mobile number is specified. If you have no special requirement, set this parameter to true.
         self.phone_number_verified = phone_number_verified
+        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified.
         self.phone_region = phone_region
+        # The ID of the primary organizational unit.
+        # 
+        # This parameter is required.
         self.primary_organizational_unit_id = primary_organizational_unit_id
+        # The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
         self.user_external_id = user_external_id
+        # The username of the account.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -473,6 +752,7 @@ class CreateUserResponseBody(TeaModel):
         self,
         user_id: str = None,
     ):
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -507,9 +787,6 @@ class CreateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -539,6 +816,75 @@ class CreateUserResponse(TeaModel):
         return self
 
 
+class DeleteGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class DeleteGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteOrganizationalUnitHeaders(TeaModel):
     def __init__(
         self,
@@ -546,6 +892,9 @@ class DeleteOrganizationalUnitHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -582,8 +931,7 @@ class DeleteOrganizationalUnitResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -613,6 +961,9 @@ class DeleteUserHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -649,8 +1000,7 @@ class DeleteUserResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -680,6 +1030,9 @@ class DisableUserHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -716,8 +1069,7 @@ class DisableUserResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -747,6 +1099,9 @@ class EnableUserHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -783,8 +1138,7 @@ class EnableUserResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -812,6 +1166,7 @@ class GenerateDeviceCodeRequest(TeaModel):
         self,
         scope: str = None,
     ):
+        # The authorization scope.
         self.scope = scope
 
     def validate(self):
@@ -845,12 +1200,19 @@ class GenerateDeviceCodeResponseBody(TeaModel):
         verification_uri: str = None,
         verification_uri_complete: str = None,
     ):
+        # The device code.
         self.device_code = device_code
+        # The time when the token expires. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expires_at = expires_at
+        # The remaining validity period of the device code. Unit: seconds.
         self.expires_in = expires_in
+        # The timeout period of the request token. Unit: seconds.
         self.interval = interval
+        # The user authorization code.
         self.user_code = user_code
+        # The verification URI.
         self.verification_uri = verification_uri
+        # The complete verification URI.
         self.verification_uri_complete = verification_uri_complete
 
     def validate(self):
@@ -909,9 +1271,6 @@ class GenerateDeviceCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -957,17 +1316,41 @@ class GenerateTokenRequest(TeaModel):
         scope: str = None,
         username: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The client secret. This parameter is required if grant_type is set to client_credentials.
         self.client_secret = client_secret
+        # The authorization code. This parameter is required if grant_type is set to authorization_code.
         self.code = code
+        # The verification code.
         self.code_verifier = code_verifier
+        # The device code. This parameter is required if grant_type is set to authorization_code.urn:ietf:params:oauth:grant-type:device_code.
         self.device_code = device_code
+        # The excluded tags.
         self.exclusive_tag = exclusive_tag
+        # The supported authorization types are as follows:
+        # - client_credentials:Client credentials flow, requires client_id and client_secret.
+        # - refresh_token:Refresh token flow.
+        # - authorization_code:Authorization code flow.
+        # - urn:ietf:params:oauth:grant-type:device_code:Device authorization flow.
+        # - password:Password (Resource Owner Password Credentials) flow.
+        # 
+        # This parameter is required.
         self.grant_type = grant_type
+        # The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
         self.password = password
+        # The redirect URI. This parameter is required if grant_type is set to authorization_code. The value of this parameter must be the same as the redirect URI in the request to obtain the authorization code.
         self.redirect_uri = redirect_uri
+        # The refreshed token. This parameter is required if grant_type is set to refresh_token.
         self.refresh_token = refresh_token
+        # The authorization scope. Valid values:
+        # 
+        # *   openid
+        # *   email
+        # *   phone
+        # *   profile
         self.scope = scope
+        # The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
         self.username = username
 
     def validate(self):
@@ -1044,14 +1427,17 @@ class GenerateTokenResponseBody(TeaModel):
         refresh_token: str = None,
         token_type: str = None,
     ):
-        # access_token。
+        # The access token.
         self.access_token = access_token
+        # The time when the token expires. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expires_at = expires_at
+        # The remaining validity period of the token. Unit: seconds.
         self.expires_in = expires_in
-        # id_token。
+        # The ID token.
         self.id_token = id_token
-        # refresh_token。
+        # The refresh token.
         self.refresh_token = refresh_token
+        # The type of the token. Valid values: Basic Bearer
         self.token_type = token_type
 
     def validate(self):
@@ -1106,9 +1492,6 @@ class GenerateTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1145,6 +1528,9 @@ class GetApplicationProvisioningScopeHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -1174,8 +1560,11 @@ class GetApplicationProvisioningScopeHeaders(TeaModel):
 class GetApplicationProvisioningScopeResponseBody(TeaModel):
     def __init__(
         self,
+        group_ids: List[str] = None,
         organizational_unit_ids: List[str] = None,
     ):
+        self.group_ids = group_ids
+        # The IDs of organizational units.
         self.organizational_unit_ids = organizational_unit_ids
 
     def validate(self):
@@ -1187,12 +1576,16 @@ class GetApplicationProvisioningScopeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.group_ids is not None:
+            result['groupIds'] = self.group_ids
         if self.organizational_unit_ids is not None:
             result['organizationalUnitIds'] = self.organizational_unit_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('groupIds') is not None:
+            self.group_ids = m.get('groupIds')
         if m.get('organizationalUnitIds') is not None:
             self.organizational_unit_ids = m.get('organizationalUnitIds')
         return self
@@ -1210,9 +1603,6 @@ class GetApplicationProvisioningScopeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1242,6 +1632,167 @@ class GetApplicationProvisioningScopeResponse(TeaModel):
         return self
 
 
+class GetGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class GetGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        description: str = None,
+        group_external_id: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        group_source_id: str = None,
+        group_source_type: str = None,
+        instance_id: str = None,
+        update_time: int = None,
+    ):
+        # The time when the group was created. The value is a UNIX timestamp. Unit: milliseconds.
+        self.create_time = create_time
+        # The group description.
+        self.description = description
+        # The external ID of the group.
+        self.group_external_id = group_external_id
+        # The group ID.
+        self.group_id = group_id
+        # The group name.
+        self.group_name = group_name
+        # The source ID of the group.
+        self.group_source_id = group_source_id
+        # The source type of the group. Valid values: build_in, ding_talk, ad, and ldap.
+        self.group_source_type = group_source_type
+        # The instance ID.
+        self.instance_id = instance_id
+        # The time when the group was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_external_id is not None:
+            result['groupExternalId'] = self.group_external_id
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+        if self.group_source_id is not None:
+            result['groupSourceId'] = self.group_source_id
+        if self.group_source_type is not None:
+            result['groupSourceType'] = self.group_source_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('groupExternalId') is not None:
+            self.group_external_id = m.get('groupExternalId')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+        if m.get('groupSourceId') is not None:
+            self.group_source_id = m.get('groupSourceId')
+        if m.get('groupSourceType') is not None:
+            self.group_source_type = m.get('groupSourceType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class GetGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOrganizationalUnitHeaders(TeaModel):
     def __init__(
         self,
@@ -1249,6 +1800,9 @@ class GetOrganizationalUnitHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -1289,15 +1843,30 @@ class GetOrganizationalUnitResponseBody(TeaModel):
         parent_id: str = None,
         update_time: int = None,
     ):
+        # The time when the organizational unit was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The description of the organizational unit.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The external ID of the organizational unit.
         self.organizational_unit_external_id = organizational_unit_external_id
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
+        # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
+        # The source ID of the organizational unit.
         self.organizational_unit_source_id = organizational_unit_source_id
+        # The source type of the organizational unit. Valid values:
+        # 
+        # *   build_in: The organizational unit was created in Identity as a Service (IDaaS).
+        # *   ding_talk: The organizational unit was imported from DingTalk.
+        # *   ad: The organizational unit was imported from Microsoft Active Directory (AD).
+        # *   ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
         self.organizational_unit_source_type = organizational_unit_source_type
+        # The ID of the parent organizational unit.
         self.parent_id = parent_id
+        # The time when the organizational unit was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -1368,9 +1937,6 @@ class GetOrganizationalUnitResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1407,6 +1973,9 @@ class GetOrganizationalUnitIdByExternalIdHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -1440,8 +2009,26 @@ class GetOrganizationalUnitIdByExternalIdRequest(TeaModel):
         organizational_unit_source_id: str = None,
         organizational_unit_source_type: str = None,
     ):
+        # The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
+        # 
+        # Note: For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+        # 
+        # This parameter is required.
         self.organizational_unit_external_id = organizational_unit_external_id
+        # The source ID of the organizational unit.
+        # 
+        # If the organizational unit was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organizational unit was imported, its source ID is the enterprise ID in the source. For example, if the organizational unit was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # 
+        # This parameter is required.
         self.organizational_unit_source_id = organizational_unit_source_id
+        # The source type of the organizational unit. Valid values:
+        # 
+        # *   build_in: The organizational unit was created in IDaaS.
+        # *   ding_talk: The organizational unit was imported from DingTalk.
+        # *   ad: The organizational unit was imported from Microsoft Active Directory (AD).
+        # *   ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # 
+        # This parameter is required.
         self.organizational_unit_source_type = organizational_unit_source_type
 
     def validate(self):
@@ -1477,6 +2064,7 @@ class GetOrganizationalUnitIdByExternalIdResponseBody(TeaModel):
         self,
         organizational_unit_id: str = None,
     ):
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -1511,9 +2099,6 @@ class GetOrganizationalUnitIdByExternalIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1550,6 +2135,9 @@ class GetUserHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -1582,7 +2170,9 @@ class GetUserResponseBodyCustomFields(TeaModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # The name of the extended field.
         self.field_name = field_name
+        # The value of the extended field. Field values are returned as strings regardless of the data types of the fields. For example, true or false is returned for a Boolean field.
         self.field_value = field_value
 
     def validate(self):
@@ -1616,11 +2206,11 @@ class GetUserResponseBodyGroups(TeaModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # 组描述。
+        # The group description.
         self.description = description
-        # 组ID。
+        # The group ID.
         self.group_id = group_id
-        # 组名称。
+        # The group name.
         self.group_name = group_name
 
     def validate(self):
@@ -1658,8 +2248,11 @@ class GetUserResponseBodyOrganizationalUnits(TeaModel):
         organizational_unit_name: str = None,
         primary: bool = None,
     ):
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
+        # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
+        # Indicates whether the organizational unit is the primary organizational unit.
         self.primary = primary
 
     def validate(self):
@@ -1718,30 +2311,62 @@ class GetUserResponseBody(TeaModel):
         user_source_type: str = None,
         username: str = None,
     ):
+        # The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.account_expire_time = account_expire_time
+        # The time when the account was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The extended fields of the account.
         self.custom_fields = custom_fields
+        # The description of the account.
         self.description = description
+        # The display name of the account.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
         self.email_verified = email_verified
-        # 账户所属组列表。
+        # The groups to which the account belongs.
         self.groups = groups
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the account lock expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.lock_expire_time = lock_expire_time
+        # The organizational units to which the account belongs.
         self.organizational_units = organizational_units
+        # Indicates whether the password is set.
         self.password_set = password_set
+        # The mobile number of the user who owns the account.
         self.phone_number = phone_number
+        # Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
         self.phone_number_verified = phone_number_verified
+        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
         self.phone_region = phone_region
+        # The ID of the primary organizational unit of the account.
         self.primary_organizational_unit_id = primary_organizational_unit_id
+        # The time when the account was registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.register_time = register_time
+        # The status of the account. Valid values: enabled disabled
         self.status = status
+        # The time when the account was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
+        # The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+        # 
+        # Note: For accounts with the same source type and source ID, each account has a unique external ID.
         self.user_external_id = user_external_id
+        # The account ID.
         self.user_id = user_id
+        # The source ID of the account.
+        # 
+        # If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
         self.user_source_id = user_source_id
+        # The source type of the account. Valid values:
+        # 
+        # *   build_in: The account was created in IDaaS.
+        # *   ding_talk: The account was imported from DingTalk.
+        # *   ad: The account was imported from Microsoft Active Directory (AD).
+        # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
         self.user_source_type = user_source_type
+        # The username of the account.
         self.username = username
 
     def validate(self):
@@ -1894,9 +2519,6 @@ class GetUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1933,6 +2555,9 @@ class GetUserIdByEmailHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -1964,6 +2589,9 @@ class GetUserIdByEmailRequest(TeaModel):
         self,
         email: str = None,
     ):
+        # The email address of the user who owns the account.
+        # 
+        # This parameter is required.
         self.email = email
 
     def validate(self):
@@ -1991,6 +2619,7 @@ class GetUserIdByEmailResponseBody(TeaModel):
         self,
         user_id: str = None,
     ):
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -2025,9 +2654,6 @@ class GetUserIdByEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2064,6 +2690,9 @@ class GetUserIdByPhoneNumberHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2095,6 +2724,9 @@ class GetUserIdByPhoneNumberRequest(TeaModel):
         self,
         phone_number: str = None,
     ):
+        # The mobile number of the user who owns the account.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -2122,6 +2754,7 @@ class GetUserIdByPhoneNumberResponseBody(TeaModel):
         self,
         user_id: str = None,
     ):
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -2156,9 +2789,6 @@ class GetUserIdByPhoneNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2195,6 +2825,9 @@ class GetUserIdByUserExternalIdHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2228,8 +2861,22 @@ class GetUserIdByUserExternalIdRequest(TeaModel):
         user_source_id: str = None,
         user_source_type: str = None,
     ):
+        # The external ID of the account.
+        # 
+        # This parameter is required.
         self.user_external_id = user_external_id
+        # The source ID of the account. If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # 
+        # This parameter is required.
         self.user_source_id = user_source_id
+        # The source type of the account. Valid values:
+        # 
+        # *   build_in: The account was created in Identity as a Service (IDaaS).
+        # *   ding_talk: The account was imported from DingTalk.
+        # *   ad: The account was imported from Microsoft Active Directory (AD).
+        # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # 
+        # This parameter is required.
         self.user_source_type = user_source_type
 
     def validate(self):
@@ -2265,6 +2912,7 @@ class GetUserIdByUserExternalIdResponseBody(TeaModel):
         self,
         user_id: str = None,
     ):
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -2299,9 +2947,6 @@ class GetUserIdByUserExternalIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2338,6 +2983,9 @@ class GetUserIdByUsernameHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2369,6 +3017,9 @@ class GetUserIdByUsernameRequest(TeaModel):
         self,
         username: str = None,
     ):
+        # The username of the account.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -2396,6 +3047,7 @@ class GetUserIdByUsernameResponseBody(TeaModel):
         self,
         user_id: str = None,
     ):
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -2430,9 +3082,6 @@ class GetUserIdByUsernameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2470,6 +3119,8 @@ class GetUserInfoHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2508,9 +3159,7 @@ class GetUserInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2537,6 +3186,473 @@ class GetUserInfoResponse(TeaModel):
         return self
 
 
+class ListGroupsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        group_name_start_with: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # The prefix of the group name.
+        self.group_name_start_with = group_name_start_with
+        # The number of entries per page. Default value: 20.
+        self.max_results = max_results
+        # nextToken
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name_start_with is not None:
+            result['groupNameStartWith'] = self.group_name_start_with
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupNameStartWith') is not None:
+            self.group_name_start_with = m.get('groupNameStartWith')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListGroupsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        description: str = None,
+        group_external_id: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        group_source_id: str = None,
+        group_source_type: str = None,
+        instance_id: str = None,
+        update_time: int = None,
+    ):
+        # The time when the group was created. The value is a UNIX timestamp. Unit: milliseconds.
+        self.create_time = create_time
+        # The group description.
+        self.description = description
+        # The external ID of the group.
+        self.group_external_id = group_external_id
+        # The group ID.
+        self.group_id = group_id
+        # The group name.
+        self.group_name = group_name
+        # The source ID of the group.
+        self.group_source_id = group_source_id
+        # The source type of the group. Valid values: build_in, ding_talk, ad, and ldap.
+        self.group_source_type = group_source_type
+        # The instance ID.
+        self.instance_id = instance_id
+        # The time when the group was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_external_id is not None:
+            result['groupExternalId'] = self.group_external_id
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+        if self.group_source_id is not None:
+            result['groupSourceId'] = self.group_source_id
+        if self.group_source_type is not None:
+            result['groupSourceType'] = self.group_source_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('groupExternalId') is not None:
+            self.group_external_id = m.get('groupExternalId')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+        if m.get('groupSourceId') is not None:
+            self.group_source_id = m.get('groupSourceId')
+        if m.get('groupSourceType') is not None:
+            self.group_source_type = m.get('groupSourceType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class ListGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListGroupsResponseBodyData] = None,
+        max_results: int = None,
+        next_token: str = None,
+        total_count: int = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The maximum number of entries returned.
+        self.max_results = max_results
+        # The start position of the query. If this parameter is left empty, the query starts from the beginning.
+        self.next_token = next_token
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListGroupsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGroupsForUserHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListGroupsForUserRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        # nextToken
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListGroupsForUserResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        group_member_relation_source_id: str = None,
+        group_member_relation_source_type: str = None,
+        instance_id: str = None,
+    ):
+        self.group_id = group_id
+        self.group_member_relation_source_id = group_member_relation_source_id
+        self.group_member_relation_source_type = group_member_relation_source_type
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.group_member_relation_source_id is not None:
+            result['groupMemberRelationSourceId'] = self.group_member_relation_source_id
+        if self.group_member_relation_source_type is not None:
+            result['groupMemberRelationSourceType'] = self.group_member_relation_source_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('groupMemberRelationSourceId') is not None:
+            self.group_member_relation_source_id = m.get('groupMemberRelationSourceId')
+        if m.get('groupMemberRelationSourceType') is not None:
+            self.group_member_relation_source_type = m.get('groupMemberRelationSourceType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        return self
+
+
+class ListGroupsForUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListGroupsForUserResponseBodyData] = None,
+        max_results: int = None,
+        next_token: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.next_token = next_token
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListGroupsForUserResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListGroupsForUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGroupsForUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGroupsForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListOrganizationalUnitParentIdsHeaders(TeaModel):
     def __init__(
         self,
@@ -2544,6 +3660,9 @@ class ListOrganizationalUnitParentIdsHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2575,6 +3694,7 @@ class ListOrganizationalUnitParentIdsResponseBody(TeaModel):
         self,
         parent_ids: List[str] = None,
     ):
+        # The IDs of the parent organizational units. The IDs of the organizational unit are ordered based on their levels from high to low. Only the IDs of the organizational units within the authorization scope are displayed.
         self.parent_ids = parent_ids
 
     def validate(self):
@@ -2609,9 +3729,6 @@ class ListOrganizationalUnitParentIdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2648,6 +3765,9 @@ class ListOrganizationalUnitsHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2681,8 +3801,13 @@ class ListOrganizationalUnitsRequest(TeaModel):
         page_size: int = None,
         parent_id: str = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The ID of the parent organizational unit.
+        # 
+        # This parameter is required.
         self.parent_id = parent_id
 
     def validate(self):
@@ -2727,15 +3852,34 @@ class ListOrganizationalUnitsResponseBodyData(TeaModel):
         parent_id: str = None,
         update_time: int = None,
     ):
+        # The time when the organizational unit was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The description of the organizational unit.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in EIAM of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
+        # 
+        # Note: For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
         self.organizational_unit_external_id = organizational_unit_external_id
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
+        # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
+        # The source ID of the organizational unit.
+        # 
+        # If the organizational unit was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organizational unit was imported, its source ID is the enterprise ID in the source. For example, if the organizational unit was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
         self.organizational_unit_source_id = organizational_unit_source_id
+        # The source type of the organizational unit. Valid values:
+        # 
+        # *   build_in: The organizational unit was created in IDaaS.
+        # *   ding_talk: The organizational unit was imported from DingTalk.
+        # *   ad: The organizational unit was imported from Microsoft Active Directory (AD).
+        # *   ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
         self.organizational_unit_source_type = organizational_unit_source_type
+        # The ID of the parent organizational unit.
         self.parent_id = parent_id
+        # The time when the organizational unit was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -2800,7 +3944,9 @@ class ListOrganizationalUnitsResponseBody(TeaModel):
         data: List[ListOrganizationalUnitsResponseBodyData] = None,
         total_count: int = None,
     ):
+        # The queried organizational units.
         self.data = data
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2847,9 +3993,6 @@ class ListOrganizationalUnitsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2886,6 +4029,9 @@ class ListUsersHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -2919,8 +4065,11 @@ class ListUsersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
 
     def validate(self):
@@ -2975,26 +4124,52 @@ class ListUsersResponseBodyData(TeaModel):
         user_source_type: str = None,
         username: str = None,
     ):
+        # The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.account_expire_time = account_expire_time
+        # The time when the account was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         self.description = description
+        # The display name of the account.
         self.display_name = display_name
+        # The email address of the user who owns the account.
         self.email = email
+        # Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
         self.email_verified = email_verified
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the account lock expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.lock_expire_time = lock_expire_time
-        # 密码是否已设置
         self.password_set = password_set
+        # The mobile number of the user who owns the account.
         self.phone_number = phone_number
+        # Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
         self.phone_number_verified = phone_number_verified
+        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
         self.phone_region = phone_region
+        # The time when the account was registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.register_time = register_time
+        # The status of the account. Valid values: enabled disabled
         self.status = status
+        # The time when the account was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
+        # The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+        # 
+        # Note: For accounts with the same source type and source ID, each account has a unique external ID.
         self.user_external_id = user_external_id
+        # The account ID.
         self.user_id = user_id
+        # The source ID of the account.
+        # 
+        # If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
         self.user_source_id = user_source_id
+        # The source type of the account. Valid values:
+        # 
+        # *   build_in: The account was created in IDaaS.
+        # *   ding_talk: The account was imported from DingTalk.
+        # *   ad: The account was imported from Microsoft Active Directory (AD).
+        # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
         self.user_source_type = user_source_type
+        # The username of the account.
         self.username = username
 
     def validate(self):
@@ -3099,7 +4274,9 @@ class ListUsersResponseBody(TeaModel):
         data: List[ListUsersResponseBodyData] = None,
         total_count: int = None,
     ):
+        # The queried EIAM accounts.
         self.data = data
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3146,9 +4323,6 @@ class ListUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3178,6 +4352,307 @@ class ListUsersResponse(TeaModel):
         return self
 
 
+class ListUsersForGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ListUsersForGroupRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # The number of entries per page. Default value: 20.
+        self.max_results = max_results
+        # nextToken
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListUsersForGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # The instance ID.
+        self.instance_id = instance_id
+        # The account ID.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ListUsersForGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListUsersForGroupResponseBodyData] = None,
+        max_results: int = None,
+        next_token: str = None,
+        total_count: int = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The maximum number of entries returned.
+        self.max_results = max_results
+        # A pagination token. If NextToken is empty, no next page exists.
+        self.next_token = next_token
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListUsersForGroupResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListUsersForGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUsersForGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUsersForGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PatchGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class PatchGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+    ):
+        # The group name.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+        return self
+
+
+class PatchGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class PatchOrganizationalUnitHeaders(TeaModel):
     def __init__(
         self,
@@ -3185,6 +4660,9 @@ class PatchOrganizationalUnitHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -3217,7 +4695,9 @@ class PatchOrganizationalUnitRequest(TeaModel):
         description: str = None,
         organizational_unit_name: str = None,
     ):
+        # The description of the organizational unit.
         self.description = description
+        # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
 
     def validate(self):
@@ -3254,8 +4734,7 @@ class PatchOrganizationalUnitResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3285,6 +4764,9 @@ class PatchUserHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -3319,13 +4801,17 @@ class PatchUserRequestCustomFields(TeaModel):
         operation: str = None,
         operator: str = None,
     ):
+        # The name of the extended field. For more information about the type and valid values of the extended field, see the detailed description of the extended field in the IDaaS console.
         self.field_name = field_name
+        # The value of the extended field.
         self.field_value = field_value
-        # 字段操作类型，取值可选范围：
-        # - add：添加。
-        # - replace：替换。若对应扩展字段无设置值，会转换为add操作。
-        # - remove：移除。
+        # The operation to be performed on the field. Valid values:
+        # 
+        # *   add
+        # *   replace If you leave the value of the extended field empty, the replace operation is converted to an add operation.
+        # *   remove
         self.operation = operation
+        # The type of the operation. This parameter is deprecated. Replace it with operation.
         self.operator = operator
 
     def validate(self):
@@ -3372,13 +4858,21 @@ class PatchUserRequest(TeaModel):
         phone_region: str = None,
         username: str = None,
     ):
+        # The extended fields of the account.
         self.custom_fields = custom_fields
+        # The display name of the account.
         self.display_name = display_name
+        # The email address.
         self.email = email
+        # Specifies whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true.
         self.email_verified = email_verified
+        # The mobile number.
         self.phone_number = phone_number
+        # Specifies whether the mobile number is verified. This field is required if a mobile number is specified. If you have no special requirement, set this parameter to true.
         self.phone_number_verified = phone_number_verified
+        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified.
         self.phone_region = phone_region
+        # The name of the account.
         self.username = username
 
     def validate(self):
@@ -3447,8 +4941,7 @@ class PatchUserResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3478,6 +4971,7 @@ class RemoveUserFromOrganizationalUnitsHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -3509,6 +5003,7 @@ class RemoveUserFromOrganizationalUnitsRequest(TeaModel):
         self,
         organizational_unit_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
 
     def validate(self):
@@ -3541,8 +5036,106 @@ class RemoveUserFromOrganizationalUnitsResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class RemoveUsersFromGroupHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        # The authentication information. The value is in the Bearer ${access_token} format. Example: Bearer ATxxxx.
+        # 
+        # This parameter is required.
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class RemoveUsersFromGroupRequest(TeaModel):
+    def __init__(
+        self,
+        user_ids: List[str] = None,
+    ):
+        # The account IDs.
+        # 
+        # This parameter is required.
+        self.user_ids = user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_ids is not None:
+            result['userIds'] = self.user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('userIds') is not None:
+            self.user_ids = m.get('userIds')
+        return self
+
+
+class RemoveUsersFromGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3573,9 +5166,15 @@ class RevokeTokenRequest(TeaModel):
         token: str = None,
         token_type_hint: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The client secret.
         self.client_secret = client_secret
+        # The token to be revoked.
+        # 
+        # This parameter is required.
         self.token = token
+        # The type of the token. Valid values: access_token refresh_token
         self.token_type_hint = token_type_hint
 
     def validate(self):
@@ -3622,9 +5221,7 @@ class RevokeTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3658,6 +5255,7 @@ class SetUserPrimaryOrganizationalUnitHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -3689,6 +5287,7 @@ class SetUserPrimaryOrganizationalUnitRequest(TeaModel):
         self,
         organizational_unit_id: str = None,
     ):
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -3721,8 +5320,7 @@ class SetUserPrimaryOrganizationalUnitResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3752,6 +5350,7 @@ class UpdateUserPasswordHeaders(TeaModel):
         authorization: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.authorization = authorization
 
     def validate(self):
@@ -3815,8 +5414,7 @@ class UpdateUserPasswordResponse(TeaModel):
         self.status_code = status_code
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
