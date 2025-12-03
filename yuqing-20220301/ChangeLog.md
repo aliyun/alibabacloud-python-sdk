@@ -1,3 +1,6 @@
+2025-12-03 Version: 1.2.5
+- Update SDK.
+
 2024-11-26 Version: 1.2.4
 - Update API QueryProductInstanceList: update response param.
 
