@@ -1,3 +1,6 @@
+2025-12-03 Version: 4.8.8
+- Update SDK.
+
 2025-07-28 Version: 4.8.7
 - Generated python 2016-07-14 for CloudAPI.
 
