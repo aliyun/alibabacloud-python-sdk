@@ -377,6 +377,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_alert_strategy_with_options_async(request, headers, runtime)
 
+    def create_vmcore_diagnosis_task_with_options(
+        self,
+        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
+        """
+        @summary 创建宕机诊断任务
+        
+        @param request: CreateVmcoreDiagnosisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVmcoreDiagnosisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.debuginfo_common_url):
+            body['debuginfoCommonUrl'] = request.debuginfo_common_url
+        if not UtilClient.is_unset(request.debuginfo_url):
+            body['debuginfoUrl'] = request.debuginfo_url
+        if not UtilClient.is_unset(request.dmesg_url):
+            body['dmesgUrl'] = request.dmesg_url
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.vmcore_url):
+            body['vmcoreUrl'] = request.vmcore_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVmcoreDiagnosisTask',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/crashAgent/diagnosis/createDiagnosisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vmcore_diagnosis_task_with_options_async(
+        self,
+        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
+        """
+        @summary 创建宕机诊断任务
+        
+        @param request: CreateVmcoreDiagnosisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVmcoreDiagnosisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.debuginfo_common_url):
+            body['debuginfoCommonUrl'] = request.debuginfo_common_url
+        if not UtilClient.is_unset(request.debuginfo_url):
+            body['debuginfoUrl'] = request.debuginfo_url
+        if not UtilClient.is_unset(request.dmesg_url):
+            body['dmesgUrl'] = request.dmesg_url
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.vmcore_url):
+            body['vmcoreUrl'] = request.vmcore_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVmcoreDiagnosisTask',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/crashAgent/diagnosis/createDiagnosisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vmcore_diagnosis_task(
+        self,
+        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
+    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
+        """
+        @summary 创建宕机诊断任务
+        
+        @param request: CreateVmcoreDiagnosisTaskRequest
+        @return: CreateVmcoreDiagnosisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_vmcore_diagnosis_task_with_options(request, headers, runtime)
+
+    async def create_vmcore_diagnosis_task_async(
+        self,
+        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
+    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
+        """
+        @summary 创建宕机诊断任务
+        
+        @param request: CreateVmcoreDiagnosisTaskRequest
+        @return: CreateVmcoreDiagnosisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
+
     def delete_alert_strategy_with_options(
         self,
         request: sys_om20231230_models.DeleteAlertStrategyRequest,
@@ -3217,6 +3337,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_service_func_status_with_options_async(request, headers, runtime)
 
+    def get_vmcore_diagnosis_task_with_options(
+        self,
+        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询宕机诊断任务结果
+        
+        @param request: GetVmcoreDiagnosisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVmcoreDiagnosisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVmcoreDiagnosisTask',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/crashAgent/diagnosis/queryTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.GetVmcoreDiagnosisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vmcore_diagnosis_task_with_options_async(
+        self,
+        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询宕机诊断任务结果
+        
+        @param request: GetVmcoreDiagnosisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVmcoreDiagnosisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVmcoreDiagnosisTask',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/crashAgent/diagnosis/queryTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.GetVmcoreDiagnosisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vmcore_diagnosis_task(
+        self,
+        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
+    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询宕机诊断任务结果
+        
+        @param request: GetVmcoreDiagnosisTaskRequest
+        @return: GetVmcoreDiagnosisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_vmcore_diagnosis_task_with_options(request, headers, runtime)
+
+    async def get_vmcore_diagnosis_task_async(
+        self,
+        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
+    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询宕机诊断任务结果
+        
+        @param request: GetVmcoreDiagnosisTaskRequest
+        @return: GetVmcoreDiagnosisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
+
     def initial_sysom_with_options(
         self,
         request: sys_om20231230_models.InitialSysomRequest,
@@ -5856,6 +6080,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_regions_with_options_async(headers, runtime)
+
+    def list_vmcore_diagnosis_task_with_options(
+        self,
+        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询历史宕机诊断任务
+        
+        @param request: ListVmcoreDiagnosisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVmcoreDiagnosisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.days):
+            query['days'] = request.days
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVmcoreDiagnosisTask',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/crashAgent/diagnosis/queryTaskList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListVmcoreDiagnosisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vmcore_diagnosis_task_with_options_async(
+        self,
+        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询历史宕机诊断任务
+        
+        @param request: ListVmcoreDiagnosisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVmcoreDiagnosisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.days):
+            query['days'] = request.days
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVmcoreDiagnosisTask',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/crashAgent/diagnosis/queryTaskList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListVmcoreDiagnosisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vmcore_diagnosis_task(
+        self,
+        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
+    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询历史宕机诊断任务
+        
+        @param request: ListVmcoreDiagnosisTaskRequest
+        @return: ListVmcoreDiagnosisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_vmcore_diagnosis_task_with_options(request, headers, runtime)
+
+    async def list_vmcore_diagnosis_task_async(
+        self,
+        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
+    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
+        """
+        @summary 查询历史宕机诊断任务
+        
+        @param request: ListVmcoreDiagnosisTaskRequest
+        @return: ListVmcoreDiagnosisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
 
     def start_aianalysis_with_options(
         self,

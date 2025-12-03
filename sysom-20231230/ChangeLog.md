@@ -1,3 +1,9 @@
+2025-12-03 Version: 1.14.0
+- Support API CreateVmcoreDiagnosisTask.
+- Support API GetVmcoreDiagnosisTask.
+- Support API ListVmcoreDiagnosisTask.
+
+
 2025-11-25 Version: 1.13.0
 - Support API DescribeMetricList.
 

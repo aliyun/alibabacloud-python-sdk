@@ -507,6 +507,173 @@ class CreateAlertStrategyResponse(TeaModel):
         return self
 
 
+class CreateVmcoreDiagnosisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        debuginfo_common_url: str = None,
+        debuginfo_url: str = None,
+        dmesg_url: str = None,
+        task_type: str = None,
+        vmcore_url: str = None,
+    ):
+        self.debuginfo_common_url = debuginfo_common_url
+        self.debuginfo_url = debuginfo_url
+        self.dmesg_url = dmesg_url
+        # This parameter is required.
+        self.task_type = task_type
+        self.vmcore_url = vmcore_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debuginfo_common_url is not None:
+            result['debuginfoCommonUrl'] = self.debuginfo_common_url
+        if self.debuginfo_url is not None:
+            result['debuginfoUrl'] = self.debuginfo_url
+        if self.dmesg_url is not None:
+            result['dmesgUrl'] = self.dmesg_url
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.vmcore_url is not None:
+            result['vmcoreUrl'] = self.vmcore_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('debuginfoCommonUrl') is not None:
+            self.debuginfo_common_url = m.get('debuginfoCommonUrl')
+        if m.get('debuginfoUrl') is not None:
+            self.debuginfo_url = m.get('debuginfoUrl')
+        if m.get('dmesgUrl') is not None:
+            self.dmesg_url = m.get('dmesgUrl')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('vmcoreUrl') is not None:
+            self.vmcore_url = m.get('vmcoreUrl')
+        return self
+
+
+class CreateVmcoreDiagnosisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateVmcoreDiagnosisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateVmcoreDiagnosisTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateVmcoreDiagnosisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateVmcoreDiagnosisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVmcoreDiagnosisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVmcoreDiagnosisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAlertStrategyRequest(TeaModel):
     def __init__(
         self,
@@ -5199,6 +5366,233 @@ class GetServiceFuncStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetServiceFuncStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVmcoreDiagnosisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetVmcoreDiagnosisTaskResponseBodyDataUrls(TeaModel):
+    def __init__(
+        self,
+        debuginfo_common_url: str = None,
+        debuginfo_url: str = None,
+        dmesg_url: str = None,
+        vmcore_url: str = None,
+    ):
+        self.debuginfo_common_url = debuginfo_common_url
+        self.debuginfo_url = debuginfo_url
+        self.dmesg_url = dmesg_url
+        self.vmcore_url = vmcore_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debuginfo_common_url is not None:
+            result['debuginfoCommonUrl'] = self.debuginfo_common_url
+        if self.debuginfo_url is not None:
+            result['debuginfoUrl'] = self.debuginfo_url
+        if self.dmesg_url is not None:
+            result['dmesgUrl'] = self.dmesg_url
+        if self.vmcore_url is not None:
+            result['vmcoreUrl'] = self.vmcore_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('debuginfoCommonUrl') is not None:
+            self.debuginfo_common_url = m.get('debuginfoCommonUrl')
+        if m.get('debuginfoUrl') is not None:
+            self.debuginfo_url = m.get('debuginfoUrl')
+        if m.get('dmesgUrl') is not None:
+            self.dmesg_url = m.get('dmesgUrl')
+        if m.get('vmcoreUrl') is not None:
+            self.vmcore_url = m.get('vmcoreUrl')
+        return self
+
+
+class GetVmcoreDiagnosisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        diagnose_result: str = None,
+        error_msg: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        task_type: str = None,
+        urls: GetVmcoreDiagnosisTaskResponseBodyDataUrls = None,
+    ):
+        self.created_at = created_at
+        self.diagnose_result = diagnose_result
+        self.error_msg = error_msg
+        self.task_id = task_id
+        self.task_status = task_status
+        self.task_type = task_type
+        self.urls = urls
+
+    def validate(self):
+        if self.urls:
+            self.urls.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.diagnose_result is not None:
+            result['diagnoseResult'] = self.diagnose_result
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.urls is not None:
+            result['urls'] = self.urls.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('diagnoseResult') is not None:
+            self.diagnose_result = m.get('diagnoseResult')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('urls') is not None:
+            temp_model = GetVmcoreDiagnosisTaskResponseBodyDataUrls()
+            self.urls = temp_model.from_map(m['urls'])
+        return self
+
+
+class GetVmcoreDiagnosisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetVmcoreDiagnosisTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetVmcoreDiagnosisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetVmcoreDiagnosisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVmcoreDiagnosisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVmcoreDiagnosisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10229,6 +10623,186 @@ class ListRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVmcoreDiagnosisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        days: int = None,
+    ):
+        # This parameter is required.
+        self.days = days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.days is not None:
+            result['days'] = self.days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('days') is not None:
+            self.days = m.get('days')
+        return self
+
+
+class ListVmcoreDiagnosisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        error_msg: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        task_type: str = None,
+    ):
+        self.created_at = created_at
+        self.error_msg = error_msg
+        self.task_id = task_id
+        self.task_status = task_status
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        return self
+
+
+class ListVmcoreDiagnosisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListVmcoreDiagnosisTaskResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListVmcoreDiagnosisTaskResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListVmcoreDiagnosisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVmcoreDiagnosisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVmcoreDiagnosisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
