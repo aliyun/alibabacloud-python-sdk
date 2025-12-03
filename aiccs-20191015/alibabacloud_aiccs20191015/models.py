@@ -27555,13 +27555,27 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentCallConfigEventConfig(T
 class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentCallConfigTtsConfig(TeaModel):
     def __init__(
         self,
+        background_enabled: bool = None,
+        background_sound: int = None,
+        background_volume: int = None,
+        mixing_enabled: bool = None,
+        mixing_template: int = None,
         tts_speed: int = None,
         tts_style: str = None,
         tts_volume: int = None,
+        voice_code: str = None,
+        voice_type: str = None,
     ):
+        self.background_enabled = background_enabled
+        self.background_sound = background_sound
+        self.background_volume = background_volume
+        self.mixing_enabled = mixing_enabled
+        self.mixing_template = mixing_template
         self.tts_speed = tts_speed
         self.tts_style = tts_style
         self.tts_volume = tts_volume
+        self.voice_code = voice_code
+        self.voice_type = voice_type
 
     def validate(self):
         pass
@@ -27572,22 +27586,50 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentCallConfigTtsConfig(Tea
             return _map
 
         result = dict()
+        if self.background_enabled is not None:
+            result['BackgroundEnabled'] = self.background_enabled
+        if self.background_sound is not None:
+            result['BackgroundSound'] = self.background_sound
+        if self.background_volume is not None:
+            result['BackgroundVolume'] = self.background_volume
+        if self.mixing_enabled is not None:
+            result['MixingEnabled'] = self.mixing_enabled
+        if self.mixing_template is not None:
+            result['MixingTemplate'] = self.mixing_template
         if self.tts_speed is not None:
             result['TtsSpeed'] = self.tts_speed
         if self.tts_style is not None:
             result['TtsStyle'] = self.tts_style
         if self.tts_volume is not None:
             result['TtsVolume'] = self.tts_volume
+        if self.voice_code is not None:
+            result['VoiceCode'] = self.voice_code
+        if self.voice_type is not None:
+            result['VoiceType'] = self.voice_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackgroundEnabled') is not None:
+            self.background_enabled = m.get('BackgroundEnabled')
+        if m.get('BackgroundSound') is not None:
+            self.background_sound = m.get('BackgroundSound')
+        if m.get('BackgroundVolume') is not None:
+            self.background_volume = m.get('BackgroundVolume')
+        if m.get('MixingEnabled') is not None:
+            self.mixing_enabled = m.get('MixingEnabled')
+        if m.get('MixingTemplate') is not None:
+            self.mixing_template = m.get('MixingTemplate')
         if m.get('TtsSpeed') is not None:
             self.tts_speed = m.get('TtsSpeed')
         if m.get('TtsStyle') is not None:
             self.tts_style = m.get('TtsStyle')
         if m.get('TtsVolume') is not None:
             self.tts_volume = m.get('TtsVolume')
+        if m.get('VoiceCode') is not None:
+            self.voice_code = m.get('VoiceCode')
+        if m.get('VoiceType') is not None:
+            self.voice_type = m.get('VoiceType')
         return self
 
 
@@ -27963,6 +28005,7 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConf
         phone_tag_key: str = None,
         phone_tag_name: str = None,
         phone_tag_required: bool = None,
+        phone_tag_source: str = None,
         phone_tag_type: str = None,
     ):
         self.id = id
@@ -27971,6 +28014,7 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConf
         self.phone_tag_key = phone_tag_key
         self.phone_tag_name = phone_tag_name
         self.phone_tag_required = phone_tag_required
+        self.phone_tag_source = phone_tag_source
         self.phone_tag_type = phone_tag_type
 
     def validate(self):
@@ -27999,6 +28043,8 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConf
             result['PhoneTagName'] = self.phone_tag_name
         if self.phone_tag_required is not None:
             result['PhoneTagRequired'] = self.phone_tag_required
+        if self.phone_tag_source is not None:
+            result['PhoneTagSource'] = self.phone_tag_source
         if self.phone_tag_type is not None:
             result['PhoneTagType'] = self.phone_tag_type
         return result
@@ -28020,6 +28066,8 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConf
             self.phone_tag_name = m.get('PhoneTagName')
         if m.get('PhoneTagRequired') is not None:
             self.phone_tag_required = m.get('PhoneTagRequired')
+        if m.get('PhoneTagSource') is not None:
+            self.phone_tag_source = m.get('PhoneTagSource')
         if m.get('PhoneTagType') is not None:
             self.phone_tag_type = m.get('PhoneTagType')
         return self
@@ -28047,6 +28095,8 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfig(TeaModel):
         output_tag_config: List[QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigOutputTagConfig] = None,
         phone_tag_config: List[QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConfig] = None,
         prologue: str = None,
+        recording_file: str = None,
+        start_word_type: int = None,
         sys_role: str = None,
         task_type: str = None,
         user_role: str = None,
@@ -28070,6 +28120,8 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfig(TeaModel):
         self.output_tag_config = output_tag_config
         self.phone_tag_config = phone_tag_config
         self.prologue = prologue
+        self.recording_file = recording_file
+        self.start_word_type = start_word_type
         self.sys_role = sys_role
         self.task_type = task_type
         self.user_role = user_role
@@ -28146,6 +28198,10 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfig(TeaModel):
                 result['PhoneTagConfig'].append(k.to_map() if k else None)
         if self.prologue is not None:
             result['Prologue'] = self.prologue
+        if self.recording_file is not None:
+            result['RecordingFile'] = self.recording_file
+        if self.start_word_type is not None:
+            result['StartWordType'] = self.start_word_type
         if self.sys_role is not None:
             result['SysRole'] = self.sys_role
         if self.task_type is not None:
@@ -28207,6 +28263,10 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfig(TeaModel):
                 self.phone_tag_config.append(temp_model.from_map(k))
         if m.get('Prologue') is not None:
             self.prologue = m.get('Prologue')
+        if m.get('RecordingFile') is not None:
+            self.recording_file = m.get('RecordingFile')
+        if m.get('StartWordType') is not None:
+            self.start_word_type = m.get('StartWordType')
         if m.get('SysRole') is not None:
             self.sys_role = m.get('SysRole')
         if m.get('TaskType') is not None:
@@ -28508,12 +28568,14 @@ class QueryConversationDetailInfoResponseBodyDataVariables(TeaModel):
         key: str = None,
         name: str = None,
         required: bool = None,
+        source: str = None,
         value: str = None,
     ):
         self.id = id
         self.key = key
         self.name = name
         self.required = required
+        self.source = source
         self.value = value
 
     def validate(self):
@@ -28533,6 +28595,8 @@ class QueryConversationDetailInfoResponseBodyDataVariables(TeaModel):
             result['Name'] = self.name
         if self.required is not None:
             result['Required'] = self.required
+        if self.source is not None:
+            result['Source'] = self.source
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -28547,6 +28611,8 @@ class QueryConversationDetailInfoResponseBodyDataVariables(TeaModel):
             self.name = m.get('Name')
         if m.get('Required') is not None:
             self.required = m.get('Required')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self

@@ -1,3 +1,17 @@
+2025-12-03 Version: 3.3.1
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.BackgroundEnabled.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.BackgroundSound.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.BackgroundVolume.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.MixingEnabled.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.MixingTemplate.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.VoiceCode.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.VoiceType.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentModelConfig.RecordingFile.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentModelConfig.StartWordType.
+- Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentModelConfig.PhoneTagConfig.$.PhoneTagSource.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.Variables.$.Source.
+
+
 2025-11-05 Version: 3.3.0
 - Support API ImportOneTaskPhoneNumber.
 - Update API QueryAiCallDetailPage: add request parameters DetailIds.
