@@ -1362,6 +1362,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1400,6 +1402,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2593,6 +2597,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_size):
             query['FileSize'] = request.file_size
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.storage_location):
             query['StorageLocation'] = request.storage_location
         if not UtilClient.is_unset(request.tags):
@@ -2658,6 +2664,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_size):
             query['FileSize'] = request.file_size
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.storage_location):
             query['StorageLocation'] = request.storage_location
         if not UtilClient.is_unset(request.tags):
@@ -3981,6 +3989,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.video_ids):
             query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
@@ -4020,6 +4030,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.video_ids):
             query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
@@ -4207,6 +4219,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.job_ids):
             query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -4244,6 +4258,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.job_ids):
             query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -4425,6 +4441,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.video_ids):
             query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
@@ -4464,6 +4482,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.video_ids):
             query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
@@ -13793,6 +13813,8 @@ class Client(OpenApiClient):
             query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.output_type):
             query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -13836,6 +13858,8 @@ class Client(OpenApiClient):
             query['AuthTimeout'] = request.auth_timeout
         if not UtilClient.is_unset(request.output_type):
             query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -13921,6 +13945,8 @@ class Client(OpenApiClient):
             query['PlayConfig'] = request.play_config
         if not UtilClient.is_unset(request.re_auth_info):
             query['ReAuthInfo'] = request.re_auth_info
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
         if not UtilClient.is_unset(request.stream_type):
@@ -13982,6 +14008,8 @@ class Client(OpenApiClient):
             query['PlayConfig'] = request.play_config
         if not UtilClient.is_unset(request.re_auth_info):
             query['ReAuthInfo'] = request.re_auth_info
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
         if not UtilClient.is_unset(request.stream_type):
@@ -14639,6 +14667,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -14676,6 +14706,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -14744,6 +14776,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.video_ids):
             query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
@@ -14782,6 +14816,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.video_ids):
             query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
@@ -14859,6 +14895,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -14910,6 +14948,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reference_ids):
+            query['ReferenceIds'] = request.reference_ids
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -14988,6 +15028,8 @@ class Client(OpenApiClient):
             query['ApiVersion'] = request.api_version
         if not UtilClient.is_unset(request.auth_info_timeout):
             query['AuthInfoTimeout'] = request.auth_info_timeout
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -15030,6 +15072,8 @@ class Client(OpenApiClient):
             query['ApiVersion'] = request.api_version
         if not UtilClient.is_unset(request.auth_info_timeout):
             query['AuthInfoTimeout'] = request.auth_info_timeout
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.video_id):
             query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
@@ -17457,6 +17501,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -17500,6 +17546,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -20344,6 +20392,8 @@ class Client(OpenApiClient):
             query['Height'] = request.height
         if not UtilClient.is_unset(request.interval):
             query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.snapshot_template_id):
             query['SnapshotTemplateId'] = request.snapshot_template_id
         if not UtilClient.is_unset(request.specified_offset_time):
@@ -20406,6 +20456,8 @@ class Client(OpenApiClient):
             query['Height'] = request.height
         if not UtilClient.is_unset(request.interval):
             query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.snapshot_template_id):
             query['SnapshotTemplateId'] = request.snapshot_template_id
         if not UtilClient.is_unset(request.specified_offset_time):
@@ -20503,6 +20555,8 @@ class Client(OpenApiClient):
             query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.template_group_id):
@@ -20558,6 +20612,8 @@ class Client(OpenApiClient):
             query['PipelineId'] = request.pipeline_id
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.template_group_id):
@@ -21692,6 +21748,8 @@ class Client(OpenApiClient):
             query['CoverURL'] = request.cover_url
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.title):
@@ -21744,6 +21802,8 @@ class Client(OpenApiClient):
             query['CoverURL'] = request.cover_url
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.reference_id):
+            query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.title):

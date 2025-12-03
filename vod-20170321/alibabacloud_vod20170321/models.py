@@ -2093,6 +2093,7 @@ class BatchGetMediaInfosRequest(TeaModel):
     def __init__(
         self,
         media_ids: str = None,
+        reference_ids: str = None,
     ):
         # The ID of the media asset. The ID can be the video ID or audio ID. Separate IDs with commas (,). You can specify a maximum of 20 IDs. You can use one of the following methods to obtain the ID of the media asset:
         # 
@@ -2102,6 +2103,7 @@ class BatchGetMediaInfosRequest(TeaModel):
         # 
         # This parameter is required.
         self.media_ids = media_ids
+        self.reference_ids = reference_ids
 
     def validate(self):
         pass
@@ -2114,12 +2116,16 @@ class BatchGetMediaInfosRequest(TeaModel):
         result = dict()
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
+        if self.reference_ids is not None:
+            result['ReferenceIds'] = self.reference_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
+        if m.get('ReferenceIds') is not None:
+            self.reference_ids = m.get('ReferenceIds')
         return self
 
 
@@ -2135,6 +2141,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaInfo(TeaModel):
         download_switch: str = None,
         media_id: str = None,
         modification_time: str = None,
+        reference_id: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
         snapshots: List[str] = None,
@@ -2167,6 +2174,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaInfo(TeaModel):
         self.media_id = media_id
         # The time when the media asset was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modification_time = modification_time
+        self.reference_id = reference_id
         # The period of time in which the audio file remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the media asset. Valid values:
@@ -2237,6 +2245,8 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaInfo(TeaModel):
             result['MediaId'] = self.media_id
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.restore_expiration is not None:
             result['RestoreExpiration'] = self.restore_expiration
         if self.restore_status is not None:
@@ -2279,6 +2289,8 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaInfo(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('RestoreExpiration') is not None:
             self.restore_expiration = m.get('RestoreExpiration')
         if m.get('RestoreStatus') is not None:
@@ -3089,6 +3101,7 @@ class BatchGetMediaInfosResponseBody(TeaModel):
         forbidden_media_ids: List[str] = None,
         media_infos: List[BatchGetMediaInfosResponseBodyMediaInfos] = None,
         non_exist_media_ids: List[str] = None,
+        non_exist_reference_ids: List[str] = None,
         request_id: str = None,
     ):
         # The IDs of the media assets that do not support the operation typically because you are not authorized to perform the operation. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
@@ -3097,6 +3110,7 @@ class BatchGetMediaInfosResponseBody(TeaModel):
         self.media_infos = media_infos
         # The IDs of the media assets that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
+        self.non_exist_reference_ids = non_exist_reference_ids
         # The request ID.
         self.request_id = request_id
 
@@ -3120,6 +3134,8 @@ class BatchGetMediaInfosResponseBody(TeaModel):
                 result['MediaInfos'].append(k.to_map() if k else None)
         if self.non_exist_media_ids is not None:
             result['NonExistMediaIds'] = self.non_exist_media_ids
+        if self.non_exist_reference_ids is not None:
+            result['NonExistReferenceIds'] = self.non_exist_reference_ids
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3135,6 +3151,8 @@ class BatchGetMediaInfosResponseBody(TeaModel):
                 self.media_infos.append(temp_model.from_map(k))
         if m.get('NonExistMediaIds') is not None:
             self.non_exist_media_ids = m.get('NonExistMediaIds')
+        if m.get('NonExistReferenceIds') is not None:
+            self.non_exist_reference_ids = m.get('NonExistReferenceIds')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -4499,6 +4517,7 @@ class CreateUploadVideoRequest(TeaModel):
         description: str = None,
         file_name: str = None,
         file_size: int = None,
+        reference_id: str = None,
         storage_location: str = None,
         tags: str = None,
         template_group_id: str = None,
@@ -4530,6 +4549,7 @@ class CreateUploadVideoRequest(TeaModel):
         self.file_name = file_name
         # The size of the source file. Unit: bytes.
         self.file_size = file_size
+        self.reference_id = reference_id
         # The storage address. Perform the following operations to obtain the storage address: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, view the storage address.
         # 
         # >  If you leave this parameter empty, audio and video files are uploaded to the default storage address. If you specify a storage address, audio and video files are uploaded to the specified address.
@@ -4590,6 +4610,8 @@ class CreateUploadVideoRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_size is not None:
             result['FileSize'] = self.file_size
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.storage_location is not None:
             result['StorageLocation'] = self.storage_location
         if self.tags is not None:
@@ -4618,6 +4640,8 @@ class CreateUploadVideoRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileSize') is not None:
             self.file_size = m.get('FileSize')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('StorageLocation') is not None:
             self.storage_location = m.get('StorageLocation')
         if m.get('Tags') is not None:
@@ -6024,6 +6048,7 @@ class DeleteMezzaninesRequest(TeaModel):
     def __init__(
         self,
         force: bool = None,
+        reference_ids: str = None,
         video_ids: str = None,
     ):
         # Specifies whether to forcibly delete the source file. Valid values:
@@ -6033,13 +6058,12 @@ class DeleteMezzaninesRequest(TeaModel):
         # 
         # >  If a video is uploaded without transcoding or is asynchronously transcoded, the source file of the video is used for original-quality playback. By default, the source file of the video cannot be deleted. To forcibly delete the mezzanine file, set this parameter to **true**.
         self.force = force
+        self.reference_ids = reference_ids
         # The IDs of audio or video files whose source files that you want to delete. You can specify up to 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
         # 
         # *   After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files** > **Audio/Video** to view the ID of the video.
         # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
         # *   Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
-        # 
-        # This parameter is required.
         self.video_ids = video_ids
 
     def validate(self):
@@ -6053,6 +6077,8 @@ class DeleteMezzaninesRequest(TeaModel):
         result = dict()
         if self.force is not None:
             result['Force'] = self.force
+        if self.reference_ids is not None:
+            result['ReferenceIds'] = self.reference_ids
         if self.video_ids is not None:
             result['VideoIds'] = self.video_ids
         return result
@@ -6061,6 +6087,8 @@ class DeleteMezzaninesRequest(TeaModel):
         m = m or dict()
         if m.get('Force') is not None:
             self.force = m.get('Force')
+        if m.get('ReferenceIds') is not None:
+            self.reference_ids = m.get('ReferenceIds')
         if m.get('VideoIds') is not None:
             self.video_ids = m.get('VideoIds')
         return self
@@ -6069,10 +6097,12 @@ class DeleteMezzaninesRequest(TeaModel):
 class DeleteMezzaninesResponseBody(TeaModel):
     def __init__(
         self,
+        non_exist_reference_ids: List[str] = None,
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
         un_removeable_video_ids: List[str] = None,
     ):
+        self.non_exist_reference_ids = non_exist_reference_ids
         # The IDs of the audio or video files that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
         # The ID of the request.
@@ -6091,6 +6121,8 @@ class DeleteMezzaninesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.non_exist_reference_ids is not None:
+            result['NonExistReferenceIds'] = self.non_exist_reference_ids
         if self.non_exist_video_ids is not None:
             result['NonExistVideoIds'] = self.non_exist_video_ids
         if self.request_id is not None:
@@ -6101,6 +6133,8 @@ class DeleteMezzaninesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NonExistReferenceIds') is not None:
+            self.non_exist_reference_ids = m.get('NonExistReferenceIds')
         if m.get('NonExistVideoIds') is not None:
             self.non_exist_video_ids = m.get('NonExistVideoIds')
         if m.get('RequestId') is not None:
@@ -6273,6 +6307,7 @@ class DeleteStreamRequest(TeaModel):
     def __init__(
         self,
         job_ids: str = None,
+        reference_id: str = None,
         video_id: str = None,
     ):
         # The job IDs for deleting media streams.
@@ -6282,9 +6317,8 @@ class DeleteStreamRequest(TeaModel):
         # 
         # This parameter is required.
         self.job_ids = job_ids
+        self.reference_id = reference_id
         # The ID of the video.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -6298,6 +6332,8 @@ class DeleteStreamRequest(TeaModel):
         result = dict()
         if self.job_ids is not None:
             result['JobIds'] = self.job_ids
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
@@ -6306,6 +6342,8 @@ class DeleteStreamRequest(TeaModel):
         m = m or dict()
         if m.get('JobIds') is not None:
             self.job_ids = m.get('JobIds')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
@@ -6510,15 +6548,15 @@ class DeleteTranscodeTemplateGroupResponse(TeaModel):
 class DeleteVideoRequest(TeaModel):
     def __init__(
         self,
+        reference_ids: str = None,
         video_ids: str = None,
     ):
+        self.reference_ids = reference_ids
         # The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified. You can obtain a video ID in one of the following ways:
         # 
         # *   If the video is uploaded by using the [ApsaraVideo VOD console](https://vod.console.aliyun.com), log on to the console and choose **Media Files** > **Audio/Video** to view the ID of the video.
         # *   If the video is uploaded by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the video ID is the VideoId value in the response.
         # *   You can also call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to obtain the video ID, which is the VideoId value in the response.
-        # 
-        # This parameter is required.
         self.video_ids = video_ids
 
     def validate(self):
@@ -6530,12 +6568,16 @@ class DeleteVideoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.reference_ids is not None:
+            result['ReferenceIds'] = self.reference_ids
         if self.video_ids is not None:
             result['VideoIds'] = self.video_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ReferenceIds') is not None:
+            self.reference_ids = m.get('ReferenceIds')
         if m.get('VideoIds') is not None:
             self.video_ids = m.get('VideoIds')
         return self
@@ -6545,12 +6587,14 @@ class DeleteVideoResponseBody(TeaModel):
     def __init__(
         self,
         forbidden_video_ids: List[str] = None,
+        non_exist_reference_ids: List[str] = None,
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
     ):
         # The IDs of the videos that cannot be deleted.
         # > Generally, videos cannot be deleted if you do not have the required [permissions](https://help.aliyun.com/document_detail/113600.html).
         self.forbidden_video_ids = forbidden_video_ids
+        self.non_exist_reference_ids = non_exist_reference_ids
         # The IDs of the videos that do not exist.
         # > If the list of videos to be deleted contains one or more videos that do not exist, the IDs of these non-existing videos are returned. If none of the videos in the list exists, a 404 error is returned.
         self.non_exist_video_ids = non_exist_video_ids
@@ -6568,6 +6612,8 @@ class DeleteVideoResponseBody(TeaModel):
         result = dict()
         if self.forbidden_video_ids is not None:
             result['ForbiddenVideoIds'] = self.forbidden_video_ids
+        if self.non_exist_reference_ids is not None:
+            result['NonExistReferenceIds'] = self.non_exist_reference_ids
         if self.non_exist_video_ids is not None:
             result['NonExistVideoIds'] = self.non_exist_video_ids
         if self.request_id is not None:
@@ -6578,6 +6624,8 @@ class DeleteVideoResponseBody(TeaModel):
         m = m or dict()
         if m.get('ForbiddenVideoIds') is not None:
             self.forbidden_video_ids = m.get('ForbiddenVideoIds')
+        if m.get('NonExistReferenceIds') is not None:
+            self.non_exist_reference_ids = m.get('NonExistReferenceIds')
         if m.get('NonExistVideoIds') is not None:
             self.non_exist_video_ids = m.get('NonExistVideoIds')
         if m.get('RequestId') is not None:
@@ -28169,6 +28217,7 @@ class GetMezzanineInfoRequest(TeaModel):
         addition_type: str = None,
         auth_timeout: int = None,
         output_type: str = None,
+        reference_id: str = None,
         video_id: str = None,
     ):
         # The type of additional information. Separate multiple values with commas (,). By default, only the basic information is returned. Valid values:
@@ -28201,9 +28250,8 @@ class GetMezzanineInfoRequest(TeaModel):
         # 
         # > If the mezzanine file is stored in a bucket of the in type, only an OSS URL is returned.
         self.output_type = output_type
+        self.reference_id = reference_id
         # The ID of the video.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -28221,6 +28269,8 @@ class GetMezzanineInfoRequest(TeaModel):
             result['AuthTimeout'] = self.auth_timeout
         if self.output_type is not None:
             result['OutputType'] = self.output_type
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
@@ -28233,6 +28283,8 @@ class GetMezzanineInfoRequest(TeaModel):
             self.auth_timeout = m.get('AuthTimeout')
         if m.get('OutputType') is not None:
             self.output_type = m.get('OutputType')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
@@ -28846,6 +28898,7 @@ class GetPlayInfoRequest(TeaModel):
         output_type: str = None,
         play_config: str = None,
         re_auth_info: str = None,
+        reference_id: str = None,
         result_type: str = None,
         stream_type: str = None,
         trace: str = None,
@@ -28915,6 +28968,7 @@ class GetPlayInfoRequest(TeaModel):
         self.play_config = play_config
         # The CDN reauthentication configuration. The value must be a JSON string. If CDN reauthentication is enabled, you can use this parameter to specify the `UID` and `rand` fields for URL authentication. For more information, see [URL authentication](https://help.aliyun.com/document_detail/2249352.html).
         self.re_auth_info = re_auth_info
+        self.reference_id = reference_id
         # The type of the data to return. Default value: Single. Valid values:
         # 
         # *   **Single**: Only one latest transcoded stream is returned for each quality and format.
@@ -28937,8 +28991,6 @@ class GetPlayInfoRequest(TeaModel):
         # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the page that appears, view the media ID.
         # *   Obtain the value of the VideoId parameter in the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to upload the audio or video file.
         # *   Obtain the value of VideoId by calling the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation. This method is applicable to files that have been uploaded.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -28966,6 +29018,8 @@ class GetPlayInfoRequest(TeaModel):
             result['PlayConfig'] = self.play_config
         if self.re_auth_info is not None:
             result['ReAuthInfo'] = self.re_auth_info
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.result_type is not None:
             result['ResultType'] = self.result_type
         if self.stream_type is not None:
@@ -28994,6 +29048,8 @@ class GetPlayInfoRequest(TeaModel):
             self.play_config = m.get('PlayConfig')
         if m.get('ReAuthInfo') is not None:
             self.re_auth_info = m.get('ReAuthInfo')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('ResultType') is not None:
             self.result_type = m.get('ResultType')
         if m.get('StreamType') is not None:
@@ -31366,15 +31422,15 @@ class GetUploadDetailsResponse(TeaModel):
 class GetVideoInfoRequest(TeaModel):
     def __init__(
         self,
+        reference_id: str = None,
         video_id: str = None,
     ):
+        self.reference_id = reference_id
         # The ID of the audio or video file. You can specify only one ID in each call. You can use one of the following methods to obtain the ID:
         # 
         # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
         # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
         # *   Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query the media ID after the media file is uploaded.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -31386,12 +31442,16 @@ class GetVideoInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
@@ -31438,6 +31498,7 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
         download_switch: str = None,
         duration: float = None,
         modification_time: str = None,
+        reference_id: str = None,
         region_id: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
@@ -31480,6 +31541,7 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
         self.duration = duration
         # The time when the audio or video file was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
+        self.reference_id = reference_id
         # The region where the media file is stored.
         self.region_id = region_id
         # The period of time in which the object remains in the restored state.
@@ -31561,6 +31623,8 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
             result['Duration'] = self.duration
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.restore_expiration is not None:
@@ -31613,6 +31677,8 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
             self.duration = m.get('Duration')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RestoreExpiration') is not None:
@@ -31724,11 +31790,11 @@ class GetVideoInfoResponse(TeaModel):
 class GetVideoInfosRequest(TeaModel):
     def __init__(
         self,
+        reference_ids: str = None,
         video_ids: str = None,
     ):
+        self.reference_ids = reference_ids
         # The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified.
-        # 
-        # This parameter is required.
         self.video_ids = video_ids
 
     def validate(self):
@@ -31740,12 +31806,16 @@ class GetVideoInfosRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.reference_ids is not None:
+            result['ReferenceIds'] = self.reference_ids
         if self.video_ids is not None:
             result['VideoIds'] = self.video_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ReferenceIds') is not None:
+            self.reference_ids = m.get('ReferenceIds')
         if m.get('VideoIds') is not None:
             self.video_ids = m.get('VideoIds')
         return self
@@ -31763,6 +31833,7 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
         download_switch: str = None,
         duration: float = None,
         modification_time: str = None,
+        reference_id: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
         size: int = None,
@@ -31797,6 +31868,7 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
         self.duration = duration
         # The time when the audio or video file was last updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
+        self.reference_id = reference_id
         # The period of time in which the audio file remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the audio file. Valid values:
@@ -31871,6 +31943,8 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
             result['Duration'] = self.duration
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.restore_expiration is not None:
             result['RestoreExpiration'] = self.restore_expiration
         if self.restore_status is not None:
@@ -31917,6 +31991,8 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
             self.duration = m.get('Duration')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('RestoreExpiration') is not None:
             self.restore_expiration = m.get('RestoreExpiration')
         if m.get('RestoreStatus') is not None:
@@ -31947,10 +32023,12 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
 class GetVideoInfosResponseBody(TeaModel):
     def __init__(
         self,
+        non_exist_reference_ids: List[str] = None,
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
         video_list: List[GetVideoInfosResponseBodyVideoList] = None,
     ):
+        self.non_exist_reference_ids = non_exist_reference_ids
         # The IDs of the videos that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
         # The ID of the request.
@@ -31970,6 +32048,8 @@ class GetVideoInfosResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.non_exist_reference_ids is not None:
+            result['NonExistReferenceIds'] = self.non_exist_reference_ids
         if self.non_exist_video_ids is not None:
             result['NonExistVideoIds'] = self.non_exist_video_ids
         if self.request_id is not None:
@@ -31982,6 +32062,8 @@ class GetVideoInfosResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NonExistReferenceIds') is not None:
+            self.non_exist_reference_ids = m.get('NonExistReferenceIds')
         if m.get('NonExistVideoIds') is not None:
             self.non_exist_video_ids = m.get('NonExistVideoIds')
         if m.get('RequestId') is not None:
@@ -32042,6 +32124,7 @@ class GetVideoListRequest(TeaModel):
         end_time: str = None,
         page_no: int = None,
         page_size: int = None,
+        reference_ids: str = None,
         sort_by: str = None,
         start_time: str = None,
         status: str = None,
@@ -32059,6 +32142,7 @@ class GetVideoListRequest(TeaModel):
         self.page_no = page_no
         # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
+        self.reference_ids = reference_ids
         # The sorting method of the results. Valid values:
         # 
         # *   **CreationTime:Desc** (default): The results are sorted in reverse chronological order based on the creation time.
@@ -32100,6 +32184,8 @@ class GetVideoListRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.reference_ids is not None:
+            result['ReferenceIds'] = self.reference_ids
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.start_time is not None:
@@ -32120,6 +32206,8 @@ class GetVideoListRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ReferenceIds') is not None:
+            self.reference_ids = m.get('ReferenceIds')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('StartTime') is not None:
@@ -32169,6 +32257,7 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
         description: str = None,
         duration: float = None,
         modification_time: str = None,
+        reference_id: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
         size: int = None,
@@ -32197,6 +32286,7 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
         self.duration = duration
         # The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
+        self.reference_id = reference_id
         # The period of time in which the audio or video file remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the audio or video file. Valid values:
@@ -32271,6 +32361,8 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
             result['Duration'] = self.duration
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.restore_expiration is not None:
             result['RestoreExpiration'] = self.restore_expiration
         if self.restore_status is not None:
@@ -32313,6 +32405,8 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
             self.duration = m.get('Duration')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('RestoreExpiration') is not None:
             self.restore_expiration = m.get('RestoreExpiration')
         if m.get('RestoreStatus') is not None:
@@ -32464,6 +32558,7 @@ class GetVideoPlayAuthRequest(TeaModel):
         self,
         api_version: str = None,
         auth_info_timeout: int = None,
+        reference_id: str = None,
         video_id: str = None,
     ):
         # The API version. Set the value to **1.0.0**.
@@ -32473,13 +32568,12 @@ class GetVideoPlayAuthRequest(TeaModel):
         # *   Default value: **100**.
         # *   Valid values: `[100,3000]`.
         self.auth_info_timeout = auth_info_timeout
+        self.reference_id = reference_id
         # The ID of the media file. You can specify only one ID. You can use one of the following methods to obtain the ID of the file:
         # 
         # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
         # *   Obtain the value of the VideoId parameter from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation.
         # *   Obtain the value of the VideoId parameter from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation. This method is applicable to files that have been uploaded.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -32495,6 +32589,8 @@ class GetVideoPlayAuthRequest(TeaModel):
             result['ApiVersion'] = self.api_version
         if self.auth_info_timeout is not None:
             result['AuthInfoTimeout'] = self.auth_info_timeout
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.video_id is not None:
             result['VideoId'] = self.video_id
         return result
@@ -32505,6 +32601,8 @@ class GetVideoPlayAuthRequest(TeaModel):
             self.api_version = m.get('ApiVersion')
         if m.get('AuthInfoTimeout') is not None:
             self.auth_info_timeout = m.get('AuthInfoTimeout')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('VideoId') is not None:
             self.video_id = m.get('VideoId')
         return self
@@ -36945,11 +37043,13 @@ class RefreshUploadVideoRequest(TeaModel):
     def __init__(
         self,
         owner_id: int = None,
+        reference_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         video_id: str = None,
     ):
         self.owner_id = owner_id
+        self.reference_id = reference_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the audio or video file. You can use one of the following methods to obtain the ID:
@@ -36957,8 +37057,6 @@ class RefreshUploadVideoRequest(TeaModel):
         # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** in the left-side navigation pane to view the ID.
         # *   View the value of the VideoId parameter returned by the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to upload the audio or video file.
         # *   After an audio or video file is uploaded, obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you call to query the audio or video ID.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -36972,6 +37070,8 @@ class RefreshUploadVideoRequest(TeaModel):
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -36984,6 +37084,8 @@ class RefreshUploadVideoRequest(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -38519,6 +38621,7 @@ class SearchMediaResponseBodyMediaListAudio(TeaModel):
         media_source: str = None,
         modification_time: str = None,
         preprocess_status: str = None,
+        reference_id: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
         size: int = None,
@@ -38568,6 +38671,7 @@ class SearchMediaResponseBodyMediaListAudio(TeaModel):
         # *   **PreprocessSucceed**\
         # *   **PreprocessFailed**\
         self.preprocess_status = preprocess_status
+        self.reference_id = reference_id
         # The period of time in which the audio file remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the audio file. Valid values:
@@ -38646,6 +38750,8 @@ class SearchMediaResponseBodyMediaListAudio(TeaModel):
             result['ModificationTime'] = self.modification_time
         if self.preprocess_status is not None:
             result['PreprocessStatus'] = self.preprocess_status
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.restore_expiration is not None:
             result['RestoreExpiration'] = self.restore_expiration
         if self.restore_status is not None:
@@ -38696,6 +38802,8 @@ class SearchMediaResponseBodyMediaListAudio(TeaModel):
             self.modification_time = m.get('ModificationTime')
         if m.get('PreprocessStatus') is not None:
             self.preprocess_status = m.get('PreprocessStatus')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('RestoreExpiration') is not None:
             self.restore_expiration = m.get('RestoreExpiration')
         if m.get('RestoreStatus') is not None:
@@ -38844,6 +38952,7 @@ class SearchMediaResponseBodyMediaListVideo(TeaModel):
         media_source: str = None,
         modification_time: str = None,
         preprocess_status: str = None,
+        reference_id: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
         size: int = None,
@@ -38892,6 +39001,7 @@ class SearchMediaResponseBodyMediaListVideo(TeaModel):
         # *   **PreprocessSucceed**\
         # *   **PreprocessFailed**\
         self.preprocess_status = preprocess_status
+        self.reference_id = reference_id
         # The period of time in which the video file remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the video file. Valid values:
@@ -38974,6 +39084,8 @@ class SearchMediaResponseBodyMediaListVideo(TeaModel):
             result['ModificationTime'] = self.modification_time
         if self.preprocess_status is not None:
             result['PreprocessStatus'] = self.preprocess_status
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.restore_expiration is not None:
             result['RestoreExpiration'] = self.restore_expiration
         if self.restore_status is not None:
@@ -39024,6 +39136,8 @@ class SearchMediaResponseBodyMediaListVideo(TeaModel):
             self.modification_time = m.get('ModificationTime')
         if m.get('PreprocessStatus') is not None:
             self.preprocess_status = m.get('PreprocessStatus')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('RestoreExpiration') is not None:
             self.restore_expiration = m.get('RestoreExpiration')
         if m.get('RestoreStatus') is not None:
@@ -41780,6 +41894,7 @@ class SubmitSnapshotJobRequest(TeaModel):
         count: int = None,
         height: str = None,
         interval: int = None,
+        reference_id: str = None,
         snapshot_template_id: str = None,
         specified_offset_time: int = None,
         specified_offset_times: List[int] = None,
@@ -41798,6 +41913,7 @@ class SubmitSnapshotJobRequest(TeaModel):
         # *   Default value: **1**.
         # *   If you set this parameter to **0**, snapshots are captured at even intervals based on the video duration divided by the value of the Count parameter.
         self.interval = interval
+        self.reference_id = reference_id
         # The ID of the snapshot template.
         # 
         # *   We recommend that you create a snapshot template before you specify the template ID. For more information about how to create a snapshot template, see [AddVodTemplate](https://help.aliyun.com/document_detail/99406.html).
@@ -41840,6 +41956,8 @@ class SubmitSnapshotJobRequest(TeaModel):
             result['Height'] = self.height
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.snapshot_template_id is not None:
             result['SnapshotTemplateId'] = self.snapshot_template_id
         if self.specified_offset_time is not None:
@@ -41864,6 +41982,8 @@ class SubmitSnapshotJobRequest(TeaModel):
             self.height = m.get('Height')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('SnapshotTemplateId') is not None:
             self.snapshot_template_id = m.get('SnapshotTemplateId')
         if m.get('SpecifiedOffsetTime') is not None:
@@ -41887,6 +42007,7 @@ class SubmitSnapshotJobShrinkRequest(TeaModel):
         count: int = None,
         height: str = None,
         interval: int = None,
+        reference_id: str = None,
         snapshot_template_id: str = None,
         specified_offset_time: int = None,
         specified_offset_times_shrink: str = None,
@@ -41905,6 +42026,7 @@ class SubmitSnapshotJobShrinkRequest(TeaModel):
         # *   Default value: **1**.
         # *   If you set this parameter to **0**, snapshots are captured at even intervals based on the video duration divided by the value of the Count parameter.
         self.interval = interval
+        self.reference_id = reference_id
         # The ID of the snapshot template.
         # 
         # *   We recommend that you create a snapshot template before you specify the template ID. For more information about how to create a snapshot template, see [AddVodTemplate](https://help.aliyun.com/document_detail/99406.html).
@@ -41947,6 +42069,8 @@ class SubmitSnapshotJobShrinkRequest(TeaModel):
             result['Height'] = self.height
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.snapshot_template_id is not None:
             result['SnapshotTemplateId'] = self.snapshot_template_id
         if self.specified_offset_time is not None:
@@ -41971,6 +42095,8 @@ class SubmitSnapshotJobShrinkRequest(TeaModel):
             self.height = m.get('Height')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('SnapshotTemplateId') is not None:
             self.snapshot_template_id = m.get('SnapshotTemplateId')
         if m.get('SpecifiedOffsetTime') is not None:
@@ -42101,6 +42227,7 @@ class SubmitTranscodeJobsRequest(TeaModel):
         override_params: str = None,
         pipeline_id: str = None,
         priority: str = None,
+        reference_id: str = None,
         session_id: str = None,
         template_group_id: str = None,
         user_data: str = None,
@@ -42126,6 +42253,7 @@ class SubmitTranscodeJobsRequest(TeaModel):
         # 
         # >  This parameter takes effect only on the queued transcoding jobs. The priorities of the in-progress transcoding jobs are not affected.
         self.priority = priority
+        self.reference_id = reference_id
         # The custom identifier for deduplication. If you send a request, an error is returned if a request with the same identifier was sent in the last 7 days. A custom identifier can be up to 50 characters in length and can contain letters, digits, hyphens (-), and underscores (_). If you do not specify this parameter or leave this parameter empty, duplicate requests are not filtered.
         self.session_id = session_id
         # The ID of the transcoding template group that you want to use. To view the template group ID, perform the following operations: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**.
@@ -42160,6 +42288,8 @@ class SubmitTranscodeJobsRequest(TeaModel):
             result['PipelineId'] = self.pipeline_id
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         if self.template_group_id is not None:
@@ -42180,6 +42310,8 @@ class SubmitTranscodeJobsRequest(TeaModel):
             self.pipeline_id = m.get('PipelineId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         if m.get('TemplateGroupId') is not None:
@@ -43644,6 +43776,7 @@ class UpdateVideoInfoRequest(TeaModel):
         cate_id: int = None,
         cover_url: str = None,
         description: str = None,
+        reference_id: str = None,
         tags: str = None,
         title: str = None,
         user_data: str = None,
@@ -43662,6 +43795,7 @@ class UpdateVideoInfoRequest(TeaModel):
         # *   The description can be up to 1,024 bytes in length.
         # *   The value is encoded in UTF-8.
         self.description = description
+        self.reference_id = reference_id
         # The tags of the media file.
         # 
         # *   Each tag can be up to 32 bytes in length. You can specify up to 16 tags.
@@ -43680,8 +43814,6 @@ class UpdateVideoInfoRequest(TeaModel):
         # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
         # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
         # *   View the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
-        # 
-        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -43699,6 +43831,8 @@ class UpdateVideoInfoRequest(TeaModel):
             result['CoverURL'] = self.cover_url
         if self.description is not None:
             result['Description'] = self.description
+        if self.reference_id is not None:
+            result['ReferenceId'] = self.reference_id
         if self.tags is not None:
             result['Tags'] = self.tags
         if self.title is not None:
@@ -43717,6 +43851,8 @@ class UpdateVideoInfoRequest(TeaModel):
             self.cover_url = m.get('CoverURL')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ReferenceId') is not None:
+            self.reference_id = m.get('ReferenceId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         if m.get('Title') is not None:
@@ -43833,11 +43969,13 @@ class UpdateVideoInfosResponseBody(TeaModel):
     def __init__(
         self,
         forbidden_video_ids: List[str] = None,
+        non_exist_reference_ids: List[str] = None,
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
     ):
         # The IDs of the videos that cannot be modified. Generally, videos cannot be modified if you do not have required [permissions](https://help.aliyun.com/document_detail/113600.html).
         self.forbidden_video_ids = forbidden_video_ids
+        self.non_exist_reference_ids = non_exist_reference_ids
         # The IDs of the videos that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
         # The ID of the request.
@@ -43854,6 +43992,8 @@ class UpdateVideoInfosResponseBody(TeaModel):
         result = dict()
         if self.forbidden_video_ids is not None:
             result['ForbiddenVideoIds'] = self.forbidden_video_ids
+        if self.non_exist_reference_ids is not None:
+            result['NonExistReferenceIds'] = self.non_exist_reference_ids
         if self.non_exist_video_ids is not None:
             result['NonExistVideoIds'] = self.non_exist_video_ids
         if self.request_id is not None:
@@ -43864,6 +44004,8 @@ class UpdateVideoInfosResponseBody(TeaModel):
         m = m or dict()
         if m.get('ForbiddenVideoIds') is not None:
             self.forbidden_video_ids = m.get('ForbiddenVideoIds')
+        if m.get('NonExistReferenceIds') is not None:
+            self.non_exist_reference_ids = m.get('NonExistReferenceIds')
         if m.get('NonExistVideoIds') is not None:
             self.non_exist_video_ids = m.get('NonExistVideoIds')
         if m.get('RequestId') is not None:

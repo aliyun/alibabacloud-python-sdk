@@ -1,3 +1,32 @@
+2025-12-03 Version: 3.9.2
+- Update API BatchGetMediaInfos: add request parameters ReferenceIds.
+- Update API BatchGetMediaInfos: add response parameters Body.NonExistReferenceIds.
+- Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MediaInfo.ReferenceId.
+- Update API CreateUploadVideo: add request parameters ReferenceId.
+- Update API DeleteMezzanines: add request parameters ReferenceIds.
+- Update API DeleteMezzanines: add response parameters Body.NonExistReferenceIds.
+- Update API DeleteStream: add request parameters ReferenceId.
+- Update API DeleteVideo: add request parameters ReferenceIds.
+- Update API DeleteVideo: add response parameters Body.NonExistReferenceIds.
+- Update API GetMezzanineInfo: add request parameters ReferenceId.
+- Update API GetPlayInfo: add request parameters ReferenceId.
+- Update API GetVideoInfo: add request parameters ReferenceId.
+- Update API GetVideoInfo: add response parameters Body.Video.ReferenceId.
+- Update API GetVideoInfos: add request parameters ReferenceIds.
+- Update API GetVideoInfos: add response parameters Body.NonExistReferenceIds.
+- Update API GetVideoInfos: add response parameters Body.VideoList.$.ReferenceId.
+- Update API GetVideoList: add request parameters ReferenceIds.
+- Update API GetVideoList: add response parameters Body.VideoList.$.ReferenceId.
+- Update API GetVideoPlayAuth: add request parameters ReferenceId.
+- Update API RefreshUploadVideo: add request parameters ReferenceId.
+- Update API SearchMedia: add response parameters Body.MediaList.$.Audio.ReferenceId.
+- Update API SearchMedia: add response parameters Body.MediaList.$.Video.ReferenceId.
+- Update API SubmitSnapshotJob: add request parameters ReferenceId.
+- Update API SubmitTranscodeJobs: add request parameters ReferenceId.
+- Update API UpdateVideoInfo: add request parameters ReferenceId.
+- Update API UpdateVideoInfos: add response parameters Body.NonExistReferenceIds.
+
+
 2025-11-19 Version: 3.9.1
 - Update API BatchGetMediaInfos: add response parameters Body.MediaInfos.$.MezzanineInfo.FileMD5.
 - Update API GetMezzanineInfo: add response parameters Body.Mezzanine.FileMD5.
