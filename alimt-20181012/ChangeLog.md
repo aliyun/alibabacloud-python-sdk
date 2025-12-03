@@ -1,3 +1,6 @@
+2025-12-03 Version: 1.5.2
+- Update SDK.
+
 2025-07-16 Version: 1.5.1
 - Generated python 2018-10-12 for alimt.
 
