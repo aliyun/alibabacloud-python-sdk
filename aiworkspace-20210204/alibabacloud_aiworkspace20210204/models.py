@@ -359,6 +359,7 @@ class DatasetShareRelationship(TeaModel):
         self,
         allowed_mount_access_levels: List[str] = None,
         expires_at: str = None,
+        extra: str = None,
         is_secure_mode: bool = None,
         shared_at: str = None,
         source_tenant_id: str = None,
@@ -369,6 +370,7 @@ class DatasetShareRelationship(TeaModel):
     ):
         self.allowed_mount_access_levels = allowed_mount_access_levels
         self.expires_at = expires_at
+        self.extra = extra
         self.is_secure_mode = is_secure_mode
         self.shared_at = shared_at
         self.source_tenant_id = source_tenant_id
@@ -390,6 +392,8 @@ class DatasetShareRelationship(TeaModel):
             result['AllowedMountAccessLevels'] = self.allowed_mount_access_levels
         if self.expires_at is not None:
             result['ExpiresAt'] = self.expires_at
+        if self.extra is not None:
+            result['Extra'] = self.extra
         if self.is_secure_mode is not None:
             result['IsSecureMode'] = self.is_secure_mode
         if self.shared_at is not None:
@@ -412,6 +416,8 @@ class DatasetShareRelationship(TeaModel):
             self.allowed_mount_access_levels = m.get('AllowedMountAccessLevels')
         if m.get('ExpiresAt') is not None:
             self.expires_at = m.get('ExpiresAt')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
         if m.get('IsSecureMode') is not None:
             self.is_secure_mode = m.get('IsSecureMode')
         if m.get('SharedAt') is not None:
@@ -844,6 +850,7 @@ class DatasetFileMeta(TeaModel):
         score: float = None,
         semantic_index_job_id: str = None,
         semantic_index_update_time: str = None,
+        status: str = None,
         tags: str = None,
         thumbnail_url: str = None,
         uri: str = None,
@@ -864,6 +871,7 @@ class DatasetFileMeta(TeaModel):
         self.semantic_index_job_id = semantic_index_job_id
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
+        self.status = status
         self.tags = tags
         self.thumbnail_url = thumbnail_url
         self.uri = uri
@@ -903,6 +911,8 @@ class DatasetFileMeta(TeaModel):
             result['SemanticIndexJobId'] = self.semantic_index_job_id
         if self.semantic_index_update_time is not None:
             result['SemanticIndexUpdateTime'] = self.semantic_index_update_time
+        if self.status is not None:
+            result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags
         if self.thumbnail_url is not None:
@@ -939,6 +949,8 @@ class DatasetFileMeta(TeaModel):
             self.semantic_index_job_id = m.get('SemanticIndexJobId')
         if m.get('SemanticIndexUpdateTime') is not None:
             self.semantic_index_update_time = m.get('SemanticIndexUpdateTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         if m.get('ThumbnailUrl') is not None:
@@ -1162,6 +1174,7 @@ class DatasetFileMetaContentGet(TeaModel):
         meta_attributes: str = None,
         semantic_index_job_id: str = None,
         semantic_index_update_time: str = None,
+        status: str = None,
         tag_update_time: str = None,
         tags: str = None,
         uri: str = None,
@@ -1182,6 +1195,7 @@ class DatasetFileMetaContentGet(TeaModel):
         self.semantic_index_job_id = semantic_index_job_id
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
+        self.status = status
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.tag_update_time = tag_update_time
         self.tags = tags
@@ -1222,6 +1236,8 @@ class DatasetFileMetaContentGet(TeaModel):
             result['SemanticIndexJobId'] = self.semantic_index_job_id
         if self.semantic_index_update_time is not None:
             result['SemanticIndexUpdateTime'] = self.semantic_index_update_time
+        if self.status is not None:
+            result['Status'] = self.status
         if self.tag_update_time is not None:
             result['TagUpdateTime'] = self.tag_update_time
         if self.tags is not None:
@@ -1258,6 +1274,8 @@ class DatasetFileMetaContentGet(TeaModel):
             self.semantic_index_job_id = m.get('SemanticIndexJobId')
         if m.get('SemanticIndexUpdateTime') is not None:
             self.semantic_index_update_time = m.get('SemanticIndexUpdateTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TagUpdateTime') is not None:
             self.tag_update_time = m.get('TagUpdateTime')
         if m.get('Tags') is not None:
@@ -14196,6 +14214,7 @@ class ListDatasetFileMetasRequest(TeaModel):
         sort_by: str = None,
         start_file_update_time: str = None,
         start_tag_update_time: str = None,
+        status: str = None,
         thumbnail_mode: str = None,
         top_k: int = None,
         workspace_id: str = None,
@@ -14251,6 +14270,7 @@ class ListDatasetFileMetasRequest(TeaModel):
         self.start_file_update_time = start_file_update_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_tag_update_time = start_tag_update_time
+        self.status = status
         self.thumbnail_mode = thumbnail_mode
         # The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
         self.top_k = top_k
@@ -14312,6 +14332,8 @@ class ListDatasetFileMetasRequest(TeaModel):
             result['StartFileUpdateTime'] = self.start_file_update_time
         if self.start_tag_update_time is not None:
             result['StartTagUpdateTime'] = self.start_tag_update_time
+        if self.status is not None:
+            result['Status'] = self.status
         if self.thumbnail_mode is not None:
             result['ThumbnailMode'] = self.thumbnail_mode
         if self.top_k is not None:
@@ -14366,6 +14388,8 @@ class ListDatasetFileMetasRequest(TeaModel):
             self.start_file_update_time = m.get('StartFileUpdateTime')
         if m.get('StartTagUpdateTime') is not None:
             self.start_tag_update_time = m.get('StartTagUpdateTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('ThumbnailMode') is not None:
             self.thumbnail_mode = m.get('ThumbnailMode')
         if m.get('TopK') is not None:
@@ -14400,6 +14424,7 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         sort_by: str = None,
         start_file_update_time: str = None,
         start_tag_update_time: str = None,
+        status: str = None,
         thumbnail_mode: str = None,
         top_k: int = None,
         workspace_id: str = None,
@@ -14455,6 +14480,7 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
         self.start_file_update_time = start_file_update_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_tag_update_time = start_tag_update_time
+        self.status = status
         self.thumbnail_mode = thumbnail_mode
         # The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
         self.top_k = top_k
@@ -14516,6 +14542,8 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
             result['StartFileUpdateTime'] = self.start_file_update_time
         if self.start_tag_update_time is not None:
             result['StartTagUpdateTime'] = self.start_tag_update_time
+        if self.status is not None:
+            result['Status'] = self.status
         if self.thumbnail_mode is not None:
             result['ThumbnailMode'] = self.thumbnail_mode
         if self.top_k is not None:
@@ -14570,6 +14598,8 @@ class ListDatasetFileMetasShrinkRequest(TeaModel):
             self.start_file_update_time = m.get('StartFileUpdateTime')
         if m.get('StartTagUpdateTime') is not None:
             self.start_tag_update_time = m.get('StartTagUpdateTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('ThumbnailMode') is not None:
             self.thumbnail_mode = m.get('ThumbnailMode')
         if m.get('TopK') is not None:

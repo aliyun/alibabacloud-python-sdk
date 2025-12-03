@@ -7912,6 +7912,8 @@ class Client(OpenApiClient):
             query['StartFileUpdateTime'] = request.start_file_update_time
         if not UtilClient.is_unset(request.start_tag_update_time):
             query['StartTagUpdateTime'] = request.start_tag_update_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.thumbnail_mode):
             query['ThumbnailMode'] = request.thumbnail_mode
         if not UtilClient.is_unset(request.top_k):
@@ -8011,6 +8013,8 @@ class Client(OpenApiClient):
             query['StartFileUpdateTime'] = request.start_file_update_time
         if not UtilClient.is_unset(request.start_tag_update_time):
             query['StartTagUpdateTime'] = request.start_tag_update_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.thumbnail_mode):
             query['ThumbnailMode'] = request.thumbnail_mode
         if not UtilClient.is_unset(request.top_k):

@@ -1,3 +1,7 @@
+2025-12-03 Version: 8.0.1
+- Update API ListDatasetFileMetas: add request parameters Status.
+
+
 2025-11-18 Version: 8.0.0
 - Update API AddImage: update request parameters body.Size' format has changed.
 - Update API GetImage: update response parameters Body.Size' format has changed.
