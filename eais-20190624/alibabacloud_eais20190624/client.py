@@ -128,16 +128,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.AttachEaiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_eai_with_options_async(
         self,
@@ -173,16 +167,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.AttachEaiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_eai(
         self,
@@ -246,16 +234,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaisEiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaisEiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.AttachEaisEiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_eais_ei_with_options_async(
         self,
@@ -293,16 +275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaisEiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.AttachEaisEiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.AttachEaisEiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_eais_ei(
         self,
@@ -364,16 +340,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -409,16 +379,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -492,16 +456,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_eai_with_options_async(
         self,
@@ -549,16 +507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_eai(
         self,
@@ -636,16 +588,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEciResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEciResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiEciResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_eai_eci_with_options_async(
         self,
@@ -697,16 +643,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEciResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEciResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiEciResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_eai_eci(
         self,
@@ -784,16 +724,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEcsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEcsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiEcsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_eai_ecs_with_options_async(
         self,
@@ -845,16 +779,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEcsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiEcsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiEcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_eai_ecs(
         self,
@@ -932,16 +860,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiJupyterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiJupyterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiJupyterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_eai_jupyter_with_options_async(
         self,
@@ -993,16 +915,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiJupyterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaiJupyterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaiJupyterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_eai_jupyter(
         self,
@@ -1074,16 +990,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaisEiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaisEiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaisEiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_eais_ei_with_options_async(
         self,
@@ -1129,16 +1039,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaisEiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.CreateEaisEiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.CreateEaisEiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_eais_ei(
         self,
@@ -1200,16 +1104,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DeleteEaiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_eai_with_options_async(
         self,
@@ -1245,16 +1143,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DeleteEaiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_eai(
         self,
@@ -1316,16 +1208,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiAllResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiAllResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DeleteEaiAllResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_eai_all_with_options_async(
         self,
@@ -1361,16 +1247,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiAllResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaiAllResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DeleteEaiAllResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_eai_all(
         self,
@@ -1432,16 +1312,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaisEiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaisEiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DeleteEaisEiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_eais_ei_with_options_async(
         self,
@@ -1477,16 +1351,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaisEiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DeleteEaisEiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DeleteEaisEiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_eais_ei(
         self,
@@ -1562,16 +1430,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeEaisResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeEaisResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DescribeEaisResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_eais_with_options_async(
         self,
@@ -1621,16 +1483,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeEaisResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeEaisResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DescribeEaisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_eais(
         self,
@@ -1681,16 +1537,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -1715,16 +1565,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(self) -> eais_20190624_models.DescribeRegionsResponse:
         """
@@ -1776,16 +1620,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DetachEaiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_eai_with_options_async(
         self,
@@ -1819,16 +1657,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DetachEaiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_eai(
         self,
@@ -1888,16 +1720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaisEiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaisEiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DetachEaisEiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_eais_ei_with_options_async(
         self,
@@ -1931,16 +1757,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaisEiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.DetachEaisEiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.DetachEaisEiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_eais_ei(
         self,
@@ -2008,16 +1828,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.GetInstanceMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.GetInstanceMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.GetInstanceMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_metrics_with_options_async(
         self,
@@ -2059,16 +1873,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.GetInstanceMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.GetInstanceMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.GetInstanceMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_metrics(
         self,
@@ -2134,16 +1942,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -2183,16 +1985,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -2252,16 +2048,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaiJupyterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaiJupyterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StartEaiJupyterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_eai_jupyter_with_options_async(
         self,
@@ -2295,16 +2085,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaiJupyterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaiJupyterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StartEaiJupyterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_eai_jupyter(
         self,
@@ -2364,16 +2148,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaisEiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaisEiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StartEaisEiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_eais_ei_with_options_async(
         self,
@@ -2407,16 +2185,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaisEiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StartEaisEiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StartEaisEiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_eais_ei(
         self,
@@ -2476,16 +2248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaiJupyterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaiJupyterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StopEaiJupyterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_eai_jupyter_with_options_async(
         self,
@@ -2519,16 +2285,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaiJupyterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaiJupyterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StopEaiJupyterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_eai_jupyter(
         self,
@@ -2588,16 +2348,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaisEiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaisEiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StopEaisEiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_eais_ei_with_options_async(
         self,
@@ -2631,16 +2385,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaisEiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.StopEaisEiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.StopEaisEiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_eais_ei(
         self,
@@ -2704,16 +2452,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -2751,16 +2493,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -2826,16 +2562,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -2875,16 +2605,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                eais_20190624_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                eais_20190624_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            eais_20190624_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,

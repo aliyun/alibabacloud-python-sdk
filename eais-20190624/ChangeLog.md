@@ -1,3 +1,6 @@
+2025-12-03 Version: 3.0.6
+- Update SDK.
+
 2025-03-07 Version: 3.0.5
 - Generated python 2019-06-24 for eais.
 
