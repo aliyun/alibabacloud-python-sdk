@@ -1169,6 +1169,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.date):
+            query['Date'] = request.date
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.max_results):
@@ -1216,6 +1218,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.date):
+            query['Date'] = request.date
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.max_results):

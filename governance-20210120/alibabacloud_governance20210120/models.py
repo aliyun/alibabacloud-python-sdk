@@ -2993,6 +2993,7 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
     def __init__(
         self,
         account_id: int = None,
+        date: str = None,
         id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -3002,6 +3003,7 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
     ):
         # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
         self.account_id = account_id
+        self.date = date
         # The ID of the check item.
         # 
         # You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to query the ID of the check item.
@@ -3026,6 +3028,8 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+        if self.date is not None:
+            result['Date'] = self.date
         if self.id is not None:
             result['Id'] = self.id
         if self.max_results is not None:
@@ -3044,6 +3048,8 @@ class ListEvaluationMetricDetailsRequest(TeaModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('MaxResults') is not None:
@@ -3189,10 +3195,12 @@ class ListEvaluationMetricDetailsResponseBodyResources(TeaModel):
 class ListEvaluationMetricDetailsResponseBody(TeaModel):
     def __init__(
         self,
+        date: str = None,
         next_token: str = None,
         request_id: str = None,
         resources: List[ListEvaluationMetricDetailsResponseBodyResources] = None,
     ):
+        self.date = date
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
@@ -3212,6 +3220,8 @@ class ListEvaluationMetricDetailsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
@@ -3224,6 +3234,8 @@ class ListEvaluationMetricDetailsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:

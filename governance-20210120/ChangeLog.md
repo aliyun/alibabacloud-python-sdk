@@ -1,3 +1,8 @@
+2025-12-03 Version: 0.3.10
+- Update API ListEvaluationMetricDetails: add request parameters Date.
+- Update API ListEvaluationMetricDetails: add response parameters Body.Date.
+
+
 2025-11-26 Version: 0.3.9
 - Update API ListEvaluationResults: add response parameters Body.Results.MetricResults.$.AvailableRemediation.
 
