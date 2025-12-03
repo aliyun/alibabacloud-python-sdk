@@ -1,3 +1,12 @@
+2025-12-03 Version: 2.1.2
+- Update API CreateMetaCategory: add request parameters Description.
+- Update API CreateMetaCategory: add request parameters OwnerIds.
+- Update API CreateMetaCategory: add request parameters Remark.
+- Update API UpdateMetaCategory: add request parameters Description.
+- Update API UpdateMetaCategory: add request parameters OwnerIds.
+- Update API UpdateMetaCategory: add request parameters Remark.
+
+
 2025-12-02 Version: 2.1.1
 - Update API ChatWithDesensitizeSSE: add request parameters Dimensions.
 - Update API ChatWithDesensitizeSSE: add request parameters Input.

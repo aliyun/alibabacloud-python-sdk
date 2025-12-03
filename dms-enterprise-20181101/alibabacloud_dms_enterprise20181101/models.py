@@ -1400,14 +1400,22 @@ class MetaCategory(TeaModel):
         category_id: int = None,
         create_time: str = None,
         depth: int = None,
+        description: str = None,
         name: str = None,
+        owner_ids: List[int] = None,
+        owner_nick_names: List[str] = None,
         parent_category_id: int = None,
+        remark: str = None,
     ):
         self.category_id = category_id
         self.create_time = create_time
         self.depth = depth
+        self.description = description
         self.name = name
+        self.owner_ids = owner_ids
+        self.owner_nick_names = owner_nick_names
         self.parent_category_id = parent_category_id
+        self.remark = remark
 
     def validate(self):
         pass
@@ -1424,10 +1432,18 @@ class MetaCategory(TeaModel):
             result['CreateTime'] = self.create_time
         if self.depth is not None:
             result['Depth'] = self.depth
+        if self.description is not None:
+            result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_ids is not None:
+            result['OwnerIds'] = self.owner_ids
+        if self.owner_nick_names is not None:
+            result['OwnerNickNames'] = self.owner_nick_names
         if self.parent_category_id is not None:
             result['ParentCategoryId'] = self.parent_category_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
@@ -1438,10 +1454,18 @@ class MetaCategory(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Depth') is not None:
             self.depth = m.get('Depth')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerIds') is not None:
+            self.owner_ids = m.get('OwnerIds')
+        if m.get('OwnerNickNames') is not None:
+            self.owner_nick_names = m.get('OwnerNickNames')
         if m.get('ParentCategoryId') is not None:
             self.parent_category_id = m.get('ParentCategoryId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
@@ -13722,16 +13746,22 @@ class CreateLogicDatabaseResponse(TeaModel):
 class CreateMetaCategoryRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         name: str = None,
+        owner_ids: List[int] = None,
         parent_category_id: int = None,
+        remark: str = None,
         tid: int = None,
     ):
+        self.description = description
         # The name of the category.
         # 
         # This parameter is required.
         self.name = name
+        self.owner_ids = owner_ids
         # The ID of the parent category. The new category is created under this parent category. If this value is left empty, the new category is of the first level.
         self.parent_category_id = parent_category_id
+        self.remark = remark
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
@@ -13744,20 +13774,94 @@ class CreateMetaCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_ids is not None:
+            result['OwnerIds'] = self.owner_ids
         if self.parent_category_id is not None:
             result['ParentCategoryId'] = self.parent_category_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerIds') is not None:
+            self.owner_ids = m.get('OwnerIds')
         if m.get('ParentCategoryId') is not None:
             self.parent_category_id = m.get('ParentCategoryId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateMetaCategoryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        owner_ids_shrink: str = None,
+        parent_category_id: int = None,
+        remark: str = None,
+        tid: int = None,
+    ):
+        self.description = description
+        # The name of the category.
+        # 
+        # This parameter is required.
+        self.name = name
+        self.owner_ids_shrink = owner_ids_shrink
+        # The ID of the parent category. The new category is created under this parent category. If this value is left empty, the new category is of the first level.
+        self.parent_category_id = parent_category_id
+        self.remark = remark
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_ids_shrink is not None:
+            result['OwnerIds'] = self.owner_ids_shrink
+        if self.parent_category_id is not None:
+            result['ParentCategoryId'] = self.parent_category_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerIds') is not None:
+            self.owner_ids_shrink = m.get('OwnerIds')
+        if m.get('ParentCategoryId') is not None:
+            self.parent_category_id = m.get('ParentCategoryId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -75162,15 +75266,21 @@ class UpdateMetaCategoryRequest(TeaModel):
     def __init__(
         self,
         category_id: int = None,
+        description: str = None,
         name: str = None,
+        owner_ids: List[int] = None,
+        remark: str = None,
         tid: int = None,
     ):
         # The category ID.
         # 
         # This parameter is required.
         self.category_id = category_id
+        self.description = description
         # The updated name of the category.
         self.name = name
+        self.owner_ids = owner_ids
+        self.remark = remark
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
@@ -75185,8 +75295,14 @@ class UpdateMetaCategoryRequest(TeaModel):
         result = dict()
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner_ids is not None:
+            result['OwnerIds'] = self.owner_ids
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -75195,8 +75311,76 @@ class UpdateMetaCategoryRequest(TeaModel):
         m = m or dict()
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OwnerIds') is not None:
+            self.owner_ids = m.get('OwnerIds')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateMetaCategoryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: int = None,
+        description: str = None,
+        name: str = None,
+        owner_ids_shrink: str = None,
+        remark: str = None,
+        tid: int = None,
+    ):
+        # The category ID.
+        # 
+        # This parameter is required.
+        self.category_id = category_id
+        self.description = description
+        # The updated name of the category.
+        self.name = name
+        self.owner_ids_shrink = owner_ids_shrink
+        self.remark = remark
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_ids_shrink is not None:
+            result['OwnerIds'] = self.owner_ids_shrink
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerIds') is not None:
+            self.owner_ids_shrink = m.get('OwnerIds')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self

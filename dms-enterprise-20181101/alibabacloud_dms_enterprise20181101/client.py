@@ -5601,22 +5601,32 @@ class Client(OpenApiClient):
 
     def create_meta_category_with_options(
         self,
-        request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
+        tmp_req: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
         """
         @summary Create Asset Category
         
-        @param request: CreateMetaCategoryRequest
+        @param tmp_req: CreateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateMetaCategoryResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateMetaCategoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.owner_ids):
+            request.owner_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.owner_ids, 'OwnerIds', 'json')
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_ids_shrink):
+            query['OwnerIds'] = request.owner_ids_shrink
         if not UtilClient.is_unset(request.parent_category_id):
             query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -5640,22 +5650,32 @@ class Client(OpenApiClient):
 
     async def create_meta_category_with_options_async(
         self,
-        request: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
+        tmp_req: dms_enterprise_20181101_models.CreateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateMetaCategoryResponse:
         """
         @summary Create Asset Category
         
-        @param request: CreateMetaCategoryRequest
+        @param tmp_req: CreateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateMetaCategoryResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateMetaCategoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.owner_ids):
+            request.owner_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.owner_ids, 'OwnerIds', 'json')
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_ids_shrink):
+            query['OwnerIds'] = request.owner_ids_shrink
         if not UtilClient.is_unset(request.parent_category_id):
             query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -33449,22 +33469,32 @@ class Client(OpenApiClient):
 
     def update_meta_category_with_options(
         self,
-        request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
+        tmp_req: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
         """
         @summary Updates asset category information.
         
-        @param request: UpdateMetaCategoryRequest
+        @param tmp_req: UpdateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateMetaCategoryResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateMetaCategoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.owner_ids):
+            request.owner_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.owner_ids, 'OwnerIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.category_id):
             query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_ids_shrink):
+            query['OwnerIds'] = request.owner_ids_shrink
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -33488,22 +33518,32 @@ class Client(OpenApiClient):
 
     async def update_meta_category_with_options_async(
         self,
-        request: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
+        tmp_req: dms_enterprise_20181101_models.UpdateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateMetaCategoryResponse:
         """
         @summary Updates asset category information.
         
-        @param request: UpdateMetaCategoryRequest
+        @param tmp_req: UpdateMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateMetaCategoryResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateMetaCategoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.owner_ids):
+            request.owner_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.owner_ids, 'OwnerIds', 'json')
         query = {}
         if not UtilClient.is_unset(request.category_id):
             query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_ids_shrink):
+            query['OwnerIds'] = request.owner_ids_shrink
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
