@@ -1,3 +1,6 @@
+2025-12-03 Version: 1.0.2
+- Generated python 2017-01-15 for HBase.
+
 2025-03-12 Version: 1.0.1
 - Update API DescribeSubscriptionInitializeProgress: add param RegionId.
 - Update API DescribeSubscriptionPerformance: add param RegionId.
