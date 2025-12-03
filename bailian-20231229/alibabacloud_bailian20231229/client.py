@@ -1071,6 +1071,12 @@ class Client(OpenApiClient):
             query['enableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.meta_extract_columns_shrink):
             query['metaExtractColumns'] = request.meta_extract_columns_shrink
+        if not UtilClient.is_unset(request.pipeline_commercial_cu):
+            query['pipelineCommercialCu'] = request.pipeline_commercial_cu
+        if not UtilClient.is_unset(request.pipeline_commercial_type):
+            query['pipelineCommercialType'] = request.pipeline_commercial_type
+        if not UtilClient.is_unset(request.pipeline_retrieve_rate_limit_strategy):
+            query['pipelineRetrieveRateLimitStrategy'] = request.pipeline_retrieve_rate_limit_strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1177,6 +1183,12 @@ class Client(OpenApiClient):
             query['enableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.meta_extract_columns_shrink):
             query['metaExtractColumns'] = request.meta_extract_columns_shrink
+        if not UtilClient.is_unset(request.pipeline_commercial_cu):
+            query['pipelineCommercialCu'] = request.pipeline_commercial_cu
+        if not UtilClient.is_unset(request.pipeline_commercial_type):
+            query['pipelineCommercialType'] = request.pipeline_commercial_type
+        if not UtilClient.is_unset(request.pipeline_retrieve_rate_limit_strategy):
+            query['pipelineRetrieveRateLimitStrategy'] = request.pipeline_retrieve_rate_limit_strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

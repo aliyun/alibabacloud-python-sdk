@@ -1,3 +1,9 @@
+2025-12-03 Version: 2.6.2
+- Update API CreateIndex: add request parameters pipelineCommercialCu.
+- Update API CreateIndex: add request parameters pipelineCommercialType.
+- Update API CreateIndex: add request parameters pipelineRetrieveRateLimitStrategy.
+
+
 2025-11-19 Version: 2.6.1
 - Generated python 2023-12-29 for bailian.
 

@@ -2489,6 +2489,9 @@ class CreateIndexRequest(TeaModel):
         chunk_mode: str = None,
         enable_headers: bool = None,
         meta_extract_columns: List[CreateIndexRequestMetaExtractColumns] = None,
+        pipeline_commercial_cu: int = None,
+        pipeline_commercial_type: str = None,
+        pipeline_retrieve_rate_limit_strategy: str = None,
     ):
         # The files to imported to the knowledge base. Specify the category IDs. All files under the categories will be imported (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.category_ids = category_ids
@@ -2594,6 +2597,9 @@ class CreateIndexRequest(TeaModel):
         self.enable_headers = enable_headers
         # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns = meta_extract_columns
+        self.pipeline_commercial_cu = pipeline_commercial_cu
+        self.pipeline_commercial_type = pipeline_commercial_type
+        self.pipeline_retrieve_rate_limit_strategy = pipeline_retrieve_rate_limit_strategy
 
     def validate(self):
         if self.columns:
@@ -2663,6 +2669,12 @@ class CreateIndexRequest(TeaModel):
         if self.meta_extract_columns is not None:
             for k in self.meta_extract_columns:
                 result['metaExtractColumns'].append(k.to_map() if k else None)
+        if self.pipeline_commercial_cu is not None:
+            result['pipelineCommercialCu'] = self.pipeline_commercial_cu
+        if self.pipeline_commercial_type is not None:
+            result['pipelineCommercialType'] = self.pipeline_commercial_type
+        if self.pipeline_retrieve_rate_limit_strategy is not None:
+            result['pipelineRetrieveRateLimitStrategy'] = self.pipeline_retrieve_rate_limit_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -2720,6 +2732,12 @@ class CreateIndexRequest(TeaModel):
             for k in m.get('metaExtractColumns'):
                 temp_model = CreateIndexRequestMetaExtractColumns()
                 self.meta_extract_columns.append(temp_model.from_map(k))
+        if m.get('pipelineCommercialCu') is not None:
+            self.pipeline_commercial_cu = m.get('pipelineCommercialCu')
+        if m.get('pipelineCommercialType') is not None:
+            self.pipeline_commercial_type = m.get('pipelineCommercialType')
+        if m.get('pipelineRetrieveRateLimitStrategy') is not None:
+            self.pipeline_retrieve_rate_limit_strategy = m.get('pipelineRetrieveRateLimitStrategy')
         return self
 
 
@@ -2749,6 +2767,9 @@ class CreateIndexShrinkRequest(TeaModel):
         chunk_mode: str = None,
         enable_headers: bool = None,
         meta_extract_columns_shrink: str = None,
+        pipeline_commercial_cu: int = None,
+        pipeline_commercial_type: str = None,
+        pipeline_retrieve_rate_limit_strategy: str = None,
     ):
         # The files to imported to the knowledge base. Specify the category IDs. All files under the categories will be imported (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.category_ids_shrink = category_ids_shrink
@@ -2854,6 +2875,9 @@ class CreateIndexShrinkRequest(TeaModel):
         self.enable_headers = enable_headers
         # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
+        self.pipeline_commercial_cu = pipeline_commercial_cu
+        self.pipeline_commercial_type = pipeline_commercial_type
+        self.pipeline_retrieve_rate_limit_strategy = pipeline_retrieve_rate_limit_strategy
 
     def validate(self):
         pass
@@ -2910,6 +2934,12 @@ class CreateIndexShrinkRequest(TeaModel):
             result['enableHeaders'] = self.enable_headers
         if self.meta_extract_columns_shrink is not None:
             result['metaExtractColumns'] = self.meta_extract_columns_shrink
+        if self.pipeline_commercial_cu is not None:
+            result['pipelineCommercialCu'] = self.pipeline_commercial_cu
+        if self.pipeline_commercial_type is not None:
+            result['pipelineCommercialType'] = self.pipeline_commercial_type
+        if self.pipeline_retrieve_rate_limit_strategy is not None:
+            result['pipelineRetrieveRateLimitStrategy'] = self.pipeline_retrieve_rate_limit_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -2960,6 +2990,12 @@ class CreateIndexShrinkRequest(TeaModel):
             self.enable_headers = m.get('enableHeaders')
         if m.get('metaExtractColumns') is not None:
             self.meta_extract_columns_shrink = m.get('metaExtractColumns')
+        if m.get('pipelineCommercialCu') is not None:
+            self.pipeline_commercial_cu = m.get('pipelineCommercialCu')
+        if m.get('pipelineCommercialType') is not None:
+            self.pipeline_commercial_type = m.get('pipelineCommercialType')
+        if m.get('pipelineRetrieveRateLimitStrategy') is not None:
+            self.pipeline_retrieve_rate_limit_strategy = m.get('pipelineRetrieveRateLimitStrategy')
         return self
 
 
