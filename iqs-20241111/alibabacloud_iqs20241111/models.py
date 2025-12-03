@@ -116,6 +116,7 @@ class ScorePageItem(TeaModel):
     def __init__(
         self,
         card_type: str = None,
+        correlation_tag: int = None,
         display_link: str = None,
         host_authority_score: float = None,
         host_logo: str = None,
@@ -139,6 +140,7 @@ class ScorePageItem(TeaModel):
     ):
         # This parameter is required.
         self.card_type = card_type
+        self.correlation_tag = correlation_tag
         # This parameter is required.
         self.display_link = display_link
         self.host_authority_score = host_authority_score
@@ -180,6 +182,8 @@ class ScorePageItem(TeaModel):
         result = dict()
         if self.card_type is not None:
             result['cardType'] = self.card_type
+        if self.correlation_tag is not None:
+            result['correlationTag'] = self.correlation_tag
         if self.display_link is not None:
             result['displayLink'] = self.display_link
         if self.host_authority_score is not None:
@@ -228,6 +232,8 @@ class ScorePageItem(TeaModel):
         m = m or dict()
         if m.get('cardType') is not None:
             self.card_type = m.get('cardType')
+        if m.get('correlationTag') is not None:
+            self.correlation_tag = m.get('correlationTag')
         if m.get('displayLink') is not None:
             self.display_link = m.get('displayLink')
         if m.get('hostAuthorityScore') is not None:
@@ -1465,6 +1471,7 @@ class UnifiedOriginalQuery(TeaModel):
 class UnifiedPageItem(TeaModel):
     def __init__(
         self,
+        correlation_tag: int = None,
         host_authority_score: float = None,
         host_logo: str = None,
         hostname: str = None,
@@ -1480,6 +1487,7 @@ class UnifiedPageItem(TeaModel):
         title: str = None,
         website_authority_score: int = None,
     ):
+        self.correlation_tag = correlation_tag
         self.host_authority_score = host_authority_score
         self.host_logo = host_logo
         self.hostname = hostname
@@ -1504,6 +1512,8 @@ class UnifiedPageItem(TeaModel):
             return _map
 
         result = dict()
+        if self.correlation_tag is not None:
+            result['correlationTag'] = self.correlation_tag
         if self.host_authority_score is not None:
             result['hostAuthorityScore'] = self.host_authority_score
         if self.host_logo is not None:
@@ -1536,6 +1546,8 @@ class UnifiedPageItem(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('correlationTag') is not None:
+            self.correlation_tag = m.get('correlationTag')
         if m.get('hostAuthorityScore') is not None:
             self.host_authority_score = m.get('hostAuthorityScore')
         if m.get('hostLogo') is not None:
