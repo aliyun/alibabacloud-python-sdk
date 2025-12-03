@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('metaspace', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -82,7 +81,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             metaspace_20220307_models.ApplyCoordinationWithCodeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def apply_coordination_with_code_with_options_async(
@@ -125,7 +124,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             metaspace_20220307_models.ApplyCoordinationWithCodeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def apply_coordination_with_code(
@@ -196,7 +195,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             metaspace_20220307_models.EndAllCoordinationByOwnerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def end_all_coordination_by_owner_with_options_async(
@@ -241,7 +240,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             metaspace_20220307_models.EndAllCoordinationByOwnerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def end_all_coordination_by_owner(
@@ -314,7 +313,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             metaspace_20220307_models.GenerateCoordinationCodeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def generate_coordination_code_with_options_async(
@@ -361,7 +360,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             metaspace_20220307_models.GenerateCoordinationCodeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def generate_coordination_code(
