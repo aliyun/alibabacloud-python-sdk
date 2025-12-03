@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.AttachVscMountPointResponse:
         """
-        ***\
+        @summary 挂载VSC挂载点
+        
+        @description ***\
         
         @param tmp_req: AttachVscMountPointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -71,8 +73,12 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.mount_point_id):
             query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
         if not UtilClient.is_unset(request.vsc_ids_shrink):
             query['VscIds'] = request.vsc_ids_shrink
+        if not UtilClient.is_unset(request.vsc_name):
+            query['VscName'] = request.vsc_name
         if not UtilClient.is_unset(request.vsc_type):
             query['VscType'] = request.vsc_type
         req = open_api_models.OpenApiRequest(
@@ -100,7 +106,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.AttachVscMountPointResponse:
         """
-        ***\
+        @summary 挂载VSC挂载点
+        
+        @description ***\
         
         @param tmp_req: AttachVscMountPointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,8 +132,12 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.mount_point_id):
             query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
         if not UtilClient.is_unset(request.vsc_ids_shrink):
             query['VscIds'] = request.vsc_ids_shrink
+        if not UtilClient.is_unset(request.vsc_name):
+            query['VscName'] = request.vsc_name
         if not UtilClient.is_unset(request.vsc_type):
             query['VscType'] = request.vsc_type
         req = open_api_models.OpenApiRequest(
@@ -152,7 +164,9 @@ class Client(OpenApiClient):
         request: dfs20180620_models.AttachVscMountPointRequest,
     ) -> dfs20180620_models.AttachVscMountPointResponse:
         """
-        ***\
+        @summary 挂载VSC挂载点
+        
+        @description ***\
         
         @param request: AttachVscMountPointRequest
         @return: AttachVscMountPointResponse
@@ -165,7 +179,9 @@ class Client(OpenApiClient):
         request: dfs20180620_models.AttachVscMountPointRequest,
     ) -> dfs20180620_models.AttachVscMountPointResponse:
         """
-        ***\
+        @summary 挂载VSC挂载点
+        
+        @description ***\
         
         @param request: AttachVscMountPointRequest
         @return: AttachVscMountPointResponse
@@ -173,11 +189,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_vsc_mount_point_with_options_async(request, runtime)
 
+    def attach_vsc_to_mount_points_with_options(
+        self,
+        tmp_req: dfs20180620_models.AttachVscToMountPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.AttachVscToMountPointsResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param tmp_req: AttachVscToMountPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachVscToMountPointsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.AttachVscToMountPointsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attach_infos):
+            request.attach_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attach_infos, 'AttachInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attach_infos_shrink):
+            query['AttachInfos'] = request.attach_infos_shrink
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachVscToMountPoints',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.AttachVscToMountPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_vsc_to_mount_points_with_options_async(
+        self,
+        tmp_req: dfs20180620_models.AttachVscToMountPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.AttachVscToMountPointsResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param tmp_req: AttachVscToMountPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachVscToMountPointsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.AttachVscToMountPointsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attach_infos):
+            request.attach_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attach_infos, 'AttachInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attach_infos_shrink):
+            query['AttachInfos'] = request.attach_infos_shrink
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachVscToMountPoints',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.AttachVscToMountPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_vsc_to_mount_points(
+        self,
+        request: dfs20180620_models.AttachVscToMountPointsRequest,
+    ) -> dfs20180620_models.AttachVscToMountPointsResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param request: AttachVscToMountPointsRequest
+        @return: AttachVscToMountPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_vsc_to_mount_points_with_options(request, runtime)
+
+    async def attach_vsc_to_mount_points_async(
+        self,
+        request: dfs20180620_models.AttachVscToMountPointsRequest,
+    ) -> dfs20180620_models.AttachVscToMountPointsResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param request: AttachVscToMountPointsRequest
+        @return: AttachVscToMountPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_vsc_to_mount_points_with_options_async(request, runtime)
+
     def bind_vsc_mount_point_alias_with_options(
         self,
         request: dfs20180620_models.BindVscMountPointAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        """
+        @param request: BindVscMountPointAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindVscMountPointAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_prefix):
@@ -212,6 +345,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.BindVscMountPointAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        """
+        @param request: BindVscMountPointAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindVscMountPointAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_prefix):
@@ -245,6 +383,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.BindVscMountPointAliasRequest,
     ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        """
+        @param request: BindVscMountPointAliasRequest
+        @return: BindVscMountPointAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_vsc_mount_point_alias_with_options(request, runtime)
 
@@ -252,6 +394,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.BindVscMountPointAliasRequest,
     ) -> dfs20180620_models.BindVscMountPointAliasResponse:
+        """
+        @param request: BindVscMountPointAliasRequest
+        @return: BindVscMountPointAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_vsc_mount_point_alias_with_options_async(request, runtime)
 
@@ -260,6 +406,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateAccessGroupResponse:
+        """
+        @param request: CreateAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -294,6 +445,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateAccessGroupResponse:
+        """
+        @param request: CreateAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -327,6 +483,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateAccessGroupRequest,
     ) -> dfs20180620_models.CreateAccessGroupResponse:
+        """
+        @param request: CreateAccessGroupRequest
+        @return: CreateAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_group_with_options(request, runtime)
 
@@ -334,6 +494,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateAccessGroupRequest,
     ) -> dfs20180620_models.CreateAccessGroupResponse:
+        """
+        @param request: CreateAccessGroupRequest
+        @return: CreateAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_group_with_options_async(request, runtime)
 
@@ -342,6 +506,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateAccessRuleResponse:
+        """
+        @param request: CreateAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -380,6 +549,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateAccessRuleResponse:
+        """
+        @param request: CreateAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -417,6 +591,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateAccessRuleRequest,
     ) -> dfs20180620_models.CreateAccessRuleResponse:
+        """
+        @param request: CreateAccessRuleRequest
+        @return: CreateAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_rule_with_options(request, runtime)
 
@@ -424,6 +602,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateAccessRuleRequest,
     ) -> dfs20180620_models.CreateAccessRuleResponse:
+        """
+        @param request: CreateAccessRuleRequest
+        @return: CreateAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_rule_with_options_async(request, runtime)
 
@@ -432,10 +614,17 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateFileSystemResponse:
+        """
+        @param request: CreateFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_redundancy_type):
             query['DataRedundancyType'] = request.data_redundancy_type
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.file_system_name):
@@ -482,10 +671,17 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateFileSystemResponse:
+        """
+        @param request: CreateFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_redundancy_type):
             query['DataRedundancyType'] = request.data_redundancy_type
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.file_system_name):
@@ -531,6 +727,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateFileSystemRequest,
     ) -> dfs20180620_models.CreateFileSystemResponse:
+        """
+        @param request: CreateFileSystemRequest
+        @return: CreateFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_file_system_with_options(request, runtime)
 
@@ -538,6 +738,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateFileSystemRequest,
     ) -> dfs20180620_models.CreateFileSystemResponse:
+        """
+        @param request: CreateFileSystemRequest
+        @return: CreateFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_file_system_with_options_async(request, runtime)
 
@@ -546,6 +750,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateMountPointResponse:
+        """
+        @param request: CreateMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -558,6 +767,8 @@ class Client(OpenApiClient):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.use_performance_mode):
+            query['UsePerformanceMode'] = request.use_performance_mode
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -586,6 +797,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.CreateMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateMountPointResponse:
+        """
+        @param request: CreateMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -598,6 +814,8 @@ class Client(OpenApiClient):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.use_performance_mode):
+            query['UsePerformanceMode'] = request.use_performance_mode
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -625,6 +843,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateMountPointRequest,
     ) -> dfs20180620_models.CreateMountPointResponse:
+        """
+        @param request: CreateMountPointRequest
+        @return: CreateMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mount_point_with_options(request, runtime)
 
@@ -632,14 +854,173 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateMountPointRequest,
     ) -> dfs20180620_models.CreateMountPointResponse:
+        """
+        @param request: CreateMountPointRequest
+        @return: CreateMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mount_point_with_options_async(request, runtime)
+
+    def create_qos_policy_with_options(
+        self,
+        tmp_req: dfs20180620_models.CreateQosPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.CreateQosPolicyResponse:
+        """
+        @summary CreateQosPolicy
+        
+        @param tmp_req: CreateQosPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQosPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.CreateQosPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flow_ids):
+            request.flow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flow_ids, 'FlowIds', 'json')
+        if not UtilClient.is_unset(tmp_req.req_tags):
+            request.req_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.req_tags, 'ReqTags', 'json')
+        if not UtilClient.is_unset(tmp_req.zone_ids):
+            request.zone_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.zone_ids, 'ZoneIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.flow_ids_shrink):
+            query['FlowIds'] = request.flow_ids_shrink
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_ioband_width):
+            query['MaxIOBandWidth'] = request.max_ioband_width
+        if not UtilClient.is_unset(request.max_iops):
+            query['MaxIOps'] = request.max_iops
+        if not UtilClient.is_unset(request.max_meta_qps):
+            query['MaxMetaQps'] = request.max_meta_qps
+        if not UtilClient.is_unset(request.req_tags_shrink):
+            query['ReqTags'] = request.req_tags_shrink
+        if not UtilClient.is_unset(request.zone_ids_shrink):
+            query['ZoneIds'] = request.zone_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateQosPolicy',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.CreateQosPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_qos_policy_with_options_async(
+        self,
+        tmp_req: dfs20180620_models.CreateQosPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.CreateQosPolicyResponse:
+        """
+        @summary CreateQosPolicy
+        
+        @param tmp_req: CreateQosPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQosPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.CreateQosPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flow_ids):
+            request.flow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flow_ids, 'FlowIds', 'json')
+        if not UtilClient.is_unset(tmp_req.req_tags):
+            request.req_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.req_tags, 'ReqTags', 'json')
+        if not UtilClient.is_unset(tmp_req.zone_ids):
+            request.zone_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.zone_ids, 'ZoneIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.flow_ids_shrink):
+            query['FlowIds'] = request.flow_ids_shrink
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_ioband_width):
+            query['MaxIOBandWidth'] = request.max_ioband_width
+        if not UtilClient.is_unset(request.max_iops):
+            query['MaxIOps'] = request.max_iops
+        if not UtilClient.is_unset(request.max_meta_qps):
+            query['MaxMetaQps'] = request.max_meta_qps
+        if not UtilClient.is_unset(request.req_tags_shrink):
+            query['ReqTags'] = request.req_tags_shrink
+        if not UtilClient.is_unset(request.zone_ids_shrink):
+            query['ZoneIds'] = request.zone_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateQosPolicy',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.CreateQosPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_qos_policy(
+        self,
+        request: dfs20180620_models.CreateQosPolicyRequest,
+    ) -> dfs20180620_models.CreateQosPolicyResponse:
+        """
+        @summary CreateQosPolicy
+        
+        @param request: CreateQosPolicyRequest
+        @return: CreateQosPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_qos_policy_with_options(request, runtime)
+
+    async def create_qos_policy_async(
+        self,
+        request: dfs20180620_models.CreateQosPolicyRequest,
+    ) -> dfs20180620_models.CreateQosPolicyResponse:
+        """
+        @summary CreateQosPolicy
+        
+        @param request: CreateQosPolicyRequest
+        @return: CreateQosPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_qos_policy_with_options_async(request, runtime)
 
     def create_user_groups_mapping_with_options(
         self,
         tmp_req: dfs20180620_models.CreateUserGroupsMappingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateUserGroupsMappingResponse:
+        """
+        @summary 创建 ugo
+        
+        @param tmp_req: CreateUserGroupsMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserGroupsMappingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.CreateUserGroupsMappingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -670,6 +1051,13 @@ class Client(OpenApiClient):
         tmp_req: dfs20180620_models.CreateUserGroupsMappingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateUserGroupsMappingResponse:
+        """
+        @summary 创建 ugo
+        
+        @param tmp_req: CreateUserGroupsMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserGroupsMappingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.CreateUserGroupsMappingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -699,6 +1087,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateUserGroupsMappingRequest,
     ) -> dfs20180620_models.CreateUserGroupsMappingResponse:
+        """
+        @summary 创建 ugo
+        
+        @param request: CreateUserGroupsMappingRequest
+        @return: CreateUserGroupsMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_groups_mapping_with_options(request, runtime)
 
@@ -706,6 +1100,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateUserGroupsMappingRequest,
     ) -> dfs20180620_models.CreateUserGroupsMappingResponse:
+        """
+        @summary 创建 ugo
+        
+        @param request: CreateUserGroupsMappingRequest
+        @return: CreateUserGroupsMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_groups_mapping_with_options_async(request, runtime)
 
@@ -714,6 +1114,11 @@ class Client(OpenApiClient):
         tmp_req: dfs20180620_models.CreateVscMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateVscMountPointResponse:
+        """
+        @param tmp_req: CreateVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVscMountPointResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.CreateVscMountPointShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -752,6 +1157,11 @@ class Client(OpenApiClient):
         tmp_req: dfs20180620_models.CreateVscMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.CreateVscMountPointResponse:
+        """
+        @param tmp_req: CreateVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVscMountPointResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.CreateVscMountPointShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -789,6 +1199,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateVscMountPointRequest,
     ) -> dfs20180620_models.CreateVscMountPointResponse:
+        """
+        @param request: CreateVscMountPointRequest
+        @return: CreateVscMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_vsc_mount_point_with_options(request, runtime)
 
@@ -796,6 +1210,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.CreateVscMountPointRequest,
     ) -> dfs20180620_models.CreateVscMountPointResponse:
+        """
+        @param request: CreateVscMountPointRequest
+        @return: CreateVscMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_vsc_mount_point_with_options_async(request, runtime)
 
@@ -804,6 +1222,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteAccessGroupResponse:
+        """
+        @param request: DeleteAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -834,6 +1257,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteAccessGroupResponse:
+        """
+        @param request: DeleteAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -863,6 +1291,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteAccessGroupRequest,
     ) -> dfs20180620_models.DeleteAccessGroupResponse:
+        """
+        @param request: DeleteAccessGroupRequest
+        @return: DeleteAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_group_with_options(request, runtime)
 
@@ -870,6 +1302,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteAccessGroupRequest,
     ) -> dfs20180620_models.DeleteAccessGroupResponse:
+        """
+        @param request: DeleteAccessGroupRequest
+        @return: DeleteAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_group_with_options_async(request, runtime)
 
@@ -878,6 +1314,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteAccessRuleResponse:
+        """
+        @param request: DeleteAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -910,6 +1351,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteAccessRuleResponse:
+        """
+        @param request: DeleteAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -941,6 +1387,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteAccessRuleRequest,
     ) -> dfs20180620_models.DeleteAccessRuleResponse:
+        """
+        @param request: DeleteAccessRuleRequest
+        @return: DeleteAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_rule_with_options(request, runtime)
 
@@ -948,6 +1398,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteAccessRuleRequest,
     ) -> dfs20180620_models.DeleteAccessRuleResponse:
+        """
+        @param request: DeleteAccessRuleRequest
+        @return: DeleteAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_rule_with_options_async(request, runtime)
 
@@ -956,6 +1410,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteFileSystemResponse:
+        """
+        @param request: DeleteFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -986,6 +1445,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteFileSystemResponse:
+        """
+        @param request: DeleteFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1015,6 +1479,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteFileSystemRequest,
     ) -> dfs20180620_models.DeleteFileSystemResponse:
+        """
+        @param request: DeleteFileSystemRequest
+        @return: DeleteFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_file_system_with_options(request, runtime)
 
@@ -1022,6 +1490,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteFileSystemRequest,
     ) -> dfs20180620_models.DeleteFileSystemResponse:
+        """
+        @param request: DeleteFileSystemRequest
+        @return: DeleteFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_file_system_with_options_async(request, runtime)
 
@@ -1030,6 +1502,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteMountPointResponse:
+        """
+        @param request: DeleteMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1062,6 +1539,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteMountPointResponse:
+        """
+        @param request: DeleteMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1093,6 +1575,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteMountPointRequest,
     ) -> dfs20180620_models.DeleteMountPointResponse:
+        """
+        @param request: DeleteMountPointRequest
+        @return: DeleteMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mount_point_with_options(request, runtime)
 
@@ -1100,14 +1586,133 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteMountPointRequest,
     ) -> dfs20180620_models.DeleteMountPointResponse:
+        """
+        @param request: DeleteMountPointRequest
+        @return: DeleteMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mount_point_with_options_async(request, runtime)
+
+    def delete_qos_policy_with_options(
+        self,
+        request: dfs20180620_models.DeleteQosPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DeleteQosPolicyResponse:
+        """
+        @summary DeleteQosPolicy
+        
+        @param request: DeleteQosPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQosPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.qos_policy_id):
+            query['QosPolicyId'] = request.qos_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteQosPolicy',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DeleteQosPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_qos_policy_with_options_async(
+        self,
+        request: dfs20180620_models.DeleteQosPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DeleteQosPolicyResponse:
+        """
+        @summary DeleteQosPolicy
+        
+        @param request: DeleteQosPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQosPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.qos_policy_id):
+            query['QosPolicyId'] = request.qos_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteQosPolicy',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DeleteQosPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_qos_policy(
+        self,
+        request: dfs20180620_models.DeleteQosPolicyRequest,
+    ) -> dfs20180620_models.DeleteQosPolicyResponse:
+        """
+        @summary DeleteQosPolicy
+        
+        @param request: DeleteQosPolicyRequest
+        @return: DeleteQosPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_qos_policy_with_options(request, runtime)
+
+    async def delete_qos_policy_async(
+        self,
+        request: dfs20180620_models.DeleteQosPolicyRequest,
+    ) -> dfs20180620_models.DeleteQosPolicyResponse:
+        """
+        @summary DeleteQosPolicy
+        
+        @param request: DeleteQosPolicyRequest
+        @return: DeleteQosPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_qos_policy_with_options_async(request, runtime)
 
     def delete_user_groups_mapping_with_options(
         self,
         tmp_req: dfs20180620_models.DeleteUserGroupsMappingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteUserGroupsMappingResponse:
+        """
+        @summary 删除 ugo
+        
+        @param tmp_req: DeleteUserGroupsMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupsMappingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.DeleteUserGroupsMappingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1138,6 +1743,13 @@ class Client(OpenApiClient):
         tmp_req: dfs20180620_models.DeleteUserGroupsMappingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteUserGroupsMappingResponse:
+        """
+        @summary 删除 ugo
+        
+        @param tmp_req: DeleteUserGroupsMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupsMappingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.DeleteUserGroupsMappingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1167,6 +1779,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteUserGroupsMappingRequest,
     ) -> dfs20180620_models.DeleteUserGroupsMappingResponse:
+        """
+        @summary 删除 ugo
+        
+        @param request: DeleteUserGroupsMappingRequest
+        @return: DeleteUserGroupsMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_groups_mapping_with_options(request, runtime)
 
@@ -1174,6 +1792,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteUserGroupsMappingRequest,
     ) -> dfs20180620_models.DeleteUserGroupsMappingResponse:
+        """
+        @summary 删除 ugo
+        
+        @param request: DeleteUserGroupsMappingRequest
+        @return: DeleteUserGroupsMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_groups_mapping_with_options_async(request, runtime)
 
@@ -1182,6 +1806,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteVscMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        """
+        @param request: DeleteVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVscMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1214,6 +1843,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DeleteVscMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        """
+        @param request: DeleteVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVscMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1245,6 +1879,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteVscMountPointRequest,
     ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        """
+        @param request: DeleteVscMountPointRequest
+        @return: DeleteVscMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_vsc_mount_point_with_options(request, runtime)
 
@@ -1252,14 +1890,143 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DeleteVscMountPointRequest,
     ) -> dfs20180620_models.DeleteVscMountPointResponse:
+        """
+        @param request: DeleteVscMountPointRequest
+        @return: DeleteVscMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vsc_mount_point_with_options_async(request, runtime)
+
+    def describe_mount_points_vsc_attach_info_with_options(
+        self,
+        tmp_req: dfs20180620_models.DescribeMountPointsVscAttachInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DescribeMountPointsVscAttachInfoResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param tmp_req: DescribeMountPointsVscAttachInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMountPointsVscAttachInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.DescribeMountPointsVscAttachInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_infos):
+            request.query_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_infos, 'QueryInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.query_infos_shrink):
+            query['QueryInfos'] = request.query_infos_shrink
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMountPointsVscAttachInfo',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DescribeMountPointsVscAttachInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mount_points_vsc_attach_info_with_options_async(
+        self,
+        tmp_req: dfs20180620_models.DescribeMountPointsVscAttachInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.DescribeMountPointsVscAttachInfoResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param tmp_req: DescribeMountPointsVscAttachInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMountPointsVscAttachInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dfs20180620_models.DescribeMountPointsVscAttachInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_infos):
+            request.query_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_infos, 'QueryInfos', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.query_infos_shrink):
+            query['QueryInfos'] = request.query_infos_shrink
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMountPointsVscAttachInfo',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.DescribeMountPointsVscAttachInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mount_points_vsc_attach_info(
+        self,
+        request: dfs20180620_models.DescribeMountPointsVscAttachInfoRequest,
+    ) -> dfs20180620_models.DescribeMountPointsVscAttachInfoResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param request: DescribeMountPointsVscAttachInfoRequest
+        @return: DescribeMountPointsVscAttachInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_mount_points_vsc_attach_info_with_options(request, runtime)
+
+    async def describe_mount_points_vsc_attach_info_async(
+        self,
+        request: dfs20180620_models.DescribeMountPointsVscAttachInfoRequest,
+    ) -> dfs20180620_models.DescribeMountPointsVscAttachInfoResponse:
+        """
+        @summary 批量挂载VSC挂载点
+        
+        @param request: DescribeMountPointsVscAttachInfoRequest
+        @return: DescribeMountPointsVscAttachInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_mount_points_vsc_attach_info_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
         request: dfs20180620_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1290,6 +2057,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1319,6 +2091,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DescribeRegionsRequest,
     ) -> dfs20180620_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -1326,6 +2102,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DescribeRegionsRequest,
     ) -> dfs20180620_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -1334,6 +2114,13 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DescribeVscMountPointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        """
+        @summary 查询VSC挂载信息
+        
+        @param request: DescribeVscMountPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVscMountPointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1372,6 +2159,13 @@ class Client(OpenApiClient):
         request: dfs20180620_models.DescribeVscMountPointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        """
+        @summary 查询VSC挂载信息
+        
+        @param request: DescribeVscMountPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVscMountPointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1409,6 +2203,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DescribeVscMountPointsRequest,
     ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        """
+        @summary 查询VSC挂载信息
+        
+        @param request: DescribeVscMountPointsRequest
+        @return: DescribeVscMountPointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vsc_mount_points_with_options(request, runtime)
 
@@ -1416,6 +2216,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DescribeVscMountPointsRequest,
     ) -> dfs20180620_models.DescribeVscMountPointsResponse:
+        """
+        @summary 查询VSC挂载信息
+        
+        @param request: DescribeVscMountPointsRequest
+        @return: DescribeVscMountPointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vsc_mount_points_with_options_async(request, runtime)
 
@@ -1424,6 +2230,11 @@ class Client(OpenApiClient):
         tmp_req: dfs20180620_models.DetachVscMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DetachVscMountPointResponse:
+        """
+        @param tmp_req: DetachVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachVscMountPointResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.DetachVscMountPointShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1442,6 +2253,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.mount_point_id):
             query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
         if not UtilClient.is_unset(request.vsc_ids_shrink):
             query['VscIds'] = request.vsc_ids_shrink
         req = open_api_models.OpenApiRequest(
@@ -1468,6 +2281,11 @@ class Client(OpenApiClient):
         tmp_req: dfs20180620_models.DetachVscMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.DetachVscMountPointResponse:
+        """
+        @param tmp_req: DetachVscMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachVscMountPointResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dfs20180620_models.DetachVscMountPointShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1486,6 +2304,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.mount_point_id):
             query['MountPointId'] = request.mount_point_id
+        if not UtilClient.is_unset(request.use_assume_role_chk_server_perm):
+            query['UseAssumeRoleChkServerPerm'] = request.use_assume_role_chk_server_perm
         if not UtilClient.is_unset(request.vsc_ids_shrink):
             query['VscIds'] = request.vsc_ids_shrink
         req = open_api_models.OpenApiRequest(
@@ -1511,6 +2331,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DetachVscMountPointRequest,
     ) -> dfs20180620_models.DetachVscMountPointResponse:
+        """
+        @param request: DetachVscMountPointRequest
+        @return: DetachVscMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_vsc_mount_point_with_options(request, runtime)
 
@@ -1518,6 +2342,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.DetachVscMountPointRequest,
     ) -> dfs20180620_models.DetachVscMountPointResponse:
+        """
+        @param request: DetachVscMountPointRequest
+        @return: DetachVscMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_vsc_mount_point_with_options_async(request, runtime)
 
@@ -1526,6 +2354,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetAccessGroupResponse:
+        """
+        @param request: GetAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -1556,6 +2389,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetAccessGroupResponse:
+        """
+        @param request: GetAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -1585,6 +2423,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetAccessGroupRequest,
     ) -> dfs20180620_models.GetAccessGroupResponse:
+        """
+        @param request: GetAccessGroupRequest
+        @return: GetAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_access_group_with_options(request, runtime)
 
@@ -1592,6 +2434,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetAccessGroupRequest,
     ) -> dfs20180620_models.GetAccessGroupResponse:
+        """
+        @param request: GetAccessGroupRequest
+        @return: GetAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_access_group_with_options_async(request, runtime)
 
@@ -1600,6 +2446,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetAccessRuleResponse:
+        """
+        @param request: GetAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -1632,6 +2483,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetAccessRuleResponse:
+        """
+        @param request: GetAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -1663,6 +2519,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetAccessRuleRequest,
     ) -> dfs20180620_models.GetAccessRuleResponse:
+        """
+        @param request: GetAccessRuleRequest
+        @return: GetAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_access_rule_with_options(request, runtime)
 
@@ -1670,6 +2530,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetAccessRuleRequest,
     ) -> dfs20180620_models.GetAccessRuleResponse:
+        """
+        @param request: GetAccessRuleRequest
+        @return: GetAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_access_rule_with_options_async(request, runtime)
 
@@ -1678,6 +2542,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetFileSystemResponse:
+        """
+        @param request: GetFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1708,6 +2577,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetFileSystemResponse:
+        """
+        @param request: GetFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1737,6 +2611,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetFileSystemRequest,
     ) -> dfs20180620_models.GetFileSystemResponse:
+        """
+        @param request: GetFileSystemRequest
+        @return: GetFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_file_system_with_options(request, runtime)
 
@@ -1744,6 +2622,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetFileSystemRequest,
     ) -> dfs20180620_models.GetFileSystemResponse:
+        """
+        @param request: GetFileSystemRequest
+        @return: GetFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_file_system_with_options_async(request, runtime)
 
@@ -1752,6 +2634,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetMountPointResponse:
+        """
+        @param request: GetMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1784,6 +2671,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetMountPointResponse:
+        """
+        @param request: GetMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -1815,6 +2707,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetMountPointRequest,
     ) -> dfs20180620_models.GetMountPointResponse:
+        """
+        @param request: GetMountPointRequest
+        @return: GetMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mount_point_with_options(request, runtime)
 
@@ -1822,6 +2718,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetMountPointRequest,
     ) -> dfs20180620_models.GetMountPointResponse:
+        """
+        @param request: GetMountPointRequest
+        @return: GetMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mount_point_with_options_async(request, runtime)
 
@@ -1830,6 +2730,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetRegionResponse:
+        """
+        @param request: GetRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_region_id):
@@ -1858,6 +2763,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.GetRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.GetRegionResponse:
+        """
+        @param request: GetRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_region_id):
@@ -1885,6 +2795,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetRegionRequest,
     ) -> dfs20180620_models.GetRegionResponse:
+        """
+        @param request: GetRegionRequest
+        @return: GetRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_region_with_options(request, runtime)
 
@@ -1892,6 +2806,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.GetRegionRequest,
     ) -> dfs20180620_models.GetRegionResponse:
+        """
+        @param request: GetRegionRequest
+        @return: GetRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_region_with_options_async(request, runtime)
 
@@ -1900,12 +2818,19 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListAccessGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListAccessGroupsResponse:
+        """
+        @param request: ListAccessGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_region_id):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -1936,12 +2861,19 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListAccessGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListAccessGroupsResponse:
+        """
+        @param request: ListAccessGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_region_id):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -1971,6 +2903,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListAccessGroupsRequest,
     ) -> dfs20180620_models.ListAccessGroupsResponse:
+        """
+        @param request: ListAccessGroupsRequest
+        @return: ListAccessGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_access_groups_with_options(request, runtime)
 
@@ -1978,6 +2914,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListAccessGroupsRequest,
     ) -> dfs20180620_models.ListAccessGroupsResponse:
+        """
+        @param request: ListAccessGroupsRequest
+        @return: ListAccessGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_access_groups_with_options_async(request, runtime)
 
@@ -1986,6 +2926,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListAccessRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListAccessRulesResponse:
+        """
+        @param request: ListAccessRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -1994,6 +2939,8 @@ class Client(OpenApiClient):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -2024,6 +2971,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListAccessRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListAccessRulesResponse:
+        """
+        @param request: ListAccessRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2032,6 +2984,8 @@ class Client(OpenApiClient):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -2061,6 +3015,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListAccessRulesRequest,
     ) -> dfs20180620_models.ListAccessRulesResponse:
+        """
+        @param request: ListAccessRulesRequest
+        @return: ListAccessRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_access_rules_with_options(request, runtime)
 
@@ -2068,20 +3026,143 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListAccessRulesRequest,
     ) -> dfs20180620_models.ListAccessRulesResponse:
+        """
+        @param request: ListAccessRulesRequest
+        @return: ListAccessRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_access_rules_with_options_async(request, runtime)
+
+    def list_federations_with_options(
+        self,
+        request: dfs20180620_models.ListFederationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.ListFederationsResponse:
+        """
+        @summary 查询Federation
+        
+        @param request: ListFederationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFederationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFederations',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.ListFederationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_federations_with_options_async(
+        self,
+        request: dfs20180620_models.ListFederationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.ListFederationsResponse:
+        """
+        @summary 查询Federation
+        
+        @param request: ListFederationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFederationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFederations',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.ListFederationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_federations(
+        self,
+        request: dfs20180620_models.ListFederationsRequest,
+    ) -> dfs20180620_models.ListFederationsResponse:
+        """
+        @summary 查询Federation
+        
+        @param request: ListFederationsRequest
+        @return: ListFederationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_federations_with_options(request, runtime)
+
+    async def list_federations_async(
+        self,
+        request: dfs20180620_models.ListFederationsRequest,
+    ) -> dfs20180620_models.ListFederationsResponse:
+        """
+        @summary 查询Federation
+        
+        @param request: ListFederationsRequest
+        @return: ListFederationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_federations_with_options_async(request, runtime)
 
     def list_file_systems_with_options(
         self,
         request: dfs20180620_models.ListFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListFileSystemsResponse:
+        """
+        @param request: ListFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_region_id):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -2112,12 +3193,19 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListFileSystemsResponse:
+        """
+        @param request: ListFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_region_id):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -2147,6 +3235,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListFileSystemsRequest,
     ) -> dfs20180620_models.ListFileSystemsResponse:
+        """
+        @param request: ListFileSystemsRequest
+        @return: ListFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_file_systems_with_options(request, runtime)
 
@@ -2154,6 +3246,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListFileSystemsRequest,
     ) -> dfs20180620_models.ListFileSystemsResponse:
+        """
+        @param request: ListFileSystemsRequest
+        @return: ListFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_file_systems_with_options_async(request, runtime)
 
@@ -2162,6 +3258,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListMountPointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListMountPointsResponse:
+        """
+        @param request: ListMountPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMountPointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -2170,6 +3271,8 @@ class Client(OpenApiClient):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -2200,6 +3303,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListMountPointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListMountPointsResponse:
+        """
+        @param request: ListMountPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMountPointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -2208,6 +3316,8 @@ class Client(OpenApiClient):
             query['InputRegionId'] = request.input_region_id
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.order_type):
@@ -2237,6 +3347,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListMountPointsRequest,
     ) -> dfs20180620_models.ListMountPointsResponse:
+        """
+        @param request: ListMountPointsRequest
+        @return: ListMountPointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mount_points_with_options(request, runtime)
 
@@ -2244,14 +3358,137 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListMountPointsRequest,
     ) -> dfs20180620_models.ListMountPointsResponse:
+        """
+        @param request: ListMountPointsRequest
+        @return: ListMountPointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mount_points_with_options_async(request, runtime)
+
+    def list_qos_policies_with_options(
+        self,
+        request: dfs20180620_models.ListQosPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.ListQosPoliciesResponse:
+        """
+        @summary 查询QosPolicies
+        
+        @param request: ListQosPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQosPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQosPolicies',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.ListQosPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_qos_policies_with_options_async(
+        self,
+        request: dfs20180620_models.ListQosPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.ListQosPoliciesResponse:
+        """
+        @summary 查询QosPolicies
+        
+        @param request: ListQosPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQosPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQosPolicies',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.ListQosPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_qos_policies(
+        self,
+        request: dfs20180620_models.ListQosPoliciesRequest,
+    ) -> dfs20180620_models.ListQosPoliciesResponse:
+        """
+        @summary 查询QosPolicies
+        
+        @param request: ListQosPoliciesRequest
+        @return: ListQosPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_qos_policies_with_options(request, runtime)
+
+    async def list_qos_policies_async(
+        self,
+        request: dfs20180620_models.ListQosPoliciesRequest,
+    ) -> dfs20180620_models.ListQosPoliciesResponse:
+        """
+        @summary 查询QosPolicies
+        
+        @param request: ListQosPoliciesRequest
+        @return: ListQosPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_qos_policies_with_options_async(request, runtime)
 
     def list_user_groups_mappings_with_options(
         self,
         request: dfs20180620_models.ListUserGroupsMappingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListUserGroupsMappingsResponse:
+        """
+        @summary list ugm
+        
+        @param request: ListUserGroupsMappingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsMappingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filesystem_id):
@@ -2286,6 +3523,13 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ListUserGroupsMappingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ListUserGroupsMappingsResponse:
+        """
+        @summary list ugm
+        
+        @param request: ListUserGroupsMappingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsMappingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filesystem_id):
@@ -2319,6 +3563,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListUserGroupsMappingsRequest,
     ) -> dfs20180620_models.ListUserGroupsMappingsResponse:
+        """
+        @summary list ugm
+        
+        @param request: ListUserGroupsMappingsRequest
+        @return: ListUserGroupsMappingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_groups_mappings_with_options(request, runtime)
 
@@ -2326,6 +3576,12 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ListUserGroupsMappingsRequest,
     ) -> dfs20180620_models.ListUserGroupsMappingsResponse:
+        """
+        @summary list ugm
+        
+        @param request: ListUserGroupsMappingsRequest
+        @return: ListUserGroupsMappingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_mappings_with_options_async(request, runtime)
 
@@ -2334,6 +3590,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyAccessGroupResponse:
+        """
+        @param request: ModifyAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2368,6 +3629,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyAccessGroupResponse:
+        """
+        @param request: ModifyAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2401,6 +3667,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyAccessGroupRequest,
     ) -> dfs20180620_models.ModifyAccessGroupResponse:
+        """
+        @param request: ModifyAccessGroupRequest
+        @return: ModifyAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_access_group_with_options(request, runtime)
 
@@ -2408,6 +3678,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyAccessGroupRequest,
     ) -> dfs20180620_models.ModifyAccessGroupResponse:
+        """
+        @param request: ModifyAccessGroupRequest
+        @return: ModifyAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_access_group_with_options_async(request, runtime)
 
@@ -2416,6 +3690,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyAccessRuleResponse:
+        """
+        @param request: ModifyAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2454,6 +3733,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyAccessRuleResponse:
+        """
+        @param request: ModifyAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2491,6 +3775,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyAccessRuleRequest,
     ) -> dfs20180620_models.ModifyAccessRuleResponse:
+        """
+        @param request: ModifyAccessRuleRequest
+        @return: ModifyAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_access_rule_with_options(request, runtime)
 
@@ -2498,6 +3786,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyAccessRuleRequest,
     ) -> dfs20180620_models.ModifyAccessRuleResponse:
+        """
+        @param request: ModifyAccessRuleRequest
+        @return: ModifyAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_access_rule_with_options_async(request, runtime)
 
@@ -2506,6 +3798,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyFileSystemResponse:
+        """
+        @param request: ModifyFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2546,6 +3843,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyFileSystemResponse:
+        """
+        @param request: ModifyFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2585,6 +3887,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyFileSystemRequest,
     ) -> dfs20180620_models.ModifyFileSystemResponse:
+        """
+        @param request: ModifyFileSystemRequest
+        @return: ModifyFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_file_system_with_options(request, runtime)
 
@@ -2592,6 +3898,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyFileSystemRequest,
     ) -> dfs20180620_models.ModifyFileSystemResponse:
+        """
+        @param request: ModifyFileSystemRequest
+        @return: ModifyFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_file_system_with_options_async(request, runtime)
 
@@ -2600,6 +3910,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyMountPointResponse:
+        """
+        @param request: ModifyMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2638,6 +3953,11 @@ class Client(OpenApiClient):
         request: dfs20180620_models.ModifyMountPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dfs20180620_models.ModifyMountPointResponse:
+        """
+        @param request: ModifyMountPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMountPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_id):
@@ -2675,6 +3995,10 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyMountPointRequest,
     ) -> dfs20180620_models.ModifyMountPointResponse:
+        """
+        @param request: ModifyMountPointRequest
+        @return: ModifyMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_mount_point_with_options(request, runtime)
 
@@ -2682,5 +4006,133 @@ class Client(OpenApiClient):
         self,
         request: dfs20180620_models.ModifyMountPointRequest,
     ) -> dfs20180620_models.ModifyMountPointResponse:
+        """
+        @param request: ModifyMountPointRequest
+        @return: ModifyMountPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_mount_point_with_options_async(request, runtime)
+
+    def modify_qos_policy_with_options(
+        self,
+        request: dfs20180620_models.ModifyQosPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.ModifyQosPolicyResponse:
+        """
+        @summary ModifyQosPolicy
+        
+        @param request: ModifyQosPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyQosPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_ioband_width):
+            query['MaxIOBandWidth'] = request.max_ioband_width
+        if not UtilClient.is_unset(request.max_iops):
+            query['MaxIOps'] = request.max_iops
+        if not UtilClient.is_unset(request.max_meta_qps):
+            query['MaxMetaQps'] = request.max_meta_qps
+        if not UtilClient.is_unset(request.qos_policy_id):
+            query['QosPolicyId'] = request.qos_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyQosPolicy',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.ModifyQosPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_qos_policy_with_options_async(
+        self,
+        request: dfs20180620_models.ModifyQosPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dfs20180620_models.ModifyQosPolicyResponse:
+        """
+        @summary ModifyQosPolicy
+        
+        @param request: ModifyQosPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyQosPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.federation_id):
+            query['FederationId'] = request.federation_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.input_region_id):
+            query['InputRegionId'] = request.input_region_id
+        if not UtilClient.is_unset(request.max_ioband_width):
+            query['MaxIOBandWidth'] = request.max_ioband_width
+        if not UtilClient.is_unset(request.max_iops):
+            query['MaxIOps'] = request.max_iops
+        if not UtilClient.is_unset(request.max_meta_qps):
+            query['MaxMetaQps'] = request.max_meta_qps
+        if not UtilClient.is_unset(request.qos_policy_id):
+            query['QosPolicyId'] = request.qos_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyQosPolicy',
+            version='2018-06-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dfs20180620_models.ModifyQosPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_qos_policy(
+        self,
+        request: dfs20180620_models.ModifyQosPolicyRequest,
+    ) -> dfs20180620_models.ModifyQosPolicyResponse:
+        """
+        @summary ModifyQosPolicy
+        
+        @param request: ModifyQosPolicyRequest
+        @return: ModifyQosPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_qos_policy_with_options(request, runtime)
+
+    async def modify_qos_policy_async(
+        self,
+        request: dfs20180620_models.ModifyQosPolicyRequest,
+    ) -> dfs20180620_models.ModifyQosPolicyResponse:
+        """
+        @summary ModifyQosPolicy
+        
+        @param request: ModifyQosPolicyRequest
+        @return: ModifyQosPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_qos_policy_with_options_async(request, runtime)

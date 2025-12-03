@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import List, Dict
 
 
 class AttachVscMountPointRequest(TeaModel):
@@ -12,15 +12,22 @@ class AttachVscMountPointRequest(TeaModel):
         input_region_id: str = None,
         instance_ids: List[str] = None,
         mount_point_id: str = None,
+        use_assume_role_chk_server_perm: bool = None,
         vsc_ids: List[str] = None,
+        vsc_name: str = None,
         vsc_type: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_ids = instance_ids
+        # This parameter is required.
         self.mount_point_id = mount_point_id
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
         self.vsc_ids = vsc_ids
+        self.vsc_name = vsc_name
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -42,8 +49,12 @@ class AttachVscMountPointRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids
         if self.mount_point_id is not None:
             result['MountPointId'] = self.mount_point_id
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
         if self.vsc_ids is not None:
             result['VscIds'] = self.vsc_ids
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
         if self.vsc_type is not None:
             result['VscType'] = self.vsc_type
         return result
@@ -60,8 +71,12 @@ class AttachVscMountPointRequest(TeaModel):
             self.instance_ids = m.get('InstanceIds')
         if m.get('MountPointId') is not None:
             self.mount_point_id = m.get('MountPointId')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
         if m.get('VscIds') is not None:
             self.vsc_ids = m.get('VscIds')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
         if m.get('VscType') is not None:
             self.vsc_type = m.get('VscType')
         return self
@@ -75,15 +90,22 @@ class AttachVscMountPointShrinkRequest(TeaModel):
         input_region_id: str = None,
         instance_ids_shrink: str = None,
         mount_point_id: str = None,
+        use_assume_role_chk_server_perm: bool = None,
         vsc_ids_shrink: str = None,
+        vsc_name: str = None,
         vsc_type: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_ids_shrink = instance_ids_shrink
+        # This parameter is required.
         self.mount_point_id = mount_point_id
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
         self.vsc_ids_shrink = vsc_ids_shrink
+        self.vsc_name = vsc_name
         self.vsc_type = vsc_type
 
     def validate(self):
@@ -105,8 +127,12 @@ class AttachVscMountPointShrinkRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids_shrink
         if self.mount_point_id is not None:
             result['MountPointId'] = self.mount_point_id
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
         if self.vsc_ids_shrink is not None:
             result['VscIds'] = self.vsc_ids_shrink
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
         if self.vsc_type is not None:
             result['VscType'] = self.vsc_type
         return result
@@ -123,8 +149,12 @@ class AttachVscMountPointShrinkRequest(TeaModel):
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('MountPointId') is not None:
             self.mount_point_id = m.get('MountPointId')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
         if m.get('VscIds') is not None:
             self.vsc_ids_shrink = m.get('VscIds')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
         if m.get('VscType') is not None:
             self.vsc_type = m.get('VscType')
         return self
@@ -198,6 +228,213 @@ class AttachVscMountPointResponse(TeaModel):
         return self
 
 
+class AttachVscToMountPointsRequestAttachInfos(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mount_point_id: str = None,
+        vsc_id: str = None,
+        vsc_name: str = None,
+        vsc_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.mount_point_id = mount_point_id
+        self.vsc_id = vsc_id
+        self.vsc_name = vsc_name
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class AttachVscToMountPointsRequest(TeaModel):
+    def __init__(
+        self,
+        attach_infos: List[AttachVscToMountPointsRequestAttachInfos] = None,
+        input_region_id: str = None,
+        use_assume_role_chk_server_perm: bool = None,
+    ):
+        self.attach_infos = attach_infos
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
+
+    def validate(self):
+        if self.attach_infos:
+            for k in self.attach_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachInfos'] = []
+        if self.attach_infos is not None:
+            for k in self.attach_infos:
+                result['AttachInfos'].append(k.to_map() if k else None)
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attach_infos = []
+        if m.get('AttachInfos') is not None:
+            for k in m.get('AttachInfos'):
+                temp_model = AttachVscToMountPointsRequestAttachInfos()
+                self.attach_infos.append(temp_model.from_map(k))
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
+        return self
+
+
+class AttachVscToMountPointsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attach_infos_shrink: str = None,
+        input_region_id: str = None,
+        use_assume_role_chk_server_perm: bool = None,
+    ):
+        self.attach_infos_shrink = attach_infos_shrink
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_infos_shrink is not None:
+            result['AttachInfos'] = self.attach_infos_shrink
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachInfos') is not None:
+            self.attach_infos_shrink = m.get('AttachInfos')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
+        return self
+
+
+class AttachVscToMountPointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachVscToMountPointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachVscToMountPointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachVscToMountPointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindVscMountPointAliasRequest(TeaModel):
     def __init__(
         self,
@@ -206,9 +443,13 @@ class BindVscMountPointAliasRequest(TeaModel):
         input_region_id: str = None,
         mount_point_id: str = None,
     ):
+        # This parameter is required.
         self.alias_prefix = alias_prefix
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.mount_point_id = mount_point_id
 
     def validate(self):
@@ -325,9 +566,12 @@ class CreateAccessGroupRequest(TeaModel):
         input_region_id: str = None,
         network_type: str = None,
     ):
+        # This parameter is required.
         self.access_group_name = access_group_name
         self.description = description
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.network_type = network_type
 
     def validate(self):
@@ -446,11 +690,16 @@ class CreateAccessRuleRequest(TeaModel):
         priority: int = None,
         rwaccess_type: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
         self.description = description
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.network_segment = network_segment
+        # This parameter is required.
         self.priority = priority
+        # This parameter is required.
         self.rwaccess_type = rwaccess_type
 
     def validate(self):
@@ -571,6 +820,7 @@ class CreateFileSystemRequest(TeaModel):
     def __init__(
         self,
         data_redundancy_type: str = None,
+        dedicated_cluster_id: str = None,
         description: str = None,
         file_system_name: str = None,
         input_region_id: str = None,
@@ -584,14 +834,20 @@ class CreateFileSystemRequest(TeaModel):
         zone_id: str = None,
     ):
         self.data_redundancy_type = data_redundancy_type
+        self.dedicated_cluster_id = dedicated_cluster_id
         self.description = description
+        # This parameter is required.
         self.file_system_name = file_system_name
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.partition_number = partition_number
+        # This parameter is required.
         self.protocol_type = protocol_type
         self.provisioned_throughput_in_mi_bps = provisioned_throughput_in_mi_bps
+        # This parameter is required.
         self.space_capacity = space_capacity
         self.storage_set_name = storage_set_name
+        # This parameter is required.
         self.storage_type = storage_type
         self.throughput_mode = throughput_mode
         self.zone_id = zone_id
@@ -607,6 +863,8 @@ class CreateFileSystemRequest(TeaModel):
         result = dict()
         if self.data_redundancy_type is not None:
             result['DataRedundancyType'] = self.data_redundancy_type
+        if self.dedicated_cluster_id is not None:
+            result['DedicatedClusterId'] = self.dedicated_cluster_id
         if self.description is not None:
             result['Description'] = self.description
         if self.file_system_name is not None:
@@ -635,6 +893,8 @@ class CreateFileSystemRequest(TeaModel):
         m = m or dict()
         if m.get('DataRedundancyType') is not None:
             self.data_redundancy_type = m.get('DataRedundancyType')
+        if m.get('DedicatedClusterId') is not None:
+            self.dedicated_cluster_id = m.get('DedicatedClusterId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('FileSystemName') is not None:
@@ -742,15 +1002,23 @@ class CreateMountPointRequest(TeaModel):
         file_system_id: str = None,
         input_region_id: str = None,
         network_type: str = None,
+        use_performance_mode: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.network_type = network_type
+        self.use_performance_mode = use_performance_mode
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -772,6 +1040,8 @@ class CreateMountPointRequest(TeaModel):
             result['InputRegionId'] = self.input_region_id
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
+        if self.use_performance_mode is not None:
+            result['UsePerformanceMode'] = self.use_performance_mode
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -790,6 +1060,8 @@ class CreateMountPointRequest(TeaModel):
             self.input_region_id = m.get('InputRegionId')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
+        if m.get('UsePerformanceMode') is not None:
+            self.use_performance_mode = m.get('UsePerformanceMode')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -871,6 +1143,250 @@ class CreateMountPointResponse(TeaModel):
         return self
 
 
+class CreateQosPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        federation_id: str = None,
+        file_system_id: str = None,
+        flow_ids: List[int] = None,
+        input_region_id: str = None,
+        max_ioband_width: int = None,
+        max_iops: int = None,
+        max_meta_qps: int = None,
+        req_tags: List[str] = None,
+        zone_ids: List[str] = None,
+    ):
+        self.description = description
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        self.flow_ids = flow_ids
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_ioband_width = max_ioband_width
+        self.max_iops = max_iops
+        self.max_meta_qps = max_meta_qps
+        self.req_tags = req_tags
+        self.zone_ids = zone_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.flow_ids is not None:
+            result['FlowIds'] = self.flow_ids
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_ioband_width is not None:
+            result['MaxIOBandWidth'] = self.max_ioband_width
+        if self.max_iops is not None:
+            result['MaxIOps'] = self.max_iops
+        if self.max_meta_qps is not None:
+            result['MaxMetaQps'] = self.max_meta_qps
+        if self.req_tags is not None:
+            result['ReqTags'] = self.req_tags
+        if self.zone_ids is not None:
+            result['ZoneIds'] = self.zone_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('FlowIds') is not None:
+            self.flow_ids = m.get('FlowIds')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxIOBandWidth') is not None:
+            self.max_ioband_width = m.get('MaxIOBandWidth')
+        if m.get('MaxIOps') is not None:
+            self.max_iops = m.get('MaxIOps')
+        if m.get('MaxMetaQps') is not None:
+            self.max_meta_qps = m.get('MaxMetaQps')
+        if m.get('ReqTags') is not None:
+            self.req_tags = m.get('ReqTags')
+        if m.get('ZoneIds') is not None:
+            self.zone_ids = m.get('ZoneIds')
+        return self
+
+
+class CreateQosPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        federation_id: str = None,
+        file_system_id: str = None,
+        flow_ids_shrink: str = None,
+        input_region_id: str = None,
+        max_ioband_width: int = None,
+        max_iops: int = None,
+        max_meta_qps: int = None,
+        req_tags_shrink: str = None,
+        zone_ids_shrink: str = None,
+    ):
+        self.description = description
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        self.flow_ids_shrink = flow_ids_shrink
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_ioband_width = max_ioband_width
+        self.max_iops = max_iops
+        self.max_meta_qps = max_meta_qps
+        self.req_tags_shrink = req_tags_shrink
+        self.zone_ids_shrink = zone_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.flow_ids_shrink is not None:
+            result['FlowIds'] = self.flow_ids_shrink
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_ioband_width is not None:
+            result['MaxIOBandWidth'] = self.max_ioband_width
+        if self.max_iops is not None:
+            result['MaxIOps'] = self.max_iops
+        if self.max_meta_qps is not None:
+            result['MaxMetaQps'] = self.max_meta_qps
+        if self.req_tags_shrink is not None:
+            result['ReqTags'] = self.req_tags_shrink
+        if self.zone_ids_shrink is not None:
+            result['ZoneIds'] = self.zone_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('FlowIds') is not None:
+            self.flow_ids_shrink = m.get('FlowIds')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxIOBandWidth') is not None:
+            self.max_ioband_width = m.get('MaxIOBandWidth')
+        if m.get('MaxIOps') is not None:
+            self.max_iops = m.get('MaxIOps')
+        if m.get('MaxMetaQps') is not None:
+            self.max_meta_qps = m.get('MaxMetaQps')
+        if m.get('ReqTags') is not None:
+            self.req_tags_shrink = m.get('ReqTags')
+        if m.get('ZoneIds') is not None:
+            self.zone_ids_shrink = m.get('ZoneIds')
+        return self
+
+
+class CreateQosPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_messages: str = None,
+        qos_policy_id: str = None,
+        request_id: str = None,
+    ):
+        self.error_messages = error_messages
+        self.qos_policy_id = qos_policy_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_messages is not None:
+            result['ErrorMessages'] = self.error_messages
+        if self.qos_policy_id is not None:
+            result['QosPolicyId'] = self.qos_policy_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessages') is not None:
+            self.error_messages = m.get('ErrorMessages')
+        if m.get('QosPolicyId') is not None:
+            self.qos_policy_id = m.get('QosPolicyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateQosPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateQosPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateQosPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserGroupsMappingRequest(TeaModel):
     def __init__(
         self,
@@ -879,9 +1395,12 @@ class CreateUserGroupsMappingRequest(TeaModel):
         input_region_id: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.group_names = group_names
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -924,9 +1443,12 @@ class CreateUserGroupsMappingShrinkRequest(TeaModel):
         input_region_id: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.group_names_shrink = group_names_shrink
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -1038,7 +1560,9 @@ class CreateVscMountPointRequest(TeaModel):
         instance_ids: List[str] = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_ids = instance_ids
 
@@ -1083,7 +1607,9 @@ class CreateVscMountPointShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_ids_shrink = instance_ids_shrink
 
@@ -1199,7 +1725,9 @@ class DeleteAccessGroupRequest(TeaModel):
         access_group_id: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -1301,8 +1829,11 @@ class DeleteAccessRuleRequest(TeaModel):
         access_rule_id: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
+        # This parameter is required.
         self.access_rule_id = access_rule_id
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -1407,7 +1938,9 @@ class DeleteFileSystemRequest(TeaModel):
         file_system_id: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -1509,8 +2042,11 @@ class DeleteMountPointRequest(TeaModel):
         input_region_id: str = None,
         mount_point_id: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.mount_point_id = mount_point_id
 
     def validate(self):
@@ -1609,17 +2145,141 @@ class DeleteMountPointResponse(TeaModel):
         return self
 
 
+class DeleteQosPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        federation_id: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        qos_policy_id: str = None,
+    ):
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        # This parameter is required.
+        self.qos_policy_id = qos_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.qos_policy_id is not None:
+            result['QosPolicyId'] = self.qos_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('QosPolicyId') is not None:
+            self.qos_policy_id = m.get('QosPolicyId')
+        return self
+
+
+class DeleteQosPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_messages: str = None,
+        request_id: str = None,
+    ):
+        self.error_messages = error_messages
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_messages is not None:
+            result['ErrorMessages'] = self.error_messages
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessages') is not None:
+            self.error_messages = m.get('ErrorMessages')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteQosPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteQosPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteQosPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserGroupsMappingRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
-        group_names: Dict[str, Any] = None,
+        group_names: List[str] = None,
         input_region_id: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.group_names = group_names
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -1662,9 +2322,12 @@ class DeleteUserGroupsMappingShrinkRequest(TeaModel):
         input_region_id: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.group_names_shrink = group_names_shrink
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -1774,8 +2437,11 @@ class DeleteVscMountPointRequest(TeaModel):
         input_region_id: str = None,
         mount_point_id: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.mount_point_id = mount_point_id
 
     def validate(self):
@@ -1870,6 +2536,314 @@ class DeleteVscMountPointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteVscMountPointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMountPointsVscAttachInfoRequestQueryInfos(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mount_point_id: str = None,
+        vsc_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.mount_point_id = mount_point_id
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DescribeMountPointsVscAttachInfoRequest(TeaModel):
+    def __init__(
+        self,
+        input_region_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        query_infos: List[DescribeMountPointsVscAttachInfoRequestQueryInfos] = None,
+        use_assume_role_chk_server_perm: bool = None,
+    ):
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.query_infos = query_infos
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
+
+    def validate(self):
+        if self.query_infos:
+            for k in self.query_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['QueryInfos'] = []
+        if self.query_infos is not None:
+            for k in self.query_infos:
+                result['QueryInfos'].append(k.to_map() if k else None)
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.query_infos = []
+        if m.get('QueryInfos') is not None:
+            for k in m.get('QueryInfos'):
+                temp_model = DescribeMountPointsVscAttachInfoRequestQueryInfos()
+                self.query_infos.append(temp_model.from_map(k))
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
+        return self
+
+
+class DescribeMountPointsVscAttachInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        input_region_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        query_infos_shrink: str = None,
+        use_assume_role_chk_server_perm: bool = None,
+    ):
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.query_infos_shrink = query_infos_shrink
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.query_infos_shrink is not None:
+            result['QueryInfos'] = self.query_infos_shrink
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('QueryInfos') is not None:
+            self.query_infos_shrink = m.get('QueryInfos')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
+        return self
+
+
+class DescribeMountPointsVscAttachInfoResponseBodyAttachInfos(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mount_point_id: str = None,
+        vsc_id: str = None,
+        vsc_name: str = None,
+        vsc_status: str = None,
+        vsc_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.mount_point_id = mount_point_id
+        self.vsc_id = vsc_id
+        self.vsc_name = vsc_name
+        self.vsc_status = vsc_status
+        self.vsc_type = vsc_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mount_point_id is not None:
+            result['MountPointId'] = self.mount_point_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
+        if self.vsc_status is not None:
+            result['VscStatus'] = self.vsc_status
+        if self.vsc_type is not None:
+            result['VscType'] = self.vsc_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MountPointId') is not None:
+            self.mount_point_id = m.get('MountPointId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
+        if m.get('VscStatus') is not None:
+            self.vsc_status = m.get('VscStatus')
+        if m.get('VscType') is not None:
+            self.vsc_type = m.get('VscType')
+        return self
+
+
+class DescribeMountPointsVscAttachInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        attach_infos: List[DescribeMountPointsVscAttachInfoResponseBodyAttachInfos] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.attach_infos = attach_infos
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.attach_infos:
+            for k in self.attach_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachInfos'] = []
+        if self.attach_infos is not None:
+            for k in self.attach_infos:
+                result['AttachInfos'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attach_infos = []
+        if m.get('AttachInfos') is not None:
+            for k in m.get('AttachInfos'):
+                temp_model = DescribeMountPointsVscAttachInfoResponseBodyAttachInfos()
+                self.attach_infos.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeMountPointsVscAttachInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMountPointsVscAttachInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMountPointsVscAttachInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2067,7 +3041,9 @@ class DescribeVscMountPointsRequest(TeaModel):
         status: str = None,
         vsc_id: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_id = instance_id
         self.mount_point_id = mount_point_id
@@ -2118,10 +3094,12 @@ class DescribeVscMountPointsResponseBodyMountPointsInstancesVscs(TeaModel):
     def __init__(
         self,
         vsc_id: str = None,
+        vsc_name: str = None,
         vsc_status: str = None,
         vsc_type: str = None,
     ):
         self.vsc_id = vsc_id
+        self.vsc_name = vsc_name
         self.vsc_status = vsc_status
         self.vsc_type = vsc_type
 
@@ -2136,6 +3114,8 @@ class DescribeVscMountPointsResponseBodyMountPointsInstancesVscs(TeaModel):
         result = dict()
         if self.vsc_id is not None:
             result['VscId'] = self.vsc_id
+        if self.vsc_name is not None:
+            result['VscName'] = self.vsc_name
         if self.vsc_status is not None:
             result['VscStatus'] = self.vsc_status
         if self.vsc_type is not None:
@@ -2146,6 +3126,8 @@ class DescribeVscMountPointsResponseBodyMountPointsInstancesVscs(TeaModel):
         m = m or dict()
         if m.get('VscId') is not None:
             self.vsc_id = m.get('VscId')
+        if m.get('VscName') is not None:
+            self.vsc_name = m.get('VscName')
         if m.get('VscStatus') is not None:
             self.vsc_status = m.get('VscStatus')
         if m.get('VscType') is not None:
@@ -2355,13 +3337,18 @@ class DetachVscMountPointRequest(TeaModel):
         input_region_id: str = None,
         instance_ids: List[str] = None,
         mount_point_id: str = None,
+        use_assume_role_chk_server_perm: bool = None,
         vsc_ids: List[str] = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_ids = instance_ids
+        # This parameter is required.
         self.mount_point_id = mount_point_id
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
         self.vsc_ids = vsc_ids
 
     def validate(self):
@@ -2383,6 +3370,8 @@ class DetachVscMountPointRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids
         if self.mount_point_id is not None:
             result['MountPointId'] = self.mount_point_id
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
         if self.vsc_ids is not None:
             result['VscIds'] = self.vsc_ids
         return result
@@ -2399,6 +3388,8 @@ class DetachVscMountPointRequest(TeaModel):
             self.instance_ids = m.get('InstanceIds')
         if m.get('MountPointId') is not None:
             self.mount_point_id = m.get('MountPointId')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
         if m.get('VscIds') is not None:
             self.vsc_ids = m.get('VscIds')
         return self
@@ -2412,13 +3403,18 @@ class DetachVscMountPointShrinkRequest(TeaModel):
         input_region_id: str = None,
         instance_ids_shrink: str = None,
         mount_point_id: str = None,
+        use_assume_role_chk_server_perm: bool = None,
         vsc_ids_shrink: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.instance_ids_shrink = instance_ids_shrink
+        # This parameter is required.
         self.mount_point_id = mount_point_id
+        self.use_assume_role_chk_server_perm = use_assume_role_chk_server_perm
         self.vsc_ids_shrink = vsc_ids_shrink
 
     def validate(self):
@@ -2440,6 +3436,8 @@ class DetachVscMountPointShrinkRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids_shrink
         if self.mount_point_id is not None:
             result['MountPointId'] = self.mount_point_id
+        if self.use_assume_role_chk_server_perm is not None:
+            result['UseAssumeRoleChkServerPerm'] = self.use_assume_role_chk_server_perm
         if self.vsc_ids_shrink is not None:
             result['VscIds'] = self.vsc_ids_shrink
         return result
@@ -2456,6 +3454,8 @@ class DetachVscMountPointShrinkRequest(TeaModel):
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('MountPointId') is not None:
             self.mount_point_id = m.get('MountPointId')
+        if m.get('UseAssumeRoleChkServerPerm') is not None:
+            self.use_assume_role_chk_server_perm = m.get('UseAssumeRoleChkServerPerm')
         if m.get('VscIds') is not None:
             self.vsc_ids_shrink = m.get('VscIds')
         return self
@@ -2535,7 +3535,9 @@ class GetAccessGroupRequest(TeaModel):
         access_group_id: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -2720,8 +3722,11 @@ class GetAccessRuleRequest(TeaModel):
         access_rule_id: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
+        # This parameter is required.
         self.access_rule_id = access_rule_id
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -2903,7 +3908,9 @@ class GetFileSystemRequest(TeaModel):
         file_system_id: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -3142,8 +4149,11 @@ class GetMountPointRequest(TeaModel):
         input_region_id: str = None,
         mount_point_id: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.mount_point_id = mount_point_id
 
     def validate(self):
@@ -3181,6 +4191,7 @@ class GetMountPointResponseBodyMountPoint(TeaModel):
         create_time: str = None,
         description: str = None,
         file_system_id: str = None,
+        mount_point_alias: str = None,
         mount_point_domain: str = None,
         mount_point_id: str = None,
         network_type: str = None,
@@ -3193,6 +4204,7 @@ class GetMountPointResponseBodyMountPoint(TeaModel):
         self.create_time = create_time
         self.description = description
         self.file_system_id = file_system_id
+        self.mount_point_alias = mount_point_alias
         self.mount_point_domain = mount_point_domain
         self.mount_point_id = mount_point_id
         self.network_type = network_type
@@ -3218,6 +4230,8 @@ class GetMountPointResponseBodyMountPoint(TeaModel):
             result['Description'] = self.description
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.mount_point_alias is not None:
+            result['MountPointAlias'] = self.mount_point_alias
         if self.mount_point_domain is not None:
             result['MountPointDomain'] = self.mount_point_domain
         if self.mount_point_id is not None:
@@ -3244,6 +4258,8 @@ class GetMountPointResponseBodyMountPoint(TeaModel):
             self.description = m.get('Description')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('MountPointAlias') is not None:
+            self.mount_point_alias = m.get('MountPointAlias')
         if m.get('MountPointDomain') is not None:
             self.mount_point_domain = m.get('MountPointDomain')
         if m.get('MountPointId') is not None:
@@ -3342,6 +4358,7 @@ class GetRegionRequest(TeaModel):
         self,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -3525,12 +4542,15 @@ class ListAccessGroupsRequest(TeaModel):
         self,
         input_region_id: str = None,
         limit: int = None,
+        next_token: str = None,
         order_by: str = None,
         order_type: str = None,
         start_offset: int = None,
     ):
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.limit = limit
+        self.next_token = next_token
         self.order_by = order_by
         self.order_type = order_type
         self.start_offset = start_offset
@@ -3548,6 +4568,8 @@ class ListAccessGroupsRequest(TeaModel):
             result['InputRegionId'] = self.input_region_id
         if self.limit is not None:
             result['Limit'] = self.limit
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
         if self.order_type is not None:
@@ -3562,6 +4584,8 @@ class ListAccessGroupsRequest(TeaModel):
             self.input_region_id = m.get('InputRegionId')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
         if m.get('OrderType') is not None:
@@ -3650,10 +4674,12 @@ class ListAccessGroupsResponseBody(TeaModel):
     def __init__(
         self,
         access_groups: List[ListAccessGroupsResponseBodyAccessGroups] = None,
+        next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
         self.access_groups = access_groups
+        self.next_token = next_token
         self.request_id = request_id
         self.total_count = total_count
 
@@ -3673,6 +4699,8 @@ class ListAccessGroupsResponseBody(TeaModel):
         if self.access_groups is not None:
             for k in self.access_groups:
                 result['AccessGroups'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
@@ -3686,6 +4714,8 @@ class ListAccessGroupsResponseBody(TeaModel):
             for k in m.get('AccessGroups'):
                 temp_model = ListAccessGroupsResponseBodyAccessGroups()
                 self.access_groups.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
@@ -3740,13 +4770,17 @@ class ListAccessRulesRequest(TeaModel):
         access_group_id: str = None,
         input_region_id: str = None,
         limit: int = None,
+        next_token: str = None,
         order_by: str = None,
         order_type: str = None,
         start_offset: int = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.limit = limit
+        self.next_token = next_token
         self.order_by = order_by
         self.order_type = order_type
         self.start_offset = start_offset
@@ -3766,6 +4800,8 @@ class ListAccessRulesRequest(TeaModel):
             result['InputRegionId'] = self.input_region_id
         if self.limit is not None:
             result['Limit'] = self.limit
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
         if self.order_type is not None:
@@ -3782,6 +4818,8 @@ class ListAccessRulesRequest(TeaModel):
             self.input_region_id = m.get('InputRegionId')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
         if m.get('OrderType') is not None:
@@ -3864,10 +4902,12 @@ class ListAccessRulesResponseBody(TeaModel):
     def __init__(
         self,
         access_rules: List[ListAccessRulesResponseBodyAccessRules] = None,
+        next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
         self.access_rules = access_rules
+        self.next_token = next_token
         self.request_id = request_id
         self.total_count = total_count
 
@@ -3887,6 +4927,8 @@ class ListAccessRulesResponseBody(TeaModel):
         if self.access_rules is not None:
             for k in self.access_rules:
                 result['AccessRules'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
@@ -3900,6 +4942,8 @@ class ListAccessRulesResponseBody(TeaModel):
             for k in m.get('AccessRules'):
                 temp_model = ListAccessRulesResponseBodyAccessRules()
                 self.access_rules.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
@@ -3948,17 +4992,199 @@ class ListAccessRulesResponse(TeaModel):
         return self
 
 
+class ListFederationsRequest(TeaModel):
+    def __init__(
+        self,
+        federation_id: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListFederationsResponseBodyFederations(TeaModel):
+    def __init__(
+        self,
+        federation_id: str = None,
+        file_system_ids: str = None,
+    ):
+        self.federation_id = federation_id
+        self.file_system_ids = file_system_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_ids is not None:
+            result['FileSystemIds'] = self.file_system_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemIds') is not None:
+            self.file_system_ids = m.get('FileSystemIds')
+        return self
+
+
+class ListFederationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        federations: List[ListFederationsResponseBodyFederations] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.federations = federations
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.federations:
+            for k in self.federations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Federations'] = []
+        if self.federations is not None:
+            for k in self.federations:
+                result['Federations'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.federations = []
+        if m.get('Federations') is not None:
+            for k in m.get('Federations'):
+                temp_model = ListFederationsResponseBodyFederations()
+                self.federations.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListFederationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFederationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFederationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFileSystemsRequest(TeaModel):
     def __init__(
         self,
         input_region_id: str = None,
         limit: int = None,
+        next_token: str = None,
         order_by: str = None,
         order_type: str = None,
         start_offset: int = None,
     ):
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.limit = limit
+        self.next_token = next_token
         self.order_by = order_by
         self.order_type = order_type
         self.start_offset = start_offset
@@ -3976,6 +5202,8 @@ class ListFileSystemsRequest(TeaModel):
             result['InputRegionId'] = self.input_region_id
         if self.limit is not None:
             result['Limit'] = self.limit
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
         if self.order_type is not None:
@@ -3990,6 +5218,8 @@ class ListFileSystemsRequest(TeaModel):
             self.input_region_id = m.get('InputRegionId')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
         if m.get('OrderType') is not None:
@@ -4132,10 +5362,12 @@ class ListFileSystemsResponseBody(TeaModel):
     def __init__(
         self,
         file_systems: List[ListFileSystemsResponseBodyFileSystems] = None,
+        next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
         self.file_systems = file_systems
+        self.next_token = next_token
         self.request_id = request_id
         self.total_count = total_count
 
@@ -4155,6 +5387,8 @@ class ListFileSystemsResponseBody(TeaModel):
         if self.file_systems is not None:
             for k in self.file_systems:
                 result['FileSystems'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
@@ -4168,6 +5402,8 @@ class ListFileSystemsResponseBody(TeaModel):
             for k in m.get('FileSystems'):
                 temp_model = ListFileSystemsResponseBodyFileSystems()
                 self.file_systems.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
@@ -4222,13 +5458,17 @@ class ListMountPointsRequest(TeaModel):
         file_system_id: str = None,
         input_region_id: str = None,
         limit: int = None,
+        next_token: str = None,
         order_by: str = None,
         order_type: str = None,
         start_offset: int = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.limit = limit
+        self.next_token = next_token
         self.order_by = order_by
         self.order_type = order_type
         self.start_offset = start_offset
@@ -4248,6 +5488,8 @@ class ListMountPointsRequest(TeaModel):
             result['InputRegionId'] = self.input_region_id
         if self.limit is not None:
             result['Limit'] = self.limit
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
         if self.order_type is not None:
@@ -4264,6 +5506,8 @@ class ListMountPointsRequest(TeaModel):
             self.input_region_id = m.get('InputRegionId')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')
         if m.get('OrderType') is not None:
@@ -4280,6 +5524,7 @@ class ListMountPointsResponseBodyMountPoints(TeaModel):
         create_time: str = None,
         description: str = None,
         file_system_id: str = None,
+        mount_point_alias: str = None,
         mount_point_domain: str = None,
         mount_point_id: str = None,
         network_type: str = None,
@@ -4292,6 +5537,7 @@ class ListMountPointsResponseBodyMountPoints(TeaModel):
         self.create_time = create_time
         self.description = description
         self.file_system_id = file_system_id
+        self.mount_point_alias = mount_point_alias
         self.mount_point_domain = mount_point_domain
         self.mount_point_id = mount_point_id
         self.network_type = network_type
@@ -4317,6 +5563,8 @@ class ListMountPointsResponseBodyMountPoints(TeaModel):
             result['Description'] = self.description
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.mount_point_alias is not None:
+            result['MountPointAlias'] = self.mount_point_alias
         if self.mount_point_domain is not None:
             result['MountPointDomain'] = self.mount_point_domain
         if self.mount_point_id is not None:
@@ -4343,6 +5591,8 @@ class ListMountPointsResponseBodyMountPoints(TeaModel):
             self.description = m.get('Description')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('MountPointAlias') is not None:
+            self.mount_point_alias = m.get('MountPointAlias')
         if m.get('MountPointDomain') is not None:
             self.mount_point_domain = m.get('MountPointDomain')
         if m.get('MountPointId') is not None:
@@ -4364,10 +5614,12 @@ class ListMountPointsResponseBody(TeaModel):
     def __init__(
         self,
         mount_points: List[ListMountPointsResponseBodyMountPoints] = None,
+        next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
         self.mount_points = mount_points
+        self.next_token = next_token
         self.request_id = request_id
         self.total_count = total_count
 
@@ -4387,6 +5639,8 @@ class ListMountPointsResponseBody(TeaModel):
         if self.mount_points is not None:
             for k in self.mount_points:
                 result['MountPoints'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
@@ -4400,6 +5654,8 @@ class ListMountPointsResponseBody(TeaModel):
             for k in m.get('MountPoints'):
                 temp_model = ListMountPointsResponseBodyMountPoints()
                 self.mount_points.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
@@ -4448,6 +5704,233 @@ class ListMountPointsResponse(TeaModel):
         return self
 
 
+class ListQosPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        federation_id: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListQosPoliciesResponseBodyQosPolicies(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        federation_id: str = None,
+        file_system_id: str = None,
+        flow_ids: str = None,
+        max_ioband_width: int = None,
+        max_iops: int = None,
+        max_meta_qps: int = None,
+        qos_policy_id: str = None,
+        req_tags: str = None,
+        zone_ids: str = None,
+    ):
+        self.description = description
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        self.flow_ids = flow_ids
+        self.max_ioband_width = max_ioband_width
+        self.max_iops = max_iops
+        self.max_meta_qps = max_meta_qps
+        self.qos_policy_id = qos_policy_id
+        self.req_tags = req_tags
+        self.zone_ids = zone_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.flow_ids is not None:
+            result['FlowIds'] = self.flow_ids
+        if self.max_ioband_width is not None:
+            result['MaxIOBandWidth'] = self.max_ioband_width
+        if self.max_iops is not None:
+            result['MaxIOps'] = self.max_iops
+        if self.max_meta_qps is not None:
+            result['MaxMetaQps'] = self.max_meta_qps
+        if self.qos_policy_id is not None:
+            result['QosPolicyId'] = self.qos_policy_id
+        if self.req_tags is not None:
+            result['ReqTags'] = self.req_tags
+        if self.zone_ids is not None:
+            result['ZoneIds'] = self.zone_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('FlowIds') is not None:
+            self.flow_ids = m.get('FlowIds')
+        if m.get('MaxIOBandWidth') is not None:
+            self.max_ioband_width = m.get('MaxIOBandWidth')
+        if m.get('MaxIOps') is not None:
+            self.max_iops = m.get('MaxIOps')
+        if m.get('MaxMetaQps') is not None:
+            self.max_meta_qps = m.get('MaxMetaQps')
+        if m.get('QosPolicyId') is not None:
+            self.qos_policy_id = m.get('QosPolicyId')
+        if m.get('ReqTags') is not None:
+            self.req_tags = m.get('ReqTags')
+        if m.get('ZoneIds') is not None:
+            self.zone_ids = m.get('ZoneIds')
+        return self
+
+
+class ListQosPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        qos_policies: List[ListQosPoliciesResponseBodyQosPolicies] = None,
+        request_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.qos_policies = qos_policies
+        self.request_id = request_id
+
+    def validate(self):
+        if self.qos_policies:
+            for k in self.qos_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['QosPolicies'] = []
+        if self.qos_policies is not None:
+            for k in self.qos_policies:
+                result['QosPolicies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.qos_policies = []
+        if m.get('QosPolicies') is not None:
+            for k in m.get('QosPolicies'):
+                temp_model = ListQosPoliciesResponseBodyQosPolicies()
+                self.qos_policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListQosPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListQosPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListQosPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserGroupsMappingsRequest(TeaModel):
     def __init__(
         self,
@@ -4456,7 +5939,9 @@ class ListUserGroupsMappingsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
+        # This parameter is required.
         self.filesystem_id = filesystem_id
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.limit = limit
         self.next_token = next_token
@@ -4628,9 +6113,11 @@ class ModifyAccessGroupRequest(TeaModel):
         description: str = None,
         input_region_id: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
         self.access_group_name = access_group_name
         self.description = description
+        # This parameter is required.
         self.input_region_id = input_region_id
 
     def validate(self):
@@ -4743,9 +6230,12 @@ class ModifyAccessRuleRequest(TeaModel):
         priority: int = None,
         rwaccess_type: str = None,
     ):
+        # This parameter is required.
         self.access_group_id = access_group_id
+        # This parameter is required.
         self.access_rule_id = access_rule_id
         self.description = description
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.priority = priority
         self.rwaccess_type = rwaccess_type
@@ -4870,8 +6360,10 @@ class ModifyFileSystemRequest(TeaModel):
         throughput_mode: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.file_system_name = file_system_name
+        # This parameter is required.
         self.input_region_id = input_region_id
         self.provisioned_throughput_in_mi_bps = provisioned_throughput_in_mi_bps
         self.space_capacity = space_capacity
@@ -5001,8 +6493,11 @@ class ModifyMountPointRequest(TeaModel):
     ):
         self.access_group_id = access_group_id
         self.description = description
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.input_region_id = input_region_id
+        # This parameter is required.
         self.mount_point_id = mount_point_id
         self.status = status
 
@@ -5110,6 +6605,145 @@ class ModifyMountPointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMountPointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyQosPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        federation_id: str = None,
+        file_system_id: str = None,
+        input_region_id: str = None,
+        max_ioband_width: int = None,
+        max_iops: int = None,
+        max_meta_qps: int = None,
+        qos_policy_id: str = None,
+    ):
+        self.description = description
+        self.federation_id = federation_id
+        self.file_system_id = file_system_id
+        # This parameter is required.
+        self.input_region_id = input_region_id
+        self.max_ioband_width = max_ioband_width
+        self.max_iops = max_iops
+        self.max_meta_qps = max_meta_qps
+        # This parameter is required.
+        self.qos_policy_id = qos_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.federation_id is not None:
+            result['FederationId'] = self.federation_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.input_region_id is not None:
+            result['InputRegionId'] = self.input_region_id
+        if self.max_ioband_width is not None:
+            result['MaxIOBandWidth'] = self.max_ioband_width
+        if self.max_iops is not None:
+            result['MaxIOps'] = self.max_iops
+        if self.max_meta_qps is not None:
+            result['MaxMetaQps'] = self.max_meta_qps
+        if self.qos_policy_id is not None:
+            result['QosPolicyId'] = self.qos_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FederationId') is not None:
+            self.federation_id = m.get('FederationId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('InputRegionId') is not None:
+            self.input_region_id = m.get('InputRegionId')
+        if m.get('MaxIOBandWidth') is not None:
+            self.max_ioband_width = m.get('MaxIOBandWidth')
+        if m.get('MaxIOps') is not None:
+            self.max_iops = m.get('MaxIOps')
+        if m.get('MaxMetaQps') is not None:
+            self.max_meta_qps = m.get('MaxMetaQps')
+        if m.get('QosPolicyId') is not None:
+            self.qos_policy_id = m.get('QosPolicyId')
+        return self
+
+
+class ModifyQosPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyQosPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyQosPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyQosPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
