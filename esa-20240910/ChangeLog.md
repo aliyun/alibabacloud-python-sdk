@@ -1,3 +1,18 @@
+2025-12-03 Version: 2.30.2
+- Update API CreateCacheRule: add request parameters PostBodyCacheKey.
+- Update API CreateCacheRule: add request parameters PostBodySizeLimit.
+- Update API CreateCacheRule: add request parameters PostCache.
+- Update API GetCacheRule: add response parameters Body.PostBodyCacheKey.
+- Update API GetCacheRule: add response parameters Body.PostBodySizeLimit.
+- Update API GetCacheRule: add response parameters Body.PostCache.
+- Update API ListCacheRules: add response parameters Body.Configs.$.PostBodyCacheKey.
+- Update API ListCacheRules: add response parameters Body.Configs.$.PostBodySizeLimit.
+- Update API ListCacheRules: add response parameters Body.Configs.$.PostCache.
+- Update API UpdateCacheRule: add request parameters PostBodyCacheKey.
+- Update API UpdateCacheRule: add request parameters PostBodySizeLimit.
+- Update API UpdateCacheRule: add request parameters PostCache.
+
+
 2025-11-07 Version: 2.30.1
 - Update API CreateOriginPool: add request parameters Origins.$.IpVersionPolicy.
 - Update API GetOriginPool: add response parameters Body.Origins.$.IpVersionPolicy.

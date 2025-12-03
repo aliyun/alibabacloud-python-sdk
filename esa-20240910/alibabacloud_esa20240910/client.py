@@ -2692,6 +2692,12 @@ class Client(OpenApiClient):
             query['IncludeCookie'] = request.include_cookie
         if not UtilClient.is_unset(request.include_header):
             query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.post_body_cache_key):
+            query['PostBodyCacheKey'] = request.post_body_cache_key
+        if not UtilClient.is_unset(request.post_body_size_limit):
+            query['PostBodySizeLimit'] = request.post_body_size_limit
+        if not UtilClient.is_unset(request.post_cache):
+            query['PostCache'] = request.post_cache
         if not UtilClient.is_unset(request.query_string):
             query['QueryString'] = request.query_string
         if not UtilClient.is_unset(request.query_string_mode):
@@ -2777,6 +2783,12 @@ class Client(OpenApiClient):
             query['IncludeCookie'] = request.include_cookie
         if not UtilClient.is_unset(request.include_header):
             query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.post_body_cache_key):
+            query['PostBodyCacheKey'] = request.post_body_cache_key
+        if not UtilClient.is_unset(request.post_body_size_limit):
+            query['PostBodySizeLimit'] = request.post_body_size_limit
+        if not UtilClient.is_unset(request.post_cache):
+            query['PostCache'] = request.post_cache
         if not UtilClient.is_unset(request.query_string):
             query['QueryString'] = request.query_string
         if not UtilClient.is_unset(request.query_string_mode):
@@ -32234,6 +32246,12 @@ class Client(OpenApiClient):
             query['IncludeCookie'] = request.include_cookie
         if not UtilClient.is_unset(request.include_header):
             query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.post_body_cache_key):
+            query['PostBodyCacheKey'] = request.post_body_cache_key
+        if not UtilClient.is_unset(request.post_body_size_limit):
+            query['PostBodySizeLimit'] = request.post_body_size_limit
+        if not UtilClient.is_unset(request.post_cache):
+            query['PostCache'] = request.post_cache
         if not UtilClient.is_unset(request.query_string):
             query['QueryString'] = request.query_string
         if not UtilClient.is_unset(request.query_string_mode):
@@ -32319,6 +32337,12 @@ class Client(OpenApiClient):
             query['IncludeCookie'] = request.include_cookie
         if not UtilClient.is_unset(request.include_header):
             query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.post_body_cache_key):
+            query['PostBodyCacheKey'] = request.post_body_cache_key
+        if not UtilClient.is_unset(request.post_body_size_limit):
+            query['PostBodySizeLimit'] = request.post_body_size_limit
+        if not UtilClient.is_unset(request.post_cache):
+            query['PostCache'] = request.post_cache
         if not UtilClient.is_unset(request.query_string):
             query['QueryString'] = request.query_string
         if not UtilClient.is_unset(request.query_string_mode):

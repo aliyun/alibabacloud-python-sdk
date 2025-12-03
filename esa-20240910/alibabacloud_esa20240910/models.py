@@ -5914,6 +5914,9 @@ class CreateCacheRuleRequest(TeaModel):
         edge_status_code_cache_ttl: str = None,
         include_cookie: str = None,
         include_header: str = None,
+        post_body_cache_key: str = None,
+        post_body_size_limit: str = None,
+        post_cache: str = None,
         query_string: str = None,
         query_string_mode: str = None,
         rule: str = None,
@@ -5967,6 +5970,9 @@ class CreateCacheRuleRequest(TeaModel):
         self.include_cookie = include_cookie
         # When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         self.include_header = include_header
+        self.post_body_cache_key = post_body_cache_key
+        self.post_body_size_limit = post_body_size_limit
+        self.post_cache = post_cache
         # Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         self.query_string = query_string
         # The processing mode for query strings when generating the cache key. Possible values:
@@ -6048,6 +6054,12 @@ class CreateCacheRuleRequest(TeaModel):
             result['IncludeCookie'] = self.include_cookie
         if self.include_header is not None:
             result['IncludeHeader'] = self.include_header
+        if self.post_body_cache_key is not None:
+            result['PostBodyCacheKey'] = self.post_body_cache_key
+        if self.post_body_size_limit is not None:
+            result['PostBodySizeLimit'] = self.post_body_size_limit
+        if self.post_cache is not None:
+            result['PostCache'] = self.post_cache
         if self.query_string is not None:
             result['QueryString'] = self.query_string
         if self.query_string_mode is not None:
@@ -6104,6 +6116,12 @@ class CreateCacheRuleRequest(TeaModel):
             self.include_cookie = m.get('IncludeCookie')
         if m.get('IncludeHeader') is not None:
             self.include_header = m.get('IncludeHeader')
+        if m.get('PostBodyCacheKey') is not None:
+            self.post_body_cache_key = m.get('PostBodyCacheKey')
+        if m.get('PostBodySizeLimit') is not None:
+            self.post_body_size_limit = m.get('PostBodySizeLimit')
+        if m.get('PostCache') is not None:
+            self.post_cache = m.get('PostCache')
         if m.get('QueryString') is not None:
             self.query_string = m.get('QueryString')
         if m.get('QueryStringMode') is not None:
@@ -27892,6 +27910,9 @@ class GetCacheRuleResponseBody(TeaModel):
         edge_status_code_cache_ttl: str = None,
         include_cookie: str = None,
         include_header: str = None,
+        post_body_cache_key: str = None,
+        post_body_size_limit: str = None,
+        post_cache: str = None,
         query_string: str = None,
         query_string_mode: str = None,
         request_id: str = None,
@@ -27954,6 +27975,9 @@ class GetCacheRuleResponseBody(TeaModel):
         self.include_cookie = include_cookie
         # When generating the cache key, include the specified header names and their values. Supports multiple values, separated by spaces.
         self.include_header = include_header
+        self.post_body_cache_key = post_body_cache_key
+        self.post_body_size_limit = post_body_size_limit
+        self.post_cache = post_cache
         # The query strings to be retained or deleted, supporting multiple values separated by spaces.
         self.query_string = query_string
         # The processing mode for query strings when generating cache keys. Value range:
@@ -28043,6 +28067,12 @@ class GetCacheRuleResponseBody(TeaModel):
             result['IncludeCookie'] = self.include_cookie
         if self.include_header is not None:
             result['IncludeHeader'] = self.include_header
+        if self.post_body_cache_key is not None:
+            result['PostBodyCacheKey'] = self.post_body_cache_key
+        if self.post_body_size_limit is not None:
+            result['PostBodySizeLimit'] = self.post_body_size_limit
+        if self.post_cache is not None:
+            result['PostCache'] = self.post_cache
         if self.query_string is not None:
             result['QueryString'] = self.query_string
         if self.query_string_mode is not None:
@@ -28103,6 +28133,12 @@ class GetCacheRuleResponseBody(TeaModel):
             self.include_cookie = m.get('IncludeCookie')
         if m.get('IncludeHeader') is not None:
             self.include_header = m.get('IncludeHeader')
+        if m.get('PostBodyCacheKey') is not None:
+            self.post_body_cache_key = m.get('PostBodyCacheKey')
+        if m.get('PostBodySizeLimit') is not None:
+            self.post_body_size_limit = m.get('PostBodySizeLimit')
+        if m.get('PostCache') is not None:
+            self.post_cache = m.get('PostCache')
         if m.get('QueryString') is not None:
             self.query_string = m.get('QueryString')
         if m.get('QueryStringMode') is not None:
@@ -45002,6 +45038,9 @@ class ListCacheRulesResponseBodyConfigs(TeaModel):
         edge_status_code_cache_ttl: str = None,
         include_cookie: str = None,
         include_header: str = None,
+        post_body_cache_key: str = None,
+        post_body_size_limit: str = None,
+        post_cache: str = None,
         query_string: str = None,
         query_string_mode: str = None,
         rule: str = None,
@@ -45060,6 +45099,9 @@ class ListCacheRulesResponseBodyConfigs(TeaModel):
         self.include_cookie = include_cookie
         # Include the specified header names and their values when generating the cache key. Multiple values are supported, separated by spaces.
         self.include_header = include_header
+        self.post_body_cache_key = post_body_cache_key
+        self.post_body_size_limit = post_body_size_limit
+        self.post_cache = post_cache
         # The query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         self.query_string = query_string
         # The processing mode for query strings when generating the cache key. The value range is as follows:
@@ -45142,6 +45184,12 @@ class ListCacheRulesResponseBodyConfigs(TeaModel):
             result['IncludeCookie'] = self.include_cookie
         if self.include_header is not None:
             result['IncludeHeader'] = self.include_header
+        if self.post_body_cache_key is not None:
+            result['PostBodyCacheKey'] = self.post_body_cache_key
+        if self.post_body_size_limit is not None:
+            result['PostBodySizeLimit'] = self.post_body_size_limit
+        if self.post_cache is not None:
+            result['PostCache'] = self.post_cache
         if self.query_string is not None:
             result['QueryString'] = self.query_string
         if self.query_string_mode is not None:
@@ -45200,6 +45248,12 @@ class ListCacheRulesResponseBodyConfigs(TeaModel):
             self.include_cookie = m.get('IncludeCookie')
         if m.get('IncludeHeader') is not None:
             self.include_header = m.get('IncludeHeader')
+        if m.get('PostBodyCacheKey') is not None:
+            self.post_body_cache_key = m.get('PostBodyCacheKey')
+        if m.get('PostBodySizeLimit') is not None:
+            self.post_body_size_limit = m.get('PostBodySizeLimit')
+        if m.get('PostCache') is not None:
+            self.post_cache = m.get('PostCache')
         if m.get('QueryString') is not None:
             self.query_string = m.get('QueryString')
         if m.get('QueryStringMode') is not None:
@@ -68492,6 +68546,9 @@ class UpdateCacheRuleRequest(TeaModel):
         edge_status_code_cache_ttl: str = None,
         include_cookie: str = None,
         include_header: str = None,
+        post_body_cache_key: str = None,
+        post_body_size_limit: str = None,
+        post_cache: str = None,
         query_string: str = None,
         query_string_mode: str = None,
         rule: str = None,
@@ -68548,6 +68605,9 @@ class UpdateCacheRuleRequest(TeaModel):
         self.include_cookie = include_cookie
         # Include the specified header names and their values when generating cache keys, supporting multiple values separated by spaces.
         self.include_header = include_header
+        self.post_body_cache_key = post_body_cache_key
+        self.post_body_size_limit = post_body_size_limit
+        self.post_cache = post_cache
         # Query strings to be retained or excluded, supporting multiple values separated by spaces.
         self.query_string = query_string
         # The processing mode of query strings when generating cache keys. Values:
@@ -68629,6 +68689,12 @@ class UpdateCacheRuleRequest(TeaModel):
             result['IncludeCookie'] = self.include_cookie
         if self.include_header is not None:
             result['IncludeHeader'] = self.include_header
+        if self.post_body_cache_key is not None:
+            result['PostBodyCacheKey'] = self.post_body_cache_key
+        if self.post_body_size_limit is not None:
+            result['PostBodySizeLimit'] = self.post_body_size_limit
+        if self.post_cache is not None:
+            result['PostCache'] = self.post_cache
         if self.query_string is not None:
             result['QueryString'] = self.query_string
         if self.query_string_mode is not None:
@@ -68685,6 +68751,12 @@ class UpdateCacheRuleRequest(TeaModel):
             self.include_cookie = m.get('IncludeCookie')
         if m.get('IncludeHeader') is not None:
             self.include_header = m.get('IncludeHeader')
+        if m.get('PostBodyCacheKey') is not None:
+            self.post_body_cache_key = m.get('PostBodyCacheKey')
+        if m.get('PostBodySizeLimit') is not None:
+            self.post_body_size_limit = m.get('PostBodySizeLimit')
+        if m.get('PostCache') is not None:
+            self.post_cache = m.get('PostCache')
         if m.get('QueryString') is not None:
             self.query_string = m.get('QueryString')
         if m.get('QueryStringMode') is not None:
