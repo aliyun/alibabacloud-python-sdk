@@ -47,6 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.CreateOrderResponse:
         """
+        @summary 创建订单
+        
         @param request: CreateOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateOrderResponse
@@ -80,6 +82,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.CreateOrderResponse:
         """
+        @summary 创建订单
+        
         @param request: CreateOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateOrderResponse
@@ -112,6 +116,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.CreateOrderRequest,
     ) -> bss_20140714_models.CreateOrderResponse:
         """
+        @summary 创建订单
+        
         @param request: CreateOrderRequest
         @return: CreateOrderResponse
         """
@@ -123,6 +129,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.CreateOrderRequest,
     ) -> bss_20140714_models.CreateOrderResponse:
         """
+        @summary 创建订单
+        
         @param request: CreateOrderRequest
         @return: CreateOrderResponse
         """
@@ -209,6 +217,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.DescribeCouponListResponse:
         """
+        @summary 查询卡券列表
+        
         @param request: DescribeCouponListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCouponListResponse
@@ -250,6 +260,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.DescribeCouponListResponse:
         """
+        @summary 查询卡券列表
+        
         @param request: DescribeCouponListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCouponListResponse
@@ -290,6 +302,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.DescribeCouponListRequest,
     ) -> bss_20140714_models.DescribeCouponListResponse:
         """
+        @summary 查询卡券列表
+        
         @param request: DescribeCouponListRequest
         @return: DescribeCouponListResponse
         """
@@ -301,6 +315,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.DescribeCouponListRequest,
     ) -> bss_20140714_models.DescribeCouponListResponse:
         """
+        @summary 查询卡券列表
+        
         @param request: DescribeCouponListRequest
         @return: DescribeCouponListResponse
         """
@@ -313,7 +329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.OpenCallbackResponse:
         """
-        @summary OpenCallback
+        @summary 生产开通回调接口
         
         @param request: OpenCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -348,7 +364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.OpenCallbackResponse:
         """
-        @summary OpenCallback
+        @summary 生产开通回调接口
         
         @param request: OpenCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -382,7 +398,7 @@ class Client(OpenApiClient):
         request: bss_20140714_models.OpenCallbackRequest,
     ) -> bss_20140714_models.OpenCallbackResponse:
         """
-        @summary OpenCallback
+        @summary 生产开通回调接口
         
         @param request: OpenCallbackRequest
         @return: OpenCallbackResponse
@@ -395,7 +411,7 @@ class Client(OpenApiClient):
         request: bss_20140714_models.OpenCallbackRequest,
     ) -> bss_20140714_models.OpenCallbackResponse:
         """
-        @summary OpenCallback
+        @summary 生产开通回调接口
         
         @param request: OpenCallbackRequest
         @return: OpenCallbackResponse
@@ -409,6 +425,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.QueryForCssOrderResponse:
         """
+        @summary 订单询价
+        
         @param request: QueryForCssOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryForCssOrderResponse
@@ -442,6 +460,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.QueryForCssOrderResponse:
         """
+        @summary 订单询价
+        
         @param request: QueryForCssOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryForCssOrderResponse
@@ -474,6 +494,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.QueryForCssOrderRequest,
     ) -> bss_20140714_models.QueryForCssOrderResponse:
         """
+        @summary 订单询价
+        
         @param request: QueryForCssOrderRequest
         @return: QueryForCssOrderResponse
         """
@@ -485,6 +507,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.QueryForCssOrderRequest,
     ) -> bss_20140714_models.QueryForCssOrderResponse:
         """
+        @summary 订单询价
+        
         @param request: QueryForCssOrderRequest
         @return: QueryForCssOrderResponse
         """
@@ -497,6 +521,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.VnoBatchRefundOrderResponse:
         """
+        @summary vnoBatchRefundOrder
+        
         @param request: VnoBatchRefundOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: VnoBatchRefundOrderResponse
@@ -530,6 +556,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_20140714_models.VnoBatchRefundOrderResponse:
         """
+        @summary vnoBatchRefundOrder
+        
         @param request: VnoBatchRefundOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: VnoBatchRefundOrderResponse
@@ -562,6 +590,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.VnoBatchRefundOrderRequest,
     ) -> bss_20140714_models.VnoBatchRefundOrderResponse:
         """
+        @summary vnoBatchRefundOrder
+        
         @param request: VnoBatchRefundOrderRequest
         @return: VnoBatchRefundOrderResponse
         """
@@ -573,6 +603,8 @@ class Client(OpenApiClient):
         request: bss_20140714_models.VnoBatchRefundOrderRequest,
     ) -> bss_20140714_models.VnoBatchRefundOrderResponse:
         """
+        @summary vnoBatchRefundOrder
+        
         @param request: VnoBatchRefundOrderRequest
         @return: VnoBatchRefundOrderResponse
         """
