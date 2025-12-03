@@ -36334,6 +36334,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_disk_encryption_by_default_with_options_async(request, runtime)
 
+    def disable_network_interface_qo_swith_options(
+        self,
+        request: ecs_20140526_models.DisableNetworkInterfaceQoSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DisableNetworkInterfaceQoSResponse:
+        """
+        @summary 禁用弹性网卡QoS限速设置
+        
+        @param request: DisableNetworkInterfaceQoSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableNetworkInterfaceQoSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableNetworkInterfaceQoS',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableNetworkInterfaceQoSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_network_interface_qo_swith_options_async(
+        self,
+        request: ecs_20140526_models.DisableNetworkInterfaceQoSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DisableNetworkInterfaceQoSResponse:
+        """
+        @summary 禁用弹性网卡QoS限速设置
+        
+        @param request: DisableNetworkInterfaceQoSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableNetworkInterfaceQoSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableNetworkInterfaceQoS',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableNetworkInterfaceQoSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_network_interface_qo_s(
+        self,
+        request: ecs_20140526_models.DisableNetworkInterfaceQoSRequest,
+    ) -> ecs_20140526_models.DisableNetworkInterfaceQoSResponse:
+        """
+        @summary 禁用弹性网卡QoS限速设置
+        
+        @param request: DisableNetworkInterfaceQoSRequest
+        @return: DisableNetworkInterfaceQoSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_network_interface_qo_swith_options(request, runtime)
+
+    async def disable_network_interface_qo_s_async(
+        self,
+        request: ecs_20140526_models.DisableNetworkInterfaceQoSRequest,
+    ) -> ecs_20140526_models.DisableNetworkInterfaceQoSResponse:
+        """
+        @summary 禁用弹性网卡QoS限速设置
+        
+        @param request: DisableNetworkInterfaceQoSRequest
+        @return: DisableNetworkInterfaceQoSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_network_interface_qo_swith_options_async(request, runtime)
+
     def enable_disk_encryption_by_default_with_options(
         self,
         request: ecs_20140526_models.EnableDiskEncryptionByDefaultRequest,
@@ -36497,6 +36617,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_disk_encryption_by_default_with_options_async(request, runtime)
+
+    def enable_network_interface_qo_swith_options(
+        self,
+        request: ecs_20140526_models.EnableNetworkInterfaceQoSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.EnableNetworkInterfaceQoSResponse:
+        """
+        @summary 启用或修改弹性网卡QoS限速设置
+        
+        @param request: EnableNetworkInterfaceQoSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableNetworkInterfaceQoSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qo_s):
+            query['QoS'] = request.qo_s
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableNetworkInterfaceQoS',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnableNetworkInterfaceQoSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_network_interface_qo_swith_options_async(
+        self,
+        request: ecs_20140526_models.EnableNetworkInterfaceQoSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.EnableNetworkInterfaceQoSResponse:
+        """
+        @summary 启用或修改弹性网卡QoS限速设置
+        
+        @param request: EnableNetworkInterfaceQoSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableNetworkInterfaceQoSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qo_s):
+            query['QoS'] = request.qo_s
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableNetworkInterfaceQoS',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnableNetworkInterfaceQoSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_network_interface_qo_s(
+        self,
+        request: ecs_20140526_models.EnableNetworkInterfaceQoSRequest,
+    ) -> ecs_20140526_models.EnableNetworkInterfaceQoSResponse:
+        """
+        @summary 启用或修改弹性网卡QoS限速设置
+        
+        @param request: EnableNetworkInterfaceQoSRequest
+        @return: EnableNetworkInterfaceQoSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_network_interface_qo_swith_options(request, runtime)
+
+    async def enable_network_interface_qo_s_async(
+        self,
+        request: ecs_20140526_models.EnableNetworkInterfaceQoSRequest,
+    ) -> ecs_20140526_models.EnableNetworkInterfaceQoSResponse:
+        """
+        @summary 启用或修改弹性网卡QoS限速设置
+        
+        @param request: EnableNetworkInterfaceQoSRequest
+        @return: EnableNetworkInterfaceQoSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_network_interface_qo_swith_options_async(request, runtime)
 
     def enable_physical_connection_with_options(
         self,

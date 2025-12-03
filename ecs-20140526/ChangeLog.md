@@ -1,3 +1,9 @@
+2025-12-03 Version: 7.4.0
+- Support API DisableNetworkInterfaceQoS.
+- Support API EnableNetworkInterfaceQoS.
+- Update API DescribeNetworkInterfaceAttribute: add response parameters Body.QoSConfig.
+
+
 2025-12-01 Version: 7.3.0
 - Support API OpenSnapshotService.
 - Update API CreateAutoProvisioningGroup: add request parameters LaunchConfiguration.SecurityOptions.
