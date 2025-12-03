@@ -10,10 +10,12 @@ class JobStatusDetailValue(TeaModel):
         comment: str = None,
         job_result: str = None,
         time_stamps: str = None,
+        error_message: str = None,
     ):
         self.comment = comment
         self.job_result = job_result
         self.time_stamps = time_stamps
+        self.error_message = error_message
 
     def validate(self):
         pass
@@ -30,6 +32,8 @@ class JobStatusDetailValue(TeaModel):
             result['jobResult'] = self.job_result
         if self.time_stamps is not None:
             result['timeStamps'] = self.time_stamps
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +44,8 @@ class JobStatusDetailValue(TeaModel):
             self.job_result = m.get('jobResult')
         if m.get('timeStamps') is not None:
             self.time_stamps = m.get('timeStamps')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
         return self
 
 
