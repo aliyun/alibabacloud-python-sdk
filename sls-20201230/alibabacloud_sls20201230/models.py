@@ -877,6 +877,261 @@ class Alert(TeaModel):
         return self
 
 
+class AzureBlobIngestionConfigurationSource(TeaModel):
+    def __init__(
+        self,
+        account_key: str = None,
+        account_name: str = None,
+        compression_codec: str = None,
+        container_name: str = None,
+        encoding: str = None,
+        end_time: int = None,
+        format: Dict[str, Any] = None,
+        interval: str = None,
+        pattern: str = None,
+        prefix: str = None,
+        processor_id: str = None,
+        start_time: int = None,
+        tag_pack_id: bool = None,
+        time_field: str = None,
+        time_format: str = None,
+        time_pattern: str = None,
+        time_zone: str = None,
+    ):
+        # This parameter is required.
+        self.account_key = account_key
+        # This parameter is required.
+        self.account_name = account_name
+        # This parameter is required.
+        self.compression_codec = compression_codec
+        # This parameter is required.
+        self.container_name = container_name
+        # This parameter is required.
+        self.encoding = encoding
+        self.end_time = end_time
+        # This parameter is required.
+        self.format = format
+        # This parameter is required.
+        self.interval = interval
+        self.pattern = pattern
+        self.prefix = prefix
+        self.processor_id = processor_id
+        self.start_time = start_time
+        self.tag_pack_id = tag_pack_id
+        self.time_field = time_field
+        self.time_format = time_format
+        self.time_pattern = time_pattern
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_key is not None:
+            result['accountKey'] = self.account_key
+        if self.account_name is not None:
+            result['accountName'] = self.account_name
+        if self.compression_codec is not None:
+            result['compressionCodec'] = self.compression_codec
+        if self.container_name is not None:
+            result['containerName'] = self.container_name
+        if self.encoding is not None:
+            result['encoding'] = self.encoding
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.format is not None:
+            result['format'] = self.format
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pattern is not None:
+            result['pattern'] = self.pattern
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.tag_pack_id is not None:
+            result['tagPackId'] = self.tag_pack_id
+        if self.time_field is not None:
+            result['timeField'] = self.time_field
+        if self.time_format is not None:
+            result['timeFormat'] = self.time_format
+        if self.time_pattern is not None:
+            result['timePattern'] = self.time_pattern
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountKey') is not None:
+            self.account_key = m.get('accountKey')
+        if m.get('accountName') is not None:
+            self.account_name = m.get('accountName')
+        if m.get('compressionCodec') is not None:
+            self.compression_codec = m.get('compressionCodec')
+        if m.get('containerName') is not None:
+            self.container_name = m.get('containerName')
+        if m.get('encoding') is not None:
+            self.encoding = m.get('encoding')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pattern') is not None:
+            self.pattern = m.get('pattern')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('tagPackId') is not None:
+            self.tag_pack_id = m.get('tagPackId')
+        if m.get('timeField') is not None:
+            self.time_field = m.get('timeField')
+        if m.get('timeFormat') is not None:
+            self.time_format = m.get('timeFormat')
+        if m.get('timePattern') is not None:
+            self.time_pattern = m.get('timePattern')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        return self
+
+
+class AzureBlobIngestionConfiguration(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        source: AzureBlobIngestionConfigurationSource = None,
+    ):
+        self.logstore = logstore
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('source') is not None:
+            temp_model = AzureBlobIngestionConfigurationSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class AzureBlobIngestion(TeaModel):
+    def __init__(
+        self,
+        configuration: AzureBlobIngestionConfiguration = None,
+        create_time: int = None,
+        description: str = None,
+        display_name: str = None,
+        last_modified_time: int = None,
+        name: str = None,
+        processor_id: str = None,
+        schedule: Schedule = None,
+        schedule_id: str = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.create_time = create_time
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        self.last_modified_time = last_modified_time
+        # This parameter is required.
+        self.name = name
+        self.processor_id = processor_id
+        # This parameter is required.
+        self.schedule = schedule
+        self.schedule_id = schedule_id
+        self.status = status
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = AzureBlobIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
 class ConsumeProcessorConfiguration(TeaModel):
     def __init__(
         self,
@@ -1249,11 +1504,11 @@ class ESIngestionConfigurationSource(TeaModel):
     def __init__(
         self,
         bootstrap_servers: str = None,
-        index: str = None,
-        min_frag_range_sec: int = None,
         connector_mode: str = None,
         end_time: int = None,
+        index: str = None,
         max_data_delay_sec: int = None,
+        min_frag_range_sec: int = None,
         password: str = None,
         query: str = None,
         start_time: int = None,
@@ -1266,14 +1521,14 @@ class ESIngestionConfigurationSource(TeaModel):
         # This parameter is required.
         self.bootstrap_servers = bootstrap_servers
         # This parameter is required.
-        self.index = index
-        # This parameter is required.
-        self.min_frag_range_sec = min_frag_range_sec
-        # This parameter is required.
         self.connector_mode = connector_mode
         self.end_time = end_time
         # This parameter is required.
+        self.index = index
+        # This parameter is required.
         self.max_data_delay_sec = max_data_delay_sec
+        # This parameter is required.
+        self.min_frag_range_sec = min_frag_range_sec
         self.password = password
         # This parameter is required.
         self.query = query
@@ -1295,64 +1550,64 @@ class ESIngestionConfigurationSource(TeaModel):
         result = dict()
         if self.bootstrap_servers is not None:
             result['BootstrapServers'] = self.bootstrap_servers
+        if self.connector_mode is not None:
+            result['ConnectorMode'] = self.connector_mode
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.index is not None:
             result['Index'] = self.index
+        if self.max_data_delay_sec is not None:
+            result['MaxDataDelaySec'] = self.max_data_delay_sec
         if self.min_frag_range_sec is not None:
             result['MinFragRangeSec'] = self.min_frag_range_sec
-        if self.connector_mode is not None:
-            result['connectorMode'] = self.connector_mode
-        if self.end_time is not None:
-            result['endTime'] = self.end_time
-        if self.max_data_delay_sec is not None:
-            result['maxDataDelaySec'] = self.max_data_delay_sec
         if self.password is not None:
-            result['password'] = self.password
+            result['Password'] = self.password
         if self.query is not None:
-            result['query'] = self.query
+            result['Query'] = self.query
         if self.start_time is not None:
-            result['startTime'] = self.start_time
+            result['StartTime'] = self.start_time
         if self.time_field_name is not None:
-            result['timeFieldName'] = self.time_field_name
+            result['TimeFieldName'] = self.time_field_name
         if self.time_format is not None:
-            result['timeFormat'] = self.time_format
+            result['TimeFormat'] = self.time_format
         if self.time_zone is not None:
-            result['timeZone'] = self.time_zone
+            result['TimeZone'] = self.time_zone
         if self.username is not None:
-            result['username'] = self.username
+            result['Username'] = self.username
         if self.vpc_id is not None:
-            result['vpcId'] = self.vpc_id
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BootstrapServers') is not None:
             self.bootstrap_servers = m.get('BootstrapServers')
+        if m.get('ConnectorMode') is not None:
+            self.connector_mode = m.get('ConnectorMode')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('Index') is not None:
             self.index = m.get('Index')
+        if m.get('MaxDataDelaySec') is not None:
+            self.max_data_delay_sec = m.get('MaxDataDelaySec')
         if m.get('MinFragRangeSec') is not None:
             self.min_frag_range_sec = m.get('MinFragRangeSec')
-        if m.get('connectorMode') is not None:
-            self.connector_mode = m.get('connectorMode')
-        if m.get('endTime') is not None:
-            self.end_time = m.get('endTime')
-        if m.get('maxDataDelaySec') is not None:
-            self.max_data_delay_sec = m.get('maxDataDelaySec')
-        if m.get('password') is not None:
-            self.password = m.get('password')
-        if m.get('query') is not None:
-            self.query = m.get('query')
-        if m.get('startTime') is not None:
-            self.start_time = m.get('startTime')
-        if m.get('timeFieldName') is not None:
-            self.time_field_name = m.get('timeFieldName')
-        if m.get('timeFormat') is not None:
-            self.time_format = m.get('timeFormat')
-        if m.get('timeZone') is not None:
-            self.time_zone = m.get('timeZone')
-        if m.get('username') is not None:
-            self.username = m.get('username')
-        if m.get('vpcId') is not None:
-            self.vpc_id = m.get('vpcId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TimeFieldName') is not None:
+            self.time_field_name = m.get('TimeFieldName')
+        if m.get('TimeFormat') is not None:
+            self.time_format = m.get('TimeFormat')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -2098,6 +2353,7 @@ class KafkaIngestionConfigurationSource(TeaModel):
         from_position: str = None,
         name_resolutions: str = None,
         parse_array: bool = None,
+        processor_id: str = None,
         time_field: str = None,
         time_format: str = None,
         time_pattern: str = None,
@@ -2119,6 +2375,7 @@ class KafkaIngestionConfigurationSource(TeaModel):
         self.name_resolutions = name_resolutions
         # This parameter is required.
         self.parse_array = parse_array
+        self.processor_id = processor_id
         self.time_field = time_field
         self.time_format = time_format
         self.time_pattern = time_pattern
@@ -2156,6 +2413,8 @@ class KafkaIngestionConfigurationSource(TeaModel):
             result['nameResolutions'] = self.name_resolutions
         if self.parse_array is not None:
             result['parseArray'] = self.parse_array
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.time_field is not None:
             result['timeField'] = self.time_field
         if self.time_format is not None:
@@ -2192,6 +2451,8 @@ class KafkaIngestionConfigurationSource(TeaModel):
             self.name_resolutions = m.get('nameResolutions')
         if m.get('parseArray') is not None:
             self.parse_array = m.get('parseArray')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('timeField') is not None:
             self.time_field = m.get('timeField')
         if m.get('timeFormat') is not None:
@@ -2255,6 +2516,7 @@ class KafkaIngestion(TeaModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
+        processor_id: str = None,
         schedule: Schedule = None,
         schedule_id: str = None,
         status: str = None,
@@ -2268,6 +2530,7 @@ class KafkaIngestion(TeaModel):
         self.last_modified_time = last_modified_time
         # This parameter is required.
         self.name = name
+        self.processor_id = processor_id
         # This parameter is required.
         self.schedule = schedule
         self.schedule_id = schedule_id
@@ -2297,6 +2560,8 @@ class KafkaIngestion(TeaModel):
             result['lastModifiedTime'] = self.last_modified_time
         if self.name is not None:
             result['name'] = self.name
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.schedule is not None:
             result['schedule'] = self.schedule.to_map()
         if self.schedule_id is not None:
@@ -2320,6 +2585,8 @@ class KafkaIngestion(TeaModel):
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('schedule') is not None:
             temp_model = Schedule()
             self.schedule = temp_model.from_map(m['schedule'])
@@ -2370,11 +2637,13 @@ class LogItem(TeaModel):
         self,
         contents: List[LogContent] = None,
         time: int = None,
+        time_ns: int = None,
     ):
         # This parameter is required.
         self.contents = contents
         # This parameter is required.
         self.time = time
+        self.time_ns = time_ns
 
     def validate(self):
         if self.contents:
@@ -2394,6 +2663,8 @@ class LogItem(TeaModel):
                 result['Contents'].append(k.to_map() if k else None)
         if self.time is not None:
             result['Time'] = self.time
+        if self.time_ns is not None:
+            result['TimeNs'] = self.time_ns
         return result
 
     def from_map(self, m: dict = None):
@@ -2405,6 +2676,8 @@ class LogItem(TeaModel):
                 self.contents.append(temp_model.from_map(k))
         if m.get('Time') is not None:
             self.time = m.get('Time')
+        if m.get('TimeNs') is not None:
+            self.time_ns = m.get('TimeNs')
         return self
 
 
@@ -3794,6 +4067,7 @@ class OSSIngestionConfigurationSource(TeaModel):
         interval: str = None,
         pattern: str = None,
         prefix: str = None,
+        processor_id: str = None,
         restore_object_enabled: bool = None,
         role_arn: str = None,
         start_time: int = None,
@@ -3819,6 +4093,7 @@ class OSSIngestionConfigurationSource(TeaModel):
         self.interval = interval
         self.pattern = pattern
         self.prefix = prefix
+        self.processor_id = processor_id
         self.restore_object_enabled = restore_object_enabled
         self.role_arn = role_arn
         self.start_time = start_time
@@ -3857,6 +4132,8 @@ class OSSIngestionConfigurationSource(TeaModel):
             result['pattern'] = self.pattern
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.restore_object_enabled is not None:
             result['restoreObjectEnabled'] = self.restore_object_enabled
         if self.role_arn is not None:
@@ -3897,6 +4174,8 @@ class OSSIngestionConfigurationSource(TeaModel):
             self.pattern = m.get('pattern')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('restoreObjectEnabled') is not None:
             self.restore_object_enabled = m.get('restoreObjectEnabled')
         if m.get('roleARN') is not None:
@@ -3964,6 +4243,7 @@ class OSSIngestion(TeaModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
+        processor_id: str = None,
         schedule: Schedule = None,
         schedule_id: str = None,
         status: str = None,
@@ -3977,6 +4257,7 @@ class OSSIngestion(TeaModel):
         self.last_modified_time = last_modified_time
         # This parameter is required.
         self.name = name
+        self.processor_id = processor_id
         # This parameter is required.
         self.schedule = schedule
         self.schedule_id = schedule_id
@@ -4006,6 +4287,8 @@ class OSSIngestion(TeaModel):
             result['lastModifiedTime'] = self.last_modified_time
         if self.name is not None:
             result['name'] = self.name
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.schedule is not None:
             result['schedule'] = self.schedule.to_map()
         if self.schedule_id is not None:
@@ -4029,6 +4312,8 @@ class OSSIngestion(TeaModel):
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('schedule') is not None:
             temp_model = Schedule()
             self.schedule = temp_model.from_map(m['schedule'])
@@ -4142,10 +4427,12 @@ class S3IngestionConfigurationSource(TeaModel):
         compression_codec: str = None,
         encoding: str = None,
         end_time: int = None,
+        endpoint: str = None,
         format: Dict[str, Any] = None,
         interval: str = None,
         pattern: str = None,
         prefix: str = None,
+        processor_id: str = None,
         start_time: int = None,
         tag_pack_id: bool = None,
         time_field: str = None,
@@ -4169,12 +4456,14 @@ class S3IngestionConfigurationSource(TeaModel):
         # This parameter is required.
         self.encoding = encoding
         self.end_time = end_time
+        self.endpoint = endpoint
         # This parameter is required.
         self.format = format
         # This parameter is required.
         self.interval = interval
         self.pattern = pattern
         self.prefix = prefix
+        self.processor_id = processor_id
         self.start_time = start_time
         self.tag_pack_id = tag_pack_id
         self.time_field = time_field
@@ -4210,6 +4499,8 @@ class S3IngestionConfigurationSource(TeaModel):
             result['encoding'] = self.encoding
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
         if self.format is not None:
             result['format'] = self.format
         if self.interval is not None:
@@ -4218,6 +4509,8 @@ class S3IngestionConfigurationSource(TeaModel):
             result['pattern'] = self.pattern
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.tag_pack_id is not None:
@@ -4254,6 +4547,8 @@ class S3IngestionConfigurationSource(TeaModel):
             self.encoding = m.get('encoding')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
         if m.get('format') is not None:
             self.format = m.get('format')
         if m.get('interval') is not None:
@@ -4262,6 +4557,8 @@ class S3IngestionConfigurationSource(TeaModel):
             self.pattern = m.get('pattern')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('tagPackId') is not None:
@@ -4288,6 +4585,7 @@ class S3Ingestion(TeaModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
+        processor_id: str = None,
         schedule: Schedule = None,
         schedule_id: str = None,
         status: str = None,
@@ -4301,6 +4599,7 @@ class S3Ingestion(TeaModel):
         self.last_modified_time = last_modified_time
         # This parameter is required.
         self.name = name
+        self.processor_id = processor_id
         # This parameter is required.
         self.schedule = schedule
         self.schedule_id = schedule_id
@@ -4330,6 +4629,8 @@ class S3Ingestion(TeaModel):
             result['lastModifiedTime'] = self.last_modified_time
         if self.name is not None:
             result['name'] = self.name
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.schedule is not None:
             result['schedule'] = self.schedule.to_map()
         if self.schedule_id is not None:
@@ -4353,6 +4654,8 @@ class S3Ingestion(TeaModel):
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('schedule') is not None:
             temp_model = Schedule()
             self.schedule = temp_model.from_map(m['schedule'])
@@ -4674,6 +4977,121 @@ class ScheduledSQL(TeaModel):
             self.schedule_id = m.get('scheduleId')
         if m.get('status') is not None:
             self.status = m.get('status')
+        return self
+
+
+class ShardingPolicyShardGroup(TeaModel):
+    def __init__(
+        self,
+        group_count: int = None,
+        keys: List[str] = None,
+    ):
+        # This parameter is required.
+        self.group_count = group_count
+        # This parameter is required.
+        self.keys = keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_count is not None:
+            result['groupCount'] = self.group_count
+        if self.keys is not None:
+            result['keys'] = self.keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupCount') is not None:
+            self.group_count = m.get('groupCount')
+        if m.get('keys') is not None:
+            self.keys = m.get('keys')
+        return self
+
+
+class ShardingPolicyShardHash(TeaModel):
+    def __init__(
+        self,
+        keys: List[str] = None,
+        max_hash_count: int = None,
+    ):
+        # This parameter is required.
+        self.keys = keys
+        # This parameter is required.
+        self.max_hash_count = max_hash_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keys is not None:
+            result['keys'] = self.keys
+        if self.max_hash_count is not None:
+            result['maxHashCount'] = self.max_hash_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keys') is not None:
+            self.keys = m.get('keys')
+        if m.get('maxHashCount') is not None:
+            self.max_hash_count = m.get('maxHashCount')
+        return self
+
+
+class ShardingPolicy(TeaModel):
+    def __init__(
+        self,
+        query_active_time: int = None,
+        shard_group: ShardingPolicyShardGroup = None,
+        shard_hash: ShardingPolicyShardHash = None,
+    ):
+        self.query_active_time = query_active_time
+        self.shard_group = shard_group
+        # This parameter is required.
+        self.shard_hash = shard_hash
+
+    def validate(self):
+        if self.shard_group:
+            self.shard_group.validate()
+        if self.shard_hash:
+            self.shard_hash.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_active_time is not None:
+            result['queryActiveTime'] = self.query_active_time
+        if self.shard_group is not None:
+            result['shardGroup'] = self.shard_group.to_map()
+        if self.shard_hash is not None:
+            result['shardHash'] = self.shard_hash.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('queryActiveTime') is not None:
+            self.query_active_time = m.get('queryActiveTime')
+        if m.get('shardGroup') is not None:
+            temp_model = ShardingPolicyShardGroup()
+            self.shard_group = temp_model.from_map(m['shardGroup'])
+        if m.get('shardHash') is not None:
+            temp_model = ShardingPolicyShardHash()
+            self.shard_hash = temp_model.from_map(m['shardHash'])
         return self
 
 
@@ -5032,6 +5450,7 @@ class Index(TeaModel):
         log_reduce_black_list: List[str] = None,
         log_reduce_white_list: List[str] = None,
         max_text_len: int = None,
+        scan_index: bool = None,
     ):
         self.keys = keys
         self.line = line
@@ -5039,6 +5458,7 @@ class Index(TeaModel):
         self.log_reduce_black_list = log_reduce_black_list
         self.log_reduce_white_list = log_reduce_white_list
         self.max_text_len = max_text_len
+        self.scan_index = scan_index
 
     def validate(self):
         if self.keys:
@@ -5068,6 +5488,8 @@ class Index(TeaModel):
             result['log_reduce_white_list'] = self.log_reduce_white_list
         if self.max_text_len is not None:
             result['max_text_len'] = self.max_text_len
+        if self.scan_index is not None:
+            result['scan_index'] = self.scan_index
         return result
 
     def from_map(self, m: dict = None):
@@ -5088,6 +5510,8 @@ class Index(TeaModel):
             self.log_reduce_white_list = m.get('log_reduce_white_list')
         if m.get('max_text_len') is not None:
             self.max_text_len = m.get('max_text_len')
+        if m.get('scan_index') is not None:
+            self.scan_index = m.get('scan_index')
         return self
 
 
@@ -5186,6 +5610,7 @@ class Logstore(TeaModel):
         processor_id: str = None,
         product_type: str = None,
         shard_count: int = None,
+        sharding_policy: ShardingPolicy = None,
         telemetry_type: str = None,
         ttl: int = None,
     ):
@@ -5205,6 +5630,7 @@ class Logstore(TeaModel):
         self.product_type = product_type
         # This parameter is required.
         self.shard_count = shard_count
+        self.sharding_policy = sharding_policy
         self.telemetry_type = telemetry_type
         # This parameter is required.
         self.ttl = ttl
@@ -5212,6 +5638,8 @@ class Logstore(TeaModel):
     def validate(self):
         if self.encrypt_conf:
             self.encrypt_conf.validate()
+        if self.sharding_policy:
+            self.sharding_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5247,6 +5675,8 @@ class Logstore(TeaModel):
             result['productType'] = self.product_type
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
+        if self.sharding_policy is not None:
+            result['shardingPolicy'] = self.sharding_policy.to_map()
         if self.telemetry_type is not None:
             result['telemetryType'] = self.telemetry_type
         if self.ttl is not None:
@@ -5284,6 +5714,9 @@ class Logstore(TeaModel):
             self.product_type = m.get('productType')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
+        if m.get('shardingPolicy') is not None:
+            temp_model = ShardingPolicy()
+            self.sharding_policy = temp_model.from_map(m['shardingPolicy'])
         if m.get('telemetryType') is not None:
             self.telemetry_type = m.get('telemetryType')
         if m.get('ttl') is not None:
@@ -5438,7 +5871,6 @@ class Project(TeaModel):
         data_redundancy_type: str = None,
         description: str = None,
         last_modify_time: str = None,
-        location: str = None,
         owner: str = None,
         project_name: str = None,
         quota: Dict[str, Any] = None,
@@ -5452,7 +5884,6 @@ class Project(TeaModel):
         # This parameter is required.
         self.description = description
         self.last_modify_time = last_modify_time
-        self.location = location
         self.owner = owner
         # This parameter is required.
         self.project_name = project_name
@@ -5479,8 +5910,6 @@ class Project(TeaModel):
             result['description'] = self.description
         if self.last_modify_time is not None:
             result['lastModifyTime'] = self.last_modify_time
-        if self.location is not None:
-            result['location'] = self.location
         if self.owner is not None:
             result['owner'] = self.owner
         if self.project_name is not None:
@@ -5507,8 +5936,6 @@ class Project(TeaModel):
             self.description = m.get('description')
         if m.get('lastModifyTime') is not None:
             self.last_modify_time = m.get('lastModifyTime')
-        if m.get('location') is not None:
-            self.location = m.get('location')
         if m.get('owner') is not None:
             self.owner = m.get('owner')
         if m.get('projectName') is not None:
@@ -6293,6 +6720,98 @@ class CreateAnnotationLabelResponse(TeaModel):
         return self
 
 
+class CreateAzureBlobIngestionRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: AzureBlobIngestionConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+        name: str = None,
+        schedule: Schedule = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        # This parameter is required.
+        self.name = name
+        self.schedule = schedule
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = AzureBlobIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        return self
+
+
+class CreateAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateConfigRequest(TeaModel):
     def __init__(
         self,
@@ -6901,6 +7420,98 @@ class CreateETLResponse(TeaModel):
         return self
 
 
+class CreateElasticsearchIngestionRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: ESIngestionConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+        name: str = None,
+        schedule: Schedule = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        # This parameter is required.
+        self.name = name
+        self.schedule = schedule
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = ESIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        return self
+
+
+class CreateElasticsearchIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateIndexRequest(TeaModel):
     def __init__(
         self,
@@ -6978,6 +7589,7 @@ class CreateLogStoreRequest(TeaModel):
         mode: str = None,
         processor_id: str = None,
         shard_count: int = None,
+        sharding_policy: ShardingPolicy = None,
         telemetry_type: str = None,
         ttl: int = None,
     ):
@@ -7030,6 +7642,7 @@ class CreateLogStoreRequest(TeaModel):
         # 
         # This parameter is required.
         self.shard_count = shard_count
+        self.sharding_policy = sharding_policy
         # The type of the observable data. Valid values:
         # 
         # *   **None** (default): log data
@@ -7043,6 +7656,8 @@ class CreateLogStoreRequest(TeaModel):
     def validate(self):
         if self.encrypt_conf:
             self.encrypt_conf.validate()
+        if self.sharding_policy:
+            self.sharding_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7072,6 +7687,8 @@ class CreateLogStoreRequest(TeaModel):
             result['processorId'] = self.processor_id
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
+        if self.sharding_policy is not None:
+            result['shardingPolicy'] = self.sharding_policy.to_map()
         if self.telemetry_type is not None:
             result['telemetryType'] = self.telemetry_type
         if self.ttl is not None:
@@ -7103,6 +7720,9 @@ class CreateLogStoreRequest(TeaModel):
             self.processor_id = m.get('processorId')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
+        if m.get('shardingPolicy') is not None:
+            temp_model = ShardingPolicy()
+            self.sharding_policy = temp_model.from_map(m['shardingPolicy'])
         if m.get('telemetryType') is not None:
             self.telemetry_type = m.get('telemetryType')
         if m.get('ttl') is not None:
@@ -7649,6 +8269,7 @@ class CreateMaxComputeExportResponse(TeaModel):
 class CreateMetricStoreRequest(TeaModel):
     def __init__(
         self,
+        append_meta: bool = None,
         auto_split: bool = None,
         hot_ttl: int = None,
         infrequent_access_ttl: int = None,
@@ -7657,8 +8278,10 @@ class CreateMetricStoreRequest(TeaModel):
         mode: str = None,
         name: str = None,
         shard_count: int = None,
+        sharding_policy: ShardingPolicy = None,
         ttl: int = None,
     ):
+        self.append_meta = append_meta
         # Specifies whether to enable automatic sharding.
         self.auto_split = auto_split
         self.hot_ttl = hot_ttl
@@ -7677,13 +8300,15 @@ class CreateMetricStoreRequest(TeaModel):
         # 
         # This parameter is required.
         self.shard_count = shard_count
+        self.sharding_policy = sharding_policy
         # The retention period of the metric data in the Metricstore. Unit: days.
         # 
         # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
-        pass
+        if self.sharding_policy:
+            self.sharding_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7691,6 +8316,8 @@ class CreateMetricStoreRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.append_meta is not None:
+            result['appendMeta'] = self.append_meta
         if self.auto_split is not None:
             result['autoSplit'] = self.auto_split
         if self.hot_ttl is not None:
@@ -7707,12 +8334,16 @@ class CreateMetricStoreRequest(TeaModel):
             result['name'] = self.name
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
+        if self.sharding_policy is not None:
+            result['shardingPolicy'] = self.sharding_policy.to_map()
         if self.ttl is not None:
             result['ttl'] = self.ttl
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appendMeta') is not None:
+            self.append_meta = m.get('appendMeta')
         if m.get('autoSplit') is not None:
             self.auto_split = m.get('autoSplit')
         if m.get('hot_ttl') is not None:
@@ -7729,6 +8360,9 @@ class CreateMetricStoreRequest(TeaModel):
             self.name = m.get('name')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
+        if m.get('shardingPolicy') is not None:
+            temp_model = ShardingPolicy()
+            self.sharding_policy = temp_model.from_map(m['shardingPolicy'])
         if m.get('ttl') is not None:
             self.ttl = m.get('ttl')
         return self
@@ -8927,6 +9561,39 @@ class DeleteAnnotationLabelResponse(TeaModel):
         return self
 
 
+class DeleteAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteCollectionPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -9192,6 +9859,39 @@ class DeleteDownloadJobResponse(TeaModel):
 
 
 class DeleteETLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteElasticsearchIngestionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -9850,12 +10550,14 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
         data_redundancy_type: List[str] = None,
+        internal_endpoint: str = None,
         internet_endpoint: str = None,
         intranet_endpoint: str = None,
         local_name: str = None,
         region: str = None,
     ):
         self.data_redundancy_type = data_redundancy_type
+        self.internal_endpoint = internal_endpoint
         # The public endpoint of Simple Log Service.
         self.internet_endpoint = internet_endpoint
         # The internal endpoint of Simple Log Service.
@@ -9876,6 +10578,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         result = dict()
         if self.data_redundancy_type is not None:
             result['dataRedundancyType'] = self.data_redundancy_type
+        if self.internal_endpoint is not None:
+            result['internalEndpoint'] = self.internal_endpoint
         if self.internet_endpoint is not None:
             result['internetEndpoint'] = self.internet_endpoint
         if self.intranet_endpoint is not None:
@@ -9890,6 +10594,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         m = m or dict()
         if m.get('dataRedundancyType') is not None:
             self.data_redundancy_type = m.get('dataRedundancyType')
+        if m.get('internalEndpoint') is not None:
+            self.internal_endpoint = m.get('internalEndpoint')
         if m.get('internetEndpoint') is not None:
             self.internet_endpoint = m.get('internetEndpoint')
         if m.get('intranetEndpoint') is not None:
@@ -10581,6 +11287,47 @@ class GetAppliedMachineGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAppliedMachineGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AzureBlobIngestion = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AzureBlobIngestion()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11907,6 +12654,47 @@ class GetETLResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ETL()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetElasticsearchIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ESIngestion = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ESIngestion()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13314,6 +14102,7 @@ class GetMaxComputeExportResponse(TeaModel):
 class GetMetricStoreResponseBody(TeaModel):
     def __init__(
         self,
+        append_meta: bool = None,
         auto_split: bool = None,
         create_time: int = None,
         hot_ttl: int = None,
@@ -13324,8 +14113,10 @@ class GetMetricStoreResponseBody(TeaModel):
         mode: str = None,
         name: str = None,
         shard_count: int = None,
+        sharding_policy: ShardingPolicy = None,
         ttl: int = None,
     ):
+        self.append_meta = append_meta
         # Indicates whether the automatic sharding feature is enabled.
         self.auto_split = auto_split
         # The creation time. The value is a UNIX timestamp.
@@ -13344,11 +14135,13 @@ class GetMetricStoreResponseBody(TeaModel):
         self.name = name
         # The number of shards.
         self.shard_count = shard_count
+        self.sharding_policy = sharding_policy
         # The retention period. Unit: days.
         self.ttl = ttl
 
     def validate(self):
-        pass
+        if self.sharding_policy:
+            self.sharding_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13356,6 +14149,8 @@ class GetMetricStoreResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.append_meta is not None:
+            result['appendMeta'] = self.append_meta
         if self.auto_split is not None:
             result['autoSplit'] = self.auto_split
         if self.create_time is not None:
@@ -13376,12 +14171,16 @@ class GetMetricStoreResponseBody(TeaModel):
             result['name'] = self.name
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
+        if self.sharding_policy is not None:
+            result['shardingPolicy'] = self.sharding_policy.to_map()
         if self.ttl is not None:
             result['ttl'] = self.ttl
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appendMeta') is not None:
+            self.append_meta = m.get('appendMeta')
         if m.get('autoSplit') is not None:
             self.auto_split = m.get('autoSplit')
         if m.get('createTime') is not None:
@@ -13402,6 +14201,9 @@ class GetMetricStoreResponseBody(TeaModel):
             self.name = m.get('name')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
+        if m.get('shardingPolicy') is not None:
+            temp_model = ShardingPolicy()
+            self.sharding_policy = temp_model.from_map(m['shardingPolicy'])
         if m.get('ttl') is not None:
             self.ttl = m.get('ttl')
         return self
@@ -15081,6 +15883,133 @@ class ListAnnotationLabelsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAnnotationLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAzureBlobIngestionRequest(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        offset: int = None,
+        size: int = None,
+    ):
+        self.logstore = logstore
+        self.offset = offset
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListAzureBlobIngestionResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        results: List[AzureBlobIngestion] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.results = results
+        self.total = total
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = AzureBlobIngestion()
+                self.results.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAzureBlobIngestionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAzureBlobIngestionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16843,6 +17772,133 @@ class ListETLsResponse(TeaModel):
         return self
 
 
+class ListElasticsearchIngestionsRequest(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        offset: int = None,
+        size: int = None,
+    ):
+        self.logstore = logstore
+        self.offset = offset
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListElasticsearchIngestionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        results: List[ESIngestion] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.results = results
+        self.total = total
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = ESIngestion()
+                self.results.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListElasticsearchIngestionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListElasticsearchIngestionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListElasticsearchIngestionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListIngestProcessorsRequest(TeaModel):
     def __init__(
         self,
@@ -18166,12 +19222,14 @@ class ListOSSIngestionsResponse(TeaModel):
 class ListProjectRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         fetch_quota: bool = None,
         offset: int = None,
         project_name: str = None,
         resource_group_id: str = None,
         size: int = None,
     ):
+        self.description = description
         self.fetch_quota = fetch_quota
         # The line from which the query starts. Default value: 0.
         self.offset = offset
@@ -18190,6 +19248,8 @@ class ListProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
         if self.fetch_quota is not None:
             result['fetchQuota'] = self.fetch_quota
         if self.offset is not None:
@@ -18204,6 +19264,8 @@ class ListProjectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('fetchQuota') is not None:
             self.fetch_quota = m.get('fetchQuota')
         if m.get('offset') is not None:
@@ -20141,7 +21203,73 @@ class SplitShardResponse(TeaModel):
         return self
 
 
+class StartAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class StartETLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class StartElasticsearchIngestionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -20306,7 +21434,73 @@ class StartOSSIngestionResponse(TeaModel):
         return self
 
 
+class StopAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class StopETLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class StopElasticsearchIngestionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -21053,6 +22247,91 @@ class UpdateAnnotationLabelResponse(TeaModel):
         return self
 
 
+class UpdateAzureBlobIngestionRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: AzureBlobIngestionConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+        schedule: Schedule = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        self.schedule = schedule
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = AzureBlobIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        return self
+
+
+class UpdateAzureBlobIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class UpdateConfigRequest(TeaModel):
     def __init__(
         self,
@@ -21366,6 +22645,91 @@ class UpdateETLResponse(TeaModel):
         return self
 
 
+class UpdateElasticsearchIngestionRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: ESIngestionConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+        schedule: Schedule = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        self.schedule = schedule
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = ESIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        return self
+
+
+class UpdateElasticsearchIngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class UpdateIndexRequest(TeaModel):
     def __init__(
         self,
@@ -21442,6 +22806,7 @@ class UpdateLogStoreRequest(TeaModel):
         max_split_shard: int = None,
         mode: str = None,
         shard_count: int = None,
+        sharding_policy: ShardingPolicy = None,
         telemetry_type: str = None,
         ttl: int = None,
     ):
@@ -21483,6 +22848,7 @@ class UpdateLogStoreRequest(TeaModel):
         # 
         # >  You cannot call the UpdateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
         self.shard_count = shard_count
+        self.sharding_policy = sharding_policy
         # The type of the observable data. Valid values:
         # 
         # *   None (default): log data.
@@ -21496,6 +22862,8 @@ class UpdateLogStoreRequest(TeaModel):
     def validate(self):
         if self.encrypt_conf:
             self.encrypt_conf.validate()
+        if self.sharding_policy:
+            self.sharding_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21523,6 +22891,8 @@ class UpdateLogStoreRequest(TeaModel):
             result['mode'] = self.mode
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
+        if self.sharding_policy is not None:
+            result['shardingPolicy'] = self.sharding_policy.to_map()
         if self.telemetry_type is not None:
             result['telemetryType'] = self.telemetry_type
         if self.ttl is not None:
@@ -21552,6 +22922,9 @@ class UpdateLogStoreRequest(TeaModel):
             self.mode = m.get('mode')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
+        if m.get('shardingPolicy') is not None:
+            temp_model = ShardingPolicy()
+            self.sharding_policy = temp_model.from_map(m['shardingPolicy'])
         if m.get('telemetryType') is not None:
             self.telemetry_type = m.get('telemetryType')
         if m.get('ttl') is not None:
@@ -22395,13 +23768,16 @@ class UpdateMaxComputeExportResponse(TeaModel):
 class UpdateMetricStoreRequest(TeaModel):
     def __init__(
         self,
+        append_meta: bool = None,
         auto_split: bool = None,
         hot_ttl: int = None,
         infrequent_access_ttl: int = None,
         max_split_shard: int = None,
         mode: str = None,
+        sharding_policy: ShardingPolicy = None,
         ttl: int = None,
     ):
+        self.append_meta = append_meta
         # Specifies whether to enable automatic sharding.
         self.auto_split = auto_split
         self.hot_ttl = hot_ttl
@@ -22410,11 +23786,13 @@ class UpdateMetricStoreRequest(TeaModel):
         self.max_split_shard = max_split_shard
         # The type of the Metricstore.
         self.mode = mode
+        self.sharding_policy = sharding_policy
         # The retention period of the metric data. Unit: days.
         self.ttl = ttl
 
     def validate(self):
-        pass
+        if self.sharding_policy:
+            self.sharding_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22422,6 +23800,8 @@ class UpdateMetricStoreRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.append_meta is not None:
+            result['appendMeta'] = self.append_meta
         if self.auto_split is not None:
             result['autoSplit'] = self.auto_split
         if self.hot_ttl is not None:
@@ -22432,12 +23812,16 @@ class UpdateMetricStoreRequest(TeaModel):
             result['maxSplitShard'] = self.max_split_shard
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.sharding_policy is not None:
+            result['shardingPolicy'] = self.sharding_policy.to_map()
         if self.ttl is not None:
             result['ttl'] = self.ttl
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appendMeta') is not None:
+            self.append_meta = m.get('appendMeta')
         if m.get('autoSplit') is not None:
             self.auto_split = m.get('autoSplit')
         if m.get('hot_ttl') is not None:
@@ -22448,6 +23832,9 @@ class UpdateMetricStoreRequest(TeaModel):
             self.max_split_shard = m.get('maxSplitShard')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('shardingPolicy') is not None:
+            temp_model = ShardingPolicy()
+            self.sharding_policy = temp_model.from_map(m['shardingPolicy'])
         if m.get('ttl') is not None:
             self.ttl = m.get('ttl')
         return self

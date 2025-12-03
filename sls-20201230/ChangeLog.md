@@ -1,3 +1,30 @@
+2025-12-03 Version: 5.10.0
+- Support API CreateAzureBlobIngestion.
+- Support API CreateElasticsearchIngestion.
+- Support API DeleteAzureBlobIngestion.
+- Support API DeleteElasticsearchIngestion.
+- Support API GetAzureBlobIngestion.
+- Support API GetElasticsearchIngestion.
+- Support API ListAzureBlobIngestion.
+- Support API ListElasticsearchIngestions.
+- Support API StartAzureBlobIngestion.
+- Support API StartElasticsearchIngestion.
+- Support API StopAzureBlobIngestion.
+- Support API StopElasticsearchIngestion.
+- Support API UpdateAzureBlobIngestion.
+- Support API UpdateElasticsearchIngestion.
+- Update API CreateLogStore: add request parameters body.shardingPolicy.
+- Update API CreateMetricStore: add request parameters body.appendMeta.
+- Update API CreateMetricStore: add request parameters body.shardingPolicy.
+- Update API DescribeRegions: add response parameters Body.regions.$.internalEndpoint.
+- Update API GetMetricStore: add response parameters Body.appendMeta.
+- Update API GetMetricStore: add response parameters Body.shardingPolicy.
+- Update API ListProject: add request parameters description.
+- Update API UpdateLogStore: add request parameters body.shardingPolicy.
+- Update API UpdateMetricStore: add request parameters body.appendMeta.
+- Update API UpdateMetricStore: add request parameters body.shardingPolicy.
+
+
 2025-09-11 Version: 5.9.0
 - Support API CreateS3Ingestion.
 - Support API DeleteS3Ingestion.

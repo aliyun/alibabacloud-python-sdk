@@ -1160,6 +1160,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_annotation_label_with_options_async(request, headers, runtime)
 
+    def create_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAzureBlobIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @param request: CreateAzureBlobIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAzureBlobIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAzureBlobIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @param request: CreateAzureBlobIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAzureBlobIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_azure_blob_ingestion(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAzureBlobIngestionRequest,
+    ) -> sls_20201230_models.CreateAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @param request: CreateAzureBlobIngestionRequest
+        @return: CreateAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_azure_blob_ingestion_with_options(project, request, headers, runtime)
+
+    async def create_azure_blob_ingestion_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAzureBlobIngestionRequest,
+    ) -> sls_20201230_models.CreateAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @param request: CreateAzureBlobIngestionRequest
+        @return: CreateAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_azure_blob_ingestion_with_options_async(project, request, headers, runtime)
+
     def create_config_with_options(
         self,
         project: str,
@@ -1984,6 +2114,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_etlwith_options_async(project, request, headers, runtime)
 
+    def create_elasticsearch_ingestion_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateElasticsearchIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateElasticsearchIngestionResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: CreateElasticsearchIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateElasticsearchIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateElasticsearchIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_elasticsearch_ingestion_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateElasticsearchIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateElasticsearchIngestionResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: CreateElasticsearchIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateElasticsearchIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateElasticsearchIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_elasticsearch_ingestion(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateElasticsearchIngestionRequest,
+    ) -> sls_20201230_models.CreateElasticsearchIngestionResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: CreateElasticsearchIngestionRequest
+        @return: CreateElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_elasticsearch_ingestion_with_options(project, request, headers, runtime)
+
+    async def create_elasticsearch_ingestion_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateElasticsearchIngestionRequest,
+    ) -> sls_20201230_models.CreateElasticsearchIngestionResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: CreateElasticsearchIngestionRequest
+        @return: CreateElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_elasticsearch_ingestion_with_options_async(project, request, headers, runtime)
+
     def create_index_with_options(
         self,
         project: str,
@@ -2158,6 +2418,8 @@ class Client(OpenApiClient):
             body['processorId'] = request.processor_id
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.telemetry_type):
             body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
@@ -2237,6 +2499,8 @@ class Client(OpenApiClient):
             body['processorId'] = request.processor_id
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.telemetry_type):
             body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
@@ -2909,6 +3173,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         body = {}
+        if not UtilClient.is_unset(request.append_meta):
+            body['appendMeta'] = request.append_meta
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
         if not UtilClient.is_unset(request.hot_ttl):
@@ -2925,6 +3191,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
@@ -2975,6 +3243,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         body = {}
+        if not UtilClient.is_unset(request.append_meta):
+            body['appendMeta'] = request.append_meta
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
         if not UtilClient.is_unset(request.hot_ttl):
@@ -2991,6 +3261,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
@@ -4862,6 +5134,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_annotation_label_with_options_async(label_id, headers, runtime)
 
+    def delete_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_azure_blob_ingestion(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.DeleteAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @return: DeleteAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_azure_blob_ingestion_with_options(project, azure_blob_ingestion_name, headers, runtime)
+
+    async def delete_azure_blob_ingestion_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.DeleteAzureBlobIngestionResponse:
+        """
+        @summary 创建Azure blob文件导入任务
+        
+        @return: DeleteAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_azure_blob_ingestion_with_options_async(project, azure_blob_ingestion_name, headers, runtime)
+
     def delete_collection_policy_with_options(
         self,
         policy_name: str,
@@ -5797,6 +6169,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_etlwith_options_async(project, etl_name, headers, runtime)
+
+    def delete_elasticsearch_ingestion_with_options(
+        self,
+        project: str,
+        es_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteElasticsearchIngestionResponse:
+        """
+        @summary 删除ES导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{es_ingestion_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteElasticsearchIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_elasticsearch_ingestion_with_options_async(
+        self,
+        project: str,
+        es_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteElasticsearchIngestionResponse:
+        """
+        @summary 删除ES导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{es_ingestion_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteElasticsearchIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_elasticsearch_ingestion(
+        self,
+        project: str,
+        es_ingestion_name: str,
+    ) -> sls_20201230_models.DeleteElasticsearchIngestionResponse:
+        """
+        @summary 删除ES导入任务
+        
+        @return: DeleteElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_elasticsearch_ingestion_with_options(project, es_ingestion_name, headers, runtime)
+
+    async def delete_elasticsearch_ingestion_async(
+        self,
+        project: str,
+        es_ingestion_name: str,
+    ) -> sls_20201230_models.DeleteElasticsearchIngestionResponse:
+        """
+        @summary 删除ES导入任务
+        
+        @return: DeleteElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_elasticsearch_ingestion_with_options_async(project, es_ingestion_name, headers, runtime)
 
     def delete_index_with_options(
         self,
@@ -8930,6 +9402,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_applied_machine_groups_with_options_async(project, config_name, headers, runtime)
 
+    def get_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAzureBlobIngestionResponse:
+        """
+        @summary 获取Azure blob文件导入任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAzureBlobIngestionResponse:
+        """
+        @summary 获取Azure blob文件导入任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_azure_blob_ingestion(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.GetAzureBlobIngestionResponse:
+        """
+        @summary 获取Azure blob文件导入任务信息
+        
+        @return: GetAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_azure_blob_ingestion_with_options(project, azure_blob_ingestion_name, headers, runtime)
+
+    async def get_azure_blob_ingestion_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.GetAzureBlobIngestionResponse:
+        """
+        @summary 获取Azure blob文件导入任务信息
+        
+        @return: GetAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_azure_blob_ingestion_with_options_async(project, azure_blob_ingestion_name, headers, runtime)
+
     def get_check_point_with_options(
         self,
         project: str,
@@ -10189,6 +10761,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_etlwith_options_async(project, etl_name, headers, runtime)
+
+    def get_elasticsearch_ingestion_with_options(
+        self,
+        project: str,
+        es_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetElasticsearchIngestionResponse:
+        """
+        @summary 获取ElasticSearch导入任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{es_ingestion_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetElasticsearchIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_elasticsearch_ingestion_with_options_async(
+        self,
+        project: str,
+        es_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetElasticsearchIngestionResponse:
+        """
+        @summary 获取ElasticSearch导入任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{es_ingestion_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetElasticsearchIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_elasticsearch_ingestion(
+        self,
+        project: str,
+        es_ingestion_name: str,
+    ) -> sls_20201230_models.GetElasticsearchIngestionResponse:
+        """
+        @summary 获取ElasticSearch导入任务信息
+        
+        @return: GetElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_elasticsearch_ingestion_with_options(project, es_ingestion_name, headers, runtime)
+
+    async def get_elasticsearch_ingestion_async(
+        self,
+        project: str,
+        es_ingestion_name: str,
+    ) -> sls_20201230_models.GetElasticsearchIngestionResponse:
+        """
+        @summary 获取ElasticSearch导入任务信息
+        
+        @return: GetElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_elasticsearch_ingestion_with_options_async(project, es_ingestion_name, headers, runtime)
 
     def get_histograms_with_options(
         self,
@@ -14152,6 +14824,128 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_annotation_labels_with_options_async(request, headers, runtime)
 
+    def list_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAzureBlobIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAzureBlobIngestionResponse:
+        """
+        @summary 列出Azure blob文件导入任务
+        
+        @param request: ListAzureBlobIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAzureBlobIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAzureBlobIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAzureBlobIngestionResponse:
+        """
+        @summary 列出Azure blob文件导入任务
+        
+        @param request: ListAzureBlobIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAzureBlobIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_azure_blob_ingestion(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAzureBlobIngestionRequest,
+    ) -> sls_20201230_models.ListAzureBlobIngestionResponse:
+        """
+        @summary 列出Azure blob文件导入任务
+        
+        @param request: ListAzureBlobIngestionRequest
+        @return: ListAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_azure_blob_ingestion_with_options(project, request, headers, runtime)
+
+    async def list_azure_blob_ingestion_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListAzureBlobIngestionRequest,
+    ) -> sls_20201230_models.ListAzureBlobIngestionResponse:
+        """
+        @summary 列出Azure blob文件导入任务
+        
+        @param request: ListAzureBlobIngestionRequest
+        @return: ListAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_azure_blob_ingestion_with_options_async(project, request, headers, runtime)
+
     def list_collection_policies_with_options(
         self,
         request: sls_20201230_models.ListCollectionPoliciesRequest,
@@ -15247,6 +16041,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_etls_with_options_async(project, request, headers, runtime)
+
+    def list_elasticsearch_ingestions_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListElasticsearchIngestionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListElasticsearchIngestionsResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: ListElasticsearchIngestionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListElasticsearchIngestionsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListElasticsearchIngestions',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListElasticsearchIngestionsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_elasticsearch_ingestions_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListElasticsearchIngestionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListElasticsearchIngestionsResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: ListElasticsearchIngestionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListElasticsearchIngestionsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListElasticsearchIngestions',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListElasticsearchIngestionsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_elasticsearch_ingestions(
+        self,
+        project: str,
+        request: sls_20201230_models.ListElasticsearchIngestionsRequest,
+    ) -> sls_20201230_models.ListElasticsearchIngestionsResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: ListElasticsearchIngestionsRequest
+        @return: ListElasticsearchIngestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_elasticsearch_ingestions_with_options(project, request, headers, runtime)
+
+    async def list_elasticsearch_ingestions_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListElasticsearchIngestionsRequest,
+    ) -> sls_20201230_models.ListElasticsearchIngestionsResponse:
+        """
+        @summary 创建ES导入任务
+        
+        @param request: ListElasticsearchIngestionsRequest
+        @return: ListElasticsearchIngestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_elasticsearch_ingestions_with_options_async(project, request, headers, runtime)
 
     def list_ingest_processors_with_options(
         self,
@@ -16619,6 +17535,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
         if not UtilClient.is_unset(request.fetch_quota):
             query['fetchQuota'] = request.fetch_quota
         if not UtilClient.is_unset(request.offset):
@@ -16668,6 +17586,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
         if not UtilClient.is_unset(request.fetch_quota):
             query['fetchQuota'] = request.fetch_quota
         if not UtilClient.is_unset(request.offset):
@@ -17714,6 +18634,8 @@ class Client(OpenApiClient):
         @return: PullLogsResponse
         """
         UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
         query = {}
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
@@ -17729,6 +18651,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.accept_encoding):
             real_headers['Accept-Encoding'] = UtilClient.to_jsonstring(headers.accept_encoding)
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
@@ -17772,6 +18695,8 @@ class Client(OpenApiClient):
         @return: PullLogsResponse
         """
         UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
         query = {}
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
@@ -17787,6 +18712,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.accept_encoding):
             real_headers['Accept-Encoding'] = UtilClient.to_jsonstring(headers.accept_encoding)
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
@@ -19164,6 +20090,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.split_shard_with_options_async(project, logstore, shard, request, headers, runtime)
 
+    def start_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StartAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}?action=START',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StartAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def start_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StartAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}?action=START',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StartAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def start_azure_blob_ingestion(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.StartAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @return: StartAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_azure_blob_ingestion_with_options(project, azure_blob_ingestion_name, headers, runtime)
+
+    async def start_azure_blob_ingestion_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.StartAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @return: StartAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_azure_blob_ingestion_with_options_async(project, azure_blob_ingestion_name, headers, runtime)
+
     def start_etlwith_options(
         self,
         project: str,
@@ -19263,6 +20289,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_etlwith_options_async(project, etl_name, headers, runtime)
+
+    def start_elasticsearch_ingestion_with_options(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StartElasticsearchIngestionResponse:
+        """
+        @summary 启动ES导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{elasticsearch_ingestion_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StartElasticsearchIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def start_elasticsearch_ingestion_with_options_async(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StartElasticsearchIngestionResponse:
+        """
+        @summary 启动ES导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{elasticsearch_ingestion_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StartElasticsearchIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def start_elasticsearch_ingestion(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+    ) -> sls_20201230_models.StartElasticsearchIngestionResponse:
+        """
+        @summary 启动ES导入任务
+        
+        @return: StartElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_elasticsearch_ingestion_with_options(project, elasticsearch_ingestion_name, headers, runtime)
+
+    async def start_elasticsearch_ingestion_async(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+    ) -> sls_20201230_models.StartElasticsearchIngestionResponse:
+        """
+        @summary 启动ES导入任务
+        
+        @return: StartElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_elasticsearch_ingestion_with_options_async(project, elasticsearch_ingestion_name, headers, runtime)
 
     def start_max_compute_export_with_options(
         self,
@@ -19684,6 +20810,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_ossingestion_with_options_async(project, oss_ingestion_name, headers, runtime)
 
+    def stop_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StopAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}?action=STOP',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StopAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def stop_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StopAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAzureBlobIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}?action=STOP',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StopAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def stop_azure_blob_ingestion(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.StopAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @return: StopAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_azure_blob_ingestion_with_options(project, azure_blob_ingestion_name, headers, runtime)
+
+    async def stop_azure_blob_ingestion_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+    ) -> sls_20201230_models.StopAzureBlobIngestionResponse:
+        """
+        @summary 启动Azure blob文件导入任务
+        
+        @return: StopAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_azure_blob_ingestion_with_options_async(project, azure_blob_ingestion_name, headers, runtime)
+
     def stop_etlwith_options(
         self,
         project: str,
@@ -19783,6 +21009,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_etlwith_options_async(project, etl_name, headers, runtime)
+
+    def stop_elasticsearch_ingestion_with_options(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StopElasticsearchIngestionResponse:
+        """
+        @summary 停止ES导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestion/{elasticsearch_ingestion_name}?action=STOP',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StopElasticsearchIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def stop_elasticsearch_ingestion_with_options_async(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.StopElasticsearchIngestionResponse:
+        """
+        @summary 停止ES导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopElasticsearchIngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestion/{elasticsearch_ingestion_name}?action=STOP',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.StopElasticsearchIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def stop_elasticsearch_ingestion(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+    ) -> sls_20201230_models.StopElasticsearchIngestionResponse:
+        """
+        @summary 停止ES导入任务
+        
+        @return: StopElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_elasticsearch_ingestion_with_options(project, elasticsearch_ingestion_name, headers, runtime)
+
+    async def stop_elasticsearch_ingestion_async(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+    ) -> sls_20201230_models.StopElasticsearchIngestionResponse:
+        """
+        @summary 停止ES导入任务
+        
+        @return: StopElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_elasticsearch_ingestion_with_options_async(project, elasticsearch_ingestion_name, headers, runtime)
 
     def stop_max_compute_export_with_options(
         self,
@@ -20990,6 +22316,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_annotation_label_with_options_async(request, headers, runtime)
 
+    def update_azure_blob_ingestion_with_options(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        request: sls_20201230_models.UpdateAzureBlobIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAzureBlobIngestionResponse:
+        """
+        @summary 更新Azure blob文件导入任务
+        
+        @param request: UpdateAzureBlobIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAzureBlobIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAzureBlobIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_azure_blob_ingestion_with_options_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        request: sls_20201230_models.UpdateAzureBlobIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAzureBlobIngestionResponse:
+        """
+        @summary 更新Azure blob文件导入任务
+        
+        @param request: UpdateAzureBlobIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAzureBlobIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAzureBlobIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/azureblobingestions/{azure_blob_ingestion_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAzureBlobIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_azure_blob_ingestion(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        request: sls_20201230_models.UpdateAzureBlobIngestionRequest,
+    ) -> sls_20201230_models.UpdateAzureBlobIngestionResponse:
+        """
+        @summary 更新Azure blob文件导入任务
+        
+        @param request: UpdateAzureBlobIngestionRequest
+        @return: UpdateAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_azure_blob_ingestion_with_options(project, azure_blob_ingestion_name, request, headers, runtime)
+
+    async def update_azure_blob_ingestion_async(
+        self,
+        project: str,
+        azure_blob_ingestion_name: str,
+        request: sls_20201230_models.UpdateAzureBlobIngestionRequest,
+    ) -> sls_20201230_models.UpdateAzureBlobIngestionResponse:
+        """
+        @summary 更新Azure blob文件导入任务
+        
+        @param request: UpdateAzureBlobIngestionRequest
+        @return: UpdateAzureBlobIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_azure_blob_ingestion_with_options_async(project, azure_blob_ingestion_name, request, headers, runtime)
+
     def update_config_with_options(
         self,
         project: str,
@@ -21576,6 +23032,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_etlwith_options_async(project, etl_name, request, headers, runtime)
 
+    def update_elasticsearch_ingestion_with_options(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        request: sls_20201230_models.UpdateElasticsearchIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateElasticsearchIngestionResponse:
+        """
+        @summary 更新ES导入任务
+        
+        @param request: UpdateElasticsearchIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateElasticsearchIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{elasticsearch_ingestion_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateElasticsearchIngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_elasticsearch_ingestion_with_options_async(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        request: sls_20201230_models.UpdateElasticsearchIngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateElasticsearchIngestionResponse:
+        """
+        @summary 更新ES导入任务
+        
+        @param request: UpdateElasticsearchIngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateElasticsearchIngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateElasticsearchIngestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/elasticsearchingestions/{elasticsearch_ingestion_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateElasticsearchIngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_elasticsearch_ingestion(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        request: sls_20201230_models.UpdateElasticsearchIngestionRequest,
+    ) -> sls_20201230_models.UpdateElasticsearchIngestionResponse:
+        """
+        @summary 更新ES导入任务
+        
+        @param request: UpdateElasticsearchIngestionRequest
+        @return: UpdateElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_elasticsearch_ingestion_with_options(project, elasticsearch_ingestion_name, request, headers, runtime)
+
+    async def update_elasticsearch_ingestion_async(
+        self,
+        project: str,
+        elasticsearch_ingestion_name: str,
+        request: sls_20201230_models.UpdateElasticsearchIngestionRequest,
+    ) -> sls_20201230_models.UpdateElasticsearchIngestionResponse:
+        """
+        @summary 更新ES导入任务
+        
+        @param request: UpdateElasticsearchIngestionRequest
+        @return: UpdateElasticsearchIngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_elasticsearch_ingestion_with_options_async(project, elasticsearch_ingestion_name, request, headers, runtime)
+
     def update_index_with_options(
         self,
         project: str,
@@ -21744,6 +23330,8 @@ class Client(OpenApiClient):
             body['mode'] = request.mode
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.telemetry_type):
             body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
@@ -21813,6 +23401,8 @@ class Client(OpenApiClient):
             body['mode'] = request.mode
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.telemetry_type):
             body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
@@ -23005,6 +24595,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         body = {}
+        if not UtilClient.is_unset(request.append_meta):
+            body['appendMeta'] = request.append_meta
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
         if not UtilClient.is_unset(request.hot_ttl):
@@ -23015,6 +24607,8 @@ class Client(OpenApiClient):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.mode):
             body['mode'] = request.mode
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
@@ -23067,6 +24661,8 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         body = {}
+        if not UtilClient.is_unset(request.append_meta):
+            body['appendMeta'] = request.append_meta
         if not UtilClient.is_unset(request.auto_split):
             body['autoSplit'] = request.auto_split
         if not UtilClient.is_unset(request.hot_ttl):
@@ -23077,6 +24673,8 @@ class Client(OpenApiClient):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.mode):
             body['mode'] = request.mode
+        if not UtilClient.is_unset(request.sharding_policy):
+            body['shardingPolicy'] = request.sharding_policy
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
