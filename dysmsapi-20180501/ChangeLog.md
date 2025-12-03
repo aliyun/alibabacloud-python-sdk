@@ -1,3 +1,6 @@
+2025-12-03 Version: 1.0.10
+- Generated python 2018-05-01 for Dysmsapi.
+
 2025-08-01 Version: 1.0.9
 - Update API SendMessageToGlobe: add request parameters Type.
 
