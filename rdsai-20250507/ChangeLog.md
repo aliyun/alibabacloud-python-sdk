@@ -1,3 +1,18 @@
+2025-12-03 Version: 1.5.0
+- Support API ChatMessages.
+- Support API ChatMessagesTaskStop.
+- Support API CreateCustomAgent.
+- Support API DeleteCustomAgent.
+- Support API DescribeEventsList.
+- Support API GetConversations.
+- Support API GetCustomAgent.
+- Support API GetMessages.
+- Support API ListCustomAgent.
+- Support API ListCustomAgentTools.
+- Support API ModifyMessagesFeedbacks.
+- Support API UpdateCustomAgent.
+
+
 2025-11-25 Version: 1.4.1
 - Update API CreateAppInstance: add request parameters PublicEndpointEnabled.
 - Update API ResetInstancePassword: add request parameters DatabasePassword.

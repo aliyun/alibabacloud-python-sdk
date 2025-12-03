@@ -41,6 +41,226 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def chat_messages_with_options(
+        self,
+        tmp_req: rds_ai_20250507_models.ChatMessagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ChatMessagesResponse:
+        """
+        @summary 发送对话消息
+        
+        @param tmp_req: ChatMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatMessagesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.ChatMessagesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.inputs):
+            request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.conversation_id):
+            query['ConversationId'] = request.conversation_id
+        if not UtilClient.is_unset(request.inputs_shrink):
+            query['Inputs'] = request.inputs_shrink
+        if not UtilClient.is_unset(request.parent_message_id):
+            query['ParentMessageId'] = request.parent_message_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatMessages',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ChatMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_messages_with_options_async(
+        self,
+        tmp_req: rds_ai_20250507_models.ChatMessagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ChatMessagesResponse:
+        """
+        @summary 发送对话消息
+        
+        @param tmp_req: ChatMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatMessagesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.ChatMessagesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.inputs):
+            request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.conversation_id):
+            query['ConversationId'] = request.conversation_id
+        if not UtilClient.is_unset(request.inputs_shrink):
+            query['Inputs'] = request.inputs_shrink
+        if not UtilClient.is_unset(request.parent_message_id):
+            query['ParentMessageId'] = request.parent_message_id
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatMessages',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ChatMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_messages(
+        self,
+        request: rds_ai_20250507_models.ChatMessagesRequest,
+    ) -> rds_ai_20250507_models.ChatMessagesResponse:
+        """
+        @summary 发送对话消息
+        
+        @param request: ChatMessagesRequest
+        @return: ChatMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_messages_with_options(request, runtime)
+
+    async def chat_messages_async(
+        self,
+        request: rds_ai_20250507_models.ChatMessagesRequest,
+    ) -> rds_ai_20250507_models.ChatMessagesResponse:
+        """
+        @summary 发送对话消息
+        
+        @param request: ChatMessagesRequest
+        @return: ChatMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_messages_with_options_async(request, runtime)
+
+    def chat_messages_task_stop_with_options(
+        self,
+        request: rds_ai_20250507_models.ChatMessagesTaskStopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ChatMessagesTaskStopResponse:
+        """
+        @summary 停止对话
+        
+        @param request: ChatMessagesTaskStopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatMessagesTaskStopResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatMessagesTaskStop',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ChatMessagesTaskStopResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def chat_messages_task_stop_with_options_async(
+        self,
+        request: rds_ai_20250507_models.ChatMessagesTaskStopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ChatMessagesTaskStopResponse:
+        """
+        @summary 停止对话
+        
+        @param request: ChatMessagesTaskStopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatMessagesTaskStopResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChatMessagesTaskStop',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ChatMessagesTaskStopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def chat_messages_task_stop(
+        self,
+        request: rds_ai_20250507_models.ChatMessagesTaskStopRequest,
+    ) -> rds_ai_20250507_models.ChatMessagesTaskStopResponse:
+        """
+        @summary 停止对话
+        
+        @param request: ChatMessagesTaskStopRequest
+        @return: ChatMessagesTaskStopResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.chat_messages_task_stop_with_options(request, runtime)
+
+    async def chat_messages_task_stop_async(
+        self,
+        request: rds_ai_20250507_models.ChatMessagesTaskStopRequest,
+    ) -> rds_ai_20250507_models.ChatMessagesTaskStopResponse:
+        """
+        @summary 停止对话
+        
+        @param request: ChatMessagesTaskStopRequest
+        @return: ChatMessagesTaskStopResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.chat_messages_task_stop_with_options_async(request, runtime)
+
     def create_app_instance_with_options(
         self,
         tmp_req: rds_ai_20250507_models.CreateAppInstanceRequest,
@@ -197,6 +417,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_app_instance_with_options_async(request, runtime)
 
+    def create_custom_agent_with_options(
+        self,
+        tmp_req: rds_ai_20250507_models.CreateCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.CreateCustomAgentResponse:
+        """
+        @summary 创建自定义agent
+        
+        @param tmp_req: CreateCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.CreateCustomAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tools):
+            request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.enable_tools):
+            query['EnableTools'] = request.enable_tools
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not UtilClient.is_unset(request.tools_shrink):
+            query['Tools'] = request.tools_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.CreateCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_agent_with_options_async(
+        self,
+        tmp_req: rds_ai_20250507_models.CreateCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.CreateCustomAgentResponse:
+        """
+        @summary 创建自定义agent
+        
+        @param tmp_req: CreateCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.CreateCustomAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tools):
+            request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.enable_tools):
+            query['EnableTools'] = request.enable_tools
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not UtilClient.is_unset(request.tools_shrink):
+            query['Tools'] = request.tools_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.CreateCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_agent(
+        self,
+        request: rds_ai_20250507_models.CreateCustomAgentRequest,
+    ) -> rds_ai_20250507_models.CreateCustomAgentResponse:
+        """
+        @summary 创建自定义agent
+        
+        @param request: CreateCustomAgentRequest
+        @return: CreateCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_custom_agent_with_options(request, runtime)
+
+    async def create_custom_agent_async(
+        self,
+        request: rds_ai_20250507_models.CreateCustomAgentRequest,
+    ) -> rds_ai_20250507_models.CreateCustomAgentResponse:
+        """
+        @summary 创建自定义agent
+        
+        @param request: CreateCustomAgentRequest
+        @return: CreateCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_custom_agent_with_options_async(request, runtime)
+
     def delete_app_instance_with_options(
         self,
         request: rds_ai_20250507_models.DeleteAppInstanceRequest,
@@ -300,6 +640,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instance_with_options_async(request, runtime)
+
+    def delete_custom_agent_with_options(
+        self,
+        request: rds_ai_20250507_models.DeleteCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DeleteCustomAgentResponse:
+        """
+        @summary 删除Custom Agent
+        
+        @param request: DeleteCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DeleteCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_agent_with_options_async(
+        self,
+        request: rds_ai_20250507_models.DeleteCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DeleteCustomAgentResponse:
+        """
+        @summary 删除Custom Agent
+        
+        @param request: DeleteCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DeleteCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_agent(
+        self,
+        request: rds_ai_20250507_models.DeleteCustomAgentRequest,
+    ) -> rds_ai_20250507_models.DeleteCustomAgentResponse:
+        """
+        @summary 删除Custom Agent
+        
+        @param request: DeleteCustomAgentRequest
+        @return: DeleteCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_agent_with_options(request, runtime)
+
+    async def delete_custom_agent_async(
+        self,
+        request: rds_ai_20250507_models.DeleteCustomAgentRequest,
+    ) -> rds_ai_20250507_models.DeleteCustomAgentResponse:
+        """
+        @summary 删除Custom Agent
+        
+        @param request: DeleteCustomAgentRequest
+        @return: DeleteCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_agent_with_options_async(request, runtime)
 
     def describe_app_instance_attribute_with_options(
         self,
@@ -512,6 +952,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_instances_with_options_async(request, runtime)
+
+    def describe_events_list_with_options(
+        self,
+        request: rds_ai_20250507_models.DescribeEventsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeEventsListResponse:
+        """
+        @summary 查询事件信息列表
+        
+        @param request: DescribeEventsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEventsList',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeEventsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_events_list_with_options_async(
+        self,
+        request: rds_ai_20250507_models.DescribeEventsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeEventsListResponse:
+        """
+        @summary 查询事件信息列表
+        
+        @param request: DescribeEventsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEventsList',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeEventsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_events_list(
+        self,
+        request: rds_ai_20250507_models.DescribeEventsListRequest,
+    ) -> rds_ai_20250507_models.DescribeEventsListResponse:
+        """
+        @summary 查询事件信息列表
+        
+        @param request: DescribeEventsListRequest
+        @return: DescribeEventsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_events_list_with_options(request, runtime)
+
+    async def describe_events_list_async(
+        self,
+        request: rds_ai_20250507_models.DescribeEventsListRequest,
+    ) -> rds_ai_20250507_models.DescribeEventsListResponse:
+        """
+        @summary 查询事件信息列表
+        
+        @param request: DescribeEventsListRequest
+        @return: DescribeEventsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_events_list_with_options_async(request, runtime)
 
     def describe_instance_auth_info_with_options(
         self,
@@ -1112,6 +1668,526 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_storage_config_with_options_async(request, runtime)
+
+    def get_conversations_with_options(
+        self,
+        request: rds_ai_20250507_models.GetConversationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.GetConversationsResponse:
+        """
+        @summary 获取会话列表
+        
+        @param request: GetConversationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.last_id):
+            query['LastId'] = request.last_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.pinned):
+            query['Pinned'] = request.pinned
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversations',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.GetConversationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_conversations_with_options_async(
+        self,
+        request: rds_ai_20250507_models.GetConversationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.GetConversationsResponse:
+        """
+        @summary 获取会话列表
+        
+        @param request: GetConversationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.last_id):
+            query['LastId'] = request.last_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.pinned):
+            query['Pinned'] = request.pinned
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversations',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.GetConversationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_conversations(
+        self,
+        request: rds_ai_20250507_models.GetConversationsRequest,
+    ) -> rds_ai_20250507_models.GetConversationsResponse:
+        """
+        @summary 获取会话列表
+        
+        @param request: GetConversationsRequest
+        @return: GetConversationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_conversations_with_options(request, runtime)
+
+    async def get_conversations_async(
+        self,
+        request: rds_ai_20250507_models.GetConversationsRequest,
+    ) -> rds_ai_20250507_models.GetConversationsResponse:
+        """
+        @summary 获取会话列表
+        
+        @param request: GetConversationsRequest
+        @return: GetConversationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_conversations_with_options_async(request, runtime)
+
+    def get_custom_agent_with_options(
+        self,
+        request: rds_ai_20250507_models.GetCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.GetCustomAgentResponse:
+        """
+        @summary 查询CustomAgent
+        
+        @param request: GetCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.GetCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_agent_with_options_async(
+        self,
+        request: rds_ai_20250507_models.GetCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.GetCustomAgentResponse:
+        """
+        @summary 查询CustomAgent
+        
+        @param request: GetCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.GetCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_agent(
+        self,
+        request: rds_ai_20250507_models.GetCustomAgentRequest,
+    ) -> rds_ai_20250507_models.GetCustomAgentResponse:
+        """
+        @summary 查询CustomAgent
+        
+        @param request: GetCustomAgentRequest
+        @return: GetCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_custom_agent_with_options(request, runtime)
+
+    async def get_custom_agent_async(
+        self,
+        request: rds_ai_20250507_models.GetCustomAgentRequest,
+    ) -> rds_ai_20250507_models.GetCustomAgentResponse:
+        """
+        @summary 查询CustomAgent
+        
+        @param request: GetCustomAgentRequest
+        @return: GetCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_custom_agent_with_options_async(request, runtime)
+
+    def get_messages_with_options(
+        self,
+        request: rds_ai_20250507_models.GetMessagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.GetMessagesResponse:
+        """
+        @summary 获取会话历史消息
+        
+        @param request: GetMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.conversation_id):
+            query['ConversationId'] = request.conversation_id
+        if not UtilClient.is_unset(request.first_id):
+            query['FirstId'] = request.first_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMessages',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.GetMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_messages_with_options_async(
+        self,
+        request: rds_ai_20250507_models.GetMessagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.GetMessagesResponse:
+        """
+        @summary 获取会话历史消息
+        
+        @param request: GetMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.conversation_id):
+            query['ConversationId'] = request.conversation_id
+        if not UtilClient.is_unset(request.first_id):
+            query['FirstId'] = request.first_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMessages',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.GetMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_messages(
+        self,
+        request: rds_ai_20250507_models.GetMessagesRequest,
+    ) -> rds_ai_20250507_models.GetMessagesResponse:
+        """
+        @summary 获取会话历史消息
+        
+        @param request: GetMessagesRequest
+        @return: GetMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_messages_with_options(request, runtime)
+
+    async def get_messages_async(
+        self,
+        request: rds_ai_20250507_models.GetMessagesRequest,
+    ) -> rds_ai_20250507_models.GetMessagesResponse:
+        """
+        @summary 获取会话历史消息
+        
+        @param request: GetMessagesRequest
+        @return: GetMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_messages_with_options_async(request, runtime)
+
+    def list_custom_agent_with_options(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ListCustomAgentResponse:
+        """
+        @summary 获取Custom Agent列表
+        
+        @param request: ListCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ListCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_agent_with_options_async(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ListCustomAgentResponse:
+        """
+        @summary 获取Custom Agent列表
+        
+        @param request: ListCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ListCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_agent(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentRequest,
+    ) -> rds_ai_20250507_models.ListCustomAgentResponse:
+        """
+        @summary 获取Custom Agent列表
+        
+        @param request: ListCustomAgentRequest
+        @return: ListCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_custom_agent_with_options(request, runtime)
+
+    async def list_custom_agent_async(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentRequest,
+    ) -> rds_ai_20250507_models.ListCustomAgentResponse:
+        """
+        @summary 获取Custom Agent列表
+        
+        @param request: ListCustomAgentRequest
+        @return: ListCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_custom_agent_with_options_async(request, runtime)
+
+    def list_custom_agent_tools_with_options(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
+        """
+        @summary 获取专属Agent可用工具
+        
+        @param request: ListCustomAgentToolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomAgentToolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomAgentTools',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ListCustomAgentToolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_agent_tools_with_options_async(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
+        """
+        @summary 获取专属Agent可用工具
+        
+        @param request: ListCustomAgentToolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomAgentToolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCustomAgentTools',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ListCustomAgentToolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_agent_tools(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
+    ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
+        """
+        @summary 获取专属Agent可用工具
+        
+        @param request: ListCustomAgentToolsRequest
+        @return: ListCustomAgentToolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_custom_agent_tools_with_options(request, runtime)
+
+    async def list_custom_agent_tools_async(
+        self,
+        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
+    ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
+        """
+        @summary 获取专属Agent可用工具
+        
+        @param request: ListCustomAgentToolsRequest
+        @return: ListCustomAgentToolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_custom_agent_tools_with_options_async(request, runtime)
 
     def modify_instance_auth_config_with_options(
         self,
@@ -1805,6 +2881,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_storage_config_with_options_async(request, runtime)
 
+    def modify_messages_feedbacks_with_options(
+        self,
+        request: rds_ai_20250507_models.ModifyMessagesFeedbacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyMessagesFeedbacksResponse:
+        """
+        @summary 消息终端用户反馈、点赞/点踩
+        
+        @param request: ModifyMessagesFeedbacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMessagesFeedbacksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.rating):
+            query['Rating'] = request.rating
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMessagesFeedbacks',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyMessagesFeedbacksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_messages_feedbacks_with_options_async(
+        self,
+        request: rds_ai_20250507_models.ModifyMessagesFeedbacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.ModifyMessagesFeedbacksResponse:
+        """
+        @summary 消息终端用户反馈、点赞/点踩
+        
+        @param request: ModifyMessagesFeedbacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMessagesFeedbacksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.rating):
+            query['Rating'] = request.rating
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMessagesFeedbacks',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.ModifyMessagesFeedbacksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_messages_feedbacks(
+        self,
+        request: rds_ai_20250507_models.ModifyMessagesFeedbacksRequest,
+    ) -> rds_ai_20250507_models.ModifyMessagesFeedbacksResponse:
+        """
+        @summary 消息终端用户反馈、点赞/点踩
+        
+        @param request: ModifyMessagesFeedbacksRequest
+        @return: ModifyMessagesFeedbacksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_messages_feedbacks_with_options(request, runtime)
+
+    async def modify_messages_feedbacks_async(
+        self,
+        request: rds_ai_20250507_models.ModifyMessagesFeedbacksRequest,
+    ) -> rds_ai_20250507_models.ModifyMessagesFeedbacksResponse:
+        """
+        @summary 消息终端用户反馈、点赞/点踩
+        
+        @param request: ModifyMessagesFeedbacksRequest
+        @return: ModifyMessagesFeedbacksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_messages_feedbacks_with_options_async(request, runtime)
+
     def reset_instance_password_with_options(
         self,
         request: rds_ai_20250507_models.ResetInstancePasswordRequest,
@@ -2212,3 +3396,127 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
+
+    def update_custom_agent_with_options(
+        self,
+        tmp_req: rds_ai_20250507_models.UpdateCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.UpdateCustomAgentResponse:
+        """
+        @summary 更新Custom Agent
+        
+        @param tmp_req: UpdateCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.UpdateCustomAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tools):
+            request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not UtilClient.is_unset(request.enable_tools):
+            query['EnableTools'] = request.enable_tools
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not UtilClient.is_unset(request.tools_shrink):
+            query['Tools'] = request.tools_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.UpdateCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_agent_with_options_async(
+        self,
+        tmp_req: rds_ai_20250507_models.UpdateCustomAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.UpdateCustomAgentResponse:
+        """
+        @summary 更新Custom Agent
+        
+        @param tmp_req: UpdateCustomAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.UpdateCustomAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tools):
+            request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not UtilClient.is_unset(request.enable_tools):
+            query['EnableTools'] = request.enable_tools
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not UtilClient.is_unset(request.tools_shrink):
+            query['Tools'] = request.tools_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomAgent',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.UpdateCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_agent(
+        self,
+        request: rds_ai_20250507_models.UpdateCustomAgentRequest,
+    ) -> rds_ai_20250507_models.UpdateCustomAgentResponse:
+        """
+        @summary 更新Custom Agent
+        
+        @param request: UpdateCustomAgentRequest
+        @return: UpdateCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_custom_agent_with_options(request, runtime)
+
+    async def update_custom_agent_async(
+        self,
+        request: rds_ai_20250507_models.UpdateCustomAgentRequest,
+    ) -> rds_ai_20250507_models.UpdateCustomAgentResponse:
+        """
+        @summary 更新Custom Agent
+        
+        @param request: UpdateCustomAgentRequest
+        @return: UpdateCustomAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_custom_agent_with_options_async(request, runtime)
