@@ -3340,6 +3340,149 @@ class ExecuteTerraformPlanResponse(TeaModel):
         return self
 
 
+class GenerateModuleRequest(TeaModel):
+    def __init__(
+        self,
+        generate_source: str = None,
+        parameters: Dict[str, Any] = None,
+        region_id: str = None,
+        syntax: str = None,
+        template: str = None,
+        terraform_provider_version: str = None,
+        terraform_resource_type: str = None,
+    ):
+        self.generate_source = generate_source
+        self.parameters = parameters
+        self.region_id = region_id
+        self.syntax = syntax
+        self.template = template
+        self.terraform_provider_version = terraform_provider_version
+        self.terraform_resource_type = terraform_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generate_source is not None:
+            result['generateSource'] = self.generate_source
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.syntax is not None:
+            result['syntax'] = self.syntax
+        if self.template is not None:
+            result['template'] = self.template
+        if self.terraform_provider_version is not None:
+            result['terraformProviderVersion'] = self.terraform_provider_version
+        if self.terraform_resource_type is not None:
+            result['terraformResourceType'] = self.terraform_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('generateSource') is not None:
+            self.generate_source = m.get('generateSource')
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('syntax') is not None:
+            self.syntax = m.get('syntax')
+        if m.get('template') is not None:
+            self.template = m.get('template')
+        if m.get('terraformProviderVersion') is not None:
+            self.terraform_provider_version = m.get('terraformProviderVersion')
+        if m.get('terraformResourceType') is not None:
+            self.terraform_resource_type = m.get('terraformResourceType')
+        return self
+
+
+class GenerateModuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: str = None,
+        properties: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.properties = properties
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['module'] = self.module
+        if self.properties is not None:
+            result['properties'] = self.properties
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('module') is not None:
+            self.module = m.get('module')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GenerateModuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateModuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateModuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetExecuteStateResponseBody(TeaModel):
     def __init__(
         self,
@@ -3791,12 +3934,14 @@ class GetJobResponseBodyJobConfig(TeaModel):
     def __init__(
         self,
         auto_apply: bool = None,
+        has_config_proactive: str = None,
         is_destroy: bool = None,
         module_version: str = None,
         resources_changed: str = None,
         sub_command: str = None,
     ):
         self.auto_apply = auto_apply
+        self.has_config_proactive = has_config_proactive
         self.is_destroy = is_destroy
         self.module_version = module_version
         self.resources_changed = resources_changed
@@ -3813,6 +3958,8 @@ class GetJobResponseBodyJobConfig(TeaModel):
         result = dict()
         if self.auto_apply is not None:
             result['autoApply'] = self.auto_apply
+        if self.has_config_proactive is not None:
+            result['hasConfigProactive'] = self.has_config_proactive
         if self.is_destroy is not None:
             result['isDestroy'] = self.is_destroy
         if self.module_version is not None:
@@ -3827,6 +3974,8 @@ class GetJobResponseBodyJobConfig(TeaModel):
         m = m or dict()
         if m.get('autoApply') is not None:
             self.auto_apply = m.get('autoApply')
+        if m.get('hasConfigProactive') is not None:
+            self.has_config_proactive = m.get('hasConfigProactive')
         if m.get('isDestroy') is not None:
             self.is_destroy = m.get('isDestroy')
         if m.get('moduleVersion') is not None:

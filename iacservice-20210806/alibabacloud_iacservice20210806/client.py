@@ -2985,6 +2985,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.execute_terraform_plan_with_options_async(request, headers, runtime)
 
+    def generate_module_with_options(
+        self,
+        request: ia_cservice_20210806_models.GenerateModuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GenerateModuleResponse:
+        """
+        @summary 生成模板
+        
+        @param request: GenerateModuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateModuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.generate_source):
+            body['generateSource'] = request.generate_source
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            body['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.syntax):
+            body['syntax'] = request.syntax
+        if not UtilClient.is_unset(request.template):
+            body['template'] = request.template
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.terraform_resource_type):
+            body['terraformResourceType'] = request.terraform_resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateModule',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/explorer/generate/module',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GenerateModuleResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def generate_module_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.GenerateModuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GenerateModuleResponse:
+        """
+        @summary 生成模板
+        
+        @param request: GenerateModuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateModuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.generate_source):
+            body['generateSource'] = request.generate_source
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            body['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.syntax):
+            body['syntax'] = request.syntax
+        if not UtilClient.is_unset(request.template):
+            body['template'] = request.template
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.terraform_resource_type):
+            body['terraformResourceType'] = request.terraform_resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateModule',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/explorer/generate/module',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GenerateModuleResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def generate_module(
+        self,
+        request: ia_cservice_20210806_models.GenerateModuleRequest,
+    ) -> ia_cservice_20210806_models.GenerateModuleResponse:
+        """
+        @summary 生成模板
+        
+        @param request: GenerateModuleRequest
+        @return: GenerateModuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generate_module_with_options(request, headers, runtime)
+
+    async def generate_module_async(
+        self,
+        request: ia_cservice_20210806_models.GenerateModuleRequest,
+    ) -> ia_cservice_20210806_models.GenerateModuleResponse:
+        """
+        @summary 生成模板
+        
+        @param request: GenerateModuleRequest
+        @return: GenerateModuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generate_module_with_options_async(request, headers, runtime)
+
     def get_execute_state_with_options(
         self,
         state_id: str,

@@ -1,3 +1,8 @@
+2025-12-03 Version: 2.1.0
+- Support API GenerateModule.
+- Update API GetJob: add response parameters Body.job.config.hasConfigProactive.
+
+
 2025-10-29 Version: 2.0.1
 - Update API GetJob: add response parameters Body.job.logFile.
 - Update API GetJob: add response parameters Body.job.outputJsonPlan.
