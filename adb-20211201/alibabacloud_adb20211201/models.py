@@ -6140,6 +6140,7 @@ class CreateApsKafkaHudiJobRequest(TeaModel):
         advanced_config: str = None,
         columns: List[CreateApsKafkaHudiJobRequestColumns] = None,
         dbcluster_id: str = None,
+        data_format_type: str = None,
         data_output_format: str = None,
         datasource_id: int = None,
         db_name: str = None,
@@ -6180,6 +6181,7 @@ class CreateApsKafkaHudiJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.data_format_type = data_format_type
         # Enumeration value and description. Single: The source is a single-row JSON record. Multi: source is a JSON array. Output a single JSON record.
         self.data_output_format = data_output_format
         # The data source ID.
@@ -6265,6 +6267,8 @@ class CreateApsKafkaHudiJobRequest(TeaModel):
                 result['Columns'].append(k.to_map() if k else None)
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.data_format_type is not None:
+            result['DataFormatType'] = self.data_format_type
         if self.data_output_format is not None:
             result['DataOutputFormat'] = self.data_output_format
         if self.datasource_id is not None:
@@ -6328,6 +6332,8 @@ class CreateApsKafkaHudiJobRequest(TeaModel):
                 self.columns.append(temp_model.from_map(k))
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataFormatType') is not None:
+            self.data_format_type = m.get('DataFormatType')
         if m.get('DataOutputFormat') is not None:
             self.data_output_format = m.get('DataOutputFormat')
         if m.get('DatasourceId') is not None:
@@ -6385,6 +6391,7 @@ class CreateApsKafkaHudiJobShrinkRequest(TeaModel):
         advanced_config: str = None,
         columns_shrink: str = None,
         dbcluster_id: str = None,
+        data_format_type: str = None,
         data_output_format: str = None,
         datasource_id: int = None,
         db_name: str = None,
@@ -6425,6 +6432,7 @@ class CreateApsKafkaHudiJobShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.data_format_type = data_format_type
         # Enumeration value and description. Single: The source is a single-row JSON record. Multi: source is a JSON array. Output a single JSON record.
         self.data_output_format = data_output_format
         # The data source ID.
@@ -6505,6 +6513,8 @@ class CreateApsKafkaHudiJobShrinkRequest(TeaModel):
             result['Columns'] = self.columns_shrink
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.data_format_type is not None:
+            result['DataFormatType'] = self.data_format_type
         if self.data_output_format is not None:
             result['DataOutputFormat'] = self.data_output_format
         if self.datasource_id is not None:
@@ -6565,6 +6575,8 @@ class CreateApsKafkaHudiJobShrinkRequest(TeaModel):
             self.columns_shrink = m.get('Columns')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataFormatType') is not None:
+            self.data_format_type = m.get('DataFormatType')
         if m.get('DataOutputFormat') is not None:
             self.data_output_format = m.get('DataOutputFormat')
         if m.get('DatasourceId') is not None:

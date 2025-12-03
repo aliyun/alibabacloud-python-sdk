@@ -2061,6 +2061,8 @@ class Client(OpenApiClient):
             body['Columns'] = request.columns_shrink
         if not UtilClient.is_unset(request.dbcluster_id):
             body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_format_type):
+            body['DataFormatType'] = request.data_format_type
         if not UtilClient.is_unset(request.data_output_format):
             body['DataOutputFormat'] = request.data_output_format
         if not UtilClient.is_unset(request.datasource_id):
@@ -2156,6 +2158,8 @@ class Client(OpenApiClient):
             body['Columns'] = request.columns_shrink
         if not UtilClient.is_unset(request.dbcluster_id):
             body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_format_type):
+            body['DataFormatType'] = request.data_format_type
         if not UtilClient.is_unset(request.data_output_format):
             body['DataOutputFormat'] = request.data_output_format
         if not UtilClient.is_unset(request.datasource_id):

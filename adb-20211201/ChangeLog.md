@@ -1,3 +1,7 @@
+2025-12-03 Version: 3.6.1
+- Update API CreateApsKafkaHudiJob: add request parameters DataFormatType.
+
+
 2025-12-02 Version: 3.6.0
 - Support API DeleteMaterializedViewRecommend.
 - Support API DescribeMVRecommendResults.
