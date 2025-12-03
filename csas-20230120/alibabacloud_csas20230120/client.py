@@ -1176,6 +1176,12 @@ class Client(OpenApiClient):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
             body['UserGroupMode'] = request.user_group_mode
+        if not UtilClient.is_unset(request.valid_from):
+            body['ValidFrom'] = request.valid_from
+        if not UtilClient.is_unset(request.valid_time_status):
+            body['ValidTimeStatus'] = request.valid_time_status
+        if not UtilClient.is_unset(request.valid_until):
+            body['ValidUntil'] = request.valid_until
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -1248,6 +1254,12 @@ class Client(OpenApiClient):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
             body['UserGroupMode'] = request.user_group_mode
+        if not UtilClient.is_unset(request.valid_from):
+            body['ValidFrom'] = request.valid_from
+        if not UtilClient.is_unset(request.valid_time_status):
+            body['ValidTimeStatus'] = request.valid_time_status
+        if not UtilClient.is_unset(request.valid_until):
+            body['ValidUntil'] = request.valid_until
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -11066,6 +11078,12 @@ class Client(OpenApiClient):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
             body['UserGroupMode'] = request.user_group_mode
+        if not UtilClient.is_unset(request.valid_from):
+            body['ValidFrom'] = request.valid_from
+        if not UtilClient.is_unset(request.valid_time_status):
+            body['ValidTimeStatus'] = request.valid_time_status
+        if not UtilClient.is_unset(request.valid_until):
+            body['ValidUntil'] = request.valid_until
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -11138,6 +11156,12 @@ class Client(OpenApiClient):
             body_flat['UserGroupIds'] = request.user_group_ids
         if not UtilClient.is_unset(request.user_group_mode):
             body['UserGroupMode'] = request.user_group_mode
+        if not UtilClient.is_unset(request.valid_from):
+            body['ValidFrom'] = request.valid_from
+        if not UtilClient.is_unset(request.valid_time_status):
+            body['ValidTimeStatus'] = request.valid_time_status
+        if not UtilClient.is_unset(request.valid_until):
+            body['ValidUntil'] = request.valid_until
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Any, List, Dict
 
 
 class AuthReportInterval(TeaModel):
@@ -281,6 +281,45 @@ class CommonConfig(TeaModel):
         if m.get('Idp') is not None:
             temp_model = CommonConfigIdp()
             self.idp = temp_model.from_map(m['Idp'])
+        return self
+
+
+class DeviceGroupDynamicRule(TeaModel):
+    def __init__(
+        self,
+        args: Any = None,
+        key: str = None,
+        operator: str = None,
+    ):
+        self.args = args
+        self.key = key
+        self.operator = operator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
         return self
 
 
@@ -1044,6 +1083,7 @@ class IdpConfig(TeaModel):
         last_sync_time_unix: int = None,
         ldap_config: IdpLdapSubConfig = None,
         login_config: IdpLoginConfig = None,
+        logo_directory: str = None,
         name: str = None,
         sync_config: IdpSyncConfig = None,
         sync_status: str = None,
@@ -1062,6 +1102,7 @@ class IdpConfig(TeaModel):
         self.last_sync_time_unix = last_sync_time_unix
         self.ldap_config = ldap_config
         self.login_config = login_config
+        self.logo_directory = logo_directory
         self.name = name
         self.sync_config = sync_config
         self.sync_status = sync_status
@@ -1119,6 +1160,8 @@ class IdpConfig(TeaModel):
             result['LdapConfig'] = self.ldap_config.to_map()
         if self.login_config is not None:
             result['LoginConfig'] = self.login_config.to_map()
+        if self.logo_directory is not None:
+            result['LogoDirectory'] = self.logo_directory
         if self.name is not None:
             result['Name'] = self.name
         if self.sync_config is not None:
@@ -1164,6 +1207,8 @@ class IdpConfig(TeaModel):
         if m.get('LoginConfig') is not None:
             temp_model = IdpLoginConfig()
             self.login_config = temp_model.from_map(m['LoginConfig'])
+        if m.get('LogoDirectory') is not None:
+            self.logo_directory = m.get('LogoDirectory')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('SyncConfig') is not None:
@@ -1509,6 +1554,57 @@ class OpenStructSaseDepartment(TeaModel):
         return self
 
 
+class OpenStructSaseUserUserTags(TeaModel):
+    def __init__(
+        self,
+        aliuid: str = None,
+        description: str = None,
+        name: str = None,
+        sase_user_id: str = None,
+        tag_id: str = None,
+    ):
+        self.aliuid = aliuid
+        self.description = description
+        self.name = name
+        self.sase_user_id = sase_user_id
+        self.tag_id = tag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliuid is not None:
+            result['Aliuid'] = self.aliuid
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aliuid') is not None:
+            self.aliuid = m.get('Aliuid')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        return self
+
+
 class OpenStructSaseUser(TeaModel):
     def __init__(
         self,
@@ -1526,6 +1622,7 @@ class OpenStructSaseUser(TeaModel):
         telephone: str = None,
         title: str = None,
         update_time_unix: int = None,
+        user_tags: List[OpenStructSaseUserUserTags] = None,
         username: str = None,
         work_status: str = None,
     ):
@@ -1543,6 +1640,7 @@ class OpenStructSaseUser(TeaModel):
         self.telephone = telephone
         self.title = title
         self.update_time_unix = update_time_unix
+        self.user_tags = user_tags
         self.username = username
         self.work_status = work_status
 
@@ -1553,6 +1651,10 @@ class OpenStructSaseUser(TeaModel):
                     k.validate()
         if self.departments:
             for k in self.departments:
+                if k:
+                    k.validate()
+        if self.user_tags:
+            for k in self.user_tags:
                 if k:
                     k.validate()
 
@@ -1594,6 +1696,10 @@ class OpenStructSaseUser(TeaModel):
             result['Title'] = self.title
         if self.update_time_unix is not None:
             result['UpdateTimeUnix'] = self.update_time_unix
+        result['UserTags'] = []
+        if self.user_tags is not None:
+            for k in self.user_tags:
+                result['UserTags'].append(k.to_map() if k else None)
         if self.username is not None:
             result['Username'] = self.username
         if self.work_status is not None:
@@ -1636,6 +1742,11 @@ class OpenStructSaseUser(TeaModel):
             self.title = m.get('Title')
         if m.get('UpdateTimeUnix') is not None:
             self.update_time_unix = m.get('UpdateTimeUnix')
+        self.user_tags = []
+        if m.get('UserTags') is not None:
+            for k in m.get('UserTags'):
+                temp_model = OpenStructSaseUserUserTags()
+                self.user_tags.append(temp_model.from_map(k))
         if m.get('Username') is not None:
             self.username = m.get('Username')
         if m.get('WorkStatus') is not None:
@@ -4693,6 +4804,9 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
+        valid_from: int = None,
+        valid_time_status: str = None,
+        valid_until: int = None,
     ):
         # Set of application IDs for the private access policy. Up to 100 application IDs can be entered. Required when **ApplicationType** is **Application**. Mutually exclusive with **TagIds**.
         self.application_ids = application_ids
@@ -4753,6 +4867,12 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.user_group_mode = user_group_mode
+        # The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+        self.valid_from = valid_from
+        # Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+        self.valid_time_status = valid_time_status
+        # The expiration time of the zero trust policy, in seconds timestamp.
+        self.valid_until = valid_until
 
     def validate(self):
         if self.custom_user_attributes:
@@ -4802,6 +4922,12 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
             result['UserGroupMode'] = self.user_group_mode
+        if self.valid_from is not None:
+            result['ValidFrom'] = self.valid_from
+        if self.valid_time_status is not None:
+            result['ValidTimeStatus'] = self.valid_time_status
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
         return result
 
     def from_map(self, m: dict = None):
@@ -4843,6 +4969,12 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
             self.user_group_mode = m.get('UserGroupMode')
+        if m.get('ValidFrom') is not None:
+            self.valid_from = m.get('ValidFrom')
+        if m.get('ValidTimeStatus') is not None:
+            self.valid_time_status = m.get('ValidTimeStatus')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
         return self
 
 
@@ -13163,6 +13295,9 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
+        valid_from: int = None,
+        valid_time_status: str = None,
+        valid_until: int = None,
     ):
         # A collection of application IDs for the private access policy. This field has a value when the application type is Application.
         self.application_ids = application_ids
@@ -13215,6 +13350,12 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         # - **Normal**: Normal user group.
         # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
+        # The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+        self.valid_from = valid_from
+        # Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+        self.valid_time_status = valid_time_status
+        # The expiration time of the zero trust policy, in seconds timestamp.
+        self.valid_until = valid_until
 
     def validate(self):
         if self.custom_user_attributes:
@@ -13268,6 +13409,12 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
             result['UserGroupMode'] = self.user_group_mode
+        if self.valid_from is not None:
+            result['ValidFrom'] = self.valid_from
+        if self.valid_time_status is not None:
+            result['ValidTimeStatus'] = self.valid_time_status
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
         return result
 
     def from_map(self, m: dict = None):
@@ -13313,6 +13460,12 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
             self.user_group_mode = m.get('UserGroupMode')
+        if m.get('ValidFrom') is not None:
+            self.valid_from = m.get('ValidFrom')
+        if m.get('ValidTimeStatus') is not None:
+            self.valid_time_status = m.get('ValidTimeStatus')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
         return self
 
 
@@ -17271,15 +17424,15 @@ class ListConnectorsRequest(TeaModel):
         status: str = None,
         switch_status: str = None,
     ):
-        # Collection of Connector IDs. Up to 100 Connector IDs can be entered.
+        # Collection of ConnectorIDs. Up to 100 ConnectorIDs can be entered.
         self.connector_ids = connector_ids
-        # The page number of the current page in a paginated query. Range: 1~10000.
+        # The page number of the current page in a paginated query. Value: 1~10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Connector name. Length: 1~128 characters, supporting Chinese and both uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+        # Connector name. Length: 1~128 characters, supporting Chinese and uppercase/lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The number of items per page in a paginated query. Range: 1~1000.
+        # The number of items per page in a paginated query. Value: 1~1000.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -17375,7 +17528,7 @@ class ListConnectorsResponseBodyConnectorsConnectorClients(TeaModel):
         hostname: str = None,
         public_ip: str = None,
     ):
-        # Connection status between ConnectorClient and ConnectorServer.
+        # Connection status between the ConnectorClient and ConnectorServer.
         self.connection_status = connection_status
         # Unique device identifier for the ConnectorClient.
         self.dev_tag = dev_tag
@@ -17467,6 +17620,9 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         switch_status: str = None,
         upgrade_time: ListConnectorsResponseBodyConnectorsUpgradeTime = None,
     ):
+        # Whether to enable global acceleration. Values: 
+        # - **Enabled**: Turn on. 
+        # - **Disabled**: Turn off.
         self.accelerate_status = accelerate_status
         # Collection of associated internal network access applications.
         self.applications = applications
@@ -17476,9 +17632,9 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         self.cluster_port = cluster_port
         # Collection of deployed ConnectorClients.
         self.connector_clients = connector_clients
-        # Connector ID.
+        # ConnectorID.
         self.connector_id = connector_id
-        # Creation time of the Connector.
+        # Connector creation time.
         self.create_time = create_time
         # Connector name.
         self.name = name
@@ -17492,7 +17648,7 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.switch_status = switch_status
-        # Connector upgrade time.
+        # Connector升级时间。
         self.upgrade_time = upgrade_time
 
     def validate(self):
@@ -17588,7 +17744,7 @@ class ListConnectorsResponseBody(TeaModel):
     ):
         # List of Connectors.
         self.connectors = connectors
-        # ID of the current request.
+        # The ID of the current request.
         self.request_id = request_id
         # Total number of Connectors.
         self.total_num = total_num
@@ -21835,6 +21991,9 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
+        valid_from: int = None,
+        valid_time_status: str = None,
+        valid_until: int = None,
     ):
         # The IDs of the applications that are specified in the private access policy. If the value of ApplicationType is **Application**, this parameter is returned.
         self.application_ids = application_ids
@@ -21891,6 +22050,12 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         # *   **Normal**: regular user group.
         # *   **Custom**: custom user group.
         self.user_group_mode = user_group_mode
+        # The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+        self.valid_from = valid_from
+        # Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+        self.valid_time_status = valid_time_status
+        # The expiration time of the zero trust policy, in seconds timestamp.
+        self.valid_until = valid_until
 
     def validate(self):
         if self.custom_user_attributes:
@@ -21944,6 +22109,12 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
             result['UserGroupMode'] = self.user_group_mode
+        if self.valid_from is not None:
+            result['ValidFrom'] = self.valid_from
+        if self.valid_time_status is not None:
+            result['ValidTimeStatus'] = self.valid_time_status
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
         return result
 
     def from_map(self, m: dict = None):
@@ -21989,6 +22160,12 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
             self.user_group_mode = m.get('UserGroupMode')
+        if m.get('ValidFrom') is not None:
+            self.valid_from = m.get('ValidFrom')
+        if m.get('ValidTimeStatus') is not None:
+            self.valid_time_status = m.get('ValidTimeStatus')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
         return self
 
 
@@ -30990,6 +31167,9 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         trusted_software_ids: List[str] = None,
         user_group_ids: List[str] = None,
         user_group_mode: str = None,
+        valid_from: int = None,
+        valid_time_status: str = None,
+        valid_until: int = None,
     ):
         # Set of application IDs for the private access policy. A single policy supports up to 100 private access application IDs.
         self.application_ids = application_ids
@@ -31048,6 +31228,12 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         # - **Normal**: Normal user group.
         # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
+        # The start time when the zero trust policy takes effect, represented as a timestamp in seconds.
+        self.valid_from = valid_from
+        # Switch status for effective time. Values: - **Enabled**: On. - **Disabled**: Off.
+        self.valid_time_status = valid_time_status
+        # The expiration time of the zero trust policy, in seconds timestamp.
+        self.valid_until = valid_until
 
     def validate(self):
         if self.custom_user_attributes:
@@ -31099,6 +31285,12 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
             result['UserGroupIds'] = self.user_group_ids
         if self.user_group_mode is not None:
             result['UserGroupMode'] = self.user_group_mode
+        if self.valid_from is not None:
+            result['ValidFrom'] = self.valid_from
+        if self.valid_time_status is not None:
+            result['ValidTimeStatus'] = self.valid_time_status
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
         return result
 
     def from_map(self, m: dict = None):
@@ -31142,6 +31334,12 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
             self.user_group_ids = m.get('UserGroupIds')
         if m.get('UserGroupMode') is not None:
             self.user_group_mode = m.get('UserGroupMode')
+        if m.get('ValidFrom') is not None:
+            self.valid_from = m.get('ValidFrom')
+        if m.get('ValidTimeStatus') is not None:
+            self.valid_time_status = m.get('ValidTimeStatus')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
         return self
 
 
