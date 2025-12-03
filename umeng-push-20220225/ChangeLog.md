@@ -1,3 +1,6 @@
+2025-12-03 Version: 1.0.15
+- Update SDK.
+
 2024-12-27 Version: 1.0.14
 - Update API SendByAlias: add param HarmonyPayload.
 - Update API SendByAliasFileId: add param HarmonyPayload.
