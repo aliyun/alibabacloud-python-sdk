@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'tds.cn-shanghai.aliyuncs.com',
@@ -125,16 +124,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.CreateScreenSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.CreateScreenSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.CreateScreenSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_screen_setting_with_options_async(
         self,
@@ -178,16 +171,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.CreateScreenSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.CreateScreenSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.CreateScreenSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_screen_setting(
         self,
@@ -245,16 +232,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DeleteScreenSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DeleteScreenSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DeleteScreenSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_screen_setting_with_options_async(
         self,
@@ -286,16 +267,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DeleteScreenSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DeleteScreenSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DeleteScreenSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_screen_setting(
         self,
@@ -373,16 +348,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAlarmEventListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAlarmEventListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenAlarmEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_alarm_event_list_with_options_async(
         self,
@@ -434,16 +403,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAlarmEventListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAlarmEventListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenAlarmEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_alarm_event_list(
         self,
@@ -513,16 +476,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAttackAnalysisDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAttackAnalysisDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenAttackAnalysisDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_attack_analysis_data_with_options_async(
         self,
@@ -566,16 +523,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAttackAnalysisDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenAttackAnalysisDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenAttackAnalysisDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_attack_analysis_data(
         self,
@@ -626,16 +577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenCloudHcRiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenCloudHcRiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenCloudHcRiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_cloud_hc_risk_with_options_async(
         self,
@@ -660,16 +605,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenCloudHcRiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenCloudHcRiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenCloudHcRiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_cloud_hc_risk(self) -> sas_20210114_models.DescribeScreenCloudHcRiskResponse:
         """
@@ -712,16 +651,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenDataMapResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenDataMapResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenDataMapResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_data_map_with_options_async(
         self,
@@ -746,16 +679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenDataMapResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenDataMapResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenDataMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_data_map(self) -> sas_20210114_models.DescribeScreenDataMapResponse:
         """
@@ -798,16 +725,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenEmerRiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenEmerRiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenEmerRiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_emer_risk_with_options_async(
         self,
@@ -832,16 +753,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenEmerRiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenEmerRiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenEmerRiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_emer_risk(self) -> sas_20210114_models.DescribeScreenEmerRiskResponse:
         """
@@ -884,16 +799,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenHostStatisticsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenHostStatisticsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenHostStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_host_statistics_with_options_async(
         self,
@@ -918,16 +827,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenHostStatisticsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenHostStatisticsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenHostStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_host_statistics(self) -> sas_20210114_models.DescribeScreenHostStatisticsResponse:
         """
@@ -979,16 +882,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOperateInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOperateInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenOperateInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_operate_info_with_options_async(
         self,
@@ -1022,16 +919,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOperateInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOperateInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenOperateInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_operate_info(
         self,
@@ -1082,16 +973,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOssUploadInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOssUploadInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenOssUploadInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_oss_upload_info_with_options_async(
         self,
@@ -1116,16 +1001,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOssUploadInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenOssUploadInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenOssUploadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_oss_upload_info(self) -> sas_20210114_models.DescribeScreenOssUploadInfoResponse:
         """
@@ -1177,16 +1056,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenScoreThreadResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenScoreThreadResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenScoreThreadResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_score_thread_with_options_async(
         self,
@@ -1220,16 +1093,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenScoreThreadResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenScoreThreadResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenScoreThreadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_score_thread(
         self,
@@ -1280,16 +1147,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSecurityStatInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSecurityStatInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenSecurityStatInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_security_stat_info_with_options_async(
         self,
@@ -1314,16 +1175,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSecurityStatInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSecurityStatInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenSecurityStatInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_security_stat_info(self) -> sas_20210114_models.DescribeScreenSecurityStatInfoResponse:
         """
@@ -1373,16 +1228,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_setting_with_options_async(
         self,
@@ -1414,16 +1263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_setting(
         self,
@@ -1474,16 +1317,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSummaryInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSummaryInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenSummaryInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_summary_info_with_options_async(
         self,
@@ -1508,16 +1345,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSummaryInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenSummaryInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenSummaryInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_summary_info(self) -> sas_20210114_models.DescribeScreenSummaryInfoResponse:
         """
@@ -1560,16 +1391,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenTitlesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenTitlesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenTitlesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_titles_with_options_async(
         self,
@@ -1594,16 +1419,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenTitlesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenTitlesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenTitlesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_titles(self) -> sas_20210114_models.DescribeScreenTitlesResponse:
         """
@@ -1653,16 +1472,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenUploadPictureResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenUploadPictureResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenUploadPictureResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_upload_picture_with_options_async(
         self,
@@ -1694,16 +1507,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenUploadPictureResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenUploadPictureResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenUploadPictureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_upload_picture(
         self,
@@ -1754,16 +1561,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenVersionConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenVersionConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenVersionConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_screen_version_config_with_options_async(
         self,
@@ -1788,16 +1589,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenVersionConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.DescribeScreenVersionConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.DescribeScreenVersionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_screen_version_config(self) -> sas_20210114_models.DescribeScreenVersionConfigResponse:
         """
@@ -1855,16 +1650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.GetFileDetectResultInnerResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.GetFileDetectResultInnerResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.GetFileDetectResultInnerResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_file_detect_result_inner_with_options_async(
         self,
@@ -1904,16 +1693,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.GetFileDetectResultInnerResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.GetFileDetectResultInnerResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.GetFileDetectResultInnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_file_detect_result_inner(
         self,
@@ -1975,16 +1758,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.ListGlobalUserConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.ListGlobalUserConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.ListGlobalUserConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_global_user_config_with_options_async(
         self,
@@ -2020,16 +1797,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sas_20210114_models.ListGlobalUserConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sas_20210114_models.ListGlobalUserConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sas_20210114_models.ListGlobalUserConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_global_user_config(
         self,
