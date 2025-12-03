@@ -27710,6 +27710,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.export_id):
             query['ExportId'] = request.export_id
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -27745,6 +27747,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.export_id):
             query['ExportId'] = request.export_id
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35988,6 +35992,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
@@ -36023,6 +36029,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
@@ -40628,6 +40636,8 @@ class Client(OpenApiClient):
             query['CalType'] = request.cal_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_ip):
@@ -40669,6 +40679,8 @@ class Client(OpenApiClient):
             query['CalType'] = request.cal_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_ip):
@@ -51114,6 +51126,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.params):
             query['Params'] = request.params
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -51161,6 +51175,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.params):
             query['Params'] = request.params
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -82262,6 +82278,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
         if not UtilClient.is_unset(request.route):
@@ -82303,6 +82321,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
         if not UtilClient.is_unset(request.route):
@@ -94926,10 +94946,32 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.select_all_across_pages):
+            query['SelectAllAcrossPages'] = request.select_all_across_pages
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -94963,10 +95005,32 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.select_all_across_pages):
+            query['SelectAllAcrossPages'] = request.select_all_across_pages
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -95026,10 +95090,34 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.id_list):
+            query['IdList'] = request.id_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.select_all_across_pages):
+            query['SelectAllAcrossPages'] = request.select_all_across_pages
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -95063,10 +95151,34 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.id_list):
+            query['IdList'] = request.id_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.internet_ip):
+            query['InternetIp'] = request.internet_ip
+        if not UtilClient.is_unset(request.intranet_ip):
+            query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.select_all_across_pages):
+            query['SelectAllAcrossPages'] = request.select_all_across_pages
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

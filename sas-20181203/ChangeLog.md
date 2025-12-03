@@ -1,3 +1,35 @@
+2025-12-03 Version: 7.0.4
+- Update API DescribeExportInfo: add request parameters ResourceDirectoryAccountId.
+- Update API DescribeNoticeConfig: add request parameters BizType.
+- Update API DescribeNoticeConfig: add response parameters Body.NoticeConfigList.$.Category.
+- Update API DescribeSecureSuggestion: add request parameters ResourceDirectoryAccountId.
+- Update API ExportRecord: add request parameters ResourceDirectoryAccountId.
+- Update API ModifyNoticeConfig: add request parameters BizType.
+- Update API UpdateFileProtectEventStatus: add request parameters AlertLevels.
+- Update API UpdateFileProtectEventStatus: add request parameters EndTime.
+- Update API UpdateFileProtectEventStatus: add request parameters InstanceId.
+- Update API UpdateFileProtectEventStatus: add request parameters InstanceName.
+- Update API UpdateFileProtectEventStatus: add request parameters InternetIp.
+- Update API UpdateFileProtectEventStatus: add request parameters IntranetIp.
+- Update API UpdateFileProtectEventStatus: add request parameters Operation.
+- Update API UpdateFileProtectEventStatus: add request parameters RuleName.
+- Update API UpdateFileProtectEventStatus: add request parameters SelectAllAcrossPages.
+- Update API UpdateFileProtectEventStatus: add request parameters StartTime.
+- Update API UpdateFileProtectEventStatus: add request parameters Uuid.
+- Update API UpdateFileProtectRemark: add request parameters AlertLevels.
+- Update API UpdateFileProtectRemark: add request parameters EndTime.
+- Update API UpdateFileProtectRemark: add request parameters IdList.
+- Update API UpdateFileProtectRemark: add request parameters InstanceId.
+- Update API UpdateFileProtectRemark: add request parameters InstanceName.
+- Update API UpdateFileProtectRemark: add request parameters InternetIp.
+- Update API UpdateFileProtectRemark: add request parameters IntranetIp.
+- Update API UpdateFileProtectRemark: add request parameters Operation.
+- Update API UpdateFileProtectRemark: add request parameters RuleName.
+- Update API UpdateFileProtectRemark: add request parameters SelectAllAcrossPages.
+- Update API UpdateFileProtectRemark: add request parameters StartTime.
+- Update API UpdateFileProtectRemark: add request parameters Uuid.
+
+
 2025-12-01 Version: 7.0.3
 - Update API AddCheckResultWhiteList: add request parameters InstanceIds.
 - Update API RemoveCheckResultWhiteList: add request parameters InstanceIds.
