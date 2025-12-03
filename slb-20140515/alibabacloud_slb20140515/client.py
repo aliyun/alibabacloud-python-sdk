@@ -92,7 +92,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        @summary Adds IP entries to a network access control list (ACL).
+        @summary Adds IP entries to an access control list (ACL).
         
         @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
         The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
@@ -143,7 +143,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        @summary Adds IP entries to a network access control list (ACL).
+        @summary Adds IP entries to an access control list (ACL).
         
         @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
         The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
@@ -193,7 +193,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddAccessControlListEntryRequest,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        @summary Adds IP entries to a network access control list (ACL).
+        @summary Adds IP entries to an access control list (ACL).
         
         @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
         The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
@@ -210,7 +210,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddAccessControlListEntryRequest,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        @summary Adds IP entries to a network access control list (ACL).
+        @summary Adds IP entries to an access control list (ACL).
         
         @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
         The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
@@ -1798,7 +1798,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a TCP listener.
         
-        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
+        @description >  Newly created listeners are in the *stopped** state. After a listener is created, call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/2401757.html) operation to enable the listener to forward network traffic.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1897,7 +1897,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a TCP listener.
         
-        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
+        @description >  Newly created listeners are in the *stopped** state. After a listener is created, call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/2401757.html) operation to enable the listener to forward network traffic.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1995,7 +1995,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a TCP listener.
         
-        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
+        @description >  Newly created listeners are in the *stopped** state. After a listener is created, call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/2401757.html) operation to enable the listener to forward network traffic.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @return: CreateLoadBalancerTCPListenerResponse
@@ -2010,7 +2010,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a TCP listener.
         
-        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
+        @description >  Newly created listeners are in the *stopped** state. After a listener is created, call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/2401757.html) operation to enable the listener to forward network traffic.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @return: CreateLoadBalancerTCPListenerResponse
@@ -3602,8 +3602,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes forwarding rules.
         
-        @description ## Limits
-        The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
+        @description You must specify at least one forwarding rule that you want to delete. You can specify at most 10 forwarding rules in each call.
         
         @param request: DeleteRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3650,8 +3649,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes forwarding rules.
         
-        @description ## Limits
-        The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
+        @description You must specify at least one forwarding rule that you want to delete. You can specify at most 10 forwarding rules in each call.
         
         @param request: DeleteRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3697,8 +3695,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes forwarding rules.
         
-        @description ## Limits
-        The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
+        @description You must specify at least one forwarding rule that you want to delete. You can specify at most 10 forwarding rules in each call.
         
         @param request: DeleteRulesRequest
         @return: DeleteRulesResponse
@@ -3713,8 +3710,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes forwarding rules.
         
-        @description ## Limits
-        The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
+        @description You must specify at least one forwarding rule that you want to delete. You can specify at most 10 forwarding rules in each call.
         
         @param request: DeleteRulesRequest
         @return: DeleteRulesResponse
@@ -4868,7 +4864,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
         """
-        @summary Queries additional certificates.
+        @summary Queries additional domain names.
         
         @param request: DescribeDomainExtensionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4917,7 +4913,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
         """
-        @summary Queries additional certificates.
+        @summary Queries additional domain names.
         
         @param request: DescribeDomainExtensionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4965,7 +4961,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionsRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
         """
-        @summary Queries additional certificates.
+        @summary Queries additional domain names.
         
         @param request: DescribeDomainExtensionsRequest
         @return: DescribeDomainExtensionsResponse
@@ -4978,7 +4974,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionsRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
         """
-        @summary Queries additional certificates.
+        @summary Queries additional domain names.
         
         @param request: DescribeDomainExtensionsRequest
         @return: DescribeDomainExtensionsResponse
@@ -11080,7 +11076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
         """
-        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        @summary Changes the name of a Classic Load Balancer (CLB) instance.
         
         @param request: SetLoadBalancerNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11127,7 +11123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
         """
-        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        @summary Changes the name of a Classic Load Balancer (CLB) instance.
         
         @param request: SetLoadBalancerNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11173,7 +11169,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerNameRequest,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
         """
-        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        @summary Changes the name of a Classic Load Balancer (CLB) instance.
         
         @param request: SetLoadBalancerNameRequest
         @return: SetLoadBalancerNameResponse
@@ -11186,7 +11182,7 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerNameRequest,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
         """
-        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        @summary Changes the name of a Classic Load Balancer (CLB) instance.
         
         @param request: SetLoadBalancerNameRequest
         @return: SetLoadBalancerNameResponse
@@ -12484,7 +12480,7 @@ class Client(OpenApiClient):
         
         @description Before you make this API call, note the following:
         After the API call is successfully made, the listener enters the stopped state.
-        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        If the Classic Load Balancer (CLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -12538,7 +12534,7 @@ class Client(OpenApiClient):
         
         @description Before you make this API call, note the following:
         After the API call is successfully made, the listener enters the stopped state.
-        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        If the Classic Load Balancer (CLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -12591,7 +12587,7 @@ class Client(OpenApiClient):
         
         @description Before you make this API call, note the following:
         After the API call is successfully made, the listener enters the stopped state.
-        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        If the Classic Load Balancer (CLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -12609,7 +12605,7 @@ class Client(OpenApiClient):
         
         @description Before you make this API call, note the following:
         After the API call is successfully made, the listener enters the stopped state.
-        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        If the Classic Load Balancer (CLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
