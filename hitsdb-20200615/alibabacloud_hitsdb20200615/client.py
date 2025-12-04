@@ -5799,6 +5799,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse:
         """
+        @summary 修改Lindorm新版实例白名单
+        
         @param request: ModifyLindormV2WhiteIpListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLindormV2WhiteIpListResponse
@@ -5850,6 +5852,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse:
         """
+        @summary 修改Lindorm新版实例白名单
+        
         @param request: ModifyLindormV2WhiteIpListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLindormV2WhiteIpListResponse
@@ -5900,6 +5904,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyLindormV2WhiteIpListRequest,
     ) -> hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse:
         """
+        @summary 修改Lindorm新版实例白名单
+        
         @param request: ModifyLindormV2WhiteIpListRequest
         @return: ModifyLindormV2WhiteIpListResponse
         """
@@ -5911,6 +5917,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyLindormV2WhiteIpListRequest,
     ) -> hitsdb_20200615_models.ModifyLindormV2WhiteIpListResponse:
         """
+        @summary 修改Lindorm新版实例白名单
+        
         @param request: ModifyLindormV2WhiteIpListRequest
         @return: ModifyLindormV2WhiteIpListResponse
         """
@@ -6164,6 +6172,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.open_compute_pre_check_with_options_async(request, runtime)
+
+    def open_ldps_columnar_index_with_options(
+        self,
+        request: hitsdb_20200615_models.OpenLdpsColumnarIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.OpenLdpsColumnarIndexResponse:
+        """
+        @summary 开通列存索引
+        
+        @param request: OpenLdpsColumnarIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenLdpsColumnarIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenLdpsColumnarIndex',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenLdpsColumnarIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_ldps_columnar_index_with_options_async(
+        self,
+        request: hitsdb_20200615_models.OpenLdpsColumnarIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.OpenLdpsColumnarIndexResponse:
+        """
+        @summary 开通列存索引
+        
+        @param request: OpenLdpsColumnarIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenLdpsColumnarIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenLdpsColumnarIndex',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.OpenLdpsColumnarIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_ldps_columnar_index(
+        self,
+        request: hitsdb_20200615_models.OpenLdpsColumnarIndexRequest,
+    ) -> hitsdb_20200615_models.OpenLdpsColumnarIndexResponse:
+        """
+        @summary 开通列存索引
+        
+        @param request: OpenLdpsColumnarIndexRequest
+        @return: OpenLdpsColumnarIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.open_ldps_columnar_index_with_options(request, runtime)
+
+    async def open_ldps_columnar_index_async(
+        self,
+        request: hitsdb_20200615_models.OpenLdpsColumnarIndexRequest,
+    ) -> hitsdb_20200615_models.OpenLdpsColumnarIndexResponse:
+        """
+        @summary 开通列存索引
+        
+        @param request: OpenLdpsColumnarIndexRequest
+        @return: OpenLdpsColumnarIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.open_ldps_columnar_index_with_options_async(request, runtime)
 
     def release_lindorm_instance_with_options(
         self,
