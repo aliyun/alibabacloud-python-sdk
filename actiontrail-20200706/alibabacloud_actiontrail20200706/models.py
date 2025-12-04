@@ -847,6 +847,102 @@ class DeleteAdvancedQueryTemplateResponse(TeaModel):
         return self
 
 
+class DeleteDataEventSelectorRequest(TeaModel):
+    def __init__(
+        self,
+        trail_name: str = None,
+    ):
+        # This parameter is required.
+        self.trail_name = trail_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.trail_name is not None:
+            result['TrailName'] = self.trail_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrailName') is not None:
+            self.trail_name = m.get('TrailName')
+        return self
+
+
+class DeleteDataEventSelectorResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDataEventSelectorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataEventSelectorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataEventSelectorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDeliveryHistoryJobRequest(TeaModel):
     def __init__(
         self,
@@ -3931,6 +4027,192 @@ class GetAdvancedQueryTemplateResponse(TeaModel):
         return self
 
 
+class GetDataEventSelectorRequest(TeaModel):
+    def __init__(
+        self,
+        trail_name: str = None,
+    ):
+        # This parameter is required.
+        self.trail_name = trail_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.trail_name is not None:
+            result['TrailName'] = self.trail_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrailName') is not None:
+            self.trail_name = m.get('TrailName')
+        return self
+
+
+class GetDataEventSelectorResponseBodySlsDeliveryConfigs(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        region_sls_project_arn: str = None,
+        status: str = None,
+        trail_region: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.region_sls_project_arn = region_sls_project_arn
+        self.status = status
+        self.trail_region = trail_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.region_sls_project_arn is not None:
+            result['RegionSlsProjectArn'] = self.region_sls_project_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.trail_region is not None:
+            result['TrailRegion'] = self.trail_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RegionSlsProjectArn') is not None:
+            self.region_sls_project_arn = m.get('RegionSlsProjectArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrailRegion') is not None:
+            self.trail_region = m.get('TrailRegion')
+        return self
+
+
+class GetDataEventSelectorResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_event_selectors: str = None,
+        is_trail_all_region: bool = None,
+        request_id: str = None,
+        sls_delivery_configs: List[GetDataEventSelectorResponseBodySlsDeliveryConfigs] = None,
+        trail_arn: str = None,
+    ):
+        self.data_event_selectors = data_event_selectors
+        self.is_trail_all_region = is_trail_all_region
+        self.request_id = request_id
+        # This parameter is required.
+        self.sls_delivery_configs = sls_delivery_configs
+        self.trail_arn = trail_arn
+
+    def validate(self):
+        if self.sls_delivery_configs:
+            for k in self.sls_delivery_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_event_selectors is not None:
+            result['DataEventSelectors'] = self.data_event_selectors
+        if self.is_trail_all_region is not None:
+            result['IsTrailAllRegion'] = self.is_trail_all_region
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SlsDeliveryConfigs'] = []
+        if self.sls_delivery_configs is not None:
+            for k in self.sls_delivery_configs:
+                result['SlsDeliveryConfigs'].append(k.to_map() if k else None)
+        if self.trail_arn is not None:
+            result['TrailArn'] = self.trail_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataEventSelectors') is not None:
+            self.data_event_selectors = m.get('DataEventSelectors')
+        if m.get('IsTrailAllRegion') is not None:
+            self.is_trail_all_region = m.get('IsTrailAllRegion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sls_delivery_configs = []
+        if m.get('SlsDeliveryConfigs') is not None:
+            for k in m.get('SlsDeliveryConfigs'):
+                temp_model = GetDataEventSelectorResponseBodySlsDeliveryConfigs()
+                self.sls_delivery_configs.append(temp_model.from_map(k))
+        if m.get('TrailArn') is not None:
+            self.trail_arn = m.get('TrailArn')
+        return self
+
+
+class GetDataEventSelectorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataEventSelectorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataEventSelectorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDeliveryHistoryJobRequest(TeaModel):
     def __init__(
         self,
@@ -4589,6 +4871,278 @@ class GetTrailStatusResponse(TeaModel):
         return self
 
 
+class ListDataEventSelectorsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListDataEventSelectorsResponseBodyDataDataEventSelectorInfosSlsDeliveryConfigs(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        region_sls_project_arn: str = None,
+        status: str = None,
+        trail_region: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.region_sls_project_arn = region_sls_project_arn
+        self.status = status
+        self.trail_region = trail_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.region_sls_project_arn is not None:
+            result['RegionSlsProjectArn'] = self.region_sls_project_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.trail_region is not None:
+            result['TrailRegion'] = self.trail_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RegionSlsProjectArn') is not None:
+            self.region_sls_project_arn = m.get('RegionSlsProjectArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrailRegion') is not None:
+            self.trail_region = m.get('TrailRegion')
+        return self
+
+
+class ListDataEventSelectorsResponseBodyDataDataEventSelectorInfos(TeaModel):
+    def __init__(
+        self,
+        event_selectors: str = None,
+        is_trail_all_region: bool = None,
+        sls_delivery_configs: List[ListDataEventSelectorsResponseBodyDataDataEventSelectorInfosSlsDeliveryConfigs] = None,
+        trail_arn: str = None,
+        trail_name: str = None,
+    ):
+        self.event_selectors = event_selectors
+        self.is_trail_all_region = is_trail_all_region
+        self.sls_delivery_configs = sls_delivery_configs
+        self.trail_arn = trail_arn
+        self.trail_name = trail_name
+
+    def validate(self):
+        if self.sls_delivery_configs:
+            for k in self.sls_delivery_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_selectors is not None:
+            result['EventSelectors'] = self.event_selectors
+        if self.is_trail_all_region is not None:
+            result['IsTrailAllRegion'] = self.is_trail_all_region
+        result['SlsDeliveryConfigs'] = []
+        if self.sls_delivery_configs is not None:
+            for k in self.sls_delivery_configs:
+                result['SlsDeliveryConfigs'].append(k.to_map() if k else None)
+        if self.trail_arn is not None:
+            result['TrailArn'] = self.trail_arn
+        if self.trail_name is not None:
+            result['TrailName'] = self.trail_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventSelectors') is not None:
+            self.event_selectors = m.get('EventSelectors')
+        if m.get('IsTrailAllRegion') is not None:
+            self.is_trail_all_region = m.get('IsTrailAllRegion')
+        self.sls_delivery_configs = []
+        if m.get('SlsDeliveryConfigs') is not None:
+            for k in m.get('SlsDeliveryConfigs'):
+                temp_model = ListDataEventSelectorsResponseBodyDataDataEventSelectorInfosSlsDeliveryConfigs()
+                self.sls_delivery_configs.append(temp_model.from_map(k))
+        if m.get('TrailArn') is not None:
+            self.trail_arn = m.get('TrailArn')
+        if m.get('TrailName') is not None:
+            self.trail_name = m.get('TrailName')
+        return self
+
+
+class ListDataEventSelectorsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_event_selector_infos: List[ListDataEventSelectorsResponseBodyDataDataEventSelectorInfos] = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.data_event_selector_infos = data_event_selector_infos
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        if self.data_event_selector_infos:
+            for k in self.data_event_selector_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataEventSelectorInfos'] = []
+        if self.data_event_selector_infos is not None:
+            for k in self.data_event_selector_infos:
+                result['DataEventSelectorInfos'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_event_selector_infos = []
+        if m.get('DataEventSelectorInfos') is not None:
+            for k in m.get('DataEventSelectorInfos'):
+                temp_model = ListDataEventSelectorsResponseBodyDataDataEventSelectorInfos()
+                self.data_event_selector_infos.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListDataEventSelectorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListDataEventSelectorsResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListDataEventSelectorsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataEventSelectorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataEventSelectorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataEventSelectorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDataEventServicesRequest(TeaModel):
     def __init__(
         self,
@@ -5236,6 +5790,133 @@ class LookupEventsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LookupEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PutDataEventSelectorRequest(TeaModel):
+    def __init__(
+        self,
+        event_selectors: str = None,
+        is_trail_all_region: bool = None,
+        trail_name: str = None,
+        trail_region_ids: str = None,
+    ):
+        # This parameter is required.
+        self.event_selectors = event_selectors
+        self.is_trail_all_region = is_trail_all_region
+        # This parameter is required.
+        self.trail_name = trail_name
+        self.trail_region_ids = trail_region_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_selectors is not None:
+            result['EventSelectors'] = self.event_selectors
+        if self.is_trail_all_region is not None:
+            result['IsTrailAllRegion'] = self.is_trail_all_region
+        if self.trail_name is not None:
+            result['TrailName'] = self.trail_name
+        if self.trail_region_ids is not None:
+            result['TrailRegionIds'] = self.trail_region_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventSelectors') is not None:
+            self.event_selectors = m.get('EventSelectors')
+        if m.get('IsTrailAllRegion') is not None:
+            self.is_trail_all_region = m.get('IsTrailAllRegion')
+        if m.get('TrailName') is not None:
+            self.trail_name = m.get('TrailName')
+        if m.get('TrailRegionIds') is not None:
+            self.trail_region_ids = m.get('TrailRegionIds')
+        return self
+
+
+class PutDataEventSelectorResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_event_selectors: str = None,
+        request_id: str = None,
+        trail_arn: str = None,
+    ):
+        self.data_event_selectors = data_event_selectors
+        self.request_id = request_id
+        self.trail_arn = trail_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_event_selectors is not None:
+            result['DataEventSelectors'] = self.data_event_selectors
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.trail_arn is not None:
+            result['TrailArn'] = self.trail_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataEventSelectors') is not None:
+            self.data_event_selectors = m.get('DataEventSelectors')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TrailArn') is not None:
+            self.trail_arn = m.get('TrailArn')
+        return self
+
+
+class PutDataEventSelectorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PutDataEventSelectorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PutDataEventSelectorResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

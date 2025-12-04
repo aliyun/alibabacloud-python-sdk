@@ -1,3 +1,10 @@
+2025-12-04 Version: 2.5.0
+- Support API DeleteDataEventSelector.
+- Support API GetDataEventSelector.
+- Support API ListDataEventSelectors.
+- Support API PutDataEventSelector.
+
+
 2025-08-18 Version: 2.4.1
 - Generated python 2020-07-06 for Actiontrail.
 

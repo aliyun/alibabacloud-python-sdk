@@ -795,6 +795,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_advanced_query_template_with_options_async(request, runtime)
 
+    def delete_data_event_selector_with_options(
+        self,
+        request: actiontrail_20200706_models.DeleteDataEventSelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.DeleteDataEventSelectorResponse:
+        """
+        @summary 删除数据事件选择器
+        
+        @param request: DeleteDataEventSelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataEventSelectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.trail_name):
+            query['TrailName'] = request.trail_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataEventSelector',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.DeleteDataEventSelectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_event_selector_with_options_async(
+        self,
+        request: actiontrail_20200706_models.DeleteDataEventSelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.DeleteDataEventSelectorResponse:
+        """
+        @summary 删除数据事件选择器
+        
+        @param request: DeleteDataEventSelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataEventSelectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.trail_name):
+            query['TrailName'] = request.trail_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataEventSelector',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.DeleteDataEventSelectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_event_selector(
+        self,
+        request: actiontrail_20200706_models.DeleteDataEventSelectorRequest,
+    ) -> actiontrail_20200706_models.DeleteDataEventSelectorResponse:
+        """
+        @summary 删除数据事件选择器
+        
+        @param request: DeleteDataEventSelectorRequest
+        @return: DeleteDataEventSelectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_event_selector_with_options(request, runtime)
+
+    async def delete_data_event_selector_async(
+        self,
+        request: actiontrail_20200706_models.DeleteDataEventSelectorRequest,
+    ) -> actiontrail_20200706_models.DeleteDataEventSelectorResponse:
+        """
+        @summary 删除数据事件选择器
+        
+        @param request: DeleteDataEventSelectorRequest
+        @return: DeleteDataEventSelectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_event_selector_with_options_async(request, runtime)
+
     def delete_delivery_history_job_with_options(
         self,
         request: actiontrail_20200706_models.DeleteDeliveryHistoryJobRequest,
@@ -2645,6 +2741,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_advanced_query_template_with_options_async(request, runtime)
 
+    def get_data_event_selector_with_options(
+        self,
+        request: actiontrail_20200706_models.GetDataEventSelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.GetDataEventSelectorResponse:
+        """
+        @summary 查询事件选择器
+        
+        @param request: GetDataEventSelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataEventSelectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.trail_name):
+            query['TrailName'] = request.trail_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataEventSelector',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.GetDataEventSelectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_event_selector_with_options_async(
+        self,
+        request: actiontrail_20200706_models.GetDataEventSelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.GetDataEventSelectorResponse:
+        """
+        @summary 查询事件选择器
+        
+        @param request: GetDataEventSelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataEventSelectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.trail_name):
+            query['TrailName'] = request.trail_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataEventSelector',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.GetDataEventSelectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_event_selector(
+        self,
+        request: actiontrail_20200706_models.GetDataEventSelectorRequest,
+    ) -> actiontrail_20200706_models.GetDataEventSelectorResponse:
+        """
+        @summary 查询事件选择器
+        
+        @param request: GetDataEventSelectorRequest
+        @return: GetDataEventSelectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_event_selector_with_options(request, runtime)
+
+    async def get_data_event_selector_async(
+        self,
+        request: actiontrail_20200706_models.GetDataEventSelectorRequest,
+    ) -> actiontrail_20200706_models.GetDataEventSelectorResponse:
+        """
+        @summary 查询事件选择器
+        
+        @param request: GetDataEventSelectorRequest
+        @return: GetDataEventSelectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_event_selector_with_options_async(request, runtime)
+
     def get_delivery_history_job_with_options(
         self,
         request: actiontrail_20200706_models.GetDeliveryHistoryJobRequest,
@@ -3017,6 +3209,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_trail_status_with_options_async(request, runtime)
 
+    def list_data_event_selectors_with_options(
+        self,
+        request: actiontrail_20200706_models.ListDataEventSelectorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.ListDataEventSelectorsResponse:
+        """
+        @summary 批量查询事件选择器
+        
+        @param request: ListDataEventSelectorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataEventSelectorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataEventSelectors',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.ListDataEventSelectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_event_selectors_with_options_async(
+        self,
+        request: actiontrail_20200706_models.ListDataEventSelectorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.ListDataEventSelectorsResponse:
+        """
+        @summary 批量查询事件选择器
+        
+        @param request: ListDataEventSelectorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataEventSelectorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataEventSelectors',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.ListDataEventSelectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_event_selectors(
+        self,
+        request: actiontrail_20200706_models.ListDataEventSelectorsRequest,
+    ) -> actiontrail_20200706_models.ListDataEventSelectorsResponse:
+        """
+        @summary 批量查询事件选择器
+        
+        @param request: ListDataEventSelectorsRequest
+        @return: ListDataEventSelectorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_event_selectors_with_options(request, runtime)
+
+    async def list_data_event_selectors_async(
+        self,
+        request: actiontrail_20200706_models.ListDataEventSelectorsRequest,
+    ) -> actiontrail_20200706_models.ListDataEventSelectorsResponse:
+        """
+        @summary 批量查询事件选择器
+        
+        @param request: ListDataEventSelectorsRequest
+        @return: ListDataEventSelectorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_event_selectors_with_options_async(request, runtime)
+
     def list_data_event_services_with_options(
         self,
         request: actiontrail_20200706_models.ListDataEventServicesRequest,
@@ -3352,6 +3644,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.lookup_events_with_options_async(request, runtime)
+
+    def put_data_event_selector_with_options(
+        self,
+        request: actiontrail_20200706_models.PutDataEventSelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.PutDataEventSelectorResponse:
+        """
+        @summary 创建事件选择器
+        
+        @param request: PutDataEventSelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutDataEventSelectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_selectors):
+            query['EventSelectors'] = request.event_selectors
+        if not UtilClient.is_unset(request.is_trail_all_region):
+            query['IsTrailAllRegion'] = request.is_trail_all_region
+        if not UtilClient.is_unset(request.trail_name):
+            query['TrailName'] = request.trail_name
+        if not UtilClient.is_unset(request.trail_region_ids):
+            query['TrailRegionIds'] = request.trail_region_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDataEventSelector',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.PutDataEventSelectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_data_event_selector_with_options_async(
+        self,
+        request: actiontrail_20200706_models.PutDataEventSelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> actiontrail_20200706_models.PutDataEventSelectorResponse:
+        """
+        @summary 创建事件选择器
+        
+        @param request: PutDataEventSelectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutDataEventSelectorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_selectors):
+            query['EventSelectors'] = request.event_selectors
+        if not UtilClient.is_unset(request.is_trail_all_region):
+            query['IsTrailAllRegion'] = request.is_trail_all_region
+        if not UtilClient.is_unset(request.trail_name):
+            query['TrailName'] = request.trail_name
+        if not UtilClient.is_unset(request.trail_region_ids):
+            query['TrailRegionIds'] = request.trail_region_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDataEventSelector',
+            version='2020-07-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            actiontrail_20200706_models.PutDataEventSelectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_data_event_selector(
+        self,
+        request: actiontrail_20200706_models.PutDataEventSelectorRequest,
+    ) -> actiontrail_20200706_models.PutDataEventSelectorResponse:
+        """
+        @summary 创建事件选择器
+        
+        @param request: PutDataEventSelectorRequest
+        @return: PutDataEventSelectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.put_data_event_selector_with_options(request, runtime)
+
+    async def put_data_event_selector_async(
+        self,
+        request: actiontrail_20200706_models.PutDataEventSelectorRequest,
+    ) -> actiontrail_20200706_models.PutDataEventSelectorResponse:
+        """
+        @summary 创建事件选择器
+        
+        @param request: PutDataEventSelectorRequest
+        @return: PutDataEventSelectorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.put_data_event_selector_with_options_async(request, runtime)
 
     def start_logging_with_options(
         self,
