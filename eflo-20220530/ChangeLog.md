@@ -1,3 +1,8 @@
+2025-12-04 Version: 2.1.0
+- Support API SwitchVccConnection.
+- Update API DeleteErRouteMap: add request parameters ErRouteMapId.
+
+
 2025-06-17 Version: 2.0.9
 - Update API ListLeniPrivateIpAddresses: add response parameters Body.Content.Data.$.ResourceGroupId.
 - Update API ListLniPrivateIpAddress: add response parameters Body.Content.Data.$.ResourceGroupId.

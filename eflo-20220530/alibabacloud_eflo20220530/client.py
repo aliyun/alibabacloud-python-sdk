@@ -2395,6 +2395,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.er_id):
             body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
         if not UtilClient.is_unset(request.er_route_map_ids):
             body['ErRouteMapIds'] = request.er_route_map_ids
         if not UtilClient.is_unset(request.region_id):
@@ -2440,6 +2442,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.er_id):
             body['ErId'] = request.er_id
+        if not UtilClient.is_unset(request.er_route_map_id):
+            body['ErRouteMapId'] = request.er_route_map_id
         if not UtilClient.is_unset(request.er_route_map_ids):
             body['ErRouteMapIds'] = request.er_route_map_ids
         if not UtilClient.is_unset(request.region_id):
@@ -8084,6 +8088,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.retry_vcc_with_options_async(request, runtime)
+
+    def switch_vcc_connection_with_options(
+        self,
+        request: eflo_20220530_models.SwitchVccConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.SwitchVccConnectionResponse:
+        """
+        @summary Switch the VCC connection instance or type
+        
+        @param request: SwitchVccConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchVccConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cen_id):
+            body['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.connection_type):
+            body['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            body['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SwitchVccConnection',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.SwitchVccConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_vcc_connection_with_options_async(
+        self,
+        request: eflo_20220530_models.SwitchVccConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_20220530_models.SwitchVccConnectionResponse:
+        """
+        @summary Switch the VCC connection instance or type
+        
+        @param request: SwitchVccConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchVccConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cen_id):
+            body['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.connection_type):
+            body['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            body['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vcc_id):
+            body['VccId'] = request.vcc_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SwitchVccConnection',
+            version='2022-05-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_20220530_models.SwitchVccConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_vcc_connection(
+        self,
+        request: eflo_20220530_models.SwitchVccConnectionRequest,
+    ) -> eflo_20220530_models.SwitchVccConnectionResponse:
+        """
+        @summary Switch the VCC connection instance or type
+        
+        @param request: SwitchVccConnectionRequest
+        @return: SwitchVccConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.switch_vcc_connection_with_options(request, runtime)
+
+    async def switch_vcc_connection_async(
+        self,
+        request: eflo_20220530_models.SwitchVccConnectionRequest,
+    ) -> eflo_20220530_models.SwitchVccConnectionResponse:
+        """
+        @summary Switch the VCC connection instance or type
+        
+        @param request: SwitchVccConnectionRequest
+        @return: SwitchVccConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_vcc_connection_with_options_async(request, runtime)
 
     def un_assign_private_ip_address_with_options(
         self,
