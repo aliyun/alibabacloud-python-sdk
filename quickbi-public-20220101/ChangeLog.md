@@ -1,3 +1,6 @@
+2025-12-04 Version: 1.14.1
+- Generated python 2022-01-01 for quickbi-public.
+
 2025-11-17 Version: 1.14.0
 - Support API CreateWorkspace.
 - Support API ListAccelerationOfWorkspace.

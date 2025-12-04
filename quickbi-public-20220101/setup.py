@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_quickbi_public20220101.
 
-Created on 17/11/2025
+Created on 04/12/2025
 
 @author: Alibaba Cloud SDK
 """
