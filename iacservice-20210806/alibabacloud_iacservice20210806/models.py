@@ -52,12 +52,12 @@ class JobStatusDetailValue(TeaModel):
 class JobsStatusDetailValue(TeaModel):
     def __init__(
         self,
-        job_result: str = None,
         comment: str = None,
+        job_result: str = None,
         time_stamps: str = None,
     ):
-        self.job_result = job_result
         self.comment = comment
+        self.job_result = job_result
         self.time_stamps = time_stamps
 
     def validate(self):
@@ -69,20 +69,20 @@ class JobsStatusDetailValue(TeaModel):
             return _map
 
         result = dict()
-        if self.job_result is not None:
-            result['jobResult'] = self.job_result
         if self.comment is not None:
             result['comment'] = self.comment
+        if self.job_result is not None:
+            result['jobResult'] = self.job_result
         if self.time_stamps is not None:
             result['timeStamps'] = self.time_stamps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('jobResult') is not None:
-            self.job_result = m.get('jobResult')
         if m.get('comment') is not None:
             self.comment = m.get('comment')
+        if m.get('jobResult') is not None:
+            self.job_result = m.get('jobResult')
         if m.get('timeStamps') is not None:
             self.time_stamps = m.get('timeStamps')
         return self
@@ -4005,6 +4005,7 @@ class GetJobResponseBodyJob(TeaModel):
         execute_type: str = None,
         is_pass_assert_check: bool = None,
         job_id: str = None,
+        job_type: str = None,
         log_file: Dict[str, Any] = None,
         output: str = None,
         output_json_plan: Any = None,
@@ -4024,6 +4025,7 @@ class GetJobResponseBodyJob(TeaModel):
         self.execute_type = execute_type
         self.is_pass_assert_check = is_pass_assert_check
         self.job_id = job_id
+        self.job_type = job_type
         self.log_file = log_file
         self.output = output
         self.output_json_plan = output_json_plan
@@ -4072,6 +4074,8 @@ class GetJobResponseBodyJob(TeaModel):
             result['isPassAssertCheck'] = self.is_pass_assert_check
         if self.job_id is not None:
             result['jobId'] = self.job_id
+        if self.job_type is not None:
+            result['jobType'] = self.job_type
         if self.log_file is not None:
             result['logFile'] = self.log_file
         if self.output is not None:
@@ -4118,6 +4122,8 @@ class GetJobResponseBodyJob(TeaModel):
             self.is_pass_assert_check = m.get('isPassAssertCheck')
         if m.get('jobId') is not None:
             self.job_id = m.get('jobId')
+        if m.get('jobType') is not None:
+            self.job_type = m.get('jobType')
         if m.get('logFile') is not None:
             self.log_file = m.get('logFile')
         if m.get('output') is not None:
@@ -7318,11 +7324,13 @@ class ListGroupResponse(TeaModel):
 class ListJobsRequest(TeaModel):
     def __init__(
         self,
+        job_type: str = None,
         page_number: int = None,
         page_size: int = None,
         status: str = None,
         task_type: str = None,
     ):
+        self.job_type = job_type
         self.page_number = page_number
         self.page_size = page_size
         self.status = status
@@ -7337,6 +7345,8 @@ class ListJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.job_type is not None:
+            result['jobType'] = self.job_type
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7349,6 +7359,8 @@ class ListJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('jobType') is not None:
+            self.job_type = m.get('jobType')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:

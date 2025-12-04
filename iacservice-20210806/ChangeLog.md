@@ -1,3 +1,8 @@
+2025-12-04 Version: 2.1.2
+- Update API GetJob: add response parameters Body.job.jobType.
+- Update API ListJobs: add request parameters jobType.
+
+
 2025-12-03 Version: 2.1.1
 - Update API GetJob: add response parameters Body.job.statusDetail.errorMessage.
 
