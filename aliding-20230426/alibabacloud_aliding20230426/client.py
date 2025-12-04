@@ -5573,6 +5573,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -5626,6 +5628,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -6503,6 +6507,8 @@ class Client(OpenApiClient):
             body['allowStructViewContent'] = request.allow_struct_view_content
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
@@ -6558,6 +6564,8 @@ class Client(OpenApiClient):
             body['allowStructViewContent'] = request.allow_struct_view_content
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
@@ -7579,6 +7587,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
@@ -7628,6 +7638,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.source_id_of_original_assistant_id):
@@ -12975,6 +12987,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -13032,6 +13046,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -22651,6 +22667,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -22706,6 +22724,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -23941,6 +23961,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.order):
@@ -23998,6 +24020,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.order):
@@ -30331,6 +30355,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.run_id):
@@ -30382,6 +30408,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.ext_login_user):
+            body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
             body['originalAssistantId'] = request.original_assistant_id
         if not UtilClient.is_unset(request.run_id):

@@ -15089,6 +15089,45 @@ class CreateMessageHeaders(TeaModel):
         return self
 
 
+class CreateMessageRequestExtLoginUser(TeaModel):
+    def __init__(
+        self,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
+    ):
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
 class CreateMessageRequestMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
@@ -15945,6 +15984,7 @@ class CreateMessageRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
+        ext_login_user: CreateMessageRequestExtLoginUser = None,
         messages: List[CreateMessageRequestMessages] = None,
         original_assistant_id: str = None,
         source_id_of_original_assistant_id: str = None,
@@ -15953,6 +15993,7 @@ class CreateMessageRequest(TeaModel):
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
         # This parameter is required.
         self.messages = messages
         self.original_assistant_id = original_assistant_id
@@ -15962,6 +16003,8 @@ class CreateMessageRequest(TeaModel):
         self.thread_id = thread_id
 
     def validate(self):
+        if self.ext_login_user:
+            self.ext_login_user.validate()
         if self.messages:
             for k in self.messages:
                 if k:
@@ -15975,6 +16018,8 @@ class CreateMessageRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         result['messages'] = []
         if self.messages is not None:
             for k in self.messages:
@@ -15993,6 +16038,9 @@ class CreateMessageRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = CreateMessageRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         self.messages = []
         if m.get('messages') is not None:
             for k in m.get('messages'):
@@ -18733,11 +18781,51 @@ class CreateRunHeaders(TeaModel):
         return self
 
 
+class CreateRunRequestExtLoginUser(TeaModel):
+    def __init__(
+        self,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
+    ):
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
 class CreateRunRequest(TeaModel):
     def __init__(
         self,
         allow_struct_view_content: bool = None,
         assistant_id: str = None,
+        ext_login_user: CreateRunRequestExtLoginUser = None,
         original_assistant_id: str = None,
         source_id_of_original_assistant_id: str = None,
         source_type_of_original_assistant_id: str = None,
@@ -18747,6 +18835,7 @@ class CreateRunRequest(TeaModel):
         self.allow_struct_view_content = allow_struct_view_content
         # This parameter is required.
         self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
         self.original_assistant_id = original_assistant_id
         self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
         self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
@@ -18755,7 +18844,8 @@ class CreateRunRequest(TeaModel):
         self.thread_id = thread_id
 
     def validate(self):
-        pass
+        if self.ext_login_user:
+            self.ext_login_user.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18767,6 +18857,8 @@ class CreateRunRequest(TeaModel):
             result['allowStructViewContent'] = self.allow_struct_view_content
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
         if self.source_id_of_original_assistant_id is not None:
@@ -18785,6 +18877,9 @@ class CreateRunRequest(TeaModel):
             self.allow_struct_view_content = m.get('allowStructViewContent')
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = CreateRunRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
         if m.get('sourceIdOfOriginalAssistantId') is not None:
@@ -22424,19 +22519,16 @@ class CreateThreadHeaders(TeaModel):
         return self
 
 
-class CreateThreadRequest(TeaModel):
+class CreateThreadRequestExtLoginUser(TeaModel):
     def __init__(
         self,
-        assistant_id: str = None,
-        original_assistant_id: str = None,
-        source_id_of_original_assistant_id: str = None,
-        source_type_of_original_assistant_id: int = None,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
     ):
-        # This parameter is required.
-        self.assistant_id = assistant_id
-        self.original_assistant_id = original_assistant_id
-        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
-        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
 
     def validate(self):
         pass
@@ -22447,8 +22539,55 @@ class CreateThreadRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
+class CreateThreadRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        ext_login_user: CreateThreadRequestExtLoginUser = None,
+        original_assistant_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: int = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
+        self.original_assistant_id = original_assistant_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
+
+    def validate(self):
+        if self.ext_login_user:
+            self.ext_login_user.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
         if self.source_id_of_original_assistant_id is not None:
@@ -22461,6 +22600,9 @@ class CreateThreadRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = CreateThreadRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
         if m.get('sourceIdOfOriginalAssistantId') is not None:
@@ -34175,6 +34317,45 @@ class GetAssistantCapabilityHeaders(TeaModel):
         return self
 
 
+class GetAssistantCapabilityRequestExtLoginUser(TeaModel):
+    def __init__(
+        self,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
+    ):
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
 class GetAssistantCapabilityRequestMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
@@ -35031,6 +35212,7 @@ class GetAssistantCapabilityRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
+        ext_login_user: GetAssistantCapabilityRequestExtLoginUser = None,
         messages: List[GetAssistantCapabilityRequestMessages] = None,
         original_assistant_id: str = None,
         protocol: str = None,
@@ -35041,6 +35223,7 @@ class GetAssistantCapabilityRequest(TeaModel):
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
         # This parameter is required.
         self.messages = messages
         self.original_assistant_id = original_assistant_id
@@ -35051,6 +35234,8 @@ class GetAssistantCapabilityRequest(TeaModel):
         self.timeout = timeout
 
     def validate(self):
+        if self.ext_login_user:
+            self.ext_login_user.validate()
         if self.messages:
             for k in self.messages:
                 if k:
@@ -35064,6 +35249,8 @@ class GetAssistantCapabilityRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         result['messages'] = []
         if self.messages is not None:
             for k in self.messages:
@@ -35086,6 +35273,9 @@ class GetAssistantCapabilityRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = GetAssistantCapabilityRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         self.messages = []
         if m.get('messages') is not None:
             for k in m.get('messages'):
@@ -62571,6 +62761,45 @@ class InvokeAssistantHeaders(TeaModel):
         return self
 
 
+class InvokeAssistantRequestExtLoginUser(TeaModel):
+    def __init__(
+        self,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
+    ):
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
 class InvokeAssistantRequestMessagesContentCardCallback(TeaModel):
     def __init__(
         self,
@@ -63427,6 +63656,7 @@ class InvokeAssistantRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
+        ext_login_user: InvokeAssistantRequestExtLoginUser = None,
         messages: List[InvokeAssistantRequestMessages] = None,
         original_assistant_id: str = None,
         session_id: str = None,
@@ -63436,6 +63666,7 @@ class InvokeAssistantRequest(TeaModel):
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
         # This parameter is required.
         self.messages = messages
         self.original_assistant_id = original_assistant_id
@@ -63445,6 +63676,8 @@ class InvokeAssistantRequest(TeaModel):
         self.stream = stream
 
     def validate(self):
+        if self.ext_login_user:
+            self.ext_login_user.validate()
         if self.messages:
             for k in self.messages:
                 if k:
@@ -63458,6 +63691,8 @@ class InvokeAssistantRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         result['messages'] = []
         if self.messages is not None:
             for k in self.messages:
@@ -63478,6 +63713,9 @@ class InvokeAssistantRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = InvokeAssistantRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         self.messages = []
         if m.get('messages') is not None:
             for k in m.get('messages'):
@@ -68774,28 +69012,16 @@ class ListMessageHeaders(TeaModel):
         return self
 
 
-class ListMessageRequest(TeaModel):
+class ListMessageRequestExtLoginUser(TeaModel):
     def __init__(
         self,
-        assistant_id: str = None,
-        limit: int = None,
-        order: str = None,
-        original_assistant_id: str = None,
-        run_id: str = None,
-        source_id_of_original_assistant_id: str = None,
-        source_type_of_original_assistant_id: str = None,
-        thread_id: str = None,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
     ):
-        # This parameter is required.
-        self.assistant_id = assistant_id
-        self.limit = limit
-        self.order = order
-        self.original_assistant_id = original_assistant_id
-        self.run_id = run_id
-        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
-        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
-        # This parameter is required.
-        self.thread_id = thread_id
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
 
     def validate(self):
         pass
@@ -68806,8 +69032,64 @@ class ListMessageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
+class ListMessageRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        ext_login_user: ListMessageRequestExtLoginUser = None,
+        limit: int = None,
+        order: str = None,
+        original_assistant_id: str = None,
+        run_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
+        thread_id: str = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
+        self.limit = limit
+        self.order = order
+        self.original_assistant_id = original_assistant_id
+        self.run_id = run_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
+        # This parameter is required.
+        self.thread_id = thread_id
+
+    def validate(self):
+        if self.ext_login_user:
+            self.ext_login_user.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         if self.limit is not None:
             result['limit'] = self.limit
         if self.order is not None:
@@ -68828,6 +69110,9 @@ class ListMessageRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = ListMessageRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         if m.get('limit') is not None:
             self.limit = m.get('limit')
         if m.get('order') is not None:
@@ -88682,21 +88967,16 @@ class RetrieveRunHeaders(TeaModel):
         return self
 
 
-class RetrieveRunRequest(TeaModel):
+class RetrieveRunRequestExtLoginUser(TeaModel):
     def __init__(
         self,
-        assistant_id: str = None,
-        original_assistant_id: str = None,
-        run_id: str = None,
-        source_id_of_original_assistant_id: str = None,
-        source_type_of_original_assistant_id: str = None,
+        ext_login_user_domain: str = None,
+        ext_login_user_id: str = None,
+        ext_login_user_name: str = None,
     ):
-        # This parameter is required.
-        self.assistant_id = assistant_id
-        self.original_assistant_id = original_assistant_id
-        self.run_id = run_id
-        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
-        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
+        self.ext_login_user_domain = ext_login_user_domain
+        self.ext_login_user_id = ext_login_user_id
+        self.ext_login_user_name = ext_login_user_name
 
     def validate(self):
         pass
@@ -88707,8 +88987,57 @@ class RetrieveRunRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ext_login_user_domain is not None:
+            result['extLoginUserDomain'] = self.ext_login_user_domain
+        if self.ext_login_user_id is not None:
+            result['extLoginUserId'] = self.ext_login_user_id
+        if self.ext_login_user_name is not None:
+            result['extLoginUserName'] = self.ext_login_user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extLoginUserDomain') is not None:
+            self.ext_login_user_domain = m.get('extLoginUserDomain')
+        if m.get('extLoginUserId') is not None:
+            self.ext_login_user_id = m.get('extLoginUserId')
+        if m.get('extLoginUserName') is not None:
+            self.ext_login_user_name = m.get('extLoginUserName')
+        return self
+
+
+class RetrieveRunRequest(TeaModel):
+    def __init__(
+        self,
+        assistant_id: str = None,
+        ext_login_user: RetrieveRunRequestExtLoginUser = None,
+        original_assistant_id: str = None,
+        run_id: str = None,
+        source_id_of_original_assistant_id: str = None,
+        source_type_of_original_assistant_id: str = None,
+    ):
+        # This parameter is required.
+        self.assistant_id = assistant_id
+        self.ext_login_user = ext_login_user
+        self.original_assistant_id = original_assistant_id
+        self.run_id = run_id
+        self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
+        self.source_type_of_original_assistant_id = source_type_of_original_assistant_id
+
+    def validate(self):
+        if self.ext_login_user:
+            self.ext_login_user.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.ext_login_user is not None:
+            result['extLoginUser'] = self.ext_login_user.to_map()
         if self.original_assistant_id is not None:
             result['originalAssistantId'] = self.original_assistant_id
         if self.run_id is not None:
@@ -88723,6 +89052,9 @@ class RetrieveRunRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('extLoginUser') is not None:
+            temp_model = RetrieveRunRequestExtLoginUser()
+            self.ext_login_user = temp_model.from_map(m['extLoginUser'])
         if m.get('originalAssistantId') is not None:
             self.original_assistant_id = m.get('originalAssistantId')
         if m.get('runId') is not None:

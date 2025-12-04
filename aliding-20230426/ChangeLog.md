@@ -1,3 +1,13 @@
+2025-12-04 Version: 2.46.1
+- Update API CreateMessage: add request parameters body.extLoginUser.
+- Update API CreateRun: add request parameters body.extLoginUser.
+- Update API CreateThread: add request parameters body.extLoginUser.
+- Update API GetAssistantCapability: add request parameters body.extLoginUser.
+- Update API InvokeAssistant: add request parameters body.extLoginUser.
+- Update API ListMessage: add request parameters body.extLoginUser.
+- Update API RetrieveRun: add request parameters body.extLoginUser.
+
+
 2025-11-20 Version: 2.46.0
 - Support API CopyDentryByNodeId.
 
