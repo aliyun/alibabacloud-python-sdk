@@ -1,3 +1,10 @@
+2025-12-04 Version: 4.0.0
+- Support API RemoveRspDomainServerHoldStatusForGateway.
+- Support API UpdateRspDomainServerProhibitStatusForGateway.
+- Delete API UpdateRspDomainServerHoldStatusOte.
+- Delete API UpdateRspDomainStatusOte.
+
+
 2025-11-13 Version: 3.7.0
 - Support API UpdateRspDomainServerHoldStatusOte.
 - Support API UpdateRspDomainStatusOte.
