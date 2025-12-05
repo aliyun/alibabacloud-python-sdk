@@ -1,3 +1,8 @@
+2025-12-05 Version: 2.10.1
+- Update API ListApplications: add response parameters Body.Data.Applications.$.ResourceType.
+- Update API ListApplications: add response parameters Body.Data.Applications.$.Children.$.ResourceType.
+
+
 2025-12-05 Version: 2.10.0
 - Support API DisableArms.
 

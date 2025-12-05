@@ -42130,6 +42130,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
         new_sae_version: str = None,
         programming_language: str = None,
         region_id: str = None,
+        resource_type: str = None,
         running_instances: int = None,
         scale_rule_enabled: bool = None,
         scale_rule_type: str = None,
@@ -42170,6 +42171,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
         self.programming_language = programming_language
         # The region ID.
         self.region_id = region_id
+        self.resource_type = resource_type
         # The number of instances in running state.
         self.running_instances = running_instances
         # If the scale rule is enabled.
@@ -42223,6 +42225,8 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             result['ProgrammingLanguage'] = self.programming_language
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.running_instances is not None:
             result['RunningInstances'] = self.running_instances
         if self.scale_rule_enabled is not None:
@@ -42269,6 +42273,8 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             self.programming_language = m.get('ProgrammingLanguage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RunningInstances') is not None:
             self.running_instances = m.get('RunningInstances')
         if m.get('ScaleRuleEnabled') is not None:
@@ -42343,6 +42349,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         package_url: str = None,
         programming_language: str = None,
         region_id: str = None,
+        resource_type: str = None,
         running_instances: int = None,
         tags: List[ListApplicationsResponseBodyDataApplicationsTags] = None,
         vpc_id: str = None,
@@ -42420,6 +42427,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         self.programming_language = programming_language
         # The region ID.
         self.region_id = region_id
+        self.resource_type = resource_type
         # The number of running instances.
         self.running_instances = running_instances
         # The tags of the application.
@@ -42489,6 +42497,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             result['ProgrammingLanguage'] = self.programming_language
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.running_instances is not None:
             result['RunningInstances'] = self.running_instances
         result['Tags'] = []
@@ -42548,6 +42558,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             self.programming_language = m.get('ProgrammingLanguage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RunningInstances') is not None:
             self.running_instances = m.get('RunningInstances')
         self.tags = []
