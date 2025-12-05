@@ -116,6 +116,7 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
         node_name: str = None,
         node_spec: str = None,
         update_time: str = None,
+        zone_id: str = None,
     ):
         # The binding type of the AI node.
         self.bind_object = bind_object
@@ -162,6 +163,7 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
         self.node_spec = node_spec
         # The update time.
         self.update_time = update_time
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -192,6 +194,9 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -216,6 +221,9 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
 
         return self
 

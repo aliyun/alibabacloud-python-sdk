@@ -106,6 +106,7 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
         disk_performance_level: str = None,
         engine: str = None,
         engine_version: str = None,
+        expire_time: str = None,
         pay_type: str = None,
         private_connect_url: str = None,
         project_id: str = None,
@@ -132,6 +133,7 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
         self.engine = engine
         # The database engine version.
         self.engine_version = engine_version
+        self.expire_time = expire_time
         # The billing method of the instance. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go
@@ -193,6 +195,9 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
 
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -253,6 +258,9 @@ class ListSupabaseProjectsResponseBodyItems(DaraModel):
 
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')

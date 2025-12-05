@@ -9,12 +9,16 @@ class ListSupabaseProjectsRequest(DaraModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
         # The maximum number of instances to return per page. Default value: 10.
         self.max_results = max_results
         # A pagination token returned from a previous call. Use it to retrieve the next page of results.
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         # The region ID of the cluster.
         # 
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation get a list of available region IDs.
@@ -34,6 +38,12 @@ class ListSupabaseProjectsRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -46,6 +56,12 @@ class ListSupabaseProjectsRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

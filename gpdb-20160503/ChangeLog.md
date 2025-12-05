@@ -1,3 +1,13 @@
+2025-12-05 Version: 4.15.1
+- Update API GetSupabaseProject: add response parameters Body.InstanceVersion.
+- Update API GetSupabaseProject: add response parameters Body.PayType.
+- Update API GetSupabaseProject: add response parameters Body.StorageType.
+- Update API ListAINodePools: add response parameters Body.AINodePoolInfos.$.AINodeInfos.$.ZoneId.
+- Update API ListSupabaseProjects: add request parameters PageNumber.
+- Update API ListSupabaseProjects: add request parameters PageSize.
+- Update API ListSupabaseProjects: add response parameters Body.Items.$.ExpireTime.
+
+
 2025-11-28 Version: 4.15.0
 - Support API CreateDBInstanceIPArray.
 - Support API CreateDatabase.

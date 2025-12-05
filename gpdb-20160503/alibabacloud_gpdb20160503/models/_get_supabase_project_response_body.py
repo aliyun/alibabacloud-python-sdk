@@ -13,6 +13,8 @@ class GetSupabaseProjectResponseBody(DaraModel):
         disk_performance_level: str = None,
         engine: str = None,
         engine_version: str = None,
+        instance_version: str = None,
+        pay_type: str = None,
         private_connect_url: str = None,
         project_id: str = None,
         project_name: str = None,
@@ -23,6 +25,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         security_ip_list: str = None,
         status: str = None,
         storage_size: int = None,
+        storage_type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -42,6 +45,8 @@ class GetSupabaseProjectResponseBody(DaraModel):
         self.engine = engine
         # The version of the database engine.
         self.engine_version = engine_version
+        self.instance_version = instance_version
+        self.pay_type = pay_type
         # The private (VPC) connection URL for the Supabase Dashboard.
         self.private_connect_url = private_connect_url
         # The Supabase instance ID.
@@ -64,6 +69,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         self.status = status
         # The storage capacity of the instance. Unit: GB.
         self.storage_size = storage_size
+        self.storage_type = storage_type
         # The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
         self.v_switch_id = v_switch_id
         # The VPC ID.
@@ -105,6 +111,12 @@ class GetSupabaseProjectResponseBody(DaraModel):
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
 
+        if self.instance_version is not None:
+            result['InstanceVersion'] = self.instance_version
+
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+
         if self.private_connect_url is not None:
             result['PrivateConnectUrl'] = self.private_connect_url
 
@@ -134,6 +146,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
+
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
@@ -166,6 +181,12 @@ class GetSupabaseProjectResponseBody(DaraModel):
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
 
+        if m.get('InstanceVersion') is not None:
+            self.instance_version = m.get('InstanceVersion')
+
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+
         if m.get('PrivateConnectUrl') is not None:
             self.private_connect_url = m.get('PrivateConnectUrl')
 
@@ -195,6 +216,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
