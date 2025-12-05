@@ -1,3 +1,7 @@
+2025-12-05 Version: 2.10.0
+- Support API DisableArms.
+
+
 2025-12-01 Version: 2.9.4
 - Update API DescribeApplicationInstances: add response parameters Body.Data.Instances.$.TrafficStatus.
 - Update API ListApplications: add request parameters NewSaeVersion.

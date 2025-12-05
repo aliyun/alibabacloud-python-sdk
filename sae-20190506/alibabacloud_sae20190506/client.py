@@ -9295,6 +9295,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.disable_application_scaling_rule_with_options_async(request, headers, runtime)
 
+    def disable_arms_with_options(
+        self,
+        request: sae_20190506_models.DisableArmsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DisableArmsResponse:
+        """
+        @param request: DisableArmsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableArmsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableArms',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/arms/disableArms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DisableArmsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_arms_with_options_async(
+        self,
+        request: sae_20190506_models.DisableArmsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DisableArmsResponse:
+        """
+        @param request: DisableArmsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableArmsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableArms',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/arms/disableArms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DisableArmsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_arms(
+        self,
+        request: sae_20190506_models.DisableArmsRequest,
+    ) -> sae_20190506_models.DisableArmsResponse:
+        """
+        @param request: DisableArmsRequest
+        @return: DisableArmsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.disable_arms_with_options(request, headers, runtime)
+
+    async def disable_arms_async(
+        self,
+        request: sae_20190506_models.DisableArmsRequest,
+    ) -> sae_20190506_models.DisableArmsResponse:
+        """
+        @param request: DisableArmsRequest
+        @return: DisableArmsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.disable_arms_with_options_async(request, headers, runtime)
+
     def downgrade_application_apm_service_with_options(
         self,
         request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
