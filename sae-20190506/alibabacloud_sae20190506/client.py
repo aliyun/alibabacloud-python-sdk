@@ -14563,6 +14563,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.restart_instances_with_options_async(request, headers, runtime)
 
+    def resume_traffic_with_options(
+        self,
+        request: sae_20190506_models.ResumeTrafficRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ResumeTrafficResponse:
+        """
+        @summary 恢复实例的流量
+        
+        @param request: ResumeTrafficRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTrafficResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeTraffic',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/instanceTrafficResume',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ResumeTrafficResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_traffic_with_options_async(
+        self,
+        request: sae_20190506_models.ResumeTrafficRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ResumeTrafficResponse:
+        """
+        @summary 恢复实例的流量
+        
+        @param request: ResumeTrafficRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTrafficResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeTraffic',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/instanceTrafficResume',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ResumeTrafficResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_traffic(
+        self,
+        request: sae_20190506_models.ResumeTrafficRequest,
+    ) -> sae_20190506_models.ResumeTrafficResponse:
+        """
+        @summary 恢复实例的流量
+        
+        @param request: ResumeTrafficRequest
+        @return: ResumeTrafficResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.resume_traffic_with_options(request, headers, runtime)
+
+    async def resume_traffic_async(
+        self,
+        request: sae_20190506_models.ResumeTrafficRequest,
+    ) -> sae_20190506_models.ResumeTrafficResponse:
+        """
+        @summary 恢复实例的流量
+        
+        @param request: ResumeTrafficRequest
+        @return: ResumeTrafficResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.resume_traffic_with_options_async(request, headers, runtime)
+
     def rollback_application_with_options(
         self,
         request: sae_20190506_models.RollbackApplicationRequest,
@@ -15238,6 +15346,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.suspend_job_with_options_async(request, headers, runtime)
+
+    def suspend_traffic_with_options(
+        self,
+        request: sae_20190506_models.SuspendTrafficRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.SuspendTrafficResponse:
+        """
+        @summary 将流量从实例中摘除
+        
+        @param request: SuspendTrafficRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendTrafficResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendTraffic',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/instanceTrafficSuspend',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.SuspendTrafficResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def suspend_traffic_with_options_async(
+        self,
+        request: sae_20190506_models.SuspendTrafficRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.SuspendTrafficResponse:
+        """
+        @summary 将流量从实例中摘除
+        
+        @param request: SuspendTrafficRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendTrafficResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendTraffic',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/instanceTrafficSuspend',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.SuspendTrafficResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def suspend_traffic(
+        self,
+        request: sae_20190506_models.SuspendTrafficRequest,
+    ) -> sae_20190506_models.SuspendTrafficResponse:
+        """
+        @summary 将流量从实例中摘除
+        
+        @param request: SuspendTrafficRequest
+        @return: SuspendTrafficResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.suspend_traffic_with_options(request, headers, runtime)
+
+    async def suspend_traffic_async(
+        self,
+        request: sae_20190506_models.SuspendTrafficRequest,
+    ) -> sae_20190506_models.SuspendTrafficResponse:
+        """
+        @summary 将流量从实例中摘除
+        
+        @param request: SuspendTrafficRequest
+        @return: SuspendTrafficResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.suspend_traffic_with_options_async(request, headers, runtime)
 
     def tag_resources_with_options(
         self,
