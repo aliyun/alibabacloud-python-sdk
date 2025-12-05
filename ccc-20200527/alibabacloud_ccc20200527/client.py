@@ -70,6 +70,11 @@ class Client(OpenApiClient):
         request: ccc20200527_models.CheckServiceLinkedRoleForDeletingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200527_models.CheckServiceLinkedRoleForDeletingResponse:
+        """
+        @param request: CheckServiceLinkedRoleForDeletingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleForDeletingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deletion_task_id):
@@ -104,6 +109,11 @@ class Client(OpenApiClient):
         request: ccc20200527_models.CheckServiceLinkedRoleForDeletingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200527_models.CheckServiceLinkedRoleForDeletingResponse:
+        """
+        @param request: CheckServiceLinkedRoleForDeletingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleForDeletingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deletion_task_id):
@@ -137,6 +147,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200527_models.CheckServiceLinkedRoleForDeletingRequest,
     ) -> ccc20200527_models.CheckServiceLinkedRoleForDeletingResponse:
+        """
+        @param request: CheckServiceLinkedRoleForDeletingRequest
+        @return: CheckServiceLinkedRoleForDeletingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_service_linked_role_for_deleting_with_options(request, runtime)
 
@@ -144,5 +158,9 @@ class Client(OpenApiClient):
         self,
         request: ccc20200527_models.CheckServiceLinkedRoleForDeletingRequest,
     ) -> ccc20200527_models.CheckServiceLinkedRoleForDeletingResponse:
+        """
+        @param request: CheckServiceLinkedRoleForDeletingRequest
+        @return: CheckServiceLinkedRoleForDeletingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_service_linked_role_for_deleting_with_options_async(request, runtime)
