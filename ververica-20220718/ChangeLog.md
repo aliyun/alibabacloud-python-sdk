@@ -1,3 +1,7 @@
+2025-12-05 Version: 1.9.1
+- Update API ListJobs: add request parameters sortOrder.
+
+
 2025-11-12 Version: 1.9.0
 - Support API GetPreSignedUrlForPutObject.
 

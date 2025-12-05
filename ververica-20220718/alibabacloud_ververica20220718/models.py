@@ -629,6 +629,136 @@ class AsyncDraftDeployResult(TeaModel):
         return self
 
 
+class DraftMetaInfoErrorDetail(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        reason: str = None,
+    ):
+        self.message = message
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class DraftValidationDetail(TeaModel):
+    def __init__(
+        self,
+        draft_meta_info_error_details: List[DraftMetaInfoErrorDetail] = None,
+        sql_error_detail: ValidationErrorDetails = None,
+        sql_validation_result: str = None,
+    ):
+        self.draft_meta_info_error_details = draft_meta_info_error_details
+        self.sql_error_detail = sql_error_detail
+        self.sql_validation_result = sql_validation_result
+
+    def validate(self):
+        if self.draft_meta_info_error_details:
+            for k in self.draft_meta_info_error_details:
+                if k:
+                    k.validate()
+        if self.sql_error_detail:
+            self.sql_error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['draftMetaInfoErrorDetails'] = []
+        if self.draft_meta_info_error_details is not None:
+            for k in self.draft_meta_info_error_details:
+                result['draftMetaInfoErrorDetails'].append(k.to_map() if k else None)
+        if self.sql_error_detail is not None:
+            result['sqlErrorDetail'] = self.sql_error_detail.to_map()
+        if self.sql_validation_result is not None:
+            result['sqlValidationResult'] = self.sql_validation_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.draft_meta_info_error_details = []
+        if m.get('draftMetaInfoErrorDetails') is not None:
+            for k in m.get('draftMetaInfoErrorDetails'):
+                temp_model = DraftMetaInfoErrorDetail()
+                self.draft_meta_info_error_details.append(temp_model.from_map(k))
+        if m.get('sqlErrorDetail') is not None:
+            temp_model = ValidationErrorDetails()
+            self.sql_error_detail = temp_model.from_map(m['sqlErrorDetail'])
+        if m.get('sqlValidationResult') is not None:
+            self.sql_validation_result = m.get('sqlValidationResult')
+        return self
+
+
+class AsyncDraftValidateResult(TeaModel):
+    def __init__(
+        self,
+        draft_validation_detail: DraftValidationDetail = None,
+        message: str = None,
+        success: bool = None,
+        ticket_status: str = None,
+    ):
+        self.draft_validation_detail = draft_validation_detail
+        self.message = message
+        self.success = success
+        self.ticket_status = ticket_status
+
+    def validate(self):
+        if self.draft_validation_detail:
+            self.draft_validation_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.draft_validation_detail is not None:
+            result['draftValidationDetail'] = self.draft_validation_detail.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.success is not None:
+            result['success'] = self.success
+        if self.ticket_status is not None:
+            result['ticketStatus'] = self.ticket_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('draftValidationDetail') is not None:
+            temp_model = DraftValidationDetail()
+            self.draft_validation_detail = temp_model.from_map(m['draftValidationDetail'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('ticketStatus') is not None:
+            self.ticket_status = m.get('ticketStatus')
+        return self
+
+
 class AsyncResourcePlanOperationResult(TeaModel):
     def __init__(
         self,
@@ -2280,6 +2410,39 @@ class DraftDeployResult(TeaModel):
             self.message = m.get('message')
         if m.get('success') is not None:
             self.success = m.get('success')
+        return self
+
+
+class DraftValidateParams(TeaModel):
+    def __init__(
+        self,
+        deployment_draft_id: str = None,
+        deployment_target_name: str = None,
+    ):
+        self.deployment_draft_id = deployment_draft_id
+        self.deployment_target_name = deployment_target_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_draft_id is not None:
+            result['deploymentDraftId'] = self.deployment_draft_id
+        if self.deployment_target_name is not None:
+            result['deploymentTargetName'] = self.deployment_target_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentDraftId') is not None:
+            self.deployment_draft_id = m.get('deploymentDraftId')
+        if m.get('deploymentTargetName') is not None:
+            self.deployment_target_name = m.get('deploymentTargetName')
         return self
 
 
@@ -15359,6 +15522,7 @@ class ListJobsRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
         sort_name: str = None,
+        sort_order: str = None,
     ):
         # The deployment ID.
         # 
@@ -15376,6 +15540,7 @@ class ListJobsRequest(TeaModel):
         # *   job_id
         # *   status
         self.sort_name = sort_name
+        self.sort_order = sort_order
 
     def validate(self):
         pass
@@ -15394,6 +15559,8 @@ class ListJobsRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.sort_name is not None:
             result['sortName'] = self.sort_name
+        if self.sort_order is not None:
+            result['sortOrder'] = self.sort_order
         return result
 
     def from_map(self, m: dict = None):
@@ -15406,6 +15573,8 @@ class ListJobsRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('sortName') is not None:
             self.sort_name = m.get('sortName')
+        if m.get('sortOrder') is not None:
+            self.sort_order = m.get('sortOrder')
         return self
 
 

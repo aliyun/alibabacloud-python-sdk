@@ -6676,6 +6676,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_name):
             query['sortName'] = request.sort_name
+        if not UtilClient.is_unset(request.sort_order):
+            query['sortOrder'] = request.sort_order
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6726,6 +6728,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_name):
             query['sortName'] = request.sort_name
+        if not UtilClient.is_unset(request.sort_order):
+            query['sortOrder'] = request.sort_order
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
