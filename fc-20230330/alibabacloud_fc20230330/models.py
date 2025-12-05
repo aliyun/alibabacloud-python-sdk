@@ -649,10 +649,12 @@ class ConcurrencyConfig(TeaModel):
 class CookieSessionAffinityConfig(TeaModel):
     def __init__(
         self,
+        disable_session_id_reuse: bool = None,
         session_concurrency_per_instance: int = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        self.disable_session_id_reuse = disable_session_id_reuse
         self.session_concurrency_per_instance = session_concurrency_per_instance
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         self.session_ttlin_seconds = session_ttlin_seconds
@@ -666,6 +668,8 @@ class CookieSessionAffinityConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_session_id_reuse is not None:
+            result['disableSessionIdReuse'] = self.disable_session_id_reuse
         if self.session_concurrency_per_instance is not None:
             result['sessionConcurrencyPerInstance'] = self.session_concurrency_per_instance
         if self.session_idle_timeout_in_seconds is not None:
@@ -676,6 +680,8 @@ class CookieSessionAffinityConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disableSessionIdReuse') is not None:
+            self.disable_session_id_reuse = m.get('disableSessionIdReuse')
         if m.get('sessionConcurrencyPerInstance') is not None:
             self.session_concurrency_per_instance = m.get('sessionConcurrencyPerInstance')
         if m.get('sessionIdleTimeoutInSeconds') is not None:
@@ -2460,11 +2466,15 @@ class CreateLayerVersionInput(TeaModel):
 class CreateSessionInput(TeaModel):
     def __init__(
         self,
+        disable_session_id_reuse: bool = None,
         nas_config: NASConfig = None,
+        session_id: str = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        self.disable_session_id_reuse = disable_session_id_reuse
         self.nas_config = nas_config
+        self.session_id = session_id
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         self.session_ttlin_seconds = session_ttlin_seconds
 
@@ -2478,8 +2488,12 @@ class CreateSessionInput(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_session_id_reuse is not None:
+            result['disableSessionIdReuse'] = self.disable_session_id_reuse
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
         if self.session_idle_timeout_in_seconds is not None:
             result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
         if self.session_ttlin_seconds is not None:
@@ -2488,9 +2502,13 @@ class CreateSessionInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disableSessionIdReuse') is not None:
+            self.disable_session_id_reuse = m.get('disableSessionIdReuse')
         if m.get('nasConfig') is not None:
             temp_model = NASConfig()
             self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
         if m.get('sessionIdleTimeoutInSeconds') is not None:
             self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
         if m.get('sessionTTLInSeconds') is not None:
@@ -4511,11 +4529,13 @@ class HeaderFieldSessionAffinityConfig(TeaModel):
     def __init__(
         self,
         affinity_header_field_name: str = None,
+        disable_session_id_reuse: bool = None,
         session_concurrency_per_instance: int = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
         self.affinity_header_field_name = affinity_header_field_name
+        self.disable_session_id_reuse = disable_session_id_reuse
         self.session_concurrency_per_instance = session_concurrency_per_instance
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         self.session_ttlin_seconds = session_ttlin_seconds
@@ -4531,6 +4551,8 @@ class HeaderFieldSessionAffinityConfig(TeaModel):
         result = dict()
         if self.affinity_header_field_name is not None:
             result['affinityHeaderFieldName'] = self.affinity_header_field_name
+        if self.disable_session_id_reuse is not None:
+            result['disableSessionIdReuse'] = self.disable_session_id_reuse
         if self.session_concurrency_per_instance is not None:
             result['sessionConcurrencyPerInstance'] = self.session_concurrency_per_instance
         if self.session_idle_timeout_in_seconds is not None:
@@ -4543,6 +4565,8 @@ class HeaderFieldSessionAffinityConfig(TeaModel):
         m = m or dict()
         if m.get('affinityHeaderFieldName') is not None:
             self.affinity_header_field_name = m.get('affinityHeaderFieldName')
+        if m.get('disableSessionIdReuse') is not None:
+            self.disable_session_id_reuse = m.get('disableSessionIdReuse')
         if m.get('sessionConcurrencyPerInstance') is not None:
             self.session_concurrency_per_instance = m.get('sessionConcurrencyPerInstance')
         if m.get('sessionIdleTimeoutInSeconds') is not None:
@@ -5447,6 +5471,7 @@ class ResidentResourceAllocation(TeaModel):
         self,
         function_name: str = None,
         instance_count: int = None,
+        instance_type: str = None,
         qualifier: str = None,
         total_cpu_cores: float = None,
         total_disk_size: float = None,
@@ -5457,6 +5482,7 @@ class ResidentResourceAllocation(TeaModel):
         self.function_name = function_name
         # 实例数
         self.instance_count = instance_count
+        self.instance_type = instance_type
         # 函数的别名
         self.qualifier = qualifier
         # CPU 占用总核数
@@ -5481,6 +5507,8 @@ class ResidentResourceAllocation(TeaModel):
             result['functionName'] = self.function_name
         if self.instance_count is not None:
             result['instanceCount'] = self.instance_count
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
         if self.total_cpu_cores is not None:
@@ -5499,6 +5527,8 @@ class ResidentResourceAllocation(TeaModel):
             self.function_name = m.get('functionName')
         if m.get('instanceCount') is not None:
             self.instance_count = m.get('instanceCount')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
         if m.get('totalCpuCores') is not None:
@@ -5767,6 +5797,7 @@ class ScalingConfigStatus(TeaModel):
         self,
         current_error: str = None,
         current_instances: int = None,
+        enable_on_demand_scaling: bool = None,
         function_arn: str = None,
         horizontal_scaling_policies: List[ScalingPolicy] = None,
         min_instances: int = None,
@@ -5776,6 +5807,7 @@ class ScalingConfigStatus(TeaModel):
     ):
         self.current_error = current_error
         self.current_instances = current_instances
+        self.enable_on_demand_scaling = enable_on_demand_scaling
         self.function_arn = function_arn
         self.horizontal_scaling_policies = horizontal_scaling_policies
         self.min_instances = min_instances
@@ -5803,6 +5835,8 @@ class ScalingConfigStatus(TeaModel):
             result['currentError'] = self.current_error
         if self.current_instances is not None:
             result['currentInstances'] = self.current_instances
+        if self.enable_on_demand_scaling is not None:
+            result['enableOnDemandScaling'] = self.enable_on_demand_scaling
         if self.function_arn is not None:
             result['functionArn'] = self.function_arn
         result['horizontalScalingPolicies'] = []
@@ -5827,6 +5861,8 @@ class ScalingConfigStatus(TeaModel):
             self.current_error = m.get('currentError')
         if m.get('currentInstances') is not None:
             self.current_instances = m.get('currentInstances')
+        if m.get('enableOnDemandScaling') is not None:
+            self.enable_on_demand_scaling = m.get('enableOnDemandScaling')
         if m.get('functionArn') is not None:
             self.function_arn = m.get('functionArn')
         self.horizontal_scaling_policies = []
@@ -5894,6 +5930,7 @@ class Session(TeaModel):
         self,
         container_id: str = None,
         created_time: str = None,
+        disable_session_id_reuse: bool = None,
         function_name: str = None,
         last_modified_time: str = None,
         nas_config: NASConfig = None,
@@ -5906,6 +5943,7 @@ class Session(TeaModel):
     ):
         self.container_id = container_id
         self.created_time = created_time
+        self.disable_session_id_reuse = disable_session_id_reuse
         self.function_name = function_name
         self.last_modified_time = last_modified_time
         self.nas_config = nas_config
@@ -5930,6 +5968,8 @@ class Session(TeaModel):
             result['containerId'] = self.container_id
         if self.created_time is not None:
             result['createdTime'] = self.created_time
+        if self.disable_session_id_reuse is not None:
+            result['disableSessionIdReuse'] = self.disable_session_id_reuse
         if self.function_name is not None:
             result['functionName'] = self.function_name
         if self.last_modified_time is not None:
@@ -5956,6 +5996,8 @@ class Session(TeaModel):
             self.container_id = m.get('containerId')
         if m.get('createdTime') is not None:
             self.created_time = m.get('createdTime')
+        if m.get('disableSessionIdReuse') is not None:
+            self.disable_session_id_reuse = m.get('disableSessionIdReuse')
         if m.get('functionName') is not None:
             self.function_name = m.get('functionName')
         if m.get('lastModifiedTime') is not None:
@@ -6873,11 +6915,13 @@ class PutProvisionConfigInput(TeaModel):
 class PutScalingConfigInput(TeaModel):
     def __init__(
         self,
+        enable_on_demand_scaling: bool = None,
         horizontal_scaling_policies: List[ScalingPolicy] = None,
         min_instances: int = None,
         resident_pool_id: str = None,
         scheduled_policies: List[ScheduledPolicy] = None,
     ):
+        self.enable_on_demand_scaling = enable_on_demand_scaling
         self.horizontal_scaling_policies = horizontal_scaling_policies
         self.min_instances = min_instances
         self.resident_pool_id = resident_pool_id
@@ -6899,6 +6943,8 @@ class PutScalingConfigInput(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_on_demand_scaling is not None:
+            result['enableOnDemandScaling'] = self.enable_on_demand_scaling
         result['horizontalScalingPolicies'] = []
         if self.horizontal_scaling_policies is not None:
             for k in self.horizontal_scaling_policies:
@@ -6915,6 +6961,8 @@ class PutScalingConfigInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableOnDemandScaling') is not None:
+            self.enable_on_demand_scaling = m.get('enableOnDemandScaling')
         self.horizontal_scaling_policies = []
         if m.get('horizontalScalingPolicies') is not None:
             for k in m.get('horizontalScalingPolicies'):
@@ -7654,9 +7702,11 @@ class UpdateResidentResourcePoolInput(TeaModel):
 class UpdateSessionInput(TeaModel):
     def __init__(
         self,
+        disable_session_id_reuse: bool = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        self.disable_session_id_reuse = disable_session_id_reuse
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         self.session_ttlin_seconds = session_ttlin_seconds
 
@@ -7669,6 +7719,8 @@ class UpdateSessionInput(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_session_id_reuse is not None:
+            result['disableSessionIdReuse'] = self.disable_session_id_reuse
         if self.session_idle_timeout_in_seconds is not None:
             result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
         if self.session_ttlin_seconds is not None:
@@ -7677,6 +7729,8 @@ class UpdateSessionInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disableSessionIdReuse') is not None:
+            self.disable_session_id_reuse = m.get('disableSessionIdReuse')
         if m.get('sessionIdleTimeoutInSeconds') is not None:
             self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
         if m.get('sessionTTLInSeconds') is not None:
@@ -7734,6 +7788,7 @@ class ChangeResourceGroupRequest(TeaModel):
         self,
         body: ChangeResourceGroupInput = None,
     ):
+        # The request details for updating the resource group.
         self.body = body
 
     def validate(self):
@@ -8097,7 +8152,9 @@ class CreateSessionRequest(TeaModel):
         body: CreateSessionInput = None,
         qualifier: str = None,
     ):
+        # Creates session configurations.
         self.body = body
+        # Specifies the version or alias to which the sesion belongs.
         self.qualifier = qualifier
 
     def validate(self):
@@ -8630,6 +8687,7 @@ class DeleteScalingConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -8690,6 +8748,7 @@ class DeleteSessionRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
+        # The function alias or version associated with the session to be deleted.
         self.qualifier = qualifier
 
     def validate(self):
@@ -8816,6 +8875,13 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language in which the list of regions is returned. For more information, see RFC 7231. Valid values:
+        # 
+        # *   zh-CN: Simplified Chinese.
+        # *   en-US: English.
+        # *   ja: Japanese
+        # 
+        # Default value: en-US
         self.accept_language = accept_language
 
     def validate(self):
@@ -8988,6 +9054,7 @@ class EnableFunctionInvocationResponseBody(TeaModel):
         self,
         success: bool = None,
     ):
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9606,6 +9673,7 @@ class GetScalingConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
+        # The alias of the function.
         self.qualifier = qualifier
 
     def validate(self):
@@ -9674,6 +9742,7 @@ class GetSessionRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
+        # The function alias or version associated with the queried session ID.
         self.qualifier = qualifier
 
     def validate(self):
@@ -11144,8 +11213,11 @@ class ListScalingConfigsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
+        # The name of the function.
         self.function_name = function_name
+        # The number of scaling settings to return.
         self.limit = limit
+        # The token for the next page.
         self.next_token = next_token
 
     def validate(self):
@@ -11226,10 +11298,15 @@ class ListSessionsRequest(TeaModel):
         session_id: str = None,
         session_status: str = None,
     ):
+        # The number of sessions to be returned. If this parameter is not specified, 20 sessions are returned by default.
         self.limit = limit
+        # The token for the next page.
         self.next_token = next_token
+        # The function alias or version.
         self.qualifier = qualifier
+        # The SessionId value to filter. If specified, all session information associated with this session ID in Active or Expired states is returned.
         self.session_id = session_id
+        # The session status to filter. By default, information for all sessions in the Active and Expired states is returned. You can specify Active to retrieve only active sessions, or Expired to retrieve only expired sessions.
         self.session_status = session_status
 
     def validate(self):
@@ -12021,7 +12098,9 @@ class PutScalingConfigRequest(TeaModel):
         body: PutScalingConfigInput = None,
         qualifier: str = None,
     ):
+        # The function scalability configuration.
         self.body = body
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -12581,7 +12660,9 @@ class UpdateSessionRequest(TeaModel):
         body: UpdateSessionInput = None,
         qualifier: str = None,
     ):
+        # The session update configuration.
         self.body = body
+        # The function alias or version associated with the session to be updated.
         self.qualifier = qualifier
 
     def validate(self):

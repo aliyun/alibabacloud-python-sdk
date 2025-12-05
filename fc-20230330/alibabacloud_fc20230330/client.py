@@ -48,7 +48,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ChangeResourceGroupResponse:
         """
-        @summary 修改实例所在资源组
+        @summary Updates the resource group of a Function Compute resource.
+        
+        @description To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -83,7 +85,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ChangeResourceGroupResponse:
         """
-        @summary 修改实例所在资源组
+        @summary Updates the resource group of a Function Compute resource.
+        
+        @description To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -116,7 +120,9 @@ class Client(OpenApiClient):
         request: fc20230330_models.ChangeResourceGroupRequest,
     ) -> fc20230330_models.ChangeResourceGroupResponse:
         """
-        @summary 修改实例所在资源组
+        @summary Updates the resource group of a Function Compute resource.
+        
+        @description To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -130,7 +136,9 @@ class Client(OpenApiClient):
         request: fc20230330_models.ChangeResourceGroupRequest,
     ) -> fc20230330_models.ChangeResourceGroupResponse:
         """
-        @summary 修改实例所在资源组
+        @summary Updates the resource group of a Function Compute resource.
+        
+        @description To update the resource group of a Function Compute resource, you must grant the user the ChangeResourceGroup permission on both the current resource group and the target resource group.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -563,7 +571,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateSessionResponse:
         """
-        @summary 创建会话资源
+        @summary The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
         
         @param request: CreateSessionRequest
         @param headers: map
@@ -603,7 +611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateSessionResponse:
         """
-        @summary 创建会话资源
+        @summary The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
         
         @param request: CreateSessionRequest
         @param headers: map
@@ -641,7 +649,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateSessionRequest,
     ) -> fc20230330_models.CreateSessionResponse:
         """
-        @summary 创建会话资源
+        @summary The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
         
         @param request: CreateSessionRequest
         @return: CreateSessionResponse
@@ -656,7 +664,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateSessionRequest,
     ) -> fc20230330_models.CreateSessionResponse:
         """
-        @summary 创建会话资源
+        @summary The CreateSession operation creates an explicit session resource. The system automatically generates a unique session ID, pre-allocates a function instance, and associates it with the session. You can specify values for TTL and idle timeout. This method applies to the HEADER_FIELD and GENERATED_COOKIE affinity types. It handles session preload and configuration initialization. After you call the InvokeFunction API, the session information can be included in the InvokeFunction request to enable request routing.
         
         @param request: CreateSessionRequest
         @return: CreateSessionResponse
@@ -1645,7 +1653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteScalingConfigResponse:
         """
-        @summary 删除弹性配置
+        @summary Deletes the scaling settings of a function.
         
         @param request: DeleteScalingConfigRequest
         @param headers: map
@@ -1684,7 +1692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteScalingConfigResponse:
         """
-        @summary 删除弹性配置
+        @summary Deletes the scaling settings of a function.
         
         @param request: DeleteScalingConfigRequest
         @param headers: map
@@ -1721,7 +1729,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteScalingConfigRequest,
     ) -> fc20230330_models.DeleteScalingConfigResponse:
         """
-        @summary 删除弹性配置
+        @summary Deletes the scaling settings of a function.
         
         @param request: DeleteScalingConfigRequest
         @return: DeleteScalingConfigResponse
@@ -1736,7 +1744,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteScalingConfigRequest,
     ) -> fc20230330_models.DeleteScalingConfigResponse:
         """
-        @summary 删除弹性配置
+        @summary Deletes the scaling settings of a function.
         
         @param request: DeleteScalingConfigRequest
         @return: DeleteScalingConfigResponse
@@ -1754,7 +1762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteSessionResponse:
         """
-        @summary 删除会话资源
+        @summary Deletes the specified session and prohibits new requests from being routed to it. Clears the session metadata from the database, so subsequent requests with the same session ID are treated as new sessions. Releases resources and performs session cleanup. In session isolation scenarios, terminates running requests and releases the instance bound to the session. In non-session isolation scenarios, allows running requests to continue and gracefully terminates them.
         
         @param request: DeleteSessionRequest
         @param headers: map
@@ -1794,7 +1802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteSessionResponse:
         """
-        @summary 删除会话资源
+        @summary Deletes the specified session and prohibits new requests from being routed to it. Clears the session metadata from the database, so subsequent requests with the same session ID are treated as new sessions. Releases resources and performs session cleanup. In session isolation scenarios, terminates running requests and releases the instance bound to the session. In non-session isolation scenarios, allows running requests to continue and gracefully terminates them.
         
         @param request: DeleteSessionRequest
         @param headers: map
@@ -1832,7 +1840,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteSessionRequest,
     ) -> fc20230330_models.DeleteSessionResponse:
         """
-        @summary 删除会话资源
+        @summary Deletes the specified session and prohibits new requests from being routed to it. Clears the session metadata from the database, so subsequent requests with the same session ID are treated as new sessions. Releases resources and performs session cleanup. In session isolation scenarios, terminates running requests and releases the instance bound to the session. In non-session isolation scenarios, allows running requests to continue and gracefully terminates them.
         
         @param request: DeleteSessionRequest
         @return: DeleteSessionResponse
@@ -1848,7 +1856,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteSessionRequest,
     ) -> fc20230330_models.DeleteSessionResponse:
         """
-        @summary 删除会话资源
+        @summary Deletes the specified session and prohibits new requests from being routed to it. Clears the session metadata from the database, so subsequent requests with the same session ID are treated as new sessions. Releases resources and performs session cleanup. In session isolation scenarios, terminates running requests and releases the instance bound to the session. In non-session isolation scenarios, allows running requests to continue and gracefully terminates them.
         
         @param request: DeleteSessionRequest
         @return: DeleteSessionResponse
@@ -2052,7 +2060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DescribeRegionsResponse:
         """
-        @summary 查询产品的地域信息列表
+        @summary Queries the regions where Function Compute 3.0 is available.
         
         @param request: DescribeRegionsRequest
         @param headers: map
@@ -2090,7 +2098,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DescribeRegionsResponse:
         """
-        @summary 查询产品的地域信息列表
+        @summary Queries the regions where Function Compute 3.0 is available.
         
         @param request: DescribeRegionsRequest
         @param headers: map
@@ -2126,7 +2134,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DescribeRegionsRequest,
     ) -> fc20230330_models.DescribeRegionsResponse:
         """
-        @summary 查询产品的地域信息列表
+        @summary Queries the regions where Function Compute 3.0 is available.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2140,7 +2148,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DescribeRegionsRequest,
     ) -> fc20230330_models.DescribeRegionsResponse:
         """
-        @summary 查询产品的地域信息列表
+        @summary Queries the regions where Function Compute 3.0 is available.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -2276,7 +2284,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.EnableFunctionInvocationResponse:
         """
-        @summary 允许函数调用
+        @summary The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2308,7 +2316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.EnableFunctionInvocationResponse:
         """
-        @summary 允许函数调用
+        @summary The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2338,7 +2346,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.EnableFunctionInvocationResponse:
         """
-        @summary 允许函数调用
+        @summary The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
         
         @return: EnableFunctionInvocationResponse
         """
@@ -2351,7 +2359,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.EnableFunctionInvocationResponse:
         """
-        @summary 允许函数调用
+        @summary The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
         
         @return: EnableFunctionInvocationResponse
         """
@@ -3369,7 +3377,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetScalingConfigResponse:
         """
-        @summary 获取弹性配置
+        @summary Gets the scaling settings of a function.
         
         @param request: GetScalingConfigRequest
         @param headers: map
@@ -3408,7 +3416,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetScalingConfigResponse:
         """
-        @summary 获取弹性配置
+        @summary Gets the scaling settings of a function.
         
         @param request: GetScalingConfigRequest
         @param headers: map
@@ -3445,7 +3453,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetScalingConfigRequest,
     ) -> fc20230330_models.GetScalingConfigResponse:
         """
-        @summary 获取弹性配置
+        @summary Gets the scaling settings of a function.
         
         @param request: GetScalingConfigRequest
         @return: GetScalingConfigResponse
@@ -3460,7 +3468,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetScalingConfigRequest,
     ) -> fc20230330_models.GetScalingConfigResponse:
         """
-        @summary 获取弹性配置
+        @summary Gets the scaling settings of a function.
         
         @param request: GetScalingConfigRequest
         @return: GetScalingConfigResponse
@@ -3478,7 +3486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetSessionResponse:
         """
-        @summary 获取函数会话信息。
+        @summary You can use this operation to retrieve detailed information about a specific session, including its session ID, associated function, affinity type, lifecycle configuration, status, and instance details. This operation retrieves the current metadata for a session. You can identify the metadata precisely using either the function name or qualifier. This capability enables you to monitor and debug external systems with ease. Only sessions that are in the Active state can be queried.
         
         @param request: GetSessionRequest
         @param headers: map
@@ -3518,7 +3526,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetSessionResponse:
         """
-        @summary 获取函数会话信息。
+        @summary You can use this operation to retrieve detailed information about a specific session, including its session ID, associated function, affinity type, lifecycle configuration, status, and instance details. This operation retrieves the current metadata for a session. You can identify the metadata precisely using either the function name or qualifier. This capability enables you to monitor and debug external systems with ease. Only sessions that are in the Active state can be queried.
         
         @param request: GetSessionRequest
         @param headers: map
@@ -3556,7 +3564,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetSessionRequest,
     ) -> fc20230330_models.GetSessionResponse:
         """
-        @summary 获取函数会话信息。
+        @summary You can use this operation to retrieve detailed information about a specific session, including its session ID, associated function, affinity type, lifecycle configuration, status, and instance details. This operation retrieves the current metadata for a session. You can identify the metadata precisely using either the function name or qualifier. This capability enables you to monitor and debug external systems with ease. Only sessions that are in the Active state can be queried.
         
         @param request: GetSessionRequest
         @return: GetSessionResponse
@@ -3572,7 +3580,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetSessionRequest,
     ) -> fc20230330_models.GetSessionResponse:
         """
-        @summary 获取函数会话信息。
+        @summary You can use this operation to retrieve detailed information about a specific session, including its session ID, associated function, affinity type, lifecycle configuration, status, and instance details. This operation retrieves the current metadata for a session. You can identify the metadata precisely using either the function name or qualifier. This capability enables you to monitor and debug external systems with ease. Only sessions that are in the Active state can be queried.
         
         @param request: GetSessionRequest
         @return: GetSessionResponse
@@ -5184,7 +5192,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListScalingConfigsResponse:
         """
-        @summary 获取弹性配置列表
+        @summary Lists the scaling settings of a function.
         
         @param request: ListScalingConfigsRequest
         @param headers: map
@@ -5226,7 +5234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListScalingConfigsResponse:
         """
-        @summary 获取弹性配置列表
+        @summary Lists the scaling settings of a function.
         
         @param request: ListScalingConfigsRequest
         @param headers: map
@@ -5266,7 +5274,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListScalingConfigsRequest,
     ) -> fc20230330_models.ListScalingConfigsResponse:
         """
-        @summary 获取弹性配置列表
+        @summary Lists the scaling settings of a function.
         
         @param request: ListScalingConfigsRequest
         @return: ListScalingConfigsResponse
@@ -5280,7 +5288,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListScalingConfigsRequest,
     ) -> fc20230330_models.ListScalingConfigsResponse:
         """
-        @summary 获取弹性配置列表
+        @summary Lists the scaling settings of a function.
         
         @param request: ListScalingConfigsRequest
         @return: ListScalingConfigsResponse
@@ -5297,7 +5305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListSessionsResponse:
         """
-        @summary 列出函数会话信息
+        @summary Lists sessions in the Active and/or Expired state(s) under the specified function. Supports filtering by qualifier, status, and session ID, as well as paginated queries. Returns basic session attributes for batch viewing of session distribution and status, helping with operations monitoring and integration with external systems, and enhancing session visibility and management.
         
         @param request: ListSessionsRequest
         @param headers: map
@@ -5344,7 +5352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListSessionsResponse:
         """
-        @summary 列出函数会话信息
+        @summary Lists sessions in the Active and/or Expired state(s) under the specified function. Supports filtering by qualifier, status, and session ID, as well as paginated queries. Returns basic session attributes for batch viewing of session distribution and status, helping with operations monitoring and integration with external systems, and enhancing session visibility and management.
         
         @param request: ListSessionsRequest
         @param headers: map
@@ -5389,7 +5397,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListSessionsRequest,
     ) -> fc20230330_models.ListSessionsResponse:
         """
-        @summary 列出函数会话信息
+        @summary Lists sessions in the Active and/or Expired state(s) under the specified function. Supports filtering by qualifier, status, and session ID, as well as paginated queries. Returns basic session attributes for batch viewing of session distribution and status, helping with operations monitoring and integration with external systems, and enhancing session visibility and management.
         
         @param request: ListSessionsRequest
         @return: ListSessionsResponse
@@ -5404,7 +5412,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListSessionsRequest,
     ) -> fc20230330_models.ListSessionsResponse:
         """
-        @summary 列出函数会话信息
+        @summary Lists sessions in the Active and/or Expired state(s) under the specified function. Supports filtering by qualifier, status, and session ID, as well as paginated queries. Returns basic session attributes for batch viewing of session distribution and status, helping with operations monitoring and integration with external systems, and enhancing session visibility and management.
         
         @param request: ListSessionsRequest
         @return: ListSessionsResponse
@@ -6295,7 +6303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutScalingConfigResponse:
         """
-        @summary 设置弹性配置
+        @summary Scaling settings
         
         @param request: PutScalingConfigRequest
         @param headers: map
@@ -6335,7 +6343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutScalingConfigResponse:
         """
-        @summary 设置弹性配置
+        @summary Scaling settings
         
         @param request: PutScalingConfigRequest
         @param headers: map
@@ -6373,7 +6381,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutScalingConfigRequest,
     ) -> fc20230330_models.PutScalingConfigResponse:
         """
-        @summary 设置弹性配置
+        @summary Scaling settings
         
         @param request: PutScalingConfigRequest
         @return: PutScalingConfigResponse
@@ -6388,7 +6396,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutScalingConfigRequest,
     ) -> fc20230330_models.PutScalingConfigResponse:
         """
-        @summary 设置弹性配置
+        @summary Scaling settings
         
         @param request: PutScalingConfigRequest
         @return: PutScalingConfigResponse
@@ -7062,7 +7070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateSessionResponse:
         """
-        @summary 更新会话配置
+        @summary Updates session configurations while the session is in the Active state, such as lifecycle parameters (e.g., SessionTTLInSeconds and SessionIdleTimeoutInSeconds). After the update takes effect, LastModifiedTime is automatically refreshed. These updates can be used to extend or shorten the validity period of a session and enable dynamic management without changing the execution environment bound to the session.
         
         @param request: UpdateSessionRequest
         @param headers: map
@@ -7103,7 +7111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateSessionResponse:
         """
-        @summary 更新会话配置
+        @summary Updates session configurations while the session is in the Active state, such as lifecycle parameters (e.g., SessionTTLInSeconds and SessionIdleTimeoutInSeconds). After the update takes effect, LastModifiedTime is automatically refreshed. These updates can be used to extend or shorten the validity period of a session and enable dynamic management without changing the execution environment bound to the session.
         
         @param request: UpdateSessionRequest
         @param headers: map
@@ -7142,7 +7150,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateSessionRequest,
     ) -> fc20230330_models.UpdateSessionResponse:
         """
-        @summary 更新会话配置
+        @summary Updates session configurations while the session is in the Active state, such as lifecycle parameters (e.g., SessionTTLInSeconds and SessionIdleTimeoutInSeconds). After the update takes effect, LastModifiedTime is automatically refreshed. These updates can be used to extend or shorten the validity period of a session and enable dynamic management without changing the execution environment bound to the session.
         
         @param request: UpdateSessionRequest
         @return: UpdateSessionResponse
@@ -7158,7 +7166,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateSessionRequest,
     ) -> fc20230330_models.UpdateSessionResponse:
         """
-        @summary 更新会话配置
+        @summary Updates session configurations while the session is in the Active state, such as lifecycle parameters (e.g., SessionTTLInSeconds and SessionIdleTimeoutInSeconds). After the update takes effect, LastModifiedTime is automatically refreshed. These updates can be used to extend or shorten the validity period of a session and enable dynamic management without changing the execution environment bound to the session.
         
         @param request: UpdateSessionRequest
         @return: UpdateSessionResponse
