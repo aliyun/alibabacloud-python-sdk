@@ -185,6 +185,10 @@ class Client(OpenApiClient):
             body['BackendNodeGroups'] = request.backend_node_groups
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dlf_catalog_name):
+            body['DlfCatalogName'] = request.dlf_catalog_name
+        if not UtilClient.is_unset(request.dlf_catalog_type):
+            body['DlfCatalogType'] = request.dlf_catalog_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
         if not UtilClient.is_unset(request.encrypted):
@@ -197,6 +201,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.kms_key_id):
             body['KmsKeyId'] = request.kms_key_id
+        if not UtilClient.is_unset(request.linked_ram_user_name):
+            body['LinkedRamUserName'] = request.linked_ram_user_name
         if not UtilClient.is_unset(request.observer_node_groups):
             body['ObserverNodeGroups'] = request.observer_node_groups
         if not UtilClient.is_unset(request.oss_accessing_role_name):
@@ -207,8 +213,12 @@ class Client(OpenApiClient):
             body['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.principal_type):
+            body['PrincipalType'] = request.principal_type
         if not UtilClient.is_unset(request.promotion_option_no):
             body['PromotionOptionNo'] = request.promotion_option_no
+        if not UtilClient.is_unset(request.ram_user_id):
+            body['RamUserId'] = request.ram_user_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -273,6 +283,10 @@ class Client(OpenApiClient):
             body['BackendNodeGroups'] = request.backend_node_groups
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dlf_catalog_name):
+            body['DlfCatalogName'] = request.dlf_catalog_name
+        if not UtilClient.is_unset(request.dlf_catalog_type):
+            body['DlfCatalogType'] = request.dlf_catalog_type
         if not UtilClient.is_unset(request.duration):
             body['Duration'] = request.duration
         if not UtilClient.is_unset(request.encrypted):
@@ -285,6 +299,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.kms_key_id):
             body['KmsKeyId'] = request.kms_key_id
+        if not UtilClient.is_unset(request.linked_ram_user_name):
+            body['LinkedRamUserName'] = request.linked_ram_user_name
         if not UtilClient.is_unset(request.observer_node_groups):
             body['ObserverNodeGroups'] = request.observer_node_groups
         if not UtilClient.is_unset(request.oss_accessing_role_name):
@@ -295,8 +311,12 @@ class Client(OpenApiClient):
             body['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.principal_type):
+            body['PrincipalType'] = request.principal_type
         if not UtilClient.is_unset(request.promotion_option_no):
             body['PromotionOptionNo'] = request.promotion_option_no
+        if not UtilClient.is_unset(request.ram_user_id):
+            body['RamUserId'] = request.ram_user_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):

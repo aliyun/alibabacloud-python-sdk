@@ -575,18 +575,23 @@ class CreateInstanceV1Request(TeaModel):
         auto_renew: bool = None,
         backend_node_groups: List[CreateInstanceV1RequestBackendNodeGroups] = None,
         client_token: str = None,
+        dlf_catalog_name: str = None,
+        dlf_catalog_type: str = None,
         duration: int = None,
         encrypted: bool = None,
         frontend_node_groups: List[CreateInstanceV1RequestFrontendNodeGroups] = None,
         gateway_type: str = None,
         instance_name: str = None,
         kms_key_id: str = None,
+        linked_ram_user_name: str = None,
         observer_node_groups: List[CreateInstanceV1RequestObserverNodeGroups] = None,
         oss_accessing_role_name: str = None,
         package_type: str = None,
         pay_type: str = None,
         pricing_cycle: str = None,
+        principal_type: str = None,
         promotion_option_no: str = None,
+        ram_user_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         run_mode: str = None,
@@ -603,6 +608,8 @@ class CreateInstanceV1Request(TeaModel):
         self.auto_renew = auto_renew
         self.backend_node_groups = backend_node_groups
         self.client_token = client_token
+        self.dlf_catalog_name = dlf_catalog_name
+        self.dlf_catalog_type = dlf_catalog_type
         self.duration = duration
         self.encrypted = encrypted
         self.frontend_node_groups = frontend_node_groups
@@ -610,6 +617,7 @@ class CreateInstanceV1Request(TeaModel):
         # This parameter is required.
         self.instance_name = instance_name
         self.kms_key_id = kms_key_id
+        self.linked_ram_user_name = linked_ram_user_name
         self.observer_node_groups = observer_node_groups
         self.oss_accessing_role_name = oss_accessing_role_name
         # This parameter is required.
@@ -617,7 +625,9 @@ class CreateInstanceV1Request(TeaModel):
         # This parameter is required.
         self.pay_type = pay_type
         self.pricing_cycle = pricing_cycle
+        self.principal_type = principal_type
         self.promotion_option_no = promotion_option_no
+        self.ram_user_id = ram_user_id
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -678,6 +688,10 @@ class CreateInstanceV1Request(TeaModel):
                 result['BackendNodeGroups'].append(k.to_map() if k else None)
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dlf_catalog_name is not None:
+            result['DlfCatalogName'] = self.dlf_catalog_name
+        if self.dlf_catalog_type is not None:
+            result['DlfCatalogType'] = self.dlf_catalog_type
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.encrypted is not None:
@@ -692,6 +706,8 @@ class CreateInstanceV1Request(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.kms_key_id is not None:
             result['KmsKeyId'] = self.kms_key_id
+        if self.linked_ram_user_name is not None:
+            result['LinkedRamUserName'] = self.linked_ram_user_name
         result['ObserverNodeGroups'] = []
         if self.observer_node_groups is not None:
             for k in self.observer_node_groups:
@@ -704,8 +720,12 @@ class CreateInstanceV1Request(TeaModel):
             result['PayType'] = self.pay_type
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.principal_type is not None:
+            result['PrincipalType'] = self.principal_type
         if self.promotion_option_no is not None:
             result['PromotionOptionNo'] = self.promotion_option_no
+        if self.ram_user_id is not None:
+            result['RamUserId'] = self.ram_user_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -746,6 +766,10 @@ class CreateInstanceV1Request(TeaModel):
                 self.backend_node_groups.append(temp_model.from_map(k))
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DlfCatalogName') is not None:
+            self.dlf_catalog_name = m.get('DlfCatalogName')
+        if m.get('DlfCatalogType') is not None:
+            self.dlf_catalog_type = m.get('DlfCatalogType')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('Encrypted') is not None:
@@ -761,6 +785,8 @@ class CreateInstanceV1Request(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('KmsKeyId') is not None:
             self.kms_key_id = m.get('KmsKeyId')
+        if m.get('LinkedRamUserName') is not None:
+            self.linked_ram_user_name = m.get('LinkedRamUserName')
         self.observer_node_groups = []
         if m.get('ObserverNodeGroups') is not None:
             for k in m.get('ObserverNodeGroups'):
@@ -774,8 +800,12 @@ class CreateInstanceV1Request(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PrincipalType') is not None:
+            self.principal_type = m.get('PrincipalType')
         if m.get('PromotionOptionNo') is not None:
             self.promotion_option_no = m.get('PromotionOptionNo')
+        if m.get('RamUserId') is not None:
+            self.ram_user_id = m.get('RamUserId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -1723,6 +1753,39 @@ class DescribeNodeGroupsResponseBodyDataNodeInfo(TeaModel):
         return self
 
 
+class DescribeNodeGroupsResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeNodeGroupsResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -1756,6 +1819,7 @@ class DescribeNodeGroupsResponseBodyData(TeaModel):
         status: str = None,
         storage_performance_level: str = None,
         storage_size: int = None,
+        tags: List[DescribeNodeGroupsResponseBodyDataTags] = None,
         target_elastic_node_number: int = None,
         zone_id: str = None,
     ):
@@ -1789,12 +1853,17 @@ class DescribeNodeGroupsResponseBodyData(TeaModel):
         self.status = status
         self.storage_performance_level = storage_performance_level
         self.storage_size = storage_size
+        self.tags = tags
         self.target_elastic_node_number = target_elastic_node_number
         self.zone_id = zone_id
 
     def validate(self):
         if self.node_info:
             for k in self.node_info:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -1866,6 +1935,10 @@ class DescribeNodeGroupsResponseBodyData(TeaModel):
             result['StoragePerformanceLevel'] = self.storage_performance_level
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.target_elastic_node_number is not None:
             result['TargetElasticNodeNumber'] = self.target_elastic_node_number
         if self.zone_id is not None:
@@ -1937,6 +2010,11 @@ class DescribeNodeGroupsResponseBodyData(TeaModel):
             self.storage_performance_level = m.get('StoragePerformanceLevel')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeNodeGroupsResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TargetElasticNodeNumber') is not None:
             self.target_elastic_node_number = m.get('TargetElasticNodeNumber')
         if m.get('ZoneId') is not None:

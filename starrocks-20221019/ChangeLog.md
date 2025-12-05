@@ -1,3 +1,12 @@
+2025-12-05 Version: 1.2.2
+- Update API CreateInstanceV1: add request parameters body.DlfCatalogName.
+- Update API CreateInstanceV1: add request parameters body.DlfCatalogType.
+- Update API CreateInstanceV1: add request parameters body.LinkedRamUserName.
+- Update API CreateInstanceV1: add request parameters body.PrincipalType.
+- Update API CreateInstanceV1: add request parameters body.RamUserId.
+- Update API DescribeNodeGroups: add response parameters Body.Data.$.Tags.
+
+
 2025-11-25 Version: 1.2.1
 - Update API ModifyNodeNumber: add request parameters Parallelism.
 - Update API ModifyNodeNumber: add request parameters TerminationGracePeriodSeconds.
