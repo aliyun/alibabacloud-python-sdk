@@ -2353,6 +2353,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_with_options_async(request, headers, runtime)
 
+    def create_service_version_with_options(
+        self,
+        service_id: str,
+        request: apig20240327_models.CreateServiceVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateServiceVersionResponse:
+        """
+        @summary 创建服务版本
+        
+        @param request: CreateServiceVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['labels'] = request.labels
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceVersion',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateServiceVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_version_with_options_async(
+        self,
+        service_id: str,
+        request: apig20240327_models.CreateServiceVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateServiceVersionResponse:
+        """
+        @summary 创建服务版本
+        
+        @param request: CreateServiceVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['labels'] = request.labels
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceVersion',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateServiceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_version(
+        self,
+        service_id: str,
+        request: apig20240327_models.CreateServiceVersionRequest,
+    ) -> apig20240327_models.CreateServiceVersionResponse:
+        """
+        @summary 创建服务版本
+        
+        @param request: CreateServiceVersionRequest
+        @return: CreateServiceVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_service_version_with_options(service_id, request, headers, runtime)
+
+    async def create_service_version_async(
+        self,
+        service_id: str,
+        request: apig20240327_models.CreateServiceVersionRequest,
+    ) -> apig20240327_models.CreateServiceVersionResponse:
+        """
+        @summary 创建服务版本
+        
+        @param request: CreateServiceVersionRequest
+        @return: CreateServiceVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_service_version_with_options_async(service_id, request, headers, runtime)
+
     def delete_consumer_with_options(
         self,
         consumer_id: str,
@@ -3658,6 +3770,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_with_options_async(service_id, headers, runtime)
+
+    def delete_service_version_with_options(
+        self,
+        service_id: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteServiceVersionResponse:
+        """
+        @summary 删除服务版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceVersion',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}/versions/{OpenApiUtilClient.get_encode_param(name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteServiceVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_version_with_options_async(
+        self,
+        service_id: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteServiceVersionResponse:
+        """
+        @summary 删除服务版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceVersion',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}/versions/{OpenApiUtilClient.get_encode_param(name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteServiceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_version(
+        self,
+        service_id: str,
+        name: str,
+    ) -> apig20240327_models.DeleteServiceVersionResponse:
+        """
+        @summary 删除服务版本
+        
+        @return: DeleteServiceVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_service_version_with_options(service_id, name, headers, runtime)
+
+    async def delete_service_version_async(
+        self,
+        service_id: str,
+        name: str,
+    ) -> apig20240327_models.DeleteServiceVersionResponse:
+        """
+        @summary 删除服务版本
+        
+        @return: DeleteServiceVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_service_version_with_options_async(service_id, name, headers, runtime)
 
     def deploy_http_api_with_options(
         self,
@@ -10184,6 +10390,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_policy_with_options_async(policy_id, request, headers, runtime)
+
+    def update_service_version_with_options(
+        self,
+        service_id: str,
+        name: str,
+        request: apig20240327_models.UpdateServiceVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateServiceVersionResponse:
+        """
+        @summary 更新服务版本
+        
+        @param request: UpdateServiceVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceVersion',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}/versions/{OpenApiUtilClient.get_encode_param(name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateServiceVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_version_with_options_async(
+        self,
+        service_id: str,
+        name: str,
+        request: apig20240327_models.UpdateServiceVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateServiceVersionResponse:
+        """
+        @summary 更新服务版本
+        
+        @param request: UpdateServiceVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceVersion',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}/versions/{OpenApiUtilClient.get_encode_param(name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateServiceVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_version(
+        self,
+        service_id: str,
+        name: str,
+        request: apig20240327_models.UpdateServiceVersionRequest,
+    ) -> apig20240327_models.UpdateServiceVersionResponse:
+        """
+        @summary 更新服务版本
+        
+        @param request: UpdateServiceVersionRequest
+        @return: UpdateServiceVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_service_version_with_options(service_id, name, request, headers, runtime)
+
+    async def update_service_version_async(
+        self,
+        service_id: str,
+        name: str,
+        request: apig20240327_models.UpdateServiceVersionRequest,
+    ) -> apig20240327_models.UpdateServiceVersionResponse:
+        """
+        @summary 更新服务版本
+        
+        @param request: UpdateServiceVersionRequest
+        @return: UpdateServiceVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_service_version_with_options_async(service_id, name, request, headers, runtime)
 
     def upgrade_gateway_with_options(
         self,

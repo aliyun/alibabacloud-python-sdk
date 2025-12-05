@@ -1,3 +1,9 @@
+2025-12-05 Version: 5.2.0
+- Support API CreateServiceVersion.
+- Support API DeleteServiceVersion.
+- Support API UpdateServiceVersion.
+
+
 2025-11-25 Version: 5.1.1
 - Update API ListGateways: add response parameters Body.data.items.$.loadBalancers.$.ipv4Addresses.
 - Update API ListGateways: add response parameters Body.data.items.$.loadBalancers.$.ipv6Addresses.
