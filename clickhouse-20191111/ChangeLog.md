@@ -1,3 +1,14 @@
+2025-12-05 Version: 3.2.0
+- Support API CancelRestartInstance.
+- Support API ChangeResourceGroup.
+- Support API CreateSLB.
+- Support API DeleteBackupPolicy.
+- Support API DeleteSLB.
+- Support API DescribeAutoRenewAttribute.
+- Support API DescribeSlowLogTrend.
+- Support API ModifyAutoRenewAttribute.
+
+
 2025-06-12 Version: 3.1.15
 - Generated python 2019-11-11 for clickhouse.
 

@@ -203,6 +203,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cluster_public_connection_with_options_async(request, runtime)
 
+    def cancel_restart_instance_with_options(
+        self,
+        request: clickhouse_20191111_models.CancelRestartInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelRestartInstanceResponse:
+        """
+        @summary 取消预约重启
+        
+        @param request: CancelRestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelRestartInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restart_time):
+            query['RestartTime'] = request.restart_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelRestartInstance',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelRestartInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_restart_instance_with_options_async(
+        self,
+        request: clickhouse_20191111_models.CancelRestartInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelRestartInstanceResponse:
+        """
+        @summary 取消预约重启
+        
+        @param request: CancelRestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelRestartInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restart_time):
+            query['RestartTime'] = request.restart_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelRestartInstance',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelRestartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_restart_instance(
+        self,
+        request: clickhouse_20191111_models.CancelRestartInstanceRequest,
+    ) -> clickhouse_20191111_models.CancelRestartInstanceResponse:
+        """
+        @summary 取消预约重启
+        
+        @param request: CancelRestartInstanceRequest
+        @return: CancelRestartInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_restart_instance_with_options(request, runtime)
+
+    async def cancel_restart_instance_async(
+        self,
+        request: clickhouse_20191111_models.CancelRestartInstanceRequest,
+    ) -> clickhouse_20191111_models.CancelRestartInstanceResponse:
+        """
+        @summary 取消预约重启
+        
+        @param request: CancelRestartInstanceRequest
+        @return: CancelRestartInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_restart_instance_with_options_async(request, runtime)
+
+    def change_resource_group_with_options(
+        self,
+        request: clickhouse_20191111_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: clickhouse_20191111_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: clickhouse_20191111_models.ChangeResourceGroupRequest,
+    ) -> clickhouse_20191111_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: clickhouse_20191111_models.ChangeResourceGroupRequest,
+    ) -> clickhouse_20191111_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def check_clickhouse_to_rdswith_options(
         self,
         request: clickhouse_20191111_models.CheckClickhouseToRDSRequest,
@@ -1975,6 +2207,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_rdsto_clickhouse_db_with_options_async(request, runtime)
 
+    def create_slbwith_options(
+        self,
+        request: clickhouse_20191111_models.CreateSLBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CreateSLBResponse:
+        """
+        @summary Mounts a Server Load Balancer (SLB) instance to an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        An ApsaraDB for ClickHouse cluster is dependent on an SLB instance at the network layer. You can bind a domain name to the IP address of an ApsaraDB for ClickHouse node to provide external connectivity service and provide failover capabilities. The SLB instance forwards requests to the nodes in the ApsaraDB for ClickHouse cluster and balances the request traffic among the nodes. The SLB instance checks the availability of backend nodes. If the SLB instance detects that a node is unavailable by checking the health status of all nodes, the SLB instance automatically isolates the unavailable node. This ensures that the request traffic is balanced among available nodes.
+        
+        @param request: CreateSLBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSLBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSLB',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CreateSLBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_slbwith_options_async(
+        self,
+        request: clickhouse_20191111_models.CreateSLBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CreateSLBResponse:
+        """
+        @summary Mounts a Server Load Balancer (SLB) instance to an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        An ApsaraDB for ClickHouse cluster is dependent on an SLB instance at the network layer. You can bind a domain name to the IP address of an ApsaraDB for ClickHouse node to provide external connectivity service and provide failover capabilities. The SLB instance forwards requests to the nodes in the ApsaraDB for ClickHouse cluster and balances the request traffic among the nodes. The SLB instance checks the availability of backend nodes. If the SLB instance detects that a node is unavailable by checking the health status of all nodes, the SLB instance automatically isolates the unavailable node. This ensures that the request traffic is balanced among available nodes.
+        
+        @param request: CreateSLBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSLBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSLB',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CreateSLBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_slb(
+        self,
+        request: clickhouse_20191111_models.CreateSLBRequest,
+    ) -> clickhouse_20191111_models.CreateSLBResponse:
+        """
+        @summary Mounts a Server Load Balancer (SLB) instance to an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        An ApsaraDB for ClickHouse cluster is dependent on an SLB instance at the network layer. You can bind a domain name to the IP address of an ApsaraDB for ClickHouse node to provide external connectivity service and provide failover capabilities. The SLB instance forwards requests to the nodes in the ApsaraDB for ClickHouse cluster and balances the request traffic among the nodes. The SLB instance checks the availability of backend nodes. If the SLB instance detects that a node is unavailable by checking the health status of all nodes, the SLB instance automatically isolates the unavailable node. This ensures that the request traffic is balanced among available nodes.
+        
+        @param request: CreateSLBRequest
+        @return: CreateSLBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_slbwith_options(request, runtime)
+
+    async def create_slb_async(
+        self,
+        request: clickhouse_20191111_models.CreateSLBRequest,
+    ) -> clickhouse_20191111_models.CreateSLBResponse:
+        """
+        @summary Mounts a Server Load Balancer (SLB) instance to an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        An ApsaraDB for ClickHouse cluster is dependent on an SLB instance at the network layer. You can bind a domain name to the IP address of an ApsaraDB for ClickHouse node to provide external connectivity service and provide failover capabilities. The SLB instance forwards requests to the nodes in the ApsaraDB for ClickHouse cluster and balances the request traffic among the nodes. The SLB instance checks the availability of backend nodes. If the SLB instance detects that a node is unavailable by checking the health status of all nodes, the SLB instance automatically isolates the unavailable node. This ensures that the request traffic is balanced among available nodes.
+        
+        @param request: CreateSLBRequest
+        @return: CreateSLBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_slbwith_options_async(request, runtime)
+
     def create_sqlaccount_with_options(
         self,
         request: clickhouse_20191111_models.CreateSQLAccountRequest,
@@ -2343,6 +2691,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
+    def delete_backup_policy_with_options(
+        self,
+        request: clickhouse_20191111_models.DeleteBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DeleteBackupPolicyResponse:
+        """
+        @summary 删除备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupPolicy',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DeleteBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_policy_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DeleteBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DeleteBackupPolicyResponse:
+        """
+        @summary 删除备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupPolicy',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DeleteBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup_policy(
+        self,
+        request: clickhouse_20191111_models.DeleteBackupPolicyRequest,
+    ) -> clickhouse_20191111_models.DeleteBackupPolicyResponse:
+        """
+        @summary 删除备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @return: DeleteBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_policy_with_options(request, runtime)
+
+    async def delete_backup_policy_async(
+        self,
+        request: clickhouse_20191111_models.DeleteBackupPolicyRequest,
+    ) -> clickhouse_20191111_models.DeleteBackupPolicyResponse:
+        """
+        @summary 删除备份策略
+        
+        @param request: DeleteBackupPolicyRequest
+        @return: DeleteBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_policy_with_options_async(request, runtime)
+
     def delete_dbcluster_with_options(
         self,
         request: clickhouse_20191111_models.DeleteDBClusterRequest,
@@ -2462,6 +2922,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbcluster_with_options_async(request, runtime)
+
+    def delete_slbwith_options(
+        self,
+        request: clickhouse_20191111_models.DeleteSLBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DeleteSLBResponse:
+        """
+        @summary Removes a Server Load Balancer (SLB) instance from an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        After an SLB instance is released, simple load balancing is performed on inbound traffic based on the domain name. The health status of all nodes is no longer checked. As a result, unavailable nodes may fail to be detected, and normal requests may be routed to the unavailable nodes. This causes the failures of some read and write requests.
+        
+        @param request: DeleteSLBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSLBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSLB',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DeleteSLBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_slbwith_options_async(
+        self,
+        request: clickhouse_20191111_models.DeleteSLBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DeleteSLBResponse:
+        """
+        @summary Removes a Server Load Balancer (SLB) instance from an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        After an SLB instance is released, simple load balancing is performed on inbound traffic based on the domain name. The health status of all nodes is no longer checked. As a result, unavailable nodes may fail to be detected, and normal requests may be routed to the unavailable nodes. This causes the failures of some read and write requests.
+        
+        @param request: DeleteSLBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSLBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSLB',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DeleteSLBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_slb(
+        self,
+        request: clickhouse_20191111_models.DeleteSLBRequest,
+    ) -> clickhouse_20191111_models.DeleteSLBResponse:
+        """
+        @summary Removes a Server Load Balancer (SLB) instance from an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        After an SLB instance is released, simple load balancing is performed on inbound traffic based on the domain name. The health status of all nodes is no longer checked. As a result, unavailable nodes may fail to be detected, and normal requests may be routed to the unavailable nodes. This causes the failures of some read and write requests.
+        
+        @param request: DeleteSLBRequest
+        @return: DeleteSLBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_slbwith_options(request, runtime)
+
+    async def delete_slb_async(
+        self,
+        request: clickhouse_20191111_models.DeleteSLBRequest,
+    ) -> clickhouse_20191111_models.DeleteSLBResponse:
+        """
+        @summary Removes a Server Load Balancer (SLB) instance from an ApsaraDB for ClickHouse cluster.
+        
+        @description ## [](#)Description
+        After an SLB instance is released, simple load balancing is performed on inbound traffic based on the domain name. The health status of all nodes is no longer checked. As a result, unavailable nodes may fail to be detected, and normal requests may be routed to the unavailable nodes. This causes the failures of some read and write requests.
+        
+        @param request: DeleteSLBRequest
+        @return: DeleteSLBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_slbwith_options_async(request, runtime)
 
     def delete_syndb_with_options(
         self,
@@ -3062,6 +3634,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_all_data_sources_with_options_async(request, runtime)
+
+    def describe_auto_renew_attribute_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeAutoRenewAttributeResponse:
+        """
+        @param request: DescribeAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoRenewAttribute',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_renew_attribute_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeAutoRenewAttributeResponse:
+        """
+        @param request: DescribeAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoRenewAttribute',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_renew_attribute(
+        self,
+        request: clickhouse_20191111_models.DescribeAutoRenewAttributeRequest,
+    ) -> clickhouse_20191111_models.DescribeAutoRenewAttributeResponse:
+        """
+        @param request: DescribeAutoRenewAttributeRequest
+        @return: DescribeAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_renew_attribute_with_options(request, runtime)
+
+    async def describe_auto_renew_attribute_async(
+        self,
+        request: clickhouse_20191111_models.DescribeAutoRenewAttributeRequest,
+    ) -> clickhouse_20191111_models.DescribeAutoRenewAttributeResponse:
+        """
+        @param request: DescribeAutoRenewAttributeRequest
+        @return: DescribeAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_renew_attribute_with_options_async(request, runtime)
 
     def describe_backup_policy_with_options(
         self,
@@ -5211,6 +5899,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
+    def describe_slow_log_trend_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeSlowLogTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeSlowLogTrendResponse:
+        """
+        @param request: DescribeSlowLogTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_duration_ms):
+            query['QueryDurationMs'] = request.query_duration_ms
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogTrend',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeSlowLogTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_slow_log_trend_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeSlowLogTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeSlowLogTrendResponse:
+        """
+        @param request: DescribeSlowLogTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_duration_ms):
+            query['QueryDurationMs'] = request.query_duration_ms
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogTrend',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeSlowLogTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_slow_log_trend(
+        self,
+        request: clickhouse_20191111_models.DescribeSlowLogTrendRequest,
+    ) -> clickhouse_20191111_models.DescribeSlowLogTrendResponse:
+        """
+        @param request: DescribeSlowLogTrendRequest
+        @return: DescribeSlowLogTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_slow_log_trend_with_options(request, runtime)
+
+    async def describe_slow_log_trend_async(
+        self,
+        request: clickhouse_20191111_models.DescribeSlowLogTrendRequest,
+    ) -> clickhouse_20191111_models.DescribeSlowLogTrendResponse:
+        """
+        @param request: DescribeSlowLogTrendRequest
+        @return: DescribeSlowLogTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_slow_log_trend_with_options_async(request, runtime)
+
     def describe_syn_db_tables_with_options(
         self,
         request: clickhouse_20191111_models.DescribeSynDbTablesRequest,
@@ -6066,6 +6874,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_auto_renew_attribute_with_options(
+        self,
+        request: clickhouse_20191111_models.ModifyAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ModifyAutoRenewAttributeResponse:
+        """
+        @param request: ModifyAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoRenewAttribute',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ModifyAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_renew_attribute_with_options_async(
+        self,
+        request: clickhouse_20191111_models.ModifyAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ModifyAutoRenewAttributeResponse:
+        """
+        @param request: ModifyAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoRenewAttribute',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ModifyAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_renew_attribute(
+        self,
+        request: clickhouse_20191111_models.ModifyAutoRenewAttributeRequest,
+    ) -> clickhouse_20191111_models.ModifyAutoRenewAttributeResponse:
+        """
+        @param request: ModifyAutoRenewAttributeRequest
+        @return: ModifyAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_auto_renew_attribute_with_options(request, runtime)
+
+    async def modify_auto_renew_attribute_async(
+        self,
+        request: clickhouse_20191111_models.ModifyAutoRenewAttributeRequest,
+    ) -> clickhouse_20191111_models.ModifyAutoRenewAttributeResponse:
+        """
+        @param request: ModifyAutoRenewAttributeRequest
+        @return: ModifyAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_auto_renew_attribute_with_options_async(request, runtime)
 
     def modify_backup_policy_with_options(
         self,
