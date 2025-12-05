@@ -1,3 +1,9 @@
+2025-12-05 Version: 5.2.1
+- Update API CreateMcpServer: add request parameters body.grayMcpServerConfigs.
+- Update API GetMcpServer: add response parameters Body.data.grayMcpServerConfigs.
+- Update API UpdateMcpServer: add request parameters body.grayMcpServerConfigs.
+
+
 2025-12-05 Version: 5.2.0
 - Support API CreateServiceVersion.
 - Support API DeleteServiceVersion.

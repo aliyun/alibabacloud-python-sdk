@@ -9157,6 +9157,142 @@ class CreateMcpServerRequestBackendConfig(TeaModel):
         return self
 
 
+class CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+        self.service_id = service_id
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class CreateMcpServerRequestGrayMcpServerConfigsBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices] = None,
+    ):
+        self.scene = scene
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMcpServerRequestGrayMcpServerConfigs(TeaModel):
+    def __init__(
+        self,
+        backend_config: CreateMcpServerRequestGrayMcpServerConfigsBackendConfig = None,
+        match: HttpRouteMatch = None,
+        route_id: str = None,
+    ):
+        self.backend_config = backend_config
+        self.match = match
+        self.route_id = route_id
+
+    def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendConfig') is not None:
+            temp_model = CreateMcpServerRequestGrayMcpServerConfigsBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        return self
+
+
 class CreateMcpServerRequest(TeaModel):
     def __init__(
         self,
@@ -9167,6 +9303,7 @@ class CreateMcpServerRequest(TeaModel):
         domain_ids: List[str] = None,
         exposed_uri_path: str = None,
         gateway_id: str = None,
+        gray_mcp_server_configs: List[CreateMcpServerRequestGrayMcpServerConfigs] = None,
         match: HttpRouteMatch = None,
         mcp_statistics_enable: bool = None,
         name: str = None,
@@ -9189,6 +9326,7 @@ class CreateMcpServerRequest(TeaModel):
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
         # Specifies whether MCP observability is enabled. Default: false.
@@ -9213,6 +9351,10 @@ class CreateMcpServerRequest(TeaModel):
                     k.validate()
         if self.backend_config:
             self.backend_config.validate()
+        if self.gray_mcp_server_configs:
+            for k in self.gray_mcp_server_configs:
+                if k:
+                    k.validate()
         if self.match:
             self.match.validate()
 
@@ -9238,6 +9380,10 @@ class CreateMcpServerRequest(TeaModel):
             result['exposedUriPath'] = self.exposed_uri_path
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
+        result['grayMcpServerConfigs'] = []
+        if self.gray_mcp_server_configs is not None:
+            for k in self.gray_mcp_server_configs:
+                result['grayMcpServerConfigs'].append(k.to_map() if k else None)
         if self.match is not None:
             result['match'] = self.match.to_map()
         if self.mcp_statistics_enable is not None:
@@ -9270,6 +9416,11 @@ class CreateMcpServerRequest(TeaModel):
             self.exposed_uri_path = m.get('exposedUriPath')
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
+        self.gray_mcp_server_configs = []
+        if m.get('grayMcpServerConfigs') is not None:
+            for k in m.get('grayMcpServerConfigs'):
+                temp_model = CreateMcpServerRequestGrayMcpServerConfigs()
+                self.gray_mcp_server_configs.append(temp_model.from_map(k))
         if m.get('match') is not None:
             temp_model = HttpRouteMatch()
             self.match = temp_model.from_map(m['match'])
@@ -14732,6 +14883,142 @@ class GetMcpServerResponseBodyDataDomainInfos(TeaModel):
         return self
 
 
+class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+        self.service_id = service_id
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices] = None,
+    ):
+        self.scene = scene
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class GetMcpServerResponseBodyDataGrayMcpServerConfigs(TeaModel):
+    def __init__(
+        self,
+        backend_config: GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig = None,
+        match: HttpRouteMatch = None,
+        route_id: str = None,
+    ):
+        self.backend_config = backend_config
+        self.match = match
+        self.route_id = route_id
+
+    def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendConfig') is not None:
+            temp_model = GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        return self
+
+
 class GetMcpServerResponseBodyDataNacosMcpSyncInfo(TeaModel):
     def __init__(
         self,
@@ -14787,6 +15074,7 @@ class GetMcpServerResponseBodyData(TeaModel):
         environment_id: str = None,
         exposed_uri_path: str = None,
         gateway_id: str = None,
+        gray_mcp_server_configs: List[GetMcpServerResponseBodyDataGrayMcpServerConfigs] = None,
         match: HttpRouteMatch = None,
         mcp_server_config: str = None,
         mcp_server_config_plugin_attachment_id: str = None,
@@ -14825,6 +15113,7 @@ class GetMcpServerResponseBodyData(TeaModel):
         self.exposed_uri_path = exposed_uri_path
         # The gateway instance ID.
         self.gateway_id = gateway_id
+        self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
         # The HTTP-to-MCP configurations.
@@ -14857,6 +15146,10 @@ class GetMcpServerResponseBodyData(TeaModel):
             self.backend.validate()
         if self.domain_infos:
             for k in self.domain_infos:
+                if k:
+                    k.validate()
+        if self.gray_mcp_server_configs:
+            for k in self.gray_mcp_server_configs:
                 if k:
                     k.validate()
         if self.match:
@@ -14894,6 +15187,10 @@ class GetMcpServerResponseBodyData(TeaModel):
             result['exposedUriPath'] = self.exposed_uri_path
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
+        result['grayMcpServerConfigs'] = []
+        if self.gray_mcp_server_configs is not None:
+            for k in self.gray_mcp_server_configs:
+                result['grayMcpServerConfigs'].append(k.to_map() if k else None)
         if self.match is not None:
             result['match'] = self.match.to_map()
         if self.mcp_server_config is not None:
@@ -14947,6 +15244,11 @@ class GetMcpServerResponseBodyData(TeaModel):
             self.exposed_uri_path = m.get('exposedUriPath')
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
+        self.gray_mcp_server_configs = []
+        if m.get('grayMcpServerConfigs') is not None:
+            for k in m.get('grayMcpServerConfigs'):
+                temp_model = GetMcpServerResponseBodyDataGrayMcpServerConfigs()
+                self.gray_mcp_server_configs.append(temp_model.from_map(k))
         if m.get('match') is not None:
             temp_model = HttpRouteMatch()
             self.match = temp_model.from_map(m['match'])
@@ -24667,6 +24969,142 @@ class UpdateMcpServerRequestBackendConfig(TeaModel):
         return self
 
 
+class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+        self.service_id = service_id
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices] = None,
+    ):
+        self.scene = scene
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateMcpServerRequestGrayMcpServerConfigs(TeaModel):
+    def __init__(
+        self,
+        backend_config: UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig = None,
+        match: HttpRouteMatch = None,
+        route_id: str = None,
+    ):
+        self.backend_config = backend_config
+        self.match = match
+        self.route_id = route_id
+
+    def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendConfig') is not None:
+            temp_model = UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        return self
+
+
 class UpdateMcpServerRequest(TeaModel):
     def __init__(
         self,
@@ -24676,6 +25114,7 @@ class UpdateMcpServerRequest(TeaModel):
         description: str = None,
         domain_ids: List[str] = None,
         exposed_uri_path: str = None,
+        gray_mcp_server_configs: List[UpdateMcpServerRequestGrayMcpServerConfigs] = None,
         match: HttpRouteMatch = None,
         mcp_statistics_enable: bool = None,
         protocol: str = None,
@@ -24693,6 +25132,7 @@ class UpdateMcpServerRequest(TeaModel):
         self.domain_ids = domain_ids
         # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
         # Specifies if MCP observability is enabled. Default value: false.
@@ -24713,6 +25153,10 @@ class UpdateMcpServerRequest(TeaModel):
                     k.validate()
         if self.backend_config:
             self.backend_config.validate()
+        if self.gray_mcp_server_configs:
+            for k in self.gray_mcp_server_configs:
+                if k:
+                    k.validate()
         if self.match:
             self.match.validate()
 
@@ -24736,6 +25180,10 @@ class UpdateMcpServerRequest(TeaModel):
             result['domainIds'] = self.domain_ids
         if self.exposed_uri_path is not None:
             result['exposedUriPath'] = self.exposed_uri_path
+        result['grayMcpServerConfigs'] = []
+        if self.gray_mcp_server_configs is not None:
+            for k in self.gray_mcp_server_configs:
+                result['grayMcpServerConfigs'].append(k.to_map() if k else None)
         if self.match is not None:
             result['match'] = self.match.to_map()
         if self.mcp_statistics_enable is not None:
@@ -24764,6 +25212,11 @@ class UpdateMcpServerRequest(TeaModel):
             self.domain_ids = m.get('domainIds')
         if m.get('exposedUriPath') is not None:
             self.exposed_uri_path = m.get('exposedUriPath')
+        self.gray_mcp_server_configs = []
+        if m.get('grayMcpServerConfigs') is not None:
+            for k in m.get('grayMcpServerConfigs'):
+                temp_model = UpdateMcpServerRequestGrayMcpServerConfigs()
+                self.gray_mcp_server_configs.append(temp_model.from_map(k))
         if m.get('match') is not None:
             temp_model = HttpRouteMatch()
             self.match = temp_model.from_map(m['match'])

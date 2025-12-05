@@ -1747,6 +1747,8 @@ class Client(OpenApiClient):
             body['exposedUriPath'] = request.exposed_uri_path
         if not UtilClient.is_unset(request.gateway_id):
             body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gray_mcp_server_configs):
+            body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
         if not UtilClient.is_unset(request.mcp_statistics_enable):
@@ -1807,6 +1809,8 @@ class Client(OpenApiClient):
             body['exposedUriPath'] = request.exposed_uri_path
         if not UtilClient.is_unset(request.gateway_id):
             body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gray_mcp_server_configs):
+            body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
         if not UtilClient.is_unset(request.mcp_statistics_enable):
@@ -10038,6 +10042,8 @@ class Client(OpenApiClient):
             body['domainIds'] = request.domain_ids
         if not UtilClient.is_unset(request.exposed_uri_path):
             body['exposedUriPath'] = request.exposed_uri_path
+        if not UtilClient.is_unset(request.gray_mcp_server_configs):
+            body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
         if not UtilClient.is_unset(request.mcp_statistics_enable):
@@ -10097,6 +10103,8 @@ class Client(OpenApiClient):
             body['domainIds'] = request.domain_ids
         if not UtilClient.is_unset(request.exposed_uri_path):
             body['exposedUriPath'] = request.exposed_uri_path
+        if not UtilClient.is_unset(request.gray_mcp_server_configs):
+            body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not UtilClient.is_unset(request.match):
             body['match'] = request.match
         if not UtilClient.is_unset(request.mcp_statistics_enable):
