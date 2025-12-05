@@ -1665,126 +1665,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_application_access_point_with_options_async(request, runtime)
 
-    def create_certificate_with_options(
-        self,
-        tmp_req: kms_20160120_models.CreateCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.CreateCertificateResponse:
-        """
-        @description To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
-        In this example, a certificate is created and the CSR is obtained.
-        
-        @param tmp_req: CreateCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCertificateResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = kms_20160120_models.CreateCertificateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.subject_alternative_names):
-            request.subject_alternative_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subject_alternative_names, 'SubjectAlternativeNames', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.exportable_private_key):
-            query['ExportablePrivateKey'] = request.exportable_private_key
-        if not UtilClient.is_unset(request.key_spec):
-            query['KeySpec'] = request.key_spec
-        if not UtilClient.is_unset(request.subject):
-            query['Subject'] = request.subject
-        if not UtilClient.is_unset(request.subject_alternative_names_shrink):
-            query['SubjectAlternativeNames'] = request.subject_alternative_names_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateCertificate',
-            version='2016-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_certificate_with_options_async(
-        self,
-        tmp_req: kms_20160120_models.CreateCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.CreateCertificateResponse:
-        """
-        @description To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
-        In this example, a certificate is created and the CSR is obtained.
-        
-        @param tmp_req: CreateCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCertificateResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = kms_20160120_models.CreateCertificateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.subject_alternative_names):
-            request.subject_alternative_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subject_alternative_names, 'SubjectAlternativeNames', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.exportable_private_key):
-            query['ExportablePrivateKey'] = request.exportable_private_key
-        if not UtilClient.is_unset(request.key_spec):
-            query['KeySpec'] = request.key_spec
-        if not UtilClient.is_unset(request.subject):
-            query['Subject'] = request.subject
-        if not UtilClient.is_unset(request.subject_alternative_names_shrink):
-            query['SubjectAlternativeNames'] = request.subject_alternative_names_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateCertificate',
-            version='2016-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            kms_20160120_models.CreateCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_certificate(
-        self,
-        request: kms_20160120_models.CreateCertificateRequest,
-    ) -> kms_20160120_models.CreateCertificateResponse:
-        """
-        @description To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
-        In this example, a certificate is created and the CSR is obtained.
-        
-        @param request: CreateCertificateRequest
-        @return: CreateCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_certificate_with_options(request, runtime)
-
-    async def create_certificate_async(
-        self,
-        request: kms_20160120_models.CreateCertificateRequest,
-    ) -> kms_20160120_models.CreateCertificateResponse:
-        """
-        @description To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
-        In this example, a certificate is created and the CSR is obtained.
-        
-        @param request: CreateCertificateRequest
-        @return: CreateCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_certificate_with_options_async(request, runtime)
-
     def create_client_key_with_options(
         self,
         request: kms_20160120_models.CreateClientKeyRequest,
@@ -5751,6 +5631,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_kms_instance_with_options_async(request, runtime)
 
+    def get_kms_instance_quota_infos_with_options(
+        self,
+        request: kms_20160120_models.GetKmsInstanceQuotaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.GetKmsInstanceQuotaInfosResponse:
+        """
+        @summary 获取实例配额信息
+        
+        @param request: GetKmsInstanceQuotaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKmsInstanceQuotaInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKmsInstanceQuotaInfos',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetKmsInstanceQuotaInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kms_instance_quota_infos_with_options_async(
+        self,
+        request: kms_20160120_models.GetKmsInstanceQuotaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.GetKmsInstanceQuotaInfosResponse:
+        """
+        @summary 获取实例配额信息
+        
+        @param request: GetKmsInstanceQuotaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKmsInstanceQuotaInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKmsInstanceQuotaInfos',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetKmsInstanceQuotaInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kms_instance_quota_infos(
+        self,
+        request: kms_20160120_models.GetKmsInstanceQuotaInfosRequest,
+    ) -> kms_20160120_models.GetKmsInstanceQuotaInfosResponse:
+        """
+        @summary 获取实例配额信息
+        
+        @param request: GetKmsInstanceQuotaInfosRequest
+        @return: GetKmsInstanceQuotaInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_kms_instance_quota_infos_with_options(request, runtime)
+
+    async def get_kms_instance_quota_infos_async(
+        self,
+        request: kms_20160120_models.GetKmsInstanceQuotaInfosRequest,
+    ) -> kms_20160120_models.GetKmsInstanceQuotaInfosResponse:
+        """
+        @summary 获取实例配额信息
+        
+        @param request: GetKmsInstanceQuotaInfosRequest
+        @return: GetKmsInstanceQuotaInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_kms_instance_quota_infos_with_options_async(request, runtime)
+
     def get_parameters_for_import_with_options(
         self,
         request: kms_20160120_models.GetParametersForImportRequest,
@@ -7093,6 +7073,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -7130,6 +7112,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -9846,7 +9830,11 @@ class Client(OpenApiClient):
         @return: UpdateKmsInstanceBindVpcResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.bind_vpcs):
+            query['BindVpcs'] = request.bind_vpcs
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9855,7 +9843,7 @@ class Client(OpenApiClient):
             version='2016-01-20',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -9883,7 +9871,11 @@ class Client(OpenApiClient):
         @return: UpdateKmsInstanceBindVpcResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.bind_vpcs):
+            query['BindVpcs'] = request.bind_vpcs
+        if not UtilClient.is_unset(request.kms_instance_id):
+            query['KmsInstanceId'] = request.kms_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9892,7 +9884,7 @@ class Client(OpenApiClient):
             version='2016-01-20',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',

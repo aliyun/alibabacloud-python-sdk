@@ -1,3 +1,14 @@
+2025-12-05 Version: 2.4.0
+- Support API GetKmsInstanceQuotaInfos.
+- Update API DescribeSecret: add response parameters Body.OwingService.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.Log.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.LogStorage.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.ProductType.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.SaleStatus.
+- Update API ListKmsInstances: add request parameters Filters.
+- Update API ListSecrets: add response parameters Body.SecretList.$.OwingService.
+
+
 2025-07-25 Version: 2.3.1
 - Generated python 2016-01-20 for Kms.
 

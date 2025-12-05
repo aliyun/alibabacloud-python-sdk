@@ -1796,246 +1796,6 @@ class CreateApplicationAccessPointResponse(TeaModel):
         return self
 
 
-class CreateCertificateRequest(TeaModel):
-    def __init__(
-        self,
-        exportable_private_key: bool = None,
-        key_spec: str = None,
-        subject: str = None,
-        subject_alternative_names: Dict[str, Any] = None,
-    ):
-        # Specifies whether the private key of the certificate can be exported for use. Valid values:
-        # 
-        # *   true: The private key of the certificate can be exported for use. This is the default value.
-        # *   false: The private key of the certificate cannot be exported for use. We recommend that you set this parameter to false to protect keys with a higher security level.
-        self.exportable_private_key = exportable_private_key
-        # The type of the key. Valid values:
-        # 
-        # *   RSA_2048
-        # *   EC_P256
-        # *   EC_SM2
-        # 
-        # This parameter is required.
-        self.key_spec = key_spec
-        # The certificate subject, which is the owner of the certificate.
-        # 
-        # Specify the value in the distinguished name (DN) format, as defined in [RFC 2253](https://tools.ietf.org/html/rfc2253?spm=a2c4g.11186623.2.13.265f1a1cGFCn3Q). A DN is a sequence of relative distinguished names (RDNs).
-        # 
-        # RDNs are key-value pairs in the format of `attribute1=value1,attribute2=value2`. Separate multiple RDNs with commas (,).
-        # 
-        # The Subject parameter consists of the following fields:
-        # 
-        # *   CN: required. The name of the certificate subject.
-        # *   C: required. The two-character country or region code in the [ISO 3166-1](https://www.iso.org/obp/ui/#search/code/) standard. For example, CN indicates China.
-        # *   O: required. The legal name of the enterprise, company, organization, or institution.
-        # *   OU: required. The name of the department.
-        # *   ST: optional. The name of the province, municipality, autonomous region, or special administrative region.
-        # *   L: optional. The name of the city.
-        # 
-        # This parameter is required.
-        self.subject = subject
-        # The subject alternative names.
-        # 
-        # A domain name list is supported. A maximum of 10 domain names are supported.
-        self.subject_alternative_names = subject_alternative_names
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.exportable_private_key is not None:
-            result['ExportablePrivateKey'] = self.exportable_private_key
-        if self.key_spec is not None:
-            result['KeySpec'] = self.key_spec
-        if self.subject is not None:
-            result['Subject'] = self.subject
-        if self.subject_alternative_names is not None:
-            result['SubjectAlternativeNames'] = self.subject_alternative_names
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ExportablePrivateKey') is not None:
-            self.exportable_private_key = m.get('ExportablePrivateKey')
-        if m.get('KeySpec') is not None:
-            self.key_spec = m.get('KeySpec')
-        if m.get('Subject') is not None:
-            self.subject = m.get('Subject')
-        if m.get('SubjectAlternativeNames') is not None:
-            self.subject_alternative_names = m.get('SubjectAlternativeNames')
-        return self
-
-
-class CreateCertificateShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        exportable_private_key: bool = None,
-        key_spec: str = None,
-        subject: str = None,
-        subject_alternative_names_shrink: str = None,
-    ):
-        # Specifies whether the private key of the certificate can be exported for use. Valid values:
-        # 
-        # *   true: The private key of the certificate can be exported for use. This is the default value.
-        # *   false: The private key of the certificate cannot be exported for use. We recommend that you set this parameter to false to protect keys with a higher security level.
-        self.exportable_private_key = exportable_private_key
-        # The type of the key. Valid values:
-        # 
-        # *   RSA_2048
-        # *   EC_P256
-        # *   EC_SM2
-        # 
-        # This parameter is required.
-        self.key_spec = key_spec
-        # The certificate subject, which is the owner of the certificate.
-        # 
-        # Specify the value in the distinguished name (DN) format, as defined in [RFC 2253](https://tools.ietf.org/html/rfc2253?spm=a2c4g.11186623.2.13.265f1a1cGFCn3Q). A DN is a sequence of relative distinguished names (RDNs).
-        # 
-        # RDNs are key-value pairs in the format of `attribute1=value1,attribute2=value2`. Separate multiple RDNs with commas (,).
-        # 
-        # The Subject parameter consists of the following fields:
-        # 
-        # *   CN: required. The name of the certificate subject.
-        # *   C: required. The two-character country or region code in the [ISO 3166-1](https://www.iso.org/obp/ui/#search/code/) standard. For example, CN indicates China.
-        # *   O: required. The legal name of the enterprise, company, organization, or institution.
-        # *   OU: required. The name of the department.
-        # *   ST: optional. The name of the province, municipality, autonomous region, or special administrative region.
-        # *   L: optional. The name of the city.
-        # 
-        # This parameter is required.
-        self.subject = subject
-        # The subject alternative names.
-        # 
-        # A domain name list is supported. A maximum of 10 domain names are supported.
-        self.subject_alternative_names_shrink = subject_alternative_names_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.exportable_private_key is not None:
-            result['ExportablePrivateKey'] = self.exportable_private_key
-        if self.key_spec is not None:
-            result['KeySpec'] = self.key_spec
-        if self.subject is not None:
-            result['Subject'] = self.subject
-        if self.subject_alternative_names_shrink is not None:
-            result['SubjectAlternativeNames'] = self.subject_alternative_names_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ExportablePrivateKey') is not None:
-            self.exportable_private_key = m.get('ExportablePrivateKey')
-        if m.get('KeySpec') is not None:
-            self.key_spec = m.get('KeySpec')
-        if m.get('Subject') is not None:
-            self.subject = m.get('Subject')
-        if m.get('SubjectAlternativeNames') is not None:
-            self.subject_alternative_names_shrink = m.get('SubjectAlternativeNames')
-        return self
-
-
-class CreateCertificateResponseBody(TeaModel):
-    def __init__(
-        self,
-        arn: str = None,
-        certificate_id: str = None,
-        csr: str = None,
-        request_id: str = None,
-    ):
-        # The Alibaba Cloud Resource Name (ARN) of the certificate.
-        self.arn = arn
-        # The ID of the certificate. It is the globally unique identifier (GUID) of the certificate in Certificates Manager.
-        self.certificate_id = certificate_id
-        # The CSR in the PEM format.
-        self.csr = csr
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.arn is not None:
-            result['Arn'] = self.arn
-        if self.certificate_id is not None:
-            result['CertificateId'] = self.certificate_id
-        if self.csr is not None:
-            result['Csr'] = self.csr
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Arn') is not None:
-            self.arn = m.get('Arn')
-        if m.get('CertificateId') is not None:
-            self.certificate_id = m.get('CertificateId')
-        if m.get('Csr') is not None:
-            self.csr = m.get('Csr')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateCertificateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateCertificateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateCertificateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateClientKeyRequest(TeaModel):
     def __init__(
         self,
@@ -6083,6 +5843,7 @@ class DescribeSecretResponseBody(TeaModel):
         extended_config: str = None,
         last_rotation_date: str = None,
         next_rotation_date: str = None,
+        owing_service: str = None,
         planned_delete_time: str = None,
         request_id: str = None,
         rotation_interval: str = None,
@@ -6121,6 +5882,7 @@ class DescribeSecretResponseBody(TeaModel):
         # 
         # >  This parameter is returned when automatic rotation is enabled.
         self.next_rotation_date = next_rotation_date
+        self.owing_service = owing_service
         # The time when the secret is scheduled to be deleted.
         self.planned_delete_time = planned_delete_time
         # The ID of the request, which is used to locate and troubleshoot issues.
@@ -6175,6 +5937,8 @@ class DescribeSecretResponseBody(TeaModel):
             result['LastRotationDate'] = self.last_rotation_date
         if self.next_rotation_date is not None:
             result['NextRotationDate'] = self.next_rotation_date
+        if self.owing_service is not None:
+            result['OwingService'] = self.owing_service
         if self.planned_delete_time is not None:
             result['PlannedDeleteTime'] = self.planned_delete_time
         if self.request_id is not None:
@@ -6211,6 +5975,8 @@ class DescribeSecretResponseBody(TeaModel):
             self.last_rotation_date = m.get('LastRotationDate')
         if m.get('NextRotationDate') is not None:
             self.next_rotation_date = m.get('NextRotationDate')
+        if m.get('OwingService') is not None:
+            self.owing_service = m.get('OwingService')
         if m.get('PlannedDeleteTime') is not None:
             self.planned_delete_time = m.get('PlannedDeleteTime')
         if m.get('RequestId') is not None:
@@ -8283,15 +8049,19 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         key_num: int = None,
+        log: int = None,
+        log_storage: int = None,
+        product_type: str = None,
         product_version: str = None,
+        sale_status: str = None,
         secret_num: str = None,
         spec: int = None,
         start_date: str = None,
         status: str = None,
         vpc_id: str = None,
         vpc_num: int = None,
-        vswitch_ids: str = None,
-        zone_ids: str = None,
+        vswitch_ids: List[str] = None,
+        zone_ids: List[str] = None,
     ):
         # A list of associated VPCs.
         # 
@@ -8310,7 +8080,11 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
         self.instance_name = instance_name
         # The number of keys that can be created for the KMS instance.
         self.key_num = key_num
+        self.log = log
+        self.log_storage = log_storage
+        self.product_type = product_type
         self.product_version = product_version
+        self.sale_status = sale_status
         # The number of secrets that can be created for the KMS instance.
         self.secret_num = secret_num
         # The computing performance of the KMS instance.
@@ -8360,8 +8134,16 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.key_num is not None:
             result['KeyNum'] = self.key_num
+        if self.log is not None:
+            result['Log'] = self.log
+        if self.log_storage is not None:
+            result['LogStorage'] = self.log_storage
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
         if self.product_version is not None:
             result['ProductVersion'] = self.product_version
+        if self.sale_status is not None:
+            result['SaleStatus'] = self.sale_status
         if self.secret_num is not None:
             result['SecretNum'] = self.secret_num
         if self.spec is not None:
@@ -8399,8 +8181,16 @@ class GetKmsInstanceResponseBodyKmsInstance(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('KeyNum') is not None:
             self.key_num = m.get('KeyNum')
+        if m.get('Log') is not None:
+            self.log = m.get('Log')
+        if m.get('LogStorage') is not None:
+            self.log_storage = m.get('LogStorage')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
         if m.get('ProductVersion') is not None:
             self.product_version = m.get('ProductVersion')
+        if m.get('SaleStatus') is not None:
+            self.sale_status = m.get('SaleStatus')
         if m.get('SecretNum') is not None:
             self.secret_num = m.get('SecretNum')
         if m.get('Spec') is not None:
@@ -8494,6 +8284,166 @@ class GetKmsInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetKmsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetKmsInstanceQuotaInfosRequest(TeaModel):
+    def __init__(
+        self,
+        kms_instance_id: str = None,
+        resource_type: str = None,
+    ):
+        self.kms_instance_id = kms_instance_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kms_instance_id is not None:
+            result['KmsInstanceId'] = self.kms_instance_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KmsInstanceId') is not None:
+            self.kms_instance_id = m.get('KmsInstanceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetKmsInstanceQuotaInfosResponseBodyKmsInstanceQuotaInfos(TeaModel):
+    def __init__(
+        self,
+        resource_quota: int = None,
+        resource_type: str = None,
+        used_quantity: int = None,
+    ):
+        self.resource_quota = resource_quota
+        self.resource_type = resource_type
+        self.used_quantity = used_quantity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_quota is not None:
+            result['ResourceQuota'] = self.resource_quota
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.used_quantity is not None:
+            result['UsedQuantity'] = self.used_quantity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceQuota') is not None:
+            self.resource_quota = m.get('ResourceQuota')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('UsedQuantity') is not None:
+            self.used_quantity = m.get('UsedQuantity')
+        return self
+
+
+class GetKmsInstanceQuotaInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        kms_instance_id: str = None,
+        kms_instance_quota_infos: List[GetKmsInstanceQuotaInfosResponseBodyKmsInstanceQuotaInfos] = None,
+        request_id: str = None,
+    ):
+        self.kms_instance_id = kms_instance_id
+        self.kms_instance_quota_infos = kms_instance_quota_infos
+        self.request_id = request_id
+
+    def validate(self):
+        if self.kms_instance_quota_infos:
+            for k in self.kms_instance_quota_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kms_instance_id is not None:
+            result['KmsInstanceId'] = self.kms_instance_id
+        result['KmsInstanceQuotaInfos'] = []
+        if self.kms_instance_quota_infos is not None:
+            for k in self.kms_instance_quota_infos:
+                result['KmsInstanceQuotaInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KmsInstanceId') is not None:
+            self.kms_instance_id = m.get('KmsInstanceId')
+        self.kms_instance_quota_infos = []
+        if m.get('KmsInstanceQuotaInfos') is not None:
+            for k in m.get('KmsInstanceQuotaInfos'):
+                temp_model = GetKmsInstanceQuotaInfosResponseBodyKmsInstanceQuotaInfos()
+                self.kms_instance_quota_infos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetKmsInstanceQuotaInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKmsInstanceQuotaInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKmsInstanceQuotaInfosResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10828,9 +10778,11 @@ class ListKeysResponse(TeaModel):
 class ListKmsInstancesRequest(TeaModel):
     def __init__(
         self,
+        filters: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.filters = filters
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100. Default value: 20.
@@ -10845,6 +10797,8 @@ class ListKmsInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.filters is not None:
+            result['Filters'] = self.filters
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -10853,6 +10807,8 @@ class ListKmsInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Filters') is not None:
+            self.filters = m.get('Filters')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -12040,6 +11996,7 @@ class ListSecretsResponseBodySecretListSecret(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        owing_service: str = None,
         planned_delete_time: str = None,
         secret_name: str = None,
         secret_type: str = None,
@@ -12048,6 +12005,7 @@ class ListSecretsResponseBodySecretListSecret(TeaModel):
     ):
         # The tag value.
         self.create_time = create_time
+        self.owing_service = owing_service
         # The resource tags of the secret.
         # 
         # This parameter is not returned if you set the FetchTags parameter to false or do not specify the FetchTags parameter.
@@ -12076,6 +12034,8 @@ class ListSecretsResponseBodySecretListSecret(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.owing_service is not None:
+            result['OwingService'] = self.owing_service
         if self.planned_delete_time is not None:
             result['PlannedDeleteTime'] = self.planned_delete_time
         if self.secret_name is not None:
@@ -12092,6 +12052,8 @@ class ListSecretsResponseBodySecretListSecret(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('OwingService') is not None:
+            self.owing_service = m.get('OwingService')
         if m.get('PlannedDeleteTime') is not None:
             self.planned_delete_time = m.get('PlannedDeleteTime')
         if m.get('SecretName') is not None:
