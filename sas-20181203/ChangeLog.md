@@ -1,3 +1,7 @@
+2025-12-05 Version: 7.0.5
+- Update API ListAgentlessRegion: add response parameters Body.VendorRegionList.
+
+
 2025-12-03 Version: 7.0.4
 - Update API DescribeExportInfo: add request parameters ResourceDirectoryAccountId.
 - Update API DescribeNoticeConfig: add request parameters BizType.
