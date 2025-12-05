@@ -1,3 +1,8 @@
+2025-12-05 Version: 3.10.0
+- Support API GetAppPlayKey.
+- Support API SetAppPlayKey.
+
+
 2025-12-03 Version: 3.9.2
 - Update API BatchGetMediaInfos: add request parameters ReferenceIds.
 - Update API BatchGetMediaInfos: add response parameters Body.NonExistReferenceIds.
