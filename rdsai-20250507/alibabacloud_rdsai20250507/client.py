@@ -59,8 +59,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.inputs):
             request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.conversation_id):
             query['ConversationId'] = request.conversation_id
         if not UtilClient.is_unset(request.inputs_shrink):
@@ -106,8 +104,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.inputs):
             request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.conversation_id):
             query['ConversationId'] = request.conversation_id
         if not UtilClient.is_unset(request.inputs_shrink):
@@ -175,8 +171,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -212,8 +206,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -435,8 +427,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tools):
             request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.enable_tools):
             query['EnableTools'] = request.enable_tools
         if not UtilClient.is_unset(request.name):
@@ -482,8 +472,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tools):
             request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.enable_tools):
             query['EnableTools'] = request.enable_tools
         if not UtilClient.is_unset(request.name):
@@ -655,8 +643,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         req = open_api_models.OpenApiRequest(
@@ -692,8 +678,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         req = open_api_models.OpenApiRequest(
@@ -1683,8 +1667,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.last_id):
             query['LastId'] = request.last_id
         if not UtilClient.is_unset(request.limit):
@@ -1726,8 +1708,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.last_id):
             query['LastId'] = request.last_id
         if not UtilClient.is_unset(request.limit):
@@ -1795,8 +1775,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         req = open_api_models.OpenApiRequest(
@@ -1832,8 +1810,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         req = open_api_models.OpenApiRequest(
@@ -1895,8 +1871,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.conversation_id):
             query['ConversationId'] = request.conversation_id
         if not UtilClient.is_unset(request.first_id):
@@ -1936,8 +1910,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.conversation_id):
             query['ConversationId'] = request.conversation_id
         if not UtilClient.is_unset(request.first_id):
@@ -2003,8 +1975,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2042,8 +2012,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2095,7 +2063,6 @@ class Client(OpenApiClient):
 
     def list_custom_agent_tools_with_options(
         self,
-        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
         """
@@ -2105,13 +2072,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCustomAgentToolsResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListCustomAgentTools',
             version='2025-05-07',
@@ -2130,7 +2091,6 @@ class Client(OpenApiClient):
 
     async def list_custom_agent_tools_with_options_async(
         self,
-        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
         """
@@ -2140,13 +2100,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCustomAgentToolsResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListCustomAgentTools',
             version='2025-05-07',
@@ -2163,31 +2117,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_custom_agent_tools(
-        self,
-        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
-    ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
+    def list_custom_agent_tools(self) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
         """
         @summary 获取专属Agent可用工具
         
-        @param request: ListCustomAgentToolsRequest
         @return: ListCustomAgentToolsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.list_custom_agent_tools_with_options(request, runtime)
+        return self.list_custom_agent_tools_with_options(runtime)
 
-    async def list_custom_agent_tools_async(
-        self,
-        request: rds_ai_20250507_models.ListCustomAgentToolsRequest,
-    ) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
+    async def list_custom_agent_tools_async(self) -> rds_ai_20250507_models.ListCustomAgentToolsResponse:
         """
         @summary 获取专属Agent可用工具
         
-        @param request: ListCustomAgentToolsRequest
         @return: ListCustomAgentToolsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.list_custom_agent_tools_with_options_async(request, runtime)
+        return await self.list_custom_agent_tools_with_options_async(runtime)
 
     def modify_instance_auth_config_with_options(
         self,
@@ -2895,8 +2841,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.message_id):
@@ -2936,8 +2880,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.message_id):
@@ -3415,8 +3357,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tools):
             request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         if not UtilClient.is_unset(request.enable_tools):
@@ -3464,8 +3404,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tools):
             request.tools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_id):
-            query['ApiId'] = request.api_id
         if not UtilClient.is_unset(request.custom_agent_id):
             query['CustomAgentId'] = request.custom_agent_id
         if not UtilClient.is_unset(request.enable_tools):

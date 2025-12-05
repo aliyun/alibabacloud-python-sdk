@@ -52,14 +52,11 @@ class ChatMessagesRequestInputs(TeaModel):
 class ChatMessagesRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         conversation_id: str = None,
         inputs: ChatMessagesRequestInputs = None,
         parent_message_id: str = None,
         query: str = None,
     ):
-        # This parameter is required.
-        self.api_id = api_id
         self.conversation_id = conversation_id
         self.inputs = inputs
         self.parent_message_id = parent_message_id
@@ -76,8 +73,6 @@ class ChatMessagesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
         if self.inputs is not None:
@@ -90,8 +85,6 @@ class ChatMessagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
         if m.get('Inputs') is not None:
@@ -107,14 +100,11 @@ class ChatMessagesRequest(TeaModel):
 class ChatMessagesShrinkRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         conversation_id: str = None,
         inputs_shrink: str = None,
         parent_message_id: str = None,
         query: str = None,
     ):
-        # This parameter is required.
-        self.api_id = api_id
         self.conversation_id = conversation_id
         self.inputs_shrink = inputs_shrink
         self.parent_message_id = parent_message_id
@@ -130,8 +120,6 @@ class ChatMessagesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
         if self.inputs_shrink is not None:
@@ -144,8 +132,6 @@ class ChatMessagesShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
         if m.get('Inputs') is not None:
@@ -276,10 +262,8 @@ class ChatMessagesResponse(TeaModel):
 class ChatMessagesTaskStopRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         task_id: str = None,
     ):
-        self.api_id = api_id
         # This parameter is required.
         self.task_id = task_id
 
@@ -292,16 +276,12 @@ class ChatMessagesTaskStopRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -709,13 +689,11 @@ class CreateAppInstanceResponse(TeaModel):
 class CreateCustomAgentRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         enable_tools: bool = None,
         name: str = None,
         system_prompt: str = None,
         tools: List[str] = None,
     ):
-        self.api_id = api_id
         self.enable_tools = enable_tools
         self.name = name
         # This parameter is required.
@@ -731,8 +709,6 @@ class CreateCustomAgentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.enable_tools is not None:
             result['EnableTools'] = self.enable_tools
         if self.name is not None:
@@ -745,8 +721,6 @@ class CreateCustomAgentRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('EnableTools') is not None:
             self.enable_tools = m.get('EnableTools')
         if m.get('Name') is not None:
@@ -761,13 +735,11 @@ class CreateCustomAgentRequest(TeaModel):
 class CreateCustomAgentShrinkRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         enable_tools: bool = None,
         name: str = None,
         system_prompt: str = None,
         tools_shrink: str = None,
     ):
-        self.api_id = api_id
         self.enable_tools = enable_tools
         self.name = name
         # This parameter is required.
@@ -783,8 +755,6 @@ class CreateCustomAgentShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.enable_tools is not None:
             result['EnableTools'] = self.enable_tools
         if self.name is not None:
@@ -797,8 +767,6 @@ class CreateCustomAgentShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('EnableTools') is not None:
             self.enable_tools = m.get('EnableTools')
         if m.get('Name') is not None:
@@ -1031,10 +999,8 @@ class DeleteAppInstanceResponse(TeaModel):
 class DeleteCustomAgentRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         custom_agent_id: str = None,
     ):
-        self.api_id = api_id
         # AgentId。
         self.custom_agent_id = custom_agent_id
 
@@ -1047,16 +1013,12 @@ class DeleteCustomAgentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.custom_agent_id is not None:
             result['CustomAgentId'] = self.custom_agent_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('CustomAgentId') is not None:
             self.custom_agent_id = m.get('CustomAgentId')
         return self
@@ -2774,13 +2736,11 @@ class DescribeInstanceStorageConfigResponse(TeaModel):
 class GetConversationsRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         last_id: str = None,
         limit: str = None,
         pinned: str = None,
         sort_by: str = None,
     ):
-        self.api_id = api_id
         self.last_id = last_id
         self.limit = limit
         self.pinned = pinned
@@ -2795,8 +2755,6 @@ class GetConversationsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.last_id is not None:
             result['LastId'] = self.last_id
         if self.limit is not None:
@@ -2809,8 +2767,6 @@ class GetConversationsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('LastId') is not None:
             self.last_id = m.get('LastId')
         if m.get('Limit') is not None:
@@ -2964,10 +2920,8 @@ class GetConversationsResponse(TeaModel):
 class GetCustomAgentRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         custom_agent_id: str = None,
     ):
-        self.api_id = api_id
         self.custom_agent_id = custom_agent_id
 
     def validate(self):
@@ -2979,16 +2933,12 @@ class GetCustomAgentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.custom_agent_id is not None:
             result['CustomAgentId'] = self.custom_agent_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('CustomAgentId') is not None:
             self.custom_agent_id = m.get('CustomAgentId')
         return self
@@ -3107,12 +3057,10 @@ class GetCustomAgentResponse(TeaModel):
 class GetMessagesRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         conversation_id: str = None,
         first_id: str = None,
         limit: int = None,
     ):
-        self.api_id = api_id
         self.conversation_id = conversation_id
         self.first_id = first_id
         self.limit = limit
@@ -3126,8 +3074,6 @@ class GetMessagesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
         if self.first_id is not None:
@@ -3138,8 +3084,6 @@ class GetMessagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
         if m.get('FirstId') is not None:
@@ -3309,11 +3253,9 @@ class GetMessagesResponse(TeaModel):
 class ListCustomAgentRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
-        self.api_id = api_id
         self.page_number = page_number
         self.page_size = page_size
 
@@ -3326,8 +3268,6 @@ class ListCustomAgentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -3336,8 +3276,6 @@ class ListCustomAgentRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -3506,33 +3444,6 @@ class ListCustomAgentResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ListCustomAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListCustomAgentToolsRequest(TeaModel):
-    def __init__(
-        self,
-        api_id: str = None,
-    ):
-        self.api_id = api_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         return self
 
 
@@ -4688,12 +4599,10 @@ class ModifyInstanceStorageConfigResponse(TeaModel):
 class ModifyMessagesFeedbacksRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         content: str = None,
         message_id: str = None,
         rating: str = None,
     ):
-        self.api_id = api_id
         self.content = content
         self.message_id = message_id
         self.rating = rating
@@ -4707,8 +4616,6 @@ class ModifyMessagesFeedbacksRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.content is not None:
             result['Content'] = self.content
         if self.message_id is not None:
@@ -4719,8 +4626,6 @@ class ModifyMessagesFeedbacksRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('MessageId') is not None:
@@ -5250,15 +5155,12 @@ class StopInstanceResponse(TeaModel):
 class UpdateCustomAgentRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         custom_agent_id: str = None,
         enable_tools: bool = None,
         name: str = None,
         system_prompt: str = None,
         tools: List[str] = None,
     ):
-        # This parameter is required.
-        self.api_id = api_id
         # AgentId。
         # 
         # This parameter is required.
@@ -5277,8 +5179,6 @@ class UpdateCustomAgentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.custom_agent_id is not None:
             result['CustomAgentId'] = self.custom_agent_id
         if self.enable_tools is not None:
@@ -5293,8 +5193,6 @@ class UpdateCustomAgentRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('CustomAgentId') is not None:
             self.custom_agent_id = m.get('CustomAgentId')
         if m.get('EnableTools') is not None:
@@ -5311,15 +5209,12 @@ class UpdateCustomAgentRequest(TeaModel):
 class UpdateCustomAgentShrinkRequest(TeaModel):
     def __init__(
         self,
-        api_id: str = None,
         custom_agent_id: str = None,
         enable_tools: bool = None,
         name: str = None,
         system_prompt: str = None,
         tools_shrink: str = None,
     ):
-        # This parameter is required.
-        self.api_id = api_id
         # AgentId。
         # 
         # This parameter is required.
@@ -5338,8 +5233,6 @@ class UpdateCustomAgentShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.api_id is not None:
-            result['ApiId'] = self.api_id
         if self.custom_agent_id is not None:
             result['CustomAgentId'] = self.custom_agent_id
         if self.enable_tools is not None:
@@ -5354,8 +5247,6 @@ class UpdateCustomAgentShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiId') is not None:
-            self.api_id = m.get('ApiId')
         if m.get('CustomAgentId') is not None:
             self.custom_agent_id = m.get('CustomAgentId')
         if m.get('EnableTools') is not None:

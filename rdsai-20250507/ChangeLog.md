@@ -1,3 +1,17 @@
+2025-12-05 Version: 2.0.0
+- Update API ChatMessages: delete request parameters ApiId.
+- Update API ChatMessagesTaskStop: delete request parameters ApiId.
+- Update API CreateCustomAgent: delete request parameters ApiId.
+- Update API DeleteCustomAgent: delete request parameters ApiId.
+- Update API GetConversations: delete request parameters ApiId.
+- Update API GetCustomAgent: delete request parameters ApiId.
+- Update API GetMessages: delete request parameters ApiId.
+- Update API ListCustomAgent: delete request parameters ApiId.
+- Update API ListCustomAgentTools: delete request parameters ApiId.
+- Update API ModifyMessagesFeedbacks: delete request parameters ApiId.
+- Update API UpdateCustomAgent: delete request parameters ApiId.
+
+
 2025-12-03 Version: 1.5.0
 - Support API ChatMessages.
 - Support API ChatMessagesTaskStop.
