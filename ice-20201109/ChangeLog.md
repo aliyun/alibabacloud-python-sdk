@@ -1,3 +1,12 @@
+2025-12-05 Version: 6.8.5
+- Update API GetTemplateParams: add response parameters Body.ParamList.$.Height.
+- Update API GetTemplateParams: add response parameters Body.ParamList.$.TimelineIn.
+- Update API GetTemplateParams: add response parameters Body.ParamList.$.TimelineOut.
+- Update API GetTemplateParams: add response parameters Body.ParamList.$.Width.
+- Update API GetTemplateParams: add response parameters Body.ParamList.$.X.
+- Update API GetTemplateParams: add response parameters Body.ParamList.$.Y.
+
+
 2025-12-01 Version: 6.8.4
 - Update API ForwardAIAgentCall: add request parameters CallerNumber.
 

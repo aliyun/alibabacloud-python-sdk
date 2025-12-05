@@ -4521,13 +4521,13 @@ class MediaConvertJobConfigInputs(TeaModel):
 class MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes(TeaModel):
     def __init__(
         self,
+        language: str = None,
         name: str = None,
         type: str = None,
-        language: str = None,
     ):
+        self.language = language
         self.name = name
         self.type = type
-        self.language = language
 
     def validate(self):
         pass
@@ -4538,22 +4538,22 @@ class MediaConvertJobConfigOutputGroupsGroupConfigManifestExtendExcludes(TeaMode
             return _map
 
         result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
             result['Type'] = self.type
-        if self.language is not None:
-            result['language'] = self.language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('language') is not None:
-            self.language = m.get('language')
         return self
 
 
@@ -7435,8 +7435,11 @@ class ActiveAiRtcLicenseRequest(TeaModel):
         device_id: str = None,
         license_item_id: str = None,
     ):
+        # The authorization code.
         self.auth_code = auth_code
+        # The device ID.
         self.device_id = device_id
+        # The batch ID.
         self.license_item_id = license_item_id
 
     def validate(self):
@@ -7477,11 +7480,17 @@ class ActiveAiRtcLicenseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The license information.
         self.license = license
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -27968,11 +27977,23 @@ class GetAiRtcAuthCodeListRequest(TeaModel):
         status: int = None,
         type: int = None,
     ):
+        # The ID of the batch.
         self.license_item_id = license_item_id
+        # Specifies whether to include the total count of records in the response. Defaults to `true`.
         self.need_total_count = need_total_count
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The status of the authorization code. Valid values:
+        # 
+        # *   `1`: Activated
+        # *   `2`: Inactive
         self.status = status
+        # The type of license. Valid values:
+        # 
+        # *   `1`: Audio call
+        # *   `2`: Vision call
         self.type = type
 
     def validate(self):
@@ -28026,12 +28047,19 @@ class GetAiRtcAuthCodeListResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # An array of AiRtcAuthCodeDTO objects, each representing an authorization code.
         self.auth_code_list = auth_code_list
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -28137,11 +28165,23 @@ class GetAiRtcLicenseInfoListRequest(TeaModel):
         status: int = None,
         type: int = None,
     ):
+        # The ID of the batch.
         self.license_item_id = license_item_id
+        # Specifies whether to include the total count of records in the response. Defaults to `true`.
         self.need_total_count = need_total_count
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The status of the batch. Valid values:
+        # 
+        # *   `1`: Active
+        # *   `2`: Expired
         self.status = status
+        # The type of license. Valid values:
+        # 
+        # *   `1`: Audio call
+        # *   `2`: Vision call
         self.type = type
 
     def validate(self):
@@ -28195,12 +28235,19 @@ class GetAiRtcLicenseInfoListResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The error code returned.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # An array of AiRtcLicenseInfoDTO objects, each representing a license batch.
         self.license_info_list = license_info_list
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -44710,18 +44757,27 @@ class GetTemplateParamsResponseBodyParamList(TeaModel):
         self,
         content: str = None,
         cover_url: str = None,
+        height: int = None,
         key: str = None,
         media_url: str = None,
+        timeline_in: float = None,
+        timeline_out: float = None,
         type: str = None,
+        width: int = None,
+        x: int = None,
+        y: int = None,
     ):
         # The original subtitle content.
         self.content = content
         # The thumbnail URL of the original material.
         self.cover_url = cover_url
+        self.height = height
         # The parameter name.
         self.key = key
         # The URL of the original material.
         self.media_url = media_url
+        self.timeline_in = timeline_in
+        self.timeline_out = timeline_out
         # The material type.
         # 
         # Valid values:
@@ -44730,6 +44786,9 @@ class GetTemplateParamsResponseBodyParamList(TeaModel):
         # *   Text
         # *   Image
         self.type = type
+        self.width = width
+        self.x = x
+        self.y = y
 
     def validate(self):
         pass
@@ -44744,12 +44803,24 @@ class GetTemplateParamsResponseBodyParamList(TeaModel):
             result['Content'] = self.content
         if self.cover_url is not None:
             result['CoverUrl'] = self.cover_url
+        if self.height is not None:
+            result['Height'] = self.height
         if self.key is not None:
             result['Key'] = self.key
         if self.media_url is not None:
             result['MediaUrl'] = self.media_url
+        if self.timeline_in is not None:
+            result['TimelineIn'] = self.timeline_in
+        if self.timeline_out is not None:
+            result['TimelineOut'] = self.timeline_out
         if self.type is not None:
             result['Type'] = self.type
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
         return result
 
     def from_map(self, m: dict = None):
@@ -44758,12 +44829,24 @@ class GetTemplateParamsResponseBodyParamList(TeaModel):
             self.content = m.get('Content')
         if m.get('CoverUrl') is not None:
             self.cover_url = m.get('CoverUrl')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
         if m.get('Key') is not None:
             self.key = m.get('Key')
         if m.get('MediaUrl') is not None:
             self.media_url = m.get('MediaUrl')
+        if m.get('TimelineIn') is not None:
+            self.timeline_in = m.get('TimelineIn')
+        if m.get('TimelineOut') is not None:
+            self.timeline_out = m.get('TimelineOut')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
         return self
 
 
@@ -90740,10 +90823,15 @@ class SubmitSceneBatchEditingJobRequest(TeaModel):
         project_ids: str = None,
         user_data: str = None,
     ):
+        # The output configuration. The structure is the same as the [OutputConfig](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.3af86997GreVu9\\&scm=20140722.H_2863940._.OR_help-T_cn~zh-V_1#4111a373d0xbz) for batch video generation, except that Count and GeneratePreviewOnly are not supported.
+        # 
         # This parameter is required.
         self.output_config = output_config
+        # A comma-separated list of editing project IDs. The video is rendered based on the timeline from each project.
+        # 
         # This parameter is required.
         self.project_ids = project_ids
+        # Custom user data, including callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
         self.user_data = user_data
 
     def validate(self):
@@ -90780,7 +90868,9 @@ class SubmitSceneBatchEditingJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -91013,15 +91103,42 @@ class SubmitSceneTimelineOrganizationJobRequest(TeaModel):
         output_config: str = None,
         user_data: str = None,
     ):
+        # The editing configuration. Its structure depends on the value of JobType.
+        # 
+        # *   When JobType is set to Smart_Mix_Timeline_Organize, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+        # *   When JobType is set to Screen_Media_Highlights_Timeline_Organize, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
         self.editing_config = editing_config
+        # The input configuration. Its structure and required fields depend on the value of JobType.
+        # 
+        # *   When JobType is set to Smart_Mix_Timeline_Organize, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+        # *   When JobType is set to Screen_Media_Highlights_Timeline_Organize, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+        # 
         # This parameter is required.
         self.input_config = input_config
+        # The job type. Valid values:
+        # 
+        # *   Smart_Mix_Timeline_Organize: Image-text matching.
+        # *   Screen_Media_Highlights_Timeline_Organize: Highlight mashup.
+        # 
+        # Differences:
+        # 
+        # *   Image-text matching: Arranges a timeline based on the results of matching a voiceover script to media assets. Ideal for bulk marketing videos and general-purpose montages.
+        # *   Highlight mashup: Arranges a timeline based on the results of highlight clip selection. Ideal for creating action-packed highlight reels from short-form dramas.
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The media selection results from a previously run SubmitSceneMediaSelectionJob. You can retrieve this result by calling GetBatchMediaProducingJob.
+        # 
         # This parameter is required.
         self.media_select_result = media_select_result
+        # The output configuration. Its structure and required fields depend on the value of JobType.
+        # 
+        # *   When JobType is set to Smart_Mix_Timeline_Organize, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+        # *   When JobType is set to Screen_Media_Highlights_Timeline_Organize, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+        # 
         # This parameter is required.
         self.output_config = output_config
+        # The user-defined data, including the business and callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
         self.user_data = user_data
 
     def validate(self):
@@ -91070,7 +91187,9 @@ class SubmitSceneTimelineOrganizationJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
