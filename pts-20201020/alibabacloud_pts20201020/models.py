@@ -10,7 +10,13 @@ class AdjustJMeterSceneSpeedRequest(TeaModel):
         report_id: str = None,
         speed: int = None,
     ):
+        # The ID of the report.
+        # 
+        # This parameter is required.
         self.report_id = report_id
+        # The load to which you want to adjust.
+        # 
+        # This parameter is required.
         self.speed = speed
 
     def validate(self):
@@ -47,11 +53,20 @@ class AdjustJMeterSceneSpeedResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the report.
         self.report_id = report_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -141,7 +156,9 @@ class AdjustPtsSceneSpeedRequestApiSpeedList(TeaModel):
         api_id: str = None,
         speed: int = None,
     ):
+        # The API ID. You can find the information of the API corresponding to the ID in the Relation response parameter of the GetPtsSceneRunningData operation based on the ID.
         self.api_id = api_id
+        # The new stress. In concurrency mode, the new stress is the concurrency. In RPS mode, the new stress is the RPS.
         self.speed = speed
 
     def validate(self):
@@ -174,7 +191,11 @@ class AdjustPtsSceneSpeedRequest(TeaModel):
         api_speed_list: List[AdjustPtsSceneSpeedRequestApiSpeedList] = None,
         scene_id: str = None,
     ):
+        # The stress testing speed in the PTS scenario.
         self.api_speed_list = api_speed_list
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -215,7 +236,11 @@ class AdjustPtsSceneSpeedShrinkRequest(TeaModel):
         api_speed_list_shrink: str = None,
         scene_id: str = None,
     ):
+        # The stress testing speed in the PTS scenario.
         self.api_speed_list_shrink = api_speed_list_shrink
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -251,10 +276,18 @@ class AdjustPtsSceneSpeedResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, no data is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -339,6 +372,9 @@ class CreatePtsSceneRequest(TeaModel):
         self,
         scene: str = None,
     ):
+        # The scenario details.
+        # 
+        # This parameter is required.
         self.scene = scene
 
     def validate(self):
@@ -371,11 +407,20 @@ class CreatePtsSceneResponseBody(TeaModel):
         scene_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the request was successful, no data is returned.
         self.code = code
+        # The HTTP status code. If the request was successful, no data is returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, no data is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ID of the created scenario.
         self.scene_id = scene_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -465,7 +510,13 @@ class CreatePtsSceneBaseLineFromReportRequest(TeaModel):
         report_id: str = None,
         scene_id: str = None,
     ):
+        # The ID of the report. For more information, see the [table](https://help.aliyun.com/document_detail/201321.html) provided in this topic.
+        # 
+        # This parameter is required.
         self.report_id = report_id
+        # The ID of the scene. For more information, see the [table](https://help.aliyun.com/document_detail/201321.html) provided in this topic.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -501,10 +552,18 @@ class CreatePtsSceneBaseLineFromReportResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # null
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false:
         self.success = success
 
     def validate(self):
@@ -589,6 +648,9 @@ class DeletePtsSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the PTS scenario that you want to delete.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -620,10 +682,18 @@ class DeletePtsSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -708,6 +778,7 @@ class DeletePtsSceneBaseLineRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -827,6 +898,7 @@ class DeletePtsScenesRequest(TeaModel):
         self,
         scene_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.scene_ids = scene_ids
 
     def validate(self):
@@ -854,6 +926,7 @@ class DeletePtsScenesShrinkRequest(TeaModel):
         self,
         scene_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.scene_ids_shrink = scene_ids_shrink
 
     def validate(self):
@@ -978,11 +1051,20 @@ class GetAllRegionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The supported regions.
         self.all_regions = all_regions
+        # The system status code. If the request was successful, no data is returned.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, no data is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1079,14 +1161,35 @@ class GetJMeterLogsRequest(TeaModel):
         report_id: str = None,
         thread: str = None,
     ):
+        # Specifies that the operational logs of the stress tester identified as number 0 are returned if the agent index is invalid.
         self.agent_index = agent_index
+        # The beginning of the time range to query. Unit: seconds.
         self.begin_time = begin_time
+        # The end of the time range to query. Unit: seconds.
         self.end_time = end_time
+        # The keyword.
         self.keyword = keyword
+        # The log level. Valid values:
+        # 
+        # *   ERROR
+        # *   WARN
+        # *   INFO (default)
+        # *   DEBUG
+        # *   TRACE
         self.level = level
+        # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The report ID.
+        # 
+        # This parameter is required.
         self.report_id = report_id
+        # The thread name.
         self.thread = thread
 
     def validate(self):
@@ -1154,14 +1257,26 @@ class GetJMeterLogsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The number of engines. The AgentCount value must be greater than the PageNumber value.
         self.agent_count = agent_count
+        # The system status code. If the request was successful, this parameter is left empty.
         self.code = code
+        # The returned entries.
         self.logs = logs
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of returned entries.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -1262,6 +1377,9 @@ class GetJMeterReportDetailsRequest(TeaModel):
         self,
         report_id: str = None,
     ):
+        # The report ID.
+        # 
+        # This parameter is required.
         self.report_id = report_id
 
     def validate(self):
@@ -1294,11 +1412,17 @@ class GetJMeterReportDetailsResponseBodyReportOverView(TeaModel):
         start_time: str = None,
         vum: int = None,
     ):
+        # The number of used engines.
         self.agent_count = agent_count
+        # The end of the queried time range.
         self.end_time = end_time
+        # The report ID.
         self.report_id = report_id
+        # The report name.
         self.report_name = report_name
+        # The beginning of the queried time range.
         self.start_time = start_time
+        # The consumed Virtual User Minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -1356,16 +1480,27 @@ class GetJMeterReportDetailsResponseBodySamplerMetricsList(TeaModel):
         seg_99rt: float = None,
         success_rate_req: float = None,
     ):
+        # The total number of requests.
         self.all_count = all_count
+        # The API name.
         self.api_name = api_name
+        # The average RT. Unit: milliseconds.
         self.avg_rt = avg_rt
+        # The average TPS.
         self.avg_tps = avg_tps
+        # The request failure rate.
         self.fail_count_req = fail_count_req
+        # The maximum RT. Unit: milliseconds.
         self.max_rt = max_rt
+        # The minimum RT. Unit: milliseconds.
         self.min_rt = min_rt
+        # The 75th percentile of RT. Unit: milliseconds.
         self.seg_75rt = seg_75rt
+        # The 90th percentile of RT. Unit: milliseconds.
         self.seg_90rt = seg_90rt
+        # The 99th percentile of RT. Unit: milliseconds.
         self.seg_99rt = seg_99rt
+        # The request success rate. The parameter value must be a non-negative number less than or equal to 100.
         self.success_rate_req = success_rate_req
 
     def validate(self):
@@ -1439,12 +1574,19 @@ class GetJMeterReportDetailsResponseBodySceneMetrics(TeaModel):
         seg_99rt: float = None,
         success_rate_req: float = None,
     ):
+        # The total number of requests.
         self.all_count = all_count
+        # The average response time (RT). Unit: milliseconds.
         self.avg_rt = avg_rt
+        # The average transactions per second (TPS).
         self.avg_tps = avg_tps
+        # The request failure rate.
         self.fail_count_req = fail_count_req
+        # The 90th percentile of RT. Unit: milliseconds.
         self.seg_90rt = seg_90rt
+        # The 99th percentile of RT. Unit: milliseconds.
         self.seg_99rt = seg_99rt
+        # The request success rate. The parameter value must be a non-negative number less than or equal to 100.
         self.success_rate_req = success_rate_req
 
     def validate(self):
@@ -1506,16 +1648,30 @@ class GetJMeterReportDetailsResponseBody(TeaModel):
         scene_metrics: GetJMeterReportDetailsResponseBodySceneMetrics = None,
         success: bool = None,
     ):
+        # The system status code. If the request was successful, this parameter is not returned.
         self.code = code
+        # The code key that corresponds to the key in Medusa. If no code key is available, or if the content corresponding to the code key fails to be obtained or is empty, the returned message is displayed as the default information.
         self.code_key = code_key
+        # The URL used to access the document.
         self.document_url = document_url
+        # The returned dynamic contents that are separated by the && operator.
         self.dynamic_ctx = dynamic_ctx
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is not returned.
         self.message = message
+        # The details of the report.
         self.report_over_view = report_over_view
+        # The request ID.
         self.request_id = request_id
+        # The dimensions of APIs.
         self.sampler_metrics_list = sampler_metrics_list
+        # The dimensions of the whole scenario.
         self.scene_metrics = scene_metrics
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1641,9 +1797,15 @@ class GetJMeterSampleMetricsRequest(TeaModel):
         report_id: str = None,
         sampler_id: int = None,
     ):
+        # The beginning of the time range to query.
         self.begin_time = begin_time
+        # The end of the time range to query.
         self.end_time = end_time
+        # The report ID.
+        # 
+        # This parameter is required.
         self.report_id = report_id
+        # The sampler ID. This parameter value starts from 0. If this parameter value is -1, the data of the whole scenario is returned.
         self.sampler_id = sampler_id
 
     def validate(self):
@@ -1688,11 +1850,20 @@ class GetJMeterSampleMetricsResponseBody(TeaModel):
         sampler_map: Dict[str, Any] = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The metrics of the samplers.
         self.sample_metric_list = sample_metric_list
+        # The sampler list. You can find the sampler to be queried based on this list.
         self.sampler_map = sampler_map
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1793,18 +1964,37 @@ class GetJMeterSamplingLogsRequest(TeaModel):
         success: bool = None,
         thread: str = None,
     ):
+        # The ID of the load generator. This parameter is disabled.
         self.agent_id = agent_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.begin_time = begin_time
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The keyword. You can use the keyword in the value of **SceneName** for fuzzy searching or use the value of **SceneID** for exact searching.
         self.keyword = keyword
+        # The maximum response time. Unit: ms.
         self.max_rt = max_rt
+        # The minimum response time. Unit: ms.
         self.min_rt = min_rt
+        # The page number.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The ID of the report.
+        # 
+        # This parameter is required.
         self.report_id = report_id
+        # The response code.
         self.response_code = response_code
+        # The ID of the sampler. The value starts from 0.
         self.sampler_id = sampler_id
+        # Specifies whether the sampling is successful.
         self.success = success
+        # The name of the thread. Fuzzy searching is supported. If you specify multiple threads, separate the threads with spaces.
         self.thread = thread
 
     def validate(self):
@@ -1888,14 +2078,26 @@ class GetJMeterSamplingLogsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of log entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The sampling results of the sampler.
         self.sample_results = sample_results
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of log entries.
         self.total_count = total_count
 
     def validate(self):
@@ -1996,6 +2198,9 @@ class GetJMeterSceneRunningDataRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -2039,22 +2244,39 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
         status: str = None,
         vum: int = None,
     ):
+        # The number of stress testing engines.
         self.agent_count = agent_count
+        # The stress testing engines.
         self.agent_id_list = agent_id_list
+        # The sampling status of the scenario.
         self.all_sample_stat = all_sample_stat
+        # The concurrency.
         self.concurrency = concurrency
+        # The error message returned for the stress testing process. If the request was successful, this parameter is not returned.
         self.error_message = error_message
+        # Indicates whether an error occurs in the stress testing process.
         self.has_error = has_error
+        # Indicates whether the report is generated.
         self.has_report = has_report
+        # The duration of the stress testing plan. Unit: seconds.
         self.hold_for = hold_for
+        # Indicates whether a debugging is performed.
         self.is_debugging = is_debugging
+        # The stress testing task ID. This ID also means the report ID.
         self.report_id = report_id
+        # The status of samplers.
         self.sample_stat_list = sample_stat_list
+        # The scenario ID.
         self.scene_id = scene_id
+        # The scenario name.
         self.scene_name = scene_name
+        # The current stage.
         self.stage_name = stage_name
+        # The timestamp when the stress testing is scheduled to start. Unit: ms.
         self.start_time_ts = start_time_ts
+        # The stress testing status of the scenario.
         self.status = status
+        # The consumed Virtual User Minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -2152,12 +2374,22 @@ class GetJMeterSceneRunningDataResponseBody(TeaModel):
         running_data: GetJMeterSceneRunningDataResponseBodyRunningData = None,
         success: bool = None,
     ):
+        # The system status code. If the request was successful, this parameter is not returned.
         self.code = code
+        # The URL that is used to access the document.
         self.document_url = document_url
+        # The HTTP status code. If the request was successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The running data.
         self.running_data = running_data
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2252,6 +2484,9 @@ class GetOpenJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -2284,11 +2519,17 @@ class GetOpenJMeterSceneResponseBodySceneBaseInfo(TeaModel):
         remark: str = None,
         resource: str = None,
     ):
+        # The name of the creator.
         self.create_name = create_name
+        # The name of the modifier.
         self.modify_name = modify_name
+        # The type of the operation.
         self.operate_type = operate_type
+        # The person who takes charge of the performance testing.
         self.principal = principal
+        # The comment.
         self.remark = remark
+        # The origin of the scenario.
         self.resource = resource
 
     def validate(self):
@@ -2338,8 +2579,11 @@ class GetOpenJMeterSceneResponseBodySceneDnsCacheConfig(TeaModel):
         dns_servers: List[str] = None,
         host_table: Dict[str, Any] = None,
     ):
+        # Indicates whether the cache is cleared.
         self.clear_cache_each_iteration = clear_cache_each_iteration
+        # The DNS servers
         self.dns_servers = dns_servers
+        # The domain name and its bounded IP address.
         self.host_table = host_table
 
     def validate(self):
@@ -2381,12 +2625,19 @@ class GetOpenJMeterSceneResponseBodySceneFileList(TeaModel):
         md_5: str = None,
         split_csv: bool = None,
     ):
+        # The name of the file.
         self.file_name = file_name
+        # The Object Storage Service (OSS) URL of the file.
         self.file_oss_address = file_oss_address
+        # The size of the file. Unit: bytes.
         self.file_size = file_size
+        # The type of the file.
         self.file_type = file_type
+        # The ID of the file.
         self.id = id
+        # The MD5 value of the JAR package.
         self.md_5 = md_5
+        # Indicates whether the file is split.
         self.split_csv = split_csv
 
     def validate(self):
@@ -2439,7 +2690,9 @@ class GetOpenJMeterSceneResponseBodySceneRegionalCondition(TeaModel):
         amount: int = None,
         region: str = None,
     ):
+        # The number of load generators.
         self.amount = amount
+        # The ID of the region.
         self.region = region
 
     def validate(self):
@@ -2495,30 +2748,55 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The number of load generators. A load generator supports up to 500 concurrent virtual users.
         self.agent_count = agent_count
+        # The basic information.
         self.base_info = base_info
+        # The maximum number of concurrent virtual users.
         self.concurrency = concurrency
+        # The type of the constant throughput timer.
         self.constant_throughput_timer_type = constant_throughput_timer_type
+        # The DNS settings.
         self.dns_cache_config = dns_cache_config
+        # The duration of the performance testing. Unit: seconds.
         self.duration = duration
+        # The ID of the environment.
         self.environment_id = environment_id
+        # The files.
         self.file_list = file_list
+        # Indicates whether the load is from a virtual private cloud (VPC).
         self.is_vpc_test = is_vpc_test
+        # The maximum RPS. This parameter is returned if you set Mode to tps_mode.
         self.max_rps = max_rps
+        # The load application mode. Valid values: concurrency_mode and tps_mode.
         self.mode = mode
+        # The origin of the load. "" indicates the Internet and intranet-vpc indicates the VPC.
         self.pool = pool
+        # The period of time during which the load is gradually increased to the desired level. Unit: seconds.
         self.ramp_up = ramp_up
+        # The region ID. This parameter is returned if the load is from a VPC.
         self.region_id = region_id
+        # Customized load generator settings for regions
         self.regional_condition = regional_condition
+        # The ID of the scenario.
         self.scene_id = scene_id
+        # The name of the scenario.
         self.scene_name = scene_name
+        # The ID of the security group. This parameter is returned if the load is from a VPC.
         self.security_group_id = security_group_id
+        # The start number of concurrent virtual users.
         self.start_concurrency = start_concurrency
+        # The start requests per second (RPS). This parameter is returned if you set Mode to tps_mode.
         self.start_rps = start_rps
+        # The number of incremented users per step. If RampUp or Steps is not specified, the fixed load is used. If RampUp is specified but Steps is not specified, the load increases uniformly based on the value of RampUp. If RampUp and Steps are specified and Steps is less than RampUp, the load increases based on the value of Steps. You cannot specify Steps without specifying RampUp. If you do so, the fixed load is used.
         self.steps = steps
+        # The type of the synchronization timer.
         self.sync_timer_type = sync_timer_type
+        # The test file.
         self.test_file = test_file
+        # The ID of the vSwitch. This parameter is returned if the load is from a VPC.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC. This parameter is returned if the load is from a VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2670,11 +2948,20 @@ class GetOpenJMeterSceneResponseBody(TeaModel):
         scene: GetOpenJMeterSceneResponseBodyScene = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the scenario.
         self.scene = scene
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2767,8 +3054,11 @@ class GetPtsDebugSampleLogsRequest(TeaModel):
         page_size: int = None,
         plan_id: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the debugging task.
         self.plan_id = plan_id
 
     def validate(self):
@@ -2822,24 +3112,43 @@ class GetPtsDebugSampleLogsResponseBodySamplingLogs(TeaModel):
         rt: str = None,
         timestamp: int = None,
     ):
+        # The ID of the session.
         self.chain_id = chain_id
+        # The name of the session.
         self.chain_name = chain_name
+        # The assertion check result.
         self.check_result = check_result
+        # The parameter export configuration.
         self.export_config = export_config
+        # The exported parameters.
         self.export_content = export_content
+        # The body of the request.
         self.http_request_body = http_request_body
+        # The request headers.
         self.http_request_headers = http_request_headers
+        # The request method.
         self.http_request_method = http_request_method
+        # The endpoint that specifies where the request is directed.
         self.http_request_url = http_request_url
+        # The response body.
         self.http_response_body = http_response_body
+        # The error message.
         self.http_response_fail_msg = http_response_fail_msg
+        # The response headers.
         self.http_response_headers = http_response_headers
+        # The HTTP status code.
         self.http_response_status = http_response_status
+        # The time when the request was sent.
         self.http_start_time = http_start_time
+        # The HTTP timing information in a waterfall format.
         self.http_timing = http_timing
+        # The imported parameters.
         self.import_content = import_content
+        # The ID of the node.
         self.node_id = node_id
+        # The response time. Unit: ms.
         self.rt = rt
+        # The timestamp. Unit: ms.
         self.timestamp = timestamp
 
     def validate(self):
@@ -2946,13 +3255,24 @@ class GetPtsDebugSampleLogsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The sampling logs.
         self.sampling_logs = sampling_logs
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3058,7 +3378,13 @@ class GetPtsReportDetailsRequest(TeaModel):
         plan_id: str = None,
         scene_id: str = None,
     ):
+        # The ID of the performance testing task. A task ID is generated each time a PTS scenario is started.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
+        # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -3103,19 +3429,33 @@ class GetPtsReportDetailsResponseBodyApiMetricsList(TeaModel):
         success_rate_biz: float = None,
         success_rate_req: float = None,
     ):
+        # The total number of requests.
         self.all_count = all_count
+        # The name of the API.
         self.api_name = api_name
+        # The average response time. Unit: ms.
         self.avg_rt = avg_rt
+        # The average TPS.
         self.avg_tps = avg_tps
+        # The number of business-related failures. If a checkpoint is defined, a failure occurs when the conditions for the checkpoint are not satisfied.
         self.fail_count_biz = fail_count_biz
+        # The number of failed requests.
         self.fail_count_req = fail_count_req
+        # The maximum response time. Unit: ms.
         self.max_rt = max_rt
+        # The minimum response time. Unit: ms.
         self.min_rt = min_rt
+        # The 50th percentile response time.
         self.seg_50rt = seg_50rt
+        # The 75th percentile response time.
         self.seg_75rt = seg_75rt
+        # The 90th percentile response time.
         self.seg_90rt = seg_90rt
+        # The 99th percentile response time.
         self.seg_99rt = seg_99rt
+        # The business success rate. The value is the ratio of the number of successful business to the total number of business.
         self.success_rate_biz = success_rate_biz
+        # The request success rate. The value is the ratio of the number of successful requests to the total number of requests.
         self.success_rate_req = success_rate_req
 
     def validate(self):
@@ -3200,11 +3540,17 @@ class GetPtsReportDetailsResponseBodyReportOverView(TeaModel):
         start_time: str = None,
         vum: int = None,
     ):
+        # The number of load generators. Each load generator has an IP address.
         self.agent_count = agent_count
+        # The end time of the performance testing task.
         self.end_time = end_time
+        # The ID of the report.
         self.report_id = report_id
+        # The name of the report.
         self.report_name = report_name
+        # The start time of the performance testing task.
         self.start_time = start_time
+        # The virtual user minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -3260,14 +3606,23 @@ class GetPtsReportDetailsResponseBodySceneMetrics(TeaModel):
         success_rate_biz: float = None,
         success_rate_req: float = None,
     ):
+        # The number of requests in the scenario.
         self.all_count = all_count
+        # The average response time in the scenario.
         self.avg_rt = avg_rt
+        # The average transactions per second (TPS) in the scenario.
         self.avg_tps = avg_tps
+        # The number of business failures in the scenario.
         self.fail_count_biz = fail_count_biz
+        # The number of failed requests in the scenario.
         self.fail_count_req = fail_count_req
+        # The 90th percentile response time.
         self.seg_90rt = seg_90rt
+        # The 99th percentile response time.
         self.seg_99rt = seg_99rt
+        # The business success rate in the scenario.
         self.success_rate_biz = success_rate_biz
+        # The request success rate in the scenario.
         self.success_rate_req = success_rate_req
 
     def validate(self):
@@ -3328,7 +3683,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotAdvanceSettingDomainBindingLis
         domain: str = None,
         ips: List[str] = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The IP addresses bound to the domain name.
         self.ips = ips
 
     def validate(self):
@@ -3363,9 +3720,13 @@ class GetPtsReportDetailsResponseBodySceneSnapShotAdvanceSetting(TeaModel):
         log_rate: int = None,
         success_code: str = None,
     ):
+        # The timeout period of the scenario.
         self.connection_timeout_in_second = connection_timeout_in_second
+        # The domain name-IP address binding relationships.
         self.domain_binding_list = domain_binding_list
+        # The log sampling rate.
         self.log_rate = log_rate
+        # The custom success code.
         self.success_code = success_code
 
     def validate(self):
@@ -3414,7 +3775,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotFileParameterList(TeaModel):
         file_name: str = None,
         file_oss_address: str = None,
     ):
+        # The name of the file.
         self.file_name = file_name
+        # The Object Storage Service (OSS) URL of the file.
         self.file_oss_address = file_oss_address
 
     def validate(self):
@@ -3447,7 +3810,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotGlobalParameterList(TeaModel):
         param_name: str = None,
         param_value: str = None,
     ):
+        # The name of the parameter.
         self.param_name = param_name
+        # The value of the parameter.
         self.param_value = param_value
 
     def validate(self):
@@ -3480,7 +3845,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotLoadConfigApiLoadConfigList(Te
         rps_begin: int = None,
         rps_limit: int = None,
     ):
+        # The starting requests per second (RPS).
         self.rps_begin = rps_begin
+        # The maximum RPS.
         self.rps_limit = rps_limit
 
     def validate(self):
@@ -3515,9 +3882,13 @@ class GetPtsReportDetailsResponseBodySceneSnapShotLoadConfigConfiguration(TeaMod
         all_rps_begin: int = None,
         all_rps_limit: int = None,
     ):
+        # The starting number of concurrent virtual users in the scenario.
         self.all_concurrency_begin = all_concurrency_begin
+        # The maximum number of concurrent virtual users in the scenario.
         self.all_concurrency_limit = all_concurrency_limit
+        # The starting RPS in the scenario.
         self.all_rps_begin = all_rps_begin
+        # The maximum RPS in the scenario.
         self.all_rps_limit = all_rps_limit
 
     def validate(self):
@@ -3558,7 +3929,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotLoadConfigRelationLoadConfigLi
         concurrency_begin: int = None,
         concurrency_limit: int = None,
     ):
+        # The starting number of concurrent virtual users.
         self.concurrency_begin = concurrency_begin
+        # The maximum number of concurrent virtual users.
         self.concurrency_limit = concurrency_limit
 
     def validate(self):
@@ -3595,11 +3968,17 @@ class GetPtsReportDetailsResponseBodySceneSnapShotLoadConfig(TeaModel):
         relation_load_config_list: List[GetPtsReportDetailsResponseBodySceneSnapShotLoadConfigRelationLoadConfigList] = None,
         test_mode: str = None,
     ):
+        # The number of load generators.
         self.agent_count = agent_count
+        # The API request load settings.
         self.api_load_config_list = api_load_config_list
+        # The concurrency and RPS limits in the scenario.
         self.configuration = configuration
+        # The maximum running time. Unit: minutes.
         self.max_running_time = max_running_time
+        # The settings of the session.
         self.relation_load_config_list = relation_load_config_list
+        # The load application mode.
         self.test_mode = test_mode
 
     def validate(self):
@@ -3668,7 +4047,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiListBody(TeaMod
         body_value: str = None,
         content_type: str = None,
     ):
+        # The content of the request body.
         self.body_value = body_value
+        # The type of the request body.
         self.content_type = content_type
 
     def validate(self):
@@ -3703,9 +4084,13 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiListCheckPointL
         expect_value: str = None,
         operator: str = None,
     ):
+        # The checked item.
         self.check_point = check_point
+        # The check type.
         self.check_type = check_type
+        # The expected value.
         self.expect_value = expect_value
+        # The check operator.
         self.operator = operator
 
     def validate(self):
@@ -3748,9 +4133,13 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiListExportList(
         export_type: str = None,
         export_value: str = None,
     ):
+        # The index of the export parameter.
         self.count = count
+        # The name of the export parameter.
         self.export_name = export_name
+        # The source of the export parameter.
         self.export_type = export_type
+        # The actual path from which you want to extract the export parameter values.
         self.export_value = export_value
 
     def validate(self):
@@ -3791,7 +4180,9 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiListHeaderList(
         header_name: str = None,
         header_value: str = None,
     ):
+        # The name of the header.
         self.header_name = header_name
+        # The value of the header.
         self.header_value = header_value
 
     def validate(self):
@@ -3832,16 +4223,25 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiList(TeaModel):
         timeout_in_second: int = None,
         url: str = None,
     ):
-        # API ID。
+        # The ID of the API operation.
         self.api_id = api_id
+        # The name of the API operation.
         self.api_name = api_name
+        # The request body.
         self.body = body
+        # The checkpoints of the API operation.
         self.check_point_list = check_point_list
+        # The export parameters.
         self.export_list = export_list
+        # The headers.
         self.header_list = header_list
+        # The method of the request.
         self.method = method
+        # The number of redirections.
         self.redirect_count_limit = redirect_count_limit
+        # The timeout period.
         self.timeout_in_second = timeout_in_second
+        # The URL to which the API request is sent.
         self.url = url
 
     def validate(self):
@@ -3937,9 +4337,13 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListFileParameterExpla
         file_name: str = None,
         file_param_name: str = None,
     ):
+        # Indicates whether the file is used as the baseline file.
         self.base_file = base_file
+        # Indicates whether the parameters are used once.
         self.cycle_once = cycle_once
+        # The name of the file.
         self.file_name = file_name
+        # The parameters in the file.
         self.file_param_name = file_param_name
 
     def validate(self):
@@ -3982,9 +4386,13 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationList(TeaModel):
         relation_id: str = None,
         relation_name: str = None,
     ):
+        # The settings of the API operation.
         self.api_list = api_list
+        # The file parameters used by the session.
         self.file_parameter_explain_list = file_parameter_explain_list
+        # The ID of the session.
         self.relation_id = relation_id
+        # The name of the session.
         self.relation_name = relation_name
 
     def validate(self):
@@ -4050,15 +4458,25 @@ class GetPtsReportDetailsResponseBodySceneSnapShot(TeaModel):
         scene_name: str = None,
         status: str = None,
     ):
+        # The advanced settings of the scenario.
         self.advance_setting = advance_setting
+        # The time when the scenario was created.
         self.create_time = create_time
+        # The file used in the scenario.
         self.file_parameter_list = file_parameter_list
+        # The global parameters.
         self.global_parameter_list = global_parameter_list
+        # The load settings.
         self.load_config = load_config
+        # The last modification time of the scenario.
         self.modified_time = modified_time
+        # The sessions.
         self.relation_list = relation_list
+        # The ID of the scenario.
         self.scene_id = scene_id
+        # The name of the scenario.
         self.scene_name = scene_name
+        # The status of the scenario.
         self.status = status
 
     def validate(self):
@@ -4162,14 +4580,26 @@ class GetPtsReportDetailsResponseBody(TeaModel):
         scene_snap_shot: GetPtsReportDetailsResponseBodySceneSnapShot = None,
         success: bool = None,
     ):
+        # The metrics for API operations in the PTS scenario
         self.api_metrics_list = api_metrics_list
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The summary of the report.
         self.report_over_view = report_over_view
+        # The ID of the request.
         self.request_id = request_id
+        # The metrics of the scenario.
         self.scene_metrics = scene_metrics
+        # The snapshot of the scenario.
         self.scene_snap_shot = scene_snap_shot
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4289,8 +4719,17 @@ class GetPtsReportsBySceneIdRequest(TeaModel):
         page_size: int = None,
         scene_id: str = None,
     ):
+        # The number of the page to display in the paging operation.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of reports to display per page. Valid values: 5 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -4331,11 +4770,17 @@ class GetPtsReportsBySceneIdResponseBodyReportOverViewList(TeaModel):
         start_time: str = None,
         vum: int = None,
     ):
+        # The number of stress testers.
         self.agent_count = agent_count
+        # The end time of the stress testing.
         self.end_time = end_time
+        # The report ID.
         self.report_id = report_id
+        # The title of the report.
         self.report_name = report_name
+        # The start time of the stress testing.
         self.start_time = start_time
+        # The consumed Virtual User Minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -4388,11 +4833,20 @@ class GetPtsReportsBySceneIdResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The reports.
         self.report_over_view_list = report_over_view_list
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4489,6 +4943,9 @@ class GetPtsSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -4517,7 +4974,9 @@ class GetPtsSceneResponseBodySceneAdvanceSettingDomainBindingList(TeaModel):
         domain: str = None,
         ips: List[str] = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The IPs bound to the domain name.
         self.ips = ips
 
     def validate(self):
@@ -4552,9 +5011,13 @@ class GetPtsSceneResponseBodySceneAdvanceSetting(TeaModel):
         log_rate: int = None,
         success_code: str = None,
     ):
+        # The timeout period of the scenario. Unit: seconds.
         self.connection_timeout_in_second = connection_timeout_in_second
+        # The IP-domain name bindings.
         self.domain_binding_list = domain_binding_list
+        # The log sampling rate.
         self.log_rate = log_rate
+        # The custom success code.
         self.success_code = success_code
 
     def validate(self):
@@ -4603,7 +5066,9 @@ class GetPtsSceneResponseBodySceneFileParameterList(TeaModel):
         file_name: str = None,
         file_oss_address: str = None,
     ):
+        # The file name.
         self.file_name = file_name
+        # The OSS address of the file. Make sure that the address is accessible from the Internet.
         self.file_oss_address = file_oss_address
 
     def validate(self):
@@ -4636,7 +5101,9 @@ class GetPtsSceneResponseBodySceneGlobalParameterList(TeaModel):
         param_name: str = None,
         param_value: str = None,
     ):
+        # The name of the parameter.
         self.param_name = param_name
+        # The value of the parameter.
         self.param_value = param_value
 
     def validate(self):
@@ -4669,7 +5136,9 @@ class GetPtsSceneResponseBodySceneHeaders(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the header.
         self.name = name
+        # The value of the header.
         self.value = value
 
     def validate(self):
@@ -4703,8 +5172,11 @@ class GetPtsSceneResponseBodySceneLoadConfigApiLoadConfigList(TeaModel):
         rps_begin: int = None,
         rps_limit: int = None,
     ):
+        # The API ID. You can track an API by its ID in sessions.
         self.api_id = api_id
+        # The starting requests per second (RPS).
         self.rps_begin = rps_begin
+        # The maximum RPS.
         self.rps_limit = rps_limit
 
     def validate(self):
@@ -4743,9 +5215,13 @@ class GetPtsSceneResponseBodySceneLoadConfigConfiguration(TeaModel):
         all_rps_begin: int = None,
         all_rps_limit: int = None,
     ):
+        # The starting number of concurrent sessions.
         self.all_concurrency_begin = all_concurrency_begin
+        # The maximum number of concurrent sessions.
         self.all_concurrency_limit = all_concurrency_limit
+        # The starting RPS.
         self.all_rps_begin = all_rps_begin
+        # The maximum RPS.
         self.all_rps_limit = all_rps_limit
 
     def validate(self):
@@ -4787,8 +5263,11 @@ class GetPtsSceneResponseBodySceneLoadConfigRelationLoadConfigList(TeaModel):
         concurrency_limit: int = None,
         relation_id: str = None,
     ):
+        # The starting number of concurrent sessions.
         self.concurrency_begin = concurrency_begin
+        # The maximum number of concurrent sessions.
         self.concurrency_limit = concurrency_limit
+        # The session ID.
         self.relation_id = relation_id
 
     def validate(self):
@@ -4827,9 +5306,13 @@ class GetPtsSceneResponseBodySceneLoadConfigVpcLoadConfig(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4878,15 +5361,27 @@ class GetPtsSceneResponseBodySceneLoadConfig(TeaModel):
         test_mode: str = None,
         vpc_load_config: GetPtsSceneResponseBodySceneLoadConfigVpcLoadConfig = None,
     ):
+        # The number of load generators.
         self.agent_count = agent_count
+        # The API request load settings.
         self.api_load_config_list = api_load_config_list
+        # Indicates whether the load is automatically incremented.
         self.auto_step = auto_step
+        # The concurrency and RPS settings of the scenario.
         self.configuration = configuration
+        # The increment percentage. The valid values are 10 to 100, in increments of 10. This parameter is returned only if you set testMode to concurrency_mode and set autoStep to true.
         self.increment = increment
+        # The duration during which a specific load level is applied. The duration is less than the value of maxRunningTime. Unit: minutes.
         self.keep_time = keep_time
+        # The maximum duration of load application. Unit: minutes.
         self.max_running_time = max_running_time
+        # The session load settings.
         self.relation_load_config_list = relation_load_config_list
+        # The load application mode. Transactions per second (TPS) indicates the RPS mode.
+        # 
+        # >  The load application mode is CONCURRENCY/TPS.
         self.test_mode = test_mode
+        # The virtual private cloud (VPC) settings. This information is returned only if you set the testing mode to VPC.
         self.vpc_load_config = vpc_load_config
 
     def validate(self):
@@ -4974,7 +5469,9 @@ class GetPtsSceneResponseBodySceneRelationListApiListBody(TeaModel):
         body_value: str = None,
         content_type: str = None,
     ):
+        # The body value.
         self.body_value = body_value
+        # The body type.
         self.content_type = content_type
 
     def validate(self):
@@ -5009,9 +5506,13 @@ class GetPtsSceneResponseBodySceneRelationListApiListCheckPointList(TeaModel):
         expect_value: str = None,
         operator: str = None,
     ):
+        # The checked parameter.
         self.check_point = check_point
+        # The check type.
         self.check_type = check_type
+        # The expected value.
         self.expect_value = expect_value
+        # The check operator.
         self.operator = operator
 
     def validate(self):
@@ -5054,9 +5555,13 @@ class GetPtsSceneResponseBodySceneRelationListApiListExportList(TeaModel):
         export_type: str = None,
         export_value: str = None,
     ):
+        # The number of items or entries related to the export operation.
         self.count = count
+        # The path where the exported value can be found.
         self.export_name = export_name
+        # The format in which data is exported.
         self.export_type = export_type
+        # The parameter that is exported.
         self.export_value = export_value
 
     def validate(self):
@@ -5097,7 +5602,9 @@ class GetPtsSceneResponseBodySceneRelationListApiListHeaderList(TeaModel):
         header_name: str = None,
         header_value: str = None,
     ):
+        # The header name.
         self.header_name = header_name
+        # The header value.
         self.header_value = header_value
 
     def validate(self):
@@ -5138,15 +5645,25 @@ class GetPtsSceneResponseBodySceneRelationListApiList(TeaModel):
         timeout_in_second: int = None,
         url: str = None,
     ):
+        # The API ID. You can track an API by its ID in sessions.
         self.api_id = api_id
+        # The API name.
         self.api_name = api_name
+        # The request body.
         self.body = body
+        # The checkpoints.
         self.check_point_list = check_point_list
+        # The exported parameters.
         self.export_list = export_list
+        # The headers used in the API request.
         self.header_list = header_list
+        # The request method.
         self.method = method
+        # The number of redirections.
         self.redirect_count_limit = redirect_count_limit
+        # The timeout period. Unit: seconds.
         self.timeout_in_second = timeout_in_second
+        # The URL to which the request is sent.
         self.url = url
 
     def validate(self):
@@ -5242,9 +5759,13 @@ class GetPtsSceneResponseBodySceneRelationListFileParameterExplainList(TeaModel)
         file_name: str = None,
         file_param_name: str = None,
     ):
+        # Indicates whether the file serves as the primary dataset for the test.
         self.base_file = base_file
+        # Indicates whether the parameters are used for a single test execution.
         self.cycle_once = cycle_once
+        # The file name.
         self.file_name = file_name
+        # The parameter names in the file.
         self.file_param_name = file_param_name
 
     def validate(self):
@@ -5287,9 +5808,13 @@ class GetPtsSceneResponseBodySceneRelationList(TeaModel):
         relation_id: str = None,
         relation_name: str = None,
     ):
+        # The APIs.
         self.api_list = api_list
+        # The file parameters.
         self.file_parameter_explain_list = file_parameter_explain_list
+        # The session ID.
         self.relation_id = relation_id
+        # The session name.
         self.relation_name = relation_name
 
     def validate(self):
@@ -5356,16 +5881,27 @@ class GetPtsSceneResponseBodyScene(TeaModel):
         scene_name: str = None,
         status: str = None,
     ):
+        # The advanced settings.
         self.advance_setting = advance_setting
+        # The creation time of the scenario.
         self.create_time = create_time
+        # The file parameters.
         self.file_parameter_list = file_parameter_list
+        # Global parameters
         self.global_parameter_list = global_parameter_list
+        # The global headers for the scenario.
         self.headers = headers
+        # The load settings.
         self.load_config = load_config
+        # The last modification time of the scenario.
         self.modified_time = modified_time
+        # The sessions.
         self.relation_list = relation_list
+        # The ID of the scenario.
         self.scene_id = scene_id
+        # The name of the scenario
         self.scene_name = scene_name
+        # The status of the scenario.
         self.status = status
 
     def validate(self):
@@ -5479,11 +6015,20 @@ class GetPtsSceneResponseBody(TeaModel):
         scene: GetPtsSceneResponseBodyScene = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, N/A is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The structure of the scenario.
         self.scene = scene
+        # Indicates whether the operation is successful.
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -5574,6 +6119,9 @@ class GetPtsSceneBaseLineRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scene. For more information, see the [table](https://help.aliyun.com/document_detail/201321.html) provided in this topic.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -5612,17 +6160,29 @@ class GetPtsSceneBaseLineResponseBodyBaselineApiBaselines(TeaModel):
         success_rate_biz: float = None,
         success_rate_req: float = None,
     ):
+        # Average RT
         self.avg_rt = avg_rt
+        # null
         self.avg_tps = avg_tps
+        # null
         self.fail_count_biz = fail_count_biz
+        # Failures
         self.fail_count_req = fail_count_req
+        # The API ID.
         self.id = id
+        # null
         self.max_rt = max_rt
+        # null
         self.min_rt = min_rt
+        # The name of the API operation.
         self.name = name
+        # null
         self.seg_90rt = seg_90rt
+        # null
         self.seg_99rt = seg_99rt
+        # null
         self.success_rate_biz = success_rate_biz
+        # request success rate
         self.success_rate_req = success_rate_req
 
     def validate(self):
@@ -5701,13 +6261,21 @@ class GetPtsSceneBaseLineResponseBodyBaselineSceneBaseline(TeaModel):
         success_rate_biz: float = None,
         success_rate_req: float = None,
     ):
+        # Average RT
         self.avg_rt = avg_rt
+        # null
         self.avg_tps = avg_tps
+        # null
         self.fail_count_biz = fail_count_biz
+        # Failures
         self.fail_count_req = fail_count_req
+        # null
         self.seg_90rt = seg_90rt
+        # null
         self.seg_99rt = seg_99rt
+        # null
         self.success_rate_biz = success_rate_biz
+        # request success rate
         self.success_rate_req = success_rate_req
 
     def validate(self):
@@ -5765,8 +6333,11 @@ class GetPtsSceneBaseLineResponseBodyBaseline(TeaModel):
         name: str = None,
         scene_baseline: GetPtsSceneBaseLineResponseBodyBaselineSceneBaseline = None,
     ):
+        # null
         self.api_baselines = api_baselines
+        # Scenario
         self.name = name
+        # null
         self.scene_baseline = scene_baseline
 
     def validate(self):
@@ -5819,12 +6390,22 @@ class GetPtsSceneBaseLineResponseBody(TeaModel):
         scene_id: str = None,
         success: bool = None,
     ):
+        # Baseline data
         self.baseline = baseline
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # null
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ID of the scene.
         self.scene_id = scene_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false:
         self.success = success
 
     def validate(self):
@@ -5920,7 +6501,13 @@ class GetPtsSceneRunningDataRequest(TeaModel):
         plan_id: str = None,
         scene_id: str = None,
     ):
+        # The ID of the stress testing task. You can obtain the task ID by calling the StartPtsScene operation.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -5955,9 +6542,13 @@ class GetPtsSceneRunningDataResponseBodyAgentLocation(TeaModel):
         province: str = None,
         region: str = None,
     ):
+        # The number of stress testers.
         self.count = count
+        # The provider of the stress tester.
         self.isp = isp
+        # The province in which the stress tester resides.
         self.province = province
+        # The region in which the stress tester resides.
         self.region = region
 
     def validate(self):
@@ -6000,9 +6591,13 @@ class GetPtsSceneRunningDataResponseBodyChainMonitorDataListCheckPointResult(Tea
         succeed_business_count: int = None,
         succeed_business_qps: float = None,
     ):
+        # The number of failed businesses.
         self.failed_business_count = failed_business_count
+        # The RPS of failed businesses.
         self.failed_business_qps = failed_business_qps
+        # The number of successful businesses.
         self.succeed_business_count = succeed_business_count
+        # The RPS of the successful businesses.
         self.succeed_business_qps = succeed_business_qps
 
     def validate(self):
@@ -6056,20 +6651,35 @@ class GetPtsSceneRunningDataResponseBodyChainMonitorDataList(TeaModel):
         real_qps: float = None,
         time_point: int = None,
     ):
+        # The API ID.
         self.api_id = api_id
+        # The API name.
         self.api_name = api_name
+        # The average RT.
         self.average_rt = average_rt
+        # The check point results.
         self.check_point_result = check_point_result
+        # The concurrency.
         self.concurrency = concurrency
+        # The RPS of successful and failed requests.
         self.config_qps = config_qps
+        # The number of successful requests.
         self.count_2xx = count_2xx
+        # The total number of failed requests.
         self.failed_count = failed_count
+        # The RPS of failed requests.
         self.failed_qps = failed_qps
+        # The maximum RT.
         self.max_rt = max_rt
+        # The minimum RT.
         self.min_rt = min_rt
+        # The API ID.
         self.node_id = node_id
+        # The Requests Per Second (RPS) of successful requests.
         self.qps_2xx = qps_2xx
+        # The actual RPS.
         self.real_qps = real_qps
+        # The point in time at which the stress testing is performed.
         self.time_point = time_point
 
     def validate(self):
@@ -6178,29 +6788,56 @@ class GetPtsSceneRunningDataResponseBody(TeaModel):
         tps_limit: int = None,
         vum: int = None,
     ):
+        # The location information of stress testers.
         self.agent_location = agent_location
+        # The number of healthy engines.
         self.alive_agents = alive_agents
+        # The average RT.
         self.average_rt = average_rt
+        # The start time of the stress testing that is displayed as a timestamp. Unit: ms.
         self.begin_time = begin_time
+        # The stress testing details of the GetPtsSceneRunningData operation.
         self.chain_monitor_data_list = chain_monitor_data_list
+        # The system status code. If the request was successful, this parameter is not returned.
         self.code = code
+        # The total concurrency.
         self.concurrency = concurrency
+        # The maximum concurrency.
         self.concurrency_limit = concurrency_limit
+        # The total number of failed businesses.
         self.failed_business_count = failed_business_count
+        # The number of failed requests.
         self.failed_request_count = failed_request_count
+        # Indicates whether a report is generated.
         self.has_report = has_report
+        # The HTTP status code. If the request was successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is not returned.
         self.message = message
+        # The size of the request body.
         self.request_bps = request_bps
+        # The request ID.
         self.request_id = request_id
+        # The size of the response body.
         self.response_bps = response_bps
+        # The 90th percentile of reaction time (RT).
         self.seg_90rt = seg_90rt
+        # The scenario status. The default parameter value is 7.
         self.status = status
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of stress testers.
         self.total_agents = total_agents
+        # The total number of queries per second (QPS).
         self.total_real_qps = total_real_qps
+        # The total number of requests.
         self.total_request_count = total_request_count
+        # The maximum transactions per second (TPS).
         self.tps_limit = tps_limit
+        # The consumed Virtual User Minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -6378,6 +7015,9 @@ class GetPtsSceneRunningStatusRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -6413,14 +7053,37 @@ class GetPtsSceneRunningStatusResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned
         self.code = code
+        # The time when the scenario was created.
         self.create_time = create_time
+        # The request status code. If the operation is successful, this parameter is not returned
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The last modification time of the scenario.
         self.modified_time = modified_time
+        # The ID of the request.
         self.request_id = request_id
+        # The name of the scenario.
         self.scene_name = scene_name
+        # The status of the scenario. Valid values:
+        # 
+        # *   CREATED
+        # *   SYNCING
+        # *   SYNC_DONE
+        # *   UPLOADING
+        # *   UPLOADED
+        # *   PREPARING
+        # *   READY
+        # *   RUNNING
+        # *   STOPPING
+        # *   STOPPED
         self.status = status
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6524,9 +7187,21 @@ class GetUserVpcSecurityGroupRequest(TeaModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
+        # The page number.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the virtual private cloud (VPC).
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6569,9 +7244,13 @@ class GetUserVpcSecurityGroupResponseBodySecurityGroupList(TeaModel):
         security_group_name: str = None,
         vpc_id: str = None,
     ):
+        # The description of the security group.
         self.description = description
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The name of the security group.
         self.security_group_name = security_group_name
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6619,14 +7298,26 @@ class GetUserVpcSecurityGroupResponseBody(TeaModel):
         security_group_list: List[GetUserVpcSecurityGroupResponseBodySecurityGroupList] = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The number of security groups.
         self.security_group_count = security_group_count
+        # The security groups.
         self.security_group_list = security_group_list
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6738,9 +7429,21 @@ class GetUserVpcVSwitchRequest(TeaModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
+        # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the virtual private cloud (VPC).
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6784,10 +7487,15 @@ class GetUserVpcVSwitchResponseBodyVSwitchList(TeaModel):
         v_switch_name: str = None,
         vpc_id: str = None,
     ):
+        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
+        # The maximum number of stress testers to be added.
         self.max_agent_count = max_agent_count
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The vSwitch name.
         self.v_switch_name = v_switch_name
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6839,14 +7547,26 @@ class GetUserVpcVSwitchResponseBody(TeaModel):
         v_switch_count: int = None,
         v_switch_list: List[GetUserVpcVSwitchResponseBodyVSwitchList] = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of returned entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The number of vSwitches.
         self.v_switch_count = v_switch_count
+        # The vSwitches.
         self.v_switch_list = v_switch_list
 
     def validate(self):
@@ -6958,9 +7678,19 @@ class GetUserVpcsRequest(TeaModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
+        # The page number.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7007,13 +7737,21 @@ class GetUserVpcsResponseBodyVpcs(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The description of the VPC.
         self.description = description
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group to which the VPC belongs.
         self.resource_group_id = resource_group_id
+        # The IDs of the route tables.
         self.router_table_ids = router_table_ids
+        # The vSwitches.
         self.v_switch_ids = v_switch_ids
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -7077,14 +7815,26 @@ class GetUserVpcsResponseBody(TeaModel):
         total_count: int = None,
         vpcs: List[GetUserVpcsResponseBodyVpcs] = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
+        # The VPCs.
         self.vpcs = vpcs
 
     def validate(self):
@@ -7196,9 +7946,17 @@ class ListEnvsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the environment. If you specify this parameter, the operation returns the information about the environment identified by the ID.
         self.env_id = env_id
+        # The keyword of the environment name. If you specify this parameter, the operation returns the information about the environments whose names contain the keyword.
         self.env_name = env_name
+        # The page number.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of environments per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -7242,10 +8000,15 @@ class ListEnvsResponseBodyEnvsFiles(TeaModel):
         file_size: int = None,
         md_5: str = None,
     ):
+        # The ID of the file.
         self.file_id = file_id
+        # The name of the file.
         self.file_name = file_name
+        # The OSS address of the file.
         self.file_oss_address = file_oss_address
+        # The size of the file. Unit: bytes.
         self.file_size = file_size
+        # The MD5 checksum of the file.
         self.md_5 = md_5
 
     def validate(self):
@@ -7291,8 +8054,11 @@ class ListEnvsResponseBodyEnvsProperties(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The description of the attribute.
         self.description = description
+        # The name of the attribute.
         self.name = name
+        # The value of the attribute.
         self.value = value
 
     def validate(self):
@@ -7337,15 +8103,25 @@ class ListEnvsResponseBodyEnvs(TeaModel):
         running_scenes: List[str] = None,
         used_capacity: int = None,
     ):
+        # The time when the environment was created.
         self.create_time = create_time
+        # The ID of the environment.
         self.env_id = env_id
+        # The name of the environment.
         self.env_name = env_name
+        # The JMeter version of the environment.
         self.env_version = env_version
+        # The JAR files.
         self.files = files
+        # The time when the environment was last modified.
         self.modified_time = modified_time
+        # The JMeter attributes.
         self.properties = properties
+        # The scenarios related to the environment.
         self.related_scenes = related_scenes
+        # The IDs of the scenarios that run in the environment.
         self.running_scenes = running_scenes
+        # The total size of the environment file.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -7434,14 +8210,26 @@ class ListEnvsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The environments.
         self.envs = envs
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of environments per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of environments.
         self.total_count = total_count
 
     def validate(self):
@@ -7556,12 +8344,23 @@ class ListJMeterReportsRequest(TeaModel):
         report_id: str = None,
         scene_id: str = None,
     ):
+        # The beginning of the time range to query. Unit: ms.
         self.begin_time = begin_time
+        # The end of the time range to query.
         self.end_time = end_time
+        # The report keyword.
         self.keyword = keyword
+        # The number of the report page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of reports to return.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The report ID.
         self.report_id = report_id
+        # The ID of the scenario whose report you want to view.
         self.scene_id = scene_id
 
     def validate(self):
@@ -7617,10 +8416,15 @@ class ListJMeterReportsResponseBodyReports(TeaModel):
         report_name: str = None,
         vum: int = None,
     ):
+        # The start time of the stress testing.
         self.actual_start_time = actual_start_time
+        # The stress testing duration.
         self.duration = duration
+        # The report ID.
         self.report_id = report_id
+        # The report name.
         self.report_name = report_name
+        # The consumed Virtual User Minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -7672,14 +8476,26 @@ class ListJMeterReportsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The number of the returned report page.
         self.page_number = page_number
+        # The number of returned reports.
         self.page_size = page_size
+        # The reports.
         self.reports = reports
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of reports returned based on the condition.
         self.total_count = total_count
 
     def validate(self):
@@ -7791,9 +8607,17 @@ class ListOpenJMeterScenesRequest(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
     ):
+        # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of scenarios to return.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The scenario ID.
         self.scene_id = scene_id
+        # The scenario name.
         self.scene_name = scene_name
 
     def validate(self):
@@ -7836,9 +8660,20 @@ class ListOpenJMeterScenesResponseBodyJMeterScene(TeaModel):
         scene_name: str = None,
         status: str = None,
     ):
+        # The stress testing duration.
         self.duration_str = duration_str
+        # The scenario ID.
         self.scene_id = scene_id
+        # The scenario name.
         self.scene_name = scene_name
+        # The status of the scenario. Valid values:
+        # 
+        # *   PREPARING: The scenario is being prepared.
+        # *   PREPARED: The scenario has been prepared.
+        # *   STARTING: The scenario is starting.
+        # *   RUNNING: The scenario is running.
+        # *   STOPPING: The scenario is being stopped.
+        # *   STOPPED: The scenario waits for startup
         self.status = status
 
     def validate(self):
@@ -7886,14 +8721,26 @@ class ListOpenJMeterScenesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The system status code. If the request was successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the request was successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The scenarios.
         self.jmeter_scene = jmeter_scene
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of returned scenarios.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of returned scenarios.
         self.total_count = total_count
 
     def validate(self):
@@ -8008,12 +8855,23 @@ class ListPtsReportsRequest(TeaModel):
         report_id: str = None,
         scene_id: str = None,
     ):
+        # The timestamp when the stress testing starts. Unit: ms.
         self.begin_time = begin_time
+        # The timestamp when the stress testing ends. Unit: ms.
         self.end_time = end_time
+        # The report keyword.
         self.keyword = keyword
+        # The number of the page to return. The page number starts from 1.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of reports to return per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The report ID.
         self.report_id = report_id
+        # The ID of the scenario whose report you want to view.
         self.scene_id = scene_id
 
     def validate(self):
@@ -8069,10 +8927,15 @@ class ListPtsReportsResponseBodyReports(TeaModel):
         report_name: str = None,
         vum: int = None,
     ):
+        # The timestamp when the stress testing starts. Unit: ms.
         self.actual_start_time = actual_start_time
+        # The stress testing duration.
         self.duration = duration
+        # The report ID.
         self.report_id = report_id
+        # The report name.
         self.report_name = report_name
+        # The consumed Virtual User Minutes (VUM).
         self.vum = vum
 
     def validate(self):
@@ -8124,14 +8987,23 @@ class ListPtsReportsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, an empty string is returned.
         self.message = message
+        # The number of the returned page. The page number starts from 1.
         self.page_number = page_number
+        # The number of reports returned per page.
         self.page_size = page_size
+        # The reports.
         self.reports = reports
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
+        # The total number of reports returned based on the condition.
         self.total_count = total_count
 
     def validate(self):
@@ -8242,8 +9114,15 @@ class ListPtsSceneRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The keyword based on which you can search for the PTS scenario. You can perform a fuzzy search on the scenario name (**SceneName**) or an exact search on the scenario ID (**SceneId**).
         self.key_word = key_word
+        # The number of the page to return. Valid values: 1 to 1073741824.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of scenario entries to return per page. Valid values: 10 to 1000.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -8282,9 +9161,13 @@ class ListPtsSceneResponseBodySceneViewList(TeaModel):
         scene_name: str = None,
         status: str = None,
     ):
+        # The time when the PTS scenario was created.
         self.create_time = create_time
+        # The scenario ID.
         self.scene_id = scene_id
+        # The scenario name.
         self.scene_name = scene_name
+        # The status of the PTS scenario. Valid values:
         self.status = status
 
     def validate(self):
@@ -8329,11 +9212,20 @@ class ListPtsSceneResponseBody(TeaModel):
         scene_view_list: List[ListPtsSceneResponseBodySceneViewList] = None,
         success: bool = None,
     ):
+        # The system status code. If the request was successful, no data is returned.
         self.code = code
+        # The HTTP status code. If the request was successful, no data is returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, no data is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The returned scenarios.
         self.scene_view_list = scene_view_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8425,11 +9317,254 @@ class ListPtsSceneResponse(TeaModel):
         return self
 
 
+class ListVpcConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        config_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.config_id = config_id
+        self.config_name = config_name
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListVpcConfigsResponseBodyVpcConfigList(TeaModel):
+    def __init__(
+        self,
+        config_description: str = None,
+        config_id: str = None,
+        config_name: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        sort_priority: int = None,
+        v_switch_id: str = None,
+        vpc_cidr: str = None,
+        vpc_id: str = None,
+    ):
+        self.config_description = config_description
+        self.config_id = config_id
+        self.config_name = config_name
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.sort_priority = sort_priority
+        self.v_switch_id = v_switch_id
+        self.vpc_cidr = vpc_cidr
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_description is not None:
+            result['ConfigDescription'] = self.config_description
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.sort_priority is not None:
+            result['SortPriority'] = self.sort_priority
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_cidr is not None:
+            result['VpcCidr'] = self.vpc_cidr
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigDescription') is not None:
+            self.config_description = m.get('ConfigDescription')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SortPriority') is not None:
+            self.sort_priority = m.get('SortPriority')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcCidr') is not None:
+            self.vpc_cidr = m.get('VpcCidr')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListVpcConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        vpc_config_list: List[ListVpcConfigsResponseBodyVpcConfigList] = None,
+    ):
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vpc_config_list = vpc_config_list
+
+    def validate(self):
+        if self.vpc_config_list:
+            for k in self.vpc_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['VpcConfigList'] = []
+        if self.vpc_config_list is not None:
+            for k in self.vpc_config_list:
+                result['VpcConfigList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.vpc_config_list = []
+        if m.get('VpcConfigList') is not None:
+            for k in m.get('VpcConfigList'):
+                temp_model = ListVpcConfigsResponseBodyVpcConfigList()
+                self.vpc_config_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListVpcConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVpcConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVpcConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyPtsSceneRequest(TeaModel):
     def __init__(
         self,
         scene: str = None,
     ):
+        # null
+        # 
+        # This parameter is required.
         self.scene = scene
 
     def validate(self):
@@ -8461,10 +9596,18 @@ class ModifyPtsSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code that is returned.
         self.http_status_code = http_status_code
+        # null
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false:
         self.success = success
 
     def validate(self):
@@ -8549,6 +9692,9 @@ class RemoveEnvRequest(TeaModel):
         self,
         env_id: str = None,
     ):
+        # The ID of the environment that you want to delete.
+        # 
+        # This parameter is required.
         self.env_id = env_id
 
     def validate(self):
@@ -8580,10 +9726,18 @@ class RemoveEnvResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the request was successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the request was successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8668,6 +9822,9 @@ class RemoveOpenJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario that you want to remove.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -8699,10 +9856,18 @@ class RemoveOpenJMeterSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8788,7 +9953,15 @@ class SaveEnvRequestEnvFiles(TeaModel):
         file_name: str = None,
         file_oss_address: str = None,
     ):
+        # The name of the file. Make sure that the file name is the same as the file name in the value of **FileOssAddress**.
+        # 
+        # This parameter is required.
         self.file_name = file_name
+        # The Object Storage Service (OSS) URL of the file. Make sure that the file is accessible from the Internet.
+        # 
+        # >  Only OSS URLs in the China (Shanghai) region are supported.
+        # 
+        # This parameter is required.
         self.file_oss_address = file_oss_address
 
     def validate(self):
@@ -8822,8 +9995,11 @@ class SaveEnvRequestEnvProperties(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The description of the attribute.
         self.description = description
+        # The name of the attribute.
         self.name = name
+        # The value of the attribute.
         self.value = value
 
     def validate(self):
@@ -8863,10 +10039,19 @@ class SaveEnvRequestEnv(TeaModel):
         jmeter_plugin_label: str = None,
         properties: List[SaveEnvRequestEnvProperties] = None,
     ):
+        # The ID of the JMeter environment. To create a JMeter environment, leave this parameter empty. To update a JMeter environment, specify the ID of the environment.
         self.env_id = env_id
+        # The name of the environment.
+        # 
+        # This parameter is required.
         self.env_name = env_name
+        # The files on which the environment depends.
+        # 
+        # This parameter is required.
         self.files = files
+        # The extension label.
         self.jmeter_plugin_label = jmeter_plugin_label
+        # The JMeter attributes.
         self.properties = properties
 
     def validate(self):
@@ -8927,6 +10112,9 @@ class SaveEnvRequest(TeaModel):
         self,
         env: SaveEnvRequestEnv = None,
     ):
+        # The JMeter environment.
+        # 
+        # This parameter is required.
         self.env = env
 
     def validate(self):
@@ -8956,6 +10144,9 @@ class SaveEnvShrinkRequest(TeaModel):
         self,
         env_shrink: str = None,
     ):
+        # The JMeter environment.
+        # 
+        # This parameter is required.
         self.env_shrink = env_shrink
 
     def validate(self):
@@ -8988,11 +10179,20 @@ class SaveEnvResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The ID of the environment.
         self.env_id = env_id
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9083,8 +10283,11 @@ class SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig(TeaModel):
         dns_servers: List[str] = None,
         host_table: Dict[str, str] = None,
     ):
+        # Specifies whether to clear the cache in each iteration.
         self.clear_cache_each_iteration = clear_cache_each_iteration
+        # The DNS servers.
         self.dns_servers = dns_servers
+        # The table that contains bound domain names.
         self.host_table = host_table
 
     def validate(self):
@@ -9126,12 +10329,25 @@ class SaveOpenJMeterSceneRequestOpenJMeterSceneFileList(TeaModel):
         split_csv: bool = None,
         tags: str = None,
     ):
+        # The file ID.
         self.file_id = file_id
+        # The name of the test file.
+        # 
+        # This parameter is required.
         self.file_name = file_name
+        # The Object Storage Service (OSS) path that is used to access the test file over the Internet.
+        # 
+        # >  Only test files in the China (Shanghai) region can be accessed.
+        # 
+        # This parameter is required.
         self.file_oss_address = file_oss_address
+        # The file size. The total file size cannot exceed 500 MB. Unit: bytes.
         self.file_size = file_size
+        # The MD5 hash of the test file.
         self.md_5 = md_5
+        # Specifies whether to split the test file. This parameter is valid only for CSV files.
         self.split_csv = split_csv
+        # The file tag.
         self.tags = tags
 
     def validate(self):
@@ -9184,7 +10400,9 @@ class SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The property name.
         self.name = name
+        # The values of the property.
         self.value = value
 
     def validate(self):
@@ -9217,7 +10435,9 @@ class SaveOpenJMeterSceneRequestOpenJMeterSceneRegionalCondition(TeaModel):
         amount: int = None,
         region: str = None,
     ):
+        # The number of stress tests. The sum of the number of stress tests in all regions must be equal to the AgentCount value of a specified scenario.
         self.amount = amount
+        # The region ID.
         self.region = region
 
     def validate(self):
@@ -9273,30 +10493,67 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The number of stress testers.
+        # 
+        # This parameter is required.
         self.agent_count = agent_count
+        # The maximum concurrency that is determined by the resource plans of users. You must configure this parameter when the mode is set to CONCURRENCY.
         self.concurrency = concurrency
+        # The type of the synchronization timer with fixed throughput in JMeter.
         self.constant_throughput_timer_type = constant_throughput_timer_type
+        # The settings of Domain Name System (DNS).
         self.dns_cache_config = dns_cache_config
+        # The stress testing duration. The maximum stress testing duration is no more than one day, Unit: seconds. Valid values: 60 to 86400.
+        # 
+        # This parameter is required.
         self.duration = duration
+        # The ID of the environment associated with the scenario.
         self.environment_id = environment_id
+        # The test files.
+        # 
+        # This parameter is required.
         self.file_list = file_list
+        # Specifies whether the test is a virtual private cloud (VPC) test. The default value is false, which indicates a public network test. VPC-related settings take effect only when you set this parameter to true.
         self.is_vpc_test = is_vpc_test
+        # The JMeter properties.
         self.jmeter_properties = jmeter_properties
+        # The JMeter plug-in tag.
         self.jmeter_plugin_label = jmeter_plugin_label
+        # The maximum RPS that takes effect in RPS mode.
         self.max_rps = max_rps
+        # The stress model.
+        # 
+        # This parameter is required.
         self.mode = mode
+        # The ramp-up period. Unit: seconds.
         self.ramp_up = ramp_up
+        # The region ID that is specified in the VPC test.
         self.region_id = region_id
+        # The requirements for the regions of the stress testers.
         self.regional_condition = regional_condition
+        # The scenario ID. If you do not configure this parameter, the system creates a scenario. If you configure this parameter, the system updates the scenario corresponding to the ID specified by this parameter.
         self.scene_id = scene_id
+        # The scenario name.
+        # 
+        # This parameter is required.
         self.scene_name = scene_name
+        # The security group ID that is specified in the VPC test.
         self.security_group_id = security_group_id
+        # The initial concurrency that takes effect in concurrency mode. You must configure this parameter when the mode is set to CONCURRENCY.
         self.start_concurrency = start_concurrency
+        # The initial RPS that takes effect in RPS mode.
         self.start_rps = start_rps
+        # The number of ramp-up steps.
         self.steps = steps
+        # The type of the synchronization timer in JMeter.
         self.sync_timer_type = sync_timer_type
+        # The test file.
+        # 
+        # This parameter is required.
         self.test_file = test_file
+        # The vSwitch ID that is specified in the VPC test.
         self.v_switch_id = v_switch_id
+        # The VPC ID that is specified in the VPC test.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9449,6 +10706,9 @@ class SaveOpenJMeterSceneRequest(TeaModel):
         self,
         open_jmeter_scene: SaveOpenJMeterSceneRequestOpenJMeterScene = None,
     ):
+        # The details of the scenario.
+        # 
+        # This parameter is required.
         self.open_jmeter_scene = open_jmeter_scene
 
     def validate(self):
@@ -9478,6 +10738,9 @@ class SaveOpenJMeterSceneShrinkRequest(TeaModel):
         self,
         open_jmeter_scene_shrink: str = None,
     ):
+        # The details of the scenario.
+        # 
+        # This parameter is required.
         self.open_jmeter_scene_shrink = open_jmeter_scene_shrink
 
     def validate(self):
@@ -9510,11 +10773,20 @@ class SaveOpenJMeterSceneResponseBody(TeaModel):
         scene_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the request was successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the request was successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ID of the created or updated scenario.
         self.scene_id = scene_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9604,7 +10876,9 @@ class SavePtsSceneRequestSceneAdvanceSettingDomainBindingList(TeaModel):
         domain: str = None,
         ips: List[str] = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The IP addresses.
         self.ips = ips
 
     def validate(self):
@@ -9639,9 +10913,13 @@ class SavePtsSceneRequestSceneAdvanceSetting(TeaModel):
         log_rate: int = None,
         success_code: str = None,
     ):
+        # The timeout period. Unit: seconds.
         self.connection_timeout_in_second = connection_timeout_in_second
+        # The domain name-IP address binding relationships
         self.domain_binding_list = domain_binding_list
+        # The log sampling rate. Valid values: 1, 10, 20, 30, 40, and 50.
         self.log_rate = log_rate
+        # The success status code. Separate multiple status codes with commas (,).
         self.success_code = success_code
 
     def validate(self):
@@ -9690,7 +10968,9 @@ class SavePtsSceneRequestSceneFileParameterList(TeaModel):
         file_name: str = None,
         file_oss_address: str = None,
     ):
+        # The name of the file.
         self.file_name = file_name
+        # The OSS URL of the file, which must be accessible over the Internet.
         self.file_oss_address = file_oss_address
 
     def validate(self):
@@ -9723,7 +11003,9 @@ class SavePtsSceneRequestSceneGlobalParameterList(TeaModel):
         param_name: str = None,
         param_value: str = None,
     ):
+        # The name of the parameter.
         self.param_name = param_name
+        # The value of the parameter.
         self.param_value = param_value
 
     def validate(self):
@@ -9757,9 +11039,17 @@ class SavePtsSceneRequestSceneLoadConfigApiLoadConfigList(TeaModel):
         rps_begin: int = None,
         rps_limit: int = None,
     ):
-        # API ID。
+        # The ID of the API.
+        # 
+        # This parameter is required.
         self.api_id = api_id
+        # The starting RPS.
+        # 
+        # This parameter is required.
         self.rps_begin = rps_begin
+        # The maximum RPS.
+        # 
+        # This parameter is required.
         self.rps_limit = rps_limit
 
     def validate(self):
@@ -9798,9 +11088,21 @@ class SavePtsSceneRequestSceneLoadConfigConfiguration(TeaModel):
         all_rps_begin: int = None,
         all_rps_limit: int = None,
     ):
+        # The starting total number of concurrent virtual users in all sessions.
+        # 
+        # The value is evenly distributed among all sessions if you set TestMode to concurrency_mode. If you do not specify this parameter, you must configure **relationLoadConfig**.
         self.all_concurrency_begin = all_concurrency_begin
+        # The maximum total number of concurrent virtual users in all sessions.
+        # 
+        # The value is evenly distributed among all sessions if you set TestMode to concurrency_mode. If you do not specify this parameter, you must configure **relationLoadConfig**.
         self.all_concurrency_limit = all_concurrency_limit
+        # The starting RPS for all APIs.
+        # 
+        # The value is evenly distributed among all APIs if you set TestMode to RPS. If you do not specify this parameter, you must specify **apiLoadConfig**.
         self.all_rps_begin = all_rps_begin
+        # The maximum RPS for all APIs.
+        # 
+        # The value is evenly distributed among all APIs if you set TestMode to RPS. If you do not specify this parameter, you must specify **apiLoadConfig**.
         self.all_rps_limit = all_rps_limit
 
     def validate(self):
@@ -9842,8 +11144,15 @@ class SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList(TeaModel):
         concurrency_limit: int = None,
         relation_id: str = None,
     ):
+        # The starting number of concurrent virtual users.
+        # 
+        # This parameter is required.
         self.concurrency_begin = concurrency_begin
+        # The maximum number of concurrent virtual users.
+        # 
+        # This parameter is required.
         self.concurrency_limit = concurrency_limit
+        # The ID of the session.
         self.relation_id = relation_id
 
     def validate(self):
@@ -9882,10 +11191,21 @@ class SavePtsSceneRequestSceneLoadConfigVpcLoadConfig(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the security group.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # The ID of the vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The ID of the VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9934,15 +11254,36 @@ class SavePtsSceneRequestSceneLoadConfig(TeaModel):
         test_mode: str = None,
         vpc_load_config: SavePtsSceneRequestSceneLoadConfigVpcLoadConfig = None,
     ):
+        # The number of load generators. If the number of concurrent virtual users exceeds 250 or the RPS exceeds 2,000, you can use multiple load generators. The maximum number of load generators is limited to the total number of concurrent virtual users divided by 250 or the total RPS divided by 200.
         self.agent_count = agent_count
+        # The API request load settings.
         self.api_load_config_list = api_load_config_list
+        # Specifies whether the load is automatically incremented. This parameter takes effect only if you set `TestMode=concurrency_mode`.
         self.auto_step = auto_step
+        # The load level settings of the scenario.
+        # 
+        # This parameter is required.
         self.configuration = configuration
+        # The increment percentage. Valid values: 10 to 100, in increments of 10.
+        # 
+        # This parameter takes effect only if you set `testMode=concurrency_mode`and `autoStep=true`.
         self.increment = increment
+        # The duration of a specific load level. Unit: minutes. The value must be less than the value of **maxRunningTime**.
         self.keep_time = keep_time
+        # The duration of load application. Unit: minutes. Valid values: 1 to 1440.
+        # 
+        # This parameter is required.
         self.max_running_time = max_running_time
+        # The session settings.
         self.relation_load_config_list = relation_load_config_list
+        # The load application mode. Valid values:
+        # 
+        # *   concurrency_mode: concurrency mode
+        # *   tps_mode: RPS mode.
+        # 
+        # This parameter is required.
         self.test_mode = test_mode
+        # The VPC settings.
         self.vpc_load_config = vpc_load_config
 
     def validate(self):
@@ -10030,7 +11371,9 @@ class SavePtsSceneRequestSceneRelationListApiListBody(TeaModel):
         body_value: str = None,
         content_type: str = None,
     ):
+        # The data in the body. For example, {"key1":"value2","key2":"value2"}.
         self.body_value = body_value
+        # The body type. Default: `application/x-www-form-urlencoded`.
         self.content_type = content_type
 
     def validate(self):
@@ -10065,9 +11408,20 @@ class SavePtsSceneRequestSceneRelationListApiListCheckPointList(TeaModel):
         expect_value: str = None,
         operator: str = None,
     ):
+        # The checked item.
+        # 
+        # This parameter specifies the fields in the header if you specify `CheckType=HEADER` or the name of the export parameter if you specify `CheckType=EXPORTED_PARAM`.
         self.check_point = check_point
+        # The type of check. Valid values:
+        # 
+        # *   BODY_TEXT: the response body
+        # *   HEADER: the response headers
+        # *   STATUS_CODE: the HTTP status code returned by the API
+        # *   EXPORTED_PARAM: a specific export parameter
         self.check_type = check_type
+        # The expected value.
         self.expect_value = expect_value
+        # The operation or condition that is checked against the expected value.
         self.operator = operator
 
     def validate(self):
@@ -10110,9 +11464,18 @@ class SavePtsSceneRequestSceneRelationListApiListExportList(TeaModel):
         export_type: str = None,
         export_value: str = None,
     ):
+        # The index of the matched item. You can specify a number or "Random". If you set ExportType to BODY_TEXT, you must specify this parameter.
         self.count = count
+        # The name of the export parameter.
         self.export_name = export_name
+        # The source of the export parameter. Valid values:
+        # 
+        # *   BODY_TEXT: the request body in the BODY_TEXT format
+        # *   BODY_JSON: the request body in the BODY_JSON format.
+        # *   HEADER: the request header
+        # *   STATUS_CODE: the HTTP status code returned by the API
         self.export_type = export_type
+        # The actual path from which you want to extract the export parameter values.
         self.export_value = export_value
 
     def validate(self):
@@ -10153,7 +11516,9 @@ class SavePtsSceneRequestSceneRelationListApiListHeaderList(TeaModel):
         header_name: str = None,
         header_value: str = None,
     ):
+        # The name of the header.
         self.header_name = header_name
+        # The value of the header.
         self.header_value = header_value
 
     def validate(self):
@@ -10194,15 +11559,33 @@ class SavePtsSceneRequestSceneRelationListApiList(TeaModel):
         timeout_in_second: int = None,
         url: str = None,
     ):
+        # The ID of the API.
         self.api_id = api_id
+        # The name of the API operation.
+        # 
+        # This parameter is required.
         self.api_name = api_name
+        # The request body.
         self.body = body
+        # The checkpoints.
         self.check_point_list = check_point_list
+        # The export parameters.
         self.export_list = export_list
+        # The headers.
         self.header_list = header_list
+        # The request method.
+        # 
+        # This parameter is required.
         self.method = method
+        # The number of redirections. The value can be 0, which specifies that redirection is allowed, or 10, which specifies that redirection is not allowed. You can specify a value based on your business requirements.
+        # 
+        # This parameter is required.
         self.redirect_count_limit = redirect_count_limit
+        # The timeout period of the API operation. Unit: seconds. Default: 5. Valid values: 1 to 60.
         self.timeout_in_second = timeout_in_second
+        # The URL to which the API request is sent.
+        # 
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -10298,9 +11681,17 @@ class SavePtsSceneRequestSceneRelationListFileParameterExplainList(TeaModel):
         file_name: str = None,
         file_param_name: str = None,
     ):
+        # Specifies whether the file is used as the baseline file.
         self.base_file = base_file
+        # Specifies whether the file is used for a single execution of the test.
         self.cycle_once = cycle_once
+        # The name of the file.
+        # 
+        # This parameter is required.
         self.file_name = file_name
+        # The parameter names in the file.
+        # 
+        # This parameter is required.
         self.file_param_name = file_param_name
 
     def validate(self):
@@ -10343,9 +11734,17 @@ class SavePtsSceneRequestSceneRelationList(TeaModel):
         relation_id: str = None,
         relation_name: str = None,
     ):
+        # The API operations on the session.
+        # 
+        # This parameter is required.
         self.api_list = api_list
+        # The file parameters of the session.
         self.file_parameter_explain_list = file_parameter_explain_list
+        # The ID of the session.
         self.relation_id = relation_id
+        # The name of the session.
+        # 
+        # This parameter is required.
         self.relation_name = relation_name
 
     def validate(self):
@@ -10408,12 +11807,25 @@ class SavePtsSceneRequestScene(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
     ):
+        # The advanced settings.
         self.advance_setting = advance_setting
+        # The file parameters.
         self.file_parameter_list = file_parameter_list
+        # The global customization parameters.
         self.global_parameter_list = global_parameter_list
+        # The load settings.
+        # 
+        # This parameter is required.
         self.load_config = load_config
+        # The sessions.
+        # 
+        # This parameter is required.
         self.relation_list = relation_list
+        # The ID of the scenario. To save a new scenario, leave this parameter empty. To update an existing scenario, specify the ID of the scenario.
         self.scene_id = scene_id
+        # The name of the scenario.
+        # 
+        # This parameter is required.
         self.scene_name = scene_name
 
     def validate(self):
@@ -10497,6 +11909,9 @@ class SavePtsSceneRequest(TeaModel):
         self,
         scene: SavePtsSceneRequestScene = None,
     ):
+        # The information about the scenario.
+        # 
+        # This parameter is required.
         self.scene = scene
 
     def validate(self):
@@ -10526,6 +11941,9 @@ class SavePtsSceneShrinkRequest(TeaModel):
         self,
         scene_shrink: str = None,
     ):
+        # The information about the scenario.
+        # 
+        # This parameter is required.
         self.scene_shrink = scene_shrink
 
     def validate(self):
@@ -10558,11 +11976,20 @@ class SavePtsSceneResponseBody(TeaModel):
         scene_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # If the operation is successful, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ID of the scenario.
         self.scene_id = scene_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10651,6 +12078,9 @@ class StartDebugPtsSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -10683,11 +12113,20 @@ class StartDebugPtsSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The ID of the stress testing task.
         self.plan_id = plan_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10776,6 +12215,9 @@ class StartDebuggingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario that you want to debug.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -10808,11 +12250,20 @@ class StartDebuggingJMeterSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the debugging report.
         self.report_id = report_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10901,6 +12352,9 @@ class StartPtsSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario that you want to start, which is the ID that is returned after the scenario is created. You can view scenario IDs on the scenario list page.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -10933,11 +12387,20 @@ class StartPtsSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The performance testing plan ID. If the scenario is successfully started, this parameter is returned.
         self.plan_id = plan_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11026,6 +12489,9 @@ class StartTestingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11058,11 +12524,20 @@ class StartTestingJMeterSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the report.
         self.report_id = report_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11152,7 +12627,13 @@ class StopDebugPtsSceneRequest(TeaModel):
         plan_id: str = None,
         scene_id: str = None,
     ):
+        # The ID of the stress testing task.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
+        # The scenario ID.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11188,10 +12669,18 @@ class StopDebugPtsSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. If the request was successful, this parameter is left empty.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11276,6 +12765,9 @@ class StopDebuggingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario that you want to stop debugging.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11307,10 +12799,18 @@ class StopDebuggingJMeterSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the request was returned, this parameter is left empty.
         self.code = code
+        # The HTTP status code. If the request was returned, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The returned message. If the request was returned, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11395,6 +12895,9 @@ class StopPtsSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the scenario that you want to stop, which is the ID that is returned after the scenario is created. You can view scenario IDs on the scenario list page in the PTS console.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11426,10 +12929,18 @@ class StopPtsSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11514,6 +13025,9 @@ class StopTestingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
+        # The ID of the JMeter scenario.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11545,10 +13059,18 @@ class StopTestingJMeterSceneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code. If the operation is successful, this parameter is not returned.
         self.code = code
+        # The HTTP status code. If the operation is successful, this parameter is not returned.
         self.http_status_code = http_status_code
+        # The error message. If the operation is successful, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11635,8 +13157,13 @@ class UpdatePtsSceneBaseLineRequest(TeaModel):
         scene_baseline: Dict[str, Any] = None,
         scene_id: str = None,
     ):
+        # null null
         self.api_baselines = api_baselines
+        # null null
         self.scene_baseline = scene_baseline
+        # The ID of the scene. For more information, see the [table](https://help.aliyun.com/document_detail/201321.html) provided in this topic.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11674,8 +13201,13 @@ class UpdatePtsSceneBaseLineShrinkRequest(TeaModel):
         scene_baseline_shrink: str = None,
         scene_id: str = None,
     ):
+        # null null
         self.api_baselines_shrink = api_baselines_shrink
+        # null null
         self.scene_baseline_shrink = scene_baseline_shrink
+        # The ID of the scene. For more information, see the [table](https://help.aliyun.com/document_detail/201321.html) provided in this topic.
+        # 
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11715,10 +13247,18 @@ class UpdatePtsSceneBaseLineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The system status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # null
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   true
+        # *   false:
         self.success = success
 
     def validate(self):

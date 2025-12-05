@@ -1,3 +1,7 @@
+2025-12-05 Version: 1.10.0
+- Support API ListVpcConfigs.
+
+
 2024-03-25 Version: 1.9.3
 - Update API ListPtsScene: update response param.
 
