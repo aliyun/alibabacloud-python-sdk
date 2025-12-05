@@ -15409,6 +15409,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
         app_key: str = None,
         app_secret: str = None,
         corp_id: str = None,
+        dingtalk_login_version: str = None,
         dingtalk_version: str = None,
         encrypt_key: str = None,
         verification_token: str = None,
@@ -15419,6 +15420,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
         self.app_secret = app_secret
         # DingTalk corpId.
         self.corp_id = corp_id
+        # IDaaS EIAM 钉钉扫码登录版本
+        self.dingtalk_login_version = dingtalk_login_version
         # DingTalk Version.
         self.dingtalk_version = dingtalk_version
         # DingTalk  encrypt key.
@@ -15441,6 +15444,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
             result['AppSecret'] = self.app_secret
         if self.corp_id is not None:
             result['CorpId'] = self.corp_id
+        if self.dingtalk_login_version is not None:
+            result['DingtalkLoginVersion'] = self.dingtalk_login_version
         if self.dingtalk_version is not None:
             result['DingtalkVersion'] = self.dingtalk_version
         if self.encrypt_key is not None:
@@ -15457,6 +15462,8 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Tea
             self.app_secret = m.get('AppSecret')
         if m.get('CorpId') is not None:
             self.corp_id = m.get('CorpId')
+        if m.get('DingtalkLoginVersion') is not None:
+            self.dingtalk_login_version = m.get('DingtalkLoginVersion')
         if m.get('DingtalkVersion') is not None:
             self.dingtalk_version = m.get('DingtalkVersion')
         if m.get('EncryptKey') is not None:
@@ -41360,6 +41367,7 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
         self,
         app_key: str = None,
         app_secret: str = None,
+        dingtalk_login_version: str = None,
         encrypt_key: str = None,
         verification_token: str = None,
     ):
@@ -41367,6 +41375,7 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
         self.app_key = app_key
         # 钉钉一方应用的AppSecret
         self.app_secret = app_secret
+        self.dingtalk_login_version = dingtalk_login_version
         self.encrypt_key = encrypt_key
         self.verification_token = verification_token
 
@@ -41383,6 +41392,8 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
             result['AppKey'] = self.app_key
         if self.app_secret is not None:
             result['AppSecret'] = self.app_secret
+        if self.dingtalk_login_version is not None:
+            result['DingtalkLoginVersion'] = self.dingtalk_login_version
         if self.encrypt_key is not None:
             result['EncryptKey'] = self.encrypt_key
         if self.verification_token is not None:
@@ -41395,6 +41406,8 @@ class UpdateIdentityProviderRequestDingtalkAppConfig(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('AppSecret') is not None:
             self.app_secret = m.get('AppSecret')
+        if m.get('DingtalkLoginVersion') is not None:
+            self.dingtalk_login_version = m.get('DingtalkLoginVersion')
         if m.get('EncryptKey') is not None:
             self.encrypt_key = m.get('EncryptKey')
         if m.get('VerificationToken') is not None:

@@ -1,3 +1,8 @@
+2025-12-05 Version: 2.5.2
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.DingtalkAppConfig.DingtalkLoginVersion.
+- Update API UpdateIdentityProvider: add request parameters DingtalkAppConfig.DingtalkLoginVersion.
+
+
 2025-11-13 Version: 2.5.1
 - Update API CreateIdentityProvider: add request parameters LdapConfig.OrganizationalUnitRdn.
 - Update API CreateIdentityProvider: add request parameters LdapConfig.PasswordSyncStatus.
