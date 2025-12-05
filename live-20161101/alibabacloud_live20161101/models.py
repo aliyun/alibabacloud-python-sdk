@@ -44925,6 +44925,243 @@ class DescribeLiveRecordVodConfigsResponse(TeaModel):
         return self
 
 
+class DescribeLiveRtcRecordUsageDataRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        end_time: str = None,
+        interval: str = None,
+        record_mode: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.interval = interval
+        # This parameter is required.
+        self.record_mode = record_mode
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.record_mode is not None:
+            result['RecordMode'] = self.record_mode
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('RecordMode') is not None:
+            self.record_mode = m.get('RecordMode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeLiveRtcRecordUsageDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audio_duration: float = None,
+        timestamp: str = None,
+        total_duration: float = None,
+        v_1080duration: float = None,
+        v_480duration: float = None,
+        v_720duration: float = None,
+    ):
+        self.audio_duration = audio_duration
+        self.timestamp = timestamp
+        self.total_duration = total_duration
+        self.v_1080duration = v_1080duration
+        self.v_480duration = v_480duration
+        self.v_720duration = v_720duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_duration is not None:
+            result['AudioDuration'] = self.audio_duration
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.total_duration is not None:
+            result['TotalDuration'] = self.total_duration
+        if self.v_1080duration is not None:
+            result['V1080Duration'] = self.v_1080duration
+        if self.v_480duration is not None:
+            result['V480Duration'] = self.v_480duration
+        if self.v_720duration is not None:
+            result['V720Duration'] = self.v_720duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioDuration') is not None:
+            self.audio_duration = m.get('AudioDuration')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('TotalDuration') is not None:
+            self.total_duration = m.get('TotalDuration')
+        if m.get('V1080Duration') is not None:
+            self.v_1080duration = m.get('V1080Duration')
+        if m.get('V480Duration') is not None:
+            self.v_480duration = m.get('V480Duration')
+        if m.get('V720Duration') is not None:
+            self.v_720duration = m.get('V720Duration')
+        return self
+
+
+class DescribeLiveRtcRecordUsageDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        audio_summary_duration: float = None,
+        data: List[DescribeLiveRtcRecordUsageDataResponseBodyData] = None,
+        record_mode: str = None,
+        request_id: str = None,
+        total_summary_duration: float = None,
+        v_1080summary_duration: float = None,
+        v_480summary_duration: float = None,
+        v_720summary_duration: float = None,
+    ):
+        self.app_id = app_id
+        self.audio_summary_duration = audio_summary_duration
+        self.data = data
+        self.record_mode = record_mode
+        # Id of the request
+        self.request_id = request_id
+        self.total_summary_duration = total_summary_duration
+        self.v_1080summary_duration = v_1080summary_duration
+        self.v_480summary_duration = v_480summary_duration
+        self.v_720summary_duration = v_720summary_duration
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.audio_summary_duration is not None:
+            result['AudioSummaryDuration'] = self.audio_summary_duration
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.record_mode is not None:
+            result['RecordMode'] = self.record_mode
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_summary_duration is not None:
+            result['TotalSummaryDuration'] = self.total_summary_duration
+        if self.v_1080summary_duration is not None:
+            result['V1080SummaryDuration'] = self.v_1080summary_duration
+        if self.v_480summary_duration is not None:
+            result['V480SummaryDuration'] = self.v_480summary_duration
+        if self.v_720summary_duration is not None:
+            result['V720SummaryDuration'] = self.v_720summary_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AudioSummaryDuration') is not None:
+            self.audio_summary_duration = m.get('AudioSummaryDuration')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeLiveRtcRecordUsageDataResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RecordMode') is not None:
+            self.record_mode = m.get('RecordMode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalSummaryDuration') is not None:
+            self.total_summary_duration = m.get('TotalSummaryDuration')
+        if m.get('V1080SummaryDuration') is not None:
+            self.v_1080summary_duration = m.get('V1080SummaryDuration')
+        if m.get('V480SummaryDuration') is not None:
+            self.v_480summary_duration = m.get('V480SummaryDuration')
+        if m.get('V720SummaryDuration') is not None:
+            self.v_720summary_duration = m.get('V720SummaryDuration')
+        return self
+
+
+class DescribeLiveRtcRecordUsageDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLiveRtcRecordUsageDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLiveRtcRecordUsageDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeLiveShiftConfigsRequest(TeaModel):
     def __init__(
         self,

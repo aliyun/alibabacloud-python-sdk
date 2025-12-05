@@ -28152,6 +28152,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_live_record_vod_configs_with_options_async(request, runtime)
 
+    def describe_live_rtc_record_usage_data_with_options(
+        self,
+        request: live_20161101_models.DescribeLiveRtcRecordUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveRtcRecordUsageDataResponse:
+        """
+        @summary 云端录制用量
+        
+        @param request: DescribeLiveRtcRecordUsageDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLiveRtcRecordUsageDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.record_mode):
+            query['RecordMode'] = request.record_mode
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLiveRtcRecordUsageData',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRtcRecordUsageDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_live_rtc_record_usage_data_with_options_async(
+        self,
+        request: live_20161101_models.DescribeLiveRtcRecordUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveRtcRecordUsageDataResponse:
+        """
+        @summary 云端录制用量
+        
+        @param request: DescribeLiveRtcRecordUsageDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLiveRtcRecordUsageDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.record_mode):
+            query['RecordMode'] = request.record_mode
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLiveRtcRecordUsageData',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRtcRecordUsageDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_live_rtc_record_usage_data(
+        self,
+        request: live_20161101_models.DescribeLiveRtcRecordUsageDataRequest,
+    ) -> live_20161101_models.DescribeLiveRtcRecordUsageDataResponse:
+        """
+        @summary 云端录制用量
+        
+        @param request: DescribeLiveRtcRecordUsageDataRequest
+        @return: DescribeLiveRtcRecordUsageDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_live_rtc_record_usage_data_with_options(request, runtime)
+
+    async def describe_live_rtc_record_usage_data_async(
+        self,
+        request: live_20161101_models.DescribeLiveRtcRecordUsageDataRequest,
+    ) -> live_20161101_models.DescribeLiveRtcRecordUsageDataResponse:
+        """
+        @summary 云端录制用量
+        
+        @param request: DescribeLiveRtcRecordUsageDataRequest
+        @return: DescribeLiveRtcRecordUsageDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_live_rtc_record_usage_data_with_options_async(request, runtime)
+
     def describe_live_shift_configs_with_options(
         self,
         request: live_20161101_models.DescribeLiveShiftConfigsRequest,
