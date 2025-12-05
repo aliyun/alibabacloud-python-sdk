@@ -1,3 +1,11 @@
+2025-12-05 Version: 1.10.0
+- Support API GetDeploymentsByIp.
+- Support API GetDeploymentsByLabel.
+- Support API GetDeploymentsByName.
+- Support API GetValidateDeploymentDraftResult.
+- Support API ValidateDeploymentDraftAsync.
+
+
 2025-12-05 Version: 1.9.1
 - Update API ListJobs: add request parameters sortOrder.
 

@@ -4287,6 +4287,400 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.GetDeploymentDraftLockHeaders()
         return await self.get_deployment_draft_lock_with_options_async(namespace, request, headers, runtime)
 
+    def get_deployments_by_ip_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByIpRequest,
+        headers: ververica_20220718_models.GetDeploymentsByIpHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetDeploymentsByIpResponse:
+        """
+        @summary 通过Ip获取已部署作业
+        
+        @param request: GetDeploymentsByIpRequest
+        @param headers: GetDeploymentsByIpHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentsByIpResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_ip):
+            query['dstIp'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_port):
+            query['dstPort'] = request.dst_port
+        if not UtilClient.is_unset(request.ignore_job_summary):
+            query['ignoreJobSummary'] = request.ignore_job_summary
+        if not UtilClient.is_unset(request.ignore_resource_setting):
+            query['ignoreResourceSetting'] = request.ignore_resource_setting
+        if not UtilClient.is_unset(request.src_ip):
+            query['srcIp'] = request.src_ip
+        if not UtilClient.is_unset(request.src_port):
+            query['srcPort'] = request.src_port
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentsByIp',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/getDeployments/byIp',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetDeploymentsByIpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deployments_by_ip_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByIpRequest,
+        headers: ververica_20220718_models.GetDeploymentsByIpHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetDeploymentsByIpResponse:
+        """
+        @summary 通过Ip获取已部署作业
+        
+        @param request: GetDeploymentsByIpRequest
+        @param headers: GetDeploymentsByIpHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentsByIpResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_ip):
+            query['dstIp'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_port):
+            query['dstPort'] = request.dst_port
+        if not UtilClient.is_unset(request.ignore_job_summary):
+            query['ignoreJobSummary'] = request.ignore_job_summary
+        if not UtilClient.is_unset(request.ignore_resource_setting):
+            query['ignoreResourceSetting'] = request.ignore_resource_setting
+        if not UtilClient.is_unset(request.src_ip):
+            query['srcIp'] = request.src_ip
+        if not UtilClient.is_unset(request.src_port):
+            query['srcPort'] = request.src_port
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentsByIp',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/getDeployments/byIp',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetDeploymentsByIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deployments_by_ip(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByIpRequest,
+    ) -> ververica_20220718_models.GetDeploymentsByIpResponse:
+        """
+        @summary 通过Ip获取已部署作业
+        
+        @param request: GetDeploymentsByIpRequest
+        @return: GetDeploymentsByIpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetDeploymentsByIpHeaders()
+        return self.get_deployments_by_ip_with_options(namespace, request, headers, runtime)
+
+    async def get_deployments_by_ip_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByIpRequest,
+    ) -> ververica_20220718_models.GetDeploymentsByIpResponse:
+        """
+        @summary 通过Ip获取已部署作业
+        
+        @param request: GetDeploymentsByIpRequest
+        @return: GetDeploymentsByIpResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetDeploymentsByIpHeaders()
+        return await self.get_deployments_by_ip_with_options_async(namespace, request, headers, runtime)
+
+    def get_deployments_by_label_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByLabelRequest,
+        headers: ververica_20220718_models.GetDeploymentsByLabelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetDeploymentsByLabelResponse:
+        """
+        @summary 通过标签获取已部署作业
+        
+        @param request: GetDeploymentsByLabelRequest
+        @param headers: GetDeploymentsByLabelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentsByLabelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignore_job_summary):
+            query['ignoreJobSummary'] = request.ignore_job_summary
+        if not UtilClient.is_unset(request.ignore_resource_setting):
+            query['ignoreResourceSetting'] = request.ignore_resource_setting
+        if not UtilClient.is_unset(request.label_key):
+            query['labelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['labelValue'] = request.label_value
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentsByLabel',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/getDeployments/byLabel',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetDeploymentsByLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deployments_by_label_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByLabelRequest,
+        headers: ververica_20220718_models.GetDeploymentsByLabelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetDeploymentsByLabelResponse:
+        """
+        @summary 通过标签获取已部署作业
+        
+        @param request: GetDeploymentsByLabelRequest
+        @param headers: GetDeploymentsByLabelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentsByLabelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignore_job_summary):
+            query['ignoreJobSummary'] = request.ignore_job_summary
+        if not UtilClient.is_unset(request.ignore_resource_setting):
+            query['ignoreResourceSetting'] = request.ignore_resource_setting
+        if not UtilClient.is_unset(request.label_key):
+            query['labelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['labelValue'] = request.label_value
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentsByLabel',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/getDeployments/byLabel',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetDeploymentsByLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deployments_by_label(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByLabelRequest,
+    ) -> ververica_20220718_models.GetDeploymentsByLabelResponse:
+        """
+        @summary 通过标签获取已部署作业
+        
+        @param request: GetDeploymentsByLabelRequest
+        @return: GetDeploymentsByLabelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetDeploymentsByLabelHeaders()
+        return self.get_deployments_by_label_with_options(namespace, request, headers, runtime)
+
+    async def get_deployments_by_label_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetDeploymentsByLabelRequest,
+    ) -> ververica_20220718_models.GetDeploymentsByLabelResponse:
+        """
+        @summary 通过标签获取已部署作业
+        
+        @param request: GetDeploymentsByLabelRequest
+        @return: GetDeploymentsByLabelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetDeploymentsByLabelHeaders()
+        return await self.get_deployments_by_label_with_options_async(namespace, request, headers, runtime)
+
+    def get_deployments_by_name_with_options(
+        self,
+        namespace: str,
+        deployment_name: str,
+        request: ververica_20220718_models.GetDeploymentsByNameRequest,
+        headers: ververica_20220718_models.GetDeploymentsByNameHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetDeploymentsByNameResponse:
+        """
+        @summary 通过名称获取已部署作业
+        
+        @param request: GetDeploymentsByNameRequest
+        @param headers: GetDeploymentsByNameHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentsByNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignore_job_summary):
+            query['ignoreJobSummary'] = request.ignore_job_summary
+        if not UtilClient.is_unset(request.ignore_resource_setting):
+            query['ignoreResourceSetting'] = request.ignore_resource_setting
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentsByName',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/name/{OpenApiUtilClient.get_encode_param(deployment_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetDeploymentsByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deployments_by_name_with_options_async(
+        self,
+        namespace: str,
+        deployment_name: str,
+        request: ververica_20220718_models.GetDeploymentsByNameRequest,
+        headers: ververica_20220718_models.GetDeploymentsByNameHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetDeploymentsByNameResponse:
+        """
+        @summary 通过名称获取已部署作业
+        
+        @param request: GetDeploymentsByNameRequest
+        @param headers: GetDeploymentsByNameHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentsByNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignore_job_summary):
+            query['ignoreJobSummary'] = request.ignore_job_summary
+        if not UtilClient.is_unset(request.ignore_resource_setting):
+            query['ignoreResourceSetting'] = request.ignore_resource_setting
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentsByName',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/name/{OpenApiUtilClient.get_encode_param(deployment_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetDeploymentsByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deployments_by_name(
+        self,
+        namespace: str,
+        deployment_name: str,
+        request: ververica_20220718_models.GetDeploymentsByNameRequest,
+    ) -> ververica_20220718_models.GetDeploymentsByNameResponse:
+        """
+        @summary 通过名称获取已部署作业
+        
+        @param request: GetDeploymentsByNameRequest
+        @return: GetDeploymentsByNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetDeploymentsByNameHeaders()
+        return self.get_deployments_by_name_with_options(namespace, deployment_name, request, headers, runtime)
+
+    async def get_deployments_by_name_async(
+        self,
+        namespace: str,
+        deployment_name: str,
+        request: ververica_20220718_models.GetDeploymentsByNameRequest,
+    ) -> ververica_20220718_models.GetDeploymentsByNameResponse:
+        """
+        @summary 通过名称获取已部署作业
+        
+        @param request: GetDeploymentsByNameRequest
+        @return: GetDeploymentsByNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetDeploymentsByNameHeaders()
+        return await self.get_deployments_by_name_with_options_async(namespace, deployment_name, request, headers, runtime)
+
     def get_events_with_options(
         self,
         namespace: str,
@@ -5836,6 +6230,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.GetUdfArtifactsHeaders()
         return await self.get_udf_artifacts_with_options_async(namespace, request, headers, runtime)
+
+    def get_validate_deployment_draft_result_with_options(
+        self,
+        namespace: str,
+        ticket_id: str,
+        headers: ververica_20220718_models.GetValidateDeploymentDraftResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetValidateDeploymentDraftResultResponse:
+        """
+        @summary Get validate DeploymentDraft result
+        
+        @param headers: GetValidateDeploymentDraftResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidateDeploymentDraftResultResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetValidateDeploymentDraftResult',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-drafts/tickets/{OpenApiUtilClient.get_encode_param(ticket_id)}/async-validate',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetValidateDeploymentDraftResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_validate_deployment_draft_result_with_options_async(
+        self,
+        namespace: str,
+        ticket_id: str,
+        headers: ververica_20220718_models.GetValidateDeploymentDraftResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetValidateDeploymentDraftResultResponse:
+        """
+        @summary Get validate DeploymentDraft result
+        
+        @param headers: GetValidateDeploymentDraftResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetValidateDeploymentDraftResultResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetValidateDeploymentDraftResult',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-drafts/tickets/{OpenApiUtilClient.get_encode_param(ticket_id)}/async-validate',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetValidateDeploymentDraftResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_validate_deployment_draft_result(
+        self,
+        namespace: str,
+        ticket_id: str,
+    ) -> ververica_20220718_models.GetValidateDeploymentDraftResultResponse:
+        """
+        @summary Get validate DeploymentDraft result
+        
+        @return: GetValidateDeploymentDraftResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetValidateDeploymentDraftResultHeaders()
+        return self.get_validate_deployment_draft_result_with_options(namespace, ticket_id, headers, runtime)
+
+    async def get_validate_deployment_draft_result_async(
+        self,
+        namespace: str,
+        ticket_id: str,
+    ) -> ververica_20220718_models.GetValidateDeploymentDraftResultResponse:
+        """
+        @summary Get validate DeploymentDraft result
+        
+        @return: GetValidateDeploymentDraftResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetValidateDeploymentDraftResultHeaders()
+        return await self.get_validate_deployment_draft_result_with_options_async(namespace, ticket_id, headers, runtime)
 
     def hot_update_job_with_options(
         self,
@@ -9690,6 +10188,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.UpdateVariableHeaders()
         return await self.update_variable_with_options_async(namespace, name, request, headers, runtime)
+
+    def validate_deployment_draft_async_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateDeploymentDraftAsyncRequest,
+        headers: ververica_20220718_models.ValidateDeploymentDraftAsyncHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ValidateDeploymentDraftAsyncResponse:
+        """
+        @summary validate DeploymentDraft async
+        
+        @param request: ValidateDeploymentDraftAsyncRequest
+        @param headers: ValidateDeploymentDraftAsyncHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateDeploymentDraftAsyncResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ValidateDeploymentDraftAsync',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-drafts/async-validate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ValidateDeploymentDraftAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_deployment_draft_async_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateDeploymentDraftAsyncRequest,
+        headers: ververica_20220718_models.ValidateDeploymentDraftAsyncHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ValidateDeploymentDraftAsyncResponse:
+        """
+        @summary validate DeploymentDraft async
+        
+        @param request: ValidateDeploymentDraftAsyncRequest
+        @param headers: ValidateDeploymentDraftAsyncHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateDeploymentDraftAsyncResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ValidateDeploymentDraftAsync',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-drafts/async-validate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ValidateDeploymentDraftAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_deployment_draft_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateDeploymentDraftAsyncRequest,
+    ) -> ververica_20220718_models.ValidateDeploymentDraftAsyncResponse:
+        """
+        @summary validate DeploymentDraft async
+        
+        @param request: ValidateDeploymentDraftAsyncRequest
+        @return: ValidateDeploymentDraftAsyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ValidateDeploymentDraftAsyncHeaders()
+        return self.validate_deployment_draft_async_with_options(namespace, request, headers, runtime)
+
+    async def validate_deployment_draft_async_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateDeploymentDraftAsyncRequest,
+    ) -> ververica_20220718_models.ValidateDeploymentDraftAsyncResponse:
+        """
+        @summary validate DeploymentDraft async
+        
+        @param request: ValidateDeploymentDraftAsyncRequest
+        @return: ValidateDeploymentDraftAsyncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ValidateDeploymentDraftAsyncHeaders()
+        return await self.validate_deployment_draft_async_with_options_async(namespace, request, headers, runtime)
 
     def validate_sql_statement_with_options(
         self,
