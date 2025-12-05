@@ -37198,6 +37198,7 @@ class RemoveInstancesRequestLifecycleHookContext(TeaModel):
         self,
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
+        lifecycle_hook_result: str = None,
     ):
         # Specifies whether to disable the lifecycle hook. Valid Values:
         # 
@@ -37206,6 +37207,7 @@ class RemoveInstancesRequestLifecycleHookContext(TeaModel):
         self.disable_lifecycle_hook = disable_lifecycle_hook
         # The IDs of the lifecycle hooks that you want to disable.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
+        self.lifecycle_hook_result = lifecycle_hook_result
 
     def validate(self):
         pass
@@ -37220,6 +37222,8 @@ class RemoveInstancesRequestLifecycleHookContext(TeaModel):
             result['DisableLifecycleHook'] = self.disable_lifecycle_hook
         if self.ignored_lifecycle_hook_ids is not None:
             result['IgnoredLifecycleHookIds'] = self.ignored_lifecycle_hook_ids
+        if self.lifecycle_hook_result is not None:
+            result['LifecycleHookResult'] = self.lifecycle_hook_result
         return result
 
     def from_map(self, m: dict = None):
@@ -37228,6 +37232,8 @@ class RemoveInstancesRequestLifecycleHookContext(TeaModel):
             self.disable_lifecycle_hook = m.get('DisableLifecycleHook')
         if m.get('IgnoredLifecycleHookIds') is not None:
             self.ignored_lifecycle_hook_ids = m.get('IgnoredLifecycleHookIds')
+        if m.get('LifecycleHookResult') is not None:
+            self.lifecycle_hook_result = m.get('LifecycleHookResult')
         return self
 
 
@@ -37531,16 +37537,16 @@ class RemoveInstancesShrinkRequest(TeaModel):
         return self
 
 
-class RemoveInstancesResponseBody(TeaModel):
+class RemoveInstancesResponseBodyIgnoredInstances(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        scaling_activity_id: str = None,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
     ):
-        # The request ID.
-        self.request_id = request_id
-        # The ID of the scaling activity.
-        self.scaling_activity_id = scaling_activity_id
+        self.code = code
+        self.instance_id = instance_id
+        self.message = message
 
     def validate(self):
         pass
@@ -37551,6 +37557,54 @@ class RemoveInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class RemoveInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        ignored_instances: List[RemoveInstancesResponseBodyIgnoredInstances] = None,
+        request_id: str = None,
+        scaling_activity_id: str = None,
+    ):
+        self.ignored_instances = ignored_instances
+        # The request ID.
+        self.request_id = request_id
+        # The ID of the scaling activity.
+        self.scaling_activity_id = scaling_activity_id
+
+    def validate(self):
+        if self.ignored_instances:
+            for k in self.ignored_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IgnoredInstances'] = []
+        if self.ignored_instances is not None:
+            for k in self.ignored_instances:
+                result['IgnoredInstances'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
@@ -37559,6 +37613,11 @@ class RemoveInstancesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.ignored_instances = []
+        if m.get('IgnoredInstances') is not None:
+            for k in m.get('IgnoredInstances'):
+                temp_model = RemoveInstancesResponseBodyIgnoredInstances()
+                self.ignored_instances.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
@@ -38006,6 +38065,7 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
         self,
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
+        lifecycle_hook_result: str = None,
     ):
         # Specifies whether to disable the Lifecycle Hook feature. Valid values:
         # 
@@ -38014,6 +38074,7 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
         self.disable_lifecycle_hook = disable_lifecycle_hook
         # The IDs of the lifecycle hooks that you want to disable.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
+        self.lifecycle_hook_result = lifecycle_hook_result
 
     def validate(self):
         pass
@@ -38028,6 +38089,8 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
             result['DisableLifecycleHook'] = self.disable_lifecycle_hook
         if self.ignored_lifecycle_hook_ids is not None:
             result['IgnoredLifecycleHookIds'] = self.ignored_lifecycle_hook_ids
+        if self.lifecycle_hook_result is not None:
+            result['LifecycleHookResult'] = self.lifecycle_hook_result
         return result
 
     def from_map(self, m: dict = None):
@@ -38036,6 +38099,8 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
             self.disable_lifecycle_hook = m.get('DisableLifecycleHook')
         if m.get('IgnoredLifecycleHookIds') is not None:
             self.ignored_lifecycle_hook_ids = m.get('IgnoredLifecycleHookIds')
+        if m.get('LifecycleHookResult') is not None:
+            self.lifecycle_hook_result = m.get('LifecycleHookResult')
         return self
 
 

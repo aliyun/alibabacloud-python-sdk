@@ -1,3 +1,9 @@
+2025-12-05 Version: 1.10.22
+- Update API RemoveInstances: add request parameters LifecycleHookContext.LifecycleHookResult.
+- Update API RemoveInstances: add response parameters Body.IgnoredInstances.
+- Update API ScaleWithAdjustment: add request parameters LifecycleHookContext.LifecycleHookResult.
+
+
 2025-12-03 Version: 1.10.21
 - Update API ModifyEciScalingConfiguration: add request parameters Override.
 
