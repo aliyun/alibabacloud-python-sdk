@@ -1,3 +1,9 @@
+2025-12-05 Version: 4.1.0
+- Support API CancelCall.
+- Support API QueryVmsRealNumberCallConnectionRateInfo.
+- Support API QueryVmsVirtualNumberRelationByPage.
+
+
 2025-08-28 Version: 4.0.0
 - Delete API ListHotlineTransferNumber.
 

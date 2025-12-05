@@ -357,6 +357,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_robot_smart_call_with_options_async(request, runtime)
 
+    def cancel_call_with_options(
+        self,
+        request: dyvmsapi_20170525_models.CancelCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.CancelCallResponse:
+        """
+        @param request: CancelCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.CancelCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_call_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.CancelCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.CancelCallResponse:
+        """
+        @param request: CancelCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.CancelCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_call(
+        self,
+        request: dyvmsapi_20170525_models.CancelCallRequest,
+    ) -> dyvmsapi_20170525_models.CancelCallResponse:
+        """
+        @param request: CancelCallRequest
+        @return: CancelCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_call_with_options(request, runtime)
+
+    async def cancel_call_async(
+        self,
+        request: dyvmsapi_20170525_models.CancelCallRequest,
+    ) -> dyvmsapi_20170525_models.CancelCallResponse:
+        """
+        @param request: CancelCallRequest
+        @return: CancelCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_call_with_options_async(request, runtime)
+
     def cancel_order_robot_task_with_options(
         self,
         request: dyvmsapi_20170525_models.CancelOrderRobotTaskRequest,
@@ -4576,6 +4676,254 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_virtual_number_relation_with_options_async(request, runtime)
+
+    def query_vms_real_number_call_connection_rate_info_with_options(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoResponse:
+        """
+        @summary 查询真实号接通率
+        
+        @param request: QueryVmsRealNumberCallConnectionRateInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVmsRealNumberCallConnectionRateInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.real_number):
+            query['RealNumber'] = request.real_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.time_period):
+            query['TimePeriod'] = request.time_period
+        if not UtilClient.is_unset(request.virtual_number):
+            query['VirtualNumber'] = request.virtual_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVmsRealNumberCallConnectionRateInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_vms_real_number_call_connection_rate_info_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoResponse:
+        """
+        @summary 查询真实号接通率
+        
+        @param request: QueryVmsRealNumberCallConnectionRateInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVmsRealNumberCallConnectionRateInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.real_number):
+            query['RealNumber'] = request.real_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.time_period):
+            query['TimePeriod'] = request.time_period
+        if not UtilClient.is_unset(request.virtual_number):
+            query['VirtualNumber'] = request.virtual_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVmsRealNumberCallConnectionRateInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_vms_real_number_call_connection_rate_info(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoRequest,
+    ) -> dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoResponse:
+        """
+        @summary 查询真实号接通率
+        
+        @param request: QueryVmsRealNumberCallConnectionRateInfoRequest
+        @return: QueryVmsRealNumberCallConnectionRateInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_vms_real_number_call_connection_rate_info_with_options(request, runtime)
+
+    async def query_vms_real_number_call_connection_rate_info_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoRequest,
+    ) -> dyvmsapi_20170525_models.QueryVmsRealNumberCallConnectionRateInfoResponse:
+        """
+        @summary 查询真实号接通率
+        
+        @param request: QueryVmsRealNumberCallConnectionRateInfoRequest
+        @return: QueryVmsRealNumberCallConnectionRateInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_vms_real_number_call_connection_rate_info_with_options_async(request, runtime)
+
+    def query_vms_virtual_number_relation_by_page_with_options(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageResponse:
+        """
+        @summary 查询虚拟号码与真实号码绑定关系列表
+        
+        @param request: QueryVmsVirtualNumberRelationByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVmsVirtualNumberRelationByPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.number_city):
+            query['NumberCity'] = request.number_city
+        if not UtilClient.is_unset(request.number_province):
+            query['NumberProvince'] = request.number_province
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_number):
+            query['RealNumber'] = request.real_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.virtual_number):
+            query['VirtualNumber'] = request.virtual_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVmsVirtualNumberRelationByPage',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_vms_virtual_number_relation_by_page_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageResponse:
+        """
+        @summary 查询虚拟号码与真实号码绑定关系列表
+        
+        @param request: QueryVmsVirtualNumberRelationByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVmsVirtualNumberRelationByPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.number_city):
+            query['NumberCity'] = request.number_city
+        if not UtilClient.is_unset(request.number_province):
+            query['NumberProvince'] = request.number_province
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_number):
+            query['RealNumber'] = request.real_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.virtual_number):
+            query['VirtualNumber'] = request.virtual_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVmsVirtualNumberRelationByPage',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_vms_virtual_number_relation_by_page(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageRequest,
+    ) -> dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageResponse:
+        """
+        @summary 查询虚拟号码与真实号码绑定关系列表
+        
+        @param request: QueryVmsVirtualNumberRelationByPageRequest
+        @return: QueryVmsVirtualNumberRelationByPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_vms_virtual_number_relation_by_page_with_options(request, runtime)
+
+    async def query_vms_virtual_number_relation_by_page_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageRequest,
+    ) -> dyvmsapi_20170525_models.QueryVmsVirtualNumberRelationByPageResponse:
+        """
+        @summary 查询虚拟号码与真实号码绑定关系列表
+        
+        @param request: QueryVmsVirtualNumberRelationByPageRequest
+        @return: QueryVmsVirtualNumberRelationByPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_vms_virtual_number_relation_by_page_with_options_async(request, runtime)
 
     def query_voice_file_audit_info_with_options(
         self,

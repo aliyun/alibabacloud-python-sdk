@@ -415,6 +415,138 @@ class BatchRobotSmartCallResponse(TeaModel):
         return self
 
 
+class CancelCallRequest(TeaModel):
+    def __init__(
+        self,
+        call_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.call_id = call_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CancelCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CancelCallResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelCallResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelOrderRobotTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6707,6 +6839,536 @@ class QueryVirtualNumberRelationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryVirtualNumberRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryVmsRealNumberCallConnectionRateInfoRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        real_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        time_period: str = None,
+        virtual_number: str = None,
+    ):
+        self.owner_id = owner_id
+        # 真实号码
+        self.real_number = real_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 时间段
+        self.time_period = time_period
+        # 虚拟号码
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.real_number is not None:
+            result['RealNumber'] = self.real_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.time_period is not None:
+            result['TimePeriod'] = self.time_period
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RealNumber') is not None:
+            self.real_number = m.get('RealNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TimePeriod') is not None:
+            self.time_period = m.get('TimePeriod')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class QueryVmsRealNumberCallConnectionRateInfoResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        call_connection_rate: float = None,
+        complete_count: int = None,
+        region_id: str = None,
+        request_count: int = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        ringing_count: int = None,
+        ringing_rate: float = None,
+    ):
+        # 接通率
+        self.call_connection_rate = call_connection_rate
+        # 接通数
+        self.complete_count = complete_count
+        self.region_id = region_id
+        # 请求通话数
+        self.request_count = request_count
+        self.resource_id = resource_id
+        # EcsInstance, EcsDisk, EcsImage, EcsSnapshot, EcsSecurityGroup, EcsEip, EcsVpc, EcsVRouter, EcsVSwitch, EcsVRouteTable, EcsAuthImage, EcsAll, SlbLoadbalancer, SlbVm, RdsInstance, RdsAllInstance, KvsInstance, OcsInstance, OdpsInstance
+        self.resource_type = resource_type
+        # 响铃数
+        self.ringing_count = ringing_count
+        # 响铃率
+        self.ringing_rate = ringing_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_connection_rate is not None:
+            result['CallConnectionRate'] = self.call_connection_rate
+        if self.complete_count is not None:
+            result['CompleteCount'] = self.complete_count
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_count is not None:
+            result['RequestCount'] = self.request_count
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.ringing_count is not None:
+            result['RingingCount'] = self.ringing_count
+        if self.ringing_rate is not None:
+            result['RingingRate'] = self.ringing_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallConnectionRate') is not None:
+            self.call_connection_rate = m.get('CallConnectionRate')
+        if m.get('CompleteCount') is not None:
+            self.complete_count = m.get('CompleteCount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestCount') is not None:
+            self.request_count = m.get('RequestCount')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RingingCount') is not None:
+            self.ringing_count = m.get('RingingCount')
+        if m.get('RingingRate') is not None:
+            self.ringing_rate = m.get('RingingRate')
+        return self
+
+
+class QueryVmsRealNumberCallConnectionRateInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: QueryVmsRealNumberCallConnectionRateInfoResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = QueryVmsRealNumberCallConnectionRateInfoResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryVmsRealNumberCallConnectionRateInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryVmsRealNumberCallConnectionRateInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryVmsRealNumberCallConnectionRateInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryVmsVirtualNumberRelationByPageRequest(TeaModel):
+    def __init__(
+        self,
+        number_city: str = None,
+        number_province: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        real_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        state: int = None,
+        virtual_number: str = None,
+    ):
+        # 号码归属地--城市
+        self.number_city = number_city
+        # 号码归属地--省
+        self.number_province = number_province
+        self.owner_id = owner_id
+        self.page_no = page_no
+        self.page_size = page_size
+        # 真实号码
+        self.real_number = real_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 状态 1:有效；0:无效；-1:注销
+        self.state = state
+        # 虚拟号码
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.number_city is not None:
+            result['NumberCity'] = self.number_city
+        if self.number_province is not None:
+            result['NumberProvince'] = self.number_province
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.real_number is not None:
+            result['RealNumber'] = self.real_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NumberCity') is not None:
+            self.number_city = m.get('NumberCity')
+        if m.get('NumberProvince') is not None:
+            self.number_province = m.get('NumberProvince')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RealNumber') is not None:
+            self.real_number = m.get('RealNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class QueryVmsVirtualNumberRelationByPageResponseBodyModelData(TeaModel):
+    def __init__(
+        self,
+        number_city: str = None,
+        number_province: str = None,
+        real_number: str = None,
+        state: int = None,
+        virtual_number: str = None,
+    ):
+        # 号码归属地--城市
+        self.number_city = number_city
+        # 号码归属地--省
+        self.number_province = number_province
+        # 真实号码
+        self.real_number = real_number
+        # 状态 1:有效；0:无效；-1:注销
+        self.state = state
+        # 虚拟号码
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.number_city is not None:
+            result['NumberCity'] = self.number_city
+        if self.number_province is not None:
+            result['NumberProvince'] = self.number_province
+        if self.real_number is not None:
+            result['RealNumber'] = self.real_number
+        if self.state is not None:
+            result['State'] = self.state
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NumberCity') is not None:
+            self.number_city = m.get('NumberCity')
+        if m.get('NumberProvince') is not None:
+            self.number_province = m.get('NumberProvince')
+        if m.get('RealNumber') is not None:
+            self.real_number = m.get('RealNumber')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class QueryVmsVirtualNumberRelationByPageResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        data: List[QueryVmsVirtualNumberRelationByPageResponseBodyModelData] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.data = data
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryVmsVirtualNumberRelationByPageResponseBodyModelData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryVmsVirtualNumberRelationByPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: QueryVmsVirtualNumberRelationByPageResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = QueryVmsVirtualNumberRelationByPageResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryVmsVirtualNumberRelationByPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryVmsVirtualNumberRelationByPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryVmsVirtualNumberRelationByPageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
