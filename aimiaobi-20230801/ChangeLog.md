@@ -1,3 +1,14 @@
+2025-12-05 Version: 1.37.0
+- Support API CreateGeneralConfig.
+- Support API DeleteGeneralConfig.
+- Support API GetGeneralConfig.
+- Support API ListDocumentRetrieve.
+- Support API ListGeneralConfigs.
+- Support API RunQuickWriting.
+- Support API RunTopicSelectionMerge.
+- Support API UpdateGeneralConfig.
+
+
 2025-11-12 Version: 1.36.5
 - Update API RunSearchGeneration: add request parameters ChatConfig.ModelCustomPromptTemplate.
 - Update API RunSearchGeneration: add request parameters ChatConfig.ModelCustomVlPromptTemplate.

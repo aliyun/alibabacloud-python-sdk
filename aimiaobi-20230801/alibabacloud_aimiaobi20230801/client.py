@@ -1629,6 +1629,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
 
+    def create_general_config_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.CreateGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.CreateGeneralConfigResponse:
+        """
+        @summary 通用配置-创建
+        
+        @param request: CreateGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.CreateGeneralConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_general_config_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.CreateGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.CreateGeneralConfigResponse:
+        """
+        @summary 通用配置-创建
+        
+        @param request: CreateGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.CreateGeneralConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_general_config(
+        self,
+        request: ai_miao_bi_20230801_models.CreateGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.CreateGeneralConfigResponse:
+        """
+        @summary 通用配置-创建
+        
+        @param request: CreateGeneralConfigRequest
+        @return: CreateGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_general_config_with_options(request, runtime)
+
+    async def create_general_config_async(
+        self,
+        request: ai_miao_bi_20230801_models.CreateGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.CreateGeneralConfigResponse:
+        """
+        @summary 通用配置-创建
+        
+        @param request: CreateGeneralConfigRequest
+        @return: CreateGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_general_config_with_options_async(request, runtime)
+
     def create_generated_content_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.CreateGeneratedContentRequest,
@@ -2808,6 +2912,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_fact_audit_url_with_options_async(request, runtime)
+
+    def delete_general_config_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteGeneralConfigResponse:
+        """
+        @summary 通用配置-删除
+        
+        @param request: DeleteGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteGeneralConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_general_config_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteGeneralConfigResponse:
+        """
+        @summary 通用配置-删除
+        
+        @param request: DeleteGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteGeneralConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_general_config(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteGeneralConfigResponse:
+        """
+        @summary 通用配置-删除
+        
+        @param request: DeleteGeneralConfigRequest
+        @return: DeleteGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_general_config_with_options(request, runtime)
+
+    async def delete_general_config_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteGeneralConfigResponse:
+        """
+        @summary 通用配置-删除
+        
+        @param request: DeleteGeneralConfigRequest
+        @return: DeleteGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_general_config_with_options_async(request, runtime)
 
     def delete_generated_content_with_options(
         self,
@@ -7685,6 +7889,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_file_content_length_with_options_async(request, runtime)
 
+    def get_general_config_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetGeneralConfigResponse:
+        """
+        @summary 通用配置-查询
+        
+        @param request: GetGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetGeneralConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_general_config_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetGeneralConfigResponse:
+        """
+        @summary 通用配置-查询
+        
+        @param request: GetGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetGeneralConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_general_config(
+        self,
+        request: ai_miao_bi_20230801_models.GetGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.GetGeneralConfigResponse:
+        """
+        @summary 通用配置-查询
+        
+        @param request: GetGeneralConfigRequest
+        @return: GetGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_general_config_with_options(request, runtime)
+
+    async def get_general_config_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.GetGeneralConfigResponse:
+        """
+        @summary 通用配置-查询
+        
+        @param request: GetGeneralConfigRequest
+        @return: GetGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_general_config_with_options_async(request, runtime)
+
     def get_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetGeneratedContentRequest,
@@ -11025,6 +11329,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_docs_with_options_async(request, runtime)
 
+    def list_document_retrieve_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListDocumentRetrieveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDocumentRetrieveResponse:
+        """
+        @summary 公文检索
+        
+        @param request: ListDocumentRetrieveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentRetrieveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.element_scope):
+            query['ElementScope'] = request.element_scope
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.office):
+            query['Office'] = request.office
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_content_type):
+            query['SubContentType'] = request.sub_content_type
+        if not UtilClient.is_unset(request.word_size):
+            query['WordSize'] = request.word_size
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDocumentRetrieve',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDocumentRetrieveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_document_retrieve_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListDocumentRetrieveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListDocumentRetrieveResponse:
+        """
+        @summary 公文检索
+        
+        @param request: ListDocumentRetrieveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentRetrieveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.element_scope):
+            query['ElementScope'] = request.element_scope
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.office):
+            query['Office'] = request.office
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_content_type):
+            query['SubContentType'] = request.sub_content_type
+        if not UtilClient.is_unset(request.word_size):
+            query['WordSize'] = request.word_size
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDocumentRetrieve',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListDocumentRetrieveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_document_retrieve(
+        self,
+        request: ai_miao_bi_20230801_models.ListDocumentRetrieveRequest,
+    ) -> ai_miao_bi_20230801_models.ListDocumentRetrieveResponse:
+        """
+        @summary 公文检索
+        
+        @param request: ListDocumentRetrieveRequest
+        @return: ListDocumentRetrieveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_document_retrieve_with_options(request, runtime)
+
+    async def list_document_retrieve_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListDocumentRetrieveRequest,
+    ) -> ai_miao_bi_20230801_models.ListDocumentRetrieveResponse:
+        """
+        @summary 公文检索
+        
+        @param request: ListDocumentRetrieveRequest
+        @return: ListDocumentRetrieveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_document_retrieve_with_options_async(request, runtime)
+
     def list_fresh_view_points_with_options(
         self,
         request: ai_miao_bi_20230801_models.ListFreshViewPointsRequest,
@@ -11140,6 +11592,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_fresh_view_points_with_options_async(request, runtime)
+
+    def list_general_configs_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListGeneralConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListGeneralConfigsResponse:
+        """
+        @summary 通用配置-列表
+        
+        @param request: ListGeneralConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGeneralConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListGeneralConfigs',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListGeneralConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_general_configs_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListGeneralConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListGeneralConfigsResponse:
+        """
+        @summary 通用配置-列表
+        
+        @param request: ListGeneralConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGeneralConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListGeneralConfigs',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListGeneralConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_general_configs(
+        self,
+        request: ai_miao_bi_20230801_models.ListGeneralConfigsRequest,
+    ) -> ai_miao_bi_20230801_models.ListGeneralConfigsResponse:
+        """
+        @summary 通用配置-列表
+        
+        @param request: ListGeneralConfigsRequest
+        @return: ListGeneralConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_general_configs_with_options(request, runtime)
+
+    async def list_general_configs_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListGeneralConfigsRequest,
+    ) -> ai_miao_bi_20230801_models.ListGeneralConfigsResponse:
+        """
+        @summary 通用配置-列表
+        
+        @param request: ListGeneralConfigsRequest
+        @return: ListGeneralConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_general_configs_with_options_async(request, runtime)
 
     def list_generated_contents_with_options(
         self,
@@ -16373,6 +16929,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_multi_doc_introduction_with_options_async(request, runtime)
 
+    def run_quick_writing_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunQuickWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunQuickWritingResponse:
+        """
+        @summary 快速写作
+        
+        @param tmp_req: RunQuickWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunQuickWritingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunQuickWritingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.articles):
+            request.articles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.articles, 'Articles', 'json')
+        if not UtilClient.is_unset(tmp_req.search_sources):
+            request.search_sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_sources, 'SearchSources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.articles_shrink):
+            body['Articles'] = request.articles_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.search_sources_shrink):
+            body['SearchSources'] = request.search_sources_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunQuickWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunQuickWritingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_quick_writing_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunQuickWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunQuickWritingResponse:
+        """
+        @summary 快速写作
+        
+        @param tmp_req: RunQuickWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunQuickWritingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunQuickWritingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.articles):
+            request.articles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.articles, 'Articles', 'json')
+        if not UtilClient.is_unset(tmp_req.search_sources):
+            request.search_sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_sources, 'SearchSources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.articles_shrink):
+            body['Articles'] = request.articles_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.search_sources_shrink):
+            body['SearchSources'] = request.search_sources_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunQuickWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunQuickWritingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_quick_writing(
+        self,
+        request: ai_miao_bi_20230801_models.RunQuickWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunQuickWritingResponse:
+        """
+        @summary 快速写作
+        
+        @param request: RunQuickWritingRequest
+        @return: RunQuickWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_quick_writing_with_options(request, runtime)
+
+    async def run_quick_writing_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunQuickWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunQuickWritingResponse:
+        """
+        @summary 快速写作
+        
+        @param request: RunQuickWritingRequest
+        @return: RunQuickWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_quick_writing_with_options_async(request, runtime)
+
     def run_search_generation_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.RunSearchGenerationRequest,
@@ -17208,6 +17888,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_title_generation_with_options_async(request, runtime)
+
+    def run_topic_selection_merge_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunTopicSelectionMergeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunTopicSelectionMergeResponse:
+        """
+        @summary 妙策选题策划聚合
+        
+        @param tmp_req: RunTopicSelectionMergeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunTopicSelectionMergeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunTopicSelectionMergeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunTopicSelectionMerge',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunTopicSelectionMergeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_topic_selection_merge_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunTopicSelectionMergeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunTopicSelectionMergeResponse:
+        """
+        @summary 妙策选题策划聚合
+        
+        @param tmp_req: RunTopicSelectionMergeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunTopicSelectionMergeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunTopicSelectionMergeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunTopicSelectionMerge',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunTopicSelectionMergeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_topic_selection_merge(
+        self,
+        request: ai_miao_bi_20230801_models.RunTopicSelectionMergeRequest,
+    ) -> ai_miao_bi_20230801_models.RunTopicSelectionMergeResponse:
+        """
+        @summary 妙策选题策划聚合
+        
+        @param request: RunTopicSelectionMergeRequest
+        @return: RunTopicSelectionMergeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_topic_selection_merge_with_options(request, runtime)
+
+    async def run_topic_selection_merge_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunTopicSelectionMergeRequest,
+    ) -> ai_miao_bi_20230801_models.RunTopicSelectionMergeResponse:
+        """
+        @summary 妙策选题策划聚合
+        
+        @param request: RunTopicSelectionMergeRequest
+        @return: RunTopicSelectionMergeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_topic_selection_merge_with_options_async(request, runtime)
 
     def run_translate_generation_with_options(
         self,
@@ -20828,6 +21620,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_dataset_document_with_options_async(request, runtime)
+
+    def update_general_config_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneralConfigResponse:
+        """
+        @summary 通用配置-更新
+        
+        @param request: UpdateGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateGeneralConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_general_config_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateGeneralConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneralConfigResponse:
+        """
+        @summary 通用配置-更新
+        
+        @param request: UpdateGeneralConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGeneralConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_key):
+            body['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGeneralConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateGeneralConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_general_config(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneralConfigResponse:
+        """
+        @summary 通用配置-更新
+        
+        @param request: UpdateGeneralConfigRequest
+        @return: UpdateGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_general_config_with_options(request, runtime)
+
+    async def update_general_config_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateGeneralConfigRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateGeneralConfigResponse:
+        """
+        @summary 通用配置-更新
+        
+        @param request: UpdateGeneralConfigRequest
+        @return: UpdateGeneralConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_general_config_with_options_async(request, runtime)
 
     def update_generated_content_with_options(
         self,
