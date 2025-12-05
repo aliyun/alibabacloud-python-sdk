@@ -6712,6 +6712,7 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
         main_eth_public_ip: str = None,
+        network_interface_id: str = None,
         network_interface_ip: str = None,
         node_id: str = None,
         session_status: str = None,
@@ -6736,6 +6737,7 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
         self.gmt_modified = gmt_modified
         # The public IP address associated with the primary NIC. This value is returned only if `StrategyType` is set to `Mixed`.
         self.main_eth_public_ip = main_eth_public_ip
+        self.network_interface_id = network_interface_id
         self.network_interface_ip = network_interface_ip
         # The ID of the node on which the app instance runs.
         # 
@@ -6775,6 +6777,8 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.main_eth_public_ip is not None:
             result['MainEthPublicIp'] = self.main_eth_public_ip
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
         if self.network_interface_ip is not None:
             result['NetworkInterfaceIp'] = self.network_interface_ip
         if self.node_id is not None:
@@ -6802,6 +6806,8 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('MainEthPublicIp') is not None:
             self.main_eth_public_ip = m.get('MainEthPublicIp')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
         if m.get('NetworkInterfaceIp') is not None:
             self.network_interface_ip = m.get('NetworkInterfaceIp')
         if m.get('NodeId') is not None:
@@ -14910,6 +14916,119 @@ class UpdateAppInstanceGroupImageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAppInstanceGroupImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWuyingServerImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        product_type: str = None,
+        wuying_server_id: str = None,
+    ):
+        self.image_id = image_id
+        self.product_type = product_type
+        self.wuying_server_id = wuying_server_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.wuying_server_id is not None:
+            result['WuyingServerId'] = self.wuying_server_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('WuyingServerId') is not None:
+            self.wuying_server_id = m.get('WuyingServerId')
+        return self
+
+
+class UpdateWuyingServerImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateWuyingServerImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateWuyingServerImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateWuyingServerImageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

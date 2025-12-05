@@ -1,3 +1,8 @@
+2025-12-05 Version: 4.7.0
+- Support API UpdateWuyingServerImage.
+- Update API ListAppInstances: add response parameters Body.AppInstanceModels.$.NetworkInterfaceId.
+
+
 2025-11-27 Version: 4.6.0
 - Support API ModifyBrowserInstanceGroup.
 - Update API CreateAppInstanceGroup: add request parameters UserGroupIds.

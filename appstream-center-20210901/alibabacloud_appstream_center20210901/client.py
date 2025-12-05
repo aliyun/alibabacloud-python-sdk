@@ -6054,3 +6054,107 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_app_instance_group_image_with_options_async(request, runtime)
+
+    def update_wuying_server_image_with_options(
+        self,
+        request: appstream_center_20210901_models.UpdateWuyingServerImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
+        """
+        @summary 更新研发主机镜像
+        
+        @param request: UpdateWuyingServerImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWuyingServerImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWuyingServerImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.UpdateWuyingServerImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_wuying_server_image_with_options_async(
+        self,
+        request: appstream_center_20210901_models.UpdateWuyingServerImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
+        """
+        @summary 更新研发主机镜像
+        
+        @param request: UpdateWuyingServerImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWuyingServerImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWuyingServerImage',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.UpdateWuyingServerImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_wuying_server_image(
+        self,
+        request: appstream_center_20210901_models.UpdateWuyingServerImageRequest,
+    ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
+        """
+        @summary 更新研发主机镜像
+        
+        @param request: UpdateWuyingServerImageRequest
+        @return: UpdateWuyingServerImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_wuying_server_image_with_options(request, runtime)
+
+    async def update_wuying_server_image_async(
+        self,
+        request: appstream_center_20210901_models.UpdateWuyingServerImageRequest,
+    ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
+        """
+        @summary 更新研发主机镜像
+        
+        @param request: UpdateWuyingServerImageRequest
+        @return: UpdateWuyingServerImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_wuying_server_image_with_options_async(request, runtime)
