@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_yundun-bastionhost20191209.
+setup module for alibabacloud_yundun_bastionhost20191209.
 
-Created on 09/09/2025
+Created on 05/12/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_yundun_bastionhost20191209"
-NAME = "alibabacloud_yundun-bastionhost20191209" or "alibabacloud-package"
+NAME = "alibabacloud_yundun_bastionhost20191209" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud Yundun-bastionhost (20191209) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"

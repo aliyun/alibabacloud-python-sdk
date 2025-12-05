@@ -3153,6 +3153,7 @@ class CreateDatabaseRequest(TeaModel):
         database_public_address: str = None,
         database_type: str = None,
         instance_id: str = None,
+        instance_member_id: int = None,
         network_domain_id: str = None,
         polar_dbendpoint_type: str = None,
         region_id: str = None,
@@ -3196,6 +3197,7 @@ class CreateDatabaseRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.instance_member_id = instance_member_id
         # The ID of the network domain to which the database to add belongs.
         # 
         # >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
@@ -3251,6 +3253,8 @@ class CreateDatabaseRequest(TeaModel):
             result['DatabaseType'] = self.database_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_member_id is not None:
+            result['InstanceMemberId'] = self.instance_member_id
         if self.network_domain_id is not None:
             result['NetworkDomainId'] = self.network_domain_id
         if self.polar_dbendpoint_type is not None:
@@ -3283,6 +3287,8 @@ class CreateDatabaseRequest(TeaModel):
             self.database_type = m.get('DatabaseType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceMemberId') is not None:
+            self.instance_member_id = m.get('InstanceMemberId')
         if m.get('NetworkDomainId') is not None:
             self.network_domain_id = m.get('NetworkDomainId')
         if m.get('PolarDBEndpointType') is not None:
@@ -3652,6 +3658,7 @@ class CreateHostRequest(TeaModel):
         host_private_address: str = None,
         host_public_address: str = None,
         instance_id: str = None,
+        instance_member_id: int = None,
         instance_region_id: str = None,
         network_domain_id: str = None,
         ostype: str = None,
@@ -3686,6 +3693,7 @@ class CreateHostRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.instance_member_id = instance_member_id
         # The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
         # 
         # > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
@@ -3739,6 +3747,8 @@ class CreateHostRequest(TeaModel):
             result['HostPublicAddress'] = self.host_public_address
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_member_id is not None:
+            result['InstanceMemberId'] = self.instance_member_id
         if self.instance_region_id is not None:
             result['InstanceRegionId'] = self.instance_region_id
         if self.network_domain_id is not None:
@@ -3767,6 +3777,8 @@ class CreateHostRequest(TeaModel):
             self.host_public_address = m.get('HostPublicAddress')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceMemberId') is not None:
+            self.instance_member_id = m.get('InstanceMemberId')
         if m.get('InstanceRegionId') is not None:
             self.instance_region_id = m.get('InstanceRegionId')
         if m.get('NetworkDomainId') is not None:

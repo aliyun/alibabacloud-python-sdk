@@ -1783,6 +1783,8 @@ class Client(OpenApiClient):
             query['DatabaseType'] = request.database_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_member_id):
+            query['InstanceMemberId'] = request.instance_member_id
         if not UtilClient.is_unset(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
         if not UtilClient.is_unset(request.polar_dbendpoint_type):
@@ -1844,6 +1846,8 @@ class Client(OpenApiClient):
             query['DatabaseType'] = request.database_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_member_id):
+            query['InstanceMemberId'] = request.instance_member_id
         if not UtilClient.is_unset(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
         if not UtilClient.is_unset(request.polar_dbendpoint_type):
@@ -2139,6 +2143,8 @@ class Client(OpenApiClient):
             query['HostPublicAddress'] = request.host_public_address
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_member_id):
+            query['InstanceMemberId'] = request.instance_member_id
         if not UtilClient.is_unset(request.instance_region_id):
             query['InstanceRegionId'] = request.instance_region_id
         if not UtilClient.is_unset(request.network_domain_id):
@@ -2196,6 +2202,8 @@ class Client(OpenApiClient):
             query['HostPublicAddress'] = request.host_public_address
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_member_id):
+            query['InstanceMemberId'] = request.instance_member_id
         if not UtilClient.is_unset(request.instance_region_id):
             query['InstanceRegionId'] = request.instance_region_id
         if not UtilClient.is_unset(request.network_domain_id):

@@ -1,3 +1,8 @@
+2025-12-05 Version: 1.4.1
+- Update API CreateDatabase: add request parameters InstanceMemberId.
+- Update API CreateHost: add request parameters InstanceMemberId.
+
+
 2025-09-09 Version: 1.4.0
 - Support API AddInstanceRdMember.
 - Support API ListInstanceRdMembers.
