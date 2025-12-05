@@ -1,3 +1,7 @@
+2025-12-05 Version: 13.0.1
+- Update API ReleaseReadWriteSplittingConnection: add request parameters RWAddressType.
+
+
 2025-11-27 Version: 13.0.0
 - Support API CheckRdsCustomInit.
 - Support API DeleteRCVCluster.
