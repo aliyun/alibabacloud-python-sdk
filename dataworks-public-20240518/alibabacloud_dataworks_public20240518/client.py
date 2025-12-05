@@ -3132,6 +3132,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_source_shared_rule_with_options_async(request, runtime)
 
+    def create_dataset_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param tmp_req: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.init_version):
+            request.init_version_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.init_version, 'InitVersion', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.data_type):
+            body['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.init_version_shrink):
+            body['InitVersion'] = request.init_version_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.storage_type):
+            body['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param tmp_req: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDatasetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.init_version):
+            request.init_version_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.init_version, 'InitVersion', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.data_type):
+            body['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.init_version_shrink):
+            body['InitVersion'] = request.init_version_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.storage_type):
+            body['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset(
+        self,
+        request: dataworks_public_20240518_models.CreateDatasetRequest,
+    ) -> dataworks_public_20240518_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dataset_with_options(request, runtime)
+
+    async def create_dataset_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDatasetRequest,
+    ) -> dataworks_public_20240518_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dataset_with_options_async(request, runtime)
+
+    def create_dataset_version_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param tmp_req: CreateDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDatasetVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.import_info):
+            request.import_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_info, 'ImportInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.import_info_shrink):
+            body['ImportInfo'] = request.import_info_shrink
+        if not UtilClient.is_unset(request.mount_path):
+            body['MountPath'] = request.mount_path
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_version_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param tmp_req: CreateDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDatasetVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.import_info):
+            request.import_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.import_info, 'ImportInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.import_info_shrink):
+            body['ImportInfo'] = request.import_info_shrink
+        if not UtilClient.is_unset(request.mount_path):
+            body['MountPath'] = request.mount_path
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset_version(
+        self,
+        request: dataworks_public_20240518_models.CreateDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param request: CreateDatasetVersionRequest
+        @return: CreateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dataset_version_with_options(request, runtime)
+
+    async def create_dataset_version_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param request: CreateDatasetVersionRequest
+        @return: CreateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dataset_version_with_options_async(request, runtime)
+
     def create_file_with_options(
         self,
         request: dataworks_public_20240518_models.CreateFileRequest,
@@ -7423,6 +7671,198 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_shared_rule_with_options_async(request, runtime)
+
+    def delete_dataset_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDatasetResponse:
+        """
+        @summary 删除数据集
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDatasetResponse:
+        """
+        @summary 删除数据集
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetRequest,
+    ) -> dataworks_public_20240518_models.DeleteDatasetResponse:
+        """
+        @summary 删除数据集
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dataset_with_options(request, runtime)
+
+    async def delete_dataset_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetRequest,
+    ) -> dataworks_public_20240518_models.DeleteDatasetResponse:
+        """
+        @summary 删除数据集
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dataset_with_options_async(request, runtime)
+
+    def delete_dataset_version_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除数据集版本
+        
+        @param request: DeleteDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_version_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除数据集版本
+        
+        @param request: DeleteDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset_version(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除数据集版本
+        
+        @param request: DeleteDatasetVersionRequest
+        @return: DeleteDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dataset_version_with_options(request, runtime)
+
+    async def delete_dataset_version_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除数据集版本
+        
+        @param request: DeleteDatasetVersionRequest
+        @return: DeleteDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dataset_version_with_options_async(request, runtime)
 
     def delete_file_with_options(
         self,
@@ -11771,6 +12211,198 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_database_with_options_async(request, runtime)
+
+    def get_dataset_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDatasetResponse:
+        """
+        @summary 获取数据集详情
+        
+        @param request: GetDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDatasetResponse:
+        """
+        @summary 获取数据集详情
+        
+        @param request: GetDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetRequest,
+    ) -> dataworks_public_20240518_models.GetDatasetResponse:
+        """
+        @summary 获取数据集详情
+        
+        @param request: GetDatasetRequest
+        @return: GetDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dataset_with_options(request, runtime)
+
+    async def get_dataset_async(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetRequest,
+    ) -> dataworks_public_20240518_models.GetDatasetResponse:
+        """
+        @summary 获取数据集详情
+        
+        @param request: GetDatasetRequest
+        @return: GetDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dataset_with_options_async(request, runtime)
+
+    def get_dataset_version_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDatasetVersionResponse:
+        """
+        @summary 获取数据集版本
+        
+        @param request: GetDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_version_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDatasetVersionResponse:
+        """
+        @summary 获取数据集版本
+        
+        @param request: GetDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset_version(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.GetDatasetVersionResponse:
+        """
+        @summary 获取数据集版本
+        
+        @param request: GetDatasetVersionRequest
+        @return: GetDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dataset_version_with_options(request, runtime)
+
+    async def get_dataset_version_async(
+        self,
+        request: dataworks_public_20240518_models.GetDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.GetDatasetVersionResponse:
+        """
+        @summary 获取数据集版本
+        
+        @param request: GetDatasetVersionRequest
+        @return: GetDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dataset_version_with_options_async(request, runtime)
 
     def get_deployment_package_with_options(
         self,
@@ -17908,6 +18540,266 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
 
+    def list_dataset_versions_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDatasetVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.creator_id):
+            body['CreatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetVersions',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDatasetVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dataset_versions_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDatasetVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.creator_id):
+            body['CreatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetVersions',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDatasetVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dataset_versions(
+        self,
+        request: dataworks_public_20240518_models.ListDatasetVersionsRequest,
+    ) -> dataworks_public_20240518_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @return: ListDatasetVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dataset_versions_with_options(request, runtime)
+
+    async def list_dataset_versions_async(
+        self,
+        request: dataworks_public_20240518_models.ListDatasetVersionsRequest,
+    ) -> dataworks_public_20240518_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @return: ListDatasetVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dataset_versions_with_options_async(request, runtime)
+
+    def list_datasets_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDatasetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDatasetsResponse:
+        """
+        @summary 获取数据集列表
+        
+        @param tmp_req: ListDatasetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDatasetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_type_list):
+            request.data_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_type_list, 'DataTypeList', 'simple')
+        if not UtilClient.is_unset(tmp_req.storage_type_list):
+            request.storage_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_type_list, 'StorageTypeList', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.creator_id):
+            body['CreatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.data_type_list_shrink):
+            body['DataTypeList'] = request.data_type_list_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.storage_type_list_shrink):
+            body['StorageTypeList'] = request.storage_type_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDatasetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_datasets_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDatasetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDatasetsResponse:
+        """
+        @summary 获取数据集列表
+        
+        @param tmp_req: ListDatasetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDatasetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_type_list):
+            request.data_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_type_list, 'DataTypeList', 'simple')
+        if not UtilClient.is_unset(tmp_req.storage_type_list):
+            request.storage_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_type_list, 'StorageTypeList', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.creator_id):
+            body['CreatorId'] = request.creator_id
+        if not UtilClient.is_unset(request.data_type_list_shrink):
+            body['DataTypeList'] = request.data_type_list_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            body['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.storage_type_list_shrink):
+            body['StorageTypeList'] = request.storage_type_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDatasetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_datasets(
+        self,
+        request: dataworks_public_20240518_models.ListDatasetsRequest,
+    ) -> dataworks_public_20240518_models.ListDatasetsResponse:
+        """
+        @summary 获取数据集列表
+        
+        @param request: ListDatasetsRequest
+        @return: ListDatasetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_datasets_with_options(request, runtime)
+
+    async def list_datasets_async(
+        self,
+        request: dataworks_public_20240518_models.ListDatasetsRequest,
+    ) -> dataworks_public_20240518_models.ListDatasetsResponse:
+        """
+        @summary 获取数据集列表
+        
+        @param request: ListDatasetsRequest
+        @return: ListDatasetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_datasets_with_options_async(request, runtime)
+
     def list_deployment_package_files_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.ListDeploymentPackageFilesRequest,
@@ -22476,6 +23368,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.move_workflow_definition_with_options_async(request, runtime)
 
+    def preview_dataset_version_with_options(
+        self,
+        request: dataworks_public_20240518_models.PreviewDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.PreviewDatasetVersionResponse:
+        """
+        @summary 预览数据集版本内容
+        
+        @param request: PreviewDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreviewDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.PreviewDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_dataset_version_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.PreviewDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.PreviewDatasetVersionResponse:
+        """
+        @summary 预览数据集版本内容
+        
+        @param request: PreviewDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreviewDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.PreviewDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_dataset_version(
+        self,
+        request: dataworks_public_20240518_models.PreviewDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.PreviewDatasetVersionResponse:
+        """
+        @summary 预览数据集版本内容
+        
+        @param request: PreviewDatasetVersionRequest
+        @return: PreviewDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.preview_dataset_version_with_options(request, runtime)
+
+    async def preview_dataset_version_async(
+        self,
+        request: dataworks_public_20240518_models.PreviewDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.PreviewDatasetVersionResponse:
+        """
+        @summary 预览数据集版本内容
+        
+        @param request: PreviewDatasetVersionRequest
+        @return: PreviewDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.preview_dataset_version_with_options_async(request, runtime)
+
     def remove_entity_from_meta_collection_with_options(
         self,
         request: dataworks_public_20240518_models.RemoveEntityFromMetaCollectionRequest,
@@ -26967,6 +27955,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_source_with_options_async(request, runtime)
+
+    def update_dataset_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDatasetResponse:
+        """
+        @summary 更新数据集
+        
+        @param request: UpdateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.readme):
+            body['Readme'] = request.readme
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDatasetResponse:
+        """
+        @summary 更新数据集
+        
+        @param request: UpdateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.readme):
+            body['Readme'] = request.readme
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataset',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetRequest,
+    ) -> dataworks_public_20240518_models.UpdateDatasetResponse:
+        """
+        @summary 更新数据集
+        
+        @param request: UpdateDatasetRequest
+        @return: UpdateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_dataset_with_options(request, runtime)
+
+    async def update_dataset_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetRequest,
+    ) -> dataworks_public_20240518_models.UpdateDatasetResponse:
+        """
+        @summary 更新数据集
+        
+        @param request: UpdateDatasetRequest
+        @return: UpdateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dataset_with_options_async(request, runtime)
+
+    def update_dataset_version_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新数据集版本信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_version_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新数据集版本信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetVersion',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset_version(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新数据集版本信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @return: UpdateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_dataset_version_with_options(request, runtime)
+
+    async def update_dataset_version_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDatasetVersionRequest,
+    ) -> dataworks_public_20240518_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新数据集版本信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @return: UpdateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dataset_version_with_options_async(request, runtime)
 
     def update_file_with_options(
         self,

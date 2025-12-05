@@ -1,3 +1,17 @@
+2025-12-05 Version: 7.8.0
+- Support API CreateDataset.
+- Support API CreateDatasetVersion.
+- Support API DeleteDataset.
+- Support API DeleteDatasetVersion.
+- Support API GetDataset.
+- Support API GetDatasetVersion.
+- Support API ListDatasetVersions.
+- Support API ListDatasets.
+- Support API PreviewDatasetVersion.
+- Support API UpdateDataset.
+- Support API UpdateDatasetVersion.
+
+
 2025-12-02 Version: 7.7.1
 - Update API ListDataQualityScanRuns: add request parameters Filter.
 
