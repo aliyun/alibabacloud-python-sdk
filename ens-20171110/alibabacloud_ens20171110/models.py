@@ -40376,6 +40376,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self,
         primary: bool = None,
         private_ip_address: str = None,
+        private_ip_status: str = None,
     ):
         # Specifies whether the private IP address is the primary private IP address. Valid values:
         # 
@@ -40384,6 +40385,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.primary = primary
         # The private IP address.
         self.private_ip_address = private_ip_address
+        self.private_ip_status = private_ip_status
 
     def validate(self):
         pass
@@ -40398,6 +40400,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             result['Primary'] = self.primary
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
+        if self.private_ip_status is not None:
+            result['PrivateIpStatus'] = self.private_ip_status
         return result
 
     def from_map(self, m: dict = None):
@@ -40406,6 +40410,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             self.primary = m.get('Primary')
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('PrivateIpStatus') is not None:
+            self.private_ip_status = m.get('PrivateIpStatus')
         return self
 
 

@@ -1,3 +1,7 @@
+2025-12-05 Version: 9.5.1
+- Update API DescribeNetworkInterfaces: add response parameters Body.NetworkInterfaceSets.$.PrivateIpSets.$.PrivateIpStatus.
+
+
 2025-11-25 Version: 9.5.0
 - Support API CreateSecurityGroupPermissions.
 - Support API DeleteSecurityGroupPermissions.
