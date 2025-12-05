@@ -26411,6 +26411,7 @@ class DescribeInstanceResponseBody(TeaModel):
         in_debt: str = None,
         instance_id: str = None,
         pay_type: str = None,
+        process_status: str = None,
         region_id: str = None,
         request_id: str = None,
         start_time: int = None,
@@ -26434,6 +26435,7 @@ class DescribeInstanceResponseBody(TeaModel):
         # *   **POSTPAY:** The WAF instance uses the pay-as-you-go billing method.
         # *   **PREPAY:** The WAF instance uses the subscription billing method.
         self.pay_type = pay_type
+        self.process_status = process_status
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou:** the Chinese mainland
@@ -26472,6 +26474,8 @@ class DescribeInstanceResponseBody(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.process_status is not None:
+            result['ProcessStatus'] = self.process_status
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.request_id is not None:
@@ -26497,6 +26501,8 @@ class DescribeInstanceResponseBody(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ProcessStatus') is not None:
+            self.process_status = m.get('ProcessStatus')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:

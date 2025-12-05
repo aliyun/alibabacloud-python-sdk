@@ -1,3 +1,7 @@
+2025-12-05 Version: 7.0.3
+- Update API DescribeInstance: add response parameters Body.ProcessStatus.
+
+
 2025-11-25 Version: 7.0.2
 - Update API CreateCloudResource: add request parameters Redirect.MaxBodySize.
 - Update API CreateDomain: add request parameters Redirect.MaxBodySize.
