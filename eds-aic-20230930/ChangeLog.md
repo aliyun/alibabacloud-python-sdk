@@ -1,3 +1,8 @@
+2025-12-05 Version: 4.19.0
+- Support API ImportImage.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.BizImageType.
+
+
 2025-11-28 Version: 4.18.1
 - Update API CreateAndroidInstanceGroup: add request parameters StreamMode.
 - Update API ModifyAndroidInstanceGroup: add request parameters StreamMode.

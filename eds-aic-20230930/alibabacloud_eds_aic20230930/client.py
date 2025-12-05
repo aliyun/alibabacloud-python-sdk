@@ -6037,6 +6037,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_properties_with_options_async(request, runtime)
 
+    def import_image_with_options(
+        self,
+        request: eds_aic_20230930_models.ImportImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ImportImageResponse:
+        """
+        @summary 导入自定义镜像
+        
+        @param request: ImportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_description):
+            query['ImageDescription'] = request.image_description
+        if not UtilClient.is_unset(request.image_file_url):
+            query['ImageFileURL'] = request.image_file_url
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportImage',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ImportImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_image_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ImportImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ImportImageResponse:
+        """
+        @summary 导入自定义镜像
+        
+        @param request: ImportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_description):
+            query['ImageDescription'] = request.image_description
+        if not UtilClient.is_unset(request.image_file_url):
+            query['ImageFileURL'] = request.image_file_url
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportImage',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ImportImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_image(
+        self,
+        request: eds_aic_20230930_models.ImportImageRequest,
+    ) -> eds_aic_20230930_models.ImportImageResponse:
+        """
+        @summary 导入自定义镜像
+        
+        @param request: ImportImageRequest
+        @return: ImportImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_image_with_options(request, runtime)
+
+    async def import_image_async(
+        self,
+        request: eds_aic_20230930_models.ImportImageRequest,
+    ) -> eds_aic_20230930_models.ImportImageResponse:
+        """
+        @summary 导入自定义镜像
+        
+        @param request: ImportImageRequest
+        @return: ImportImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_image_with_options_async(request, runtime)
+
     def import_key_pair_with_options(
         self,
         request: eds_aic_20230930_models.ImportKeyPairRequest,
