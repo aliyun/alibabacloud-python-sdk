@@ -4467,6 +4467,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.academic_proxy):
+            query['AcademicProxy'] = request.academic_proxy
         if not UtilClient.is_unset(request.admin_access):
             query['AdminAccess'] = request.admin_access
         if not UtilClient.is_unset(request.app_content_protection):
@@ -4477,6 +4479,8 @@ class Client(OpenApiClient):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not UtilClient.is_unset(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not UtilClient.is_unset(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -4499,6 +4503,8 @@ class Client(OpenApiClient):
             query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_overload):
+            query['CpuOverload'] = request.cpu_overload
         if not UtilClient.is_unset(request.cpu_processors):
             query['CpuProcessors'] = request.cpu_processors
         if not UtilClient.is_unset(request.cpu_protected_mode):
@@ -4519,6 +4525,8 @@ class Client(OpenApiClient):
             query['DisconnectKeepSession'] = request.disconnect_keep_session
         if not UtilClient.is_unset(request.disconnect_keep_session_time):
             query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.disk_overload):
+            query['DiskOverload'] = request.disk_overload
         if not UtilClient.is_unset(request.display_mode):
             query['DisplayMode'] = request.display_mode
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -4555,6 +4563,8 @@ class Client(OpenApiClient):
             query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_overload):
+            query['MemoryOverload'] = request.memory_overload
         if not UtilClient.is_unset(request.memory_processors):
             query['MemoryProcessors'] = request.memory_processors
         if not UtilClient.is_unset(request.memory_protected_mode):
@@ -4575,6 +4585,8 @@ class Client(OpenApiClient):
             query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
         if not UtilClient.is_unset(request.mobile_wy_assistant):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
+        if not UtilClient.is_unset(request.model_library):
+            query['ModelLibrary'] = request.model_library
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -4585,6 +4597,8 @@ class Client(OpenApiClient):
             query['NoOperationDisconnect'] = request.no_operation_disconnect
         if not UtilClient.is_unset(request.no_operation_disconnect_time):
             query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
+        if not UtilClient.is_unset(request.port_proxy):
+            query['PortProxy'] = request.port_proxy
         if not UtilClient.is_unset(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not UtilClient.is_unset(request.quality_enhancement):
@@ -4738,6 +4752,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.academic_proxy):
+            query['AcademicProxy'] = request.academic_proxy
         if not UtilClient.is_unset(request.admin_access):
             query['AdminAccess'] = request.admin_access
         if not UtilClient.is_unset(request.app_content_protection):
@@ -4748,6 +4764,8 @@ class Client(OpenApiClient):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not UtilClient.is_unset(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not UtilClient.is_unset(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -4770,6 +4788,8 @@ class Client(OpenApiClient):
             query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_overload):
+            query['CpuOverload'] = request.cpu_overload
         if not UtilClient.is_unset(request.cpu_processors):
             query['CpuProcessors'] = request.cpu_processors
         if not UtilClient.is_unset(request.cpu_protected_mode):
@@ -4790,6 +4810,8 @@ class Client(OpenApiClient):
             query['DisconnectKeepSession'] = request.disconnect_keep_session
         if not UtilClient.is_unset(request.disconnect_keep_session_time):
             query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.disk_overload):
+            query['DiskOverload'] = request.disk_overload
         if not UtilClient.is_unset(request.display_mode):
             query['DisplayMode'] = request.display_mode
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -4826,6 +4848,8 @@ class Client(OpenApiClient):
             query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_overload):
+            query['MemoryOverload'] = request.memory_overload
         if not UtilClient.is_unset(request.memory_processors):
             query['MemoryProcessors'] = request.memory_processors
         if not UtilClient.is_unset(request.memory_protected_mode):
@@ -4846,6 +4870,8 @@ class Client(OpenApiClient):
             query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
         if not UtilClient.is_unset(request.mobile_wy_assistant):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
+        if not UtilClient.is_unset(request.model_library):
+            query['ModelLibrary'] = request.model_library
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -4856,6 +4882,8 @@ class Client(OpenApiClient):
             query['NoOperationDisconnect'] = request.no_operation_disconnect
         if not UtilClient.is_unset(request.no_operation_disconnect_time):
             query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
+        if not UtilClient.is_unset(request.port_proxy):
+            query['PortProxy'] = request.port_proxy
         if not UtilClient.is_unset(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not UtilClient.is_unset(request.quality_enhancement):
@@ -12269,14 +12297,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.academic_proxy):
+            query['AcademicProxy'] = request.academic_proxy
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.model_library):
+            query['ModelLibrary'] = request.model_library
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.port_proxy):
+            query['PortProxy'] = request.port_proxy
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.scope):
@@ -12314,14 +12348,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.academic_proxy):
+            query['AcademicProxy'] = request.academic_proxy
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.model_library):
+            query['ModelLibrary'] = request.model_library
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.port_proxy):
+            query['PortProxy'] = request.port_proxy
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.scope):
@@ -17485,6 +17525,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not UtilClient.is_unset(request.external_policy_group_ids):
             query['ExternalPolicyGroupIds'] = request.external_policy_group_ids
         if not UtilClient.is_unset(request.max_results):
@@ -17534,6 +17576,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not UtilClient.is_unset(request.external_policy_group_ids):
             query['ExternalPolicyGroupIds'] = request.external_policy_group_ids
         if not UtilClient.is_unset(request.max_results):
@@ -24929,6 +24973,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.academic_proxy):
+            query['AcademicProxy'] = request.academic_proxy
         if not UtilClient.is_unset(request.admin_access):
             query['AdminAccess'] = request.admin_access
         if not UtilClient.is_unset(request.app_content_protection):
@@ -24939,6 +24985,8 @@ class Client(OpenApiClient):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not UtilClient.is_unset(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not UtilClient.is_unset(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -24961,6 +25009,8 @@ class Client(OpenApiClient):
             query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_overload):
+            query['CpuOverload'] = request.cpu_overload
         if not UtilClient.is_unset(request.cpu_processors):
             query['CpuProcessors'] = request.cpu_processors
         if not UtilClient.is_unset(request.cpu_protected_mode):
@@ -24981,6 +25031,8 @@ class Client(OpenApiClient):
             query['DisconnectKeepSession'] = request.disconnect_keep_session
         if not UtilClient.is_unset(request.disconnect_keep_session_time):
             query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.disk_overload):
+            query['DiskOverload'] = request.disk_overload
         if not UtilClient.is_unset(request.display_mode):
             query['DisplayMode'] = request.display_mode
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -25017,6 +25069,8 @@ class Client(OpenApiClient):
             query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_overload):
+            query['MemoryOverload'] = request.memory_overload
         if not UtilClient.is_unset(request.memory_processors):
             query['MemoryProcessors'] = request.memory_processors
         if not UtilClient.is_unset(request.memory_protected_mode):
@@ -25037,6 +25091,8 @@ class Client(OpenApiClient):
             query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
         if not UtilClient.is_unset(request.mobile_wy_assistant):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
+        if not UtilClient.is_unset(request.model_library):
+            query['ModelLibrary'] = request.model_library
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -25049,6 +25105,8 @@ class Client(OpenApiClient):
             query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.port_proxy):
+            query['PortProxy'] = request.port_proxy
         if not UtilClient.is_unset(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not UtilClient.is_unset(request.quality_enhancement):
@@ -25206,6 +25264,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.academic_proxy):
+            query['AcademicProxy'] = request.academic_proxy
         if not UtilClient.is_unset(request.admin_access):
             query['AdminAccess'] = request.admin_access
         if not UtilClient.is_unset(request.app_content_protection):
@@ -25216,6 +25276,8 @@ class Client(OpenApiClient):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
         if not UtilClient.is_unset(request.auto_reconnect):
             query['AutoReconnect'] = request.auto_reconnect
+        if not UtilClient.is_unset(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -25238,6 +25300,8 @@ class Client(OpenApiClient):
             query['CpdDriveClipboard'] = request.cpd_drive_clipboard
         if not UtilClient.is_unset(request.cpu_down_grade_duration):
             query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_overload):
+            query['CpuOverload'] = request.cpu_overload
         if not UtilClient.is_unset(request.cpu_processors):
             query['CpuProcessors'] = request.cpu_processors
         if not UtilClient.is_unset(request.cpu_protected_mode):
@@ -25258,6 +25322,8 @@ class Client(OpenApiClient):
             query['DisconnectKeepSession'] = request.disconnect_keep_session
         if not UtilClient.is_unset(request.disconnect_keep_session_time):
             query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.disk_overload):
+            query['DiskOverload'] = request.disk_overload
         if not UtilClient.is_unset(request.display_mode):
             query['DisplayMode'] = request.display_mode
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -25294,6 +25360,8 @@ class Client(OpenApiClient):
             query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.memory_down_grade_duration):
             query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_overload):
+            query['MemoryOverload'] = request.memory_overload
         if not UtilClient.is_unset(request.memory_processors):
             query['MemoryProcessors'] = request.memory_processors
         if not UtilClient.is_unset(request.memory_protected_mode):
@@ -25314,6 +25382,8 @@ class Client(OpenApiClient):
             query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
         if not UtilClient.is_unset(request.mobile_wy_assistant):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
+        if not UtilClient.is_unset(request.model_library):
+            query['ModelLibrary'] = request.model_library
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -25326,6 +25396,8 @@ class Client(OpenApiClient):
             query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.port_proxy):
+            query['PortProxy'] = request.port_proxy
         if not UtilClient.is_unset(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not UtilClient.is_unset(request.quality_enhancement):

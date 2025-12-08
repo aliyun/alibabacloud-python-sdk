@@ -1,3 +1,30 @@
+2025-12-08 Version: 4.17.2
+- Update API CreateCenterPolicy: add request parameters AcademicProxy.
+- Update API CreateCenterPolicy: add request parameters BusinessChannel.
+- Update API CreateCenterPolicy: add request parameters CpuOverload.
+- Update API CreateCenterPolicy: add request parameters DiskOverload.
+- Update API CreateCenterPolicy: add request parameters MemoryOverload.
+- Update API CreateCenterPolicy: add request parameters ModelLibrary.
+- Update API CreateCenterPolicy: add request parameters PortProxy.
+- Update API DescribeCenterPolicyList: add request parameters AcademicProxy.
+- Update API DescribeCenterPolicyList: add request parameters ModelLibrary.
+- Update API DescribeCenterPolicyList: add request parameters PortProxy.
+- Update API DescribePolicyGroups: add request parameters BusinessChannel.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.AcademicProxy.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.CpuOverload.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.DiskOverload.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.MemoryOverload.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ModelLibrary.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.PortProxy.
+- Update API ModifyCenterPolicy: add request parameters AcademicProxy.
+- Update API ModifyCenterPolicy: add request parameters BusinessChannel.
+- Update API ModifyCenterPolicy: add request parameters CpuOverload.
+- Update API ModifyCenterPolicy: add request parameters DiskOverload.
+- Update API ModifyCenterPolicy: add request parameters MemoryOverload.
+- Update API ModifyCenterPolicy: add request parameters ModelLibrary.
+- Update API ModifyCenterPolicy: add request parameters PortProxy.
+
+
 2025-12-08 Version: 4.17.1
 - Update API AllocateIpAddress: add request parameters Bandwidth.
 - Update API AllocateIpAddress: add request parameters InternetChargeType.

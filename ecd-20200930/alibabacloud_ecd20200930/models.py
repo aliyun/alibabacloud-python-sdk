@@ -7416,11 +7416,13 @@ class CreateCenterPolicyRequestUsbSupplyRedirectRule(TeaModel):
 class CreateCenterPolicyRequest(TeaModel):
     def __init__(
         self,
+        academic_proxy: str = None,
         admin_access: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rule: List[CreateCenterPolicyRequestAuthorizeAccessPolicyRule] = None,
         authorize_security_policy_rule: List[CreateCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
         auto_reconnect: str = None,
+        business_channel: str = None,
         business_type: int = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
@@ -7432,6 +7434,7 @@ class CreateCenterPolicyRequest(TeaModel):
         color_enhancement: str = None,
         cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
+        cpu_overload: str = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
         cpu_rate_limit: int = None,
@@ -7442,6 +7445,7 @@ class CreateCenterPolicyRequest(TeaModel):
         device_rules: List[CreateCenterPolicyRequestDeviceRules] = None,
         disconnect_keep_session: str = None,
         disconnect_keep_session_time: int = None,
+        disk_overload: str = None,
         display_mode: str = None,
         domain_resolve_rule: List[CreateCenterPolicyRequestDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
@@ -7460,6 +7464,7 @@ class CreateCenterPolicyRequest(TeaModel):
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
+        memory_overload: str = None,
         memory_processors: List[str] = None,
         memory_protected_mode: str = None,
         memory_rate_limit: int = None,
@@ -7470,11 +7475,13 @@ class CreateCenterPolicyRequest(TeaModel):
         mobile_shutdown: str = None,
         mobile_wuying_keeper: str = None,
         mobile_wy_assistant: str = None,
+        model_library: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[CreateCenterPolicyRequestNetRedirectRule] = None,
         no_operation_disconnect: str = None,
         no_operation_disconnect_time: int = None,
+        port_proxy: str = None,
         printer_redirect: str = None,
         quality_enhancement: str = None,
         record_event_duration: int = None,
@@ -7536,6 +7543,7 @@ class CreateCenterPolicyRequest(TeaModel):
         wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
+        self.academic_proxy = academic_proxy
         # Specifies whether to grant the admin permissions to end users.
         # 
         # >  This parameter is in private preview and only available to specific users.
@@ -7558,6 +7566,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # The security group rule.
         self.authorize_security_policy_rule = authorize_security_policy_rule
         self.auto_reconnect = auto_reconnect
+        self.business_channel = business_channel
         # The business type.
         # 
         # Valid values:
@@ -7599,6 +7608,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        self.cpu_overload = cpu_overload
         # The CPU processors.
         self.cpu_processors = cpu_processors
         # The CPU spike protection policy.
@@ -7633,6 +7643,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # 
         # >  This parameter applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        self.disk_overload = disk_overload
         # The display mode.
         # 
         # Valid values:
@@ -7716,6 +7727,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.max_reconnect_time = max_reconnect_time
         # The memory underclocking duration per process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        self.memory_overload = memory_overload
         # The memory processors.
         self.memory_processors = memory_processors
         # The memory spike protection policy.
@@ -7752,6 +7764,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.mobile_shutdown = mobile_shutdown
         self.mobile_wuying_keeper = mobile_wuying_keeper
         self.mobile_wy_assistant = mobile_wy_assistant
+        self.model_library = model_library
         # The policy name.
         # 
         # This parameter is required.
@@ -7783,6 +7796,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # 
         # >  This parameter applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
+        self.port_proxy = port_proxy
         # The printer redirection policy. This parameter only applies if DeviceRedirects does not include a printer redirection policy.
         # 
         # Valid values:
@@ -8088,6 +8102,8 @@ class CreateCenterPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.academic_proxy is not None:
+            result['AcademicProxy'] = self.academic_proxy
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
         if self.app_content_protection is not None:
@@ -8102,6 +8118,8 @@ class CreateCenterPolicyRequest(TeaModel):
                 result['AuthorizeSecurityPolicyRule'].append(k.to_map() if k else None)
         if self.auto_reconnect is not None:
             result['AutoReconnect'] = self.auto_reconnect
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.camera_redirect is not None:
@@ -8128,6 +8146,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
+        if self.cpu_overload is not None:
+            result['CpuOverload'] = self.cpu_overload
         if self.cpu_processors is not None:
             result['CpuProcessors'] = self.cpu_processors
         if self.cpu_protected_mode is not None:
@@ -8152,6 +8172,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['DisconnectKeepSession'] = self.disconnect_keep_session
         if self.disconnect_keep_session_time is not None:
             result['DisconnectKeepSessionTime'] = self.disconnect_keep_session_time
+        if self.disk_overload is not None:
+            result['DiskOverload'] = self.disk_overload
         if self.display_mode is not None:
             result['DisplayMode'] = self.display_mode
         result['DomainResolveRule'] = []
@@ -8190,6 +8212,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['MaxReconnectTime'] = self.max_reconnect_time
         if self.memory_down_grade_duration is not None:
             result['MemoryDownGradeDuration'] = self.memory_down_grade_duration
+        if self.memory_overload is not None:
+            result['MemoryOverload'] = self.memory_overload
         if self.memory_processors is not None:
             result['MemoryProcessors'] = self.memory_processors
         if self.memory_protected_mode is not None:
@@ -8210,6 +8234,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
         if self.mobile_wy_assistant is not None:
             result['MobileWyAssistant'] = self.mobile_wy_assistant
+        if self.model_library is not None:
+            result['ModelLibrary'] = self.model_library
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -8222,6 +8248,8 @@ class CreateCenterPolicyRequest(TeaModel):
             result['NoOperationDisconnect'] = self.no_operation_disconnect
         if self.no_operation_disconnect_time is not None:
             result['NoOperationDisconnectTime'] = self.no_operation_disconnect_time
+        if self.port_proxy is not None:
+            result['PortProxy'] = self.port_proxy
         if self.printer_redirect is not None:
             result['PrinterRedirect'] = self.printer_redirect
         if self.quality_enhancement is not None:
@@ -8350,6 +8378,8 @@ class CreateCenterPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcademicProxy') is not None:
+            self.academic_proxy = m.get('AcademicProxy')
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
         if m.get('AppContentProtection') is not None:
@@ -8366,6 +8396,8 @@ class CreateCenterPolicyRequest(TeaModel):
                 self.authorize_security_policy_rule.append(temp_model.from_map(k))
         if m.get('AutoReconnect') is not None:
             self.auto_reconnect = m.get('AutoReconnect')
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('CameraRedirect') is not None:
@@ -8394,6 +8426,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
+        if m.get('CpuOverload') is not None:
+            self.cpu_overload = m.get('CpuOverload')
         if m.get('CpuProcessors') is not None:
             self.cpu_processors = m.get('CpuProcessors')
         if m.get('CpuProtectedMode') is not None:
@@ -8420,6 +8454,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.disconnect_keep_session = m.get('DisconnectKeepSession')
         if m.get('DisconnectKeepSessionTime') is not None:
             self.disconnect_keep_session_time = m.get('DisconnectKeepSessionTime')
+        if m.get('DiskOverload') is not None:
+            self.disk_overload = m.get('DiskOverload')
         if m.get('DisplayMode') is not None:
             self.display_mode = m.get('DisplayMode')
         self.domain_resolve_rule = []
@@ -8459,6 +8495,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.max_reconnect_time = m.get('MaxReconnectTime')
         if m.get('MemoryDownGradeDuration') is not None:
             self.memory_down_grade_duration = m.get('MemoryDownGradeDuration')
+        if m.get('MemoryOverload') is not None:
+            self.memory_overload = m.get('MemoryOverload')
         if m.get('MemoryProcessors') is not None:
             self.memory_processors = m.get('MemoryProcessors')
         if m.get('MemoryProtectedMode') is not None:
@@ -8479,6 +8517,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
         if m.get('MobileWyAssistant') is not None:
             self.mobile_wy_assistant = m.get('MobileWyAssistant')
+        if m.get('ModelLibrary') is not None:
+            self.model_library = m.get('ModelLibrary')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -8492,6 +8532,8 @@ class CreateCenterPolicyRequest(TeaModel):
             self.no_operation_disconnect = m.get('NoOperationDisconnect')
         if m.get('NoOperationDisconnectTime') is not None:
             self.no_operation_disconnect_time = m.get('NoOperationDisconnectTime')
+        if m.get('PortProxy') is not None:
+            self.port_proxy = m.get('PortProxy')
         if m.get('PrinterRedirect') is not None:
             self.printer_redirect = m.get('PrinterRedirect')
         if m.get('QualityEnhancement') is not None:
@@ -22243,13 +22285,17 @@ class DescribeCensResponse(TeaModel):
 class DescribeCenterPolicyListRequest(TeaModel):
     def __init__(
         self,
+        academic_proxy: str = None,
         business_type: int = None,
+        model_library: str = None,
         page_number: int = None,
         page_size: int = None,
         policy_group_id: List[str] = None,
+        port_proxy: str = None,
         resource_type: str = None,
         scope: str = None,
     ):
+        self.academic_proxy = academic_proxy
         # The business type.
         # 
         # Valid values:
@@ -22259,6 +22305,7 @@ class DescribeCenterPolicyListRequest(TeaModel):
         # 
         # This parameter is required.
         self.business_type = business_type
+        self.model_library = model_library
         # The page number.\\
         # Default value: 1.
         self.page_number = page_number
@@ -22266,6 +22313,7 @@ class DescribeCenterPolicyListRequest(TeaModel):
         self.page_size = page_size
         # The IDs of the cloud computer policies.
         self.policy_group_id = policy_group_id
+        self.port_proxy = port_proxy
         # The resource type.
         # 
         # Valid values:
@@ -22292,14 +22340,20 @@ class DescribeCenterPolicyListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.academic_proxy is not None:
+            result['AcademicProxy'] = self.academic_proxy
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
+        if self.model_library is not None:
+            result['ModelLibrary'] = self.model_library
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.port_proxy is not None:
+            result['PortProxy'] = self.port_proxy
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.scope is not None:
@@ -22308,14 +22362,20 @@ class DescribeCenterPolicyListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcademicProxy') is not None:
+            self.academic_proxy = m.get('AcademicProxy')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
+        if m.get('ModelLibrary') is not None:
+            self.model_library = m.get('ModelLibrary')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PortProxy') is not None:
+            self.port_proxy = m.get('PortProxy')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Scope') is not None:
@@ -39786,6 +39846,7 @@ class DescribeOfficeSitesResponse(TeaModel):
 class DescribePolicyGroupsRequest(TeaModel):
     def __init__(
         self,
+        business_channel: str = None,
         external_policy_group_ids: List[str] = None,
         max_results: int = None,
         next_token: str = None,
@@ -39795,6 +39856,7 @@ class DescribePolicyGroupsRequest(TeaModel):
         region_id: str = None,
         scope: str = None,
     ):
+        self.business_channel = business_channel
         # The array of cloud computer policy IDs to be excluded.
         self.external_policy_group_ids = external_policy_group_ids
         # The number of entries per page.
@@ -39830,6 +39892,8 @@ class DescribePolicyGroupsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
         if self.external_policy_group_ids is not None:
             result['ExternalPolicyGroupIds'] = self.external_policy_group_ids
         if self.max_results is not None:
@@ -39850,6 +39914,8 @@ class DescribePolicyGroupsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
         if m.get('ExternalPolicyGroupIds') is not None:
             self.external_policy_group_ids = m.get('ExternalPolicyGroupIds')
         if m.get('MaxResults') is not None:
@@ -40391,6 +40457,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule(
 class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
     def __init__(
         self,
+        academic_proxy: str = None,
         admin_access: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
@@ -40404,6 +40471,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         color_enhancement: str = None,
         cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
+        cpu_overload: str = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
         cpu_rate_limit: int = None,
@@ -40414,6 +40482,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         device_connect_hint: str = None,
         device_redirects: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects] = None,
         device_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules] = None,
+        disk_overload: str = None,
         display_mode: str = None,
         domain_list: str = None,
         domain_resolve_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule] = None,
@@ -40435,6 +40504,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
+        memory_overload: str = None,
         memory_processors: List[str] = None,
         memory_protected_mode: str = None,
         memory_rate_limit: int = None,
@@ -40445,12 +40515,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         mobile_shutdown: str = None,
         mobile_wuying_keeper: str = None,
         mobile_wy_assistant: str = None,
+        model_library: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
         policy_group_id: str = None,
         policy_group_type: str = None,
         policy_status: str = None,
+        port_proxy: str = None,
         preempt_login: str = None,
         preempt_login_users: List[str] = None,
         printer_redirection: str = None,
@@ -40513,6 +40585,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
+        self.academic_proxy = academic_proxy
         # Indicates whether end users are granted the administrator permissions.
         # 
         # >  This parameter is in invitational preview for specific users and not available to the public.
@@ -40560,6 +40633,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        self.cpu_overload = cpu_overload
         # The process whitelist that is not restricted by the CPU usage limit.
         self.cpu_processors = cpu_processors
         # Indicates whether the CPU spike protection switch is turned on.
@@ -40584,6 +40658,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.device_redirects = device_redirects
         # The custom peripheral rules.
         self.device_rules = device_rules
+        self.disk_overload = disk_overload
         # The display mode.
         # 
         # Valid values:
@@ -40675,6 +40750,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.max_reconnect_time = max_reconnect_time
         # The memory underclocking duration for a single process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        self.memory_overload = memory_overload
         # The whitelist of processes that are not restricted by the memory usage limit.
         self.memory_processors = memory_processors
         # Indicates whether the memory spike protection switch is turned on.
@@ -40714,6 +40790,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.mobile_wuying_keeper = mobile_wuying_keeper
         # Indicates whether the Xiaoying AI Assistant is enabled for mobile clients.
         self.mobile_wy_assistant = mobile_wy_assistant
+        self.model_library = model_library
         # The name of the cloud computer policy.
         self.name = name
         # Indicates whether the network redirection feature is enabled.
@@ -40745,6 +40822,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   AVAILABLE
         # *   CREATING
         self.policy_status = policy_status
+        self.port_proxy = port_proxy
         # The cloud computer preemption feature.
         # 
         # >  To ensure user experience and data security, when a cloud computer is used by an end user, other end users cannot connect to the cloud computer. By default, this parameter is set to `off`, which cannot be modified.
@@ -41057,6 +41135,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.academic_proxy is not None:
+            result['AcademicProxy'] = self.academic_proxy
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
         if self.app_content_protection is not None:
@@ -41089,6 +41169,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
+        if self.cpu_overload is not None:
+            result['CpuOverload'] = self.cpu_overload
         if self.cpu_processors is not None:
             result['CpuProcessors'] = self.cpu_processors
         if self.cpu_protected_mode is not None:
@@ -41113,6 +41195,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         if self.device_rules is not None:
             for k in self.device_rules:
                 result['DeviceRules'].append(k.to_map() if k else None)
+        if self.disk_overload is not None:
+            result['DiskOverload'] = self.disk_overload
         if self.display_mode is not None:
             result['DisplayMode'] = self.display_mode
         if self.domain_list is not None:
@@ -41157,6 +41241,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['MaxReconnectTime'] = self.max_reconnect_time
         if self.memory_down_grade_duration is not None:
             result['MemoryDownGradeDuration'] = self.memory_down_grade_duration
+        if self.memory_overload is not None:
+            result['MemoryOverload'] = self.memory_overload
         if self.memory_processors is not None:
             result['MemoryProcessors'] = self.memory_processors
         if self.memory_protected_mode is not None:
@@ -41177,6 +41263,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
         if self.mobile_wy_assistant is not None:
             result['MobileWyAssistant'] = self.mobile_wy_assistant
+        if self.model_library is not None:
+            result['ModelLibrary'] = self.model_library
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -41191,6 +41279,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['PolicyGroupType'] = self.policy_group_type
         if self.policy_status is not None:
             result['PolicyStatus'] = self.policy_status
+        if self.port_proxy is not None:
+            result['PortProxy'] = self.port_proxy
         if self.preempt_login is not None:
             result['PreemptLogin'] = self.preempt_login
         if self.preempt_login_users is not None:
@@ -41321,6 +41411,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcademicProxy') is not None:
+            self.academic_proxy = m.get('AcademicProxy')
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
         if m.get('AppContentProtection') is not None:
@@ -41356,6 +41448,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
+        if m.get('CpuOverload') is not None:
+            self.cpu_overload = m.get('CpuOverload')
         if m.get('CpuProcessors') is not None:
             self.cpu_processors = m.get('CpuProcessors')
         if m.get('CpuProtectedMode') is not None:
@@ -41382,6 +41476,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             for k in m.get('DeviceRules'):
                 temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules()
                 self.device_rules.append(temp_model.from_map(k))
+        if m.get('DiskOverload') is not None:
+            self.disk_overload = m.get('DiskOverload')
         if m.get('DisplayMode') is not None:
             self.display_mode = m.get('DisplayMode')
         if m.get('DomainList') is not None:
@@ -41427,6 +41523,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.max_reconnect_time = m.get('MaxReconnectTime')
         if m.get('MemoryDownGradeDuration') is not None:
             self.memory_down_grade_duration = m.get('MemoryDownGradeDuration')
+        if m.get('MemoryOverload') is not None:
+            self.memory_overload = m.get('MemoryOverload')
         if m.get('MemoryProcessors') is not None:
             self.memory_processors = m.get('MemoryProcessors')
         if m.get('MemoryProtectedMode') is not None:
@@ -41447,6 +41545,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
         if m.get('MobileWyAssistant') is not None:
             self.mobile_wy_assistant = m.get('MobileWyAssistant')
+        if m.get('ModelLibrary') is not None:
+            self.model_library = m.get('ModelLibrary')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -41462,6 +41562,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.policy_group_type = m.get('PolicyGroupType')
         if m.get('PolicyStatus') is not None:
             self.policy_status = m.get('PolicyStatus')
+        if m.get('PortProxy') is not None:
+            self.port_proxy = m.get('PortProxy')
         if m.get('PreemptLogin') is not None:
             self.preempt_login = m.get('PreemptLogin')
         if m.get('PreemptLoginUsers') is not None:
@@ -57300,11 +57402,13 @@ class ModifyCenterPolicyRequestUsbSupplyRedirectRule(TeaModel):
 class ModifyCenterPolicyRequest(TeaModel):
     def __init__(
         self,
+        academic_proxy: str = None,
         admin_access: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rule: List[ModifyCenterPolicyRequestAuthorizeAccessPolicyRule] = None,
         authorize_security_policy_rule: List[ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
         auto_reconnect: str = None,
+        business_channel: str = None,
         business_type: int = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
@@ -57316,6 +57420,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         color_enhancement: str = None,
         cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
+        cpu_overload: str = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
         cpu_rate_limit: int = None,
@@ -57326,6 +57431,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         device_rules: List[ModifyCenterPolicyRequestDeviceRules] = None,
         disconnect_keep_session: str = None,
         disconnect_keep_session_time: int = None,
+        disk_overload: str = None,
         display_mode: str = None,
         domain_resolve_rule: List[ModifyCenterPolicyRequestDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
@@ -57344,6 +57450,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         local_drive: str = None,
         max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
+        memory_overload: str = None,
         memory_processors: List[str] = None,
         memory_protected_mode: str = None,
         memory_rate_limit: int = None,
@@ -57354,12 +57461,14 @@ class ModifyCenterPolicyRequest(TeaModel):
         mobile_shutdown: str = None,
         mobile_wuying_keeper: str = None,
         mobile_wy_assistant: str = None,
+        model_library: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[ModifyCenterPolicyRequestNetRedirectRule] = None,
         no_operation_disconnect: str = None,
         no_operation_disconnect_time: int = None,
         policy_group_id: str = None,
+        port_proxy: str = None,
         printer_redirect: str = None,
         quality_enhancement: str = None,
         record_event_duration: int = None,
@@ -57423,6 +57532,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
+        self.academic_proxy = academic_proxy
         # Specifies whether to grant the admin permissions to end users.
         # 
         # >  This parameter is in private preview and only available to specific users.
@@ -57445,6 +57555,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # The security group rules.
         self.authorize_security_policy_rule = authorize_security_policy_rule
         self.auto_reconnect = auto_reconnect
+        self.business_channel = business_channel
         # The business type.
         # 
         # Valid values:
@@ -57486,6 +57597,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.cpd_drive_clipboard = cpd_drive_clipboard
         # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        self.cpu_overload = cpu_overload
         # The CPU processors.
         self.cpu_processors = cpu_processors
         # The CPU spike protection policy.
@@ -57525,6 +57637,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # 
         # >  This parameter applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        self.disk_overload = disk_overload
         # The display mode.
         # 
         # Valid values:
@@ -57613,6 +57726,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.max_reconnect_time = max_reconnect_time
         # The memory underclocking duration per process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        self.memory_overload = memory_overload
         # The memory processors.
         self.memory_processors = memory_processors
         # The memory spike protection policy.
@@ -57649,6 +57763,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.mobile_shutdown = mobile_shutdown
         self.mobile_wuying_keeper = mobile_wuying_keeper
         self.mobile_wy_assistant = mobile_wy_assistant
+        self.model_library = model_library
         # The policy name.
         self.name = name
         # The network redirection policy.
@@ -57682,6 +57797,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
+        self.port_proxy = port_proxy
         # The printer redirection policy. This parameter only applies if DeviceRedirects does not include a printer redirection policy.
         # 
         # Valid values:
@@ -58009,6 +58125,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.academic_proxy is not None:
+            result['AcademicProxy'] = self.academic_proxy
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
         if self.app_content_protection is not None:
@@ -58023,6 +58141,8 @@ class ModifyCenterPolicyRequest(TeaModel):
                 result['AuthorizeSecurityPolicyRule'].append(k.to_map() if k else None)
         if self.auto_reconnect is not None:
             result['AutoReconnect'] = self.auto_reconnect
+        if self.business_channel is not None:
+            result['BusinessChannel'] = self.business_channel
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.camera_redirect is not None:
@@ -58049,6 +58169,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['CpdDriveClipboard'] = self.cpd_drive_clipboard
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
+        if self.cpu_overload is not None:
+            result['CpuOverload'] = self.cpu_overload
         if self.cpu_processors is not None:
             result['CpuProcessors'] = self.cpu_processors
         if self.cpu_protected_mode is not None:
@@ -58073,6 +58195,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['DisconnectKeepSession'] = self.disconnect_keep_session
         if self.disconnect_keep_session_time is not None:
             result['DisconnectKeepSessionTime'] = self.disconnect_keep_session_time
+        if self.disk_overload is not None:
+            result['DiskOverload'] = self.disk_overload
         if self.display_mode is not None:
             result['DisplayMode'] = self.display_mode
         result['DomainResolveRule'] = []
@@ -58111,6 +58235,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['MaxReconnectTime'] = self.max_reconnect_time
         if self.memory_down_grade_duration is not None:
             result['MemoryDownGradeDuration'] = self.memory_down_grade_duration
+        if self.memory_overload is not None:
+            result['MemoryOverload'] = self.memory_overload
         if self.memory_processors is not None:
             result['MemoryProcessors'] = self.memory_processors
         if self.memory_protected_mode is not None:
@@ -58131,6 +58257,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
         if self.mobile_wy_assistant is not None:
             result['MobileWyAssistant'] = self.mobile_wy_assistant
+        if self.model_library is not None:
+            result['ModelLibrary'] = self.model_library
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -58145,6 +58273,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['NoOperationDisconnectTime'] = self.no_operation_disconnect_time
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.port_proxy is not None:
+            result['PortProxy'] = self.port_proxy
         if self.printer_redirect is not None:
             result['PrinterRedirect'] = self.printer_redirect
         if self.quality_enhancement is not None:
@@ -58281,6 +58411,8 @@ class ModifyCenterPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcademicProxy') is not None:
+            self.academic_proxy = m.get('AcademicProxy')
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
         if m.get('AppContentProtection') is not None:
@@ -58297,6 +58429,8 @@ class ModifyCenterPolicyRequest(TeaModel):
                 self.authorize_security_policy_rule.append(temp_model.from_map(k))
         if m.get('AutoReconnect') is not None:
             self.auto_reconnect = m.get('AutoReconnect')
+        if m.get('BusinessChannel') is not None:
+            self.business_channel = m.get('BusinessChannel')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('CameraRedirect') is not None:
@@ -58325,6 +58459,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.cpd_drive_clipboard = m.get('CpdDriveClipboard')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
+        if m.get('CpuOverload') is not None:
+            self.cpu_overload = m.get('CpuOverload')
         if m.get('CpuProcessors') is not None:
             self.cpu_processors = m.get('CpuProcessors')
         if m.get('CpuProtectedMode') is not None:
@@ -58351,6 +58487,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.disconnect_keep_session = m.get('DisconnectKeepSession')
         if m.get('DisconnectKeepSessionTime') is not None:
             self.disconnect_keep_session_time = m.get('DisconnectKeepSessionTime')
+        if m.get('DiskOverload') is not None:
+            self.disk_overload = m.get('DiskOverload')
         if m.get('DisplayMode') is not None:
             self.display_mode = m.get('DisplayMode')
         self.domain_resolve_rule = []
@@ -58390,6 +58528,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.max_reconnect_time = m.get('MaxReconnectTime')
         if m.get('MemoryDownGradeDuration') is not None:
             self.memory_down_grade_duration = m.get('MemoryDownGradeDuration')
+        if m.get('MemoryOverload') is not None:
+            self.memory_overload = m.get('MemoryOverload')
         if m.get('MemoryProcessors') is not None:
             self.memory_processors = m.get('MemoryProcessors')
         if m.get('MemoryProtectedMode') is not None:
@@ -58410,6 +58550,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
         if m.get('MobileWyAssistant') is not None:
             self.mobile_wy_assistant = m.get('MobileWyAssistant')
+        if m.get('ModelLibrary') is not None:
+            self.model_library = m.get('ModelLibrary')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -58425,6 +58567,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.no_operation_disconnect_time = m.get('NoOperationDisconnectTime')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PortProxy') is not None:
+            self.port_proxy = m.get('PortProxy')
         if m.get('PrinterRedirect') is not None:
             self.printer_redirect = m.get('PrinterRedirect')
         if m.get('QualityEnhancement') is not None:
