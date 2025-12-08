@@ -1,3 +1,6 @@
+2025-12-08 Version: 7.0.4
+- Generated python 2021-10-01 for waf-openapi.
+
 2025-12-05 Version: 7.0.3
 - Update API DescribeInstance: add response parameters Body.ProcessStatus.
 
