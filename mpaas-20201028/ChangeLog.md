@@ -1,3 +1,6 @@
+2025-12-08 Version: 3.0.1
+- Generated python 2020-10-28 for mPaaS.
+
 2025-12-08 Version: 3.0.0
 - Update API GetUserAppEnhanceProcessInMsa: update response parameters Body.ResultContent.Data.ClassForest' type has changed.
 - Update API GetUserAppEnhanceProcessInMsa: delete response parameters Body.ResultContent.Data.ClassForest.$.
