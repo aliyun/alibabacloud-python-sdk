@@ -94,6 +94,106 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def assign_certificate_count_with_options(
+        self,
+        request: cas_20200630_models.AssignCertificateCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.AssignCertificateCountResponse:
+        """
+        @summary 分配证书使用数量
+        
+        @param request: AssignCertificateCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignCertificateCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_total_count):
+            query['CertTotalCount'] = request.cert_total_count
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssignCertificateCount',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.AssignCertificateCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def assign_certificate_count_with_options_async(
+        self,
+        request: cas_20200630_models.AssignCertificateCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.AssignCertificateCountResponse:
+        """
+        @summary 分配证书使用数量
+        
+        @param request: AssignCertificateCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignCertificateCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_total_count):
+            query['CertTotalCount'] = request.cert_total_count
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssignCertificateCount',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.AssignCertificateCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def assign_certificate_count(
+        self,
+        request: cas_20200630_models.AssignCertificateCountRequest,
+    ) -> cas_20200630_models.AssignCertificateCountResponse:
+        """
+        @summary 分配证书使用数量
+        
+        @param request: AssignCertificateCountRequest
+        @return: AssignCertificateCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.assign_certificate_count_with_options(request, runtime)
+
+    async def assign_certificate_count_async(
+        self,
+        request: cas_20200630_models.AssignCertificateCountRequest,
+    ) -> cas_20200630_models.AssignCertificateCountResponse:
+        """
+        @summary 分配证书使用数量
+        
+        @param request: AssignCertificateCountRequest
+        @return: AssignCertificateCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.assign_certificate_count_with_options_async(request, runtime)
+
     def create_client_certificate_with_options(
         self,
         request: cas_20200630_models.CreateClientCertificateRequest,
@@ -2564,6 +2664,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cainstance_status_with_options_async(request, runtime)
 
+    def list_all_end_entity_instance_with_options(
+        self,
+        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
+        """
+        @summary 查询终端实例
+        
+        @param request: ListAllEndEntityInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllEndEntityInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.recursive_children):
+            query['RecursiveChildren'] = request.recursive_children
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllEndEntityInstance',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.ListAllEndEntityInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_end_entity_instance_with_options_async(
+        self,
+        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
+        """
+        @summary 查询终端实例
+        
+        @param request: ListAllEndEntityInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllEndEntityInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.recursive_children):
+            query['RecursiveChildren'] = request.recursive_children
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllEndEntityInstance',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.ListAllEndEntityInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_end_entity_instance(
+        self,
+        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
+    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
+        """
+        @summary 查询终端实例
+        
+        @param request: ListAllEndEntityInstanceRequest
+        @return: ListAllEndEntityInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_all_end_entity_instance_with_options(request, runtime)
+
+    async def list_all_end_entity_instance_async(
+        self,
+        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
+    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
+        """
+        @summary 查询终端实例
+        
+        @param request: ListAllEndEntityInstanceRequest
+        @return: ListAllEndEntityInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_all_end_entity_instance_with_options_async(request, runtime)
+
     def list_cert_with_options(
         self,
         request: cas_20200630_models.ListCertRequest,
@@ -3155,6 +3371,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_cacertificate_status_with_options_async(request, runtime)
+
+    def update_pca_certificate_with_options(
+        self,
+        request: cas_20200630_models.UpdatePcaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
+        """
+        @summary 更新证书属性
+        
+        @param request: UpdatePcaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePcaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePcaCertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.UpdatePcaCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_pca_certificate_with_options_async(
+        self,
+        request: cas_20200630_models.UpdatePcaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
+        """
+        @summary 更新证书属性
+        
+        @param request: UpdatePcaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePcaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePcaCertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.UpdatePcaCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_pca_certificate(
+        self,
+        request: cas_20200630_models.UpdatePcaCertificateRequest,
+    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
+        """
+        @summary 更新证书属性
+        
+        @param request: UpdatePcaCertificateRequest
+        @return: UpdatePcaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_pca_certificate_with_options(request, runtime)
+
+    async def update_pca_certificate_async(
+        self,
+        request: cas_20200630_models.UpdatePcaCertificateRequest,
+    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
+        """
+        @summary 更新证书属性
+        
+        @param request: UpdatePcaCertificateRequest
+        @return: UpdatePcaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_pca_certificate_with_options_async(request, runtime)
 
     def upload_pca_cert_to_cas_with_options(
         self,

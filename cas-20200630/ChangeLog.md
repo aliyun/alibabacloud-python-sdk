@@ -1,3 +1,9 @@
+2025-12-08 Version: 1.3.0
+- Support API AssignCertificateCount.
+- Support API ListAllEndEntityInstance.
+- Support API UpdatePcaCertificate.
+
+
 2025-11-27 Version: 1.2.4
 - Update API DescribeCACertificate: add response parameters Body.Certificate.ClusterId.
 - Update API DescribeCACertificate: add response parameters Body.Certificate.KeyIndex.
