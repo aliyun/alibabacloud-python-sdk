@@ -1,3 +1,9 @@
+2025-12-08 Version: 4.4.0
+- Support API CreateVirtualCluster.
+- Support API DeleteVirtualCluster.
+- Support API ModifyVirtualCluster.
+
+
 2025-11-13 Version: 4.3.4
 - Update API DescribeDBInstanceAttribute: add response parameters Body.VirtualClusterList.
 

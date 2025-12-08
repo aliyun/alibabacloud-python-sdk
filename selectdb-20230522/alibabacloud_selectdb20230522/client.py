@@ -1341,6 +1341,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_for_select_dbwith_options_async(request, runtime)
 
+    def create_virtual_cluster_with_options(
+        self,
+        request: selectdb_20230522_models.CreateVirtualClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.CreateVirtualClusterResponse:
+        """
+        @summary 创建虚拟集群
+        
+        @param request: CreateVirtualClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_cluster_id):
+            query['ActiveClusterId'] = request.active_cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.standby_cluster_id):
+            query['StandbyClusterId'] = request.standby_cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVirtualCluster',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.CreateVirtualClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_virtual_cluster_with_options_async(
+        self,
+        request: selectdb_20230522_models.CreateVirtualClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.CreateVirtualClusterResponse:
+        """
+        @summary 创建虚拟集群
+        
+        @param request: CreateVirtualClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_cluster_id):
+            query['ActiveClusterId'] = request.active_cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.standby_cluster_id):
+            query['StandbyClusterId'] = request.standby_cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVirtualCluster',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.CreateVirtualClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_virtual_cluster(
+        self,
+        request: selectdb_20230522_models.CreateVirtualClusterRequest,
+    ) -> selectdb_20230522_models.CreateVirtualClusterResponse:
+        """
+        @summary 创建虚拟集群
+        
+        @param request: CreateVirtualClusterRequest
+        @return: CreateVirtualClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_virtual_cluster_with_options(request, runtime)
+
+    async def create_virtual_cluster_async(
+        self,
+        request: selectdb_20230522_models.CreateVirtualClusterRequest,
+    ) -> selectdb_20230522_models.CreateVirtualClusterResponse:
+        """
+        @summary 创建虚拟集群
+        
+        @param request: CreateVirtualClusterRequest
+        @return: CreateVirtualClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_virtual_cluster_with_options_async(request, runtime)
+
     def delete_dbcluster_with_options(
         self,
         request: selectdb_20230522_models.DeleteDBClusterRequest,
@@ -1788,6 +1900,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_elastic_rule_with_options_async(request, runtime)
+
+    def delete_virtual_cluster_with_options(
+        self,
+        request: selectdb_20230522_models.DeleteVirtualClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DeleteVirtualClusterResponse:
+        """
+        @summary 删除虚拟集群
+        
+        @param request: DeleteVirtualClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVirtualCluster',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DeleteVirtualClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_virtual_cluster_with_options_async(
+        self,
+        request: selectdb_20230522_models.DeleteVirtualClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DeleteVirtualClusterResponse:
+        """
+        @summary 删除虚拟集群
+        
+        @param request: DeleteVirtualClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVirtualCluster',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DeleteVirtualClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_virtual_cluster(
+        self,
+        request: selectdb_20230522_models.DeleteVirtualClusterRequest,
+    ) -> selectdb_20230522_models.DeleteVirtualClusterResponse:
+        """
+        @summary 删除虚拟集群
+        
+        @param request: DeleteVirtualClusterRequest
+        @return: DeleteVirtualClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_virtual_cluster_with_options(request, runtime)
+
+    async def delete_virtual_cluster_async(
+        self,
+        request: selectdb_20230522_models.DeleteVirtualClusterRequest,
+    ) -> selectdb_20230522_models.DeleteVirtualClusterResponse:
+        """
+        @summary 删除虚拟集群
+        
+        @param request: DeleteVirtualClusterRequest
+        @return: DeleteVirtualClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_virtual_cluster_with_options_async(request, runtime)
 
     def describe_all_dbinstance_class_with_options(
         self,
@@ -3876,6 +4092,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_iplist_with_options_async(request, runtime)
+
+    def modify_virtual_cluster_with_options(
+        self,
+        request: selectdb_20230522_models.ModifyVirtualClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.ModifyVirtualClusterResponse:
+        """
+        @summary 修改虚拟集群
+        
+        @param request: ModifyVirtualClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVirtualClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_cluster_id):
+            query['ActiveClusterId'] = request.active_cluster_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.standby_cluster_id):
+            query['StandbyClusterId'] = request.standby_cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVirtualCluster',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.ModifyVirtualClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_virtual_cluster_with_options_async(
+        self,
+        request: selectdb_20230522_models.ModifyVirtualClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.ModifyVirtualClusterResponse:
+        """
+        @summary 修改虚拟集群
+        
+        @param request: ModifyVirtualClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVirtualClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active_cluster_id):
+            query['ActiveClusterId'] = request.active_cluster_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.standby_cluster_id):
+            query['StandbyClusterId'] = request.standby_cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVirtualCluster',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.ModifyVirtualClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_virtual_cluster(
+        self,
+        request: selectdb_20230522_models.ModifyVirtualClusterRequest,
+    ) -> selectdb_20230522_models.ModifyVirtualClusterResponse:
+        """
+        @summary 修改虚拟集群
+        
+        @param request: ModifyVirtualClusterRequest
+        @return: ModifyVirtualClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_virtual_cluster_with_options(request, runtime)
+
+    async def modify_virtual_cluster_async(
+        self,
+        request: selectdb_20230522_models.ModifyVirtualClusterRequest,
+    ) -> selectdb_20230522_models.ModifyVirtualClusterResponse:
+        """
+        @summary 修改虚拟集群
+        
+        @param request: ModifyVirtualClusterRequest
+        @return: ModifyVirtualClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_virtual_cluster_with_options_async(request, runtime)
 
     def release_instance_public_connection_with_options(
         self,
