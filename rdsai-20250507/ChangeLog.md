@@ -1,3 +1,6 @@
+2025-12-08 Version: 2.0.1
+- Generated python 2025-05-07 for RdsAi.
+
 2025-12-05 Version: 2.0.0
 - Update API ChatMessages: delete request parameters ApiId.
 - Update API ChatMessagesTaskStop: delete request parameters ApiId.
