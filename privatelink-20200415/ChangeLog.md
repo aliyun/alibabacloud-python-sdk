@@ -1,3 +1,9 @@
+2025-12-08 Version: 4.0.4
+- Update API EnableVpcEndpointConnection: add request parameters TrafficControlMode.
+- Update API ListVpcEndpointConnections: add response parameters Body.Connections.$.TrafficControlMode.
+- Update API UpdateVpcEndpointConnectionAttribute: add request parameters TrafficControlMode.
+
+
 2025-10-30 Version: 4.0.3
 - Update API CreateVpcEndpoint: add request parameters ZoneAffinityEnabled.
 - Update API CreateVpcEndpoint: add response parameters Body.ZoneAffinityEnabled.

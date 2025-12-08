@@ -2188,6 +2188,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.traffic_control_mode):
+            query['TrafficControlMode'] = request.traffic_control_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2240,6 +2242,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.traffic_control_mode):
+            query['TrafficControlMode'] = request.traffic_control_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4601,6 +4605,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.traffic_control_mode):
+            query['TrafficControlMode'] = request.traffic_control_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4650,6 +4656,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.traffic_control_mode):
+            query['TrafficControlMode'] = request.traffic_control_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -2938,6 +2938,7 @@ class EnableVpcEndpointConnectionRequest(TeaModel):
         endpoint_id: str = None,
         region_id: str = None,
         service_id: str = None,
+        traffic_control_mode: str = None,
     ):
         # The bandwidth of the endpoint connection. Unit: Mbit/s. Valid values: **3072 to 10240**.
         # 
@@ -2966,6 +2967,7 @@ class EnableVpcEndpointConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_id = service_id
+        self.traffic_control_mode = traffic_control_mode
 
     def validate(self):
         pass
@@ -2988,6 +2990,8 @@ class EnableVpcEndpointConnectionRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.traffic_control_mode is not None:
+            result['TrafficControlMode'] = self.traffic_control_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -3004,6 +3008,8 @@ class EnableVpcEndpointConnectionRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('TrafficControlMode') is not None:
+            self.traffic_control_mode = m.get('TrafficControlMode')
         return self
 
 
@@ -4265,6 +4271,7 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
         resource_group_id: str = None,
         resource_owner: bool = None,
         service_id: str = None,
+        traffic_control_mode: str = None,
         zones: List[ListVpcEndpointConnectionsResponseBodyConnectionsZones] = None,
     ):
         # The bandwidth of the endpoint connection. Valid values: **1024 to 10240**. Unit: Mbit/s.
@@ -4296,6 +4303,7 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
         self.resource_owner = resource_owner
         # The endpoint service ID.
         self.service_id = service_id
+        self.traffic_control_mode = traffic_control_mode
         # The zones.
         self.zones = zones
 
@@ -4329,6 +4337,8 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
             result['ResourceOwner'] = self.resource_owner
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.traffic_control_mode is not None:
+            result['TrafficControlMode'] = self.traffic_control_mode
         result['Zones'] = []
         if self.zones is not None:
             for k in self.zones:
@@ -4355,6 +4365,8 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('TrafficControlMode') is not None:
+            self.traffic_control_mode = m.get('TrafficControlMode')
         self.zones = []
         if m.get('Zones') is not None:
             for k in m.get('Zones'):
@@ -7833,6 +7845,7 @@ class UpdateVpcEndpointConnectionAttributeRequest(TeaModel):
         endpoint_id: str = None,
         region_id: str = None,
         service_id: str = None,
+        traffic_control_mode: str = None,
     ):
         # The bandwidth of the endpoint connection that you want to modify. Unit: Mbit/s. Valid values: **3072** to **10240**.
         # 
@@ -7859,6 +7872,7 @@ class UpdateVpcEndpointConnectionAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_id = service_id
+        self.traffic_control_mode = traffic_control_mode
 
     def validate(self):
         pass
@@ -7881,6 +7895,8 @@ class UpdateVpcEndpointConnectionAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.traffic_control_mode is not None:
+            result['TrafficControlMode'] = self.traffic_control_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -7897,6 +7913,8 @@ class UpdateVpcEndpointConnectionAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('TrafficControlMode') is not None:
+            self.traffic_control_mode = m.get('TrafficControlMode')
         return self
 
 
