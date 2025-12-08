@@ -1,3 +1,17 @@
+2025-12-08 Version: 6.0.0
+- Delete API BeautifyBody.
+- Delete API DetectChefCap.
+- Delete API DetectPedestrianIntrusion.
+- Delete API ExtractPedestrianFeatureAttr.
+- Delete API FaceFilter.
+- Delete API FaceMakeup.
+- Delete API FaceTidyup.
+- Delete API HandPosture.
+- Delete API RecognizeHandGesture.
+- Delete API RetouchBody.
+- Delete API VerifyFaceMask.
+
+
 2024-04-22 Version: 5.1.2
 - Update API DetectFace: update response param.
 
