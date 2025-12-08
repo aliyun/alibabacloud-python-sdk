@@ -4,6 +4,125 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class ClientUserLogoutRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        login_token: str = None,
+        office_site_id: str = None,
+        profile_region: str = None,
+        session_id: str = None,
+    ):
+        self.client_id = client_id
+        self.login_token = login_token
+        self.office_site_id = office_site_id
+        self.profile_region = profile_region
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.profile_region is not None:
+            result['ProfileRegion'] = self.profile_region
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('ProfileRegion') is not None:
+            self.profile_region = m.get('ProfileRegion')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class ClientUserLogoutResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ClientUserLogoutResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ClientUserLogoutResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ClientUserLogoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FindIdpListByLoginIdentifierRequest(TeaModel):
     def __init__(
         self,

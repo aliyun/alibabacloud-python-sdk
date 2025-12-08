@@ -41,6 +41,118 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def client_user_logout_with_options(
+        self,
+        request: appstream_center_20210220_models.ClientUserLogoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210220_models.ClientUserLogoutResponse:
+        """
+        @summary 终端用户登出
+        
+        @param request: ClientUserLogoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClientUserLogoutResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.login_token):
+            query['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.profile_region):
+            query['ProfileRegion'] = request.profile_region
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClientUserLogout',
+            version='2021-02-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210220_models.ClientUserLogoutResponse(),
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+        )
+
+    async def client_user_logout_with_options_async(
+        self,
+        request: appstream_center_20210220_models.ClientUserLogoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210220_models.ClientUserLogoutResponse:
+        """
+        @summary 终端用户登出
+        
+        @param request: ClientUserLogoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClientUserLogoutResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.login_token):
+            query['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.profile_region):
+            query['ProfileRegion'] = request.profile_region
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClientUserLogout',
+            version='2021-02-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210220_models.ClientUserLogoutResponse(),
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+        )
+
+    def client_user_logout(
+        self,
+        request: appstream_center_20210220_models.ClientUserLogoutRequest,
+    ) -> appstream_center_20210220_models.ClientUserLogoutResponse:
+        """
+        @summary 终端用户登出
+        
+        @param request: ClientUserLogoutRequest
+        @return: ClientUserLogoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.client_user_logout_with_options(request, runtime)
+
+    async def client_user_logout_async(
+        self,
+        request: appstream_center_20210220_models.ClientUserLogoutRequest,
+    ) -> appstream_center_20210220_models.ClientUserLogoutResponse:
+        """
+        @summary 终端用户登出
+        
+        @param request: ClientUserLogoutRequest
+        @return: ClientUserLogoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.client_user_logout_with_options_async(request, runtime)
+
     def find_idp_list_by_login_identifier_with_options(
         self,
         tmp_req: appstream_center_20210220_models.FindIdpListByLoginIdentifierRequest,

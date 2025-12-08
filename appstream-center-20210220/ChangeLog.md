@@ -1,3 +1,7 @@
+2025-12-08 Version: 1.3.0
+- Support API ClientUserLogout.
+
+
 2025-11-18 Version: 1.2.4
 - Update API GetLoginToken: add request parameters AreaSite.
 
