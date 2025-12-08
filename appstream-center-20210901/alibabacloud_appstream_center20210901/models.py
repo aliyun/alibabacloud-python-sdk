@@ -7836,6 +7836,7 @@ class ListImageResponseBodyData(TeaModel):
         product_type: str = None,
         protocol_type: str = None,
         resource_instance_category: str = None,
+        scene: str = None,
         session_type: str = None,
         status: str = None,
         supported_language_list: List[str] = None,
@@ -7922,6 +7923,7 @@ class ListImageResponseBodyData(TeaModel):
         self.protocol_type = protocol_type
         # The types of resources that are supported by the images.
         self.resource_instance_category = resource_instance_category
+        self.scene = scene
         # The type of the session.
         # 
         # Valid values:
@@ -8034,6 +8036,8 @@ class ListImageResponseBodyData(TeaModel):
             result['ProtocolType'] = self.protocol_type
         if self.resource_instance_category is not None:
             result['ResourceInstanceCategory'] = self.resource_instance_category
+        if self.scene is not None:
+            result['Scene'] = self.scene
         if self.session_type is not None:
             result['SessionType'] = self.session_type
         if self.status is not None:
@@ -8128,6 +8132,8 @@ class ListImageResponseBodyData(TeaModel):
             self.protocol_type = m.get('ProtocolType')
         if m.get('ResourceInstanceCategory') is not None:
             self.resource_instance_category = m.get('ResourceInstanceCategory')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
         if m.get('Status') is not None:

@@ -1,3 +1,7 @@
+2025-12-08 Version: 4.7.1
+- Update API ListImage: add response parameters Body.Data.$.Scene.
+
+
 2025-12-05 Version: 4.7.0
 - Support API UpdateWuyingServerImage.
 - Update API ListAppInstances: add response parameters Body.AppInstanceModels.$.NetworkInterfaceId.
