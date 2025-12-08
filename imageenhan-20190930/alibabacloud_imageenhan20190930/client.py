@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+import time
+
 from Tea.request import TeaRequest
-from Tea.exceptions import TeaException
+from Tea.exceptions import TeaException, UnretryableException
 from Tea.core import TeaCore
 from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_tea_fileform.client import Client as FileFormClient
 from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_imageenhan20190930 import models as imageenhan_20190930_models
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_fileform import models as file_form_models
 
@@ -34,77 +36,163 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = TeaCore.do_action(_request)
-        resp_map = None
-        body_str = UtilClient.read_as_string(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                body_str = UtilClient.read_as_string(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await TeaCore.async_do_action(_request)
-        resp_map = None
-        body_str = await UtilClient.read_as_string_async(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                body_str = await UtilClient.read_as_string_async(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     def get_endpoint(
         self,
@@ -288,7 +376,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             assess_composition_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         assess_composition_resp = self.assess_composition_with_options(assess_composition_req, runtime)
         return assess_composition_resp
@@ -371,7 +459,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             assess_composition_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         assess_composition_resp = await self.assess_composition_with_options_async(assess_composition_req, runtime)
         return assess_composition_resp
@@ -542,7 +630,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             assess_exposure_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         assess_exposure_resp = self.assess_exposure_with_options(assess_exposure_req, runtime)
         return assess_exposure_resp
@@ -625,7 +713,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             assess_exposure_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         assess_exposure_resp = await self.assess_exposure_with_options_async(assess_exposure_req, runtime)
         return assess_exposure_resp
@@ -796,7 +884,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             assess_sharpness_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         assess_sharpness_resp = self.assess_sharpness_with_options(assess_sharpness_req, runtime)
         return assess_sharpness_resp
@@ -879,7 +967,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             assess_sharpness_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         assess_sharpness_resp = await self.assess_sharpness_with_options_async(assess_sharpness_req, runtime)
         return assess_sharpness_resp
@@ -1058,7 +1146,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             change_image_size_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         change_image_size_resp = self.change_image_size_with_options(change_image_size_req, runtime)
         return change_image_size_resp
@@ -1141,7 +1229,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             change_image_size_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         change_image_size_resp = await self.change_image_size_with_options_async(change_image_size_req, runtime)
         return change_image_size_resp
@@ -1312,7 +1400,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             colorize_image_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         colorize_image_resp = self.colorize_image_with_options(colorize_image_req, runtime)
         return colorize_image_resp
@@ -1395,7 +1483,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             colorize_image_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         colorize_image_resp = await self.colorize_image_with_options_async(colorize_image_req, runtime)
         return colorize_image_resp
@@ -1574,7 +1662,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             enhance_image_color_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_image_color_resp = self.enhance_image_color_with_options(enhance_image_color_req, runtime)
         return enhance_image_color_resp
@@ -1657,7 +1745,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             enhance_image_color_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_image_color_resp = await self.enhance_image_color_with_options_async(enhance_image_color_req, runtime)
         return enhance_image_color_resp
@@ -1832,7 +1920,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_person_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.user_mask_object):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -1854,7 +1942,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_person_req.user_mask = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_person_resp = self.erase_person_with_options(erase_person_req, runtime)
         return erase_person_resp
@@ -1937,7 +2025,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_person_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.user_mask_object):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -1959,7 +2047,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             erase_person_req.user_mask = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_person_resp = await self.erase_person_with_options_async(erase_person_req, runtime)
         return erase_person_resp
@@ -2134,7 +2222,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             extend_image_style_req.major_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.style_url_object):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -2156,7 +2244,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             extend_image_style_req.style_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         extend_image_style_resp = self.extend_image_style_with_options(extend_image_style_req, runtime)
         return extend_image_style_resp
@@ -2239,7 +2327,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             extend_image_style_req.major_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.style_url_object):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -2261,7 +2349,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             extend_image_style_req.style_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         extend_image_style_resp = await self.extend_image_style_with_options_async(extend_image_style_req, runtime)
         return extend_image_style_resp
@@ -2448,7 +2536,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             generate_cartoonized_image_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_cartoonized_image_resp = self.generate_cartoonized_image_with_options(generate_cartoonized_image_req, runtime)
         return generate_cartoonized_image_resp
@@ -2531,662 +2619,10 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             generate_cartoonized_image_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_cartoonized_image_resp = await self.generate_cartoonized_image_with_options_async(generate_cartoonized_image_req, runtime)
         return generate_cartoonized_image_resp
-
-    def generate_dynamic_image_with_options(
-        self,
-        request: imageenhan_20190930_models.GenerateDynamicImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateDynamicImageResponse:
-        """
-        @summary 图像微动
-        
-        @param request: GenerateDynamicImageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateDynamicImageResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.operation):
-            body['Operation'] = request.operation
-        if not UtilClient.is_unset(request.url):
-            body['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GenerateDynamicImage',
-            version='2019-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageenhan_20190930_models.GenerateDynamicImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def generate_dynamic_image_with_options_async(
-        self,
-        request: imageenhan_20190930_models.GenerateDynamicImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateDynamicImageResponse:
-        """
-        @summary 图像微动
-        
-        @param request: GenerateDynamicImageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateDynamicImageResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.operation):
-            body['Operation'] = request.operation
-        if not UtilClient.is_unset(request.url):
-            body['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GenerateDynamicImage',
-            version='2019-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageenhan_20190930_models.GenerateDynamicImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def generate_dynamic_image(
-        self,
-        request: imageenhan_20190930_models.GenerateDynamicImageRequest,
-    ) -> imageenhan_20190930_models.GenerateDynamicImageResponse:
-        """
-        @summary 图像微动
-        
-        @param request: GenerateDynamicImageRequest
-        @return: GenerateDynamicImageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.generate_dynamic_image_with_options(request, runtime)
-
-    async def generate_dynamic_image_async(
-        self,
-        request: imageenhan_20190930_models.GenerateDynamicImageRequest,
-    ) -> imageenhan_20190930_models.GenerateDynamicImageResponse:
-        """
-        @summary 图像微动
-        
-        @param request: GenerateDynamicImageRequest
-        @return: GenerateDynamicImageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.generate_dynamic_image_with_options_async(request, runtime)
-
-    def generate_dynamic_image_advance(
-        self,
-        request: imageenhan_20190930_models.GenerateDynamicImageAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateDynamicImageResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'imageenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        generate_dynamic_image_req = imageenhan_20190930_models.GenerateDynamicImageRequest()
-        OpenApiUtilClient.convert(request, generate_dynamic_image_req)
-        if not UtilClient.is_unset(request.url_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            generate_dynamic_image_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        generate_dynamic_image_resp = self.generate_dynamic_image_with_options(generate_dynamic_image_req, runtime)
-        return generate_dynamic_image_resp
-
-    async def generate_dynamic_image_advance_async(
-        self,
-        request: imageenhan_20190930_models.GenerateDynamicImageAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateDynamicImageResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'imageenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        generate_dynamic_image_req = imageenhan_20190930_models.GenerateDynamicImageRequest()
-        OpenApiUtilClient.convert(request, generate_dynamic_image_req)
-        if not UtilClient.is_unset(request.url_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            generate_dynamic_image_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        generate_dynamic_image_resp = await self.generate_dynamic_image_with_options_async(generate_dynamic_image_req, runtime)
-        return generate_dynamic_image_resp
-
-    def generate_image_with_text_with_options(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextResponse:
-        """
-        @summary 文本到图像生成
-        
-        @param request: GenerateImageWithTextRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateImageWithTextResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.number):
-            body['Number'] = request.number
-        if not UtilClient.is_unset(request.resolution):
-            body['Resolution'] = request.resolution
-        if not UtilClient.is_unset(request.text):
-            body['Text'] = request.text
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GenerateImageWithText',
-            version='2019-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageenhan_20190930_models.GenerateImageWithTextResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def generate_image_with_text_with_options_async(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextResponse:
-        """
-        @summary 文本到图像生成
-        
-        @param request: GenerateImageWithTextRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateImageWithTextResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.number):
-            body['Number'] = request.number
-        if not UtilClient.is_unset(request.resolution):
-            body['Resolution'] = request.resolution
-        if not UtilClient.is_unset(request.text):
-            body['Text'] = request.text
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GenerateImageWithText',
-            version='2019-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageenhan_20190930_models.GenerateImageWithTextResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def generate_image_with_text(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextRequest,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextResponse:
-        """
-        @summary 文本到图像生成
-        
-        @param request: GenerateImageWithTextRequest
-        @return: GenerateImageWithTextResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.generate_image_with_text_with_options(request, runtime)
-
-    async def generate_image_with_text_async(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextRequest,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextResponse:
-        """
-        @summary 文本到图像生成
-        
-        @param request: GenerateImageWithTextRequest
-        @return: GenerateImageWithTextResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.generate_image_with_text_with_options_async(request, runtime)
-
-    def generate_image_with_text_and_image_with_options(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextAndImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextAndImageResponse:
-        """
-        @summary 文本和参考图到图像生成
-        
-        @param request: GenerateImageWithTextAndImageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateImageWithTextAndImageResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.aspect_ratio_mode):
-            body['AspectRatioMode'] = request.aspect_ratio_mode
-        if not UtilClient.is_unset(request.number):
-            body['Number'] = request.number
-        if not UtilClient.is_unset(request.ref_image_url):
-            body['RefImageUrl'] = request.ref_image_url
-        if not UtilClient.is_unset(request.resolution):
-            body['Resolution'] = request.resolution
-        if not UtilClient.is_unset(request.similarity):
-            body['Similarity'] = request.similarity
-        if not UtilClient.is_unset(request.text):
-            body['Text'] = request.text
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GenerateImageWithTextAndImage',
-            version='2019-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageenhan_20190930_models.GenerateImageWithTextAndImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def generate_image_with_text_and_image_with_options_async(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextAndImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextAndImageResponse:
-        """
-        @summary 文本和参考图到图像生成
-        
-        @param request: GenerateImageWithTextAndImageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateImageWithTextAndImageResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.aspect_ratio_mode):
-            body['AspectRatioMode'] = request.aspect_ratio_mode
-        if not UtilClient.is_unset(request.number):
-            body['Number'] = request.number
-        if not UtilClient.is_unset(request.ref_image_url):
-            body['RefImageUrl'] = request.ref_image_url
-        if not UtilClient.is_unset(request.resolution):
-            body['Resolution'] = request.resolution
-        if not UtilClient.is_unset(request.similarity):
-            body['Similarity'] = request.similarity
-        if not UtilClient.is_unset(request.text):
-            body['Text'] = request.text
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GenerateImageWithTextAndImage',
-            version='2019-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imageenhan_20190930_models.GenerateImageWithTextAndImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def generate_image_with_text_and_image(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextAndImageRequest,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextAndImageResponse:
-        """
-        @summary 文本和参考图到图像生成
-        
-        @param request: GenerateImageWithTextAndImageRequest
-        @return: GenerateImageWithTextAndImageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.generate_image_with_text_and_image_with_options(request, runtime)
-
-    async def generate_image_with_text_and_image_async(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextAndImageRequest,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextAndImageResponse:
-        """
-        @summary 文本和参考图到图像生成
-        
-        @param request: GenerateImageWithTextAndImageRequest
-        @return: GenerateImageWithTextAndImageResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.generate_image_with_text_and_image_with_options_async(request, runtime)
-
-    def generate_image_with_text_and_image_advance(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextAndImageAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextAndImageResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = self._credential.get_credential()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'imageenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        generate_image_with_text_and_image_req = imageenhan_20190930_models.GenerateImageWithTextAndImageRequest()
-        OpenApiUtilClient.convert(request, generate_image_with_text_and_image_req)
-        if not UtilClient.is_unset(request.ref_image_url_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.ref_image_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
-            generate_image_with_text_and_image_req.ref_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        generate_image_with_text_and_image_resp = self.generate_image_with_text_and_image_with_options(generate_image_with_text_and_image_req, runtime)
-        return generate_image_with_text_and_image_resp
-
-    async def generate_image_with_text_and_image_advance_async(
-        self,
-        request: imageenhan_20190930_models.GenerateImageWithTextAndImageAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageenhan_20190930_models.GenerateImageWithTextAndImageResponse:
-        # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
-        credential_model = await self._credential.get_credential_async()
-        access_key_id = credential_model.access_key_id
-        access_key_secret = credential_model.access_key_secret
-        security_token = credential_model.security_token
-        credential_type = credential_model.type
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenApiClient(auth_config)
-        auth_request = {
-            'Product': 'imageenhan',
-            'RegionId': self._region_id
-        }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
-        )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        auth_response = {}
-        file_obj = file_form_models.FileField()
-        oss_header = {}
-        tmp_body = {}
-        use_accelerate = False
-        auth_response_body = {}
-        generate_image_with_text_and_image_req = imageenhan_20190930_models.GenerateImageWithTextAndImageRequest()
-        OpenApiUtilClient.convert(request, generate_image_with_text_and_image_req)
-        if not UtilClient.is_unset(request.ref_image_url_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.ref_image_url_object,
-                content_type=''
-            )
-            oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
-                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
-                'policy': auth_response_body.get('EncodedPolicy'),
-                'Signature': auth_response_body.get('Signature'),
-                'key': auth_response_body.get('ObjectKey'),
-                'file': file_obj,
-                'success_action_status': '201'
-            }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
-            generate_image_with_text_and_image_req.ref_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        generate_image_with_text_and_image_resp = await self.generate_image_with_text_and_image_with_options_async(generate_image_with_text_and_image_req, runtime)
-        return generate_image_with_text_and_image_resp
 
     def generate_super_resolution_image_with_options(
         self,
@@ -3378,7 +2814,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             generate_super_resolution_image_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_super_resolution_image_resp = self.generate_super_resolution_image_with_options(generate_super_resolution_image_req, runtime)
         return generate_super_resolution_image_resp
@@ -3461,7 +2897,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             generate_super_resolution_image_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_super_resolution_image_resp = await self.generate_super_resolution_image_with_options_async(generate_super_resolution_image_req, runtime)
         return generate_super_resolution_image_resp
@@ -3740,7 +3176,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_character_watermark_req.origin_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.watermark_image_urlobject):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -3762,7 +3198,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_character_watermark_req.watermark_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         image_blind_character_watermark_resp = self.image_blind_character_watermark_with_options(image_blind_character_watermark_req, runtime)
         return image_blind_character_watermark_resp
@@ -3845,7 +3281,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_character_watermark_req.origin_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.watermark_image_urlobject):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -3867,7 +3303,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_character_watermark_req.watermark_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         image_blind_character_watermark_resp = await self.image_blind_character_watermark_with_options_async(image_blind_character_watermark_req, runtime)
         return image_blind_character_watermark_resp
@@ -4058,7 +3494,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_pic_watermark_req.logo_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.origin_image_urlobject):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -4080,7 +3516,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_pic_watermark_req.origin_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.watermark_image_urlobject):
             tmp_resp_2 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -4102,7 +3538,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_pic_watermark_req.watermark_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         image_blind_pic_watermark_resp = self.image_blind_pic_watermark_with_options(image_blind_pic_watermark_req, runtime)
         return image_blind_pic_watermark_resp
@@ -4185,7 +3621,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_pic_watermark_req.logo_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.origin_image_urlobject):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -4207,7 +3643,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_pic_watermark_req.origin_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.watermark_image_urlobject):
             tmp_resp_2 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -4229,7 +3665,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             image_blind_pic_watermark_req.watermark_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         image_blind_pic_watermark_resp = await self.image_blind_pic_watermark_with_options_async(image_blind_pic_watermark_req, runtime)
         return image_blind_pic_watermark_resp
@@ -4404,7 +3840,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             imitate_photo_style_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.style_url_object):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -4426,7 +3862,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             imitate_photo_style_req.style_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         imitate_photo_style_resp = self.imitate_photo_style_with_options(imitate_photo_style_req, runtime)
         return imitate_photo_style_resp
@@ -4509,7 +3945,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             imitate_photo_style_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.style_url_object):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -4531,7 +3967,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             imitate_photo_style_req.style_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         imitate_photo_style_resp = await self.imitate_photo_style_with_options_async(imitate_photo_style_req, runtime)
         return imitate_photo_style_resp
@@ -4706,7 +4142,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             intelligent_composition_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         intelligent_composition_resp = self.intelligent_composition_with_options(intelligent_composition_req, runtime)
         return intelligent_composition_resp
@@ -4789,7 +4225,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             intelligent_composition_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         intelligent_composition_resp = await self.intelligent_composition_with_options_async(intelligent_composition_req, runtime)
         return intelligent_composition_resp
@@ -4976,7 +4412,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             make_super_resolution_image_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         make_super_resolution_image_resp = self.make_super_resolution_image_with_options(make_super_resolution_image_req, runtime)
         return make_super_resolution_image_resp
@@ -5059,7 +4495,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             make_super_resolution_image_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         make_super_resolution_image_resp = await self.make_super_resolution_image_with_options_async(make_super_resolution_image_req, runtime)
         return make_super_resolution_image_resp
@@ -5250,7 +4686,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_hdimage_req.ref_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.url_object):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -5272,7 +4708,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_hdimage_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         recolor_hdimage_resp = self.recolor_hdimage_with_options(recolor_hdimage_req, runtime)
         return recolor_hdimage_resp
@@ -5355,7 +4791,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_hdimage_req.ref_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.url_object):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -5377,7 +4813,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_hdimage_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         recolor_hdimage_resp = await self.recolor_hdimage_with_options_async(recolor_hdimage_req, runtime)
         return recolor_hdimage_resp
@@ -5564,7 +5000,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_image_req.ref_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.url_object):
             tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
@@ -5586,7 +5022,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_image_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         recolor_image_resp = self.recolor_image_with_options(recolor_image_req, runtime)
         return recolor_image_resp
@@ -5669,7 +5105,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_image_req.ref_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.url_object):
             tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
@@ -5691,7 +5127,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             recolor_image_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         recolor_image_resp = await self.recolor_image_with_options_async(recolor_image_req, runtime)
         return recolor_image_resp
@@ -5878,7 +5314,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             remove_image_subtitles_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         remove_image_subtitles_resp = self.remove_image_subtitles_with_options(remove_image_subtitles_req, runtime)
         return remove_image_subtitles_resp
@@ -5961,7 +5397,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             remove_image_subtitles_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         remove_image_subtitles_resp = await self.remove_image_subtitles_with_options_async(remove_image_subtitles_req, runtime)
         return remove_image_subtitles_resp
@@ -6132,7 +5568,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             remove_image_watermark_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         remove_image_watermark_resp = self.remove_image_watermark_with_options(remove_image_watermark_req, runtime)
         return remove_image_watermark_resp
@@ -6215,7 +5651,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             remove_image_watermark_req.image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         remove_image_watermark_resp = await self.remove_image_watermark_with_options_async(remove_image_watermark_req, runtime)
         return remove_image_watermark_resp

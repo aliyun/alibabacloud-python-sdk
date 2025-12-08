@@ -1,3 +1,9 @@
+2025-12-08 Version: 3.0.0
+- Delete API GenerateDynamicImage.
+- Delete API GenerateImageWithText.
+- Delete API GenerateImageWithTextAndImage.
+
+
 2025-08-25 Version: 2.0.12
 - Generated python 2019-09-30 for imageenhan.
 

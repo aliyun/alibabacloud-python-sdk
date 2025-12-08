@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_imageenhan20190930.
 
-Created on 25/08/2025
+Created on 08/12/2025
 
 @author: Alibaba Cloud SDK
 """
