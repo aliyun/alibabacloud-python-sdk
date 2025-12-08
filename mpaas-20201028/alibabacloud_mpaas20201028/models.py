@@ -12376,7 +12376,7 @@ class GetUserAppEnhanceProcessInMsaResponseBodyResultContentData(TeaModel):
         assets_file_list: List[str] = None,
         before_md_5: str = None,
         before_size: int = None,
-        class_forest: List[str] = None,
+        class_forest: str = None,
         enhance_mapping: List[GetUserAppEnhanceProcessInMsaResponseBodyResultContentDataEnhanceMapping] = None,
         enhance_rules: List[str] = None,
         enhanced_assets_files: List[str] = None,
