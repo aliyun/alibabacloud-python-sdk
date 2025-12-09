@@ -1,3 +1,7 @@
+2025-12-09 Version: 3.5.0
+- Support API RebootRenderingServer.
+
+
 2025-11-27 Version: 3.4.5
 - Update API DescribeRenderingInstance: add response parameters Body.ResourceAttributes.
 

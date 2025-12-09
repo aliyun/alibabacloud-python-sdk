@@ -26556,6 +26556,237 @@ class RebootRenderingInstanceResponse(TeaModel):
         return self
 
 
+class RebootRenderingServerRequest(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.rendering_instance_ids = rendering_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_ids is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids = m.get('RenderingInstanceIds')
+        return self
+
+
+class RebootRenderingServerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_ids_shrink is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids_shrink = m.get('RenderingInstanceIds')
+        return self
+
+
+class RebootRenderingServerResponseBodyFailedInstances(TeaModel):
+    def __init__(
+        self,
+        err_code: int = None,
+        err_message: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.err_code = err_code
+        self.err_message = err_message
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class RebootRenderingServerResponseBodySuccessInstances(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_id: str = None,
+    ):
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class RebootRenderingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_instance_count: int = None,
+        failed_instances: List[RebootRenderingServerResponseBodyFailedInstances] = None,
+        request_id: str = None,
+        success_instance_count: int = None,
+        success_instances: List[RebootRenderingServerResponseBodySuccessInstances] = None,
+    ):
+        self.failed_instance_count = failed_instance_count
+        self.failed_instances = failed_instances
+        self.request_id = request_id
+        self.success_instance_count = success_instance_count
+        self.success_instances = success_instances
+
+    def validate(self):
+        if self.failed_instances:
+            for k in self.failed_instances:
+                if k:
+                    k.validate()
+        if self.success_instances:
+            for k in self.success_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_instance_count is not None:
+            result['FailedInstanceCount'] = self.failed_instance_count
+        result['FailedInstances'] = []
+        if self.failed_instances is not None:
+            for k in self.failed_instances:
+                result['FailedInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_instance_count is not None:
+            result['SuccessInstanceCount'] = self.success_instance_count
+        result['SuccessInstances'] = []
+        if self.success_instances is not None:
+            for k in self.success_instances:
+                result['SuccessInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedInstanceCount') is not None:
+            self.failed_instance_count = m.get('FailedInstanceCount')
+        self.failed_instances = []
+        if m.get('FailedInstances') is not None:
+            for k in m.get('FailedInstances'):
+                temp_model = RebootRenderingServerResponseBodyFailedInstances()
+                self.failed_instances.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessInstanceCount') is not None:
+            self.success_instance_count = m.get('SuccessInstanceCount')
+        self.success_instances = []
+        if m.get('SuccessInstances') is not None:
+            for k in m.get('SuccessInstances'):
+                temp_model = RebootRenderingServerResponseBodySuccessInstances()
+                self.success_instances.append(temp_model.from_map(k))
+        return self
+
+
+class RebootRenderingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebootRenderingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebootRenderingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecoverRenderingDataPackageRequest(TeaModel):
     def __init__(
         self,

@@ -14887,6 +14887,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reboot_rendering_instance_with_options_async(request, runtime)
 
+    def reboot_rendering_server_with_options(
+        self,
+        tmp_req: vs_20181212_models.RebootRenderingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.RebootRenderingServerResponse:
+        """
+        @summary 云应用服务实例主机重启
+        
+        @param tmp_req: RebootRenderingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootRenderingServerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.RebootRenderingServerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootRenderingServer',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.RebootRenderingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_rendering_server_with_options_async(
+        self,
+        tmp_req: vs_20181212_models.RebootRenderingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.RebootRenderingServerResponse:
+        """
+        @summary 云应用服务实例主机重启
+        
+        @param tmp_req: RebootRenderingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootRenderingServerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.RebootRenderingServerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootRenderingServer',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.RebootRenderingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_rendering_server(
+        self,
+        request: vs_20181212_models.RebootRenderingServerRequest,
+    ) -> vs_20181212_models.RebootRenderingServerResponse:
+        """
+        @summary 云应用服务实例主机重启
+        
+        @param request: RebootRenderingServerRequest
+        @return: RebootRenderingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reboot_rendering_server_with_options(request, runtime)
+
+    async def reboot_rendering_server_async(
+        self,
+        request: vs_20181212_models.RebootRenderingServerRequest,
+    ) -> vs_20181212_models.RebootRenderingServerResponse:
+        """
+        @summary 云应用服务实例主机重启
+        
+        @param request: RebootRenderingServerRequest
+        @return: RebootRenderingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reboot_rendering_server_with_options_async(request, runtime)
+
     def recover_rendering_data_package_with_options(
         self,
         request: vs_20181212_models.RecoverRenderingDataPackageRequest,
