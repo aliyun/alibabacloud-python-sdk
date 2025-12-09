@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'central'
+        self._endpoint_map = {
+            'ap-southeast-1': 'openapi-mcp.ap-southeast-1.aliyuncs.com',
+            'cn-hangzhou': 'openapi-mcp.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('openapiexplorer', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -175,6 +179,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_assume_role):
             body['enableAssumeRole'] = request.enable_assume_role
+        if not UtilClient.is_unset(request.enable_custom_vpc_whitelist):
+            body['enableCustomVpcWhitelist'] = request.enable_custom_vpc_whitelist
         if not UtilClient.is_unset(request.instructions):
             body['instructions'] = request.instructions
         if not UtilClient.is_unset(request.language):
@@ -185,10 +191,14 @@ class Client(OpenApiClient):
             body['oauthClientId'] = request.oauth_client_id
         if not UtilClient.is_unset(request.prompts):
             body['prompts'] = request.prompts
+        if not UtilClient.is_unset(request.public_access):
+            body['publicAccess'] = request.public_access
         if not UtilClient.is_unset(request.system_tools):
             body['systemTools'] = request.system_tools
         if not UtilClient.is_unset(request.terraform_tools):
             body['terraformTools'] = request.terraform_tools
+        if not UtilClient.is_unset(request.vpc_whitelists):
+            body['vpcWhitelists'] = request.vpc_whitelists
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -239,6 +249,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_assume_role):
             body['enableAssumeRole'] = request.enable_assume_role
+        if not UtilClient.is_unset(request.enable_custom_vpc_whitelist):
+            body['enableCustomVpcWhitelist'] = request.enable_custom_vpc_whitelist
         if not UtilClient.is_unset(request.instructions):
             body['instructions'] = request.instructions
         if not UtilClient.is_unset(request.language):
@@ -249,10 +261,14 @@ class Client(OpenApiClient):
             body['oauthClientId'] = request.oauth_client_id
         if not UtilClient.is_unset(request.prompts):
             body['prompts'] = request.prompts
+        if not UtilClient.is_unset(request.public_access):
+            body['publicAccess'] = request.public_access
         if not UtilClient.is_unset(request.system_tools):
             body['systemTools'] = request.system_tools
         if not UtilClient.is_unset(request.terraform_tools):
             body['terraformTools'] = request.terraform_tools
+        if not UtilClient.is_unset(request.vpc_whitelists):
+            body['vpcWhitelists'] = request.vpc_whitelists
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -435,6 +451,8 @@ class Client(OpenApiClient):
             body['apiParams'] = request.api_params_shrink
         if not UtilClient.is_unset(request.api_version):
             body['apiVersion'] = request.api_version
+        if not UtilClient.is_unset(request.json_api_params):
+            body['jsonApiParams'] = request.json_api_params
         if not UtilClient.is_unset(request.product):
             body['product'] = request.product
         if not UtilClient.is_unset(request.region_id):
@@ -485,6 +503,8 @@ class Client(OpenApiClient):
             body['apiParams'] = request.api_params_shrink
         if not UtilClient.is_unset(request.api_version):
             body['apiVersion'] = request.api_version
+        if not UtilClient.is_unset(request.json_api_params):
+            body['jsonApiParams'] = request.json_api_params
         if not UtilClient.is_unset(request.product):
             body['product'] = request.product
         if not UtilClient.is_unset(request.region_id):
@@ -752,6 +772,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_api_mcp_server_with_options_async(request, headers, runtime)
+
+    def get_api_mcp_server_user_config_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_apiexplorer_20241130_models.GetApiMcpServerUserConfigResponse:
+        """
+        @summary 查询用户全局API MCP Server配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApiMcpServerUserConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetApiMcpServerUserConfig',
+            version='2024-11-30',
+            protocol='HTTPS',
+            pathname=f'/userconfig/get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_apiexplorer_20241130_models.GetApiMcpServerUserConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_api_mcp_server_user_config_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_apiexplorer_20241130_models.GetApiMcpServerUserConfigResponse:
+        """
+        @summary 查询用户全局API MCP Server配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApiMcpServerUserConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetApiMcpServerUserConfig',
+            version='2024-11-30',
+            protocol='HTTPS',
+            pathname=f'/userconfig/get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_apiexplorer_20241130_models.GetApiMcpServerUserConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_api_mcp_server_user_config(self) -> open_apiexplorer_20241130_models.GetApiMcpServerUserConfigResponse:
+        """
+        @summary 查询用户全局API MCP Server配置
+        
+        @return: GetApiMcpServerUserConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_api_mcp_server_user_config_with_options(headers, runtime)
+
+    async def get_api_mcp_server_user_config_async(self) -> open_apiexplorer_20241130_models.GetApiMcpServerUserConfigResponse:
+        """
+        @summary 查询用户全局API MCP Server配置
+        
+        @return: GetApiMcpServerUserConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_api_mcp_server_user_config_with_options_async(headers, runtime)
 
     def get_error_code_solutions_with_options(
         self,
@@ -1598,6 +1700,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_assume_role):
             body['enableAssumeRole'] = request.enable_assume_role
+        if not UtilClient.is_unset(request.enable_custom_vpc_whitelist):
+            body['enableCustomVpcWhitelist'] = request.enable_custom_vpc_whitelist
         if not UtilClient.is_unset(request.instructions):
             body['instructions'] = request.instructions
         if not UtilClient.is_unset(request.language):
@@ -1606,10 +1710,14 @@ class Client(OpenApiClient):
             body['oauthClientId'] = request.oauth_client_id
         if not UtilClient.is_unset(request.prompts):
             body['prompts'] = request.prompts
+        if not UtilClient.is_unset(request.public_access):
+            body['publicAccess'] = request.public_access
         if not UtilClient.is_unset(request.system_tools):
             body['systemTools'] = request.system_tools
         if not UtilClient.is_unset(request.terraform_tools):
             body['terraformTools'] = request.terraform_tools
+        if not UtilClient.is_unset(request.vpc_whitelists):
+            body['vpcWhitelists'] = request.vpc_whitelists
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1664,6 +1772,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.enable_assume_role):
             body['enableAssumeRole'] = request.enable_assume_role
+        if not UtilClient.is_unset(request.enable_custom_vpc_whitelist):
+            body['enableCustomVpcWhitelist'] = request.enable_custom_vpc_whitelist
         if not UtilClient.is_unset(request.instructions):
             body['instructions'] = request.instructions
         if not UtilClient.is_unset(request.language):
@@ -1672,10 +1782,14 @@ class Client(OpenApiClient):
             body['oauthClientId'] = request.oauth_client_id
         if not UtilClient.is_unset(request.prompts):
             body['prompts'] = request.prompts
+        if not UtilClient.is_unset(request.public_access):
+            body['publicAccess'] = request.public_access
         if not UtilClient.is_unset(request.system_tools):
             body['systemTools'] = request.system_tools
         if not UtilClient.is_unset(request.terraform_tools):
             body['terraformTools'] = request.terraform_tools
+        if not UtilClient.is_unset(request.vpc_whitelists):
+            body['vpcWhitelists'] = request.vpc_whitelists
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1724,3 +1838,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_api_mcp_server_with_options_async(request, headers, runtime)
+
+    def update_api_mcp_server_user_config_with_options(
+        self,
+        request: open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigResponse:
+        """
+        @summary 修改用户全局API MCP Server配置
+        
+        @param request: UpdateApiMcpServerUserConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApiMcpServerUserConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_public_access):
+            body['enablePublicAccess'] = request.enable_public_access
+        if not UtilClient.is_unset(request.vpc_whitelists):
+            body['vpcWhitelists'] = request.vpc_whitelists
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateApiMcpServerUserConfig',
+            version='2024-11-30',
+            protocol='HTTPS',
+            pathname=f'/userconfig/update',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_api_mcp_server_user_config_with_options_async(
+        self,
+        request: open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigResponse:
+        """
+        @summary 修改用户全局API MCP Server配置
+        
+        @param request: UpdateApiMcpServerUserConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApiMcpServerUserConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_public_access):
+            body['enablePublicAccess'] = request.enable_public_access
+        if not UtilClient.is_unset(request.vpc_whitelists):
+            body['vpcWhitelists'] = request.vpc_whitelists
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateApiMcpServerUserConfig',
+            version='2024-11-30',
+            protocol='HTTPS',
+            pathname=f'/userconfig/update',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_api_mcp_server_user_config(
+        self,
+        request: open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigRequest,
+    ) -> open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigResponse:
+        """
+        @summary 修改用户全局API MCP Server配置
+        
+        @param request: UpdateApiMcpServerUserConfigRequest
+        @return: UpdateApiMcpServerUserConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_api_mcp_server_user_config_with_options(request, headers, runtime)
+
+    async def update_api_mcp_server_user_config_async(
+        self,
+        request: open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigRequest,
+    ) -> open_apiexplorer_20241130_models.UpdateApiMcpServerUserConfigResponse:
+        """
+        @summary 修改用户全局API MCP Server配置
+        
+        @param request: UpdateApiMcpServerUserConfigRequest
+        @return: UpdateApiMcpServerUserConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_api_mcp_server_user_config_with_options_async(request, headers, runtime)

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_openapiexplorer20241130.
 
-Created on 10/11/2025
+Created on 09/12/2025
 
 @author: Alibaba Cloud SDK
 """

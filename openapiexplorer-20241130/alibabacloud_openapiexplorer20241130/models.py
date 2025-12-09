@@ -434,13 +434,16 @@ class CreateApiMcpServerRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         enable_assume_role: bool = None,
+        enable_custom_vpc_whitelist: bool = None,
         instructions: str = None,
         language: str = None,
         name: str = None,
         oauth_client_id: str = None,
         prompts: List[CreateApiMcpServerRequestPrompts] = None,
+        public_access: str = None,
         system_tools: List[str] = None,
         terraform_tools: List[CreateApiMcpServerRequestTerraformTools] = None,
+        vpc_whitelists: List[str] = None,
     ):
         self.additional_api_descriptions = additional_api_descriptions
         # This parameter is required.
@@ -450,14 +453,17 @@ class CreateApiMcpServerRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.enable_assume_role = enable_assume_role
+        self.enable_custom_vpc_whitelist = enable_custom_vpc_whitelist
         self.instructions = instructions
         self.language = language
         # This parameter is required.
         self.name = name
         self.oauth_client_id = oauth_client_id
         self.prompts = prompts
+        self.public_access = public_access
         self.system_tools = system_tools
         self.terraform_tools = terraform_tools
+        self.vpc_whitelists = vpc_whitelists
 
     def validate(self):
         if self.additional_api_descriptions:
@@ -501,6 +507,8 @@ class CreateApiMcpServerRequest(TeaModel):
             result['description'] = self.description
         if self.enable_assume_role is not None:
             result['enableAssumeRole'] = self.enable_assume_role
+        if self.enable_custom_vpc_whitelist is not None:
+            result['enableCustomVpcWhitelist'] = self.enable_custom_vpc_whitelist
         if self.instructions is not None:
             result['instructions'] = self.instructions
         if self.language is not None:
@@ -513,12 +521,16 @@ class CreateApiMcpServerRequest(TeaModel):
         if self.prompts is not None:
             for k in self.prompts:
                 result['prompts'].append(k.to_map() if k else None)
+        if self.public_access is not None:
+            result['publicAccess'] = self.public_access
         if self.system_tools is not None:
             result['systemTools'] = self.system_tools
         result['terraformTools'] = []
         if self.terraform_tools is not None:
             for k in self.terraform_tools:
                 result['terraformTools'].append(k.to_map() if k else None)
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
         return result
 
     def from_map(self, m: dict = None):
@@ -543,6 +555,8 @@ class CreateApiMcpServerRequest(TeaModel):
             self.description = m.get('description')
         if m.get('enableAssumeRole') is not None:
             self.enable_assume_role = m.get('enableAssumeRole')
+        if m.get('enableCustomVpcWhitelist') is not None:
+            self.enable_custom_vpc_whitelist = m.get('enableCustomVpcWhitelist')
         if m.get('instructions') is not None:
             self.instructions = m.get('instructions')
         if m.get('language') is not None:
@@ -556,6 +570,8 @@ class CreateApiMcpServerRequest(TeaModel):
             for k in m.get('prompts'):
                 temp_model = CreateApiMcpServerRequestPrompts()
                 self.prompts.append(temp_model.from_map(k))
+        if m.get('publicAccess') is not None:
+            self.public_access = m.get('publicAccess')
         if m.get('systemTools') is not None:
             self.system_tools = m.get('systemTools')
         self.terraform_tools = []
@@ -563,6 +579,8 @@ class CreateApiMcpServerRequest(TeaModel):
             for k in m.get('terraformTools'):
                 temp_model = CreateApiMcpServerRequestTerraformTools()
                 self.terraform_tools.append(temp_model.from_map(k))
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
         return self
 
 
@@ -571,9 +589,13 @@ class CreateApiMcpServerResponseBodyUrls(TeaModel):
         self,
         mcp: str = None,
         sse: str = None,
+        vpc_mcp: str = None,
+        vpc_sse: str = None,
     ):
         self.mcp = mcp
         self.sse = sse
+        self.vpc_mcp = vpc_mcp
+        self.vpc_sse = vpc_sse
 
     def validate(self):
         pass
@@ -588,6 +610,10 @@ class CreateApiMcpServerResponseBodyUrls(TeaModel):
             result['mcp'] = self.mcp
         if self.sse is not None:
             result['sse'] = self.sse
+        if self.vpc_mcp is not None:
+            result['vpcMcp'] = self.vpc_mcp
+        if self.vpc_sse is not None:
+            result['vpcSse'] = self.vpc_sse
         return result
 
     def from_map(self, m: dict = None):
@@ -596,6 +622,10 @@ class CreateApiMcpServerResponseBodyUrls(TeaModel):
             self.mcp = m.get('mcp')
         if m.get('sse') is not None:
             self.sse = m.get('sse')
+        if m.get('vpcMcp') is not None:
+            self.vpc_mcp = m.get('vpcMcp')
+        if m.get('vpcSse') is not None:
+            self.vpc_sse = m.get('vpcSse')
         return self
 
 
@@ -789,6 +819,7 @@ class GenerateCLICommandRequest(TeaModel):
         api: str = None,
         api_params: Dict[str, Any] = None,
         api_version: str = None,
+        json_api_params: str = None,
         product: str = None,
         region_id: str = None,
     ):
@@ -797,6 +828,7 @@ class GenerateCLICommandRequest(TeaModel):
         self.api_params = api_params
         # This parameter is required.
         self.api_version = api_version
+        self.json_api_params = json_api_params
         # This parameter is required.
         self.product = product
         self.region_id = region_id
@@ -816,6 +848,8 @@ class GenerateCLICommandRequest(TeaModel):
             result['apiParams'] = self.api_params
         if self.api_version is not None:
             result['apiVersion'] = self.api_version
+        if self.json_api_params is not None:
+            result['jsonApiParams'] = self.json_api_params
         if self.product is not None:
             result['product'] = self.product
         if self.region_id is not None:
@@ -830,6 +864,8 @@ class GenerateCLICommandRequest(TeaModel):
             self.api_params = m.get('apiParams')
         if m.get('apiVersion') is not None:
             self.api_version = m.get('apiVersion')
+        if m.get('jsonApiParams') is not None:
+            self.json_api_params = m.get('jsonApiParams')
         if m.get('product') is not None:
             self.product = m.get('product')
         if m.get('regionId') is not None:
@@ -843,6 +879,7 @@ class GenerateCLICommandShrinkRequest(TeaModel):
         api: str = None,
         api_params_shrink: str = None,
         api_version: str = None,
+        json_api_params: str = None,
         product: str = None,
         region_id: str = None,
     ):
@@ -851,6 +888,7 @@ class GenerateCLICommandShrinkRequest(TeaModel):
         self.api_params_shrink = api_params_shrink
         # This parameter is required.
         self.api_version = api_version
+        self.json_api_params = json_api_params
         # This parameter is required.
         self.product = product
         self.region_id = region_id
@@ -870,6 +908,8 @@ class GenerateCLICommandShrinkRequest(TeaModel):
             result['apiParams'] = self.api_params_shrink
         if self.api_version is not None:
             result['apiVersion'] = self.api_version
+        if self.json_api_params is not None:
+            result['jsonApiParams'] = self.json_api_params
         if self.product is not None:
             result['product'] = self.product
         if self.region_id is not None:
@@ -884,6 +924,8 @@ class GenerateCLICommandShrinkRequest(TeaModel):
             self.api_params_shrink = m.get('apiParams')
         if m.get('apiVersion') is not None:
             self.api_version = m.get('apiVersion')
+        if m.get('jsonApiParams') is not None:
+            self.json_api_params = m.get('jsonApiParams')
         if m.get('product') is not None:
             self.product = m.get('product')
         if m.get('regionId') is not None:
@@ -1431,9 +1473,13 @@ class GetApiMcpServerResponseBodyUrls(TeaModel):
         self,
         mcp: str = None,
         sse: str = None,
+        vpc_mcp: str = None,
+        vpc_sse: str = None,
     ):
         self.mcp = mcp
         self.sse = sse
+        self.vpc_mcp = vpc_mcp
+        self.vpc_sse = vpc_sse
 
     def validate(self):
         pass
@@ -1448,6 +1494,10 @@ class GetApiMcpServerResponseBodyUrls(TeaModel):
             result['mcp'] = self.mcp
         if self.sse is not None:
             result['sse'] = self.sse
+        if self.vpc_mcp is not None:
+            result['vpcMcp'] = self.vpc_mcp
+        if self.vpc_sse is not None:
+            result['vpcSse'] = self.vpc_sse
         return result
 
     def from_map(self, m: dict = None):
@@ -1456,6 +1506,10 @@ class GetApiMcpServerResponseBodyUrls(TeaModel):
             self.mcp = m.get('mcp')
         if m.get('sse') is not None:
             self.sse = m.get('sse')
+        if m.get('vpcMcp') is not None:
+            self.vpc_mcp = m.get('vpcMcp')
+        if m.get('vpcSse') is not None:
+            self.vpc_sse = m.get('vpcSse')
         return self
 
 
@@ -1470,12 +1524,14 @@ class GetApiMcpServerResponseBody(TeaModel):
         create_time: str = None,
         description: str = None,
         enable_assume_role: bool = None,
+        enable_custom_vpc_whitelist: bool = None,
         id: str = None,
         instructions: str = None,
         language: str = None,
         name: str = None,
         oauth_client_id: str = None,
         prompts: List[GetApiMcpServerResponseBodyPrompts] = None,
+        public_access: str = None,
         request_id: str = None,
         required_rampolicy: str = None,
         source_type: str = None,
@@ -1484,6 +1540,7 @@ class GetApiMcpServerResponseBody(TeaModel):
         terraform_tools: List[GetApiMcpServerResponseBodyTerraformTools] = None,
         update_time: str = None,
         urls: GetApiMcpServerResponseBodyUrls = None,
+        vpc_whitelists: List[str] = None,
     ):
         self.additional_api_descriptions = additional_api_descriptions
         self.api_infos = api_infos
@@ -1493,12 +1550,14 @@ class GetApiMcpServerResponseBody(TeaModel):
         self.create_time = create_time
         self.description = description
         self.enable_assume_role = enable_assume_role
+        self.enable_custom_vpc_whitelist = enable_custom_vpc_whitelist
         self.id = id
         self.instructions = instructions
         self.language = language
         self.name = name
         self.oauth_client_id = oauth_client_id
         self.prompts = prompts
+        self.public_access = public_access
         self.request_id = request_id
         self.required_rampolicy = required_rampolicy
         self.source_type = source_type
@@ -1507,6 +1566,7 @@ class GetApiMcpServerResponseBody(TeaModel):
         self.terraform_tools = terraform_tools
         self.update_time = update_time
         self.urls = urls
+        self.vpc_whitelists = vpc_whitelists
 
     def validate(self):
         if self.additional_api_descriptions:
@@ -1562,6 +1622,8 @@ class GetApiMcpServerResponseBody(TeaModel):
             result['description'] = self.description
         if self.enable_assume_role is not None:
             result['enableAssumeRole'] = self.enable_assume_role
+        if self.enable_custom_vpc_whitelist is not None:
+            result['enableCustomVpcWhitelist'] = self.enable_custom_vpc_whitelist
         if self.id is not None:
             result['id'] = self.id
         if self.instructions is not None:
@@ -1576,6 +1638,8 @@ class GetApiMcpServerResponseBody(TeaModel):
         if self.prompts is not None:
             for k in self.prompts:
                 result['prompts'].append(k.to_map() if k else None)
+        if self.public_access is not None:
+            result['publicAccess'] = self.public_access
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.required_rampolicy is not None:
@@ -1594,6 +1658,8 @@ class GetApiMcpServerResponseBody(TeaModel):
             result['updateTime'] = self.update_time
         if self.urls is not None:
             result['urls'] = self.urls.to_map()
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
         return result
 
     def from_map(self, m: dict = None):
@@ -1623,6 +1689,8 @@ class GetApiMcpServerResponseBody(TeaModel):
             self.description = m.get('description')
         if m.get('enableAssumeRole') is not None:
             self.enable_assume_role = m.get('enableAssumeRole')
+        if m.get('enableCustomVpcWhitelist') is not None:
+            self.enable_custom_vpc_whitelist = m.get('enableCustomVpcWhitelist')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('instructions') is not None:
@@ -1638,6 +1706,8 @@ class GetApiMcpServerResponseBody(TeaModel):
             for k in m.get('prompts'):
                 temp_model = GetApiMcpServerResponseBodyPrompts()
                 self.prompts.append(temp_model.from_map(k))
+        if m.get('publicAccess') is not None:
+            self.public_access = m.get('publicAccess')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('requiredRAMPolicy') is not None:
@@ -1659,6 +1729,8 @@ class GetApiMcpServerResponseBody(TeaModel):
         if m.get('urls') is not None:
             temp_model = GetApiMcpServerResponseBodyUrls()
             self.urls = temp_model.from_map(m['urls'])
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
         return self
 
 
@@ -1699,6 +1771,104 @@ class GetApiMcpServerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetApiMcpServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetApiMcpServerUserConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        enable_public_access: bool = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        request_id: str = None,
+        vpc_whitelists: List[str] = None,
+    ):
+        self.account_id = account_id
+        self.enable_public_access = enable_public_access
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.request_id = request_id
+        self.vpc_whitelists = vpc_whitelists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.enable_public_access is not None:
+            result['enablePublicAccess'] = self.enable_public_access
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('enablePublicAccess') is not None:
+            self.enable_public_access = m.get('enablePublicAccess')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
+        return self
+
+
+class GetApiMcpServerUserConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApiMcpServerUserConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApiMcpServerUserConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3972,9 +4142,13 @@ class ListApiMcpServersResponseBodyApiMcpServersUrls(TeaModel):
         self,
         mcp: str = None,
         sse: str = None,
+        vpc_mcp: str = None,
+        vpc_sse: str = None,
     ):
         self.mcp = mcp
         self.sse = sse
+        self.vpc_mcp = vpc_mcp
+        self.vpc_sse = vpc_sse
 
     def validate(self):
         pass
@@ -3989,6 +4163,10 @@ class ListApiMcpServersResponseBodyApiMcpServersUrls(TeaModel):
             result['mcp'] = self.mcp
         if self.sse is not None:
             result['sse'] = self.sse
+        if self.vpc_mcp is not None:
+            result['vpcMcp'] = self.vpc_mcp
+        if self.vpc_sse is not None:
+            result['vpcSse'] = self.vpc_sse
         return result
 
     def from_map(self, m: dict = None):
@@ -3997,6 +4175,10 @@ class ListApiMcpServersResponseBodyApiMcpServersUrls(TeaModel):
             self.mcp = m.get('mcp')
         if m.get('sse') is not None:
             self.sse = m.get('sse')
+        if m.get('vpcMcp') is not None:
+            self.vpc_mcp = m.get('vpcMcp')
+        if m.get('vpcSse') is not None:
+            self.vpc_sse = m.get('vpcSse')
         return self
 
 
@@ -4010,18 +4192,21 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
         create_time: str = None,
         description: str = None,
         enable_assume_role: bool = None,
+        enable_custom_vpc_whitelist: bool = None,
         id: str = None,
         instructions: str = None,
         language: str = None,
         name: str = None,
         oauth_client_id: str = None,
         prompts: List[ListApiMcpServersResponseBodyApiMcpServersPrompts] = None,
+        public_access: str = None,
         source_type: str = None,
         system_mcp_server_info: ListApiMcpServersResponseBodyApiMcpServersSystemMcpServerInfo = None,
         system_tools: List[str] = None,
         terraform_tools: List[ListApiMcpServersResponseBodyApiMcpServersTerraformTools] = None,
         update_time: str = None,
         urls: ListApiMcpServersResponseBodyApiMcpServersUrls = None,
+        vpc_whitelists: List[str] = None,
     ):
         self.additional_api_descriptions = additional_api_descriptions
         self.apis = apis
@@ -4030,18 +4215,21 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
         self.create_time = create_time
         self.description = description
         self.enable_assume_role = enable_assume_role
+        self.enable_custom_vpc_whitelist = enable_custom_vpc_whitelist
         self.id = id
         self.instructions = instructions
         self.language = language
         self.name = name
         self.oauth_client_id = oauth_client_id
         self.prompts = prompts
+        self.public_access = public_access
         self.source_type = source_type
         self.system_mcp_server_info = system_mcp_server_info
         self.system_tools = system_tools
         self.terraform_tools = terraform_tools
         self.update_time = update_time
         self.urls = urls
+        self.vpc_whitelists = vpc_whitelists
 
     def validate(self):
         if self.additional_api_descriptions:
@@ -4089,6 +4277,8 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
             result['description'] = self.description
         if self.enable_assume_role is not None:
             result['enableAssumeRole'] = self.enable_assume_role
+        if self.enable_custom_vpc_whitelist is not None:
+            result['enableCustomVpcWhitelist'] = self.enable_custom_vpc_whitelist
         if self.id is not None:
             result['id'] = self.id
         if self.instructions is not None:
@@ -4103,6 +4293,8 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
         if self.prompts is not None:
             for k in self.prompts:
                 result['prompts'].append(k.to_map() if k else None)
+        if self.public_access is not None:
+            result['publicAccess'] = self.public_access
         if self.source_type is not None:
             result['sourceType'] = self.source_type
         if self.system_mcp_server_info is not None:
@@ -4117,6 +4309,8 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
             result['updateTime'] = self.update_time
         if self.urls is not None:
             result['urls'] = self.urls.to_map()
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
         return result
 
     def from_map(self, m: dict = None):
@@ -4141,6 +4335,8 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
             self.description = m.get('description')
         if m.get('enableAssumeRole') is not None:
             self.enable_assume_role = m.get('enableAssumeRole')
+        if m.get('enableCustomVpcWhitelist') is not None:
+            self.enable_custom_vpc_whitelist = m.get('enableCustomVpcWhitelist')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('instructions') is not None:
@@ -4156,6 +4352,8 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
             for k in m.get('prompts'):
                 temp_model = ListApiMcpServersResponseBodyApiMcpServersPrompts()
                 self.prompts.append(temp_model.from_map(k))
+        if m.get('publicAccess') is not None:
+            self.public_access = m.get('publicAccess')
         if m.get('sourceType') is not None:
             self.source_type = m.get('sourceType')
         if m.get('systemMcpServerInfo') is not None:
@@ -4173,6 +4371,8 @@ class ListApiMcpServersResponseBodyApiMcpServers(TeaModel):
         if m.get('urls') is not None:
             temp_model = ListApiMcpServersResponseBodyApiMcpServersUrls()
             self.urls = temp_model.from_map(m['urls'])
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
         return self
 
 
@@ -4571,12 +4771,15 @@ class UpdateApiMcpServerRequest(TeaModel):
         assume_role_name: str = None,
         description: str = None,
         enable_assume_role: bool = None,
+        enable_custom_vpc_whitelist: bool = None,
         instructions: str = None,
         language: str = None,
         oauth_client_id: str = None,
         prompts: List[UpdateApiMcpServerRequestPrompts] = None,
+        public_access: str = None,
         system_tools: List[str] = None,
         terraform_tools: List[UpdateApiMcpServerRequestTerraformTools] = None,
+        vpc_whitelists: List[str] = None,
         client_token: str = None,
         id: str = None,
     ):
@@ -4586,12 +4789,15 @@ class UpdateApiMcpServerRequest(TeaModel):
         self.assume_role_name = assume_role_name
         self.description = description
         self.enable_assume_role = enable_assume_role
+        self.enable_custom_vpc_whitelist = enable_custom_vpc_whitelist
         self.instructions = instructions
         self.language = language
         self.oauth_client_id = oauth_client_id
         self.prompts = prompts
+        self.public_access = public_access
         self.system_tools = system_tools
         self.terraform_tools = terraform_tools
+        self.vpc_whitelists = vpc_whitelists
         self.client_token = client_token
         # This parameter is required.
         self.id = id
@@ -4636,6 +4842,8 @@ class UpdateApiMcpServerRequest(TeaModel):
             result['description'] = self.description
         if self.enable_assume_role is not None:
             result['enableAssumeRole'] = self.enable_assume_role
+        if self.enable_custom_vpc_whitelist is not None:
+            result['enableCustomVpcWhitelist'] = self.enable_custom_vpc_whitelist
         if self.instructions is not None:
             result['instructions'] = self.instructions
         if self.language is not None:
@@ -4646,12 +4854,16 @@ class UpdateApiMcpServerRequest(TeaModel):
         if self.prompts is not None:
             for k in self.prompts:
                 result['prompts'].append(k.to_map() if k else None)
+        if self.public_access is not None:
+            result['publicAccess'] = self.public_access
         if self.system_tools is not None:
             result['systemTools'] = self.system_tools
         result['terraformTools'] = []
         if self.terraform_tools is not None:
             for k in self.terraform_tools:
                 result['terraformTools'].append(k.to_map() if k else None)
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         if self.id is not None:
@@ -4678,6 +4890,8 @@ class UpdateApiMcpServerRequest(TeaModel):
             self.description = m.get('description')
         if m.get('enableAssumeRole') is not None:
             self.enable_assume_role = m.get('enableAssumeRole')
+        if m.get('enableCustomVpcWhitelist') is not None:
+            self.enable_custom_vpc_whitelist = m.get('enableCustomVpcWhitelist')
         if m.get('instructions') is not None:
             self.instructions = m.get('instructions')
         if m.get('language') is not None:
@@ -4689,6 +4903,8 @@ class UpdateApiMcpServerRequest(TeaModel):
             for k in m.get('prompts'):
                 temp_model = UpdateApiMcpServerRequestPrompts()
                 self.prompts.append(temp_model.from_map(k))
+        if m.get('publicAccess') is not None:
+            self.public_access = m.get('publicAccess')
         if m.get('systemTools') is not None:
             self.system_tools = m.get('systemTools')
         self.terraform_tools = []
@@ -4696,6 +4912,8 @@ class UpdateApiMcpServerRequest(TeaModel):
             for k in m.get('terraformTools'):
                 temp_model = UpdateApiMcpServerRequestTerraformTools()
                 self.terraform_tools.append(temp_model.from_map(k))
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         if m.get('id') is not None:
@@ -4767,6 +4985,107 @@ class UpdateApiMcpServerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateApiMcpServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateApiMcpServerUserConfigRequest(TeaModel):
+    def __init__(
+        self,
+        enable_public_access: bool = None,
+        vpc_whitelists: List[str] = None,
+    ):
+        self.enable_public_access = enable_public_access
+        self.vpc_whitelists = vpc_whitelists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_public_access is not None:
+            result['enablePublicAccess'] = self.enable_public_access
+        if self.vpc_whitelists is not None:
+            result['vpcWhitelists'] = self.vpc_whitelists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enablePublicAccess') is not None:
+            self.enable_public_access = m.get('enablePublicAccess')
+        if m.get('vpcWhitelists') is not None:
+            self.vpc_whitelists = m.get('vpcWhitelists')
+        return self
+
+
+class UpdateApiMcpServerUserConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateApiMcpServerUserConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApiMcpServerUserConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApiMcpServerUserConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
