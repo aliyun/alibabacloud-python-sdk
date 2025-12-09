@@ -2603,7 +2603,7 @@ class Client(OpenApiClient):
 
     def create_cluster_with_options(
         self,
-        request: ens_20171110_models.CreateClusterRequest,
+        tmp_req: ens_20171110_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateClusterResponse:
         """
@@ -2612,16 +2612,48 @@ class Client(OpenApiClient):
         @description    You can call this operation up to 10 times per second per account.
         Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
         
-        @param request: CreateClusterRequest
+        @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateClusterResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.control_plane_config):
+            request.control_plane_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_plane_config, 'ControlPlaneConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.pod_vswitch_ids):
+            request.pod_vswitch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pod_vswitch_ids, 'PodVswitchIds', 'json')
+        if not UtilClient.is_unset(tmp_req.vswitch_ids):
+            request.vswitch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vswitch_ids, 'VswitchIds', 'json')
         query = {}
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.cluster_version):
             query['ClusterVersion'] = request.cluster_version
+        if not UtilClient.is_unset(request.container_cidr):
+            query['ContainerCidr'] = request.container_cidr
+        if not UtilClient.is_unset(request.control_plane_config_shrink):
+            query['ControlPlaneConfig'] = request.control_plane_config_shrink
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.kubernetes_version):
+            query['KubernetesVersion'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.pod_vswitch_ids_shrink):
+            query['PodVswitchIds'] = request.pod_vswitch_ids_shrink
+        if not UtilClient.is_unset(request.profile):
+            query['Profile'] = request.profile
+        if not UtilClient.is_unset(request.public_access):
+            query['PublicAccess'] = request.public_access
+        if not UtilClient.is_unset(request.service_cidr):
+            query['ServiceCidr'] = request.service_cidr
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_ids_shrink):
+            query['VswitchIds'] = request.vswitch_ids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2643,7 +2675,7 @@ class Client(OpenApiClient):
 
     async def create_cluster_with_options_async(
         self,
-        request: ens_20171110_models.CreateClusterRequest,
+        tmp_req: ens_20171110_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateClusterResponse:
         """
@@ -2652,16 +2684,48 @@ class Client(OpenApiClient):
         @description    You can call this operation up to 10 times per second per account.
         Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
         
-        @param request: CreateClusterRequest
+        @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateClusterResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.control_plane_config):
+            request.control_plane_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_plane_config, 'ControlPlaneConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.pod_vswitch_ids):
+            request.pod_vswitch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pod_vswitch_ids, 'PodVswitchIds', 'json')
+        if not UtilClient.is_unset(tmp_req.vswitch_ids):
+            request.vswitch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vswitch_ids, 'VswitchIds', 'json')
         query = {}
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.cluster_version):
             query['ClusterVersion'] = request.cluster_version
+        if not UtilClient.is_unset(request.container_cidr):
+            query['ContainerCidr'] = request.container_cidr
+        if not UtilClient.is_unset(request.control_plane_config_shrink):
+            query['ControlPlaneConfig'] = request.control_plane_config_shrink
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.kubernetes_version):
+            query['KubernetesVersion'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.pod_vswitch_ids_shrink):
+            query['PodVswitchIds'] = request.pod_vswitch_ids_shrink
+        if not UtilClient.is_unset(request.profile):
+            query['Profile'] = request.profile
+        if not UtilClient.is_unset(request.public_access):
+            query['PublicAccess'] = request.public_access
+        if not UtilClient.is_unset(request.service_cidr):
+            query['ServiceCidr'] = request.service_cidr
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_ids_shrink):
+            query['VswitchIds'] = request.vswitch_ids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

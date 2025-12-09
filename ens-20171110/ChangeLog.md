@@ -1,3 +1,18 @@
+2025-12-09 Version: 9.5.2
+- Update API CreateCluster: add request parameters ClusterType.
+- Update API CreateCluster: add request parameters ContainerCidr.
+- Update API CreateCluster: add request parameters ControlPlaneConfig.
+- Update API CreateCluster: add request parameters EnsRegionId.
+- Update API CreateCluster: add request parameters KubernetesVersion.
+- Update API CreateCluster: add request parameters LoadBalancerId.
+- Update API CreateCluster: add request parameters PodVswitchIds.
+- Update API CreateCluster: add request parameters Profile.
+- Update API CreateCluster: add request parameters PublicAccess.
+- Update API CreateCluster: add request parameters ServiceCidr.
+- Update API CreateCluster: add request parameters VpcId.
+- Update API CreateCluster: add request parameters VswitchIds.
+
+
 2025-12-05 Version: 9.5.1
 - Update API DescribeNetworkInterfaces: add response parameters Body.NetworkInterfaceSets.$.PrivateIpSets.$.PrivateIpStatus.
 
