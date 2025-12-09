@@ -1,3 +1,9 @@
+2025-12-09 Version: 1.3.0
+- Support API GetChatContent.
+- Support API GetNotebookTaskStatus.
+- Support API SendChatMessage.
+
+
 2025-10-22 Version: 1.2.0
 - Support API GetNotebookAndSubmitTask.
 

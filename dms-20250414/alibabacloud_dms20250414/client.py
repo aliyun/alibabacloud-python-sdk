@@ -1853,6 +1853,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_airflow_with_options_async(request, runtime)
 
+    def get_chat_content_with_options(
+        self,
+        request: dms_20250414_models.GetChatContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.GetChatContentResponse:
+        """
+        @summary GetChatContent
+        
+        @param request: GetChatContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatContentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatContent',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.GetChatContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_content_with_options_async(
+        self,
+        request: dms_20250414_models.GetChatContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.GetChatContentResponse:
+        """
+        @summary GetChatContent
+        
+        @param request: GetChatContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatContentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatContent',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.GetChatContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_content(
+        self,
+        request: dms_20250414_models.GetChatContentRequest,
+    ) -> dms_20250414_models.GetChatContentResponse:
+        """
+        @summary GetChatContent
+        
+        @param request: GetChatContentRequest
+        @return: GetChatContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_chat_content_with_options(request, runtime)
+
+    async def get_chat_content_async(
+        self,
+        request: dms_20250414_models.GetChatContentRequest,
+    ) -> dms_20250414_models.GetChatContentResponse:
+        """
+        @summary GetChatContent
+        
+        @param request: GetChatContentRequest
+        @return: GetChatContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chat_content_with_options_async(request, runtime)
+
     def get_data_lake_catalog_with_options(
         self,
         request: dms_20250414_models.GetDataLakeCatalogRequest,
@@ -2528,6 +2636,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_notebook_and_submit_task_with_options_async(request, runtime)
+
+    def get_notebook_task_status_with_options(
+        self,
+        request: dms_20250414_models.GetNotebookTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.GetNotebookTaskStatusResponse:
+        """
+        @summary 查看Notebook任务运行结果
+        
+        @param request: GetNotebookTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNotebookTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNotebookTaskStatus',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.GetNotebookTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_notebook_task_status_with_options_async(
+        self,
+        request: dms_20250414_models.GetNotebookTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.GetNotebookTaskStatusResponse:
+        """
+        @summary 查看Notebook任务运行结果
+        
+        @param request: GetNotebookTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNotebookTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNotebookTaskStatus',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.GetNotebookTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_notebook_task_status(
+        self,
+        request: dms_20250414_models.GetNotebookTaskStatusRequest,
+    ) -> dms_20250414_models.GetNotebookTaskStatusResponse:
+        """
+        @summary 查看Notebook任务运行结果
+        
+        @param request: GetNotebookTaskStatusRequest
+        @return: GetNotebookTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_notebook_task_status_with_options(request, runtime)
+
+    async def get_notebook_task_status_async(
+        self,
+        request: dms_20250414_models.GetNotebookTaskStatusRequest,
+    ) -> dms_20250414_models.GetNotebookTaskStatusResponse:
+        """
+        @summary 查看Notebook任务运行结果
+        
+        @param request: GetNotebookTaskStatusRequest
+        @return: GetNotebookTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_notebook_task_status_with_options_async(request, runtime)
 
     def list_airflows_with_options(
         self,
@@ -3852,6 +4064,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_lake_tablebase_info_with_options_async(request, runtime)
+
+    def send_chat_message_with_options(
+        self,
+        tmp_req: dms_20250414_models.SendChatMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.SendChatMessageResponse:
+        """
+        @summary SendChatMessage
+        
+        @param tmp_req: SendChatMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendChatMessageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_20250414_models.SendChatMessageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_source):
+            request.data_source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
+        if not UtilClient.is_unset(tmp_req.session_config):
+            request.session_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.data_source_shrink):
+            query['DataSource'] = request.data_source_shrink
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.question):
+            query['Question'] = request.question
+        if not UtilClient.is_unset(request.quoted_message):
+            query['QuotedMessage'] = request.quoted_message
+        if not UtilClient.is_unset(request.reply_to):
+            query['ReplyTo'] = request.reply_to
+        if not UtilClient.is_unset(request.session_config_shrink):
+            query['SessionConfig'] = request.session_config_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendChatMessage',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.SendChatMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_chat_message_with_options_async(
+        self,
+        tmp_req: dms_20250414_models.SendChatMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.SendChatMessageResponse:
+        """
+        @summary SendChatMessage
+        
+        @param tmp_req: SendChatMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendChatMessageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_20250414_models.SendChatMessageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_source):
+            request.data_source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
+        if not UtilClient.is_unset(tmp_req.session_config):
+            request.session_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.data_source_shrink):
+            query['DataSource'] = request.data_source_shrink
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.question):
+            query['Question'] = request.question
+        if not UtilClient.is_unset(request.quoted_message):
+            query['QuotedMessage'] = request.quoted_message
+        if not UtilClient.is_unset(request.reply_to):
+            query['ReplyTo'] = request.reply_to
+        if not UtilClient.is_unset(request.session_config_shrink):
+            query['SessionConfig'] = request.session_config_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendChatMessage',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.SendChatMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_chat_message(
+        self,
+        request: dms_20250414_models.SendChatMessageRequest,
+    ) -> dms_20250414_models.SendChatMessageResponse:
+        """
+        @summary SendChatMessage
+        
+        @param request: SendChatMessageRequest
+        @return: SendChatMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_chat_message_with_options(request, runtime)
+
+    async def send_chat_message_async(
+        self,
+        request: dms_20250414_models.SendChatMessageRequest,
+    ) -> dms_20250414_models.SendChatMessageResponse:
+        """
+        @summary SendChatMessage
+        
+        @param request: SendChatMessageRequest
+        @return: SendChatMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_chat_message_with_options_async(request, runtime)
 
     def update_airflow_with_options(
         self,
