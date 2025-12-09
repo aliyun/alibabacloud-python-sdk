@@ -1,3 +1,8 @@
+2025-12-09 Version: 7.1.0
+- Support API DescribeBotRuleLabels.
+- Update API CreateCloudResource: add request parameters Listen.ResourceRegionId.
+
+
 2025-12-08 Version: 7.0.4
 - Generated python 2021-10-01 for waf-openapi.
 

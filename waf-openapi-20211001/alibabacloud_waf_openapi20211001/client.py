@@ -6915,6 +6915,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_base_system_rules_with_options_async(request, runtime)
 
+    def describe_bot_rule_labels_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeBotRuleLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeBotRuleLabelsResponse:
+        """
+        @summary 分页获取Bot管理规则标签信息
+        
+        @param request: DescribeBotRuleLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBotRuleLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_type):
+            query['LabelType'] = request.label_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sub_scene):
+            query['SubScene'] = request.sub_scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBotRuleLabels',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeBotRuleLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_bot_rule_labels_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeBotRuleLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeBotRuleLabelsResponse:
+        """
+        @summary 分页获取Bot管理规则标签信息
+        
+        @param request: DescribeBotRuleLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBotRuleLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_type):
+            query['LabelType'] = request.label_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sub_scene):
+            query['SubScene'] = request.sub_scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBotRuleLabels',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeBotRuleLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_bot_rule_labels(
+        self,
+        request: waf_openapi_20211001_models.DescribeBotRuleLabelsRequest,
+    ) -> waf_openapi_20211001_models.DescribeBotRuleLabelsResponse:
+        """
+        @summary 分页获取Bot管理规则标签信息
+        
+        @param request: DescribeBotRuleLabelsRequest
+        @return: DescribeBotRuleLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_bot_rule_labels_with_options(request, runtime)
+
+    async def describe_bot_rule_labels_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeBotRuleLabelsRequest,
+    ) -> waf_openapi_20211001_models.DescribeBotRuleLabelsResponse:
+        """
+        @summary 分页获取Bot管理规则标签信息
+        
+        @param request: DescribeBotRuleLabelsRequest
+        @return: DescribeBotRuleLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_bot_rule_labels_with_options_async(request, runtime)
+
     def describe_cert_detail_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeCertDetailRequest,

@@ -771,6 +771,7 @@ class CreateCloudResourceRequestListen(TeaModel):
         protocol: str = None,
         resource_instance_id: str = None,
         resource_product: str = None,
+        resource_region_id: str = None,
         tlsversion: str = None,
     ):
         # The certificates.
@@ -817,6 +818,7 @@ class CreateCloudResourceRequestListen(TeaModel):
         # 
         # This parameter is required.
         self.resource_product = resource_product
+        self.resource_region_id = resource_region_id
         # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **tlsv1**\
@@ -856,6 +858,8 @@ class CreateCloudResourceRequestListen(TeaModel):
             result['ResourceInstanceId'] = self.resource_instance_id
         if self.resource_product is not None:
             result['ResourceProduct'] = self.resource_product
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
         if self.tlsversion is not None:
             result['TLSVersion'] = self.tlsversion
         return result
@@ -883,6 +887,8 @@ class CreateCloudResourceRequestListen(TeaModel):
             self.resource_instance_id = m.get('ResourceInstanceId')
         if m.get('ResourceProduct') is not None:
             self.resource_product = m.get('ResourceProduct')
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
         if m.get('TLSVersion') is not None:
             self.tlsversion = m.get('TLSVersion')
         return self
@@ -12198,6 +12204,215 @@ class DescribeBaseSystemRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBaseSystemRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBotRuleLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        label_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        sub_scene: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.label_type = label_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.sub_scene = sub_scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.label_type is not None:
+            result['LabelType'] = self.label_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.sub_scene is not None:
+            result['SubScene'] = self.sub_scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LabelType') is not None:
+            self.label_type = m.get('LabelType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('SubScene') is not None:
+            self.sub_scene = m.get('SubScene')
+        return self
+
+
+class DescribeBotRuleLabelsResponseBodyRuleLabels(TeaModel):
+    def __init__(
+        self,
+        bot_behavior: str = None,
+        label_key: str = None,
+        label_type: str = None,
+        sub_scene: str = None,
+    ):
+        self.bot_behavior = bot_behavior
+        self.label_key = label_key
+        self.label_type = label_type
+        self.sub_scene = sub_scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bot_behavior is not None:
+            result['BotBehavior'] = self.bot_behavior
+        if self.label_key is not None:
+            result['LabelKey'] = self.label_key
+        if self.label_type is not None:
+            result['LabelType'] = self.label_type
+        if self.sub_scene is not None:
+            result['SubScene'] = self.sub_scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BotBehavior') is not None:
+            self.bot_behavior = m.get('BotBehavior')
+        if m.get('LabelKey') is not None:
+            self.label_key = m.get('LabelKey')
+        if m.get('LabelType') is not None:
+            self.label_type = m.get('LabelType')
+        if m.get('SubScene') is not None:
+            self.sub_scene = m.get('SubScene')
+        return self
+
+
+class DescribeBotRuleLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        rule_labels: List[DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.rule_labels = rule_labels
+        self.total_count = total_count
+
+    def validate(self):
+        if self.rule_labels:
+            for k in self.rule_labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RuleLabels'] = []
+        if self.rule_labels is not None:
+            for k in self.rule_labels:
+                result['RuleLabels'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rule_labels = []
+        if m.get('RuleLabels') is not None:
+            for k in m.get('RuleLabels'):
+                temp_model = DescribeBotRuleLabelsResponseBodyRuleLabels()
+                self.rule_labels.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeBotRuleLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBotRuleLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBotRuleLabelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
