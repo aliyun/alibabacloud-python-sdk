@@ -1,3 +1,9 @@
+2025-12-09 Version: 2.2.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2025-11-25 Version: 2.1.17
 - Update API CreateTrainingJob: add request parameters body.AssignNodeSpec.
 - Update API GetTrainingJob: add response parameters Body.AssignNodeSpec.
