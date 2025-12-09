@@ -39412,6 +39412,165 @@ class UpdateApplicationInfoResponse(TeaModel):
         return self
 
 
+class UpdateApplicationSsoFormParamsRequestApplicationTemplateParams(TeaModel):
+    def __init__(
+        self,
+        template_param_name: str = None,
+        template_param_value: str = None,
+    ):
+        # 应用模板创建参数具体名称
+        self.template_param_name = template_param_name
+        # 应用模板创建参数真实的取值
+        self.template_param_value = template_param_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_param_name is not None:
+            result['TemplateParamName'] = self.template_param_name
+        if self.template_param_value is not None:
+            result['TemplateParamValue'] = self.template_param_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateParamName') is not None:
+            self.template_param_name = m.get('TemplateParamName')
+        if m.get('TemplateParamValue') is not None:
+            self.template_param_value = m.get('TemplateParamValue')
+        return self
+
+
+class UpdateApplicationSsoFormParamsRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_template_params: List[UpdateApplicationSsoFormParamsRequestApplicationTemplateParams] = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的应用主键id
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # 应用模板创建参数，应用创建来源为模板时才可以指定
+        # 
+        # This parameter is required.
+        self.application_template_params = application_template_params
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        if self.application_template_params:
+            for k in self.application_template_params:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        result['ApplicationTemplateParams'] = []
+        if self.application_template_params is not None:
+            for k in self.application_template_params:
+                result['ApplicationTemplateParams'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        self.application_template_params = []
+        if m.get('ApplicationTemplateParams') is not None:
+            for k in m.get('ApplicationTemplateParams'):
+                temp_model = UpdateApplicationSsoFormParamsRequestApplicationTemplateParams()
+                self.application_template_params.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateApplicationSsoFormParamsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateApplicationSsoFormParamsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApplicationSsoFormParamsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationSsoFormParamsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateApplicationTokenExpirationTimeRequest(TeaModel):
     def __init__(
         self,

@@ -19339,6 +19339,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_application_info_with_options_async(request, runtime)
 
+    def update_application_sso_form_params_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationSsoFormParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationSsoFormParamsResponse:
+        """
+        @summary 更新模板应用的SSO参数
+        
+        @param request: UpdateApplicationSsoFormParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationSsoFormParamsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_template_params):
+            query['ApplicationTemplateParams'] = request.application_template_params
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationSsoFormParams',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationSsoFormParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_sso_form_params_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationSsoFormParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationSsoFormParamsResponse:
+        """
+        @summary 更新模板应用的SSO参数
+        
+        @param request: UpdateApplicationSsoFormParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationSsoFormParamsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_template_params):
+            query['ApplicationTemplateParams'] = request.application_template_params
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationSsoFormParams',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationSsoFormParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_sso_form_params(
+        self,
+        request: eiam_20211201_models.UpdateApplicationSsoFormParamsRequest,
+    ) -> eiam_20211201_models.UpdateApplicationSsoFormParamsResponse:
+        """
+        @summary 更新模板应用的SSO参数
+        
+        @param request: UpdateApplicationSsoFormParamsRequest
+        @return: UpdateApplicationSsoFormParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_sso_form_params_with_options(request, runtime)
+
+    async def update_application_sso_form_params_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationSsoFormParamsRequest,
+    ) -> eiam_20211201_models.UpdateApplicationSsoFormParamsResponse:
+        """
+        @summary 更新模板应用的SSO参数
+        
+        @param request: UpdateApplicationSsoFormParamsRequest
+        @return: UpdateApplicationSsoFormParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_sso_form_params_with_options_async(request, runtime)
+
     def update_application_token_expiration_time_with_options(
         self,
         request: eiam_20211201_models.UpdateApplicationTokenExpirationTimeRequest,

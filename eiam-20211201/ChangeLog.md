@@ -1,3 +1,7 @@
+2025-12-09 Version: 2.6.0
+- Support API UpdateApplicationSsoFormParams.
+
+
 2025-12-05 Version: 2.5.2
 - Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.DingtalkAppConfig.DingtalkLoginVersion.
 - Update API UpdateIdentityProvider: add request parameters DingtalkAppConfig.DingtalkLoginVersion.
