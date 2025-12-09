@@ -60801,6 +60801,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        plan_name_en: str = None,
         plan_type: str = None,
         remaining_expire_days: int = None,
         sort_by: str = None,
@@ -60819,6 +60820,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        self.plan_name_en = plan_name_en
         self.plan_type = plan_type
         self.remaining_expire_days = remaining_expire_days
         # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
@@ -60857,6 +60859,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.plan_name_en is not None:
+            result['PlanNameEn'] = self.plan_name_en
         if self.plan_type is not None:
             result['PlanType'] = self.plan_type
         if self.remaining_expire_days is not None:
@@ -60881,6 +60885,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PlanNameEn') is not None:
+            self.plan_name_en = m.get('PlanNameEn')
         if m.get('PlanType') is not None:
             self.plan_type = m.get('PlanType')
         if m.get('RemainingExpireDays') is not None:

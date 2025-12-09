@@ -1,3 +1,7 @@
+2025-12-09 Version: 2.30.3
+- Update API ListUserRatePlanInstances: add request parameters PlanNameEn.
+
+
 2025-12-03 Version: 2.30.2
 - Update API CreateCacheRule: add request parameters PostBodyCacheKey.
 - Update API CreateCacheRule: add request parameters PostBodySizeLimit.
