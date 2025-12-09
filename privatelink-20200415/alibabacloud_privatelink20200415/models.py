@@ -5910,6 +5910,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
     def __init__(
         self,
         address_ip_version: str = None,
+        auto_accept_enabled: bool = None,
         payer: str = None,
         resource_group_id: str = None,
         service_domain: str = None,
@@ -5919,6 +5920,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         service_support_ipv_6: bool = None,
         service_type: str = None,
         tags: List[ListVpcEndpointServicesByEndUserResponseBodyServicesTags] = None,
+        vpc_endpoint_policy_supported: bool = None,
         zone_affinity_enabled: bool = None,
         zones: List[str] = None,
     ):
@@ -5927,6 +5929,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         # *   **IPv4**\
         # *   **DualStack**\
         self.address_ip_version = address_ip_version
+        self.auto_accept_enabled = auto_accept_enabled
         # The payer. Valid values:
         # 
         # *   **Endpoint**: the service consumer
@@ -5957,6 +5960,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         self.service_type = service_type
         # The list of tags.
         self.tags = tags
+        self.vpc_endpoint_policy_supported = vpc_endpoint_policy_supported
         self.zone_affinity_enabled = zone_affinity_enabled
         # The zones of the endpoint service that can be associated with the endpoint.
         self.zones = zones
@@ -5975,6 +5979,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         result = dict()
         if self.address_ip_version is not None:
             result['AddressIpVersion'] = self.address_ip_version
+        if self.auto_accept_enabled is not None:
+            result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.payer is not None:
             result['Payer'] = self.payer
         if self.resource_group_id is not None:
@@ -5995,6 +6001,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_endpoint_policy_supported is not None:
+            result['VpcEndpointPolicySupported'] = self.vpc_endpoint_policy_supported
         if self.zone_affinity_enabled is not None:
             result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         if self.zones is not None:
@@ -6005,6 +6013,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         m = m or dict()
         if m.get('AddressIpVersion') is not None:
             self.address_ip_version = m.get('AddressIpVersion')
+        if m.get('AutoAcceptEnabled') is not None:
+            self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('Payer') is not None:
             self.payer = m.get('Payer')
         if m.get('ResourceGroupId') is not None:
@@ -6026,6 +6036,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListVpcEndpointServicesByEndUserResponseBodyServicesTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VpcEndpointPolicySupported') is not None:
+            self.vpc_endpoint_policy_supported = m.get('VpcEndpointPolicySupported')
         if m.get('ZoneAffinityEnabled') is not None:
             self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         if m.get('Zones') is not None:
@@ -7678,6 +7690,7 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         endpoint_name: str = None,
         policy_document: str = None,
         region_id: str = None,
+        reset_policy: bool = None,
         zone_affinity_enabled: bool = None,
     ):
         # The protocol. Valid values:
@@ -7713,6 +7726,7 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reset_policy = reset_policy
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
@@ -7740,6 +7754,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             result['PolicyDocument'] = self.policy_document
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reset_policy is not None:
+            result['ResetPolicy'] = self.reset_policy
         if self.zone_affinity_enabled is not None:
             result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         return result
@@ -7762,6 +7778,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             self.policy_document = m.get('PolicyDocument')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResetPolicy') is not None:
+            self.reset_policy = m.get('ResetPolicy')
         if m.get('ZoneAffinityEnabled') is not None:
             self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         return self

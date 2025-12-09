@@ -1,3 +1,9 @@
+2025-12-09 Version: 4.0.5
+- Update API ListVpcEndpointServicesByEndUser: add response parameters Body.Services.$.AutoAcceptEnabled.
+- Update API ListVpcEndpointServicesByEndUser: add response parameters Body.Services.$.VpcEndpointPolicySupported.
+- Update API UpdateVpcEndpointAttribute: add request parameters ResetPolicy.
+
+
 2025-12-08 Version: 4.0.4
 - Update API EnableVpcEndpointConnection: add request parameters TrafficControlMode.
 - Update API ListVpcEndpointConnections: add response parameters Body.Connections.$.TrafficControlMode.

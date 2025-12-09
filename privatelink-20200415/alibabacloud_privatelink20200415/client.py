@@ -4469,6 +4469,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reset_policy):
+            query['ResetPolicy'] = request.reset_policy
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -4524,6 +4526,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reset_policy):
+            query['ResetPolicy'] = request.reset_policy
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
