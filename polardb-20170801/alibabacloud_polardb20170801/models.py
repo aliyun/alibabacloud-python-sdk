@@ -3580,6 +3580,7 @@ class CreateApplicationRequest(TeaModel):
         application_type: str = None,
         architecture: str = None,
         auto_renew: bool = None,
+        auto_use_coupon: bool = None,
         components: List[CreateApplicationRequestComponents] = None,
         dbcluster_id: str = None,
         description: str = None,
@@ -3588,6 +3589,7 @@ class CreateApplicationRequest(TeaModel):
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
+        promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         used_time: str = None,
@@ -3600,6 +3602,7 @@ class CreateApplicationRequest(TeaModel):
         # This parameter is required.
         self.architecture = architecture
         self.auto_renew = auto_renew
+        self.auto_use_coupon = auto_use_coupon
         self.components = components
         self.dbcluster_id = dbcluster_id
         self.description = description
@@ -3608,6 +3611,7 @@ class CreateApplicationRequest(TeaModel):
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
+        self.promotion_code = promotion_code
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.used_time = used_time
@@ -3637,6 +3641,8 @@ class CreateApplicationRequest(TeaModel):
             result['Architecture'] = self.architecture
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         result['Components'] = []
         if self.components is not None:
             for k in self.components:
@@ -3657,6 +3663,8 @@ class CreateApplicationRequest(TeaModel):
             result['Period'] = self.period
         if self.polar_fsinstance_id is not None:
             result['PolarFSInstanceId'] = self.polar_fsinstance_id
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -3679,6 +3687,8 @@ class CreateApplicationRequest(TeaModel):
             self.architecture = m.get('Architecture')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         self.components = []
         if m.get('Components') is not None:
             for k in m.get('Components'):
@@ -3701,6 +3711,8 @@ class CreateApplicationRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PolarFSInstanceId') is not None:
             self.polar_fsinstance_id = m.get('PolarFSInstanceId')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -3722,6 +3734,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         application_type: str = None,
         architecture: str = None,
         auto_renew: bool = None,
+        auto_use_coupon: bool = None,
         components_shrink: str = None,
         dbcluster_id: str = None,
         description: str = None,
@@ -3730,6 +3743,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
+        promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         used_time: str = None,
@@ -3742,6 +3756,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         # This parameter is required.
         self.architecture = architecture
         self.auto_renew = auto_renew
+        self.auto_use_coupon = auto_use_coupon
         self.components_shrink = components_shrink
         self.dbcluster_id = dbcluster_id
         self.description = description
@@ -3750,6 +3765,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
+        self.promotion_code = promotion_code
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.used_time = used_time
@@ -3772,6 +3788,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Architecture'] = self.architecture
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.components_shrink is not None:
             result['Components'] = self.components_shrink
         if self.dbcluster_id is not None:
@@ -3788,6 +3806,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Period'] = self.period
         if self.polar_fsinstance_id is not None:
             result['PolarFSInstanceId'] = self.polar_fsinstance_id
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -3810,6 +3830,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.architecture = m.get('Architecture')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('Components') is not None:
             self.components_shrink = m.get('Components')
         if m.get('DBClusterId') is not None:
@@ -3826,6 +3848,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PolarFSInstanceId') is not None:
             self.polar_fsinstance_id = m.get('PolarFSInstanceId')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -4697,6 +4721,7 @@ class CreateDBClusterRequest(TeaModel):
         allow_shut_down: str = None,
         architecture: str = None,
         auto_renew: bool = None,
+        auto_use_coupon: bool = None,
         backup_retention_policy_on_cluster_deletion: str = None,
         bursting_enabled: str = None,
         client_token: str = None,
@@ -4724,6 +4749,7 @@ class CreateDBClusterRequest(TeaModel):
         parameter_group_id: str = None,
         pay_type: str = None,
         period: str = None,
+        promotion_code: str = None,
         provisioned_iops: int = None,
         proxy_class: str = None,
         proxy_type: str = None,
@@ -4777,6 +4803,7 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # > This parameter takes effect only when **PayType** is set to **Prepaid**.
         self.auto_renew = auto_renew
+        self.auto_use_coupon = auto_use_coupon
         # Backup retention policy upon cluster deletion, with valid values as follows:
         # * **ALL**: Permanently retain all backups.
         # * **LATEST**: Permanently retain the latest backup (automatically backed up before deletion).
@@ -4956,6 +4983,7 @@ class CreateDBClusterRequest(TeaModel):
         # - **Year**: Yearly subscription.
         # - **Month**: Monthly subscription.
         self.period = period
+        self.promotion_code = promotion_code
         # <p id="p_wyg_t4a_glm">The provisioned read and write IOPS for ESSD AutoPL cloud disks. Possible values: 0 to min{50,000, 1000*capacity-Baseline Performance}.</p>
         # <p id="p_6de_jxy_k2g">Baseline Performance = min{1,800+50*capacity, 50000}.</p>
         # <note id="note_7kj_j0o_rgs">This parameter is supported only when StorageType is ESSDAUTOPL.</note>
@@ -5122,6 +5150,8 @@ class CreateDBClusterRequest(TeaModel):
             result['Architecture'] = self.architecture
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.backup_retention_policy_on_cluster_deletion is not None:
             result['BackupRetentionPolicyOnClusterDeletion'] = self.backup_retention_policy_on_cluster_deletion
         if self.bursting_enabled is not None:
@@ -5176,6 +5206,8 @@ class CreateDBClusterRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.period is not None:
             result['Period'] = self.period
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.provisioned_iops is not None:
             result['ProvisionedIops'] = self.provisioned_iops
         if self.proxy_class is not None:
@@ -5250,6 +5282,8 @@ class CreateDBClusterRequest(TeaModel):
             self.architecture = m.get('Architecture')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('BackupRetentionPolicyOnClusterDeletion') is not None:
             self.backup_retention_policy_on_cluster_deletion = m.get('BackupRetentionPolicyOnClusterDeletion')
         if m.get('BurstingEnabled') is not None:
@@ -5304,6 +5338,8 @@ class CreateDBClusterRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ProvisionedIops') is not None:
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('ProxyClass') is not None:
@@ -6396,6 +6432,7 @@ class CreateDBNodesRequestDBNode(TeaModel):
 class CreateDBNodesRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         cloud_provider: str = None,
         dbcluster_id: str = None,
@@ -6407,10 +6444,12 @@ class CreateDBNodesRequest(TeaModel):
         owner_id: int = None,
         planned_end_time: str = None,
         planned_start_time: str = None,
+        promotion_code: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         self.cloud_provider = cloud_provider
@@ -6458,6 +6497,7 @@ class CreateDBNodesRequest(TeaModel):
         # >- The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
         # >- If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
         self.planned_start_time = planned_start_time
+        self.promotion_code = promotion_code
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -6475,6 +6515,8 @@ class CreateDBNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.cloud_provider is not None:
@@ -6499,6 +6541,8 @@ class CreateDBNodesRequest(TeaModel):
             result['PlannedEndTime'] = self.planned_end_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -6509,6 +6553,8 @@ class CreateDBNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CloudProvider') is not None:
@@ -6534,6 +6580,8 @@ class CreateDBNodesRequest(TeaModel):
             self.planned_end_time = m.get('PlannedEndTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -8478,16 +8526,19 @@ class CreateServiceLinkedRoleResponse(TeaModel):
 class CreateStoragePlanRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         owner_account: str = None,
         owner_id: int = None,
         period: str = None,
+        promotion_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         storage_class: str = None,
         storage_type: str = None,
         used_time: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
@@ -8499,6 +8550,7 @@ class CreateStoragePlanRequest(TeaModel):
         # 
         # This parameter is required.
         self.period = period
+        self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The capacity of the storage plan. Unit: GB. Valid values: 50, 100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, and 200000
@@ -8529,6 +8581,8 @@ class CreateStoragePlanRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.owner_account is not None:
@@ -8537,6 +8591,8 @@ class CreateStoragePlanRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.period is not None:
             result['Period'] = self.period
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8551,6 +8607,8 @@ class CreateStoragePlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('OwnerAccount') is not None:
@@ -8559,6 +8617,8 @@ class CreateStoragePlanRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -12485,6 +12545,7 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
         dbcluster_status: str = None,
         dbnodes: List[DescribeAIDBClusterAttributeResponseBodyDBNodes] = None,
         dbversion: str = None,
+        ecs_security_group_id: str = None,
         endpoint_list: List[DescribeAIDBClusterAttributeResponseBodyEndpointList] = None,
         expire_time: str = None,
         expired: bool = None,
@@ -12513,6 +12574,7 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
         self.dbcluster_status = dbcluster_status
         self.dbnodes = dbnodes
         self.dbversion = dbversion
+        self.ecs_security_group_id = ecs_security_group_id
         self.endpoint_list = endpoint_list
         self.expire_time = expire_time
         self.expired = expired
@@ -12571,6 +12633,8 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
                 result['DBNodes'].append(k.to_map() if k else None)
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
+        if self.ecs_security_group_id is not None:
+            result['EcsSecurityGroupId'] = self.ecs_security_group_id
         result['EndpointList'] = []
         if self.endpoint_list is not None:
             for k in self.endpoint_list:
@@ -12636,6 +12700,8 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
                 self.dbnodes.append(temp_model.from_map(k))
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
+        if m.get('EcsSecurityGroupId') is not None:
+            self.ecs_security_group_id = m.get('EcsSecurityGroupId')
         self.endpoint_list = []
         if m.get('EndpointList') is not None:
             for k in m.get('EndpointList'):
@@ -40840,6 +40906,7 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
         category: str = None,
         client_download_path: str = None,
         create_time: str = None,
+        custom_bucket_path: str = None,
         dbtype: str = None,
         expire_time: str = None,
         expired: str = None,
@@ -40874,6 +40941,7 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
         self.category = category
         self.client_download_path = client_download_path
         self.create_time = create_time
+        self.custom_bucket_path = custom_bucket_path
         self.dbtype = dbtype
         self.expire_time = expire_time
         self.expired = expired
@@ -40927,6 +40995,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             result['ClientDownloadPath'] = self.client_download_path
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.custom_bucket_path is not None:
+            result['CustomBucketPath'] = self.custom_bucket_path
         if self.dbtype is not None:
             result['DBType'] = self.dbtype
         if self.expire_time is not None:
@@ -40997,6 +41067,8 @@ class DescribePolarFsAttributeResponseBody(TeaModel):
             self.client_download_path = m.get('ClientDownloadPath')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CustomBucketPath') is not None:
+            self.custom_bucket_path = m.get('CustomBucketPath')
         if m.get('DBType') is not None:
             self.dbtype = m.get('DBType')
         if m.get('ExpireTime') is not None:
@@ -52506,11 +52578,14 @@ class ModifyDBClusterAndNodesParametersResponse(TeaModel):
 class ModifyDBClusterArchRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         dbcluster_id: str = None,
         hot_standby_cluster: str = None,
+        promotion_code: str = None,
         region_id: str = None,
         standby_az: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable the hot standby storage cluster feature. Valid values:
@@ -52518,6 +52593,7 @@ class ModifyDBClusterArchRequest(TeaModel):
         # *   **on**: enables hot standby storage cluster.
         # *   **equal**: Enable a peer-to-peer cluster.
         self.hot_standby_cluster = hot_standby_cluster
+        self.promotion_code = promotion_code
         # The region ID.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
@@ -52538,10 +52614,14 @@ class ModifyDBClusterArchRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.hot_standby_cluster is not None:
             result['HotStandbyCluster'] = self.hot_standby_cluster
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.standby_az is not None:
@@ -52550,10 +52630,14 @@ class ModifyDBClusterArchRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('HotStandbyCluster') is not None:
             self.hot_standby_cluster = m.get('HotStandbyCluster')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StandbyAZ') is not None:
@@ -55185,14 +55269,17 @@ class ModifyDBClusterServerlessConfResponse(TeaModel):
 class ModifyDBClusterStoragePerformanceRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         bursting_enabled: str = None,
         client_token: str = None,
         dbcluster_id: str = None,
         modify_type: str = None,
+        promotion_code: str = None,
         provisioned_iops: int = None,
         resource_owner_id: int = None,
         storage_type: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # Specifies whether to enable the I/O Burst feature for the ESSD AutoPL disk. Valid value:
         # 
         # *   **true**\
@@ -55204,6 +55291,7 @@ class ModifyDBClusterStoragePerformanceRequest(TeaModel):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.modify_type = modify_type
+        self.promotion_code = promotion_code
         self.provisioned_iops = provisioned_iops
         self.resource_owner_id = resource_owner_id
         self.storage_type = storage_type
@@ -55217,6 +55305,8 @@ class ModifyDBClusterStoragePerformanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.bursting_enabled is not None:
             result['BurstingEnabled'] = self.bursting_enabled
         if self.client_token is not None:
@@ -55225,6 +55315,8 @@ class ModifyDBClusterStoragePerformanceRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.modify_type is not None:
             result['ModifyType'] = self.modify_type
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.provisioned_iops is not None:
             result['ProvisionedIops'] = self.provisioned_iops
         if self.resource_owner_id is not None:
@@ -55235,6 +55327,8 @@ class ModifyDBClusterStoragePerformanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('BurstingEnabled') is not None:
             self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('ClientToken') is not None:
@@ -55243,6 +55337,8 @@ class ModifyDBClusterStoragePerformanceRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('ModifyType') is not None:
             self.modify_type = m.get('ModifyType')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ProvisionedIops') is not None:
             self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('ResourceOwnerId') is not None:
@@ -55335,6 +55431,7 @@ class ModifyDBClusterStoragePerformanceResponse(TeaModel):
 class ModifyDBClusterStorageSpaceRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         cloud_provider: str = None,
         dbcluster_id: str = None,
@@ -55342,11 +55439,13 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
         owner_id: int = None,
         planned_end_time: str = None,
         planned_start_time: str = None,
+        promotion_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         storage_space: int = None,
         sub_category: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         self.cloud_provider = cloud_provider
@@ -55365,6 +55464,7 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
         # >- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
         # >- If this parameter is left empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
+        self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The storage capacity that you can select when you change the cluster. Unit: GB.
@@ -55388,6 +55488,8 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.cloud_provider is not None:
@@ -55402,6 +55504,8 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
             result['PlannedEndTime'] = self.planned_end_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -55414,6 +55518,8 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CloudProvider') is not None:
@@ -55428,6 +55534,8 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
             self.planned_end_time = m.get('PlannedEndTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -56310,6 +56418,7 @@ class ModifyDBEndpointAddressResponse(TeaModel):
 class ModifyDBNodeClassRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         cloud_provider: str = None,
         dbcluster_id: str = None,
@@ -56321,10 +56430,12 @@ class ModifyDBNodeClassRequest(TeaModel):
         planned_end_time: str = None,
         planned_flashing_off_time: str = None,
         planned_start_time: str = None,
+        promotion_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         self.cloud_provider = cloud_provider
@@ -56363,6 +56474,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         # >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
         # >*   If this parameter is left empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
+        self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The category of the cluster. Valid values:
@@ -56380,6 +56492,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.cloud_provider is not None:
@@ -56402,6 +56516,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             result['PlannedFlashingOffTime'] = self.planned_flashing_off_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -56412,6 +56528,8 @@ class ModifyDBNodeClassRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CloudProvider') is not None:
@@ -56434,6 +56552,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             self.planned_flashing_off_time = m.get('PlannedFlashingOffTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -57147,6 +57267,7 @@ class ModifyDBNodesClassRequestDBNode(TeaModel):
 class ModifyDBNodesClassRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         cloud_provider: str = None,
         dbcluster_id: str = None,
@@ -57157,10 +57278,12 @@ class ModifyDBNodesClassRequest(TeaModel):
         planned_end_time: str = None,
         planned_flashing_off_time: str = None,
         planned_start_time: str = None,
+        promotion_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         self.cloud_provider = cloud_provider
@@ -57193,6 +57316,7 @@ class ModifyDBNodesClassRequest(TeaModel):
         # >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
         # >*   If this parameter is left empty, the upgrade task is immediately performed.
         self.planned_start_time = planned_start_time
+        self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The category of the cluster. Valid values:
@@ -57213,6 +57337,8 @@ class ModifyDBNodesClassRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.cloud_provider is not None:
@@ -57235,6 +57361,8 @@ class ModifyDBNodesClassRequest(TeaModel):
             result['PlannedFlashingOffTime'] = self.planned_flashing_off_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -57245,6 +57373,8 @@ class ModifyDBNodesClassRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('CloudProvider') is not None:
@@ -57268,6 +57398,8 @@ class ModifyDBNodesClassRequest(TeaModel):
             self.planned_flashing_off_time = m.get('PlannedFlashingOffTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -62499,6 +62631,7 @@ class TempModifyDBNodeRequestDBNode(TeaModel):
 class TempModifyDBNodeRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         dbcluster_id: str = None,
         dbnode: List[TempModifyDBNodeRequestDBNode] = None,
@@ -62506,10 +62639,12 @@ class TempModifyDBNodeRequest(TeaModel):
         operation_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        promotion_code: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cluster ID.
@@ -62532,6 +62667,7 @@ class TempModifyDBNodeRequest(TeaModel):
         self.operation_type = operation_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The rollback time of the configuration for the temporary upgrade. Specify the time in the ISO 8601 standard in the YYYY-MM-DD hh:mm:ss format.
@@ -62553,6 +62689,8 @@ class TempModifyDBNodeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbcluster_id is not None:
@@ -62569,6 +62707,8 @@ class TempModifyDBNodeRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -62579,6 +62719,8 @@ class TempModifyDBNodeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBClusterId') is not None:
@@ -62596,6 +62738,8 @@ class TempModifyDBNodeRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -62698,18 +62842,21 @@ class TempModifyDBNodeResponse(TeaModel):
 class TransformDBClusterPayTypeRequest(TeaModel):
     def __init__(
         self,
+        auto_use_coupon: bool = None,
         client_token: str = None,
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         pay_type: str = None,
         period: str = None,
+        promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         used_time: str = None,
     ):
+        self.auto_use_coupon = auto_use_coupon
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cluster ID.
@@ -62732,6 +62879,7 @@ class TransformDBClusterPayTypeRequest(TeaModel):
         # 
         # >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
         self.period = period
+        self.promotion_code = promotion_code
         # The ID of the region.
         # 
         # This parameter is required.
@@ -62757,6 +62905,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbcluster_id is not None:
@@ -62769,6 +62919,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.period is not None:
             result['Period'] = self.period
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -62783,6 +62935,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBClusterId') is not None:
@@ -62795,6 +62949,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:

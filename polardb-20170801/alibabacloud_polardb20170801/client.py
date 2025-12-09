@@ -2860,6 +2860,8 @@ class Client(OpenApiClient):
             query['Architecture'] = request.architecture
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.components_shrink):
             query['Components'] = request.components_shrink
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2876,6 +2878,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.polar_fsinstance_id):
             query['PolarFSInstanceId'] = request.polar_fsinstance_id
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -2933,6 +2937,8 @@ class Client(OpenApiClient):
             query['Architecture'] = request.architecture
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.components_shrink):
             query['Components'] = request.components_shrink
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2949,6 +2955,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.polar_fsinstance_id):
             query['PolarFSInstanceId'] = request.polar_fsinstance_id
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -3562,6 +3570,8 @@ class Client(OpenApiClient):
             query['Architecture'] = request.architecture
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
         if not UtilClient.is_unset(request.bursting_enabled):
@@ -3616,6 +3626,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
         if not UtilClient.is_unset(request.proxy_class):
@@ -3717,6 +3729,8 @@ class Client(OpenApiClient):
             query['Architecture'] = request.architecture
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
         if not UtilClient.is_unset(request.bursting_enabled):
@@ -3771,6 +3785,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
         if not UtilClient.is_unset(request.proxy_class):
@@ -4524,6 +4540,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -4546,6 +4564,8 @@ class Client(OpenApiClient):
             query['PlannedEndTime'] = request.planned_end_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -4585,6 +4605,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -4607,6 +4629,8 @@ class Client(OpenApiClient):
             query['PlannedEndTime'] = request.planned_end_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -6036,6 +6060,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.owner_account):
@@ -6044,6 +6070,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6087,6 +6115,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.owner_account):
@@ -6095,6 +6125,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -26746,10 +26778,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.hot_standby_cluster):
             query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.standby_az):
@@ -26787,10 +26823,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.hot_standby_cluster):
             query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.standby_az):
@@ -28890,6 +28930,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.bursting_enabled):
             query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.client_token):
@@ -28898,6 +28940,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.modify_type):
             query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -28937,6 +28981,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.bursting_enabled):
             query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.client_token):
@@ -28945,6 +28991,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.modify_type):
             query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -29010,6 +29058,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -29024,6 +29074,8 @@ class Client(OpenApiClient):
             query['PlannedEndTime'] = request.planned_end_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -29065,6 +29117,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -29079,6 +29133,8 @@ class Client(OpenApiClient):
             query['PlannedEndTime'] = request.planned_end_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -29794,6 +29850,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -29816,6 +29874,8 @@ class Client(OpenApiClient):
             query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -29855,6 +29915,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -29877,6 +29939,8 @@ class Client(OpenApiClient):
             query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -30422,6 +30486,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -30442,6 +30508,8 @@ class Client(OpenApiClient):
             query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -30481,6 +30549,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.cloud_provider):
@@ -30501,6 +30571,8 @@ class Client(OpenApiClient):
             query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -34374,6 +34446,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -34388,6 +34462,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -34427,6 +34503,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -34441,6 +34519,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -34511,6 +34591,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -34523,6 +34605,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -34571,6 +34655,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -34583,6 +34669,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.promotion_code):
+            query['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):

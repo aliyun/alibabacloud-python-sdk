@@ -1,3 +1,30 @@
+2025-12-09 Version: 6.1.10
+- Update API CreateApplication: add request parameters AutoUseCoupon.
+- Update API CreateApplication: add request parameters PromotionCode.
+- Update API CreateDBCluster: add request parameters AutoUseCoupon.
+- Update API CreateDBCluster: add request parameters PromotionCode.
+- Update API CreateDBNodes: add request parameters AutoUseCoupon.
+- Update API CreateDBNodes: add request parameters PromotionCode.
+- Update API CreateStoragePlan: add request parameters AutoUseCoupon.
+- Update API CreateStoragePlan: add request parameters PromotionCode.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.EcsSecurityGroupId.
+- Update API DescribePolarFsAttribute: add response parameters Body.CustomBucketPath.
+- Update API ModifyDBClusterArch: add request parameters AutoUseCoupon.
+- Update API ModifyDBClusterArch: add request parameters PromotionCode.
+- Update API ModifyDBClusterStoragePerformance: add request parameters AutoUseCoupon.
+- Update API ModifyDBClusterStoragePerformance: add request parameters PromotionCode.
+- Update API ModifyDBClusterStorageSpace: add request parameters AutoUseCoupon.
+- Update API ModifyDBClusterStorageSpace: add request parameters PromotionCode.
+- Update API ModifyDBNodeClass: add request parameters AutoUseCoupon.
+- Update API ModifyDBNodeClass: add request parameters PromotionCode.
+- Update API ModifyDBNodesClass: add request parameters AutoUseCoupon.
+- Update API ModifyDBNodesClass: add request parameters PromotionCode.
+- Update API TempModifyDBNode: add request parameters AutoUseCoupon.
+- Update API TempModifyDBNode: add request parameters PromotionCode.
+- Update API TransformDBClusterPayType: add request parameters AutoUseCoupon.
+- Update API TransformDBClusterPayType: add request parameters PromotionCode.
+
+
 2025-11-28 Version: 6.1.9
 - Generated python 2017-08-01 for polardb.
 
