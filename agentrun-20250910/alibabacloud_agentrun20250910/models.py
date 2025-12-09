@@ -68,12 +68,18 @@ class CodeConfiguration(TeaModel):
 class ContainerConfiguration(TeaModel):
     def __init__(
         self,
+        acr_instance_id: str = None,
         command: List[str] = None,
         image: str = None,
+        image_registry_type: str = None,
     ):
+        # 阿里云容器镜像服务（ACR）的实例ID或名称
+        self.acr_instance_id = acr_instance_id
         # 在容器中运行的命令（例如：[\"python3\", \"app.py\"]）
         self.command = command
         self.image = image
+        # 容器镜像的来源类型，支持ACR（阿里云容器镜像服务）、ACREE（阿里云容器镜像服务企业版）、CUSTOM（自定义镜像仓库）
+        self.image_registry_type = image_registry_type
 
     def validate(self):
         pass
@@ -84,18 +90,26 @@ class ContainerConfiguration(TeaModel):
             return _map
 
         result = dict()
+        if self.acr_instance_id is not None:
+            result['acrInstanceId'] = self.acr_instance_id
         if self.command is not None:
             result['command'] = self.command
         if self.image is not None:
             result['image'] = self.image
+        if self.image_registry_type is not None:
+            result['imageRegistryType'] = self.image_registry_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('acrInstanceId') is not None:
+            self.acr_instance_id = m.get('acrInstanceId')
         if m.get('command') is not None:
             self.command = m.get('command')
         if m.get('image') is not None:
             self.image = m.get('image')
+        if m.get('imageRegistryType') is not None:
+            self.image_registry_type = m.get('imageRegistryType')
         return self
 
 
@@ -5171,8 +5185,8 @@ class ModelService(TeaModel):
         credential_name: str = None,
         description: str = None,
         last_updated_at: str = None,
-        mode_service_id: str = None,
         model_info_configs: List[ModelInfoConfig] = None,
+        model_service_id: str = None,
         model_service_name: str = None,
         model_type: str = None,
         network_configuration: NetworkConfiguration = None,
@@ -5185,8 +5199,8 @@ class ModelService(TeaModel):
         self.credential_name = credential_name
         self.description = description
         self.last_updated_at = last_updated_at
-        self.mode_service_id = mode_service_id
         self.model_info_configs = model_info_configs
+        self.model_service_id = model_service_id
         self.model_service_name = model_service_name
         self.model_type = model_type
         self.network_configuration = network_configuration
@@ -5219,12 +5233,12 @@ class ModelService(TeaModel):
             result['description'] = self.description
         if self.last_updated_at is not None:
             result['lastUpdatedAt'] = self.last_updated_at
-        if self.mode_service_id is not None:
-            result['modeServiceId'] = self.mode_service_id
         result['modelInfoConfigs'] = []
         if self.model_info_configs is not None:
             for k in self.model_info_configs:
                 result['modelInfoConfigs'].append(k.to_map() if k else None)
+        if self.model_service_id is not None:
+            result['modelServiceId'] = self.model_service_id
         if self.model_service_name is not None:
             result['modelServiceName'] = self.model_service_name
         if self.model_type is not None:
@@ -5251,13 +5265,13 @@ class ModelService(TeaModel):
             self.description = m.get('description')
         if m.get('lastUpdatedAt') is not None:
             self.last_updated_at = m.get('lastUpdatedAt')
-        if m.get('modeServiceId') is not None:
-            self.mode_service_id = m.get('modeServiceId')
         self.model_info_configs = []
         if m.get('modelInfoConfigs') is not None:
             for k in m.get('modelInfoConfigs'):
                 temp_model = ModelInfoConfig()
                 self.model_info_configs.append(temp_model.from_map(k))
+        if m.get('modelServiceId') is not None:
+            self.model_service_id = m.get('modelServiceId')
         if m.get('modelServiceName') is not None:
             self.model_service_name = m.get('modelServiceName')
         if m.get('modelType') is not None:
@@ -5537,7 +5551,7 @@ class Template(TeaModel):
         credential_configuration: CredentialConfiguration = None,
         description: str = None,
         disk_size: int = None,
-        environment_variables: str = None,
+        environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         last_updated_at: str = None,
         log_configuration: LogConfiguration = None,
@@ -5552,7 +5566,7 @@ class Template(TeaModel):
         status: str = None,
         status_reason: str = None,
         template_arn: str = None,
-        template_configuration: str = None,
+        template_configuration: Dict[str, Any] = None,
         template_id: str = None,
         template_name: str = None,
         template_type: str = None,
