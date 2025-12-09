@@ -22104,6 +22104,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_vendor_account_aklist_with_options_async(request, runtime)
 
+    def describe_cloud_vendor_product_template_config_with_options(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorProductTemplateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCloudVendorProductTemplateConfigResponse:
+        """
+        @summary 获取厂商云产品接入模板
+        
+        @param request: DescribeCloudVendorProductTemplateConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudVendorProductTemplateConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudVendorProductTemplateConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudVendorProductTemplateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_vendor_product_template_config_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorProductTemplateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCloudVendorProductTemplateConfigResponse:
+        """
+        @summary 获取厂商云产品接入模板
+        
+        @param request: DescribeCloudVendorProductTemplateConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudVendorProductTemplateConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudVendorProductTemplateConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudVendorProductTemplateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_vendor_product_template_config(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorProductTemplateConfigRequest,
+    ) -> sas_20181203_models.DescribeCloudVendorProductTemplateConfigResponse:
+        """
+        @summary 获取厂商云产品接入模板
+        
+        @param request: DescribeCloudVendorProductTemplateConfigRequest
+        @return: DescribeCloudVendorProductTemplateConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_vendor_product_template_config_with_options(request, runtime)
+
+    async def describe_cloud_vendor_product_template_config_async(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorProductTemplateConfigRequest,
+    ) -> sas_20181203_models.DescribeCloudVendorProductTemplateConfigResponse:
+        """
+        @summary 获取厂商云产品接入模板
+        
+        @param request: DescribeCloudVendorProductTemplateConfigRequest
+        @return: DescribeCloudVendorProductTemplateConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_vendor_product_template_config_with_options_async(request, runtime)
+
     def describe_cloud_vendor_trial_config_with_options(
         self,
         request: sas_20181203_models.DescribeCloudVendorTrialConfigRequest,
@@ -27280,6 +27380,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.risk_status):
             query['RiskStatus'] = request.risk_status
         if not UtilClient.is_unset(request.scan_type):
@@ -27327,6 +27429,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.risk_status):
             query['RiskStatus'] = request.risk_status
         if not UtilClient.is_unset(request.scan_type):
@@ -80754,6 +80858,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.user_agreement):
             query['UserAgreement'] = request.user_agreement
         req = open_api_models.OpenApiRequest(
@@ -80793,6 +80899,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.user_agreement):
             query['UserAgreement'] = request.user_agreement
         req = open_api_models.OpenApiRequest(

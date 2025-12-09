@@ -1,3 +1,9 @@
+2025-12-09 Version: 7.1.0
+- Support API DescribeCloudVendorProductTemplateConfig.
+- Update API DescribeEmgVulItem: add request parameters ResourceDirectoryAccountId.
+- Update API ModifyEmgVulSubmit: add request parameters ResourceDirectoryAccountId.
+
+
 2025-12-05 Version: 7.0.5
 - Update API ListAgentlessRegion: add response parameters Body.VendorRegionList.
 
