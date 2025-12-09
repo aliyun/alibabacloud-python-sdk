@@ -1,3 +1,10 @@
+2025-12-09 Version: 1.4.0
+- Support API ListTagResources.
+- Support API MoveResourceGroup.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2025-12-08 Version: 1.3.0
 - Support API AssignCertificateCount.
 - Support API ListAllEndEntityInstance.
