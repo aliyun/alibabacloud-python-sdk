@@ -2495,6 +2495,385 @@ class CreateAirflowLoginTokenResponse(TeaModel):
         return self
 
 
+class CreateDataAgentSessionRequestSessionConfig(TeaModel):
+    def __init__(
+        self,
+        custom_agent_id: str = None,
+        custom_agent_stage: str = None,
+        enable_search: bool = None,
+        language: str = None,
+        mode: str = None,
+    ):
+        self.custom_agent_id = custom_agent_id
+        self.custom_agent_stage = custom_agent_stage
+        self.enable_search = enable_search
+        self.language = language
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_agent_id is not None:
+            result['CustomAgentId'] = self.custom_agent_id
+        if self.custom_agent_stage is not None:
+            result['CustomAgentStage'] = self.custom_agent_stage
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomAgentId') is not None:
+            self.custom_agent_id = m.get('CustomAgentId')
+        if m.get('CustomAgentStage') is not None:
+            self.custom_agent_stage = m.get('CustomAgentStage')
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class CreateDataAgentSessionRequest(TeaModel):
+    def __init__(
+        self,
+        dmsunit: str = None,
+        file: str = None,
+        session_config: CreateDataAgentSessionRequestSessionConfig = None,
+        title: str = None,
+        workspace_id: str = None,
+    ):
+        self.dmsunit = dmsunit
+        self.file = file
+        self.session_config = session_config
+        self.title = title
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.session_config:
+            self.session_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dmsunit is not None:
+            result['DMSUnit'] = self.dmsunit
+        if self.file is not None:
+            result['File'] = self.file
+        if self.session_config is not None:
+            result['SessionConfig'] = self.session_config.to_map()
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DMSUnit') is not None:
+            self.dmsunit = m.get('DMSUnit')
+        if m.get('File') is not None:
+            self.file = m.get('File')
+        if m.get('SessionConfig') is not None:
+            temp_model = CreateDataAgentSessionRequestSessionConfig()
+            self.session_config = temp_model.from_map(m['SessionConfig'])
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDataAgentSessionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dmsunit: str = None,
+        file: str = None,
+        session_config_shrink: str = None,
+        title: str = None,
+        workspace_id: str = None,
+    ):
+        self.dmsunit = dmsunit
+        self.file = file
+        self.session_config_shrink = session_config_shrink
+        self.title = title
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dmsunit is not None:
+            result['DMSUnit'] = self.dmsunit
+        if self.file is not None:
+            result['File'] = self.file
+        if self.session_config_shrink is not None:
+            result['SessionConfig'] = self.session_config_shrink
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DMSUnit') is not None:
+            self.dmsunit = m.get('DMSUnit')
+        if m.get('File') is not None:
+            self.file = m.get('File')
+        if m.get('SessionConfig') is not None:
+            self.session_config_shrink = m.get('SessionConfig')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
+    def __init__(
+        self,
+        custom_agent_id: str = None,
+        custom_agent_stage: str = None,
+        enable_search: bool = None,
+        language: str = None,
+        mode: str = None,
+    ):
+        self.custom_agent_id = custom_agent_id
+        self.custom_agent_stage = custom_agent_stage
+        self.enable_search = enable_search
+        self.language = language
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_agent_id is not None:
+            result['CustomAgentId'] = self.custom_agent_id
+        if self.custom_agent_stage is not None:
+            result['CustomAgentStage'] = self.custom_agent_stage
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomAgentId') is not None:
+            self.custom_agent_id = m.get('CustomAgentId')
+        if m.get('CustomAgentStage') is not None:
+            self.custom_agent_stage = m.get('CustomAgentStage')
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class CreateDataAgentSessionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_status: str = None,
+        create_time: int = None,
+        file: str = None,
+        saved: bool = None,
+        session_config: CreateDataAgentSessionResponseBodyDataSessionConfig = None,
+        session_id: str = None,
+        session_status: str = None,
+        title: str = None,
+    ):
+        # Agent Id
+        self.agent_id = agent_id
+        self.agent_status = agent_status
+        self.create_time = create_time
+        self.file = file
+        self.saved = saved
+        self.session_config = session_config
+        self.session_id = session_id
+        self.session_status = session_status
+        self.title = title
+
+    def validate(self):
+        if self.session_config:
+            self.session_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_status is not None:
+            result['AgentStatus'] = self.agent_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.file is not None:
+            result['File'] = self.file
+        if self.saved is not None:
+            result['Saved'] = self.saved
+        if self.session_config is not None:
+            result['SessionConfig'] = self.session_config.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentStatus') is not None:
+            self.agent_status = m.get('AgentStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('File') is not None:
+            self.file = m.get('File')
+        if m.get('Saved') is not None:
+            self.saved = m.get('Saved')
+        if m.get('SessionConfig') is not None:
+            temp_model = CreateDataAgentSessionResponseBodyDataSessionConfig()
+            self.session_config = temp_model.from_map(m['SessionConfig'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateDataAgentSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateDataAgentSessionResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateDataAgentSessionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDataAgentSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataAgentSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataAgentSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDataLakeDatabaseRequest(TeaModel):
     def __init__(
         self,
@@ -4207,6 +4586,328 @@ class DeleteDataLakeTableResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDataLakeTableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDataAgentSessionRequest(TeaModel):
+    def __init__(
+        self,
+        dmsunit: str = None,
+        session_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.dmsunit = dmsunit
+        self.session_id = session_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dmsunit is not None:
+            result['DMSUnit'] = self.dmsunit
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DMSUnit') is not None:
+            self.dmsunit = m.get('DMSUnit')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DescribeDataAgentSessionResponseBodyDataChatHistoryLocations(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        url: str = None,
+    ):
+        self.key = key
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
+    def __init__(
+        self,
+        custom_agent_id: str = None,
+        custom_agent_stage: str = None,
+        enable_search: bool = None,
+        language: str = None,
+        mode: str = None,
+    ):
+        self.custom_agent_id = custom_agent_id
+        self.custom_agent_stage = custom_agent_stage
+        self.enable_search = enable_search
+        self.language = language
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_agent_id is not None:
+            result['CustomAgentId'] = self.custom_agent_id
+        if self.custom_agent_stage is not None:
+            result['CustomAgentStage'] = self.custom_agent_stage
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomAgentId') is not None:
+            self.custom_agent_id = m.get('CustomAgentId')
+        if m.get('CustomAgentStage') is not None:
+            self.custom_agent_stage = m.get('CustomAgentStage')
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class DescribeDataAgentSessionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_status: str = None,
+        chat_history_locations: List[DescribeDataAgentSessionResponseBodyDataChatHistoryLocations] = None,
+        create_time: int = None,
+        favorite_in_workspace: str = None,
+        file: str = None,
+        saved: bool = None,
+        session_config: DescribeDataAgentSessionResponseBodyDataSessionConfig = None,
+        session_id: str = None,
+        session_status: str = None,
+        title: str = None,
+        user_id: str = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_status = agent_status
+        self.chat_history_locations = chat_history_locations
+        self.create_time = create_time
+        self.favorite_in_workspace = favorite_in_workspace
+        self.file = file
+        self.saved = saved
+        self.session_config = session_config
+        self.session_id = session_id
+        self.session_status = session_status
+        self.title = title
+        self.user_id = user_id
+
+    def validate(self):
+        if self.chat_history_locations:
+            for k in self.chat_history_locations:
+                if k:
+                    k.validate()
+        if self.session_config:
+            self.session_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_status is not None:
+            result['AgentStatus'] = self.agent_status
+        result['ChatHistoryLocations'] = []
+        if self.chat_history_locations is not None:
+            for k in self.chat_history_locations:
+                result['ChatHistoryLocations'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.favorite_in_workspace is not None:
+            result['FavoriteInWorkspace'] = self.favorite_in_workspace
+        if self.file is not None:
+            result['File'] = self.file
+        if self.saved is not None:
+            result['Saved'] = self.saved
+        if self.session_config is not None:
+            result['SessionConfig'] = self.session_config.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentStatus') is not None:
+            self.agent_status = m.get('AgentStatus')
+        self.chat_history_locations = []
+        if m.get('ChatHistoryLocations') is not None:
+            for k in m.get('ChatHistoryLocations'):
+                temp_model = DescribeDataAgentSessionResponseBodyDataChatHistoryLocations()
+                self.chat_history_locations.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FavoriteInWorkspace') is not None:
+            self.favorite_in_workspace = m.get('FavoriteInWorkspace')
+        if m.get('File') is not None:
+            self.file = m.get('File')
+        if m.get('Saved') is not None:
+            self.saved = m.get('Saved')
+        if m.get('SessionConfig') is not None:
+            temp_model = DescribeDataAgentSessionResponseBodyDataSessionConfig()
+            self.session_config = temp_model.from_map(m['SessionConfig'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DescribeDataAgentSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeDataAgentSessionResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeDataAgentSessionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeDataAgentSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataAgentSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataAgentSessionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

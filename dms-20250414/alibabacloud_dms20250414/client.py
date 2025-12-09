@@ -677,6 +677,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_airflow_login_token_with_options_async(request, runtime)
 
+    def create_data_agent_session_with_options(
+        self,
+        tmp_req: dms_20250414_models.CreateDataAgentSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.CreateDataAgentSessionResponse:
+        """
+        @summary CreateDataAgentSession
+        
+        @param tmp_req: CreateDataAgentSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataAgentSessionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_20250414_models.CreateDataAgentSessionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.session_config):
+            request.session_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.file):
+            query['File'] = request.file
+        if not UtilClient.is_unset(request.session_config_shrink):
+            query['SessionConfig'] = request.session_config_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataAgentSession',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.CreateDataAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_session_with_options_async(
+        self,
+        tmp_req: dms_20250414_models.CreateDataAgentSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.CreateDataAgentSessionResponse:
+        """
+        @summary CreateDataAgentSession
+        
+        @param tmp_req: CreateDataAgentSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataAgentSessionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_20250414_models.CreateDataAgentSessionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.session_config):
+            request.session_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.file):
+            query['File'] = request.file
+        if not UtilClient.is_unset(request.session_config_shrink):
+            query['SessionConfig'] = request.session_config_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataAgentSession',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.CreateDataAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_session(
+        self,
+        request: dms_20250414_models.CreateDataAgentSessionRequest,
+    ) -> dms_20250414_models.CreateDataAgentSessionResponse:
+        """
+        @summary CreateDataAgentSession
+        
+        @param request: CreateDataAgentSessionRequest
+        @return: CreateDataAgentSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_agent_session_with_options(request, runtime)
+
+    async def create_data_agent_session_async(
+        self,
+        request: dms_20250414_models.CreateDataAgentSessionRequest,
+    ) -> dms_20250414_models.CreateDataAgentSessionResponse:
+        """
+        @summary CreateDataAgentSession
+        
+        @param request: CreateDataAgentSessionRequest
+        @return: CreateDataAgentSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_agent_session_with_options_async(request, runtime)
+
     def create_data_lake_database_with_options(
         self,
         tmp_req: dms_20250414_models.CreateDataLakeDatabaseRequest,
@@ -1752,6 +1872,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_lake_table_with_options_async(request, runtime)
+
+    def describe_data_agent_session_with_options(
+        self,
+        request: dms_20250414_models.DescribeDataAgentSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.DescribeDataAgentSessionResponse:
+        """
+        @summary DescribeDataAgentSession
+        
+        @param request: DescribeDataAgentSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataAgentSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataAgentSession',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.DescribeDataAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_agent_session_with_options_async(
+        self,
+        request: dms_20250414_models.DescribeDataAgentSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.DescribeDataAgentSessionResponse:
+        """
+        @summary DescribeDataAgentSession
+        
+        @param request: DescribeDataAgentSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataAgentSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataAgentSession',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.DescribeDataAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_agent_session(
+        self,
+        request: dms_20250414_models.DescribeDataAgentSessionRequest,
+    ) -> dms_20250414_models.DescribeDataAgentSessionResponse:
+        """
+        @summary DescribeDataAgentSession
+        
+        @param request: DescribeDataAgentSessionRequest
+        @return: DescribeDataAgentSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_data_agent_session_with_options(request, runtime)
+
+    async def describe_data_agent_session_async(
+        self,
+        request: dms_20250414_models.DescribeDataAgentSessionRequest,
+    ) -> dms_20250414_models.DescribeDataAgentSessionResponse:
+        """
+        @summary DescribeDataAgentSession
+        
+        @param request: DescribeDataAgentSessionRequest
+        @return: DescribeDataAgentSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_data_agent_session_with_options_async(request, runtime)
 
     def get_airflow_with_options(
         self,

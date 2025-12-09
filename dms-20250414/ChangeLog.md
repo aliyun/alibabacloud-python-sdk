@@ -1,3 +1,8 @@
+2025-12-09 Version: 1.4.0
+- Support API CreateDataAgentSession.
+- Support API DescribeDataAgentSession.
+
+
 2025-12-09 Version: 1.3.0
 - Support API GetChatContent.
 - Support API GetNotebookTaskStatus.
