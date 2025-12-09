@@ -69278,6 +69278,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cloud_asset_query_data):
+            query['CloudAssetQueryData'] = request.cloud_asset_query_data
         if not UtilClient.is_unset(request.cloud_asset_types):
             query['CloudAssetTypes'] = request.cloud_asset_types
         if not UtilClient.is_unset(request.criteria):
@@ -69323,6 +69325,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cloud_asset_query_data):
+            query['CloudAssetQueryData'] = request.cloud_asset_query_data
         if not UtilClient.is_unset(request.cloud_asset_types):
             query['CloudAssetTypes'] = request.cloud_asset_types
         if not UtilClient.is_unset(request.criteria):

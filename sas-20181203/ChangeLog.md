@@ -1,3 +1,8 @@
+2025-12-09 Version: 7.1.1
+- Update API DescribeSecureSuggestion: add response parameters Body.Score.
+- Update API ListCloudAssetInstances: add request parameters CloudAssetQueryData.
+
+
 2025-12-09 Version: 7.1.0
 - Support API DescribeCloudVendorProductTemplateConfig.
 - Update API DescribeEmgVulItem: add request parameters ResourceDirectoryAccountId.
