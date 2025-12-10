@@ -342,30 +342,30 @@ class AttachPolicyRequest(TeaModel):
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The name of the object to which you want to attach the policy.
+        # The name of the object to which you want to attach the permission policy.
         # 
-        # *   If you want to attach the policy to a RAM user, specify the name in the \\<UserName>@\\<AccountAlias>.onaliyun.com format. \\<UserName> indicates the name of the RAM user, and \\<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM user belongs.
-        # *   If you want to attach the policy to a RAM user group, specify the name in the \\<GroupName>@group.\\<AccountAlias>.onaliyun.com format. \\<GroupName> indicates the name of the RAM user group, and \\<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM user group belongs.
-        # *   If you want to attach the policy to a RAM role, specify the name in the \\<RoleName>@role.\\<AccountAlias>.onaliyun.com format. \\<RoleName> indicates the name of the RAM role, and \\<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM role belongs.
+        # *   If you want to attach the permission policy to a RAM user, specify the name in the @.onaliyun.com format. indicates the name of the RAM user, and indicates the alias of the Alibaba Cloud account to which the RAM user belongs.
+        # *   If you want to attach the permission policy to a RAM user group, specify the name in the @group..onaliyun.com format. indicates the name of the RAM user group, and indicates the alias of the Alibaba Cloud account to which the RAM user group belongs.
+        # *   If you want to attach the permission policy to a RAM role, specify the name in the @role..onaliyunservice.com format. indicates the name of the RAM role, and indicates the alias of the Alibaba Cloud account to which the RAM role belongs.
         # 
         # >  The alias of an Alibaba Cloud account is a part of the default domain name. You can call the [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html) operation to obtain the alias of an Alibaba Cloud account.
         # 
         # This parameter is required.
         self.principal_name = principal_name
-        # The type of the object to which you want to attach the policy. Valid values:
+        # The type of the object to which you want to attach the permission policy. Valid values:
         # 
         # *   IMSUser: RAM user
         # *   IMSGroup: RAM user group
@@ -373,10 +373,10 @@ class AttachPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.principal_type = principal_type
-        # The effective scope of the policy. You can set this parameter to one of the following items:
+        # The effective scope of the permission policy. Valid values:
         # 
-        # *   ID of a resource group: indicates that the policy takes effect for the resources in the resource group.
-        # *   ID of the Alibaba Cloud account to which the authorized object belongs: indicates that the policy takes effect for the resources within the Alibaba Cloud account.
+        # *   ID of a resource group: indicates that the permission policy takes effect for the resources in the resource group.
+        # *   ID of the Alibaba Cloud account to which the authorized object belongs: indicates that the permission policy takes effect for the resources within the Alibaba Cloud account.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -422,7 +422,7 @@ class AttachPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2209,17 +2209,17 @@ class CreatePolicyRequest(TeaModel):
         policy_document: str = None,
         policy_name: str = None,
     ):
-        # The description of the policy.
+        # The description of the permission policy.
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
         # The document of the policy.
         # 
-        # The document must be 1 to 2,048 characters in length.
+        # The document must be 1 to 6,144 characters in length.
         # 
         # This parameter is required.
         self.policy_document = policy_document
-        # The name of the policy.
+        # The name of the permission policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
@@ -2263,18 +2263,18 @@ class CreatePolicyResponseBodyPolicy(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
-        # The time when the policy was created.
+        # The time when the permission policy was created.
         self.create_date = create_date
-        # The version number of the policy. Default value: v1.
+        # The version number of the permission policy. Default value: v1.
         self.default_version = default_version
-        # The description of the policy.
+        # The description of the permission policy.
         self.description = description
-        # The name of the policy.
+        # The name of the permission policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
 
     def validate(self):
@@ -2319,9 +2319,9 @@ class CreatePolicyResponseBody(TeaModel):
         policy: CreatePolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The information of the policy.
+        # The information about the permission policy.
         self.policy = policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2398,24 +2398,22 @@ class CreatePolicyVersionRequest(TeaModel):
         policy_name: str = None,
         set_as_default: bool = None,
     ):
-        # The document of the policy.
+        # The document of the permission policy.
         # 
-        # The document must be 1 to 2,048 characters in length.
+        # The document must be 1 to 6,144 characters in length.
         # 
         # This parameter is required.
         self.policy_document = policy_document
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # Specifies whether to set the policy version as the default version. Valid values:
+        # Specifies whether to set the policy version as the default version.
         # 
-        # *   false: The policy version is not set as the default version.
-        # *   true: The policy version is set as the default version.
-        # 
-        # Default value: false.
+        # *   false (default)
+        # *   true
         self.set_as_default = set_as_default
 
     def validate(self):
@@ -2494,9 +2492,9 @@ class CreatePolicyVersionResponseBody(TeaModel):
         policy_version: CreatePolicyVersionResponseBodyPolicyVersion = None,
         request_id: str = None,
     ):
-        # The information of the policy version.
+        # The information about the policy version.
         self.policy_version = policy_version
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2871,13 +2869,13 @@ class CreateResourceGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. 
+        # The key of the tag.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. 
+        # The value of the tag.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2913,17 +2911,17 @@ class CreateResourceGroupRequest(TeaModel):
     ):
         # The display name of the resource group.
         # 
-        # The name must be 1 to 50 characters in length.
+        # It must be 1 to 50 characters in length.
         # 
         # This parameter is required.
         self.display_name = display_name
         # The unique identifier of the resource group.
         # 
-        # The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
+        # It must be 2 to 50 characters in length and can contain letters, digits, and hyphens (-). It must start with a letter.
         # 
         # This parameter is required.
         self.name = name
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -2968,12 +2966,7 @@ class CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus(Tea
         region_id: str = None,
         status: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
-        # The status of the resource group. Valid values:
-        # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
         self.status = status
 
     def validate(self):
@@ -3116,7 +3109,7 @@ class CreateResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         resource_group: CreateResourceGroupResponseBodyResourceGroup = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information of the resource group.
         self.resource_group = resource_group
@@ -3196,25 +3189,27 @@ class CreateRoleRequest(TeaModel):
         max_session_duration: int = None,
         role_name: str = None,
     ):
-        # The document of the policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        # The document of the policy that specifies
+        # 
+        # one or more trusted entities to assume the role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         # 
         # >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
         # 
         # This parameter is required.
         self.assume_role_policy_document = assume_role_policy_document
-        # The description of the RAM role.
+        # The description of the role.
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session duration of the role.
         # 
-        # Unit: seconds. Valid values: 3600 to 43200. Default value: 3600.
+        # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
         # If you do not specify this parameter, the default value is used.
         self.max_session_duration = max_session_duration
-        # The name of the RAM role.
+        # The name of the role.
         # 
-        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.role_name = role_name
@@ -3263,21 +3258,21 @@ class CreateRoleResponseBodyRole(TeaModel):
         role_name: str = None,
         role_principal_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.arn = arn
-        # The document of the policy that specifies the trusted entity to assume the RAM role.
+        # The document of the policy in which the entity that can assume the role is specified.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the RAM role was created.
+        # The time when the role was created.
         self.create_date = create_date
-        # The description of the RAM role.
+        # The description of the role.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session duration of the role.
         self.max_session_duration = max_session_duration
-        # The ID of the RAM role.
+        # The ID of the role.
         self.role_id = role_id
-        # The name of the RAM role.
+        # The name of the role.
         self.role_name = role_name
-        # The name of the RAM role after authorization.
+        # The name of the role after authorization.
         self.role_principal_name = role_principal_name
 
     def validate(self):
@@ -3334,9 +3329,9 @@ class CreateRoleResponseBody(TeaModel):
         request_id: str = None,
         role: CreateRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM role.
+        # The information about the role.
         self.role = role
 
     def validate(self):
@@ -3425,7 +3420,7 @@ class CreateServiceLinkedRoleRequest(TeaModel):
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The name of the service.
+        # The service name.
         # 
         # For more information about the service name, see [Alibaba Cloud services that support service-linked roles](https://help.aliyun.com/document_detail/461722.html).
         # 
@@ -3482,8 +3477,8 @@ class CreateServiceLinkedRoleResponseBodyRole(TeaModel):
         self.description = description
         # Indicates whether the role is a service-linked role. Valid values:
         # 
-        # *   true: The role is a service-linked role.
-        # *   false: The role is not a service-linked role.
+        # *   true
+        # *   false
         self.is_service_linked_role = is_service_linked_role
         # The ID of the role.
         self.role_id = role_id
@@ -3546,7 +3541,7 @@ class CreateServiceLinkedRoleResponseBody(TeaModel):
         request_id: str = None,
         role: CreateServiceLinkedRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the role.
         self.role = role
@@ -4287,9 +4282,9 @@ class DeletePolicyRequest(TeaModel):
         self,
         policy_name: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
@@ -4319,7 +4314,7 @@ class DeletePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4389,9 +4384,9 @@ class DeletePolicyVersionRequest(TeaModel):
         policy_name: str = None,
         version_id: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
@@ -4431,7 +4426,7 @@ class DeletePolicyVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4761,7 +4756,7 @@ class DeleteRoleRequest(TeaModel):
         self,
         role_name: str = None,
     ):
-        # The name of the RAM role.
+        # The name of the role.
         # 
         # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
@@ -4793,7 +4788,7 @@ class DeleteRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4895,7 +4890,7 @@ class DeleteServiceLinkedRoleResponseBody(TeaModel):
     ):
         # The ID of the deletion task.
         self.deletion_task_id = deletion_task_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5263,24 +5258,24 @@ class DetachPolicyRequest(TeaModel):
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The name of the object to which the policy is attached.
+        # The name of the object to which you want to attach the permission policy.
         # 
         # This parameter is required.
         self.principal_name = principal_name
-        # The type of the object to which the policy is attached. Valid values:
+        # The type of the object to which you want to attach the permission policy. Valid values:
         # 
         # *   IMSUser: RAM user
         # *   IMSGroup: RAM user group
@@ -5336,7 +5331,7 @@ class DetachPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5615,6 +5610,74 @@ class DisableControlPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableResourceGroupNotificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableResourceGroupNotificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableResourceGroupNotificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableResourceGroupNotificationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6032,6 +6095,74 @@ class EnableResourceDirectoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableResourceDirectoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableResourceGroupNotificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableResourceGroupNotificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableResourceGroupNotificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableResourceGroupNotificationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8023,22 +8154,22 @@ class GetPolicyRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
-        # The language that is used to return the description of the system policy. Valid values:
+        # The language in which you want to return the description of the system permission policy. Valid values:
         # 
         # *   en: English
         # *   zh-CN: Chinese
         # *   ja: Japanese
         self.language = language
-        # The name of the policy.
+        # The name of the permission policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         # 
         # This parameter is required.
         self.policy_type = policy_type
@@ -8083,24 +8214,24 @@ class GetPolicyResponseBodyPolicy(TeaModel):
         policy_type: str = None,
         update_date: str = None,
     ):
-        # The number of times the policy is referenced.
+        # The number of references to the permission policy.
         self.attachment_count = attachment_count
-        # The time when the policy was created.
+        # The time when the permission policy was created.
         self.create_date = create_date
-        # The default version of the policy.
+        # The default version of the permission policy.
         self.default_version = default_version
-        # The description of the policy.
+        # The description of the permission policy.
         self.description = description
-        # The document of the policy.
+        # The document of the permission policy.
         self.policy_document = policy_document
-        # The name of the policy.
+        # The name of the permission policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
-        # The time when the policy was updated.
+        # The time when the permission policy was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -8157,9 +8288,9 @@ class GetPolicyResponseBody(TeaModel):
         policy: GetPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The information of the policy.
+        # The information about the permission policy.
         self.policy = policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8236,16 +8367,16 @@ class GetPolicyVersionRequest(TeaModel):
         policy_type: str = None,
         version_id: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         # 
         # This parameter is required.
         self.policy_type = policy_type
@@ -8294,7 +8425,7 @@ class GetPolicyVersionResponseBodyPolicyVersion(TeaModel):
         self.create_date = create_date
         # Indicates whether the policy version is the default version.
         self.is_default_version = is_default_version
-        # The document of the policy.
+        # The document of the permission policy.
         self.policy_document = policy_document
         # The ID of the policy version.
         self.version_id = version_id
@@ -8337,9 +8468,9 @@ class GetPolicyVersionResponseBody(TeaModel):
         policy_version: GetPolicyVersionResponseBodyPolicyVersion = None,
         request_id: str = None,
     ):
-        # The information of the policy version.
+        # The information about the policy version.
         self.policy_version = policy_version
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8578,12 +8709,14 @@ class GetResourceGroupRequest(TeaModel):
         include_tags: bool = None,
         resource_group_id: str = None,
     ):
-        # The ID of the request.
-        self.include_tags = include_tags
         # Specifies whether to return the information of tags. Valid values:
         # 
         # *   false (default value)
         # *   true
+        self.include_tags = include_tags
+        # The ID of the resource group.
+        # 
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID of the resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -8618,9 +8751,14 @@ class GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus(TeaMod
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource group belongs.
-        self.region_id = region_id
         # The region ID.
+        self.region_id = region_id
+        # The status of the resource group. Valid values:
+        # 
+        # *   Creating: The resource group is being created.
+        # *   OK: The resource group is created.
+        # *   PendingDelete: The resource group is waiting to be deleted.
+        # *   Deleting: The resource group is being deleted.
         self.status = status
 
     def validate(self):
@@ -8688,8 +8826,9 @@ class GetResourceGroupResponseBodyResourceGroupTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag value.
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -8763,30 +8902,25 @@ class GetResourceGroupResponseBodyResourceGroup(TeaModel):
         status: str = None,
         tags: GetResourceGroupResponseBodyResourceGroupTags = None,
     ):
-        # The identifier of the resource group.
+        # The ID of the Alibaba Cloud account to which the resource group belongs.
         self.account_id = account_id
-        # The ID of the resource group.
-        self.create_date = create_date
-        # The status of the resource group. Valid values:
-        # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
-        # *   PendingDelete: The resource group is waiting to be deleted.
-        self.display_name = display_name
-        # The tags that are added to the resource group.
-        self.id = id
         # The time when the resource group was created. The time is displayed in UTC.
+        self.create_date = create_date
+        # The display name of the resource group.
+        self.display_name = display_name
+        # The ID of the resource group.
+        self.id = id
+        # The identifier of the resource group.
         self.name = name
+        # The status of the resource group in all regions.
+        self.region_statuses = region_statuses
         # The status of the resource group. Valid values:
         # 
         # *   Creating: The resource group is being created.
         # *   OK: The resource group is created.
         # *   PendingDelete: The resource group is waiting to be deleted.
-        # *   Deleting: The resource group is being deleted.
-        self.region_statuses = region_statuses
-        # The status of the resource group in all regions.
         self.status = status
-        # The tag key.
+        # The tags that are added to the resource group.
         self.tags = tags
 
     def validate(self):
@@ -8848,9 +8982,9 @@ class GetResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         resource_group: GetResourceGroupResponseBodyResourceGroup = None,
     ):
-        # The information of the resource group.
+        # The ID of the request.
         self.request_id = request_id
-        # The display name of the resource group.
+        # The information of the resource group.
         self.resource_group = resource_group
 
     def validate(self):
@@ -8920,21 +9054,400 @@ class GetResourceGroupResponse(TeaModel):
         return self
 
 
+class GetResourceGroupAdminSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        creator_as_admin: bool = None,
+        request_id: str = None,
+    ):
+        self.creator_as_admin = creator_as_admin
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_as_admin is not None:
+            result['CreatorAsAdmin'] = self.creator_as_admin
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatorAsAdmin') is not None:
+            self.creator_as_admin = m.get('CreatorAsAdmin')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetResourceGroupAdminSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceGroupAdminSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceGroupAdminSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceGroupNotificationSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group_notification_enable_status: bool = None,
+    ):
+        self.request_id = request_id
+        self.resource_group_notification_enable_status = resource_group_notification_enable_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_notification_enable_status is not None:
+            result['ResourceGroupNotificationEnableStatus'] = self.resource_group_notification_enable_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupNotificationEnableStatus') is not None:
+            self.resource_group_notification_enable_status = m.get('ResourceGroupNotificationEnableStatus')
+        return self
+
+
+class GetResourceGroupNotificationSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceGroupNotificationSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceGroupNotificationSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceGroupResourceCountsRequestResourceTypes(TeaModel):
+    def __init__(
+        self,
+        resource_type_code: str = None,
+        service: str = None,
+    ):
+        # The resource type.
+        # 
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        self.resource_type_code = resource_type_code
+        # The service code.
+        # 
+        # You can obtain the code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type_code is not None:
+            result['ResourceTypeCode'] = self.resource_type_code
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTypeCode') is not None:
+            self.resource_type_code = m.get('ResourceTypeCode')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class GetResourceGroupResourceCountsRequest(TeaModel):
+    def __init__(
+        self,
+        group_by_key: str = None,
+        resource_group_id: str = None,
+        resource_region_id: str = None,
+        resource_types: List[GetResourceGroupResourceCountsRequestResourceTypes] = None,
+    ):
+        # The dimension by which resources are queried.
+        # 
+        # > If you do not specify a dimension, no results are returned.
+        # 
+        # Valid values:
+        # 
+        # *   ResourceGroupId
+        # *   ResourceType
+        self.group_by_key = group_by_key
+        # The resource group ID.
+        # 
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) operation to obtain the ID.
+        self.resource_group_id = resource_group_id
+        # The region ID of the resources.
+        self.resource_region_id = resource_region_id
+        # The resource types.
+        self.resource_types = resource_types
+
+    def validate(self):
+        if self.resource_types:
+            for k in self.resource_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_by_key is not None:
+            result['GroupByKey'] = self.group_by_key
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
+        result['ResourceTypes'] = []
+        if self.resource_types is not None:
+            for k in self.resource_types:
+                result['ResourceTypes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupByKey') is not None:
+            self.group_by_key = m.get('GroupByKey')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
+        self.resource_types = []
+        if m.get('ResourceTypes') is not None:
+            for k in m.get('ResourceTypes'):
+                temp_model = GetResourceGroupResourceCountsRequestResourceTypes()
+                self.resource_types.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceGroupResourceCountsResponseBodyResourceCounts(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        group_by_key: str = None,
+        resource_group_id: str = None,
+    ):
+        # The number of the resources.
+        self.count = count
+        # The dimension by which resources are queried.
+        self.group_by_key = group_by_key
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.group_by_key is not None:
+            result['GroupByKey'] = self.group_by_key
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('GroupByKey') is not None:
+            self.group_by_key = m.get('GroupByKey')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class GetResourceGroupResourceCountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_counts: List[GetResourceGroupResourceCountsResponseBodyResourceCounts] = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The numbers of the resources.
+        self.resource_counts = resource_counts
+
+    def validate(self):
+        if self.resource_counts:
+            for k in self.resource_counts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceCounts'] = []
+        if self.resource_counts is not None:
+            for k in self.resource_counts:
+                result['ResourceCounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_counts = []
+        if m.get('ResourceCounts') is not None:
+            for k in m.get('ResourceCounts'):
+                temp_model = GetResourceGroupResourceCountsResponseBodyResourceCounts()
+                self.resource_counts.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceGroupResourceCountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceGroupResourceCountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceGroupResourceCountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRoleRequest(TeaModel):
     def __init__(
         self,
         language: str = None,
         role_name: str = None,
     ):
-        # The language that is used to return the description of the RAM role. Valid values:
+        # The language in which you want to return the description of the role. Valid values:
         # 
         # *   en: English
         # *   zh-CN: Chinese
         # *   ja: Japanese
         self.language = language
-        # The name of the RAM role.
+        # The name of the role.
         # 
-        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.role_name = role_name
@@ -9013,27 +9526,27 @@ class GetRoleResponseBodyRole(TeaModel):
         role_principal_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.arn = arn
-        # The document of the policy that specifies the trusted entity to assume the RAM role.
+        # The document of the policy in which the identity that can assume the role is specified.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the RAM role was created.
+        # The time when the role was created.
         self.create_date = create_date
-        # The description of the RAM role.
+        # The description of the role.
         self.description = description
-        # Indicates whether the RAM role is a service linked role.
+        # Indicates whether the role is a service-linked role.
         self.is_service_linked_role = is_service_linked_role
         # The information of the most recent deletion task.
         self.latest_deletion_task = latest_deletion_task
-        # The maximum session duration of the RAM role.
+        # The maximum session duration of the role.
         self.max_session_duration = max_session_duration
-        # The ID of the RAM role.
+        # The ID of the role.
         self.role_id = role_id
-        # The name of the RAM role.
+        # The name of the role.
         self.role_name = role_name
-        # The name of the RAM role after authorization.
+        # The name of the role after authorization.
         self.role_principal_name = role_principal_name
-        # The time when the RAM role was updated.
+        # The time when the role was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -9104,9 +9617,9 @@ class GetRoleResponseBody(TeaModel):
         request_id: str = None,
         role: GetRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM role.
+        # The information about the role.
         self.role = role
 
     def validate(self):
@@ -9237,9 +9750,9 @@ class GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsagesRoleUsage(Te
         region: str = None,
         resources: GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsagesRoleUsageResources = None,
     ):
-        # The IDs of the regions in which the resources are to be queried.
+        # The region.
         self.region = region
-        # The returned resources.
+        # The information about resources.
         self.resources = resources
 
     def validate(self):
@@ -9309,9 +9822,9 @@ class GetServiceLinkedRoleDeletionStatusResponseBodyReason(TeaModel):
         message: str = None,
         role_usages: GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsages = None,
     ):
-        # Failure information.
+        # The failure information.
         self.message = message
-        # Use resource information of the service linked role.
+        # The information about the resources that the service-linked role can use.
         self.role_usages = role_usages
 
     def validate(self):
@@ -9347,17 +9860,17 @@ class GetServiceLinkedRoleDeletionStatusResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The reason why the deletion task failed.
+        # The cause for the failure of the deletion task.
         self.reason = reason
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The status of the task.
         # 
-        # - SUCCEEDED
-        # - IN_PROGRESS
-        # - FAILED
-        # - NOT_STARTED
-        # - INTERNAL_ERROR
+        # *   SUCCEEDED
+        # *   IN_PROGRESS
+        # *   FAILED
+        # *   NOT_STARTED
+        # *   INTERNAL_ERROR
         self.status = status
 
     def validate(self):
@@ -11076,6 +11589,274 @@ class ListAssociatedTransferSettingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAssociatedTransferSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAutoGroupingRemediationsRequest(TeaModel):
+    def __init__(
+        self,
+        earliest_remediation_time: str = None,
+        latest_remediation_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        rule_id: str = None,
+        service: str = None,
+        target_resource_group_id: str = None,
+    ):
+        self.earliest_remediation_time = earliest_remediation_time
+        self.latest_remediation_time = latest_remediation_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.rule_id = rule_id
+        self.service = service
+        self.target_resource_group_id = target_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.earliest_remediation_time is not None:
+            result['EarliestRemediationTime'] = self.earliest_remediation_time
+        if self.latest_remediation_time is not None:
+            result['LatestRemediationTime'] = self.latest_remediation_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.target_resource_group_id is not None:
+            result['TargetResourceGroupId'] = self.target_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EarliestRemediationTime') is not None:
+            self.earliest_remediation_time = m.get('EarliestRemediationTime')
+        if m.get('LatestRemediationTime') is not None:
+            self.latest_remediation_time = m.get('LatestRemediationTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('TargetResourceGroupId') is not None:
+            self.target_resource_group_id = m.get('TargetResourceGroupId')
+        return self
+
+
+class ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo(TeaModel):
+    def __init__(
+        self,
+        resource_group_display_name: str = None,
+        resource_group_id: str = None,
+    ):
+        self.resource_group_display_name = resource_group_display_name
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListAutoGroupingRemediationsResponseBodyRemediations(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        remediation_id: str = None,
+        remediation_time: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        service: str = None,
+        target_resource_group_info: ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo = None,
+    ):
+        self.region_id = region_id
+        self.remediation_id = remediation_id
+        self.remediation_time = remediation_time
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.service = service
+        self.target_resource_group_info = target_resource_group_info
+
+    def validate(self):
+        if self.target_resource_group_info:
+            self.target_resource_group_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.remediation_time is not None:
+            result['RemediationTime'] = self.remediation_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.target_resource_group_info is not None:
+            result['TargetResourceGroupInfo'] = self.target_resource_group_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RemediationTime') is not None:
+            self.remediation_time = m.get('RemediationTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('TargetResourceGroupInfo') is not None:
+            temp_model = ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo()
+            self.target_resource_group_info = temp_model.from_map(m['TargetResourceGroupInfo'])
+        return self
+
+
+class ListAutoGroupingRemediationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        remediations: List[ListAutoGroupingRemediationsResponseBodyRemediations] = None,
+        request_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.remediations = remediations
+        self.request_id = request_id
+
+    def validate(self):
+        if self.remediations:
+            for k in self.remediations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Remediations'] = []
+        if self.remediations is not None:
+            for k in self.remediations:
+                result['Remediations'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.remediations = []
+        if m.get('Remediations') is not None:
+            for k in m.get('Remediations'):
+                temp_model = ListAutoGroupingRemediationsResponseBodyRemediations()
+                self.remediations.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAutoGroupingRemediationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAutoGroupingRemediationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAutoGroupingRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13156,24 +13937,24 @@ class ListPoliciesRequest(TeaModel):
         page_size: int = None,
         policy_type: str = None,
     ):
-        # The language that is used to return the description of the system policy. Valid values:
+        # The language in which you want to return the descriptions of the system permission policies. Valid values:
         # 
-        # *   en: English
+        # *   en: English.
         # *   zh-CN: Chinese
         # *   ja: Japanese
         self.language = language
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values:
+        # The type of the permission policy. If you do not configure this parameter, all types of permission policies are returned. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
 
     def validate(self):
@@ -13219,22 +14000,22 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
         policy_type: str = None,
         update_date: str = None,
     ):
-        # The number of times the policy is referenced.
+        # The number of references to the permission policy.
         self.attachment_count = attachment_count
-        # The time when the policy was created.
+        # The time when the permission policy was created.
         self.create_date = create_date
-        # The default version of the policy.
+        # The default version of the permission policy.
         self.default_version = default_version
-        # The description of the policy.
+        # The description of the permission policy.
         self.description = description
-        # The name of the policy.
+        # The name of the permission policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
-        # The time when the policy was updated.
+        # The time when the permission policy was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -13325,15 +14106,15 @@ class ListPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The information of the policies.
+        # The information about the permission policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13427,38 +14208,38 @@ class ListPolicyAttachmentsRequest(TeaModel):
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The language that is used to return the description of the system policy. Valid values:
+        # The language in which you want to return the description of the system policy. Valid values:
         # 
         # *   en: English
         # *   zh-CN: Chinese
         # *   ja: Japanese
         self.language = language
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         self.policy_name = policy_name
-        # The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values:
+        # The type of the permission policy. If you do not configure this parameter, all types of policies are returned. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
-        # The name of the object to which the policy is attached.
+        # The name of the object to which you want to attach the permission policy.
         self.principal_name = principal_name
-        # The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values:
+        # The type of the object to which you want to attach the permission policy. If you do not configure this parameter, the system lists all types of objects. Valid values:
         # 
         # *   IMSUser: RAM user
         # *   IMSGroup: RAM user group
         # *   ServiceRole: RAM role
         self.principal_type = principal_type
-        # The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+        # The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not configure this parameter, the system lists all policy attachment records within the current account.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -13520,20 +14301,20 @@ class ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment(TeaMode
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The time when the policy was attached.
+        # The time when the permission policy is attached.
         self.attach_date = attach_date
-        # The description of the policy.
+        # The description of the permission policy.
         self.description = description
-        # The name of the policy.
+        # The name of the permission policy.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         self.policy_type = policy_type
-        # The name of the object to which the policy is attached.
+        # The name of the object to which the permission policy is attached.
         self.principal_name = principal_name
-        # The type of the object to which the policy is attached. Valid values:
+        # The type of the object to which the permission policy is attached. Valid values:
         # 
         # *   IMSUser: RAM user
         # *   IMSGroup: RAM user group
@@ -13630,15 +14411,15 @@ class ListPolicyAttachmentsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The policy attachment records.
+        # The information about the permission policies.
         self.policy_attachments = policy_attachments
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13726,16 +14507,16 @@ class ListPolicyVersionsRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
+        # The type of the permission policy. Valid values:
         # 
-        # *   Custom: custom policy
-        # *   System: system policy
+        # *   Custom
+        # *   System
         # 
         # This parameter is required.
         self.policy_type = policy_type
@@ -13847,9 +14628,9 @@ class ListPolicyVersionsResponseBody(TeaModel):
         policy_versions: ListPolicyVersionsResponseBodyPolicyVersions = None,
         request_id: str = None,
     ):
-        # The information of the policy versions.
+        # The information about the policy version.
         self.policy_versions = policy_versions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14351,6 +15132,475 @@ class ListResourceGroupsResponse(TeaModel):
         return self
 
 
+class ListResourceGroupsWithAuthDetailsRequestResourceTypes(TeaModel):
+    def __init__(
+        self,
+        resource_type_code: str = None,
+        service: str = None,
+    ):
+        self.resource_type_code = resource_type_code
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type_code is not None:
+            result['ResourceTypeCode'] = self.resource_type_code
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTypeCode') is not None:
+            self.resource_type_code = m.get('ResourceTypeCode')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        include_tags: bool = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_group_ids: List[str] = None,
+        resource_region_id: str = None,
+        resource_types: List[ListResourceGroupsWithAuthDetailsRequestResourceTypes] = None,
+        status: str = None,
+        tag: List[ListResourceGroupsWithAuthDetailsRequestTag] = None,
+    ):
+        self.display_name = display_name
+        self.include_tags = include_tags
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_group_ids = resource_group_ids
+        self.resource_region_id = resource_region_id
+        self.resource_types = resource_types
+        self.status = status
+        self.tag = tag
+
+    def validate(self):
+        if self.resource_types:
+            for k in self.resource_types:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.include_tags is not None:
+            result['IncludeTags'] = self.include_tags
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
+        result['ResourceTypes'] = []
+        if self.resource_types is not None:
+            for k in self.resource_types:
+                result['ResourceTypes'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('IncludeTags') is not None:
+            self.include_tags = m.get('IncludeTags')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
+        self.resource_types = []
+        if m.get('ResourceTypes') is not None:
+            for k in m.get('ResourceTypes'):
+                temp_model = ListResourceGroupsWithAuthDetailsRequestResourceTypes()
+                self.resource_types.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListResourceGroupsWithAuthDetailsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceGroups(TeaModel):
+    def __init__(
+        self,
+        has_permission: bool = None,
+        resource_group_id: str = None,
+    ):
+        self.has_permission = has_permission
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_permission is not None:
+            result['HasPermission'] = self.has_permission
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HasPermission') is not None:
+            self.has_permission = m.get('HasPermission')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails(TeaModel):
+    def __init__(
+        self,
+        account_scope_auth: bool = None,
+        auth_of_resource_groups: List[ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceGroups] = None,
+        resource_type: str = None,
+        service: str = None,
+    ):
+        self.account_scope_auth = account_scope_auth
+        self.auth_of_resource_groups = auth_of_resource_groups
+        self.resource_type = resource_type
+        self.service = service
+
+    def validate(self):
+        if self.auth_of_resource_groups:
+            for k in self.auth_of_resource_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_scope_auth is not None:
+            result['AccountScopeAuth'] = self.account_scope_auth
+        result['AuthOfResourceGroups'] = []
+        if self.auth_of_resource_groups is not None:
+            for k in self.auth_of_resource_groups:
+                result['AuthOfResourceGroups'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountScopeAuth') is not None:
+            self.account_scope_auth = m.get('AccountScopeAuth')
+        self.auth_of_resource_groups = []
+        if m.get('AuthOfResourceGroups') is not None:
+            for k in m.get('AuthOfResourceGroups'):
+                temp_model = ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceGroups()
+                self.auth_of_resource_groups.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        create_date: str = None,
+        display_name: str = None,
+        id: str = None,
+        name: str = None,
+        status: str = None,
+        tags: List[ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags] = None,
+    ):
+        self.account_id = account_id
+        self.create_date = create_date
+        self.display_name = display_name
+        self.id = id
+        self.name = name
+        self.status = status
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        auth_details: List[ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        resource_groups: List[ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups] = None,
+        total_count: int = None,
+    ):
+        self.auth_details = auth_details
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.resource_groups = resource_groups
+        self.total_count = total_count
+
+    def validate(self):
+        if self.auth_details:
+            for k in self.auth_details:
+                if k:
+                    k.validate()
+        if self.resource_groups:
+            for k in self.resource_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuthDetails'] = []
+        if self.auth_details is not None:
+            for k in self.auth_details:
+                result['AuthDetails'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceGroups'] = []
+        if self.resource_groups is not None:
+            for k in self.resource_groups:
+                result['ResourceGroups'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auth_details = []
+        if m.get('AuthDetails') is not None:
+            for k in m.get('AuthDetails'):
+                temp_model = ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails()
+                self.auth_details.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_groups = []
+        if m.get('ResourceGroups') is not None:
+            for k in m.get('ResourceGroups'):
+                temp_model = ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups()
+                self.resource_groups.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListResourceGroupsWithAuthDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceGroupsWithAuthDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceGroupsWithAuthDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourcesRequestResourceTypes(TeaModel):
     def __init__(
         self,
@@ -14697,17 +15947,17 @@ class ListRolesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language that is used to return the descriptions of the RAM roles. Valid values:
+        # The language in which you want to return the descriptions of the RAM roles. Valid values:
         # 
         # *   en: English
         # *   zh-CN: Chinese
         # *   ja: Japanese
         self.language = language
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
@@ -14789,25 +16039,25 @@ class ListRolesResponseBodyRolesRole(TeaModel):
         role_principal_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.arn = arn
-        # The time when the RAM role was created.
+        # The time when the role was created.
         self.create_date = create_date
-        # The description of the RAM role.
+        # The description of the role.
         self.description = description
-        # Indicates whether the RAM role is a service linked role.
+        # Indicates whether the role is a service-linked role.
         self.is_service_linked_role = is_service_linked_role
         # The information of the most recent deletion task.
         self.latest_deletion_task = latest_deletion_task
-        # The maximum session duration of the RAM role.
+        # The maximum session duration of the role.
         self.max_session_duration = max_session_duration
-        # The ID of the RAM role.
+        # The ID of the role.
         self.role_id = role_id
-        # The name of the RAM role.
+        # The name of the role.
         self.role_name = role_name
-        # The name of the RAM role after authorization.
+        # The name of the role after authorization.
         self.role_principal_name = role_principal_name
-        # The time when the RAM role was updated.
+        # The time when the role was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -14912,15 +16162,15 @@ class ListRolesResponseBody(TeaModel):
         roles: ListRolesResponseBodyRoles = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM roles.
+        # The information about the roles.
         self.roles = roles
-        # The total number of RAM roles.
+        # The total number of roles.
         self.total_count = total_count
 
     def validate(self):
@@ -17659,9 +18909,9 @@ class SetDefaultPolicyVersionRequest(TeaModel):
         policy_name: str = None,
         version_id: str = None,
     ):
-        # The name of the policy.
+        # The name of the permission policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
@@ -17699,7 +18949,7 @@ class SetDefaultPolicyVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19504,6 +20754,102 @@ class UpdateResourceGroupResponse(TeaModel):
         return self
 
 
+class UpdateResourceGroupAdminSettingRequest(TeaModel):
+    def __init__(
+        self,
+        creator_as_admin: bool = None,
+    ):
+        # This parameter is required.
+        self.creator_as_admin = creator_as_admin
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_as_admin is not None:
+            result['CreatorAsAdmin'] = self.creator_as_admin
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatorAsAdmin') is not None:
+            self.creator_as_admin = m.get('CreatorAsAdmin')
+        return self
+
+
+class UpdateResourceGroupAdminSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateResourceGroupAdminSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourceGroupAdminSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourceGroupAdminSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateRoleRequest(TeaModel):
     def __init__(
         self,
@@ -19512,21 +20858,21 @@ class UpdateRoleRequest(TeaModel):
         new_max_session_duration: int = None,
         role_name: str = None,
     ):
-        # The document of the policy that specifies the trusted entity to assume the RAM role.
+        # The trust policy of the RAM role.
         self.new_assume_role_policy_document = new_assume_role_policy_document
         # The description of the RAM role.
         # 
         # The description must be 1 to 1,024 characters in length.
         self.new_description = new_description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         # 
-        # Unit: seconds. Valid values: 3600 to 43200. Default value: 3600.
+        # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
         # If you do not specify this parameter, the default value is used.
         self.new_max_session_duration = new_max_session_duration
         # The name of the RAM role.
         # 
-        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.),and hyphens (-).
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.role_name = role_name
@@ -19578,13 +20924,13 @@ class UpdateRoleResponseBodyRole(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
-        # The document of the policy that specifies the trusted entity to assume the RAM role.
+        # The trust policy of the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
         # The time when the RAM role was created.
         self.create_date = create_date
         # The description of the RAM role.
         self.description = description
-        # The maximum session duration of the RAM role.
+        # The maximum session time of the RAM role.
         self.max_session_duration = max_session_duration
         # The ID of the RAM role.
         self.role_id = role_id
@@ -19653,9 +20999,9 @@ class UpdateRoleResponseBody(TeaModel):
         request_id: str = None,
         role: UpdateRoleResponseBodyRole = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the RAM role.
+        # The information about the RAM role.
         self.role = role
 
     def validate(self):

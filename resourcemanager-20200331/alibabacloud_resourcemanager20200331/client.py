@@ -74,16 +74,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AcceptHandshakeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AcceptHandshakeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.AcceptHandshakeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def accept_handshake_with_options_async(
         self,
@@ -118,16 +112,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AcceptHandshakeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AcceptHandshakeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.AcceptHandshakeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def accept_handshake(
         self,
@@ -197,16 +185,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.AttachControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_control_policy_with_options_async(
         self,
@@ -244,16 +226,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.AttachControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_control_policy(
         self,
@@ -295,7 +271,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
         """
-        @summary 为RAM身份授权
+        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
         
         @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
         
@@ -329,16 +305,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.AttachPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_policy_with_options_async(
         self,
@@ -346,7 +316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
         """
-        @summary 为RAM身份授权
+        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
         
         @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
         
@@ -380,23 +350,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.AttachPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.AttachPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_policy(
         self,
         request: resource_manager_20200331_models.AttachPolicyRequest,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
         """
-        @summary 为RAM身份授权
+        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
         
         @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
         
@@ -411,7 +375,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.AttachPolicyRequest,
     ) -> resource_manager_20200331_models.AttachPolicyResponse:
         """
-        @summary 为RAM身份授权
+        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
         
         @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
         
@@ -459,16 +423,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def bind_secure_mobile_phone_with_options_async(
         self,
@@ -508,16 +466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def bind_secure_mobile_phone(
         self,
@@ -583,16 +535,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_change_account_email_with_options_async(
         self,
@@ -624,16 +570,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_change_account_email(
         self,
@@ -691,16 +631,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_create_cloud_account_with_options_async(
         self,
@@ -732,16 +666,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_create_cloud_account(
         self,
@@ -801,16 +729,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelHandshakeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelHandshakeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelHandshakeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_handshake_with_options_async(
         self,
@@ -844,16 +766,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelHandshakeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelHandshakeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelHandshakeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_handshake(
         self,
@@ -915,16 +831,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_promote_resource_account_with_options_async(
         self,
@@ -956,16 +866,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_promote_resource_account(
         self,
@@ -1025,16 +929,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ChangeAccountEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ChangeAccountEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ChangeAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_account_email_with_options_async(
         self,
@@ -1068,16 +966,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ChangeAccountEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ChangeAccountEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ChangeAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_account_email(
         self,
@@ -1138,16 +1030,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CheckAccountDeleteResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CheckAccountDeleteResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CheckAccountDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_account_delete_with_options_async(
         self,
@@ -1182,16 +1068,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CheckAccountDeleteResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CheckAccountDeleteResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CheckAccountDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_account_delete(
         self,
@@ -1279,16 +1159,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_auto_grouping_rule_with_options_async(
         self,
@@ -1344,16 +1218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_auto_grouping_rule(
         self,
@@ -1426,16 +1294,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateCloudAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateCloudAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateCloudAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_cloud_account_with_options_async(
         self,
@@ -1478,16 +1340,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateCloudAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateCloudAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateCloudAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_cloud_account(
         self,
@@ -1561,16 +1417,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_control_policy_with_options_async(
         self,
@@ -1608,16 +1458,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_control_policy(
         self,
@@ -1678,16 +1522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateFolderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateFolderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_folder_with_options_async(
         self,
@@ -1722,16 +1560,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateFolderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateFolderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_folder(
         self,
@@ -1767,7 +1599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreatePolicyResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a permission policy.
         
         @param request: CreatePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1795,16 +1627,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_with_options_async(
         self,
@@ -1812,7 +1638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreatePolicyResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a permission policy.
         
         @param request: CreatePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1840,23 +1666,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy(
         self,
         request: resource_manager_20200331_models.CreatePolicyRequest,
     ) -> resource_manager_20200331_models.CreatePolicyResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a permission policy.
         
         @param request: CreatePolicyRequest
         @return: CreatePolicyResponse
@@ -1869,7 +1689,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreatePolicyRequest,
     ) -> resource_manager_20200331_models.CreatePolicyResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a permission policy.
         
         @param request: CreatePolicyRequest
         @return: CreatePolicyResponse
@@ -1883,7 +1703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
         """
-        @summary 创建权限策略版本
+        @summary Creates a version for a permission policy.
         
         @param request: CreatePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1911,16 +1731,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreatePolicyVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_version_with_options_async(
         self,
@@ -1928,7 +1742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
         """
-        @summary 创建权限策略版本
+        @summary Creates a version for a permission policy.
         
         @param request: CreatePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1956,23 +1770,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreatePolicyVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreatePolicyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy_version(
         self,
         request: resource_manager_20200331_models.CreatePolicyVersionRequest,
     ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
         """
-        @summary 创建权限策略版本
+        @summary Creates a version for a permission policy.
         
         @param request: CreatePolicyVersionRequest
         @return: CreatePolicyVersionResponse
@@ -1985,7 +1793,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreatePolicyVersionRequest,
     ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
         """
-        @summary 创建权限策略版本
+        @summary Creates a version for a permission policy.
         
         @param request: CreatePolicyVersionRequest
         @return: CreatePolicyVersionResponse
@@ -2035,16 +1843,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateResourceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_account_with_options_async(
         self,
@@ -2088,16 +1890,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateResourceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource_account(
         self,
@@ -2137,7 +1933,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group.
         
-        @description >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2165,16 +1961,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_resource_group_with_options_async(
         self,
@@ -2184,7 +1974,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group.
         
-        @description >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2212,16 +2002,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_resource_group(
         self,
@@ -2230,7 +2014,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group.
         
-        @description >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -2245,7 +2029,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group.
         
-        @description >  A maximum of 30 resource groups can be created within an Alibaba Cloud account.
+        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -2289,16 +2073,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_role_with_options_async(
         self,
@@ -2336,16 +2114,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_role(
         self,
@@ -2379,7 +2151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role.
         
         @param request: CreateServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2407,16 +2179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_service_linked_role_with_options_async(
         self,
@@ -2424,7 +2190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role.
         
         @param request: CreateServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2452,23 +2218,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_service_linked_role(
         self,
         request: resource_manager_20200331_models.CreateServiceLinkedRoleRequest,
     ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role.
         
         @param request: CreateServiceLinkedRoleRequest
         @return: CreateServiceLinkedRoleResponse
@@ -2481,7 +2241,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.CreateServiceLinkedRoleRequest,
     ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role.
         
         @param request: CreateServiceLinkedRoleRequest
         @return: CreateServiceLinkedRoleResponse
@@ -2519,16 +2279,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeclineHandshakeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeclineHandshakeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeclineHandshakeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def decline_handshake_with_options_async(
         self,
@@ -2560,16 +2314,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeclineHandshakeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeclineHandshakeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeclineHandshakeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def decline_handshake(
         self,
@@ -2635,16 +2383,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_account_with_options_async(
         self,
@@ -2684,16 +2426,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_account(
         self,
@@ -2755,16 +2491,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_auto_grouping_rule_with_options_async(
         self,
@@ -2796,16 +2526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_auto_grouping_rule(
         self,
@@ -2866,16 +2590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_control_policy_with_options_async(
         self,
@@ -2910,16 +2628,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_control_policy(
         self,
@@ -2983,16 +2695,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteFolderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteFolderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_folder_with_options_async(
         self,
@@ -3024,16 +2730,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteFolderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteFolderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_folder(
         self,
@@ -3067,11 +2767,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a permission policy.
         
         @description >
-        Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
+        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
         
         @param request: DeletePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3095,16 +2795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_with_options_async(
         self,
@@ -3112,11 +2806,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a permission policy.
         
         @description >
-        Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
+        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
         
         @param request: DeletePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3140,27 +2834,21 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy(
         self,
         request: resource_manager_20200331_models.DeletePolicyRequest,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a permission policy.
         
         @description >
-        Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
+        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
         
         @param request: DeletePolicyRequest
         @return: DeletePolicyResponse
@@ -3173,11 +2861,11 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeletePolicyRequest,
     ) -> resource_manager_20200331_models.DeletePolicyResponse:
         """
-        @summary 删除权限策略
+        @summary Deletes a permission policy.
         
         @description >
-        Before you delete a policy, you must delete all non-default versions of the policy. For more information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a policy, make sure that the policy is not referenced. This means that the policy is not attached to RAM users, RAM user groups, or RAM roles. For more information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
+        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
+        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
         
         @param request: DeletePolicyRequest
         @return: DeletePolicyResponse
@@ -3191,9 +2879,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
         """
-        @summary 删除权限策略版本
+        @summary Deletes a version of a permission policy.
         
-        @description >  The default version of a permission policy cannot be deleted.
+        @description >  The default version of a policy cannot be deleted.
         
         @param request: DeletePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3219,16 +2907,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeletePolicyVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_version_with_options_async(
         self,
@@ -3236,9 +2918,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
         """
-        @summary 删除权限策略版本
+        @summary Deletes a version of a permission policy.
         
-        @description >  The default version of a permission policy cannot be deleted.
+        @description >  The default version of a policy cannot be deleted.
         
         @param request: DeletePolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3264,25 +2946,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeletePolicyVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeletePolicyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy_version(
         self,
         request: resource_manager_20200331_models.DeletePolicyVersionRequest,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
         """
-        @summary 删除权限策略版本
+        @summary Deletes a version of a permission policy.
         
-        @description >  The default version of a permission policy cannot be deleted.
+        @description >  The default version of a policy cannot be deleted.
         
         @param request: DeletePolicyVersionRequest
         @return: DeletePolicyVersionResponse
@@ -3295,9 +2971,9 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeletePolicyVersionRequest,
     ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
         """
-        @summary 删除权限策略版本
+        @summary Deletes a version of a permission policy.
         
-        @description >  The default version of a permission policy cannot be deleted.
+        @description >  The default version of a policy cannot be deleted.
         
         @param request: DeletePolicyVersionRequest
         @return: DeletePolicyVersionResponse
@@ -3338,16 +3014,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_resource_group_with_options_async(
         self,
@@ -3382,16 +3052,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_resource_group(
         self,
@@ -3431,7 +3095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteRoleResponse:
         """
-        @summary 删除角色
+        @summary Deletes a RAM role.
         
         @param request: DeleteRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3455,16 +3119,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_role_with_options_async(
         self,
@@ -3472,7 +3130,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteRoleResponse:
         """
-        @summary 删除角色
+        @summary Deletes a RAM role.
         
         @param request: DeleteRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3496,23 +3154,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_role(
         self,
         request: resource_manager_20200331_models.DeleteRoleRequest,
     ) -> resource_manager_20200331_models.DeleteRoleResponse:
         """
-        @summary 删除角色
+        @summary Deletes a RAM role.
         
         @param request: DeleteRoleRequest
         @return: DeleteRoleResponse
@@ -3525,7 +3177,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteRoleRequest,
     ) -> resource_manager_20200331_models.DeleteRoleResponse:
         """
-        @summary 删除角色
+        @summary Deletes a RAM role.
         
         @param request: DeleteRoleRequest
         @return: DeleteRoleResponse
@@ -3539,7 +3191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
         """
-        @summary 删除服务关联角色
+        @summary Deletes a service-linked role.
         
         @param request: DeleteServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3563,16 +3215,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_service_linked_role_with_options_async(
         self,
@@ -3580,7 +3226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
         """
-        @summary 删除服务关联角色
+        @summary Deletes a service-linked role.
         
         @param request: DeleteServiceLinkedRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3604,23 +3250,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_service_linked_role(
         self,
         request: resource_manager_20200331_models.DeleteServiceLinkedRoleRequest,
     ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
         """
-        @summary 删除服务关联角色
+        @summary Deletes a service-linked role.
         
         @param request: DeleteServiceLinkedRoleRequest
         @return: DeleteServiceLinkedRoleResponse
@@ -3633,7 +3273,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DeleteServiceLinkedRoleRequest,
     ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
         """
-        @summary 删除服务关联角色
+        @summary Deletes a service-linked role.
         
         @param request: DeleteServiceLinkedRoleRequest
         @return: DeleteServiceLinkedRoleResponse
@@ -3676,16 +3316,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def deregister_delegated_administrator_with_options_async(
         self,
@@ -3722,16 +3356,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def deregister_delegated_administrator(
         self,
@@ -3790,16 +3418,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def destroy_resource_directory_with_options_async(
         self,
@@ -3826,16 +3448,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def destroy_resource_directory(self) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
         """
@@ -3895,16 +3511,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DetachControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_control_policy_with_options_async(
         self,
@@ -3942,16 +3552,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DetachControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_control_policy(
         self,
@@ -3993,7 +3597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DetachPolicyResponse:
         """
-        @summary 为RAM身份移除权限
+        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
         
         @param request: DetachPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4025,16 +3629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DetachPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_policy_with_options_async(
         self,
@@ -4042,7 +3640,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DetachPolicyResponse:
         """
-        @summary 为RAM身份移除权限
+        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
         
         @param request: DetachPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4074,23 +3672,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DetachPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DetachPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_policy(
         self,
         request: resource_manager_20200331_models.DetachPolicyRequest,
     ) -> resource_manager_20200331_models.DetachPolicyResponse:
         """
-        @summary 为RAM身份移除权限
+        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
         
         @param request: DetachPolicyRequest
         @return: DetachPolicyResponse
@@ -4103,7 +3695,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.DetachPolicyRequest,
     ) -> resource_manager_20200331_models.DetachPolicyResponse:
         """
-        @summary 为RAM身份移除权限
+        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
         
         @param request: DetachPolicyRequest
         @return: DetachPolicyResponse
@@ -4134,16 +3726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAssociatedTransferResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAssociatedTransferResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableAssociatedTransferResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_associated_transfer_with_options_async(
         self,
@@ -4168,16 +3754,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAssociatedTransferResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAssociatedTransferResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableAssociatedTransferResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_associated_transfer(self) -> resource_manager_20200331_models.DisableAssociatedTransferResponse:
         """
@@ -4220,16 +3800,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAutoGroupingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAutoGroupingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableAutoGroupingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_auto_grouping_with_options_async(
         self,
@@ -4254,16 +3828,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAutoGroupingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableAutoGroupingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableAutoGroupingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_auto_grouping(self) -> resource_manager_20200331_models.DisableAutoGroupingResponse:
         """
@@ -4309,16 +3877,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_control_policy_with_options_async(
         self,
@@ -4346,16 +3908,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.DisableControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_control_policy(self) -> resource_manager_20200331_models.DisableControlPolicyResponse:
         """
@@ -4381,6 +3937,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_control_policy_with_options_async(runtime)
 
+    def disable_resource_group_notification_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
+        """
+        @summary 关闭资源组通知
+        
+        @param request: DisableResourceGroupNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableResourceGroupNotificationResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DisableResourceGroupNotification',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableResourceGroupNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_resource_group_notification_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
+        """
+        @summary 关闭资源组通知
+        
+        @param request: DisableResourceGroupNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableResourceGroupNotificationResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DisableResourceGroupNotification',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DisableResourceGroupNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_resource_group_notification(self) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
+        """
+        @summary 关闭资源组通知
+        
+        @return: DisableResourceGroupNotificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_resource_group_notification_with_options(runtime)
+
+    async def disable_resource_group_notification_async(self) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
+        """
+        @summary 关闭资源组通知
+        
+        @return: DisableResourceGroupNotificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_resource_group_notification_with_options_async(runtime)
+
     def enable_associated_transfer_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -4404,16 +4034,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAssociatedTransferResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAssociatedTransferResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableAssociatedTransferResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_associated_transfer_with_options_async(
         self,
@@ -4438,16 +4062,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAssociatedTransferResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAssociatedTransferResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableAssociatedTransferResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_associated_transfer(self) -> resource_manager_20200331_models.EnableAssociatedTransferResponse:
         """
@@ -4490,16 +4108,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAutoGroupingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAutoGroupingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableAutoGroupingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_auto_grouping_with_options_async(
         self,
@@ -4524,16 +4136,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAutoGroupingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableAutoGroupingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableAutoGroupingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_auto_grouping(self) -> resource_manager_20200331_models.EnableAutoGroupingResponse:
         """
@@ -4578,16 +4184,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_control_policy_with_options_async(
         self,
@@ -4614,16 +4214,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_control_policy(self) -> resource_manager_20200331_models.EnableControlPolicyResponse:
         """
@@ -4686,16 +4280,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableResourceDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableResourceDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_resource_directory_with_options_async(
         self,
@@ -4736,16 +4324,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableResourceDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.EnableResourceDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_resource_directory(
         self,
@@ -4779,6 +4361,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_resource_directory_with_options_async(request, runtime)
 
+    def enable_resource_group_notification_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
+        """
+        @summary 开通资源组通知
+        
+        @param request: EnableResourceGroupNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableResourceGroupNotificationResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableResourceGroupNotification',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableResourceGroupNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_resource_group_notification_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
+        """
+        @summary 开通资源组通知
+        
+        @param request: EnableResourceGroupNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableResourceGroupNotificationResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableResourceGroupNotification',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.EnableResourceGroupNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_resource_group_notification(self) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
+        """
+        @summary 开通资源组通知
+        
+        @return: EnableResourceGroupNotificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_resource_group_notification_with_options(runtime)
+
+    async def enable_resource_group_notification_async(self) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
+        """
+        @summary 开通资源组通知
+        
+        @return: EnableResourceGroupNotificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_resource_group_notification_with_options_async(runtime)
+
     def get_account_with_options(
         self,
         request: resource_manager_20200331_models.GetAccountRequest,
@@ -4811,16 +4467,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_account_with_options_async(
         self,
@@ -4854,16 +4504,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_account(
         self,
@@ -4924,16 +4568,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_account_deletion_check_result_with_options_async(
         self,
@@ -4968,16 +4606,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_account_deletion_check_result(
         self,
@@ -5043,16 +4675,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_account_deletion_status_with_options_async(
         self,
@@ -5086,16 +4712,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_account_deletion_status(
         self,
@@ -5157,16 +4777,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_auto_grouping_rule_with_options_async(
         self,
@@ -5198,16 +4812,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_auto_grouping_rule(
         self,
@@ -5258,16 +4866,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_auto_grouping_status_with_options_async(
         self,
@@ -5292,16 +4894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_auto_grouping_status(self) -> resource_manager_20200331_models.GetAutoGroupingStatusResponse:
         """
@@ -5353,16 +4949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_control_policy_with_options_async(
         self,
@@ -5396,16 +4986,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_control_policy(
         self,
@@ -5456,16 +5040,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_control_policy_enablement_status_with_options_async(
         self,
@@ -5490,16 +5068,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_control_policy_enablement_status(self) -> resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse:
         """
@@ -5549,16 +5121,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetFolderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetFolderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_folder_with_options_async(
         self,
@@ -5590,16 +5156,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetFolderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetFolderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_folder(
         self,
@@ -5659,16 +5219,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetHandshakeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetHandshakeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetHandshakeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_handshake_with_options_async(
         self,
@@ -5702,16 +5256,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetHandshakeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetHandshakeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetHandshakeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_handshake(
         self,
@@ -5771,16 +5319,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPayerForAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPayerForAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetPayerForAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_payer_for_account_with_options_async(
         self,
@@ -5810,16 +5352,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPayerForAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPayerForAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetPayerForAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_payer_for_account(
         self,
@@ -5849,7 +5385,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries the information about a permission policy.
         
         @param request: GetPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5877,16 +5413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_with_options_async(
         self,
@@ -5894,7 +5424,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries the information about a permission policy.
         
         @param request: GetPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5922,23 +5452,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy(
         self,
         request: resource_manager_20200331_models.GetPolicyRequest,
     ) -> resource_manager_20200331_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries the information about a permission policy.
         
         @param request: GetPolicyRequest
         @return: GetPolicyResponse
@@ -5951,7 +5475,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetPolicyRequest,
     ) -> resource_manager_20200331_models.GetPolicyResponse:
         """
-        @summary Queries the information of a policy.
+        @summary Queries the information about a permission policy.
         
         @param request: GetPolicyRequest
         @return: GetPolicyResponse
@@ -5965,7 +5489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
         """
-        @summary 获取权限策略的指定版本
+        @summary Queries the information about a version of a permission policy.
         
         @param request: GetPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5993,16 +5517,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetPolicyVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_version_with_options_async(
         self,
@@ -6010,7 +5528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
         """
-        @summary 获取权限策略的指定版本
+        @summary Queries the information about a version of a permission policy.
         
         @param request: GetPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6038,23 +5556,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetPolicyVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetPolicyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy_version(
         self,
         request: resource_manager_20200331_models.GetPolicyVersionRequest,
     ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
         """
-        @summary 获取权限策略的指定版本
+        @summary Queries the information about a version of a permission policy.
         
         @param request: GetPolicyVersionRequest
         @return: GetPolicyVersionResponse
@@ -6067,7 +5579,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetPolicyVersionRequest,
     ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
         """
-        @summary 获取权限策略的指定版本
+        @summary Queries the information about a version of a permission policy.
         
         @param request: GetPolicyVersionRequest
         @return: GetPolicyVersionResponse
@@ -6100,16 +5612,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_resource_directory_with_options_async(
         self,
@@ -6136,16 +5642,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_resource_directory(self) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
         """
@@ -6175,9 +5675,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         """
-        @summary In this example, the information of the resource group whose ID is `rg-9gLOoK***` is queried.
-        
-        @description For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/159973.html).
+        @summary Queries the information of a resource group.
         
         @param request: GetResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6203,16 +5701,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_resource_group_with_options_async(
         self,
@@ -6220,9 +5712,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         """
-        @summary In this example, the information of the resource group whose ID is `rg-9gLOoK***` is queried.
-        
-        @description For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/159973.html).
+        @summary Queries the information of a resource group.
         
         @param request: GetResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6248,25 +5738,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_resource_group(
         self,
         request: resource_manager_20200331_models.GetResourceGroupRequest,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         """
-        @summary In this example, the information of the resource group whose ID is `rg-9gLOoK***` is queried.
-        
-        @description For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/159973.html).
+        @summary Queries the information of a resource group.
         
         @param request: GetResourceGroupRequest
         @return: GetResourceGroupResponse
@@ -6279,9 +5761,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetResourceGroupRequest,
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         """
-        @summary In this example, the information of the resource group whose ID is `rg-9gLOoK***` is queried.
-        
-        @description For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/159973.html).
+        @summary Queries the information of a resource group.
         
         @param request: GetResourceGroupRequest
         @return: GetResourceGroupResponse
@@ -6289,13 +5769,269 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_group_with_options_async(request, runtime)
 
+    def get_resource_group_admin_setting_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
+        """
+        @summary 查询资源组管理员配置
+        
+        @param request: GetResourceGroupAdminSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupAdminSettingResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceGroupAdminSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupAdminSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_admin_setting_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
+        """
+        @summary 查询资源组管理员配置
+        
+        @param request: GetResourceGroupAdminSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupAdminSettingResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceGroupAdminSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupAdminSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group_admin_setting(self) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
+        """
+        @summary 查询资源组管理员配置
+        
+        @return: GetResourceGroupAdminSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_group_admin_setting_with_options(runtime)
+
+    async def get_resource_group_admin_setting_async(self) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
+        """
+        @summary 查询资源组管理员配置
+        
+        @return: GetResourceGroupAdminSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_group_admin_setting_with_options_async(runtime)
+
+    def get_resource_group_notification_setting_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
+        """
+        @summary 查询资源组通知设置
+        
+        @param request: GetResourceGroupNotificationSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupNotificationSettingResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceGroupNotificationSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_notification_setting_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
+        """
+        @summary 查询资源组通知设置
+        
+        @param request: GetResourceGroupNotificationSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupNotificationSettingResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceGroupNotificationSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group_notification_setting(self) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
+        """
+        @summary 查询资源组通知设置
+        
+        @return: GetResourceGroupNotificationSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_group_notification_setting_with_options(runtime)
+
+    async def get_resource_group_notification_setting_async(self) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
+        """
+        @summary 查询资源组通知设置
+        
+        @return: GetResourceGroupNotificationSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_group_notification_setting_with_options_async(runtime)
+
+    def get_resource_group_resource_counts_with_options(
+        self,
+        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
+        """
+        @summary Queries the number of resources in a visible resource group.
+        
+        @param request: GetResourceGroupResourceCountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResourceCountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceGroupResourceCounts',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupResourceCountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_resource_counts_with_options_async(
+        self,
+        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
+        """
+        @summary Queries the number of resources in a visible resource group.
+        
+        @param request: GetResourceGroupResourceCountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResourceCountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceGroupResourceCounts',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupResourceCountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group_resource_counts(
+        self,
+        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
+    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
+        """
+        @summary Queries the number of resources in a visible resource group.
+        
+        @param request: GetResourceGroupResourceCountsRequest
+        @return: GetResourceGroupResourceCountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_group_resource_counts_with_options(request, runtime)
+
+    async def get_resource_group_resource_counts_async(
+        self,
+        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
+    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
+        """
+        @summary Queries the number of resources in a visible resource group.
+        
+        @param request: GetResourceGroupResourceCountsRequest
+        @return: GetResourceGroupResourceCountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_group_resource_counts_with_options_async(request, runtime)
+
     def get_role_with_options(
         self,
         request: resource_manager_20200331_models.GetRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetRoleResponse:
         """
-        @summary Queries the information of a RAM role.
+        @summary Queries the information about a RAM role.
         
         @param request: GetRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6321,16 +6057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_role_with_options_async(
         self,
@@ -6338,7 +6068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetRoleResponse:
         """
-        @summary Queries the information of a RAM role.
+        @summary Queries the information about a RAM role.
         
         @param request: GetRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6364,23 +6094,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_role(
         self,
         request: resource_manager_20200331_models.GetRoleRequest,
     ) -> resource_manager_20200331_models.GetRoleResponse:
         """
-        @summary Queries the information of a RAM role.
+        @summary Queries the information about a RAM role.
         
         @param request: GetRoleRequest
         @return: GetRoleResponse
@@ -6393,7 +6117,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetRoleRequest,
     ) -> resource_manager_20200331_models.GetRoleResponse:
         """
-        @summary Queries the information of a RAM role.
+        @summary Queries the information about a RAM role.
         
         @param request: GetRoleRequest
         @return: GetRoleResponse
@@ -6407,7 +6131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
         """
-        @summary Query the status of the deletion task for a service linked role.
+        @summary Queries the status of the task that is used to delete a service-linked role.
         
         @param request: GetServiceLinkedRoleDeletionStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6431,16 +6155,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_service_linked_role_deletion_status_with_options_async(
         self,
@@ -6448,7 +6166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
         """
-        @summary Query the status of the deletion task for a service linked role.
+        @summary Queries the status of the task that is used to delete a service-linked role.
         
         @param request: GetServiceLinkedRoleDeletionStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6472,23 +6190,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_service_linked_role_deletion_status(
         self,
         request: resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusRequest,
     ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
         """
-        @summary Query the status of the deletion task for a service linked role.
+        @summary Queries the status of the task that is used to delete a service-linked role.
         
         @param request: GetServiceLinkedRoleDeletionStatusRequest
         @return: GetServiceLinkedRoleDeletionStatusResponse
@@ -6501,7 +6213,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusRequest,
     ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
         """
-        @summary Query the status of the deletion task for a service linked role.
+        @summary Queries the status of the task that is used to delete a service-linked role.
         
         @param request: GetServiceLinkedRoleDeletionStatusRequest
         @return: GetServiceLinkedRoleDeletionStatusResponse
@@ -6536,16 +6248,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InitResourceDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InitResourceDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.InitResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def init_resource_directory_with_options_async(
         self,
@@ -6574,16 +6280,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InitResourceDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InitResourceDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.InitResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def init_resource_directory(self) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
         """
@@ -6649,16 +6349,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def invite_account_to_resource_directory_with_options_async(
         self,
@@ -6698,16 +6392,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def invite_account_to_resource_directory(
         self,
@@ -6777,16 +6465,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_accounts_with_options_async(
         self,
@@ -6826,16 +6508,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_accounts(
         self,
@@ -6907,16 +6583,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsForParentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsForParentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAccountsForParentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_accounts_for_parent_with_options_async(
         self,
@@ -6958,16 +6628,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsForParentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAccountsForParentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAccountsForParentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_accounts_for_parent(
         self,
@@ -7023,16 +6687,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAncestorsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAncestorsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAncestorsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_ancestors_with_options_async(
         self,
@@ -7062,16 +6720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAncestorsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAncestorsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAncestorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_ancestors(
         self,
@@ -7118,16 +6770,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_associated_transfer_setting_with_options_async(
         self,
@@ -7152,16 +6798,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_associated_transfer_setting(self) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
         """
@@ -7180,6 +6820,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_associated_transfer_setting_with_options_async(runtime)
+
+    def list_auto_grouping_remediations_with_options(
+        self,
+        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
+        """
+        @summary 列出自动分组修正记录
+        
+        @param request: ListAutoGroupingRemediationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoGroupingRemediationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.earliest_remediation_time):
+            query['EarliestRemediationTime'] = request.earliest_remediation_time
+        if not UtilClient.is_unset(request.latest_remediation_time):
+            query['LatestRemediationTime'] = request.latest_remediation_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.target_resource_group_id):
+            query['TargetResourceGroupId'] = request.target_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoGroupingRemediations',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAutoGroupingRemediationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_grouping_remediations_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
+        """
+        @summary 列出自动分组修正记录
+        
+        @param request: ListAutoGroupingRemediationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoGroupingRemediationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.earliest_remediation_time):
+            query['EarliestRemediationTime'] = request.earliest_remediation_time
+        if not UtilClient.is_unset(request.latest_remediation_time):
+            query['LatestRemediationTime'] = request.latest_remediation_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.target_resource_group_id):
+            query['TargetResourceGroupId'] = request.target_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoGroupingRemediations',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAutoGroupingRemediationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_grouping_remediations(
+        self,
+        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
+    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
+        """
+        @summary 列出自动分组修正记录
+        
+        @param request: ListAutoGroupingRemediationsRequest
+        @return: ListAutoGroupingRemediationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_auto_grouping_remediations_with_options(request, runtime)
+
+    async def list_auto_grouping_remediations_async(
+        self,
+        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
+    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
+        """
+        @summary 列出自动分组修正记录
+        
+        @param request: ListAutoGroupingRemediationsRequest
+        @return: ListAutoGroupingRemediationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_auto_grouping_remediations_with_options_async(request, runtime)
 
     def list_auto_grouping_rules_with_options(
         self,
@@ -7219,16 +6987,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_auto_grouping_rules_with_options_async(
         self,
@@ -7268,16 +7030,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_auto_grouping_rules(
         self,
@@ -7343,16 +7099,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListControlPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_control_policies_with_options_async(
         self,
@@ -7392,16 +7142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListControlPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_control_policies(
         self,
@@ -7465,16 +7209,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_control_policy_attachments_for_target_with_options_async(
         self,
@@ -7508,16 +7246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_control_policy_attachments_for_target(
         self,
@@ -7581,16 +7313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_delegated_administrators_with_options_async(
         self,
@@ -7628,16 +7354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_delegated_administrators(
         self,
@@ -7701,16 +7421,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_delegated_services_for_account_with_options_async(
         self,
@@ -7744,16 +7458,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_delegated_services_for_account(
         self,
@@ -7821,16 +7529,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListFoldersForParentResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListFoldersForParentResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListFoldersForParentResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_folders_for_parent_with_options_async(
         self,
@@ -7868,16 +7570,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListFoldersForParentResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListFoldersForParentResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListFoldersForParentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_folders_for_parent(
         self,
@@ -7939,16 +7635,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListHandshakesForAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_handshakes_for_account_with_options_async(
         self,
@@ -7984,16 +7674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListHandshakesForAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_handshakes_for_account(
         self,
@@ -8057,16 +7741,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_handshakes_for_resource_directory_with_options_async(
         self,
@@ -8100,16 +7778,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_handshakes_for_resource_directory(
         self,
@@ -8143,7 +7815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListPoliciesResponse:
         """
-        @summary Queries policies.
+        @summary Queries a list of permission policies.
         
         @param request: ListPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8173,16 +7845,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policies_with_options_async(
         self,
@@ -8190,7 +7856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListPoliciesResponse:
         """
-        @summary Queries policies.
+        @summary Queries a list of permission policies.
         
         @param request: ListPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8220,23 +7886,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policies(
         self,
         request: resource_manager_20200331_models.ListPoliciesRequest,
     ) -> resource_manager_20200331_models.ListPoliciesResponse:
         """
-        @summary Queries policies.
+        @summary Queries a list of permission policies.
         
         @param request: ListPoliciesRequest
         @return: ListPoliciesResponse
@@ -8249,7 +7909,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListPoliciesRequest,
     ) -> resource_manager_20200331_models.ListPoliciesResponse:
         """
-        @summary Queries policies.
+        @summary Queries a list of permission policies.
         
         @param request: ListPoliciesRequest
         @return: ListPoliciesResponse
@@ -8266,9 +7926,9 @@ class Client(OpenApiClient):
         @summary Queries policy attachment records.
         
         @description You can view the following information:
-        Policy attachment records under an Alibaba Cloud account or a resource group
-        Policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        Policy attachment records within an Alibaba Cloud account or a resource group
+        Permission policies attached to RAM users, RAM user groups, or RAM roles
+        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
         
         @param request: ListPolicyAttachmentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8306,16 +7966,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policy_attachments_with_options_async(
         self,
@@ -8326,9 +7980,9 @@ class Client(OpenApiClient):
         @summary Queries policy attachment records.
         
         @description You can view the following information:
-        Policy attachment records under an Alibaba Cloud account or a resource group
-        Policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        Policy attachment records within an Alibaba Cloud account or a resource group
+        Permission policies attached to RAM users, RAM user groups, or RAM roles
+        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
         
         @param request: ListPolicyAttachmentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8366,16 +8020,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policy_attachments(
         self,
@@ -8385,9 +8033,9 @@ class Client(OpenApiClient):
         @summary Queries policy attachment records.
         
         @description You can view the following information:
-        Policy attachment records under an Alibaba Cloud account or a resource group
-        Policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        Policy attachment records within an Alibaba Cloud account or a resource group
+        Permission policies attached to RAM users, RAM user groups, or RAM roles
+        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
         
         @param request: ListPolicyAttachmentsRequest
         @return: ListPolicyAttachmentsResponse
@@ -8403,9 +8051,9 @@ class Client(OpenApiClient):
         @summary Queries policy attachment records.
         
         @description You can view the following information:
-        Policy attachment records under an Alibaba Cloud account or a resource group
-        Policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which policies are attached under an Alibaba Cloud account or a resource group
+        Policy attachment records within an Alibaba Cloud account or a resource group
+        Permission policies attached to RAM users, RAM user groups, or RAM roles
+        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
         
         @param request: ListPolicyAttachmentsRequest
         @return: ListPolicyAttachmentsResponse
@@ -8419,7 +8067,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
         """
-        @summary 查看权限策略版本列表
+        @summary Queries a list of versions of a policy.
         
         @param request: ListPolicyVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8445,16 +8093,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyVersionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyVersionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListPolicyVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policy_versions_with_options_async(
         self,
@@ -8462,7 +8104,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
         """
-        @summary 查看权限策略版本列表
+        @summary Queries a list of versions of a policy.
         
         @param request: ListPolicyVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8488,23 +8130,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyVersionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListPolicyVersionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListPolicyVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policy_versions(
         self,
         request: resource_manager_20200331_models.ListPolicyVersionsRequest,
     ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
         """
-        @summary 查看权限策略版本列表
+        @summary Queries a list of versions of a policy.
         
         @param request: ListPolicyVersionsRequest
         @return: ListPolicyVersionsResponse
@@ -8517,7 +8153,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListPolicyVersionsRequest,
     ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
         """
-        @summary 查看权限策略版本列表
+        @summary Queries a list of versions of a policy.
         
         @param request: ListPolicyVersionsRequest
         @return: ListPolicyVersionsResponse
@@ -8572,16 +8208,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourceGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourceGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resource_groups_with_options_async(
         self,
@@ -8630,16 +8260,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourceGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourceGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resource_groups(
         self,
@@ -8668,6 +8292,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_groups_with_options_async(request, runtime)
+
+    def list_resource_groups_with_auth_details_with_options(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
+        """
+        @summary 列出资源组与用户授权信息
+        
+        @param request: ListResourceGroupsWithAuthDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsWithAuthDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupsWithAuthDetails',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_groups_with_auth_details_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
+        """
+        @summary 列出资源组与用户授权信息
+        
+        @param request: ListResourceGroupsWithAuthDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsWithAuthDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupsWithAuthDetails',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_groups_with_auth_details(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
+    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
+        """
+        @summary 列出资源组与用户授权信息
+        
+        @param request: ListResourceGroupsWithAuthDetailsRequest
+        @return: ListResourceGroupsWithAuthDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_groups_with_auth_details_with_options(request, runtime)
+
+    async def list_resource_groups_with_auth_details_async(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
+    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
+        """
+        @summary 列出资源组与用户授权信息
+        
+        @param request: ListResourceGroupsWithAuthDetailsRequest
+        @return: ListResourceGroupsWithAuthDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_groups_with_auth_details_with_options_async(request, runtime)
 
     def list_resources_with_options(
         self,
@@ -8716,16 +8472,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resources_with_options_async(
         self,
@@ -8774,16 +8524,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resources(
         self,
@@ -8823,7 +8567,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListRolesResponse:
         """
-        @summary Queries RAM roles.
+        @summary Queries a list of RAM roles.
         
         @param request: ListRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8851,16 +8595,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListRolesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListRolesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_roles_with_options_async(
         self,
@@ -8868,7 +8606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListRolesResponse:
         """
-        @summary Queries RAM roles.
+        @summary Queries a list of RAM roles.
         
         @param request: ListRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8896,23 +8634,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListRolesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListRolesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_roles(
         self,
         request: resource_manager_20200331_models.ListRolesRequest,
     ) -> resource_manager_20200331_models.ListRolesResponse:
         """
-        @summary Queries RAM roles.
+        @summary Queries a list of RAM roles.
         
         @param request: ListRolesRequest
         @return: ListRolesResponse
@@ -8925,7 +8657,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListRolesRequest,
     ) -> resource_manager_20200331_models.ListRolesResponse:
         """
-        @summary Queries RAM roles.
+        @summary Queries a list of RAM roles.
         
         @param request: ListRolesRequest
         @return: ListRolesResponse
@@ -8971,16 +8703,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_keys_with_options_async(
         self,
@@ -9020,16 +8746,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_keys(
         self,
@@ -9101,16 +8821,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -9152,16 +8866,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -9233,16 +8941,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_values_with_options_async(
         self,
@@ -9284,16 +8986,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTagValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_values(
         self,
@@ -9361,16 +9057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_target_attachments_for_control_policy_with_options_async(
         self,
@@ -9408,16 +9098,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_target_attachments_for_control_policy(
         self,
@@ -9484,16 +9168,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_trusted_service_status_with_options_async(
         self,
@@ -9530,16 +9208,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_trusted_service_status(
         self,
@@ -9601,16 +9273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.MoveAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_account_with_options_async(
         self,
@@ -9644,16 +9310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.MoveAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_account(
         self,
@@ -9716,16 +9376,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.MoveResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def move_resources_with_options_async(
         self,
@@ -9762,16 +9416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.MoveResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.MoveResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def move_resources(
         self,
@@ -9837,16 +9485,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.PromoteResourceAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.PromoteResourceAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.PromoteResourceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def promote_resource_account_with_options_async(
         self,
@@ -9880,16 +9522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.PromoteResourceAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.PromoteResourceAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.PromoteResourceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def promote_resource_account(
         self,
@@ -9954,16 +9590,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def register_delegated_administrator_with_options_async(
         self,
@@ -10002,16 +9632,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def register_delegated_administrator(
         self,
@@ -10079,16 +9703,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RemoveCloudAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RemoveCloudAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RemoveCloudAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def remove_cloud_account_with_options_async(
         self,
@@ -10120,16 +9738,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RemoveCloudAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RemoveCloudAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RemoveCloudAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def remove_cloud_account(
         self,
@@ -10187,16 +9799,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resend_create_cloud_account_email_with_options_async(
         self,
@@ -10228,16 +9834,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resend_create_cloud_account_email(
         self,
@@ -10295,16 +9895,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def resend_promote_resource_account_email_with_options_async(
         self,
@@ -10336,16 +9930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def resend_promote_resource_account_email(
         self,
@@ -10403,16 +9991,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def retry_change_account_email_with_options_async(
         self,
@@ -10444,16 +10026,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def retry_change_account_email(
         self,
@@ -10516,16 +10092,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_verification_code_for_bind_secure_mobile_phone_with_options_async(
         self,
@@ -10562,16 +10132,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_verification_code_for_bind_secure_mobile_phone(
         self,
@@ -10637,16 +10201,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_verification_code_for_enable_rdwith_options_async(
         self,
@@ -10680,16 +10238,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_verification_code_for_enable_rd(
         self,
@@ -10727,7 +10279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
         """
-        @summary 设置权限策略默认版本
+        @summary Sets a default version for a permission policy.
         
         @param request: SetDefaultPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10753,16 +10305,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_default_policy_version_with_options_async(
         self,
@@ -10770,7 +10316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
         """
-        @summary 设置权限策略默认版本
+        @summary Sets a default version for a permission policy.
         
         @param request: SetDefaultPolicyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10796,23 +10342,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_default_policy_version(
         self,
         request: resource_manager_20200331_models.SetDefaultPolicyVersionRequest,
     ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
         """
-        @summary 设置权限策略默认版本
+        @summary Sets a default version for a permission policy.
         
         @param request: SetDefaultPolicyVersionRequest
         @return: SetDefaultPolicyVersionResponse
@@ -10825,7 +10365,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.SetDefaultPolicyVersionRequest,
     ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
         """
-        @summary 设置权限策略默认版本
+        @summary Sets a default version for a permission policy.
         
         @param request: SetDefaultPolicyVersionRequest
         @return: SetDefaultPolicyVersionResponse
@@ -10865,16 +10405,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_member_deletion_permission_with_options_async(
         self,
@@ -10908,16 +10442,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_member_deletion_permission(
         self,
@@ -10985,16 +10513,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -11032,16 +10554,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -11111,16 +10627,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -11160,16 +10670,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -11238,16 +10742,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAccountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAccountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_account_with_options_async(
         self,
@@ -11286,16 +10784,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAccountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAccountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_account(
         self,
@@ -11363,16 +10855,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_associated_transfer_setting_with_options_async(
         self,
@@ -11408,16 +10894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_associated_transfer_setting(
         self,
@@ -11479,16 +10959,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_auto_grouping_config_with_options_async(
         self,
@@ -11520,16 +10994,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_auto_grouping_config(
         self,
@@ -11609,16 +11077,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_auto_grouping_rule_with_options_async(
         self,
@@ -11672,16 +11134,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_auto_grouping_rule(
         self,
@@ -11745,16 +11201,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateControlPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateControlPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_control_policy_with_options_async(
         self,
@@ -11792,16 +11242,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateControlPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateControlPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_control_policy(
         self,
@@ -11859,16 +11303,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateFolderResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateFolderResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_folder_with_options_async(
         self,
@@ -11900,16 +11338,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateFolderResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateFolderResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_folder(
         self,
@@ -11965,16 +11397,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_resource_group_with_options_async(
         self,
@@ -12008,16 +11434,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_resource_group(
         self,
@@ -12045,13 +11465,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_resource_group_with_options_async(request, runtime)
 
+    def update_resource_group_admin_setting_with_options(
+        self,
+        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
+        """
+        @summary 更新资源组管理员配置
+        
+        @param request: UpdateResourceGroupAdminSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupAdminSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creator_as_admin):
+            query['CreatorAsAdmin'] = request.creator_as_admin
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceGroupAdminSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resource_group_admin_setting_with_options_async(
+        self,
+        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
+        """
+        @summary 更新资源组管理员配置
+        
+        @param request: UpdateResourceGroupAdminSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupAdminSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creator_as_admin):
+            query['CreatorAsAdmin'] = request.creator_as_admin
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceGroupAdminSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resource_group_admin_setting(
+        self,
+        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
+    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
+        """
+        @summary 更新资源组管理员配置
+        
+        @param request: UpdateResourceGroupAdminSettingRequest
+        @return: UpdateResourceGroupAdminSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_resource_group_admin_setting_with_options(request, runtime)
+
+    async def update_resource_group_admin_setting_async(
+        self,
+        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
+    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
+        """
+        @summary 更新资源组管理员配置
+        
+        @param request: UpdateResourceGroupAdminSettingRequest
+        @return: UpdateResourceGroupAdminSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_resource_group_admin_setting_with_options_async(request, runtime)
+
     def update_role_with_options(
         self,
         request: resource_manager_20200331_models.UpdateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
         """
-        @summary Updates the information of a Resource Access Management (RAM) role.
+        @summary Updates the information about a Resource Access Management (RAM) role.
         
         @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
         
@@ -12083,16 +11599,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_role_with_options_async(
         self,
@@ -12100,7 +11610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
         """
-        @summary Updates the information of a Resource Access Management (RAM) role.
+        @summary Updates the information about a Resource Access Management (RAM) role.
         
         @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
         
@@ -12132,23 +11642,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                resource_manager_20200331_models.UpdateRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_role(
         self,
         request: resource_manager_20200331_models.UpdateRoleRequest,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
         """
-        @summary Updates the information of a Resource Access Management (RAM) role.
+        @summary Updates the information about a Resource Access Management (RAM) role.
         
         @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
         
@@ -12163,7 +11667,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateRoleRequest,
     ) -> resource_manager_20200331_models.UpdateRoleResponse:
         """
-        @summary Updates the information of a Resource Access Management (RAM) role.
+        @summary Updates the information about a Resource Access Management (RAM) role.
         
         @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
         

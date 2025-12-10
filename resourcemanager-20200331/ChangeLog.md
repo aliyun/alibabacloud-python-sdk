@@ -1,3 +1,14 @@
+2025-12-10 Version: 2.5.0
+- Support API DisableResourceGroupNotification.
+- Support API EnableResourceGroupNotification.
+- Support API GetResourceGroupAdminSetting.
+- Support API GetResourceGroupNotificationSetting.
+- Support API GetResourceGroupResourceCounts.
+- Support API ListAutoGroupingRemediations.
+- Support API ListResourceGroupsWithAuthDetails.
+- Support API UpdateResourceGroupAdminSetting.
+
+
 2025-03-03 Version: 2.4.0
 - Support API CreateAutoGroupingRule.
 - Support API DeleteAutoGroupingRule.
