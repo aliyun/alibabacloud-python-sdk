@@ -2990,6 +2990,9 @@ class Client(OpenApiClient):
         """
         @summary Verifies whether a data address is available.
         
+        @description    To verify a data address, you must have the permission on mgw:VerifyImportAddress.
+        A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: VerifyAddressResponse
@@ -3026,6 +3029,9 @@ class Client(OpenApiClient):
         """
         @summary Verifies whether a data address is available.
         
+        @description    To verify a data address, you must have the permission on mgw:VerifyImportAddress.
+        A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: VerifyAddressResponse
@@ -3060,6 +3066,9 @@ class Client(OpenApiClient):
         """
         @summary Verifies whether a data address is available.
         
+        @description    To verify a data address, you must have the permission on mgw:VerifyImportAddress.
+        A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
+        
         @return: VerifyAddressResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3073,6 +3082,9 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.VerifyAddressResponse:
         """
         @summary Verifies whether a data address is available.
+        
+        @description    To verify a data address, you must have the permission on mgw:VerifyImportAddress.
+        A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
         
         @return: VerifyAddressResponse
         """

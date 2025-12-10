@@ -1,3 +1,6 @@
+2025-12-10 Version: 1.0.3
+- Generated python 2024-06-26 for hcs-mgw.
+
 2025-04-08 Version: 1.0.2
 - Generated python 2024-06-26 for hcs-mgw.
 

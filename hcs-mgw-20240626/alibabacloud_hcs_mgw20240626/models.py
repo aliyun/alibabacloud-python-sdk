@@ -12,6 +12,7 @@ class AddressDetail(TeaModel):
         address_type: str = None,
         agent_list: str = None,
         bucket: str = None,
+        data_type: str = None,
         domain: str = None,
         inv_access_id: str = None,
         inv_access_secret: str = None,
@@ -34,6 +35,7 @@ class AddressDetail(TeaModel):
         self.agent_list = agent_list
         # This parameter is required.
         self.bucket = bucket
+        self.data_type = data_type
         # This parameter is required.
         self.domain = domain
         self.inv_access_id = inv_access_id
@@ -67,6 +69,8 @@ class AddressDetail(TeaModel):
             result['AgentList'] = self.agent_list
         if self.bucket is not None:
             result['Bucket'] = self.bucket
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.inv_access_id is not None:
@@ -105,6 +109,8 @@ class AddressDetail(TeaModel):
             self.agent_list = m.get('AgentList')
         if m.get('Bucket') is not None:
             self.bucket = m.get('Bucket')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('InvAccessId') is not None:
@@ -583,6 +589,7 @@ class ScheduleRule(TeaModel):
 class CreateJobInfo(TeaModel):
     def __init__(
         self,
+        appendable_to_normal: bool = None,
         audit: Audit = None,
         convert_symlink_target: bool = None,
         create_report: bool = None,
@@ -596,8 +603,12 @@ class CreateJobInfo(TeaModel):
         schedule_rule: ScheduleRule = None,
         src_address: str = None,
         tags: str = None,
+        target_storage_class: str = None,
         transfer_mode: str = None,
+        with_last_modify_time: bool = None,
+        with_storage_class: bool = None,
     ):
+        self.appendable_to_normal = appendable_to_normal
         self.audit = audit
         self.convert_symlink_target = convert_symlink_target
         self.create_report = create_report
@@ -615,8 +626,11 @@ class CreateJobInfo(TeaModel):
         # This parameter is required.
         self.src_address = src_address
         self.tags = tags
+        self.target_storage_class = target_storage_class
         # This parameter is required.
         self.transfer_mode = transfer_mode
+        self.with_last_modify_time = with_last_modify_time
+        self.with_storage_class = with_storage_class
 
     def validate(self):
         if self.audit:
@@ -634,6 +648,8 @@ class CreateJobInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.appendable_to_normal is not None:
+            result['AppendableToNormal'] = self.appendable_to_normal
         if self.audit is not None:
             result['Audit'] = self.audit.to_map()
         if self.convert_symlink_target is not None:
@@ -660,12 +676,20 @@ class CreateJobInfo(TeaModel):
             result['SrcAddress'] = self.src_address
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.target_storage_class is not None:
+            result['TargetStorageClass'] = self.target_storage_class
         if self.transfer_mode is not None:
             result['TransferMode'] = self.transfer_mode
+        if self.with_last_modify_time is not None:
+            result['WithLastModifyTime'] = self.with_last_modify_time
+        if self.with_storage_class is not None:
+            result['WithStorageClass'] = self.with_storage_class
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppendableToNormal') is not None:
+            self.appendable_to_normal = m.get('AppendableToNormal')
         if m.get('Audit') is not None:
             temp_model = Audit()
             self.audit = temp_model.from_map(m['Audit'])
@@ -696,8 +720,14 @@ class CreateJobInfo(TeaModel):
             self.src_address = m.get('SrcAddress')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('TargetStorageClass') is not None:
+            self.target_storage_class = m.get('TargetStorageClass')
         if m.get('TransferMode') is not None:
             self.transfer_mode = m.get('TransferMode')
+        if m.get('WithLastModifyTime') is not None:
+            self.with_last_modify_time = m.get('WithLastModifyTime')
+        if m.get('WithStorageClass') is not None:
+            self.with_storage_class = m.get('WithStorageClass')
         return self
 
 
@@ -1017,8 +1047,12 @@ class GetAgentResp(TeaModel):
 class GetAgentStatusResp(TeaModel):
     def __init__(
         self,
+        agent_ip: str = None,
+        agent_version: str = None,
         status: str = None,
     ):
+        self.agent_ip = agent_ip
+        self.agent_version = agent_version
         self.status = status
 
     def validate(self):
@@ -1030,12 +1064,20 @@ class GetAgentStatusResp(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_ip is not None:
+            result['AgentIP'] = self.agent_ip
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
         if self.status is not None:
             result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentIP') is not None:
+            self.agent_ip = m.get('AgentIP')
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -1044,6 +1086,7 @@ class GetAgentStatusResp(TeaModel):
 class GetJobResp(TeaModel):
     def __init__(
         self,
+        appendable_to_normal: bool = None,
         audit: Audit = None,
         convert_symlink_target: bool = None,
         create_report: bool = None,
@@ -1062,9 +1105,13 @@ class GetJobResp(TeaModel):
         src_address: str = None,
         status: str = None,
         tags: str = None,
+        target_storage_class: str = None,
         transfer_mode: str = None,
         version: str = None,
+        with_last_modify_time: bool = None,
+        with_storage_class: bool = None,
     ):
+        self.appendable_to_normal = appendable_to_normal
         self.audit = audit
         self.convert_symlink_target = convert_symlink_target
         self.create_report = create_report
@@ -1083,8 +1130,11 @@ class GetJobResp(TeaModel):
         self.src_address = src_address
         self.status = status
         self.tags = tags
+        self.target_storage_class = target_storage_class
         self.transfer_mode = transfer_mode
         self.version = version
+        self.with_last_modify_time = with_last_modify_time
+        self.with_storage_class = with_storage_class
 
     def validate(self):
         if self.audit:
@@ -1102,6 +1152,8 @@ class GetJobResp(TeaModel):
             return _map
 
         result = dict()
+        if self.appendable_to_normal is not None:
+            result['AppendableToNormal'] = self.appendable_to_normal
         if self.audit is not None:
             result['Audit'] = self.audit.to_map()
         if self.convert_symlink_target is not None:
@@ -1138,14 +1190,22 @@ class GetJobResp(TeaModel):
             result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.target_storage_class is not None:
+            result['TargetStorageClass'] = self.target_storage_class
         if self.transfer_mode is not None:
             result['TransferMode'] = self.transfer_mode
         if self.version is not None:
             result['Version'] = self.version
+        if self.with_last_modify_time is not None:
+            result['WithLastModifyTime'] = self.with_last_modify_time
+        if self.with_storage_class is not None:
+            result['WithStorageClass'] = self.with_storage_class
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppendableToNormal') is not None:
+            self.appendable_to_normal = m.get('AppendableToNormal')
         if m.get('Audit') is not None:
             temp_model = Audit()
             self.audit = temp_model.from_map(m['Audit'])
@@ -1186,10 +1246,16 @@ class GetJobResp(TeaModel):
             self.status = m.get('Status')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('TargetStorageClass') is not None:
+            self.target_storage_class = m.get('TargetStorageClass')
         if m.get('TransferMode') is not None:
             self.transfer_mode = m.get('TransferMode')
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('WithLastModifyTime') is not None:
+            self.with_last_modify_time = m.get('WithLastModifyTime')
+        if m.get('WithStorageClass') is not None:
+            self.with_storage_class = m.get('WithStorageClass')
         return self
 
 
@@ -1208,6 +1274,8 @@ class GetJobResultResp(TeaModel):
         inv_path: str = None,
         inv_region_id: str = None,
         ready_retry: str = None,
+        skipped_object_count: int = None,
+        skipped_object_size: int = None,
         total_object_count: int = None,
         total_object_size: int = None,
         version: str = None,
@@ -1224,6 +1292,8 @@ class GetJobResultResp(TeaModel):
         self.inv_path = inv_path
         self.inv_region_id = inv_region_id
         self.ready_retry = ready_retry
+        self.skipped_object_count = skipped_object_count
+        self.skipped_object_size = skipped_object_size
         self.total_object_count = total_object_count
         self.total_object_size = total_object_size
         self.version = version
@@ -1261,6 +1331,10 @@ class GetJobResultResp(TeaModel):
             result['InvRegionId'] = self.inv_region_id
         if self.ready_retry is not None:
             result['ReadyRetry'] = self.ready_retry
+        if self.skipped_object_count is not None:
+            result['SkippedObjectCount'] = self.skipped_object_count
+        if self.skipped_object_size is not None:
+            result['SkippedObjectSize'] = self.skipped_object_size
         if self.total_object_count is not None:
             result['TotalObjectCount'] = self.total_object_count
         if self.total_object_size is not None:
@@ -1295,6 +1369,10 @@ class GetJobResultResp(TeaModel):
             self.inv_region_id = m.get('InvRegionId')
         if m.get('ReadyRetry') is not None:
             self.ready_retry = m.get('ReadyRetry')
+        if m.get('SkippedObjectCount') is not None:
+            self.skipped_object_count = m.get('SkippedObjectCount')
+        if m.get('SkippedObjectSize') is not None:
+            self.skipped_object_size = m.get('SkippedObjectSize')
         if m.get('TotalObjectCount') is not None:
             self.total_object_count = m.get('TotalObjectCount')
         if m.get('TotalObjectSize') is not None:
@@ -3843,7 +3921,7 @@ class VerifyAddressResponseBody(TeaModel):
         self,
         verify_address_response: VerifyAddressResp = None,
     ):
-        # 校验数据地址详情。
+        # The details for verifying the data address.
         self.verify_address_response = verify_address_response
 
     def validate(self):

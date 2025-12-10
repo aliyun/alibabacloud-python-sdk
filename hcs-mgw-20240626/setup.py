@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_hcs-mgw20240626.
+setup module for alibabacloud_hcs_mgw20240626.
 
-Created on 08/04/2025
+Created on 10/12/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_hcs_mgw20240626"
-NAME = "alibabacloud_hcs-mgw20240626" or "alibabacloud-package"
+NAME = "alibabacloud_hcs_mgw20240626" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud hcs-mgw (20240626) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
@@ -38,8 +38,8 @@ URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.13, <1.0.0",
-    "alibabacloud_gateway_oss>=0.0.17, <1.0.0",
-    "alibabacloud_tea_openapi>=0.3.12, <1.0.0",
+    "alibabacloud_gateway_oss>=0.0.20, <1.0.0",
+    "alibabacloud_tea_openapi>=0.3.16, <1.0.0",
     "alibabacloud_openapi_util>=0.2.2, <1.0.0"
 ]
 
