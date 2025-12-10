@@ -1,3 +1,8 @@
+2025-12-10 Version: 4.17.3
+- Update API CreateCenterPolicy: add request parameters ClipboardGraineds.$.ClipboardSizeUnit.
+- Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.$.ClipboardSizeUnit.
+
+
 2025-12-08 Version: 4.17.2
 - Update API CreateCenterPolicy: add request parameters AcademicProxy.
 - Update API CreateCenterPolicy: add request parameters BusinessChannel.

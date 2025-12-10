@@ -7050,10 +7050,12 @@ class CreateCenterPolicyRequestClipboardGraineds(TeaModel):
     def __init__(
         self,
         clipboard_size: int = None,
+        clipboard_size_unit: str = None,
         clipboard_type: str = None,
         grained_type: str = None,
     ):
         self.clipboard_size = clipboard_size
+        self.clipboard_size_unit = clipboard_size_unit
         self.clipboard_type = clipboard_type
         self.grained_type = grained_type
 
@@ -7068,6 +7070,8 @@ class CreateCenterPolicyRequestClipboardGraineds(TeaModel):
         result = dict()
         if self.clipboard_size is not None:
             result['ClipboardSize'] = self.clipboard_size
+        if self.clipboard_size_unit is not None:
+            result['ClipboardSizeUnit'] = self.clipboard_size_unit
         if self.clipboard_type is not None:
             result['ClipboardType'] = self.clipboard_type
         if self.grained_type is not None:
@@ -7078,6 +7082,8 @@ class CreateCenterPolicyRequestClipboardGraineds(TeaModel):
         m = m or dict()
         if m.get('ClipboardSize') is not None:
             self.clipboard_size = m.get('ClipboardSize')
+        if m.get('ClipboardSizeUnit') is not None:
+            self.clipboard_size_unit = m.get('ClipboardSizeUnit')
         if m.get('ClipboardType') is not None:
             self.clipboard_type = m.get('ClipboardType')
         if m.get('GrainedType') is not None:
@@ -56906,10 +56912,12 @@ class ModifyCenterPolicyRequestClipboardGraineds(TeaModel):
     def __init__(
         self,
         clipboard_size: int = None,
+        clipboard_size_unit: str = None,
         clipboard_type: str = None,
         grained_type: str = None,
     ):
         self.clipboard_size = clipboard_size
+        self.clipboard_size_unit = clipboard_size_unit
         self.clipboard_type = clipboard_type
         self.grained_type = grained_type
 
@@ -56924,6 +56932,8 @@ class ModifyCenterPolicyRequestClipboardGraineds(TeaModel):
         result = dict()
         if self.clipboard_size is not None:
             result['ClipboardSize'] = self.clipboard_size
+        if self.clipboard_size_unit is not None:
+            result['ClipboardSizeUnit'] = self.clipboard_size_unit
         if self.clipboard_type is not None:
             result['ClipboardType'] = self.clipboard_type
         if self.grained_type is not None:
@@ -56934,6 +56944,8 @@ class ModifyCenterPolicyRequestClipboardGraineds(TeaModel):
         m = m or dict()
         if m.get('ClipboardSize') is not None:
             self.clipboard_size = m.get('ClipboardSize')
+        if m.get('ClipboardSizeUnit') is not None:
+            self.clipboard_size_unit = m.get('ClipboardSizeUnit')
         if m.get('ClipboardType') is not None:
             self.clipboard_type = m.get('ClipboardType')
         if m.get('GrainedType') is not None:
