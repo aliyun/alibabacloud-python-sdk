@@ -1,3 +1,8 @@
+2025-12-10 Version: 6.2.0
+- Support API CreateAINodes.
+- Support API DeleteAINodes.
+
+
 2025-12-09 Version: 6.1.10
 - Update API CreateApplication: add request parameters AutoUseCoupon.
 - Update API CreateApplication: add request parameters PromotionCode.

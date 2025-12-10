@@ -2410,6 +2410,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.continue_dbcluster_migration_with_options_async(request, runtime)
 
+    def create_ainodes_with_options(
+        self,
+        request: polardb_20170801_models.CreateAINodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateAINodesResponse:
+        """
+        @summary 创建AI节点
+        
+        @param request: CreateAINodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAINodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnodes):
+            query['DBNodes'] = request.dbnodes
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAINodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateAINodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ainodes_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateAINodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateAINodesResponse:
+        """
+        @summary 创建AI节点
+        
+        @param request: CreateAINodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAINodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnodes):
+            query['DBNodes'] = request.dbnodes
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAINodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateAINodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ainodes(
+        self,
+        request: polardb_20170801_models.CreateAINodesRequest,
+    ) -> polardb_20170801_models.CreateAINodesResponse:
+        """
+        @summary 创建AI节点
+        
+        @param request: CreateAINodesRequest
+        @return: CreateAINodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ainodes_with_options(request, runtime)
+
+    async def create_ainodes_async(
+        self,
+        request: polardb_20170801_models.CreateAINodesRequest,
+    ) -> polardb_20170801_models.CreateAINodesResponse:
+        """
+        @summary 创建AI节点
+        
+        @param request: CreateAINodesRequest
+        @return: CreateAINodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ainodes_with_options_async(request, runtime)
+
     def create_account_with_options(
         self,
         request: polardb_20170801_models.CreateAccountRequest,
@@ -6277,6 +6377,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_aidbcluster_with_options_async(request, runtime)
+
+    def delete_ainodes_with_options(
+        self,
+        request: polardb_20170801_models.DeleteAINodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteAINodesResponse:
+        """
+        @summary 删除ai实例子节点
+        
+        @param request: DeleteAINodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAINodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAINodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteAINodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ainodes_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteAINodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteAINodesResponse:
+        """
+        @summary 删除ai实例子节点
+        
+        @param request: DeleteAINodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAINodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAINodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteAINodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ainodes(
+        self,
+        request: polardb_20170801_models.DeleteAINodesRequest,
+    ) -> polardb_20170801_models.DeleteAINodesResponse:
+        """
+        @summary 删除ai实例子节点
+        
+        @param request: DeleteAINodesRequest
+        @return: DeleteAINodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ainodes_with_options(request, runtime)
+
+    async def delete_ainodes_async(
+        self,
+        request: polardb_20170801_models.DeleteAINodesRequest,
+    ) -> polardb_20170801_models.DeleteAINodesResponse:
+        """
+        @summary 删除ai实例子节点
+        
+        @param request: DeleteAINodesRequest
+        @return: DeleteAINodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ainodes_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
