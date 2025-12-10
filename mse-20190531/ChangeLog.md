@@ -1,3 +1,8 @@
+2025-12-10 Version: 6.22.1
+- Update API GetGatewayConfig: add response parameters Body.Data.LiteMetrics.
+- Update API GetGatewayConfig: add response parameters Body.Data.PreserveExternalRequestID.
+
+
 2025-11-26 Version: 6.22.0
 - Support API QueryNacosGrayConfig.
 

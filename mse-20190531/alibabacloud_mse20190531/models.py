@@ -25654,9 +25654,11 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         initial_connection_window_size: int = None,
         initial_stream_window_size: int = None,
         keepalive_header_timeout: int = None,
+        lite_metrics: bool = None,
         log_filter_config: str = None,
         no_supported_config_list: str = None,
         path_with_escaped_slashes: str = None,
+        preserve_external_request_id: bool = None,
         preserve_header_format: bool = None,
         sls_config_details: GetGatewayConfigResponseBodyDataSlsConfigDetails = None,
         support_waf: bool = None,
@@ -25686,9 +25688,11 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         self.initial_connection_window_size = initial_connection_window_size
         self.initial_stream_window_size = initial_stream_window_size
         self.keepalive_header_timeout = keepalive_header_timeout
+        self.lite_metrics = lite_metrics
         self.log_filter_config = log_filter_config
         self.no_supported_config_list = no_supported_config_list
         self.path_with_escaped_slashes = path_with_escaped_slashes
+        self.preserve_external_request_id = preserve_external_request_id
         self.preserve_header_format = preserve_header_format
         self.sls_config_details = sls_config_details
         self.support_waf = support_waf
@@ -25754,12 +25758,16 @@ class GetGatewayConfigResponseBodyData(TeaModel):
             result['InitialStreamWindowSize'] = self.initial_stream_window_size
         if self.keepalive_header_timeout is not None:
             result['KeepaliveHeaderTimeout'] = self.keepalive_header_timeout
+        if self.lite_metrics is not None:
+            result['LiteMetrics'] = self.lite_metrics
         if self.log_filter_config is not None:
             result['LogFilterConfig'] = self.log_filter_config
         if self.no_supported_config_list is not None:
             result['NoSupportedConfigList'] = self.no_supported_config_list
         if self.path_with_escaped_slashes is not None:
             result['PathWithEscapedSlashes'] = self.path_with_escaped_slashes
+        if self.preserve_external_request_id is not None:
+            result['PreserveExternalRequestID'] = self.preserve_external_request_id
         if self.preserve_header_format is not None:
             result['PreserveHeaderFormat'] = self.preserve_header_format
         if self.sls_config_details is not None:
@@ -25822,12 +25830,16 @@ class GetGatewayConfigResponseBodyData(TeaModel):
             self.initial_stream_window_size = m.get('InitialStreamWindowSize')
         if m.get('KeepaliveHeaderTimeout') is not None:
             self.keepalive_header_timeout = m.get('KeepaliveHeaderTimeout')
+        if m.get('LiteMetrics') is not None:
+            self.lite_metrics = m.get('LiteMetrics')
         if m.get('LogFilterConfig') is not None:
             self.log_filter_config = m.get('LogFilterConfig')
         if m.get('NoSupportedConfigList') is not None:
             self.no_supported_config_list = m.get('NoSupportedConfigList')
         if m.get('PathWithEscapedSlashes') is not None:
             self.path_with_escaped_slashes = m.get('PathWithEscapedSlashes')
+        if m.get('PreserveExternalRequestID') is not None:
+            self.preserve_external_request_id = m.get('PreserveExternalRequestID')
         if m.get('PreserveHeaderFormat') is not None:
             self.preserve_header_format = m.get('PreserveHeaderFormat')
         if m.get('SlsConfigDetails') is not None:
