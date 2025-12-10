@@ -1,3 +1,14 @@
+2025-12-10 Version: 2.0.0
+- Delete API AddImage.
+- Delete API AddImageLabels.
+- Delete API GetImage.
+- Delete API GetNodeVisualization.
+- Delete API ListAlgoDefs.
+- Delete API RemoveImage.
+- Delete API RemoveImageLabels.
+- Update API CreateJob: add request parameters body.PipelineDraftId.
+
+
 2023-07-28 Version: 1.0.27
 - Release PAI Studio SDK.
 
