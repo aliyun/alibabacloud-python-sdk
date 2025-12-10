@@ -647,6 +647,45 @@ class ForwardInfoResponse(TeaModel):
         return self
 
 
+class PodIp(TeaModel):
+    def __init__(
+        self,
+        interface_name: str = None,
+        ip: str = None,
+        type: str = None,
+    ):
+        self.interface_name = interface_name
+        self.ip = ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interface_name is not None:
+            result['InterfaceName'] = self.interface_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InterfaceName') is not None:
+            self.interface_name = m.get('InterfaceName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class ServiceConfig(TeaModel):
     def __init__(
         self,
@@ -3976,6 +4015,7 @@ class GetInstanceResponseBody(TeaModel):
         message: str = None,
         node_error_recovery: GetInstanceResponseBodyNodeErrorRecovery = None,
         payment_type: str = None,
+        pod_ips: List[PodIp] = None,
         priority: int = None,
         proxy_path: str = None,
         reason_code: str = None,
@@ -4080,6 +4120,7 @@ class GetInstanceResponseBody(TeaModel):
         # *   PayAsYouGo
         # *   Subscription
         self.payment_type = payment_type
+        self.pod_ips = pod_ips
         # The priority based on which resources are allocated to instances.
         self.priority = priority
         # The proxy path.
@@ -4176,6 +4217,10 @@ class GetInstanceResponseBody(TeaModel):
             self.latest_snapshot.validate()
         if self.node_error_recovery:
             self.node_error_recovery.validate()
+        if self.pod_ips:
+            for k in self.pod_ips:
+                if k:
+                    k.validate()
         if self.requested_resource:
             self.requested_resource.validate()
         if self.service_config:
@@ -4263,6 +4308,10 @@ class GetInstanceResponseBody(TeaModel):
             result['NodeErrorRecovery'] = self.node_error_recovery.to_map()
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        result['PodIps'] = []
+        if self.pod_ips is not None:
+            for k in self.pod_ips:
+                result['PodIps'].append(k.to_map() if k else None)
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.proxy_path is not None:
@@ -4392,6 +4441,11 @@ class GetInstanceResponseBody(TeaModel):
             self.node_error_recovery = temp_model.from_map(m['NodeErrorRecovery'])
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        self.pod_ips = []
+        if m.get('PodIps') is not None:
+            for k in m.get('PodIps'):
+                temp_model = PodIp()
+                self.pod_ips.append(temp_model.from_map(k))
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('ProxyPath') is not None:

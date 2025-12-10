@@ -1,3 +1,7 @@
+2025-12-10 Version: 2.2.1
+- Update API GetInstance: add response parameters Body.PodIps.
+
+
 2025-11-06 Version: 2.2.0
 - Support API CreateDiagnosis.
 - Update API GetInstance: add response parameters Body.ServiceConfig.
