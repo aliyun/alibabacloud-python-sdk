@@ -1,3 +1,22 @@
+2025-12-10 Version: 1.37.1
+- Update API AsyncCreateClipsTask: add request parameters CloseMusic.
+- Update API AsyncCreateClipsTask: add request parameters CloseSubtitle.
+- Update API AsyncCreateClipsTask: add request parameters CloseVoice.
+- Update API AsyncCreateClipsTask: add request parameters CustomVoiceUrl.
+- Update API AsyncCreateClipsTask: add request parameters CustomVoiceVolume.
+- Update API AsyncCreateClipsTask: add request parameters Stickers.
+- Update API AsyncUploadVideo: add request parameters FaceIdentitySimilarityMinScore.
+- Update API AsyncUploadVideo: add request parameters RemoveSubtitle.
+- Update API AsyncUploadVideo: add request parameters VideoRoles.
+- Update API AsyncUploadVideo: add request parameters VideoShotFaceIdentityCount.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.CloseMusic.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.CloseSubtitle.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.CloseVoice.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.CustomVoiceUrl.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.CustomVoiceVolume.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.Stickers.
+
+
 2025-12-05 Version: 1.37.0
 - Support API CreateGeneralConfig.
 - Support API DeleteGeneralConfig.

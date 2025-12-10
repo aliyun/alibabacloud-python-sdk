@@ -1412,13 +1412,88 @@ class AsyncCreateClipsTaskRequestColorWords(TeaModel):
         return self
 
 
+class AsyncCreateClipsTaskRequestStickers(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        dync_frames: int = None,
+        height: int = None,
+        timeline_in: int = None,
+        url: str = None,
+        width: int = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.duration = duration
+        self.dync_frames = dync_frames
+        self.height = height
+        self.timeline_in = timeline_in
+        self.url = url
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.dync_frames is not None:
+            result['DyncFrames'] = self.dync_frames
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.timeline_in is not None:
+            result['TimelineIn'] = self.timeline_in
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('DyncFrames') is not None:
+            self.dync_frames = m.get('DyncFrames')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('TimelineIn') is not None:
+            self.timeline_in = m.get('TimelineIn')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class AsyncCreateClipsTaskRequest(TeaModel):
     def __init__(
         self,
+        close_music: bool = None,
+        close_subtitle: bool = None,
+        close_voice: bool = None,
         color_words: List[AsyncCreateClipsTaskRequestColorWords] = None,
+        custom_voice_url: str = None,
+        custom_voice_volume: int = None,
         height: int = None,
         music_url: str = None,
         music_volume: int = None,
+        stickers: List[AsyncCreateClipsTaskRequestStickers] = None,
         subtitle_font_size: int = None,
         task_id: str = None,
         voice_style: str = None,
@@ -1426,10 +1501,16 @@ class AsyncCreateClipsTaskRequest(TeaModel):
         width: int = None,
         workspace_id: str = None,
     ):
+        self.close_music = close_music
+        self.close_subtitle = close_subtitle
+        self.close_voice = close_voice
         self.color_words = color_words
+        self.custom_voice_url = custom_voice_url
+        self.custom_voice_volume = custom_voice_volume
         self.height = height
         self.music_url = music_url
         self.music_volume = music_volume
+        self.stickers = stickers
         self.subtitle_font_size = subtitle_font_size
         # This parameter is required.
         self.task_id = task_id
@@ -1444,6 +1525,10 @@ class AsyncCreateClipsTaskRequest(TeaModel):
             for k in self.color_words:
                 if k:
                     k.validate()
+        if self.stickers:
+            for k in self.stickers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1451,16 +1536,30 @@ class AsyncCreateClipsTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.close_music is not None:
+            result['CloseMusic'] = self.close_music
+        if self.close_subtitle is not None:
+            result['CloseSubtitle'] = self.close_subtitle
+        if self.close_voice is not None:
+            result['CloseVoice'] = self.close_voice
         result['ColorWords'] = []
         if self.color_words is not None:
             for k in self.color_words:
                 result['ColorWords'].append(k.to_map() if k else None)
+        if self.custom_voice_url is not None:
+            result['CustomVoiceUrl'] = self.custom_voice_url
+        if self.custom_voice_volume is not None:
+            result['CustomVoiceVolume'] = self.custom_voice_volume
         if self.height is not None:
             result['Height'] = self.height
         if self.music_url is not None:
             result['MusicUrl'] = self.music_url
         if self.music_volume is not None:
             result['MusicVolume'] = self.music_volume
+        result['Stickers'] = []
+        if self.stickers is not None:
+            for k in self.stickers:
+                result['Stickers'].append(k.to_map() if k else None)
         if self.subtitle_font_size is not None:
             result['SubtitleFontSize'] = self.subtitle_font_size
         if self.task_id is not None:
@@ -1477,17 +1576,32 @@ class AsyncCreateClipsTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloseMusic') is not None:
+            self.close_music = m.get('CloseMusic')
+        if m.get('CloseSubtitle') is not None:
+            self.close_subtitle = m.get('CloseSubtitle')
+        if m.get('CloseVoice') is not None:
+            self.close_voice = m.get('CloseVoice')
         self.color_words = []
         if m.get('ColorWords') is not None:
             for k in m.get('ColorWords'):
                 temp_model = AsyncCreateClipsTaskRequestColorWords()
                 self.color_words.append(temp_model.from_map(k))
+        if m.get('CustomVoiceUrl') is not None:
+            self.custom_voice_url = m.get('CustomVoiceUrl')
+        if m.get('CustomVoiceVolume') is not None:
+            self.custom_voice_volume = m.get('CustomVoiceVolume')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('MusicUrl') is not None:
             self.music_url = m.get('MusicUrl')
         if m.get('MusicVolume') is not None:
             self.music_volume = m.get('MusicVolume')
+        self.stickers = []
+        if m.get('Stickers') is not None:
+            for k in m.get('Stickers'):
+                temp_model = AsyncCreateClipsTaskRequestStickers()
+                self.stickers.append(temp_model.from_map(k))
         if m.get('SubtitleFontSize') is not None:
             self.subtitle_font_size = m.get('SubtitleFontSize')
         if m.get('TaskId') is not None:
@@ -1506,10 +1620,16 @@ class AsyncCreateClipsTaskRequest(TeaModel):
 class AsyncCreateClipsTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        close_music: bool = None,
+        close_subtitle: bool = None,
+        close_voice: bool = None,
         color_words_shrink: str = None,
+        custom_voice_url: str = None,
+        custom_voice_volume: int = None,
         height: int = None,
         music_url: str = None,
         music_volume: int = None,
+        stickers_shrink: str = None,
         subtitle_font_size: int = None,
         task_id: str = None,
         voice_style: str = None,
@@ -1517,10 +1637,16 @@ class AsyncCreateClipsTaskShrinkRequest(TeaModel):
         width: int = None,
         workspace_id: str = None,
     ):
+        self.close_music = close_music
+        self.close_subtitle = close_subtitle
+        self.close_voice = close_voice
         self.color_words_shrink = color_words_shrink
+        self.custom_voice_url = custom_voice_url
+        self.custom_voice_volume = custom_voice_volume
         self.height = height
         self.music_url = music_url
         self.music_volume = music_volume
+        self.stickers_shrink = stickers_shrink
         self.subtitle_font_size = subtitle_font_size
         # This parameter is required.
         self.task_id = task_id
@@ -1539,14 +1665,26 @@ class AsyncCreateClipsTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.close_music is not None:
+            result['CloseMusic'] = self.close_music
+        if self.close_subtitle is not None:
+            result['CloseSubtitle'] = self.close_subtitle
+        if self.close_voice is not None:
+            result['CloseVoice'] = self.close_voice
         if self.color_words_shrink is not None:
             result['ColorWords'] = self.color_words_shrink
+        if self.custom_voice_url is not None:
+            result['CustomVoiceUrl'] = self.custom_voice_url
+        if self.custom_voice_volume is not None:
+            result['CustomVoiceVolume'] = self.custom_voice_volume
         if self.height is not None:
             result['Height'] = self.height
         if self.music_url is not None:
             result['MusicUrl'] = self.music_url
         if self.music_volume is not None:
             result['MusicVolume'] = self.music_volume
+        if self.stickers_shrink is not None:
+            result['Stickers'] = self.stickers_shrink
         if self.subtitle_font_size is not None:
             result['SubtitleFontSize'] = self.subtitle_font_size
         if self.task_id is not None:
@@ -1563,14 +1701,26 @@ class AsyncCreateClipsTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloseMusic') is not None:
+            self.close_music = m.get('CloseMusic')
+        if m.get('CloseSubtitle') is not None:
+            self.close_subtitle = m.get('CloseSubtitle')
+        if m.get('CloseVoice') is not None:
+            self.close_voice = m.get('CloseVoice')
         if m.get('ColorWords') is not None:
             self.color_words_shrink = m.get('ColorWords')
+        if m.get('CustomVoiceUrl') is not None:
+            self.custom_voice_url = m.get('CustomVoiceUrl')
+        if m.get('CustomVoiceVolume') is not None:
+            self.custom_voice_volume = m.get('CustomVoiceVolume')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('MusicUrl') is not None:
             self.music_url = m.get('MusicUrl')
         if m.get('MusicVolume') is not None:
             self.music_volume = m.get('MusicVolume')
+        if m.get('Stickers') is not None:
+            self.stickers_shrink = m.get('Stickers')
         if m.get('SubtitleFontSize') is not None:
             self.subtitle_font_size = m.get('SubtitleFontSize')
         if m.get('TaskId') is not None:
@@ -2497,20 +2647,108 @@ class AsyncUploadVideoRequestSourceVideos(TeaModel):
         return self
 
 
+class AsyncUploadVideoRequestVideoRolesRoleUrls(TeaModel):
+    def __init__(
+        self,
+        role_file_name: str = None,
+        role_file_url: str = None,
+    ):
+        self.role_file_name = role_file_name
+        self.role_file_url = role_file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_file_name is not None:
+            result['RoleFileName'] = self.role_file_name
+        if self.role_file_url is not None:
+            result['RoleFileUrl'] = self.role_file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RoleFileName') is not None:
+            self.role_file_name = m.get('RoleFileName')
+        if m.get('RoleFileUrl') is not None:
+            self.role_file_url = m.get('RoleFileUrl')
+        return self
+
+
+class AsyncUploadVideoRequestVideoRoles(TeaModel):
+    def __init__(
+        self,
+        role_info: str = None,
+        role_name: str = None,
+        role_urls: List[AsyncUploadVideoRequestVideoRolesRoleUrls] = None,
+    ):
+        self.role_info = role_info
+        self.role_name = role_name
+        self.role_urls = role_urls
+
+    def validate(self):
+        if self.role_urls:
+            for k in self.role_urls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_info is not None:
+            result['RoleInfo'] = self.role_info
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        result['RoleUrls'] = []
+        if self.role_urls is not None:
+            for k in self.role_urls:
+                result['RoleUrls'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RoleInfo') is not None:
+            self.role_info = m.get('RoleInfo')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        self.role_urls = []
+        if m.get('RoleUrls') is not None:
+            for k in m.get('RoleUrls'):
+                temp_model = AsyncUploadVideoRequestVideoRolesRoleUrls()
+                self.role_urls.append(temp_model.from_map(k))
+        return self
+
+
 class AsyncUploadVideoRequest(TeaModel):
     def __init__(
         self,
         anlysis_prompt: str = None,
+        face_identity_similarity_min_score: float = None,
         reference_video: AsyncUploadVideoRequestReferenceVideo = None,
+        remove_subtitle: bool = None,
         source_videos: List[AsyncUploadVideoRequestSourceVideos] = None,
         split_interval: int = None,
+        video_roles: List[AsyncUploadVideoRequestVideoRoles] = None,
+        video_shot_face_identity_count: int = None,
         workspace_id: str = None,
     ):
         self.anlysis_prompt = anlysis_prompt
+        self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.reference_video = reference_video
+        self.remove_subtitle = remove_subtitle
         # This parameter is required.
         self.source_videos = source_videos
         self.split_interval = split_interval
+        self.video_roles = video_roles
+        self.video_shot_face_identity_count = video_shot_face_identity_count
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -2519,6 +2757,10 @@ class AsyncUploadVideoRequest(TeaModel):
             self.reference_video.validate()
         if self.source_videos:
             for k in self.source_videos:
+                if k:
+                    k.validate()
+        if self.video_roles:
+            for k in self.video_roles:
                 if k:
                     k.validate()
 
@@ -2530,14 +2772,24 @@ class AsyncUploadVideoRequest(TeaModel):
         result = dict()
         if self.anlysis_prompt is not None:
             result['AnlysisPrompt'] = self.anlysis_prompt
+        if self.face_identity_similarity_min_score is not None:
+            result['FaceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.reference_video is not None:
             result['ReferenceVideo'] = self.reference_video.to_map()
+        if self.remove_subtitle is not None:
+            result['RemoveSubtitle'] = self.remove_subtitle
         result['SourceVideos'] = []
         if self.source_videos is not None:
             for k in self.source_videos:
                 result['SourceVideos'].append(k.to_map() if k else None)
         if self.split_interval is not None:
             result['SplitInterval'] = self.split_interval
+        result['VideoRoles'] = []
+        if self.video_roles is not None:
+            for k in self.video_roles:
+                result['VideoRoles'].append(k.to_map() if k else None)
+        if self.video_shot_face_identity_count is not None:
+            result['VideoShotFaceIdentityCount'] = self.video_shot_face_identity_count
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -2546,9 +2798,13 @@ class AsyncUploadVideoRequest(TeaModel):
         m = m or dict()
         if m.get('AnlysisPrompt') is not None:
             self.anlysis_prompt = m.get('AnlysisPrompt')
+        if m.get('FaceIdentitySimilarityMinScore') is not None:
+            self.face_identity_similarity_min_score = m.get('FaceIdentitySimilarityMinScore')
         if m.get('ReferenceVideo') is not None:
             temp_model = AsyncUploadVideoRequestReferenceVideo()
             self.reference_video = temp_model.from_map(m['ReferenceVideo'])
+        if m.get('RemoveSubtitle') is not None:
+            self.remove_subtitle = m.get('RemoveSubtitle')
         self.source_videos = []
         if m.get('SourceVideos') is not None:
             for k in m.get('SourceVideos'):
@@ -2556,6 +2812,13 @@ class AsyncUploadVideoRequest(TeaModel):
                 self.source_videos.append(temp_model.from_map(k))
         if m.get('SplitInterval') is not None:
             self.split_interval = m.get('SplitInterval')
+        self.video_roles = []
+        if m.get('VideoRoles') is not None:
+            for k in m.get('VideoRoles'):
+                temp_model = AsyncUploadVideoRequestVideoRoles()
+                self.video_roles.append(temp_model.from_map(k))
+        if m.get('VideoShotFaceIdentityCount') is not None:
+            self.video_shot_face_identity_count = m.get('VideoShotFaceIdentityCount')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -2565,16 +2828,24 @@ class AsyncUploadVideoShrinkRequest(TeaModel):
     def __init__(
         self,
         anlysis_prompt: str = None,
+        face_identity_similarity_min_score: float = None,
         reference_video_shrink: str = None,
+        remove_subtitle: bool = None,
         source_videos_shrink: str = None,
         split_interval: int = None,
+        video_roles_shrink: str = None,
+        video_shot_face_identity_count: int = None,
         workspace_id: str = None,
     ):
         self.anlysis_prompt = anlysis_prompt
+        self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.reference_video_shrink = reference_video_shrink
+        self.remove_subtitle = remove_subtitle
         # This parameter is required.
         self.source_videos_shrink = source_videos_shrink
         self.split_interval = split_interval
+        self.video_roles_shrink = video_roles_shrink
+        self.video_shot_face_identity_count = video_shot_face_identity_count
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -2589,12 +2860,20 @@ class AsyncUploadVideoShrinkRequest(TeaModel):
         result = dict()
         if self.anlysis_prompt is not None:
             result['AnlysisPrompt'] = self.anlysis_prompt
+        if self.face_identity_similarity_min_score is not None:
+            result['FaceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.reference_video_shrink is not None:
             result['ReferenceVideo'] = self.reference_video_shrink
+        if self.remove_subtitle is not None:
+            result['RemoveSubtitle'] = self.remove_subtitle
         if self.source_videos_shrink is not None:
             result['SourceVideos'] = self.source_videos_shrink
         if self.split_interval is not None:
             result['SplitInterval'] = self.split_interval
+        if self.video_roles_shrink is not None:
+            result['VideoRoles'] = self.video_roles_shrink
+        if self.video_shot_face_identity_count is not None:
+            result['VideoShotFaceIdentityCount'] = self.video_shot_face_identity_count
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -2603,12 +2882,20 @@ class AsyncUploadVideoShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AnlysisPrompt') is not None:
             self.anlysis_prompt = m.get('AnlysisPrompt')
+        if m.get('FaceIdentitySimilarityMinScore') is not None:
+            self.face_identity_similarity_min_score = m.get('FaceIdentitySimilarityMinScore')
         if m.get('ReferenceVideo') is not None:
             self.reference_video_shrink = m.get('ReferenceVideo')
+        if m.get('RemoveSubtitle') is not None:
+            self.remove_subtitle = m.get('RemoveSubtitle')
         if m.get('SourceVideos') is not None:
             self.source_videos_shrink = m.get('SourceVideos')
         if m.get('SplitInterval') is not None:
             self.split_interval = m.get('SplitInterval')
+        if m.get('VideoRoles') is not None:
+            self.video_roles_shrink = m.get('VideoRoles')
+        if m.get('VideoShotFaceIdentityCount') is not None:
+            self.video_shot_face_identity_count = m.get('VideoShotFaceIdentityCount')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -11605,6 +11892,75 @@ class GetAutoClipsTaskInfoResponseBodyDataColorWords(TeaModel):
         return self
 
 
+class GetAutoClipsTaskInfoResponseBodyDataStickers(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        dync_frames: int = None,
+        height: int = None,
+        timeline_in: int = None,
+        url: str = None,
+        width: int = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.duration = duration
+        self.dync_frames = dync_frames
+        self.height = height
+        self.timeline_in = timeline_in
+        self.url = url
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.dync_frames is not None:
+            result['DyncFrames'] = self.dync_frames
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.timeline_in is not None:
+            result['TimelineIn'] = self.timeline_in
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('DyncFrames') is not None:
+            self.dync_frames = m.get('DyncFrames')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('TimelineIn') is not None:
+            self.timeline_in = m.get('TimelineIn')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class GetAutoClipsTaskInfoResponseBodyDataTimelinesClips(TeaModel):
     def __init__(
         self,
@@ -11724,8 +12080,13 @@ class GetAutoClipsTaskInfoResponseBodyDataTimelines(TeaModel):
 class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
     def __init__(
         self,
+        close_music: bool = None,
+        close_subtitle: bool = None,
+        close_voice: bool = None,
         color_words: List[GetAutoClipsTaskInfoResponseBodyDataColorWords] = None,
         content: str = None,
+        custom_voice_url: str = None,
+        custom_voice_volume: int = None,
         error_message: str = None,
         media_cloud_timeline: str = None,
         music_style: str = None,
@@ -11734,14 +12095,20 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
         output_video_url: str = None,
         status: int = None,
         step: str = None,
+        stickers: List[GetAutoClipsTaskInfoResponseBodyDataStickers] = None,
         subtitle_font_size: int = None,
         task_id: str = None,
         timelines: List[GetAutoClipsTaskInfoResponseBodyDataTimelines] = None,
         voice_style: str = None,
         voice_volume: int = None,
     ):
+        self.close_music = close_music
+        self.close_subtitle = close_subtitle
+        self.close_voice = close_voice
         self.color_words = color_words
         self.content = content
+        self.custom_voice_url = custom_voice_url
+        self.custom_voice_volume = custom_voice_volume
         self.error_message = error_message
         self.media_cloud_timeline = media_cloud_timeline
         self.music_style = music_style
@@ -11750,6 +12117,7 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
         self.output_video_url = output_video_url
         self.status = status
         self.step = step
+        self.stickers = stickers
         self.subtitle_font_size = subtitle_font_size
         self.task_id = task_id
         self.timelines = timelines
@@ -11759,6 +12127,10 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
     def validate(self):
         if self.color_words:
             for k in self.color_words:
+                if k:
+                    k.validate()
+        if self.stickers:
+            for k in self.stickers:
                 if k:
                     k.validate()
         if self.timelines:
@@ -11772,12 +12144,22 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.close_music is not None:
+            result['CloseMusic'] = self.close_music
+        if self.close_subtitle is not None:
+            result['CloseSubtitle'] = self.close_subtitle
+        if self.close_voice is not None:
+            result['CloseVoice'] = self.close_voice
         result['ColorWords'] = []
         if self.color_words is not None:
             for k in self.color_words:
                 result['ColorWords'].append(k.to_map() if k else None)
         if self.content is not None:
             result['Content'] = self.content
+        if self.custom_voice_url is not None:
+            result['CustomVoiceUrl'] = self.custom_voice_url
+        if self.custom_voice_volume is not None:
+            result['CustomVoiceVolume'] = self.custom_voice_volume
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.media_cloud_timeline is not None:
@@ -11794,6 +12176,10 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
             result['Status'] = self.status
         if self.step is not None:
             result['Step'] = self.step
+        result['Stickers'] = []
+        if self.stickers is not None:
+            for k in self.stickers:
+                result['Stickers'].append(k.to_map() if k else None)
         if self.subtitle_font_size is not None:
             result['SubtitleFontSize'] = self.subtitle_font_size
         if self.task_id is not None:
@@ -11810,6 +12196,12 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CloseMusic') is not None:
+            self.close_music = m.get('CloseMusic')
+        if m.get('CloseSubtitle') is not None:
+            self.close_subtitle = m.get('CloseSubtitle')
+        if m.get('CloseVoice') is not None:
+            self.close_voice = m.get('CloseVoice')
         self.color_words = []
         if m.get('ColorWords') is not None:
             for k in m.get('ColorWords'):
@@ -11817,6 +12209,10 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
                 self.color_words.append(temp_model.from_map(k))
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CustomVoiceUrl') is not None:
+            self.custom_voice_url = m.get('CustomVoiceUrl')
+        if m.get('CustomVoiceVolume') is not None:
+            self.custom_voice_volume = m.get('CustomVoiceVolume')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('MediaCloudTimeline') is not None:
@@ -11833,6 +12229,11 @@ class GetAutoClipsTaskInfoResponseBodyData(TeaModel):
             self.status = m.get('Status')
         if m.get('Step') is not None:
             self.step = m.get('Step')
+        self.stickers = []
+        if m.get('Stickers') is not None:
+            for k in m.get('Stickers'):
+                temp_model = GetAutoClipsTaskInfoResponseBodyDataStickers()
+                self.stickers.append(temp_model.from_map(k))
         if m.get('SubtitleFontSize') is not None:
             self.subtitle_font_size = m.get('SubtitleFontSize')
         if m.get('TaskId') is not None:
