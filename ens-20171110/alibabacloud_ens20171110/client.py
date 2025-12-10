@@ -2936,8 +2936,12 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.ip_address):
+            query['IpAddress'] = request.ip_address
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.name):
@@ -2990,8 +2994,12 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.ip_address):
+            query['IpAddress'] = request.ip_address
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.name):
@@ -6159,7 +6167,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
         """
-        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        @summary Create an ENS security group rule.
         
         @param tmp_req: CreateSecurityGroupPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6200,7 +6208,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
         """
-        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        @summary Create an ENS security group rule.
         
         @param tmp_req: CreateSecurityGroupPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6240,7 +6248,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSecurityGroupPermissionsRequest,
     ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
         """
-        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        @summary Create an ENS security group rule.
         
         @param request: CreateSecurityGroupPermissionsRequest
         @return: CreateSecurityGroupPermissionsResponse
@@ -6253,7 +6261,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSecurityGroupPermissionsRequest,
     ) -> ens_20171110_models.CreateSecurityGroupPermissionsResponse:
         """
-        @summary 调用CreateSecurityGroupPermissions创建安全组规则。
+        @summary Create an ENS security group rule.
         
         @param request: CreateSecurityGroupPermissionsRequest
         @return: CreateSecurityGroupPermissionsResponse
@@ -6863,7 +6871,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
         """
-        @summary 删除托管公钥
+        @summary Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
         
         @param request: DeleteAICPublicKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6898,7 +6906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
         """
-        @summary 删除托管公钥
+        @summary Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
         
         @param request: DeleteAICPublicKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6932,7 +6940,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteAICPublicKeyRequest,
     ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
         """
-        @summary 删除托管公钥
+        @summary Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
         
         @param request: DeleteAICPublicKeyRequest
         @return: DeleteAICPublicKeyResponse
@@ -6945,7 +6953,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteAICPublicKeyRequest,
     ) -> ens_20171110_models.DeleteAICPublicKeyResponse:
         """
-        @summary 删除托管公钥
+        @summary Deletes a specified AIC public key. You can delete a public key only if it is not associated with the public key.
         
         @param request: DeleteAICPublicKeyRequest
         @return: DeleteAICPublicKeyResponse
@@ -9435,7 +9443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
         """
-        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        @summary Deletes an ENS security group rule.
         
         @param tmp_req: DeleteSecurityGroupPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9476,7 +9484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
         """
-        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        @summary Deletes an ENS security group rule.
         
         @param tmp_req: DeleteSecurityGroupPermissionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9516,7 +9524,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSecurityGroupPermissionsRequest,
     ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
         """
-        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        @summary Deletes an ENS security group rule.
         
         @param request: DeleteSecurityGroupPermissionsRequest
         @return: DeleteSecurityGroupPermissionsResponse
@@ -9529,7 +9537,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSecurityGroupPermissionsRequest,
     ) -> ens_20171110_models.DeleteSecurityGroupPermissionsResponse:
         """
-        @summary 调用DeleteSecurityGroupPermissions删除安全组规则。
+        @summary Deletes an ENS security group rule.
         
         @param request: DeleteSecurityGroupPermissionsRequest
         @return: DeleteSecurityGroupPermissionsResponse
@@ -14743,7 +14751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
         """
-        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        @summary You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
         
         @param request: DescribeForwardEntryAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14778,7 +14786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
         """
-        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        @summary You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
         
         @param request: DescribeForwardEntryAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14812,7 +14820,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeForwardEntryAttributeRequest,
     ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
         """
-        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        @summary You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
         
         @param request: DescribeForwardEntryAttributeRequest
         @return: DescribeForwardEntryAttributeResponse
@@ -14825,7 +14833,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeForwardEntryAttributeRequest,
     ) -> ens_20171110_models.DescribeForwardEntryAttributeResponse:
         """
-        @summary 调用DescribeForwardEntryAttribute查询DNAT条目明细
+        @summary You can call the DescribeForwardEntryAttribute operation to query the details of a DNAT rule.
         
         @param request: DescribeForwardEntryAttributeRequest
         @return: DescribeForwardEntryAttributeResponse
@@ -19403,7 +19411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
         """
-        @summary 查询SDG下的共享盘
+        @summary You can query the information of shared disks in a specified SDG.
         
         @param request: DescribeSDGSharedDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19446,7 +19454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
         """
-        @summary 查询SDG下的共享盘
+        @summary You can query the information of shared disks in a specified SDG.
         
         @param request: DescribeSDGSharedDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19488,7 +19496,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSDGSharedDisksRequest,
     ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
         """
-        @summary 查询SDG下的共享盘
+        @summary You can query the information of shared disks in a specified SDG.
         
         @param request: DescribeSDGSharedDisksRequest
         @return: DescribeSDGSharedDisksResponse
@@ -19501,7 +19509,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSDGSharedDisksRequest,
     ) -> ens_20171110_models.DescribeSDGSharedDisksResponse:
         """
-        @summary 查询SDG下的共享盘
+        @summary You can query the information of shared disks in a specified SDG.
         
         @param request: DescribeSDGSharedDisksRequest
         @return: DescribeSDGSharedDisksResponse
@@ -23539,7 +23547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
         """
-        @summary 查询公钥下发信息
+        @summary Queries the related information of AIC public keys. Paged query is supported.
         
         @param request: ListAICPublicKeyDeliveriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23584,7 +23592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
         """
-        @summary 查询公钥下发信息
+        @summary Queries the related information of AIC public keys. Paged query is supported.
         
         @param request: ListAICPublicKeyDeliveriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23628,7 +23636,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListAICPublicKeyDeliveriesRequest,
     ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
         """
-        @summary 查询公钥下发信息
+        @summary Queries the related information of AIC public keys. Paged query is supported.
         
         @param request: ListAICPublicKeyDeliveriesRequest
         @return: ListAICPublicKeyDeliveriesResponse
@@ -23641,7 +23649,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListAICPublicKeyDeliveriesRequest,
     ) -> ens_20171110_models.ListAICPublicKeyDeliveriesResponse:
         """
-        @summary 查询公钥下发信息
+        @summary Queries the related information of AIC public keys. Paged query is supported.
         
         @param request: ListAICPublicKeyDeliveriesRequest
         @return: ListAICPublicKeyDeliveriesResponse
@@ -23655,7 +23663,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListAICPublicKeysResponse:
         """
-        @summary 查询所有托管的公钥
+        @summary Query the list of AIC public keys that meet the conditions. Paged query is supported.
         
         @param request: ListAICPublicKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23698,7 +23706,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListAICPublicKeysResponse:
         """
-        @summary 查询所有托管的公钥
+        @summary Query the list of AIC public keys that meet the conditions. Paged query is supported.
         
         @param request: ListAICPublicKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23740,7 +23748,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListAICPublicKeysRequest,
     ) -> ens_20171110_models.ListAICPublicKeysResponse:
         """
-        @summary 查询所有托管的公钥
+        @summary Query the list of AIC public keys that meet the conditions. Paged query is supported.
         
         @param request: ListAICPublicKeysRequest
         @return: ListAICPublicKeysResponse
@@ -23753,7 +23761,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListAICPublicKeysRequest,
     ) -> ens_20171110_models.ListAICPublicKeysResponse:
         """
-        @summary 查询所有托管的公钥
+        @summary Query the list of AIC public keys that meet the conditions. Paged query is supported.
         
         @param request: ListAICPublicKeysRequest
         @return: ListAICPublicKeysResponse
@@ -24297,7 +24305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ManageAICLoginResponse:
         """
-        @summary AIC公钥登入管理
+        @summary Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
         
         @param request: ManageAICLoginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24338,7 +24346,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ManageAICLoginResponse:
         """
-        @summary AIC公钥登入管理
+        @summary Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
         
         @param request: ManageAICLoginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24378,7 +24386,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ManageAICLoginRequest,
     ) -> ens_20171110_models.ManageAICLoginResponse:
         """
-        @summary AIC公钥登入管理
+        @summary Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
         
         @param request: ManageAICLoginRequest
         @return: ManageAICLoginResponse
@@ -24391,7 +24399,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ManageAICLoginRequest,
     ) -> ens_20171110_models.ManageAICLoginResponse:
         """
-        @summary AIC公钥登入管理
+        @summary Log on to the AIC instance. You can associate or disassociate an AIC instance based on the uploaded AIC public key.
         
         @param request: ManageAICLoginRequest
         @return: ManageAICLoginResponse
@@ -25753,7 +25761,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
         """
-        @summary 修改实例网络
+        @summary Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+        
+        @description The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+        Instance:
+        Instances that are associated with SLB are not supported.
+        Network:
+        Instances that are associated with EIPs are not supported.
+        Instances that are associated with high-availability virtual IP addresses are not supported.
+        Instances that have been used as next hops in the routing table are not supported.
+        Secondary ENIs cannot be attached to the ECS instance.
+        Instances configured with secondary IP addresses are not supported.
         
         @param request: ModifyInstanceNetworkAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25792,7 +25810,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
         """
-        @summary 修改实例网络
+        @summary Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+        
+        @description The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+        Instance:
+        Instances that are associated with SLB are not supported.
+        Network:
+        Instances that are associated with EIPs are not supported.
+        Instances that are associated with high-availability virtual IP addresses are not supported.
+        Instances that have been used as next hops in the routing table are not supported.
+        Secondary ENIs cannot be attached to the ECS instance.
+        Instances configured with secondary IP addresses are not supported.
         
         @param request: ModifyInstanceNetworkAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25830,7 +25858,17 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceNetworkAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
         """
-        @summary 修改实例网络
+        @summary Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+        
+        @description The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+        Instance:
+        Instances that are associated with SLB are not supported.
+        Network:
+        Instances that are associated with EIPs are not supported.
+        Instances that are associated with high-availability virtual IP addresses are not supported.
+        Instances that have been used as next hops in the routing table are not supported.
+        Secondary ENIs cannot be attached to the ECS instance.
+        Instances configured with secondary IP addresses are not supported.
         
         @param request: ModifyInstanceNetworkAttributeRequest
         @return: ModifyInstanceNetworkAttributeResponse
@@ -25843,7 +25881,17 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceNetworkAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceNetworkAttributeResponse:
         """
-        @summary 修改实例网络
+        @summary Modifies the private IP address or vSwitch of a VPC-type ECS instance.
+        
+        @description The instance that you want to manage must be in the Stopped state. When you modify the parameters of a scaling group, the following limits apply:
+        Instance:
+        Instances that are associated with SLB are not supported.
+        Network:
+        Instances that are associated with EIPs are not supported.
+        Instances that are associated with high-availability virtual IP addresses are not supported.
+        Instances that have been used as next hops in the routing table are not supported.
+        Secondary ENIs cannot be attached to the ECS instance.
+        Instances configured with secondary IP addresses are not supported.
         
         @param request: ModifyInstanceNetworkAttributeRequest
         @return: ModifyInstanceNetworkAttributeResponse
@@ -32001,7 +32049,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ShareAICImageResponse:
         """
-        @summary 共享AIC镜像
+        @summary Share the specified AIC image to other users.
         
         @param tmp_req: ShareAICImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32042,7 +32090,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ShareAICImageResponse:
         """
-        @summary 共享AIC镜像
+        @summary Share the specified AIC image to other users.
         
         @param tmp_req: ShareAICImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32082,7 +32130,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ShareAICImageRequest,
     ) -> ens_20171110_models.ShareAICImageResponse:
         """
-        @summary 共享AIC镜像
+        @summary Share the specified AIC image to other users.
         
         @param request: ShareAICImageRequest
         @return: ShareAICImageResponse
@@ -32095,7 +32143,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ShareAICImageRequest,
     ) -> ens_20171110_models.ShareAICImageResponse:
         """
-        @summary 共享AIC镜像
+        @summary Share the specified AIC image to other users.
         
         @param request: ShareAICImageRequest
         @return: ShareAICImageResponse
@@ -34333,7 +34381,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UploadAICPublicKeyResponse:
         """
-        @summary 上传公钥
+        @summary Upload a new AIC public key.
         
         @param request: UploadAICPublicKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34376,7 +34424,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UploadAICPublicKeyResponse:
         """
-        @summary 上传公钥
+        @summary Upload a new AIC public key.
         
         @param request: UploadAICPublicKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34418,7 +34466,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UploadAICPublicKeyRequest,
     ) -> ens_20171110_models.UploadAICPublicKeyResponse:
         """
-        @summary 上传公钥
+        @summary Upload a new AIC public key.
         
         @param request: UploadAICPublicKeyRequest
         @return: UploadAICPublicKeyResponse
@@ -34431,7 +34479,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UploadAICPublicKeyRequest,
     ) -> ens_20171110_models.UploadAICPublicKeyResponse:
         """
-        @summary 上传公钥
+        @summary Upload a new AIC public key.
         
         @param request: UploadAICPublicKeyRequest
         @return: UploadAICPublicKeyResponse

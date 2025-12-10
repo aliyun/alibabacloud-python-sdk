@@ -4885,6 +4885,7 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
         self,
         image_id: str = None,
         instance_spec: str = None,
+        login_password: str = None,
         node_port_range: str = None,
         runtime: str = None,
         size: int = None,
@@ -4893,6 +4894,7 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
     ):
         self.image_id = image_id
         self.instance_spec = instance_spec
+        self.login_password = login_password
         self.node_port_range = node_port_range
         self.runtime = runtime
         self.size = size
@@ -4912,6 +4914,8 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
             result['ImageId'] = self.image_id
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
         if self.node_port_range is not None:
             result['NodePortRange'] = self.node_port_range
         if self.runtime is not None:
@@ -4930,6 +4934,8 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
         if m.get('NodePortRange') is not None:
             self.node_port_range = m.get('NodePortRange')
         if m.get('Runtime') is not None:
@@ -5531,7 +5537,9 @@ class CreateEipInstanceRequest(TeaModel):
         description: str = None,
         ens_region_id: str = None,
         instance_charge_type: str = None,
+        instance_id: str = None,
         internet_charge_type: str = None,
+        ip_address: str = None,
         isp: str = None,
         name: str = None,
         tag: List[CreateEipInstanceRequestTag] = None,
@@ -5555,10 +5563,12 @@ class CreateEipInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
+        self.instance_id = instance_id
         # The metering method of the EIP. Set the value to **95BandwidthByMonth**.
         # 
         # This parameter is required.
         self.internet_charge_type = internet_charge_type
+        self.ip_address = ip_address
         # The Internet service provider. Valid values:
         # 
         # *   **cmcc**: China Mobile.
@@ -5592,8 +5602,12 @@ class CreateEipInstanceRequest(TeaModel):
             result['EnsRegionId'] = self.ens_region_id
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
         if self.isp is not None:
             result['Isp'] = self.isp
         if self.name is not None:
@@ -5616,8 +5630,12 @@ class CreateEipInstanceRequest(TeaModel):
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
         if m.get('Isp') is not None:
             self.isp = m.get('Isp')
         if m.get('Name') is not None:
@@ -10651,21 +10669,63 @@ class CreateSecurityGroupPermissionsRequestPermissions(TeaModel):
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
+        # The description of the storage gateway. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
+        # The destination IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
         self.dest_cidr_ip = dest_cidr_ip
+        # The direction in which the security group rule is applied.
+        # 
+        # *   egress
+        # *   ingress
+        # 
         # This parameter is required.
         self.direction = direction
+        # Protocol type. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   ICMP: the ICMP protocol
+        # *   ICMPv6: the ICMP protocol for IPv6.
+        # *   ALL: All protocols are supported.
+        # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
+        # The destination IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
+        # 
+        # >  This parameter and the `DestCidrIp` parameter cannot be set at the same time.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        # The source IPv6 CIDR block of the security group rule. or IPv6 address.
+        # 
+        # >  This parameter and the `DestCidrIp` parameter cannot be set at the same time.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
+        # The action specified in the security group rule. Valid values:
+        # 
+        # *   Accept
+        # *   Drop
+        # 
         # This parameter is required.
         self.policy = policy
+        # The destination port range of the security group rule. Valid values:
+        # 
+        # *   If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to ICMP, the port range is -1/-1.
+        # *   ICMPv6:-1/-1.
+        # *   If you set IpProtocol to ALL, the port number range is -1/-1.
+        # 
         # This parameter is required.
         self.port_range = port_range
+        # The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.priority = priority
+        # The source IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
         self.source_cidr_ip = source_cidr_ip
+        # The range of source port numbers for the protocols specified in the security group rule. Valid values:
+        # 
+        # *   If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to ICMP, the port range is -1/-1.
+        # *   ICMPv6:-1/-1.
+        # *   If you set IpProtocol to ALL, the port range is -1/-1.
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -10734,8 +10794,12 @@ class CreateSecurityGroupPermissionsRequest(TeaModel):
         permissions: List[CreateSecurityGroupPermissionsRequestPermissions] = None,
         security_group_id: str = None,
     ):
+        # The security group rules.
+        # 
         # This parameter is required.
         self.permissions = permissions
+        # The IDs of the security groups.
+        # 
         # This parameter is required.
         self.security_group_id = security_group_id
 
@@ -10777,8 +10841,12 @@ class CreateSecurityGroupPermissionsShrinkRequest(TeaModel):
         permissions_shrink: str = None,
         security_group_id: str = None,
     ):
+        # The security group rules.
+        # 
         # This parameter is required.
         self.permissions_shrink = permissions_shrink
+        # The IDs of the security groups.
+        # 
         # This parameter is required.
         self.security_group_id = security_group_id
 
@@ -10811,6 +10879,7 @@ class CreateSecurityGroupPermissionsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11898,6 +11967,8 @@ class DeleteAICPublicKeyRequest(TeaModel):
         self,
         key_name: str = None,
     ):
+        # Public Key Name
+        # 
         # This parameter is required.
         self.key_name = key_name
 
@@ -15003,20 +15074,59 @@ class DeleteSecurityGroupPermissionsRequestPermissions(TeaModel):
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
+        # The destination IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
         self.dest_cidr_ip = dest_cidr_ip
+        # The direction in which the security group rule is applied.
+        # 
+        # *   egress
+        # *   ingress
+        # 
         # This parameter is required.
         self.direction = direction
+        # Protocol type. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   ICMP: the ICMP protocol
+        # *   ICMPv6: the IPv6 ICMP protocol.
+        # *   ALL: All protocols are supported.
+        # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
+        # The destination IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
+        # 
+        # >  This parameter and the `DestCidrIp` parameter cannot be set at the same time.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        # The source IPv6 CIDR block of the security group rule. IPv6 CIDR blocks and IPv6 addresses are supported.
+        # 
+        # >  This parameter and the `DestCidrIp` parameter cannot be set at the same time.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
+        # The action specified in the security group rule. Valid values:
+        # 
+        # *   Accept
+        # *   Drop
+        # 
         # This parameter is required.
         self.policy = policy
+        # The destination port range of the security group rule. Valid values:
+        # 
+        # *   If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to ICMP, the port range is -1/-1.
+        # *   If you set IpProtocol to ALL, the port number range is -1/-1.
+        # 
         # This parameter is required.
         self.port_range = port_range
+        # The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.priority = priority
+        # The source IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
         self.source_cidr_ip = source_cidr_ip
+        # The range of source port numbers for the protocols specified in the security group rule. Valid values:
+        # 
+        # *   If you set IpProtocol to TCP or UDP, the valid values of this parameter are 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to ICMP, the port range is -1/-1.
+        # *   If you set IpProtocol to ALL, the port range is -1/-1.
         self.source_port_range = source_port_range
 
     def validate(self):
@@ -15081,8 +15191,12 @@ class DeleteSecurityGroupPermissionsRequest(TeaModel):
         permissions: List[DeleteSecurityGroupPermissionsRequestPermissions] = None,
         security_group_id: str = None,
     ):
+        # The security group rules.
+        # 
         # This parameter is required.
         self.permissions = permissions
+        # The ID of the security group.
+        # 
         # This parameter is required.
         self.security_group_id = security_group_id
 
@@ -15124,8 +15238,12 @@ class DeleteSecurityGroupPermissionsShrinkRequest(TeaModel):
         permissions_shrink: str = None,
         security_group_id: str = None,
     ):
+        # The security group rules.
+        # 
         # This parameter is required.
         self.permissions_shrink = permissions_shrink
+        # The ID of the security group.
+        # 
         # This parameter is required.
         self.security_group_id = security_group_id
 
@@ -15158,6 +15276,7 @@ class DeleteSecurityGroupPermissionsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28720,6 +28839,8 @@ class DescribeForwardEntryAttributeRequest(TeaModel):
         self,
         forward_entry_id: str = None,
     ):
+        # The ID of the DNAT entry.
+        # 
         # This parameter is required.
         self.forward_entry_id = forward_entry_id
 
@@ -28761,19 +28882,52 @@ class DescribeForwardEntryAttributeResponseBody(TeaModel):
         standby_status: str = None,
         status: str = None,
     ):
+        # The creation time. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The EIP in the DNAT entry. The public IP address is used to access the Internet.
         self.external_ip = external_ip
+        # The external port or port range that is used for port forwarding.
+        # 
+        # *   Valid values: 1 to 65535.
+        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
         self.external_port = external_port
+        # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
+        # The name of the DNAT entry.
         self.forward_entry_name = forward_entry_name
+        # The DNAT probe port. The port must be within the internal port range. By default, this parameter is empty.
         self.health_check_port = health_check_port
+        # The private IP address of the instance that uses the DNAT entry for Internet communication.
         self.internal_ip = internal_ip
+        # The internal port or port range that is used for port forwarding.
+        # 
+        # *   Valid values: 1 to 65535.
+        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
         self.internal_port = internal_port
+        # The protocol. Valid values:
+        # 
+        # *   **TCP**: forwards TCP packets.
+        # *   **UDP**: forwards UDP packets.
+        # *   **Any**: forwards all packets.
         self.ip_protocol = ip_protocol
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The request ID.
         self.request_id = request_id
+        # The secondary EIP that is used to access the Internet. You need to select a secondary EIP that is bound to NAT. After the DNAT entry is created, the secondary EIP takes effect.
         self.standby_external_ip = standby_external_ip
+        # The status of the secondary EIP.
+        # 
+        # *   Running
+        # *   Stopping
+        # *   Stopped
+        # *   Starting
         self.standby_status = standby_status
+        # The status of the DNAT entry.
+        # 
+        # *   Pending: The DNAT entry is being created or modified.
+        # *   Available: The DNAT entry is available.
+        # *   Deleting: The DNAT entry is being deleted.
         self.status = status
 
     def validate(self):
@@ -45646,10 +45800,16 @@ class DescribeSDGSharedDisksRequest(TeaModel):
         region_id: str = None,
         sdg_id: str = None,
     ):
+        # The namespace.
         self.namespace = namespace
+        # The page number, which is used for paged query
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # sdg ID
+        # 
         # This parameter is required.
         self.sdg_id = sdg_id
 
@@ -45701,13 +45861,21 @@ class DescribeSDGSharedDisksResponseBodySharedDisks(TeaModel):
         shared_num: int = None,
         status: str = None,
     ):
+        # The time when the shared disk was created.
         self.creation_time = creation_time
+        # shared disk id
         self.disk_id = disk_id
+        # Shared disk type
         self.disk_type = disk_type
+        # The namespace of the service.
         self.namespace = namespace
+        # The node ID.
         self.region_id = region_id
+        # SdgId of the shared disk
         self.sdg_id = sdg_id
+        # Number of shared mounts
         self.shared_num = shared_num
+        # Shared disk status
         self.status = status
 
     def validate(self):
@@ -45767,10 +45935,15 @@ class DescribeSDGSharedDisksResponseBody(TeaModel):
         shared_disks: List[DescribeSDGSharedDisksResponseBodySharedDisks] = None,
         total_count: int = None,
     ):
+        # Current page number when paging
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Shared disk list
         self.shared_disks = shared_disks
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -54180,11 +54353,17 @@ class ListAICPublicKeyDeliveriesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # Public Key Grouping
         self.key_group = key_group
+        # Public Key Name
         self.key_name = key_name
+        # Public key type
         self.key_type = key_type
+        # The page number of the page to return.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -54236,10 +54415,15 @@ class ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo(TeaModel):
         key_name: str = None,
         key_type: str = None,
     ):
+        # The creation time.
         self.creation_time = creation_time
+        # The instance ID.
         self.instance_id = instance_id
+        # Public Key Grouping
         self.key_group = key_group
+        # Public Key Name
         self.key_name = key_name
+        # Public key type
         self.key_type = key_type
 
     def validate(self):
@@ -54287,10 +54471,15 @@ class ListAICPublicKeyDeliveriesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Current page number when paging
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # Public Key List
         self.public_key_deliver_info = public_key_deliver_info
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -54387,10 +54576,15 @@ class ListAICPublicKeysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Public key grouping
         self.key_group = key_group
+        # Public key name
         self.key_name = key_name
+        # Public key type
         self.key_type = key_type
+        # The page number of the page to return.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -54439,11 +54633,17 @@ class ListAICPublicKeysResponseBodyPublicKeys(TeaModel):
         key_name: str = None,
         key_type: str = None,
     ):
+        # Public key content
         self.content = content
+        # The creation time of the voiceprint.
         self.creation_time = creation_time
+        # Public key description
         self.description = description
+        # Public key grouping
         self.key_group = key_group
+        # Public key name
         self.key_name = key_name
+        # Public key type
         self.key_type = key_type
 
     def validate(self):
@@ -54495,10 +54695,15 @@ class ListAICPublicKeysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Current page number when paging
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # Public key list
         self.public_keys = public_keys
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -55745,11 +55950,22 @@ class ManageAICLoginRequest(TeaModel):
         key_group: str = None,
         key_name: str = None,
     ):
+        # Manage actions
+        # 
+        # Valid value:
+        # 
+        # *   open
+        # *   close
+        # 
         # This parameter is required.
         self.action_name = action_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Public Key Grouping
         self.key_group = key_group
+        # Public Key Name
         self.key_name = key_name
 
     def validate(self):
@@ -57532,9 +57748,17 @@ class ModifyInstanceNetworkAttributeRequest(TeaModel):
         private_ip_address: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the ENS instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The new private IP address of the ECS instance. By default, if this parameter is empty, a private IP address is randomly assigned from the CIDR block of the specified vSwitch.
         self.private_ip_address = private_ip_address
+        # The vSwitch IDs.
+        # 
+        # *   If you set this parameter to the ID of the current vSwitch, the vSwitch of the ECS instance remains unchanged.
+        # *   The input ID is a new vSwitch, and the new and old vSwitches must belong to the same node.
+        # *   By default, if this parameter is not specified, a private IP address is randomly assigned from within the CIDR block of the specified vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -57570,6 +57794,7 @@ class ModifyInstanceNetworkAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66971,8 +67196,12 @@ class ShareAICImageRequest(TeaModel):
         image_id: str = None,
         users: List[str] = None,
     ):
+        # The image name.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The user groups.
+        # 
         # This parameter is required.
         self.users = users
 
@@ -67006,8 +67235,12 @@ class ShareAICImageShrinkRequest(TeaModel):
         image_id: str = None,
         users_shrink: str = None,
     ):
+        # The image name.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The user groups.
+        # 
         # This parameter is required.
         self.users_shrink = users_shrink
 
@@ -70223,12 +70456,20 @@ class UploadAICPublicKeyRequest(TeaModel):
         key_name: str = None,
         key_type: str = None,
     ):
+        # Public Key
+        # 
         # This parameter is required.
         self.content = content
+        # The description of the document.
         self.description = description
+        # Public Key Grouping
         self.key_group = key_group
+        # Public Key Name
+        # 
         # This parameter is required.
         self.key_name = key_name
+        # Public key type
+        # 
         # This parameter is required.
         self.key_type = key_type
 

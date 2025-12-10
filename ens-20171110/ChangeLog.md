@@ -1,3 +1,9 @@
+2025-12-10 Version: 9.5.3
+- Update API CreateCluster: add request parameters ControlPlaneConfig.LoginPassword.
+- Update API CreateEipInstance: add request parameters InstanceId.
+- Update API CreateEipInstance: add request parameters IpAddress.
+
+
 2025-12-09 Version: 9.5.2
 - Update API CreateCluster: add request parameters ClusterType.
 - Update API CreateCluster: add request parameters ContainerCidr.
