@@ -11390,36 +11390,36 @@ class Client(OpenApiClient):
         @return: ListDocumentRetrieveResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.content_type):
-            query['ContentType'] = request.content_type
-        if not UtilClient.is_unset(request.element_scope):
-            query['ElementScope'] = request.element_scope
-        if not UtilClient.is_unset(request.end_date):
-            query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.office):
-            query['Office'] = request.office
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.start_date):
-            query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.sub_content_type):
-            query['SubContentType'] = request.sub_content_type
-        if not UtilClient.is_unset(request.word_size):
-            query['WordSize'] = request.word_size
         body = {}
+        if not UtilClient.is_unset(request.content_type):
+            body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.element_scope):
+            body['ElementScope'] = request.element_scope
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office):
+            body['Office'] = request.office
         if not UtilClient.is_unset(request.query):
             body['Query'] = request.query
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_content_type):
+            body['SubContentType'] = request.sub_content_type
+        if not UtilClient.is_unset(request.subject_classify):
+            body['SubjectClassify'] = request.subject_classify
+        if not UtilClient.is_unset(request.word_size):
+            body['WordSize'] = request.word_size
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -11451,36 +11451,36 @@ class Client(OpenApiClient):
         @return: ListDocumentRetrieveResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.content_type):
-            query['ContentType'] = request.content_type
-        if not UtilClient.is_unset(request.element_scope):
-            query['ElementScope'] = request.element_scope
-        if not UtilClient.is_unset(request.end_date):
-            query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.office):
-            query['Office'] = request.office
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.start_date):
-            query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.sub_content_type):
-            query['SubContentType'] = request.sub_content_type
-        if not UtilClient.is_unset(request.word_size):
-            query['WordSize'] = request.word_size
         body = {}
+        if not UtilClient.is_unset(request.content_type):
+            body['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.element_scope):
+            body['ElementScope'] = request.element_scope
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office):
+            body['Office'] = request.office
         if not UtilClient.is_unset(request.query):
             body['Query'] = request.query
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_content_type):
+            body['SubContentType'] = request.sub_content_type
+        if not UtilClient.is_unset(request.subject_classify):
+            body['SubjectClassify'] = request.subject_classify
+        if not UtilClient.is_unset(request.word_size):
+            body['WordSize'] = request.word_size
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(

@@ -27538,6 +27538,7 @@ class ListDocumentRetrieveRequest(TeaModel):
         source: str = None,
         start_date: str = None,
         sub_content_type: str = None,
+        subject_classify: str = None,
         word_size: str = None,
         workspace_id: str = None,
     ):
@@ -27552,6 +27553,7 @@ class ListDocumentRetrieveRequest(TeaModel):
         self.source = source
         self.start_date = start_date
         self.sub_content_type = sub_content_type
+        self.subject_classify = subject_classify
         self.word_size = word_size
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -27587,6 +27589,8 @@ class ListDocumentRetrieveRequest(TeaModel):
             result['StartDate'] = self.start_date
         if self.sub_content_type is not None:
             result['SubContentType'] = self.sub_content_type
+        if self.subject_classify is not None:
+            result['SubjectClassify'] = self.subject_classify
         if self.word_size is not None:
             result['WordSize'] = self.word_size
         if self.workspace_id is not None:
@@ -27617,6 +27621,8 @@ class ListDocumentRetrieveRequest(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('SubContentType') is not None:
             self.sub_content_type = m.get('SubContentType')
+        if m.get('SubjectClassify') is not None:
+            self.subject_classify = m.get('SubjectClassify')
         if m.get('WordSize') is not None:
             self.word_size = m.get('WordSize')
         if m.get('WorkspaceId') is not None:

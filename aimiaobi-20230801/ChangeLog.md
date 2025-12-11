@@ -1,3 +1,7 @@
+2025-12-11 Version: 1.37.2
+- Update API ListDocumentRetrieve: add request parameters SubjectClassify.
+
+
 2025-12-10 Version: 1.37.1
 - Update API AsyncCreateClipsTask: add request parameters CloseMusic.
 - Update API AsyncCreateClipsTask: add request parameters CloseSubtitle.
