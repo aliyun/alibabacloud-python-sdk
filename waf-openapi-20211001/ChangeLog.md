@@ -7,6 +7,15 @@
 - Update API ModifyDomain: add request parameters Redirect.Http2OriginMaxConcurrency.
 
 
+2025-12-11 Version: 7.1.1
+- Update API CreateDomain: add request parameters Redirect.Http2Origin.
+- Update API CreateDomain: add request parameters Redirect.Http2OriginMaxConcurrency.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.Http2Origin.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.Http2OriginMaxConcurrency.
+- Update API ModifyDomain: add request parameters Redirect.Http2Origin.
+- Update API ModifyDomain: add request parameters Redirect.Http2OriginMaxConcurrency.
+
+
 2025-12-09 Version: 7.1.0
 - Support API DescribeBotRuleLabels.
 - Update API CreateCloudResource: add request parameters Listen.ResourceRegionId.
