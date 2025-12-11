@@ -1,3 +1,10 @@
+2025-12-11 Version: 6.2.1
+- Update API DeleteDBCluster: add request parameters CloudProvider.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.ModelType.
+- Update API DescribeAIDBClusters: add response parameters Body.Items.$.ModelType.
+- Update API RemoveDBClusterFromGDN: add request parameters TargetDBClusterId.
+
+
 2025-12-10 Version: 6.2.0
 - Support API CreateAINodes.
 - Support API DeleteAINodes.

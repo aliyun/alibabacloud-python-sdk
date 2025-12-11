@@ -9700,6 +9700,7 @@ class DeleteDBClusterRequest(TeaModel):
     def __init__(
         self,
         backup_retention_policy_on_cluster_deletion: str = None,
+        cloud_provider: str = None,
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -9712,6 +9713,7 @@ class DeleteDBClusterRequest(TeaModel):
         # *   **LATEST**: permanently retains the most recent backup set that is automatically created before the cluster is released.
         # *   **NONE**: does not retain backup sets.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        self.cloud_provider = cloud_provider
         # The cluster ID.
         # 
         # This parameter is required.
@@ -9732,6 +9734,8 @@ class DeleteDBClusterRequest(TeaModel):
         result = dict()
         if self.backup_retention_policy_on_cluster_deletion is not None:
             result['BackupRetentionPolicyOnClusterDeletion'] = self.backup_retention_policy_on_cluster_deletion
+        if self.cloud_provider is not None:
+            result['CloudProvider'] = self.cloud_provider
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.owner_account is not None:
@@ -9748,6 +9752,8 @@ class DeleteDBClusterRequest(TeaModel):
         m = m or dict()
         if m.get('BackupRetentionPolicyOnClusterDeletion') is not None:
             self.backup_retention_policy_on_cluster_deletion = m.get('BackupRetentionPolicyOnClusterDeletion')
+        if m.get('CloudProvider') is not None:
+            self.cloud_provider = m.get('CloudProvider')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('OwnerAccount') is not None:
@@ -12822,6 +12828,7 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
         lock_mode: str = None,
         max_qpm: str = None,
         model_name: str = None,
+        model_type: str = None,
         pay_type: str = None,
         public_ip: str = None,
         region_id: str = None,
@@ -12851,6 +12858,7 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
         self.lock_mode = lock_mode
         self.max_qpm = max_qpm
         self.model_name = model_name
+        self.model_type = model_type
         self.pay_type = pay_type
         self.public_ip = public_ip
         self.region_id = region_id
@@ -12922,6 +12930,8 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
             result['MaxQPM'] = self.max_qpm
         if self.model_name is not None:
             result['ModelName'] = self.model_name
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.public_ip is not None:
@@ -12990,6 +13000,8 @@ class DescribeAIDBClusterAttributeResponseBody(TeaModel):
             self.max_qpm = m.get('MaxQPM')
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('PublicIp') is not None:
@@ -13547,6 +13559,7 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(TeaModel):
         expired: bool = None,
         kube_cluster_id: str = None,
         lock_mode: str = None,
+        model_type: str = None,
         pay_type: str = None,
         region_id: str = None,
         relative_dbcluster_id: str = None,
@@ -13569,6 +13582,7 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.expired = expired
         self.kube_cluster_id = kube_cluster_id
         self.lock_mode = lock_mode
+        self.model_type = model_type
         self.pay_type = pay_type
         self.region_id = region_id
         self.relative_dbcluster_id = relative_dbcluster_id
@@ -13612,6 +13626,8 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['KubeClusterId'] = self.kube_cluster_id
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.region_id is not None:
@@ -13658,6 +13674,8 @@ class DescribeAIDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.kube_cluster_id = m.get('KubeClusterId')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
@@ -60752,6 +60770,7 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        target_dbcluster_id: str = None,
     ):
         # The ID of the cluster in the GDN.
         # 
@@ -60769,6 +60788,7 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.target_dbcluster_id = target_dbcluster_id
 
     def validate(self):
         pass
@@ -60795,6 +60815,8 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.target_dbcluster_id is not None:
+            result['TargetDBClusterId'] = self.target_dbcluster_id
         return result
 
     def from_map(self, m: dict = None):
@@ -60815,6 +60837,8 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('TargetDBClusterId') is not None:
+            self.target_dbcluster_id = m.get('TargetDBClusterId')
         return self
 
 

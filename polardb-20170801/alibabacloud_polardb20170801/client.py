@@ -7074,6 +7074,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.cloud_provider):
+            query['CloudProvider'] = request.cloud_provider
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -7119,6 +7121,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.cloud_provider):
+            query['CloudProvider'] = request.cloud_provider
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.owner_account):
@@ -32952,6 +32956,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.target_dbcluster_id):
+            query['TargetDBClusterId'] = request.target_dbcluster_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -33003,6 +33009,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.target_dbcluster_id):
+            query['TargetDBClusterId'] = request.target_dbcluster_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
