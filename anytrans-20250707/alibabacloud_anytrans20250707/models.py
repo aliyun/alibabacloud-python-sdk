@@ -4965,6 +4965,7 @@ class TextTranslateRequestExt(TeaModel):
         config: TextTranslateRequestExtConfig = None,
         domain_hint: str = None,
         examples: List[TextTranslateRequestExtExamples] = None,
+        prefix: str = None,
         sensitives: List[str] = None,
         terminologies: List[TextTranslateRequestExtTerminologies] = None,
         text_transform: TextTranslateRequestExtTextTransform = None,
@@ -4973,6 +4974,7 @@ class TextTranslateRequestExt(TeaModel):
         self.config = config
         self.domain_hint = domain_hint
         self.examples = examples
+        self.prefix = prefix
         self.sensitives = sensitives
         self.terminologies = terminologies
         self.text_transform = text_transform
@@ -5007,6 +5009,8 @@ class TextTranslateRequestExt(TeaModel):
         if self.examples is not None:
             for k in self.examples:
                 result['examples'].append(k.to_map() if k else None)
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
         if self.sensitives is not None:
             result['sensitives'] = self.sensitives
         result['terminologies'] = []
@@ -5031,6 +5035,8 @@ class TextTranslateRequestExt(TeaModel):
             for k in m.get('examples'):
                 temp_model = TextTranslateRequestExtExamples()
                 self.examples.append(temp_model.from_map(k))
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
         if m.get('sensitives') is not None:
             self.sensitives = m.get('sensitives')
         self.terminologies = []
