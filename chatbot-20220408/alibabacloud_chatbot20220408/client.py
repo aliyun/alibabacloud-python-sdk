@@ -5549,20 +5549,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        body = {}
         if not UtilClient.is_unset(request.email):
-            query['Email'] = request.email
+            body['Email'] = request.email
         if not UtilClient.is_unset(request.expire_time):
-            query['ExpireTime'] = request.expire_time
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.extra_info):
-            query['ExtraInfo'] = request.extra_info
+            body['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.foreign_id):
-            query['ForeignId'] = request.foreign_id
+            body['ForeignId'] = request.foreign_id
         if not UtilClient.is_unset(request.nick):
-            query['Nick'] = request.nick
+            body['Nick'] = request.nick
         if not UtilClient.is_unset(request.telephone):
-            query['Telephone'] = request.telephone
+            body['Telephone'] = request.telephone
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateUserAccessToken',
@@ -5596,20 +5598,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        body = {}
         if not UtilClient.is_unset(request.email):
-            query['Email'] = request.email
+            body['Email'] = request.email
         if not UtilClient.is_unset(request.expire_time):
-            query['ExpireTime'] = request.expire_time
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.extra_info):
-            query['ExtraInfo'] = request.extra_info
+            body['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.foreign_id):
-            query['ForeignId'] = request.foreign_id
+            body['ForeignId'] = request.foreign_id
         if not UtilClient.is_unset(request.nick):
-            query['Nick'] = request.nick
+            body['Nick'] = request.nick
         if not UtilClient.is_unset(request.telephone):
-            query['Telephone'] = request.telephone
+            body['Telephone'] = request.telephone
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateUserAccessToken',
@@ -6177,12 +6181,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        body = {}
         if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
+            body['From'] = request.from_
         if not UtilClient.is_unset(request.user_access_token):
-            query['UserAccessToken'] = request.user_access_token
+            body['UserAccessToken'] = request.user_access_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='InitIMConnect',
@@ -6216,12 +6222,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        body = {}
         if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
+            body['From'] = request.from_
         if not UtilClient.is_unset(request.user_access_token):
-            query['UserAccessToken'] = request.user_access_token
+            body['UserAccessToken'] = request.user_access_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='InitIMConnect',

@@ -1,3 +1,6 @@
+2025-12-11 Version: 2.5.1
+- Generated python 2022-04-08 for Chatbot.
+
 2025-12-01 Version: 2.5.0
 - Support API CancelChat.
 
