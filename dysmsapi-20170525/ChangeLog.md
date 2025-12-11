@@ -1,3 +1,14 @@
+2025-12-11 Version: 4.3.1
+- Update API CreateSmsSign: add request parameters AppIcpRecordId.
+- Update API CreateSmsSign: add request parameters TrademarkId.
+- Update API GetSmsSign: add response parameters Body.AppIcpRecordId.
+- Update API GetSmsSign: add response parameters Body.TrademarkId.
+- Update API QuerySmsSignList: add response parameters Body.SmsSignList.$.AppIcpRecordId.
+- Update API QuerySmsSignList: add response parameters Body.SmsSignList.$.TrademarkId.
+- Update API UpdateSmsSign: add request parameters AppIcpRecordId.
+- Update API UpdateSmsSign: add request parameters TrademarkId.
+
+
 2025-11-27 Version: 4.3.0
 - Support API GetSmsOcrOssInfo.
 - Update API QuerySmsTemplateList: add response parameters Body.SmsTemplateList.$.TrafficDriving.

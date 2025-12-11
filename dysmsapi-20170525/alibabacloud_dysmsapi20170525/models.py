@@ -2118,6 +2118,7 @@ class CreateSmsAuthorizationLetterResponse(TeaModel):
 class CreateSmsSignRequest(TeaModel):
     def __init__(
         self,
+        app_icp_record_id: int = None,
         apply_scene_content: str = None,
         authorization_letter_id: int = None,
         more_data: List[str] = None,
@@ -2130,7 +2131,9 @@ class CreateSmsSignRequest(TeaModel):
         sign_source: int = None,
         sign_type: int = None,
         third_party: bool = None,
+        trademark_id: int = None,
     ):
+        self.app_icp_record_id = app_icp_record_id
         # Application scenarios, instructions as follows:
         # - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
         # 
@@ -2196,6 +2199,7 @@ class CreateSmsSignRequest(TeaModel):
         # - true: Third-party use
         # >Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
         self.third_party = third_party
+        self.trademark_id = trademark_id
 
     def validate(self):
         pass
@@ -2206,6 +2210,8 @@ class CreateSmsSignRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_icp_record_id is not None:
+            result['AppIcpRecordId'] = self.app_icp_record_id
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
         if self.authorization_letter_id is not None:
@@ -2230,10 +2236,14 @@ class CreateSmsSignRequest(TeaModel):
             result['SignType'] = self.sign_type
         if self.third_party is not None:
             result['ThirdParty'] = self.third_party
+        if self.trademark_id is not None:
+            result['TrademarkId'] = self.trademark_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppIcpRecordId') is not None:
+            self.app_icp_record_id = m.get('AppIcpRecordId')
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
         if m.get('AuthorizationLetterId') is not None:
@@ -2258,12 +2268,15 @@ class CreateSmsSignRequest(TeaModel):
             self.sign_type = m.get('SignType')
         if m.get('ThirdParty') is not None:
             self.third_party = m.get('ThirdParty')
+        if m.get('TrademarkId') is not None:
+            self.trademark_id = m.get('TrademarkId')
         return self
 
 
 class CreateSmsSignShrinkRequest(TeaModel):
     def __init__(
         self,
+        app_icp_record_id: int = None,
         apply_scene_content: str = None,
         authorization_letter_id: int = None,
         more_data_shrink: str = None,
@@ -2276,7 +2289,9 @@ class CreateSmsSignShrinkRequest(TeaModel):
         sign_source: int = None,
         sign_type: int = None,
         third_party: bool = None,
+        trademark_id: int = None,
     ):
+        self.app_icp_record_id = app_icp_record_id
         # Application scenarios, instructions as follows:
         # - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
         # 
@@ -2342,6 +2357,7 @@ class CreateSmsSignShrinkRequest(TeaModel):
         # - true: Third-party use
         # >Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
         self.third_party = third_party
+        self.trademark_id = trademark_id
 
     def validate(self):
         pass
@@ -2352,6 +2368,8 @@ class CreateSmsSignShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_icp_record_id is not None:
+            result['AppIcpRecordId'] = self.app_icp_record_id
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
         if self.authorization_letter_id is not None:
@@ -2376,10 +2394,14 @@ class CreateSmsSignShrinkRequest(TeaModel):
             result['SignType'] = self.sign_type
         if self.third_party is not None:
             result['ThirdParty'] = self.third_party
+        if self.trademark_id is not None:
+            result['TrademarkId'] = self.trademark_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppIcpRecordId') is not None:
+            self.app_icp_record_id = m.get('AppIcpRecordId')
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
         if m.get('AuthorizationLetterId') is not None:
@@ -2404,6 +2426,8 @@ class CreateSmsSignShrinkRequest(TeaModel):
             self.sign_type = m.get('SignType')
         if m.get('ThirdParty') is not None:
             self.third_party = m.get('ThirdParty')
+        if m.get('TrademarkId') is not None:
+            self.trademark_id = m.get('TrademarkId')
         return self
 
 
@@ -5447,6 +5471,7 @@ class GetSmsSignResponseBodySignIspRegisterDetailList(TeaModel):
 class GetSmsSignResponseBody(TeaModel):
     def __init__(
         self,
+        app_icp_record_id: int = None,
         apply_scene: str = None,
         audit_info: GetSmsSignResponseBodyAuditInfo = None,
         authorization_letter_audit_pass: bool = None,
@@ -5467,7 +5492,9 @@ class GetSmsSignResponseBody(TeaModel):
         sign_tag: str = None,
         sign_usage: str = None,
         third_party: bool = None,
+        trademark_id: int = None,
     ):
+        self.app_icp_record_id = app_icp_record_id
         # Content of application scenarios.
         self.apply_scene = apply_scene
         # Audit information.
@@ -5523,6 +5550,7 @@ class GetSmsSignResponseBody(TeaModel):
         # 
         # - true: Third-party use
         self.third_party = third_party
+        self.trademark_id = trademark_id
 
     def validate(self):
         if self.audit_info:
@@ -5538,6 +5566,8 @@ class GetSmsSignResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.app_icp_record_id is not None:
+            result['AppIcpRecordId'] = self.app_icp_record_id
         if self.apply_scene is not None:
             result['ApplyScene'] = self.apply_scene
         if self.audit_info is not None:
@@ -5580,10 +5610,14 @@ class GetSmsSignResponseBody(TeaModel):
             result['SignUsage'] = self.sign_usage
         if self.third_party is not None:
             result['ThirdParty'] = self.third_party
+        if self.trademark_id is not None:
+            result['TrademarkId'] = self.trademark_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppIcpRecordId') is not None:
+            self.app_icp_record_id = m.get('AppIcpRecordId')
         if m.get('ApplyScene') is not None:
             self.apply_scene = m.get('ApplyScene')
         if m.get('AuditInfo') is not None:
@@ -5628,6 +5662,8 @@ class GetSmsSignResponseBody(TeaModel):
             self.sign_usage = m.get('SignUsage')
         if m.get('ThirdParty') is not None:
             self.third_party = m.get('ThirdParty')
+        if m.get('TrademarkId') is not None:
+            self.trademark_id = m.get('TrademarkId')
         return self
 
 
@@ -10171,6 +10207,7 @@ class QuerySmsSignListResponseBodySmsSignListReason(TeaModel):
 class QuerySmsSignListResponseBodySmsSignList(TeaModel):
     def __init__(
         self,
+        app_icp_record_id: int = None,
         audit_status: str = None,
         authorization_letter_id: int = None,
         business_type: str = None,
@@ -10178,8 +10215,10 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
         order_id: str = None,
         reason: QuerySmsSignListResponseBodySmsSignListReason = None,
         sign_name: str = None,
+        trademark_id: int = None,
         authorization_letter_audit_pass: bool = None,
     ):
+        self.app_icp_record_id = app_icp_record_id
         # The approval status of the signature. Valid values:
         # 
         # *   **AUDIT_STATE_INIT**: The signature is pending approval.
@@ -10204,6 +10243,7 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
         self.reason = reason
         # The name of the signature.
         self.sign_name = sign_name
+        self.trademark_id = trademark_id
         self.authorization_letter_audit_pass = authorization_letter_audit_pass
 
     def validate(self):
@@ -10216,6 +10256,8 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
             return _map
 
         result = dict()
+        if self.app_icp_record_id is not None:
+            result['AppIcpRecordId'] = self.app_icp_record_id
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
         if self.authorization_letter_id is not None:
@@ -10230,12 +10272,16 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
             result['Reason'] = self.reason.to_map()
         if self.sign_name is not None:
             result['SignName'] = self.sign_name
+        if self.trademark_id is not None:
+            result['TrademarkId'] = self.trademark_id
         if self.authorization_letter_audit_pass is not None:
             result['authorizationLetterAuditPass'] = self.authorization_letter_audit_pass
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppIcpRecordId') is not None:
+            self.app_icp_record_id = m.get('AppIcpRecordId')
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
         if m.get('AuthorizationLetterId') is not None:
@@ -10251,6 +10297,8 @@ class QuerySmsSignListResponseBodySmsSignList(TeaModel):
             self.reason = temp_model.from_map(m['Reason'])
         if m.get('SignName') is not None:
             self.sign_name = m.get('SignName')
+        if m.get('TrademarkId') is not None:
+            self.trademark_id = m.get('TrademarkId')
         if m.get('authorizationLetterAuditPass') is not None:
             self.authorization_letter_audit_pass = m.get('authorizationLetterAuditPass')
         return self
@@ -14263,6 +14311,7 @@ class UpdateSmsQualificationResponse(TeaModel):
 class UpdateSmsSignRequest(TeaModel):
     def __init__(
         self,
+        app_icp_record_id: int = None,
         apply_scene_content: str = None,
         authorization_letter_id: int = None,
         more_data: List[str] = None,
@@ -14275,7 +14324,9 @@ class UpdateSmsSignRequest(TeaModel):
         sign_source: int = None,
         sign_type: int = None,
         third_party: bool = None,
+        trademark_id: int = None,
     ):
+        self.app_icp_record_id = app_icp_record_id
         # Application scenarios, instructions as follows:
         # - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
         # - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
@@ -14325,6 +14376,7 @@ class UpdateSmsSignRequest(TeaModel):
         # - true: Others
         # >Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
         self.third_party = third_party
+        self.trademark_id = trademark_id
 
     def validate(self):
         pass
@@ -14335,6 +14387,8 @@ class UpdateSmsSignRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_icp_record_id is not None:
+            result['AppIcpRecordId'] = self.app_icp_record_id
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
         if self.authorization_letter_id is not None:
@@ -14359,10 +14413,14 @@ class UpdateSmsSignRequest(TeaModel):
             result['SignType'] = self.sign_type
         if self.third_party is not None:
             result['ThirdParty'] = self.third_party
+        if self.trademark_id is not None:
+            result['TrademarkId'] = self.trademark_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppIcpRecordId') is not None:
+            self.app_icp_record_id = m.get('AppIcpRecordId')
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
         if m.get('AuthorizationLetterId') is not None:
@@ -14387,12 +14445,15 @@ class UpdateSmsSignRequest(TeaModel):
             self.sign_type = m.get('SignType')
         if m.get('ThirdParty') is not None:
             self.third_party = m.get('ThirdParty')
+        if m.get('TrademarkId') is not None:
+            self.trademark_id = m.get('TrademarkId')
         return self
 
 
 class UpdateSmsSignShrinkRequest(TeaModel):
     def __init__(
         self,
+        app_icp_record_id: int = None,
         apply_scene_content: str = None,
         authorization_letter_id: int = None,
         more_data_shrink: str = None,
@@ -14405,7 +14466,9 @@ class UpdateSmsSignShrinkRequest(TeaModel):
         sign_source: int = None,
         sign_type: int = None,
         third_party: bool = None,
+        trademark_id: int = None,
     ):
+        self.app_icp_record_id = app_icp_record_id
         # Application scenarios, instructions as follows:
         # - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
         # - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
@@ -14455,6 +14518,7 @@ class UpdateSmsSignShrinkRequest(TeaModel):
         # - true: Others
         # >Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
         self.third_party = third_party
+        self.trademark_id = trademark_id
 
     def validate(self):
         pass
@@ -14465,6 +14529,8 @@ class UpdateSmsSignShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_icp_record_id is not None:
+            result['AppIcpRecordId'] = self.app_icp_record_id
         if self.apply_scene_content is not None:
             result['ApplySceneContent'] = self.apply_scene_content
         if self.authorization_letter_id is not None:
@@ -14489,10 +14555,14 @@ class UpdateSmsSignShrinkRequest(TeaModel):
             result['SignType'] = self.sign_type
         if self.third_party is not None:
             result['ThirdParty'] = self.third_party
+        if self.trademark_id is not None:
+            result['TrademarkId'] = self.trademark_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppIcpRecordId') is not None:
+            self.app_icp_record_id = m.get('AppIcpRecordId')
         if m.get('ApplySceneContent') is not None:
             self.apply_scene_content = m.get('ApplySceneContent')
         if m.get('AuthorizationLetterId') is not None:
@@ -14517,6 +14587,8 @@ class UpdateSmsSignShrinkRequest(TeaModel):
             self.sign_type = m.get('SignType')
         if m.get('ThirdParty') is not None:
             self.third_party = m.get('ThirdParty')
+        if m.get('TrademarkId') is not None:
+            self.trademark_id = m.get('TrademarkId')
         return self
 
 

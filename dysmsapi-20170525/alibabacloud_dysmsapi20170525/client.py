@@ -1404,6 +1404,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.more_data):
             request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
         query = {}
+        if not UtilClient.is_unset(request.app_icp_record_id):
+            query['AppIcpRecordId'] = request.app_icp_record_id
         if not UtilClient.is_unset(request.apply_scene_content):
             query['ApplySceneContent'] = request.apply_scene_content
         if not UtilClient.is_unset(request.authorization_letter_id):
@@ -1428,6 +1430,8 @@ class Client(OpenApiClient):
             query['SignType'] = request.sign_type
         if not UtilClient.is_unset(request.third_party):
             query['ThirdParty'] = request.third_party
+        if not UtilClient.is_unset(request.trademark_id):
+            query['TrademarkId'] = request.trademark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1470,6 +1474,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.more_data):
             request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
         query = {}
+        if not UtilClient.is_unset(request.app_icp_record_id):
+            query['AppIcpRecordId'] = request.app_icp_record_id
         if not UtilClient.is_unset(request.apply_scene_content):
             query['ApplySceneContent'] = request.apply_scene_content
         if not UtilClient.is_unset(request.authorization_letter_id):
@@ -1494,6 +1500,8 @@ class Client(OpenApiClient):
             query['SignType'] = request.sign_type
         if not UtilClient.is_unset(request.third_party):
             query['ThirdParty'] = request.third_party
+        if not UtilClient.is_unset(request.trademark_id):
+            query['TrademarkId'] = request.trademark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7565,6 +7573,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.more_data):
             request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
         query = {}
+        if not UtilClient.is_unset(request.app_icp_record_id):
+            query['AppIcpRecordId'] = request.app_icp_record_id
         if not UtilClient.is_unset(request.apply_scene_content):
             query['ApplySceneContent'] = request.apply_scene_content
         if not UtilClient.is_unset(request.authorization_letter_id):
@@ -7589,6 +7599,8 @@ class Client(OpenApiClient):
             query['SignType'] = request.sign_type
         if not UtilClient.is_unset(request.third_party):
             query['ThirdParty'] = request.third_party
+        if not UtilClient.is_unset(request.trademark_id):
+            query['TrademarkId'] = request.trademark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7630,6 +7642,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.more_data):
             request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
         query = {}
+        if not UtilClient.is_unset(request.app_icp_record_id):
+            query['AppIcpRecordId'] = request.app_icp_record_id
         if not UtilClient.is_unset(request.apply_scene_content):
             query['ApplySceneContent'] = request.apply_scene_content
         if not UtilClient.is_unset(request.authorization_letter_id):
@@ -7654,6 +7668,8 @@ class Client(OpenApiClient):
             query['SignType'] = request.sign_type
         if not UtilClient.is_unset(request.third_party):
             query['ThirdParty'] = request.third_party
+        if not UtilClient.is_unset(request.trademark_id):
+            query['TrademarkId'] = request.trademark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
