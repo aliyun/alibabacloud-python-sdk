@@ -2514,6 +2514,8 @@ class CreateDomainRequestRedirect(TeaModel):
         cname_enabled: bool = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
+        http_2origin: bool = None,
+        http_2origin_max_concurrency: int = None,
         keepalive: bool = None,
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
@@ -2549,6 +2551,8 @@ class CreateDomainRequestRedirect(TeaModel):
         # *   **true**\
         # *   **false**\
         self.focus_http_backend = focus_http_backend
+        self.http_2origin = http_2origin
+        self.http_2origin_max_concurrency = http_2origin_max_concurrency
         # Specifies whether to enable the persistent connection feature. Valid values:
         # 
         # *   **true** (default)
@@ -2639,6 +2643,10 @@ class CreateDomainRequestRedirect(TeaModel):
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
             result['FocusHttpBackend'] = self.focus_http_backend
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.http_2origin_max_concurrency is not None:
+            result['Http2OriginMaxConcurrency'] = self.http_2origin_max_concurrency
         if self.keepalive is not None:
             result['Keepalive'] = self.keepalive
         if self.keepalive_requests is not None:
@@ -2694,6 +2702,10 @@ class CreateDomainRequestRedirect(TeaModel):
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
             self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Http2OriginMaxConcurrency') is not None:
+            self.http_2origin_max_concurrency = m.get('Http2OriginMaxConcurrency')
         if m.get('Keepalive') is not None:
             self.keepalive = m.get('Keepalive')
         if m.get('KeepaliveRequests') is not None:
@@ -19692,6 +19704,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         backup_backends: List[DescribeDomainDetailResponseBodyRedirectBackupBackends] = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
+        http_2origin: bool = None,
+        http_2origin_max_concurrency: int = None,
         keepalive: bool = None,
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
@@ -19723,6 +19737,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         # *   **true:** HTTPS to HTTP redirection for back-to-origin requests of the domain name is enabled.
         # *   **false:** HTTPS to HTTP redirection for back-to-origin requests of the domain name is disabled.
         self.focus_http_backend = focus_http_backend
+        self.http_2origin = http_2origin
+        self.http_2origin_max_concurrency = http_2origin_max_concurrency
         # Indicates whether the persistent connection feature is enabled. Valid values:
         # 
         # *   **true:** The persistent connection feature is enabled. This is the default value.
@@ -19815,6 +19831,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
             result['FocusHttpBackend'] = self.focus_http_backend
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.http_2origin_max_concurrency is not None:
+            result['Http2OriginMaxConcurrency'] = self.http_2origin_max_concurrency
         if self.keepalive is not None:
             result['Keepalive'] = self.keepalive
         if self.keepalive_requests is not None:
@@ -19876,6 +19896,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
             self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Http2OriginMaxConcurrency') is not None:
+            self.http_2origin_max_concurrency = m.get('Http2OriginMaxConcurrency')
         if m.get('Keepalive') is not None:
             self.keepalive = m.get('Keepalive')
         if m.get('KeepaliveRequests') is not None:
@@ -44153,6 +44177,8 @@ class ModifyDomainRequestRedirect(TeaModel):
         cname_enabled: bool = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
+        http_2origin: bool = None,
+        http_2origin_max_concurrency: int = None,
         keepalive: bool = None,
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
@@ -44191,6 +44217,8 @@ class ModifyDomainRequestRedirect(TeaModel):
         # *   **true**\
         # *   **false**\
         self.focus_http_backend = focus_http_backend
+        self.http_2origin = http_2origin
+        self.http_2origin_max_concurrency = http_2origin_max_concurrency
         # Specifies whether to enable the persistent connection feature. Valid values:
         # 
         # *   **true** (default)
@@ -44281,6 +44309,10 @@ class ModifyDomainRequestRedirect(TeaModel):
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
             result['FocusHttpBackend'] = self.focus_http_backend
+        if self.http_2origin is not None:
+            result['Http2Origin'] = self.http_2origin
+        if self.http_2origin_max_concurrency is not None:
+            result['Http2OriginMaxConcurrency'] = self.http_2origin_max_concurrency
         if self.keepalive is not None:
             result['Keepalive'] = self.keepalive
         if self.keepalive_requests is not None:
@@ -44336,6 +44368,10 @@ class ModifyDomainRequestRedirect(TeaModel):
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
             self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Http2Origin') is not None:
+            self.http_2origin = m.get('Http2Origin')
+        if m.get('Http2OriginMaxConcurrency') is not None:
+            self.http_2origin_max_concurrency = m.get('Http2OriginMaxConcurrency')
         if m.get('Keepalive') is not None:
             self.keepalive = m.get('Keepalive')
         if m.get('KeepaliveRequests') is not None:
