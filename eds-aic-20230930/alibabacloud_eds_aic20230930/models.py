@@ -2649,6 +2649,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         down_bandwidth_limit: int = None,
         image_id: str = None,
         instance_type: str = None,
+        is_single_img_disk: bool = None,
         network_id: str = None,
         network_info: CreateCloudPhoneNodeRequestNetworkInfo = None,
         network_type: str = None,
@@ -2704,6 +2705,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # *   ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
         # *   ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
         self.instance_type = instance_type
+        self.is_single_img_disk = is_single_img_disk
         # The office network ID.
         self.network_id = network_id
         self.network_info = network_info
@@ -2787,6 +2789,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.is_single_img_disk is not None:
+            result['IsSingleImgDisk'] = self.is_single_img_disk
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.network_info is not None:
@@ -2854,6 +2858,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('IsSingleImgDisk') is not None:
+            self.is_single_img_disk = m.get('IsSingleImgDisk')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('NetworkInfo') is not None:
@@ -2948,6 +2954,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         down_bandwidth_limit: int = None,
         image_id: str = None,
         instance_type: str = None,
+        is_single_img_disk: bool = None,
         network_id: str = None,
         network_info_shrink: str = None,
         network_type: str = None,
@@ -3003,6 +3010,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # *   ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
         # *   ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
         self.instance_type = instance_type
+        self.is_single_img_disk = is_single_img_disk
         # The office network ID.
         self.network_id = network_id
         self.network_info_shrink = network_info_shrink
@@ -3082,6 +3090,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.is_single_img_disk is not None:
+            result['IsSingleImgDisk'] = self.is_single_img_disk
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.network_info_shrink is not None:
@@ -3148,6 +3158,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('IsSingleImgDisk') is not None:
+            self.is_single_img_disk = m.get('IsSingleImgDisk')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('NetworkInfo') is not None:

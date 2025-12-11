@@ -1213,6 +1213,8 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.is_single_img_disk):
+            query['IsSingleImgDisk'] = request.is_single_img_disk
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
         if not UtilClient.is_unset(request.network_info_shrink):
@@ -1314,6 +1316,8 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.is_single_img_disk):
+            query['IsSingleImgDisk'] = request.is_single_img_disk
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
         if not UtilClient.is_unset(request.network_info_shrink):

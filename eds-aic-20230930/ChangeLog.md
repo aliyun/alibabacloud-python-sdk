@@ -1,3 +1,7 @@
+2025-12-11 Version: 4.19.1
+- Update API CreateCloudPhoneNode: add request parameters IsSingleImgDisk.
+
+
 2025-12-05 Version: 4.19.0
 - Support API ImportImage.
 - Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.BizImageType.
