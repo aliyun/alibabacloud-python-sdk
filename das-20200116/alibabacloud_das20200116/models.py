@@ -10342,6 +10342,7 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
         logical_ioreads: int = None,
         namespace: str = None,
         node_id: str = None,
+        op_type: str = None,
         origin_time: str = None,
         physical_ioreads: int = None,
         psql: str = None,
@@ -10393,6 +10394,7 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
         self.logical_ioreads = logical_ioreads
         self.namespace = namespace
         self.node_id = node_id
+        self.op_type = op_type
         self.origin_time = origin_time
         self.physical_ioreads = physical_ioreads
         self.psql = psql
@@ -10476,6 +10478,8 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             result['Namespace'] = self.namespace
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
         if self.origin_time is not None:
             result['OriginTime'] = self.origin_time
         if self.physical_ioreads is not None:
@@ -10580,6 +10584,8 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
         if m.get('OriginTime') is not None:
             self.origin_time = m.get('OriginTime')
         if m.get('PhysicalIOReads') is not None:

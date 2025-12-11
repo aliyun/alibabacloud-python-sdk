@@ -1,3 +1,7 @@
+2025-12-11 Version: 2.10.1
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.OpType.
+
+
 2025-11-19 Version: 2.10.0
 - Support API CreateSecurityIPGroup.
 - Support API DeleteSecurityIPGroup.
