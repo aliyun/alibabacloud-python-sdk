@@ -1957,6 +1957,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_action_plans_with_options_async(request, runtime)
 
+    def list_executor_events_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.ListExecutorEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListExecutorEventsResponse:
+        """
+        @summary 查询Executor的事件信息
+        
+        @param tmp_req: ListExecutorEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutorEventsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.ListExecutorEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExecutorEvents',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListExecutorEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_executor_events_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.ListExecutorEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListExecutorEventsResponse:
+        """
+        @summary 查询Executor的事件信息
+        
+        @param tmp_req: ListExecutorEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutorEventsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.ListExecutorEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExecutorEvents',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListExecutorEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_executor_events(
+        self,
+        request: ehpc_instant_20230701_models.ListExecutorEventsRequest,
+    ) -> ehpc_instant_20230701_models.ListExecutorEventsResponse:
+        """
+        @summary 查询Executor的事件信息
+        
+        @param request: ListExecutorEventsRequest
+        @return: ListExecutorEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_executor_events_with_options(request, runtime)
+
+    async def list_executor_events_async(
+        self,
+        request: ehpc_instant_20230701_models.ListExecutorEventsRequest,
+    ) -> ehpc_instant_20230701_models.ListExecutorEventsResponse:
+        """
+        @summary 查询Executor的事件信息
+        
+        @param request: ListExecutorEventsRequest
+        @return: ListExecutorEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_executor_events_with_options_async(request, runtime)
+
     def list_executors_with_options(
         self,
         tmp_req: ehpc_instant_20230701_models.ListExecutorsRequest,

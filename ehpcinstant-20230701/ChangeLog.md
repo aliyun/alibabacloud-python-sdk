@@ -1,3 +1,7 @@
+2025-12-11 Version: 3.4.0
+- Support API ListExecutorEvents.
+
+
 2025-11-27 Version: 3.3.0
 - Support API DeleteJobRecords.
 - Update API ListExecutors: add request parameters Filter.VpcId.

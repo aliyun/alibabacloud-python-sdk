@@ -6020,6 +6020,288 @@ class ListActionPlansResponse(TeaModel):
         return self
 
 
+class ListExecutorEventsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        executor_ids: List[str] = None,
+        job_id: str = None,
+        level: str = None,
+        time_after: int = None,
+        time_before: int = None,
+    ):
+        self.executor_ids = executor_ids
+        self.job_id = job_id
+        self.level = level
+        self.time_after = time_after
+        self.time_before = time_before
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.executor_ids is not None:
+            result['ExecutorIds'] = self.executor_ids
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.time_after is not None:
+            result['TimeAfter'] = self.time_after
+        if self.time_before is not None:
+            result['TimeBefore'] = self.time_before
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecutorIds') is not None:
+            self.executor_ids = m.get('ExecutorIds')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('TimeAfter') is not None:
+            self.time_after = m.get('TimeAfter')
+        if m.get('TimeBefore') is not None:
+            self.time_before = m.get('TimeBefore')
+        return self
+
+
+class ListExecutorEventsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: ListExecutorEventsRequestFilter = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.filter = filter
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            temp_model = ListExecutorEventsRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListExecutorEventsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.filter_shrink = filter_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListExecutorEventsResponseBodyExecutorEventList(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        executor_id: str = None,
+        job_id: str = None,
+        level: str = None,
+        time: str = None,
+    ):
+        self.content = content
+        self.executor_id = executor_id
+        self.job_id = job_id
+        self.level = level
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.executor_id is not None:
+            result['ExecutorId'] = self.executor_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ExecutorId') is not None:
+            self.executor_id = m.get('ExecutorId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class ListExecutorEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        executor_event_list: List[ListExecutorEventsResponseBodyExecutorEventList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.executor_event_list = executor_event_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.executor_event_list:
+            for k in self.executor_event_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExecutorEventList'] = []
+        if self.executor_event_list is not None:
+            for k in self.executor_event_list:
+                result['ExecutorEventList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.executor_event_list = []
+        if m.get('ExecutorEventList') is not None:
+            for k in m.get('ExecutorEventList'):
+                temp_model = ListExecutorEventsResponseBodyExecutorEventList()
+                self.executor_event_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListExecutorEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListExecutorEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListExecutorEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListExecutorsRequestFilter(TeaModel):
     def __init__(
         self,
