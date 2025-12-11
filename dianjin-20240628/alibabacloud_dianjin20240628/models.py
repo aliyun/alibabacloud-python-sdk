@@ -2154,6 +2154,7 @@ class CreateQualityCheckTaskRequest(TeaModel):
         meta_data: Dict[str, str] = None,
         quality_group: List[str] = None,
         request_id: str = None,
+        scene_code: str = None,
         type: str = None,
     ):
         # This parameter is required.
@@ -2164,6 +2165,7 @@ class CreateQualityCheckTaskRequest(TeaModel):
         self.quality_group = quality_group
         # This parameter is required.
         self.request_id = request_id
+        self.scene_code = scene_code
         # This parameter is required.
         self.type = type
 
@@ -2187,6 +2189,8 @@ class CreateQualityCheckTaskRequest(TeaModel):
             result['qualityGroup'] = self.quality_group
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.scene_code is not None:
+            result['sceneCode'] = self.scene_code
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -2204,6 +2208,8 @@ class CreateQualityCheckTaskRequest(TeaModel):
             self.quality_group = m.get('qualityGroup')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('sceneCode') is not None:
+            self.scene_code = m.get('sceneCode')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -2604,6 +2610,149 @@ class DeleteLibraryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteLibraryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EndToEndRealTimeDialogRequest(TeaModel):
+    def __init__(
+        self,
+        asr_model_id: str = None,
+        input_format: str = None,
+        output_format: str = None,
+        pitch_rate: int = None,
+        sample_rate: str = None,
+        speech_rate: int = None,
+        tts_model_id: str = None,
+        voice_code: str = None,
+        volume: int = None,
+    ):
+        self.asr_model_id = asr_model_id
+        self.input_format = input_format
+        self.output_format = output_format
+        self.pitch_rate = pitch_rate
+        self.sample_rate = sample_rate
+        self.speech_rate = speech_rate
+        self.tts_model_id = tts_model_id
+        self.voice_code = voice_code
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_model_id is not None:
+            result['asrModelId'] = self.asr_model_id
+        if self.input_format is not None:
+            result['inputFormat'] = self.input_format
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        if self.pitch_rate is not None:
+            result['pitchRate'] = self.pitch_rate
+        if self.sample_rate is not None:
+            result['sampleRate'] = self.sample_rate
+        if self.speech_rate is not None:
+            result['speechRate'] = self.speech_rate
+        if self.tts_model_id is not None:
+            result['ttsModelId'] = self.tts_model_id
+        if self.voice_code is not None:
+            result['voiceCode'] = self.voice_code
+        if self.volume is not None:
+            result['volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('asrModelId') is not None:
+            self.asr_model_id = m.get('asrModelId')
+        if m.get('inputFormat') is not None:
+            self.input_format = m.get('inputFormat')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        if m.get('pitchRate') is not None:
+            self.pitch_rate = m.get('pitchRate')
+        if m.get('sampleRate') is not None:
+            self.sample_rate = m.get('sampleRate')
+        if m.get('speechRate') is not None:
+            self.speech_rate = m.get('speechRate')
+        if m.get('ttsModelId') is not None:
+            self.tts_model_id = m.get('ttsModelId')
+        if m.get('voiceCode') is not None:
+            self.voice_code = m.get('voiceCode')
+        if m.get('volume') is not None:
+            self.volume = m.get('volume')
+        return self
+
+
+class EndToEndRealTimeDialogResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class EndToEndRealTimeDialogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EndToEndRealTimeDialogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EndToEndRealTimeDialogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

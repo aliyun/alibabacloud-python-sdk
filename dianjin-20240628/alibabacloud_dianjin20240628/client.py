@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+import time
+
 from Tea.request import TeaRequest
-from Tea.exceptions import TeaException
+from Tea.exceptions import TeaException, UnretryableException
 from Tea.core import TeaCore
 from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_tea_fileform.client import Client as FileFormClient
 from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dianjin20240628 import models as dian_jin_20240628_models
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_fileform import models as file_form_models
 
@@ -34,77 +36,163 @@ class Client(OpenApiClient):
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = TeaCore.do_action(_request)
-        resp_map = None
-        body_str = UtilClient.read_as_string(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                body_str = UtilClient.read_as_string(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
         data: dict,
+        runtime: util_models.RuntimeOptions,
     ) -> dict:
-        _request = TeaRequest()
-        form = UtilClient.assert_as_map(data)
-        boundary = FileFormClient.get_boundary()
-        host = UtilClient.assert_as_string(form.get('host'))
-        _request.protocol = 'HTTPS'
-        _request.method = 'POST'
-        _request.pathname = f'/'
-        _request.headers = {
-            'host': host,
-            'date': UtilClient.get_date_utcstring(),
-            'user-agent': UtilClient.get_user_agent('')
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'key': UtilClient.default_string(runtime.key, self._key),
+            'cert': UtilClient.default_string(runtime.cert, self._cert),
+            'ca': UtilClient.default_string(runtime.ca, self._ca),
+            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
+            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
+            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
+            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
+            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
+            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
+            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
+            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
+            'tlsMinVersion': self._tls_min_version
         }
-        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-        _request.body = FileFormClient.to_file_form(form, boundary)
-        _last_request = _request
-        _response = await TeaCore.async_do_action(_request)
-        resp_map = None
-        body_str = await UtilClient.read_as_string_async(_response.body)
-        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-            resp_map = XMLClient.parse_xml(body_str, None)
-            err = UtilClient.assert_as_map(resp_map.get('Error'))
-            raise TeaException({
-                'code': err.get('Code'),
-                'message': err.get('Message'),
-                'data': {
-                    'httpCode': _response.status_code,
-                    'requestId': err.get('RequestId'),
-                    'hostId': err.get('HostId')
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                form = UtilClient.assert_as_map(data)
+                boundary = FileFormClient.get_boundary()
+                host = UtilClient.assert_as_string(form.get('host'))
+                _request.protocol = 'HTTPS'
+                _request.method = 'POST'
+                _request.pathname = f'/'
+                _request.headers = {
+                    'host': host,
+                    'date': UtilClient.get_date_utcstring(),
+                    'user-agent': UtilClient.get_user_agent('')
                 }
-            })
-        resp_map = XMLClient.parse_xml(body_str, None)
-        return TeaCore.merge(resp_map)
+                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+                _request.body = FileFormClient.to_file_form(form, boundary)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                body_str = await UtilClient.read_as_string_async(_response.body)
+                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+                    resp_map = XMLClient.parse_xml(body_str, None)
+                    err = UtilClient.assert_as_map(resp_map.get('Error'))
+                    raise TeaException({
+                        'code': err.get('Code'),
+                        'message': err.get('Message'),
+                        'data': {
+                            'httpCode': _response.status_code,
+                            'requestId': err.get('RequestId'),
+                            'hostId': err.get('HostId')
+                        }
+                    })
+                resp_map = XMLClient.parse_xml(body_str, None)
+                return TeaCore.merge(resp_map)
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
 
     def get_endpoint(
         self,
@@ -1145,6 +1233,8 @@ class Client(OpenApiClient):
             body['qualityGroup'] = request.quality_group
         if not UtilClient.is_unset(request.request_id):
             body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.scene_code):
+            body['sceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -1194,6 +1284,8 @@ class Client(OpenApiClient):
             body['qualityGroup'] = request.quality_group
         if not UtilClient.is_unset(request.request_id):
             body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.scene_code):
+            body['sceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -1465,6 +1557,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_library_with_options_async(workspace_id, request, headers, runtime)
+
+    def end_to_end_real_time_dialog_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EndToEndRealTimeDialogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.EndToEndRealTimeDialogResponse:
+        """
+        @summary 端到端实时对话
+        
+        @param request: EndToEndRealTimeDialogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndToEndRealTimeDialogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['asrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.input_format):
+            query['inputFormat'] = request.input_format
+        if not UtilClient.is_unset(request.output_format):
+            query['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.pitch_rate):
+            query['pitchRate'] = request.pitch_rate
+        if not UtilClient.is_unset(request.sample_rate):
+            query['sampleRate'] = request.sample_rate
+        if not UtilClient.is_unset(request.speech_rate):
+            query['speechRate'] = request.speech_rate
+        if not UtilClient.is_unset(request.tts_model_id):
+            query['ttsModelId'] = request.tts_model_id
+        if not UtilClient.is_unset(request.voice_code):
+            query['voiceCode'] = request.voice_code
+        if not UtilClient.is_unset(request.volume):
+            query['volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EndToEndRealTimeDialog',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ws/realtime/dialog',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.EndToEndRealTimeDialogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def end_to_end_real_time_dialog_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EndToEndRealTimeDialogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.EndToEndRealTimeDialogResponse:
+        """
+        @summary 端到端实时对话
+        
+        @param request: EndToEndRealTimeDialogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndToEndRealTimeDialogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asr_model_id):
+            query['asrModelId'] = request.asr_model_id
+        if not UtilClient.is_unset(request.input_format):
+            query['inputFormat'] = request.input_format
+        if not UtilClient.is_unset(request.output_format):
+            query['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.pitch_rate):
+            query['pitchRate'] = request.pitch_rate
+        if not UtilClient.is_unset(request.sample_rate):
+            query['sampleRate'] = request.sample_rate
+        if not UtilClient.is_unset(request.speech_rate):
+            query['speechRate'] = request.speech_rate
+        if not UtilClient.is_unset(request.tts_model_id):
+            query['ttsModelId'] = request.tts_model_id
+        if not UtilClient.is_unset(request.voice_code):
+            query['voiceCode'] = request.voice_code
+        if not UtilClient.is_unset(request.volume):
+            query['volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EndToEndRealTimeDialog',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ws/realtime/dialog',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.EndToEndRealTimeDialogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def end_to_end_real_time_dialog(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EndToEndRealTimeDialogRequest,
+    ) -> dian_jin_20240628_models.EndToEndRealTimeDialogResponse:
+        """
+        @summary 端到端实时对话
+        
+        @param request: EndToEndRealTimeDialogRequest
+        @return: EndToEndRealTimeDialogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.end_to_end_real_time_dialog_with_options(workspace_id, request, headers, runtime)
+
+    async def end_to_end_real_time_dialog_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EndToEndRealTimeDialogRequest,
+    ) -> dian_jin_20240628_models.EndToEndRealTimeDialogResponse:
+        """
+        @summary 端到端实时对话
+        
+        @param request: EndToEndRealTimeDialogRequest
+        @return: EndToEndRealTimeDialogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.end_to_end_real_time_dialog_with_options_async(workspace_id, request, headers, runtime)
 
     def evict_task_with_options(
         self,
@@ -5948,7 +6180,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             upload_document_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upload_document_resp = self.upload_document_with_options(workspace_id, upload_document_req, headers, runtime)
         return upload_document_resp
@@ -6033,7 +6265,7 @@ class Client(OpenApiClient):
                 'file': file_obj,
                 'success_action_status': '201'
             }
-            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             upload_document_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upload_document_resp = await self.upload_document_with_options_async(workspace_id, upload_document_req, headers, runtime)
         return upload_document_resp

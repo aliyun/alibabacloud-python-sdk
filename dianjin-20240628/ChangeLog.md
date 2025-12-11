@@ -1,3 +1,8 @@
+2025-12-11 Version: 1.17.0
+- Support API EndToEndRealTimeDialog.
+- Update API CreateQualityCheckTask: add request parameters body.sceneCode.
+
+
 2025-10-15 Version: 1.16.0
 - Support API RunDialogAnalysis.
 
