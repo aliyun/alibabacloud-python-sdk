@@ -10396,8 +10396,11 @@ class CreateServiceVersionRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -10430,8 +10433,12 @@ class CreateServiceVersionRequest(TeaModel):
         labels: List[CreateServiceVersionRequestLabels] = None,
         name: str = None,
     ):
+        # The service tags.
+        # 
         # This parameter is required.
         self.labels = labels
+        # The version name.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -10474,8 +10481,11 @@ class CreateServiceVersionResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10543,6 +10553,284 @@ class CreateServiceVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateServiceVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        port_ranges: List[str] = None,
+        security_group_id: str = None,
+    ):
+        self.description = description
+        self.port_ranges = port_ranges
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.port_ranges is not None:
+            result['portRanges'] = self.port_ranges
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('portRanges') is not None:
+            self.port_ranges = m.get('portRanges')
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        return self
+
+
+class CreateSourceRequestK8sSourceConfig(TeaModel):
+    def __init__(
+        self,
+        authorize_security_group_rules: List[CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules] = None,
+        cluster_id: str = None,
+    ):
+        self.authorize_security_group_rules = authorize_security_group_rules
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        if self.authorize_security_group_rules:
+            for k in self.authorize_security_group_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['authorizeSecurityGroupRules'] = []
+        if self.authorize_security_group_rules is not None:
+            for k in self.authorize_security_group_rules:
+                result['authorizeSecurityGroupRules'].append(k.to_map() if k else None)
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authorize_security_group_rules = []
+        if m.get('authorizeSecurityGroupRules') is not None:
+            for k in m.get('authorizeSecurityGroupRules'):
+                temp_model = CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules()
+                self.authorize_security_group_rules.append(temp_model.from_map(k))
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        return self
+
+
+class CreateSourceRequestNacosSourceConfig(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        return self
+
+
+class CreateSourceRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        k_8s_source_config: CreateSourceRequestK8sSourceConfig = None,
+        nacos_source_config: CreateSourceRequestNacosSourceConfig = None,
+        resource_group_id: str = None,
+        type: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.k_8s_source_config = k_8s_source_config
+        self.nacos_source_config = nacos_source_config
+        self.resource_group_id = resource_group_id
+        self.type = type
+
+    def validate(self):
+        if self.k_8s_source_config:
+            self.k_8s_source_config.validate()
+        if self.nacos_source_config:
+            self.nacos_source_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.k_8s_source_config is not None:
+            result['k8sSourceConfig'] = self.k_8s_source_config.to_map()
+        if self.nacos_source_config is not None:
+            result['nacosSourceConfig'] = self.nacos_source_config.to_map()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('k8sSourceConfig') is not None:
+            temp_model = CreateSourceRequestK8sSourceConfig()
+            self.k_8s_source_config = temp_model.from_map(m['k8sSourceConfig'])
+        if m.get('nacosSourceConfig') is not None:
+            temp_model = CreateSourceRequestNacosSourceConfig()
+            self.nacos_source_config = temp_model.from_map(m['nacosSourceConfig'])
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateSourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        source_id: str = None,
+    ):
+        self.source_id = source_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        return self
+
+
+class CreateSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateSourceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateSourceResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11744,8 +12032,11 @@ class DeleteServiceVersionResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The response message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11813,6 +12104,86 @@ class DeleteServiceVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteServiceVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16135,6 +16506,241 @@ class GetServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSourceResponseBodyDataK8SSourceInfo(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        return self
+
+
+class GetSourceResponseBodyDataNacosSourceInfo(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        cluster_id: str = None,
+        instance_id: str = None,
+    ):
+        self.address = address
+        self.cluster_id = cluster_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        return self
+
+
+class GetSourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_timestamp: int = None,
+        gateway_id: str = None,
+        k_8ssource_info: GetSourceResponseBodyDataK8SSourceInfo = None,
+        nacos_source_info: GetSourceResponseBodyDataNacosSourceInfo = None,
+        name: str = None,
+        resource_group_id: str = None,
+        source_id: str = None,
+        type: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_timestamp = create_timestamp
+        self.gateway_id = gateway_id
+        self.k_8ssource_info = k_8ssource_info
+        self.nacos_source_info = nacos_source_info
+        self.name = name
+        self.resource_group_id = resource_group_id
+        self.source_id = source_id
+        self.type = type
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.k_8ssource_info:
+            self.k_8ssource_info.validate()
+        if self.nacos_source_info:
+            self.nacos_source_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.k_8ssource_info is not None:
+            result['k8SSourceInfo'] = self.k_8ssource_info.to_map()
+        if self.nacos_source_info is not None:
+            result['nacosSourceInfo'] = self.nacos_source_info.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_timestamp is not None:
+            result['updateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('k8SSourceInfo') is not None:
+            temp_model = GetSourceResponseBodyDataK8SSourceInfo()
+            self.k_8ssource_info = temp_model.from_map(m['k8SSourceInfo'])
+        if m.get('nacosSourceInfo') is not None:
+            temp_model = GetSourceResponseBodyDataNacosSourceInfo()
+            self.nacos_source_info = temp_model.from_map(m['nacosSourceInfo'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('updateTimestamp') is not None:
+            self.update_timestamp = m.get('updateTimestamp')
+        return self
+
+
+class GetSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetSourceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetSourceResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25572,8 +26178,11 @@ class UpdateServiceVersionRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -25605,6 +26214,8 @@ class UpdateServiceVersionRequest(TeaModel):
         self,
         labels: List[UpdateServiceVersionRequestLabels] = None,
     ):
+        # The list of tags.
+        # 
         # This parameter is required.
         self.labels = labels
 
@@ -25643,8 +26254,11 @@ class UpdateServiceVersionResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The response message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

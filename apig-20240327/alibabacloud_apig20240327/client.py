@@ -2365,7 +2365,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateServiceVersionResponse:
         """
-        @summary 创建服务版本
+        @summary Creates a service version.
         
         @param request: CreateServiceVersionRequest
         @param headers: map
@@ -2406,7 +2406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateServiceVersionResponse:
         """
-        @summary 创建服务版本
+        @summary Creates a service version.
         
         @param request: CreateServiceVersionRequest
         @param headers: map
@@ -2445,7 +2445,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateServiceVersionRequest,
     ) -> apig20240327_models.CreateServiceVersionResponse:
         """
-        @summary 创建服务版本
+        @summary Creates a service version.
         
         @param request: CreateServiceVersionRequest
         @return: CreateServiceVersionResponse
@@ -2460,7 +2460,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateServiceVersionRequest,
     ) -> apig20240327_models.CreateServiceVersionResponse:
         """
-        @summary 创建服务版本
+        @summary Creates a service version.
         
         @param request: CreateServiceVersionRequest
         @return: CreateServiceVersionResponse
@@ -2468,6 +2468,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_version_with_options_async(service_id, request, headers, runtime)
+
+    def create_source_with_options(
+        self,
+        request: apig20240327_models.CreateSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateSourceResponse:
+        """
+        @summary 创建服务来源
+        
+        @param request: CreateSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.k_8s_source_config):
+            body['k8sSourceConfig'] = request.k_8s_source_config
+        if not UtilClient.is_unset(request.nacos_source_config):
+            body['nacosSourceConfig'] = request.nacos_source_config
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSource',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/sources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_source_with_options_async(
+        self,
+        request: apig20240327_models.CreateSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateSourceResponse:
+        """
+        @summary 创建服务来源
+        
+        @param request: CreateSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.k_8s_source_config):
+            body['k8sSourceConfig'] = request.k_8s_source_config
+        if not UtilClient.is_unset(request.nacos_source_config):
+            body['nacosSourceConfig'] = request.nacos_source_config
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSource',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/sources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_source(
+        self,
+        request: apig20240327_models.CreateSourceRequest,
+    ) -> apig20240327_models.CreateSourceResponse:
+        """
+        @summary 创建服务来源
+        
+        @param request: CreateSourceRequest
+        @return: CreateSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_source_with_options(request, headers, runtime)
+
+    async def create_source_async(
+        self,
+        request: apig20240327_models.CreateSourceRequest,
+    ) -> apig20240327_models.CreateSourceResponse:
+        """
+        @summary 创建服务来源
+        
+        @param request: CreateSourceRequest
+        @return: CreateSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_source_with_options_async(request, headers, runtime)
 
     def delete_consumer_with_options(
         self,
@@ -3783,7 +3903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteServiceVersionResponse:
         """
-        @summary 删除服务版本
+        @summary Deletes a service version.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3816,7 +3936,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteServiceVersionResponse:
         """
-        @summary 删除服务版本
+        @summary Deletes a service version.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3847,7 +3967,7 @@ class Client(OpenApiClient):
         name: str,
     ) -> apig20240327_models.DeleteServiceVersionResponse:
         """
-        @summary 删除服务版本
+        @summary Deletes a service version.
         
         @return: DeleteServiceVersionResponse
         """
@@ -3861,13 +3981,103 @@ class Client(OpenApiClient):
         name: str,
     ) -> apig20240327_models.DeleteServiceVersionResponse:
         """
-        @summary 删除服务版本
+        @summary Deletes a service version.
         
         @return: DeleteServiceVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_version_with_options_async(service_id, name, headers, runtime)
+
+    def delete_source_with_options(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteSourceResponse:
+        """
+        @summary 删除服务来源
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSource',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/sources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_source_with_options_async(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.DeleteSourceResponse:
+        """
+        @summary 删除服务来源
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSource',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/sources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.DeleteSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_source(
+        self,
+        source_id: str,
+    ) -> apig20240327_models.DeleteSourceResponse:
+        """
+        @summary 删除服务来源
+        
+        @return: DeleteSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_source_with_options(source_id, headers, runtime)
+
+    async def delete_source_async(
+        self,
+        source_id: str,
+    ) -> apig20240327_models.DeleteSourceResponse:
+        """
+        @summary 删除服务来源
+        
+        @return: DeleteSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_source_with_options_async(source_id, headers, runtime)
 
     def deploy_http_api_with_options(
         self,
@@ -5658,6 +5868,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_service_with_options_async(service_id, headers, runtime)
+
+    def get_source_with_options(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetSourceResponse:
+        """
+        @summary 获取服务来源
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSource',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/sources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_source_with_options_async(
+        self,
+        source_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.GetSourceResponse:
+        """
+        @summary 获取服务来源
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSource',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/sources/{OpenApiUtilClient.get_encode_param(source_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.GetSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_source(
+        self,
+        source_id: str,
+    ) -> apig20240327_models.GetSourceResponse:
+        """
+        @summary 获取服务来源
+        
+        @return: GetSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_source_with_options(source_id, headers, runtime)
+
+    async def get_source_async(
+        self,
+        source_id: str,
+    ) -> apig20240327_models.GetSourceResponse:
+        """
+        @summary 获取服务来源
+        
+        @return: GetSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_source_with_options_async(source_id, headers, runtime)
 
     def get_trace_config_with_options(
         self,
@@ -10408,7 +10708,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateServiceVersionResponse:
         """
-        @summary 更新服务版本
+        @summary Updates a service version.
         
         @param request: UpdateServiceVersionRequest
         @param headers: map
@@ -10448,7 +10748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateServiceVersionResponse:
         """
-        @summary 更新服务版本
+        @summary Updates a service version.
         
         @param request: UpdateServiceVersionRequest
         @param headers: map
@@ -10486,7 +10786,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateServiceVersionRequest,
     ) -> apig20240327_models.UpdateServiceVersionResponse:
         """
-        @summary 更新服务版本
+        @summary Updates a service version.
         
         @param request: UpdateServiceVersionRequest
         @return: UpdateServiceVersionResponse
@@ -10502,7 +10802,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateServiceVersionRequest,
     ) -> apig20240327_models.UpdateServiceVersionResponse:
         """
-        @summary 更新服务版本
+        @summary Updates a service version.
         
         @param request: UpdateServiceVersionRequest
         @return: UpdateServiceVersionResponse

@@ -1,3 +1,9 @@
+2025-12-11 Version: 5.3.0
+- Support API CreateSource.
+- Support API DeleteSource.
+- Support API GetSource.
+
+
 2025-12-05 Version: 5.2.1
 - Update API CreateMcpServer: add request parameters body.grayMcpServerConfigs.
 - Update API GetMcpServer: add response parameters Body.data.grayMcpServerConfigs.
