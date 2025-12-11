@@ -1,3 +1,6 @@
+2025-12-11 Version: 6.13.1
+- Generated python 2016-04-28 for Vpc.
+
 2025-11-03 Version: 6.13.0
 - Support API DeleteExpressConnect.
 - Support API DescribeGrantRulesToEcr.
