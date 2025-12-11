@@ -6486,10 +6486,12 @@ class GetInstanceResponseBodyDataInstanceQuotas(TeaModel):
 class GetInstanceResponseBodyDataNetworkInfoEndpoints(TeaModel):
     def __init__(
         self,
+        endpoint_id: str = None,
         endpoint_type: str = None,
         endpoint_url: str = None,
         ip_whitelist: List[str] = None,
     ):
+        self.endpoint_id = endpoint_id
         # The type of the endpoint that is used to access the instance.
         # 
         # Valid values:
@@ -6516,6 +6518,8 @@ class GetInstanceResponseBodyDataNetworkInfoEndpoints(TeaModel):
             return _map
 
         result = dict()
+        if self.endpoint_id is not None:
+            result['endpointId'] = self.endpoint_id
         if self.endpoint_type is not None:
             result['endpointType'] = self.endpoint_type
         if self.endpoint_url is not None:
@@ -6526,6 +6530,8 @@ class GetInstanceResponseBodyDataNetworkInfoEndpoints(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('endpointId') is not None:
+            self.endpoint_id = m.get('endpointId')
         if m.get('endpointType') is not None:
             self.endpoint_type = m.get('endpointType')
         if m.get('endpointUrl') is not None:

@@ -1,3 +1,7 @@
+2025-12-11 Version: 5.0.1
+- Update API GetInstance: add response parameters Body.data.networkInfo.endpoints.$.endpointId.
+
+
 2025-11-10 Version: 5.0.0
 - Support API GetConsumeTimespan.
 - Support API ListMigrations.
