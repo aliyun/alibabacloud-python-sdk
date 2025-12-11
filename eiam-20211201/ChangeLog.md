@@ -1,3 +1,10 @@
+2025-12-11 Version: 2.6.1
+- Update API GetInstance: add response parameters Body.Instance.ManagedServiceCode.
+- Update API GetInstance: add response parameters Body.Instance.ServiceManaged.
+- Update API ListInstances: add response parameters Body.Instances.$.ManagedServiceCode.
+- Update API ListInstances: add response parameters Body.Instances.$.ServiceManaged.
+
+
 2025-12-09 Version: 2.6.0
 - Support API UpdateApplicationSsoFormParams.
 

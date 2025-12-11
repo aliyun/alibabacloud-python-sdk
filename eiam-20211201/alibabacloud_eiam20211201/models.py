@@ -16979,6 +16979,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
         domain_config: GetInstanceResponseBodyInstanceDomainConfig = None,
         egress_addresses: List[str] = None,
         instance_id: str = None,
+        managed_service_code: str = None,
+        service_managed: bool = None,
         status: str = None,
     ):
         # The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -16993,6 +16995,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.egress_addresses = egress_addresses
         # The instance ID.
         self.instance_id = instance_id
+        self.managed_service_code = managed_service_code
+        self.service_managed = service_managed
         # The status of the instance. Valid values:
         # 
         # *   creating
@@ -17023,6 +17027,10 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['EgressAddresses'] = self.egress_addresses
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.managed_service_code is not None:
+            result['ManagedServiceCode'] = self.managed_service_code
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -17043,6 +17051,10 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.egress_addresses = m.get('EgressAddresses')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ManagedServiceCode') is not None:
+            self.managed_service_code = m.get('ManagedServiceCode')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -29377,6 +29389,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         default_endpoint: ListInstancesResponseBodyInstancesDefaultEndpoint = None,
         description: str = None,
         instance_id: str = None,
+        managed_service_code: str = None,
+        service_managed: bool = None,
         status: str = None,
     ):
         # The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -29387,6 +29401,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
+        self.managed_service_code = managed_service_code
+        self.service_managed = service_managed
         # The status of the instance. Valid values:
         # 
         # *   creating
@@ -29411,6 +29427,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['Description'] = self.description
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.managed_service_code is not None:
+            result['ManagedServiceCode'] = self.managed_service_code
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -29426,6 +29446,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.description = m.get('Description')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ManagedServiceCode') is not None:
+            self.managed_service_code = m.get('ManagedServiceCode')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
