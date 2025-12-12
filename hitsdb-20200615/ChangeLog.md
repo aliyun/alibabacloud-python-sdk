@@ -1,3 +1,14 @@
+2025-12-12 Version: 4.14.0
+- Support API UpdateLindormV2WhiteIpList.
+- Update API CreateAutoScalingConfig: add request parameters StorageCapacityMax.
+- Update API GetLindormV2Instance: add response parameters Body.EngineList.$.NodeGroup.$.IsScaleSpecGroup.
+- Update API ListAutoScalingConfigs: add request parameters ScaleTypes.
+- Update API ListAutoScalingConfigs: add response parameters Body.Data.ScaleConfigs.$.StorageCapacityMax.
+- Update API ListAutoScalingRecords: add request parameters ScaleTypes.
+- Update API ModifyAutoScalingConfig: add request parameters ScaleRuleList.
+- Update API ModifyAutoScalingConfig: add request parameters StorageCapacityMax.
+
+
 2025-12-04 Version: 4.13.0
 - Support API OpenLdpsColumnarIndex.
 

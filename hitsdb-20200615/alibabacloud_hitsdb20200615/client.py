@@ -259,6 +259,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
         """
+        @summary 创建弹性伸缩配置
+        
         @param tmp_req: CreateAutoScalingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAutoScalingConfigResponse
@@ -301,6 +303,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.spec_id):
             query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.storage_capacity_max):
+            query['StorageCapacityMax'] = request.storage_capacity_max
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -326,6 +330,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
         """
+        @summary 创建弹性伸缩配置
+        
         @param tmp_req: CreateAutoScalingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAutoScalingConfigResponse
@@ -368,6 +374,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.spec_id):
             query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.storage_capacity_max):
+            query['StorageCapacityMax'] = request.storage_capacity_max
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -392,6 +400,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateAutoScalingConfigRequest,
     ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
         """
+        @summary 创建弹性伸缩配置
+        
         @param request: CreateAutoScalingConfigRequest
         @return: CreateAutoScalingConfigResponse
         """
@@ -403,6 +413,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateAutoScalingConfigRequest,
     ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
         """
+        @summary 创建弹性伸缩配置
+        
         @param request: CreateAutoScalingConfigRequest
         @return: CreateAutoScalingConfigResponse
         """
@@ -415,6 +427,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
         """
+        @summary 创建弹性伸缩规则
+        
         @param request: CreateAutoScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAutoScalingRuleResponse
@@ -490,6 +504,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
         """
+        @summary 创建弹性伸缩规则
+        
         @param request: CreateAutoScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAutoScalingRuleResponse
@@ -564,6 +580,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateAutoScalingRuleRequest,
     ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
         """
+        @summary 创建弹性伸缩规则
+        
         @param request: CreateAutoScalingRuleRequest
         @return: CreateAutoScalingRuleResponse
         """
@@ -575,6 +593,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateAutoScalingRuleRequest,
     ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
         """
+        @summary 创建弹性伸缩规则
+        
         @param request: CreateAutoScalingRuleRequest
         @return: CreateAutoScalingRuleResponse
         """
@@ -4355,15 +4375,21 @@ class Client(OpenApiClient):
 
     def list_auto_scaling_configs_with_options(
         self,
-        request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
+        tmp_req: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
         """
-        @param request: ListAutoScalingConfigsRequest
+        @summary 查询弹性伸缩配置
+        
+        @param tmp_req: ListAutoScalingConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAutoScalingConfigsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.ListAutoScalingConfigsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_types):
+            request.scale_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_types, 'ScaleTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -4375,6 +4401,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_types_shrink):
+            query['ScaleTypes'] = request.scale_types_shrink
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
@@ -4398,15 +4426,21 @@ class Client(OpenApiClient):
 
     async def list_auto_scaling_configs_with_options_async(
         self,
-        request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
+        tmp_req: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
         """
-        @param request: ListAutoScalingConfigsRequest
+        @summary 查询弹性伸缩配置
+        
+        @param tmp_req: ListAutoScalingConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAutoScalingConfigsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.ListAutoScalingConfigsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_types):
+            request.scale_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_types, 'ScaleTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -4418,6 +4452,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_types_shrink):
+            query['ScaleTypes'] = request.scale_types_shrink
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
@@ -4444,6 +4480,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
     ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
         """
+        @summary 查询弹性伸缩配置
+        
         @param request: ListAutoScalingConfigsRequest
         @return: ListAutoScalingConfigsResponse
         """
@@ -4455,6 +4493,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
     ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
         """
+        @summary 查询弹性伸缩配置
+        
         @param request: ListAutoScalingConfigsRequest
         @return: ListAutoScalingConfigsResponse
         """
@@ -4463,15 +4503,21 @@ class Client(OpenApiClient):
 
     def list_auto_scaling_records_with_options(
         self,
-        request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
+        tmp_req: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
         """
-        @param request: ListAutoScalingRecordsRequest
+        @summary 查询伸缩记录
+        
+        @param tmp_req: ListAutoScalingRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAutoScalingRecordsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.ListAutoScalingRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_types):
+            request.scale_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_types, 'ScaleTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -4487,6 +4533,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_types_shrink):
+            query['ScaleTypes'] = request.scale_types_shrink
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
@@ -4510,15 +4558,21 @@ class Client(OpenApiClient):
 
     async def list_auto_scaling_records_with_options_async(
         self,
-        request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
+        tmp_req: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
         """
-        @param request: ListAutoScalingRecordsRequest
+        @summary 查询伸缩记录
+        
+        @param tmp_req: ListAutoScalingRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAutoScalingRecordsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.ListAutoScalingRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_types):
+            request.scale_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_types, 'ScaleTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -4534,6 +4588,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_types_shrink):
+            query['ScaleTypes'] = request.scale_types_shrink
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
@@ -4560,6 +4616,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
     ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
         """
+        @summary 查询伸缩记录
+        
         @param request: ListAutoScalingRecordsRequest
         @return: ListAutoScalingRecordsResponse
         """
@@ -4571,6 +4629,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
     ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
         """
+        @summary 查询伸缩记录
+        
         @param request: ListAutoScalingRecordsRequest
         @return: ListAutoScalingRecordsResponse
         """
@@ -5071,15 +5131,21 @@ class Client(OpenApiClient):
 
     def modify_auto_scaling_config_with_options(
         self,
-        request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
+        tmp_req: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
         """
-        @param request: ModifyAutoScalingConfigRequest
+        @summary 修改弹性伸缩配置
+        
+        @param tmp_req: ModifyAutoScalingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAutoScalingConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.ModifyAutoScalingConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_rule_list):
+            request.scale_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_rule_list, 'ScaleRuleList', 'json')
         query = {}
         if not UtilClient.is_unset(request.config_id):
             query['ConfigId'] = request.config_id
@@ -5107,12 +5173,16 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_rule_list_shrink):
+            query['ScaleRuleList'] = request.scale_rule_list_shrink
         if not UtilClient.is_unset(request.scale_type):
             query['ScaleType'] = request.scale_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.spec_id):
             query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.storage_capacity_max):
+            query['StorageCapacityMax'] = request.storage_capacity_max
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5134,15 +5204,21 @@ class Client(OpenApiClient):
 
     async def modify_auto_scaling_config_with_options_async(
         self,
-        request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
+        tmp_req: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
         """
-        @param request: ModifyAutoScalingConfigRequest
+        @summary 修改弹性伸缩配置
+        
+        @param tmp_req: ModifyAutoScalingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAutoScalingConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.ModifyAutoScalingConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_rule_list):
+            request.scale_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_rule_list, 'ScaleRuleList', 'json')
         query = {}
         if not UtilClient.is_unset(request.config_id):
             query['ConfigId'] = request.config_id
@@ -5170,12 +5246,16 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_rule_list_shrink):
+            query['ScaleRuleList'] = request.scale_rule_list_shrink
         if not UtilClient.is_unset(request.scale_type):
             query['ScaleType'] = request.scale_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.spec_id):
             query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.storage_capacity_max):
+            query['StorageCapacityMax'] = request.storage_capacity_max
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5200,6 +5280,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
     ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
         """
+        @summary 修改弹性伸缩配置
+        
         @param request: ModifyAutoScalingConfigRequest
         @return: ModifyAutoScalingConfigResponse
         """
@@ -5211,6 +5293,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
     ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
         """
+        @summary 修改弹性伸缩配置
+        
         @param request: ModifyAutoScalingConfigRequest
         @return: ModifyAutoScalingConfigResponse
         """
@@ -5223,6 +5307,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
         """
+        @summary 修改弹性伸缩规则
+        
         @param request: ModifyAutoScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAutoScalingRuleResponse
@@ -5300,6 +5386,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
         """
+        @summary 修改弹性伸缩规则
+        
         @param request: ModifyAutoScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAutoScalingRuleResponse
@@ -5376,6 +5464,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyAutoScalingRuleRequest,
     ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
         """
+        @summary 修改弹性伸缩规则
+        
         @param request: ModifyAutoScalingRuleRequest
         @return: ModifyAutoScalingRuleResponse
         """
@@ -5387,6 +5477,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyAutoScalingRuleRequest,
     ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
         """
+        @summary 修改弹性伸缩规则
+        
         @param request: ModifyAutoScalingRuleRequest
         @return: ModifyAutoScalingRuleResponse
         """
@@ -8052,6 +8144,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_lindorm_v2instance_parameter_with_options_async(request, runtime)
+
+    def update_lindorm_v2white_ip_list_with_options(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2WhiteIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpdateLindormV2WhiteIpListResponse:
+        """
+        @summary 修改Lindorm新版实例白名单分组列表
+        
+        @param request: UpdateLindormV2WhiteIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLindormV2WhiteIpListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.white_ip_group_list):
+            query['WhiteIpGroupList'] = request.white_ip_group_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLindormV2WhiteIpList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLindormV2WhiteIpListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_lindorm_v2white_ip_list_with_options_async(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2WhiteIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpdateLindormV2WhiteIpListResponse:
+        """
+        @summary 修改Lindorm新版实例白名单分组列表
+        
+        @param request: UpdateLindormV2WhiteIpListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLindormV2WhiteIpListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.white_ip_group_list):
+            query['WhiteIpGroupList'] = request.white_ip_group_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLindormV2WhiteIpList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLindormV2WhiteIpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_lindorm_v2white_ip_list(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2WhiteIpListRequest,
+    ) -> hitsdb_20200615_models.UpdateLindormV2WhiteIpListResponse:
+        """
+        @summary 修改Lindorm新版实例白名单分组列表
+        
+        @param request: UpdateLindormV2WhiteIpListRequest
+        @return: UpdateLindormV2WhiteIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_lindorm_v2white_ip_list_with_options(request, runtime)
+
+    async def update_lindorm_v2white_ip_list_async(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2WhiteIpListRequest,
+    ) -> hitsdb_20200615_models.UpdateLindormV2WhiteIpListResponse:
+        """
+        @summary 修改Lindorm新版实例白名单分组列表
+        
+        @param request: UpdateLindormV2WhiteIpListRequest
+        @return: UpdateLindormV2WhiteIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_lindorm_v2white_ip_list_with_options_async(request, runtime)
 
     def upgrade_lindorm_instance_with_options(
         self,

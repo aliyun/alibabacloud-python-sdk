@@ -414,6 +414,7 @@ class CreateAutoScalingConfigRequest(TeaModel):
         scale_type: str = None,
         security_token: str = None,
         spec_id: str = None,
+        storage_capacity_max: int = None,
     ):
         # This parameter is required.
         self.config_name = config_name
@@ -436,6 +437,7 @@ class CreateAutoScalingConfigRequest(TeaModel):
         self.security_token = security_token
         # This parameter is required.
         self.spec_id = spec_id
+        self.storage_capacity_max = storage_capacity_max
 
     def validate(self):
         if self.scale_rule_list:
@@ -483,6 +485,8 @@ class CreateAutoScalingConfigRequest(TeaModel):
             result['SecurityToken'] = self.security_token
         if self.spec_id is not None:
             result['SpecId'] = self.spec_id
+        if self.storage_capacity_max is not None:
+            result['StorageCapacityMax'] = self.storage_capacity_max
         return result
 
     def from_map(self, m: dict = None):
@@ -522,6 +526,8 @@ class CreateAutoScalingConfigRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('SpecId') is not None:
             self.spec_id = m.get('SpecId')
+        if m.get('StorageCapacityMax') is not None:
+            self.storage_capacity_max = m.get('StorageCapacityMax')
         return self
 
 
@@ -544,6 +550,7 @@ class CreateAutoScalingConfigShrinkRequest(TeaModel):
         scale_type: str = None,
         security_token: str = None,
         spec_id: str = None,
+        storage_capacity_max: int = None,
     ):
         # This parameter is required.
         self.config_name = config_name
@@ -566,6 +573,7 @@ class CreateAutoScalingConfigShrinkRequest(TeaModel):
         self.security_token = security_token
         # This parameter is required.
         self.spec_id = spec_id
+        self.storage_capacity_max = storage_capacity_max
 
     def validate(self):
         pass
@@ -608,6 +616,8 @@ class CreateAutoScalingConfigShrinkRequest(TeaModel):
             result['SecurityToken'] = self.security_token
         if self.spec_id is not None:
             result['SpecId'] = self.spec_id
+        if self.storage_capacity_max is not None:
+            result['StorageCapacityMax'] = self.storage_capacity_max
         return result
 
     def from_map(self, m: dict = None):
@@ -644,6 +654,8 @@ class CreateAutoScalingConfigShrinkRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('SpecId') is not None:
             self.spec_id = m.get('SpecId')
+        if m.get('StorageCapacityMax') is not None:
+            self.storage_capacity_max = m.get('StorageCapacityMax')
         return self
 
 
@@ -7362,6 +7374,7 @@ class GetLindormV2InstanceResponseBodyEngineListNodeGroup(TeaModel):
         category: str = None,
         cpu_core_count: int = None,
         enable_attach_local_disk: bool = None,
+        is_scale_spec_group: bool = None,
         local_disk_capacity: int = None,
         local_disk_category: str = None,
         memory_size_gi_b: int = None,
@@ -7374,6 +7387,7 @@ class GetLindormV2InstanceResponseBodyEngineListNodeGroup(TeaModel):
         self.category = category
         self.cpu_core_count = cpu_core_count
         self.enable_attach_local_disk = enable_attach_local_disk
+        self.is_scale_spec_group = is_scale_spec_group
         self.local_disk_capacity = local_disk_capacity
         self.local_disk_category = local_disk_category
         self.memory_size_gi_b = memory_size_gi_b
@@ -7398,6 +7412,8 @@ class GetLindormV2InstanceResponseBodyEngineListNodeGroup(TeaModel):
             result['CpuCoreCount'] = self.cpu_core_count
         if self.enable_attach_local_disk is not None:
             result['EnableAttachLocalDisk'] = self.enable_attach_local_disk
+        if self.is_scale_spec_group is not None:
+            result['IsScaleSpecGroup'] = self.is_scale_spec_group
         if self.local_disk_capacity is not None:
             result['LocalDiskCapacity'] = self.local_disk_capacity
         if self.local_disk_category is not None:
@@ -7424,6 +7440,8 @@ class GetLindormV2InstanceResponseBodyEngineListNodeGroup(TeaModel):
             self.cpu_core_count = m.get('CpuCoreCount')
         if m.get('EnableAttachLocalDisk') is not None:
             self.enable_attach_local_disk = m.get('EnableAttachLocalDisk')
+        if m.get('IsScaleSpecGroup') is not None:
+            self.is_scale_spec_group = m.get('IsScaleSpecGroup')
         if m.get('LocalDiskCapacity') is not None:
             self.local_disk_capacity = m.get('LocalDiskCapacity')
         if m.get('LocalDiskCategory') is not None:
@@ -9963,6 +9981,7 @@ class ListAutoScalingConfigsRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scale_types: List[str] = None,
         security_token: str = None,
     ):
         # This parameter is required.
@@ -9971,6 +9990,7 @@ class ListAutoScalingConfigsRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scale_types = scale_types
         self.security_token = security_token
 
     def validate(self):
@@ -9992,6 +10012,8 @@ class ListAutoScalingConfigsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_types is not None:
+            result['ScaleTypes'] = self.scale_types
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -10008,6 +10030,72 @@ class ListAutoScalingConfigsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleTypes') is not None:
+            self.scale_types = m.get('ScaleTypes')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ListAutoScalingConfigsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_types_shrink: str = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_types_shrink = scale_types_shrink
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_types_shrink is not None:
+            result['ScaleTypes'] = self.scale_types_shrink
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleTypes') is not None:
+            self.scale_types_shrink = m.get('ScaleTypes')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self
@@ -10157,6 +10245,7 @@ class ListAutoScalingConfigsResponseBodyDataScaleConfigs(TeaModel):
         scale_rule_list: List[ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList] = None,
         scale_type: str = None,
         spec_id: str = None,
+        storage_capacity_max: int = None,
     ):
         self.config_id = config_id
         self.config_name = config_name
@@ -10170,6 +10259,7 @@ class ListAutoScalingConfigsResponseBodyDataScaleConfigs(TeaModel):
         self.scale_rule_list = scale_rule_list
         self.scale_type = scale_type
         self.spec_id = spec_id
+        self.storage_capacity_max = storage_capacity_max
 
     def validate(self):
         if self.scale_rule_list:
@@ -10209,6 +10299,8 @@ class ListAutoScalingConfigsResponseBodyDataScaleConfigs(TeaModel):
             result['ScaleType'] = self.scale_type
         if self.spec_id is not None:
             result['SpecId'] = self.spec_id
+        if self.storage_capacity_max is not None:
+            result['StorageCapacityMax'] = self.storage_capacity_max
         return result
 
     def from_map(self, m: dict = None):
@@ -10240,6 +10332,8 @@ class ListAutoScalingConfigsResponseBodyDataScaleConfigs(TeaModel):
             self.scale_type = m.get('ScaleType')
         if m.get('SpecId') is not None:
             self.spec_id = m.get('SpecId')
+        if m.get('StorageCapacityMax') is not None:
+            self.storage_capacity_max = m.get('StorageCapacityMax')
         return self
 
 
@@ -10406,6 +10500,7 @@ class ListAutoScalingRecordsRequest(TeaModel):
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scale_types: List[str] = None,
         security_token: str = None,
     ):
         # This parameter is required.
@@ -10418,6 +10513,7 @@ class ListAutoScalingRecordsRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scale_types = scale_types
         self.security_token = security_token
 
     def validate(self):
@@ -10443,6 +10539,8 @@ class ListAutoScalingRecordsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_types is not None:
+            result['ScaleTypes'] = self.scale_types
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -10463,6 +10561,86 @@ class ListAutoScalingRecordsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleTypes') is not None:
+            self.scale_types = m.get('ScaleTypes')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ListAutoScalingRecordsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_num: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_types_shrink: str = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page_num = page_num
+        # This parameter is required.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_types_shrink = scale_types_shrink
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_types_shrink is not None:
+            result['ScaleTypes'] = self.scale_types_shrink
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleTypes') is not None:
+            self.scale_types_shrink = m.get('ScaleTypes')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self
@@ -11731,6 +11909,135 @@ class MigrateSingleZoneToMultiZoneResponse(TeaModel):
         return self
 
 
+class ModifyAutoScalingConfigRequestScaleRuleList(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
 class ModifyAutoScalingConfigRequest(TeaModel):
     def __init__(
         self,
@@ -11747,9 +12054,11 @@ class ModifyAutoScalingConfigRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scale_rule_list: List[ModifyAutoScalingConfigRequestScaleRuleList] = None,
         scale_type: str = None,
         security_token: str = None,
         spec_id: str = None,
+        storage_capacity_max: int = None,
     ):
         # This parameter is required.
         self.config_id = config_id
@@ -11766,9 +12075,150 @@ class ModifyAutoScalingConfigRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scale_rule_list = scale_rule_list
         self.scale_type = scale_type
         self.security_token = security_token
         self.spec_id = spec_id
+        self.storage_capacity_max = storage_capacity_max
+
+    def validate(self):
+        if self.scale_rule_list:
+            for k in self.scale_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.effective_time_end is not None:
+            result['EffectiveTimeEnd'] = self.effective_time_end
+        if self.effective_time_start is not None:
+            result['EffectiveTimeStart'] = self.effective_time_start
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.nodes_max is not None:
+            result['NodesMax'] = self.nodes_max
+        if self.nodes_min is not None:
+            result['NodesMin'] = self.nodes_min
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['ScaleRuleList'] = []
+        if self.scale_rule_list is not None:
+            for k in self.scale_rule_list:
+                result['ScaleRuleList'].append(k.to_map() if k else None)
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.spec_id is not None:
+            result['SpecId'] = self.spec_id
+        if self.storage_capacity_max is not None:
+            result['StorageCapacityMax'] = self.storage_capacity_max
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('EffectiveTimeEnd') is not None:
+            self.effective_time_end = m.get('EffectiveTimeEnd')
+        if m.get('EffectiveTimeStart') is not None:
+            self.effective_time_start = m.get('EffectiveTimeStart')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodesMax') is not None:
+            self.nodes_max = m.get('NodesMax')
+        if m.get('NodesMin') is not None:
+            self.nodes_min = m.get('NodesMin')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.scale_rule_list = []
+        if m.get('ScaleRuleList') is not None:
+            for k in m.get('ScaleRuleList'):
+                temp_model = ModifyAutoScalingConfigRequestScaleRuleList()
+                self.scale_rule_list.append(temp_model.from_map(k))
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SpecId') is not None:
+            self.spec_id = m.get('SpecId')
+        if m.get('StorageCapacityMax') is not None:
+            self.storage_capacity_max = m.get('StorageCapacityMax')
+        return self
+
+
+class ModifyAutoScalingConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        config_name: str = None,
+        effective_time_end: str = None,
+        effective_time_start: str = None,
+        enabled: bool = None,
+        engine: str = None,
+        instance_id: str = None,
+        nodes_max: int = None,
+        nodes_min: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_rule_list_shrink: str = None,
+        scale_type: str = None,
+        security_token: str = None,
+        spec_id: str = None,
+        storage_capacity_max: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.config_name = config_name
+        self.effective_time_end = effective_time_end
+        self.effective_time_start = effective_time_start
+        self.enabled = enabled
+        self.engine = engine
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.nodes_max = nodes_max
+        self.nodes_min = nodes_min
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_rule_list_shrink = scale_rule_list_shrink
+        self.scale_type = scale_type
+        self.security_token = security_token
+        self.spec_id = spec_id
+        self.storage_capacity_max = storage_capacity_max
 
     def validate(self):
         pass
@@ -11805,12 +12255,16 @@ class ModifyAutoScalingConfigRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_rule_list_shrink is not None:
+            result['ScaleRuleList'] = self.scale_rule_list_shrink
         if self.scale_type is not None:
             result['ScaleType'] = self.scale_type
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.spec_id is not None:
             result['SpecId'] = self.spec_id
+        if self.storage_capacity_max is not None:
+            result['StorageCapacityMax'] = self.storage_capacity_max
         return result
 
     def from_map(self, m: dict = None):
@@ -11841,12 +12295,16 @@ class ModifyAutoScalingConfigRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleRuleList') is not None:
+            self.scale_rule_list_shrink = m.get('ScaleRuleList')
         if m.get('ScaleType') is not None:
             self.scale_type = m.get('ScaleType')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('SpecId') is not None:
             self.spec_id = m.get('SpecId')
+        if m.get('StorageCapacityMax') is not None:
+            self.storage_capacity_max = m.get('StorageCapacityMax')
         return self
 
 
@@ -15624,6 +16082,194 @@ class UpdateLindormV2InstanceParameterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateLindormV2InstanceParameterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLindormV2WhiteIpListRequestWhiteIpGroupList(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        white_ip_list: str = None,
+    ):
+        # This parameter is required.
+        self.group_name = group_name
+        # This parameter is required.
+        self.white_ip_list = white_ip_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.white_ip_list is not None:
+            result['WhiteIpList'] = self.white_ip_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('WhiteIpList') is not None:
+            self.white_ip_list = m.get('WhiteIpList')
+        return self
+
+
+class UpdateLindormV2WhiteIpListRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        white_ip_group_list: List[UpdateLindormV2WhiteIpListRequestWhiteIpGroupList] = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # This parameter is required.
+        self.white_ip_group_list = white_ip_group_list
+
+    def validate(self):
+        if self.white_ip_group_list:
+            for k in self.white_ip_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        result['WhiteIpGroupList'] = []
+        if self.white_ip_group_list is not None:
+            for k in self.white_ip_group_list:
+                result['WhiteIpGroupList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        self.white_ip_group_list = []
+        if m.get('WhiteIpGroupList') is not None:
+            for k in m.get('WhiteIpGroupList'):
+                temp_model = UpdateLindormV2WhiteIpListRequestWhiteIpGroupList()
+                self.white_ip_group_list.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateLindormV2WhiteIpListResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLindormV2WhiteIpListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLindormV2WhiteIpListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLindormV2WhiteIpListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
