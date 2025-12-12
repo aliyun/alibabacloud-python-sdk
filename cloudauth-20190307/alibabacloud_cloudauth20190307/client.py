@@ -1259,6 +1259,10 @@ class Client(OpenApiClient):
             query['MiniProgramName'] = request.mini_program_name
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.return_pic_count):
+            query['ReturnPicCount'] = request.return_pic_count
+        if not UtilClient.is_unset(request.return_video_length):
+            query['ReturnVideoLength'] = request.return_video_length
         if not UtilClient.is_unset(request.scene_name):
             query['SceneName'] = request.scene_name
         if not UtilClient.is_unset(request.store_image):
@@ -1309,6 +1313,10 @@ class Client(OpenApiClient):
             query['MiniProgramName'] = request.mini_program_name
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.return_pic_count):
+            query['ReturnPicCount'] = request.return_pic_count
+        if not UtilClient.is_unset(request.return_video_length):
+            query['ReturnVideoLength'] = request.return_video_length
         if not UtilClient.is_unset(request.scene_name):
             query['SceneName'] = request.scene_name
         if not UtilClient.is_unset(request.store_image):
@@ -12418,6 +12426,10 @@ class Client(OpenApiClient):
             query['MiniProgramName'] = request.mini_program_name
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.return_pic_count):
+            query['ReturnPicCount'] = request.return_pic_count
+        if not UtilClient.is_unset(request.return_video_length):
+            query['ReturnVideoLength'] = request.return_video_length
         if not UtilClient.is_unset(request.scene_id):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.scene_name):
@@ -12473,6 +12485,10 @@ class Client(OpenApiClient):
             query['MiniProgramName'] = request.mini_program_name
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.return_pic_count):
+            query['ReturnPicCount'] = request.return_pic_count
+        if not UtilClient.is_unset(request.return_video_length):
+            query['ReturnVideoLength'] = request.return_video_length
         if not UtilClient.is_unset(request.scene_id):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.scene_name):

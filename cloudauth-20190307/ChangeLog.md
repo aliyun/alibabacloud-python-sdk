@@ -1,3 +1,12 @@
+2025-12-12 Version: 3.11.1
+- Update API CreateAntCloudAuthScene: add request parameters ReturnPicCount.
+- Update API CreateAntCloudAuthScene: add request parameters ReturnVideoLength.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.ReturnPicCount.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.ReturnVideoLength.
+- Update API UpdateAntCloudAuthScene: add request parameters ReturnPicCount.
+- Update API UpdateAntCloudAuthScene: add request parameters ReturnVideoLength.
+
+
 2025-11-07 Version: 3.11.0
 - Support API CreateAntCloudAuthScene.
 - Support API CreateCloudauthstScene.

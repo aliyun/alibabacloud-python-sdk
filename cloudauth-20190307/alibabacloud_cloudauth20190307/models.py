@@ -1437,6 +1437,8 @@ class CreateAntCloudAuthSceneRequest(TeaModel):
         check_file_name: str = None,
         mini_program_name: str = None,
         platform: str = None,
+        return_pic_count: int = None,
+        return_video_length: int = None,
         scene_name: str = None,
         store_image: str = None,
     ):
@@ -1455,6 +1457,8 @@ class CreateAntCloudAuthSceneRequest(TeaModel):
         # - **ALIPAY**: Alipay
         # - **TIKTOK**: TikTok
         self.platform = platform
+        self.return_pic_count = return_pic_count
+        self.return_video_length = return_video_length
         # Scene name.
         # 
         # This parameter is required.
@@ -1483,6 +1487,10 @@ class CreateAntCloudAuthSceneRequest(TeaModel):
             result['MiniProgramName'] = self.mini_program_name
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.return_pic_count is not None:
+            result['ReturnPicCount'] = self.return_pic_count
+        if self.return_video_length is not None:
+            result['ReturnVideoLength'] = self.return_video_length
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
         if self.store_image is not None:
@@ -1501,6 +1509,10 @@ class CreateAntCloudAuthSceneRequest(TeaModel):
             self.mini_program_name = m.get('MiniProgramName')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('ReturnPicCount') is not None:
+            self.return_pic_count = m.get('ReturnPicCount')
+        if m.get('ReturnVideoLength') is not None:
+            self.return_video_length = m.get('ReturnVideoLength')
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')
         if m.get('StoreImage') is not None:
@@ -6820,6 +6832,8 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(TeaModel):
         mini_program_name: str = None,
         modifier: str = None,
         platform: str = None,
+        return_pic_count: int = None,
+        return_video_length: int = None,
         scene_id: int = None,
         scene_name: str = None,
         status: int = None,
@@ -6847,6 +6861,8 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(TeaModel):
         # - **ALIPAY**: Alipay
         # - **TIKTOK**: TikTok
         self.platform = platform
+        self.return_pic_count = return_pic_count
+        self.return_video_length = return_video_length
         # Scenario ID.
         self.scene_id = scene_id
         # Scenario name.
@@ -6885,6 +6901,10 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(TeaModel):
             result['Modifier'] = self.modifier
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.return_pic_count is not None:
+            result['ReturnPicCount'] = self.return_pic_count
+        if self.return_video_length is not None:
+            result['ReturnVideoLength'] = self.return_video_length
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
@@ -6915,6 +6935,10 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(TeaModel):
             self.modifier = m.get('Modifier')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('ReturnPicCount') is not None:
+            self.return_pic_count = m.get('ReturnPicCount')
+        if m.get('ReturnVideoLength') is not None:
+            self.return_video_length = m.get('ReturnVideoLength')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
@@ -15613,6 +15637,10 @@ class InitFaceVerifyRequest(TeaModel):
         # > - Choosing to output the device assistant will incur additional costs. For details, see [Paid Value-Added Services](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/face-guard?spm=a2c4g.11186623.0.0.443e5522rbHsR4).
         # > - If you do not need to output the device assistant label, you can either not pass the parameter or pass an empty value.
         self.face_guard_output = face_guard_output
+        # H5 Downgrade Confirmation Button Switch:
+        # 
+        # - **Y**: Enabled (On)
+        # - **N (default)**: Disabled (Off)
         self.h_5degrade_confirm_btn = h_5degrade_confirm_btn
         # User\\"s IP address.
         self.ip = ip
@@ -21081,6 +21109,8 @@ class UpdateAntCloudAuthSceneRequest(TeaModel):
         check_file_name: str = None,
         mini_program_name: str = None,
         platform: str = None,
+        return_pic_count: int = None,
+        return_video_length: int = None,
         scene_id: int = None,
         scene_name: str = None,
         status: int = None,
@@ -21102,6 +21132,8 @@ class UpdateAntCloudAuthSceneRequest(TeaModel):
         # - **ALIPAY**: Alipay
         # - **TIKTOK**: TikTok
         self.platform = platform
+        self.return_pic_count = return_pic_count
+        self.return_video_length = return_video_length
         # Scenario ID.
         # 
         # This parameter is required.
@@ -21134,6 +21166,10 @@ class UpdateAntCloudAuthSceneRequest(TeaModel):
             result['MiniProgramName'] = self.mini_program_name
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.return_pic_count is not None:
+            result['ReturnPicCount'] = self.return_pic_count
+        if self.return_video_length is not None:
+            result['ReturnVideoLength'] = self.return_video_length
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
@@ -21156,6 +21192,10 @@ class UpdateAntCloudAuthSceneRequest(TeaModel):
             self.mini_program_name = m.get('MiniProgramName')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('ReturnPicCount') is not None:
+            self.return_pic_count = m.get('ReturnPicCount')
+        if m.get('ReturnVideoLength') is not None:
+            self.return_video_length = m.get('ReturnVideoLength')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
