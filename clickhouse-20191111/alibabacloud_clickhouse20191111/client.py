@@ -203,6 +203,370 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cluster_public_connection_with_options_async(request, runtime)
 
+    def cancel_active_operation_tasks_with_options(
+        self,
+        request: clickhouse_20191111_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消运维事件任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_active_operation_tasks_with_options_async(
+        self,
+        request: clickhouse_20191111_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消运维事件任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_active_operation_tasks(
+        self,
+        request: clickhouse_20191111_models.CancelActiveOperationTasksRequest,
+    ) -> clickhouse_20191111_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消运维事件任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_active_operation_tasks_with_options(request, runtime)
+
+    async def cancel_active_operation_tasks_async(
+        self,
+        request: clickhouse_20191111_models.CancelActiveOperationTasksRequest,
+    ) -> clickhouse_20191111_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消运维事件任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
+    def cancel_appointment_elect_zookeeper_leader_with_options(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderResponse:
+        """
+        @summary 取消预约Zookeeper切主
+        
+        @param request: CancelAppointmentElectZookeeperLeaderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAppointmentElectZookeeperLeaderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAppointmentElectZookeeperLeader',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_appointment_elect_zookeeper_leader_with_options_async(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderResponse:
+        """
+        @summary 取消预约Zookeeper切主
+        
+        @param request: CancelAppointmentElectZookeeperLeaderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAppointmentElectZookeeperLeaderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAppointmentElectZookeeperLeader',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_appointment_elect_zookeeper_leader(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderRequest,
+    ) -> clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderResponse:
+        """
+        @summary 取消预约Zookeeper切主
+        
+        @param request: CancelAppointmentElectZookeeperLeaderRequest
+        @return: CancelAppointmentElectZookeeperLeaderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_appointment_elect_zookeeper_leader_with_options(request, runtime)
+
+    async def cancel_appointment_elect_zookeeper_leader_async(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderRequest,
+    ) -> clickhouse_20191111_models.CancelAppointmentElectZookeeperLeaderResponse:
+        """
+        @summary 取消预约Zookeeper切主
+        
+        @param request: CancelAppointmentElectZookeeperLeaderRequest
+        @return: CancelAppointmentElectZookeeperLeaderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_appointment_elect_zookeeper_leader_with_options_async(request, runtime)
+
+    def cancel_appointment_restart_instance_node_list_with_options(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListResponse:
+        """
+        @summary 取消预约重启节点列表
+        
+        @param request: CancelAppointmentRestartInstanceNodeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAppointmentRestartInstanceNodeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAppointmentRestartInstanceNodeList',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_appointment_restart_instance_node_list_with_options_async(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListResponse:
+        """
+        @summary 取消预约重启节点列表
+        
+        @param request: CancelAppointmentRestartInstanceNodeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAppointmentRestartInstanceNodeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAppointmentRestartInstanceNodeList',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_appointment_restart_instance_node_list(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListRequest,
+    ) -> clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListResponse:
+        """
+        @summary 取消预约重启节点列表
+        
+        @param request: CancelAppointmentRestartInstanceNodeListRequest
+        @return: CancelAppointmentRestartInstanceNodeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_appointment_restart_instance_node_list_with_options(request, runtime)
+
+    async def cancel_appointment_restart_instance_node_list_async(
+        self,
+        request: clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListRequest,
+    ) -> clickhouse_20191111_models.CancelAppointmentRestartInstanceNodeListResponse:
+        """
+        @summary 取消预约重启节点列表
+        
+        @param request: CancelAppointmentRestartInstanceNodeListRequest
+        @return: CancelAppointmentRestartInstanceNodeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_appointment_restart_instance_node_list_with_options_async(request, runtime)
+
     def cancel_restart_instance_with_options(
         self,
         request: clickhouse_20191111_models.CancelRestartInstanceRequest,
@@ -3395,6 +3759,266 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
+    def describe_active_operation_maintain_conf_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 主动运维
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationMaintainConf',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeActiveOperationMaintainConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_maintain_conf_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 主动运维
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationMaintainConf',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeActiveOperationMaintainConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_maintain_conf(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationMaintainConfRequest,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 主动运维
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_maintain_conf_with_options(request, runtime)
+
+    async def describe_active_operation_maintain_conf_async(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationMaintainConfRequest,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 主动运维
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_maintain_conf_with_options_async(request, runtime)
+
+    def describe_active_operation_tasks_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_tasks_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_tasks(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationTasksRequest,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_tasks_with_options(request, runtime)
+
+    async def describe_active_operation_tasks_async(
+        self,
+        request: clickhouse_20191111_models.DescribeActiveOperationTasksRequest,
+    ) -> clickhouse_20191111_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_tasks_with_options_async(request, runtime)
+
     def describe_all_data_source_with_options(
         self,
         request: clickhouse_20191111_models.DescribeAllDataSourceRequest,
@@ -4891,6 +5515,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_net_info_items_with_options_async(request, runtime)
 
+    def describe_dbcluster_node_infos_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterNodeInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeDBClusterNodeInfosResponse:
+        """
+        @summary 获取实例节点信息
+        
+        @param request: DescribeDBClusterNodeInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterNodeInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterNodeInfos',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeDBClusterNodeInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_node_infos_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterNodeInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeDBClusterNodeInfosResponse:
+        """
+        @summary 获取实例节点信息
+        
+        @param request: DescribeDBClusterNodeInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterNodeInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterNodeInfos',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeDBClusterNodeInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_node_infos(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterNodeInfosRequest,
+    ) -> clickhouse_20191111_models.DescribeDBClusterNodeInfosResponse:
+        """
+        @summary 获取实例节点信息
+        
+        @param request: DescribeDBClusterNodeInfosRequest
+        @return: DescribeDBClusterNodeInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_node_infos_with_options(request, runtime)
+
+    async def describe_dbcluster_node_infos_async(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterNodeInfosRequest,
+    ) -> clickhouse_20191111_models.DescribeDBClusterNodeInfosResponse:
+        """
+        @summary 获取实例节点信息
+        
+        @param request: DescribeDBClusterNodeInfosRequest
+        @return: DescribeDBClusterNodeInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_node_infos_with_options_async(request, runtime)
+
     def describe_dbcluster_performance_with_options(
         self,
         request: clickhouse_20191111_models.DescribeDBClusterPerformanceRequest,
@@ -5026,6 +5774,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
+
+    def describe_dbcluster_status_set_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterStatusSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeDBClusterStatusSetResponse:
+        """
+        @param request: DescribeDBClusterStatusSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterStatusSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterStatusSet',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeDBClusterStatusSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_status_set_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterStatusSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeDBClusterStatusSetResponse:
+        """
+        @param request: DescribeDBClusterStatusSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterStatusSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterStatusSet',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeDBClusterStatusSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_status_set(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterStatusSetRequest,
+    ) -> clickhouse_20191111_models.DescribeDBClusterStatusSetResponse:
+        """
+        @param request: DescribeDBClusterStatusSetRequest
+        @return: DescribeDBClusterStatusSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_status_set_with_options(request, runtime)
+
+    async def describe_dbcluster_status_set_async(
+        self,
+        request: clickhouse_20191111_models.DescribeDBClusterStatusSetRequest,
+    ) -> clickhouse_20191111_models.DescribeDBClusterStatusSetResponse:
+        """
+        @param request: DescribeDBClusterStatusSetRequest
+        @return: DescribeDBClusterStatusSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_status_set_with_options_async(request, runtime)
 
     def describe_dbclusters_with_options(
         self,
@@ -5282,6 +6134,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbconfig_with_options_async(request, runtime)
+
+    def describe_event_meta_info_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeEventMetaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeEventMetaInfoResponse:
+        """
+        @summary DescribeEventMetaInfo
+        
+        @param request: DescribeEventMetaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventMetaInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEventMetaInfo',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeEventMetaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_event_meta_info_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeEventMetaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeEventMetaInfoResponse:
+        """
+        @summary DescribeEventMetaInfo
+        
+        @param request: DescribeEventMetaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventMetaInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_code):
+            query['SourceCode'] = request.source_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEventMetaInfo',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeEventMetaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_event_meta_info(
+        self,
+        request: clickhouse_20191111_models.DescribeEventMetaInfoRequest,
+    ) -> clickhouse_20191111_models.DescribeEventMetaInfoResponse:
+        """
+        @summary DescribeEventMetaInfo
+        
+        @param request: DescribeEventMetaInfoRequest
+        @return: DescribeEventMetaInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_event_meta_info_with_options(request, runtime)
+
+    async def describe_event_meta_info_async(
+        self,
+        request: clickhouse_20191111_models.DescribeEventMetaInfoRequest,
+    ) -> clickhouse_20191111_models.DescribeEventMetaInfoResponse:
+        """
+        @summary DescribeEventMetaInfo
+        
+        @param request: DescribeEventMetaInfoRequest
+        @return: DescribeEventMetaInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_event_meta_info_with_options_async(request, runtime)
 
     def describe_ossstorage_with_options(
         self,
@@ -6491,6 +7447,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_transfer_history_with_options_async(request, runtime)
 
+    def describe_user_encryption_key_list_with_options(
+        self,
+        request: clickhouse_20191111_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEncryptionKeyList',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeUserEncryptionKeyListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_encryption_key_list_with_options_async(
+        self,
+        request: clickhouse_20191111_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEncryptionKeyList',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.DescribeUserEncryptionKeyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_encryption_key_list(
+        self,
+        request: clickhouse_20191111_models.DescribeUserEncryptionKeyListRequest,
+    ) -> clickhouse_20191111_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_encryption_key_list_with_options(request, runtime)
+
+    async def describe_user_encryption_key_list_async(
+        self,
+        request: clickhouse_20191111_models.DescribeUserEncryptionKeyListRequest,
+    ) -> clickhouse_20191111_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
+
+    def elect_zookeeper_leader_with_options(
+        self,
+        request: clickhouse_20191111_models.ElectZookeeperLeaderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ElectZookeeperLeaderResponse:
+        """
+        @summary Zookeeper主动切主
+        
+        @param request: ElectZookeeperLeaderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ElectZookeeperLeaderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.disable_write):
+            query['DisableWrite'] = request.disable_write
+        if not UtilClient.is_unset(request.elect_time):
+            query['ElectTime'] = request.elect_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ElectZookeeperLeader',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ElectZookeeperLeaderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def elect_zookeeper_leader_with_options_async(
+        self,
+        request: clickhouse_20191111_models.ElectZookeeperLeaderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ElectZookeeperLeaderResponse:
+        """
+        @summary Zookeeper主动切主
+        
+        @param request: ElectZookeeperLeaderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ElectZookeeperLeaderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.disable_write):
+            query['DisableWrite'] = request.disable_write
+        if not UtilClient.is_unset(request.elect_time):
+            query['ElectTime'] = request.elect_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ElectZookeeperLeader',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ElectZookeeperLeaderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def elect_zookeeper_leader(
+        self,
+        request: clickhouse_20191111_models.ElectZookeeperLeaderRequest,
+    ) -> clickhouse_20191111_models.ElectZookeeperLeaderResponse:
+        """
+        @summary Zookeeper主动切主
+        
+        @param request: ElectZookeeperLeaderRequest
+        @return: ElectZookeeperLeaderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.elect_zookeeper_leader_with_options(request, runtime)
+
+    async def elect_zookeeper_leader_async(
+        self,
+        request: clickhouse_20191111_models.ElectZookeeperLeaderRequest,
+    ) -> clickhouse_20191111_models.ElectZookeeperLeaderResponse:
+        """
+        @summary Zookeeper主动切主
+        
+        @param request: ElectZookeeperLeaderRequest
+        @return: ElectZookeeperLeaderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.elect_zookeeper_leader_with_options_async(request, runtime)
+
     def kill_process_with_options(
         self,
         request: clickhouse_20191111_models.KillProcessRequest,
@@ -6610,6 +7794,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.kill_process_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: clickhouse_20191111_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to ApsaraDB for ClickHouse clusters.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: clickhouse_20191111_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to ApsaraDB for ClickHouse clusters.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: clickhouse_20191111_models.ListTagResourcesRequest,
+    ) -> clickhouse_20191111_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to ApsaraDB for ClickHouse clusters.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: clickhouse_20191111_models.ListTagResourcesRequest,
+    ) -> clickhouse_20191111_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to ApsaraDB for ClickHouse clusters.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def modify_account_authority_with_options(
         self,
@@ -6874,6 +8186,254 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_active_operation_maintain_conf_with_options(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改主动运维设置
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cycle_time):
+            query['CycleTime'] = request.cycle_time
+        if not UtilClient.is_unset(request.cycle_type):
+            query['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationMaintainConf',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ModifyActiveOperationMaintainConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_maintain_conf_with_options_async(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationMaintainConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改主动运维设置
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cycle_time):
+            query['CycleTime'] = request.cycle_time
+        if not UtilClient.is_unset(request.cycle_type):
+            query['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationMaintainConf',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ModifyActiveOperationMaintainConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_maintain_conf(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationMaintainConfRequest,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改主动运维设置
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_maintain_conf_with_options(request, runtime)
+
+    async def modify_active_operation_maintain_conf_async(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationMaintainConfRequest,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改主动运维设置
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_maintain_conf_with_options_async(request, runtime)
+
+    def modify_active_operation_tasks_with_options(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ModifyActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_tasks_with_options_async(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.ModifyActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_tasks(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationTasksRequest,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_tasks_with_options(request, runtime)
+
+    async def modify_active_operation_tasks_async(
+        self,
+        request: clickhouse_20191111_models.ModifyActiveOperationTasksRequest,
+    ) -> clickhouse_20191111_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_tasks_with_options_async(request, runtime)
 
     def modify_auto_renew_attribute_with_options(
         self,
@@ -8627,6 +10187,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restart_instance_with_options_async(request, runtime)
 
+    def restart_instance_node_list_with_options(
+        self,
+        tmp_req: clickhouse_20191111_models.RestartInstanceNodeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.RestartInstanceNodeListResponse:
+        """
+        @summary 批量重启实例节点
+        
+        @param tmp_req: RestartInstanceNodeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceNodeListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = clickhouse_20191111_models.RestartInstanceNodeListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_list):
+            request.node_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_list, 'NodeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.node_list_shrink):
+            query['NodeList'] = request.node_list_shrink
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restart_time):
+            query['RestartTime'] = request.restart_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartInstanceNodeList',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.RestartInstanceNodeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_instance_node_list_with_options_async(
+        self,
+        tmp_req: clickhouse_20191111_models.RestartInstanceNodeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.RestartInstanceNodeListResponse:
+        """
+        @summary 批量重启实例节点
+        
+        @param tmp_req: RestartInstanceNodeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceNodeListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = clickhouse_20191111_models.RestartInstanceNodeListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_list):
+            request.node_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_list, 'NodeList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.node_list_shrink):
+            query['NodeList'] = request.node_list_shrink
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restart_time):
+            query['RestartTime'] = request.restart_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartInstanceNodeList',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.RestartInstanceNodeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_instance_node_list(
+        self,
+        request: clickhouse_20191111_models.RestartInstanceNodeListRequest,
+    ) -> clickhouse_20191111_models.RestartInstanceNodeListResponse:
+        """
+        @summary 批量重启实例节点
+        
+        @param request: RestartInstanceNodeListRequest
+        @return: RestartInstanceNodeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_instance_node_list_with_options(request, runtime)
+
+    async def restart_instance_node_list_async(
+        self,
+        request: clickhouse_20191111_models.RestartInstanceNodeListRequest,
+    ) -> clickhouse_20191111_models.RestartInstanceNodeListResponse:
+        """
+        @summary 批量重启实例节点
+        
+        @param request: RestartInstanceNodeListRequest
+        @return: RestartInstanceNodeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_instance_node_list_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: clickhouse_20191111_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.TagResourcesResponse:
+        """
+        @summary Creates tags for ApsaraDB for ClickHouse clusters and adds the tags to the ApsaraDB for ClickHouse clusters.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: clickhouse_20191111_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.TagResourcesResponse:
+        """
+        @summary Creates tags for ApsaraDB for ClickHouse clusters and adds the tags to the ApsaraDB for ClickHouse clusters.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: clickhouse_20191111_models.TagResourcesRequest,
+    ) -> clickhouse_20191111_models.TagResourcesResponse:
+        """
+        @summary Creates tags for ApsaraDB for ClickHouse clusters and adds the tags to the ApsaraDB for ClickHouse clusters.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: clickhouse_20191111_models.TagResourcesRequest,
+    ) -> clickhouse_20191111_models.TagResourcesResponse:
+        """
+        @summary Creates tags for ApsaraDB for ClickHouse clusters and adds the tags to the ApsaraDB for ClickHouse clusters.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
     def transfer_version_with_options(
         self,
         request: clickhouse_20191111_models.TransferVersionRequest,
@@ -8802,6 +10626,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.transfer_version_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: clickhouse_20191111_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from ApsaraDB for ClickHouse clusters.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: clickhouse_20191111_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from ApsaraDB for ClickHouse clusters.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: clickhouse_20191111_models.UntagResourcesRequest,
+    ) -> clickhouse_20191111_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from ApsaraDB for ClickHouse clusters.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: clickhouse_20191111_models.UntagResourcesRequest,
+    ) -> clickhouse_20191111_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from ApsaraDB for ClickHouse clusters.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def upgrade_minor_version_with_options(
         self,

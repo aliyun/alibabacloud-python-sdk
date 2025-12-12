@@ -1,3 +1,22 @@
+2025-12-12 Version: 3.3.0
+- Support API CancelActiveOperationTasks.
+- Support API CancelAppointmentElectZookeeperLeader.
+- Support API CancelAppointmentRestartInstanceNodeList.
+- Support API DescribeActiveOperationMaintainConf.
+- Support API DescribeActiveOperationTasks.
+- Support API DescribeDBClusterNodeInfos.
+- Support API DescribeDBClusterStatusSet.
+- Support API DescribeEventMetaInfo.
+- Support API DescribeUserEncryptionKeyList.
+- Support API ElectZookeeperLeader.
+- Support API ListTagResources.
+- Support API ModifyActiveOperationMaintainConf.
+- Support API ModifyActiveOperationTasks.
+- Support API RestartInstanceNodeList.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2025-12-05 Version: 3.2.0
 - Support API CancelRestartInstance.
 - Support API ChangeResourceGroup.
