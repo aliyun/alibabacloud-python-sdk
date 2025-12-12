@@ -1,7 +1,335 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class AttachWhitelistTemplateToInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        region_id: str = None,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        reason: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates(TeaModel):
+    def __init__(
+        self,
+        db_instances: List[AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances] = None,
+        security_iplist: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.db_instances = db_instances
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        if self.db_instances:
+            for k in self.db_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DbInstances'] = []
+        if self.db_instances is not None:
+            for k in self.db_instances:
+                result['DbInstances'].append(k.to_map() if k else None)
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.db_instances = []
+        if m.get('DbInstances') is not None:
+            for k in m.get('DbInstances'):
+                temp_model = AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances()
+                self.db_instances.append(temp_model.from_map(k))
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        templates: List[AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates] = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.templates = templates
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attach_fail_list: List[AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList] = None,
+        attach_successed_list: List[AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList] = None,
+        status: str = None,
+    ):
+        self.attach_fail_list = attach_fail_list
+        self.attach_successed_list = attach_successed_list
+        self.status = status
+
+    def validate(self):
+        if self.attach_fail_list:
+            for k in self.attach_fail_list:
+                if k:
+                    k.validate()
+        if self.attach_successed_list:
+            for k in self.attach_successed_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachFailList'] = []
+        if self.attach_fail_list is not None:
+            for k in self.attach_fail_list:
+                result['AttachFailList'].append(k.to_map() if k else None)
+        result['AttachSuccessedList'] = []
+        if self.attach_successed_list is not None:
+            for k in self.attach_successed_list:
+                result['AttachSuccessedList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attach_fail_list = []
+        if m.get('AttachFailList') is not None:
+            for k in m.get('AttachFailList'):
+                temp_model = AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList()
+                self.attach_fail_list.append(temp_model.from_map(k))
+        self.attach_successed_list = []
+        if m.get('AttachSuccessedList') is not None:
+            for k in m.get('AttachSuccessedList'):
+                temp_model = AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList()
+                self.attach_successed_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: AttachWhitelistTemplateToInstanceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = AttachWhitelistTemplateToInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachWhitelistTemplateToInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachWhitelistTemplateToInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachWhitelistTemplateToInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class ChangeResourceGroupRequest(TeaModel):
@@ -2116,6 +2444,232 @@ class DeleteEndpointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWhitelistTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances(TeaModel):
+    def __init__(
+        self,
+        db_instance_name: str = None,
+    ):
+        self.db_instance_name = db_instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_instance_name is not None:
+            result['DbInstanceName'] = self.db_instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbInstanceName') is not None:
+            self.db_instance_name = m.get('DbInstanceName')
+        return self
+
+
+class DeleteWhitelistTemplateResponseBodyDataTemplates(TeaModel):
+    def __init__(
+        self,
+        db_instances: List[DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances] = None,
+        security_iplist: str = None,
+        template_id: str = None,
+    ):
+        self.db_instances = db_instances
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+
+    def validate(self):
+        if self.db_instances:
+            for k in self.db_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DbInstances'] = []
+        if self.db_instances is not None:
+            for k in self.db_instances:
+                result['DbInstances'].append(k.to_map() if k else None)
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.db_instances = []
+        if m.get('DbInstances') is not None:
+            for k in m.get('DbInstances'):
+                temp_model = DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances()
+                self.db_instances.append(temp_model.from_map(k))
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteWhitelistTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        templates: List[DeleteWhitelistTemplateResponseBodyDataTemplates] = None,
+    ):
+        self.templates = templates
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = DeleteWhitelistTemplateResponseBodyDataTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class DeleteWhitelistTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeleteWhitelistTemplateResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeleteWhitelistTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteWhitelistTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWhitelistTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWhitelistTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6044,6 +6598,560 @@ class DescribeSlowLogTrendResponse(TeaModel):
         return self
 
 
+class DetachWhitelistTemplateToInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        region_id: str = None,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        reason: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates(TeaModel):
+    def __init__(
+        self,
+        db_instances: List[DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances] = None,
+        security_iplist: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.db_instances = db_instances
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        if self.db_instances:
+            for k in self.db_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DbInstances'] = []
+        if self.db_instances is not None:
+            for k in self.db_instances:
+                result['DbInstances'].append(k.to_map() if k else None)
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.db_instances = []
+        if m.get('DbInstances') is not None:
+            for k in m.get('DbInstances'):
+                temp_model = DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances()
+                self.db_instances.append(temp_model.from_map(k))
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        templates: List[DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates] = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.templates = templates
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detach_fail_list: List[DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList] = None,
+        detach_successed_list: List[DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList] = None,
+        status: str = None,
+    ):
+        self.detach_fail_list = detach_fail_list
+        self.detach_successed_list = detach_successed_list
+        self.status = status
+
+    def validate(self):
+        if self.detach_fail_list:
+            for k in self.detach_fail_list:
+                if k:
+                    k.validate()
+        if self.detach_successed_list:
+            for k in self.detach_successed_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetachFailList'] = []
+        if self.detach_fail_list is not None:
+            for k in self.detach_fail_list:
+                result['DetachFailList'].append(k.to_map() if k else None)
+        result['DetachSuccessedList'] = []
+        if self.detach_successed_list is not None:
+            for k in self.detach_successed_list:
+                result['DetachSuccessedList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detach_fail_list = []
+        if m.get('DetachFailList') is not None:
+            for k in m.get('DetachFailList'):
+                temp_model = DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList()
+                self.detach_fail_list.append(temp_model.from_map(k))
+        self.detach_successed_list = []
+        if m.get('DetachSuccessedList') is not None:
+            for k in m.get('DetachSuccessedList'):
+                temp_model = DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList()
+                self.detach_successed_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DetachWhitelistTemplateToInstanceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DetachWhitelistTemplateToInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachWhitelistTemplateToInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachWhitelistTemplateToInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachWhitelistTemplateToInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWhitelistTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class GetWhitelistTemplateResponseBodyDataTemplatesDbInstances(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class GetWhitelistTemplateResponseBodyDataTemplates(TeaModel):
+    def __init__(
+        self,
+        db_instances: List[GetWhitelistTemplateResponseBodyDataTemplatesDbInstances] = None,
+        security_iplist: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.db_instances = db_instances
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        if self.db_instances:
+            for k in self.db_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DbInstances'] = []
+        if self.db_instances is not None:
+            for k in self.db_instances:
+                result['DbInstances'].append(k.to_map() if k else None)
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.db_instances = []
+        if m.get('DbInstances') is not None:
+            for k in m.get('DbInstances'):
+                temp_model = GetWhitelistTemplateResponseBodyDataTemplatesDbInstances()
+                self.db_instances.append(temp_model.from_map(k))
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class GetWhitelistTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        templates: List[GetWhitelistTemplateResponseBodyDataTemplates] = None,
+    ):
+        self.templates = templates
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = GetWhitelistTemplateResponseBodyDataTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class GetWhitelistTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetWhitelistTemplateResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetWhitelistTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetWhitelistTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWhitelistTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWhitelistTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class KillProcessRequest(TeaModel):
     def __init__(
         self,
@@ -6210,6 +7318,464 @@ class KillProcessResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = KillProcessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInstanceLinkedWhitelistTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates(TeaModel):
+    def __init__(
+        self,
+        security_iplist: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListInstanceLinkedWhitelistTemplatesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        templates: List[ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates] = None,
+    ):
+        self.templates = templates
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class ListInstanceLinkedWhitelistTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListInstanceLinkedWhitelistTemplatesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListInstanceLinkedWhitelistTemplatesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListInstanceLinkedWhitelistTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstanceLinkedWhitelistTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstanceLinkedWhitelistTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWhitelistTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        template_name: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class ListWhitelistTemplatesResponseBodyDataTemplates(TeaModel):
+    def __init__(
+        self,
+        db_instances: List[ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances] = None,
+        security_iplist: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.db_instances = db_instances
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        if self.db_instances:
+            for k in self.db_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DbInstances'] = []
+        if self.db_instances is not None:
+            for k in self.db_instances:
+                result['DbInstances'].append(k.to_map() if k else None)
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.db_instances = []
+        if m.get('DbInstances') is not None:
+            for k in m.get('DbInstances'):
+                temp_model = ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances()
+                self.db_instances.append(temp_model.from_map(k))
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListWhitelistTemplatesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        curr_page_numbers: int = None,
+        has_next: bool = None,
+        has_prev: bool = None,
+        page_size: int = None,
+        templates: List[ListWhitelistTemplatesResponseBodyDataTemplates] = None,
+        total_count: int = None,
+        total_page_numbers: int = None,
+    ):
+        self.curr_page_numbers = curr_page_numbers
+        self.has_next = has_next
+        self.has_prev = has_prev
+        self.page_size = page_size
+        self.templates = templates
+        self.total_count = total_count
+        self.total_page_numbers = total_page_numbers
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.curr_page_numbers is not None:
+            result['CurrPageNumbers'] = self.curr_page_numbers
+        if self.has_next is not None:
+            result['HasNext'] = self.has_next
+        if self.has_prev is not None:
+            result['HasPrev'] = self.has_prev
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page_numbers is not None:
+            result['TotalPageNumbers'] = self.total_page_numbers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrPageNumbers') is not None:
+            self.curr_page_numbers = m.get('CurrPageNumbers')
+        if m.get('HasNext') is not None:
+            self.has_next = m.get('HasNext')
+        if m.get('HasPrev') is not None:
+            self.has_prev = m.get('HasPrev')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = ListWhitelistTemplatesResponseBodyDataTemplates()
+                self.templates.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPageNumbers') is not None:
+            self.total_page_numbers = m.get('TotalPageNumbers')
+        return self
+
+
+class ListWhitelistTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListWhitelistTemplatesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListWhitelistTemplatesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListWhitelistTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWhitelistTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWhitelistTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8375,6 +9941,240 @@ class StopDBInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopDBInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWhitelistTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        security_iplist: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.security_iplist = security_iplist
+        # This parameter is required.
+        self.template_id = template_id
+        # This parameter is required.
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances(TeaModel):
+    def __init__(
+        self,
+        db_instance_name: str = None,
+    ):
+        self.db_instance_name = db_instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_instance_name is not None:
+            result['DbInstanceName'] = self.db_instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbInstanceName') is not None:
+            self.db_instance_name = m.get('DbInstanceName')
+        return self
+
+
+class UpdateWhitelistTemplateResponseBodyDataTemplates(TeaModel):
+    def __init__(
+        self,
+        db_instances: List[UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances] = None,
+        security_iplist: str = None,
+        template_id: str = None,
+    ):
+        self.db_instances = db_instances
+        self.security_iplist = security_iplist
+        self.template_id = template_id
+
+    def validate(self):
+        if self.db_instances:
+            for k in self.db_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DbInstances'] = []
+        if self.db_instances is not None:
+            for k in self.db_instances:
+                result['DbInstances'].append(k.to_map() if k else None)
+        if self.security_iplist is not None:
+            result['SecurityIPList'] = self.security_iplist
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.db_instances = []
+        if m.get('DbInstances') is not None:
+            for k in m.get('DbInstances'):
+                temp_model = UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances()
+                self.db_instances.append(temp_model.from_map(k))
+        if m.get('SecurityIPList') is not None:
+            self.security_iplist = m.get('SecurityIPList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class UpdateWhitelistTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        templates: List[UpdateWhitelistTemplateResponseBodyDataTemplates] = None,
+    ):
+        self.templates = templates
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = UpdateWhitelistTemplateResponseBodyDataTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateWhitelistTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateWhitelistTemplateResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = UpdateWhitelistTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateWhitelistTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateWhitelistTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateWhitelistTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
