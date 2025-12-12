@@ -1,3 +1,6 @@
+2025-12-12 Version: 4.7.2
+- Generated python 2020-09-30 for imm.
+
 2025-12-12 Version: 4.7.1
 - Update API SemanticQuery: add request parameters SourceURI.
 
