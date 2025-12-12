@@ -28864,6 +28864,7 @@ class SemanticQueryRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
         query: str = None,
+        source_uri: str = None,
         with_fields: List[str] = None,
     ):
         # The name of the dataset.
@@ -28884,6 +28885,7 @@ class SemanticQueryRequest(TeaModel):
         self.project_name = project_name
         # The content of the query that you input.
         self.query = query
+        self.source_uri = source_uri
         # The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
         # 
         # If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
@@ -28910,6 +28912,8 @@ class SemanticQueryRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
         if self.with_fields is not None:
             result['WithFields'] = self.with_fields
         return result
@@ -28928,6 +28932,8 @@ class SemanticQueryRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
         if m.get('WithFields') is not None:
             self.with_fields = m.get('WithFields')
         return self
@@ -28942,6 +28948,7 @@ class SemanticQueryShrinkRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
         query: str = None,
+        source_uri: str = None,
         with_fields_shrink: str = None,
     ):
         # The name of the dataset.
@@ -28962,6 +28969,7 @@ class SemanticQueryShrinkRequest(TeaModel):
         self.project_name = project_name
         # The content of the query that you input.
         self.query = query
+        self.source_uri = source_uri
         # The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
         # 
         # If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
@@ -28988,6 +28996,8 @@ class SemanticQueryShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
         if self.with_fields_shrink is not None:
             result['WithFields'] = self.with_fields_shrink
         return result
@@ -29006,6 +29016,8 @@ class SemanticQueryShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
         if m.get('WithFields') is not None:
             self.with_fields_shrink = m.get('WithFields')
         return self

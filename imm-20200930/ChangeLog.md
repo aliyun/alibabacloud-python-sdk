@@ -1,3 +1,7 @@
+2025-12-12 Version: 4.7.1
+- Update API SemanticQuery: add request parameters SourceURI.
+
+
 2025-11-27 Version: 4.7.0
 - Support API ListAttachedOSSBuckets.
 

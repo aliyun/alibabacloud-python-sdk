@@ -13063,6 +13063,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
         if not UtilClient.is_unset(request.with_fields_shrink):
             query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
@@ -13131,6 +13133,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
         if not UtilClient.is_unset(request.with_fields_shrink):
             query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
