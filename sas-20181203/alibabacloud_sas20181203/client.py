@@ -36908,12 +36908,16 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -36955,12 +36959,16 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -37138,6 +37146,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.port):
@@ -37148,6 +37158,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -37189,6 +37201,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.extend):
             query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.port):
@@ -37199,6 +37213,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -37376,6 +37392,8 @@ class Client(OpenApiClient):
             query['Extend'] = request.extend
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.proc_time_end):
@@ -37386,6 +37404,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -37431,6 +37451,8 @@ class Client(OpenApiClient):
             query['Extend'] = request.extend
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.proc_time_end):
@@ -37441,6 +37463,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -37622,6 +37646,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.pid):
@@ -37648,6 +37674,8 @@ class Client(OpenApiClient):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.search_item_sub):
             query['SearchItemSub'] = request.search_item_sub
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -37695,6 +37723,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.pid):
@@ -37721,6 +37751,8 @@ class Client(OpenApiClient):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.search_item_sub):
             query['SearchItemSub'] = request.search_item_sub
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -38130,6 +38162,8 @@ class Client(OpenApiClient):
             query['InstallTimeStart'] = request.install_time_start
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.path):
@@ -38138,6 +38172,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.software_version):
             query['SoftwareVersion'] = request.software_version
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -38183,6 +38219,8 @@ class Client(OpenApiClient):
             query['InstallTimeStart'] = request.install_time_start
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.path):
@@ -38191,6 +38229,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.software_version):
             query['SoftwareVersion'] = request.software_version
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -38578,10 +38618,14 @@ class Client(OpenApiClient):
             query['LastLoginTimeEnd'] = request.last_login_time_end
         if not UtilClient.is_unset(request.last_login_time_start):
             query['LastLoginTimeStart'] = request.last_login_time_start
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -38629,10 +38673,14 @@ class Client(OpenApiClient):
             query['LastLoginTimeEnd'] = request.last_login_time_end
         if not UtilClient.is_unset(request.last_login_time_start):
             query['LastLoginTimeStart'] = request.last_login_time_start
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.user):
             query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
@@ -53588,12 +53636,16 @@ class Client(OpenApiClient):
             query['ItemName'] = request.item_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.search_criteria_list):
             query['SearchCriteriaList'] = request.search_criteria_list
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -53637,12 +53689,16 @@ class Client(OpenApiClient):
             query['ItemName'] = request.item_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.search_criteria_list):
             query['SearchCriteriaList'] = request.search_criteria_list
+        if not UtilClient.is_unset(request.use_next_token):
+            query['UseNextToken'] = request.use_next_token
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -80850,7 +80906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyEmgVulSubmitResponse:
         """
-        @summary Runs a scan task for urgent vulnerabilities.
+        @summary Scans for urgent vulnerabilities.
         
         @param request: ModifyEmgVulSubmitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -80891,7 +80947,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyEmgVulSubmitResponse:
         """
-        @summary Runs a scan task for urgent vulnerabilities.
+        @summary Scans for urgent vulnerabilities.
         
         @param request: ModifyEmgVulSubmitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -80931,7 +80987,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyEmgVulSubmitRequest,
     ) -> sas_20181203_models.ModifyEmgVulSubmitResponse:
         """
-        @summary Runs a scan task for urgent vulnerabilities.
+        @summary Scans for urgent vulnerabilities.
         
         @param request: ModifyEmgVulSubmitRequest
         @return: ModifyEmgVulSubmitResponse
@@ -80944,7 +81000,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyEmgVulSubmitRequest,
     ) -> sas_20181203_models.ModifyEmgVulSubmitResponse:
         """
-        @summary Runs a scan task for urgent vulnerabilities.
+        @summary Scans for urgent vulnerabilities.
         
         @param request: ModifyEmgVulSubmitRequest
         @return: ModifyEmgVulSubmitResponse

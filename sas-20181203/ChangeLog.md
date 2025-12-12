@@ -1,3 +1,27 @@
+2025-12-12 Version: 7.1.2
+- Update API DescribePropertyCronDetail: add request parameters NextToken.
+- Update API DescribePropertyCronDetail: add request parameters UseNextToken.
+- Update API DescribePropertyCronDetail: add response parameters Body.PageInfo.NextToken.
+- Update API DescribePropertyPortDetail: add request parameters NextToken.
+- Update API DescribePropertyPortDetail: add request parameters UseNextToken.
+- Update API DescribePropertyPortDetail: add response parameters Body.PageInfo.NextToken.
+- Update API DescribePropertyProcDetail: add request parameters NextToken.
+- Update API DescribePropertyProcDetail: add request parameters UseNextToken.
+- Update API DescribePropertyProcDetail: add response parameters Body.PageInfo.NextToken.
+- Update API DescribePropertyScaDetail: add request parameters NextToken.
+- Update API DescribePropertyScaDetail: add request parameters UseNextToken.
+- Update API DescribePropertyScaDetail: add response parameters Body.PageInfo.NextToken.
+- Update API DescribePropertySoftwareDetail: add request parameters NextToken.
+- Update API DescribePropertySoftwareDetail: add request parameters UseNextToken.
+- Update API DescribePropertySoftwareDetail: add response parameters Body.PageInfo.NextToken.
+- Update API DescribePropertyUserDetail: add request parameters NextToken.
+- Update API DescribePropertyUserDetail: add request parameters UseNextToken.
+- Update API DescribePropertyUserDetail: add response parameters Body.PageInfo.NextToken.
+- Update API GetAssetsPropertyDetail: add request parameters NextToken.
+- Update API GetAssetsPropertyDetail: add request parameters UseNextToken.
+- Update API GetAssetsPropertyDetail: add response parameters Body.PageInfo.NextToken.
+
+
 2025-12-09 Version: 7.1.1
 - Update API DescribeSecureSuggestion: add response parameters Body.Score.
 - Update API ListCloudAssetInstances: add request parameters CloudAssetQueryData.
