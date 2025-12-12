@@ -1,3 +1,7 @@
+2025-12-12 Version: 1.18.0
+- Support API GetRunConfiguration.
+
+
 2025-11-25 Version: 1.17.0
 - Support API CancelKyuubiSparkApplication.
 - Support API CreateKyuubiService.

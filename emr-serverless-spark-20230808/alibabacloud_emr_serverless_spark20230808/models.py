@@ -6793,6 +6793,246 @@ class GetLivyComputeTokenResponse(TeaModel):
         return self
 
 
+class GetRunConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs(TeaModel):
+    def __init__(
+        self,
+        config_file_name: str = None,
+        config_item_key: str = None,
+        config_item_value: str = None,
+    ):
+        # 应用配置文件名。 应用配置文件名。 ```spark-defaults.conf```
+        self.config_file_name = config_file_name
+        # 配置项键。 配置项键。 ```dfs.namenode.checkpoint.period```
+        self.config_item_key = config_item_key
+        # 配置项值。 配置项值。 ```3600s```
+        self.config_item_value = config_item_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_file_name is not None:
+            result['configFileName'] = self.config_file_name
+        if self.config_item_key is not None:
+            result['configItemKey'] = self.config_item_key
+        if self.config_item_value is not None:
+            result['configItemValue'] = self.config_item_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configFileName') is not None:
+            self.config_file_name = m.get('configFileName')
+        if m.get('configItemKey') is not None:
+            self.config_item_key = m.get('configItemKey')
+        if m.get('configItemValue') is not None:
+            self.config_item_value = m.get('configItemValue')
+        return self
+
+
+class GetRunConfigurationResponseBodyRunConfigurationLogConfig(TeaModel):
+    def __init__(
+        self,
+        log_level: str = None,
+        log_path: str = None,
+    ):
+        self.log_level = log_level
+        self.log_path = log_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        if self.log_path is not None:
+            result['LogPath'] = self.log_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
+        if m.get('LogPath') is not None:
+            self.log_path = m.get('LogPath')
+        return self
+
+
+class GetRunConfigurationResponseBodyRunConfiguration(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs] = None,
+        log_config: GetRunConfigurationResponseBodyRunConfigurationLogConfig = None,
+        runtime_configs: List[Tag] = None,
+    ):
+        # 应用配置项
+        self.application_configs = application_configs
+        self.log_config = log_config
+        # 运行配置。
+        self.runtime_configs = runtime_configs
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.runtime_configs:
+            for k in self.runtime_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['applicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['applicationConfigs'].append(k.to_map() if k else None)
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        result['runtimeConfigs'] = []
+        if self.runtime_configs is not None:
+            for k in self.runtime_configs:
+                result['runtimeConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('applicationConfigs') is not None:
+            for k in m.get('applicationConfigs'):
+                temp_model = GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs()
+                self.application_configs.append(temp_model.from_map(k))
+        if m.get('logConfig') is not None:
+            temp_model = GetRunConfigurationResponseBodyRunConfigurationLogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        self.runtime_configs = []
+        if m.get('runtimeConfigs') is not None:
+            for k in m.get('runtimeConfigs'):
+                temp_model = Tag()
+                self.runtime_configs.append(temp_model.from_map(k))
+        return self
+
+
+class GetRunConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        run_configuration: GetRunConfigurationResponseBodyRunConfiguration = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        self.run_configuration = run_configuration
+
+    def validate(self):
+        if self.run_configuration:
+            self.run_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.run_configuration is not None:
+            result['runConfiguration'] = self.run_configuration.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('runConfiguration') is not None:
+            temp_model = GetRunConfigurationResponseBodyRunConfiguration()
+            self.run_configuration = temp_model.from_map(m['runConfiguration'])
+        return self
+
+
+class GetRunConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRunConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRunConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSessionClusterRequest(TeaModel):
     def __init__(
         self,

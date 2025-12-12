@@ -3085,6 +3085,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
 
+    def get_run_configuration_with_options(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetRunConfigurationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetRunConfigurationResponse:
+        """
+        @summary 获取任务配置
+        
+        @param request: GetRunConfigurationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRunConfiguration',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/runs/{OpenApiUtilClient.get_encode_param(run_id)}/action/getRunConfiguration',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetRunConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_run_configuration_with_options_async(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetRunConfigurationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetRunConfigurationResponse:
+        """
+        @summary 获取任务配置
+        
+        @param request: GetRunConfigurationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRunConfiguration',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/runs/{OpenApiUtilClient.get_encode_param(run_id)}/action/getRunConfiguration',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetRunConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_run_configuration(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetRunConfigurationRequest,
+    ) -> emr_serverless_spark_20230808_models.GetRunConfigurationResponse:
+        """
+        @summary 获取任务配置
+        
+        @param request: GetRunConfigurationRequest
+        @return: GetRunConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_run_configuration_with_options(workspace_id, run_id, request, headers, runtime)
+
+    async def get_run_configuration_async(
+        self,
+        workspace_id: str,
+        run_id: str,
+        request: emr_serverless_spark_20230808_models.GetRunConfigurationRequest,
+    ) -> emr_serverless_spark_20230808_models.GetRunConfigurationResponse:
+        """
+        @summary 获取任务配置
+        
+        @param request: GetRunConfigurationRequest
+        @return: GetRunConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_run_configuration_with_options_async(workspace_id, run_id, request, headers, runtime)
+
     def get_session_cluster_with_options(
         self,
         workspace_id: str,

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_emr_serverless_spark20230808.
 
-Created on 25/11/2025
+Created on 12/12/2025
 
 @author: Alibaba Cloud SDK
 """
