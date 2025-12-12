@@ -1,3 +1,6 @@
+2025-12-12 Version: 8.4.2
+- Generated python 2019-01-15 for Qualitycheck.
+
 2025-08-07 Version: 8.4.1
 - Update API GetMiningTaskResult: add response parameters Body.Data.FilePathList.
 
