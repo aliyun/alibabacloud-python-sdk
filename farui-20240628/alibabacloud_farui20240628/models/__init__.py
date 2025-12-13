@@ -6,6 +6,10 @@ from ._create_text_file_request import CreateTextFileRequest
 from ._create_text_file_advance_request import CreateTextFileAdvanceRequest
 from ._create_text_file_response_body import CreateTextFileResponseBody
 from ._create_text_file_response import CreateTextFileResponse
+from ._run_contract_extract_request import RunContractExtractRequest
+from ._run_contract_extract_shrink_request import RunContractExtractShrinkRequest
+from ._run_contract_extract_response_body import RunContractExtractResponseBody
+from ._run_contract_extract_response import RunContractExtractResponse
 from ._run_contract_result_generation_request import RunContractResultGenerationRequest
 from ._run_contract_result_generation_shrink_request import RunContractResultGenerationShrinkRequest
 from ._run_contract_result_generation_response_body import RunContractResultGenerationResponseBody
@@ -27,6 +31,10 @@ from ._run_search_law_query_shrink_request import RunSearchLawQueryShrinkRequest
 from ._run_search_law_query_response_body import RunSearchLawQueryResponseBody
 from ._run_search_law_query_response import RunSearchLawQueryResponse
 from ._create_text_file_response_body import CreateTextFileResponseBodyData
+from ._run_contract_extract_request import RunContractExtractRequestFieldsToExtract
+from ._run_contract_extract_response_body import RunContractExtractResponseBodyDataExtractResultValue
+from ._run_contract_extract_response_body import RunContractExtractResponseBodyDataExtractResult
+from ._run_contract_extract_response_body import RunContractExtractResponseBodyData
 from ._run_contract_result_generation_request import RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules
 from ._run_contract_result_generation_request import RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig
 from ._run_contract_result_generation_request import RunContractResultGenerationRequestAssistantMetaDataRules
@@ -68,6 +76,10 @@ __all__ = [
     CreateTextFileAdvanceRequest,
     CreateTextFileResponseBody,
     CreateTextFileResponse,
+    RunContractExtractRequest,
+    RunContractExtractShrinkRequest,
+    RunContractExtractResponseBody,
+    RunContractExtractResponse,
     RunContractResultGenerationRequest,
     RunContractResultGenerationShrinkRequest,
     RunContractResultGenerationResponseBody,
@@ -89,6 +101,10 @@ __all__ = [
     RunSearchLawQueryResponseBody,
     RunSearchLawQueryResponse,
     CreateTextFileResponseBodyData,
+    RunContractExtractRequestFieldsToExtract,
+    RunContractExtractResponseBodyDataExtractResultValue,
+    RunContractExtractResponseBodyDataExtractResult,
+    RunContractExtractResponseBodyData,
     RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules,
     RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig,
     RunContractResultGenerationRequestAssistantMetaDataRules,

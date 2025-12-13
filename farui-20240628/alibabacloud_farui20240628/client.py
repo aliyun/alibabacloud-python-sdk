@@ -466,6 +466,110 @@ class Client(OpenApiClient):
         create_text_file_resp = await self.create_text_file_with_options_async(workspace_id, create_text_file_req, headers, runtime)
         return create_text_file_resp
 
+    def run_contract_extract_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.RunContractExtractRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunContractExtractResponse:
+        tmp_req.validate()
+        request = main_models.RunContractExtractShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.fields_to_extract):
+            request.fields_to_extract_shrink = Utils.array_to_string_with_specified_style(tmp_req.fields_to_extract, 'fieldsToExtract', 'json')
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['appId'] = request.app_id
+        if not DaraCore.is_null(request.fields_to_extract_shrink):
+            body['fieldsToExtract'] = request.fields_to_extract_shrink
+        if not DaraCore.is_null(request.file_oss_url):
+            body['fileOssUrl'] = request.file_oss_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunContractExtract',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/pop/contract/extraction',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunContractExtractResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_contract_extract_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.RunContractExtractRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunContractExtractResponse:
+        tmp_req.validate()
+        request = main_models.RunContractExtractShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.fields_to_extract):
+            request.fields_to_extract_shrink = Utils.array_to_string_with_specified_style(tmp_req.fields_to_extract, 'fieldsToExtract', 'json')
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['appId'] = request.app_id
+        if not DaraCore.is_null(request.fields_to_extract_shrink):
+            body['fieldsToExtract'] = request.fields_to_extract_shrink
+        if not DaraCore.is_null(request.file_oss_url):
+            body['fileOssUrl'] = request.file_oss_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunContractExtract',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/pop/contract/extraction',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunContractExtractResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_contract_extract(
+        self,
+        workspace_id: str,
+        request: main_models.RunContractExtractRequest,
+    ) -> main_models.RunContractExtractResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.run_contract_extract_with_options(workspace_id, request, headers, runtime)
+
+    async def run_contract_extract_async(
+        self,
+        workspace_id: str,
+        request: main_models.RunContractExtractRequest,
+    ) -> main_models.RunContractExtractResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.run_contract_extract_with_options_async(workspace_id, request, headers, runtime)
+
     def run_contract_result_generation_with_sse(
         self,
         workspace_id: str,

@@ -1,3 +1,7 @@
+2025-12-13 Version: 1.3.0
+- Support API RunContractExtract.
+
+
 2025-11-13 Version: 1.2.3
 - Update API CreateTextFile: add request parameters ContractId.
 - Update API CreateTextFile: add response parameters Body.Data.ContractId.
