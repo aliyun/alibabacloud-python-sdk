@@ -4151,6 +4151,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_ancestors_with_options_async(request, runtime)
 
+    def list_authorized_accounts_with_options(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedAccountsResponse:
+        """
+        @summary Queries a list of members who have the permission to query member information in a resource directory.
+        
+        @description The permission to query member information refers to the permission to call the [GetAccount](~~GetAccount~~) API operation.
+        
+        @param request: ListAuthorizedAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedAccounts',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.ListAuthorizedAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_accounts_with_options_async(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedAccountsResponse:
+        """
+        @summary Queries a list of members who have the permission to query member information in a resource directory.
+        
+        @description The permission to query member information refers to the permission to call the [GetAccount](~~GetAccount~~) API operation.
+        
+        @param request: ListAuthorizedAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedAccounts',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.ListAuthorizedAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_accounts(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedAccountsRequest,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedAccountsResponse:
+        """
+        @summary Queries a list of members who have the permission to query member information in a resource directory.
+        
+        @description The permission to query member information refers to the permission to call the [GetAccount](~~GetAccount~~) API operation.
+        
+        @param request: ListAuthorizedAccountsRequest
+        @return: ListAuthorizedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_accounts_with_options(request, runtime)
+
+    async def list_authorized_accounts_async(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedAccountsRequest,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedAccountsResponse:
+        """
+        @summary Queries a list of members who have the permission to query member information in a resource directory.
+        
+        @description The permission to query member information refers to the permission to call the [GetAccount](~~GetAccount~~) API operation.
+        
+        @param request: ListAuthorizedAccountsRequest
+        @return: ListAuthorizedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_accounts_with_options_async(request, runtime)
+
+    def list_authorized_folders_with_options(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedFoldersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedFoldersResponse:
+        """
+        @summary Queries a list of folders that have permissions to query subfolder information in a resource directory.
+        
+        @description The permissions to query subfolder information refer to the permissions to call the [ListAccountsForParent](~~ListAccountsForParent~~) and [ListFoldersForParent](~~ListFoldersForParent~~) API operations.
+        
+        @param request: ListAuthorizedFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedFoldersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedFolders',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.ListAuthorizedFoldersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_folders_with_options_async(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedFoldersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedFoldersResponse:
+        """
+        @summary Queries a list of folders that have permissions to query subfolder information in a resource directory.
+        
+        @description The permissions to query subfolder information refer to the permissions to call the [ListAccountsForParent](~~ListAccountsForParent~~) and [ListFoldersForParent](~~ListFoldersForParent~~) API operations.
+        
+        @param request: ListAuthorizedFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedFoldersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedFolders',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_directory_master_20220419_models.ListAuthorizedFoldersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_folders(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedFoldersRequest,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedFoldersResponse:
+        """
+        @summary Queries a list of folders that have permissions to query subfolder information in a resource directory.
+        
+        @description The permissions to query subfolder information refer to the permissions to call the [ListAccountsForParent](~~ListAccountsForParent~~) and [ListFoldersForParent](~~ListFoldersForParent~~) API operations.
+        
+        @param request: ListAuthorizedFoldersRequest
+        @return: ListAuthorizedFoldersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorized_folders_with_options(request, runtime)
+
+    async def list_authorized_folders_async(
+        self,
+        request: resource_directory_master_20220419_models.ListAuthorizedFoldersRequest,
+    ) -> resource_directory_master_20220419_models.ListAuthorizedFoldersResponse:
+        """
+        @summary Queries a list of folders that have permissions to query subfolder information in a resource directory.
+        
+        @description The permissions to query subfolder information refer to the permissions to call the [ListAccountsForParent](~~ListAccountsForParent~~) and [ListFoldersForParent](~~ListFoldersForParent~~) API operations.
+        
+        @param request: ListAuthorizedFoldersRequest
+        @return: ListAuthorizedFoldersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorized_folders_with_options_async(request, runtime)
+
     def list_control_policies_with_options(
         self,
         request: resource_directory_master_20220419_models.ListControlPoliciesRequest,

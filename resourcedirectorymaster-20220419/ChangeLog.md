@@ -1,3 +1,8 @@
+2025-12-15 Version: 2.3.0
+- Support API ListAuthorizedAccounts.
+- Support API ListAuthorizedFolders.
+
+
 2025-11-10 Version: 2.2.2
 - Update API GetAccount: add response parameters Body.Account.SecureMobilePhone.
 
