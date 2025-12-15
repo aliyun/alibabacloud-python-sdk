@@ -5619,6 +5619,7 @@ class DisableResourceGroupNotificationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6104,6 +6105,7 @@ class EnableResourceGroupNotificationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9060,7 +9062,9 @@ class GetResourceGroupAdminSettingResponseBody(TeaModel):
         creator_as_admin: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether enable the Use Creator as Administrator feature.
         self.creator_as_admin = creator_as_admin
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9134,7 +9138,9 @@ class GetResourceGroupNotificationSettingResponseBody(TeaModel):
         request_id: str = None,
         resource_group_notification_enable_status: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the group event notification is enabled.
         self.resource_group_notification_enable_status = resource_group_notification_enable_status
 
     def validate(self):
@@ -11606,15 +11612,29 @@ class ListAutoGroupingRemediationsRequest(TeaModel):
         service: str = None,
         target_resource_group_id: str = None,
     ):
+        # The earliest remediation time. This parameter is empty by default.
         self.earliest_remediation_time = earliest_remediation_time
+        # The latest remediation time. This parameter is empty by default.
         self.latest_remediation_time = latest_remediation_time
+        # The maximum number of data entries to return.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The resource ID,
         self.resource_id = resource_id
+        # The resource type,
+        # 
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
+        # The rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # The ID of the Alibaba Cloud service.
+        # 
+        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
+        # The ID of the new resource group.
         self.target_resource_group_id = target_resource_group_id
 
     def validate(self):
@@ -11675,7 +11695,9 @@ class ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInf
         resource_group_display_name: str = None,
         resource_group_id: str = None,
     ):
+        # The resource group name.
         self.resource_group_display_name = resource_group_display_name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -11713,12 +11735,23 @@ class ListAutoGroupingRemediationsResponseBodyRemediations(TeaModel):
         service: str = None,
         target_resource_group_info: ListAutoGroupingRemediationsResponseBodyRemediationsTargetResourceGroupInfo = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The remediation record ID.
         self.remediation_id = remediation_id
+        # The remediation time.
         self.remediation_time = remediation_time
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
+        # The ID of the Alibaba Cloud service.
+        # 
+        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
+        # The information about the new resource group.
         self.target_resource_group_info = target_resource_group_info
 
     def validate(self):
@@ -11775,9 +11808,15 @@ class ListAutoGroupingRemediationsResponseBody(TeaModel):
         remediations: List[ListAutoGroupingRemediationsResponseBodyRemediations] = None,
         request_id: str = None,
     ):
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The remediation records.
         self.remediations = remediations
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14700,6 +14739,166 @@ class ListPolicyVersionsResponse(TeaModel):
         return self
 
 
+class ListResourceGroupCapabilityRequest(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        service: str = None,
+        support_resource_group_event: bool = None,
+    ):
+        self.resource_type = resource_type
+        self.service = service
+        self.support_resource_group_event = support_resource_group_event
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.support_resource_group_event is not None:
+            result['SupportResourceGroupEvent'] = self.support_resource_group_event
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('SupportResourceGroupEvent') is not None:
+            self.support_resource_group_event = m.get('SupportResourceGroupEvent')
+        return self
+
+
+class ListResourceGroupCapabilityResponseBodyCapabilities(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        service: str = None,
+        support_resource_group_event: bool = None,
+    ):
+        self.resource_type = resource_type
+        self.service = service
+        self.support_resource_group_event = support_resource_group_event
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.support_resource_group_event is not None:
+            result['SupportResourceGroupEvent'] = self.support_resource_group_event
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('SupportResourceGroupEvent') is not None:
+            self.support_resource_group_event = m.get('SupportResourceGroupEvent')
+        return self
+
+
+class ListResourceGroupCapabilityResponseBody(TeaModel):
+    def __init__(
+        self,
+        capabilities: List[ListResourceGroupCapabilityResponseBodyCapabilities] = None,
+        request_id: str = None,
+    ):
+        self.capabilities = capabilities
+        self.request_id = request_id
+
+    def validate(self):
+        if self.capabilities:
+            for k in self.capabilities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Capabilities'] = []
+        if self.capabilities is not None:
+            for k in self.capabilities:
+                result['Capabilities'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.capabilities = []
+        if m.get('Capabilities') is not None:
+            for k in m.get('Capabilities'):
+                temp_model = ListResourceGroupCapabilityResponseBodyCapabilities()
+                self.capabilities.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListResourceGroupCapabilityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceGroupCapabilityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceGroupCapabilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourceGroupsRequestTag(TeaModel):
     def __init__(
         self,
@@ -15499,6 +15698,7 @@ class ListResourceGroupsWithAuthDetailsResponseBody(TeaModel):
         self.auth_details = auth_details
         self.page_number = page_number
         self.page_size = page_size
+        # The response parameters.
         self.request_id = request_id
         self.resource_groups = resource_groups
         self.total_count = total_count
@@ -17316,6 +17516,357 @@ class ListTrustedServiceStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTrustedServiceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LookupResourceGroupEventsRequestLookupAttributes(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class LookupResourceGroupEventsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event_category: str = None,
+        lookup_attributes: List[LookupResourceGroupEventsRequestLookupAttributes] = None,
+        max_results: str = None,
+        next_token: str = None,
+        resource_group_display_name: str = None,
+        resource_group_id: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.event_category = event_category
+        self.lookup_attributes = lookup_attributes
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_group_display_name = resource_group_display_name
+        self.resource_group_id = resource_group_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.lookup_attributes:
+            for k in self.lookup_attributes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_category is not None:
+            result['EventCategory'] = self.event_category
+        result['LookupAttributes'] = []
+        if self.lookup_attributes is not None:
+            for k in self.lookup_attributes:
+                result['LookupAttributes'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventCategory') is not None:
+            self.event_category = m.get('EventCategory')
+        self.lookup_attributes = []
+        if m.get('LookupAttributes') is not None:
+            for k in m.get('LookupAttributes'):
+                temp_model = LookupResourceGroupEventsRequestLookupAttributes()
+                self.lookup_attributes.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo(TeaModel):
+    def __init__(
+        self,
+        resource_group_display_name: str = None,
+        resource_group_id: str = None,
+    ):
+        self.resource_group_display_name = resource_group_display_name
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo(TeaModel):
+    def __init__(
+        self,
+        resource_group_display_name: str = None,
+        resource_group_id: str = None,
+    ):
+        self.resource_group_display_name = resource_group_display_name
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class LookupResourceGroupEventsResponseBodyEvents(TeaModel):
+    def __init__(
+        self,
+        change_type: str = None,
+        event_time: str = None,
+        region_id: str = None,
+        resource_group_display_name: str = None,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        service: str = None,
+        source_resource_group_info: LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo = None,
+        target_resource_group_info: LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo = None,
+    ):
+        self.change_type = change_type
+        self.event_time = event_time
+        self.region_id = region_id
+        self.resource_group_display_name = resource_group_display_name
+        self.resource_group_id = resource_group_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.service = service
+        self.source_resource_group_info = source_resource_group_info
+        self.target_resource_group_info = target_resource_group_info
+
+    def validate(self):
+        if self.source_resource_group_info:
+            self.source_resource_group_info.validate()
+        if self.target_resource_group_info:
+            self.target_resource_group_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_type is not None:
+            result['ChangeType'] = self.change_type
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.source_resource_group_info is not None:
+            result['SourceResourceGroupInfo'] = self.source_resource_group_info.to_map()
+        if self.target_resource_group_info is not None:
+            result['TargetResourceGroupInfo'] = self.target_resource_group_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeType') is not None:
+            self.change_type = m.get('ChangeType')
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('SourceResourceGroupInfo') is not None:
+            temp_model = LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo()
+            self.source_resource_group_info = temp_model.from_map(m['SourceResourceGroupInfo'])
+        if m.get('TargetResourceGroupInfo') is not None:
+            temp_model = LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo()
+            self.target_resource_group_info = temp_model.from_map(m['TargetResourceGroupInfo'])
+        return self
+
+
+class LookupResourceGroupEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        events: List[LookupResourceGroupEventsResponseBodyEvents] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.events = events
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['Events'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('Events') is not None:
+            for k in m.get('Events'):
+                temp_model = LookupResourceGroupEventsResponseBodyEvents()
+                self.events.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class LookupResourceGroupEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LookupResourceGroupEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LookupResourceGroupEventsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20759,6 +21310,8 @@ class UpdateResourceGroupAdminSettingRequest(TeaModel):
         self,
         creator_as_admin: bool = None,
     ):
+        # Specifies whether to enable the Use Creator as Administrator feature.
+        # 
         # This parameter is required.
         self.creator_as_admin = creator_as_admin
 
@@ -20787,6 +21340,7 @@ class UpdateResourceGroupAdminSettingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

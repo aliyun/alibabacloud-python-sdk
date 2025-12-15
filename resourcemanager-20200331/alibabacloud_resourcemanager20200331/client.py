@@ -3942,7 +3942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
         """
-        @summary 关闭资源组通知
+        @summary Disables group event notification.
         
         @param request: DisableResourceGroupNotificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3970,7 +3970,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
         """
-        @summary 关闭资源组通知
+        @summary Disables group event notification.
         
         @param request: DisableResourceGroupNotificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3995,7 +3995,7 @@ class Client(OpenApiClient):
 
     def disable_resource_group_notification(self) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
         """
-        @summary 关闭资源组通知
+        @summary Disables group event notification.
         
         @return: DisableResourceGroupNotificationResponse
         """
@@ -4004,7 +4004,7 @@ class Client(OpenApiClient):
 
     async def disable_resource_group_notification_async(self) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
         """
-        @summary 关闭资源组通知
+        @summary Disables group event notification.
         
         @return: DisableResourceGroupNotificationResponse
         """
@@ -4366,7 +4366,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
         """
-        @summary 开通资源组通知
+        @summary Enables group event notification.
         
         @param request: EnableResourceGroupNotificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4394,7 +4394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
         """
-        @summary 开通资源组通知
+        @summary Enables group event notification.
         
         @param request: EnableResourceGroupNotificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4419,7 +4419,7 @@ class Client(OpenApiClient):
 
     def enable_resource_group_notification(self) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
         """
-        @summary 开通资源组通知
+        @summary Enables group event notification.
         
         @return: EnableResourceGroupNotificationResponse
         """
@@ -4428,7 +4428,7 @@ class Client(OpenApiClient):
 
     async def enable_resource_group_notification_async(self) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
         """
-        @summary 开通资源组通知
+        @summary Enables group event notification.
         
         @return: EnableResourceGroupNotificationResponse
         """
@@ -5774,7 +5774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
         """
-        @summary 查询资源组管理员配置
+        @summary Queries the configurations of a resource group administrator.
         
         @param request: GetResourceGroupAdminSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5802,7 +5802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
         """
-        @summary 查询资源组管理员配置
+        @summary Queries the configurations of a resource group administrator.
         
         @param request: GetResourceGroupAdminSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5827,7 +5827,7 @@ class Client(OpenApiClient):
 
     def get_resource_group_admin_setting(self) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
         """
-        @summary 查询资源组管理员配置
+        @summary Queries the configurations of a resource group administrator.
         
         @return: GetResourceGroupAdminSettingResponse
         """
@@ -5836,7 +5836,7 @@ class Client(OpenApiClient):
 
     async def get_resource_group_admin_setting_async(self) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
         """
-        @summary 查询资源组管理员配置
+        @summary Queries the configurations of a resource group administrator.
         
         @return: GetResourceGroupAdminSettingResponse
         """
@@ -5848,7 +5848,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
         """
-        @summary 查询资源组通知设置
+        @summary Queries the notification settings of a resource group.
         
         @param request: GetResourceGroupNotificationSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5876,7 +5876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
         """
-        @summary 查询资源组通知设置
+        @summary Queries the notification settings of a resource group.
         
         @param request: GetResourceGroupNotificationSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5901,7 +5901,7 @@ class Client(OpenApiClient):
 
     def get_resource_group_notification_setting(self) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
         """
-        @summary 查询资源组通知设置
+        @summary Queries the notification settings of a resource group.
         
         @return: GetResourceGroupNotificationSettingResponse
         """
@@ -5910,7 +5910,7 @@ class Client(OpenApiClient):
 
     async def get_resource_group_notification_setting_async(self) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
         """
-        @summary 查询资源组通知设置
+        @summary Queries the notification settings of a resource group.
         
         @return: GetResourceGroupNotificationSettingResponse
         """
@@ -6827,7 +6827,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
         """
-        @summary 列出自动分组修正记录
+        @summary Queries a list of automatic grouping remediation records.
         
         @param request: ListAutoGroupingRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6878,7 +6878,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
         """
-        @summary 列出自动分组修正记录
+        @summary Queries a list of automatic grouping remediation records.
         
         @param request: ListAutoGroupingRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6928,7 +6928,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
     ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
         """
-        @summary 列出自动分组修正记录
+        @summary Queries a list of automatic grouping remediation records.
         
         @param request: ListAutoGroupingRemediationsRequest
         @return: ListAutoGroupingRemediationsResponse
@@ -6941,7 +6941,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
     ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
         """
-        @summary 列出自动分组修正记录
+        @summary Queries a list of automatic grouping remediation records.
         
         @param request: ListAutoGroupingRemediationsRequest
         @return: ListAutoGroupingRemediationsResponse
@@ -8161,6 +8161,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_policy_versions_with_options_async(request, runtime)
 
+    def list_resource_group_capability_with_options(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
+        """
+        @summary 列出资源组能力项
+        
+        @param request: ListResourceGroupCapabilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupCapabilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.support_resource_group_event):
+            query['SupportResourceGroupEvent'] = request.support_resource_group_event
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupCapability',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourceGroupCapabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_group_capability_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
+        """
+        @summary 列出资源组能力项
+        
+        @param request: ListResourceGroupCapabilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupCapabilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.support_resource_group_event):
+            query['SupportResourceGroupEvent'] = request.support_resource_group_event
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroupCapability',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListResourceGroupCapabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_group_capability(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
+    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
+        """
+        @summary 列出资源组能力项
+        
+        @param request: ListResourceGroupCapabilityRequest
+        @return: ListResourceGroupCapabilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_group_capability_with_options(request, runtime)
+
+    async def list_resource_group_capability_async(
+        self,
+        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
+    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
+        """
+        @summary 列出资源组能力项
+        
+        @param request: ListResourceGroupCapabilityRequest
+        @return: ListResourceGroupCapabilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_group_capability_with_options_async(request, runtime)
+
     def list_resource_groups_with_options(
         self,
         request: resource_manager_20200331_models.ListResourceGroupsRequest,
@@ -9240,6 +9344,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_trusted_service_status_with_options_async(request, runtime)
+
+    def lookup_resource_group_events_with_options(
+        self,
+        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
+        """
+        @summary 查询资源组事件
+        
+        @param request: LookupResourceGroupEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LookupResourceGroupEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not UtilClient.is_unset(request.lookup_attributes):
+            query['LookupAttributes'] = request.lookup_attributes
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_display_name):
+            query['ResourceGroupDisplayName'] = request.resource_group_display_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LookupResourceGroupEvents',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.LookupResourceGroupEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def lookup_resource_group_events_with_options_async(
+        self,
+        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
+        """
+        @summary 查询资源组事件
+        
+        @param request: LookupResourceGroupEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LookupResourceGroupEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not UtilClient.is_unset(request.lookup_attributes):
+            query['LookupAttributes'] = request.lookup_attributes
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_display_name):
+            query['ResourceGroupDisplayName'] = request.resource_group_display_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LookupResourceGroupEvents',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.LookupResourceGroupEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def lookup_resource_group_events(
+        self,
+        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
+    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
+        """
+        @summary 查询资源组事件
+        
+        @param request: LookupResourceGroupEventsRequest
+        @return: LookupResourceGroupEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.lookup_resource_group_events_with_options(request, runtime)
+
+    async def lookup_resource_group_events_async(
+        self,
+        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
+    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
+        """
+        @summary 查询资源组事件
+        
+        @param request: LookupResourceGroupEventsRequest
+        @return: LookupResourceGroupEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.lookup_resource_group_events_with_options_async(request, runtime)
 
     def move_account_with_options(
         self,
@@ -11471,7 +11699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
         """
-        @summary 更新资源组管理员配置
+        @summary Updates the configurations of a resource group administrator.
         
         @param request: UpdateResourceGroupAdminSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11506,7 +11734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
         """
-        @summary 更新资源组管理员配置
+        @summary Updates the configurations of a resource group administrator.
         
         @param request: UpdateResourceGroupAdminSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11540,7 +11768,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
     ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
         """
-        @summary 更新资源组管理员配置
+        @summary Updates the configurations of a resource group administrator.
         
         @param request: UpdateResourceGroupAdminSettingRequest
         @return: UpdateResourceGroupAdminSettingResponse
@@ -11553,7 +11781,7 @@ class Client(OpenApiClient):
         request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
     ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
         """
-        @summary 更新资源组管理员配置
+        @summary Updates the configurations of a resource group administrator.
         
         @param request: UpdateResourceGroupAdminSettingRequest
         @return: UpdateResourceGroupAdminSettingResponse

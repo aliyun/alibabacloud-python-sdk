@@ -1,3 +1,8 @@
+2025-12-15 Version: 2.6.0
+- Support API ListResourceGroupCapability.
+- Support API LookupResourceGroupEvents.
+
+
 2025-12-10 Version: 2.5.0
 - Support API DisableResourceGroupNotification.
 - Support API EnableResourceGroupNotification.
