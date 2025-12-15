@@ -1636,6 +1636,7 @@ class CreateInstanceRequest(TeaModel):
         image_url: str = None,
         instance_name: str = None,
         labels: List[CreateInstanceRequestLabels] = None,
+        migration_options: Dict[str, Any] = None,
         oversold_type: str = None,
         priority: int = None,
         requested_resource: CreateInstanceRequestRequestedResource = None,
@@ -1685,6 +1686,7 @@ class CreateInstanceRequest(TeaModel):
         self.instance_name = instance_name
         # The custom labels.
         self.labels = labels
+        self.migration_options = migration_options
         self.oversold_type = oversold_type
         # The priority based on which resources are allocated to instances. Valid values: 1 to 9.
         # 
@@ -1796,6 +1798,8 @@ class CreateInstanceRequest(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.migration_options is not None:
+            result['MigrationOptions'] = self.migration_options
         if self.oversold_type is not None:
             result['OversoldType'] = self.oversold_type
         if self.priority is not None:
@@ -1867,6 +1871,8 @@ class CreateInstanceRequest(TeaModel):
             for k in m.get('Labels'):
                 temp_model = CreateInstanceRequestLabels()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('MigrationOptions') is not None:
+            self.migration_options = m.get('MigrationOptions')
         if m.get('OversoldType') is not None:
             self.oversold_type = m.get('OversoldType')
         if m.get('Priority') is not None:
@@ -4013,6 +4019,7 @@ class GetInstanceResponseBody(TeaModel):
         labels: List[GetInstanceResponseBodyLabels] = None,
         latest_snapshot: GetInstanceResponseBodyLatestSnapshot = None,
         message: str = None,
+        migration_options: Dict[str, Any] = None,
         node_error_recovery: GetInstanceResponseBodyNodeErrorRecovery = None,
         payment_type: str = None,
         pod_ips: List[PodIp] = None,
@@ -4113,6 +4120,7 @@ class GetInstanceResponseBody(TeaModel):
         # *   If the request is successful, null is returned.
         # *   If the request fails, the cause for the failure is returned.
         self.message = message
+        self.migration_options = migration_options
         # The error recovery configuration of the node.
         self.node_error_recovery = node_error_recovery
         # The billing method. Valid values:
@@ -4304,6 +4312,8 @@ class GetInstanceResponseBody(TeaModel):
             result['LatestSnapshot'] = self.latest_snapshot.to_map()
         if self.message is not None:
             result['Message'] = self.message
+        if self.migration_options is not None:
+            result['MigrationOptions'] = self.migration_options
         if self.node_error_recovery is not None:
             result['NodeErrorRecovery'] = self.node_error_recovery.to_map()
         if self.payment_type is not None:
@@ -4436,6 +4446,8 @@ class GetInstanceResponseBody(TeaModel):
             self.latest_snapshot = temp_model.from_map(m['LatestSnapshot'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('MigrationOptions') is not None:
+            self.migration_options = m.get('MigrationOptions')
         if m.get('NodeErrorRecovery') is not None:
             temp_model = GetInstanceResponseBodyNodeErrorRecovery()
             self.node_error_recovery = temp_model.from_map(m['NodeErrorRecovery'])
@@ -8841,6 +8853,7 @@ class ListInstancesResponseBody(TeaModel):
         http_status_code: int = None,
         instances: List[ListInstancesResponseBodyInstances] = None,
         message: str = None,
+        migration_options: Dict[str, Any] = None,
         request_id: str = None,
         success: bool = None,
         total_count: int = None,
@@ -8859,6 +8872,7 @@ class ListInstancesResponseBody(TeaModel):
         self.instances = instances
         # The response message.
         self.message = message
+        self.migration_options = migration_options
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
@@ -8891,6 +8905,8 @@ class ListInstancesResponseBody(TeaModel):
                 result['Instances'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
+        if self.migration_options is not None:
+            result['MigrationOptions'] = self.migration_options
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -8912,6 +8928,8 @@ class ListInstancesResponseBody(TeaModel):
                 self.instances.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('MigrationOptions') is not None:
+            self.migration_options = m.get('MigrationOptions')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
@@ -10024,6 +10042,7 @@ class UpdateInstanceRequest(TeaModel):
         disassociate_driver: bool = None,
         disassociate_environment_variables: bool = None,
         disassociate_forward_infos: bool = None,
+        disassociate_migration_options: bool = None,
         disassociate_spot: bool = None,
         disassociate_user_command: bool = None,
         disassociate_vpc: bool = None,
@@ -10035,6 +10054,7 @@ class UpdateInstanceRequest(TeaModel):
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
+        migration_options: Dict[str, Any] = None,
         oversold_type: str = None,
         priority: int = None,
         requested_resource: UpdateInstanceRequestRequestedResource = None,
@@ -10074,6 +10094,7 @@ class UpdateInstanceRequest(TeaModel):
         self.disassociate_environment_variables = disassociate_environment_variables
         # Specifies whether to delete the associated forward information.
         self.disassociate_forward_infos = disassociate_forward_infos
+        self.disassociate_migration_options = disassociate_migration_options
         self.disassociate_spot = disassociate_spot
         self.disassociate_user_command = disassociate_user_command
         # Specifies whether to delete the associated user VPC.
@@ -10096,6 +10117,7 @@ class UpdateInstanceRequest(TeaModel):
         # *   The name can contain only letters, digits, and underscores (_).
         # *   The name can be up to 27 characters in length.
         self.instance_name = instance_name
+        self.migration_options = migration_options
         self.oversold_type = oversold_type
         # The priority based on which resources are allocated to instances. Valid values: 1 to 9.
         # 
@@ -10186,6 +10208,8 @@ class UpdateInstanceRequest(TeaModel):
             result['DisassociateEnvironmentVariables'] = self.disassociate_environment_variables
         if self.disassociate_forward_infos is not None:
             result['DisassociateForwardInfos'] = self.disassociate_forward_infos
+        if self.disassociate_migration_options is not None:
+            result['DisassociateMigrationOptions'] = self.disassociate_migration_options
         if self.disassociate_spot is not None:
             result['DisassociateSpot'] = self.disassociate_spot
         if self.disassociate_user_command is not None:
@@ -10208,6 +10232,8 @@ class UpdateInstanceRequest(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.migration_options is not None:
+            result['MigrationOptions'] = self.migration_options
         if self.oversold_type is not None:
             result['OversoldType'] = self.oversold_type
         if self.priority is not None:
@@ -10263,6 +10289,8 @@ class UpdateInstanceRequest(TeaModel):
             self.disassociate_environment_variables = m.get('DisassociateEnvironmentVariables')
         if m.get('DisassociateForwardInfos') is not None:
             self.disassociate_forward_infos = m.get('DisassociateForwardInfos')
+        if m.get('DisassociateMigrationOptions') is not None:
+            self.disassociate_migration_options = m.get('DisassociateMigrationOptions')
         if m.get('DisassociateSpot') is not None:
             self.disassociate_spot = m.get('DisassociateSpot')
         if m.get('DisassociateUserCommand') is not None:
@@ -10286,6 +10314,8 @@ class UpdateInstanceRequest(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('MigrationOptions') is not None:
+            self.migration_options = m.get('MigrationOptions')
         if m.get('OversoldType') is not None:
             self.oversold_type = m.get('OversoldType')
         if m.get('Priority') is not None:

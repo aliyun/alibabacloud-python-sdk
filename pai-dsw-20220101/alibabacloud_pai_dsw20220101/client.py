@@ -315,6 +315,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.migration_options):
+            body['MigrationOptions'] = request.migration_options
         if not UtilClient.is_unset(request.oversold_type):
             body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
@@ -403,6 +405,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.migration_options):
+            body['MigrationOptions'] = request.migration_options
         if not UtilClient.is_unset(request.oversold_type):
             body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
@@ -3656,6 +3660,8 @@ class Client(OpenApiClient):
             body['DisassociateEnvironmentVariables'] = request.disassociate_environment_variables
         if not UtilClient.is_unset(request.disassociate_forward_infos):
             body['DisassociateForwardInfos'] = request.disassociate_forward_infos
+        if not UtilClient.is_unset(request.disassociate_migration_options):
+            body['DisassociateMigrationOptions'] = request.disassociate_migration_options
         if not UtilClient.is_unset(request.disassociate_spot):
             body['DisassociateSpot'] = request.disassociate_spot
         if not UtilClient.is_unset(request.disassociate_user_command):
@@ -3678,6 +3684,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.migration_options):
+            body['MigrationOptions'] = request.migration_options
         if not UtilClient.is_unset(request.oversold_type):
             body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):
@@ -3757,6 +3765,8 @@ class Client(OpenApiClient):
             body['DisassociateEnvironmentVariables'] = request.disassociate_environment_variables
         if not UtilClient.is_unset(request.disassociate_forward_infos):
             body['DisassociateForwardInfos'] = request.disassociate_forward_infos
+        if not UtilClient.is_unset(request.disassociate_migration_options):
+            body['DisassociateMigrationOptions'] = request.disassociate_migration_options
         if not UtilClient.is_unset(request.disassociate_spot):
             body['DisassociateSpot'] = request.disassociate_spot
         if not UtilClient.is_unset(request.disassociate_user_command):
@@ -3779,6 +3789,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.migration_options):
+            body['MigrationOptions'] = request.migration_options
         if not UtilClient.is_unset(request.oversold_type):
             body['OversoldType'] = request.oversold_type
         if not UtilClient.is_unset(request.priority):

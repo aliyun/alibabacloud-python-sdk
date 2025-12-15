@@ -1,3 +1,11 @@
+2025-12-15 Version: 2.2.2
+- Update API CreateInstance: add request parameters body.MigrationOptions.
+- Update API GetInstance: add response parameters Body.MigrationOptions.
+- Update API ListInstances: add response parameters Body.MigrationOptions.
+- Update API UpdateInstance: add request parameters body.DisassociateMigrationOptions.
+- Update API UpdateInstance: add request parameters body.MigrationOptions.
+
+
 2025-12-10 Version: 2.2.1
 - Update API GetInstance: add response parameters Body.PodIps.
 
