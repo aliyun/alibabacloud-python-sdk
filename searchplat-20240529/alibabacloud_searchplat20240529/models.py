@@ -1248,10 +1248,12 @@ class GetDocumentAnalyzeTaskStatusResponseBodyUsage(TeaModel):
     def __init__(
         self,
         image_count: int = None,
+        semantic_token_count: int = None,
         table_count: int = None,
         token_count: int = None,
     ):
         self.image_count = image_count
+        self.semantic_token_count = semantic_token_count
         self.table_count = table_count
         self.token_count = token_count
 
@@ -1266,6 +1268,8 @@ class GetDocumentAnalyzeTaskStatusResponseBodyUsage(TeaModel):
         result = dict()
         if self.image_count is not None:
             result['image_count'] = self.image_count
+        if self.semantic_token_count is not None:
+            result['semantic_token_count'] = self.semantic_token_count
         if self.table_count is not None:
             result['table_count'] = self.table_count
         if self.token_count is not None:
@@ -1276,6 +1280,8 @@ class GetDocumentAnalyzeTaskStatusResponseBodyUsage(TeaModel):
         m = m or dict()
         if m.get('image_count') is not None:
             self.image_count = m.get('image_count')
+        if m.get('semantic_token_count') is not None:
+            self.semantic_token_count = m.get('semantic_token_count')
         if m.get('table_count') is not None:
             self.table_count = m.get('table_count')
         if m.get('token_count') is not None:
@@ -2416,6 +2422,307 @@ class GetImageAnalyzeTaskStatusResponse(TeaModel):
         return self
 
 
+class GetImageObjectDetectionRequestImage(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetImageObjectDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        image: GetImageObjectDetectionRequestImage = None,
+        options: Dict[str, Any] = None,
+    ):
+        self.image = image
+        self.options = options
+
+    def validate(self):
+        if self.image:
+            self.image.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image.to_map()
+        if self.options is not None:
+            result['options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            temp_model = GetImageObjectDetectionRequestImage()
+            self.image = temp_model.from_map(m['image'])
+        if m.get('options') is not None:
+            self.options = m.get('options')
+        return self
+
+
+class GetImageObjectDetectionResponseBodyResultObjectsLocation(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+        height: int = None,
+        width: int = None,
+    ):
+        self.x = x
+        self.y = y
+        self.height = height
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.height is not None:
+            result['height'] = self.height
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
+class GetImageObjectDetectionResponseBodyResultObjects(TeaModel):
+    def __init__(
+        self,
+        confidence: str = None,
+        location: GetImageObjectDetectionResponseBodyResultObjectsLocation = None,
+    ):
+        self.confidence = confidence
+        self.location = location
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['confidence'] = self.confidence
+        if self.location is not None:
+            result['location'] = self.location.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('confidence') is not None:
+            self.confidence = m.get('confidence')
+        if m.get('location') is not None:
+            temp_model = GetImageObjectDetectionResponseBodyResultObjectsLocation()
+            self.location = temp_model.from_map(m['location'])
+        return self
+
+
+class GetImageObjectDetectionResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        objects: List[GetImageObjectDetectionResponseBodyResultObjects] = None,
+    ):
+        self.objects = objects
+
+    def validate(self):
+        if self.objects:
+            for k in self.objects:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['objects'] = []
+        if self.objects is not None:
+            for k in self.objects:
+                result['objects'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.objects = []
+        if m.get('objects') is not None:
+            for k in m.get('objects'):
+                temp_model = GetImageObjectDetectionResponseBodyResultObjects()
+                self.objects.append(temp_model.from_map(k))
+        return self
+
+
+class GetImageObjectDetectionResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        image: int = None,
+    ):
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        return self
+
+
+class GetImageObjectDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetImageObjectDetectionResponseBodyResult = None,
+        usage: GetImageObjectDetectionResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetImageObjectDetectionResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetImageObjectDetectionResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetImageObjectDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetImageObjectDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetImageObjectDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMultiModalEmbeddingRequestInput(TeaModel):
     def __init__(
         self,
@@ -2453,8 +2760,10 @@ class GetMultiModalEmbeddingRequest(TeaModel):
     def __init__(
         self,
         input: List[GetMultiModalEmbeddingRequestInput] = None,
+        options: Dict[str, Any] = None,
     ):
         self.input = input
+        self.options = options
 
     def validate(self):
         if self.input:
@@ -2472,6 +2781,8 @@ class GetMultiModalEmbeddingRequest(TeaModel):
         if self.input is not None:
             for k in self.input:
                 result['input'].append(k.to_map() if k else None)
+        if self.options is not None:
+            result['options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
@@ -2481,6 +2792,8 @@ class GetMultiModalEmbeddingRequest(TeaModel):
             for k in m.get('input'):
                 temp_model = GetMultiModalEmbeddingRequestInput()
                 self.input.append(temp_model.from_map(k))
+        if m.get('options') is not None:
+            self.options = m.get('options')
         return self
 
 
@@ -2556,9 +2869,13 @@ class GetMultiModalEmbeddingResponseBodyUsage(TeaModel):
     def __init__(
         self,
         image: int = None,
+        image_token: int = None,
+        text_token: int = None,
         token_count: int = None,
     ):
         self.image = image
+        self.image_token = image_token
+        self.text_token = text_token
         self.token_count = token_count
 
     def validate(self):
@@ -2572,6 +2889,10 @@ class GetMultiModalEmbeddingResponseBodyUsage(TeaModel):
         result = dict()
         if self.image is not None:
             result['image'] = self.image
+        if self.image_token is not None:
+            result['image_token'] = self.image_token
+        if self.text_token is not None:
+            result['text_token'] = self.text_token
         if self.token_count is not None:
             result['token_count'] = self.token_count
         return result
@@ -2580,6 +2901,10 @@ class GetMultiModalEmbeddingResponseBodyUsage(TeaModel):
         m = m or dict()
         if m.get('image') is not None:
             self.image = m.get('image')
+        if m.get('image_token') is not None:
+            self.image_token = m.get('image_token')
+        if m.get('text_token') is not None:
+            self.text_token = m.get('text_token')
         if m.get('token_count') is not None:
             self.token_count = m.get('token_count')
         return self
@@ -2672,6 +2997,314 @@ class GetMultiModalEmbeddingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMultiModalEmbeddingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiModalRerankerRequestDocs(TeaModel):
+    def __init__(
+        self,
+        image: str = None,
+        text: str = None,
+    ):
+        self.image = image
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class GetMultiModalRerankerRequestQuery(TeaModel):
+    def __init__(
+        self,
+        image: str = None,
+        text: str = None,
+    ):
+        self.image = image
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['image'] = self.image
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class GetMultiModalRerankerRequest(TeaModel):
+    def __init__(
+        self,
+        docs: List[GetMultiModalRerankerRequestDocs] = None,
+        options: Dict[str, Any] = None,
+        query: GetMultiModalRerankerRequestQuery = None,
+    ):
+        self.docs = docs
+        self.options = options
+        self.query = query
+
+    def validate(self):
+        if self.docs:
+            for k in self.docs:
+                if k:
+                    k.validate()
+        if self.query:
+            self.query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['docs'] = []
+        if self.docs is not None:
+            for k in self.docs:
+                result['docs'].append(k.to_map() if k else None)
+        if self.options is not None:
+            result['options'] = self.options
+        if self.query is not None:
+            result['query'] = self.query.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.docs = []
+        if m.get('docs') is not None:
+            for k in m.get('docs'):
+                temp_model = GetMultiModalRerankerRequestDocs()
+                self.docs.append(temp_model.from_map(k))
+        if m.get('options') is not None:
+            self.options = m.get('options')
+        if m.get('query') is not None:
+            temp_model = GetMultiModalRerankerRequestQuery()
+            self.query = temp_model.from_map(m['query'])
+        return self
+
+
+class GetMultiModalRerankerResponseBodyResultScores(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        score: float = None,
+    ):
+        self.index = index
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index
+        if self.score is not None:
+            result['score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('score') is not None:
+            self.score = m.get('score')
+        return self
+
+
+class GetMultiModalRerankerResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        scores: List[GetMultiModalRerankerResponseBodyResultScores] = None,
+    ):
+        self.scores = scores
+
+    def validate(self):
+        if self.scores:
+            for k in self.scores:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['scores'] = []
+        if self.scores is not None:
+            for k in self.scores:
+                result['scores'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.scores = []
+        if m.get('scores') is not None:
+            for k in m.get('scores'):
+                temp_model = GetMultiModalRerankerResponseBodyResultScores()
+                self.scores.append(temp_model.from_map(k))
+        return self
+
+
+class GetMultiModalRerankerResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        image_token: int = None,
+        text_token: int = None,
+    ):
+        self.image_token = image_token
+        self.text_token = text_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_token is not None:
+            result['image_token'] = self.image_token
+        if self.text_token is not None:
+            result['text_token'] = self.text_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image_token') is not None:
+            self.image_token = m.get('image_token')
+        if m.get('text_token') is not None:
+            self.text_token = m.get('text_token')
+        return self
+
+
+class GetMultiModalRerankerResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetMultiModalRerankerResponseBodyResult = None,
+        usage: GetMultiModalRerankerResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetMultiModalRerankerResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetMultiModalRerankerResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetMultiModalRerankerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiModalRerankerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiModalRerankerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

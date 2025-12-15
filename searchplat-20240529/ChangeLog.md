@@ -1,3 +1,12 @@
+2025-12-15 Version: 2.3.0
+- Support API GetImageObjectDetection.
+- Support API GetMultiModalReranker.
+- Update API GetDocumentAnalyzeTaskStatus: add response parameters Body.usage.semantic_token_count.
+- Update API GetMultiModalEmbedding: add request parameters body.options.
+- Update API GetMultiModalEmbedding: add response parameters Body.usage.image_token.
+- Update API GetMultiModalEmbedding: add response parameters Body.usage.text_token.
+
+
 2025-06-26 Version: 2.2.0
 - Support API CreateAudioAsrTask.
 - Support API CreateVideoSnapshotTask.

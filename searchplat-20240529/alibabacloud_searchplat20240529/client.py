@@ -1182,6 +1182,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_image_analyze_task_status_with_options_async(workspace_name, service_id, request, headers, runtime)
 
+    def get_image_object_detection_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageObjectDetectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetImageObjectDetectionResponse:
+        """
+        @summary 图片主体检测
+        
+        @param request: GetImageObjectDetectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageObjectDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image):
+            body['image'] = request.image
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageObjectDetection',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/image-object-detection/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetImageObjectDetectionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_image_object_detection_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageObjectDetectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetImageObjectDetectionResponse:
+        """
+        @summary 图片主体检测
+        
+        @param request: GetImageObjectDetectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageObjectDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image):
+            body['image'] = request.image
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageObjectDetection',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/image-object-detection/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetImageObjectDetectionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_image_object_detection(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageObjectDetectionRequest,
+    ) -> searchplat_20240529_models.GetImageObjectDetectionResponse:
+        """
+        @summary 图片主体检测
+        
+        @param request: GetImageObjectDetectionRequest
+        @return: GetImageObjectDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_image_object_detection_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_image_object_detection_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageObjectDetectionRequest,
+    ) -> searchplat_20240529_models.GetImageObjectDetectionResponse:
+        """
+        @summary 图片主体检测
+        
+        @param request: GetImageObjectDetectionRequest
+        @return: GetImageObjectDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_image_object_detection_with_options_async(workspace_name, service_id, request, headers, runtime)
+
     def get_multi_modal_embedding_with_options(
         self,
         workspace_name: str,
@@ -1202,6 +1318,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.input):
             body['input'] = request.input
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1242,6 +1360,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.input):
             body['input'] = request.input
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1293,6 +1413,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_multi_modal_embedding_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def get_multi_modal_reranker_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalRerankerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetMultiModalRerankerResponse:
+        """
+        @summary 多模态 Reranker
+        
+        @param request: GetMultiModalRerankerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiModalRerankerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.docs):
+            body['docs'] = request.docs
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiModalReranker',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/multi-modal-reranker/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetMultiModalRerankerResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_multi_modal_reranker_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalRerankerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetMultiModalRerankerResponse:
+        """
+        @summary 多模态 Reranker
+        
+        @param request: GetMultiModalRerankerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiModalRerankerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.docs):
+            body['docs'] = request.docs
+        if not UtilClient.is_unset(request.options):
+            body['options'] = request.options
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiModalReranker',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/multi-modal-reranker/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetMultiModalRerankerResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_multi_modal_reranker(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalRerankerRequest,
+    ) -> searchplat_20240529_models.GetMultiModalRerankerResponse:
+        """
+        @summary 多模态 Reranker
+        
+        @param request: GetMultiModalRerankerRequest
+        @return: GetMultiModalRerankerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_multi_modal_reranker_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_multi_modal_reranker_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetMultiModalRerankerRequest,
+    ) -> searchplat_20240529_models.GetMultiModalRerankerResponse:
+        """
+        @summary 多模态 Reranker
+        
+        @param request: GetMultiModalRerankerRequest
+        @return: GetMultiModalRerankerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_multi_modal_reranker_with_options_async(workspace_name, service_id, request, headers, runtime)
 
     def get_prediction_with_options(
         self,
