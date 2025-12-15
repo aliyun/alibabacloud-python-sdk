@@ -1,3 +1,31 @@
+2025-12-15 Version: 6.2.0
+- Support API DescribeActiveOperationMaintenanceConfig.
+- Support API DescribeActiveOperationTaskCount.
+- Support API DescribeDBInstanceMonitor.
+- Support API DescribeDbInstanceConnectivity.
+- Support API DescribeHistoryEvents.
+- Support API DescribeHistoryEventsStat.
+- Support API DescribeHistoryTasksStat.
+- Support API DescribeServiceLinkedRoleExists.
+- Support API DescribeTags.
+- Support API DestroyInstance.
+- Support API ModifyActiveOperationMaintainConfig.
+- Support API ModifyDBInstanceMonitor.
+- Support API ModifyEventInfo.
+- Support API RebootProxy.
+- Support API UpgradeProxy.
+- Update API CreateAccount: add response parameters Body.AccountName.
+- Update API CreateTairKVCacheVNode: add request parameters ElasticTimeRange.
+- Update API CreateTairKVCacheVNode: add request parameters VNodeType.
+- Update API DescribeDBInstanceNetInfo: add request parameters NetType.
+- Update API DescribeGlobalSecurityIPGroup: add request parameters Engine.
+- Update API DescribeInstanceAttribute: add response parameters Body.Instances.$.ComputingType.
+- Update API DescribeTairKVCacheInferInstanceAttribute: add response parameters Body.Instances.$.ReplicaNum.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.ElasticVNodeCount.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.FixedVNodeCount.
+- Update API EnableAdditionalBandwidth: add request parameters BandWidthBurst.
+
+
 2025-08-28 Version: 6.1.0
 - Support API CreateTairKVCacheVNode.
 - Support API TransformToEcs.

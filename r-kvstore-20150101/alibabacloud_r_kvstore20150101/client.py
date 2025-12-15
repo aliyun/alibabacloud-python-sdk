@@ -28,11 +28,9 @@ class Client(OpenApiClient):
             'cn-wulanchabu': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou': 'r-kvstore.aliyuncs.com',
             'cn-shanghai': 'r-kvstore.aliyuncs.com',
-            'cn-shenzhen': 'r-kvstore.aliyuncs.com',
             'cn-heyuan': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
             'ap-northeast-2-pop': 'r-kvstore.aliyuncs.com',
-            'cn-beijing-finance-1': 'r-kvstore.aliyuncs.com',
             'cn-beijing-finance-pop': 'r-kvstore.aliyuncs.com',
             'cn-beijing-gov-1': 'r-kvstore.aliyuncs.com',
             'cn-beijing-nu16-b01': 'r-kvstore.aliyuncs.com',
@@ -2584,7 +2582,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
         """
-        @summary 创建Tair VNode实例
+        @summary Creates a Tair VNode instance.
         
         @param request: CreateTairKVCacheVNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2612,6 +2610,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.elastic_time_range):
+            query['ElasticTimeRange'] = request.elastic_time_range
         if not UtilClient.is_unset(request.instance_class):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_name):
@@ -2634,6 +2634,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vnode_type):
+            query['VNodeType'] = request.vnode_type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vk_name):
@@ -2665,7 +2667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
         """
-        @summary 创建Tair VNode实例
+        @summary Creates a Tair VNode instance.
         
         @param request: CreateTairKVCacheVNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2693,6 +2695,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.elastic_time_range):
+            query['ElasticTimeRange'] = request.elastic_time_range
         if not UtilClient.is_unset(request.instance_class):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_name):
@@ -2715,6 +2719,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vnode_type):
+            query['VNodeType'] = request.vnode_type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vk_name):
@@ -2745,7 +2751,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairKVCacheVNodeRequest,
     ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
         """
-        @summary 创建Tair VNode实例
+        @summary Creates a Tair VNode instance.
         
         @param request: CreateTairKVCacheVNodeRequest
         @return: CreateTairKVCacheVNodeResponse
@@ -2758,7 +2764,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairKVCacheVNodeRequest,
     ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
         """
-        @summary 创建Tair VNode实例
+        @summary Creates a Tair VNode instance.
         
         @param request: CreateTairKVCacheVNodeRequest
         @return: CreateTairKVCacheVNodeResponse
@@ -2908,7 +2914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteBackupResponse:
         """
-        @summary 删除指定备份集
+        @summary Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
         
         @param request: DeleteBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2953,7 +2959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteBackupResponse:
         """
-        @summary 删除指定备份集
+        @summary Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
         
         @param request: DeleteBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2997,7 +3003,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteBackupRequest,
     ) -> r_kvstore_20150101_models.DeleteBackupResponse:
         """
-        @summary 删除指定备份集
+        @summary Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
         
         @param request: DeleteBackupRequest
         @return: DeleteBackupResponse
@@ -3010,7 +3016,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteBackupRequest,
     ) -> r_kvstore_20150101_models.DeleteBackupResponse:
         """
-        @summary 删除指定备份集
+        @summary Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
         
         @param request: DeleteBackupRequest
         @return: DeleteBackupResponse
@@ -3694,6 +3700,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
+    def describe_active_operation_maintenance_config_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigResponse:
+        """
+        @summary Queries the O\\\\\\&M task configurations of an instance.
+        
+        @param request: DescribeActiveOperationMaintenanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintenanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationMaintenanceConfig',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_maintenance_config_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigResponse:
+        """
+        @summary Queries the O\\\\\\&M task configurations of an instance.
+        
+        @param request: DescribeActiveOperationMaintenanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintenanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationMaintenanceConfig',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_maintenance_config(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigRequest,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigResponse:
+        """
+        @summary Queries the O\\\\\\&M task configurations of an instance.
+        
+        @param request: DescribeActiveOperationMaintenanceConfigRequest
+        @return: DescribeActiveOperationMaintenanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_maintenance_config_with_options(request, runtime)
+
+    async def describe_active_operation_maintenance_config_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigRequest,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationMaintenanceConfigResponse:
+        """
+        @summary Queries the O\\\\\\&M task configurations of an instance.
+        
+        @param request: DescribeActiveOperationMaintenanceConfigRequest
+        @return: DescribeActiveOperationMaintenanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_maintenance_config_with_options_async(request, runtime)
+
     def describe_active_operation_task_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
@@ -3833,6 +3951,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_task_with_options_async(request, runtime)
+
+    def describe_active_operation_task_count_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary Queries the number of O\\\\\\&M tasks on a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTaskCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTaskCount',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTaskCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_task_count_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary Queries the number of O\\\\\\&M tasks on a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTaskCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTaskCount',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTaskCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_task_count(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskCountRequest,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary Queries the number of O\\\\\\&M tasks on a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @return: DescribeActiveOperationTaskCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_task_count_with_options(request, runtime)
+
+    async def describe_active_operation_task_count_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskCountRequest,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary Queries the number of O\\\\\\&M tasks on a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @return: DescribeActiveOperationTaskCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_task_count_with_options_async(request, runtime)
 
     def describe_active_operation_tasks_with_options(
         self,
@@ -5358,6 +5592,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_member_info_with_options_async(request, runtime)
 
+    def describe_dbinstance_monitor_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeDBInstanceMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeDBInstanceMonitorResponse:
+        """
+        @summary Queries the collection frequency of monitoring data for a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeDBInstanceMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceMonitor',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBInstanceMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_monitor_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeDBInstanceMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeDBInstanceMonitorResponse:
+        """
+        @summary Queries the collection frequency of monitoring data for a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeDBInstanceMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceMonitor',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBInstanceMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_monitor(
+        self,
+        request: r_kvstore_20150101_models.DescribeDBInstanceMonitorRequest,
+    ) -> r_kvstore_20150101_models.DescribeDBInstanceMonitorResponse:
+        """
+        @summary Queries the collection frequency of monitoring data for a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeDBInstanceMonitorRequest
+        @return: DescribeDBInstanceMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_monitor_with_options(request, runtime)
+
+    async def describe_dbinstance_monitor_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeDBInstanceMonitorRequest,
+    ) -> r_kvstore_20150101_models.DescribeDBInstanceMonitorResponse:
+        """
+        @summary Queries the collection frequency of monitoring data for a Tair (Redis OSS-compatible) instance.
+        
+        @param request: DescribeDBInstanceMonitorRequest
+        @return: DescribeDBInstanceMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_monitor_with_options_async(request, runtime)
+
     def describe_dbinstance_net_info_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeDBInstanceNetInfoRequest,
@@ -5374,6 +5724,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5419,6 +5771,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5593,6 +5947,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbnode_direct_vip_info_with_options_async(request, runtime)
+
+    def describe_db_instance_connectivity_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeDbInstanceConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeDbInstanceConnectivityResponse:
+        """
+        @summary Checks the connectivity between the client IP address and the instance.
+        
+        @param request: DescribeDbInstanceConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDbInstanceConnectivityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDbInstanceConnectivity',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDbInstanceConnectivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_db_instance_connectivity_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeDbInstanceConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeDbInstanceConnectivityResponse:
+        """
+        @summary Checks the connectivity between the client IP address and the instance.
+        
+        @param request: DescribeDbInstanceConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDbInstanceConnectivityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDbInstanceConnectivity',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDbInstanceConnectivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_db_instance_connectivity(
+        self,
+        request: r_kvstore_20150101_models.DescribeDbInstanceConnectivityRequest,
+    ) -> r_kvstore_20150101_models.DescribeDbInstanceConnectivityResponse:
+        """
+        @summary Checks the connectivity between the client IP address and the instance.
+        
+        @param request: DescribeDbInstanceConnectivityRequest
+        @return: DescribeDbInstanceConnectivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_db_instance_connectivity_with_options(request, runtime)
+
+    async def describe_db_instance_connectivity_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeDbInstanceConnectivityRequest,
+    ) -> r_kvstore_20150101_models.DescribeDbInstanceConnectivityResponse:
+        """
+        @summary Checks the connectivity between the client IP address and the instance.
+        
+        @param request: DescribeDbInstanceConnectivityRequest
+        @return: DescribeDbInstanceConnectivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_db_instance_connectivity_with_options_async(request, runtime)
 
     def describe_dedicated_cluster_instance_list_with_options(
         self,
@@ -6299,7 +6773,25 @@ class Client(OpenApiClient):
         @return: DescribeGlobalSecurityIPGroupResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6308,7 +6800,7 @@ class Client(OpenApiClient):
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6332,7 +6824,25 @@ class Client(OpenApiClient):
         @return: DescribeGlobalSecurityIPGroupResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6341,7 +6851,7 @@ class Client(OpenApiClient):
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6391,7 +6901,23 @@ class Client(OpenApiClient):
         @return: DescribeGlobalSecurityIPGroupRelationResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6400,7 +6926,7 @@ class Client(OpenApiClient):
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6424,7 +6950,23 @@ class Client(OpenApiClient):
         @return: DescribeGlobalSecurityIPGroupRelationResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6433,7 +6975,7 @@ class Client(OpenApiClient):
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6469,6 +7011,306 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
+
+    def describe_history_events_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsResponse:
+        """
+        @summary DescribeHistoryEvents
+        
+        @param request: DescribeHistoryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_status):
+            query['EventStatus'] = request.event_status
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEvents',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsResponse:
+        """
+        @summary DescribeHistoryEvents
+        
+        @param request: DescribeHistoryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_status):
+            query['EventStatus'] = request.event_status
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEvents',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsRequest,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsResponse:
+        """
+        @summary DescribeHistoryEvents
+        
+        @param request: DescribeHistoryEventsRequest
+        @return: DescribeHistoryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_events_with_options(request, runtime)
+
+    async def describe_history_events_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsRequest,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsResponse:
+        """
+        @summary DescribeHistoryEvents
+        
+        @param request: DescribeHistoryEventsRequest
+        @return: DescribeHistoryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_events_with_options_async(request, runtime)
+
+    def describe_history_events_stat_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary Queries the statistics of historical events.
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEventsStat',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryEventsStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_stat_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary Queries the statistics of historical events.
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryEventsStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEventsStat',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryEventsStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events_stat(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsStatRequest,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary Queries the statistics of historical events.
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @return: DescribeHistoryEventsStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_events_stat_with_options(request, runtime)
+
+    async def describe_history_events_stat_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryEventsStatRequest,
+    ) -> r_kvstore_20150101_models.DescribeHistoryEventsStatResponse:
+        """
+        @summary Queries the statistics of historical events.
+        
+        @param request: DescribeHistoryEventsStatRequest
+        @return: DescribeHistoryEventsStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_events_stat_with_options_async(request, runtime)
 
     def describe_history_monitor_values_with_options(
         self,
@@ -6773,6 +7615,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_history_tasks_with_options_async(request, runtime)
+
+    def describe_history_tasks_stat_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary Queries the task statistics in the task center.
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryTasksStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_tasks_stat_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary Queries the task statistics in the task center.
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryTasksStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_tasks_stat(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryTasksStatRequest,
+    ) -> r_kvstore_20150101_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary Queries the task statistics in the task center.
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @return: DescribeHistoryTasksStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_stat_with_options(request, runtime)
+
+    async def describe_history_tasks_stat_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeHistoryTasksStatRequest,
+    ) -> r_kvstore_20150101_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary Queries the task statistics in the task center.
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @return: DescribeHistoryTasksStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
     def describe_instance_attribute_with_options(
         self,
@@ -8435,7 +9413,25 @@ class Client(OpenApiClient):
         @return: DescribeParameterGroupTemplateListResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8444,7 +9440,7 @@ class Client(OpenApiClient):
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8468,7 +9464,25 @@ class Client(OpenApiClient):
         @return: DescribeParameterGroupTemplateListResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8477,7 +9491,7 @@ class Client(OpenApiClient):
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -9874,6 +10888,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ips_with_options_async(request, runtime)
 
+    def describe_service_linked_role_exists_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsResponse:
+        """
+        @summary Queries whether the related service-linked role is created for Tair (Redis OSS-compatible) in the current account.
+        
+        @description You can call this operation to query whether the service-lined role AliyunServiceRoleForKvstore is created for Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
+        
+        @param request: DescribeServiceLinkedRoleExistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceLinkedRoleExistsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceLinkedRoleExists',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_linked_role_exists_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsResponse:
+        """
+        @summary Queries whether the related service-linked role is created for Tair (Redis OSS-compatible) in the current account.
+        
+        @description You can call this operation to query whether the service-lined role AliyunServiceRoleForKvstore is created for Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
+        
+        @param request: DescribeServiceLinkedRoleExistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceLinkedRoleExistsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceLinkedRoleExists',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_linked_role_exists(
+        self,
+        request: r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsRequest,
+    ) -> r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsResponse:
+        """
+        @summary Queries whether the related service-linked role is created for Tair (Redis OSS-compatible) in the current account.
+        
+        @description You can call this operation to query whether the service-lined role AliyunServiceRoleForKvstore is created for Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
+        
+        @param request: DescribeServiceLinkedRoleExistsRequest
+        @return: DescribeServiceLinkedRoleExistsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_service_linked_role_exists_with_options(request, runtime)
+
+    async def describe_service_linked_role_exists_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsRequest,
+    ) -> r_kvstore_20150101_models.DescribeServiceLinkedRoleExistsResponse:
+        """
+        @summary Queries whether the related service-linked role is created for Tair (Redis OSS-compatible) in the current account.
+        
+        @description You can call this operation to query whether the service-lined role AliyunServiceRoleForKvstore is created for Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
+        
+        @param request: DescribeServiceLinkedRoleExistsRequest
+        @return: DescribeServiceLinkedRoleExistsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_service_linked_role_exists_with_options_async(request, runtime)
+
     def describe_slow_log_records_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeSlowLogRecordsRequest,
@@ -10037,6 +11179,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
+
+    def describe_tags_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTagsResponse:
+        """
+        @summary Queries all tags in a region.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tags_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeTagsResponse:
+        """
+        @summary Queries all tags in a region.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tags(
+        self,
+        request: r_kvstore_20150101_models.DescribeTagsRequest,
+    ) -> r_kvstore_20150101_models.DescribeTagsResponse:
+        """
+        @summary Queries all tags in a region.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tags_with_options(request, runtime)
+
+    async def describe_tags_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeTagsRequest,
+    ) -> r_kvstore_20150101_models.DescribeTagsResponse:
+        """
+        @summary Queries all tags in a region.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tags_with_options_async(request, runtime)
 
     def describe_tair_kvcache_custom_instance_attribute_with_options(
         self,
@@ -10618,6 +11880,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
+    def destroy_instance_with_options(
+        self,
+        request: r_kvstore_20150101_models.DestroyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DestroyInstanceResponse:
+        """
+        @summary Permanently destroys instances and their data backups in the recycle bin.
+        
+        @description Before you call this operation, instances must be available in the recycle bin. For more information, see [Instance recycle bin](https://help.aliyun.com/document_detail/86114.html).
+        > Calling this operation permanently deletes the instances and their data backups in the recycle bin.
+        *\
+        *Warning** After you destroy the instance, data in the instance is permanently deleted and can no longer be restored. Proceed with caution.
+        
+        @param request: DestroyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DestroyInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DestroyInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DestroyInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def destroy_instance_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DestroyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DestroyInstanceResponse:
+        """
+        @summary Permanently destroys instances and their data backups in the recycle bin.
+        
+        @description Before you call this operation, instances must be available in the recycle bin. For more information, see [Instance recycle bin](https://help.aliyun.com/document_detail/86114.html).
+        > Calling this operation permanently deletes the instances and their data backups in the recycle bin.
+        *\
+        *Warning** After you destroy the instance, data in the instance is permanently deleted and can no longer be restored. Proceed with caution.
+        
+        @param request: DestroyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DestroyInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DestroyInstance',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DestroyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def destroy_instance(
+        self,
+        request: r_kvstore_20150101_models.DestroyInstanceRequest,
+    ) -> r_kvstore_20150101_models.DestroyInstanceResponse:
+        """
+        @summary Permanently destroys instances and their data backups in the recycle bin.
+        
+        @description Before you call this operation, instances must be available in the recycle bin. For more information, see [Instance recycle bin](https://help.aliyun.com/document_detail/86114.html).
+        > Calling this operation permanently deletes the instances and their data backups in the recycle bin.
+        *\
+        *Warning** After you destroy the instance, data in the instance is permanently deleted and can no longer be restored. Proceed with caution.
+        
+        @param request: DestroyInstanceRequest
+        @return: DestroyInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.destroy_instance_with_options(request, runtime)
+
+    async def destroy_instance_async(
+        self,
+        request: r_kvstore_20150101_models.DestroyInstanceRequest,
+    ) -> r_kvstore_20150101_models.DestroyInstanceResponse:
+        """
+        @summary Permanently destroys instances and their data backups in the recycle bin.
+        
+        @description Before you call this operation, instances must be available in the recycle bin. For more information, see [Instance recycle bin](https://help.aliyun.com/document_detail/86114.html).
+        > Calling this operation permanently deletes the instances and their data backups in the recycle bin.
+        *\
+        *Warning** After you destroy the instance, data in the instance is permanently deleted and can no longer be restored. Proceed with caution.
+        
+        @param request: DestroyInstanceRequest
+        @return: DestroyInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.destroy_instance_with_options_async(request, runtime)
+
     def enable_additional_bandwidth_with_options(
         self,
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
@@ -10641,6 +12039,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_renew_period):
             query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.band_width_burst):
+            query['BandWidthBurst'] = request.band_width_burst
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.charge_type):
@@ -10707,6 +12107,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_renew_period):
             query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.band_width_burst):
+            query['BandWidthBurst'] = request.band_width_burst
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.charge_type):
@@ -12238,6 +13640,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_password_with_options_async(request, runtime)
 
+    def modify_active_operation_maintain_config_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cycle_time):
+            query['CycleTime'] = request.cycle_time
+        if not UtilClient.is_unset(request.cycle_type):
+            query['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationMaintainConfig',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_maintain_config_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cycle_time):
+            query['CycleTime'] = request.cycle_time
+        if not UtilClient.is_unset(request.cycle_type):
+            query['CycleType'] = request.cycle_type
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationMaintainConfig',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_maintain_config(
+        self,
+        request: r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigRequest,
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfigRequest
+        @return: ModifyActiveOperationMaintainConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_maintain_config_with_options(request, runtime)
+
+    async def modify_active_operation_maintain_config_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigRequest,
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationMaintainConfigResponse:
+        """
+        @summary ModifyActiveOperationMaintainConf
+        
+        @param request: ModifyActiveOperationMaintainConfigRequest
+        @return: ModifyActiveOperationMaintainConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_maintain_config_with_options_async(request, runtime)
+
     def modify_active_operation_task_with_options(
         self,
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
@@ -12640,7 +14174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
         """
-        @summary 修改备份集过期时间
+        @summary Extends the expiration time of manual backup data.
         
         @param request: ModifyBackupExpireTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12687,7 +14221,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
         """
-        @summary 修改备份集过期时间
+        @summary Extends the expiration time of manual backup data.
         
         @param request: ModifyBackupExpireTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12733,7 +14267,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyBackupExpireTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
         """
-        @summary 修改备份集过期时间
+        @summary Extends the expiration time of manual backup data.
         
         @param request: ModifyBackupExpireTimeRequest
         @return: ModifyBackupExpireTimeResponse
@@ -12746,7 +14280,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyBackupExpireTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyBackupExpireTimeResponse:
         """
-        @summary 修改备份集过期时间
+        @summary Extends the expiration time of manual backup data.
         
         @param request: ModifyBackupExpireTimeRequest
         @return: ModifyBackupExpireTimeResponse
@@ -13145,6 +14679,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
+
+    def modify_dbinstance_monitor_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceMonitorResponse:
+        """
+        @summary Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceMonitor',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_monitor_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceMonitorResponse:
+        """
+        @summary Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceMonitor',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_monitor(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceMonitorRequest,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceMonitorResponse:
+        """
+        @summary Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @return: ModifyDBInstanceMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_monitor_with_options(request, runtime)
+
+    async def modify_dbinstance_monitor_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceMonitorRequest,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceMonitorResponse:
+        """
+        @summary Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @return: ModifyDBInstanceMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_monitor_with_options_async(request, runtime)
+
+    def modify_event_info_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyEventInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyEventInfoResponse:
+        """
+        @summary 事件中心修改事件信息
+        
+        @param request: ModifyEventInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEventInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.event_action):
+            query['EventAction'] = request.event_action
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEventInfo',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyEventInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_event_info_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyEventInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyEventInfoResponse:
+        """
+        @summary 事件中心修改事件信息
+        
+        @param request: ModifyEventInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEventInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.event_action):
+            query['EventAction'] = request.event_action
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEventInfo',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyEventInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_event_info(
+        self,
+        request: r_kvstore_20150101_models.ModifyEventInfoRequest,
+    ) -> r_kvstore_20150101_models.ModifyEventInfoResponse:
+        """
+        @summary 事件中心修改事件信息
+        
+        @param request: ModifyEventInfoRequest
+        @return: ModifyEventInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_event_info_with_options(request, runtime)
+
+    async def modify_event_info_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyEventInfoRequest,
+    ) -> r_kvstore_20150101_models.ModifyEventInfoResponse:
+        """
+        @summary 事件中心修改事件信息
+        
+        @param request: ModifyEventInfoRequest
+        @return: ModifyEventInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_event_info_with_options_async(request, runtime)
 
     def modify_global_security_ipgroup_with_options(
         self,
@@ -16286,6 +18052,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_task_info_with_options_async(request, runtime)
 
+    def reboot_proxy_with_options(
+        self,
+        request: r_kvstore_20150101_models.RebootProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.RebootProxyResponse:
+        """
+        @summary Restarts the proxy node of a running Tair (Redis OSS-compatible) instance.
+        
+        @description This operation supports only instances that use the read/write splitting architecture or the cluster architecture in proxy mode. For more information, see [Restart or rebuild proxy nodes](https://help.aliyun.com/document_detail/164224.html).
+        
+        @param request: RebootProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_list):
+            query['ProxyList'] = request.proxy_list
+        if not UtilClient.is_unset(request.proxy_node_list):
+            query['ProxyNodeList'] = request.proxy_node_list
+        if not UtilClient.is_unset(request.reboot_mode):
+            query['RebootMode'] = request.reboot_mode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootProxy',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RebootProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_proxy_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.RebootProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.RebootProxyResponse:
+        """
+        @summary Restarts the proxy node of a running Tair (Redis OSS-compatible) instance.
+        
+        @description This operation supports only instances that use the read/write splitting architecture or the cluster architecture in proxy mode. For more information, see [Restart or rebuild proxy nodes](https://help.aliyun.com/document_detail/164224.html).
+        
+        @param request: RebootProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_list):
+            query['ProxyList'] = request.proxy_list
+        if not UtilClient.is_unset(request.proxy_node_list):
+            query['ProxyNodeList'] = request.proxy_node_list
+        if not UtilClient.is_unset(request.reboot_mode):
+            query['RebootMode'] = request.reboot_mode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootProxy',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RebootProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_proxy(
+        self,
+        request: r_kvstore_20150101_models.RebootProxyRequest,
+    ) -> r_kvstore_20150101_models.RebootProxyResponse:
+        """
+        @summary Restarts the proxy node of a running Tair (Redis OSS-compatible) instance.
+        
+        @description This operation supports only instances that use the read/write splitting architecture or the cluster architecture in proxy mode. For more information, see [Restart or rebuild proxy nodes](https://help.aliyun.com/document_detail/164224.html).
+        
+        @param request: RebootProxyRequest
+        @return: RebootProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reboot_proxy_with_options(request, runtime)
+
+    async def reboot_proxy_async(
+        self,
+        request: r_kvstore_20150101_models.RebootProxyRequest,
+    ) -> r_kvstore_20150101_models.RebootProxyResponse:
+        """
+        @summary Restarts the proxy node of a running Tair (Redis OSS-compatible) instance.
+        
+        @description This operation supports only instances that use the read/write splitting architecture or the cluster architecture in proxy mode. For more information, see [Restart or rebuild proxy nodes](https://help.aliyun.com/document_detail/164224.html).
+        
+        @param request: RebootProxyRequest
+        @return: RebootProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reboot_proxy_with_options_async(request, runtime)
+
     def release_direct_connection_with_options(
         self,
         request: r_kvstore_20150101_models.ReleaseDirectConnectionRequest,
@@ -18940,7 +20842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToEcsResponse:
         """
-        @summary 转换本地盘到云原生
+        @summary Converts an instance use local disks to a cloud-native instance.
         
         @param request: TransformToEcsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19001,7 +20903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToEcsResponse:
         """
-        @summary 转换本地盘到云原生
+        @summary Converts an instance use local disks to a cloud-native instance.
         
         @param request: TransformToEcsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19061,7 +20963,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToEcsRequest,
     ) -> r_kvstore_20150101_models.TransformToEcsResponse:
         """
-        @summary 转换本地盘到云原生
+        @summary Converts an instance use local disks to a cloud-native instance.
         
         @param request: TransformToEcsRequest
         @return: TransformToEcsResponse
@@ -19074,7 +20976,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToEcsRequest,
     ) -> r_kvstore_20150101_models.TransformToEcsResponse:
         """
-        @summary 转换本地盘到云原生
+        @summary Converts an instance use local disks to a cloud-native instance.
         
         @param request: TransformToEcsRequest
         @return: TransformToEcsResponse
@@ -19485,3 +21387,147 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def upgrade_proxy_with_options(
+        self,
+        request: r_kvstore_20150101_models.UpgradeProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.UpgradeProxyResponse:
+        """
+        @summary Updates the proxy node of a cluster instance to the latest version.
+        
+        @description The procedure and impacts for updating the minor version of an instance varies based on the instance architecture. For more information, see [Update the minor version of an instance](https://help.aliyun.com/document_detail/56450.html).
+        >
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the current minor version of the proxy node.
+        The connection to the instance is interrupted during the update. We recommend that perform an update during off-peak hours. Make sure your application can reconnect to the instance after the update. For more information, see [Minor version update](https://help.aliyun.com/document_detail/56450.html).
+        
+        @param request: UpgradeProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_instance_ids):
+            query['ProxyInstanceIds'] = request.proxy_instance_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeProxy',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UpgradeProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_proxy_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.UpgradeProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.UpgradeProxyResponse:
+        """
+        @summary Updates the proxy node of a cluster instance to the latest version.
+        
+        @description The procedure and impacts for updating the minor version of an instance varies based on the instance architecture. For more information, see [Update the minor version of an instance](https://help.aliyun.com/document_detail/56450.html).
+        >
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the current minor version of the proxy node.
+        The connection to the instance is interrupted during the update. We recommend that perform an update during off-peak hours. Make sure your application can reconnect to the instance after the update. For more information, see [Minor version update](https://help.aliyun.com/document_detail/56450.html).
+        
+        @param request: UpgradeProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_instance_ids):
+            query['ProxyInstanceIds'] = request.proxy_instance_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeProxy',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UpgradeProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_proxy(
+        self,
+        request: r_kvstore_20150101_models.UpgradeProxyRequest,
+    ) -> r_kvstore_20150101_models.UpgradeProxyResponse:
+        """
+        @summary Updates the proxy node of a cluster instance to the latest version.
+        
+        @description The procedure and impacts for updating the minor version of an instance varies based on the instance architecture. For more information, see [Update the minor version of an instance](https://help.aliyun.com/document_detail/56450.html).
+        >
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the current minor version of the proxy node.
+        The connection to the instance is interrupted during the update. We recommend that perform an update during off-peak hours. Make sure your application can reconnect to the instance after the update. For more information, see [Minor version update](https://help.aliyun.com/document_detail/56450.html).
+        
+        @param request: UpgradeProxyRequest
+        @return: UpgradeProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_proxy_with_options(request, runtime)
+
+    async def upgrade_proxy_async(
+        self,
+        request: r_kvstore_20150101_models.UpgradeProxyRequest,
+    ) -> r_kvstore_20150101_models.UpgradeProxyResponse:
+        """
+        @summary Updates the proxy node of a cluster instance to the latest version.
+        
+        @description The procedure and impacts for updating the minor version of an instance varies based on the instance architecture. For more information, see [Update the minor version of an instance](https://help.aliyun.com/document_detail/56450.html).
+        >
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) operation to query the current minor version of the proxy node.
+        The connection to the instance is interrupted during the update. We recommend that perform an update during off-peak hours. Make sure your application can reconnect to the instance after the update. For more information, see [Minor version update](https://help.aliyun.com/document_detail/56450.html).
+        
+        @param request: UpgradeProxyRequest
+        @return: UpgradeProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_proxy_with_options_async(request, runtime)

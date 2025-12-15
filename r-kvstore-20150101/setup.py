@@ -22,15 +22,15 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_r-kvstore20150101.
+setup module for alibabacloud_r_kvstore20150101.
 
-Created on 28/08/2025
+Created on 15/12/2025
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_r_kvstore20150101"
-NAME = "alibabacloud_r-kvstore20150101" or "alibabacloud-package"
+NAME = "alibabacloud_r_kvstore20150101" or "alibabacloud-package"
 DESCRIPTION = "Alibaba Cloud R-kvstore (20150101) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
