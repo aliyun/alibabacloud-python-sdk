@@ -1,3 +1,7 @@
+2025-12-15 Version: 4.15.2
+- Update API GetSupabaseProject: add response parameters Body.Eni.
+
+
 2025-12-05 Version: 4.15.1
 - Update API GetSupabaseProject: add response parameters Body.InstanceVersion.
 - Update API GetSupabaseProject: add response parameters Body.PayType.

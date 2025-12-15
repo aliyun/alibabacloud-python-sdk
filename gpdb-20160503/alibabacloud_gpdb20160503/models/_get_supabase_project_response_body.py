@@ -13,6 +13,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         disk_performance_level: str = None,
         engine: str = None,
         engine_version: str = None,
+        eni: str = None,
         instance_version: str = None,
         pay_type: str = None,
         private_connect_url: str = None,
@@ -45,6 +46,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         self.engine = engine
         # The version of the database engine.
         self.engine_version = engine_version
+        self.eni = eni
         self.instance_version = instance_version
         self.pay_type = pay_type
         # The private (VPC) connection URL for the Supabase Dashboard.
@@ -110,6 +112,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+
+        if self.eni is not None:
+            result['Eni'] = self.eni
 
         if self.instance_version is not None:
             result['InstanceVersion'] = self.instance_version
@@ -180,6 +185,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+
+        if m.get('Eni') is not None:
+            self.eni = m.get('Eni')
 
         if m.get('InstanceVersion') is not None:
             self.instance_version = m.get('InstanceVersion')
