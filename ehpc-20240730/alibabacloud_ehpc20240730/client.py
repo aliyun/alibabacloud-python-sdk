@@ -3765,6 +3765,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_queues_with_options_async(request, runtime)
 
+    def list_regions_with_options(
+        self,
+        request: ehpc20240730_models.ListRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.ListRegionsResponse:
+        """
+        @summary 查询产品支持的地域列表。
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.spec_code):
+            query['SpecCode'] = request.spec_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_regions_with_options_async(
+        self,
+        request: ehpc20240730_models.ListRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.ListRegionsResponse:
+        """
+        @summary 查询产品支持的地域列表。
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.spec_code):
+            query['SpecCode'] = request.spec_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_regions(
+        self,
+        request: ehpc20240730_models.ListRegionsRequest,
+    ) -> ehpc20240730_models.ListRegionsResponse:
+        """
+        @summary 查询产品支持的地域列表。
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_regions_with_options(request, runtime)
+
+    async def list_regions_async(
+        self,
+        request: ehpc20240730_models.ListRegionsRequest,
+    ) -> ehpc20240730_models.ListRegionsResponse:
+        """
+        @summary 查询产品支持的地域列表。
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_regions_with_options_async(request, runtime)
+
     def list_shared_storages_with_options(
         self,
         request: ehpc20240730_models.ListSharedStoragesRequest,

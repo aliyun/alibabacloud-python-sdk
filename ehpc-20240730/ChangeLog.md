@@ -1,3 +1,17 @@
+2025-12-15 Version: 2.2.0
+- Support API ListRegions.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.AutoRenew.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.AutoRenewPeriod.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.Duration.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.EnableHt.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.ImageId.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.Period.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.PeriodUnit.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.SpotPriceLimit.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.SpotStrategy.
+- Update API GetCluster: add response parameters Body.Manager.ManagerNode.SystemDisk.
+
+
 2025-05-16 Version: 2.1.0
 - Support API AttachNodes.
 

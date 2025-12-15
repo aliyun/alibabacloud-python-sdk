@@ -631,7 +631,7 @@ class AttachNodesRequestComputeNode(TeaModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The instance IDs.
+        # The IDs of ECS instances.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
@@ -667,11 +667,11 @@ class AttachNodesRequest(TeaModel):
         compute_node: AttachNodesRequestComputeNode = None,
         queue_name: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The compute node information.
+        # The list of compute nodes.
         # 
         # This parameter is required.
         self.compute_node = compute_node
@@ -715,11 +715,11 @@ class AttachNodesShrinkRequest(TeaModel):
         compute_node_shrink: str = None,
         queue_name: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The compute node information.
+        # The list of compute nodes.
         # 
         # This parameter is required.
         self.compute_node_shrink = compute_node_shrink
@@ -762,7 +762,7 @@ class AttachNodesResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         # 
         # Valid values:
         # 
@@ -1286,7 +1286,7 @@ class CreateClusterRequestManagerDNS(TeaModel):
     ):
         # The domain name resolution type.
         # 
-        # Valid value:
+        # Valid values:
         # 
         # *   NIS
         self.type = type
@@ -1325,7 +1325,7 @@ class CreateClusterRequestManagerDirectoryService(TeaModel):
     ):
         # The type of the domain account.
         # 
-        # Valid value:
+        # Valid values:
         # 
         # *   NIS
         self.type = type
@@ -5113,25 +5113,16 @@ class GetClusterResponseBodyManagerDirectoryService(TeaModel):
         return self
 
 
-class GetClusterResponseBodyManagerManagerNode(TeaModel):
+class GetClusterResponseBodyManagerManagerNodeSystemDisk(TeaModel):
     def __init__(
         self,
-        expired_time: str = None,
-        instance_charge_type: str = None,
-        instance_id: str = None,
-        instance_type: str = None,
+        category: str = None,
+        level: str = None,
+        size: int = None,
     ):
-        # The expiration time of the management node.
-        self.expired_time = expired_time
-        # The instance billing method of the management node. Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
-        self.instance_charge_type = instance_charge_type
-        # The instance ID of the management node.
-        self.instance_id = instance_id
-        # The instance type of the management node.
-        self.instance_type = instance_type
+        self.category = category
+        self.level = level
+        self.size = size
 
     def validate(self):
         pass
@@ -5142,26 +5133,136 @@ class GetClusterResponseBodyManagerManagerNode(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class GetClusterResponseBodyManagerManagerNode(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        duration: int = None,
+        enable_ht: bool = None,
+        expired_time: str = None,
+        image_id: str = None,
+        instance_charge_type: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        period: int = None,
+        period_unit: str = None,
+        spot_price_limit: float = None,
+        spot_strategy: str = None,
+        system_disk: GetClusterResponseBodyManagerManagerNodeSystemDisk = None,
+    ):
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
+        self.duration = duration
+        self.enable_ht = enable_ht
+        # The expiration time of the management node.
+        self.expired_time = expired_time
+        self.image_id = image_id
+        # The instance billing method of the management node. Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
+        self.instance_charge_type = instance_charge_type
+        # The instance ID of the management node.
+        self.instance_id = instance_id
+        # The instance type of the management node.
+        self.instance_type = instance_type
+        self.period = period
+        self.period_unit = period_unit
+        self.spot_price_limit = spot_price_limit
+        self.spot_strategy = spot_strategy
+        self.system_disk = system_disk
+
+    def validate(self):
+        if self.system_disk:
+            self.system_disk.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['AutoRenewPeriod'] = self.auto_renew_period
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.enable_ht is not None:
+            result['EnableHt'] = self.enable_ht
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewPeriod') is not None:
+            self.auto_renew_period = m.get('AutoRenewPeriod')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EnableHt') is not None:
+            self.enable_ht = m.get('EnableHt')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        if m.get('SystemDisk') is not None:
+            temp_model = GetClusterResponseBodyManagerManagerNodeSystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
         return self
 
 
@@ -9803,7 +9904,7 @@ class ListInstalledSoftwaresRequest(TeaModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The page number of the page to return.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -11631,6 +11732,184 @@ class ListQueuesResponse(TeaModel):
         return self
 
 
+class ListRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        spec_code: str = None,
+    ):
+        self.accept_language = accept_language
+        self.max_results = max_results
+        self.next_token = next_token
+        self.spec_code = spec_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.spec_code is not None:
+            result['SpecCode'] = self.spec_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('SpecCode') is not None:
+            self.spec_code = m.get('SpecCode')
+        return self
+
+
+class ListRegionsResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        region_id: str = None,
+    ):
+        self.local_name = local_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        regions: List[ListRegionsResponseBodyRegions] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.regions = regions
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = ListRegionsResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSharedStoragesRequest(TeaModel):
     def __init__(
         self,
@@ -11957,7 +12236,7 @@ class ListSoftwaresRequest(TeaModel):
         self.name = name
         # The operating system (OS) information.
         self.os_infos = os_infos
-        # The page number of the page to return.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -12365,7 +12644,7 @@ class ListUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The page number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1.
         # 
@@ -13724,8 +14003,8 @@ class UpdateQueueRequestQueue(TeaModel):
         self.enable_scale_in = enable_scale_in
         # Specifies whether to enable auto scale-out for the queue. Valid values:
         # 
-        # *   true: deletion protection is enabled.
-        # *   false: disables ASM.
+        # *   true
+        # *   false
         self.enable_scale_out = enable_scale_out
         # The hostname prefix of the added compute nodes.
         self.hostname_prefix = hostname_prefix
@@ -13735,7 +14014,7 @@ class UpdateQueueRequestQueue(TeaModel):
         self.initial_count = initial_count
         # The type of the network for interconnecting compute nodes in the queue.
         self.inter_connect = inter_connect
-        # The nodes for which deletion protection is enabled in the queue.
+        # List of excluded compute nodes in the queue.
         self.keep_alive_nodes = keep_alive_nodes
         # The maximum number of compute nodes that the queue can contain.
         self.max_count = max_count
