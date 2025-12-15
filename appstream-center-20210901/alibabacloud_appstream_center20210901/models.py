@@ -2034,6 +2034,7 @@ class CreateWuyingServerRequest(TeaModel):
         biz_region_id: str = None,
         charge_type: str = None,
         data_disk: List[CreateWuyingServerRequestDataDisk] = None,
+        host_name: str = None,
         idempotence_token: str = None,
         image_id: str = None,
         network_strategy_type: str = None,
@@ -2070,6 +2071,7 @@ class CreateWuyingServerRequest(TeaModel):
         self.charge_type = charge_type
         # The list of data disks.
         self.data_disk = data_disk
+        self.host_name = host_name
         # Idempotence token to ensure operation uniqueness
         self.idempotence_token = idempotence_token
         # The ID of the image.
@@ -2141,6 +2143,8 @@ class CreateWuyingServerRequest(TeaModel):
         if self.data_disk is not None:
             for k in self.data_disk:
                 result['DataDisk'].append(k.to_map() if k else None)
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
         if self.idempotence_token is not None:
             result['IdempotenceToken'] = self.idempotence_token
         if self.image_id is not None:
@@ -2196,6 +2200,8 @@ class CreateWuyingServerRequest(TeaModel):
             for k in m.get('DataDisk'):
                 temp_model = CreateWuyingServerRequestDataDisk()
                 self.data_disk.append(temp_model.from_map(k))
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
         if m.get('IdempotenceToken') is not None:
             self.idempotence_token = m.get('IdempotenceToken')
         if m.get('ImageId') is not None:

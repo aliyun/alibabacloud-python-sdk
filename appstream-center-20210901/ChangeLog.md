@@ -1,3 +1,7 @@
+2025-12-15 Version: 4.7.2
+- Update API CreateWuyingServer: add request parameters HostName.
+
+
 2025-12-08 Version: 4.7.1
 - Update API ListImage: add response parameters Body.Data.$.Scene.
 

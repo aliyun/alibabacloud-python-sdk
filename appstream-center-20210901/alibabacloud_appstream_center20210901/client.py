@@ -791,9 +791,6 @@ class Client(OpenApiClient):
         @return: CreateWuyingServerResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.saving_plan_id):
-            query['SavingPlanId'] = request.saving_plan_id
         body = {}
         if not UtilClient.is_unset(request.amount):
             body['Amount'] = request.amount
@@ -810,6 +807,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.data_disk):
             body_flat['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.host_name):
+            body['HostName'] = request.host_name
         if not UtilClient.is_unset(request.idempotence_token):
             body['IdempotenceToken'] = request.idempotence_token
         if not UtilClient.is_unset(request.image_id):
@@ -826,6 +825,8 @@ class Client(OpenApiClient):
             body['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.promotion_id):
             body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.saving_plan_id):
+            body['SavingPlanId'] = request.saving_plan_id
         if not UtilClient.is_unset(request.server_instance_type):
             body['ServerInstanceType'] = request.server_instance_type
         if not UtilClient.is_unset(request.server_port_range):
@@ -845,7 +846,6 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -884,9 +884,6 @@ class Client(OpenApiClient):
         @return: CreateWuyingServerResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.saving_plan_id):
-            query['SavingPlanId'] = request.saving_plan_id
         body = {}
         if not UtilClient.is_unset(request.amount):
             body['Amount'] = request.amount
@@ -903,6 +900,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.data_disk):
             body_flat['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.host_name):
+            body['HostName'] = request.host_name
         if not UtilClient.is_unset(request.idempotence_token):
             body['IdempotenceToken'] = request.idempotence_token
         if not UtilClient.is_unset(request.image_id):
@@ -919,6 +918,8 @@ class Client(OpenApiClient):
             body['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.promotion_id):
             body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.saving_plan_id):
+            body['SavingPlanId'] = request.saving_plan_id
         if not UtilClient.is_unset(request.server_instance_type):
             body['ServerInstanceType'] = request.server_instance_type
         if not UtilClient.is_unset(request.server_port_range):
@@ -938,7 +939,6 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
