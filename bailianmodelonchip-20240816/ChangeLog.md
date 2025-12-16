@@ -1,3 +1,7 @@
+2025-12-16 Version: 1.4.0
+- Support API GetPassThroughAuthInfo.
+
+
 2025-11-26 Version: 1.3.0
 - Support API ActiveInteractionEuCreate.
 - Support API OmniRealtimeConversationEU.

@@ -365,6 +365,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.device_register_with_options_async(request, headers, runtime)
 
+    def get_pass_through_auth_info_with_options(
+        self,
+        request: bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoResponse:
+        """
+        @summary 云端获取透传鉴权信息
+        
+        @param request: GetPassThroughAuthInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPassThroughAuthInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.device_name):
+            body['deviceName'] = request.device_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPassThroughAuthInfo',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/auth/v1/token/getPassThroughAuthInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pass_through_auth_info_with_options_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoResponse:
+        """
+        @summary 云端获取透传鉴权信息
+        
+        @param request: GetPassThroughAuthInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPassThroughAuthInfoResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.device_name):
+            body['deviceName'] = request.device_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPassThroughAuthInfo',
+            version='2024-08-16',
+            protocol='HTTPS',
+            pathname=f'/open/api/auth/v1/token/getPassThroughAuthInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pass_through_auth_info(
+        self,
+        request: bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoRequest,
+    ) -> bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoResponse:
+        """
+        @summary 云端获取透传鉴权信息
+        
+        @param request: GetPassThroughAuthInfoRequest
+        @return: GetPassThroughAuthInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_pass_through_auth_info_with_options(request, headers, runtime)
+
+    async def get_pass_through_auth_info_async(
+        self,
+        request: bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoRequest,
+    ) -> bailian_model_on_chip_20240816_models.GetPassThroughAuthInfoResponse:
+        """
+        @summary 云端获取透传鉴权信息
+        
+        @param request: GetPassThroughAuthInfoRequest
+        @return: GetPassThroughAuthInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_pass_through_auth_info_with_options_async(request, headers, runtime)
+
     def get_token_with_options(
         self,
         request: bailian_model_on_chip_20240816_models.GetTokenRequest,

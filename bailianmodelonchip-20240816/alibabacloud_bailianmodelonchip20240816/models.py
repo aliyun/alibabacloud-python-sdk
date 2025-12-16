@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, Any, List
 
 
 class ActiveInteractionCreateRequest(TeaModel):
@@ -537,6 +537,184 @@ class DeviceRegisterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeviceRegisterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPassThroughAuthInfoRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        device_name: str = None,
+    ):
+        self.app_id = app_id
+        self.device_name = device_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        if self.device_name is not None:
+            result['deviceName'] = self.device_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
+        if m.get('deviceName') is not None:
+            self.device_name = m.get('deviceName')
+        return self
+
+
+class GetPassThroughAuthInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        device_name: str = None,
+        pass_through_params: Dict[str, Any] = None,
+        task_id: str = None,
+    ):
+        self.app_id = app_id
+        self.device_name = device_name
+        self.pass_through_params = pass_through_params
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        if self.device_name is not None:
+            result['deviceName'] = self.device_name
+        if self.pass_through_params is not None:
+            result['passThroughParams'] = self.pass_through_params
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
+        if m.get('deviceName') is not None:
+            self.device_name = m.get('deviceName')
+        if m.get('passThroughParams') is not None:
+            self.pass_through_params = m.get('passThroughParams')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetPassThroughAuthInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPassThroughAuthInfoResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetPassThroughAuthInfoResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPassThroughAuthInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPassThroughAuthInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPassThroughAuthInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
