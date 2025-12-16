@@ -1,3 +1,17 @@
+2025-12-16 Version: 2.3.0
+- Support API CreateVaultReplication.
+- Support API DeleteVaultReplication.
+- Update API CreateVault: add request parameters Replication.
+- Update API DescribeVaults: add request parameters Replication.
+- Update API DescribeVaults: add request parameters VaultOwnerId.
+- Update API DescribeVaults: add response parameters Body.Vaults.$.ReplicationSourceOwnerId.
+- Update API DescribeVaults: add response parameters Body.Vaults.$.ReplicationStatus.
+- Update API DescribeVaults: add response parameters Body.Vaults.$.ReplicationTargetOwnerId.
+- Update API DescribeVaults: add response parameters Body.Vaults.$.ReplicationTargetVaultId.
+- Update API DescribeVaults: add response parameters Body.Vaults.$.RsTargetAccountIds.
+- Update API DescribeVaults: add response parameters Body.Vaults.$.VaultOwnerId.
+
+
 2025-11-20 Version: 2.2.0
 - Support API ListProtectedResources.
 

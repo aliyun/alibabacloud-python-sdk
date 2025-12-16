@@ -2427,6 +2427,8 @@ class Client(OpenApiClient):
             query['EncryptType'] = request.encrypt_type
         if not UtilClient.is_unset(request.kms_key_id):
             query['KmsKeyId'] = request.kms_key_id
+        if not UtilClient.is_unset(request.replication):
+            query['Replication'] = request.replication
         if not UtilClient.is_unset(request.vault_name):
             query['VaultName'] = request.vault_name
         if not UtilClient.is_unset(request.vault_region_id):
@@ -2481,6 +2483,8 @@ class Client(OpenApiClient):
             query['EncryptType'] = request.encrypt_type
         if not UtilClient.is_unset(request.kms_key_id):
             query['KmsKeyId'] = request.kms_key_id
+        if not UtilClient.is_unset(request.replication):
+            query['Replication'] = request.replication
         if not UtilClient.is_unset(request.vault_name):
             query['VaultName'] = request.vault_name
         if not UtilClient.is_unset(request.vault_region_id):
@@ -2545,6 +2549,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_vault_with_options_async(request, runtime)
+
+    def create_vault_replication_with_options(
+        self,
+        request: hbr_20170908_models.CreateVaultReplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.CreateVaultReplicationResponse:
+        """
+        @summary 创建备份库复制
+        
+        @param request: CreateVaultReplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVaultReplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.replication_source_region_id):
+            query['ReplicationSourceRegionId'] = request.replication_source_region_id
+        if not UtilClient.is_unset(request.replication_source_vault_id):
+            query['ReplicationSourceVaultId'] = request.replication_source_vault_id
+        if not UtilClient.is_unset(request.replication_target_vault_id):
+            query['ReplicationTargetVaultId'] = request.replication_target_vault_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVaultReplication',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateVaultReplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vault_replication_with_options_async(
+        self,
+        request: hbr_20170908_models.CreateVaultReplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.CreateVaultReplicationResponse:
+        """
+        @summary 创建备份库复制
+        
+        @param request: CreateVaultReplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVaultReplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.replication_source_region_id):
+            query['ReplicationSourceRegionId'] = request.replication_source_region_id
+        if not UtilClient.is_unset(request.replication_source_vault_id):
+            query['ReplicationSourceVaultId'] = request.replication_source_vault_id
+        if not UtilClient.is_unset(request.replication_target_vault_id):
+            query['ReplicationTargetVaultId'] = request.replication_target_vault_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVaultReplication',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateVaultReplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vault_replication(
+        self,
+        request: hbr_20170908_models.CreateVaultReplicationRequest,
+    ) -> hbr_20170908_models.CreateVaultReplicationResponse:
+        """
+        @summary 创建备份库复制
+        
+        @param request: CreateVaultReplicationRequest
+        @return: CreateVaultReplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_vault_replication_with_options(request, runtime)
+
+    async def create_vault_replication_async(
+        self,
+        request: hbr_20170908_models.CreateVaultReplicationRequest,
+    ) -> hbr_20170908_models.CreateVaultReplicationResponse:
+        """
+        @summary 创建备份库复制
+        
+        @param request: CreateVaultReplicationRequest
+        @return: CreateVaultReplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vault_replication_with_options_async(request, runtime)
 
     def delete_air_ecs_instance_with_options(
         self,
@@ -3977,6 +4085,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vault_with_options_async(request, runtime)
+
+    def delete_vault_replication_with_options(
+        self,
+        request: hbr_20170908_models.DeleteVaultReplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteVaultReplicationResponse:
+        """
+        @summary 关闭备份库复制
+        
+        @param request: DeleteVaultReplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVaultReplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.replication_source_region_id):
+            query['ReplicationSourceRegionId'] = request.replication_source_region_id
+        if not UtilClient.is_unset(request.replication_source_vault_id):
+            query['ReplicationSourceVaultId'] = request.replication_source_vault_id
+        if not UtilClient.is_unset(request.replication_target_vault_id):
+            query['ReplicationTargetVaultId'] = request.replication_target_vault_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVaultReplication',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteVaultReplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vault_replication_with_options_async(
+        self,
+        request: hbr_20170908_models.DeleteVaultReplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteVaultReplicationResponse:
+        """
+        @summary 关闭备份库复制
+        
+        @param request: DeleteVaultReplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVaultReplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.replication_source_region_id):
+            query['ReplicationSourceRegionId'] = request.replication_source_region_id
+        if not UtilClient.is_unset(request.replication_source_vault_id):
+            query['ReplicationSourceVaultId'] = request.replication_source_vault_id
+        if not UtilClient.is_unset(request.replication_target_vault_id):
+            query['ReplicationTargetVaultId'] = request.replication_target_vault_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVaultReplication',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteVaultReplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vault_replication(
+        self,
+        request: hbr_20170908_models.DeleteVaultReplicationRequest,
+    ) -> hbr_20170908_models.DeleteVaultReplicationResponse:
+        """
+        @summary 关闭备份库复制
+        
+        @param request: DeleteVaultReplicationRequest
+        @return: DeleteVaultReplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vault_replication_with_options(request, runtime)
+
+    async def delete_vault_replication_async(
+        self,
+        request: hbr_20170908_models.DeleteVaultReplicationRequest,
+    ) -> hbr_20170908_models.DeleteVaultReplicationResponse:
+        """
+        @summary 关闭备份库复制
+        
+        @param request: DeleteVaultReplicationRequest
+        @return: DeleteVaultReplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vault_replication_with_options_async(request, runtime)
 
     def describe_backup_clients_with_options(
         self,
@@ -6604,6 +6816,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.replication):
+            query['Replication'] = request.replication
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
@@ -6612,6 +6826,8 @@ class Client(OpenApiClient):
             query['VaultId'] = request.vault_id
         if not UtilClient.is_unset(request.vault_name):
             query['VaultName'] = request.vault_name
+        if not UtilClient.is_unset(request.vault_owner_id):
+            query['VaultOwnerId'] = request.vault_owner_id
         if not UtilClient.is_unset(request.vault_region_id):
             query['VaultRegionId'] = request.vault_region_id
         if not UtilClient.is_unset(request.vault_type):
@@ -6657,6 +6873,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.replication):
+            query['Replication'] = request.replication
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
@@ -6665,6 +6883,8 @@ class Client(OpenApiClient):
             query['VaultId'] = request.vault_id
         if not UtilClient.is_unset(request.vault_name):
             query['VaultName'] = request.vault_name
+        if not UtilClient.is_unset(request.vault_owner_id):
+            query['VaultOwnerId'] = request.vault_owner_id
         if not UtilClient.is_unset(request.vault_region_id):
             query['VaultRegionId'] = request.vault_region_id
         if not UtilClient.is_unset(request.vault_type):

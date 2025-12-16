@@ -5338,6 +5338,7 @@ class CreateVaultRequest(TeaModel):
         description: str = None,
         encrypt_type: str = None,
         kms_key_id: str = None,
+        replication: bool = None,
         vault_name: str = None,
         vault_region_id: str = None,
         vault_storage_class: str = None,
@@ -5353,6 +5354,7 @@ class CreateVaultRequest(TeaModel):
         self.encrypt_type = encrypt_type
         # The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
         self.kms_key_id = kms_key_id
+        self.replication = replication
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         # 
         # This parameter is required.
@@ -5391,6 +5393,8 @@ class CreateVaultRequest(TeaModel):
             result['EncryptType'] = self.encrypt_type
         if self.kms_key_id is not None:
             result['KmsKeyId'] = self.kms_key_id
+        if self.replication is not None:
+            result['Replication'] = self.replication
         if self.vault_name is not None:
             result['VaultName'] = self.vault_name
         if self.vault_region_id is not None:
@@ -5411,6 +5415,8 @@ class CreateVaultRequest(TeaModel):
             self.encrypt_type = m.get('EncryptType')
         if m.get('KmsKeyId') is not None:
             self.kms_key_id = m.get('KmsKeyId')
+        if m.get('Replication') is not None:
+            self.replication = m.get('Replication')
         if m.get('VaultName') is not None:
             self.vault_name = m.get('VaultName')
         if m.get('VaultRegionId') is not None:
@@ -5527,6 +5533,139 @@ class CreateVaultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateVaultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVaultReplicationRequest(TeaModel):
+    def __init__(
+        self,
+        replication_source_region_id: str = None,
+        replication_source_vault_id: str = None,
+        replication_target_vault_id: str = None,
+    ):
+        self.replication_source_region_id = replication_source_region_id
+        # This parameter is required.
+        self.replication_source_vault_id = replication_source_vault_id
+        # This parameter is required.
+        self.replication_target_vault_id = replication_target_vault_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.replication_source_region_id is not None:
+            result['ReplicationSourceRegionId'] = self.replication_source_region_id
+        if self.replication_source_vault_id is not None:
+            result['ReplicationSourceVaultId'] = self.replication_source_vault_id
+        if self.replication_target_vault_id is not None:
+            result['ReplicationTargetVaultId'] = self.replication_target_vault_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReplicationSourceRegionId') is not None:
+            self.replication_source_region_id = m.get('ReplicationSourceRegionId')
+        if m.get('ReplicationSourceVaultId') is not None:
+            self.replication_source_vault_id = m.get('ReplicationSourceVaultId')
+        if m.get('ReplicationTargetVaultId') is not None:
+            self.replication_target_vault_id = m.get('ReplicationTargetVaultId')
+        return self
+
+
+class CreateVaultReplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateVaultReplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVaultReplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVaultReplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7414,6 +7553,133 @@ class DeleteVaultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteVaultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVaultReplicationRequest(TeaModel):
+    def __init__(
+        self,
+        replication_source_region_id: str = None,
+        replication_source_vault_id: str = None,
+        replication_target_vault_id: str = None,
+    ):
+        self.replication_source_region_id = replication_source_region_id
+        # This parameter is required.
+        self.replication_source_vault_id = replication_source_vault_id
+        # This parameter is required.
+        self.replication_target_vault_id = replication_target_vault_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.replication_source_region_id is not None:
+            result['ReplicationSourceRegionId'] = self.replication_source_region_id
+        if self.replication_source_vault_id is not None:
+            result['ReplicationSourceVaultId'] = self.replication_source_vault_id
+        if self.replication_target_vault_id is not None:
+            result['ReplicationTargetVaultId'] = self.replication_target_vault_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReplicationSourceRegionId') is not None:
+            self.replication_source_region_id = m.get('ReplicationSourceRegionId')
+        if m.get('ReplicationSourceVaultId') is not None:
+            self.replication_source_vault_id = m.get('ReplicationSourceVaultId')
+        if m.get('ReplicationTargetVaultId') is not None:
+            self.replication_target_vault_id = m.get('ReplicationTargetVaultId')
+        return self
+
+
+class DeleteVaultReplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteVaultReplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVaultReplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVaultReplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17594,11 +17860,13 @@ class DescribeVaultsRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        replication: bool = None,
         resource_group_id: str = None,
         status: str = None,
         tag: List[DescribeVaultsRequestTag] = None,
         vault_id: str = None,
         vault_name: str = None,
+        vault_owner_id: int = None,
         vault_region_id: str = None,
         vault_type: str = None,
     ):
@@ -17606,6 +17874,7 @@ class DescribeVaultsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
+        self.replication = replication
         # Resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the backup vault. Valid values:
@@ -17621,6 +17890,7 @@ class DescribeVaultsRequest(TeaModel):
         self.vault_id = vault_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
+        self.vault_owner_id = vault_owner_id
         # The region ID to which the backup vault belongs.
         self.vault_region_id = vault_region_id
         # Backup repository type. The values are as follows: 
@@ -17644,6 +17914,8 @@ class DescribeVaultsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.replication is not None:
+            result['Replication'] = self.replication
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
@@ -17656,6 +17928,8 @@ class DescribeVaultsRequest(TeaModel):
             result['VaultId'] = self.vault_id
         if self.vault_name is not None:
             result['VaultName'] = self.vault_name
+        if self.vault_owner_id is not None:
+            result['VaultOwnerId'] = self.vault_owner_id
         if self.vault_region_id is not None:
             result['VaultRegionId'] = self.vault_region_id
         if self.vault_type is not None:
@@ -17668,6 +17942,8 @@ class DescribeVaultsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Replication') is not None:
+            self.replication = m.get('Replication')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
@@ -17681,6 +17957,8 @@ class DescribeVaultsRequest(TeaModel):
             self.vault_id = m.get('VaultId')
         if m.get('VaultName') is not None:
             self.vault_name = m.get('VaultName')
+        if m.get('VaultOwnerId') is not None:
+            self.vault_owner_id = m.get('VaultOwnerId')
         if m.get('VaultRegionId') is not None:
             self.vault_region_id = m.get('VaultRegionId')
         if m.get('VaultType') is not None:
@@ -17846,6 +18124,33 @@ class DescribeVaultsResponseBodyVaultsVaultReplicationProgress(TeaModel):
             self.historical_replication_progress = m.get('HistoricalReplicationProgress')
         if m.get('NewReplicationProgress') is not None:
             self.new_replication_progress = m.get('NewReplicationProgress')
+        return self
+
+
+class DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds(TeaModel):
+    def __init__(
+        self,
+        rs_target_account_id: List[int] = None,
+    ):
+        self.rs_target_account_id = rs_target_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rs_target_account_id is not None:
+            result['RsTargetAccountId'] = self.rs_target_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RsTargetAccountId') is not None:
+            self.rs_target_account_id = m.get('RsTargetAccountId')
         return self
 
 
@@ -18026,12 +18331,17 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         redundancy_type: str = None,
         replication: bool = None,
         replication_progress: DescribeVaultsResponseBodyVaultsVaultReplicationProgress = None,
+        replication_source_owner_id: int = None,
         replication_source_region_id: str = None,
         replication_source_vault: bool = None,
         replication_source_vault_id: str = None,
+        replication_status: str = None,
+        replication_target_owner_id: int = None,
         replication_target_region_id: str = None,
+        replication_target_vault_id: str = None,
         resource_group_id: str = None,
         retention: int = None,
+        rs_target_account_ids: DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds = None,
         search_enabled: bool = None,
         snapshot_count: int = None,
         source_types: DescribeVaultsResponseBodyVaultsVaultSourceTypes = None,
@@ -18042,6 +18352,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         updated_time: int = None,
         vault_id: str = None,
         vault_name: str = None,
+        vault_owner_id: int = None,
         vault_region_id: str = None,
         vault_status_message: str = None,
         vault_storage_class: str = None,
@@ -18106,6 +18417,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         self.replication = replication
         # The progress of data synchronization from the backup vault to the mirror vault.
         self.replication_progress = replication_progress
+        self.replication_source_owner_id = replication_source_owner_id
         # The ID of the region in which the source vault resides. This parameter is valid only for remote backup vaults.
         self.replication_source_region_id = replication_source_region_id
         # Indicate whether the backup vault is the source vault that corresponds to the remote backup vault. Valid values:
@@ -18115,12 +18427,16 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         self.replication_source_vault = replication_source_vault
         # The ID of the source vault that corresponds to the remote backup vault.
         self.replication_source_vault_id = replication_source_vault_id
+        self.replication_status = replication_status
+        self.replication_target_owner_id = replication_target_owner_id
         # Target region for remote backup repository.
         self.replication_target_region_id = replication_target_region_id
+        self.replication_target_vault_id = replication_target_vault_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The retention period of the backup vault. Unit: days.
         self.retention = retention
+        self.rs_target_account_ids = rs_target_account_ids
         # Indicates whether the backup search feature is enabled.
         self.search_enabled = search_enabled
         # The number of snapshots in the backup vault.
@@ -18146,6 +18462,7 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         self.vault_id = vault_id
         # The name of the backup vault.
         self.vault_name = vault_name
+        self.vault_owner_id = vault_owner_id
         # The ID of the region in which the backup vault resides.
         self.vault_region_id = vault_region_id
         # The status message that is returned when the backup vault is in the ERROR state. This parameter is valid only for remote backup vaults. Valid values:
@@ -18165,6 +18482,8 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
             self.backup_plan_statistics.validate()
         if self.replication_progress:
             self.replication_progress.validate()
+        if self.rs_target_account_ids:
+            self.rs_target_account_ids.validate()
         if self.source_types:
             self.source_types.validate()
         if self.tags:
@@ -18218,18 +18537,28 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
             result['Replication'] = self.replication
         if self.replication_progress is not None:
             result['ReplicationProgress'] = self.replication_progress.to_map()
+        if self.replication_source_owner_id is not None:
+            result['ReplicationSourceOwnerId'] = self.replication_source_owner_id
         if self.replication_source_region_id is not None:
             result['ReplicationSourceRegionId'] = self.replication_source_region_id
         if self.replication_source_vault is not None:
             result['ReplicationSourceVault'] = self.replication_source_vault
         if self.replication_source_vault_id is not None:
             result['ReplicationSourceVaultId'] = self.replication_source_vault_id
+        if self.replication_status is not None:
+            result['ReplicationStatus'] = self.replication_status
+        if self.replication_target_owner_id is not None:
+            result['ReplicationTargetOwnerId'] = self.replication_target_owner_id
         if self.replication_target_region_id is not None:
             result['ReplicationTargetRegionId'] = self.replication_target_region_id
+        if self.replication_target_vault_id is not None:
+            result['ReplicationTargetVaultId'] = self.replication_target_vault_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.retention is not None:
             result['Retention'] = self.retention
+        if self.rs_target_account_ids is not None:
+            result['RsTargetAccountIds'] = self.rs_target_account_ids.to_map()
         if self.search_enabled is not None:
             result['SearchEnabled'] = self.search_enabled
         if self.snapshot_count is not None:
@@ -18250,6 +18579,8 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
             result['VaultId'] = self.vault_id
         if self.vault_name is not None:
             result['VaultName'] = self.vault_name
+        if self.vault_owner_id is not None:
+            result['VaultOwnerId'] = self.vault_owner_id
         if self.vault_region_id is not None:
             result['VaultRegionId'] = self.vault_region_id
         if self.vault_status_message is not None:
@@ -18306,18 +18637,29 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         if m.get('ReplicationProgress') is not None:
             temp_model = DescribeVaultsResponseBodyVaultsVaultReplicationProgress()
             self.replication_progress = temp_model.from_map(m['ReplicationProgress'])
+        if m.get('ReplicationSourceOwnerId') is not None:
+            self.replication_source_owner_id = m.get('ReplicationSourceOwnerId')
         if m.get('ReplicationSourceRegionId') is not None:
             self.replication_source_region_id = m.get('ReplicationSourceRegionId')
         if m.get('ReplicationSourceVault') is not None:
             self.replication_source_vault = m.get('ReplicationSourceVault')
         if m.get('ReplicationSourceVaultId') is not None:
             self.replication_source_vault_id = m.get('ReplicationSourceVaultId')
+        if m.get('ReplicationStatus') is not None:
+            self.replication_status = m.get('ReplicationStatus')
+        if m.get('ReplicationTargetOwnerId') is not None:
+            self.replication_target_owner_id = m.get('ReplicationTargetOwnerId')
         if m.get('ReplicationTargetRegionId') is not None:
             self.replication_target_region_id = m.get('ReplicationTargetRegionId')
+        if m.get('ReplicationTargetVaultId') is not None:
+            self.replication_target_vault_id = m.get('ReplicationTargetVaultId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Retention') is not None:
             self.retention = m.get('Retention')
+        if m.get('RsTargetAccountIds') is not None:
+            temp_model = DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds()
+            self.rs_target_account_ids = temp_model.from_map(m['RsTargetAccountIds'])
         if m.get('SearchEnabled') is not None:
             self.search_enabled = m.get('SearchEnabled')
         if m.get('SnapshotCount') is not None:
@@ -18341,6 +18683,8 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
             self.vault_id = m.get('VaultId')
         if m.get('VaultName') is not None:
             self.vault_name = m.get('VaultName')
+        if m.get('VaultOwnerId') is not None:
+            self.vault_owner_id = m.get('VaultOwnerId')
         if m.get('VaultRegionId') is not None:
             self.vault_region_id = m.get('VaultRegionId')
         if m.get('VaultStatusMessage') is not None:
