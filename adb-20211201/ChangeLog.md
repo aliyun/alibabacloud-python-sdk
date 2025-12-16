@@ -1,3 +1,8 @@
+2025-12-16 Version: 3.7.0
+- Support API DescribeAutoRenewalAttribute.
+- Support API ModifyAutoRenewalAttribute.
+
+
 2025-12-03 Version: 3.6.1
 - Update API CreateApsKafkaHudiJob: add request parameters DataFormatType.
 

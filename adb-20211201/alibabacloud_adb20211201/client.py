@@ -8335,6 +8335,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_log_records_with_options_async(request, runtime)
 
+    def describe_auto_renewal_attribute_with_options(
+        self,
+        tmp_req: adb_20211201_models.DescribeAutoRenewalAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAutoRenewalAttributeResponse:
+        """
+        @summary 查询自动续费参数
+        
+        @param tmp_req: DescribeAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoRenewalAttributeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.DescribeAutoRenewalAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbcluster_id):
+            request.dbcluster_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbcluster_id, 'DBClusterId', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id_shrink):
+            query['DBClusterId'] = request.dbcluster_id_shrink
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoRenewalAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAutoRenewalAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_renewal_attribute_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.DescribeAutoRenewalAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAutoRenewalAttributeResponse:
+        """
+        @summary 查询自动续费参数
+        
+        @param tmp_req: DescribeAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoRenewalAttributeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.DescribeAutoRenewalAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbcluster_id):
+            request.dbcluster_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbcluster_id, 'DBClusterId', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id_shrink):
+            query['DBClusterId'] = request.dbcluster_id_shrink
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoRenewalAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAutoRenewalAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_renewal_attribute(
+        self,
+        request: adb_20211201_models.DescribeAutoRenewalAttributeRequest,
+    ) -> adb_20211201_models.DescribeAutoRenewalAttributeResponse:
+        """
+        @summary 查询自动续费参数
+        
+        @param request: DescribeAutoRenewalAttributeRequest
+        @return: DescribeAutoRenewalAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_renewal_attribute_with_options(request, runtime)
+
+    async def describe_auto_renewal_attribute_async(
+        self,
+        request: adb_20211201_models.DescribeAutoRenewalAttributeRequest,
+    ) -> adb_20211201_models.DescribeAutoRenewalAttributeResponse:
+        """
+        @summary 查询自动续费参数
+        
+        @param request: DescribeAutoRenewalAttributeRequest
+        @return: DescribeAutoRenewalAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_renewal_attribute_with_options_async(request, runtime)
+
     def describe_available_advices_with_options(
         self,
         request: adb_20211201_models.DescribeAvailableAdvicesRequest,
@@ -24370,6 +24506,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_audit_log_config_with_options_async(request, runtime)
+
+    def modify_auto_renewal_attribute_with_options(
+        self,
+        request: adb_20211201_models.ModifyAutoRenewalAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyAutoRenewalAttributeResponse:
+        """
+        @summary 修改自动续费配置
+        
+        @param request: ModifyAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoRenewalAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renewal_period):
+            query['AutoRenewalPeriod'] = request.auto_renewal_period
+        if not UtilClient.is_unset(request.auto_renewal_period_unit):
+            query['AutoRenewalPeriodUnit'] = request.auto_renewal_period_unit
+        if not UtilClient.is_unset(request.auto_renewal_status):
+            query['AutoRenewalStatus'] = request.auto_renewal_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoRenewalAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyAutoRenewalAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_renewal_attribute_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyAutoRenewalAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyAutoRenewalAttributeResponse:
+        """
+        @summary 修改自动续费配置
+        
+        @param request: ModifyAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoRenewalAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renewal_period):
+            query['AutoRenewalPeriod'] = request.auto_renewal_period
+        if not UtilClient.is_unset(request.auto_renewal_period_unit):
+            query['AutoRenewalPeriodUnit'] = request.auto_renewal_period_unit
+        if not UtilClient.is_unset(request.auto_renewal_status):
+            query['AutoRenewalStatus'] = request.auto_renewal_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoRenewalAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyAutoRenewalAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_renewal_attribute(
+        self,
+        request: adb_20211201_models.ModifyAutoRenewalAttributeRequest,
+    ) -> adb_20211201_models.ModifyAutoRenewalAttributeResponse:
+        """
+        @summary 修改自动续费配置
+        
+        @param request: ModifyAutoRenewalAttributeRequest
+        @return: ModifyAutoRenewalAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_auto_renewal_attribute_with_options(request, runtime)
+
+    async def modify_auto_renewal_attribute_async(
+        self,
+        request: adb_20211201_models.ModifyAutoRenewalAttributeRequest,
+    ) -> adb_20211201_models.ModifyAutoRenewalAttributeResponse:
+        """
+        @summary 修改自动续费配置
+        
+        @param request: ModifyAutoRenewalAttributeRequest
+        @return: ModifyAutoRenewalAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_auto_renewal_attribute_with_options_async(request, runtime)
 
     def modify_backup_policy_with_options(
         self,
