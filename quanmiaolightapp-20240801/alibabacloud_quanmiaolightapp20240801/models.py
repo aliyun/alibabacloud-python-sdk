@@ -2269,13 +2269,66 @@ class GetVideoAnalysisTaskResponseBodyDataHeader(TeaModel):
         return self
 
 
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        error_message: str = None,
+        status: int = None,
+        title: str = None,
+    ):
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.error_message = error_message
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['docUuid'] = self.doc_uuid
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.status is not None:
+            result['status'] = self.status
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('docUuid') is not None:
+            self.doc_uuid = m.get('docUuid')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
 class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage(TeaModel):
     def __init__(
         self,
+        image_tokens: int = None,
         input_tokens: int = None,
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        self.image_tokens = image_tokens
         self.input_tokens = input_tokens
         self.output_tokens = output_tokens
         self.total_tokens = total_tokens
@@ -2289,6 +2342,8 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage(
             return _map
 
         result = dict()
+        if self.image_tokens is not None:
+            result['imageTokens'] = self.image_tokens
         if self.input_tokens is not None:
             result['inputTokens'] = self.input_tokens
         if self.output_tokens is not None:
@@ -2299,6 +2354,8 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage(
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('imageTokens') is not None:
+            self.image_tokens = m.get('imageTokens')
         if m.get('inputTokens') is not None:
             self.input_tokens = m.get('inputTokens')
         if m.get('outputTokens') is not None:
@@ -2400,6 +2457,116 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult(TeaMo
             for k in m.get('videoShotAnalysisResults'):
                 temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultVideoShotAnalysisResults()
                 self.video_shot_analysis_results.append(temp_model.from_map(k))
+        return self
+
+
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems(TeaModel):
+    def __init__(
+        self,
+        input_expense: float = None,
+        input_token: int = None,
+        name: str = None,
+        output_expense: float = None,
+        output_token: int = None,
+        time: int = None,
+        time_expense: float = None,
+        total_expense: float = None,
+        type: str = None,
+    ):
+        self.input_expense = input_expense
+        self.input_token = input_token
+        self.name = name
+        self.output_expense = output_expense
+        self.output_token = output_token
+        self.time = time
+        self.time_expense = time_expense
+        self.total_expense = total_expense
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_expense is not None:
+            result['inputExpense'] = self.input_expense
+        if self.input_token is not None:
+            result['inputToken'] = self.input_token
+        if self.name is not None:
+            result['name'] = self.name
+        if self.output_expense is not None:
+            result['outputExpense'] = self.output_expense
+        if self.output_token is not None:
+            result['outputToken'] = self.output_token
+        if self.time is not None:
+            result['time'] = self.time
+        if self.time_expense is not None:
+            result['timeExpense'] = self.time_expense
+        if self.total_expense is not None:
+            result['totalExpense'] = self.total_expense
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputExpense') is not None:
+            self.input_expense = m.get('inputExpense')
+        if m.get('inputToken') is not None:
+            self.input_token = m.get('inputToken')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('outputExpense') is not None:
+            self.output_expense = m.get('outputExpense')
+        if m.get('outputToken') is not None:
+            self.output_token = m.get('outputToken')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('timeExpense') is not None:
+            self.time_expense = m.get('timeExpense')
+        if m.get('totalExpense') is not None:
+            self.total_expense = m.get('totalExpense')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult(TeaModel):
+    def __init__(
+        self,
+        items: List[GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResultItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
@@ -3129,8 +3296,10 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult(
 class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
     def __init__(
         self,
+        add_dataset_documents_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult = None,
         result_json_file_url: str = None,
         video_analysis_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult = None,
+        video_calculator_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult = None,
         video_caption_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult = None,
         video_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult = None,
         video_generate_results: List[GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults] = None,
@@ -3138,8 +3307,10 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         video_role_recognition_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResult = None,
         video_title_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult = None,
     ):
+        self.add_dataset_documents_result = add_dataset_documents_result
         self.result_json_file_url = result_json_file_url
         self.video_analysis_result = video_analysis_result
+        self.video_calculator_result = video_calculator_result
         self.video_caption_result = video_caption_result
         self.video_generate_result = video_generate_result
         self.video_generate_results = video_generate_results
@@ -3148,8 +3319,12 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         self.video_title_generate_result = video_title_generate_result
 
     def validate(self):
+        if self.add_dataset_documents_result:
+            self.add_dataset_documents_result.validate()
         if self.video_analysis_result:
             self.video_analysis_result.validate()
+        if self.video_calculator_result:
+            self.video_calculator_result.validate()
         if self.video_caption_result:
             self.video_caption_result.validate()
         if self.video_generate_result:
@@ -3171,10 +3346,14 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.add_dataset_documents_result is not None:
+            result['addDatasetDocumentsResult'] = self.add_dataset_documents_result.to_map()
         if self.result_json_file_url is not None:
             result['resultJsonFileUrl'] = self.result_json_file_url
         if self.video_analysis_result is not None:
             result['videoAnalysisResult'] = self.video_analysis_result.to_map()
+        if self.video_calculator_result is not None:
+            result['videoCalculatorResult'] = self.video_calculator_result.to_map()
         if self.video_caption_result is not None:
             result['videoCaptionResult'] = self.video_caption_result.to_map()
         if self.video_generate_result is not None:
@@ -3193,11 +3372,17 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addDatasetDocumentsResult') is not None:
+            temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult()
+            self.add_dataset_documents_result = temp_model.from_map(m['addDatasetDocumentsResult'])
         if m.get('resultJsonFileUrl') is not None:
             self.result_json_file_url = m.get('resultJsonFileUrl')
         if m.get('videoAnalysisResult') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult()
             self.video_analysis_result = temp_model.from_map(m['videoAnalysisResult'])
+        if m.get('videoCalculatorResult') is not None:
+            temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCalculatorResult()
+            self.video_calculator_result = temp_model.from_map(m['videoCalculatorResult'])
         if m.get('videoCaptionResult') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult()
             self.video_caption_result = temp_model.from_map(m['videoCaptionResult'])
@@ -10600,6 +10785,80 @@ class RunTagMiningAnalysisResponse(TeaModel):
         return self
 
 
+class RunVideoAnalysisRequestAddDocumentParamDocument(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        title: str = None,
+    ):
+        self.doc_id = doc_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class RunVideoAnalysisRequestAddDocumentParam(TeaModel):
+    def __init__(
+        self,
+        dataset_id: int = None,
+        dataset_name: str = None,
+        document: RunVideoAnalysisRequestAddDocumentParamDocument = None,
+    ):
+        self.dataset_id = dataset_id
+        self.dataset_name = dataset_name
+        self.document = document
+
+    def validate(self):
+        if self.document:
+            self.document.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_id is not None:
+            result['datasetId'] = self.dataset_id
+        if self.dataset_name is not None:
+            result['datasetName'] = self.dataset_name
+        if self.document is not None:
+            result['document'] = self.document.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('datasetId') is not None:
+            self.dataset_id = m.get('datasetId')
+        if m.get('datasetName') is not None:
+            self.dataset_name = m.get('datasetName')
+        if m.get('document') is not None:
+            temp_model = RunVideoAnalysisRequestAddDocumentParamDocument()
+            self.document = temp_model.from_map(m['document'])
+        return self
+
+
 class RunVideoAnalysisRequestFrameSampleMethod(TeaModel):
     def __init__(
         self,
@@ -10859,6 +11118,7 @@ class RunVideoAnalysisRequestVideoRoles(TeaModel):
 class RunVideoAnalysisRequest(TeaModel):
     def __init__(
         self,
+        add_document_param: RunVideoAnalysisRequestAddDocumentParam = None,
         auto_role_recognition_video_url: str = None,
         exclude_generate_options: List[str] = None,
         face_identity_similarity_min_score: float = None,
@@ -10882,6 +11142,7 @@ class RunVideoAnalysisRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.add_document_param = add_document_param
         self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.exclude_generate_options = exclude_generate_options
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
@@ -10906,6 +11167,8 @@ class RunVideoAnalysisRequest(TeaModel):
         self.video_url = video_url
 
     def validate(self):
+        if self.add_document_param:
+            self.add_document_param.validate()
         if self.frame_sample_method:
             self.frame_sample_method.validate()
         if self.text_process_tasks:
@@ -10925,6 +11188,8 @@ class RunVideoAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_document_param is not None:
+            result['addDocumentParam'] = self.add_document_param.to_map()
         if self.auto_role_recognition_video_url is not None:
             result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.exclude_generate_options is not None:
@@ -10977,6 +11242,9 @@ class RunVideoAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addDocumentParam') is not None:
+            temp_model = RunVideoAnalysisRequestAddDocumentParam()
+            self.add_document_param = temp_model.from_map(m['addDocumentParam'])
         if m.get('autoRoleRecognitionVideoUrl') is not None:
             self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('excludeGenerateOptions') is not None:
@@ -11035,6 +11303,7 @@ class RunVideoAnalysisRequest(TeaModel):
 class RunVideoAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        add_document_param_shrink: str = None,
         auto_role_recognition_video_url: str = None,
         exclude_generate_options_shrink: str = None,
         face_identity_similarity_min_score: float = None,
@@ -11058,6 +11327,7 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.add_document_param_shrink = add_document_param_shrink
         self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.exclude_generate_options_shrink = exclude_generate_options_shrink
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
@@ -11090,6 +11360,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_document_param_shrink is not None:
+            result['addDocumentParam'] = self.add_document_param_shrink
         if self.auto_role_recognition_video_url is not None:
             result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.exclude_generate_options_shrink is not None:
@@ -11138,6 +11410,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addDocumentParam') is not None:
+            self.add_document_param_shrink = m.get('addDocumentParam')
         if m.get('autoRoleRecognitionVideoUrl') is not None:
             self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('excludeGenerateOptions') is not None:
@@ -11248,13 +11522,66 @@ class RunVideoAnalysisResponseBodyHeader(TeaModel):
         return self
 
 
+class RunVideoAnalysisResponseBodyPayloadOutputAddDatasetDocumentsResult(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        error_message: str = None,
+        status: int = None,
+        title: str = None,
+    ):
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.error_message = error_message
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['docUuid'] = self.doc_uuid
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.status is not None:
+            result['status'] = self.status
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('docUuid') is not None:
+            self.doc_uuid = m.get('docUuid')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
 class RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResultUsage(TeaModel):
     def __init__(
         self,
+        image_tokens: int = None,
         input_tokens: int = None,
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        self.image_tokens = image_tokens
         self.input_tokens = input_tokens
         self.output_tokens = output_tokens
         self.total_tokens = total_tokens
@@ -11268,6 +11595,8 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResultUsage(TeaModel
             return _map
 
         result = dict()
+        if self.image_tokens is not None:
+            result['imageTokens'] = self.image_tokens
         if self.input_tokens is not None:
             result['inputTokens'] = self.input_tokens
         if self.output_tokens is not None:
@@ -11278,6 +11607,8 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResultUsage(TeaModel
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('imageTokens') is not None:
+            self.image_tokens = m.get('imageTokens')
         if m.get('inputTokens') is not None:
             self.input_tokens = m.get('inputTokens')
         if m.get('outputTokens') is not None:
@@ -11385,6 +11716,116 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult(TeaModel):
             for k in m.get('videoShotAnalysisResults'):
                 temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResultVideoShotAnalysisResults()
                 self.video_shot_analysis_results.append(temp_model.from_map(k))
+        return self
+
+
+class RunVideoAnalysisResponseBodyPayloadOutputVideoCalculatorResultItems(TeaModel):
+    def __init__(
+        self,
+        input_expense: float = None,
+        input_token: int = None,
+        name: str = None,
+        output_expense: float = None,
+        output_token: int = None,
+        time: int = None,
+        time_expense: float = None,
+        total_expense: float = None,
+        type: str = None,
+    ):
+        self.input_expense = input_expense
+        self.input_token = input_token
+        self.name = name
+        self.output_expense = output_expense
+        self.output_token = output_token
+        self.time = time
+        self.time_expense = time_expense
+        self.total_expense = total_expense
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_expense is not None:
+            result['inputExpense'] = self.input_expense
+        if self.input_token is not None:
+            result['inputToken'] = self.input_token
+        if self.name is not None:
+            result['name'] = self.name
+        if self.output_expense is not None:
+            result['outputExpense'] = self.output_expense
+        if self.output_token is not None:
+            result['outputToken'] = self.output_token
+        if self.time is not None:
+            result['time'] = self.time
+        if self.time_expense is not None:
+            result['timeExpense'] = self.time_expense
+        if self.total_expense is not None:
+            result['totalExpense'] = self.total_expense
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputExpense') is not None:
+            self.input_expense = m.get('inputExpense')
+        if m.get('inputToken') is not None:
+            self.input_token = m.get('inputToken')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('outputExpense') is not None:
+            self.output_expense = m.get('outputExpense')
+        if m.get('outputToken') is not None:
+            self.output_token = m.get('outputToken')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('timeExpense') is not None:
+            self.time_expense = m.get('timeExpense')
+        if m.get('totalExpense') is not None:
+            self.total_expense = m.get('totalExpense')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class RunVideoAnalysisResponseBodyPayloadOutputVideoCalculatorResult(TeaModel):
+    def __init__(
+        self,
+        items: List[RunVideoAnalysisResponseBodyPayloadOutputVideoCalculatorResultItems] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoCalculatorResultItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
@@ -12259,8 +12700,10 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult(TeaModel
 class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
     def __init__(
         self,
+        add_dataset_documents_result: RunVideoAnalysisResponseBodyPayloadOutputAddDatasetDocumentsResult = None,
         result_json_file_url: str = None,
         video_analysis_result: RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult = None,
+        video_calculator_result: RunVideoAnalysisResponseBodyPayloadOutputVideoCalculatorResult = None,
         video_caption_result: RunVideoAnalysisResponseBodyPayloadOutputVideoCaptionResult = None,
         video_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult = None,
         video_generate_results: List[RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResults] = None,
@@ -12269,8 +12712,10 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         video_shot_snapshot_result: RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult = None,
         video_title_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult = None,
     ):
+        self.add_dataset_documents_result = add_dataset_documents_result
         self.result_json_file_url = result_json_file_url
         self.video_analysis_result = video_analysis_result
+        self.video_calculator_result = video_calculator_result
         self.video_caption_result = video_caption_result
         self.video_generate_result = video_generate_result
         self.video_generate_results = video_generate_results
@@ -12280,8 +12725,12 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         self.video_title_generate_result = video_title_generate_result
 
     def validate(self):
+        if self.add_dataset_documents_result:
+            self.add_dataset_documents_result.validate()
         if self.video_analysis_result:
             self.video_analysis_result.validate()
+        if self.video_calculator_result:
+            self.video_calculator_result.validate()
         if self.video_caption_result:
             self.video_caption_result.validate()
         if self.video_generate_result:
@@ -12305,10 +12754,14 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.add_dataset_documents_result is not None:
+            result['addDatasetDocumentsResult'] = self.add_dataset_documents_result.to_map()
         if self.result_json_file_url is not None:
             result['resultJsonFileUrl'] = self.result_json_file_url
         if self.video_analysis_result is not None:
             result['videoAnalysisResult'] = self.video_analysis_result.to_map()
+        if self.video_calculator_result is not None:
+            result['videoCalculatorResult'] = self.video_calculator_result.to_map()
         if self.video_caption_result is not None:
             result['videoCaptionResult'] = self.video_caption_result.to_map()
         if self.video_generate_result is not None:
@@ -12329,11 +12782,17 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addDatasetDocumentsResult') is not None:
+            temp_model = RunVideoAnalysisResponseBodyPayloadOutputAddDatasetDocumentsResult()
+            self.add_dataset_documents_result = temp_model.from_map(m['addDatasetDocumentsResult'])
         if m.get('resultJsonFileUrl') is not None:
             self.result_json_file_url = m.get('resultJsonFileUrl')
         if m.get('videoAnalysisResult') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult()
             self.video_analysis_result = temp_model.from_map(m['videoAnalysisResult'])
+        if m.get('videoCalculatorResult') is not None:
+            temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoCalculatorResult()
+            self.video_calculator_result = temp_model.from_map(m['videoCalculatorResult'])
         if m.get('videoCaptionResult') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoCaptionResult()
             self.video_caption_result = temp_model.from_map(m['videoCaptionResult'])
@@ -14161,6 +14620,80 @@ class SubmitTagMiningAnalysisTaskResponse(TeaModel):
         return self
 
 
+class SubmitVideoAnalysisTaskRequestAddDocumentParamDocument(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        title: str = None,
+    ):
+        self.doc_id = doc_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class SubmitVideoAnalysisTaskRequestAddDocumentParam(TeaModel):
+    def __init__(
+        self,
+        dataset_id: int = None,
+        dataset_name: str = None,
+        document: SubmitVideoAnalysisTaskRequestAddDocumentParamDocument = None,
+    ):
+        self.dataset_id = dataset_id
+        self.dataset_name = dataset_name
+        self.document = document
+
+    def validate(self):
+        if self.document:
+            self.document.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_id is not None:
+            result['datasetId'] = self.dataset_id
+        if self.dataset_name is not None:
+            result['datasetName'] = self.dataset_name
+        if self.document is not None:
+            result['document'] = self.document.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('datasetId') is not None:
+            self.dataset_id = m.get('datasetId')
+        if m.get('datasetName') is not None:
+            self.dataset_name = m.get('datasetName')
+        if m.get('document') is not None:
+            temp_model = SubmitVideoAnalysisTaskRequestAddDocumentParamDocument()
+            self.document = temp_model.from_map(m['document'])
+        return self
+
+
 class SubmitVideoAnalysisTaskRequestFrameSampleMethod(TeaModel):
     def __init__(
         self,
@@ -14420,6 +14953,7 @@ class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
 class SubmitVideoAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        add_document_param: SubmitVideoAnalysisTaskRequestAddDocumentParam = None,
         auto_role_recognition_video_url: str = None,
         deduplication_id: str = None,
         exclude_generate_options: List[str] = None,
@@ -14442,6 +14976,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.add_document_param = add_document_param
         self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.deduplication_id = deduplication_id
         self.exclude_generate_options = exclude_generate_options
@@ -14466,6 +15001,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         self.video_url = video_url
 
     def validate(self):
+        if self.add_document_param:
+            self.add_document_param.validate()
         if self.frame_sample_method:
             self.frame_sample_method.validate()
         if self.text_process_tasks:
@@ -14485,6 +15022,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_document_param is not None:
+            result['addDocumentParam'] = self.add_document_param.to_map()
         if self.auto_role_recognition_video_url is not None:
             result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.deduplication_id is not None:
@@ -14535,6 +15074,9 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addDocumentParam') is not None:
+            temp_model = SubmitVideoAnalysisTaskRequestAddDocumentParam()
+            self.add_document_param = temp_model.from_map(m['addDocumentParam'])
         if m.get('autoRoleRecognitionVideoUrl') is not None:
             self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('deduplicationId') is not None:
@@ -14591,6 +15133,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        add_document_param_shrink: str = None,
         auto_role_recognition_video_url: str = None,
         deduplication_id: str = None,
         exclude_generate_options_shrink: str = None,
@@ -14613,6 +15156,7 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.add_document_param_shrink = add_document_param_shrink
         self.auto_role_recognition_video_url = auto_role_recognition_video_url
         self.deduplication_id = deduplication_id
         self.exclude_generate_options_shrink = exclude_generate_options_shrink
@@ -14645,6 +15189,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_document_param_shrink is not None:
+            result['addDocumentParam'] = self.add_document_param_shrink
         if self.auto_role_recognition_video_url is not None:
             result['autoRoleRecognitionVideoUrl'] = self.auto_role_recognition_video_url
         if self.deduplication_id is not None:
@@ -14691,6 +15237,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addDocumentParam') is not None:
+            self.add_document_param_shrink = m.get('addDocumentParam')
         if m.get('autoRoleRecognitionVideoUrl') is not None:
             self.auto_role_recognition_video_url = m.get('autoRoleRecognitionVideoUrl')
         if m.get('deduplicationId') is not None:

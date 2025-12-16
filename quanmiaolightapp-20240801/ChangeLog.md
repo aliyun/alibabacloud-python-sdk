@@ -1,3 +1,14 @@
+2025-12-16 Version: 2.13.2
+- Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.addDatasetDocumentsResult.
+- Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.videoCalculatorResult.
+- Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.videoAnalysisResult.usage.imageTokens.
+- Update API RunVideoAnalysis: add request parameters addDocumentParam.
+- Update API RunVideoAnalysis: add response parameters Body.payload.output.addDatasetDocumentsResult.
+- Update API RunVideoAnalysis: add response parameters Body.payload.output.videoCalculatorResult.
+- Update API RunVideoAnalysis: add response parameters Body.payload.output.videoAnalysisResult.usage.imageTokens.
+- Update API SubmitVideoAnalysisTask: add request parameters addDocumentParam.
+
+
 2025-10-21 Version: 2.13.1
 - Generated python 2024-08-01 for QuanMiaoLightApp.
 

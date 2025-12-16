@@ -3571,6 +3571,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.RunVideoAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_document_param):
+            request.add_document_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_document_param, 'addDocumentParam', 'json')
         if not UtilClient.is_unset(tmp_req.exclude_generate_options):
             request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
@@ -3584,6 +3586,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.add_document_param_shrink):
+            body['addDocumentParam'] = request.add_document_param_shrink
         if not UtilClient.is_unset(request.auto_role_recognition_video_url):
             body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.exclude_generate_options_shrink):
@@ -3666,6 +3670,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.RunVideoAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_document_param):
+            request.add_document_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_document_param, 'addDocumentParam', 'json')
         if not UtilClient.is_unset(tmp_req.exclude_generate_options):
             request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
@@ -3679,6 +3685,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.add_document_param_shrink):
+            body['addDocumentParam'] = request.add_document_param_shrink
         if not UtilClient.is_unset(request.auto_role_recognition_video_url):
             body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.exclude_generate_options_shrink):
@@ -4419,6 +4427,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_document_param):
+            request.add_document_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_document_param, 'addDocumentParam', 'json')
         if not UtilClient.is_unset(tmp_req.exclude_generate_options):
             request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
@@ -4432,6 +4442,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.add_document_param_shrink):
+            body['addDocumentParam'] = request.add_document_param_shrink
         if not UtilClient.is_unset(request.auto_role_recognition_video_url):
             body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.deduplication_id):
@@ -4512,6 +4524,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_document_param):
+            request.add_document_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_document_param, 'addDocumentParam', 'json')
         if not UtilClient.is_unset(tmp_req.exclude_generate_options):
             request.exclude_generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_generate_options, 'excludeGenerateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.frame_sample_method):
@@ -4525,6 +4539,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.add_document_param_shrink):
+            body['addDocumentParam'] = request.add_document_param_shrink
         if not UtilClient.is_unset(request.auto_role_recognition_video_url):
             body['autoRoleRecognitionVideoUrl'] = request.auto_role_recognition_video_url
         if not UtilClient.is_unset(request.deduplication_id):
