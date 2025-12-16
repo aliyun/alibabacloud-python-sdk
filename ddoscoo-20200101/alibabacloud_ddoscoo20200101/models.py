@@ -30173,6 +30173,7 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
         forward_protocol: str = None,
         frontend_port: int = None,
         instance_id: str = None,
+        module: str = None,
     ):
         # The detailed settings of the port forwarding rule. This parameter is a JSON string and contains the following fields. The detailed settings of a TCP port forwarding rule contain the following fields.
         # 
@@ -30222,6 +30223,7 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.module = module
 
     def validate(self):
         pass
@@ -30240,6 +30242,8 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
             result['FrontendPort'] = self.frontend_port
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.module is not None:
+            result['Module'] = self.module
         return result
 
     def from_map(self, m: dict = None):
@@ -30252,6 +30256,8 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
             self.frontend_port = m.get('FrontendPort')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
         return self
 
 

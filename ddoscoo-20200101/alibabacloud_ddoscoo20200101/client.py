@@ -18427,6 +18427,8 @@ class Client(OpenApiClient):
             query['FrontendPort'] = request.frontend_port
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18468,6 +18470,8 @@ class Client(OpenApiClient):
             query['FrontendPort'] = request.frontend_port
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
