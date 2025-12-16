@@ -18368,17 +18368,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.patch):
             request.patch_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.patch, 'Patch', 'json')
+        if not UtilClient.is_unset(tmp_req.pkg_labels):
+            request.pkg_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pkg_labels, 'PkgLabels', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.patch_shrink):
-            query['Patch'] = request.patch_shrink
+        if not UtilClient.is_unset(request.pkg_labels_shrink):
+            query['PkgLabels'] = request.pkg_labels_shrink
         if not UtilClient.is_unset(request.stable_patch_id):
             query['StablePatchId'] = request.stable_patch_id
+        body = {}
+        if not UtilClient.is_unset(request.patch_shrink):
+            body['Patch'] = request.patch_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCloudAppInfo',
@@ -18413,17 +18419,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.patch):
             request.patch_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.patch, 'Patch', 'json')
+        if not UtilClient.is_unset(tmp_req.pkg_labels):
+            request.pkg_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pkg_labels, 'PkgLabels', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.patch_shrink):
-            query['Patch'] = request.patch_shrink
+        if not UtilClient.is_unset(request.pkg_labels_shrink):
+            query['PkgLabels'] = request.pkg_labels_shrink
         if not UtilClient.is_unset(request.stable_patch_id):
             query['StablePatchId'] = request.stable_patch_id
+        body = {}
+        if not UtilClient.is_unset(request.patch_shrink):
+            body['Patch'] = request.patch_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCloudAppInfo',
@@ -19021,17 +19033,21 @@ class Client(OpenApiClient):
 
     def upload_cloud_app_with_options(
         self,
-        request: vs_20181212_models.UploadCloudAppRequest,
+        tmp_req: vs_20181212_models.UploadCloudAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UploadCloudAppResponse:
         """
         @summary 应用上架
         
-        @param request: UploadCloudAppRequest
+        @param tmp_req: UploadCloudAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UploadCloudAppResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UploadCloudAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.pkg_labels):
+            request.pkg_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pkg_labels, 'PkgLabels', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -19045,6 +19061,8 @@ class Client(OpenApiClient):
             query['Md5'] = request.md_5
         if not UtilClient.is_unset(request.pkg_format):
             query['PkgFormat'] = request.pkg_format
+        if not UtilClient.is_unset(request.pkg_labels_shrink):
+            query['PkgLabels'] = request.pkg_labels_shrink
         if not UtilClient.is_unset(request.pkg_type):
             query['PkgType'] = request.pkg_type
         req = open_api_models.OpenApiRequest(
@@ -19068,17 +19086,21 @@ class Client(OpenApiClient):
 
     async def upload_cloud_app_with_options_async(
         self,
-        request: vs_20181212_models.UploadCloudAppRequest,
+        tmp_req: vs_20181212_models.UploadCloudAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UploadCloudAppResponse:
         """
         @summary 应用上架
         
-        @param request: UploadCloudAppRequest
+        @param tmp_req: UploadCloudAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UploadCloudAppResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UploadCloudAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.pkg_labels):
+            request.pkg_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pkg_labels, 'PkgLabels', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -19092,6 +19114,8 @@ class Client(OpenApiClient):
             query['Md5'] = request.md_5
         if not UtilClient.is_unset(request.pkg_format):
             query['PkgFormat'] = request.pkg_format
+        if not UtilClient.is_unset(request.pkg_labels_shrink):
+            query['PkgLabels'] = request.pkg_labels_shrink
         if not UtilClient.is_unset(request.pkg_type):
             query['PkgType'] = request.pkg_type
         req = open_api_models.OpenApiRequest(

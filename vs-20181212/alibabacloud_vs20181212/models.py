@@ -22290,19 +22290,25 @@ class ListCloudAppsRequest(TeaModel):
         app_name: str = None,
         app_version: str = None,
         end_time: str = None,
+        latest_version_only: bool = None,
         page_number: int = None,
         page_size: int = None,
+        pkg_label: str = None,
         pkg_type: str = None,
         start_time: str = None,
+        status: str = None,
     ):
         self.app_id = app_id
         self.app_name = app_name
         self.app_version = app_version
         self.end_time = end_time
+        self.latest_version_only = latest_version_only
         self.page_number = page_number
         self.page_size = page_size
+        self.pkg_label = pkg_label
         self.pkg_type = pkg_type
         self.start_time = start_time
+        self.status = status
 
     def validate(self):
         pass
@@ -22321,14 +22327,20 @@ class ListCloudAppsRequest(TeaModel):
             result['AppVersion'] = self.app_version
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.latest_version_only is not None:
+            result['LatestVersionOnly'] = self.latest_version_only
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.pkg_label is not None:
+            result['PkgLabel'] = self.pkg_label
         if self.pkg_type is not None:
             result['PkgType'] = self.pkg_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -22341,14 +22353,20 @@ class ListCloudAppsRequest(TeaModel):
             self.app_version = m.get('AppVersion')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LatestVersionOnly') is not None:
+            self.latest_version_only = m.get('LatestVersionOnly')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PkgLabel') is not None:
+            self.pkg_label = m.get('PkgLabel')
         if m.get('PkgType') is not None:
             self.pkg_type = m.get('PkgType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -31118,13 +31136,19 @@ class UnlockDeviceResponse(TeaModel):
 class UpdateCloudAppInfoRequestPatch(TeaModel):
     def __init__(
         self,
+        as_stable_patch: bool = None,
         download_url: str = None,
         md_5: str = None,
         patch_name: str = None,
+        pkg_format: str = None,
+        rendering_instance_id: str = None,
     ):
+        self.as_stable_patch = as_stable_patch
         self.download_url = download_url
         self.md_5 = md_5
         self.patch_name = patch_name
+        self.pkg_format = pkg_format
+        self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
         pass
@@ -31135,22 +31159,34 @@ class UpdateCloudAppInfoRequestPatch(TeaModel):
             return _map
 
         result = dict()
+        if self.as_stable_patch is not None:
+            result['AsStablePatch'] = self.as_stable_patch
         if self.download_url is not None:
             result['DownloadURL'] = self.download_url
         if self.md_5 is not None:
             result['Md5'] = self.md_5
         if self.patch_name is not None:
             result['PatchName'] = self.patch_name
+        if self.pkg_format is not None:
+            result['PkgFormat'] = self.pkg_format
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsStablePatch') is not None:
+            self.as_stable_patch = m.get('AsStablePatch')
         if m.get('DownloadURL') is not None:
             self.download_url = m.get('DownloadURL')
         if m.get('Md5') is not None:
             self.md_5 = m.get('Md5')
         if m.get('PatchName') is not None:
             self.patch_name = m.get('PatchName')
+        if m.get('PkgFormat') is not None:
+            self.pkg_format = m.get('PkgFormat')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
         return self
 
 
@@ -31160,12 +31196,14 @@ class UpdateCloudAppInfoRequest(TeaModel):
         app_id: str = None,
         description: str = None,
         patch: UpdateCloudAppInfoRequestPatch = None,
+        pkg_labels: List[str] = None,
         stable_patch_id: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
         self.description = description
         self.patch = patch
+        self.pkg_labels = pkg_labels
         self.stable_patch_id = stable_patch_id
 
     def validate(self):
@@ -31184,6 +31222,8 @@ class UpdateCloudAppInfoRequest(TeaModel):
             result['Description'] = self.description
         if self.patch is not None:
             result['Patch'] = self.patch.to_map()
+        if self.pkg_labels is not None:
+            result['PkgLabels'] = self.pkg_labels
         if self.stable_patch_id is not None:
             result['StablePatchId'] = self.stable_patch_id
         return result
@@ -31197,6 +31237,8 @@ class UpdateCloudAppInfoRequest(TeaModel):
         if m.get('Patch') is not None:
             temp_model = UpdateCloudAppInfoRequestPatch()
             self.patch = temp_model.from_map(m['Patch'])
+        if m.get('PkgLabels') is not None:
+            self.pkg_labels = m.get('PkgLabels')
         if m.get('StablePatchId') is not None:
             self.stable_patch_id = m.get('StablePatchId')
         return self
@@ -31208,12 +31250,14 @@ class UpdateCloudAppInfoShrinkRequest(TeaModel):
         app_id: str = None,
         description: str = None,
         patch_shrink: str = None,
+        pkg_labels_shrink: str = None,
         stable_patch_id: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
         self.description = description
         self.patch_shrink = patch_shrink
+        self.pkg_labels_shrink = pkg_labels_shrink
         self.stable_patch_id = stable_patch_id
 
     def validate(self):
@@ -31231,6 +31275,8 @@ class UpdateCloudAppInfoShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.patch_shrink is not None:
             result['Patch'] = self.patch_shrink
+        if self.pkg_labels_shrink is not None:
+            result['PkgLabels'] = self.pkg_labels_shrink
         if self.stable_patch_id is not None:
             result['StablePatchId'] = self.stable_patch_id
         return result
@@ -31243,6 +31289,8 @@ class UpdateCloudAppInfoShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Patch') is not None:
             self.patch_shrink = m.get('Patch')
+        if m.get('PkgLabels') is not None:
+            self.pkg_labels_shrink = m.get('PkgLabels')
         if m.get('StablePatchId') is not None:
             self.stable_patch_id = m.get('StablePatchId')
         return self
@@ -32165,6 +32213,7 @@ class UploadCloudAppRequest(TeaModel):
         download_url: str = None,
         md_5: str = None,
         pkg_format: str = None,
+        pkg_labels: List[str] = None,
         pkg_type: str = None,
     ):
         # This parameter is required.
@@ -32177,6 +32226,7 @@ class UploadCloudAppRequest(TeaModel):
         # This parameter is required.
         self.md_5 = md_5
         self.pkg_format = pkg_format
+        self.pkg_labels = pkg_labels
         self.pkg_type = pkg_type
 
     def validate(self):
@@ -32200,6 +32250,8 @@ class UploadCloudAppRequest(TeaModel):
             result['Md5'] = self.md_5
         if self.pkg_format is not None:
             result['PkgFormat'] = self.pkg_format
+        if self.pkg_labels is not None:
+            result['PkgLabels'] = self.pkg_labels
         if self.pkg_type is not None:
             result['PkgType'] = self.pkg_type
         return result
@@ -32218,6 +32270,81 @@ class UploadCloudAppRequest(TeaModel):
             self.md_5 = m.get('Md5')
         if m.get('PkgFormat') is not None:
             self.pkg_format = m.get('PkgFormat')
+        if m.get('PkgLabels') is not None:
+            self.pkg_labels = m.get('PkgLabels')
+        if m.get('PkgType') is not None:
+            self.pkg_type = m.get('PkgType')
+        return self
+
+
+class UploadCloudAppShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        app_version: str = None,
+        description: str = None,
+        download_url: str = None,
+        md_5: str = None,
+        pkg_format: str = None,
+        pkg_labels_shrink: str = None,
+        pkg_type: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        # This parameter is required.
+        self.app_version = app_version
+        self.description = description
+        # This parameter is required.
+        self.download_url = download_url
+        # This parameter is required.
+        self.md_5 = md_5
+        self.pkg_format = pkg_format
+        self.pkg_labels_shrink = pkg_labels_shrink
+        self.pkg_type = pkg_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.pkg_format is not None:
+            result['PkgFormat'] = self.pkg_format
+        if self.pkg_labels_shrink is not None:
+            result['PkgLabels'] = self.pkg_labels_shrink
+        if self.pkg_type is not None:
+            result['PkgType'] = self.pkg_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('PkgFormat') is not None:
+            self.pkg_format = m.get('PkgFormat')
+        if m.get('PkgLabels') is not None:
+            self.pkg_labels_shrink = m.get('PkgLabels')
         if m.get('PkgType') is not None:
             self.pkg_type = m.get('PkgType')
         return self

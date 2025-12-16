@@ -1,3 +1,14 @@
+2025-12-16 Version: 3.5.1
+- Update API ListCloudApps: add request parameters LatestVersionOnly.
+- Update API ListCloudApps: add request parameters PkgLabel.
+- Update API ListCloudApps: add request parameters Status.
+- Update API UpdateCloudAppInfo: add request parameters PkgLabels.
+- Update API UpdateCloudAppInfo: add request parameters Patch.AsStablePatch.
+- Update API UpdateCloudAppInfo: add request parameters Patch.PkgFormat.
+- Update API UpdateCloudAppInfo: add request parameters Patch.RenderingInstanceId.
+- Update API UploadCloudApp: add request parameters PkgLabels.
+
+
 2025-12-09 Version: 3.5.0
 - Support API RebootRenderingServer.
 
