@@ -1,3 +1,8 @@
+2025-12-16 Version: 3.12.0
+- Support API DescribeAuthVerify.
+- Support API InitAuthVerify.
+
+
 2025-12-12 Version: 3.11.1
 - Update API CreateAntCloudAuthScene: add request parameters ReturnPicCount.
 - Update API CreateAntCloudAuthScene: add request parameters ReturnVideoLength.

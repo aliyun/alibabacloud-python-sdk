@@ -5509,6 +5509,174 @@ class DescribeAntAndCloudAuthUserStatusResponse(TeaModel):
         return self
 
 
+class DescribeAuthVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+        scene_id: int = None,
+    ):
+        # This parameter is required.
+        self.certify_id = certify_id
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DescribeAuthVerifyResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        material_info: str = None,
+        spoof_back_info: str = None,
+        spoof_info: str = None,
+        sub_code: str = None,
+    ):
+        self.material_info = material_info
+        self.spoof_back_info = spoof_back_info
+        self.spoof_info = spoof_info
+        self.sub_code = sub_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info
+        if self.spoof_back_info is not None:
+            result['SpoofBackInfo'] = self.spoof_back_info
+        if self.spoof_info is not None:
+            result['SpoofInfo'] = self.spoof_info
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaterialInfo') is not None:
+            self.material_info = m.get('MaterialInfo')
+        if m.get('SpoofBackInfo') is not None:
+            self.spoof_back_info = m.get('SpoofBackInfo')
+        if m.get('SpoofInfo') is not None:
+            self.spoof_info = m.get('SpoofInfo')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        return self
+
+
+class DescribeAuthVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: DescribeAuthVerifyResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = DescribeAuthVerifyResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class DescribeAuthVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAuthVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAuthVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCardVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -15255,6 +15423,208 @@ class Id3MetaVerifyWithOCRResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Id3MetaVerifyWithOCRResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InitAuthVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        callback_token: str = None,
+        callback_url: str = None,
+        card_page_number: str = None,
+        card_type: str = None,
+        doc_scan_mode: str = None,
+        id_spoof: str = None,
+        meta_info: str = None,
+        outer_order_no: str = None,
+        product_code: str = None,
+        scene_id: int = None,
+    ):
+        self.callback_token = callback_token
+        self.callback_url = callback_url
+        # This parameter is required.
+        self.card_page_number = card_page_number
+        # This parameter is required.
+        self.card_type = card_type
+        self.doc_scan_mode = doc_scan_mode
+        self.id_spoof = id_spoof
+        # This parameter is required.
+        self.meta_info = meta_info
+        # This parameter is required.
+        self.outer_order_no = outer_order_no
+        # This parameter is required.
+        self.product_code = product_code
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_token is not None:
+            result['CallbackToken'] = self.callback_token
+        if self.callback_url is not None:
+            result['CallbackUrl'] = self.callback_url
+        if self.card_page_number is not None:
+            result['CardPageNumber'] = self.card_page_number
+        if self.card_type is not None:
+            result['CardType'] = self.card_type
+        if self.doc_scan_mode is not None:
+            result['DocScanMode'] = self.doc_scan_mode
+        if self.id_spoof is not None:
+            result['IdSpoof'] = self.id_spoof
+        if self.meta_info is not None:
+            result['MetaInfo'] = self.meta_info
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackToken') is not None:
+            self.callback_token = m.get('CallbackToken')
+        if m.get('CallbackUrl') is not None:
+            self.callback_url = m.get('CallbackUrl')
+        if m.get('CardPageNumber') is not None:
+            self.card_page_number = m.get('CardPageNumber')
+        if m.get('CardType') is not None:
+            self.card_type = m.get('CardType')
+        if m.get('DocScanMode') is not None:
+            self.doc_scan_mode = m.get('DocScanMode')
+        if m.get('IdSpoof') is not None:
+            self.id_spoof = m.get('IdSpoof')
+        if m.get('MetaInfo') is not None:
+            self.meta_info = m.get('MetaInfo')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class InitAuthVerifyResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+    ):
+        self.certify_id = certify_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        return self
+
+
+class InitAuthVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: InitAuthVerifyResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = InitAuthVerifyResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class InitAuthVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitAuthVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitAuthVerifyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
