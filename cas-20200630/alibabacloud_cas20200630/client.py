@@ -2178,6 +2178,8 @@ class Client(OpenApiClient):
             query['EncryptedCode'] = request.encrypted_code
         if not UtilClient.is_unset(request.identifier):
             query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2227,6 +2229,8 @@ class Client(OpenApiClient):
             query['EncryptedCode'] = request.encrypted_code
         if not UtilClient.is_unset(request.identifier):
             query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2436,6 +2440,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_client_certificate_with_options_async(request, runtime)
 
+    def describe_client_certificate_for_serial_number_with_options(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
+        """
+        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+        
+        @summary 获取客户端证书
+        
+        @param request: DescribeClientCertificateForSerialNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClientCertificateForSerialNumberResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClientCertificateForSerialNumber',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.DescribeClientCertificateForSerialNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_client_certificate_for_serial_number_with_options_async(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
+        """
+        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+        
+        @summary 获取客户端证书
+        
+        @param request: DescribeClientCertificateForSerialNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClientCertificateForSerialNumberResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClientCertificateForSerialNumber',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.DescribeClientCertificateForSerialNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_client_certificate_for_serial_number(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
+    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
+        """
+        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+        
+        @summary 获取客户端证书
+        
+        @param request: DescribeClientCertificateForSerialNumberRequest
+        @return: DescribeClientCertificateForSerialNumberResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_client_certificate_for_serial_number_with_options(request, runtime)
+
+    async def describe_client_certificate_for_serial_number_async(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
+    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
+        """
+        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
+        
+        @summary 获取客户端证书
+        
+        @param request: DescribeClientCertificateForSerialNumberRequest
+        @return: DescribeClientCertificateForSerialNumberResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_client_certificate_for_serial_number_with_options_async(request, runtime)
+
     def describe_client_certificate_status_with_options(
         self,
         request: cas_20200630_models.DescribeClientCertificateStatusRequest,
@@ -2547,6 +2659,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_client_certificate_status_with_options_async(request, runtime)
+
+    def describe_client_certificate_status_for_serial_number_with_options(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        """
+        @summary 获取客户端证书状态
+        
+        @param request: DescribeClientCertificateStatusForSerialNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClientCertificateStatusForSerialNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClientCertificateStatusForSerialNumber',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_client_certificate_status_for_serial_number_with_options_async(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        """
+        @summary 获取客户端证书状态
+        
+        @param request: DescribeClientCertificateStatusForSerialNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClientCertificateStatusForSerialNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClientCertificateStatusForSerialNumber',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_client_certificate_status_for_serial_number(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
+    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        """
+        @summary 获取客户端证书状态
+        
+        @param request: DescribeClientCertificateStatusForSerialNumberRequest
+        @return: DescribeClientCertificateStatusForSerialNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_client_certificate_status_for_serial_number_with_options(request, runtime)
+
+    async def describe_client_certificate_status_for_serial_number_async(
+        self,
+        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
+    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        """
+        @summary 获取客户端证书状态
+        
+        @param request: DescribeClientCertificateStatusForSerialNumberRequest
+        @return: DescribeClientCertificateStatusForSerialNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_client_certificate_status_for_serial_number_with_options_async(request, runtime)
+
+    def describe_pca_and_external_cacertificate_list_with_options(
+        self,
+        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
+        """
+        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+        
+        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+        
+        @param request: DescribePcaAndExternalCACertificateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePcaAndExternalCACertificateListResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePcaAndExternalCACertificateList',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.DescribePcaAndExternalCACertificateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pca_and_external_cacertificate_list_with_options_async(
+        self,
+        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
+        """
+        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+        
+        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+        
+        @param request: DescribePcaAndExternalCACertificateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePcaAndExternalCACertificateListResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePcaAndExternalCACertificateList',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.DescribePcaAndExternalCACertificateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pca_and_external_cacertificate_list(
+        self,
+        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
+    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
+        """
+        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+        
+        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+        
+        @param request: DescribePcaAndExternalCACertificateListRequest
+        @return: DescribePcaAndExternalCACertificateListResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pca_and_external_cacertificate_list_with_options(request, runtime)
+
+    async def describe_pca_and_external_cacertificate_list_async(
+        self,
+        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
+    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
+        """
+        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
+        
+        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
+        
+        @param request: DescribePcaAndExternalCACertificateListRequest
+        @return: DescribePcaAndExternalCACertificateListResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pca_and_external_cacertificate_list_with_options_async(request, runtime)
 
     def get_cainstance_status_with_options(
         self,
@@ -2779,6 +3099,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_all_end_entity_instance_with_options_async(request, runtime)
+
+    def list_cacertificate_log_with_options(
+        self,
+        request: cas_20200630_models.ListCACertificateLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.ListCACertificateLogResponse:
+        """
+        @summary 获取证书日志
+        
+        @param request: ListCACertificateLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCACertificateLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCACertificateLog',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.ListCACertificateLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cacertificate_log_with_options_async(
+        self,
+        request: cas_20200630_models.ListCACertificateLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.ListCACertificateLogResponse:
+        """
+        @summary 获取证书日志
+        
+        @param request: ListCACertificateLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCACertificateLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCACertificateLog',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.ListCACertificateLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cacertificate_log(
+        self,
+        request: cas_20200630_models.ListCACertificateLogRequest,
+    ) -> cas_20200630_models.ListCACertificateLogResponse:
+        """
+        @summary 获取证书日志
+        
+        @param request: ListCACertificateLogRequest
+        @return: ListCACertificateLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cacertificate_log_with_options(request, runtime)
+
+    async def list_cacertificate_log_async(
+        self,
+        request: cas_20200630_models.ListCACertificateLogRequest,
+    ) -> cas_20200630_models.ListCACertificateLogResponse:
+        """
+        @summary 获取证书日志
+        
+        @param request: ListCACertificateLogRequest
+        @return: ListCACertificateLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cacertificate_log_with_options_async(request, runtime)
 
     def list_cert_with_options(
         self,

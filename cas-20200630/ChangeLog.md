@@ -1,3 +1,11 @@
+2025-12-16 Version: 1.5.0
+- Support API DescribeClientCertificateForSerialNumber.
+- Support API DescribeClientCertificateStatusForSerialNumber.
+- Support API DescribePcaAndExternalCACertificateList.
+- Support API ListCACertificateLog.
+- Update API DescribeCertificatePrivateKey: add request parameters ResourceGroupId.
+
+
 2025-12-09 Version: 1.4.0
 - Support API ListTagResources.
 - Support API MoveResourceGroup.
