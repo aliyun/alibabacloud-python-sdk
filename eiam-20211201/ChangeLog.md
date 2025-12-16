@@ -1,3 +1,8 @@
+2025-12-16 Version: 2.7.0
+- Support API GetApplicationAdvancedConfig.
+- Support API UpdateApplicationAdvancedConfig.
+
+
 2025-12-11 Version: 2.6.1
 - Update API GetInstance: add response parameters Body.Instance.ManagedServiceCode.
 - Update API GetInstance: add response parameters Body.Instance.ServiceManaged.

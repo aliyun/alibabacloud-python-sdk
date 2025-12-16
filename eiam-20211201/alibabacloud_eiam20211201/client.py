@@ -8089,6 +8089,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
+    def get_application_advanced_config_with_options(
+        self,
+        request: eiam_20211201_models.GetApplicationAdvancedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetApplicationAdvancedConfigResponse:
+        """
+        @summary 获取应用高阶配置
+        
+        @param request: GetApplicationAdvancedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationAdvancedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationAdvancedConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationAdvancedConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_advanced_config_with_options_async(
+        self,
+        request: eiam_20211201_models.GetApplicationAdvancedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetApplicationAdvancedConfigResponse:
+        """
+        @summary 获取应用高阶配置
+        
+        @param request: GetApplicationAdvancedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationAdvancedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationAdvancedConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetApplicationAdvancedConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_advanced_config(
+        self,
+        request: eiam_20211201_models.GetApplicationAdvancedConfigRequest,
+    ) -> eiam_20211201_models.GetApplicationAdvancedConfigResponse:
+        """
+        @summary 获取应用高阶配置
+        
+        @param request: GetApplicationAdvancedConfigRequest
+        @return: GetApplicationAdvancedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_advanced_config_with_options(request, runtime)
+
+    async def get_application_advanced_config_async(
+        self,
+        request: eiam_20211201_models.GetApplicationAdvancedConfigRequest,
+    ) -> eiam_20211201_models.GetApplicationAdvancedConfigResponse:
+        """
+        @summary 获取应用高阶配置
+        
+        @param request: GetApplicationAdvancedConfigRequest
+        @return: GetApplicationAdvancedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_advanced_config_with_options_async(request, runtime)
+
     def get_application_federated_credential_with_options(
         self,
         request: eiam_20211201_models.GetApplicationFederatedCredentialRequest,
@@ -18686,6 +18786,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unlock_user_with_options_async(request, runtime)
+
+    def update_application_advanced_config_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationAdvancedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationAdvancedConfigResponse:
+        """
+        @summary 修改应用高阶配置
+        
+        @param request: UpdateApplicationAdvancedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationAdvancedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scim_server_advanced_config):
+            query['ScimServerAdvancedConfig'] = request.scim_server_advanced_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationAdvancedConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationAdvancedConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_advanced_config_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationAdvancedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationAdvancedConfigResponse:
+        """
+        @summary 修改应用高阶配置
+        
+        @param request: UpdateApplicationAdvancedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationAdvancedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scim_server_advanced_config):
+            query['ScimServerAdvancedConfig'] = request.scim_server_advanced_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationAdvancedConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationAdvancedConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_advanced_config(
+        self,
+        request: eiam_20211201_models.UpdateApplicationAdvancedConfigRequest,
+    ) -> eiam_20211201_models.UpdateApplicationAdvancedConfigResponse:
+        """
+        @summary 修改应用高阶配置
+        
+        @param request: UpdateApplicationAdvancedConfigRequest
+        @return: UpdateApplicationAdvancedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_advanced_config_with_options(request, runtime)
+
+    async def update_application_advanced_config_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationAdvancedConfigRequest,
+    ) -> eiam_20211201_models.UpdateApplicationAdvancedConfigResponse:
+        """
+        @summary 修改应用高阶配置
+        
+        @param request: UpdateApplicationAdvancedConfigRequest
+        @return: UpdateApplicationAdvancedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_advanced_config_with_options_async(request, runtime)
 
     def update_application_authorization_type_with_options(
         self,
