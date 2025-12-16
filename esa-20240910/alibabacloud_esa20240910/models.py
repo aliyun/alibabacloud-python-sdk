@@ -7025,6 +7025,123 @@ class CreateEdgeContainerAppResponse(TeaModel):
         return self
 
 
+class CreateEdgeContainerAppImageSecretRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        password: str = None,
+        registry: str = None,
+        username: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.password = password
+        # This parameter is required.
+        self.registry = registry
+        # This parameter is required.
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.registry is not None:
+            result['Registry'] = self.registry
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Registry') is not None:
+            self.registry = m.get('Registry')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class CreateEdgeContainerAppImageSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateEdgeContainerAppImageSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEdgeContainerAppImageSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEdgeContainerAppImageSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateEdgeContainerAppRecordRequest(TeaModel):
     def __init__(
         self,
@@ -18951,6 +19068,109 @@ class DeleteEdgeContainerAppResponse(TeaModel):
         return self
 
 
+class DeleteEdgeContainerAppImageSecretRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeleteEdgeContainerAppImageSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEdgeContainerAppImageSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEdgeContainerAppImageSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEdgeContainerAppImageSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteEdgeContainerAppRecordRequest(TeaModel):
     def __init__(
         self,
@@ -30534,6 +30754,155 @@ class GetEdgeContainerAppLogRiverResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEdgeContainerAppLogRiverResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerAppResourceCapacityRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerAppResourceCapacityResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        isp: str = None,
+        region: str = None,
+        replicas: int = None,
+    ):
+        self.isp = isp
+        self.region = region
+        self.replicas = replicas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        return self
+
+
+class GetEdgeContainerAppResourceCapacityResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[GetEdgeContainerAppResourceCapacityResponseBodyRegions] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = GetEdgeContainerAppResourceCapacityResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEdgeContainerAppResourceCapacityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerAppResourceCapacityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerAppResourceCapacityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -43995,6 +44364,41 @@ class GetWafQuotaRequest(TeaModel):
         return self
 
 
+class GetWafQuotaResponseBodyQuotaCaptcha(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        number_total: WafQuotaInteger = None,
+    ):
+        self.enable = enable
+        self.number_total = number_total
+
+    def validate(self):
+        if self.number_total:
+            self.number_total.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.number_total is not None:
+            result['NumberTotal'] = self.number_total.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('NumberTotal') is not None:
+            temp_model = WafQuotaInteger()
+            self.number_total = temp_model.from_map(m['NumberTotal'])
+        return self
+
+
 class GetWafQuotaResponseBodyQuotaList(TeaModel):
     def __init__(
         self,
@@ -44198,11 +44602,13 @@ class GetWafQuotaResponseBodyQuotaScenePolicy(TeaModel):
 class GetWafQuotaResponseBodyQuota(TeaModel):
     def __init__(
         self,
+        captcha: GetWafQuotaResponseBodyQuotaCaptcha = None,
         list: GetWafQuotaResponseBodyQuotaList = None,
         managed_rules_group: GetWafQuotaResponseBodyQuotaManagedRulesGroup = None,
         page: GetWafQuotaResponseBodyQuotaPage = None,
         scene_policy: GetWafQuotaResponseBodyQuotaScenePolicy = None,
     ):
+        self.captcha = captcha
         # Quota information related to custom lists.
         self.list = list
         # Quota information related to the WAF managed rules group.
@@ -44213,6 +44619,8 @@ class GetWafQuotaResponseBodyQuota(TeaModel):
         self.scene_policy = scene_policy
 
     def validate(self):
+        if self.captcha:
+            self.captcha.validate()
         if self.list:
             self.list.validate()
         if self.managed_rules_group:
@@ -44228,6 +44636,8 @@ class GetWafQuotaResponseBodyQuota(TeaModel):
             return _map
 
         result = dict()
+        if self.captcha is not None:
+            result['Captcha'] = self.captcha.to_map()
         if self.list is not None:
             result['List'] = self.list.to_map()
         if self.managed_rules_group is not None:
@@ -44240,6 +44650,9 @@ class GetWafQuotaResponseBodyQuota(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Captcha') is not None:
+            temp_model = GetWafQuotaResponseBodyQuotaCaptcha()
+            self.captcha = temp_model.from_map(m['Captcha'])
         if m.get('List') is not None:
             temp_model = GetWafQuotaResponseBodyQuotaList()
             self.list = temp_model.from_map(m['List'])
@@ -47321,6 +47734,155 @@ class ListESAIPInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListESAIPInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEdgeContainerAppImageSecretsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class ListEdgeContainerAppImageSecretsResponseBodyImageSecretList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        registry: str = None,
+        username: str = None,
+    ):
+        self.name = name
+        self.registry = registry
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.registry is not None:
+            result['Registry'] = self.registry
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Registry') is not None:
+            self.registry = m.get('Registry')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListEdgeContainerAppImageSecretsResponseBody(TeaModel):
+    def __init__(
+        self,
+        image_secret_list: List[ListEdgeContainerAppImageSecretsResponseBodyImageSecretList] = None,
+        request_id: str = None,
+    ):
+        self.image_secret_list = image_secret_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.image_secret_list:
+            for k in self.image_secret_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ImageSecretList'] = []
+        if self.image_secret_list is not None:
+            for k in self.image_secret_list:
+                result['ImageSecretList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.image_secret_list = []
+        if m.get('ImageSecretList') is not None:
+            for k in m.get('ImageSecretList'):
+                temp_model = ListEdgeContainerAppImageSecretsResponseBodyImageSecretList()
+                self.image_secret_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListEdgeContainerAppImageSecretsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEdgeContainerAppImageSecretsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEdgeContainerAppImageSecretsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

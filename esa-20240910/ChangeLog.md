@@ -1,3 +1,11 @@
+2025-12-16 Version: 2.31.0
+- Support API CreateEdgeContainerAppImageSecret.
+- Support API DeleteEdgeContainerAppImageSecret.
+- Support API GetEdgeContainerAppResourceCapacity.
+- Support API ListEdgeContainerAppImageSecrets.
+- Update API GetWafQuota: add response parameters Body.Quota.Captcha.
+
+
 2025-12-09 Version: 2.30.3
 - Update API ListUserRatePlanInstances: add request parameters PlanNameEn.
 

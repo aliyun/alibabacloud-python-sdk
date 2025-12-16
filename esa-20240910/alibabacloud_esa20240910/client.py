@@ -3364,6 +3364,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_container_app_with_options_async(request, runtime)
 
+    def create_edge_container_app_image_secret_with_options(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppImageSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppImageSecretResponse:
+        """
+        @summary 创建边缘容器应用的镜像秘钥
+        
+        @param request: CreateEdgeContainerAppImageSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppImageSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.registry):
+            query['Registry'] = request.registry
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerAppImageSecret',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppImageSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_edge_container_app_image_secret_with_options_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppImageSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppImageSecretResponse:
+        """
+        @summary 创建边缘容器应用的镜像秘钥
+        
+        @param request: CreateEdgeContainerAppImageSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppImageSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.registry):
+            query['Registry'] = request.registry
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerAppImageSecret',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppImageSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_edge_container_app_image_secret(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppImageSecretRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppImageSecretResponse:
+        """
+        @summary 创建边缘容器应用的镜像秘钥
+        
+        @param request: CreateEdgeContainerAppImageSecretRequest
+        @return: CreateEdgeContainerAppImageSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_edge_container_app_image_secret_with_options(request, runtime)
+
+    async def create_edge_container_app_image_secret_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppImageSecretRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppImageSecretResponse:
+        """
+        @summary 创建边缘容器应用的镜像秘钥
+        
+        @param request: CreateEdgeContainerAppImageSecretRequest
+        @return: CreateEdgeContainerAppImageSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_edge_container_app_image_secret_with_options_async(request, runtime)
+
     def create_edge_container_app_record_with_options(
         self,
         request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
@@ -9349,6 +9457,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_edge_container_app_with_options_async(request, runtime)
+
+    def delete_edge_container_app_image_secret_with_options(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppImageSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppImageSecretResponse:
+        """
+        @summary 删除边缘容器应用的镜像秘钥
+        
+        @param request: DeleteEdgeContainerAppImageSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppImageSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerAppImageSecret',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppImageSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_edge_container_app_image_secret_with_options_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppImageSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppImageSecretResponse:
+        """
+        @summary 删除边缘容器应用的镜像秘钥
+        
+        @param request: DeleteEdgeContainerAppImageSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppImageSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerAppImageSecret',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppImageSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_edge_container_app_image_secret(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppImageSecretRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppImageSecretResponse:
+        """
+        @summary 删除边缘容器应用的镜像秘钥
+        
+        @param request: DeleteEdgeContainerAppImageSecretRequest
+        @return: DeleteEdgeContainerAppImageSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_edge_container_app_image_secret_with_options(request, runtime)
+
+    async def delete_edge_container_app_image_secret_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppImageSecretRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppImageSecretResponse:
+        """
+        @summary 删除边缘容器应用的镜像秘钥
+        
+        @param request: DeleteEdgeContainerAppImageSecretRequest
+        @return: DeleteEdgeContainerAppImageSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_edge_container_app_image_secret_with_options_async(request, runtime)
 
     def delete_edge_container_app_record_with_options(
         self,
@@ -16838,6 +17046,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_container_app_log_river_with_options_async(request, runtime)
 
+    def get_edge_container_app_resource_capacity_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceCapacityResponse:
+        """
+        @summary 获取边缘容器应用的资源容量
+        
+        @param request: GetEdgeContainerAppResourceCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResourceCapacityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppResourceCapacity',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppResourceCapacityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_app_resource_capacity_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceCapacityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceCapacityResponse:
+        """
+        @summary 获取边缘容器应用的资源容量
+        
+        @param request: GetEdgeContainerAppResourceCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResourceCapacityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppResourceCapacity',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppResourceCapacityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_app_resource_capacity(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceCapacityRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceCapacityResponse:
+        """
+        @summary 获取边缘容器应用的资源容量
+        
+        @param request: GetEdgeContainerAppResourceCapacityRequest
+        @return: GetEdgeContainerAppResourceCapacityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_app_resource_capacity_with_options(request, runtime)
+
+    async def get_edge_container_app_resource_capacity_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceCapacityRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceCapacityResponse:
+        """
+        @summary 获取边缘容器应用的资源容量
+        
+        @param request: GetEdgeContainerAppResourceCapacityRequest
+        @return: GetEdgeContainerAppResourceCapacityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_app_resource_capacity_with_options_async(request, runtime)
+
     def get_edge_container_app_resource_reserve_with_options(
         self,
         request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
@@ -23697,6 +24001,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_esaipinfo_with_options_async(request, runtime)
+
+    def list_edge_container_app_image_secrets_with_options(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppImageSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeContainerAppImageSecretsResponse:
+        """
+        @summary 获取边缘容器应用的镜像秘钥列表
+        
+        @param request: ListEdgeContainerAppImageSecretsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeContainerAppImageSecretsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEdgeContainerAppImageSecrets',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeContainerAppImageSecretsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_edge_container_app_image_secrets_with_options_async(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppImageSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeContainerAppImageSecretsResponse:
+        """
+        @summary 获取边缘容器应用的镜像秘钥列表
+        
+        @param request: ListEdgeContainerAppImageSecretsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeContainerAppImageSecretsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEdgeContainerAppImageSecrets',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeContainerAppImageSecretsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_edge_container_app_image_secrets(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppImageSecretsRequest,
+    ) -> esa20240910_models.ListEdgeContainerAppImageSecretsResponse:
+        """
+        @summary 获取边缘容器应用的镜像秘钥列表
+        
+        @param request: ListEdgeContainerAppImageSecretsRequest
+        @return: ListEdgeContainerAppImageSecretsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_edge_container_app_image_secrets_with_options(request, runtime)
+
+    async def list_edge_container_app_image_secrets_async(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppImageSecretsRequest,
+    ) -> esa20240910_models.ListEdgeContainerAppImageSecretsResponse:
+        """
+        @summary 获取边缘容器应用的镜像秘钥列表
+        
+        @param request: ListEdgeContainerAppImageSecretsRequest
+        @return: ListEdgeContainerAppImageSecretsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_edge_container_app_image_secrets_with_options_async(request, runtime)
 
     def list_edge_container_app_records_with_options(
         self,
