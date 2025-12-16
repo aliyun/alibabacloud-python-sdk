@@ -105,6 +105,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
         """
+        @summary 服务单授权
+        
         @param request: BindProduceAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindProduceAuthorizationResponse
@@ -142,6 +144,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
         """
+        @summary 服务单授权
+        
         @param request: BindProduceAuthorizationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindProduceAuthorizationResponse
@@ -178,6 +182,8 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.BindProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
         """
+        @summary 服务单授权
+        
         @param request: BindProduceAuthorizationRequest
         @return: BindProduceAuthorizationResponse
         """
@@ -189,6 +195,8 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.BindProduceAuthorizationRequest,
     ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
         """
+        @summary 服务单授权
+        
         @param request: BindProduceAuthorizationRequest
         @return: BindProduceAuthorizationResponse
         """
@@ -3699,6 +3707,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
         if not UtilClient.is_unset(request.person_id):
             query['PersonId'] = request.person_id
         if not UtilClient.is_unset(request.remark):
@@ -3740,6 +3750,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
         if not UtilClient.is_unset(request.person_id):
             query['PersonId'] = request.person_id
         if not UtilClient.is_unset(request.remark):
@@ -3807,6 +3819,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
         if not UtilClient.is_unset(request.person_id):
             query['PersonId'] = request.person_id
         if not UtilClient.is_unset(request.remark):
@@ -3848,6 +3862,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
         if not UtilClient.is_unset(request.person_id):
             query['PersonId'] = request.person_id
         if not UtilClient.is_unset(request.remark):

@@ -5674,6 +5674,7 @@ class TransferIntentionOwnerRequest(TeaModel):
         self,
         biz_id: str = None,
         biz_type: str = None,
+        employee_code: str = None,
         person_id: int = None,
         remark: str = None,
     ):
@@ -5681,7 +5682,7 @@ class TransferIntentionOwnerRequest(TeaModel):
         self.biz_id = biz_id
         # This parameter is required.
         self.biz_type = biz_type
-        # This parameter is required.
+        self.employee_code = employee_code
         self.person_id = person_id
         self.remark = remark
 
@@ -5698,6 +5699,8 @@ class TransferIntentionOwnerRequest(TeaModel):
             result['BizId'] = self.biz_id
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.employee_code is not None:
+            result['EmployeeCode'] = self.employee_code
         if self.person_id is not None:
             result['PersonId'] = self.person_id
         if self.remark is not None:
@@ -5710,6 +5713,8 @@ class TransferIntentionOwnerRequest(TeaModel):
             self.biz_id = m.get('BizId')
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('EmployeeCode') is not None:
+            self.employee_code = m.get('EmployeeCode')
         if m.get('PersonId') is not None:
             self.person_id = m.get('PersonId')
         if m.get('Remark') is not None:
@@ -5814,6 +5819,7 @@ class TransferProduceOwnerRequest(TeaModel):
         self,
         biz_id: str = None,
         biz_type: str = None,
+        employee_code: str = None,
         person_id: int = None,
         remark: str = None,
     ):
@@ -5821,7 +5827,7 @@ class TransferProduceOwnerRequest(TeaModel):
         self.biz_id = biz_id
         # This parameter is required.
         self.biz_type = biz_type
-        # This parameter is required.
+        self.employee_code = employee_code
         self.person_id = person_id
         self.remark = remark
 
@@ -5838,6 +5844,8 @@ class TransferProduceOwnerRequest(TeaModel):
             result['BizId'] = self.biz_id
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+        if self.employee_code is not None:
+            result['EmployeeCode'] = self.employee_code
         if self.person_id is not None:
             result['PersonId'] = self.person_id
         if self.remark is not None:
@@ -5850,6 +5858,8 @@ class TransferProduceOwnerRequest(TeaModel):
             self.biz_id = m.get('BizId')
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+        if m.get('EmployeeCode') is not None:
+            self.employee_code = m.get('EmployeeCode')
         if m.get('PersonId') is not None:
             self.person_id = m.get('PersonId')
         if m.get('Remark') is not None:

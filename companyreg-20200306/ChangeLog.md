@@ -1,3 +1,8 @@
+2025-12-16 Version: 2.2.4
+- Update API TransferIntentionOwner: add request parameters EmployeeCode.
+- Update API TransferProduceOwner: add request parameters EmployeeCode.
+
+
 2025-10-29 Version: 2.2.3
 - Generated python 2020-03-06 for companyreg.
 
