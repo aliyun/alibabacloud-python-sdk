@@ -2502,12 +2502,14 @@ class CreateDataAgentSessionRequestSessionConfig(TeaModel):
         custom_agent_stage: str = None,
         enable_search: bool = None,
         language: str = None,
+        mcp_server_ids: List[str] = None,
         mode: str = None,
     ):
         self.custom_agent_id = custom_agent_id
         self.custom_agent_stage = custom_agent_stage
         self.enable_search = enable_search
         self.language = language
+        self.mcp_server_ids = mcp_server_ids
         self.mode = mode
 
     def validate(self):
@@ -2527,6 +2529,8 @@ class CreateDataAgentSessionRequestSessionConfig(TeaModel):
             result['EnableSearch'] = self.enable_search
         if self.language is not None:
             result['Language'] = self.language
+        if self.mcp_server_ids is not None:
+            result['McpServerIds'] = self.mcp_server_ids
         if self.mode is not None:
             result['Mode'] = self.mode
         return result
@@ -2541,6 +2545,8 @@ class CreateDataAgentSessionRequestSessionConfig(TeaModel):
             self.enable_search = m.get('EnableSearch')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('McpServerIds') is not None:
+            self.mcp_server_ids = m.get('McpServerIds')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         return self
@@ -2657,12 +2663,14 @@ class CreateDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
         custom_agent_stage: str = None,
         enable_search: bool = None,
         language: str = None,
+        mcp_server_ids: List[str] = None,
         mode: str = None,
     ):
         self.custom_agent_id = custom_agent_id
         self.custom_agent_stage = custom_agent_stage
         self.enable_search = enable_search
         self.language = language
+        self.mcp_server_ids = mcp_server_ids
         self.mode = mode
 
     def validate(self):
@@ -2682,6 +2690,8 @@ class CreateDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
             result['EnableSearch'] = self.enable_search
         if self.language is not None:
             result['Language'] = self.language
+        if self.mcp_server_ids is not None:
+            result['McpServerIds'] = self.mcp_server_ids
         if self.mode is not None:
             result['Mode'] = self.mode
         return result
@@ -2696,6 +2706,8 @@ class CreateDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
             self.enable_search = m.get('EnableSearch')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('McpServerIds') is not None:
+            self.mcp_server_ids = m.get('McpServerIds')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         return self
@@ -4669,12 +4681,14 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
         custom_agent_stage: str = None,
         enable_search: bool = None,
         language: str = None,
+        mcp_server_ids: List[str] = None,
         mode: str = None,
     ):
         self.custom_agent_id = custom_agent_id
         self.custom_agent_stage = custom_agent_stage
         self.enable_search = enable_search
         self.language = language
+        self.mcp_server_ids = mcp_server_ids
         self.mode = mode
 
     def validate(self):
@@ -4694,6 +4708,8 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
             result['EnableSearch'] = self.enable_search
         if self.language is not None:
             result['Language'] = self.language
+        if self.mcp_server_ids is not None:
+            result['McpServerIds'] = self.mcp_server_ids
         if self.mode is not None:
             result['Mode'] = self.mode
         return result
@@ -4708,6 +4724,8 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(TeaModel):
             self.enable_search = m.get('EnableSearch')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('McpServerIds') is not None:
+            self.mcp_server_ids = m.get('McpServerIds')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         return self
