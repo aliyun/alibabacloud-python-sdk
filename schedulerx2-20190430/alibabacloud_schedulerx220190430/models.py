@@ -1817,6 +1817,458 @@ class CreateRouteStrategyResponse(TeaModel):
         return self
 
 
+class CreateSchedulerxCalendarRequest(TeaModel):
+    def __init__(
+        self,
+        calendar_name: str = None,
+        month_days_content: str = None,
+        region_id: str = None,
+        year: int = None,
+    ):
+        # The calendar name.
+        # 
+        # This parameter is required.
+        self.calendar_name = calendar_name
+        # The month and days.
+        # 
+        # This parameter is required.
+        self.month_days_content = month_days_content
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The year.
+        # 
+        # This parameter is required.
+        self.year = year
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_name is not None:
+            result['CalendarName'] = self.calendar_name
+        if self.month_days_content is not None:
+            result['MonthDaysContent'] = self.month_days_content
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.year is not None:
+            result['Year'] = self.year
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarName') is not None:
+            self.calendar_name = m.get('CalendarName')
+        if m.get('MonthDaysContent') is not None:
+            self.month_days_content = m.get('MonthDaysContent')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Year') is not None:
+            self.year = m.get('Year')
+        return self
+
+
+class CreateSchedulerxCalendarResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class CreateSchedulerxCalendarResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: CreateSchedulerxCalendarResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # Th status code.
+        self.code = code
+        # Additional information. Returned only when an error occurs.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = CreateSchedulerxCalendarResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSchedulerxCalendarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSchedulerxCalendarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSchedulerxCalendarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSchedulerxNotificationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        channel_time_range: str = None,
+        description: str = None,
+        policy_name: str = None,
+        region_id: str = None,
+    ):
+        # The configuration for the effective time periods of notification channels.
+        # 
+        # >  Please see the detailed explanation of this parameter below.
+        # 
+        # This parameter is required.
+        self.channel_time_range = channel_time_range
+        # The description of the notification policy.
+        self.description = description
+        # The name of the notification policy.
+        # 
+        # This parameter is required.
+        self.policy_name = policy_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_time_range is not None:
+            result['ChannelTimeRange'] = self.channel_time_range
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelTimeRange') is not None:
+            self.channel_time_range = m.get('ChannelTimeRange')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class CreateSchedulerxNotificationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: CreateSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # Additional information. Returned only when an error occurs.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = CreateSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSchedulerxNotificationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSchedulerxNotificationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSchedulerxNotificationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWorkflowRequest(TeaModel):
     def __init__(
         self,
@@ -2368,8 +2820,12 @@ class DeleteNamespaceRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -2405,9 +2861,13 @@ class DeleteNamespaceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned code.
         self.code = code
+        # The additional information returned only if an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2627,6 +3087,431 @@ class DeleteRouteStrategyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRouteStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSchedulerxCalendarRequest(TeaModel):
+    def __init__(
+        self,
+        calendar_name: str = None,
+        region_id: str = None,
+        year: int = None,
+    ):
+        # The calendar name.
+        # 
+        # This parameter is required.
+        self.calendar_name = calendar_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The year.
+        # 
+        # This parameter is required.
+        self.year = year
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_name is not None:
+            result['CalendarName'] = self.calendar_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.year is not None:
+            result['Year'] = self.year
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarName') is not None:
+            self.calendar_name = m.get('CalendarName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Year') is not None:
+            self.year = m.get('Year')
+        return self
+
+
+class DeleteSchedulerxCalendarResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class DeleteSchedulerxCalendarResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: DeleteSchedulerxCalendarResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # Additional information. Returned only when an error occurs.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = DeleteSchedulerxCalendarResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSchedulerxCalendarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSchedulerxCalendarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSchedulerxCalendarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSchedulerxNotificationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        policy_name: str = None,
+        region_id: str = None,
+    ):
+        # The name of the notification policy.
+        # 
+        # This parameter is required.
+        self.policy_name = policy_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class DeleteSchedulerxNotificationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: DeleteSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # The error message. Returned only when an error occurs.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = DeleteSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSchedulerxNotificationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSchedulerxNotificationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSchedulerxNotificationPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4251,6 +5136,7 @@ class GetAppGroupResponseBodyData(TeaModel):
         app_version: str = None,
         cur_jobs: int = None,
         description: str = None,
+        enable_log: bool = None,
         group_id: str = None,
         max_jobs: int = None,
         monitor_config_json: str = None,
@@ -4268,6 +5154,7 @@ class GetAppGroupResponseBodyData(TeaModel):
         self.cur_jobs = cur_jobs
         # The description of the application.
         self.description = description
+        self.enable_log = enable_log
         # The ID of the application.
         self.group_id = group_id
         # The maximum number of jobs that can be configured for the application group.
@@ -4303,6 +5190,8 @@ class GetAppGroupResponseBodyData(TeaModel):
             result['CurJobs'] = self.cur_jobs
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_log is not None:
+            result['EnableLog'] = self.enable_log
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.max_jobs is not None:
@@ -4329,6 +5218,8 @@ class GetAppGroupResponseBodyData(TeaModel):
             self.cur_jobs = m.get('CurJobs')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableLog') is not None:
+            self.enable_log = m.get('EnableLog')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('MaxJobs') is not None:
@@ -6079,16 +6970,34 @@ class GetOverviewRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value must be a UNIX timestamp (in seconds). If left empty, the current time is used.
         self.end_time = end_time
+        # The application group ID.
         self.group_id = group_id
+        # The metric type. Valid values:
+        # 
+        # *   0: the basic job data.
+        # *   1: the job running data.
+        # 
         # This parameter is required.
         self.metric_type = metric_type
+        # The unique identifier (UID) of the namespace.
         self.namespace = namespace
+        # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The query type. Valid values:
+        # 
+        # *   query: queries data in a time range.
+        # *   query_range: queries time series data in a time range.
+        # 
         # This parameter is required.
         self.operate = operate
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The beginning of the time range to query. The value must be a UNIX timestamp (in seconds).
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -6149,11 +7058,22 @@ class GetOverviewResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned in JSON format. Valid data types:
+        # 
+        # *   Basic job data.
+        # *   Job running data.
+        # *   Time series data for job execution: includes triggering statistics, records of successful and failed executions, and their associated timestamps within a specific time range.
         self.data = data
+        # Additional information. Returned only if an error occurs.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -7594,6 +8514,7 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         app_name: str = None,
         app_version: int = None,
         description: str = None,
+        enable_log: bool = None,
         group_id: str = None,
         namespace: str = None,
     ):
@@ -7607,6 +8528,7 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         self.app_version = app_version
         # The description of the application.
         self.description = description
+        self.enable_log = enable_log
         # The application ID.
         self.group_id = group_id
         # The ID of the namespace.
@@ -7631,6 +8553,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             result['AppVersion'] = self.app_version
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_log is not None:
+            result['EnableLog'] = self.enable_log
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.namespace is not None:
@@ -7649,6 +8573,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             self.app_version = m.get('AppVersion')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableLog') is not None:
+            self.enable_log = m.get('EnableLog')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('Namespace') is not None:
@@ -7803,13 +8729,22 @@ class ListJobScriptHistoryRequest(TeaModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
+        # The application ID. You can obtain the application ID on the Applications page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The job ID. You can obtain the job ID on the Tasks page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -7857,9 +8792,13 @@ class ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos(TeaModel):
         script_content: str = None,
         versiones_description: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The script content.
         self.script_content = script_content
+        # The description of the script version.
         self.versiones_description = versiones_description
 
     def validate(self):
@@ -7899,7 +8838,7 @@ class ListJobScriptHistoryResponseBodyData(TeaModel):
         self,
         job_script_history_infos: List[ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos] = None,
     ):
-        # -\
+        # The information about the job\\"s historical scripts.
         self.job_script_history_infos = job_script_history_infos
 
     def validate(self):
@@ -7939,11 +8878,19 @@ class ListJobScriptHistoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
-        # -\
+        # The information about the jobs.
         self.data = data
+        # The additional information returned only if an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true
+        # 
+        # false
         self.success = success
 
     def validate(self):
@@ -8906,6 +9853,346 @@ class ListNamespacesResponse(TeaModel):
         return self
 
 
+class ListWorkFlowsRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        namespace: str = None,
+        namespace_source: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        status: int = None,
+        workflow_name: str = None,
+    ):
+        # The ID of the application group.
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # The namespace ID.
+        # 
+        # This parameter is required.
+        self.namespace = namespace
+        # The source of the namespace. This parameter is required only for special sources.
+        self.namespace_source = namespace_source
+        # The page number.
+        self.page_num = page_num
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The job status.
+        # 
+        # *   **0**: disables the job.
+        # *   **1**: enables the routing policy.
+        self.status = status
+        # The workflow name.
+        self.workflow_name = workflow_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_source is not None:
+            result['NamespaceSource'] = self.namespace_source
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.workflow_name is not None:
+            result['WorkflowName'] = self.workflow_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceSource') is not None:
+            self.namespace_source = m.get('NamespaceSource')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WorkflowName') is not None:
+            self.workflow_name = m.get('WorkflowName')
+        return self
+
+
+class ListWorkFlowsResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        calendar: str = None,
+        creator: str = None,
+        description: str = None,
+        group_id: str = None,
+        max_concurrency: str = None,
+        name: str = None,
+        namespace: str = None,
+        time_expression: str = None,
+        time_type: str = None,
+        updater: str = None,
+        workflow_id: int = None,
+    ):
+        # The calendar.
+        self.calendar = calendar
+        # The creator.
+        self.creator = creator
+        # The job description.
+        self.description = description
+        # The application ID.
+        self.group_id = group_id
+        # The maximum concurrency.
+        self.max_concurrency = max_concurrency
+        # The workflow name.
+        self.name = name
+        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        self.namespace = namespace
+        # The time expression.
+        self.time_expression = time_expression
+        # The time type of the workflow.
+        self.time_type = time_type
+        # The updater.
+        self.updater = updater
+        # The workflow ID.
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar is not None:
+            result['Calendar'] = self.calendar
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.max_concurrency is not None:
+            result['MaxConcurrency'] = self.max_concurrency
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.time_expression is not None:
+            result['TimeExpression'] = self.time_expression
+        if self.time_type is not None:
+            result['TimeType'] = self.time_type
+        if self.updater is not None:
+            result['Updater'] = self.updater
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Calendar') is not None:
+            self.calendar = m.get('Calendar')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MaxConcurrency') is not None:
+            self.max_concurrency = m.get('MaxConcurrency')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('TimeExpression') is not None:
+            self.time_expression = m.get('TimeExpression')
+        if m.get('TimeType') is not None:
+            self.time_type = m.get('TimeType')
+        if m.get('Updater') is not None:
+            self.updater = m.get('Updater')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class ListWorkFlowsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        records: List[ListWorkFlowsResponseBodyDataRecords] = None,
+        total: int = None,
+    ):
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The row of data.
+        self.records = records
+        # The total number of entries returned.
+        self.total = total
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = ListWorkFlowsResponseBodyDataRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListWorkFlowsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListWorkFlowsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code.
+        self.code = code
+        # The data of the workflow.
+        self.data = data
+        # The error message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListWorkFlowsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListWorkFlowsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWorkFlowsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWorkFlowsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkflowInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -9184,6 +10471,242 @@ class ListWorkflowInstanceResponse(TeaModel):
         return self
 
 
+class ManageSchedulerxCalendarRequest(TeaModel):
+    def __init__(
+        self,
+        calendar_name: str = None,
+        incremental: bool = None,
+        month_days_content: str = None,
+        region_id: str = None,
+        year: int = None,
+    ):
+        # The calendar name.
+        # 
+        # This parameter is required.
+        self.calendar_name = calendar_name
+        # Specifies whether to perform an incremental update. Default value: false.
+        # 
+        # *   false: Updates the specified months and removes configurations for all other months.
+        # *   true: Updates only the specified months and preserves existing configurations for other months.
+        self.incremental = incremental
+        # The month and days.
+        # 
+        # This parameter is required.
+        self.month_days_content = month_days_content
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The year.
+        # 
+        # This parameter is required.
+        self.year = year
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_name is not None:
+            result['CalendarName'] = self.calendar_name
+        if self.incremental is not None:
+            result['Incremental'] = self.incremental
+        if self.month_days_content is not None:
+            result['MonthDaysContent'] = self.month_days_content
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.year is not None:
+            result['Year'] = self.year
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarName') is not None:
+            self.calendar_name = m.get('CalendarName')
+        if m.get('Incremental') is not None:
+            self.incremental = m.get('Incremental')
+        if m.get('MonthDaysContent') is not None:
+            self.month_days_content = m.get('MonthDaysContent')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Year') is not None:
+            self.year = m.get('Year')
+        return self
+
+
+class ManageSchedulerxCalendarResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The principal name.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ManageSchedulerxCalendarResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: ManageSchedulerxCalendarResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # Additional information. Returned only if an error occurs.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = ManageSchedulerxCalendarResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ManageSchedulerxCalendarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManageSchedulerxCalendarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManageSchedulerxCalendarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ManageSchedulerxJobSyncRequest(TeaModel):
     def __init__(
         self,
@@ -9195,17 +10718,30 @@ class ManageSchedulerxJobSyncRequest(TeaModel):
         target_group_id: str = None,
         target_namespace: str = None,
     ):
+        # The list of task IDs.
+        # 
         # This parameter is required.
         self.job_id_list = job_id_list
+        # The source of the namespace. Required only for specific third-party cases.
         self.namespace_source = namespace_source
+        # The source application group to which the task belongs.
+        # 
         # This parameter is required.
         self.original_group_id = original_group_id
+        # The source namespace where the task resides.
+        # 
         # This parameter is required.
         self.original_namespace = original_namespace
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the destination application group to which the task will be synchronized.
+        # 
         # This parameter is required.
         self.target_group_id = target_group_id
+        # The destination namespace to which the task will be synchronized.
+        # 
         # This parameter is required.
         self.target_namespace = target_namespace
 
@@ -9264,17 +10800,30 @@ class ManageSchedulerxJobSyncShrinkRequest(TeaModel):
         target_group_id: str = None,
         target_namespace: str = None,
     ):
+        # The list of task IDs.
+        # 
         # This parameter is required.
         self.job_id_list_shrink = job_id_list_shrink
+        # The source of the namespace. Required only for specific third-party cases.
         self.namespace_source = namespace_source
+        # The source application group to which the task belongs.
+        # 
         # This parameter is required.
         self.original_group_id = original_group_id
+        # The source namespace where the task resides.
+        # 
         # This parameter is required.
         self.original_namespace = original_namespace
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the destination application group to which the task will be synchronized.
+        # 
         # This parameter is required.
         self.target_group_id = target_group_id
+        # The destination namespace to which the task will be synchronized.
+        # 
         # This parameter is required.
         self.target_namespace = target_namespace
 
@@ -9330,9 +10879,13 @@ class ManageSchedulerxJobSyncResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The error message. Returned only when an error occurs.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9408,6 +10961,600 @@ class ManageSchedulerxJobSyncResponse(TeaModel):
         return self
 
 
+class ManageSchedulerxNotificationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        channel_time_range: str = None,
+        description: str = None,
+        policy_name: str = None,
+        region_id: str = None,
+    ):
+        # The time range configuration for notification channels.
+        # 
+        # >  See the supplementary description of ChannelTimeRange in the request parameters.
+        self.channel_time_range = channel_time_range
+        # The notification policy description.
+        self.description = description
+        # The name of the notification policy.
+        # 
+        # This parameter is required.
+        self.policy_name = policy_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_time_range is not None:
+            result['ChannelTimeRange'] = self.channel_time_range
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelTimeRange') is not None:
+            self.channel_time_range = m.get('ChannelTimeRange')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ManageSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ManageSchedulerxNotificationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: ManageSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # The error message, returned only when an error occurs.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = ManageSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ManageSchedulerxNotificationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManageSchedulerxNotificationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManageSchedulerxNotificationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadSchedulerxCalendarRequest(TeaModel):
+    def __init__(
+        self,
+        calendar_name: str = None,
+        fetch_calendar_detail: bool = None,
+        fetch_system_calendar: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        year: int = None,
+    ):
+        # The calendar name.
+        self.calendar_name = calendar_name
+        # Specifies whether to retrieve calendar details. The default value is false.
+        # 
+        # *   false: Returns only basic information without the detailed list of days for each month.
+        # *   true: Returns the detailed list of days for each month.
+        self.fetch_calendar_detail = fetch_calendar_detail
+        # Specifies whether to retrieve system calendars. The default value is false.
+        # 
+        # *   false: Returns only user-defined calendars.
+        # *   true: Returns both system calendars and user-defined calendars.
+        self.fetch_system_calendar = fetch_system_calendar
+        # The maximum number of entries to return on this call. The default value is 20.
+        self.max_results = max_results
+        # A token that specifies the starting position for retrieving the next page of data. You do not need to provide this parameter for the first request. An empty value indicates that all data has been read.
+        self.next_token = next_token
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The year.
+        self.year = year
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_name is not None:
+            result['CalendarName'] = self.calendar_name
+        if self.fetch_calendar_detail is not None:
+            result['FetchCalendarDetail'] = self.fetch_calendar_detail
+        if self.fetch_system_calendar is not None:
+            result['FetchSystemCalendar'] = self.fetch_system_calendar
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.year is not None:
+            result['Year'] = self.year
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarName') is not None:
+            self.calendar_name = m.get('CalendarName')
+        if m.get('FetchCalendarDetail') is not None:
+            self.fetch_calendar_detail = m.get('FetchCalendarDetail')
+        if m.get('FetchSystemCalendar') is not None:
+            self.fetch_system_calendar = m.get('FetchSystemCalendar')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Year') is not None:
+            self.year = m.get('Year')
+        return self
+
+
+class ReadSchedulerxCalendarResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication action.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ReadSchedulerxCalendarResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        calendar_name: str = None,
+        creator: str = None,
+        month_days_content: str = None,
+        system_calendar: bool = None,
+        year: int = None,
+    ):
+        # The calendar name.
+        self.calendar_name = calendar_name
+        # The creator.
+        self.creator = creator
+        # The months and days.
+        self.month_days_content = month_days_content
+        # Indicates whether it is a system calendar.
+        self.system_calendar = system_calendar
+        # The year.
+        self.year = year
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_name is not None:
+            result['CalendarName'] = self.calendar_name
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.month_days_content is not None:
+            result['MonthDaysContent'] = self.month_days_content
+        if self.system_calendar is not None:
+            result['SystemCalendar'] = self.system_calendar
+        if self.year is not None:
+            result['Year'] = self.year
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarName') is not None:
+            self.calendar_name = m.get('CalendarName')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('MonthDaysContent') is not None:
+            self.month_days_content = m.get('MonthDaysContent')
+        if m.get('SystemCalendar') is not None:
+            self.system_calendar = m.get('SystemCalendar')
+        if m.get('Year') is not None:
+            self.year = m.get('Year')
+        return self
+
+
+class ReadSchedulerxCalendarResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        records: List[ReadSchedulerxCalendarResponseBodyDataRecords] = None,
+        total: int = None,
+    ):
+        # The maximum number of entries returned.
+        self.max_results = max_results
+        # When there is more data to retrieve, the server returns a nextToken. You can use this token in a subsequent request to continue reading from where you left off.
+        self.next_token = next_token
+        # *\
+        self.records = records
+        # The total number of entries.
+        self.total = total
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = ReadSchedulerxCalendarResponseBodyDataRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ReadSchedulerxCalendarResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: ReadSchedulerxCalendarResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        data: ReadSchedulerxCalendarResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # *\
+        self.data = data
+        # The error message.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = ReadSchedulerxCalendarResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ReadSchedulerxCalendarResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadSchedulerxCalendarResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadSchedulerxCalendarResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadSchedulerxCalendarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReadSchedulerxDesignateDetailRequest(TeaModel):
     def __init__(
         self,
@@ -9418,14 +11565,27 @@ class ReadSchedulerxDesignateDetailRequest(TeaModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
+        # The information type of the specified workers that you want to query. Valid values: 1 and 2.
+        # 
+        # 1: the IP address of the specified workers.
+        # 2: the tags of the specified workers.
         self.designate_type = designate_type
+        # The ID of the application. You can obtain the application ID on the Applications page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The job ID. You can obtain the ID on the Tasks page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The unique identifier (UID) of the namespace. You can obtain the namespace UID on the Namespaces page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -9480,12 +11640,19 @@ class ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail(TeaModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication operation.
         self.auth_action = auth_action
+        # The principal name.
         self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):
@@ -9549,18 +11716,31 @@ class ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics(Tea
         share_pool_available_size: int = None,
         share_pool_queue_size: int = None,
     ):
+        # The most recent value of CPU workload.
         self.cpu_load_1 = cpu_load_1
+        # The average of the latest five values of CPU workload.
         self.cpu_load_5 = cpu_load_5
+        # The number of available CPU processors.
         self.cpu_processors = cpu_processors
+        # The total disk capacity in MB.
         self.disk_max = disk_max
+        # The disk usage.
         self.disk_usage = disk_usage
+        # The used disk space in MB.
         self.disk_used = disk_used
+        # The number of job executions.
         self.exec_count = exec_count
+        # The most recent value of heap memory usage.
         self.heap_1usage = heap_1usage
+        # The most recent value of used heap memory in MB.
         self.heap_1used = heap_1used
+        # The average of the latest five values of heap memory usage.
         self.heap_5usage = heap_5usage
+        # The maximum heap memory in MB.
         self.heap_max = heap_max
+        # The number of available resources in the shared pool.
         self.share_pool_available_size = share_pool_available_size
+        # The queue size in the shared pool.
         self.share_pool_queue_size = share_pool_queue_size
 
     def validate(self):
@@ -9643,13 +11823,29 @@ class ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos(TeaModel):
         starter: str = None,
         version: str = None,
     ):
+        # The status of the workers. Valid values: 
+        # 
+        # FREE: idle. 
+        # LOAD5_BUSY: The average of the latest five values of CPU workload is too high. 
+        # HEAP5_BUSY: The average of the latest five values of heap memory usage is too high. 
+        # DISK_BUSY: The disk usage is too high.
         self.busy = busy
+        # Indicates whether the workers are specified. Valid values: true and false.
         self.checked = checked
+        # The information returned based on the value of the DesignateType parameter.
+        # 
+        # *   If you set the DesignateType parameter to 2, the tags of the workers are returned.
+        # *   If you set the DesignateType parameter to 1, the IP addresses of the workers are returned.
         self.key = key
+        # The metric values.
         self.metrics = metrics
+        # Indicates whether the workers are offline.
         self.offline = offline
+        # The number of workers.
         self.size = size
+        # The startup method of the workers.
         self.starter = starter
+        # The version of the workers.
         self.version = version
 
     def validate(self):
@@ -9707,7 +11903,7 @@ class ReadSchedulerxDesignateDetailResponseBodyData(TeaModel):
         self,
         designate_detail_vos: List[ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos] = None,
     ):
-        # -\
+        # *\
         self.designate_detail_vos = designate_detail_vos
 
     def validate(self):
@@ -9748,12 +11944,17 @@ class ReadSchedulerxDesignateDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
+        # Th status code.
         self.code = code
-        # -\
+        # *\
         self.data = data
+        # The additional information returned only if an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9851,13 +12052,22 @@ class ReadSchedulerxDesignateInfoRequest(TeaModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
+        # The ID of the application. You can obtain the application ID on the **Applications** page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The job ID. You can obtain the ID on the Tasks page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The unique identifier (UID) of the namespace. You can obtain the namespace UID on the Namespaces page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -9908,12 +12118,19 @@ class ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail(TeaModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication operation.
         self.auth_action = auth_action
+        # The principal name.
         self.auth_principal_display_name = auth_principal_display_name
+        # The principal account.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):
@@ -9977,18 +12194,31 @@ class ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics(TeaMo
         share_pool_available_size: int = None,
         share_pool_queue_size: int = None,
     ):
+        # The most recent value of CPU workload.
         self.cpu_load_1 = cpu_load_1
+        # The average of the latest five values of CPU workload.
         self.cpu_load_5 = cpu_load_5
+        # The number of available CPU processors.
         self.cpu_processors = cpu_processors
+        # The total disk capacity in MB.
         self.disk_max = disk_max
+        # The disk usage.
         self.disk_usage = disk_usage
+        # The used disk space in MB.
         self.disk_used = disk_used
+        # The number of job executions.
         self.exec_count = exec_count
+        # The most recent value of heap memory usage.
         self.heap_1usage = heap_1usage
+        # The most recent value of used heap memory in MB.
         self.heap_1used = heap_1used
+        # The average of the latest five values of heap memory usage.
         self.heap_5usage = heap_5usage
+        # The maximum heap memory in MB.
         self.heap_max = heap_max
+        # The number of available resources in the shared pool.
         self.share_pool_available_size = share_pool_available_size
+        # The queue size in the shared pool.
         self.share_pool_queue_size = share_pool_queue_size
 
     def validate(self):
@@ -10071,13 +12301,32 @@ class ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos(TeaModel):
         starter: str = None,
         version: str = None,
     ):
+        # The status of the workers. Valid values:
+        # 
+        # *   FREE: idle.
+        # *   LOAD5_BUSY: The average of the latest five values of CPU workload is too high.
+        # *   HEAP5_BUSY: The average of the latest five values of heap memory usage is too high.
+        # *   DISK_BUSY: The disk usage is too high.
         self.busy = busy
+        # Indicates whether the workers are specified.
+        # 
+        # *   true: The workers are specified.
+        # *   false: The workers are not specified.
         self.checked = checked
+        # The information returned based on the value of the DesignateType parameter.
+        # 
+        # *   If you set the DesignateType parameter to 2, the tags of the workers are returned.
+        # *   If you set the DesignateType parameter to 1, the IP addresses of the workers are returned.
         self.key = key
+        # The metric values.
         self.metrics = metrics
+        # Indicates whether the workers are offline.
         self.offline = offline
+        # The number of workers.
         self.size = size
+        # The startup method of the workers.
         self.starter = starter
+        # The version of the workers.
         self.version = version
 
     def validate(self):
@@ -10137,9 +12386,21 @@ class ReadSchedulerxDesignateInfoResponseBodyData(TeaModel):
         designate_type: int = None,
         transferable: bool = None,
     ):
-        # -\
+        # *\
         self.designate_detail_vos = designate_detail_vos
+        # The information type of the specified workers.
+        # 
+        # *   1: the IP address of the specified workers.
+        # *   2: the tags of the specified workers.
+        # 
+        # >  The default value of the DesignateType parameter is 1.
         self.designate_type = designate_type
+        # Indicates whether to enable failover for the workers. If you set this parameter to true, the job is scheduled to other workers when the specified workers go offline.
+        # 
+        # *   true: enables failover for the workers.
+        # *   false: disables failover for the workers.
+        # 
+        # >  The default value of the Transferable parameter is false.
         self.transferable = transferable
 
     def validate(self):
@@ -10188,12 +12449,17 @@ class ReadSchedulerxDesignateInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
+        # The HTTP status code returned.
         self.code = code
-        # -\
+        # *\
         self.data = data
+        # The error message returned only if an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10278,6 +12544,427 @@ class ReadSchedulerxDesignateInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReadSchedulerxDesignateInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadSchedulerxNotificationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        policy_name: str = None,
+        region_id: str = None,
+    ):
+        # The maximum number of entries returned. Default value: 20.
+        self.max_results = max_results
+        # The cursor for pagination. Leave this parameter empty for the first request. When the returned value is empty, all data has been retrieved.
+        self.next_token = next_token
+        # The name of the notification policy. Supports fuzzy matching.
+        self.policy_name = policy_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ReadSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        # The authentication operation.
+        self.auth_action = auth_action
+        # The principal name.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The account of the principal.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The principal type.
+        self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The permission denial type.
+        self.no_permission_type = no_permission_type
+        # The policy type.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ReadSchedulerxNotificationPolicyResponseBodyDataRecordsReferenceApps(TeaModel):
+    def __init__(
+        self,
+        app_group_id: int = None,
+        group_id: str = None,
+        namespace_name: str = None,
+        namespace_uid: str = None,
+    ):
+        # The ID of the task group.
+        self.app_group_id = app_group_id
+        # The ID of the application.
+        self.group_id = group_id
+        # The name of the namespace.
+        self.namespace_name = namespace_name
+        # The unique identifier of the namespace.
+        self.namespace_uid = namespace_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group_id is not None:
+            result['AppGroupId'] = self.app_group_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        if self.namespace_uid is not None:
+            result['NamespaceUid'] = self.namespace_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroupId') is not None:
+            self.app_group_id = m.get('AppGroupId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        if m.get('NamespaceUid') is not None:
+            self.namespace_uid = m.get('NamespaceUid')
+        return self
+
+
+class ReadSchedulerxNotificationPolicyResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        channel_time_range: str = None,
+        create_time: str = None,
+        creator: str = None,
+        description: str = None,
+        policy_name: str = None,
+        reference_apps: List[ReadSchedulerxNotificationPolicyResponseBodyDataRecordsReferenceApps] = None,
+        update_time: str = None,
+        updater: str = None,
+    ):
+        # The configuration of the notification policy.
+        self.channel_time_range = channel_time_range
+        # The creation time.
+        self.create_time = create_time
+        # The creator.
+        self.creator = creator
+        # The description of the notification policy.
+        self.description = description
+        # The name of the notification policy.
+        self.policy_name = policy_name
+        # The list of applications associated with the notification policy.
+        self.reference_apps = reference_apps
+        # The update time.
+        self.update_time = update_time
+        # The updater.
+        self.updater = updater
+
+    def validate(self):
+        if self.reference_apps:
+            for k in self.reference_apps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_time_range is not None:
+            result['ChannelTimeRange'] = self.channel_time_range
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        result['ReferenceApps'] = []
+        if self.reference_apps is not None:
+            for k in self.reference_apps:
+                result['ReferenceApps'].append(k.to_map() if k else None)
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.updater is not None:
+            result['Updater'] = self.updater
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelTimeRange') is not None:
+            self.channel_time_range = m.get('ChannelTimeRange')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        self.reference_apps = []
+        if m.get('ReferenceApps') is not None:
+            for k in m.get('ReferenceApps'):
+                temp_model = ReadSchedulerxNotificationPolicyResponseBodyDataRecordsReferenceApps()
+                self.reference_apps.append(temp_model.from_map(k))
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Updater') is not None:
+            self.updater = m.get('Updater')
+        return self
+
+
+class ReadSchedulerxNotificationPolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        records: List[ReadSchedulerxNotificationPolicyResponseBodyDataRecords] = None,
+        total: int = None,
+    ):
+        # The maximum number of entries returned.
+        self.max_results = max_results
+        # When data that matches the query conditions has not been fully retrieved, the server returns nextToken. You can then use nextToken to continue retrieving the remaining data.
+        self.next_token = next_token
+        # The data records.
+        self.records = records
+        # The total number of records.
+        self.total = total
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = ReadSchedulerxNotificationPolicyResponseBodyDataRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ReadSchedulerxNotificationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: ReadSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail = None,
+        code: int = None,
+        data: ReadSchedulerxNotificationPolicyResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The access denial details.
+        self.access_denied_detail = access_denied_detail
+        # The status code.
+        self.code = code
+        # *\
+        self.data = data
+        # The error message.
+        self.message = message
+        # The unique request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = ReadSchedulerxNotificationPolicyResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ReadSchedulerxNotificationPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReadSchedulerxNotificationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReadSchedulerxNotificationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReadSchedulerxNotificationPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11292,6 +13979,7 @@ class UpdateAppGroupRequest(TeaModel):
         self,
         app_version: int = None,
         description: str = None,
+        enable_log: bool = None,
         group_id: str = None,
         max_concurrency: int = None,
         monitor_config_json: str = None,
@@ -11304,6 +13992,7 @@ class UpdateAppGroupRequest(TeaModel):
         self.app_version = app_version
         # The description of the application.
         self.description = description
+        self.enable_log = enable_log
         # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
         # 
         # This parameter is required.
@@ -11337,6 +14026,8 @@ class UpdateAppGroupRequest(TeaModel):
             result['AppVersion'] = self.app_version
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_log is not None:
+            result['EnableLog'] = self.enable_log
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.max_concurrency is not None:
@@ -11359,6 +14050,8 @@ class UpdateAppGroupRequest(TeaModel):
             self.app_version = m.get('AppVersion')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableLog') is not None:
+            self.enable_log = m.get('EnableLog')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('MaxConcurrency') is not None:
@@ -11951,16 +14644,27 @@ class UpdateJobScriptRequest(TeaModel):
         script_content: str = None,
         version_description: str = None,
     ):
+        # The application ID. You can obtain the application ID on the Applications page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The job ID. You can obtain the ID on the Tasks page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The script content.
         self.script_content = script_content
+        # The description of the script version.
         self.version_description = version_description
 
     def validate(self):
@@ -12015,9 +14719,13 @@ class UpdateJobScriptResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned code.
         self.code = code
+        # The additional information returned only if an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -12101,10 +14809,16 @@ class UpdateNamespaceRequest(TeaModel):
         namespace_name: str = None,
         region_id: str = None,
     ):
+        # The description of the namespace.
         self.description = description
+        # The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -12148,9 +14862,13 @@ class UpdateNamespaceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned code.
         self.code = code
+        # The additional information returned only if an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

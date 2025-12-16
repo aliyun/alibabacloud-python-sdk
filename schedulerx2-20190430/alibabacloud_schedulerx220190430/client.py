@@ -1183,6 +1183,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_route_strategy_with_options_async(request, runtime)
 
+    def create_schedulerx_calendar_with_options(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
+        """
+        @summary Creates a calendar.
+        
+        @param request: CreateSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.month_days_content):
+            body['MonthDaysContent'] = request.month_days_content
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            body['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateSchedulerxCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_schedulerx_calendar_with_options_async(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
+        """
+        @summary Creates a calendar.
+        
+        @param request: CreateSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.month_days_content):
+            body['MonthDaysContent'] = request.month_days_content
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            body['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateSchedulerxCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_schedulerx_calendar(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
+        """
+        @summary Creates a calendar.
+        
+        @param request: CreateSchedulerxCalendarRequest
+        @return: CreateSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_schedulerx_calendar_with_options(request, runtime)
+
+    async def create_schedulerx_calendar_async(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.CreateSchedulerxCalendarResponse:
+        """
+        @summary Creates a calendar.
+        
+        @param request: CreateSchedulerxCalendarRequest
+        @return: CreateSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_schedulerx_calendar_with_options_async(request, runtime)
+
+    def create_schedulerx_notification_policy_with_options(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
+        """
+        @summary Creates a notification policy.
+        
+        @param request: CreateSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_time_range):
+            body['ChannelTimeRange'] = request.channel_time_range
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_schedulerx_notification_policy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
+        """
+        @summary Creates a notification policy.
+        
+        @param request: CreateSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_time_range):
+            body['ChannelTimeRange'] = request.channel_time_range
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_schedulerx_notification_policy(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
+        """
+        @summary Creates a notification policy.
+        
+        @param request: CreateSchedulerxNotificationPolicyRequest
+        @return: CreateSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_schedulerx_notification_policy_with_options(request, runtime)
+
+    async def create_schedulerx_notification_policy_async(
+        self,
+        request: schedulerx_220190430_models.CreateSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.CreateSchedulerxNotificationPolicyResponse:
+        """
+        @summary Creates a notification policy.
+        
+        @param request: CreateSchedulerxNotificationPolicyRequest
+        @return: CreateSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_schedulerx_notification_policy_with_options_async(request, runtime)
+
     def create_workflow_with_options(
         self,
         request: schedulerx_220190430_models.CreateWorkflowRequest,
@@ -1521,7 +1737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
         """
-        @summary 删除命名空间
+        @summary Deletes a namespace.
         
         @param request: DeleteNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1558,7 +1774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
         """
-        @summary 删除命名空间
+        @summary Deletes a namespace.
         
         @param request: DeleteNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1594,7 +1810,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteNamespaceRequest,
     ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
         """
-        @summary 删除命名空间
+        @summary Deletes a namespace.
         
         @param request: DeleteNamespaceRequest
         @return: DeleteNamespaceResponse
@@ -1607,7 +1823,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteNamespaceRequest,
     ) -> schedulerx_220190430_models.DeleteNamespaceResponse:
         """
-        @summary 删除命名空间
+        @summary Deletes a namespace.
         
         @param request: DeleteNamespaceRequest
         @return: DeleteNamespaceResponse
@@ -1722,6 +1938,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_route_strategy_with_options_async(request, runtime)
+
+    def delete_schedulerx_calendar_with_options(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
+        """
+        @summary Deletes a calendar.
+        
+        @param request: DeleteSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            body['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteSchedulerxCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_schedulerx_calendar_with_options_async(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
+        """
+        @summary Deletes a calendar.
+        
+        @param request: DeleteSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            body['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteSchedulerxCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_schedulerx_calendar(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
+        """
+        @summary Deletes a calendar.
+        
+        @param request: DeleteSchedulerxCalendarRequest
+        @return: DeleteSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_schedulerx_calendar_with_options(request, runtime)
+
+    async def delete_schedulerx_calendar_async(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxCalendarResponse:
+        """
+        @summary Deletes a calendar.
+        
+        @param request: DeleteSchedulerxCalendarRequest
+        @return: DeleteSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_schedulerx_calendar_with_options_async(request, runtime)
+
+    def delete_schedulerx_notification_policy_with_options(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
+        """
+        @summary Deletes a notification policy.
+        
+        @param request: DeleteSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_schedulerx_notification_policy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
+        """
+        @summary Deletes a notification policy.
+        
+        @param request: DeleteSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_schedulerx_notification_policy(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
+        """
+        @summary Deletes a notification policy.
+        
+        @param request: DeleteSchedulerxNotificationPolicyRequest
+        @return: DeleteSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_schedulerx_notification_policy_with_options(request, runtime)
+
+    async def delete_schedulerx_notification_policy_async(
+        self,
+        request: schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.DeleteSchedulerxNotificationPolicyResponse:
+        """
+        @summary Deletes a notification policy.
+        
+        @param request: DeleteSchedulerxNotificationPolicyRequest
+        @return: DeleteSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_schedulerx_notification_policy_with_options_async(request, runtime)
 
     def delete_workflow_with_options(
         self,
@@ -3041,7 +3461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
         """
-        @summary 查询概览数据信息
+        @summary Retrieves job scheduling data for Professional Edition applications.
         
         @param request: GetOverviewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3090,7 +3510,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
         """
-        @summary 查询概览数据信息
+        @summary Retrieves job scheduling data for Professional Edition applications.
         
         @param request: GetOverviewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3138,7 +3558,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetOverviewRequest,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
         """
-        @summary 查询概览数据信息
+        @summary Retrieves job scheduling data for Professional Edition applications.
         
         @param request: GetOverviewRequest
         @return: GetOverviewResponse
@@ -3151,7 +3571,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetOverviewRequest,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
         """
-        @summary 查询概览数据信息
+        @summary Retrieves job scheduling data for Professional Edition applications.
         
         @param request: GetOverviewRequest
         @return: GetOverviewResponse
@@ -3705,7 +4125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
         """
-        @summary 获取任务脚本历史列表
+        @summary Queries historical scripts of a job.
         
         @param request: ListJobScriptHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3748,7 +4168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
         """
-        @summary 获取任务脚本历史列表
+        @summary Queries historical scripts of a job.
         
         @param request: ListJobScriptHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3790,7 +4210,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
     ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
         """
-        @summary 获取任务脚本历史列表
+        @summary Queries historical scripts of a job.
         
         @param request: ListJobScriptHistoryRequest
         @return: ListJobScriptHistoryResponse
@@ -3803,7 +4223,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListJobScriptHistoryRequest,
     ) -> schedulerx_220190430_models.ListJobScriptHistoryResponse:
         """
-        @summary 获取任务脚本历史列表
+        @summary Queries historical scripts of a job.
         
         @param request: ListJobScriptHistoryRequest
         @return: ListJobScriptHistoryResponse
@@ -4063,6 +4483,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
 
+    def list_work_flows_with_options(
+        self,
+        request: schedulerx_220190430_models.ListWorkFlowsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
+        """
+        @summary Queries the information of a workflow.
+        
+        @param request: ListWorkFlowsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkFlowsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkFlows',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ListWorkFlowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_work_flows_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ListWorkFlowsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
+        """
+        @summary Queries the information of a workflow.
+        
+        @param request: ListWorkFlowsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkFlowsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkFlows',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ListWorkFlowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_work_flows(
+        self,
+        request: schedulerx_220190430_models.ListWorkFlowsRequest,
+    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
+        """
+        @summary Queries the information of a workflow.
+        
+        @param request: ListWorkFlowsRequest
+        @return: ListWorkFlowsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_work_flows_with_options(request, runtime)
+
+    async def list_work_flows_async(
+        self,
+        request: schedulerx_220190430_models.ListWorkFlowsRequest,
+    ) -> schedulerx_220190430_models.ListWorkFlowsResponse:
+        """
+        @summary Queries the information of a workflow.
+        
+        @param request: ListWorkFlowsRequest
+        @return: ListWorkFlowsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_work_flows_with_options_async(request, runtime)
+
     def list_workflow_instance_with_options(
         self,
         request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
@@ -4155,13 +4699,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_workflow_instance_with_options_async(request, runtime)
 
+    def manage_schedulerx_calendar_with_options(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
+        """
+        @summary Updates a calendar.
+        
+        @param request: ManageSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.incremental):
+            body['Incremental'] = request.incremental
+        if not UtilClient.is_unset(request.month_days_content):
+            body['MonthDaysContent'] = request.month_days_content
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            body['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ManageSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ManageSchedulerxCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_schedulerx_calendar_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
+        """
+        @summary Updates a calendar.
+        
+        @param request: ManageSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.incremental):
+            body['Incremental'] = request.incremental
+        if not UtilClient.is_unset(request.month_days_content):
+            body['MonthDaysContent'] = request.month_days_content
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            body['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ManageSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ManageSchedulerxCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manage_schedulerx_calendar(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
+        """
+        @summary Updates a calendar.
+        
+        @param request: ManageSchedulerxCalendarRequest
+        @return: ManageSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.manage_schedulerx_calendar_with_options(request, runtime)
+
+    async def manage_schedulerx_calendar_async(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.ManageSchedulerxCalendarResponse:
+        """
+        @summary Updates a calendar.
+        
+        @param request: ManageSchedulerxCalendarRequest
+        @return: ManageSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.manage_schedulerx_calendar_with_options_async(request, runtime)
+
     def manage_schedulerx_job_sync_with_options(
         self,
         tmp_req: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
         """
-        @summary 同步任务
+        @summary Synchronizes tasks across namespaces.
         
         @param tmp_req: ManageSchedulerxJobSyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4212,7 +4868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
         """
-        @summary 同步任务
+        @summary Synchronizes tasks across namespaces.
         
         @param tmp_req: ManageSchedulerxJobSyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4262,7 +4918,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
     ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
         """
-        @summary 同步任务
+        @summary Synchronizes tasks across namespaces.
         
         @param request: ManageSchedulerxJobSyncRequest
         @return: ManageSchedulerxJobSyncResponse
@@ -4275,7 +4931,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ManageSchedulerxJobSyncRequest,
     ) -> schedulerx_220190430_models.ManageSchedulerxJobSyncResponse:
         """
-        @summary 同步任务
+        @summary Synchronizes tasks across namespaces.
         
         @param request: ManageSchedulerxJobSyncRequest
         @return: ManageSchedulerxJobSyncResponse
@@ -4283,13 +4939,241 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.manage_schedulerx_job_sync_with_options_async(request, runtime)
 
+    def manage_schedulerx_notification_policy_with_options(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
+        """
+        @summary Updates a notification policy.
+        
+        @param request: ManageSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_time_range):
+            body['ChannelTimeRange'] = request.channel_time_range
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ManageSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_schedulerx_notification_policy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
+        """
+        @summary Updates a notification policy.
+        
+        @param request: ManageSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_time_range):
+            body['ChannelTimeRange'] = request.channel_time_range
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ManageSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manage_schedulerx_notification_policy(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
+        """
+        @summary Updates a notification policy.
+        
+        @param request: ManageSchedulerxNotificationPolicyRequest
+        @return: ManageSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.manage_schedulerx_notification_policy_with_options(request, runtime)
+
+    async def manage_schedulerx_notification_policy_async(
+        self,
+        request: schedulerx_220190430_models.ManageSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.ManageSchedulerxNotificationPolicyResponse:
+        """
+        @summary Updates a notification policy.
+        
+        @param request: ManageSchedulerxNotificationPolicyRequest
+        @return: ManageSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.manage_schedulerx_notification_policy_with_options_async(request, runtime)
+
+    def read_schedulerx_calendar_with_options(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
+        """
+        @summary Retrieves the information of a calendar.
+        
+        @param request: ReadSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            query['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.fetch_calendar_detail):
+            query['FetchCalendarDetail'] = request.fetch_calendar_detail
+        if not UtilClient.is_unset(request.fetch_system_calendar):
+            query['FetchSystemCalendar'] = request.fetch_system_calendar
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            query['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_schedulerx_calendar_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
+        """
+        @summary Retrieves the information of a calendar.
+        
+        @param request: ReadSchedulerxCalendarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxCalendarResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.calendar_name):
+            query['CalendarName'] = request.calendar_name
+        if not UtilClient.is_unset(request.fetch_calendar_detail):
+            query['FetchCalendarDetail'] = request.fetch_calendar_detail
+        if not UtilClient.is_unset(request.fetch_system_calendar):
+            query['FetchSystemCalendar'] = request.fetch_system_calendar
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.year):
+            query['Year'] = request.year
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxCalendar',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_schedulerx_calendar(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
+        """
+        @summary Retrieves the information of a calendar.
+        
+        @param request: ReadSchedulerxCalendarRequest
+        @return: ReadSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_schedulerx_calendar_with_options(request, runtime)
+
+    async def read_schedulerx_calendar_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxCalendarRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxCalendarResponse:
+        """
+        @summary Retrieves the information of a calendar.
+        
+        @param request: ReadSchedulerxCalendarRequest
+        @return: ReadSchedulerxCalendarResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_schedulerx_calendar_with_options_async(request, runtime)
+
     def read_schedulerx_designate_detail_with_options(
         self,
         request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
         """
-        @summary 获取机器详细信息
+        @summary Queries detailed information of the workers specified by a job.
         
         @param request: ReadSchedulerxDesignateDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4334,7 +5218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
         """
-        @summary 获取机器详细信息
+        @summary Queries detailed information of the workers specified by a job.
         
         @param request: ReadSchedulerxDesignateDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4378,7 +5262,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
         """
-        @summary 获取机器详细信息
+        @summary Queries detailed information of the workers specified by a job.
         
         @param request: ReadSchedulerxDesignateDetailRequest
         @return: ReadSchedulerxDesignateDetailResponse
@@ -4391,7 +5275,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ReadSchedulerxDesignateDetailRequest,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateDetailResponse:
         """
-        @summary 获取机器详细信息
+        @summary Queries detailed information of the workers specified by a job.
         
         @param request: ReadSchedulerxDesignateDetailRequest
         @return: ReadSchedulerxDesignateDetailResponse
@@ -4405,7 +5289,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
         """
-        @summary 获取指定机器基本信息
+        @summary Queries the basic information of specified workers.
         
         @param request: ReadSchedulerxDesignateInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4448,7 +5332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
         """
-        @summary 获取指定机器基本信息
+        @summary Queries the basic information of specified workers.
         
         @param request: ReadSchedulerxDesignateInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4490,7 +5374,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
         """
-        @summary 获取指定机器基本信息
+        @summary Queries the basic information of specified workers.
         
         @param request: ReadSchedulerxDesignateInfoRequest
         @return: ReadSchedulerxDesignateInfoResponse
@@ -4503,13 +5387,121 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ReadSchedulerxDesignateInfoRequest,
     ) -> schedulerx_220190430_models.ReadSchedulerxDesignateInfoResponse:
         """
-        @summary 获取指定机器基本信息
+        @summary Queries the basic information of specified workers.
         
         @param request: ReadSchedulerxDesignateInfoRequest
         @return: ReadSchedulerxDesignateInfoResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.read_schedulerx_designate_info_with_options_async(request, runtime)
+
+    def read_schedulerx_notification_policy_with_options(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
+        """
+        @summary Queries notification policies.
+        
+        @param request: ReadSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def read_schedulerx_notification_policy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
+        """
+        @summary Queries notification policies.
+        
+        @param request: ReadSchedulerxNotificationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadSchedulerxNotificationPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReadSchedulerxNotificationPolicy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def read_schedulerx_notification_policy(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
+        """
+        @summary Queries notification policies.
+        
+        @param request: ReadSchedulerxNotificationPolicyRequest
+        @return: ReadSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.read_schedulerx_notification_policy_with_options(request, runtime)
+
+    async def read_schedulerx_notification_policy_async(
+        self,
+        request: schedulerx_220190430_models.ReadSchedulerxNotificationPolicyRequest,
+    ) -> schedulerx_220190430_models.ReadSchedulerxNotificationPolicyResponse:
+        """
+        @summary Queries notification policies.
+        
+        @param request: ReadSchedulerxNotificationPolicyRequest
+        @return: ReadSchedulerxNotificationPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.read_schedulerx_notification_policy_with_options_async(request, runtime)
 
     def rerun_job_with_options(
         self,
@@ -5205,6 +6197,8 @@ class Client(OpenApiClient):
             query['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_log):
+            query['EnableLog'] = request.enable_log
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.max_concurrency):
@@ -5256,6 +6250,8 @@ class Client(OpenApiClient):
             query['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_log):
+            query['EnableLog'] = request.enable_log
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.max_concurrency):
@@ -5569,7 +6565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
         """
-        @summary 更新任务执行脚本
+        @summary Updates the execution script of a job.
         
         @param request: UpdateJobScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5616,7 +6612,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
         """
-        @summary 更新任务执行脚本
+        @summary Updates the execution script of a job.
         
         @param request: UpdateJobScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5662,7 +6658,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateJobScriptRequest,
     ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
         """
-        @summary 更新任务执行脚本
+        @summary Updates the execution script of a job.
         
         @param request: UpdateJobScriptRequest
         @return: UpdateJobScriptResponse
@@ -5675,7 +6671,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateJobScriptRequest,
     ) -> schedulerx_220190430_models.UpdateJobScriptResponse:
         """
-        @summary 更新任务执行脚本
+        @summary Updates the execution script of a job.
         
         @param request: UpdateJobScriptRequest
         @return: UpdateJobScriptResponse
@@ -5689,7 +6685,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
         """
-        @summary 更新命名空间
+        @summary Updates a namespace.
         
         @param request: UpdateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5730,7 +6726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
         """
-        @summary 更新命名空间
+        @summary Updates a namespace.
         
         @param request: UpdateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5770,7 +6766,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateNamespaceRequest,
     ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
         """
-        @summary 更新命名空间
+        @summary Updates a namespace.
         
         @param request: UpdateNamespaceRequest
         @return: UpdateNamespaceResponse
@@ -5783,7 +6779,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateNamespaceRequest,
     ) -> schedulerx_220190430_models.UpdateNamespaceResponse:
         """
-        @summary 更新命名空间
+        @summary Updates a namespace.
         
         @param request: UpdateNamespaceRequest
         @return: UpdateNamespaceResponse
