@@ -1,3 +1,11 @@
+2025-12-16 Version: 1.37.3
+- Update API AddDatasetDocument: add request parameters Document.Metadata.
+- Update API GetDatasetDocument: add request parameters IncludeFields.
+- Update API GetDatasetDocument: add response parameters Body.Data.DocType.
+- Update API GetDatasetDocument: add response parameters Body.Data.Metadata.
+- Update API GetDatasetDocument: add response parameters Body.Data.Status.
+
+
 2025-12-11 Version: 1.37.2
 - Update API ListDocumentRetrieve: add request parameters SubjectClassify.
 

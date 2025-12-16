@@ -7119,17 +7119,21 @@ class Client(OpenApiClient):
 
     def get_dataset_document_with_options(
         self,
-        request: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
+        tmp_req: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetDatasetDocumentResponse:
         """
         @summary 获取数据集文档
         
-        @param request: GetDatasetDocumentRequest
+        @param tmp_req: GetDatasetDocumentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDatasetDocumentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.GetDatasetDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.include_fields):
+            request.include_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.include_fields, 'IncludeFields', 'json')
         body = {}
         if not UtilClient.is_unset(request.dataset_id):
             body['DatasetId'] = request.dataset_id
@@ -7139,6 +7143,8 @@ class Client(OpenApiClient):
             body['DocId'] = request.doc_id
         if not UtilClient.is_unset(request.doc_uuid):
             body['DocUuid'] = request.doc_uuid
+        if not UtilClient.is_unset(request.include_fields_shrink):
+            body['IncludeFields'] = request.include_fields_shrink
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -7162,17 +7168,21 @@ class Client(OpenApiClient):
 
     async def get_dataset_document_with_options_async(
         self,
-        request: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
+        tmp_req: ai_miao_bi_20230801_models.GetDatasetDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetDatasetDocumentResponse:
         """
         @summary 获取数据集文档
         
-        @param request: GetDatasetDocumentRequest
+        @param tmp_req: GetDatasetDocumentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDatasetDocumentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.GetDatasetDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.include_fields):
+            request.include_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.include_fields, 'IncludeFields', 'json')
         body = {}
         if not UtilClient.is_unset(request.dataset_id):
             body['DatasetId'] = request.dataset_id
@@ -7182,6 +7192,8 @@ class Client(OpenApiClient):
             body['DocId'] = request.doc_id
         if not UtilClient.is_unset(request.doc_uuid):
             body['DocUuid'] = request.doc_uuid
+        if not UtilClient.is_unset(request.include_fields_shrink):
+            body['IncludeFields'] = request.include_fields_shrink
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
