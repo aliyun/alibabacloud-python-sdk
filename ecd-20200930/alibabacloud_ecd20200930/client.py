@@ -1887,6 +1887,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
         """
+        @description    The cloud computers for which you want to change their policies must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        
         @param request: BatchModifyEntitlementRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BatchModifyEntitlementResponse
@@ -1932,6 +1936,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
         """
+        @description    The cloud computers for which you want to change their policies must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        
         @param request: BatchModifyEntitlementRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BatchModifyEntitlementResponse
@@ -1976,6 +1984,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.BatchModifyEntitlementRequest,
     ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
         """
+        @description    The cloud computers for which you want to change their policies must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        
         @param request: BatchModifyEntitlementRequest
         @return: BatchModifyEntitlementResponse
         """
@@ -1987,6 +1999,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.BatchModifyEntitlementRequest,
     ) -> ecd_20200930_models.BatchModifyEntitlementResponse:
         """
+        @description    The cloud computers for which you want to change their policies must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        
         @param request: BatchModifyEntitlementRequest
         @return: BatchModifyEntitlementResponse
         """
@@ -16079,6 +16095,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_desktop_records_with_options_async(request, runtime)
 
+    def describe_global_timer_batches_with_options(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerBatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeGlobalTimerBatchesResponse:
+        """
+        @summary 查询全局定时任务Batch记录
+        
+        @param request: DescribeGlobalTimerBatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalTimerBatchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        if not UtilClient.is_unset(request.timer_type):
+            query['TimerType'] = request.timer_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalTimerBatches',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeGlobalTimerBatchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_timer_batches_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerBatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeGlobalTimerBatchesResponse:
+        """
+        @summary 查询全局定时任务Batch记录
+        
+        @param request: DescribeGlobalTimerBatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalTimerBatchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        if not UtilClient.is_unset(request.timer_type):
+            query['TimerType'] = request.timer_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalTimerBatches',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeGlobalTimerBatchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_timer_batches(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerBatchesRequest,
+    ) -> ecd_20200930_models.DescribeGlobalTimerBatchesResponse:
+        """
+        @summary 查询全局定时任务Batch记录
+        
+        @param request: DescribeGlobalTimerBatchesRequest
+        @return: DescribeGlobalTimerBatchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_timer_batches_with_options(request, runtime)
+
+    async def describe_global_timer_batches_async(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerBatchesRequest,
+    ) -> ecd_20200930_models.DescribeGlobalTimerBatchesResponse:
+        """
+        @summary 查询全局定时任务Batch记录
+        
+        @param request: DescribeGlobalTimerBatchesRequest
+        @return: DescribeGlobalTimerBatchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_timer_batches_with_options_async(request, runtime)
+
+    def describe_global_timer_records_with_options(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeGlobalTimerRecordsResponse:
+        """
+        @summary Queries the execution records of scheduled tasks on cloud computers.
+        
+        @param request: DescribeGlobalTimerRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalTimerRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_id):
+            query['BatchId'] = request.batch_id
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.result_category):
+            query['ResultCategory'] = request.result_category
+        if not UtilClient.is_unset(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        if not UtilClient.is_unset(request.timer_result):
+            query['TimerResult'] = request.timer_result
+        if not UtilClient.is_unset(request.timer_types):
+            query['TimerTypes'] = request.timer_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalTimerRecords',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeGlobalTimerRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_timer_records_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeGlobalTimerRecordsResponse:
+        """
+        @summary Queries the execution records of scheduled tasks on cloud computers.
+        
+        @param request: DescribeGlobalTimerRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalTimerRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_id):
+            query['BatchId'] = request.batch_id
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.result_category):
+            query['ResultCategory'] = request.result_category
+        if not UtilClient.is_unset(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        if not UtilClient.is_unset(request.timer_result):
+            query['TimerResult'] = request.timer_result
+        if not UtilClient.is_unset(request.timer_types):
+            query['TimerTypes'] = request.timer_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalTimerRecords',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeGlobalTimerRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_timer_records(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerRecordsRequest,
+    ) -> ecd_20200930_models.DescribeGlobalTimerRecordsResponse:
+        """
+        @summary Queries the execution records of scheduled tasks on cloud computers.
+        
+        @param request: DescribeGlobalTimerRecordsRequest
+        @return: DescribeGlobalTimerRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_timer_records_with_options(request, runtime)
+
+    async def describe_global_timer_records_async(
+        self,
+        request: ecd_20200930_models.DescribeGlobalTimerRecordsRequest,
+    ) -> ecd_20200930_models.DescribeGlobalTimerRecordsResponse:
+        """
+        @summary Queries the execution records of scheduled tasks on cloud computers.
+        
+        @param request: DescribeGlobalTimerRecordsRequest
+        @return: DescribeGlobalTimerRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_timer_records_with_options_async(request, runtime)
+
     def describe_guest_applications_with_options(
         self,
         request: ecd_20200930_models.DescribeGuestApplicationsRequest,
@@ -29327,6 +29591,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies a custom cloud computer template.
         
+        @description *\
+        *Warning** This operation employs the full parameter update logic to maintain compatibility between the no-configuration logic and the default update logic. In other words, any unspecified parameters are treated as empty.
+        
         @param request: ModifyTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTemplateResponse
@@ -29405,6 +29672,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies a custom cloud computer template.
         
+        @description *\
+        *Warning** This operation employs the full parameter update logic to maintain compatibility between the no-configuration logic and the default update logic. In other words, any unspecified parameters are treated as empty.
+        
         @param request: ModifyTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTemplateResponse
@@ -29482,6 +29752,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies a custom cloud computer template.
         
+        @description *\
+        *Warning** This operation employs the full parameter update logic to maintain compatibility between the no-configuration logic and the default update logic. In other words, any unspecified parameters are treated as empty.
+        
         @param request: ModifyTemplateRequest
         @return: ModifyTemplateResponse
         """
@@ -29494,6 +29767,9 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.ModifyTemplateResponse:
         """
         @summary Modifies a custom cloud computer template.
+        
+        @description *\
+        *Warning** This operation employs the full parameter update logic to maintain compatibility between the no-configuration logic and the default update logic. In other words, any unspecified parameters are treated as empty.
         
         @param request: ModifyTemplateRequest
         @return: ModifyTemplateResponse

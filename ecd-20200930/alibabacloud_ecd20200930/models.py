@@ -2882,14 +2882,27 @@ class BatchModifyEntitlementRequest(TeaModel):
         region_id: str = None,
         strategy: str = None,
     ):
+        # The IDs of the cloud computers for which you want to modify end users.
+        # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        # The IDs of the users.
         self.end_user_id = end_user_id
+        # The number of cloud computers allocated to each user.
         self.max_desktop_per_user = max_desktop_per_user
+        # The number of users assigned to each cloud computer.
         self.max_user_per_desktop = max_user_per_desktop
+        # Whether to preview the assign results instead of actually assigning cloud computers.
         self.preview = preview
+        # The ID of the region. Call the DescribeRegions operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The disproportional assignment policy. Valid values:
+        # 
+        # AVERAGE: The system preferentially guarantees that each user is assigned with at least a cloud computer. If the number of selected cloud computers cannot be proportionally assigned to the selected users, ensure that each user is assigned a cloud computer.
+        # 
+        # CENTRAL: The system preferentially assigns the designated number of cloud computers to each user. If the number of selected cloud computers cannot be proportionally assigned to the selected users, ensure that each user is assigned the specified number of cloud computers.
         self.strategy = strategy
 
     def validate(self):
@@ -2943,8 +2956,19 @@ class BatchModifyEntitlementResponseBodyEntitlementsAssignModels(TeaModel):
         end_user_ids: List[str] = None,
         inner_status: str = None,
     ):
+        # The cloud computer ID.
         self.desktop_id = desktop_id
+        # The authorized user IDs for the cloud computer.
         self.end_user_ids = end_user_ids
+        # The assign result for each cloud computer.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED
+        # *   NOT_STARTED
+        # *   STARTED
+        # *   PROCESSING
+        # *   FINISHED
         self.inner_status = inner_status
 
     def validate(self):
@@ -2983,7 +3007,17 @@ class BatchModifyEntitlementResponseBodyEntitlements(TeaModel):
         task_id: str = None,
     ):
         self.assign_models = assign_models
+        # The result.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED
+        # *   NOT_STARTED
+        # *   STARTED
+        # *   PROCESSING
+        # *   FINISHED
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -3029,6 +3063,7 @@ class BatchModifyEntitlementResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.entitlements = entitlements
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -35150,6 +35185,526 @@ class DescribeGlobalDesktopRecordsResponse(TeaModel):
         return self
 
 
+class DescribeGlobalTimerBatchesRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        search_region_id: str = None,
+        timer_type: str = None,
+    ):
+        self.group_id = group_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.search_region_id = search_region_id
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.search_region_id is not None:
+            result['SearchRegionId'] = self.search_region_id
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SearchRegionId') is not None:
+            self.search_region_id = m.get('SearchRegionId')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
+class DescribeGlobalTimerBatchesResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        create_time: str = None,
+        failed_count: int = None,
+        running_count: int = None,
+        skipped_count: int = None,
+        succeed_count: int = None,
+        timer_type: str = None,
+    ):
+        self.batch_id = batch_id
+        self.create_time = create_time
+        self.failed_count = failed_count
+        self.running_count = running_count
+        self.skipped_count = skipped_count
+        self.succeed_count = succeed_count
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        if self.running_count is not None:
+            result['RunningCount'] = self.running_count
+        if self.skipped_count is not None:
+            result['SkippedCount'] = self.skipped_count
+        if self.succeed_count is not None:
+            result['SucceedCount'] = self.succeed_count
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        if m.get('RunningCount') is not None:
+            self.running_count = m.get('RunningCount')
+        if m.get('SkippedCount') is not None:
+            self.skipped_count = m.get('SkippedCount')
+        if m.get('SucceedCount') is not None:
+            self.succeed_count = m.get('SucceedCount')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
+class DescribeGlobalTimerBatchesResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        results: List[DescribeGlobalTimerBatchesResponseBodyResults] = None,
+    ):
+        self.count = count
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeGlobalTimerBatchesResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeGlobalTimerBatchesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGlobalTimerBatchesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGlobalTimerBatchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeGlobalTimerRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        desktop_ids: List[str] = None,
+        group_id: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        result_category: str = None,
+        search_region_id: str = None,
+        timer_result: str = None,
+        timer_types: List[str] = None,
+    ):
+        # The ID of the batch in which the scheduled task is executed.
+        self.batch_id = batch_id
+        # The cloud computer IDs.
+        self.desktop_ids = desktop_ids
+        # The ID of the scheduled task group.
+        self.group_id = group_id
+        # The number of entries per page.
+        # 
+        # Maximum value: 100.
+        # 
+        # Default value: 10.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        self.region_id = region_id
+        # The type of the execution result. You can specify this parameter to filter the execution results.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED: The execution is successful.
+        # *   FAILED: The execution failed.
+        # *   RUNNING: The execution is in progress.
+        # *   SKIPPED: The execution is skipped.
+        self.result_category = result_category
+        # The ID of the searched region. You can specify this parameter to filter cloud computers in specific regions.
+        self.search_region_id = search_region_id
+        # The execution result of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   CONNECTED_NOT_RUN: The cloud computer is connected, but the scheduled task is not executed.
+        # *   PAUSED: The scheduled task is suspended.
+        # *   COMPLETED: The scheduled task is executed.
+        # *   FAILED: The scheduled task failed to be executed.
+        # *   RUNNING: The scheduled task is being executed.
+        # *   TERMINATED: The scheduled task is stopped.
+        self.timer_result = timer_result
+        # The scheduled tasks.
+        self.timer_types = timer_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.desktop_ids is not None:
+            result['DesktopIds'] = self.desktop_ids
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.result_category is not None:
+            result['ResultCategory'] = self.result_category
+        if self.search_region_id is not None:
+            result['SearchRegionId'] = self.search_region_id
+        if self.timer_result is not None:
+            result['TimerResult'] = self.timer_result
+        if self.timer_types is not None:
+            result['TimerTypes'] = self.timer_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('DesktopIds') is not None:
+            self.desktop_ids = m.get('DesktopIds')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResultCategory') is not None:
+            self.result_category = m.get('ResultCategory')
+        if m.get('SearchRegionId') is not None:
+            self.search_region_id = m.get('SearchRegionId')
+        if m.get('TimerResult') is not None:
+            self.timer_result = m.get('TimerResult')
+        if m.get('TimerTypes') is not None:
+            self.timer_types = m.get('TimerTypes')
+        return self
+
+
+class DescribeGlobalTimerRecordsResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        batch_id: str = None,
+        context: str = None,
+        create_time: str = None,
+        desktop_id: str = None,
+        desktop_name: str = None,
+        finish_time: str = None,
+        region_id: str = None,
+        timer_group_id: str = None,
+        timer_result: str = None,
+        timer_type: str = None,
+    ):
+        self.action_type = action_type
+        # The ID of the batch in which the scheduled task is executed.
+        self.batch_id = batch_id
+        self.context = context
+        # The time when the execution record was created.
+        self.create_time = create_time
+        # The cloud computer ID.
+        self.desktop_id = desktop_id
+        # The cloud computer name.
+        self.desktop_name = desktop_name
+        # The time when the scheduled task ended.
+        self.finish_time = finish_time
+        # The region ID.
+        self.region_id = region_id
+        # The ID of the scheduled task group.
+        self.timer_group_id = timer_group_id
+        # The execution result of the scheduled task.
+        self.timer_result = timer_result
+        # The type of the scheduled task.
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.timer_group_id is not None:
+            result['TimerGroupId'] = self.timer_group_id
+        if self.timer_result is not None:
+            result['TimerResult'] = self.timer_result
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TimerGroupId') is not None:
+            self.timer_group_id = m.get('TimerGroupId')
+        if m.get('TimerResult') is not None:
+            self.timer_result = m.get('TimerResult')
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+        return self
+
+
+class DescribeGlobalTimerRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        results: List[DescribeGlobalTimerRecordsResponseBodyResults] = None,
+    ):
+        # The total number of entries returned.
+        self.count = count
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The response parameters.
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeGlobalTimerRecordsResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeGlobalTimerRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGlobalTimerRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGlobalTimerRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeGuestApplicationsRequest(TeaModel):
     def __init__(
         self,
@@ -38978,6 +39533,7 @@ class DescribeOfficeSitesRequest(TeaModel):
         # 
         #     <!-- -->
         self.status = status
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -65297,14 +65853,12 @@ class ModifyTemplateRequestDataDiskList(TeaModel):
         size: int = None,
     ):
         # The PL of the data disk. Default value: `AutoPL`.
-        # 
         # Valid values:
-        # 
         # *   PL1: a PL1 ESSD
         # *   PL0: a PL0 ESSD
         # *   AutoPL: an AutoPL ESSD
         self.performance_level = performance_level
-        # The size of the data disk. Unit: GiB. Valid range: 40 to 2040 GiB with an increment of 10 GiB.
+        # The size of the data disk. Unit: GiB.Valid range: 40 to 2040 GiB with an increment of 10 GiB.
         self.size = size
 
     def validate(self):
@@ -65342,12 +65896,24 @@ class ModifyTemplateRequestRegionConfigList(TeaModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
+        # The office network ID.
         self.office_site_id = office_site_id
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
+        # The ID of the cloud computer type.
         self.resource_instance_type = resource_instance_type
+        # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
+        # The subnet ID.
         self.subnet_id = subnet_id
+        # Specifies whether to enable disk encryption.
+        # 
+        # Valid values:
+        # 
+        # *   false (default): disables disk encryption.
+        # *   true: enables disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt disks.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -65400,7 +65966,9 @@ class ModifyTemplateRequestResourceTagList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -65489,22 +66057,61 @@ class ModifyTemplateRequest(TeaModel):
         self.auto_renew = auto_renew
         self.charge_type = charge_type
         self.data_disk_list = data_disk_list
+        # The default language of the cloud computer during startup. This parameter takes effect only when the cloud computer is created from a system image.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English.
+        # *   zh-HK: Chinese, Traditional (Hong Kong, China).
+        # *   zh-CN: Simplified Chinese.
+        # *   ja-JP: Japanese.
         self.default_language = default_language
+        # The template description. It must meet the following criteria:
+        # 
+        # *   It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # *   It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
         self.description = description
+        # The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
         self.image_id = image_id
         self.period = period
         self.period_unit = period_unit
+        # The ID of the policy group.
         self.policy_group_id = policy_group_id
         self.post_paid_after_used_up = post_paid_after_used_up
+        # The regions by which you can search for cloud computer templates. When this parameter takes effect, cloud computer templates are matched based on the specified regions.
+        # 
+        # >  You can specify up to 20 regions.
         self.region_config_list = region_config_list
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags added to cloud computers. Specify tags in key-value pairs. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
         self.site_config_list = site_config_list
+        # The performance level (PL) of the system disk.
+        # 
+        # >  Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
+        # 
+        # Valid values:
+        # 
+        # *   PL1: a PL1 ESSD.
+        # *   PL0: a PL0 ESSD.
+        # *   AutoPL: an AutoPL ESSD.
         self.system_disk_performance_level = system_disk_performance_level
+        # The size of the system disk. Unit: GiB. Valid values: 40 to 500. Increments: 10 GiB.
+        # 
+        # >  The system disk size must be at least as large as the configured image size.
         self.system_disk_size = system_disk_size
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The template name. It must meet the following criteria:
+        # 
+        # *   It can be 2 to 126 characters in length.
+        # *   It must begin with a letter and cannot start with `http://` or `https://`.
+        # *   It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
         self.template_name = template_name
+        # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
         self.user_duration = user_duration
 
@@ -65652,10 +66259,15 @@ class ModifyTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned. This parameter is not returned if the value of Code is `success`.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true false
         self.success = success
 
     def validate(self):

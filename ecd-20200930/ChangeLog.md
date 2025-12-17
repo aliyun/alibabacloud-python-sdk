@@ -1,3 +1,8 @@
+2025-12-17 Version: 4.18.0
+- Support API DescribeGlobalTimerBatches.
+- Support API DescribeGlobalTimerRecords.
+
+
 2025-12-10 Version: 4.17.3
 - Update API CreateCenterPolicy: add request parameters ClipboardGraineds.$.ClipboardSizeUnit.
 - Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.$.ClipboardSizeUnit.
