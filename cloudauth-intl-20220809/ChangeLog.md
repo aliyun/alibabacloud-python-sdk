@@ -1,3 +1,7 @@
+2025-12-17 Version: 3.16.0
+- Support API DownloadVerifyRecordIntl.
+
+
 2025-11-28 Version: 3.15.2
 - Update API DocOcrMax: add request parameters Authorize.
 

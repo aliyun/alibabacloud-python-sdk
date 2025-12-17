@@ -332,6 +332,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
+        @deprecated OpenAPI AddressVerifyIntl is deprecated, please use Cloudauth-intl::2022-08-09::AddressVerifyV2Intl instead.
+        
         @summary Address Verification
         
         @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
@@ -339,6 +341,7 @@ class Client(OpenApiClient):
         @param request: AddressVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddressVerifyIntlResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -389,6 +392,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
+        @deprecated OpenAPI AddressVerifyIntl is deprecated, please use Cloudauth-intl::2022-08-09::AddressVerifyV2Intl instead.
+        
         @summary Address Verification
         
         @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
@@ -396,6 +401,7 @@ class Client(OpenApiClient):
         @param request: AddressVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddressVerifyIntlResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -445,12 +451,15 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
+        @deprecated OpenAPI AddressVerifyIntl is deprecated, please use Cloudauth-intl::2022-08-09::AddressVerifyV2Intl instead.
+        
         @summary Address Verification
         
         @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
         
         @param request: AddressVerifyIntlRequest
         @return: AddressVerifyIntlResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.address_verify_intl_with_options(request, runtime)
@@ -460,12 +469,15 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
+        @deprecated OpenAPI AddressVerifyIntl is deprecated, please use Cloudauth-intl::2022-08-09::AddressVerifyV2Intl instead.
+        
         @summary Address Verification
         
         @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
         
         @param request: AddressVerifyIntlRequest
         @return: AddressVerifyIntlResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.address_verify_intl_with_options_async(request, runtime)
@@ -2750,6 +2762,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.doc_ocr_max_with_options_async(request, runtime)
 
+    def download_verify_record_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.DownloadVerifyRecordIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DownloadVerifyRecordIntlResponse:
+        """
+        @summary Console Export Records
+        
+        @param request: DownloadVerifyRecordIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadVerifyRecordIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.download_mode):
+            query['DownloadMode'] = request.download_mode
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadVerifyRecordIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DownloadVerifyRecordIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_verify_record_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.DownloadVerifyRecordIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.DownloadVerifyRecordIntlResponse:
+        """
+        @summary Console Export Records
+        
+        @param request: DownloadVerifyRecordIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadVerifyRecordIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.download_mode):
+            query['DownloadMode'] = request.download_mode
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadVerifyRecordIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.DownloadVerifyRecordIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_verify_record_intl(
+        self,
+        request: cloudauth_intl_20220809_models.DownloadVerifyRecordIntlRequest,
+    ) -> cloudauth_intl_20220809_models.DownloadVerifyRecordIntlResponse:
+        """
+        @summary Console Export Records
+        
+        @param request: DownloadVerifyRecordIntlRequest
+        @return: DownloadVerifyRecordIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_verify_record_intl_with_options(request, runtime)
+
+    async def download_verify_record_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.DownloadVerifyRecordIntlRequest,
+    ) -> cloudauth_intl_20220809_models.DownloadVerifyRecordIntlResponse:
+        """
+        @summary Console Export Records
+        
+        @param request: DownloadVerifyRecordIntlRequest
+        @return: DownloadVerifyRecordIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_verify_record_intl_with_options_async(request, runtime)
+
     def ekyc_verify_with_options(
         self,
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
@@ -3042,20 +3166,22 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
-        if not UtilClient.is_unset(request.source_aface_picture):
-            query['SourceAFacePicture'] = request.source_aface_picture
         if not UtilClient.is_unset(request.source_aface_picture_url):
             query['SourceAFacePictureUrl'] = request.source_aface_picture_url
-        if not UtilClient.is_unset(request.source_bface_picture):
-            query['SourceBFacePicture'] = request.source_bface_picture
         if not UtilClient.is_unset(request.source_bface_picture_url):
             query['SourceBFacePictureUrl'] = request.source_bface_picture_url
-        if not UtilClient.is_unset(request.source_cface_picture):
-            query['SourceCFacePicture'] = request.source_cface_picture
         if not UtilClient.is_unset(request.source_cface_picture_url):
             query['SourceCFacePictureUrl'] = request.source_cface_picture_url
+        body = {}
+        if not UtilClient.is_unset(request.source_aface_picture):
+            body['SourceAFacePicture'] = request.source_aface_picture
+        if not UtilClient.is_unset(request.source_bface_picture):
+            body['SourceBFacePicture'] = request.source_bface_picture
+        if not UtilClient.is_unset(request.source_cface_picture):
+            body['SourceCFacePicture'] = request.source_cface_picture
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceCrossCompareIntl',
@@ -3097,20 +3223,22 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
-        if not UtilClient.is_unset(request.source_aface_picture):
-            query['SourceAFacePicture'] = request.source_aface_picture
         if not UtilClient.is_unset(request.source_aface_picture_url):
             query['SourceAFacePictureUrl'] = request.source_aface_picture_url
-        if not UtilClient.is_unset(request.source_bface_picture):
-            query['SourceBFacePicture'] = request.source_bface_picture
         if not UtilClient.is_unset(request.source_bface_picture_url):
             query['SourceBFacePictureUrl'] = request.source_bface_picture_url
-        if not UtilClient.is_unset(request.source_cface_picture):
-            query['SourceCFacePicture'] = request.source_cface_picture
         if not UtilClient.is_unset(request.source_cface_picture_url):
             query['SourceCFacePictureUrl'] = request.source_cface_picture_url
+        body = {}
+        if not UtilClient.is_unset(request.source_aface_picture):
+            body['SourceAFacePicture'] = request.source_aface_picture
+        if not UtilClient.is_unset(request.source_bface_picture):
+            body['SourceBFacePicture'] = request.source_bface_picture
+        if not UtilClient.is_unset(request.source_cface_picture):
+            body['SourceCFacePicture'] = request.source_cface_picture
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceCrossCompareIntl',
@@ -3556,11 +3684,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
         """
+        @deprecated OpenAPI FraudResultCallBack is deprecated
+        
         @summary Anti-Fraud Callback Interface
         
         @param request: FraudResultCallBackRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: FraudResultCallBackResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3597,11 +3728,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
         """
+        @deprecated OpenAPI FraudResultCallBack is deprecated
+        
         @summary Anti-Fraud Callback Interface
         
         @param request: FraudResultCallBackRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: FraudResultCallBackResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3637,10 +3771,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
         """
+        @deprecated OpenAPI FraudResultCallBack is deprecated
+        
         @summary Anti-Fraud Callback Interface
         
         @param request: FraudResultCallBackRequest
         @return: FraudResultCallBackResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.fraud_result_call_back_with_options(request, runtime)
@@ -3650,10 +3787,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
         """
+        @deprecated OpenAPI FraudResultCallBack is deprecated
+        
         @summary Anti-Fraud Callback Interface
         
         @param request: FraudResultCallBackRequest
         @return: FraudResultCallBackResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.fraud_result_call_back_with_options_async(request, runtime)

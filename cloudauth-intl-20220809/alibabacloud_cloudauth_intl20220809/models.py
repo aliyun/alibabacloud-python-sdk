@@ -3794,6 +3794,16 @@ class DocOcrMaxRequest(TeaModel):
         scene_code: str = None,
         spoof: str = None,
     ):
+        # Specifies whether to enable verification with an authoritative data source to enhance document anti-spoofing capabilities.
+        # 
+        # - **T**: Enable
+        # 
+        # - **F**: Disable (default)
+        # 
+        # > 
+        # > - **Applicable document types**: Chinese resident ID cards (CHN01001) and Chinese mainland driver\\"s licenses (CHN02001).
+        # > - **Data transfer declaration**: If you enable this parameter, you agree to transfer the user\\"s name and certificate number to an authoritative data source in the Chinese mainland for consistency verification.
+        # > - **Performance impact:** After you enable this feature, the response time of the API operation increases by 1 to 2 seconds. Adjust the timeout setting.
         self.authorize = authorize
         # Page expected to be recognized
         # 
@@ -3830,6 +3840,11 @@ class DocOcrMaxRequest(TeaModel):
         # 0: General document mode.
         # 1: Custom mode.
         self.ocr_model = ocr_model
+        # Specifies whether to return additional OCR fields in a standardized format:
+        # 
+        # - **0**: No (default)
+        # 
+        # - **1**: Yes
         self.ocr_value_standard = ocr_value_standard
         # The product solution to be integrated.
         # 
@@ -4061,6 +4076,194 @@ class DocOcrMaxResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DocOcrMaxResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DownloadVerifyRecordIntlRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        code: str = None,
+        download_mode: str = None,
+        param: str = None,
+        product_type: str = None,
+    ):
+        # Business type:
+        # - INVOKE_STATISTICS
+        # - INVOKE_RECORD
+        self.biz_type = biz_type
+        # Query code.
+        self.code = code
+        # Download mode:
+        # 
+        # - **async**: Asynchronous
+        # - **sync**: Synchronous
+        self.download_mode = download_mode
+        # Parameters related to the export and download query task.
+        self.param = param
+        # Product Code.
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.download_mode is not None:
+            result['DownloadMode'] = self.download_mode
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DownloadMode') is not None:
+            self.download_mode = m.get('DownloadMode')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class DownloadVerifyRecordIntlResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        download_task_id: str = None,
+        url: str = None,
+    ):
+        # Task ID, returned in asynchronous mode, used later with QueryDownloadTaskIntl to download the exported file.
+        self.download_task_id = download_task_id
+        # Exported file download link.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DownloadVerifyRecordIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DownloadVerifyRecordIntlResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Return code.
+        self.code = code
+        # Returned data.
+        self.data = data
+        # Return message.
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DownloadVerifyRecordIntlResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DownloadVerifyRecordIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DownloadVerifyRecordIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DownloadVerifyRecordIntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4593,15 +4796,12 @@ class FaceCrossCompareIntlRequest(TeaModel):
         self.product_code = product_code
         # Custom business scenario ID
         self.scene_code = scene_code
-        # Base64 encoded portrait photo.
         self.source_aface_picture = source_aface_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_aface_picture_url = source_aface_picture_url
-        # Base64 encoded portrait photo.
         self.source_bface_picture = source_bface_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_bface_picture_url = source_bface_picture_url
-        # Base64 encoded portrait photo.
         self.source_cface_picture = source_cface_picture
         # Portrait image URL, accessible via HTTP or HTTPS on the public network.
         self.source_cface_picture_url = source_cface_picture_url
@@ -6376,10 +6576,6 @@ class InitializeRequest(TeaModel):
         # 
         # - **PHOTINUS_LIVENESS**: Blinking action liveness + photinus liveness dual detection.
         # 
-        # - **PHOTINUS_FAR_NEAR_LIVENESS**:
-        # Blinking action + far/near + photinus liveness detection.
-        # (Only supported by APP SDK or Flutter integration based on APP SDK)
-        # 
         # > 
         # > - For supported SDK versions, see [SDK Publishing Record](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
         # > - PC does not support photinus liveness dual detection.
@@ -6837,10 +7033,6 @@ class InitializeShrinkRequest(TeaModel):
         # - **LIVENESS** (default): Blinking action liveness detection.
         # 
         # - **PHOTINUS_LIVENESS**: Blinking action liveness + photinus liveness dual detection.
-        # 
-        # - **PHOTINUS_FAR_NEAR_LIVENESS**:
-        # Blinking action + far/near + photinus liveness detection.
-        # (Only supported by APP SDK or Flutter integration based on APP SDK)
         # 
         # > 
         # > - For supported SDK versions, see [SDK Publishing Record](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
