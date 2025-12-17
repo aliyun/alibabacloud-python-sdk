@@ -1,3 +1,7 @@
+2025-12-17 Version: 4.7.3
+- Update API DescribeWuyingServerEipInfo: add response parameters Body.EipInfoModel.EipId.
+
+
 2025-12-15 Version: 4.7.2
 - Update API CreateWuyingServer: add request parameters HostName.
 

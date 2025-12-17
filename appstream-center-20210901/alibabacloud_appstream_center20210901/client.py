@@ -303,6 +303,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a delivery group.
         
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        A delivery group is a logical group that is used to deliver cloud applications to end users, including the images, resource management policies, and user groups on which the cloud applications rely. For more information, see [Publish delivery groups](https://help.aliyun.com/document_detail/426046.html).
+        
         @param tmp_req: CreateAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAppInstanceGroupResponse
@@ -412,6 +415,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a delivery group.
         
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        A delivery group is a logical group that is used to deliver cloud applications to end users, including the images, resource management policies, and user groups on which the cloud applications rely. For more information, see [Publish delivery groups](https://help.aliyun.com/document_detail/426046.html).
+        
         @param tmp_req: CreateAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAppInstanceGroupResponse
@@ -520,6 +526,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a delivery group.
         
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        A delivery group is a logical group that is used to deliver cloud applications to end users, including the images, resource management policies, and user groups on which the cloud applications rely. For more information, see [Publish delivery groups](https://help.aliyun.com/document_detail/426046.html).
+        
         @param request: CreateAppInstanceGroupRequest
         @return: CreateAppInstanceGroupResponse
         """
@@ -532,6 +541,9 @@ class Client(OpenApiClient):
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
         """
         @summary Creates a delivery group.
+        
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        A delivery group is a logical group that is used to deliver cloud applications to end users, including the images, resource management policies, and user groups on which the cloud applications rely. For more information, see [Publish delivery groups](https://help.aliyun.com/document_detail/426046.html).
         
         @param request: CreateAppInstanceGroupRequest
         @return: CreateAppInstanceGroupResponse
@@ -6061,7 +6073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
         """
-        @summary 更新研发主机镜像
+        @summary Updates the workstation image.
         
         @param request: UpdateWuyingServerImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6100,7 +6112,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
         """
-        @summary 更新研发主机镜像
+        @summary Updates the workstation image.
         
         @param request: UpdateWuyingServerImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6138,7 +6150,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateWuyingServerImageRequest,
     ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
         """
-        @summary 更新研发主机镜像
+        @summary Updates the workstation image.
         
         @param request: UpdateWuyingServerImageRequest
         @return: UpdateWuyingServerImageResponse
@@ -6151,7 +6163,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateWuyingServerImageRequest,
     ) -> appstream_center_20210901_models.UpdateWuyingServerImageResponse:
         """
-        @summary 更新研发主机镜像
+        @summary Updates the workstation image.
         
         @param request: UpdateWuyingServerImageRequest
         @return: UpdateWuyingServerImageResponse

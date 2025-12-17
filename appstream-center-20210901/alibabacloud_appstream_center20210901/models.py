@@ -441,7 +441,14 @@ class CreateAppInstanceGroupRequestNetworkDomainRules(TeaModel):
         domain: str = None,
         policy: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The policy used for the domain name.
+        # 
+        # Valid values:
+        # 
+        # *   allow
+        # *   block
         self.policy = policy
 
     def validate(self):
@@ -474,7 +481,13 @@ class CreateAppInstanceGroupRequestNetworkRoutes(TeaModel):
         destination: str = None,
         mode: str = None,
     ):
+        # The destination. The value is a CIDR block.
         self.destination = destination
+        # The network egress mode.
+        # 
+        # Valid value:
+        # 
+        # *   Shared: accesses the network by using NAT Gateway.
         self.mode = mode
 
     def validate(self):
@@ -511,11 +524,23 @@ class CreateAppInstanceGroupRequestNetwork(TeaModel):
         strategy_type: str = None,
         v_switch_ids: List[str] = None,
     ):
+        # The domain name rules.
         self.domain_rules = domain_rules
+        # The validity period of the public IP address. If the specified value is exceeded, the IP address is updated at next logon. Minimum value: 60. Unit: minutes.
         self.ip_expire_minutes = ip_expire_minutes
+        # Office Network ID.
         self.office_site_id = office_site_id
+        # The route settings. This parameter is available only if you set `StrategyType` to `Mixed`.
         self.routes = routes
+        # The type of the network policy.
+        # 
+        # Valid values:
+        # 
+        # *   Mixed: the hybrid mode. In this mode, a device is deployed in one virtual private cloud (VPC). Two NICs are provided and an independent public IP address is configured for the device.
+        # *   Shared: the shared mode. In this mode, a single NIC is provided for a device and the network is accessed by using NAT Gateway.
         self.strategy_type = strategy_type
+        # List of virtual switch IDs.
+        # - Valid only for custom office networks.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -582,8 +607,11 @@ class CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods(TeaMo
         end_time: str = None,
         start_time: str = None,
     ):
+        # The number of resources.
         self.amount = amount
+        # The end time of the time period. Format: HH:mm.
         self.end_time = end_time
+        # The start time of the time period. Format: HH:mm.
         self.start_time = start_time
 
     def validate(self):
@@ -621,8 +649,21 @@ class CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules(TeaModel):
         recurrence_values: List[int] = None,
         timer_periods: List[CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods] = None,
     ):
+        # The schedule type of the scaling policy. This parameter must be configured together with `RecurrenceValues`.``
+        # 
+        # Valid value:
+        # 
+        # *   Weekly: The scaling policy is executed on specific days each week.
         self.recurrence_type = recurrence_type
+        # The days of each week on which the scaling policy is executed.
         self.recurrence_values = recurrence_values
+        # The time periods during which the scaling policy can be executed. The time periods must meet the following requirements:
+        # 
+        # *   Up to three time periods can be added.
+        # *   Time periods cannot be overlapped.
+        # *   The interval between two consecutive time periods must be greater than or equal to 5 minutes.
+        # *   Each time period must be greater than or equal to 15 minutes.
+        # *   The total length of the time periods that you specify cannot be greater than a day.
         self.timer_periods = timer_periods
 
     def validate(self):
@@ -678,18 +719,68 @@ class CreateAppInstanceGroupRequestNodePool(TeaModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
+        # Maximum number of idle sessions. When this value is specified, auto-scaling is triggered only if the session utilization exceeds `ScalingUsageThreshold` and the current number of idle sessions in the delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, it is considered that sufficient idle sessions are available, and no auto-scaling will occur. This parameter allows flexible control over elastic scaling behavior and helps reduce usage costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
+        # The maximum number of resources that can be created for scale-out. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_USAGE`.
         self.max_scaling_amount = max_scaling_amount
+        # The number of resources that you want to purchase. Valid values: 1 to 100.
+        # 
+        # > 
+        # 
+        # *   This parameter is required if the resources are subscription resources.
+        # 
+        # *   If the resources are pay-as-you-go resources, this parameter is required only if you set `StrategyType` to `NODE_FIXED` or `NODE_SCALING_BY_USAGE`.
         self.node_amount = node_amount
+        # The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, the user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+        # 
+        # *   appstreaming.general.4c8g: 1 to 2
+        # *   appstreaming.general.8c16g: 1 to 4
+        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
+        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
+        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
         self.node_capacity = node_capacity
+        # The ID of the resource type that you want to purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation to obtain the ID.
+        # 
+        # Valid values:
+        # 
+        # *   appstreaming.vgpu.8c16g.4g: WUYING - Graphics_8 vCPUs, 16 GiB Memory, 4 GiB GPU Memory
+        # *   appstreaming.general.8c16g: WUYING - General_8 vCPUs, 16 GiB Memory
+        # *   appstreaming.general.4c8g: WUYING - General_4 vCPUs, 8 GiB Memory
+        # *   appstreaming.vgpu.14c93g.12g: WUYING - Graphics_14 vCPUs, 93 GiB Memory, 12 GiB GPU Memory.
+        # *   appstreaming.vgpu.8c31g.16g: WUYING - Graphics_8 vCPUs, 31 GiB Memory, 16 GiB GPU Memory
         self.node_instance_type = node_instance_type
+        # The schedules of the scaling policy. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.recurrence_schedules = recurrence_schedules
+        # The maximum retention period of a resource to which no session is connected. If no session is connected to a resource, the resource is automatically scaled in after the specified retention period elapses. Valid values: 5 to 120. Default value: 5. Unit: minutes. If one of the following situations occurs, the resource is not scaled in.
+        # 
+        # *   If automatic scale-out is triggered after the resource is scaled in, the scale-in is not executed. This prevents repeated scale-in and scale-out.
+        # *   If automatic scale-out is triggered due to an increase in the number of sessions during the specified period of time, the resource is not scaled in and the countdown restarts.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        # The number of resources that are created each time resources are scaled out. Valid values: 1 to 10. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_USAGE`.
         self.scaling_step = scaling_step
+        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scaling is automatically triggered. The session usage is calculated by using the following formula: `Session usage = Number of current sessions/(Total number of resources × Number of concurrent sessions) × 100%`. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_USAGE`. Valid values: 0 to 100. Default value: 85.
         self.scaling_usage_threshold = scaling_usage_threshold
+        # The expiration date of the scaling policy. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be from 7 days to 1 year. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.strategy_disable_date = strategy_disable_date
+        # The effective date of the scaling policy. Format: yyyy-MM-dd. The date must be the same as or later than the current date. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.strategy_enable_date = strategy_enable_date
+        # The scaling policy of resources.
+        # 
+        # > 
+        # 
+        # *   `NODE_FIXED`: fixed number of resources. This value is applicable to pay-as-you-go resources and subscription resources.
+        # 
+        # *   `NODE_SCALING_BY_USAGE`: auto scaling. This value is applicable to pay-as-you-go resources and subscription resources.
+        # 
+        # *   `NODE_SCALING_BY_SCHEDULE`: scheduled scaling. This value is applicable only to pay-as-you-go resources.
+        # 
+        # Valid values:
+        # 
+        # *   NODE_FIXED: fixed number of resources
+        # *   NODE_SCALING_BY_SCHEDULE: scheduled scaling
+        # *   NODE_SCALING_BY_USAGE: auto scaling
         self.strategy_type = strategy_type
+        # Specifies whether to enable the warmup policy for resources. This parameter is required if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.warm_up = warm_up
 
     def validate(self):
@@ -785,24 +876,15 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
         # *   OFF
         # *   ON
         self.debug_mode = debug_mode
-        # Specifies whether only one app can be opened in a session.
+        # Only one application is allowed to be opened within a single session.
         # 
-        # *   After you enable this feature, the system assigns a session to each app if you open multiple apps in a delivery group. This consumes a larger number of sessions.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # - When enabled, launching multiple applications from the delivery group will allocate a separate session for each application, resulting in higher session consumption.
         self.per_session_per_app = per_session_per_app
+        # Persistent session scheduling mode.
         self.persistent_app_instance_schedule_mode = persistent_app_instance_schedule_mode
-        # Specifies whether to enable pre-open for sessions.
+        # Session pre-launch toggle.
         # 
-        # *   Default value: true
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # - If not specified, the default value is true.
         self.session_pre_open = session_pre_open
         # The session type.
         # 
@@ -812,8 +894,7 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
         # *   NORMAL: Remote Desktop Protocol (RDP)-based O\\&M session
         self.session_type = session_type
         # The generation mode of the session users. Valid value:
-        # 
-        # *   wyid. In this case, you must set sessionPreOpen to false.
+        # - wyid. In this case, you must set sessionPreOpen to false.
         self.session_user_generation_mode = session_user_generation_mode
 
     def validate(self):
@@ -862,7 +943,19 @@ class CreateAppInstanceGroupRequestSecurityPolicy(TeaModel):
         reset_after_unbind: bool = None,
         skip_user_auth_check: bool = None,
     ):
+        # Specifies whether to reset after unbinding from a delivery group.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.reset_after_unbind = reset_after_unbind
+        # Specifies whether to skip user permission verification.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: This is the default value.
         self.skip_user_auth_check = skip_user_auth_check
 
     def validate(self):
@@ -896,8 +989,14 @@ class CreateAppInstanceGroupRequestStoragePolicyUserProfile(TeaModel):
         remote_storage_type: str = None,
         user_profile_switch: bool = None,
     ):
+        # Remote storage path for user data roaming.
+        # 
+        # - If left empty, the default value is the delivery group ID.
+        # - For cross-delivery-group (within the same VPC) user data roaming, the same value must be configured for all participating delivery groups.
         self.remote_storage_path = remote_storage_path
+        # Remote storage type used for user data roaming.
         self.remote_storage_type = remote_storage_type
+        # User data roaming toggle.
         self.user_profile_switch = user_profile_switch
 
     def validate(self):
@@ -934,7 +1033,9 @@ class CreateAppInstanceGroupRequestStoragePolicy(TeaModel):
         storage_type_list: List[str] = None,
         user_profile: CreateAppInstanceGroupRequestStoragePolicyUserProfile = None,
     ):
+        # The storage types.
         self.storage_type_list = storage_type_list
+        # User data roaming configuration.
         self.user_profile = user_profile
 
     def validate(self):
@@ -968,6 +1069,7 @@ class CreateAppInstanceGroupRequestUserDefinePolicy(TeaModel):
         self,
         custom_config: str = None,
     ):
+        # The content of the custom policy. The content must meet the specifications of image versions. To use this parameter, submit a ticket to apply to enable the whitelist feature.
         self.custom_config = custom_config
 
     def validate(self):
@@ -995,6 +1097,11 @@ class CreateAppInstanceGroupRequestUserInfo(TeaModel):
         self,
         type: str = None,
     ):
+        # The account type of the user.
+        # 
+        # Valid value:
+        # 
+        # *   Simple: convenience account
         self.type = type
 
     def validate(self):
@@ -1027,11 +1134,29 @@ class CreateAppInstanceGroupRequestVideoPolicy(TeaModel):
         terminal_resolution_adaptive: bool = None,
         webrtc: bool = None,
     ):
+        # Frame rate (FPS).
         self.frame_rate = frame_rate
+        # Resolution height, in pixels.
         self.session_resolution_height = session_resolution_height
+        # Resolution width, in pixels.
         self.session_resolution_width = session_resolution_width
+        # Streaming mode. Combined with the Webrtc parameter, it indicates the protocol type.
+        # 
+        # - When Webrtc=true and StreamingMode=video, it indicates a WebRTC stream.
+        # - When Webrtc=false and StreamingMode=video, it indicates a video stream.
+        # - When Webrtc=false and StreamingMode=mix, it indicates a mixed stream.
         self.streaming_mode = streaming_mode
+        # Whether to use adaptive resolution.
+        # 
+        # - true: The session resolution follows changes in the terminal\\"s display area. In this case, SessionResolutionWidth and SessionResolutionHeight represent the maximum values for resolution adjustment.
+        # 
+        # - false: The session resolution does not follow changes in the terminal\\"s display area. In this case, the resolution is fixed to the values of SessionResolutionWidth and SessionResolutionHeight.
         self.terminal_resolution_adaptive = terminal_resolution_adaptive
+        # Whether to enable WebRTC. Combined with the StreamingMode parameter, it indicates the protocol type.
+        # 
+        # - When Webrtc=true and StreamingMode=video, it indicates a WebRTC stream.
+        # - When Webrtc=false and StreamingMode=video, it indicates a video stream.
+        # - When Webrtc=false and StreamingMode=mix, it indicates a mixed stream.
         self.webrtc = webrtc
 
     def validate(self):
@@ -1106,43 +1231,136 @@ class CreateAppInstanceGroupRequest(TeaModel):
         users: List[str] = None,
         video_policy: CreateAppInstanceGroupRequestVideoPolicy = None,
     ):
+        # The image ID of the application. To obtain the image ID, log on to the [App Streaming console](https://appstreaming.console.aliyun.com/). In the left-side navigation pane, choose **Maintenance** > **Custom Images** or Maintenance > **System Images**.
+        # 
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
+        # Package type.
         self.app_package_type = app_package_type
+        # Policy ID.
         self.app_policy_id = app_policy_id
         # The authentication mode of the delivery group.
         self.auth_mode = auth_mode
+        # Specifies whether to enable automatic payment.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: manual payment. This is the default value.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: manual payment. This is the default value.
         self.auto_renew = auto_renew
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai)
+        # *   cn-hangzhou: China (Hangzhou)
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The sales mode.
+        # 
+        # Valid value:
+        # 
+        # *   Node: by resource
+        # 
         # This parameter is required.
         self.charge_resource_mode = charge_resource_mode
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # The network settings.
+        # 
+        # >  If you want to use this parameter, submit a ticket.
         self.network = network
+        # The node pool object.
         self.node_pool = node_pool
+        # The subscription duration of resources. This parameter is required if you set `ChargeType` to `PrePaid`. The unit of this parameter is specified by `PeriodUnit`.
+        # 
+        # *   Valid value if you set `PeriodUnit` to `Week`:
+        # 
+        #     *   1
+        # 
+        # *   Valid values if you set `PeriodUnit` to `Month`:
+        # 
+        #     *   1
+        #     *   2
+        #     *   3
+        #     *   6
+        # 
+        # *   Valid values if you set `PeriodUnit` to `Year`:
+        # 
+        #     *   1
+        #     *   2
+        #     *   3
+        # 
+        # >  If you set `ChargeType` to `PostPaid`, set this parameter to 1.
+        # 
         # This parameter is required.
         self.period = period
+        # The unit of the subscription duration. This parameter is available if you set `ChargeType` to `PrePaid`.
+        # 
+        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify an invalid value combination for Period and PeriodUnit, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # 
+        # >  If you set `ChargeType` to `PostPaid`, set this parameter to `Month`.
+        # 
+        # Valid values:
+        # 
+        # *   Month
+        # *   Year
+        # *   Week
+        # 
         # This parameter is required.
         self.period_unit = period_unit
+        # The ID of the pre-open application.
         self.pre_open_app_id = pre_open_app_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
         self.promotion_id = promotion_id
         # The runtime policy.
         self.runtime_policy = runtime_policy
+        # The security policy.
         self.security_policy = security_policy
+        # The period of time during which the application can be recycled. The recycling period is the period of time between the time when the end user disconnects from the application and the time when processes exit the application. If you do not want to recycle the application, set this parameter to `-1`. Valid values:-1 and 3 to 300. The value must be an integer. Default value: `15`. Unit: minutes.
+        # 
         # This parameter is required.
         self.session_timeout = session_timeout
+        # The storage policy.
         self.storage_policy = storage_policy
+        # Payment method subtype.
         self.sub_pay_type = sub_pay_type
+        # The custom policy.
         self.user_define_policy = user_define_policy
+        # List of authorized user group IDs.
         self.user_group_ids = user_group_ids
+        # The information about the user that you want to add to the assigned user list of the delivery group. This parameter is required if you configure `Users`.
         self.user_info = user_info
+        # The users that you want to add to the assigned user list of the delivery group.
         self.users = users
+        # Display policy.
         self.video_policy = video_policy
 
     def validate(self):
@@ -1328,43 +1546,136 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         users: List[str] = None,
         video_policy_shrink: str = None,
     ):
+        # The image ID of the application. To obtain the image ID, log on to the [App Streaming console](https://appstreaming.console.aliyun.com/). In the left-side navigation pane, choose **Maintenance** > **Custom Images** or Maintenance > **System Images**.
+        # 
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
+        # Package type.
         self.app_package_type = app_package_type
+        # Policy ID.
         self.app_policy_id = app_policy_id
         # The authentication mode of the delivery group.
         self.auth_mode = auth_mode
+        # Specifies whether to enable automatic payment.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: manual payment. This is the default value.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: manual payment. This is the default value.
         self.auto_renew = auto_renew
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai)
+        # *   cn-hangzhou: China (Hangzhou)
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The sales mode.
+        # 
+        # Valid value:
+        # 
+        # *   Node: by resource
+        # 
         # This parameter is required.
         self.charge_resource_mode = charge_resource_mode
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # The network settings.
+        # 
+        # >  If you want to use this parameter, submit a ticket.
         self.network_shrink = network_shrink
+        # The node pool object.
         self.node_pool_shrink = node_pool_shrink
+        # The subscription duration of resources. This parameter is required if you set `ChargeType` to `PrePaid`. The unit of this parameter is specified by `PeriodUnit`.
+        # 
+        # *   Valid value if you set `PeriodUnit` to `Week`:
+        # 
+        #     *   1
+        # 
+        # *   Valid values if you set `PeriodUnit` to `Month`:
+        # 
+        #     *   1
+        #     *   2
+        #     *   3
+        #     *   6
+        # 
+        # *   Valid values if you set `PeriodUnit` to `Year`:
+        # 
+        #     *   1
+        #     *   2
+        #     *   3
+        # 
+        # >  If you set `ChargeType` to `PostPaid`, set this parameter to 1.
+        # 
         # This parameter is required.
         self.period = period
+        # The unit of the subscription duration. This parameter is available if you set `ChargeType` to `PrePaid`.
+        # 
+        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify an invalid value combination for Period and PeriodUnit, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # 
+        # >  If you set `ChargeType` to `PostPaid`, set this parameter to `Month`.
+        # 
+        # Valid values:
+        # 
+        # *   Month
+        # *   Year
+        # *   Week
+        # 
         # This parameter is required.
         self.period_unit = period_unit
+        # The ID of the pre-open application.
         self.pre_open_app_id = pre_open_app_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
         self.promotion_id = promotion_id
         # The runtime policy.
         self.runtime_policy_shrink = runtime_policy_shrink
+        # The security policy.
         self.security_policy_shrink = security_policy_shrink
+        # The period of time during which the application can be recycled. The recycling period is the period of time between the time when the end user disconnects from the application and the time when processes exit the application. If you do not want to recycle the application, set this parameter to `-1`. Valid values:-1 and 3 to 300. The value must be an integer. Default value: `15`. Unit: minutes.
+        # 
         # This parameter is required.
         self.session_timeout = session_timeout
+        # The storage policy.
         self.storage_policy_shrink = storage_policy_shrink
+        # Payment method subtype.
         self.sub_pay_type = sub_pay_type
+        # The custom policy.
         self.user_define_policy_shrink = user_define_policy_shrink
+        # List of authorized user group IDs.
         self.user_group_ids = user_group_ids
+        # The information about the user that you want to add to the assigned user list of the delivery group. This parameter is required if you configure `Users`.
         self.user_info_shrink = user_info_shrink
+        # The users that you want to add to the assigned user list of the delivery group.
         self.users = users
+        # Display policy.
         self.video_policy_shrink = video_policy_shrink
 
     def validate(self):
@@ -1502,8 +1813,11 @@ class CreateAppInstanceGroupResponseBodyAppInstanceGroupModel(TeaModel):
         node_pool_id: str = None,
         order_id: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the resource group. This parameter is returned if a resource group was created.
         self.node_pool_id = node_pool_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):
@@ -1540,7 +1854,9 @@ class CreateAppInstanceGroupResponseBody(TeaModel):
         app_instance_group_model: CreateAppInstanceGroupResponseBodyAppInstanceGroupModel = None,
         request_id: str = None,
     ):
+        # The delivery group.
         self.app_instance_group_model = app_instance_group_model
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2930,10 +3246,12 @@ class DescribeWuyingServerEipInfoRequest(TeaModel):
 class DescribeWuyingServerEipInfoResponseBodyEipInfoModel(TeaModel):
     def __init__(
         self,
+        eip_id: str = None,
         ip_address: str = None,
         network_interface_id: str = None,
         server_port_range: str = None,
     ):
+        self.eip_id = eip_id
         # The public IP address.
         self.ip_address = ip_address
         # The ID of the elastic network interface (ENI).
@@ -2950,6 +3268,8 @@ class DescribeWuyingServerEipInfoResponseBodyEipInfoModel(TeaModel):
             return _map
 
         result = dict()
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
         if self.ip_address is not None:
             result['IpAddress'] = self.ip_address
         if self.network_interface_id is not None:
@@ -2960,6 +3280,8 @@ class DescribeWuyingServerEipInfoResponseBodyEipInfoModel(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
         if m.get('NetworkInterfaceId') is not None:
@@ -14939,8 +15261,11 @@ class UpdateWuyingServerImageRequest(TeaModel):
         product_type: str = None,
         wuying_server_id: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The product type. Set this parameter to WuyingServer.
         self.product_type = product_type
+        # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
 
     def validate(self):
@@ -14977,7 +15302,9 @@ class UpdateWuyingServerImageResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the update task.
         self.task_id = task_id
 
     def validate(self):
