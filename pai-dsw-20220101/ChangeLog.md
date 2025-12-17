@@ -1,3 +1,8 @@
+2025-12-17 Version: 2.3.0
+- Support API CreateSanityCheckTask.
+- Support API GetSanityCheckTask.
+
+
 2025-12-15 Version: 2.2.2
 - Update API CreateInstance: add request parameters body.MigrationOptions.
 - Update API GetInstance: add response parameters Body.MigrationOptions.

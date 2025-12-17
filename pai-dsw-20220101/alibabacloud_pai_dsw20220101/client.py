@@ -717,6 +717,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
 
+    def create_sanity_check_task_with_options(
+        self,
+        check_type: str,
+        request: pai_dsw_20220101_models.CreateSanityCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.CreateSanityCheckTaskResponse:
+        """
+        @summary 创建一个健康检查任务
+        
+        @param request: CreateSanityCheckTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSanityCheckTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSanityCheckTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/sanitychecks/{OpenApiUtilClient.get_encode_param(check_type)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateSanityCheckTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sanity_check_task_with_options_async(
+        self,
+        check_type: str,
+        request: pai_dsw_20220101_models.CreateSanityCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.CreateSanityCheckTaskResponse:
+        """
+        @summary 创建一个健康检查任务
+        
+        @param request: CreateSanityCheckTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSanityCheckTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSanityCheckTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/sanitychecks/{OpenApiUtilClient.get_encode_param(check_type)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateSanityCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sanity_check_task(
+        self,
+        check_type: str,
+        request: pai_dsw_20220101_models.CreateSanityCheckTaskRequest,
+    ) -> pai_dsw_20220101_models.CreateSanityCheckTaskResponse:
+        """
+        @summary 创建一个健康检查任务
+        
+        @param request: CreateSanityCheckTaskRequest
+        @return: CreateSanityCheckTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_sanity_check_task_with_options(check_type, request, headers, runtime)
+
+    async def create_sanity_check_task_async(
+        self,
+        check_type: str,
+        request: pai_dsw_20220101_models.CreateSanityCheckTaskRequest,
+    ) -> pai_dsw_20220101_models.CreateSanityCheckTaskResponse:
+        """
+        @summary 创建一个健康检查任务
+        
+        @param request: CreateSanityCheckTaskRequest
+        @return: CreateSanityCheckTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_sanity_check_task_with_options_async(check_type, request, headers, runtime)
+
     def delete_idle_instance_culler_with_options(
         self,
         instance_id: str,
@@ -2302,6 +2410,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resource_group_statistics_with_options_async(request, headers, runtime)
+
+    def get_sanity_check_task_with_options(
+        self,
+        check_type: str,
+        task_id: str,
+        request: pai_dsw_20220101_models.GetSanityCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetSanityCheckTaskResponse:
+        """
+        @summary 查询健康检查任务结果
+        
+        @param request: GetSanityCheckTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSanityCheckTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSanityCheckTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/sanitychecks/{OpenApiUtilClient.get_encode_param(check_type)}/{OpenApiUtilClient.get_encode_param(task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetSanityCheckTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sanity_check_task_with_options_async(
+        self,
+        check_type: str,
+        task_id: str,
+        request: pai_dsw_20220101_models.GetSanityCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetSanityCheckTaskResponse:
+        """
+        @summary 查询健康检查任务结果
+        
+        @param request: GetSanityCheckTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSanityCheckTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSanityCheckTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/sanitychecks/{OpenApiUtilClient.get_encode_param(check_type)}/{OpenApiUtilClient.get_encode_param(task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetSanityCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sanity_check_task(
+        self,
+        check_type: str,
+        task_id: str,
+        request: pai_dsw_20220101_models.GetSanityCheckTaskRequest,
+    ) -> pai_dsw_20220101_models.GetSanityCheckTaskResponse:
+        """
+        @summary 查询健康检查任务结果
+        
+        @param request: GetSanityCheckTaskRequest
+        @return: GetSanityCheckTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_sanity_check_task_with_options(check_type, task_id, request, headers, runtime)
+
+    async def get_sanity_check_task_async(
+        self,
+        check_type: str,
+        task_id: str,
+        request: pai_dsw_20220101_models.GetSanityCheckTaskRequest,
+    ) -> pai_dsw_20220101_models.GetSanityCheckTaskResponse:
+        """
+        @summary 查询健康检查任务结果
+        
+        @param request: GetSanityCheckTaskRequest
+        @return: GetSanityCheckTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_sanity_check_task_with_options_async(check_type, task_id, request, headers, runtime)
 
     def get_token_with_options(
         self,
