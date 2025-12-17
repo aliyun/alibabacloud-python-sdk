@@ -1,3 +1,7 @@
+2025-12-17 Version: 5.4.0
+- Support API UpdateService.
+
+
 2025-12-11 Version: 5.3.0
 - Support API CreateSource.
 - Support API DeleteSource.

@@ -26172,6 +26172,346 @@ class UpdatePolicyResponse(TeaModel):
         return self
 
 
+class UpdateServiceRequestHealthCheckConfig(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expected_statuses: List[str] = None,
+        healthy_threshold: int = None,
+        http_host: str = None,
+        http_path: str = None,
+        interval: int = None,
+        protocol: str = None,
+        timeout: int = None,
+        unhealthy_threshold: int = None,
+    ):
+        self.enable = enable
+        self.expected_statuses = expected_statuses
+        self.healthy_threshold = healthy_threshold
+        self.http_host = http_host
+        self.http_path = http_path
+        self.interval = interval
+        self.protocol = protocol
+        self.timeout = timeout
+        self.unhealthy_threshold = unhealthy_threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expected_statuses is not None:
+            result['expectedStatuses'] = self.expected_statuses
+        if self.healthy_threshold is not None:
+            result['healthyThreshold'] = self.healthy_threshold
+        if self.http_host is not None:
+            result['httpHost'] = self.http_host
+        if self.http_path is not None:
+            result['httpPath'] = self.http_path
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.unhealthy_threshold is not None:
+            result['unhealthyThreshold'] = self.unhealthy_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expectedStatuses') is not None:
+            self.expected_statuses = m.get('expectedStatuses')
+        if m.get('healthyThreshold') is not None:
+            self.healthy_threshold = m.get('healthyThreshold')
+        if m.get('httpHost') is not None:
+            self.http_host = m.get('httpHost')
+        if m.get('httpPath') is not None:
+            self.http_path = m.get('httpPath')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('unhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('unhealthyThreshold')
+        return self
+
+
+class UpdateServiceRequestOutlierDetectionConfig(TeaModel):
+    def __init__(
+        self,
+        base_ejection_time: int = None,
+        enable: bool = None,
+        failure_percentage_minimum_hosts: int = None,
+        failure_percentage_threshold: int = None,
+        interval: int = None,
+    ):
+        self.base_ejection_time = base_ejection_time
+        self.enable = enable
+        self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
+        self.failure_percentage_threshold = failure_percentage_threshold
+        self.interval = interval
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_ejection_time is not None:
+            result['baseEjectionTime'] = self.base_ejection_time
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.failure_percentage_minimum_hosts is not None:
+            result['failurePercentageMinimumHosts'] = self.failure_percentage_minimum_hosts
+        if self.failure_percentage_threshold is not None:
+            result['failurePercentageThreshold'] = self.failure_percentage_threshold
+        if self.interval is not None:
+            result['interval'] = self.interval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('baseEjectionTime') is not None:
+            self.base_ejection_time = m.get('baseEjectionTime')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('failurePercentageMinimumHosts') is not None:
+            self.failure_percentage_minimum_hosts = m.get('failurePercentageMinimumHosts')
+        if m.get('failurePercentageThreshold') is not None:
+            self.failure_percentage_threshold = m.get('failurePercentageThreshold')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        return self
+
+
+class UpdateServiceRequestPorts(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        port: int = None,
+        protocol: str = None,
+    ):
+        self.name = name
+        self.port = port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
+class UpdateServiceRequest(TeaModel):
+    def __init__(
+        self,
+        addresses: List[str] = None,
+        agent_service_config: AgentServiceConfig = None,
+        ai_service_config: AiServiceConfig = None,
+        dns_servers: List[str] = None,
+        health_check_config: UpdateServiceRequestHealthCheckConfig = None,
+        healthy_panic_threshold: float = None,
+        outlier_detection_config: UpdateServiceRequestOutlierDetectionConfig = None,
+        ports: List[UpdateServiceRequestPorts] = None,
+        protocol: str = None,
+    ):
+        self.addresses = addresses
+        self.agent_service_config = agent_service_config
+        self.ai_service_config = ai_service_config
+        self.dns_servers = dns_servers
+        self.health_check_config = health_check_config
+        self.healthy_panic_threshold = healthy_panic_threshold
+        self.outlier_detection_config = outlier_detection_config
+        self.ports = ports
+        self.protocol = protocol
+
+    def validate(self):
+        if self.agent_service_config:
+            self.agent_service_config.validate()
+        if self.ai_service_config:
+            self.ai_service_config.validate()
+        if self.health_check_config:
+            self.health_check_config.validate()
+        if self.outlier_detection_config:
+            self.outlier_detection_config.validate()
+        if self.ports:
+            for k in self.ports:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addresses is not None:
+            result['addresses'] = self.addresses
+        if self.agent_service_config is not None:
+            result['agentServiceConfig'] = self.agent_service_config.to_map()
+        if self.ai_service_config is not None:
+            result['aiServiceConfig'] = self.ai_service_config.to_map()
+        if self.dns_servers is not None:
+            result['dnsServers'] = self.dns_servers
+        if self.health_check_config is not None:
+            result['healthCheckConfig'] = self.health_check_config.to_map()
+        if self.healthy_panic_threshold is not None:
+            result['healthyPanicThreshold'] = self.healthy_panic_threshold
+        if self.outlier_detection_config is not None:
+            result['outlierDetectionConfig'] = self.outlier_detection_config.to_map()
+        result['ports'] = []
+        if self.ports is not None:
+            for k in self.ports:
+                result['ports'].append(k.to_map() if k else None)
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addresses') is not None:
+            self.addresses = m.get('addresses')
+        if m.get('agentServiceConfig') is not None:
+            temp_model = AgentServiceConfig()
+            self.agent_service_config = temp_model.from_map(m['agentServiceConfig'])
+        if m.get('aiServiceConfig') is not None:
+            temp_model = AiServiceConfig()
+            self.ai_service_config = temp_model.from_map(m['aiServiceConfig'])
+        if m.get('dnsServers') is not None:
+            self.dns_servers = m.get('dnsServers')
+        if m.get('healthCheckConfig') is not None:
+            temp_model = UpdateServiceRequestHealthCheckConfig()
+            self.health_check_config = temp_model.from_map(m['healthCheckConfig'])
+        if m.get('healthyPanicThreshold') is not None:
+            self.healthy_panic_threshold = m.get('healthyPanicThreshold')
+        if m.get('outlierDetectionConfig') is not None:
+            temp_model = UpdateServiceRequestOutlierDetectionConfig()
+            self.outlier_detection_config = temp_model.from_map(m['outlierDetectionConfig'])
+        self.ports = []
+        if m.get('ports') is not None:
+            for k in m.get('ports'):
+                temp_model = UpdateServiceRequestPorts()
+                self.ports.append(temp_model.from_map(k))
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
+class UpdateServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateServiceVersionRequestLabels(TeaModel):
     def __init__(
         self,

@@ -10699,6 +10699,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_policy_with_options_async(policy_id, request, headers, runtime)
 
+    def update_service_with_options(
+        self,
+        service_id: str,
+        request: apig20240327_models.UpdateServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param request: UpdateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.addresses):
+            body['addresses'] = request.addresses
+        if not UtilClient.is_unset(request.agent_service_config):
+            body['agentServiceConfig'] = request.agent_service_config
+        if not UtilClient.is_unset(request.ai_service_config):
+            body['aiServiceConfig'] = request.ai_service_config
+        if not UtilClient.is_unset(request.dns_servers):
+            body['dnsServers'] = request.dns_servers
+        if not UtilClient.is_unset(request.health_check_config):
+            body['healthCheckConfig'] = request.health_check_config
+        if not UtilClient.is_unset(request.healthy_panic_threshold):
+            body['healthyPanicThreshold'] = request.healthy_panic_threshold
+        if not UtilClient.is_unset(request.outlier_detection_config):
+            body['outlierDetectionConfig'] = request.outlier_detection_config
+        if not UtilClient.is_unset(request.ports):
+            body['ports'] = request.ports
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_with_options_async(
+        self,
+        service_id: str,
+        request: apig20240327_models.UpdateServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param request: UpdateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.addresses):
+            body['addresses'] = request.addresses
+        if not UtilClient.is_unset(request.agent_service_config):
+            body['agentServiceConfig'] = request.agent_service_config
+        if not UtilClient.is_unset(request.ai_service_config):
+            body['aiServiceConfig'] = request.ai_service_config
+        if not UtilClient.is_unset(request.dns_servers):
+            body['dnsServers'] = request.dns_servers
+        if not UtilClient.is_unset(request.health_check_config):
+            body['healthCheckConfig'] = request.health_check_config
+        if not UtilClient.is_unset(request.healthy_panic_threshold):
+            body['healthyPanicThreshold'] = request.healthy_panic_threshold
+        if not UtilClient.is_unset(request.outlier_detection_config):
+            body['outlierDetectionConfig'] = request.outlier_detection_config
+        if not UtilClient.is_unset(request.ports):
+            body['ports'] = request.ports
+        if not UtilClient.is_unset(request.protocol):
+            body['protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/services/{OpenApiUtilClient.get_encode_param(service_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service(
+        self,
+        service_id: str,
+        request: apig20240327_models.UpdateServiceRequest,
+    ) -> apig20240327_models.UpdateServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param request: UpdateServiceRequest
+        @return: UpdateServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_service_with_options(service_id, request, headers, runtime)
+
+    async def update_service_async(
+        self,
+        service_id: str,
+        request: apig20240327_models.UpdateServiceRequest,
+    ) -> apig20240327_models.UpdateServiceResponse:
+        """
+        @summary 更新服务
+        
+        @param request: UpdateServiceRequest
+        @return: UpdateServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_service_with_options_async(service_id, request, headers, runtime)
+
     def update_service_version_with_options(
         self,
         service_id: str,
