@@ -1,3 +1,7 @@
+2025-12-17 Version: 1.5.0
+- Support API ListFileUpload.
+
+
 2025-12-16 Version: 1.4.1
 - Update API CreateDataAgentSession: add request parameters SessionConfig.McpServerIds.
 - Update API CreateDataAgentSession: add response parameters Body.Data.SessionConfig.McpServerIds.

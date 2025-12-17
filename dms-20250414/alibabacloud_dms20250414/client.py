@@ -4289,6 +4289,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_lake_tablebase_info_with_options_async(request, runtime)
 
+    def list_file_upload_with_options(
+        self,
+        request: dms_20250414_models.ListFileUploadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.ListFileUploadResponse:
+        """
+        @summary ListFileUpload
+        
+        @param request: ListFileUploadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileUploadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not UtilClient.is_unset(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not UtilClient.is_unset(request.file_category):
+            query['FileCategory'] = request.file_category
+        if not UtilClient.is_unset(request.file_from):
+            query['FileFrom'] = request.file_from
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.sort_column):
+            query['SortColumn'] = request.sort_column
+        if not UtilClient.is_unset(request.sort_direction):
+            query['SortDirection'] = request.sort_direction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFileUpload',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.ListFileUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_upload_with_options_async(
+        self,
+        request: dms_20250414_models.ListFileUploadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_20250414_models.ListFileUploadResponse:
+        """
+        @summary ListFileUpload
+        
+        @param request: ListFileUploadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileUploadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not UtilClient.is_unset(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not UtilClient.is_unset(request.file_category):
+            query['FileCategory'] = request.file_category
+        if not UtilClient.is_unset(request.file_from):
+            query['FileFrom'] = request.file_from
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.sort_column):
+            query['SortColumn'] = request.sort_column
+        if not UtilClient.is_unset(request.sort_direction):
+            query['SortDirection'] = request.sort_direction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFileUpload',
+            version='2025-04-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_20250414_models.ListFileUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_upload(
+        self,
+        request: dms_20250414_models.ListFileUploadRequest,
+    ) -> dms_20250414_models.ListFileUploadResponse:
+        """
+        @summary ListFileUpload
+        
+        @param request: ListFileUploadRequest
+        @return: ListFileUploadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_file_upload_with_options(request, runtime)
+
+    async def list_file_upload_async(
+        self,
+        request: dms_20250414_models.ListFileUploadRequest,
+    ) -> dms_20250414_models.ListFileUploadResponse:
+        """
+        @summary ListFileUpload
+        
+        @param request: ListFileUploadRequest
+        @return: ListFileUploadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_file_upload_with_options_async(request, runtime)
+
     def send_chat_message_with_options(
         self,
         tmp_req: dms_20250414_models.SendChatMessageRequest,
