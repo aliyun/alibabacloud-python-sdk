@@ -1,3 +1,6 @@
+2025-12-17 Version: 4.7.4
+- Generated python 2021-09-01 for appstream-center.
+
 2025-12-17 Version: 4.7.3
 - Update API DescribeWuyingServerEipInfo: add response parameters Body.EipInfoModel.EipId.
 
