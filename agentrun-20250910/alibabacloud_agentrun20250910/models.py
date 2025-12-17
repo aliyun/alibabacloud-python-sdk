@@ -3572,6 +3572,81 @@ class ProxyConfigEndpoints(TeaModel):
         return self
 
 
+class ProxyConfigPoliciesAiGuardrailConfig(TeaModel):
+    def __init__(
+        self,
+        block_on_content_moderation: bool = None,
+        block_on_malicious_url: bool = None,
+        block_on_model_hallucination: bool = None,
+        block_on_prompt_attack: bool = None,
+        block_on_sensitive_data: bool = None,
+        check_request: bool = None,
+        check_response: bool = None,
+        level: str = None,
+        max_text_length: int = None,
+    ):
+        self.block_on_content_moderation = block_on_content_moderation
+        self.block_on_malicious_url = block_on_malicious_url
+        self.block_on_model_hallucination = block_on_model_hallucination
+        self.block_on_prompt_attack = block_on_prompt_attack
+        self.block_on_sensitive_data = block_on_sensitive_data
+        self.check_request = check_request
+        self.check_response = check_response
+        self.level = level
+        self.max_text_length = max_text_length
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_on_content_moderation is not None:
+            result['blockOnContentModeration'] = self.block_on_content_moderation
+        if self.block_on_malicious_url is not None:
+            result['blockOnMaliciousUrl'] = self.block_on_malicious_url
+        if self.block_on_model_hallucination is not None:
+            result['blockOnModelHallucination'] = self.block_on_model_hallucination
+        if self.block_on_prompt_attack is not None:
+            result['blockOnPromptAttack'] = self.block_on_prompt_attack
+        if self.block_on_sensitive_data is not None:
+            result['blockOnSensitiveData'] = self.block_on_sensitive_data
+        if self.check_request is not None:
+            result['checkRequest'] = self.check_request
+        if self.check_response is not None:
+            result['checkResponse'] = self.check_response
+        if self.level is not None:
+            result['level'] = self.level
+        if self.max_text_length is not None:
+            result['maxTextLength'] = self.max_text_length
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('blockOnContentModeration') is not None:
+            self.block_on_content_moderation = m.get('blockOnContentModeration')
+        if m.get('blockOnMaliciousUrl') is not None:
+            self.block_on_malicious_url = m.get('blockOnMaliciousUrl')
+        if m.get('blockOnModelHallucination') is not None:
+            self.block_on_model_hallucination = m.get('blockOnModelHallucination')
+        if m.get('blockOnPromptAttack') is not None:
+            self.block_on_prompt_attack = m.get('blockOnPromptAttack')
+        if m.get('blockOnSensitiveData') is not None:
+            self.block_on_sensitive_data = m.get('blockOnSensitiveData')
+        if m.get('checkRequest') is not None:
+            self.check_request = m.get('checkRequest')
+        if m.get('checkResponse') is not None:
+            self.check_response = m.get('checkResponse')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('maxTextLength') is not None:
+            self.max_text_length = m.get('maxTextLength')
+        return self
+
+
 class ProxyConfigPoliciesFallbacks(TeaModel):
     def __init__(
         self,
@@ -3605,26 +3680,21 @@ class ProxyConfigPoliciesFallbacks(TeaModel):
         return self
 
 
-class ProxyConfigPolicies(TeaModel):
+class ProxyConfigPoliciesTokenRateLimiter(TeaModel):
     def __init__(
         self,
-        cache: bool = None,
-        concurrency_limit: int = None,
-        fallbacks: List[ProxyConfigPoliciesFallbacks] = None,
-        num_retries: int = None,
-        request_timeout: int = None,
+        tpd: int = None,
+        tph: int = None,
+        tpm: int = None,
+        tps: int = None,
     ):
-        self.cache = cache
-        self.concurrency_limit = concurrency_limit
-        self.fallbacks = fallbacks
-        self.num_retries = num_retries
-        self.request_timeout = request_timeout
+        self.tpd = tpd
+        self.tph = tph
+        self.tpm = tpm
+        self.tps = tps
 
     def validate(self):
-        if self.fallbacks:
-            for k in self.fallbacks:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3632,6 +3702,66 @@ class ProxyConfigPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.tpd is not None:
+            result['tpd'] = self.tpd
+        if self.tph is not None:
+            result['tph'] = self.tph
+        if self.tpm is not None:
+            result['tpm'] = self.tpm
+        if self.tps is not None:
+            result['tps'] = self.tps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tpd') is not None:
+            self.tpd = m.get('tpd')
+        if m.get('tph') is not None:
+            self.tph = m.get('tph')
+        if m.get('tpm') is not None:
+            self.tpm = m.get('tpm')
+        if m.get('tps') is not None:
+            self.tps = m.get('tps')
+        return self
+
+
+class ProxyConfigPolicies(TeaModel):
+    def __init__(
+        self,
+        ai_guardrail_config: ProxyConfigPoliciesAiGuardrailConfig = None,
+        cache: bool = None,
+        concurrency_limit: int = None,
+        fallbacks: List[ProxyConfigPoliciesFallbacks] = None,
+        num_retries: int = None,
+        request_timeout: int = None,
+        token_rate_limiter: ProxyConfigPoliciesTokenRateLimiter = None,
+    ):
+        self.ai_guardrail_config = ai_guardrail_config
+        self.cache = cache
+        self.concurrency_limit = concurrency_limit
+        self.fallbacks = fallbacks
+        self.num_retries = num_retries
+        self.request_timeout = request_timeout
+        self.token_rate_limiter = token_rate_limiter
+
+    def validate(self):
+        if self.ai_guardrail_config:
+            self.ai_guardrail_config.validate()
+        if self.fallbacks:
+            for k in self.fallbacks:
+                if k:
+                    k.validate()
+        if self.token_rate_limiter:
+            self.token_rate_limiter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_guardrail_config is not None:
+            result['aiGuardrailConfig'] = self.ai_guardrail_config.to_map()
         if self.cache is not None:
             result['cache'] = self.cache
         if self.concurrency_limit is not None:
@@ -3644,10 +3774,15 @@ class ProxyConfigPolicies(TeaModel):
             result['numRetries'] = self.num_retries
         if self.request_timeout is not None:
             result['requestTimeout'] = self.request_timeout
+        if self.token_rate_limiter is not None:
+            result['tokenRateLimiter'] = self.token_rate_limiter.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aiGuardrailConfig') is not None:
+            temp_model = ProxyConfigPoliciesAiGuardrailConfig()
+            self.ai_guardrail_config = temp_model.from_map(m['aiGuardrailConfig'])
         if m.get('cache') is not None:
             self.cache = m.get('cache')
         if m.get('concurrencyLimit') is not None:
@@ -3661,6 +3796,9 @@ class ProxyConfigPolicies(TeaModel):
             self.num_retries = m.get('numRetries')
         if m.get('requestTimeout') is not None:
             self.request_timeout = m.get('requestTimeout')
+        if m.get('tokenRateLimiter') is not None:
+            temp_model = ProxyConfigPoliciesTokenRateLimiter()
+            self.token_rate_limiter = temp_model.from_map(m['tokenRateLimiter'])
         return self
 
 
@@ -3715,6 +3853,7 @@ class CreateModelProxyInput(TeaModel):
         cpu: float = None,
         credential_name: str = None,
         description: str = None,
+        execution_role_arn: str = None,
         litellm_version: str = None,
         log_configuration: LogConfiguration = None,
         memory: int = None,
@@ -3730,6 +3869,7 @@ class CreateModelProxyInput(TeaModel):
         self.cpu = cpu
         self.credential_name = credential_name
         self.description = description
+        self.execution_role_arn = execution_role_arn
         self.litellm_version = litellm_version
         self.log_configuration = log_configuration
         # This parameter is required.
@@ -3768,6 +3908,8 @@ class CreateModelProxyInput(TeaModel):
             result['credentialName'] = self.credential_name
         if self.description is not None:
             result['description'] = self.description
+        if self.execution_role_arn is not None:
+            result['executionRoleArn'] = self.execution_role_arn
         if self.litellm_version is not None:
             result['litellmVersion'] = self.litellm_version
         if self.log_configuration is not None:
@@ -3799,6 +3941,8 @@ class CreateModelProxyInput(TeaModel):
             self.credential_name = m.get('credentialName')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('executionRoleArn') is not None:
+            self.execution_role_arn = m.get('executionRoleArn')
         if m.get('litellmVersion') is not None:
             self.litellm_version = m.get('litellmVersion')
         if m.get('logConfiguration') is not None:
@@ -5002,6 +5146,7 @@ class ModelProxy(TeaModel):
         credential_name: str = None,
         description: str = None,
         endpoint: str = None,
+        execution_role_arn: str = None,
         function_name: str = None,
         last_updated_at: str = None,
         litellm_version: str = None,
@@ -5022,6 +5167,7 @@ class ModelProxy(TeaModel):
         self.credential_name = credential_name
         self.description = description
         self.endpoint = endpoint
+        self.execution_role_arn = execution_role_arn
         self.function_name = function_name
         self.last_updated_at = last_updated_at
         self.litellm_version = litellm_version
@@ -5061,6 +5207,8 @@ class ModelProxy(TeaModel):
             result['description'] = self.description
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.execution_role_arn is not None:
+            result['executionRoleArn'] = self.execution_role_arn
         if self.function_name is not None:
             result['functionName'] = self.function_name
         if self.last_updated_at is not None:
@@ -5103,6 +5251,8 @@ class ModelProxy(TeaModel):
             self.description = m.get('description')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('executionRoleArn') is not None:
+            self.execution_role_arn = m.get('executionRoleArn')
         if m.get('functionName') is not None:
             self.function_name = m.get('functionName')
         if m.get('lastUpdatedAt') is not None:
@@ -9583,6 +9733,7 @@ class UpdateModelProxyInput(TeaModel):
         arms_configuration: ArmsConfiguration = None,
         credential_name: str = None,
         description: str = None,
+        execution_role_arn: str = None,
         log_configuration: LogConfiguration = None,
         network_configuration: NetworkConfiguration = None,
         proxy_config: ProxyConfig = None,
@@ -9590,6 +9741,7 @@ class UpdateModelProxyInput(TeaModel):
         self.arms_configuration = arms_configuration
         self.credential_name = credential_name
         self.description = description
+        self.execution_role_arn = execution_role_arn
         self.log_configuration = log_configuration
         self.network_configuration = network_configuration
         self.proxy_config = proxy_config
@@ -9616,6 +9768,8 @@ class UpdateModelProxyInput(TeaModel):
             result['credentialName'] = self.credential_name
         if self.description is not None:
             result['description'] = self.description
+        if self.execution_role_arn is not None:
+            result['executionRoleArn'] = self.execution_role_arn
         if self.log_configuration is not None:
             result['logConfiguration'] = self.log_configuration.to_map()
         if self.network_configuration is not None:
@@ -9633,6 +9787,8 @@ class UpdateModelProxyInput(TeaModel):
             self.credential_name = m.get('credentialName')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('executionRoleArn') is not None:
+            self.execution_role_arn = m.get('executionRoleArn')
         if m.get('logConfiguration') is not None:
             temp_model = LogConfiguration()
             self.log_configuration = temp_model.from_map(m['logConfiguration'])
