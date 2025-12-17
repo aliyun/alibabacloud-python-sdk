@@ -1,3 +1,8 @@
+2025-12-17 Version: 2.2.1
+- Update API GetQueue: add response parameters Body.Queue.CreateTime.
+- Update API GetQueue: add response parameters Body.Queue.UpdateTime.
+
+
 2025-12-15 Version: 2.2.0
 - Support API ListRegions.
 - Update API GetCluster: add response parameters Body.Manager.ManagerNode.AutoRenew.

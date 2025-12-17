@@ -6680,6 +6680,7 @@ class GetQueueResponseBodyQueue(TeaModel):
         self,
         allocation_strategy: str = None,
         compute_nodes: List[NodeTemplate] = None,
+        create_time: str = None,
         enable_scale_in: bool = None,
         enable_scale_out: bool = None,
         hostname_prefix: str = None,
@@ -6693,12 +6694,14 @@ class GetQueueResponseBodyQueue(TeaModel):
         queue_name: str = None,
         ram_role: str = None,
         reserved_node_pool_id: str = None,
+        update_time: str = None,
         v_switch_ids: List[str] = None,
     ):
         # The auto scale-out policy of the queue.
         self.allocation_strategy = allocation_strategy
         # The hardware configurations of the compute nodes in the queue.
         self.compute_nodes = compute_nodes
+        self.create_time = create_time
         # Indicates whether auto scale-in is enabled for the queue. Valid values:
         # 
         # *   true
@@ -6736,6 +6739,7 @@ class GetQueueResponseBodyQueue(TeaModel):
         self.ram_role = ram_role
         # Preset node pool ID.
         self.reserved_node_pool_id = reserved_node_pool_id
+        self.update_time = update_time
         # The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
         self.v_switch_ids = v_switch_ids
 
@@ -6757,6 +6761,8 @@ class GetQueueResponseBodyQueue(TeaModel):
         if self.compute_nodes is not None:
             for k in self.compute_nodes:
                 result['ComputeNodes'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.enable_scale_in is not None:
             result['EnableScaleIn'] = self.enable_scale_in
         if self.enable_scale_out is not None:
@@ -6783,6 +6789,8 @@ class GetQueueResponseBodyQueue(TeaModel):
             result['RamRole'] = self.ram_role
         if self.reserved_node_pool_id is not None:
             result['ReservedNodePoolId'] = self.reserved_node_pool_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         return result
@@ -6796,6 +6804,8 @@ class GetQueueResponseBodyQueue(TeaModel):
             for k in m.get('ComputeNodes'):
                 temp_model = NodeTemplate()
                 self.compute_nodes.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('EnableScaleIn') is not None:
             self.enable_scale_in = m.get('EnableScaleIn')
         if m.get('EnableScaleOut') is not None:
@@ -6822,6 +6832,8 @@ class GetQueueResponseBodyQueue(TeaModel):
             self.ram_role = m.get('RamRole')
         if m.get('ReservedNodePoolId') is not None:
             self.reserved_node_pool_id = m.get('ReservedNodePoolId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         return self
