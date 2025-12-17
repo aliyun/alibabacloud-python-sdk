@@ -4103,6 +4103,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_alarm_with_options_async(request, runtime)
 
+    def delete_diagnose_report_with_options(
+        self,
+        request: ess_20220222_models.DeleteDiagnoseReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DeleteDiagnoseReportResponse:
+        """
+        @summary DeleteDiagnoseReport
+        
+        @param request: DeleteDiagnoseReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDiagnoseReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnoseReport',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DeleteDiagnoseReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_diagnose_report_with_options_async(
+        self,
+        request: ess_20220222_models.DeleteDiagnoseReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DeleteDiagnoseReportResponse:
+        """
+        @summary DeleteDiagnoseReport
+        
+        @param request: DeleteDiagnoseReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDiagnoseReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnoseReport',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DeleteDiagnoseReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_diagnose_report(
+        self,
+        request: ess_20220222_models.DeleteDiagnoseReportRequest,
+    ) -> ess_20220222_models.DeleteDiagnoseReportResponse:
+        """
+        @summary DeleteDiagnoseReport
+        
+        @param request: DeleteDiagnoseReportRequest
+        @return: DeleteDiagnoseReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_diagnose_report_with_options(request, runtime)
+
+    async def delete_diagnose_report_async(
+        self,
+        request: ess_20220222_models.DeleteDiagnoseReportRequest,
+    ) -> ess_20220222_models.DeleteDiagnoseReportResponse:
+        """
+        @summary DeleteDiagnoseReport
+        
+        @param request: DeleteDiagnoseReportRequest
+        @return: DeleteDiagnoseReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_diagnose_report_with_options_async(request, runtime)
+
     def delete_eci_scaling_configuration_with_options(
         self,
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,

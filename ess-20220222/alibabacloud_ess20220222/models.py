@@ -10711,6 +10711,109 @@ class DeleteAlarmResponse(TeaModel):
         return self
 
 
+class DeleteDiagnoseReportRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        report_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        return self
+
+
+class DeleteDiagnoseReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDiagnoseReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDiagnoseReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDiagnoseReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteEciScalingConfigurationRequest(TeaModel):
     def __init__(
         self,
@@ -31509,6 +31612,9 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         self.memory = memory
         # The endpoints of Network Time Protocol (NTP) servers.
         self.ntp_servers = ntp_servers
+        # Specifies whether to override existing data. Valid Values:
+        # 
+        # true false
         self.override = override
         self.owner_id = owner_id
         # The name of the instance Resource Access Management (RAM) role. You can use the same RAM role to access elastic container instances and Elastic Compute Service (ECS) instances. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
@@ -37200,7 +37306,7 @@ class RemoveInstancesRequestLifecycleHookContext(TeaModel):
         ignored_lifecycle_hook_ids: List[str] = None,
         lifecycle_hook_result: str = None,
     ):
-        # Specifies whether to disable the lifecycle hook. Valid Values:
+        # Specifies whether to disable the lifecycle hook. Valid values:
         # 
         # *   true
         # *   false
@@ -38067,7 +38173,7 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
         ignored_lifecycle_hook_ids: List[str] = None,
         lifecycle_hook_result: str = None,
     ):
-        # Specifies whether to disable the Lifecycle Hook feature. Valid values:
+        # Specifies whether to disable the lifecycle hook. Valid values:
         # 
         # *   true
         # *   false
@@ -38159,7 +38265,7 @@ class ScaleWithAdjustmentRequestOverridesContainerOverrides(TeaModel):
         self.environment_vars = environment_vars
         # The memory size that you want to allocate to the container. Unit: GiB.
         self.memory = memory
-        # The name of container N. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
+        # The name of the container. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
         self.name = name
 
     def validate(self):
@@ -38224,6 +38330,7 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
         self.cpu = cpu
         # The memory size that you want to allocate to the instance. Unit: GiB.
         self.memory = memory
+        # The user data of the Elastic Compute Service (ECS) instance. The user data must be encoded in Base64 format. The size of raw data before Base64 encoding cannot exceed 32 KB.
         self.user_data = user_data
 
     def validate(self):
@@ -38314,7 +38421,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.lifecycle_hook_context = lifecycle_hook_context
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
+        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance (ECI) type during a scale-out event.
         self.overrides = overrides
         self.owner_id = owner_id
         # Whether the current scale-out task supports concurrency.
@@ -38455,7 +38562,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
+        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance (ECI) type during a scale-out event.
         self.overrides_shrink = overrides_shrink
         self.owner_id = owner_id
         # Whether the current scale-out task supports concurrency.

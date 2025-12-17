@@ -1,3 +1,7 @@
+2025-12-17 Version: 1.11.0
+- Support API DeleteDiagnoseReport.
+
+
 2025-12-05 Version: 1.10.22
 - Update API RemoveInstances: add request parameters LifecycleHookContext.LifecycleHookResult.
 - Update API RemoveInstances: add response parameters Body.IgnoredInstances.
