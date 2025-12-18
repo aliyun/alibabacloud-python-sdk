@@ -1,3 +1,9 @@
+2025-12-18 Version: 3.1.2
+- Update API CreateDBInstance: add request parameters Description.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.EngineVersion.
+- Update API DescribeDBInstances: add response parameters Body.DBInstances.$.EngineVersion.
+
+
 2025-11-25 Version: 3.1.1
 - Update API DescribeComponentPropeties: add request parameters StorageType.
 

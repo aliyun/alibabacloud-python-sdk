@@ -1985,6 +1985,7 @@ class CreateDBInstanceRequest(TeaModel):
         dbnode_class: str = None,
         dbnode_count: int = None,
         dnnode_count: int = None,
+        description: str = None,
         dn_class: str = None,
         dn_storage_space: str = None,
         engine_version: str = None,
@@ -2014,6 +2015,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.dbnode_class = dbnode_class
         self.dbnode_count = dbnode_count
         self.dnnode_count = dnnode_count
+        self.description = description
         self.dn_class = dn_class
         self.dn_storage_space = dn_storage_space
         # This parameter is required.
@@ -2064,6 +2066,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['DBNodeCount'] = self.dbnode_count
         if self.dnnode_count is not None:
             result['DNNodeCount'] = self.dnnode_count
+        if self.description is not None:
+            result['Description'] = self.description
         if self.dn_class is not None:
             result['DnClass'] = self.dn_class
         if self.dn_storage_space is not None:
@@ -2124,6 +2128,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.dbnode_count = m.get('DBNodeCount')
         if m.get('DNNodeCount') is not None:
             self.dnnode_count = m.get('DNNodeCount')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('DnClass') is not None:
             self.dn_class = m.get('DnClass')
         if m.get('DnStorageSpace') is not None:
@@ -2179,6 +2185,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         dbnode_class: str = None,
         dbnode_count: int = None,
         dnnode_count: int = None,
+        description: str = None,
         dn_class: str = None,
         dn_storage_space: str = None,
         engine_version: str = None,
@@ -2208,6 +2215,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.dbnode_class = dbnode_class
         self.dbnode_count = dbnode_count
         self.dnnode_count = dnnode_count
+        self.description = description
         self.dn_class = dn_class
         self.dn_storage_space = dn_storage_space
         # This parameter is required.
@@ -2258,6 +2266,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['DBNodeCount'] = self.dbnode_count
         if self.dnnode_count is not None:
             result['DNNodeCount'] = self.dnnode_count
+        if self.description is not None:
+            result['Description'] = self.description
         if self.dn_class is not None:
             result['DnClass'] = self.dn_class
         if self.dn_storage_space is not None:
@@ -2318,6 +2328,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.dbnode_count = m.get('DBNodeCount')
         if m.get('DNNodeCount') is not None:
             self.dnnode_count = m.get('DNNodeCount')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('DnClass') is not None:
             self.dn_class = m.get('DnClass')
         if m.get('DnStorageSpace') is not None:
@@ -9151,6 +9163,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         dn_node_class_code: str = None,
         dn_node_count: int = None,
         engine: str = None,
+        engine_version: str = None,
         expire_date: str = None,
         expired: str = None,
         gdn_instance_name: str = None,
@@ -9209,6 +9222,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.dn_node_class_code = dn_node_class_code
         self.dn_node_count = dn_node_count
         self.engine = engine
+        self.engine_version = engine_version
         self.expire_date = expire_date
         self.expired = expired
         self.gdn_instance_name = gdn_instance_name
@@ -9329,6 +9343,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             result['DnNodeCount'] = self.dn_node_count
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.expire_date is not None:
             result['ExpireDate'] = self.expire_date
         if self.expired is not None:
@@ -9457,6 +9473,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             self.dn_node_count = m.get('DnNodeCount')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('ExpireDate') is not None:
             self.expire_date = m.get('ExpireDate')
         if m.get('Expired') is not None:
@@ -11607,6 +11625,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         dn_node_class_code: str = None,
         dn_node_count: int = None,
         engine: str = None,
+        engine_version: str = None,
         expire_time: str = None,
         expired: bool = None,
         id: str = None,
@@ -11654,6 +11673,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         self.dn_node_class_code = dn_node_class_code
         self.dn_node_count = dn_node_count
         self.engine = engine
+        self.engine_version = engine_version
         self.expire_time = expire_time
         self.expired = expired
         self.id = id
@@ -11745,6 +11765,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             result['DnNodeCount'] = self.dn_node_count
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.expired is not None:
@@ -11845,6 +11867,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             self.dn_node_count = m.get('DnNodeCount')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('Expired') is not None:

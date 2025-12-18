@@ -1592,6 +1592,8 @@ class Client(OpenApiClient):
             query['DBNodeCount'] = request.dbnode_count
         if not UtilClient.is_unset(request.dnnode_count):
             query['DNNodeCount'] = request.dnnode_count
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.dn_class):
             query['DnClass'] = request.dn_class
         if not UtilClient.is_unset(request.dn_storage_space):
@@ -1685,6 +1687,8 @@ class Client(OpenApiClient):
             query['DBNodeCount'] = request.dbnode_count
         if not UtilClient.is_unset(request.dnnode_count):
             query['DNNodeCount'] = request.dnnode_count
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.dn_class):
             query['DnClass'] = request.dn_class
         if not UtilClient.is_unset(request.dn_storage_space):
@@ -3038,6 +3042,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: DeleteDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDBInstanceResponse
@@ -3073,6 +3079,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: DeleteDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDBInstanceResponse
@@ -3107,6 +3115,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteDBInstanceRequest,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: DeleteDBInstanceRequest
         @return: DeleteDBInstanceResponse
         """
@@ -3118,6 +3128,8 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteDBInstanceRequest,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: DeleteDBInstanceRequest
         @return: DeleteDBInstanceResponse
         """
