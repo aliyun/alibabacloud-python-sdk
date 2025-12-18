@@ -4583,6 +4583,7 @@ class InstanceInfo(TeaModel):
         destroyed_time_ms: int = None,
         instance_id: str = None,
         qualifier: str = None,
+        resource_type: str = None,
         status: str = None,
         version_id: str = None,
     ):
@@ -4590,6 +4591,7 @@ class InstanceInfo(TeaModel):
         self.destroyed_time_ms = destroyed_time_ms
         self.instance_id = instance_id
         self.qualifier = qualifier
+        self.resource_type = resource_type
         self.status = status
         self.version_id = version_id
 
@@ -4610,6 +4612,8 @@ class InstanceInfo(TeaModel):
             result['instanceId'] = self.instance_id
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
         if self.status is not None:
             result['status'] = self.status
         if self.version_id is not None:
@@ -4626,6 +4630,8 @@ class InstanceInfo(TeaModel):
             self.instance_id = m.get('instanceId')
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('versionId') is not None:
@@ -5797,20 +5803,24 @@ class ScalingConfigStatus(TeaModel):
         self,
         current_error: str = None,
         current_instances: int = None,
+        enable_mix_mode: bool = None,
         enable_on_demand_scaling: bool = None,
         function_arn: str = None,
         horizontal_scaling_policies: List[ScalingPolicy] = None,
         min_instances: int = None,
+        request_dispatch_policy: str = None,
         resident_pool_id: str = None,
         scheduled_policies: List[ScheduledPolicy] = None,
         target_instances: int = None,
     ):
         self.current_error = current_error
         self.current_instances = current_instances
+        self.enable_mix_mode = enable_mix_mode
         self.enable_on_demand_scaling = enable_on_demand_scaling
         self.function_arn = function_arn
         self.horizontal_scaling_policies = horizontal_scaling_policies
         self.min_instances = min_instances
+        self.request_dispatch_policy = request_dispatch_policy
         self.resident_pool_id = resident_pool_id
         self.scheduled_policies = scheduled_policies
         self.target_instances = target_instances
@@ -5835,6 +5845,8 @@ class ScalingConfigStatus(TeaModel):
             result['currentError'] = self.current_error
         if self.current_instances is not None:
             result['currentInstances'] = self.current_instances
+        if self.enable_mix_mode is not None:
+            result['enableMixMode'] = self.enable_mix_mode
         if self.enable_on_demand_scaling is not None:
             result['enableOnDemandScaling'] = self.enable_on_demand_scaling
         if self.function_arn is not None:
@@ -5845,6 +5857,8 @@ class ScalingConfigStatus(TeaModel):
                 result['horizontalScalingPolicies'].append(k.to_map() if k else None)
         if self.min_instances is not None:
             result['minInstances'] = self.min_instances
+        if self.request_dispatch_policy is not None:
+            result['requestDispatchPolicy'] = self.request_dispatch_policy
         if self.resident_pool_id is not None:
             result['residentPoolId'] = self.resident_pool_id
         result['scheduledPolicies'] = []
@@ -5861,6 +5875,8 @@ class ScalingConfigStatus(TeaModel):
             self.current_error = m.get('currentError')
         if m.get('currentInstances') is not None:
             self.current_instances = m.get('currentInstances')
+        if m.get('enableMixMode') is not None:
+            self.enable_mix_mode = m.get('enableMixMode')
         if m.get('enableOnDemandScaling') is not None:
             self.enable_on_demand_scaling = m.get('enableOnDemandScaling')
         if m.get('functionArn') is not None:
@@ -5872,6 +5888,8 @@ class ScalingConfigStatus(TeaModel):
                 self.horizontal_scaling_policies.append(temp_model.from_map(k))
         if m.get('minInstances') is not None:
             self.min_instances = m.get('minInstances')
+        if m.get('requestDispatchPolicy') is not None:
+            self.request_dispatch_policy = m.get('requestDispatchPolicy')
         if m.get('residentPoolId') is not None:
             self.resident_pool_id = m.get('residentPoolId')
         self.scheduled_policies = []
@@ -6915,15 +6933,19 @@ class PutProvisionConfigInput(TeaModel):
 class PutScalingConfigInput(TeaModel):
     def __init__(
         self,
+        enable_mix_mode: bool = None,
         enable_on_demand_scaling: bool = None,
         horizontal_scaling_policies: List[ScalingPolicy] = None,
         min_instances: int = None,
+        request_dispatch_policy: str = None,
         resident_pool_id: str = None,
         scheduled_policies: List[ScheduledPolicy] = None,
     ):
+        self.enable_mix_mode = enable_mix_mode
         self.enable_on_demand_scaling = enable_on_demand_scaling
         self.horizontal_scaling_policies = horizontal_scaling_policies
         self.min_instances = min_instances
+        self.request_dispatch_policy = request_dispatch_policy
         self.resident_pool_id = resident_pool_id
         self.scheduled_policies = scheduled_policies
 
@@ -6943,6 +6965,8 @@ class PutScalingConfigInput(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_mix_mode is not None:
+            result['enableMixMode'] = self.enable_mix_mode
         if self.enable_on_demand_scaling is not None:
             result['enableOnDemandScaling'] = self.enable_on_demand_scaling
         result['horizontalScalingPolicies'] = []
@@ -6951,6 +6975,8 @@ class PutScalingConfigInput(TeaModel):
                 result['horizontalScalingPolicies'].append(k.to_map() if k else None)
         if self.min_instances is not None:
             result['minInstances'] = self.min_instances
+        if self.request_dispatch_policy is not None:
+            result['requestDispatchPolicy'] = self.request_dispatch_policy
         if self.resident_pool_id is not None:
             result['residentPoolId'] = self.resident_pool_id
         result['scheduledPolicies'] = []
@@ -6961,6 +6987,8 @@ class PutScalingConfigInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableMixMode') is not None:
+            self.enable_mix_mode = m.get('enableMixMode')
         if m.get('enableOnDemandScaling') is not None:
             self.enable_on_demand_scaling = m.get('enableOnDemandScaling')
         self.horizontal_scaling_policies = []
@@ -6970,6 +6998,8 @@ class PutScalingConfigInput(TeaModel):
                 self.horizontal_scaling_policies.append(temp_model.from_map(k))
         if m.get('minInstances') is not None:
             self.min_instances = m.get('minInstances')
+        if m.get('requestDispatchPolicy') is not None:
+            self.request_dispatch_policy = m.get('requestDispatchPolicy')
         if m.get('residentPoolId') is not None:
             self.resident_pool_id = m.get('residentPoolId')
         self.scheduled_policies = []
