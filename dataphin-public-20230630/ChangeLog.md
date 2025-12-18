@@ -1,3 +1,8 @@
+2025-12-18 Version: 2.3.0
+- Support API SyncDepartment.
+- Support API SyncDepartmentUser.
+
+
 2025-11-04 Version: 2.2.0
 - Support API AddRegisterLineage.
 - Support API CreatePipeline.

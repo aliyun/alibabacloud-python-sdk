@@ -18461,6 +18461,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_batch_task_with_options_async(request, runtime)
 
+    def sync_department_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息。
+        
+        @param tmp_req: SyncDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_command):
+            request.sync_department_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_command, 'SyncDepartmentCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_command_shrink):
+            body['SyncDepartmentCommand'] = request.sync_department_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartment',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_department_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息。
+        
+        @param tmp_req: SyncDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_command):
+            request.sync_department_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_command, 'SyncDepartmentCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_command_shrink):
+            body['SyncDepartmentCommand'] = request.sync_department_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartment',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_department(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息。
+        
+        @param request: SyncDepartmentRequest
+        @return: SyncDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_department_with_options(request, runtime)
+
+    async def sync_department_async(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
+        """
+        @summary 同步部门信息。
+        
+        @param request: SyncDepartmentRequest
+        @return: SyncDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_department_with_options_async(request, runtime)
+
+    def sync_department_user_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param tmp_req: SyncDepartmentUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentUserResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_user_command):
+            request.sync_department_user_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_user_command, 'SyncDepartmentUserCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_user_command_shrink):
+            body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartmentUser',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_department_user_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param tmp_req: SyncDepartmentUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDepartmentUserResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.SyncDepartmentUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sync_department_user_command):
+            request.sync_department_user_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_user_command, 'SyncDepartmentUserCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.sync_department_user_command_shrink):
+            body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncDepartmentUser',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.SyncDepartmentUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_department_user(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param request: SyncDepartmentUserRequest
+        @return: SyncDepartmentUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_department_user_with_options(request, runtime)
+
+    async def sync_department_user_async(
+        self,
+        request: dataphin_public_20230630_models.SyncDepartmentUserRequest,
+    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
+        """
+        @summary 同步部门成员信息
+        
+        @param request: SyncDepartmentUserRequest
+        @return: SyncDepartmentUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_department_user_with_options_async(request, runtime)
+
     def transfer_ownership_for_all_object_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.TransferOwnershipForAllObjectRequest,
