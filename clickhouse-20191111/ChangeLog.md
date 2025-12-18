@@ -1,3 +1,7 @@
+2025-12-18 Version: 3.3.1
+- Update API CreateDBInstance: add request parameters Tags.
+
+
 2025-12-12 Version: 3.3.0
 - Support API CancelActiveOperationTasks.
 - Support API CancelAppointmentElectZookeeperLeader.

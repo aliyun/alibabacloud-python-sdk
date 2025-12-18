@@ -2254,6 +2254,39 @@ class CreateBackupPolicyResponse(TeaModel):
         return self
 
 
+class CreateDBInstanceRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -2279,6 +2312,7 @@ class CreateDBInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         source_dbcluster_id: str = None,
+        tags: List[CreateDBInstanceRequestTags] = None,
         used_time: str = None,
         vpcid: str = None,
         v_switch_bak: str = None,
@@ -2398,6 +2432,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
         self.source_dbcluster_id = source_dbcluster_id
+        self.tags = tags
         # The subscription duration of the subscription cluster.
         # 
         # >  This parameter is required only when PayType is set to Prepaid.
@@ -2425,7 +2460,10 @@ class CreateDBInstanceRequest(TeaModel):
         self.zone_id_bak = zone_id_bak
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2477,6 +2515,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.source_dbcluster_id is not None:
             result['SourceDBClusterId'] = self.source_dbcluster_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.vpcid is not None:
@@ -2541,6 +2583,11 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SourceDBClusterId') is not None:
             self.source_dbcluster_id = m.get('SourceDBClusterId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateDBInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VPCId') is not None:
