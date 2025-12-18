@@ -19830,7 +19830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a Single Origin Rule Configuration
+        @summary Queries the configurations of a single origin rule.
         
         @param request: GetOriginRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19863,7 +19863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a Single Origin Rule Configuration
+        @summary Queries the configurations of a single origin rule.
         
         @param request: GetOriginRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19895,7 +19895,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetOriginRuleRequest,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a Single Origin Rule Configuration
+        @summary Queries the configurations of a single origin rule.
         
         @param request: GetOriginRuleRequest
         @return: GetOriginRuleResponse
@@ -19908,7 +19908,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetOriginRuleRequest,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a Single Origin Rule Configuration
+        @summary Queries the configurations of a single origin rule.
         
         @param request: GetOriginRuleRequest
         @return: GetOriginRuleResponse

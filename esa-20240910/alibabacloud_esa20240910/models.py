@@ -38371,11 +38371,11 @@ class GetOriginRuleRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # ConfigId of the configuration, which can be obtained by calling the [ListOriginRules](https://help.aliyun.com/document_detail/2866989.html) interface.
+        # The ID of the configuration. You can call the [ListSiteRoutes](https://help.aliyun.com/document_detail/2866989.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -38432,65 +38432,90 @@ class GetOriginRuleResponseBody(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # The configuration type to query. Valid values:
         # 
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # *   global: global configurations.
+        # *   rule: rule configurations.
         self.config_type = config_type
-        # Rewrite the DNS resolution record for the origin request.
+        # The hostname that overrides the resolved hostname of an incoming request.
         self.dns_record = dns_record
+        # 302 follow switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.follow_302enable = follow_302enable
+        # The maximum number of 302 follow times. Valid values: 1 to 5.
         self.follow_302max_tries = follow_302max_tries
+        # Retains the original request parameters switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.follow_302retain_args = follow_302retain_args
+        # Retain the original request header switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.follow_302retain_header = follow_302retain_header
+        # Target Host
         self.follow_302target_host = follow_302target_host
-        # HOST carried in the origin request.
+        # The Host header in origin requests.
         self.origin_host = origin_host
-        # Port of the origin server accessed when using the HTTP protocol for origin.
+        # The origin port that is accessed when the HTTP protocol is used to back to the origin.
         self.origin_http_port = origin_http_port
-        # Port of the origin server accessed when using the HTTPS protocol for origin.
+        # The origin port that is accessed when the HTTPS protocol is used to back to the origin.
         self.origin_https_port = origin_https_port
-        # mTLS switch. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # The MTLS switch. Valid values:
+        # 
+        # *   on
+        # *   off
         self.origin_mtls = origin_mtls
+        # The read timeout period (in seconds) on the origin.
         self.origin_read_timeout = origin_read_timeout
-        # Protocol used for the origin request. Value range:
+        # The protocol used for origin requests. Valid values:
         # 
-        # - http: Use HTTP protocol for origin.
-        # - https: Use HTTPS protocol for origin.
-        # - follow: Follow the client\\"s protocol for origin.
+        # *   http: HTTP.
+        # *   https: HTTPS.
+        # *   follow: follows the protocol used by the client.
         self.origin_scheme = origin_scheme
-        # SNI carried in the origin request.
+        # The SNI in origin requests.
         self.origin_sni = origin_sni
-        # Origin certificate verification switch. Value range: 
-        # - on: Enable. 
-        # - off: Disable.
-        self.origin_verify = origin_verify
-        # Use the range chunk method for origin file download. Value range:
+        # The origin certificate verification switch. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
-        # - force: Force.
+        # *   on
+        # *   off
+        self.origin_verify = origin_verify
+        # Use range requests to download an object from the source. Valid values:
+        # 
+        # *   on
+        # *   off
+        # *   force: enables range origin fetch by force.
         self.range = range
+        # The size of the range part. Valid values:
+        # 
+        # *   512KB
+        # *   1MB
+        # *   2MB
+        # *   4MB
         self.range_chunk_size = range_chunk_size
         # Request ID.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+        # 
+        # *   true: Match all incoming requests.
+        # *   Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
         self.rule = rule
-        # Rule switch. This parameter does not need to be set when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
+        # 
+        # *   on
+        # *   off
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding a global configuration.
+        # The rule name. You do not need to set this parameter when you add global configurations.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+        # The version number of the configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         self.site_version = site_version
 
     def validate(self):
@@ -42762,11 +42787,11 @@ class GetTransportLayerApplicationRequest(TeaModel):
         application_id: int = None,
         site_id: int = None,
     ):
-        # Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # Number of forwarding rules contained in the transport layer acceleration application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # Transport layer application ID.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -42807,39 +42832,34 @@ class GetTransportLayerApplicationResponseBodyRules(TeaModel):
         source_port: str = None,
         source_type: str = None,
     ):
+        # The domain name of the transport layer application.
+        self.client_ippass_through_mode = client_ippass_through_mode
+        # Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
+        # 
+        # - on: Turned on.
+        # - off: Turned off.
+        self.comment = comment
+        # Comment information of the rule.
+        self.edge_port = edge_port
         # Client IP pass-through protocol, supporting:
         # - **off**: No pass-through.
         # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
         # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
         # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
-        self.client_ippass_through_mode = client_ippass_through_mode
-        # Comment information of the rule.
-        self.comment = comment
-        # Edge port. Supports:
-        # 
-        # - A single port, such as 80.
-        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
-        # - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
-        self.edge_port = edge_port
-        # Forwarding rule protocol, with values:
-        # 
-        # - TCP: TCP protocol.
-        # - UDP: UDP protocol.
         self.protocol = protocol
-        # Rule ID.
+        # Status of the transport layer application
+        # 
+        # - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+        # - **active**: Active.
         self.rule_id = rule_id
-        # Specific value of the origin, which needs to match the type of the origin.
-        self.source = source
         # Origin port. Supports:
         # 
         # - A single port, when the origin port is a single port, any valid edge port combination is supported.
         # - Port range, only when the edge port is a port range, the origin port can be set as a port range and the size of the range must be consistent with the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which are inconsistent.
+        self.source = source
+        # The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
         self.source_port = source_port
-        # Origin type, supporting:
-        # - **ip**: IP.
-        # - **domain**: Domain name.
-        # - **OP**: Origin pool.
-        # - **LB**: Load balancer.
+        # Rule ID.
         self.source_type = source_type
 
     def validate(self):
@@ -42940,37 +42960,36 @@ class GetTransportLayerApplicationResponseBody(TeaModel):
         static_ip_v4list: List[GetTransportLayerApplicationResponseBodyStaticIpV4List] = None,
         status: str = None,
     ):
-        # Transport layer application ID.
+        # Specific value of the origin, which needs to match the type of the origin.
         self.application_id = application_id
-        # The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
-        self.cname = cname
         # Whether to enable China mainland network access optimization, default is off. Value range:
         # - on: Enabled.
         # - off: Disabled.
+        self.cname = cname
         self.cross_border_optimization = cross_border_optimization
-        # Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
-        # 
-        # - on: Turned on.
-        # - off: Turned off.
+        # #/components/schemas/WafRuleMatch2
         self.ip_access_rule = ip_access_rule
-        # IPv6 switch.
+        # Ipv6 switch
         self.ipv_6 = ipv_6
-        # The domain name of the transport layer application.
+        # Query Transport Layer Acceleration Application
         self.record_name = record_name
         # Id of the request
         self.request_id = request_id
-        # List of forwarding rules.
+        # Edge port. Supports:
+        # 
+        # - A single port, such as 80.
+        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
+        # - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
         self.rules = rules
-        # Number of forwarding rules contained in the transport layer acceleration application.
+        # Forwarding rule protocol, with values:
+        # 
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
         self.rules_count = rules_count
-        # Site ID.
+        # Details of the forwarding rule.
         self.site_id = site_id
         self.static_ip = static_ip
         self.static_ip_v4list = static_ip_v4list
-        # Status of the transport layer application
-        # 
-        # - **deploying**: Deploying. In this state, modification and deletion are not allowed.
-        # - **active**: Active.
         self.status = status
 
     def validate(self):
@@ -52944,6 +52963,7 @@ class ListListsResponseBodyLists(TeaModel):
 class ListListsResponseBody(TeaModel):
     def __init__(
         self,
+        items_usage: int = None,
         lists: List[ListListsResponseBodyLists] = None,
         page_number: int = None,
         page_size: int = None,
@@ -52951,6 +52971,7 @@ class ListListsResponseBody(TeaModel):
         total_count: int = None,
         usage: int = None,
     ):
+        self.items_usage = items_usage
         # The array that contains list information, including list data after paging.
         self.lists = lists
         # The page number returned.
@@ -52976,6 +52997,8 @@ class ListListsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.items_usage is not None:
+            result['ItemsUsage'] = self.items_usage
         result['Lists'] = []
         if self.lists is not None:
             for k in self.lists:
@@ -52994,6 +53017,8 @@ class ListListsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ItemsUsage') is not None:
+            self.items_usage = m.get('ItemsUsage')
         self.lists = []
         if m.get('Lists') is not None:
             for k in m.get('Lists'):
