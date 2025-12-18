@@ -1,3 +1,10 @@
+2025-12-18 Version: 6.13.2
+- Update API CreateHighReliablePhysicalConnection: add request parameters ApList.$.OpticalModuleModel.
+- Update API CreatePhysicalConnection: add request parameters OpticalModuleModel.
+- Update API DescribePhysicalConnections: add response parameters Body.PhysicalConnectionSet.$.OpticalModuleModel.
+- Update API ListBusinessAccessPoints: add response parameters Body.BusinessAccessPoints.$.OpticalModuleModels.
+
+
 2025-12-11 Version: 6.13.1
 - Generated python 2016-04-28 for Vpc.
 

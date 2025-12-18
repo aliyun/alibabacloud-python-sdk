@@ -10486,6 +10486,8 @@ class Client(OpenApiClient):
             query['LineOperator'] = request.line_operator
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.optical_module_model):
+            query['OpticalModuleModel'] = request.optical_module_model
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -10564,6 +10566,8 @@ class Client(OpenApiClient):
             query['LineOperator'] = request.line_operator
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.optical_module_model):
+            query['OpticalModuleModel'] = request.optical_module_model
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
