@@ -1,3 +1,7 @@
+2025-12-18 Version: 5.4.1
+- Update API GetResourceOverview: add response parameters Body.data.riskOverview.
+
+
 2025-12-17 Version: 5.4.0
 - Support API UpdateService.
 
