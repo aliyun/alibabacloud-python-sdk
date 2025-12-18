@@ -295,6 +295,7 @@ class AgentRuntime(TeaModel):
         container_configuration: ContainerConfiguration = None,
         cpu: float = None,
         created_at: str = None,
+        credential_name: str = None,
         description: str = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
@@ -328,6 +329,8 @@ class AgentRuntime(TeaModel):
         self.cpu = cpu
         # 智能体运行时的创建时间，采用ISO 8601格式
         self.created_at = created_at
+        # 用于访问智能体的凭证名称，访问智能体运行时将使用此凭证进行身份验证
+        self.credential_name = credential_name
         # 智能体运行时的描述信息，说明该运行时的用途和功能
         self.description = description
         # 智能体运行时的环境变量配置
@@ -395,6 +398,8 @@ class AgentRuntime(TeaModel):
             result['cpu'] = self.cpu
         if self.created_at is not None:
             result['createdAt'] = self.created_at
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
         if self.description is not None:
             result['description'] = self.description
         if self.environment_variables is not None:
@@ -447,6 +452,8 @@ class AgentRuntime(TeaModel):
             self.cpu = m.get('cpu')
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('environmentVariables') is not None:
