@@ -1,3 +1,56 @@
+2025-12-18 Version: 4.0.0
+- Support API DescribeDiscoveredResourceBatch.
+- Support API DescribeIntegratedServiceStatus.
+- Support API DryRunConfigRule.
+- Support API GetResourceConfigurationSample.
+- Support API GetResourceTypeProperties.
+- Support API ListAggregateRecommendManagedRules.
+- Support API ListConfigRuleOperators.
+- Support API ListRecommendManagedRules.
+- Support API StartConfigRuleEvaluationByResource.
+- Delete API CreateDeliveryChannel.
+- Delete API UpdateDeliveryChannel.
+- Update API GetAggregateComplianceSummary: add response parameters Body.ComplianceSummary.ComplianceSummaryByResource.HighRiskRuleNonCompliantResourceCount.
+- Update API GetAggregateComplianceSummary: add response parameters Body.ComplianceSummary.ComplianceSummaryByResource.LowRiskRuleNonCompliantResourceCount.
+- Update API GetAggregateComplianceSummary: add response parameters Body.ComplianceSummary.ComplianceSummaryByResource.MediumRiskRuleNonCompliantResourceCount.
+- Update API GetAggregateConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.CompliantCount.
+- Update API GetAggregateConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.IgnoredCount.
+- Update API GetAggregateConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.InsufficientDataCount.
+- Update API GetAggregateConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.NotApplicableCount.
+- Update API GetAggregateResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.CompliantCount.
+- Update API GetAggregateResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.IgnoredCount.
+- Update API GetAggregateResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.InsufficientDataCount.
+- Update API GetAggregateResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.NotApplicableCount.
+- Update API GetAggregator: add response parameters Body.Aggregator.FolderName.
+- Update API GetComplianceSummary: add response parameters Body.ComplianceSummary.ComplianceSummaryByResource.HighRiskRuleNonCompliantResourceCount.
+- Update API GetComplianceSummary: add response parameters Body.ComplianceSummary.ComplianceSummaryByResource.LowRiskRuleNonCompliantResourceCount.
+- Update API GetComplianceSummary: add response parameters Body.ComplianceSummary.ComplianceSummaryByResource.MediumRiskRuleNonCompliantResourceCount.
+- Update API GetConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.CompliantCount.
+- Update API GetConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.IgnoredCount.
+- Update API GetConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.InsufficientDataCount.
+- Update API GetConfigRuleComplianceByPack: add response parameters Body.ConfigRuleComplianceResult.NotApplicableCount.
+- Update API GetResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.CompliantCount.
+- Update API GetResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.IgnoredCount.
+- Update API GetResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.InsufficientDataCount.
+- Update API GetResourceComplianceByPack: add response parameters Body.ResourceComplianceResult.NotApplicableCount.
+- Update API ListAggregateCompliancePacks: add request parameters RiskLevel.
+- Update API ListAggregateConfigRules: add request parameters SortBy.
+- Update API ListAggregateConfigRules: add response parameters Body.ConfigRules.ConfigRuleList.$.CreateDate.
+- Update API ListAggregateDiscoveredResources: add request parameters ResourceName.
+- Update API ListAggregateResourceEvaluationResults: add request parameters RiskLevel.
+- Update API ListAggregateResourceEvaluationResults: add request parameters SortBy.
+- Update API ListAggregateResourceEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.EvaluationResultIdentifier.EvaluationResultQualifier.ResourceOwnerId.
+- Update API ListCompliancePackTemplates: add request parameters FilterType.
+- Update API ListCompliancePackTemplates: add request parameters RuleRiskLevel.
+- Update API ListCompliancePacks: add request parameters RiskLevel.
+- Update API ListConfigRules: add request parameters SortBy.
+- Update API ListConfigRules: add response parameters Body.ConfigRules.ConfigRuleList.$.CreateDate.
+- Update API ListDiscoveredResources: add request parameters ResourceName.
+- Update API ListDiscoveredResources: add response parameters Body.DiscoveredResourceProfiles.DiscoveredResourceProfileList.$.ResourceGroupId.
+- Update API ListResourceEvaluationResults: add request parameters RiskLevel.
+- Update API ListResourceEvaluationResults: add request parameters SortBy.
+
+
 2025-07-10 Version: 3.0.16
 - Update API ListAggregateConfigRuleEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.EvaluationResultIdentifier.EvaluationResultQualifier.ResourceGroupId.
 - Update API ListConfigRuleEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.EvaluationResultIdentifier.EvaluationResultQualifier.ResourceGroupId.

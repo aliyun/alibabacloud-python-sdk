@@ -2385,162 +2385,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_config_rule_with_options_async(request, runtime)
 
-    def create_delivery_channel_with_options(
-        self,
-        request: config_20200907_models.CreateDeliveryChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.CreateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        
-        @summary Creates a delivery channel.
-        
-        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
-        
-        @param request: CreateDeliveryChannelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDeliveryChannelResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.configuration_item_change_notification):
-            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
-        if not UtilClient.is_unset(request.configuration_snapshot):
-            body['ConfigurationSnapshot'] = request.configuration_snapshot
-        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
-            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
-        if not UtilClient.is_unset(request.delivery_channel_condition):
-            body['DeliveryChannelCondition'] = request.delivery_channel_condition
-        if not UtilClient.is_unset(request.delivery_channel_name):
-            body['DeliveryChannelName'] = request.delivery_channel_name
-        if not UtilClient.is_unset(request.delivery_channel_target_arn):
-            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
-        if not UtilClient.is_unset(request.delivery_channel_type):
-            body['DeliveryChannelType'] = request.delivery_channel_type
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.non_compliant_notification):
-            body['NonCompliantNotification'] = request.non_compliant_notification
-        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
-            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateDeliveryChannel',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.CreateDeliveryChannelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_delivery_channel_with_options_async(
-        self,
-        request: config_20200907_models.CreateDeliveryChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.CreateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        
-        @summary Creates a delivery channel.
-        
-        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
-        
-        @param request: CreateDeliveryChannelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDeliveryChannelResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.configuration_item_change_notification):
-            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
-        if not UtilClient.is_unset(request.configuration_snapshot):
-            body['ConfigurationSnapshot'] = request.configuration_snapshot
-        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
-            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
-        if not UtilClient.is_unset(request.delivery_channel_condition):
-            body['DeliveryChannelCondition'] = request.delivery_channel_condition
-        if not UtilClient.is_unset(request.delivery_channel_name):
-            body['DeliveryChannelName'] = request.delivery_channel_name
-        if not UtilClient.is_unset(request.delivery_channel_target_arn):
-            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
-        if not UtilClient.is_unset(request.delivery_channel_type):
-            body['DeliveryChannelType'] = request.delivery_channel_type
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.non_compliant_notification):
-            body['NonCompliantNotification'] = request.non_compliant_notification
-        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
-            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateDeliveryChannel',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.CreateDeliveryChannelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_delivery_channel(
-        self,
-        request: config_20200907_models.CreateDeliveryChannelRequest,
-    ) -> config_20200907_models.CreateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        
-        @summary Creates a delivery channel.
-        
-        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
-        
-        @param request: CreateDeliveryChannelRequest
-        @return: CreateDeliveryChannelResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_delivery_channel_with_options(request, runtime)
-
-    async def create_delivery_channel_async(
-        self,
-        request: config_20200907_models.CreateDeliveryChannelRequest,
-    ) -> config_20200907_models.CreateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        
-        @summary Creates a delivery channel.
-        
-        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
-        
-        @param request: CreateDeliveryChannelRequest
-        @return: CreateDeliveryChannelResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_delivery_channel_with_options_async(request, runtime)
-
     def create_remediation_with_options(
         self,
         request: config_20200907_models.CreateRemediationRequest,
@@ -3913,6 +3757,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_remediations_with_options_async(request, runtime)
 
+    def describe_discovered_resource_batch_with_options(
+        self,
+        request: config_20200907_models.DescribeDiscoveredResourceBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DescribeDiscoveredResourceBatchResponse:
+        """
+        @summary 批量获取资源详情
+        
+        @param request: DescribeDiscoveredResourceBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiscoveredResourceBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiscoveredResourceBatch',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DescribeDiscoveredResourceBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_discovered_resource_batch_with_options_async(
+        self,
+        request: config_20200907_models.DescribeDiscoveredResourceBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DescribeDiscoveredResourceBatchResponse:
+        """
+        @summary 批量获取资源详情
+        
+        @param request: DescribeDiscoveredResourceBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiscoveredResourceBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiscoveredResourceBatch',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DescribeDiscoveredResourceBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_discovered_resource_batch(
+        self,
+        request: config_20200907_models.DescribeDiscoveredResourceBatchRequest,
+    ) -> config_20200907_models.DescribeDiscoveredResourceBatchResponse:
+        """
+        @summary 批量获取资源详情
+        
+        @param request: DescribeDiscoveredResourceBatchRequest
+        @return: DescribeDiscoveredResourceBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_discovered_resource_batch_with_options(request, runtime)
+
+    async def describe_discovered_resource_batch_async(
+        self,
+        request: config_20200907_models.DescribeDiscoveredResourceBatchRequest,
+    ) -> config_20200907_models.DescribeDiscoveredResourceBatchResponse:
+        """
+        @summary 批量获取资源详情
+        
+        @param request: DescribeDiscoveredResourceBatchRequest
+        @return: DescribeDiscoveredResourceBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_discovered_resource_batch_with_options_async(request, runtime)
+
+    def describe_integrated_service_status_with_options(
+        self,
+        request: config_20200907_models.DescribeIntegratedServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DescribeIntegratedServiceStatusResponse:
+        """
+        @summary 查询用户集成云产品的授权状态
+        
+        @param request: DescribeIntegratedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIntegratedServiceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeIntegratedServiceStatus',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DescribeIntegratedServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_integrated_service_status_with_options_async(
+        self,
+        request: config_20200907_models.DescribeIntegratedServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DescribeIntegratedServiceStatusResponse:
+        """
+        @summary 查询用户集成云产品的授权状态
+        
+        @param request: DescribeIntegratedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIntegratedServiceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeIntegratedServiceStatus',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DescribeIntegratedServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_integrated_service_status(
+        self,
+        request: config_20200907_models.DescribeIntegratedServiceStatusRequest,
+    ) -> config_20200907_models.DescribeIntegratedServiceStatusResponse:
+        """
+        @summary 查询用户集成云产品的授权状态
+        
+        @param request: DescribeIntegratedServiceStatusRequest
+        @return: DescribeIntegratedServiceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_integrated_service_status_with_options(request, runtime)
+
+    async def describe_integrated_service_status_async(
+        self,
+        request: config_20200907_models.DescribeIntegratedServiceStatusRequest,
+    ) -> config_20200907_models.DescribeIntegratedServiceStatusResponse:
+        """
+        @summary 查询用户集成云产品的授权状态
+        
+        @param request: DescribeIntegratedServiceStatusRequest
+        @return: DescribeIntegratedServiceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_integrated_service_status_with_options_async(request, runtime)
+
     def describe_remediation_with_options(
         self,
         request: config_20200907_models.DescribeRemediationRequest,
@@ -4248,6 +4292,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_config_rule_to_compliance_pack_with_options_async(request, runtime)
+
+    def dry_run_config_rule_with_options(
+        self,
+        request: config_20200907_models.DryRunConfigRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DryRunConfigRuleResponse:
+        """
+        @summary 试运行事前合规预检的规则
+        
+        @param request: DryRunConfigRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DryRunConfigRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.configuration_item):
+            body['ConfigurationItem'] = request.configuration_item
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DryRunConfigRule',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DryRunConfigRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dry_run_config_rule_with_options_async(
+        self,
+        request: config_20200907_models.DryRunConfigRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DryRunConfigRuleResponse:
+        """
+        @summary 试运行事前合规预检的规则
+        
+        @param request: DryRunConfigRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DryRunConfigRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.configuration_item):
+            body['ConfigurationItem'] = request.configuration_item
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DryRunConfigRule',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DryRunConfigRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dry_run_config_rule(
+        self,
+        request: config_20200907_models.DryRunConfigRuleRequest,
+    ) -> config_20200907_models.DryRunConfigRuleResponse:
+        """
+        @summary 试运行事前合规预检的规则
+        
+        @param request: DryRunConfigRuleRequest
+        @return: DryRunConfigRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dry_run_config_rule_with_options(request, runtime)
+
+    async def dry_run_config_rule_async(
+        self,
+        request: config_20200907_models.DryRunConfigRuleRequest,
+    ) -> config_20200907_models.DryRunConfigRuleResponse:
+        """
+        @summary 试运行事前合规预检的规则
+        
+        @param request: DryRunConfigRuleRequest
+        @return: DryRunConfigRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dry_run_config_rule_with_options_async(request, runtime)
 
     def evaluate_pre_config_rules_with_options(
         self,
@@ -9409,6 +9553,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_compliance_timeline_with_options_async(request, runtime)
 
+    def get_resource_configuration_sample_with_options(
+        self,
+        request: config_20200907_models.GetResourceConfigurationSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetResourceConfigurationSampleResponse:
+        """
+        @summary 获取资源配置样例
+        
+        @param request: GetResourceConfigurationSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceConfigurationSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mock_only):
+            query['MockOnly'] = request.mock_only
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceConfigurationSample',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetResourceConfigurationSampleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_configuration_sample_with_options_async(
+        self,
+        request: config_20200907_models.GetResourceConfigurationSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetResourceConfigurationSampleResponse:
+        """
+        @summary 获取资源配置样例
+        
+        @param request: GetResourceConfigurationSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceConfigurationSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mock_only):
+            query['MockOnly'] = request.mock_only
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceConfigurationSample',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetResourceConfigurationSampleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_configuration_sample(
+        self,
+        request: config_20200907_models.GetResourceConfigurationSampleRequest,
+    ) -> config_20200907_models.GetResourceConfigurationSampleResponse:
+        """
+        @summary 获取资源配置样例
+        
+        @param request: GetResourceConfigurationSampleRequest
+        @return: GetResourceConfigurationSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_configuration_sample_with_options(request, runtime)
+
+    async def get_resource_configuration_sample_async(
+        self,
+        request: config_20200907_models.GetResourceConfigurationSampleRequest,
+    ) -> config_20200907_models.GetResourceConfigurationSampleResponse:
+        """
+        @summary 获取资源配置样例
+        
+        @param request: GetResourceConfigurationSampleRequest
+        @return: GetResourceConfigurationSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_configuration_sample_with_options_async(request, runtime)
+
     def get_resource_configuration_timeline_with_options(
         self,
         request: config_20200907_models.GetResourceConfigurationTimelineRequest,
@@ -9602,6 +9846,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_inventory_with_options_async(runtime)
+
+    def get_resource_type_properties_with_options(
+        self,
+        request: config_20200907_models.GetResourceTypePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetResourceTypePropertiesResponse:
+        """
+        @summary 获取资源类型的属性配置
+        
+        @param request: GetResourceTypePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceTypePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceTypeProperties',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetResourceTypePropertiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_type_properties_with_options_async(
+        self,
+        request: config_20200907_models.GetResourceTypePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetResourceTypePropertiesResponse:
+        """
+        @summary 获取资源类型的属性配置
+        
+        @param request: GetResourceTypePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceTypePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceTypeProperties',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetResourceTypePropertiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_type_properties(
+        self,
+        request: config_20200907_models.GetResourceTypePropertiesRequest,
+    ) -> config_20200907_models.GetResourceTypePropertiesResponse:
+        """
+        @summary 获取资源类型的属性配置
+        
+        @param request: GetResourceTypePropertiesRequest
+        @return: GetResourceTypePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_type_properties_with_options(request, runtime)
+
+    async def get_resource_type_properties_async(
+        self,
+        request: config_20200907_models.GetResourceTypePropertiesRequest,
+    ) -> config_20200907_models.GetResourceTypePropertiesResponse:
+        """
+        @summary 获取资源类型的属性配置
+        
+        @param request: GetResourceTypePropertiesRequest
+        @return: GetResourceTypePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_type_properties_with_options_async(request, runtime)
 
     def get_supported_resource_relation_config_with_options(
         self,
@@ -9993,6 +10329,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag_shrink):
@@ -10042,6 +10380,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag_shrink):
@@ -10483,6 +10823,8 @@ class Client(OpenApiClient):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.risk_level):
             query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
@@ -10544,6 +10886,8 @@ class Client(OpenApiClient):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.risk_level):
             query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
@@ -10629,6 +10973,8 @@ class Client(OpenApiClient):
             query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_types):
@@ -10688,6 +11034,8 @@ class Client(OpenApiClient):
             query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_types):
@@ -10742,6 +11090,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_discovered_resources_with_options_async(request, runtime)
+
+    def list_aggregate_recommend_managed_rules_with_options(
+        self,
+        request: config_20200907_models.ListAggregateRecommendManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表-多账号
+        
+        @param request: ListAggregateRecommendManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateRecommendManagedRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_ids_scope):
+            query['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            query['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.selected_managed_rule_identifiers):
+            query['SelectedManagedRuleIdentifiers'] = request.selected_managed_rule_identifiers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateRecommendManagedRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateRecommendManagedRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_recommend_managed_rules_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateRecommendManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表-多账号
+        
+        @param request: ListAggregateRecommendManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateRecommendManagedRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_ids_scope):
+            query['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            query['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.selected_managed_rule_identifiers):
+            query['SelectedManagedRuleIdentifiers'] = request.selected_managed_rule_identifiers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateRecommendManagedRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateRecommendManagedRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_recommend_managed_rules(
+        self,
+        request: config_20200907_models.ListAggregateRecommendManagedRulesRequest,
+    ) -> config_20200907_models.ListAggregateRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表-多账号
+        
+        @param request: ListAggregateRecommendManagedRulesRequest
+        @return: ListAggregateRecommendManagedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_recommend_managed_rules_with_options(request, runtime)
+
+    async def list_aggregate_recommend_managed_rules_async(
+        self,
+        request: config_20200907_models.ListAggregateRecommendManagedRulesRequest,
+    ) -> config_20200907_models.ListAggregateRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表-多账号
+        
+        @param request: ListAggregateRecommendManagedRulesRequest
+        @return: ListAggregateRecommendManagedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_recommend_managed_rules_with_options_async(request, runtime)
 
     def list_aggregate_remediation_executions_with_options(
         self,
@@ -11005,6 +11485,10 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11054,6 +11538,10 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11505,12 +11993,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.compliance_pack_template_id):
             query['CompliancePackTemplateId'] = request.compliance_pack_template_id
+        if not UtilClient.is_unset(request.filter_type):
+            query['FilterType'] = request.filter_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.rule_risk_level):
+            query['RuleRiskLevel'] = request.rule_risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11548,12 +12040,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.compliance_pack_template_id):
             query['CompliancePackTemplateId'] = request.compliance_pack_template_id
+        if not UtilClient.is_unset(request.filter_type):
+            query['FilterType'] = request.filter_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.rule_risk_level):
+            query['RuleRiskLevel'] = request.rule_risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11627,6 +12123,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag_shrink):
@@ -11674,6 +12172,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tag_shrink):
@@ -11997,6 +12497,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_config_rule_evaluation_statistics_with_options_async(runtime)
 
+    def list_config_rule_operators_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListConfigRuleOperatorsResponse:
+        """
+        @summary 规则支持的操作符列表
+        
+        @param request: ListConfigRuleOperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRuleOperatorsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListConfigRuleOperators',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListConfigRuleOperatorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_config_rule_operators_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListConfigRuleOperatorsResponse:
+        """
+        @summary 规则支持的操作符列表
+        
+        @param request: ListConfigRuleOperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRuleOperatorsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListConfigRuleOperators',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListConfigRuleOperatorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_config_rule_operators(self) -> config_20200907_models.ListConfigRuleOperatorsResponse:
+        """
+        @summary 规则支持的操作符列表
+        
+        @return: ListConfigRuleOperatorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_config_rule_operators_with_options(runtime)
+
+    async def list_config_rule_operators_async(self) -> config_20200907_models.ListConfigRuleOperatorsResponse:
+        """
+        @summary 规则支持的操作符列表
+        
+        @return: ListConfigRuleOperatorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_config_rule_operators_with_options_async(runtime)
+
     def list_config_rules_with_options(
         self,
         tmp_req: config_20200907_models.ListConfigRulesRequest,
@@ -12035,6 +12609,8 @@ class Client(OpenApiClient):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.risk_level):
             query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
@@ -12094,6 +12670,8 @@ class Client(OpenApiClient):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.risk_level):
             query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
@@ -12175,6 +12753,8 @@ class Client(OpenApiClient):
             query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.start_update_timestamp):
@@ -12228,6 +12808,8 @@ class Client(OpenApiClient):
             query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.start_update_timestamp):
@@ -12623,6 +13205,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_pre_managed_rules_with_options_async(request, runtime)
 
+    def list_recommend_managed_rules_with_options(
+        self,
+        request: config_20200907_models.ListRecommendManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表
+        
+        @param request: ListRecommendManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecommendManagedRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_ids_scope):
+            query['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            query['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.selected_managed_rule_identifiers):
+            query['SelectedManagedRuleIdentifiers'] = request.selected_managed_rule_identifiers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecommendManagedRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListRecommendManagedRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_recommend_managed_rules_with_options_async(
+        self,
+        request: config_20200907_models.ListRecommendManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表
+        
+        @param request: ListRecommendManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecommendManagedRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_ids_scope):
+            query['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            query['ResourceIdsScope'] = request.resource_ids_scope
+        if not UtilClient.is_unset(request.selected_managed_rule_identifiers):
+            query['SelectedManagedRuleIdentifiers'] = request.selected_managed_rule_identifiers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecommendManagedRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListRecommendManagedRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_recommend_managed_rules(
+        self,
+        request: config_20200907_models.ListRecommendManagedRulesRequest,
+    ) -> config_20200907_models.ListRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表
+        
+        @param request: ListRecommendManagedRulesRequest
+        @return: ListRecommendManagedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recommend_managed_rules_with_options(request, runtime)
+
+    async def list_recommend_managed_rules_async(
+        self,
+        request: config_20200907_models.ListRecommendManagedRulesRequest,
+    ) -> config_20200907_models.ListRecommendManagedRulesResponse:
+        """
+        @summary 获取推荐的托管规则列表
+        
+        @param request: ListRecommendManagedRulesRequest
+        @return: ListRecommendManagedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recommend_managed_rules_with_options_async(request, runtime)
+
     def list_remediation_executions_with_options(
         self,
         request: config_20200907_models.ListRemediationExecutionsRequest,
@@ -12995,6 +13705,10 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13042,6 +13756,10 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14290,6 +15008,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_config_rule_evaluation_with_options_async(request, runtime)
+
+    def start_config_rule_evaluation_by_resource_with_options(
+        self,
+        request: config_20200907_models.StartConfigRuleEvaluationByResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StartConfigRuleEvaluationByResourceResponse:
+        """
+        @summary 触发单资源重新评估
+        
+        @param request: StartConfigRuleEvaluationByResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConfigRuleEvaluationByResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartConfigRuleEvaluationByResource',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StartConfigRuleEvaluationByResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_config_rule_evaluation_by_resource_with_options_async(
+        self,
+        request: config_20200907_models.StartConfigRuleEvaluationByResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StartConfigRuleEvaluationByResourceResponse:
+        """
+        @summary 触发单资源重新评估
+        
+        @param request: StartConfigRuleEvaluationByResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConfigRuleEvaluationByResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartConfigRuleEvaluationByResource',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StartConfigRuleEvaluationByResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_config_rule_evaluation_by_resource(
+        self,
+        request: config_20200907_models.StartConfigRuleEvaluationByResourceRequest,
+    ) -> config_20200907_models.StartConfigRuleEvaluationByResourceResponse:
+        """
+        @summary 触发单资源重新评估
+        
+        @param request: StartConfigRuleEvaluationByResourceRequest
+        @return: StartConfigRuleEvaluationByResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_config_rule_evaluation_by_resource_with_options(request, runtime)
+
+    async def start_config_rule_evaluation_by_resource_async(
+        self,
+        request: config_20200907_models.StartConfigRuleEvaluationByResourceRequest,
+    ) -> config_20200907_models.StartConfigRuleEvaluationByResourceResponse:
+        """
+        @summary 触发单资源重新评估
+        
+        @param request: StartConfigRuleEvaluationByResourceRequest
+        @return: StartConfigRuleEvaluationByResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_config_rule_evaluation_by_resource_with_options_async(request, runtime)
 
     def start_configuration_recorder_with_options(
         self,
@@ -16306,166 +17120,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_configuration_recorder_with_options_async(request, runtime)
-
-    def update_delivery_channel_with_options(
-        self,
-        request: config_20200907_models.UpdateDeliveryChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        
-        @summary Modifies a delivery channel.
-        
-        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
-        
-        @param request: UpdateDeliveryChannelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateDeliveryChannelResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.configuration_item_change_notification):
-            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
-        if not UtilClient.is_unset(request.configuration_snapshot):
-            body['ConfigurationSnapshot'] = request.configuration_snapshot
-        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
-            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
-        if not UtilClient.is_unset(request.delivery_channel_condition):
-            body['DeliveryChannelCondition'] = request.delivery_channel_condition
-        if not UtilClient.is_unset(request.delivery_channel_id):
-            body['DeliveryChannelId'] = request.delivery_channel_id
-        if not UtilClient.is_unset(request.delivery_channel_name):
-            body['DeliveryChannelName'] = request.delivery_channel_name
-        if not UtilClient.is_unset(request.delivery_channel_target_arn):
-            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.non_compliant_notification):
-            body['NonCompliantNotification'] = request.non_compliant_notification
-        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
-            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateDeliveryChannel',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.UpdateDeliveryChannelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_delivery_channel_with_options_async(
-        self,
-        request: config_20200907_models.UpdateDeliveryChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        
-        @summary Modifies a delivery channel.
-        
-        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
-        
-        @param request: UpdateDeliveryChannelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateDeliveryChannelResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.configuration_item_change_notification):
-            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
-        if not UtilClient.is_unset(request.configuration_snapshot):
-            body['ConfigurationSnapshot'] = request.configuration_snapshot
-        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
-            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
-        if not UtilClient.is_unset(request.delivery_channel_condition):
-            body['DeliveryChannelCondition'] = request.delivery_channel_condition
-        if not UtilClient.is_unset(request.delivery_channel_id):
-            body['DeliveryChannelId'] = request.delivery_channel_id
-        if not UtilClient.is_unset(request.delivery_channel_name):
-            body['DeliveryChannelName'] = request.delivery_channel_name
-        if not UtilClient.is_unset(request.delivery_channel_target_arn):
-            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.non_compliant_notification):
-            body['NonCompliantNotification'] = request.non_compliant_notification
-        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
-            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateDeliveryChannel',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.UpdateDeliveryChannelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_delivery_channel(
-        self,
-        request: config_20200907_models.UpdateDeliveryChannelRequest,
-    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        
-        @summary Modifies a delivery channel.
-        
-        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
-        
-        @param request: UpdateDeliveryChannelRequest
-        @return: UpdateDeliveryChannelResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.update_delivery_channel_with_options(request, runtime)
-
-    async def update_delivery_channel_async(
-        self,
-        request: config_20200907_models.UpdateDeliveryChannelRequest,
-    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
-        """
-        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        
-        @summary Modifies a delivery channel.
-        
-        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
-        
-        @param request: UpdateDeliveryChannelRequest
-        @return: UpdateDeliveryChannelResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.update_delivery_channel_with_options_async(request, runtime)
 
     def update_integrated_service_status_with_options(
         self,
