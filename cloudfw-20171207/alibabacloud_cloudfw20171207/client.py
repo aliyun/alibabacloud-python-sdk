@@ -25409,6 +25409,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_address_book_with_options_async(request, runtime)
 
+    def modify_cfw_instance_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyCfwInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyCfwInstanceResponse:
+        """
+        @summary 更新用户版本信息
+        
+        @param request: ModifyCfwInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCfwInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.update_list):
+            query['UpdateList'] = request.update_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCfwInstance',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyCfwInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cfw_instance_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyCfwInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyCfwInstanceResponse:
+        """
+        @summary 更新用户版本信息
+        
+        @param request: ModifyCfwInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCfwInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.update_list):
+            query['UpdateList'] = request.update_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCfwInstance',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyCfwInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cfw_instance(
+        self,
+        request: cloudfw_20171207_models.ModifyCfwInstanceRequest,
+    ) -> cloudfw_20171207_models.ModifyCfwInstanceResponse:
+        """
+        @summary 更新用户版本信息
+        
+        @param request: ModifyCfwInstanceRequest
+        @return: ModifyCfwInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cfw_instance_with_options(request, runtime)
+
+    async def modify_cfw_instance_async(
+        self,
+        request: cloudfw_20171207_models.ModifyCfwInstanceRequest,
+    ) -> cloudfw_20171207_models.ModifyCfwInstanceResponse:
+        """
+        @summary 更新用户版本信息
+        
+        @param request: ModifyCfwInstanceRequest
+        @return: ModifyCfwInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cfw_instance_with_options_async(request, runtime)
+
     def modify_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.ModifyControlPolicyRequest,

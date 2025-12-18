@@ -50048,6 +50048,148 @@ class ModifyAddressBookResponse(TeaModel):
         return self
 
 
+class ModifyCfwInstanceRequestUpdateList(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        value: str = None,
+    ):
+        self.code = code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyCfwInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        update_list: List[ModifyCfwInstanceRequestUpdateList] = None,
+    ):
+        self.instance_id = instance_id
+        self.update_list = update_list
+
+    def validate(self):
+        if self.update_list:
+            for k in self.update_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['UpdateList'] = []
+        if self.update_list is not None:
+            for k in self.update_list:
+                result['UpdateList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.update_list = []
+        if m.get('UpdateList') is not None:
+            for k in m.get('UpdateList'):
+                temp_model = ModifyCfwInstanceRequestUpdateList()
+                self.update_list.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyCfwInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCfwInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCfwInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCfwInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyControlPolicyRequest(TeaModel):
     def __init__(
         self,
