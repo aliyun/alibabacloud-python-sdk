@@ -24618,6 +24618,355 @@ class GetHDMLastAliyunResourceSyncResultResponse(TeaModel):
         return self
 
 
+class GetInstanceGroupInspectReportDetailRequest(TeaModel):
+    def __init__(
+        self,
+        report_id: str = None,
+    ):
+        # This parameter is required.
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        return self
+
+
+class GetInstanceGroupInspectReportDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        report_detail: str = None,
+        report_id: str = None,
+    ):
+        self.report_detail = report_detail
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_detail is not None:
+            result['ReportDetail'] = self.report_detail
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportDetail') is not None:
+            self.report_detail = m.get('ReportDetail')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        return self
+
+
+class GetInstanceGroupInspectReportDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetInstanceGroupInspectReportDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        # ReportDetail
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetInstanceGroupInspectReportDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetInstanceGroupInspectReportDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceGroupInspectReportDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceGroupInspectReportDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstanceGroupInspectReportListRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        end_time: int = None,
+        group_id: str = None,
+        start_time: int = None,
+    ):
+        self.agent_id = agent_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.group_id = group_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetInstanceGroupInspectReportListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        report_date: str = None,
+        report_id: str = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.report_date = report_date
+        self.report_id = report_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.report_date is not None:
+            result['ReportDate'] = self.report_date
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ReportDate') is not None:
+            self.report_date = m.get('ReportDate')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetInstanceGroupInspectReportListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetInstanceGroupInspectReportListResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        # List<ReportStatus>
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetInstanceGroupInspectReportListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetInstanceGroupInspectReportListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceGroupInspectReportListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceGroupInspectReportListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetInstanceInspectionsRequest(TeaModel):
     def __init__(
         self,

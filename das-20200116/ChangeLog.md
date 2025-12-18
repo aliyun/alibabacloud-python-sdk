@@ -1,3 +1,8 @@
+2025-12-18 Version: 2.11.0
+- Support API GetInstanceGroupInspectReportDetail.
+- Support API GetInstanceGroupInspectReportList.
+
+
 2025-12-11 Version: 2.10.1
 - Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.OpType.
 

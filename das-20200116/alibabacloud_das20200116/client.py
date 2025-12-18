@@ -9344,6 +9344,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_hdmlast_aliyun_resource_sync_result_with_options_async(request, runtime)
 
+    def get_instance_group_inspect_report_detail_with_options(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetInstanceGroupInspectReportDetailResponse:
+        """
+        @summary 获取实例组日报详情
+        
+        @param request: GetInstanceGroupInspectReportDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceGroupInspectReportDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceGroupInspectReportDetail',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetInstanceGroupInspectReportDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_group_inspect_report_detail_with_options_async(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetInstanceGroupInspectReportDetailResponse:
+        """
+        @summary 获取实例组日报详情
+        
+        @param request: GetInstanceGroupInspectReportDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceGroupInspectReportDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceGroupInspectReportDetail',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetInstanceGroupInspectReportDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_group_inspect_report_detail(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportDetailRequest,
+    ) -> das20200116_models.GetInstanceGroupInspectReportDetailResponse:
+        """
+        @summary 获取实例组日报详情
+        
+        @param request: GetInstanceGroupInspectReportDetailRequest
+        @return: GetInstanceGroupInspectReportDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_group_inspect_report_detail_with_options(request, runtime)
+
+    async def get_instance_group_inspect_report_detail_async(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportDetailRequest,
+    ) -> das20200116_models.GetInstanceGroupInspectReportDetailResponse:
+        """
+        @summary 获取实例组日报详情
+        
+        @param request: GetInstanceGroupInspectReportDetailRequest
+        @return: GetInstanceGroupInspectReportDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_group_inspect_report_detail_with_options_async(request, runtime)
+
+    def get_instance_group_inspect_report_list_with_options(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetInstanceGroupInspectReportListResponse:
+        """
+        @summary 查询实例组的报告信息
+        
+        @param request: GetInstanceGroupInspectReportListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceGroupInspectReportListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceGroupInspectReportList',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetInstanceGroupInspectReportListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_group_inspect_report_list_with_options_async(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetInstanceGroupInspectReportListResponse:
+        """
+        @summary 查询实例组的报告信息
+        
+        @param request: GetInstanceGroupInspectReportListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceGroupInspectReportListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceGroupInspectReportList',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetInstanceGroupInspectReportListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_group_inspect_report_list(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportListRequest,
+    ) -> das20200116_models.GetInstanceGroupInspectReportListResponse:
+        """
+        @summary 查询实例组的报告信息
+        
+        @param request: GetInstanceGroupInspectReportListRequest
+        @return: GetInstanceGroupInspectReportListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_group_inspect_report_list_with_options(request, runtime)
+
+    async def get_instance_group_inspect_report_list_async(
+        self,
+        request: das20200116_models.GetInstanceGroupInspectReportListRequest,
+    ) -> das20200116_models.GetInstanceGroupInspectReportListResponse:
+        """
+        @summary 查询实例组的报告信息
+        
+        @param request: GetInstanceGroupInspectReportListRequest
+        @return: GetInstanceGroupInspectReportListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_group_inspect_report_list_with_options_async(request, runtime)
+
     def get_instance_inspections_with_options(
         self,
         request: das20200116_models.GetInstanceInspectionsRequest,
