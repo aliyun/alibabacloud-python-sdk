@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._assume_role_for_workload_identity_request import AssumeRoleForWorkloadIdentityRequest
+from ._assume_role_for_workload_identity_response_body import AssumeRoleForWorkloadIdentityResponseBody
+from ._assume_role_for_workload_identity_response import AssumeRoleForWorkloadIdentityResponse
+from ._complete_resource_token_auth_request import CompleteResourceTokenAuthRequest
+from ._complete_resource_token_auth_shrink_request import CompleteResourceTokenAuthShrinkRequest
+from ._complete_resource_token_auth_response_body import CompleteResourceTokenAuthResponseBody
+from ._complete_resource_token_auth_response import CompleteResourceTokenAuthResponse
+from ._get_resource_apikey_request import GetResourceAPIKeyRequest
+from ._get_resource_apikey_response_body import GetResourceAPIKeyResponseBody
+from ._get_resource_apikey_response import GetResourceAPIKeyResponse
+from ._get_resource_oauth2_token_request import GetResourceOAuth2TokenRequest
+from ._get_resource_oauth2_token_shrink_request import GetResourceOAuth2TokenShrinkRequest
+from ._get_resource_oauth2_token_response_body import GetResourceOAuth2TokenResponseBody
+from ._get_resource_oauth2_token_response import GetResourceOAuth2TokenResponse
+from ._get_workload_access_token_request import GetWorkloadAccessTokenRequest
+from ._get_workload_access_token_response_body import GetWorkloadAccessTokenResponseBody
+from ._get_workload_access_token_response import GetWorkloadAccessTokenResponse
+from ._get_workload_access_token_for_jwt_request import GetWorkloadAccessTokenForJWTRequest
+from ._get_workload_access_token_for_jwt_response_body import GetWorkloadAccessTokenForJWTResponseBody
+from ._get_workload_access_token_for_jwt_response import GetWorkloadAccessTokenForJWTResponse
+from ._get_workload_access_token_for_user_id_request import GetWorkloadAccessTokenForUserIdRequest
+from ._get_workload_access_token_for_user_id_response_body import GetWorkloadAccessTokenForUserIdResponseBody
+from ._get_workload_access_token_for_user_id_response import GetWorkloadAccessTokenForUserIdResponse
+from ._assume_role_for_workload_identity_response_body import AssumeRoleForWorkloadIdentityResponseBodyAssumedRoleUser
+from ._assume_role_for_workload_identity_response_body import AssumeRoleForWorkloadIdentityResponseBodyCredentials
+from ._assume_role_for_workload_identity_response_body import AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims
+from ._assume_role_for_workload_identity_response_body import AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext
+from ._assume_role_for_workload_identity_response_body import AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfo
+from ._complete_resource_token_auth_request import CompleteResourceTokenAuthRequestUserIdentifier
+
+__all__ = [
+    AssumeRoleForWorkloadIdentityRequest,
+    AssumeRoleForWorkloadIdentityResponseBody,
+    AssumeRoleForWorkloadIdentityResponse,
+    CompleteResourceTokenAuthRequest,
+    CompleteResourceTokenAuthShrinkRequest,
+    CompleteResourceTokenAuthResponseBody,
+    CompleteResourceTokenAuthResponse,
+    GetResourceAPIKeyRequest,
+    GetResourceAPIKeyResponseBody,
+    GetResourceAPIKeyResponse,
+    GetResourceOAuth2TokenRequest,
+    GetResourceOAuth2TokenShrinkRequest,
+    GetResourceOAuth2TokenResponseBody,
+    GetResourceOAuth2TokenResponse,
+    GetWorkloadAccessTokenRequest,
+    GetWorkloadAccessTokenResponseBody,
+    GetWorkloadAccessTokenResponse,
+    GetWorkloadAccessTokenForJWTRequest,
+    GetWorkloadAccessTokenForJWTResponseBody,
+    GetWorkloadAccessTokenForJWTResponse,
+    GetWorkloadAccessTokenForUserIdRequest,
+    GetWorkloadAccessTokenForUserIdResponseBody,
+    GetWorkloadAccessTokenForUserIdResponse,
+    AssumeRoleForWorkloadIdentityResponseBodyAssumedRoleUser,
+    AssumeRoleForWorkloadIdentityResponseBodyCredentials,
+    AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwtClaims,
+    AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContext,
+    AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfo,
+    CompleteResourceTokenAuthRequestUserIdentifier
+]
