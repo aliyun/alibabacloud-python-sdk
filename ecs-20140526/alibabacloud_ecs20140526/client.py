@@ -27584,6 +27584,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.activation_id):
             query['ActivationId'] = request.activation_id
+        if not UtilClient.is_unset(request.connected):
+            query['Connected'] = request.connected
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_ip):
@@ -27655,6 +27657,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.activation_id):
             query['ActivationId'] = request.activation_id
+        if not UtilClient.is_unset(request.connected):
+            query['Connected'] = request.connected
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_ip):

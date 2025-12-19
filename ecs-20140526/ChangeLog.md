@@ -1,3 +1,7 @@
+2025-12-19 Version: 7.4.1
+- Update API DescribeManagedInstances: add request parameters Connected.
+
+
 2025-12-03 Version: 7.4.0
 - Support API DisableNetworkInterfaceQoS.
 - Support API EnableNetworkInterfaceQoS.
