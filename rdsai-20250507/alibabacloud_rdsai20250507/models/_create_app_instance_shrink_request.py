@@ -15,6 +15,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         dashboard_password: str = None,
         dashboard_username: str = None,
         database_password: str = None,
+        initialize_with_existing_data: bool = None,
         instance_class: str = None,
         public_endpoint_enabled: bool = None,
         public_network_access_enabled: bool = None,
@@ -30,6 +31,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         self.dashboard_password = dashboard_password
         self.dashboard_username = dashboard_username
         self.database_password = database_password
+        self.initialize_with_existing_data = initialize_with_existing_data
         self.instance_class = instance_class
         self.public_endpoint_enabled = public_endpoint_enabled
         self.public_network_access_enabled = public_network_access_enabled
@@ -68,6 +70,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
 
         if self.database_password is not None:
             result['DatabasePassword'] = self.database_password
+
+        if self.initialize_with_existing_data is not None:
+            result['InitializeWithExistingData'] = self.initialize_with_existing_data
 
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
@@ -114,6 +119,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
 
         if m.get('DatabasePassword') is not None:
             self.database_password = m.get('DatabasePassword')
+
+        if m.get('InitializeWithExistingData') is not None:
+            self.initialize_with_existing_data = m.get('InitializeWithExistingData')
 
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')

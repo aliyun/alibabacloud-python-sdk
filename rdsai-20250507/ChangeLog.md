@@ -1,3 +1,7 @@
+2025-12-19 Version: 2.0.2
+- Update API CreateAppInstance: add request parameters InitializeWithExistingData.
+
+
 2025-12-08 Version: 2.0.1
 - Generated python 2025-05-07 for RdsAi.
 

@@ -324,6 +324,8 @@ class Client(OpenApiClient):
             query['DashboardUsername'] = request.dashboard_username
         if not DaraCore.is_null(request.database_password):
             query['DatabasePassword'] = request.database_password
+        if not DaraCore.is_null(request.initialize_with_existing_data):
+            query['InitializeWithExistingData'] = request.initialize_with_existing_data
         if not DaraCore.is_null(request.instance_class):
             query['InstanceClass'] = request.instance_class
         if not DaraCore.is_null(request.public_endpoint_enabled):
@@ -382,6 +384,8 @@ class Client(OpenApiClient):
             query['DashboardUsername'] = request.dashboard_username
         if not DaraCore.is_null(request.database_password):
             query['DatabasePassword'] = request.database_password
+        if not DaraCore.is_null(request.initialize_with_existing_data):
+            query['InitializeWithExistingData'] = request.initialize_with_existing_data
         if not DaraCore.is_null(request.instance_class):
             query['InstanceClass'] = request.instance_class
         if not DaraCore.is_null(request.public_endpoint_enabled):
