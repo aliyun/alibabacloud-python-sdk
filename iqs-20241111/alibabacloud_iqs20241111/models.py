@@ -995,6 +995,39 @@ class GlobalSearchResult(TeaModel):
         return self
 
 
+class LocationInfo(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        ip: str = None,
+    ):
+        self.city = city
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['city'] = self.city
+        if self.ip is not None:
+            result['ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city') is not None:
+            self.city = m.get('city')
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        return self
+
+
 class ReadPageBodyReadability(TeaModel):
     def __init__(
         self,
@@ -1724,6 +1757,7 @@ class UnifiedSearchInput(TeaModel):
         contents: RequestContents = None,
         engine_type: str = None,
         location: str = None,
+        location_info: LocationInfo = None,
         query: str = None,
         time_range: str = None,
     ):
@@ -1732,12 +1766,15 @@ class UnifiedSearchInput(TeaModel):
         self.contents = contents
         self.engine_type = engine_type
         self.location = location
+        self.location_info = location_info
         self.query = query
         self.time_range = time_range
 
     def validate(self):
         if self.contents:
             self.contents.validate()
+        if self.location_info:
+            self.location_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1755,6 +1792,8 @@ class UnifiedSearchInput(TeaModel):
             result['engineType'] = self.engine_type
         if self.location is not None:
             result['location'] = self.location
+        if self.location_info is not None:
+            result['locationInfo'] = self.location_info.to_map()
         if self.query is not None:
             result['query'] = self.query
         if self.time_range is not None:
@@ -1774,6 +1813,9 @@ class UnifiedSearchInput(TeaModel):
             self.engine_type = m.get('engineType')
         if m.get('location') is not None:
             self.location = m.get('location')
+        if m.get('locationInfo') is not None:
+            temp_model = LocationInfo()
+            self.location_info = temp_model.from_map(m['locationInfo'])
         if m.get('query') is not None:
             self.query = m.get('query')
         if m.get('timeRange') is not None:
