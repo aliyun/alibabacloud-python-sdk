@@ -1,3 +1,9 @@
+2025-12-19 Version: 2.2.1
+- Update API ListNodes: add request parameters HealthCount.
+- Update API ListNodes: add request parameters HealthRate.
+- Update API ListNodes: add request parameters LayoutMode.
+
+
 2025-12-09 Version: 2.2.0
 - Support API ListTagResources.
 - Support API TagResources.

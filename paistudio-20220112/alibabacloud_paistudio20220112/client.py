@@ -3646,19 +3646,25 @@ class Client(OpenApiClient):
 
     def list_nodes_with_options(
         self,
-        request: pai_studio_20220112_models.ListNodesRequest,
+        tmp_req: pai_studio_20220112_models.ListNodesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListNodesResponse:
         """
         @summary 获取资源节点列表
         
-        @param request: ListNodesRequest
+        @param tmp_req: ListNodesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.ListNodesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.health_count):
+            request.health_count_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_count, 'HealthCount', 'json')
+        if not UtilClient.is_unset(tmp_req.health_rate):
+            request.health_rate_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_rate, 'HealthRate', 'json')
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
@@ -3672,10 +3678,16 @@ class Client(OpenApiClient):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.health_count_shrink):
+            query['HealthCount'] = request.health_count_shrink
+        if not UtilClient.is_unset(request.health_rate_shrink):
+            query['HealthRate'] = request.health_rate_shrink
         if not UtilClient.is_unset(request.hyper_node):
             query['HyperNode'] = request.hyper_node
         if not UtilClient.is_unset(request.hyper_zone):
             query['HyperZone'] = request.hyper_zone
+        if not UtilClient.is_unset(request.layout_mode):
+            query['LayoutMode'] = request.layout_mode
         if not UtilClient.is_unset(request.machine_group_ids):
             query['MachineGroupIds'] = request.machine_group_ids
         if not UtilClient.is_unset(request.node_names):
@@ -3730,19 +3742,25 @@ class Client(OpenApiClient):
 
     async def list_nodes_with_options_async(
         self,
-        request: pai_studio_20220112_models.ListNodesRequest,
+        tmp_req: pai_studio_20220112_models.ListNodesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListNodesResponse:
         """
         @summary 获取资源节点列表
         
-        @param request: ListNodesRequest
+        @param tmp_req: ListNodesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.ListNodesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.health_count):
+            request.health_count_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_count, 'HealthCount', 'json')
+        if not UtilClient.is_unset(tmp_req.health_rate):
+            request.health_rate_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_rate, 'HealthRate', 'json')
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
@@ -3756,10 +3774,16 @@ class Client(OpenApiClient):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.health_count_shrink):
+            query['HealthCount'] = request.health_count_shrink
+        if not UtilClient.is_unset(request.health_rate_shrink):
+            query['HealthRate'] = request.health_rate_shrink
         if not UtilClient.is_unset(request.hyper_node):
             query['HyperNode'] = request.hyper_node
         if not UtilClient.is_unset(request.hyper_zone):
             query['HyperZone'] = request.hyper_zone
+        if not UtilClient.is_unset(request.layout_mode):
+            query['LayoutMode'] = request.layout_mode
         if not UtilClient.is_unset(request.machine_group_ids):
             query['MachineGroupIds'] = request.machine_group_ids
         if not UtilClient.is_unset(request.node_names):
