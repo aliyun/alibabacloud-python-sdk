@@ -18427,6 +18427,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_for_renew_desktop_oversold_group_with_options_async(request, runtime)
 
+    def describe_record_file_with_options(
+        self,
+        request: ecd_20200930_models.DescribeRecordFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRecordFileResponse:
+        """
+        @summary 查询录屏文件列表
+        
+        @param request: DescribeRecordFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_sort):
+            query['OrderSort'] = request.order_sort
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.record_type):
+            query['RecordType'] = request.record_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecordFile',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRecordFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_record_file_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeRecordFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeRecordFileResponse:
+        """
+        @summary 查询录屏文件列表
+        
+        @param request: DescribeRecordFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_sort):
+            query['OrderSort'] = request.order_sort
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.record_type):
+            query['RecordType'] = request.record_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecordFile',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeRecordFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_record_file(
+        self,
+        request: ecd_20200930_models.DescribeRecordFileRequest,
+    ) -> ecd_20200930_models.DescribeRecordFileResponse:
+        """
+        @summary 查询录屏文件列表
+        
+        @param request: DescribeRecordFileRequest
+        @return: DescribeRecordFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_record_file_with_options(request, runtime)
+
+    async def describe_record_file_async(
+        self,
+        request: ecd_20200930_models.DescribeRecordFileRequest,
+    ) -> ecd_20200930_models.DescribeRecordFileResponse:
+        """
+        @summary 查询录屏文件列表
+        
+        @param request: DescribeRecordFileRequest
+        @return: DescribeRecordFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_record_file_with_options_async(request, runtime)
+
     def describe_recordings_with_options(
         self,
         request: ecd_20200930_models.DescribeRecordingsRequest,

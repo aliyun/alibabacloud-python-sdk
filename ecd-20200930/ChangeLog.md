@@ -1,3 +1,7 @@
+2025-12-19 Version: 4.19.0
+- Support API DescribeRecordFile.
+
+
 2025-12-17 Version: 4.18.0
 - Support API DescribeGlobalTimerBatches.
 - Support API DescribeGlobalTimerRecords.
