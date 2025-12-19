@@ -4,6 +4,996 @@ from Tea.model import TeaModel
 from typing import List, Any, Dict
 
 
+class AppAiStaff(TeaModel):
+    def __init__(
+        self,
+        staff_id: str = None,
+        staff_name: str = None,
+        staff_type: str = None,
+        status: str = None,
+    ):
+        self.staff_id = staff_id
+        self.staff_name = staff_name
+        self.staff_type = staff_type
+        # 可能的值：unknown, init, testing, online
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.staff_id is not None:
+            result['StaffId'] = self.staff_id
+        if self.staff_name is not None:
+            result['StaffName'] = self.staff_name
+        if self.staff_type is not None:
+            result['StaffType'] = self.staff_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StaffId') is not None:
+            self.staff_id = m.get('StaffId')
+        if m.get('StaffName') is not None:
+            self.staff_name = m.get('StaffName')
+        if m.get('StaffType') is not None:
+            self.staff_type = m.get('StaffType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class AppInstanceProfile(TeaModel):
+    def __init__(
+        self,
+        application_type: str = None,
+        application_type_text: str = None,
+        biz_id: str = None,
+        commodity_code: str = None,
+        customer_service: str = None,
+        deploy_area: str = None,
+        instance_id: str = None,
+        ord_time: str = None,
+        order_id: str = None,
+        pay_time: str = None,
+        seo_site: str = None,
+        site_version: str = None,
+        site_version_text: str = None,
+        source: str = None,
+        template_etag: str = None,
+        template_id: str = None,
+    ):
+        self.application_type = application_type
+        self.application_type_text = application_type_text
+        self.biz_id = biz_id
+        self.commodity_code = commodity_code
+        self.customer_service = customer_service
+        self.deploy_area = deploy_area
+        self.instance_id = instance_id
+        self.ord_time = ord_time
+        self.order_id = order_id
+        self.pay_time = pay_time
+        self.seo_site = seo_site
+        self.site_version = site_version
+        self.site_version_text = site_version_text
+        self.source = source
+        self.template_etag = template_etag
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.application_type_text is not None:
+            result['ApplicationTypeText'] = self.application_type_text
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.customer_service is not None:
+            result['CustomerService'] = self.customer_service
+        if self.deploy_area is not None:
+            result['DeployArea'] = self.deploy_area
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ord_time is not None:
+            result['OrdTime'] = self.ord_time
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.pay_time is not None:
+            result['PayTime'] = self.pay_time
+        if self.seo_site is not None:
+            result['SeoSite'] = self.seo_site
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        if self.site_version_text is not None:
+            result['SiteVersionText'] = self.site_version_text
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.template_etag is not None:
+            result['TemplateEtag'] = self.template_etag
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('ApplicationTypeText') is not None:
+            self.application_type_text = m.get('ApplicationTypeText')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomerService') is not None:
+            self.customer_service = m.get('CustomerService')
+        if m.get('DeployArea') is not None:
+            self.deploy_area = m.get('DeployArea')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrdTime') is not None:
+            self.ord_time = m.get('OrdTime')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PayTime') is not None:
+            self.pay_time = m.get('PayTime')
+        if m.get('SeoSite') is not None:
+            self.seo_site = m.get('SeoSite')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        if m.get('SiteVersionText') is not None:
+            self.site_version_text = m.get('SiteVersionText')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('TemplateEtag') is not None:
+            self.template_etag = m.get('TemplateEtag')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class AppInstance(TeaModel):
+    def __init__(
+        self,
+        app_sub_type: str = None,
+        app_type: str = None,
+        biz_id: str = None,
+        build_type: str = None,
+        deleted: int = None,
+        description: str = None,
+        design_spec_biz_id: str = None,
+        design_spec_id: str = None,
+        domain: str = None,
+        end_time: str = None,
+        esp_biz_id: str = None,
+        gmt_create: str = None,
+        gmt_delete: str = None,
+        gmt_modified: str = None,
+        gmt_publish: str = None,
+        icon_url: str = None,
+        name: str = None,
+        profile: AppInstanceProfile = None,
+        site_host: str = None,
+        slug: str = None,
+        source_type: str = None,
+        start_time: str = None,
+        status: str = None,
+        status_text: str = None,
+        thumbnail_url: str = None,
+        user_id: str = None,
+    ):
+        self.app_sub_type = app_sub_type
+        self.app_type = app_type
+        self.biz_id = biz_id
+        self.build_type = build_type
+        self.deleted = deleted
+        self.description = description
+        self.design_spec_biz_id = design_spec_biz_id
+        self.design_spec_id = design_spec_id
+        self.domain = domain
+        self.end_time = end_time
+        self.esp_biz_id = esp_biz_id
+        self.gmt_create = gmt_create
+        self.gmt_delete = gmt_delete
+        self.gmt_modified = gmt_modified
+        self.gmt_publish = gmt_publish
+        self.icon_url = icon_url
+        self.name = name
+        self.profile = profile
+        self.site_host = site_host
+        self.slug = slug
+        self.source_type = source_type
+        self.start_time = start_time
+        # trial,draft,live,refunded,expired,released
+        self.status = status
+        self.status_text = status_text
+        self.thumbnail_url = thumbnail_url
+        self.user_id = user_id
+
+    def validate(self):
+        if self.profile:
+            self.profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_sub_type is not None:
+            result['AppSubType'] = self.app_sub_type
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.build_type is not None:
+            result['BuildType'] = self.build_type
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.design_spec_biz_id is not None:
+            result['DesignSpecBizId'] = self.design_spec_biz_id
+        if self.design_spec_id is not None:
+            result['DesignSpecId'] = self.design_spec_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.esp_biz_id is not None:
+            result['EspBizId'] = self.esp_biz_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_delete is not None:
+            result['GmtDelete'] = self.gmt_delete
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.gmt_publish is not None:
+            result['GmtPublish'] = self.gmt_publish
+        if self.icon_url is not None:
+            result['IconUrl'] = self.icon_url
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.profile is not None:
+            result['Profile'] = self.profile.to_map()
+        if self.site_host is not None:
+            result['SiteHost'] = self.site_host
+        if self.slug is not None:
+            result['Slug'] = self.slug
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_text is not None:
+            result['StatusText'] = self.status_text
+        if self.thumbnail_url is not None:
+            result['ThumbnailUrl'] = self.thumbnail_url
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppSubType') is not None:
+            self.app_sub_type = m.get('AppSubType')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('BuildType') is not None:
+            self.build_type = m.get('BuildType')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DesignSpecBizId') is not None:
+            self.design_spec_biz_id = m.get('DesignSpecBizId')
+        if m.get('DesignSpecId') is not None:
+            self.design_spec_id = m.get('DesignSpecId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EspBizId') is not None:
+            self.esp_biz_id = m.get('EspBizId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtDelete') is not None:
+            self.gmt_delete = m.get('GmtDelete')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GmtPublish') is not None:
+            self.gmt_publish = m.get('GmtPublish')
+        if m.get('IconUrl') is not None:
+            self.icon_url = m.get('IconUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Profile') is not None:
+            temp_model = AppInstanceProfile()
+            self.profile = temp_model.from_map(m['Profile'])
+        if m.get('SiteHost') is not None:
+            self.site_host = m.get('SiteHost')
+        if m.get('Slug') is not None:
+            self.slug = m.get('Slug')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusText') is not None:
+            self.status_text = m.get('StatusText')
+        if m.get('ThumbnailUrl') is not None:
+            self.thumbnail_url = m.get('ThumbnailUrl')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AppOperateAction(TeaModel):
+    def __init__(
+        self,
+        action_key: str = None,
+        action_text: str = None,
+        enable: bool = None,
+        href: str = None,
+    ):
+        # 用于唯一标识一个操作行为
+        self.action_key = action_key
+        # 用于在界面中展示操作名称
+        self.action_text = action_text
+        # 标识该操作是否可用
+        self.enable = enable
+        # 点击操作时跳转的URL地址
+        self.href = href
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_key is not None:
+            result['ActionKey'] = self.action_key
+        if self.action_text is not None:
+            result['ActionText'] = self.action_text
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.href is not None:
+            result['Href'] = self.href
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionKey') is not None:
+            self.action_key = m.get('ActionKey')
+        if m.get('ActionText') is not None:
+            self.action_text = m.get('ActionText')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Href') is not None:
+            self.href = m.get('Href')
+        return self
+
+
+class AppOperationAddress(TeaModel):
+    def __init__(
+        self,
+        actions: List[AppOperateAction] = None,
+    ):
+        self.actions = actions
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['Actions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('Actions') is not None:
+            for k in m.get('Actions'):
+                temp_model = AppOperateAction()
+                self.actions.append(temp_model.from_map(k))
+        return self
+
+
+class AppServiceProfile(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        design_type: str = None,
+        design_type_text: str = None,
+        instance_id: str = None,
+        order_id: str = None,
+        service_spec: str = None,
+        service_spec_text: str = None,
+    ):
+        self.biz_id = biz_id
+        self.design_type = design_type
+        self.design_type_text = design_type_text
+        self.instance_id = instance_id
+        self.order_id = order_id
+        self.service_spec = service_spec
+        self.service_spec_text = service_spec_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.design_type is not None:
+            result['DesignType'] = self.design_type
+        if self.design_type_text is not None:
+            result['DesignTypeText'] = self.design_type_text
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.service_spec is not None:
+            result['ServiceSpec'] = self.service_spec
+        if self.service_spec_text is not None:
+            result['ServiceSpecText'] = self.service_spec_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('DesignType') is not None:
+            self.design_type = m.get('DesignType')
+        if m.get('DesignTypeText') is not None:
+            self.design_type_text = m.get('DesignTypeText')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('ServiceSpec') is not None:
+            self.service_spec = m.get('ServiceSpec')
+        if m.get('ServiceSpecText') is not None:
+            self.service_spec_text = m.get('ServiceSpecText')
+        return self
+
+
+class AppServiceAggregate(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        deleted: int = None,
+        end_time: str = None,
+        esp_biz_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        instance_biz_id: str = None,
+        name: str = None,
+        operation_address: AppOperationAddress = None,
+        profile: AppServiceProfile = None,
+        service_type: str = None,
+        service_type_text: str = None,
+        slug: str = None,
+        start_time: str = None,
+        status: str = None,
+        user_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.deleted = deleted
+        self.end_time = end_time
+        self.esp_biz_id = esp_biz_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.instance_biz_id = instance_biz_id
+        self.name = name
+        self.operation_address = operation_address
+        self.profile = profile
+        self.service_type = service_type
+        self.service_type_text = service_type_text
+        self.slug = slug
+        self.start_time = start_time
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.operation_address:
+            self.operation_address.validate()
+        if self.profile:
+            self.profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.esp_biz_id is not None:
+            result['EspBizId'] = self.esp_biz_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.instance_biz_id is not None:
+            result['InstanceBizId'] = self.instance_biz_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation_address is not None:
+            result['OperationAddress'] = self.operation_address.to_map()
+        if self.profile is not None:
+            result['Profile'] = self.profile.to_map()
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.service_type_text is not None:
+            result['ServiceTypeText'] = self.service_type_text
+        if self.slug is not None:
+            result['Slug'] = self.slug
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EspBizId') is not None:
+            self.esp_biz_id = m.get('EspBizId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('InstanceBizId') is not None:
+            self.instance_biz_id = m.get('InstanceBizId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OperationAddress') is not None:
+            temp_model = AppOperationAddress()
+            self.operation_address = temp_model.from_map(m['OperationAddress'])
+        if m.get('Profile') is not None:
+            temp_model = AppServiceProfile()
+            self.profile = temp_model.from_map(m['Profile'])
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('ServiceTypeText') is not None:
+            self.service_type_text = m.get('ServiceTypeText')
+        if m.get('Slug') is not None:
+            self.slug = m.get('Slug')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AppInstanceAggregate(TeaModel):
+    def __init__(
+        self,
+        ai_staff_list: List[AppAiStaff] = None,
+        app_operation_address: AppOperationAddress = None,
+        app_service_list: List[AppServiceAggregate] = None,
+        app_sub_type: str = None,
+        app_type: str = None,
+        biz_id: str = None,
+        build_type: str = None,
+        create_time: str = None,
+        deleted: int = None,
+        description: str = None,
+        design_spec_biz_id: str = None,
+        design_spec_id: str = None,
+        domain: str = None,
+        end_time: str = None,
+        esp_biz_id: str = None,
+        gmt_delete: str = None,
+        gmt_modified: str = None,
+        gmt_publish: str = None,
+        icon_url: str = None,
+        name: str = None,
+        profile: AppInstanceProfile = None,
+        site_host: str = None,
+        slug: str = None,
+        source_type: str = None,
+        start_time: str = None,
+        status: str = None,
+        status_text: str = None,
+        thumbnail_url: str = None,
+        user_id: str = None,
+    ):
+        self.ai_staff_list = ai_staff_list
+        self.app_operation_address = app_operation_address
+        self.app_service_list = app_service_list
+        self.app_sub_type = app_sub_type
+        self.app_type = app_type
+        self.biz_id = biz_id
+        self.build_type = build_type
+        self.create_time = create_time
+        self.deleted = deleted
+        self.description = description
+        self.design_spec_biz_id = design_spec_biz_id
+        self.design_spec_id = design_spec_id
+        self.domain = domain
+        self.end_time = end_time
+        self.esp_biz_id = esp_biz_id
+        self.gmt_delete = gmt_delete
+        self.gmt_modified = gmt_modified
+        self.gmt_publish = gmt_publish
+        self.icon_url = icon_url
+        self.name = name
+        self.profile = profile
+        self.site_host = site_host
+        self.slug = slug
+        self.source_type = source_type
+        self.start_time = start_time
+        # trial,draft,live,refunded,expired,released
+        self.status = status
+        self.status_text = status_text
+        self.thumbnail_url = thumbnail_url
+        self.user_id = user_id
+
+    def validate(self):
+        if self.ai_staff_list:
+            for k in self.ai_staff_list:
+                if k:
+                    k.validate()
+        if self.app_operation_address:
+            self.app_operation_address.validate()
+        if self.app_service_list:
+            for k in self.app_service_list:
+                if k:
+                    k.validate()
+        if self.profile:
+            self.profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AiStaffList'] = []
+        if self.ai_staff_list is not None:
+            for k in self.ai_staff_list:
+                result['AiStaffList'].append(k.to_map() if k else None)
+        if self.app_operation_address is not None:
+            result['AppOperationAddress'] = self.app_operation_address.to_map()
+        result['AppServiceList'] = []
+        if self.app_service_list is not None:
+            for k in self.app_service_list:
+                result['AppServiceList'].append(k.to_map() if k else None)
+        if self.app_sub_type is not None:
+            result['AppSubType'] = self.app_sub_type
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.build_type is not None:
+            result['BuildType'] = self.build_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.design_spec_biz_id is not None:
+            result['DesignSpecBizId'] = self.design_spec_biz_id
+        if self.design_spec_id is not None:
+            result['DesignSpecId'] = self.design_spec_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.esp_biz_id is not None:
+            result['EspBizId'] = self.esp_biz_id
+        if self.gmt_delete is not None:
+            result['GmtDelete'] = self.gmt_delete
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.gmt_publish is not None:
+            result['GmtPublish'] = self.gmt_publish
+        if self.icon_url is not None:
+            result['IconUrl'] = self.icon_url
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.profile is not None:
+            result['Profile'] = self.profile.to_map()
+        if self.site_host is not None:
+            result['SiteHost'] = self.site_host
+        if self.slug is not None:
+            result['Slug'] = self.slug
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_text is not None:
+            result['StatusText'] = self.status_text
+        if self.thumbnail_url is not None:
+            result['ThumbnailUrl'] = self.thumbnail_url
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ai_staff_list = []
+        if m.get('AiStaffList') is not None:
+            for k in m.get('AiStaffList'):
+                temp_model = AppAiStaff()
+                self.ai_staff_list.append(temp_model.from_map(k))
+        if m.get('AppOperationAddress') is not None:
+            temp_model = AppOperationAddress()
+            self.app_operation_address = temp_model.from_map(m['AppOperationAddress'])
+        self.app_service_list = []
+        if m.get('AppServiceList') is not None:
+            for k in m.get('AppServiceList'):
+                temp_model = AppServiceAggregate()
+                self.app_service_list.append(temp_model.from_map(k))
+        if m.get('AppSubType') is not None:
+            self.app_sub_type = m.get('AppSubType')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('BuildType') is not None:
+            self.build_type = m.get('BuildType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DesignSpecBizId') is not None:
+            self.design_spec_biz_id = m.get('DesignSpecBizId')
+        if m.get('DesignSpecId') is not None:
+            self.design_spec_id = m.get('DesignSpecId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EspBizId') is not None:
+            self.esp_biz_id = m.get('EspBizId')
+        if m.get('GmtDelete') is not None:
+            self.gmt_delete = m.get('GmtDelete')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GmtPublish') is not None:
+            self.gmt_publish = m.get('GmtPublish')
+        if m.get('IconUrl') is not None:
+            self.icon_url = m.get('IconUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Profile') is not None:
+            temp_model = AppInstanceProfile()
+            self.profile = temp_model.from_map(m['Profile'])
+        if m.get('SiteHost') is not None:
+            self.site_host = m.get('SiteHost')
+        if m.get('Slug') is not None:
+            self.slug = m.get('Slug')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusText') is not None:
+            self.status_text = m.get('StatusText')
+        if m.get('ThumbnailUrl') is not None:
+            self.thumbnail_url = m.get('ThumbnailUrl')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AppService(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        create_time: str = None,
+        deleted: int = None,
+        end_time: str = None,
+        esp_biz_id: str = None,
+        gmt_modified: str = None,
+        instance_biz_id: str = None,
+        name: str = None,
+        profile: AppServiceProfile = None,
+        service_type: str = None,
+        service_type_text: str = None,
+        slug: str = None,
+        start_time: str = None,
+        status: str = None,
+        user_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.create_time = create_time
+        self.deleted = deleted
+        self.end_time = end_time
+        self.esp_biz_id = esp_biz_id
+        self.gmt_modified = gmt_modified
+        self.instance_biz_id = instance_biz_id
+        self.name = name
+        self.profile = profile
+        self.service_type = service_type
+        self.service_type_text = service_type_text
+        self.slug = slug
+        self.start_time = start_time
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.profile:
+            self.profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.esp_biz_id is not None:
+            result['EspBizId'] = self.esp_biz_id
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.instance_biz_id is not None:
+            result['InstanceBizId'] = self.instance_biz_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.profile is not None:
+            result['Profile'] = self.profile.to_map()
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.service_type_text is not None:
+            result['ServiceTypeText'] = self.service_type_text
+        if self.slug is not None:
+            result['Slug'] = self.slug
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EspBizId') is not None:
+            self.esp_biz_id = m.get('EspBizId')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('InstanceBizId') is not None:
+            self.instance_biz_id = m.get('InstanceBizId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Profile') is not None:
+            temp_model = AppServiceProfile()
+            self.profile = temp_model.from_map(m['Profile'])
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('ServiceTypeText') is not None:
+            self.service_type_text = m.get('ServiceTypeText')
+        if m.get('Slug') is not None:
+            self.slug = m.get('Slug')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AppServiceGroup(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        qr_code: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.name = name
+        self.qr_code = qr_code
+        # 例如：dingtalk、wx 等
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.qr_code is not None:
+            result['QrCode'] = self.qr_code
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QrCode') is not None:
+            self.qr_code = m.get('QrCode')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
 class BindAppDomainRequest(TeaModel):
     def __init__(
         self,
@@ -203,6 +1193,515 @@ class BindAppDomainResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindAppDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAppInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        application_type: str = None,
+        auto_renew: bool = None,
+        client_token: str = None,
+        deploy_area: str = None,
+        duration: int = None,
+        extend: str = None,
+        payment_type: str = None,
+        pricing_cycle: str = None,
+        quantity: int = None,
+        site_version: str = None,
+    ):
+        self.application_type = application_type
+        self.auto_renew = auto_renew
+        self.client_token = client_token
+        self.deploy_area = deploy_area
+        self.duration = duration
+        self.extend = extend
+        self.payment_type = payment_type
+        self.pricing_cycle = pricing_cycle
+        self.quantity = quantity
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.deploy_area is not None:
+            result['DeployArea'] = self.deploy_area
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
+        if self.quantity is not None:
+            result['Quantity'] = self.quantity
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeployArea') is not None:
+            self.deploy_area = m.get('DeployArea')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
+        if m.get('Quantity') is not None:
+            self.quantity = m.get('Quantity')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateAppInstanceResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        instance_id: str = None,
+        order_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.instance_id = instance_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CreateAppInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        module: CreateAppInstanceResponseBodyModule = None,
+        request_id: str = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('Module') is not None:
+            temp_model = CreateAppInstanceResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class CreateAppInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAppInstanceTicketRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        client_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class CreateAppInstanceTicketResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        access_token_expires_at: str = None,
+        access_token_issued_at: str = None,
+        access_token_value: str = None,
+        aliyun_pk: str = None,
+        attributes: str = None,
+        authorization_grant_type: str = None,
+        bid: str = None,
+        parent_pk: str = None,
+        refresh_token_expires_at: str = None,
+        refresh_token_issued_at: str = None,
+        refresh_token_value: str = None,
+        uuid: str = None,
+    ):
+        self.access_token_expires_at = access_token_expires_at
+        self.access_token_issued_at = access_token_issued_at
+        self.access_token_value = access_token_value
+        self.aliyun_pk = aliyun_pk
+        self.attributes = attributes
+        self.authorization_grant_type = authorization_grant_type
+        # bid
+        self.bid = bid
+        self.parent_pk = parent_pk
+        self.refresh_token_expires_at = refresh_token_expires_at
+        self.refresh_token_issued_at = refresh_token_issued_at
+        self.refresh_token_value = refresh_token_value
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token_expires_at is not None:
+            result['AccessTokenExpiresAt'] = self.access_token_expires_at
+        if self.access_token_issued_at is not None:
+            result['AccessTokenIssuedAt'] = self.access_token_issued_at
+        if self.access_token_value is not None:
+            result['AccessTokenValue'] = self.access_token_value
+        if self.aliyun_pk is not None:
+            result['AliyunPk'] = self.aliyun_pk
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.authorization_grant_type is not None:
+            result['AuthorizationGrantType'] = self.authorization_grant_type
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.parent_pk is not None:
+            result['ParentPk'] = self.parent_pk
+        if self.refresh_token_expires_at is not None:
+            result['RefreshTokenExpiresAt'] = self.refresh_token_expires_at
+        if self.refresh_token_issued_at is not None:
+            result['RefreshTokenIssuedAt'] = self.refresh_token_issued_at
+        if self.refresh_token_value is not None:
+            result['RefreshTokenValue'] = self.refresh_token_value
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessTokenExpiresAt') is not None:
+            self.access_token_expires_at = m.get('AccessTokenExpiresAt')
+        if m.get('AccessTokenIssuedAt') is not None:
+            self.access_token_issued_at = m.get('AccessTokenIssuedAt')
+        if m.get('AccessTokenValue') is not None:
+            self.access_token_value = m.get('AccessTokenValue')
+        if m.get('AliyunPk') is not None:
+            self.aliyun_pk = m.get('AliyunPk')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('AuthorizationGrantType') is not None:
+            self.authorization_grant_type = m.get('AuthorizationGrantType')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('ParentPk') is not None:
+            self.parent_pk = m.get('ParentPk')
+        if m.get('RefreshTokenExpiresAt') is not None:
+            self.refresh_token_expires_at = m.get('RefreshTokenExpiresAt')
+        if m.get('RefreshTokenIssuedAt') is not None:
+            self.refresh_token_issued_at = m.get('RefreshTokenIssuedAt')
+        if m.get('RefreshTokenValue') is not None:
+            self.refresh_token_value = m.get('RefreshTokenValue')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class CreateAppInstanceTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        module: CreateAppInstanceTicketResponseBodyModule = None,
+        request_id: str = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('Module') is not None:
+            temp_model = CreateAppInstanceTicketResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class CreateAppInstanceTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppInstanceTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppInstanceTicketResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1102,6 +2601,164 @@ class DispatchConsoleAPIForPartnerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DispatchConsoleAPIForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAppInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+    ):
+        self.biz_id = biz_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        return self
+
+
+class GetAppInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        module: AppInstanceAggregate = None,
+        request_id: str = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('Module') is not None:
+            temp_model = AppInstanceAggregate()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class GetAppInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAppInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAppInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3265,6 +4922,598 @@ class ListAppInstanceDomainsResponse(TeaModel):
         return self
 
 
+class ListAppInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        end_time_begin: str = None,
+        end_time_end: str = None,
+        extend: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order_column: str = None,
+        order_type: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        query: str = None,
+        status_list: List[str] = None,
+    ):
+        self.biz_id = biz_id
+        self.end_time_begin = end_time_begin
+        self.end_time_end = end_time_end
+        self.extend = extend
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order_column = order_column
+        self.order_type = order_type
+        self.page_num = page_num
+        self.page_size = page_size
+        self.query = query
+        self.status_list = status_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.end_time_begin is not None:
+            result['EndTimeBegin'] = self.end_time_begin
+        if self.end_time_end is not None:
+            result['EndTimeEnd'] = self.end_time_end
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_column is not None:
+            result['OrderColumn'] = self.order_column
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.status_list is not None:
+            result['StatusList'] = self.status_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('EndTimeBegin') is not None:
+            self.end_time_begin = m.get('EndTimeBegin')
+        if m.get('EndTimeEnd') is not None:
+            self.end_time_end = m.get('EndTimeEnd')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderColumn') is not None:
+            self.order_column = m.get('OrderColumn')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('StatusList') is not None:
+            self.status_list = m.get('StatusList')
+        return self
+
+
+class ListAppInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        end_time_begin: str = None,
+        end_time_end: str = None,
+        extend: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order_column: str = None,
+        order_type: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        query: str = None,
+        status_list_shrink: str = None,
+    ):
+        self.biz_id = biz_id
+        self.end_time_begin = end_time_begin
+        self.end_time_end = end_time_end
+        self.extend = extend
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order_column = order_column
+        self.order_type = order_type
+        self.page_num = page_num
+        self.page_size = page_size
+        self.query = query
+        self.status_list_shrink = status_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.end_time_begin is not None:
+            result['EndTimeBegin'] = self.end_time_begin
+        if self.end_time_end is not None:
+            result['EndTimeEnd'] = self.end_time_end
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_column is not None:
+            result['OrderColumn'] = self.order_column
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.status_list_shrink is not None:
+            result['StatusList'] = self.status_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('EndTimeBegin') is not None:
+            self.end_time_begin = m.get('EndTimeBegin')
+        if m.get('EndTimeEnd') is not None:
+            self.end_time_end = m.get('EndTimeEnd')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderColumn') is not None:
+            self.order_column = m.get('OrderColumn')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('StatusList') is not None:
+            self.status_list_shrink = m.get('StatusList')
+        return self
+
+
+class ListAppInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        current_page_num: int = None,
+        data: List[AppInstanceAggregate] = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        max_results: int = None,
+        next_page: bool = None,
+        next_token: str = None,
+        page_size: int = None,
+        pre_page: bool = None,
+        request_id: str = None,
+        result_limit: bool = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+        total_page_num: int = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.current_page_num = current_page_num
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.max_results = max_results
+        self.next_page = next_page
+        self.next_token = next_token
+        self.page_size = page_size
+        self.pre_page = pre_page
+        # Id of the request
+        self.request_id = request_id
+        self.result_limit = result_limit
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+        self.total_page_num = total_page_num
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.current_page_num is not None:
+            result['CurrentPageNum'] = self.current_page_num
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_page is not None:
+            result['NextPage'] = self.next_page
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pre_page is not None:
+            result['PrePage'] = self.pre_page
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_limit is not None:
+            result['ResultLimit'] = self.result_limit
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        if self.total_page_num is not None:
+            result['TotalPageNum'] = self.total_page_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('CurrentPageNum') is not None:
+            self.current_page_num = m.get('CurrentPageNum')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = AppInstanceAggregate()
+                self.data.append(temp_model.from_map(k))
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextPage') is not None:
+            self.next_page = m.get('NextPage')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PrePage') is not None:
+            self.pre_page = m.get('PrePage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultLimit') is not None:
+            self.result_limit = m.get('ResultLimit')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        if m.get('TotalPageNum') is not None:
+            self.total_page_num = m.get('TotalPageNum')
+        return self
+
+
+class ListAppInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAppInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAppInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppInstanceSpecRequest(TeaModel):
+    def __init__(
+        self,
+        application_type: str = None,
+        biz_id: str = None,
+        client_token: str = None,
+        deploy_area: str = None,
+        extend: str = None,
+        payment_type: str = None,
+        site_version: str = None,
+    ):
+        self.application_type = application_type
+        self.biz_id = biz_id
+        self.client_token = client_token
+        self.deploy_area = deploy_area
+        self.extend = extend
+        self.payment_type = payment_type
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.deploy_area is not None:
+            result['DeployArea'] = self.deploy_area
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeployArea') is not None:
+            self.deploy_area = m.get('DeployArea')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ModifyAppInstanceSpecResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+    ):
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class ModifyAppInstanceSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        module: ModifyAppInstanceSpecResponseBodyModule = None,
+        request_id: str = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('Module') is not None:
+            temp_model = ModifyAppInstanceSpecResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class ModifyAppInstanceSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppInstanceSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppInstanceSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OperateAppInstanceForPartnerRequest(TeaModel):
     def __init__(
         self,
@@ -3513,6 +5762,485 @@ class OperateAppServiceForPartnerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OperateAppServiceForPartnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RefreshAppInstanceTicketRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        token: str = None,
+        uuid: str = None,
+    ):
+        self.biz_id = biz_id
+        self.token = token
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class RefreshAppInstanceTicketResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        access_token_expires_at: str = None,
+        access_token_issued_at: str = None,
+        access_token_value: str = None,
+        aliyun_pk: str = None,
+        attributes: str = None,
+        authorization_grant_type: str = None,
+        bid: str = None,
+        parent_pk: str = None,
+        refresh_token_expires_at: str = None,
+        refresh_token_issued_at: str = None,
+        refresh_token_value: str = None,
+        uuid: str = None,
+    ):
+        self.access_token_expires_at = access_token_expires_at
+        self.access_token_issued_at = access_token_issued_at
+        self.access_token_value = access_token_value
+        self.aliyun_pk = aliyun_pk
+        self.attributes = attributes
+        self.authorization_grant_type = authorization_grant_type
+        # bid
+        self.bid = bid
+        self.parent_pk = parent_pk
+        self.refresh_token_expires_at = refresh_token_expires_at
+        self.refresh_token_issued_at = refresh_token_issued_at
+        self.refresh_token_value = refresh_token_value
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token_expires_at is not None:
+            result['AccessTokenExpiresAt'] = self.access_token_expires_at
+        if self.access_token_issued_at is not None:
+            result['AccessTokenIssuedAt'] = self.access_token_issued_at
+        if self.access_token_value is not None:
+            result['AccessTokenValue'] = self.access_token_value
+        if self.aliyun_pk is not None:
+            result['AliyunPk'] = self.aliyun_pk
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.authorization_grant_type is not None:
+            result['AuthorizationGrantType'] = self.authorization_grant_type
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.parent_pk is not None:
+            result['ParentPk'] = self.parent_pk
+        if self.refresh_token_expires_at is not None:
+            result['RefreshTokenExpiresAt'] = self.refresh_token_expires_at
+        if self.refresh_token_issued_at is not None:
+            result['RefreshTokenIssuedAt'] = self.refresh_token_issued_at
+        if self.refresh_token_value is not None:
+            result['RefreshTokenValue'] = self.refresh_token_value
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessTokenExpiresAt') is not None:
+            self.access_token_expires_at = m.get('AccessTokenExpiresAt')
+        if m.get('AccessTokenIssuedAt') is not None:
+            self.access_token_issued_at = m.get('AccessTokenIssuedAt')
+        if m.get('AccessTokenValue') is not None:
+            self.access_token_value = m.get('AccessTokenValue')
+        if m.get('AliyunPk') is not None:
+            self.aliyun_pk = m.get('AliyunPk')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('AuthorizationGrantType') is not None:
+            self.authorization_grant_type = m.get('AuthorizationGrantType')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('ParentPk') is not None:
+            self.parent_pk = m.get('ParentPk')
+        if m.get('RefreshTokenExpiresAt') is not None:
+            self.refresh_token_expires_at = m.get('RefreshTokenExpiresAt')
+        if m.get('RefreshTokenIssuedAt') is not None:
+            self.refresh_token_issued_at = m.get('RefreshTokenIssuedAt')
+        if m.get('RefreshTokenValue') is not None:
+            self.refresh_token_value = m.get('RefreshTokenValue')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class RefreshAppInstanceTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        module: RefreshAppInstanceTicketResponseBodyModule = None,
+        request_id: str = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('Module') is not None:
+            temp_model = RefreshAppInstanceTicketResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class RefreshAppInstanceTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RefreshAppInstanceTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RefreshAppInstanceTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewAppInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        client_token: str = None,
+        duration: int = None,
+        extend: str = None,
+        payment_type: str = None,
+        pricing_cycle: str = None,
+    ):
+        self.biz_id = biz_id
+        self.client_token = client_token
+        self.duration = duration
+        self.extend = extend
+        self.payment_type = payment_type
+        self.pricing_cycle = pricing_cycle
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
+        return self
+
+
+class RenewAppInstanceResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+    ):
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class RenewAppInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        module: RenewAppInstanceResponseBodyModule = None,
+        request_id: str = None,
+        root_error_code: str = None,
+        root_error_msg: str = None,
+        synchro: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.module = module
+        # Id of the request
+        self.request_id = request_id
+        self.root_error_code = root_error_code
+        self.root_error_msg = root_error_msg
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root_error_code is not None:
+            result['RootErrorCode'] = self.root_error_code
+        if self.root_error_msg is not None:
+            result['RootErrorMsg'] = self.root_error_msg
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('Module') is not None:
+            temp_model = RenewAppInstanceResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RootErrorCode') is not None:
+            self.root_error_code = m.get('RootErrorCode')
+        if m.get('RootErrorMsg') is not None:
+            self.root_error_msg = m.get('RootErrorMsg')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class RenewAppInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewAppInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewAppInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

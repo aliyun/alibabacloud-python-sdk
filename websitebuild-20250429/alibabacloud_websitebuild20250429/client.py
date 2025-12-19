@@ -149,6 +149,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_app_domain_with_options_async(request, runtime)
 
+    def create_app_instance_with_options(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.CreateAppInstanceResponse:
+        """
+        @summary 创建建站实例
+        
+        @param request: CreateAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deploy_area):
+            query['DeployArea'] = request.deploy_area
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.quantity):
+            query['Quantity'] = request.quantity
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppInstance',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.CreateAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_instance_with_options_async(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.CreateAppInstanceResponse:
+        """
+        @summary 创建建站实例
+        
+        @param request: CreateAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deploy_area):
+            query['DeployArea'] = request.deploy_area
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.quantity):
+            query['Quantity'] = request.quantity
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppInstance',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.CreateAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_instance(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceRequest,
+    ) -> website_build_20250429_models.CreateAppInstanceResponse:
+        """
+        @summary 创建建站实例
+        
+        @param request: CreateAppInstanceRequest
+        @return: CreateAppInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_instance_with_options(request, runtime)
+
+    async def create_app_instance_async(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceRequest,
+    ) -> website_build_20250429_models.CreateAppInstanceResponse:
+        """
+        @summary 创建建站实例
+        
+        @param request: CreateAppInstanceRequest
+        @return: CreateAppInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_instance_with_options_async(request, runtime)
+
+    def create_app_instance_ticket_with_options(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.CreateAppInstanceTicketResponse:
+        """
+        @summary 免登ticket
+        
+        @param request: CreateAppInstanceTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppInstanceTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppInstanceTicket',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.CreateAppInstanceTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_instance_ticket_with_options_async(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.CreateAppInstanceTicketResponse:
+        """
+        @summary 免登ticket
+        
+        @param request: CreateAppInstanceTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppInstanceTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.client_id):
+            query['ClientId'] = request.client_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppInstanceTicket',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.CreateAppInstanceTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_instance_ticket(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceTicketRequest,
+    ) -> website_build_20250429_models.CreateAppInstanceTicketResponse:
+        """
+        @summary 免登ticket
+        
+        @param request: CreateAppInstanceTicketRequest
+        @return: CreateAppInstanceTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_instance_ticket_with_options(request, runtime)
+
+    async def create_app_instance_ticket_async(
+        self,
+        request: website_build_20250429_models.CreateAppInstanceTicketRequest,
+    ) -> website_build_20250429_models.CreateAppInstanceTicketResponse:
+        """
+        @summary 免登ticket
+        
+        @param request: CreateAppInstanceTicketRequest
+        @return: CreateAppInstanceTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_instance_ticket_with_options_async(request, runtime)
+
     def create_logo_task_with_options(
         self,
         request: website_build_20250429_models.CreateLogoTaskRequest,
@@ -672,6 +904,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.dispatch_console_apifor_partner_with_options_async(request, runtime)
+
+    def get_app_instance_with_options(
+        self,
+        request: website_build_20250429_models.GetAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetAppInstanceResponse:
+        """
+        @summary 查询应用实例详情
+        
+        @param request: GetAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppInstance',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_instance_with_options_async(
+        self,
+        request: website_build_20250429_models.GetAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetAppInstanceResponse:
+        """
+        @summary 查询应用实例详情
+        
+        @param request: GetAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppInstance',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_instance(
+        self,
+        request: website_build_20250429_models.GetAppInstanceRequest,
+    ) -> website_build_20250429_models.GetAppInstanceResponse:
+        """
+        @summary 查询应用实例详情
+        
+        @param request: GetAppInstanceRequest
+        @return: GetAppInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_instance_with_options(request, runtime)
+
+    async def get_app_instance_async(
+        self,
+        request: website_build_20250429_models.GetAppInstanceRequest,
+    ) -> website_build_20250429_models.GetAppInstanceResponse:
+        """
+        @summary 查询应用实例详情
+        
+        @param request: GetAppInstanceRequest
+        @return: GetAppInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_instance_with_options_async(request, runtime)
 
     def get_create_logo_task_with_options(
         self,
@@ -1409,6 +1737,274 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_app_instance_domains_with_options_async(request, runtime)
 
+    def list_app_instances_with_options(
+        self,
+        tmp_req: website_build_20250429_models.ListAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ListAppInstancesResponse:
+        """
+        @summary 建站实例列表查询
+        
+        @param tmp_req: ListAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = website_build_20250429_models.ListAppInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.end_time_begin):
+            query['EndTimeBegin'] = request.end_time_begin
+        if not UtilClient.is_unset(request.end_time_end):
+            query['EndTimeEnd'] = request.end_time_end
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppInstances',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ListAppInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_instances_with_options_async(
+        self,
+        tmp_req: website_build_20250429_models.ListAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ListAppInstancesResponse:
+        """
+        @summary 建站实例列表查询
+        
+        @param tmp_req: ListAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = website_build_20250429_models.ListAppInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.end_time_begin):
+            query['EndTimeBegin'] = request.end_time_begin
+        if not UtilClient.is_unset(request.end_time_end):
+            query['EndTimeEnd'] = request.end_time_end
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppInstances',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ListAppInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_instances(
+        self,
+        request: website_build_20250429_models.ListAppInstancesRequest,
+    ) -> website_build_20250429_models.ListAppInstancesResponse:
+        """
+        @summary 建站实例列表查询
+        
+        @param request: ListAppInstancesRequest
+        @return: ListAppInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_instances_with_options(request, runtime)
+
+    async def list_app_instances_async(
+        self,
+        request: website_build_20250429_models.ListAppInstancesRequest,
+    ) -> website_build_20250429_models.ListAppInstancesResponse:
+        """
+        @summary 建站实例列表查询
+        
+        @param request: ListAppInstancesRequest
+        @return: ListAppInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_instances_with_options_async(request, runtime)
+
+    def modify_app_instance_spec_with_options(
+        self,
+        request: website_build_20250429_models.ModifyAppInstanceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ModifyAppInstanceSpecResponse:
+        """
+        @summary 建站实例变配
+        
+        @param request: ModifyAppInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppInstanceSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deploy_area):
+            query['DeployArea'] = request.deploy_area
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppInstanceSpec',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ModifyAppInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_instance_spec_with_options_async(
+        self,
+        request: website_build_20250429_models.ModifyAppInstanceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ModifyAppInstanceSpecResponse:
+        """
+        @summary 建站实例变配
+        
+        @param request: ModifyAppInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppInstanceSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_type):
+            query['ApplicationType'] = request.application_type
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deploy_area):
+            query['DeployArea'] = request.deploy_area
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppInstanceSpec',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ModifyAppInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_instance_spec(
+        self,
+        request: website_build_20250429_models.ModifyAppInstanceSpecRequest,
+    ) -> website_build_20250429_models.ModifyAppInstanceSpecResponse:
+        """
+        @summary 建站实例变配
+        
+        @param request: ModifyAppInstanceSpecRequest
+        @return: ModifyAppInstanceSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_instance_spec_with_options(request, runtime)
+
+    async def modify_app_instance_spec_async(
+        self,
+        request: website_build_20250429_models.ModifyAppInstanceSpecRequest,
+    ) -> website_build_20250429_models.ModifyAppInstanceSpecResponse:
+        """
+        @summary 建站实例变配
+        
+        @param request: ModifyAppInstanceSpecRequest
+        @return: ModifyAppInstanceSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_instance_spec_with_options_async(request, runtime)
+
     def operate_app_instance_for_partner_with_options(
         self,
         request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
@@ -1616,6 +2212,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.operate_app_service_for_partner_with_options_async(request, runtime)
+
+    def refresh_app_instance_ticket_with_options(
+        self,
+        request: website_build_20250429_models.RefreshAppInstanceTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.RefreshAppInstanceTicketResponse:
+        """
+        @summary 刷新ticket
+        
+        @param request: RefreshAppInstanceTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAppInstanceTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshAppInstanceTicket',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.RefreshAppInstanceTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_app_instance_ticket_with_options_async(
+        self,
+        request: website_build_20250429_models.RefreshAppInstanceTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.RefreshAppInstanceTicketResponse:
+        """
+        @summary 刷新ticket
+        
+        @param request: RefreshAppInstanceTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAppInstanceTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshAppInstanceTicket',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.RefreshAppInstanceTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_app_instance_ticket(
+        self,
+        request: website_build_20250429_models.RefreshAppInstanceTicketRequest,
+    ) -> website_build_20250429_models.RefreshAppInstanceTicketResponse:
+        """
+        @summary 刷新ticket
+        
+        @param request: RefreshAppInstanceTicketRequest
+        @return: RefreshAppInstanceTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_app_instance_ticket_with_options(request, runtime)
+
+    async def refresh_app_instance_ticket_async(
+        self,
+        request: website_build_20250429_models.RefreshAppInstanceTicketRequest,
+    ) -> website_build_20250429_models.RefreshAppInstanceTicketResponse:
+        """
+        @summary 刷新ticket
+        
+        @param request: RefreshAppInstanceTicketRequest
+        @return: RefreshAppInstanceTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_app_instance_ticket_with_options_async(request, runtime)
+
+    def renew_app_instance_with_options(
+        self,
+        request: website_build_20250429_models.RenewAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.RenewAppInstanceResponse:
+        """
+        @summary 建站实例续费
+        
+        @param request: RenewAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewAppInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewAppInstance',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.RenewAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_app_instance_with_options_async(
+        self,
+        request: website_build_20250429_models.RenewAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.RenewAppInstanceResponse:
+        """
+        @summary 建站实例续费
+        
+        @param request: RenewAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewAppInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewAppInstance',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.RenewAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_app_instance(
+        self,
+        request: website_build_20250429_models.RenewAppInstanceRequest,
+    ) -> website_build_20250429_models.RenewAppInstanceResponse:
+        """
+        @summary 建站实例续费
+        
+        @param request: RenewAppInstanceRequest
+        @return: RenewAppInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.renew_app_instance_with_options(request, runtime)
+
+    async def renew_app_instance_async(
+        self,
+        request: website_build_20250429_models.RenewAppInstanceRequest,
+    ) -> website_build_20250429_models.RenewAppInstanceResponse:
+        """
+        @summary 建站实例续费
+        
+        @param request: RenewAppInstanceRequest
+        @return: RenewAppInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_app_instance_with_options_async(request, runtime)
 
     def search_image_with_options(
         self,
