@@ -3474,6 +3474,180 @@ class GetLinkageAttributesTemplateResponse(TeaModel):
         return self
 
 
+class GetOperationParamsRequest(TeaModel):
+    def __init__(
+        self,
+        operation: str = None,
+        service_type: str = None,
+    ):
+        # This parameter is required.
+        self.operation = operation
+        # This parameter is required.
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class GetOperationParamsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, Any] = None,
+        operation: str = None,
+        outputs: Dict[str, Any] = None,
+        properties: Dict[str, Any] = None,
+        service: str = None,
+    ):
+        self.attributes = attributes
+        self.operation = operation
+        self.outputs = outputs
+        self.properties = properties
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Outputs') is not None:
+            self.outputs = m.get('Outputs')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class GetOperationParamsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetOperationParamsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetOperationParamsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetOperationParamsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOperationParamsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOperationParamsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPotentialFailZonesRequest(TeaModel):
     def __init__(
         self,
@@ -5212,6 +5386,253 @@ class ListFoCreatedAppsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFoCreatedAppsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOperationsRequest(TeaModel):
+    def __init__(
+        self,
+        service_type: str = None,
+    ):
+        # This parameter is required.
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class ListOperationsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        operation: str = None,
+        service: str = None,
+    ):
+        self.display_name = display_name
+        self.operation = operation
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class ListOperationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListOperationsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListOperationsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListOperationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOperationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOperationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[str] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListServicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListServicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListServicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

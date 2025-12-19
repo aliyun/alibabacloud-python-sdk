@@ -1813,6 +1813,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_linkage_attributes_template_with_options_async(request, runtime)
 
+    def get_operation_params_with_options(
+        self,
+        request: bpstudio_20210931_models.GetOperationParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetOperationParamsResponse:
+        """
+        @summary 查看某操作的输入参数
+        
+        @param request: GetOperationParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOperationParamsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOperationParams',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetOperationParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_operation_params_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetOperationParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetOperationParamsResponse:
+        """
+        @summary 查看某操作的输入参数
+        
+        @param request: GetOperationParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOperationParamsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOperationParams',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetOperationParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_operation_params(
+        self,
+        request: bpstudio_20210931_models.GetOperationParamsRequest,
+    ) -> bpstudio_20210931_models.GetOperationParamsResponse:
+        """
+        @summary 查看某操作的输入参数
+        
+        @param request: GetOperationParamsRequest
+        @return: GetOperationParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_operation_params_with_options(request, runtime)
+
+    async def get_operation_params_async(
+        self,
+        request: bpstudio_20210931_models.GetOperationParamsRequest,
+    ) -> bpstudio_20210931_models.GetOperationParamsResponse:
+        """
+        @summary 查看某操作的输入参数
+        
+        @param request: GetOperationParamsRequest
+        @return: GetOperationParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_operation_params_with_options_async(request, runtime)
+
     def get_potential_fail_zones_with_options(
         self,
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
@@ -2754,6 +2854,176 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_fo_created_apps_with_options_async(runtime)
+
+    def list_operations_with_options(
+        self,
+        request: bpstudio_20210931_models.ListOperationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListOperationsResponse:
+        """
+        @summary 查看某服务支持的操作
+        
+        @param request: ListOperationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperations',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListOperationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operations_with_options_async(
+        self,
+        request: bpstudio_20210931_models.ListOperationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListOperationsResponse:
+        """
+        @summary 查看某服务支持的操作
+        
+        @param request: ListOperationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperations',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListOperationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operations(
+        self,
+        request: bpstudio_20210931_models.ListOperationsRequest,
+    ) -> bpstudio_20210931_models.ListOperationsResponse:
+        """
+        @summary 查看某服务支持的操作
+        
+        @param request: ListOperationsRequest
+        @return: ListOperationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_operations_with_options(request, runtime)
+
+    async def list_operations_async(
+        self,
+        request: bpstudio_20210931_models.ListOperationsRequest,
+    ) -> bpstudio_20210931_models.ListOperationsResponse:
+        """
+        @summary 查看某服务支持的操作
+        
+        @param request: ListOperationsRequest
+        @return: ListOperationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_operations_with_options_async(request, runtime)
+
+    def list_services_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListServicesResponse:
+        """
+        @summary 查看支持的服务列表
+        
+        @param request: ListServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_services_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListServicesResponse:
+        """
+        @summary 查看支持的服务列表
+        
+        @param request: ListServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_services(self) -> bpstudio_20210931_models.ListServicesResponse:
+        """
+        @summary 查看支持的服务列表
+        
+        @return: ListServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_services_with_options(runtime)
+
+    async def list_services_async(self) -> bpstudio_20210931_models.ListServicesResponse:
+        """
+        @summary 查看支持的服务列表
+        
+        @return: ListServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_services_with_options_async(runtime)
 
     def list_tag_resources_with_options(
         self,
