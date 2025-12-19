@@ -1,3 +1,6 @@
+2025-12-19 Version: 1.38.1
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2025-12-19 Version: 1.38.0
 - Support API BindPptArtifact.
 - Support API GetPptConfig.
