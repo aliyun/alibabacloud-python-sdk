@@ -3065,6 +3065,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_iplist_with_options_async(request, runtime)
 
+    def describe_vswitches_with_options(
+        self,
+        request: selectdb_20230522_models.DescribeVSwitchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeVSwitchesResponse:
+        """
+        @summary DescribeVSwitches
+        
+        @param request: DescribeVSwitchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVSwitches',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeVSwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vswitches_with_options_async(
+        self,
+        request: selectdb_20230522_models.DescribeVSwitchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeVSwitchesResponse:
+        """
+        @summary DescribeVSwitches
+        
+        @param request: DescribeVSwitchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVSwitches',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeVSwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vswitches(
+        self,
+        request: selectdb_20230522_models.DescribeVSwitchesRequest,
+    ) -> selectdb_20230522_models.DescribeVSwitchesResponse:
+        """
+        @summary DescribeVSwitches
+        
+        @param request: DescribeVSwitchesRequest
+        @return: DescribeVSwitchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vswitches_with_options(request, runtime)
+
+    async def describe_vswitches_async(
+        self,
+        request: selectdb_20230522_models.DescribeVSwitchesRequest,
+    ) -> selectdb_20230522_models.DescribeVSwitchesResponse:
+        """
+        @summary DescribeVSwitches
+        
+        @param request: DescribeVSwitchesRequest
+        @return: DescribeVSwitchesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vswitches_with_options_async(request, runtime)
+
+    def describe_zones_with_options(
+        self,
+        request: selectdb_20230522_models.DescribeZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeZonesResponse:
+        """
+        @summary DescribeZones
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeZones',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_zones_with_options_async(
+        self,
+        request: selectdb_20230522_models.DescribeZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeZonesResponse:
+        """
+        @summary DescribeZones
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeZones',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_zones(
+        self,
+        request: selectdb_20230522_models.DescribeZonesRequest,
+    ) -> selectdb_20230522_models.DescribeZonesResponse:
+        """
+        @summary DescribeZones
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_zones_with_options(request, runtime)
+
+    async def describe_zones_async(
+        self,
+        request: selectdb_20230522_models.DescribeZonesRequest,
+    ) -> selectdb_20230522_models.DescribeZonesResponse:
+        """
+        @summary DescribeZones
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_zones_with_options_async(request, runtime)
+
     def en_disable_scaling_rules_with_options(
         self,
         request: selectdb_20230522_models.EnDisableScalingRulesRequest,
@@ -4960,6 +5184,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def upgrade_dbinstance_deploy_scheme_with_options(
+        self,
+        tmp_req: selectdb_20230522_models.UpgradeDBInstanceDeploySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.UpgradeDBInstanceDeploySchemeResponse:
+        """
+        @summary UpgradeDBInstanceDeployScheme
+        
+        @param tmp_req: UpgradeDBInstanceDeploySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceDeploySchemeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = selectdb_20230522_models.UpgradeDBInstanceDeploySchemeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.multi_zone):
+            request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.multi_zone_shrink):
+            query['MultiZone'] = request.multi_zone_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBInstanceDeployScheme',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.UpgradeDBInstanceDeploySchemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_dbinstance_deploy_scheme_with_options_async(
+        self,
+        tmp_req: selectdb_20230522_models.UpgradeDBInstanceDeploySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.UpgradeDBInstanceDeploySchemeResponse:
+        """
+        @summary UpgradeDBInstanceDeployScheme
+        
+        @param tmp_req: UpgradeDBInstanceDeploySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceDeploySchemeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = selectdb_20230522_models.UpgradeDBInstanceDeploySchemeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.multi_zone):
+            request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.multi_zone_shrink):
+            query['MultiZone'] = request.multi_zone_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBInstanceDeployScheme',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.UpgradeDBInstanceDeploySchemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_dbinstance_deploy_scheme(
+        self,
+        request: selectdb_20230522_models.UpgradeDBInstanceDeploySchemeRequest,
+    ) -> selectdb_20230522_models.UpgradeDBInstanceDeploySchemeResponse:
+        """
+        @summary UpgradeDBInstanceDeployScheme
+        
+        @param request: UpgradeDBInstanceDeploySchemeRequest
+        @return: UpgradeDBInstanceDeploySchemeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_dbinstance_deploy_scheme_with_options(request, runtime)
+
+    async def upgrade_dbinstance_deploy_scheme_async(
+        self,
+        request: selectdb_20230522_models.UpgradeDBInstanceDeploySchemeRequest,
+    ) -> selectdb_20230522_models.UpgradeDBInstanceDeploySchemeResponse:
+        """
+        @summary UpgradeDBInstanceDeployScheme
+        
+        @param request: UpgradeDBInstanceDeploySchemeRequest
+        @return: UpgradeDBInstanceDeploySchemeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_dbinstance_deploy_scheme_with_options_async(request, runtime)
 
     def upgrade_dbinstance_engine_version_with_options(
         self,

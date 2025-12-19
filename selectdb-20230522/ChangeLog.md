@@ -1,3 +1,9 @@
+2025-12-19 Version: 4.5.0
+- Support API DescribeVSwitches.
+- Support API DescribeZones.
+- Support API UpgradeDBInstanceDeployScheme.
+
+
 2025-12-08 Version: 4.4.0
 - Support API CreateVirtualCluster.
 - Support API DeleteVirtualCluster.
