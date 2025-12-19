@@ -1,3 +1,8 @@
+2025-12-19 Version: 2.2.1
+- Update API CreateDBInstance: add request parameters Tags.
+- Update API DescribeDBInstances: add request parameters Tags.
+
+
 2025-12-12 Version: 2.2.0
 - Support API AttachWhitelistTemplateToInstance.
 - Support API DeleteWhitelistTemplate.

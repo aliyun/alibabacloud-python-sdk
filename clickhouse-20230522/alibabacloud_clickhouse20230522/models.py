@@ -13,6 +13,8 @@ class AttachWhitelistTemplateToInstanceRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # RegionId
+        # 
         # This parameter is required.
         self.region_id = region_id
         # This parameter is required.
@@ -263,6 +265,7 @@ class AttachWhitelistTemplateToInstanceResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1150,6 +1153,39 @@ class CreateDBInstanceRequestMultiZone(TeaModel):
         return self
 
 
+class CreateDBInstanceRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -1172,6 +1208,7 @@ class CreateDBInstanceRequest(TeaModel):
         source_dbinstance_id: str = None,
         storage_quota: int = None,
         storage_type: str = None,
+        tags: List[CreateDBInstanceRequestTags] = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
@@ -1208,6 +1245,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.source_dbinstance_id = source_dbinstance_id
         self.storage_quota = storage_quota
         self.storage_type = storage_type
+        self.tags = tags
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
@@ -1218,6 +1256,10 @@ class CreateDBInstanceRequest(TeaModel):
     def validate(self):
         if self.multi_zone:
             for k in self.multi_zone:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -1267,6 +1309,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['StorageQuota'] = self.storage_quota
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -1318,12 +1364,50 @@ class CreateDBInstanceRequest(TeaModel):
             self.storage_quota = m.get('StorageQuota')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateDBInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateDBInstanceShrinkRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1349,6 +1433,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         source_dbinstance_id: str = None,
         storage_quota: int = None,
         storage_type: str = None,
+        tags: List[CreateDBInstanceShrinkRequestTags] = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
@@ -1385,6 +1470,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.source_dbinstance_id = source_dbinstance_id
         self.storage_quota = storage_quota
         self.storage_type = storage_type
+        self.tags = tags
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
@@ -1393,7 +1479,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1439,6 +1528,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['StorageQuota'] = self.storage_quota
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -1487,6 +1580,11 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.storage_quota = m.get('StorageQuota')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateDBInstanceShrinkRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -4776,6 +4874,39 @@ class DescribeDBInstanceDataSourcesResponse(TeaModel):
         return self
 
 
+class DescribeDBInstancesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDBInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -4786,6 +4917,7 @@ class DescribeDBInstancesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tags: List[DescribeDBInstancesRequestTags] = None,
     ):
         # The cluster IDs. Separate multiple cluster IDs with commas (,).
         self.dbinstance_ids = dbinstance_ids
@@ -4801,9 +4933,13 @@ class DescribeDBInstancesRequest(TeaModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4825,6 +4961,10 @@ class DescribeDBInstancesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4843,6 +4983,11 @@ class DescribeDBInstancesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDBInstancesRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
