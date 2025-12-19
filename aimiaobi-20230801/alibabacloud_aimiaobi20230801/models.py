@@ -3404,6 +3404,175 @@ class AsyncWritingBiddingDocResponse(TeaModel):
         return self
 
 
+class BindPptArtifactRequest(TeaModel):
+    def __init__(
+        self,
+        artifact_id: int = None,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.artifact_id = artifact_id
+        # This parameter is required.
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_id is not None:
+            result['ArtifactId'] = self.artifact_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactId') is not None:
+            self.artifact_id = m.get('ArtifactId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class BindPptArtifactResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class BindPptArtifactResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: BindPptArtifactResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindPptArtifactResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindPptArtifactResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindPptArtifactResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindPptArtifactResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelAsyncTaskRequest(TeaModel):
     def __init__(
         self,
@@ -19637,6 +19806,169 @@ class GetMaterialByIdResponse(TeaModel):
         return self
 
 
+class GetPptConfigRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+    ):
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetPptConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        code: str = None,
+    ):
+        # AppKey
+        self.app_key = app_key
+        # Code
+        self.code = code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class GetPptConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPptConfigResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPptConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPptConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPptConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPptConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPropertiesRequest(TeaModel):
     def __init__(
         self,
@@ -23353,6 +23685,182 @@ class ImportInterveneFileAsyncResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportInterveneFileAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InitiatePptCreationRequest(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.outline = outline
+        # This parameter is required.
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class InitiatePptCreationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        code: str = None,
+    ):
+        # AppKey
+        self.app_key = app_key
+        # Code
+        self.code = code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class InitiatePptCreationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: InitiatePptCreationResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = InitiatePptCreationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class InitiatePptCreationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitiatePptCreationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitiatePptCreationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36292,6 +36800,451 @@ class RunAbbreviationContentResponse(TeaModel):
         return self
 
 
+class RunAiHelperWritingRequest(TeaModel):
+    def __init__(
+        self,
+        distribute_writing: bool = None,
+        prompt: str = None,
+        prompt_mode: str = None,
+        workspace_id: str = None,
+        writing_params: Dict[str, str] = None,
+        writing_scene: str = None,
+        writing_style: str = None,
+    ):
+        self.distribute_writing = distribute_writing
+        # This parameter is required.
+        self.prompt = prompt
+        self.prompt_mode = prompt_mode
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_params = writing_params
+        # 写作场景：government(政务)、media(传媒)、market(营销)、office(办公)、custom(自定义)
+        # 
+        # This parameter is required.
+        self.writing_scene = writing_scene
+        # 写作文体唯一标识KEY，可通过ListWritingStyles接口获取对应写作场景下的文体列表
+        # 
+        # This parameter is required.
+        self.writing_style = writing_style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distribute_writing is not None:
+            result['DistributeWriting'] = self.distribute_writing
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_mode is not None:
+            result['PromptMode'] = self.prompt_mode
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_params is not None:
+            result['WritingParams'] = self.writing_params
+        if self.writing_scene is not None:
+            result['WritingScene'] = self.writing_scene
+        if self.writing_style is not None:
+            result['WritingStyle'] = self.writing_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributeWriting') is not None:
+            self.distribute_writing = m.get('DistributeWriting')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptMode') is not None:
+            self.prompt_mode = m.get('PromptMode')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingParams') is not None:
+            self.writing_params = m.get('WritingParams')
+        if m.get('WritingScene') is not None:
+            self.writing_scene = m.get('WritingScene')
+        if m.get('WritingStyle') is not None:
+            self.writing_style = m.get('WritingStyle')
+        return self
+
+
+class RunAiHelperWritingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        distribute_writing: bool = None,
+        prompt: str = None,
+        prompt_mode: str = None,
+        workspace_id: str = None,
+        writing_params_shrink: str = None,
+        writing_scene: str = None,
+        writing_style: str = None,
+    ):
+        self.distribute_writing = distribute_writing
+        # This parameter is required.
+        self.prompt = prompt
+        self.prompt_mode = prompt_mode
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_params_shrink = writing_params_shrink
+        # 写作场景：government(政务)、media(传媒)、market(营销)、office(办公)、custom(自定义)
+        # 
+        # This parameter is required.
+        self.writing_scene = writing_scene
+        # 写作文体唯一标识KEY，可通过ListWritingStyles接口获取对应写作场景下的文体列表
+        # 
+        # This parameter is required.
+        self.writing_style = writing_style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distribute_writing is not None:
+            result['DistributeWriting'] = self.distribute_writing
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_mode is not None:
+            result['PromptMode'] = self.prompt_mode
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_params_shrink is not None:
+            result['WritingParams'] = self.writing_params_shrink
+        if self.writing_scene is not None:
+            result['WritingScene'] = self.writing_scene
+        if self.writing_style is not None:
+            result['WritingStyle'] = self.writing_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributeWriting') is not None:
+            self.distribute_writing = m.get('DistributeWriting')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptMode') is not None:
+            self.prompt_mode = m.get('PromptMode')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingParams') is not None:
+            self.writing_params_shrink = m.get('WritingParams')
+        if m.get('WritingScene') is not None:
+            self.writing_scene = m.get('WritingScene')
+        if m.get('WritingStyle') is not None:
+            self.writing_style = m.get('WritingStyle')
+        return self
+
+
+class RunAiHelperWritingResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        status_code: int = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        # 请求错误时的错误码
+        self.error_code = error_code
+        # 请求错误时的详细错误信息
+        self.error_message = error_message
+        # SSE事件类型，如：result-generated(生成结果)、task-finished(任务完成)
+        self.event = event
+        # 当前写作会话的唯一标识
+        self.session_id = session_id
+        # HTTP状态码
+        self.status_code = status_code
+        # 写作任务的唯一标识
+        self.task_id = task_id
+        # 用于问题排查的链路追踪标识
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunAiHelperWritingResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+        writing_params: Dict[str, str] = None,
+    ):
+        # AI生成的文章内容，流式返回时为增量文本
+        self.text = text
+        # 返回的写作参数键值对
+        self.writing_params = writing_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.writing_params is not None:
+            result['WritingParams'] = self.writing_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('WritingParams') is not None:
+            self.writing_params = m.get('WritingParams')
+        return self
+
+
+class RunAiHelperWritingResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        # 输入内容消耗的Token数量
+        self.input_tokens = input_tokens
+        # 生成内容消耗的Token数量
+        self.output_tokens = output_tokens
+        # 输入和输出Token的总和
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunAiHelperWritingResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunAiHelperWritingResponseBodyPayloadOutput = None,
+        usage: RunAiHelperWritingResponseBodyPayloadUsage = None,
+    ):
+        # AI生成的写作内容
+        self.output = output
+        # 本次请求的Token消耗统计
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunAiHelperWritingResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunAiHelperWritingResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunAiHelperWritingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        header: RunAiHelperWritingResponseBodyHeader = None,
+        http_status_code: str = None,
+        message: str = None,
+        payload: RunAiHelperWritingResponseBodyPayload = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 业务处理结果状态码
+        self.code = code
+        # 流式响应的头部信息，包含事件类型、状态码等元数据
+        self.header = header
+        # HTTP响应状态码
+        self.http_status_code = http_status_code
+        # 业务处理结果描述信息
+        self.message = message
+        # 包含写作输出内容和Token使用量统计
+        self.payload = payload
+        # 本次API请求的唯一标识
+        self.request_id = request_id
+        # 请求是否处理成功
+        self.success = success
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Header') is not None:
+            temp_model = RunAiHelperWritingResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Payload') is not None:
+            temp_model = RunAiHelperWritingResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RunAiHelperWritingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunAiHelperWritingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunAiHelperWritingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunBookBrainmapRequest(TeaModel):
     def __init__(
         self,
@@ -43738,6 +44691,269 @@ class RunMultiDocIntroductionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunMultiDocIntroductionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunPptOutlineGenerationRequest(TeaModel):
+    def __init__(
+        self,
+        prompt: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.prompt = prompt
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunPptOutlineGenerationResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        status_code: int = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.status_code = status_code
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunPptOutlineGenerationResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RunPptOutlineGenerationResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunPptOutlineGenerationResponseBodyPayloadOutput = None,
+    ):
+        self.output = output
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunPptOutlineGenerationResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        return self
+
+
+class RunPptOutlineGenerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        header: RunPptOutlineGenerationResponseBodyHeader = None,
+        http_status_code: str = None,
+        message: str = None,
+        payload: RunPptOutlineGenerationResponseBodyPayload = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.header = header
+        self.http_status_code = http_status_code
+        self.message = message
+        self.payload = payload
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Header') is not None:
+            temp_model = RunPptOutlineGenerationResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Payload') is not None:
+            temp_model = RunPptOutlineGenerationResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RunPptOutlineGenerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunPptOutlineGenerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunPptOutlineGenerationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

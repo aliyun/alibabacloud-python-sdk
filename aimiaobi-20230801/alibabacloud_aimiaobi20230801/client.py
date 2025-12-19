@@ -1037,6 +1037,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.async_writing_bidding_doc_with_options_async(request, runtime)
 
+    def bind_ppt_artifact_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.BindPptArtifactRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.BindPptArtifactResponse:
+        """
+        @summary 绑定PPT作品信息
+        
+        @param request: BindPptArtifactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPptArtifactResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.artifact_id):
+            body['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BindPptArtifact',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.BindPptArtifactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_ppt_artifact_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.BindPptArtifactRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.BindPptArtifactResponse:
+        """
+        @summary 绑定PPT作品信息
+        
+        @param request: BindPptArtifactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPptArtifactResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.artifact_id):
+            body['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BindPptArtifact',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.BindPptArtifactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_ppt_artifact(
+        self,
+        request: ai_miao_bi_20230801_models.BindPptArtifactRequest,
+    ) -> ai_miao_bi_20230801_models.BindPptArtifactResponse:
+        """
+        @summary 绑定PPT作品信息
+        
+        @param request: BindPptArtifactRequest
+        @return: BindPptArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_ppt_artifact_with_options(request, runtime)
+
+    async def bind_ppt_artifact_async(
+        self,
+        request: ai_miao_bi_20230801_models.BindPptArtifactRequest,
+    ) -> ai_miao_bi_20230801_models.BindPptArtifactResponse:
+        """
+        @summary 绑定PPT作品信息
+        
+        @param request: BindPptArtifactRequest
+        @return: BindPptArtifactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_ppt_artifact_with_options_async(request, runtime)
+
     def cancel_async_task_with_options(
         self,
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
@@ -8817,6 +8921,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_material_by_id_with_options_async(request, runtime)
 
+    def get_ppt_config_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetPptConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetPptConfigResponse:
+        """
+        @summary 获取PPT组件的配置
+        
+        @param request: GetPptConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPptConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPptConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetPptConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ppt_config_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetPptConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetPptConfigResponse:
+        """
+        @summary 获取PPT组件的配置
+        
+        @param request: GetPptConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPptConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPptConfig',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetPptConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ppt_config(
+        self,
+        request: ai_miao_bi_20230801_models.GetPptConfigRequest,
+    ) -> ai_miao_bi_20230801_models.GetPptConfigResponse:
+        """
+        @summary 获取PPT组件的配置
+        
+        @param request: GetPptConfigRequest
+        @return: GetPptConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ppt_config_with_options(request, runtime)
+
+    async def get_ppt_config_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetPptConfigRequest,
+    ) -> ai_miao_bi_20230801_models.GetPptConfigResponse:
+        """
+        @summary 获取PPT组件的配置
+        
+        @param request: GetPptConfigRequest
+        @return: GetPptConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ppt_config_with_options_async(request, runtime)
+
     def get_properties_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetPropertiesRequest,
@@ -9648,6 +9848,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.import_intervene_file_async_with_options_async(request, runtime)
+
+    def initiate_ppt_creation_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.InitiatePptCreationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.InitiatePptCreationResponse:
+        """
+        @summary 初始化PPT创建操作
+        
+        @param request: InitiatePptCreationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitiatePptCreationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.outline):
+            body['Outline'] = request.outline
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitiatePptCreation',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.InitiatePptCreationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initiate_ppt_creation_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.InitiatePptCreationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.InitiatePptCreationResponse:
+        """
+        @summary 初始化PPT创建操作
+        
+        @param request: InitiatePptCreationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitiatePptCreationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.outline):
+            body['Outline'] = request.outline
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitiatePptCreation',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.InitiatePptCreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initiate_ppt_creation(
+        self,
+        request: ai_miao_bi_20230801_models.InitiatePptCreationRequest,
+    ) -> ai_miao_bi_20230801_models.InitiatePptCreationResponse:
+        """
+        @summary 初始化PPT创建操作
+        
+        @param request: InitiatePptCreationRequest
+        @return: InitiatePptCreationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.initiate_ppt_creation_with_options(request, runtime)
+
+    async def initiate_ppt_creation_async(
+        self,
+        request: ai_miao_bi_20230801_models.InitiatePptCreationRequest,
+    ) -> ai_miao_bi_20230801_models.InitiatePptCreationResponse:
+        """
+        @summary 初始化PPT创建操作
+        
+        @param request: InitiatePptCreationRequest
+        @return: InitiatePptCreationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.initiate_ppt_creation_with_options_async(request, runtime)
 
     def insert_intervene_global_reply_with_options(
         self,
@@ -14589,6 +14893,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_abbreviation_content_with_options_async(request, runtime)
 
+    def run_ai_helper_writing_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunAiHelperWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunAiHelperWritingResponse:
+        """
+        @summary 妙笔：AI助手写作
+        
+        @param tmp_req: RunAiHelperWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunAiHelperWritingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunAiHelperWritingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.writing_params):
+            request.writing_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.writing_params, 'WritingParams', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.distribute_writing):
+            body['DistributeWriting'] = request.distribute_writing
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.prompt_mode):
+            body['PromptMode'] = request.prompt_mode
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_params_shrink):
+            body['WritingParams'] = request.writing_params_shrink
+        if not UtilClient.is_unset(request.writing_scene):
+            body['WritingScene'] = request.writing_scene
+        if not UtilClient.is_unset(request.writing_style):
+            body['WritingStyle'] = request.writing_style
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunAiHelperWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunAiHelperWritingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_ai_helper_writing_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunAiHelperWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunAiHelperWritingResponse:
+        """
+        @summary 妙笔：AI助手写作
+        
+        @param tmp_req: RunAiHelperWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunAiHelperWritingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunAiHelperWritingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.writing_params):
+            request.writing_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.writing_params, 'WritingParams', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.distribute_writing):
+            body['DistributeWriting'] = request.distribute_writing
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.prompt_mode):
+            body['PromptMode'] = request.prompt_mode
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_params_shrink):
+            body['WritingParams'] = request.writing_params_shrink
+        if not UtilClient.is_unset(request.writing_scene):
+            body['WritingScene'] = request.writing_scene
+        if not UtilClient.is_unset(request.writing_style):
+            body['WritingStyle'] = request.writing_style
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunAiHelperWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunAiHelperWritingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_ai_helper_writing(
+        self,
+        request: ai_miao_bi_20230801_models.RunAiHelperWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunAiHelperWritingResponse:
+        """
+        @summary 妙笔：AI助手写作
+        
+        @param request: RunAiHelperWritingRequest
+        @return: RunAiHelperWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_ai_helper_writing_with_options(request, runtime)
+
+    async def run_ai_helper_writing_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunAiHelperWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunAiHelperWritingResponse:
+        """
+        @summary 妙笔：AI助手写作
+        
+        @param request: RunAiHelperWritingRequest
+        @return: RunAiHelperWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_ai_helper_writing_with_options_async(request, runtime)
+
     def run_book_brainmap_with_options(
         self,
         request: ai_miao_bi_20230801_models.RunBookBrainmapRequest,
@@ -16988,6 +17420,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_multi_doc_introduction_with_options_async(request, runtime)
+
+    def run_ppt_outline_generation_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunPptOutlineGenerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunPptOutlineGenerationResponse:
+        """
+        @summary 流式输出PPT大纲
+        
+        @param request: RunPptOutlineGenerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunPptOutlineGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunPptOutlineGeneration',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunPptOutlineGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_ppt_outline_generation_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunPptOutlineGenerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunPptOutlineGenerationResponse:
+        """
+        @summary 流式输出PPT大纲
+        
+        @param request: RunPptOutlineGenerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunPptOutlineGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunPptOutlineGeneration',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunPptOutlineGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_ppt_outline_generation(
+        self,
+        request: ai_miao_bi_20230801_models.RunPptOutlineGenerationRequest,
+    ) -> ai_miao_bi_20230801_models.RunPptOutlineGenerationResponse:
+        """
+        @summary 流式输出PPT大纲
+        
+        @param request: RunPptOutlineGenerationRequest
+        @return: RunPptOutlineGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_ppt_outline_generation_with_options(request, runtime)
+
+    async def run_ppt_outline_generation_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunPptOutlineGenerationRequest,
+    ) -> ai_miao_bi_20230801_models.RunPptOutlineGenerationResponse:
+        """
+        @summary 流式输出PPT大纲
+        
+        @param request: RunPptOutlineGenerationRequest
+        @return: RunPptOutlineGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_ppt_outline_generation_with_options_async(request, runtime)
 
     def run_quick_writing_with_options(
         self,

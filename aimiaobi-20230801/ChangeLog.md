@@ -1,3 +1,11 @@
+2025-12-19 Version: 1.38.0
+- Support API BindPptArtifact.
+- Support API GetPptConfig.
+- Support API InitiatePptCreation.
+- Support API RunAiHelperWriting.
+- Support API RunPptOutlineGeneration.
+
+
 2025-12-16 Version: 1.37.3
 - Update API AddDatasetDocument: add request parameters Document.Metadata.
 - Update API GetDatasetDocument: add request parameters IncludeFields.
