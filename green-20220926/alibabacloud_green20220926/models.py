@@ -9982,6 +9982,7 @@ class GetScanResultResponseBodyDataItemsResult(TeaModel):
 class GetScanResultResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         api_labels: str = None,
         api_request_time: str = None,
         api_risk_level: str = None,
@@ -10001,6 +10002,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         image_service: str = None,
         image_url: str = None,
         labels: str = None,
+        live_id: str = None,
         malicious_file_level: str = None,
         malicious_url_level: str = None,
         manual_only: bool = None,
@@ -10035,6 +10037,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         voice_scan_opened: bool = None,
         voice_service: str = None,
     ):
+        self.account_id = account_id
         # Automated review labels.
         self.api_labels = api_labels
         # Machine review time.
@@ -10081,6 +10084,7 @@ class GetScanResultResponseBodyDataItems(TeaModel):
         self.image_url = image_url
         # Labels.
         self.labels = labels
+        self.live_id = live_id
         # Malicious file risk level.
         self.malicious_file_level = malicious_file_level
         # Malicious URL risk level.
@@ -10173,6 +10177,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.api_labels is not None:
             result['ApiLabels'] = self.api_labels
         if self.api_request_time is not None:
@@ -10211,6 +10217,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
         if self.malicious_file_level is not None:
             result['MaliciousFileLevel'] = self.malicious_file_level
         if self.malicious_url_level is not None:
@@ -10283,6 +10291,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('ApiLabels') is not None:
             self.api_labels = m.get('ApiLabels')
         if m.get('ApiRequestTime') is not None:
@@ -10321,6 +10331,8 @@ class GetScanResultResponseBodyDataItems(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
         if m.get('MaliciousFileLevel') is not None:
             self.malicious_file_level = m.get('MaliciousFileLevel')
         if m.get('MaliciousUrlLevel') is not None:

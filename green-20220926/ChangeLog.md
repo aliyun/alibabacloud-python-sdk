@@ -1,3 +1,8 @@
+2025-12-19 Version: 1.5.3
+- Update API GetScanResult: add response parameters Body.Data.Items.$.AccountId.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.LiveId.
+
+
 2025-12-02 Version: 1.5.2
 - Update API GetUserBuyStatus: add response parameters Body.Data.InstanceId.
 
