@@ -5693,6 +5693,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_suppression_with_options_async(request, runtime)
 
+    def list_validate_file_with_options(
+        self,
+        request: dm_20151123_models.ListValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ListValidateFileResponse:
+        """
+        @summary 获取上传的校验文件的列表
+        
+        @param request: ListValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.file_keyword):
+            query['FileKeyword'] = request.file_keyword
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ListValidateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_validate_file_with_options_async(
+        self,
+        request: dm_20151123_models.ListValidateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.ListValidateFileResponse:
+        """
+        @summary 获取上传的校验文件的列表
+        
+        @param request: ListValidateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListValidateFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.file_keyword):
+            query['FileKeyword'] = request.file_keyword
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListValidateFile',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ListValidateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_validate_file(
+        self,
+        request: dm_20151123_models.ListValidateFileRequest,
+    ) -> dm_20151123_models.ListValidateFileResponse:
+        """
+        @summary 获取上传的校验文件的列表
+        
+        @param request: ListValidateFileRequest
+        @return: ListValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_validate_file_with_options(request, runtime)
+
+    async def list_validate_file_async(
+        self,
+        request: dm_20151123_models.ListValidateFileRequest,
+    ) -> dm_20151123_models.ListValidateFileResponse:
+        """
+        @summary 获取上传的校验文件的列表
+        
+        @param request: ListValidateFileRequest
+        @return: ListValidateFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_validate_file_with_options_async(request, runtime)
+
     def modify_mail_address_with_options(
         self,
         request: dm_20151123_models.ModifyMailAddressRequest,
