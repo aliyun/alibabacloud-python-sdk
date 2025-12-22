@@ -955,6 +955,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_endpoint_with_options_async(request, runtime)
 
+    def create_whitelist_template_with_options(
+        self,
+        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
+        """
+        @summary 新增白名单模板
+        
+        @param request: CreateWhitelistTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWhitelistTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        body = {}
+        if not UtilClient.is_unset(request.security_iplist):
+            body['SecurityIPList'] = request.security_iplist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWhitelistTemplate',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateWhitelistTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_whitelist_template_with_options_async(
+        self,
+        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
+        """
+        @summary 新增白名单模板
+        
+        @param request: CreateWhitelistTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWhitelistTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        body = {}
+        if not UtilClient.is_unset(request.security_iplist):
+            body['SecurityIPList'] = request.security_iplist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWhitelistTemplate',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            clickhouse_20230522_models.CreateWhitelistTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_whitelist_template(
+        self,
+        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
+    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
+        """
+        @summary 新增白名单模板
+        
+        @param request: CreateWhitelistTemplateRequest
+        @return: CreateWhitelistTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_whitelist_template_with_options(request, runtime)
+
+    async def create_whitelist_template_async(
+        self,
+        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
+    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
+        """
+        @summary 新增白名单模板
+        
+        @param request: CreateWhitelistTemplateRequest
+        @return: CreateWhitelistTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_whitelist_template_with_options_async(request, runtime)
+
     def delete_account_with_options(
         self,
         request: clickhouse_20230522_models.DeleteAccountRequest,
