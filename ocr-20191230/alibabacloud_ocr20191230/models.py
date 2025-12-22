@@ -848,23 +848,61 @@ class RecognizeCharacterAdvanceRequest(TeaModel):
         return self
 
 
+class RecognizeCharacterResponseBodyDataResultsTextRectanglesPos(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
 class RecognizeCharacterResponseBodyDataResultsTextRectangles(TeaModel):
     def __init__(
         self,
         angle: int = None,
         height: int = None,
         left: int = None,
+        pos: List[RecognizeCharacterResponseBodyDataResultsTextRectanglesPos] = None,
         top: int = None,
         width: int = None,
     ):
         self.angle = angle
         self.height = height
         self.left = left
+        self.pos = pos
         self.top = top
         self.width = width
 
     def validate(self):
-        pass
+        if self.pos:
+            for k in self.pos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -878,6 +916,10 @@ class RecognizeCharacterResponseBodyDataResultsTextRectangles(TeaModel):
             result['Height'] = self.height
         if self.left is not None:
             result['Left'] = self.left
+        result['Pos'] = []
+        if self.pos is not None:
+            for k in self.pos:
+                result['Pos'].append(k.to_map() if k else None)
         if self.top is not None:
             result['Top'] = self.top
         if self.width is not None:
@@ -892,6 +934,11 @@ class RecognizeCharacterResponseBodyDataResultsTextRectangles(TeaModel):
             self.height = m.get('Height')
         if m.get('Left') is not None:
             self.left = m.get('Left')
+        self.pos = []
+        if m.get('Pos') is not None:
+            for k in m.get('Pos'):
+                temp_model = RecognizeCharacterResponseBodyDataResultsTextRectanglesPos()
+                self.pos.append(temp_model.from_map(k))
         if m.get('Top') is not None:
             self.top = m.get('Top')
         if m.get('Width') is not None:

@@ -1,3 +1,7 @@
+2025-12-22 Version: 4.0.2
+- Update API RecognizeCharacter: add response parameters Body.Data.Results.$.TextRectangles.Pos.
+
+
 2025-08-26 Version: 4.0.1
 - Generated python 2019-12-30 for ocr.
 
