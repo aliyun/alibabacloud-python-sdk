@@ -19394,6 +19394,135 @@ class DeleteEdgeContainerAppVersionResponse(TeaModel):
         return self
 
 
+class DeleteHttpDDoSIntelligentRuleRequest(TeaModel):
+    def __init__(
+        self,
+        record_name: str = None,
+        rule_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.record_name = record_name
+        # This parameter is required.
+        self.rule_id = rule_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteHttpDDoSIntelligentRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        record_name: str = None,
+        request_id: str = None,
+        rule_id: int = None,
+        site_id: int = None,
+    ):
+        self.record_name = record_name
+        # Id of the request
+        self.request_id = request_id
+        self.rule_id = rule_id
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteHttpDDoSIntelligentRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHttpDDoSIntelligentRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHttpDDoSIntelligentRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteHttpIncomingRequestHeaderModificationRuleRequest(TeaModel):
     def __init__(
         self,
@@ -68130,6 +68259,228 @@ class SetHttpDDoSAttackProtectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetHttpDDoSAttackProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetHttpDDoSAttackRuleActionRequest(TeaModel):
+    def __init__(
+        self,
+        rule_action: str = None,
+        rule_ids: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.rule_action = rule_action
+        # This parameter is required.
+        self.rule_ids = rule_ids
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_action is not None:
+            result['RuleAction'] = self.rule_action
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleAction') is not None:
+            self.rule_action = m.get('RuleAction')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class SetHttpDDoSAttackRuleActionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetHttpDDoSAttackRuleActionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetHttpDDoSAttackRuleActionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetHttpDDoSAttackRuleActionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetHttpDDoSAttackRuleStatusRequest(TeaModel):
+    def __init__(
+        self,
+        rule_ids: str = None,
+        site_id: int = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.rule_ids = rule_ids
+        # This parameter is required.
+        self.site_id = site_id
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class SetHttpDDoSAttackRuleStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetHttpDDoSAttackRuleStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetHttpDDoSAttackRuleStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetHttpDDoSAttackRuleStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -9762,6 +9762,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_edge_container_app_version_with_options_async(request, runtime)
 
+    def delete_http_ddo_sintelligent_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteHttpDDoSIntelligentRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpDDoSIntelligentRuleResponse:
+        """
+        @summary 删除深度学习和防护下发的规则
+        
+        @param request: DeleteHttpDDoSIntelligentRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpDDoSIntelligentRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_name):
+            query['RecordName'] = request.record_name
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpDDoSIntelligentRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpDDoSIntelligentRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_http_ddo_sintelligent_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteHttpDDoSIntelligentRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpDDoSIntelligentRuleResponse:
+        """
+        @summary 删除深度学习和防护下发的规则
+        
+        @param request: DeleteHttpDDoSIntelligentRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpDDoSIntelligentRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_name):
+            query['RecordName'] = request.record_name
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpDDoSIntelligentRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpDDoSIntelligentRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_http_ddo_sintelligent_rule(
+        self,
+        request: esa20240910_models.DeleteHttpDDoSIntelligentRuleRequest,
+    ) -> esa20240910_models.DeleteHttpDDoSIntelligentRuleResponse:
+        """
+        @summary 删除深度学习和防护下发的规则
+        
+        @param request: DeleteHttpDDoSIntelligentRuleRequest
+        @return: DeleteHttpDDoSIntelligentRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_http_ddo_sintelligent_rule_with_options(request, runtime)
+
+    async def delete_http_ddo_sintelligent_rule_async(
+        self,
+        request: esa20240910_models.DeleteHttpDDoSIntelligentRuleRequest,
+    ) -> esa20240910_models.DeleteHttpDDoSIntelligentRuleResponse:
+        """
+        @summary 删除深度学习和防护下发的规则
+        
+        @param request: DeleteHttpDDoSIntelligentRuleRequest
+        @return: DeleteHttpDDoSIntelligentRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_http_ddo_sintelligent_rule_with_options_async(request, runtime)
+
     def delete_http_incoming_request_header_modification_rule_with_options(
         self,
         request: esa20240910_models.DeleteHttpIncomingRequestHeaderModificationRuleRequest,
@@ -31955,6 +32059,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_http_ddo_sattack_protection_with_options_async(request, runtime)
+
+    def set_http_ddo_sattack_rule_action_with_options(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleActionResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护动作
+        
+        @param request: SetHttpDDoSAttackRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetHttpDDoSAttackRuleActionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetHttpDDoSAttackRuleAction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.SetHttpDDoSAttackRuleActionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_http_ddo_sattack_rule_action_with_options_async(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleActionResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护动作
+        
+        @param request: SetHttpDDoSAttackRuleActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetHttpDDoSAttackRuleActionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetHttpDDoSAttackRuleAction',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.SetHttpDDoSAttackRuleActionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_http_ddo_sattack_rule_action(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleActionRequest,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleActionResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护动作
+        
+        @param request: SetHttpDDoSAttackRuleActionRequest
+        @return: SetHttpDDoSAttackRuleActionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_http_ddo_sattack_rule_action_with_options(request, runtime)
+
+    async def set_http_ddo_sattack_rule_action_async(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleActionRequest,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleActionResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护动作
+        
+        @param request: SetHttpDDoSAttackRuleActionRequest
+        @return: SetHttpDDoSAttackRuleActionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_http_ddo_sattack_rule_action_with_options_async(request, runtime)
+
+    def set_http_ddo_sattack_rule_status_with_options(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleStatusResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护状态
+        
+        @param request: SetHttpDDoSAttackRuleStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetHttpDDoSAttackRuleStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetHttpDDoSAttackRuleStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.SetHttpDDoSAttackRuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_http_ddo_sattack_rule_status_with_options_async(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleStatusResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护状态
+        
+        @param request: SetHttpDDoSAttackRuleStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetHttpDDoSAttackRuleStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetHttpDDoSAttackRuleStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.SetHttpDDoSAttackRuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_http_ddo_sattack_rule_status(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleStatusRequest,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleStatusResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护状态
+        
+        @param request: SetHttpDDoSAttackRuleStatusRequest
+        @return: SetHttpDDoSAttackRuleStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_http_ddo_sattack_rule_status_with_options(request, runtime)
+
+    async def set_http_ddo_sattack_rule_status_async(
+        self,
+        request: esa20240910_models.SetHttpDDoSAttackRuleStatusRequest,
+    ) -> esa20240910_models.SetHttpDDoSAttackRuleStatusResponse:
+        """
+        @summary 设置HTTP DDoS攻击防护指定规则防护状态
+        
+        @param request: SetHttpDDoSAttackRuleStatusRequest
+        @return: SetHttpDDoSAttackRuleStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_http_ddo_sattack_rule_status_with_options_async(request, runtime)
 
     def set_origin_client_certificate_hostnames_with_options(
         self,
