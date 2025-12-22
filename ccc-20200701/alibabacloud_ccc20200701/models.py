@@ -33134,6 +33134,196 @@ class ListDocumentsResponse(TeaModel):
         return self
 
 
+class ListFeedbacksRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        task_id_list: str = None,
+    ):
+        self.instance_id = instance_id
+        self.task_id_list = task_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.task_id_list is not None:
+            result['TaskIdList'] = self.task_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TaskIdList') is not None:
+            self.task_id_list = m.get('TaskIdList')
+        return self
+
+
+class ListFeedbacksResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        contact_id: str = None,
+        instance_id: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        user_rating: int = None,
+        user_response: str = None,
+    ):
+        self.contact_id = contact_id
+        self.instance_id = instance_id
+        self.task_id = task_id
+        self.task_name = task_name
+        self.user_rating = user_rating
+        self.user_response = user_response
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.user_rating is not None:
+            result['UserRating'] = self.user_rating
+        if self.user_response is not None:
+            result['UserResponse'] = self.user_response
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('UserRating') is not None:
+            self.user_rating = m.get('UserRating')
+        if m.get('UserResponse') is not None:
+            self.user_response = m.get('UserResponse')
+        return self
+
+
+class ListFeedbacksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListFeedbacksResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListFeedbacksResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListFeedbacksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFeedbacksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFeedbacksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFlashSmsApplicationsRequest(TeaModel):
     def __init__(
         self,
@@ -62191,6 +62381,148 @@ class SendDtmfSignalingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendDtmfSignalingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendNotificationRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        message_body: str = None,
+        notification_target: str = None,
+        notification_type: str = None,
+        sharding_key: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.message_body = message_body
+        # This parameter is required.
+        self.notification_target = notification_target
+        # This parameter is required.
+        self.notification_type = notification_type
+        # This parameter is required.
+        self.sharding_key = sharding_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message_body is not None:
+            result['MessageBody'] = self.message_body
+        if self.notification_target is not None:
+            result['NotificationTarget'] = self.notification_target
+        if self.notification_type is not None:
+            result['NotificationType'] = self.notification_type
+        if self.sharding_key is not None:
+            result['ShardingKey'] = self.sharding_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MessageBody') is not None:
+            self.message_body = m.get('MessageBody')
+        if m.get('NotificationTarget') is not None:
+            self.notification_target = m.get('NotificationTarget')
+        if m.get('NotificationType') is not None:
+            self.notification_type = m.get('NotificationType')
+        if m.get('ShardingKey') is not None:
+            self.sharding_key = m.get('ShardingKey')
+        return self
+
+
+class SendNotificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendNotificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendNotificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendNotificationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

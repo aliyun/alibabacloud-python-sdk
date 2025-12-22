@@ -1,3 +1,8 @@
+2025-12-22 Version: 2.32.0
+- Support API ListFeedbacks.
+- Support API SendNotification.
+
+
 2025-11-14 Version: 2.31.0
 - Support API ModifyCampaignNumbers.
 

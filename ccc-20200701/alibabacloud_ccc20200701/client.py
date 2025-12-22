@@ -14081,6 +14081,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_documents_with_options_async(request, runtime)
 
+    def list_feedbacks_with_options(
+        self,
+        request: ccc20200701_models.ListFeedbacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFeedbacksResponse:
+        """
+        @summary 查询反馈记录
+        
+        @param request: ListFeedbacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeedbacksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_id_list):
+            query['TaskIdList'] = request.task_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFeedbacks',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFeedbacksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_feedbacks_with_options_async(
+        self,
+        request: ccc20200701_models.ListFeedbacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFeedbacksResponse:
+        """
+        @summary 查询反馈记录
+        
+        @param request: ListFeedbacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeedbacksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_id_list):
+            query['TaskIdList'] = request.task_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFeedbacks',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFeedbacksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_feedbacks(
+        self,
+        request: ccc20200701_models.ListFeedbacksRequest,
+    ) -> ccc20200701_models.ListFeedbacksResponse:
+        """
+        @summary 查询反馈记录
+        
+        @param request: ListFeedbacksRequest
+        @return: ListFeedbacksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_feedbacks_with_options(request, runtime)
+
+    async def list_feedbacks_async(
+        self,
+        request: ccc20200701_models.ListFeedbacksRequest,
+    ) -> ccc20200701_models.ListFeedbacksResponse:
+        """
+        @summary 查询反馈记录
+        
+        @param request: ListFeedbacksRequest
+        @return: ListFeedbacksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_feedbacks_with_options_async(request, runtime)
+
     def list_flash_sms_applications_with_options(
         self,
         request: ccc20200701_models.ListFlashSmsApplicationsRequest,
@@ -23660,6 +23760,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.send_dtmf_signaling_with_options_async(request, runtime)
+
+    def send_notification_with_options(
+        self,
+        request: ccc20200701_models.SendNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.SendNotificationResponse:
+        """
+        @summary 推送消息
+        
+        @param request: SendNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendNotificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message_body):
+            query['MessageBody'] = request.message_body
+        if not UtilClient.is_unset(request.notification_target):
+            query['NotificationTarget'] = request.notification_target
+        if not UtilClient.is_unset(request.notification_type):
+            query['NotificationType'] = request.notification_type
+        if not UtilClient.is_unset(request.sharding_key):
+            query['ShardingKey'] = request.sharding_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendNotification',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.SendNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_notification_with_options_async(
+        self,
+        request: ccc20200701_models.SendNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.SendNotificationResponse:
+        """
+        @summary 推送消息
+        
+        @param request: SendNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendNotificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message_body):
+            query['MessageBody'] = request.message_body
+        if not UtilClient.is_unset(request.notification_target):
+            query['NotificationTarget'] = request.notification_target
+        if not UtilClient.is_unset(request.notification_type):
+            query['NotificationType'] = request.notification_type
+        if not UtilClient.is_unset(request.sharding_key):
+            query['ShardingKey'] = request.sharding_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendNotification',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.SendNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_notification(
+        self,
+        request: ccc20200701_models.SendNotificationRequest,
+    ) -> ccc20200701_models.SendNotificationResponse:
+        """
+        @summary 推送消息
+        
+        @param request: SendNotificationRequest
+        @return: SendNotificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_notification_with_options(request, runtime)
+
+    async def send_notification_async(
+        self,
+        request: ccc20200701_models.SendNotificationRequest,
+    ) -> ccc20200701_models.SendNotificationResponse:
+        """
+        @summary 推送消息
+        
+        @param request: SendNotificationRequest
+        @return: SendNotificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_notification_with_options_async(request, runtime)
 
     def sign_in_group_with_options(
         self,
