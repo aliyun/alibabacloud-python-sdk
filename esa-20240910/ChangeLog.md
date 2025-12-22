@@ -4,6 +4,12 @@
 - Support API SetHttpDDoSAttackRuleStatus.
 
 
+2025-12-22 Version: 2.32.0
+- Support API DeleteHttpDDoSIntelligentRule.
+- Support API SetHttpDDoSAttackRuleAction.
+- Support API SetHttpDDoSAttackRuleStatus.
+
+
 2025-12-18 Version: 2.31.1
 - Update API ListLists: add response parameters Body.ItemsUsage.
 
