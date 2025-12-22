@@ -1,3 +1,10 @@
+2025-12-22 Version: 1.18.0
+- Support API CreateImageDetectionTask.
+- Support API CreateVideoCreationTask.
+- Support API GetImageDetectionTaskResult.
+- Support API GetVideoCreationTaskResult.
+
+
 2025-12-11 Version: 1.17.0
 - Support API EndToEndRealTimeDialog.
 - Update API CreateQualityCheckTask: add request parameters body.sceneCode.

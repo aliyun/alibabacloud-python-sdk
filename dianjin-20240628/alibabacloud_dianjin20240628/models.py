@@ -1079,6 +1079,312 @@ class CreateFinReportSummaryTaskResponse(TeaModel):
         return self
 
 
+class CreateImageDetectionTaskHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_load_test: bool = None,
+    ):
+        self.common_headers = common_headers
+        self.x_load_test = x_load_test
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_load_test is not None:
+            result['X-Load-Test'] = self.x_load_test
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('X-Load-Test') is not None:
+            self.x_load_test = m.get('X-Load-Test')
+        return self
+
+
+class CreateImageDetectionTaskRequestFileInfo(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        file_trace_id: str = None,
+        oss_key: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_trace_id = file_trace_id
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_trace_id is not None:
+            result['fileTraceId'] = self.file_trace_id
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileTraceId') is not None:
+            self.file_trace_id = m.get('fileTraceId')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class CreateImageDetectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        file_info: CreateImageDetectionTaskRequestFileInfo = None,
+        file_url: str = None,
+        request_id: str = None,
+        user_id: str = None,
+    ):
+        self.file_info = file_info
+        self.file_url = file_url
+        # This parameter is required.
+        self.request_id = request_id
+        self.user_id = user_id
+
+    def validate(self):
+        if self.file_info:
+            self.file_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_info is not None:
+            result['fileInfo'] = self.file_info.to_map()
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileInfo') is not None:
+            temp_model = CreateImageDetectionTaskRequestFileInfo()
+            self.file_info = temp_model.from_map(m['fileInfo'])
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class CreateImageDetectionTaskResponseBodyDataFileInfo(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        file_trace_id: str = None,
+        oss_key: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_trace_id = file_trace_id
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_trace_id is not None:
+            result['fileTraceId'] = self.file_trace_id
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileTraceId') is not None:
+            self.file_trace_id = m.get('fileTraceId')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class CreateImageDetectionTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_info: CreateImageDetectionTaskResponseBodyDataFileInfo = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.file_info = file_info
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        if self.file_info:
+            self.file_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_info is not None:
+            result['fileInfo'] = self.file_info.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileInfo') is not None:
+            temp_model = CreateImageDetectionTaskResponseBodyDataFileInfo()
+            self.file_info = temp_model.from_map(m['fileInfo'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateImageDetectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateImageDetectionTaskResponseBodyData = None,
+        message: str = None,
+        retry_able: bool = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.retry_able = retry_able
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.retry_able is not None:
+            result['retryAble'] = self.retry_able
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateImageDetectionTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('retryAble') is not None:
+            self.retry_able = m.get('retryAble')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateImageDetectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateImageDetectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateImageDetectionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLibraryRequestIndexSettingChunkStrategy(TeaModel):
     def __init__(
         self,
@@ -2351,6 +2657,308 @@ class CreateQualityCheckTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateQualityCheckTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVideoCreationTaskHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_load_test: bool = None,
+    ):
+        self.common_headers = common_headers
+        self.x_load_test = x_load_test
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_load_test is not None:
+            result['X-Load-Test'] = self.x_load_test
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('X-Load-Test') is not None:
+            self.x_load_test = m.get('X-Load-Test')
+        return self
+
+
+class CreateVideoCreationTaskRequestCreationInstruction(TeaModel):
+    def __init__(
+        self,
+        instruction: str = None,
+        template_id: str = None,
+    ):
+        self.instruction = instruction
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class CreateVideoCreationTaskRequestFileInfo(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        file_trace_id: str = None,
+        oss_key: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_trace_id = file_trace_id
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_trace_id is not None:
+            result['fileTraceId'] = self.file_trace_id
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileTraceId') is not None:
+            self.file_trace_id = m.get('fileTraceId')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class CreateVideoCreationTaskRequest(TeaModel):
+    def __init__(
+        self,
+        creation_instruction: CreateVideoCreationTaskRequestCreationInstruction = None,
+        file_info: CreateVideoCreationTaskRequestFileInfo = None,
+        image_detection_task_id: str = None,
+        request_id: str = None,
+        user_id: str = None,
+    ):
+        self.creation_instruction = creation_instruction
+        self.file_info = file_info
+        # This parameter is required.
+        self.image_detection_task_id = image_detection_task_id
+        # This parameter is required.
+        self.request_id = request_id
+        self.user_id = user_id
+
+    def validate(self):
+        if self.creation_instruction:
+            self.creation_instruction.validate()
+        if self.file_info:
+            self.file_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_instruction is not None:
+            result['creationInstruction'] = self.creation_instruction.to_map()
+        if self.file_info is not None:
+            result['fileInfo'] = self.file_info.to_map()
+        if self.image_detection_task_id is not None:
+            result['imageDetectionTaskId'] = self.image_detection_task_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creationInstruction') is not None:
+            temp_model = CreateVideoCreationTaskRequestCreationInstruction()
+            self.creation_instruction = temp_model.from_map(m['creationInstruction'])
+        if m.get('fileInfo') is not None:
+            temp_model = CreateVideoCreationTaskRequestFileInfo()
+            self.file_info = temp_model.from_map(m['fileInfo'])
+        if m.get('imageDetectionTaskId') is not None:
+            self.image_detection_task_id = m.get('imageDetectionTaskId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class CreateVideoCreationTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        estimated_wait_time_in_seconds: int = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.estimated_wait_time_in_seconds = estimated_wait_time_in_seconds
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.estimated_wait_time_in_seconds is not None:
+            result['estimatedWaitTimeInSeconds'] = self.estimated_wait_time_in_seconds
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('estimatedWaitTimeInSeconds') is not None:
+            self.estimated_wait_time_in_seconds = m.get('estimatedWaitTimeInSeconds')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateVideoCreationTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateVideoCreationTaskResponseBodyData = None,
+        message: str = None,
+        retry_able: bool = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.retry_able = retry_able
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.retry_able is not None:
+            result['retryAble'] = self.retry_able
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateVideoCreationTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('retryAble') is not None:
+            self.retry_able = m.get('retryAble')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateVideoCreationTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVideoCreationTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVideoCreationTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6033,6 +6641,354 @@ class GetHistoryListByBizTypeResponse(TeaModel):
         return self
 
 
+class GetImageDetectionTaskResultHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_load_test: bool = None,
+    ):
+        self.common_headers = common_headers
+        self.x_load_test = x_load_test
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_load_test is not None:
+            result['X-Load-Test'] = self.x_load_test
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('X-Load-Test') is not None:
+            self.x_load_test = m.get('X-Load-Test')
+        return self
+
+
+class GetImageDetectionTaskResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        confidence: float = None,
+        pass_: bool = None,
+        reason: str = None,
+    ):
+        self.code = code
+        self.confidence = confidence
+        self.pass_ = pass_
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.confidence is not None:
+            result['confidence'] = self.confidence
+        if self.pass_ is not None:
+            result['pass'] = self.pass_
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('confidence') is not None:
+            self.confidence = m.get('confidence')
+        if m.get('pass') is not None:
+            self.pass_ = m.get('pass')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class GetImageDetectionTaskResultResponseBodyDataDetectionResult(TeaModel):
+    def __init__(
+        self,
+        detection_details: List[GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails] = None,
+        suggestions: List[str] = None,
+    ):
+        self.detection_details = detection_details
+        self.suggestions = suggestions
+
+    def validate(self):
+        if self.detection_details:
+            for k in self.detection_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['detectionDetails'] = []
+        if self.detection_details is not None:
+            for k in self.detection_details:
+                result['detectionDetails'].append(k.to_map() if k else None)
+        if self.suggestions is not None:
+            result['suggestions'] = self.suggestions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detection_details = []
+        if m.get('detectionDetails') is not None:
+            for k in m.get('detectionDetails'):
+                temp_model = GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails()
+                self.detection_details.append(temp_model.from_map(k))
+        if m.get('suggestions') is not None:
+            self.suggestions = m.get('suggestions')
+        return self
+
+
+class GetImageDetectionTaskResultResponseBodyDataFileInfo(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        file_trace_id: str = None,
+        oss_key: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_trace_id = file_trace_id
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_trace_id is not None:
+            result['fileTraceId'] = self.file_trace_id
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileTraceId') is not None:
+            self.file_trace_id = m.get('fileTraceId')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class GetImageDetectionTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detection_conclusion: str = None,
+        detection_result: GetImageDetectionTaskResultResponseBodyDataDetectionResult = None,
+        file_info: GetImageDetectionTaskResultResponseBodyDataFileInfo = None,
+        task_id: str = None,
+        task_status: str = None,
+    ):
+        self.detection_conclusion = detection_conclusion
+        self.detection_result = detection_result
+        self.file_info = file_info
+        self.task_id = task_id
+        self.task_status = task_status
+
+    def validate(self):
+        if self.detection_result:
+            self.detection_result.validate()
+        if self.file_info:
+            self.file_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detection_conclusion is not None:
+            result['detectionConclusion'] = self.detection_conclusion
+        if self.detection_result is not None:
+            result['detectionResult'] = self.detection_result.to_map()
+        if self.file_info is not None:
+            result['fileInfo'] = self.file_info.to_map()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('detectionConclusion') is not None:
+            self.detection_conclusion = m.get('detectionConclusion')
+        if m.get('detectionResult') is not None:
+            temp_model = GetImageDetectionTaskResultResponseBodyDataDetectionResult()
+            self.detection_result = temp_model.from_map(m['detectionResult'])
+        if m.get('fileInfo') is not None:
+            temp_model = GetImageDetectionTaskResultResponseBodyDataFileInfo()
+            self.file_info = temp_model.from_map(m['fileInfo'])
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        return self
+
+
+class GetImageDetectionTaskResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetImageDetectionTaskResultResponseBodyData = None,
+        message: str = None,
+        retry_able: bool = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.retry_able = retry_able
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.retry_able is not None:
+            result['retryAble'] = self.retry_able
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetImageDetectionTaskResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('retryAble') is not None:
+            self.retry_able = m.get('retryAble')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetImageDetectionTaskResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetImageDetectionTaskResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetImageDetectionTaskResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLibraryRequest(TeaModel):
     def __init__(
         self,
@@ -8692,6 +9648,473 @@ class GetTaskStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVideoCreationTaskResultHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_load_test: bool = None,
+    ):
+        self.common_headers = common_headers
+        self.x_load_test = x_load_test
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_load_test is not None:
+            result['X-Load-Test'] = self.x_load_test
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('X-Load-Test') is not None:
+            self.x_load_test = m.get('X-Load-Test')
+        return self
+
+
+class GetVideoCreationTaskResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBodyDataFileInfo(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        file_trace_id: str = None,
+        oss_key: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_trace_id = file_trace_id
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_trace_id is not None:
+            result['fileTraceId'] = self.file_trace_id
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileTraceId') is not None:
+            self.file_trace_id = m.get('fileTraceId')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResultDetectionDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        confidence: float = None,
+        pass_: bool = None,
+        reason: str = None,
+    ):
+        self.code = code
+        self.confidence = confidence
+        self.pass_ = pass_
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.confidence is not None:
+            result['confidence'] = self.confidence
+        if self.pass_ is not None:
+            result['pass'] = self.pass_
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('confidence') is not None:
+            self.confidence = m.get('confidence')
+        if m.get('pass') is not None:
+            self.pass_ = m.get('pass')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResult(TeaModel):
+    def __init__(
+        self,
+        detection_details: List[GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResultDetectionDetails] = None,
+        suggestions: List[str] = None,
+    ):
+        self.detection_details = detection_details
+        self.suggestions = suggestions
+
+    def validate(self):
+        if self.detection_details:
+            for k in self.detection_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['detectionDetails'] = []
+        if self.detection_details is not None:
+            for k in self.detection_details:
+                result['detectionDetails'].append(k.to_map() if k else None)
+        if self.suggestions is not None:
+            result['suggestions'] = self.suggestions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detection_details = []
+        if m.get('detectionDetails') is not None:
+            for k in m.get('detectionDetails'):
+                temp_model = GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResultDetectionDetails()
+                self.detection_details.append(temp_model.from_map(k))
+        if m.get('suggestions') is not None:
+            self.suggestions = m.get('suggestions')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultFileInfo(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        file_trace_id: str = None,
+        oss_key: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_trace_id = file_trace_id
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_trace_id is not None:
+            result['fileTraceId'] = self.file_trace_id
+        if self.oss_key is not None:
+            result['ossKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileTraceId') is not None:
+            self.file_trace_id = m.get('fileTraceId')
+        if m.get('ossKey') is not None:
+            self.oss_key = m.get('ossKey')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult(TeaModel):
+    def __init__(
+        self,
+        detection_conclusion: str = None,
+        detection_result: GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResult = None,
+        file_info: GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultFileInfo = None,
+        task_id: str = None,
+        task_status: str = None,
+    ):
+        self.detection_conclusion = detection_conclusion
+        self.detection_result = detection_result
+        self.file_info = file_info
+        self.task_id = task_id
+        self.task_status = task_status
+
+    def validate(self):
+        if self.detection_result:
+            self.detection_result.validate()
+        if self.file_info:
+            self.file_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detection_conclusion is not None:
+            result['detectionConclusion'] = self.detection_conclusion
+        if self.detection_result is not None:
+            result['detectionResult'] = self.detection_result.to_map()
+        if self.file_info is not None:
+            result['fileInfo'] = self.file_info.to_map()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('detectionConclusion') is not None:
+            self.detection_conclusion = m.get('detectionConclusion')
+        if m.get('detectionResult') is not None:
+            temp_model = GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultDetectionResult()
+            self.detection_result = temp_model.from_map(m['detectionResult'])
+        if m.get('fileInfo') is not None:
+            temp_model = GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResultFileInfo()
+            self.file_info = temp_model.from_map(m['fileInfo'])
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        estimated_wait_time_in_seconds: int = None,
+        file_info: GetVideoCreationTaskResultResponseBodyDataFileInfo = None,
+        finish_time: str = None,
+        media_detection_task_result: GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult = None,
+        start_time: str = None,
+        task_id: str = None,
+        task_status: str = None,
+        video_url: str = None,
+    ):
+        self.estimated_wait_time_in_seconds = estimated_wait_time_in_seconds
+        self.file_info = file_info
+        self.finish_time = finish_time
+        self.media_detection_task_result = media_detection_task_result
+        self.start_time = start_time
+        self.task_id = task_id
+        self.task_status = task_status
+        self.video_url = video_url
+
+    def validate(self):
+        if self.file_info:
+            self.file_info.validate()
+        if self.media_detection_task_result:
+            self.media_detection_task_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.estimated_wait_time_in_seconds is not None:
+            result['estimatedWaitTimeInSeconds'] = self.estimated_wait_time_in_seconds
+        if self.file_info is not None:
+            result['fileInfo'] = self.file_info.to_map()
+        if self.finish_time is not None:
+            result['finishTime'] = self.finish_time
+        if self.media_detection_task_result is not None:
+            result['mediaDetectionTaskResult'] = self.media_detection_task_result.to_map()
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_status is not None:
+            result['taskStatus'] = self.task_status
+        if self.video_url is not None:
+            result['videoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('estimatedWaitTimeInSeconds') is not None:
+            self.estimated_wait_time_in_seconds = m.get('estimatedWaitTimeInSeconds')
+        if m.get('fileInfo') is not None:
+            temp_model = GetVideoCreationTaskResultResponseBodyDataFileInfo()
+            self.file_info = temp_model.from_map(m['fileInfo'])
+        if m.get('finishTime') is not None:
+            self.finish_time = m.get('finishTime')
+        if m.get('mediaDetectionTaskResult') is not None:
+            temp_model = GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult()
+            self.media_detection_task_result = temp_model.from_map(m['mediaDetectionTaskResult'])
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskStatus') is not None:
+            self.task_status = m.get('taskStatus')
+        if m.get('videoUrl') is not None:
+            self.video_url = m.get('videoUrl')
+        return self
+
+
+class GetVideoCreationTaskResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetVideoCreationTaskResultResponseBodyData = None,
+        message: str = None,
+        retry_able: bool = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.retry_able = retry_able
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.retry_able is not None:
+            result['retryAble'] = self.retry_able
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetVideoCreationTaskResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('retryAble') is not None:
+            self.retry_able = m.get('retryAble')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetVideoCreationTaskResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVideoCreationTaskResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVideoCreationTaskResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

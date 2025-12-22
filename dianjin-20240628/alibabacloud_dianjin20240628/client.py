@@ -846,6 +846,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_fin_report_summary_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_image_detection_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateImageDetectionTaskRequest,
+        headers: dian_jin_20240628_models.CreateImageDetectionTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateImageDetectionTaskResponse:
+        """
+        @summary 创建图片检测任务
+        
+        @param request: CreateImageDetectionTaskRequest
+        @param headers: CreateImageDetectionTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageDetectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_info):
+            body['fileInfo'] = request.file_info
+        if not UtilClient.is_unset(request.file_url):
+            body['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageDetectionTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/imageDetect/task/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateImageDetectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_detection_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateImageDetectionTaskRequest,
+        headers: dian_jin_20240628_models.CreateImageDetectionTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateImageDetectionTaskResponse:
+        """
+        @summary 创建图片检测任务
+        
+        @param request: CreateImageDetectionTaskRequest
+        @param headers: CreateImageDetectionTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageDetectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_info):
+            body['fileInfo'] = request.file_info
+        if not UtilClient.is_unset(request.file_url):
+            body['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageDetectionTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/imageDetect/task/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateImageDetectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_detection_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateImageDetectionTaskRequest,
+    ) -> dian_jin_20240628_models.CreateImageDetectionTaskResponse:
+        """
+        @summary 创建图片检测任务
+        
+        @param request: CreateImageDetectionTaskRequest
+        @return: CreateImageDetectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.CreateImageDetectionTaskHeaders()
+        return self.create_image_detection_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_image_detection_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateImageDetectionTaskRequest,
+    ) -> dian_jin_20240628_models.CreateImageDetectionTaskResponse:
+        """
+        @summary 创建图片检测任务
+        
+        @param request: CreateImageDetectionTaskRequest
+        @return: CreateImageDetectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.CreateImageDetectionTaskHeaders()
+        return await self.create_image_detection_task_with_options_async(workspace_id, request, headers, runtime)
+
     def create_library_with_options(
         self,
         workspace_id: str,
@@ -1337,6 +1467,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_quality_check_task_with_options_async(workspace_id, request, headers, runtime)
+
+    def create_video_creation_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateVideoCreationTaskRequest,
+        headers: dian_jin_20240628_models.CreateVideoCreationTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateVideoCreationTaskResponse:
+        """
+        @summary 创建视频生成任务
+        
+        @param request: CreateVideoCreationTaskRequest
+        @param headers: CreateVideoCreationTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoCreationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.creation_instruction):
+            body['creationInstruction'] = request.creation_instruction
+        if not UtilClient.is_unset(request.file_info):
+            body['fileInfo'] = request.file_info
+        if not UtilClient.is_unset(request.image_detection_task_id):
+            body['imageDetectionTaskId'] = request.image_detection_task_id
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoCreationTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/videoCreation/task/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateVideoCreationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_video_creation_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateVideoCreationTaskRequest,
+        headers: dian_jin_20240628_models.CreateVideoCreationTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateVideoCreationTaskResponse:
+        """
+        @summary 创建视频生成任务
+        
+        @param request: CreateVideoCreationTaskRequest
+        @param headers: CreateVideoCreationTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoCreationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.creation_instruction):
+            body['creationInstruction'] = request.creation_instruction
+        if not UtilClient.is_unset(request.file_info):
+            body['fileInfo'] = request.file_info
+        if not UtilClient.is_unset(request.image_detection_task_id):
+            body['imageDetectionTaskId'] = request.image_detection_task_id
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoCreationTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/videoCreation/task/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateVideoCreationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_video_creation_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateVideoCreationTaskRequest,
+    ) -> dian_jin_20240628_models.CreateVideoCreationTaskResponse:
+        """
+        @summary 创建视频生成任务
+        
+        @param request: CreateVideoCreationTaskRequest
+        @return: CreateVideoCreationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.CreateVideoCreationTaskHeaders()
+        return self.create_video_creation_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_video_creation_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateVideoCreationTaskRequest,
+    ) -> dian_jin_20240628_models.CreateVideoCreationTaskResponse:
+        """
+        @summary 创建视频生成任务
+        
+        @param request: CreateVideoCreationTaskRequest
+        @return: CreateVideoCreationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.CreateVideoCreationTaskHeaders()
+        return await self.create_video_creation_task_with_options_async(workspace_id, request, headers, runtime)
 
     def delete_document_with_options(
         self,
@@ -3084,6 +3348,128 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_history_list_by_biz_type_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_image_detection_task_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetImageDetectionTaskResultRequest,
+        headers: dian_jin_20240628_models.GetImageDetectionTaskResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetImageDetectionTaskResultResponse:
+        """
+        @summary 获取检测结果
+        
+        @param request: GetImageDetectionTaskResultRequest
+        @param headers: GetImageDetectionTaskResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageDetectionTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageDetectionTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/imageDetect/task/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetImageDetectionTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_detection_task_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetImageDetectionTaskResultRequest,
+        headers: dian_jin_20240628_models.GetImageDetectionTaskResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetImageDetectionTaskResultResponse:
+        """
+        @summary 获取检测结果
+        
+        @param request: GetImageDetectionTaskResultRequest
+        @param headers: GetImageDetectionTaskResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageDetectionTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageDetectionTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/imageDetect/task/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetImageDetectionTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_detection_task_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetImageDetectionTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetImageDetectionTaskResultResponse:
+        """
+        @summary 获取检测结果
+        
+        @param request: GetImageDetectionTaskResultRequest
+        @return: GetImageDetectionTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.GetImageDetectionTaskResultHeaders()
+        return self.get_image_detection_task_result_with_options(workspace_id, request, headers, runtime)
+
+    async def get_image_detection_task_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetImageDetectionTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetImageDetectionTaskResultResponse:
+        """
+        @summary 获取检测结果
+        
+        @param request: GetImageDetectionTaskResultRequest
+        @return: GetImageDetectionTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.GetImageDetectionTaskResultHeaders()
+        return await self.get_image_detection_task_result_with_options_async(workspace_id, request, headers, runtime)
+
     def get_library_with_options(
         self,
         workspace_id: str,
@@ -3855,6 +4241,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_status_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_video_creation_task_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetVideoCreationTaskResultRequest,
+        headers: dian_jin_20240628_models.GetVideoCreationTaskResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetVideoCreationTaskResultResponse:
+        """
+        @summary 获取视频生成任务结果
+        
+        @param request: GetVideoCreationTaskResultRequest
+        @param headers: GetVideoCreationTaskResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoCreationTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVideoCreationTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/videoCreation/task/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetVideoCreationTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_creation_task_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetVideoCreationTaskResultRequest,
+        headers: dian_jin_20240628_models.GetVideoCreationTaskResultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetVideoCreationTaskResultResponse:
+        """
+        @summary 获取视频生成任务结果
+        
+        @param request: GetVideoCreationTaskResultRequest
+        @param headers: GetVideoCreationTaskResultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoCreationTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_load_test):
+            real_headers['X-Load-Test'] = UtilClient.to_jsonstring(headers.x_load_test)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVideoCreationTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/videoCreation/task/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetVideoCreationTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_creation_task_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetVideoCreationTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetVideoCreationTaskResultResponse:
+        """
+        @summary 获取视频生成任务结果
+        
+        @param request: GetVideoCreationTaskResultRequest
+        @return: GetVideoCreationTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.GetVideoCreationTaskResultHeaders()
+        return self.get_video_creation_task_result_with_options(workspace_id, request, headers, runtime)
+
+    async def get_video_creation_task_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetVideoCreationTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetVideoCreationTaskResultResponse:
+        """
+        @summary 获取视频生成任务结果
+        
+        @param request: GetVideoCreationTaskResultRequest
+        @return: GetVideoCreationTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = dian_jin_20240628_models.GetVideoCreationTaskResultHeaders()
+        return await self.get_video_creation_task_result_with_options_async(workspace_id, request, headers, runtime)
 
     def invoke_plugin_with_options(
         self,
