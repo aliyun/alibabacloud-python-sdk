@@ -1021,6 +1021,8 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.loki_configs):
+            query['LokiConfigs'] = request.loki_configs
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
@@ -1235,6 +1237,8 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.loki_configs):
+            query['LokiConfigs'] = request.loki_configs
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
@@ -4689,6 +4693,8 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.loki_configs):
+            query['LokiConfigs'] = request.loki_configs
         if not UtilClient.is_unset(request.max_surge_instance_ratio):
             query['MaxSurgeInstanceRatio'] = request.max_surge_instance_ratio
         if not UtilClient.is_unset(request.max_surge_instances):
@@ -4899,6 +4905,8 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.loki_configs):
+            query['LokiConfigs'] = request.loki_configs
         if not UtilClient.is_unset(request.max_surge_instance_ratio):
             query['MaxSurgeInstanceRatio'] = request.max_surge_instance_ratio
         if not UtilClient.is_unset(request.max_surge_instances):
@@ -17353,6 +17361,8 @@ class Client(OpenApiClient):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
+        if not UtilClient.is_unset(request.sls_log_env_tags):
+            query['SlsLogEnvTags'] = request.sls_log_env_tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -17395,6 +17405,8 @@ class Client(OpenApiClient):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
+        if not UtilClient.is_unset(request.sls_log_env_tags):
+            query['SlsLogEnvTags'] = request.sls_log_env_tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

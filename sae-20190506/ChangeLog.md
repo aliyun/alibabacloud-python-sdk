@@ -1,3 +1,10 @@
+2025-12-22 Version: 2.10.3
+- Update API CreateApplication: add request parameters LokiConfigs.
+- Update API DeployApplication: add request parameters LokiConfigs.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.LokiConfigs.
+- Update API UpdateNamespaceSlsConfigs: add request parameters SlsLogEnvTags.
+
+
 2025-12-05 Version: 2.10.2
 - Generated python 2019-05-06 for sae.
 

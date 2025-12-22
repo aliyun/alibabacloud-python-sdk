@@ -12615,6 +12615,7 @@ class CreateApplicationRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        loki_configs: str = None,
         memory: int = None,
         micro_registration: str = None,
         micro_registration_config: str = None,
@@ -12840,6 +12841,7 @@ class CreateApplicationRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.loki_configs = loki_configs
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -13158,6 +13160,8 @@ class CreateApplicationRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.loki_configs is not None:
+            result['LokiConfigs'] = self.loki_configs
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.micro_registration is not None:
@@ -13337,6 +13341,8 @@ class CreateApplicationRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('LokiConfigs') is not None:
+            self.loki_configs = m.get('LokiConfigs')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
@@ -13476,6 +13482,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        loki_configs: str = None,
         memory: int = None,
         micro_registration: str = None,
         micro_registration_config: str = None,
@@ -13701,6 +13708,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.loki_configs = loki_configs
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -14010,6 +14018,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.loki_configs is not None:
+            result['LokiConfigs'] = self.loki_configs
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.micro_registration is not None:
@@ -14184,6 +14194,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('LokiConfigs') is not None:
+            self.loki_configs = m.get('LokiConfigs')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
@@ -20431,6 +20443,7 @@ class DeployApplicationRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        loki_configs: str = None,
         max_surge_instance_ratio: int = None,
         max_surge_instances: int = None,
         memory: int = None,
@@ -20665,6 +20678,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.loki_configs = loki_configs
         self.max_surge_instance_ratio = max_surge_instance_ratio
         self.max_surge_instances = max_surge_instances
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
@@ -21021,6 +21035,8 @@ class DeployApplicationRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.loki_configs is not None:
+            result['LokiConfigs'] = self.loki_configs
         if self.max_surge_instance_ratio is not None:
             result['MaxSurgeInstanceRatio'] = self.max_surge_instance_ratio
         if self.max_surge_instances is not None:
@@ -21196,6 +21212,8 @@ class DeployApplicationRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('LokiConfigs') is not None:
+            self.loki_configs = m.get('LokiConfigs')
         if m.get('MaxSurgeInstanceRatio') is not None:
             self.max_surge_instance_ratio = m.get('MaxSurgeInstanceRatio')
         if m.get('MaxSurgeInstances') is not None:
@@ -21334,6 +21352,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        loki_configs: str = None,
         max_surge_instance_ratio: int = None,
         max_surge_instances: int = None,
         memory: int = None,
@@ -21568,6 +21587,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.loki_configs = loki_configs
         self.max_surge_instance_ratio = max_surge_instance_ratio
         self.max_surge_instances = max_surge_instances
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
@@ -21915,6 +21935,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.loki_configs is not None:
+            result['LokiConfigs'] = self.loki_configs
         if self.max_surge_instance_ratio is not None:
             result['MaxSurgeInstanceRatio'] = self.max_surge_instance_ratio
         if self.max_surge_instances is not None:
@@ -22085,6 +22107,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('LokiConfigs') is not None:
+            self.loki_configs = m.get('LokiConfigs')
         if m.get('MaxSurgeInstanceRatio') is not None:
             self.max_surge_instance_ratio = m.get('MaxSurgeInstanceRatio')
         if m.get('MaxSurgeInstances') is not None:
@@ -23563,6 +23587,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        loki_configs: str = None,
         max_surge_instance_ratio: int = None,
         max_surge_instances: int = None,
         memory: int = None,
@@ -23806,6 +23831,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
         # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.loki_configs = loki_configs
         self.max_surge_instance_ratio = max_surge_instance_ratio
         self.max_surge_instances = max_surge_instances
         # The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
@@ -24159,6 +24185,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.loki_configs is not None:
+            result['LokiConfigs'] = self.loki_configs
         if self.max_surge_instance_ratio is not None:
             result['MaxSurgeInstanceRatio'] = self.max_surge_instance_ratio
         if self.max_surge_instances is not None:
@@ -24380,6 +24408,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('LokiConfigs') is not None:
+            self.loki_configs = m.get('LokiConfigs')
         if m.get('MaxSurgeInstanceRatio') is not None:
             self.max_surge_instance_ratio = m.get('MaxSurgeInstanceRatio')
         if m.get('MaxSurgeInstances') is not None:
@@ -55003,6 +55033,7 @@ class UpdateNamespaceSlsConfigsRequest(TeaModel):
         name_space_short_id: str = None,
         namespace_id: str = None,
         sls_configs: str = None,
+        sls_log_env_tags: str = None,
     ):
         # The short ID of the namespace. No need to specify a region ID. We recommend configuring this parameter.
         self.name_space_short_id = name_space_short_id
@@ -55025,6 +55056,7 @@ class UpdateNamespaceSlsConfigsRequest(TeaModel):
         # 
         # > Projects automatically created by SAE for job templates are deleted when their corresponding job templates are deleted. Therefore, you should not select an existing SAE-created project for log collection.
         self.sls_configs = sls_configs
+        self.sls_log_env_tags = sls_log_env_tags
 
     def validate(self):
         pass
@@ -55041,6 +55073,8 @@ class UpdateNamespaceSlsConfigsRequest(TeaModel):
             result['NamespaceId'] = self.namespace_id
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.sls_log_env_tags is not None:
+            result['SlsLogEnvTags'] = self.sls_log_env_tags
         return result
 
     def from_map(self, m: dict = None):
@@ -55051,6 +55085,8 @@ class UpdateNamespaceSlsConfigsRequest(TeaModel):
             self.namespace_id = m.get('NamespaceId')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SlsLogEnvTags') is not None:
+            self.sls_log_env_tags = m.get('SlsLogEnvTags')
         return self
 
 
