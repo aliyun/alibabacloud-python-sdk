@@ -13353,6 +13353,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pre_check_create_gad_order_with_options_async(request, runtime)
 
+    def promote_to_master_with_options(
+        self,
+        request: dts_20200101_models.PromoteToMasterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.PromoteToMasterResponse:
+        """
+        @param request: PromoteToMasterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PromoteToMasterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.master_db_instance_id):
+            query['MasterDbInstanceId'] = request.master_db_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PromoteToMaster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.PromoteToMasterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def promote_to_master_with_options_async(
+        self,
+        request: dts_20200101_models.PromoteToMasterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.PromoteToMasterResponse:
+        """
+        @param request: PromoteToMasterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PromoteToMasterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.master_db_instance_id):
+            query['MasterDbInstanceId'] = request.master_db_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.slave_db_instance_id):
+            query['SlaveDbInstanceId'] = request.slave_db_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PromoteToMaster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.PromoteToMasterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def promote_to_master(
+        self,
+        request: dts_20200101_models.PromoteToMasterRequest,
+    ) -> dts_20200101_models.PromoteToMasterResponse:
+        """
+        @param request: PromoteToMasterRequest
+        @return: PromoteToMasterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.promote_to_master_with_options(request, runtime)
+
+    async def promote_to_master_async(
+        self,
+        request: dts_20200101_models.PromoteToMasterRequest,
+    ) -> dts_20200101_models.PromoteToMasterResponse:
+        """
+        @param request: PromoteToMasterRequest
+        @return: PromoteToMasterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.promote_to_master_with_options_async(request, runtime)
+
     def renew_instance_with_options(
         self,
         request: dts_20200101_models.RenewInstanceRequest,

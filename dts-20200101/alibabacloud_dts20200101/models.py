@@ -42858,6 +42858,167 @@ class PreCheckCreateGadOrderResponse(TeaModel):
         return self
 
 
+class PromoteToMasterRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        master_db_instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        slave_db_instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.master_db_instance_id = master_db_instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.slave_db_instance_id = slave_db_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.master_db_instance_id is not None:
+            result['MasterDbInstanceId'] = self.master_db_instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_db_instance_id is not None:
+            result['SlaveDbInstanceId'] = self.slave_db_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MasterDbInstanceId') is not None:
+            self.master_db_instance_id = m.get('MasterDbInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveDbInstanceId') is not None:
+            self.slave_db_instance_id = m.get('SlaveDbInstanceId')
+        return self
+
+
+class PromoteToMasterResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class PromoteToMasterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PromoteToMasterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PromoteToMasterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RenewInstanceRequest(TeaModel):
     def __init__(
         self,
