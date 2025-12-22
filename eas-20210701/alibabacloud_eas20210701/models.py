@@ -6783,6 +6783,39 @@ class DescribeBenchmarkTaskReportResponse(TeaModel):
         return self
 
 
+class DescribeGatewayResponseBodyLabels(TeaModel):
+    def __init__(
+        self,
+        label_key: str = None,
+        label_value: str = None,
+    ):
+        self.label_key = label_key
+        self.label_value = label_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_key is not None:
+            result['LabelKey'] = self.label_key
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LabelKey') is not None:
+            self.label_key = m.get('LabelKey')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        return self
+
+
 class DescribeGatewayResponseBody(TeaModel):
     def __init__(
         self,
@@ -6798,6 +6831,7 @@ class DescribeGatewayResponseBody(TeaModel):
         intranet_domain: str = None,
         intranet_enabled: bool = None,
         is_default: bool = None,
+        labels: List[DescribeGatewayResponseBodyLabels] = None,
         replicas: int = None,
         request_id: str = None,
         sslredirection_enabled: bool = None,
@@ -6841,6 +6875,7 @@ class DescribeGatewayResponseBody(TeaModel):
         self.intranet_enabled = intranet_enabled
         # Indicates whether it is the default private gateway.
         self.is_default = is_default
+        self.labels = labels
         # The number of nodes in the private gateway.
         self.replicas = replicas
         # The request ID.
@@ -6863,7 +6898,10 @@ class DescribeGatewayResponseBody(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6895,6 +6933,10 @@ class DescribeGatewayResponseBody(TeaModel):
             result['IntranetEnabled'] = self.intranet_enabled
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.replicas is not None:
             result['Replicas'] = self.replicas
         if self.request_id is not None:
@@ -6933,6 +6975,11 @@ class DescribeGatewayResponseBody(TeaModel):
             self.intranet_enabled = m.get('IntranetEnabled')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = DescribeGatewayResponseBodyLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
         if m.get('RequestId') is not None:
@@ -10818,6 +10865,7 @@ class ListGatewayRequest(TeaModel):
         gateway_name: str = None,
         gateway_type: str = None,
         internet_enabled: bool = None,
+        label: Dict[str, str] = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -10832,6 +10880,7 @@ class ListGatewayRequest(TeaModel):
         self.gateway_name = gateway_name
         self.gateway_type = gateway_type
         self.internet_enabled = internet_enabled
+        self.label = label
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -10861,6 +10910,8 @@ class ListGatewayRequest(TeaModel):
             result['GatewayType'] = self.gateway_type
         if self.internet_enabled is not None:
             result['InternetEnabled'] = self.internet_enabled
+        if self.label is not None:
+            result['Label'] = self.label
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -10887,6 +10938,8 @@ class ListGatewayRequest(TeaModel):
             self.gateway_type = m.get('GatewayType')
         if m.get('InternetEnabled') is not None:
             self.internet_enabled = m.get('InternetEnabled')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -10899,6 +10952,137 @@ class ListGatewayRequest(TeaModel):
             self.sort = m.get('Sort')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        return self
+
+
+class ListGatewayShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        gateway_id: str = None,
+        gateway_name: str = None,
+        gateway_type: str = None,
+        internet_enabled: bool = None,
+        label_shrink: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_name: str = None,
+        sort: str = None,
+        status: str = None,
+    ):
+        self.charge_type = charge_type
+        # The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
+        self.gateway_id = gateway_id
+        # The private gateway alias.
+        self.gateway_name = gateway_name
+        self.gateway_type = gateway_type
+        self.internet_enabled = internet_enabled
+        self.label_shrink = label_shrink
+        self.order = order
+        # The page number. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 100.
+        self.page_size = page_size
+        # The ID of the resource group. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+        self.resource_name = resource_name
+        self.sort = sort
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_name is not None:
+            result['GatewayName'] = self.gateway_name
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+        if self.internet_enabled is not None:
+            result['InternetEnabled'] = self.internet_enabled
+        if self.label_shrink is not None:
+            result['Label'] = self.label_shrink
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayName') is not None:
+            self.gateway_name = m.get('GatewayName')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
+        if m.get('InternetEnabled') is not None:
+            self.internet_enabled = m.get('InternetEnabled')
+        if m.get('Label') is not None:
+            self.label_shrink = m.get('Label')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListGatewayResponseBodyGatewaysLabels(TeaModel):
+    def __init__(
+        self,
+        label_key: str = None,
+        label_value: str = None,
+    ):
+        self.label_key = label_key
+        self.label_value = label_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_key is not None:
+            result['LabelKey'] = self.label_key
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LabelKey') is not None:
+            self.label_key = m.get('LabelKey')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
         return self
 
 
@@ -10915,6 +11099,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         intranet_domain: str = None,
         intranet_enabled: bool = None,
         is_default: bool = None,
+        labels: List[ListGatewayResponseBodyGatewaysLabels] = None,
         replicas: int = None,
         sslredirection_enabled: bool = None,
         status: str = None,
@@ -10942,6 +11127,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         self.intranet_enabled = intranet_enabled
         # Indicates whether it is the default private gateway.
         self.is_default = is_default
+        self.labels = labels
         # The number of nodes in the private gateway.
         self.replicas = replicas
         # Specifies whether to enable HTTP to HTTPS redirection.
@@ -10962,7 +11148,10 @@ class ListGatewayResponseBodyGateways(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10990,6 +11179,10 @@ class ListGatewayResponseBodyGateways(TeaModel):
             result['IntranetEnabled'] = self.intranet_enabled
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.replicas is not None:
             result['Replicas'] = self.replicas
         if self.sslredirection_enabled is not None:
@@ -11022,6 +11215,11 @@ class ListGatewayResponseBodyGateways(TeaModel):
             self.intranet_enabled = m.get('IntranetEnabled')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListGatewayResponseBodyGatewaysLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
         if m.get('SSLRedirectionEnabled') is not None:

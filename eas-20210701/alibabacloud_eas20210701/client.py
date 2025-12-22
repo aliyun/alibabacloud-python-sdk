@@ -6890,19 +6890,23 @@ class Client(OpenApiClient):
 
     def list_gateway_with_options(
         self,
-        request: eas_20210701_models.ListGatewayRequest,
+        tmp_req: eas_20210701_models.ListGatewayRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayResponse:
         """
         @summary Queries a list of private gateways.
         
-        @param request: ListGatewayRequest
+        @param tmp_req: ListGatewayRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListGatewayResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.ListGatewayShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label):
+            request.label_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
@@ -6914,6 +6918,8 @@ class Client(OpenApiClient):
             query['GatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.internet_enabled):
             query['InternetEnabled'] = request.internet_enabled
+        if not UtilClient.is_unset(request.label_shrink):
+            query['Label'] = request.label_shrink
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -6948,19 +6954,23 @@ class Client(OpenApiClient):
 
     async def list_gateway_with_options_async(
         self,
-        request: eas_20210701_models.ListGatewayRequest,
+        tmp_req: eas_20210701_models.ListGatewayRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayResponse:
         """
         @summary Queries a list of private gateways.
         
-        @param request: ListGatewayRequest
+        @param tmp_req: ListGatewayRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListGatewayResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.ListGatewayShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label):
+            request.label_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
@@ -6972,6 +6982,8 @@ class Client(OpenApiClient):
             query['GatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.internet_enabled):
             query['InternetEnabled'] = request.internet_enabled
+        if not UtilClient.is_unset(request.label_shrink):
+            query['Label'] = request.label_shrink
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):

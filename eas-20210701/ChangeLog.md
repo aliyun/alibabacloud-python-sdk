@@ -1,3 +1,9 @@
+2025-12-22 Version: 6.10.1
+- Update API DescribeGateway: add response parameters Body.Labels.
+- Update API ListGateway: add request parameters Label.
+- Update API ListGateway: add response parameters Body.Gateways.$.Labels.
+
+
 2025-11-28 Version: 6.10.0
 - Support API MigrateResourceInstance.
 - Update API DescribeMachineSpec: add request parameters ChargeType.
