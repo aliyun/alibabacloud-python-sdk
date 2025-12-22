@@ -1,3 +1,9 @@
+2025-12-22 Version: 2.15.0
+- Support API AddUserDefinedSg.
+- Support API DeleteUserDefinedSg.
+- Support API ModifyUserDefinedSg.
+
+
 2025-11-27 Version: 2.14.0
 - Support API DowngradePostPayOrder.
 - Support API DowngradePrePayOrder.

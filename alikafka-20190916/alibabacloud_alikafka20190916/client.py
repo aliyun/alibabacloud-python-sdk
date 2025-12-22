@@ -41,6 +41,118 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_user_defined_sg_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.AddUserDefinedSgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.AddUserDefinedSgResponse:
+        """
+        @summary AddUserDefinedSg
+        
+        @param tmp_req: AddUserDefinedSgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserDefinedSgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.AddUserDefinedSgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sg_id_list):
+            request.sg_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sg_id_list, 'SgIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sg_id_list_shrink):
+            query['SgIdList'] = request.sg_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddUserDefinedSg',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.AddUserDefinedSgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_user_defined_sg_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.AddUserDefinedSgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.AddUserDefinedSgResponse:
+        """
+        @summary AddUserDefinedSg
+        
+        @param tmp_req: AddUserDefinedSgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserDefinedSgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.AddUserDefinedSgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sg_id_list):
+            request.sg_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sg_id_list, 'SgIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sg_id_list_shrink):
+            query['SgIdList'] = request.sg_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddUserDefinedSg',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.AddUserDefinedSgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_user_defined_sg(
+        self,
+        request: alikafka_20190916_models.AddUserDefinedSgRequest,
+    ) -> alikafka_20190916_models.AddUserDefinedSgResponse:
+        """
+        @summary AddUserDefinedSg
+        
+        @param request: AddUserDefinedSgRequest
+        @return: AddUserDefinedSgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_user_defined_sg_with_options(request, runtime)
+
+    async def add_user_defined_sg_async(
+        self,
+        request: alikafka_20190916_models.AddUserDefinedSgRequest,
+    ) -> alikafka_20190916_models.AddUserDefinedSgResponse:
+        """
+        @summary AddUserDefinedSg
+        
+        @param request: AddUserDefinedSgRequest
+        @return: AddUserDefinedSgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_user_defined_sg_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: alikafka_20190916_models.ChangeResourceGroupRequest,
@@ -2216,6 +2328,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_topic_with_options_async(request, runtime)
+
+    def delete_user_defined_sg_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.DeleteUserDefinedSgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.DeleteUserDefinedSgResponse:
+        """
+        @summary DeleteUserDefinedSg
+        
+        @param tmp_req: DeleteUserDefinedSgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserDefinedSgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.DeleteUserDefinedSgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sg_id_list):
+            request.sg_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sg_id_list, 'SgIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sg_id_list_shrink):
+            query['SgIdList'] = request.sg_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserDefinedSg',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteUserDefinedSgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_defined_sg_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.DeleteUserDefinedSgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.DeleteUserDefinedSgResponse:
+        """
+        @summary DeleteUserDefinedSg
+        
+        @param tmp_req: DeleteUserDefinedSgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserDefinedSgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.DeleteUserDefinedSgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sg_id_list):
+            request.sg_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sg_id_list, 'SgIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sg_id_list_shrink):
+            query['SgIdList'] = request.sg_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserDefinedSg',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteUserDefinedSgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_defined_sg(
+        self,
+        request: alikafka_20190916_models.DeleteUserDefinedSgRequest,
+    ) -> alikafka_20190916_models.DeleteUserDefinedSgResponse:
+        """
+        @summary DeleteUserDefinedSg
+        
+        @param request: DeleteUserDefinedSgRequest
+        @return: DeleteUserDefinedSgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_defined_sg_with_options(request, runtime)
+
+    async def delete_user_defined_sg_async(
+        self,
+        request: alikafka_20190916_models.DeleteUserDefinedSgRequest,
+    ) -> alikafka_20190916_models.DeleteUserDefinedSgResponse:
+        """
+        @summary DeleteUserDefinedSg
+        
+        @param request: DeleteUserDefinedSgRequest
+        @return: DeleteUserDefinedSgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_defined_sg_with_options_async(request, runtime)
 
     def describe_acl_resource_name_with_options(
         self,
@@ -5140,6 +5364,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_topic_remark_with_options_async(request, runtime)
+
+    def modify_user_defined_sg_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.ModifyUserDefinedSgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.ModifyUserDefinedSgResponse:
+        """
+        @summary ModifyUserDefinedSg
+        
+        @param tmp_req: ModifyUserDefinedSgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserDefinedSgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.ModifyUserDefinedSgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sg_id_list):
+            request.sg_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sg_id_list, 'SgIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sg_id_list_shrink):
+            query['SgIdList'] = request.sg_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserDefinedSg',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyUserDefinedSgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_defined_sg_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.ModifyUserDefinedSgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.ModifyUserDefinedSgResponse:
+        """
+        @summary ModifyUserDefinedSg
+        
+        @param tmp_req: ModifyUserDefinedSgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserDefinedSgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.ModifyUserDefinedSgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sg_id_list):
+            request.sg_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sg_id_list, 'SgIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sg_id_list_shrink):
+            query['SgIdList'] = request.sg_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserDefinedSg',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyUserDefinedSgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_defined_sg(
+        self,
+        request: alikafka_20190916_models.ModifyUserDefinedSgRequest,
+    ) -> alikafka_20190916_models.ModifyUserDefinedSgResponse:
+        """
+        @summary ModifyUserDefinedSg
+        
+        @param request: ModifyUserDefinedSgRequest
+        @return: ModifyUserDefinedSgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_defined_sg_with_options(request, runtime)
+
+    async def modify_user_defined_sg_async(
+        self,
+        request: alikafka_20190916_models.ModifyUserDefinedSgRequest,
+    ) -> alikafka_20190916_models.ModifyUserDefinedSgResponse:
+        """
+        @summary ModifyUserDefinedSg
+        
+        @param request: ModifyUserDefinedSgRequest
+        @return: ModifyUserDefinedSgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_defined_sg_with_options_async(request, runtime)
 
     def query_message_with_options(
         self,
