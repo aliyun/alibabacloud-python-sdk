@@ -9915,6 +9915,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_addons_with_options_async(request, headers, runtime)
 
+    def list_cluster_addon_instance_resources_with_options(
+        self,
+        cluster_id: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListClusterAddonInstanceResourcesResponse:
+        """
+        @summary 获取集群组件实例的资源列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterAddonInstanceResourcesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListClusterAddonInstanceResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/addon_instances/{OpenApiUtilClient.get_encode_param(instance_name)}/resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListClusterAddonInstanceResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_addon_instance_resources_with_options_async(
+        self,
+        cluster_id: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListClusterAddonInstanceResourcesResponse:
+        """
+        @summary 获取集群组件实例的资源列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterAddonInstanceResourcesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListClusterAddonInstanceResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/addon_instances/{OpenApiUtilClient.get_encode_param(instance_name)}/resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListClusterAddonInstanceResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_addon_instance_resources(
+        self,
+        cluster_id: str,
+        instance_name: str,
+    ) -> cs20151215_models.ListClusterAddonInstanceResourcesResponse:
+        """
+        @summary 获取集群组件实例的资源列表
+        
+        @return: ListClusterAddonInstanceResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_cluster_addon_instance_resources_with_options(cluster_id, instance_name, headers, runtime)
+
+    async def list_cluster_addon_instance_resources_async(
+        self,
+        cluster_id: str,
+        instance_name: str,
+    ) -> cs20151215_models.ListClusterAddonInstanceResourcesResponse:
+        """
+        @summary 获取集群组件实例的资源列表
+        
+        @return: ListClusterAddonInstanceResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_cluster_addon_instance_resources_with_options_async(cluster_id, instance_name, headers, runtime)
+
     def list_cluster_addon_instances_with_options(
         self,
         cluster_id: str,

@@ -1,3 +1,7 @@
+2025-12-22 Version: 6.2.0
+- Support API ListClusterAddonInstanceResources.
+
+
 2025-12-01 Version: 6.1.2
 - Update API DescribeClusterAttachScripts: add request parameters body.one_time_token.
 
