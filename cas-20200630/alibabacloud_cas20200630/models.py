@@ -158,6 +158,7 @@ class CreateClientCertificateRequest(TeaModel):
         before_time: int = None,
         common_name: str = None,
         country: str = None,
+        custom_identifier: str = None,
         days: int = None,
         enable_crl: int = None,
         immediately: int = None,
@@ -199,6 +200,7 @@ class CreateClientCertificateRequest(TeaModel):
         self.common_name = common_name
         # The country in which the organization is located. Default value: CN.
         self.country = country
+        self.custom_identifier = custom_identifier
         # The validity period of the client certificate. Unit: day. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
         # 
         # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.
@@ -269,6 +271,8 @@ class CreateClientCertificateRequest(TeaModel):
             result['CommonName'] = self.common_name
         if self.country is not None:
             result['Country'] = self.country
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.days is not None:
             result['Days'] = self.days
         if self.enable_crl is not None:
@@ -313,6 +317,8 @@ class CreateClientCertificateRequest(TeaModel):
             self.common_name = m.get('CommonName')
         if m.get('Country') is not None:
             self.country = m.get('Country')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Days') is not None:
             self.days = m.get('Days')
         if m.get('EnableCrl') is not None:
@@ -486,6 +492,7 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
         common_name: str = None,
         country: str = None,
         csr: str = None,
+        custom_identifier: str = None,
         days: int = None,
         enable_crl: int = None,
         immediately: int = None,
@@ -531,6 +538,7 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
         self.country = country
         # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](https://help.aliyun.com/document_detail/313297.html).
         self.csr = csr
+        self.custom_identifier = custom_identifier
         # The validity period of the client certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
         # 
         # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********\
@@ -603,6 +611,8 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
             result['Country'] = self.country
         if self.csr is not None:
             result['Csr'] = self.csr
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.days is not None:
             result['Days'] = self.days
         if self.enable_crl is not None:
@@ -649,6 +659,8 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
             self.country = m.get('Country')
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Days') is not None:
             self.days = m.get('Days')
         if m.get('EnableCrl') is not None:
@@ -1191,6 +1203,7 @@ class CreateCustomCertificateRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[CreateCustomCertificateRequestTags] = None,
         validity: str = None,
+        custom_identifier: str = None,
     ):
         # The passthrough parameters.
         self.api_passthrough = api_passthrough
@@ -1230,6 +1243,7 @@ class CreateCustomCertificateRequest(TeaModel):
         # 
         # This parameter is required.
         self.validity = validity
+        self.custom_identifier = custom_identifier
 
     def validate(self):
         if self.api_passthrough:
@@ -1263,6 +1277,8 @@ class CreateCustomCertificateRequest(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.validity is not None:
             result['Validity'] = self.validity
+        if self.custom_identifier is not None:
+            result['customIdentifier'] = self.custom_identifier
         return result
 
     def from_map(self, m: dict = None):
@@ -1287,6 +1303,8 @@ class CreateCustomCertificateRequest(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('Validity') is not None:
             self.validity = m.get('Validity')
+        if m.get('customIdentifier') is not None:
+            self.custom_identifier = m.get('customIdentifier')
         return self
 
 
@@ -2194,6 +2212,7 @@ class CreateServerCertificateRequest(TeaModel):
         before_time: int = None,
         common_name: str = None,
         country: str = None,
+        custom_identifier: str = None,
         days: int = None,
         domain: str = None,
         enable_crl: int = None,
@@ -2238,6 +2257,7 @@ class CreateServerCertificateRequest(TeaModel):
         self.common_name = common_name
         # The code of the country in which the organization is located, such as CN or US.
         self.country = country
+        self.custom_identifier = custom_identifier
         # The validity period of the server certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
         # 
         # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.
@@ -2307,6 +2327,8 @@ class CreateServerCertificateRequest(TeaModel):
             result['CommonName'] = self.common_name
         if self.country is not None:
             result['Country'] = self.country
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.days is not None:
             result['Days'] = self.days
         if self.domain is not None:
@@ -2349,6 +2371,8 @@ class CreateServerCertificateRequest(TeaModel):
             self.common_name = m.get('CommonName')
         if m.get('Country') is not None:
             self.country = m.get('Country')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Days') is not None:
             self.days = m.get('Days')
         if m.get('Domain') is not None:
@@ -2520,6 +2544,7 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
         common_name: str = None,
         country: str = None,
         csr: str = None,
+        custom_identifier: str = None,
         days: int = None,
         domain: str = None,
         enable_crl: int = None,
@@ -2566,6 +2591,7 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
         # 
         # This parameter is required.
         self.csr = csr
+        self.custom_identifier = custom_identifier
         # The validity period of the server certificate. Unit: days.
         # 
         # You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
@@ -2638,6 +2664,8 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
             result['Country'] = self.country
         if self.csr is not None:
             result['Csr'] = self.csr
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.days is not None:
             result['Days'] = self.days
         if self.domain is not None:
@@ -2682,6 +2710,8 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
             self.country = m.get('Country')
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Days') is not None:
             self.days = m.get('Days')
         if m.get('Domain') is not None:
@@ -4341,9 +4371,11 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         after_date: int = None,
         algorithm: str = None,
         before_date: int = None,
+        cert_chain: str = None,
         certificate_type: str = None,
         common_name: str = None,
         country_code: str = None,
+        custom_identifier: str = None,
         days: int = None,
         identifier: str = None,
         key_size: int = None,
@@ -4373,6 +4405,7 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         self.algorithm = algorithm
         # The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
+        self.cert_chain = cert_chain
         # The type of the certificate. Valid values:
         # 
         # *   **CLIENT**: client certificate
@@ -4384,6 +4417,7 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         # 
         # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
         self.country_code = country_code
+        self.custom_identifier = custom_identifier
         # The validity period of the certificate. Unit: days.
         self.days = days
         # The unique identifier of the certificate.
@@ -4458,12 +4492,16 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
             result['Algorithm'] = self.algorithm
         if self.before_date is not None:
             result['BeforeDate'] = self.before_date
+        if self.cert_chain is not None:
+            result['CertChain'] = self.cert_chain
         if self.certificate_type is not None:
             result['CertificateType'] = self.certificate_type
         if self.common_name is not None:
             result['CommonName'] = self.common_name
         if self.country_code is not None:
             result['CountryCode'] = self.country_code
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.days is not None:
             result['Days'] = self.days
         if self.identifier is not None:
@@ -4512,12 +4550,16 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
             self.algorithm = m.get('Algorithm')
         if m.get('BeforeDate') is not None:
             self.before_date = m.get('BeforeDate')
+        if m.get('CertChain') is not None:
+            self.cert_chain = m.get('CertChain')
         if m.get('CertificateType') is not None:
             self.certificate_type = m.get('CertificateType')
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
             self.country_code = m.get('CountryCode')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Days') is not None:
             self.days = m.get('Days')
         if m.get('Identifier') is not None:
@@ -6152,6 +6194,7 @@ class ListCertResponseBodyList(TeaModel):
         before_time: int = None,
         certificate_type: str = None,
         common_name: str = None,
+        custom_identifier: str = None,
         extra: str = None,
         id: str = None,
         identifier: str = None,
@@ -6171,6 +6214,7 @@ class ListCertResponseBodyList(TeaModel):
         self.before_time = before_time
         self.certificate_type = certificate_type
         self.common_name = common_name
+        self.custom_identifier = custom_identifier
         self.extra = extra
         self.id = id
         self.identifier = identifier
@@ -6207,6 +6251,8 @@ class ListCertResponseBodyList(TeaModel):
             result['CertificateType'] = self.certificate_type
         if self.common_name is not None:
             result['CommonName'] = self.common_name
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.extra is not None:
             result['Extra'] = self.extra
         if self.id is not None:
@@ -6247,6 +6293,8 @@ class ListCertResponseBodyList(TeaModel):
             self.certificate_type = m.get('CertificateType')
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Extra') is not None:
             self.extra = m.get('Extra')
         if m.get('Id') is not None:
@@ -6447,6 +6495,7 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
         certificate_type: str = None,
         common_name: str = None,
         country_code: str = None,
+        custom_identifier: str = None,
         days: int = None,
         identifier: str = None,
         key_size: int = None,
@@ -6486,6 +6535,7 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
         # 
         # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
         self.country_code = country_code
+        self.custom_identifier = custom_identifier
         # The validity period of the certificate. Unit: days.
         self.days = days
         # The unique identifier of the certificate.
@@ -6562,6 +6612,8 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
             result['CommonName'] = self.common_name
         if self.country_code is not None:
             result['CountryCode'] = self.country_code
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.days is not None:
             result['Days'] = self.days
         if self.identifier is not None:
@@ -6612,6 +6664,8 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
             self.country_code = m.get('CountryCode')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Days') is not None:
             self.days = m.get('Days')
         if m.get('Identifier') is not None:
@@ -7001,6 +7055,7 @@ class ListRevokeCertificateResponseBodyCertificateList(TeaModel):
         certificate_type: str = None,
         common_name: str = None,
         country_code: str = None,
+        custom_identifier: str = None,
         identifier: str = None,
         key_size: int = None,
         locality: str = None,
@@ -7035,6 +7090,7 @@ class ListRevokeCertificateResponseBodyCertificateList(TeaModel):
         # 
         # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
         self.country_code = country_code
+        self.custom_identifier = custom_identifier
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The key length of the certificate.
@@ -7105,6 +7161,8 @@ class ListRevokeCertificateResponseBodyCertificateList(TeaModel):
             result['CommonName'] = self.common_name
         if self.country_code is not None:
             result['CountryCode'] = self.country_code
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.key_size is not None:
@@ -7151,6 +7209,8 @@ class ListRevokeCertificateResponseBodyCertificateList(TeaModel):
             self.common_name = m.get('CommonName')
         if m.get('CountryCode') is not None:
             self.country_code = m.get('CountryCode')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('KeySize') is not None:

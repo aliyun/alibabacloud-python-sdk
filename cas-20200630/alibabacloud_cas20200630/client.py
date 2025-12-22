@@ -222,6 +222,8 @@ class Client(OpenApiClient):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country):
             query['Country'] = request.country
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.enable_crl):
@@ -297,6 +299,8 @@ class Client(OpenApiClient):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country):
             query['Country'] = request.country
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.enable_crl):
@@ -408,6 +412,8 @@ class Client(OpenApiClient):
             query['Country'] = request.country
         if not UtilClient.is_unset(request.csr):
             query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.enable_crl):
@@ -485,6 +491,8 @@ class Client(OpenApiClient):
             query['Country'] = request.country
         if not UtilClient.is_unset(request.csr):
             query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.enable_crl):
@@ -612,6 +620,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.validity):
             query['Validity'] = request.validity
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['customIdentifier'] = request.custom_identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -677,6 +687,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.validity):
             query['Validity'] = request.validity
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['customIdentifier'] = request.custom_identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1178,6 +1190,8 @@ class Client(OpenApiClient):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country):
             query['Country'] = request.country
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.domain):
@@ -1251,6 +1265,8 @@ class Client(OpenApiClient):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country):
             query['Country'] = request.country
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.domain):
@@ -1359,6 +1375,8 @@ class Client(OpenApiClient):
             query['Country'] = request.country
         if not UtilClient.is_unset(request.csr):
             query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.domain):
@@ -1433,6 +1451,8 @@ class Client(OpenApiClient):
             query['Country'] = request.country
         if not UtilClient.is_unset(request.csr):
             query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
         if not UtilClient.is_unset(request.domain):

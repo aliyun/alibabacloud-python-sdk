@@ -1,3 +1,16 @@
+2025-12-22 Version: 1.5.1
+- Update API CreateClientCertificate: add request parameters CustomIdentifier.
+- Update API CreateClientCertificateWithCsr: add request parameters CustomIdentifier.
+- Update API CreateCustomCertificate: add request parameters customIdentifier.
+- Update API CreateServerCertificate: add request parameters CustomIdentifier.
+- Update API CreateServerCertificateWithCsr: add request parameters CustomIdentifier.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.CertChain.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.CustomIdentifier.
+- Update API ListCert: add response parameters Body.List.$.CustomIdentifier.
+- Update API ListClientCertificate: add response parameters Body.CertificateList.$.CustomIdentifier.
+- Update API ListRevokeCertificate: add response parameters Body.CertificateList.$.CustomIdentifier.
+
+
 2025-12-16 Version: 1.5.0
 - Support API DescribeClientCertificateForSerialNumber.
 - Support API DescribeClientCertificateStatusForSerialNumber.
