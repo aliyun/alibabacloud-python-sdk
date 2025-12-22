@@ -1,3 +1,6 @@
+2025-12-22 Version: 8.1.1
+- Generated python 2021-09-31 for BPStudio.
+
 2025-12-19 Version: 8.1.0
 - Support API GetOperationParams.
 - Support API ListOperations.
