@@ -1,3 +1,8 @@
+2025-12-22 Version: 1.18.1
+- Update API GetImageDetectionTaskResult: add response parameters Body.data.detectionResult.description.
+- Update API GetImageDetectionTaskResult: add response parameters Body.data.detectionResult.portraitType.
+
+
 2025-12-22 Version: 1.18.0
 - Support API CreateImageDetectionTask.
 - Support API CreateVideoCreationTask.

@@ -6756,10 +6756,14 @@ class GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails
 class GetImageDetectionTaskResultResponseBodyDataDetectionResult(TeaModel):
     def __init__(
         self,
+        description: str = None,
         detection_details: List[GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails] = None,
+        portrait_type: str = None,
         suggestions: List[str] = None,
     ):
+        self.description = description
         self.detection_details = detection_details
+        self.portrait_type = portrait_type
         self.suggestions = suggestions
 
     def validate(self):
@@ -6774,21 +6778,29 @@ class GetImageDetectionTaskResultResponseBodyDataDetectionResult(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
         result['detectionDetails'] = []
         if self.detection_details is not None:
             for k in self.detection_details:
                 result['detectionDetails'].append(k.to_map() if k else None)
+        if self.portrait_type is not None:
+            result['portraitType'] = self.portrait_type
         if self.suggestions is not None:
             result['suggestions'] = self.suggestions
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
         self.detection_details = []
         if m.get('detectionDetails') is not None:
             for k in m.get('detectionDetails'):
                 temp_model = GetImageDetectionTaskResultResponseBodyDataDetectionResultDetectionDetails()
                 self.detection_details.append(temp_model.from_map(k))
+        if m.get('portraitType') is not None:
+            self.portrait_type = m.get('portraitType')
         if m.get('suggestions') is not None:
             self.suggestions = m.get('suggestions')
         return self
