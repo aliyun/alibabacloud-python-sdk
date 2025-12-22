@@ -1,3 +1,11 @@
+2025-12-22 Version: 3.1.0
+- Support API MultiModalGuardForBase64.
+- Update API DescribeFileModerationResult: add response parameters Body.Data.AccountId.
+- Update API DescribeImageModerationResult: add response parameters Body.Data.AccountId.
+- Update API ImageModeration: add response parameters Body.Data.AccountId.
+- Update API TextModerationPlus: add response parameters Body.Data.AccountId.
+
+
 2025-10-28 Version: 3.0.1
 - Update API ImageModeration: add response parameters Body.Data.Ext.AigcData.
 

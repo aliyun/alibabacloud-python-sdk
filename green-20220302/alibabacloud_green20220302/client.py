@@ -1571,6 +1571,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.multi_modal_guard_with_options_async(request, runtime)
 
+    def multi_modal_guard_for_base_64with_options(
+        self,
+        request: green_20220302_models.MultiModalGuardForBase64Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.MultiModalGuardForBase64Response:
+        """
+        @summary 多模态同步检测接口，支持图片base64字符串
+        
+        @param request: MultiModalGuardForBase64Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MultiModalGuardForBase64Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        body = {}
+        if not UtilClient.is_unset(request.image_base_64str):
+            body['ImageBase64Str'] = request.image_base_64str
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MultiModalGuardForBase64',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.MultiModalGuardForBase64Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multi_modal_guard_for_base_64with_options_async(
+        self,
+        request: green_20220302_models.MultiModalGuardForBase64Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.MultiModalGuardForBase64Response:
+        """
+        @summary 多模态同步检测接口，支持图片base64字符串
+        
+        @param request: MultiModalGuardForBase64Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MultiModalGuardForBase64Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        body = {}
+        if not UtilClient.is_unset(request.image_base_64str):
+            body['ImageBase64Str'] = request.image_base_64str
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MultiModalGuardForBase64',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.MultiModalGuardForBase64Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multi_modal_guard_for_base_64(
+        self,
+        request: green_20220302_models.MultiModalGuardForBase64Request,
+    ) -> green_20220302_models.MultiModalGuardForBase64Response:
+        """
+        @summary 多模态同步检测接口，支持图片base64字符串
+        
+        @param request: MultiModalGuardForBase64Request
+        @return: MultiModalGuardForBase64Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.multi_modal_guard_for_base_64with_options(request, runtime)
+
+    async def multi_modal_guard_for_base_64_async(
+        self,
+        request: green_20220302_models.MultiModalGuardForBase64Request,
+    ) -> green_20220302_models.MultiModalGuardForBase64Response:
+        """
+        @summary 多模态同步检测接口，支持图片base64字符串
+        
+        @param request: MultiModalGuardForBase64Request
+        @return: MultiModalGuardForBase64Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.multi_modal_guard_for_base_64with_options_async(request, runtime)
+
     def multimodal_async_moderation_with_options(
         self,
         request: green_20220302_models.MultimodalAsyncModerationRequest,

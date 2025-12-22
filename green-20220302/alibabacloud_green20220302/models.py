@@ -576,6 +576,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(TeaModel):
 class DescribeFileModerationResultResponseBodyData(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         data_id: str = None,
         doc_type: str = None,
         page_result: List[DescribeFileModerationResultResponseBodyDataPageResult] = None,
@@ -583,6 +584,7 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
         risk_level: str = None,
         url: str = None,
     ):
+        self.account_id = account_id
         # The ID of the moderated object.
         self.data_id = data_id
         # Optional. The document type.
@@ -610,6 +612,8 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.data_id is not None:
             result['DataId'] = self.data_id
         if self.doc_type is not None:
@@ -628,6 +632,8 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         if m.get('DocType') is not None:
@@ -819,6 +825,7 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
 class DescribeImageModerationResultResponseBodyData(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         data_id: str = None,
         frame: str = None,
         frame_num: int = None,
@@ -827,6 +834,7 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         result: List[DescribeImageModerationResultResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
+        self.account_id = account_id
         # The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
         self.data_id = data_id
         # The information about the captured frames.
@@ -853,6 +861,8 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.data_id is not None:
             result['DataId'] = self.data_id
         if self.frame is not None:
@@ -873,6 +883,8 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         if m.get('Frame') is not None:
@@ -4789,12 +4801,14 @@ class ImageModerationResponseBodyDataResult(TeaModel):
 class ImageModerationResponseBodyData(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         data_id: str = None,
         ext: ImageModerationResponseBodyDataExt = None,
         manual_task_id: str = None,
         result: List[ImageModerationResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
+        self.account_id = account_id
         # The ID of the moderated object.
         # 
         # >  If you specify the dataId parameter in the request, the value of the dataId parameter is returned in the response.
@@ -4821,6 +4835,8 @@ class ImageModerationResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.data_id is not None:
             result['DataId'] = self.data_id
         if self.ext is not None:
@@ -4837,6 +4853,8 @@ class ImageModerationResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         if m.get('Ext') is not None:
@@ -5972,6 +5990,285 @@ class MultiModalGuardResponse(TeaModel):
         return self
 
 
+class MultiModalGuardForBase64Request(TeaModel):
+    def __init__(
+        self,
+        image_base_64str: str = None,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.image_base_64str = image_base_64str
+        # Service
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_base_64str is not None:
+            result['ImageBase64Str'] = self.image_base_64str
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageBase64Str') is not None:
+            self.image_base_64str = m.get('ImageBase64Str')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class MultiModalGuardForBase64ResponseBodyDataDetailResult(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        description: str = None,
+        ext: Any = None,
+        label: str = None,
+        level: str = None,
+    ):
+        self.confidence = confidence
+        self.description = description
+        self.ext = ext
+        self.label = label
+        self.level = level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.level is not None:
+            result['Level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        return self
+
+
+class MultiModalGuardForBase64ResponseBodyDataDetail(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        result: List[MultiModalGuardForBase64ResponseBodyDataDetailResult] = None,
+        suggestion: str = None,
+        type: str = None,
+    ):
+        self.level = level
+        self.result = result
+        self.suggestion = suggestion
+        self.type = type
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = MultiModalGuardForBase64ResponseBodyDataDetailResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class MultiModalGuardForBase64ResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        detail: List[MultiModalGuardForBase64ResponseBodyDataDetail] = None,
+        suggestion: str = None,
+    ):
+        self.data_id = data_id
+        self.detail = detail
+        self.suggestion = suggestion
+
+    def validate(self):
+        if self.detail:
+            for k in self.detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        result['Detail'] = []
+        if self.detail is not None:
+            for k in self.detail:
+                result['Detail'].append(k.to_map() if k else None)
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        self.detail = []
+        if m.get('Detail') is not None:
+            for k in m.get('Detail'):
+                temp_model = MultiModalGuardForBase64ResponseBodyDataDetail()
+                self.detail.append(temp_model.from_map(k))
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        return self
+
+
+class MultiModalGuardForBase64ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: MultiModalGuardForBase64ResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MultiModalGuardForBase64ResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MultiModalGuardForBase64Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MultiModalGuardForBase64ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MultiModalGuardForBase64ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class MultimodalAsyncModerationRequest(TeaModel):
     def __init__(
         self,
@@ -6617,6 +6914,7 @@ class TextModerationPlusResponseBodyDataSensitiveResult(TeaModel):
 class TextModerationPlusResponseBodyData(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         advice: List[TextModerationPlusResponseBodyDataAdvice] = None,
         attack_level: str = None,
         attack_result: List[TextModerationPlusResponseBodyDataAttackResult] = None,
@@ -6630,6 +6928,7 @@ class TextModerationPlusResponseBodyData(TeaModel):
         sensitive_result: List[TextModerationPlusResponseBodyDataSensitiveResult] = None,
         translated_content: str = None,
     ):
+        self.account_id = account_id
         # The suggestion.
         self.advice = advice
         # The level of prompt attack
@@ -6676,6 +6975,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         result['Advice'] = []
         if self.advice is not None:
             for k in self.advice:
@@ -6712,6 +7013,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         self.advice = []
         if m.get('Advice') is not None:
             for k in m.get('Advice'):
