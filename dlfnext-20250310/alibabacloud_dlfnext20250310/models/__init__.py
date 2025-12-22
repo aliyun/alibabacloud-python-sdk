@@ -133,6 +133,9 @@ from ._list_database_details_response import ListDatabaseDetailsResponse
 from ._list_databases_request import ListDatabasesRequest
 from ._list_databases_response_body import ListDatabasesResponseBody
 from ._list_databases_response import ListDatabasesResponse
+from ._list_functions_request import ListFunctionsRequest
+from ._list_functions_response_body import ListFunctionsResponseBody
+from ._list_functions_response import ListFunctionsResponse
 from ._list_iceberg_namespace_details_request import ListIcebergNamespaceDetailsRequest
 from ._list_iceberg_namespace_details_response_body import ListIcebergNamespaceDetailsResponseBody
 from ._list_iceberg_namespace_details_response import ListIcebergNamespaceDetailsResponse
@@ -186,6 +189,12 @@ from ._list_user_roles_response import ListUserRolesResponse
 from ._list_users_request import ListUsersRequest
 from ._list_users_response_body import ListUsersResponseBody
 from ._list_users_response import ListUsersResponse
+from ._list_view_details_request import ListViewDetailsRequest
+from ._list_view_details_response_body import ListViewDetailsResponseBody
+from ._list_view_details_response import ListViewDetailsResponse
+from ._list_views_request import ListViewsRequest
+from ._list_views_response_body import ListViewsResponseBody
+from ._list_views_response import ListViewsResponse
 from ._refresh_user_sync_response import RefreshUserSyncResponse
 from ._revoke_role_from_users_request import RevokeRoleFromUsersRequest
 from ._revoke_role_from_users_response import RevokeRoleFromUsersResponse
@@ -331,6 +340,9 @@ __all__ = [
     ListDatabasesRequest,
     ListDatabasesResponseBody,
     ListDatabasesResponse,
+    ListFunctionsRequest,
+    ListFunctionsResponseBody,
+    ListFunctionsResponse,
     ListIcebergNamespaceDetailsRequest,
     ListIcebergNamespaceDetailsResponseBody,
     ListIcebergNamespaceDetailsResponse,
@@ -384,6 +396,12 @@ __all__ = [
     ListUsersRequest,
     ListUsersResponseBody,
     ListUsersResponse,
+    ListViewDetailsRequest,
+    ListViewDetailsResponseBody,
+    ListViewDetailsResponse,
+    ListViewsRequest,
+    ListViewsResponseBody,
+    ListViewsResponse,
     RefreshUserSyncResponse,
     RevokeRoleFromUsersRequest,
     RevokeRoleFromUsersResponse,

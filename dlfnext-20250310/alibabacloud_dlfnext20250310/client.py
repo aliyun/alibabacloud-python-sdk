@@ -3533,6 +3533,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_databases_with_options_async(catalog_id, request, headers, runtime)
 
+    def list_functions_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListFunctionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFunctionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.function_name_pattern):
+            query['functionNamePattern'] = request.function_name_pattern
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFunctions',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/functions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFunctionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_functions_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListFunctionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFunctionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.function_name_pattern):
+            query['functionNamePattern'] = request.function_name_pattern
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFunctions',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/functions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFunctionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_functions(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListFunctionsRequest,
+    ) -> main_models.ListFunctionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_functions_with_options(catalog_id, database, request, headers, runtime)
+
+    async def list_functions_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListFunctionsRequest,
+    ) -> main_models.ListFunctionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_functions_with_options_async(catalog_id, database, request, headers, runtime)
+
     def list_iceberg_namespace_details_with_options(
         self,
         catalog_id: str,
@@ -5136,6 +5228,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_users_with_options_async(request, headers, runtime)
+
+    def list_view_details_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListViewDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.view_name_pattern):
+            query['viewNamePattern'] = request.view_name_pattern
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListViewDetails',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/view-details',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListViewDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_view_details_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListViewDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.view_name_pattern):
+            query['viewNamePattern'] = request.view_name_pattern
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListViewDetails',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/view-details',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListViewDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_view_details(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewDetailsRequest,
+    ) -> main_models.ListViewDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_view_details_with_options(catalog_id, database, request, headers, runtime)
+
+    async def list_view_details_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewDetailsRequest,
+    ) -> main_models.ListViewDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_view_details_with_options_async(catalog_id, database, request, headers, runtime)
+
+    def list_views_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListViewsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.view_name_pattern):
+            query['viewNamePattern'] = request.view_name_pattern
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListViews',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/views',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListViewsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_views_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListViewsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.page_token):
+            query['pageToken'] = request.page_token
+        if not DaraCore.is_null(request.view_name_pattern):
+            query['viewNamePattern'] = request.view_name_pattern
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListViews',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/views',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListViewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_views(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewsRequest,
+    ) -> main_models.ListViewsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_views_with_options(catalog_id, database, request, headers, runtime)
+
+    async def list_views_async(
+        self,
+        catalog_id: str,
+        database: str,
+        request: main_models.ListViewsRequest,
+    ) -> main_models.ListViewsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_views_with_options_async(catalog_id, database, request, headers, runtime)
 
     def refresh_user_sync_with_options(
         self,
