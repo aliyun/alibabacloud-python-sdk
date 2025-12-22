@@ -1,3 +1,15 @@
+2025-12-22 Version: 3.1.4
+- Update API CreateFileSystem: add request parameters RedundancyType.
+- Update API CreateFileSystem: add request parameters RedundancyVSwitchIds.
+- Update API CreateProtocolMountTarget: add request parameters VSwitchIds.
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.RedundancyType.
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.RedundancyVSwitchIds.
+- Update API DescribeProtocolMountTarget: add request parameters ProtocolServiceIds.
+- Update API DescribeProtocolMountTarget: add response parameters Body.ProtocolMountTargets.$.VSwitchIds.
+- Update API DescribeProtocolService: add response parameters Body.ProtocolServices.$.VSwitchId.
+- Update API DescribeProtocolService: add response parameters Body.ProtocolServices.$.VpcId.
+
+
 2025-11-03 Version: 3.1.3
 - Update API CreateAccessPoint: add request parameters Tag.
 - Update API DescribeAccessPoint: add response parameters Body.AccessPoint.Tags.

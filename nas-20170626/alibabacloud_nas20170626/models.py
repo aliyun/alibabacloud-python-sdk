@@ -291,9 +291,9 @@ class ApplyDataFlowAutoRefreshRequest(TeaModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
-        # The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minutes.
+        # The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minute.
         # 
-        # Valid values: 5 to 526600. Default value: 10.
+        # Valid values: 10 to 525600. Default value: 10.
         self.auto_refresh_interval = auto_refresh_interval
         # The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy. Valid values:
         # 
@@ -310,7 +310,7 @@ class ApplyDataFlowAutoRefreshRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -720,7 +720,7 @@ class CancelDataFlowAutoRefreshRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -1021,7 +1021,7 @@ class CancelDataFlowTaskRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -1038,8 +1038,6 @@ class CancelDataFlowTaskRequest(TeaModel):
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -2225,8 +2223,8 @@ class CreateAccessRuleRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
+        # *   standard (default): General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
         # The IPv6 address or CIDR block of the authorized object.
         # 
@@ -2246,8 +2244,8 @@ class CreateAccessRuleRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   RDWR (default): the read and write permissions
-        # *   RDONLY: the read-only permissions
+        # *   RDWR (default): the read and write permissions.
+        # *   RDONLY: the read-only permissions.
         self.rwaccess_type = rwaccess_type
         # The IP address or CIDR block of the authorized object.
         # 
@@ -2649,9 +2647,7 @@ class CreateDataFlowRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -2792,7 +2788,7 @@ class CreateDataFlowResponseBody(TeaModel):
         data_flow_id: str = None,
         request_id: str = None,
     ):
-        # The dataflow ID.
+        # The ID of the dataflow.
         self.data_flow_id = data_flow_id
         # The request ID.
         self.request_id = request_id
@@ -3105,25 +3101,28 @@ class CreateDataFlowTaskRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The conflict policy for files with the same name. Valid values:
+        # The conflict policy for files with the same name. Valid value:
         # 
         # *   SKIP_THE_FILE: skips files with the same name.
         # *   KEEP_LATEST: compares the update time and keeps the latest version.
         # *   OVERWRITE_EXISTING: forcibly overwrites the existing file.
         # 
-        # >  This parameter is required for CPFS for LINGJUN file systems.
+        # >  This parameter is required for CPFS for Lingjun file systems.
         self.conflict_policy = conflict_policy
-        # Specifies whether to automatically create a directory if no directory exists. Valid values:
+        # Specifies whether to automatically create a directory if no directory exists. Valid value:
         # 
         # *   true: automatically creates a directory.
         # *   false (default): does not automatically create a directory.
         # 
-        # > - This parameter is required if the TaskAction parameter is set to Import.
-        # > - Only CPFS for LINGJUN V2.6.0 and later support this parameter.
+        # > 
+        # 
+        # *   This parameter is required if the TaskAction parameter is set to Import.
+        # 
+        # *   Only CPFS for Lingjun V2.6.0 and later support this parameter.
         self.create_dir_if_not_exist = create_dir_if_not_exist
         # The ID of the dataflow.
         # 
@@ -3131,7 +3130,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         self.data_flow_id = data_flow_id
         # The type of data on which operations are performed by the dataflow task.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   Metadata: the metadata of a file, including the timestamp, ownership, and permission information of the file. If you select Metadata, only the metadata of the file is imported. You can only query the file. When you access the file data, the file is loaded from the source storage as required.
         # *   Data: the data blocks of a file.
@@ -3142,7 +3141,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         # Limits:
         # 
         # *   The directory must be 1 to 1,023 characters in length.
-        # *   The directory must be encoded in UTF-8.
+        # *   Must be encoded in UTF-8.
         # *   The directory must start and end with a forward slash (/).
         # *   Only one directory can be listed at a time.
         # *   If the TaskAction parameter is set to Export, the directory must be a relative path within the FileSystemPath.
@@ -3150,31 +3149,31 @@ class CreateDataFlowTaskRequest(TeaModel):
         # *   If the TaskAction parameter is set to StreamExport, the directory must be a relative path within the FileSystemPath.
         # *   If the TaskAction parameter is set to StreamImport, the directory must be a relative path within the SourceStoragePath.
         # 
-        # >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
+        # >  Only CPFS for Lingjun V2.6.0 and later support StreamImport and StreamExport.
         self.directory = directory
         # Specifies whether to perform a dry run.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no data flow task is created and no fee is incurred.
+        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no dataflow task is created and no fee is incurred.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the TaskId parameter.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a data flow task is created.
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. Otherwise, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the TaskId parameter.
+        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a dataflow task is created.
         self.dry_run = dry_run
-        # The directory mapped to the data flow task. Limits:
+        # The directory mapped to the dataflow task. Limits:
         # 
         # *   The directory must start and end with a forward slash (/). The directory cannot be /../.
         # *   The directory must be 1 to 1,023 characters in length.
-        # *   The directory must be encoded in UTF-8.
+        # *   Must be encoded in UTF-8.
         # *   Only one directory can be listed at a time.
         # *   If the TaskAction parameter is set to Export, the directory must be a relative path within the SourceStoragePath.
         # *   If the TaskAction parameter is set to Import, the directory must be a relative path within the FileSystemPath.
         # *   If the TaskAction parameter is set to StreamExport, the directory must be a relative path within the SourceStoragePath.
         # *   If the TaskAction parameter is set to StreamImport, the directory must be a relative path within the FileSystemPath.
         # 
-        # >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
+        # >  Only CPFS for Lingjun V2.6.0 and later support StreamImport and StreamExport.
         self.dst_directory = dst_directory
-        # The list of files that are executed by the data flow task.
+        # The list of files that are executed by the dataflow task.
         # 
         # Limits:
         # 
@@ -3188,33 +3187,59 @@ class CreateDataFlowTaskRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # Filters subdirectories and transfers their contents.
         # 
-        # > *   This parameter takes effect only when the Directory parameter is specified.
-        # > *   The path length of a single folder must be 1 to 1023 characters, start and end with a forward slash (/), and the total length must not exceed 3000 characters.
-        # >*   Only CPFS for Lingjun supports this parameter.
+        # > 
+        # 
+        # *   This parameter takes effect only when the Directory parameter is specified.
+        # 
+        # *   The path length of a single folder must be 1 to 1023 characters, start and end with a forward slash (/), and the total length must not exceed 3000 characters.
+        # 
+        # *   Only CPFS for Lingjun supports this parameter.
         self.includes = includes
         # If you specify SrcTaskId, you must enter the ID of the dataflow task. The system copies the TaskAction, DataType, and EntryList parameters from the destination dataflow task. You do not need to specify them.
         # 
         # >  Streaming dataflow tasks are not supported.
         self.src_task_id = src_task_id
-        # The type of the data flow task.
+        # Select the type of the dataflow task.
         # 
-        # Valid values:
+        # Valid value:
         # 
         # *   Import: imports data stored in the source storage to a CPFS file system.
         # *   Export: exports specified data from a CPFS file system to the source storage.
         # *   StreamImport: batch imports the specified data from the source storage to a CPFS file system.
         # *   StreamExport: batch exports specified data from a CPFS file system to the source storage.
+        # *   Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
+        # *   Inventory: obtains the inventory list managed by a dataflow from the CPFS file system, providing the cache status of inventories in the dataflow.
         # 
-        # >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
+        # >  CPFS for Lingjun supports only Import, Export, StreamImport, and StreamExport. Only CPFS for Lingjun V2.6.0 and later support StreamImport and StreamExport.
         self.task_action = task_action
+        # Specify the OSS directory and synchronize data based on the content of the CSV file in the OSS directory. Requirements:
+        # 
+        # *   Must start and end with a forward slash (/).
+        # *   Case-sensitive.
+        # *   Must be 1 to 1023 characters in length.
+        # *   Must be encoded in UTF-8.
+        # 
+        # > 
+        # 
+        # *   TransferFileListPath,Directory, and EntryList are mutually exclusive, and only one of the three can be selected.
+        # 
+        # *   This parameter is the actual path that exists in OSS. The \\*.csv file in the path is stored in OSS.
+        # 
+        # *   TransferFileListPath only supports Import and Export functions.
+        # 
+        # *   In the import scenario, the file or directory specified in the CSV file is imported from OSS to CPFS.
+        # 
+        # *   In the export scenario, the file or directory specified in the CSV file is exported from CPFS to OSS.
+        # 
+        # *   The CSV file format should include the columns Name and Type. Name refers to the relative path, while Type supports two values: dir and file. If Type is dir, the Name must end with a "/".
+        # 
+        # *   Only CPFS for Lingjun supports this operation.
         self.transfer_file_list_path = transfer_file_list_path
 
     def validate(self):
@@ -3720,6 +3745,8 @@ class CreateFileSystemRequest(TeaModel):
         file_system_type: str = None,
         kms_key_id: str = None,
         protocol_type: str = None,
+        redundancy_type: str = None,
+        redundancy_vswitch_ids: List[str] = None,
         resource_group_id: str = None,
         snapshot_id: str = None,
         storage_type: str = None,
@@ -3733,21 +3760,22 @@ class CreateFileSystemRequest(TeaModel):
         # Unit: MB/s.
         # 
         # Specify a value based on the specifications on the buy page.
-        self.bandwidth = bandwidth
-        # The capacity of the file system. Unit: GiB.
         # 
-        # This parameter is valid and required if the FileSystemType parameter is set to extreme.
+        # [CPFS file system (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui\\&commodityCode=nas_cpfspost_public_intl#/buy)
+        self.bandwidth = bandwidth
+        # Specify the capacity of the file system. Unit: GiB. Specify the Capacity parameter when the FileSystemType parameter is set to extreme or cpfs.
         # 
         # Specify a value based on the specifications on the following buy page:
         # 
-        # [Extreme NAS file system (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?commodityCode=nas_extpost_public_intl#/buy)
+        # *   [Extreme NAS file system (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?commodityCode=nas_extpost_public_intl#/buy)
+        # *   [CPFS file system (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui\\&commodityCode=nas_cpfspost_public_intl#/buy)
         self.capacity = capacity
         # The billing method.
         # 
         # Valid values:
         # 
         # *   PayAsYouGo (default): pay-as-you-go
-        # *   Subscription: subscription
+        # *   Subscription
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
@@ -3793,23 +3821,24 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: Cloud Parallel File Storage (CPFS) file system
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
+        # *   extreme: Extreme NAS file system.
+        # *   cpfs: CPFS file system
         self.file_system_type = file_system_type
         # The ID of the KMS key.
         # 
         # This parameter is required only if the EncryptType parameter is set to 2.
         self.kms_key_id = kms_key_id
-        # The protocol type.
+        # Specify the protocol type.
         # 
-        # *   If the FileSystemType parameter is set to standard, you can set the ProtocolType parameter to NFS or SMB.
-        # *   If the FileSystemType parameter is set to extreme, you can set the ProtocolType parameter to NFS.
+        # *   If the FileSystemType parameter is set to standard, set the ProtocolType parameter to NFS or SMB.
+        # *   If the FileSystemType parameter is set to extreme, set the ProtocolType parameter to NFS.
+        # *   If the FileSystemType parameter is set to cpfs, set the ProtocolType parameter to cpfs.
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
+        self.redundancy_type = redundancy_type
+        self.redundancy_vswitch_ids = redundancy_vswitch_ids
         # The resource group ID.
         # 
         # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
@@ -3820,10 +3849,11 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # >  You can create a file system from a snapshot. In this case, the version of the file system is the same as that of the source file system. For example, the source file system of the snapshot uses version 1. To create a file system of version 2, you can create File System A from the snapshot and create File System B of version 2. You can then copy the data and migrate your business from File System A to File System B.
         self.snapshot_id = snapshot_id
-        # The storage class.
+        # The storage type.
         # 
-        # *   If the FileSystemType parameter is set to standard, you can set the StorageType parameter to Performance, Capacity, or Premium.
-        # *   If the FileSystemType parameter is set to extreme, you can set the StorageType parameter to standard or advance.
+        # *   If the FileSystemType parameter is set to standard, set the StorageType parameter to Performance, Capacity, or Premium.
+        # *   If the FileSystemType parameter is set to extreme, set the StorageType parameter to standard or advance.
+        # *   If the FileSystemType parameter is set to cpfs, set the StorageType parameter to advance_100 (100 MB/s/TiB baseline) or advance_200 (200 MB/s/TiB baseline).
         # 
         # This parameter is required.
         self.storage_type = storage_type
@@ -3831,24 +3861,29 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # You can specify up to 20 tags. If you specify multiple tags, each tag key must be unique.
         self.tag = tag
-        # The vSwitch ID.
+        # The vSwitch ID of the cluster.
         # 
-        # This parameter is reserved and does not take effect. You do not need to configure this parameter.
+        # *   This parameter is required only if you set the FileSystemType parameter to cpfs.
+        # *   This parameter is reserved and not required if you set the FileSystemType parameter to standard or extreme.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         # 
-        # This parameter is reserved and does not take effect. You do not need to configure this parameter.
+        # *   This parameter is required only if you set the FileSystemType parameter to cpfs.
+        # *   This parameter is reserved and not required if you set the FileSystemType parameter to standard or extreme.
         self.vpc_id = vpc_id
-        # The zone ID.
+        # The ID of the zone.
         # 
-        # Each region has multiple isolated locations known as zones. Each zone has its own independent power supply and networks.
+        # Each region has multiple isolated locations known as zones. Each zone has its own independent power supply and network.
         # 
         # This parameter is not required if the FileSystemType parameter is set to standard. By default, a random zone is selected based on the protocol type and storage type.
         # 
-        # This parameter is required if the FileSystemType parameter is set to extreme.
+        # This parameter is required if the FileSystemType parameter is set to extreme or cpfs.
         # 
-        # > *   An Elastic Compute Service (ECS) instance and a NAS file system that reside in different zones of the same region can access each other.
-        # >*   We recommend that you select the zone where the ECS instance resides. This prevents cross-zone latency between the file system and the ECS instance.
+        # > 
+        # 
+        # *   An Elastic Compute Service (ECS) instance and a NAS file system that reside in different zones of the same region can access each other.
+        # 
+        # *   We recommend that you select the zone where the ECS instance resides. This prevents cross-zone latency between the file system and the ECS instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3885,6 +3920,10 @@ class CreateFileSystemRequest(TeaModel):
             result['KmsKeyId'] = self.kms_key_id
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
+        if self.redundancy_type is not None:
+            result['RedundancyType'] = self.redundancy_type
+        if self.redundancy_vswitch_ids is not None:
+            result['RedundancyVSwitchIds'] = self.redundancy_vswitch_ids
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.snapshot_id is not None:
@@ -3927,6 +3966,10 @@ class CreateFileSystemRequest(TeaModel):
             self.kms_key_id = m.get('KmsKeyId')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+        if m.get('RedundancyType') is not None:
+            self.redundancy_type = m.get('RedundancyType')
+        if m.get('RedundancyVSwitchIds') is not None:
+            self.redundancy_vswitch_ids = m.get('RedundancyVSwitchIds')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SnapshotId') is not None:
@@ -4029,17 +4072,16 @@ class CreateFilesetRequestQuota(TeaModel):
         file_count_limit: int = None,
         size_limit: int = None,
     ):
-        # The number of files of the quota. Valid values:
+        # The file quantity quota. Valid values:
         # 
         # *   Minimum value: 100000.
         # *   Maximum value: 10000000000.
         self.file_count_limit = file_count_limit
-        # The total capacity of the quota. Unit: bytes.
+        # The total quota capacity limit. Unit: bytes.
         # 
         # Valid values:
         # 
-        # *   Minimum value: 10737418240 (10 GiB).
-        # *   Maximum value: 1073741824000 (1024000 GiB).
+        # *   Minimum value: 10,737,418,240 (10 GiB).
         # *   Step size: 1073741824 (1 GiB).
         self.size_limit = size_limit
 
@@ -4080,11 +4122,11 @@ class CreateFilesetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation.
+        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
         # 
         # *   true: enables release protection.
         # *   false (default): disables release protection.
@@ -4094,41 +4136,48 @@ class CreateFilesetRequest(TeaModel):
         # The description of the fileset.
         # 
         # *   The description must be 2 to 128 characters in length.
-        # *   The description must start with a letter but cannot start with http:// or https://.
-        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # *   The name must start with a letter and cannot start with http:// or https://.
+        # *   The description can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run.
         # 
         # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset is created and no fee is incurred.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FsetId parameter.
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. Otherwise, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FsetId parameter.
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is created.
         self.dry_run = dry_run
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # The absolute path of the fileset.
         # 
-        # *   The path must be 2 to 1024 characters in length.
-        # *   The path must start and end with a forward slash (/).
-        # *   The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
-        # *   The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
-        # *   If the fileset path is a multi-level path, the parent directory must be an existing directory.
-        # *   Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+        # *   CPFS path limits.
+        # 
+        #     *   The parent directory of the path that you specify must be an existing directory in the file system.
+        #     *   The path must be 2 to 1024 characters in length.
+        #     *   The path must start and end with a forward slash (/).
+        # 
+        # *   Path limit of CPFS for Lingjun
+        # 
+        #     *   The path must be 2 to 1024 characters in length.
+        #     *   The path must start and end with a forward slash (/).
+        #     *   The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+        #     *   The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+        #     *   If the fileset path is a multi-level path, the parent directory must be an existing directory.
+        #     *   Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+        #     *   The path cannot exceed 990 characters in length.
         # 
         # This parameter is required.
         self.file_system_path = file_system_path
         # The quota information.
         # 
-        # >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+        # >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
         self.quota = quota
 
     def validate(self):
@@ -4185,7 +4234,7 @@ class CreateFilesetResponseBody(TeaModel):
     ):
         # The fileset ID.
         self.fset_id = fset_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4813,9 +4862,7 @@ class CreateMountTargetRequest(TeaModel):
         # 
         # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -5007,6 +5054,7 @@ class CreateProtocolMountTargetRequest(TeaModel):
         path: str = None,
         protocol_service_id: str = None,
         v_switch_id: str = None,
+        v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
         # The name of the permission group.
@@ -5065,12 +5113,9 @@ class CreateProtocolMountTargetRequest(TeaModel):
         # This parameter is required.
         self.protocol_service_id = protocol_service_id
         # The vSwitch ID of the export directory for the protocol service.
-        # 
-        # This parameter is required.
         self.v_switch_id = v_switch_id
+        self.v_switch_ids = v_switch_ids
         # The VPC ID of the export directory for the protocol service.
-        # 
-        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5100,6 +5145,8 @@ class CreateProtocolMountTargetRequest(TeaModel):
             result['ProtocolServiceId'] = self.protocol_service_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -5124,6 +5171,8 @@ class CreateProtocolMountTargetRequest(TeaModel):
             self.protocol_service_id = m.get('ProtocolServiceId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -5268,12 +5317,8 @@ class CreateProtocolServiceRequest(TeaModel):
         # Unit: MB/s.
         self.throughput = throughput
         # The vSwitch ID of the protocol service.
-        # 
-        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID of the protocol service. The VPC ID of the protocol service must be the same as the VPC ID of the file system.
-        # 
-        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6056,8 +6101,8 @@ class DeleteAccessRuleRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
+        # *   standard (default): General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
 
     def validate(self):
@@ -6274,7 +6319,7 @@ class DeleteDataFlowRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -6290,9 +6335,7 @@ class DeleteDataFlowRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -6408,8 +6451,6 @@ class DeleteFileSystemRequest(TeaModel):
         # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
         # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-00cb6fa094ca\\*\\*\\*\\*.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -6529,9 +6570,7 @@ class DeleteFilesetRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -6978,9 +7017,7 @@ class DeleteMountTargetRequest(TeaModel):
         # 
         # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -7474,17 +7511,15 @@ class DescribeAccessGroupsRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system.
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
         # *   extreme: Extreme NAS file system.
-        # *   cpfs: Cloud Parallel File Storage (CPFS) file system.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   cpfs: CPFS file system.
         self.file_system_type = file_system_type
         # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of permission groups returned per page.
         # 
         # Valid values: 1 to 100.
         # 
@@ -7558,11 +7593,9 @@ class DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard: General-purpose File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: Cloud Parallel File Storage (CPFS) file system
-        # 
-        # >  CPFS file systems are available only on the China site (aliyun.com).
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
+        # *   extreme: Extreme NAS file system.
+        # *   cpfs: CPFS file system.
         self.file_system_type = file_system_type
         # The number of mount targets to which the permission group is attached.
         self.mount_target_count = mount_target_count
@@ -8670,8 +8703,8 @@ class DescribeAccessRulesRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
+        # *   standard (default): General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
         # The page number.
         # 
@@ -10106,35 +10139,35 @@ class DescribeDataFlowTasksRequestFilters(TeaModel):
     ):
         # The filter name.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   DataFlowIds: filters data flow tasks by data flow ID.
-        # *   TaskIds: filters data flow tasks by task ID.
-        # *   Originator: filters data flow tasks by task initiator.
-        # *   TaskActions: filters data flow tasks by task type.
-        # *   DataTypes: filters data flow tasks by data type.
-        # *   Status: filters data flow tasks by data flow status.
-        # *   CreateTimeBegin: filters data flow tasks that are created after a specified time.
-        # *   CreateTimeEnd: filters data flow tasks that are created before a specified time.
-        # *   StartTimeBegin: filters data flow tasks that are started after a specified time.
-        # *   StartTimeEnd: filters data flow tasks that are started before a specified time.
-        # *   EndTimeBegin: filters data flow tasks that are stopped after a specified time.
-        # *   EndTimeEnd: filters data flow tasks that are stopped before a specified time.
+        # *   DataFlowIds: filters dataflow tasks by dataflow ID.
+        # *   TaskIds: filters dataflow tasks by task ID.
+        # *   Originator: filters dataflow tasks by task initiator.
+        # *   TaskActions: filters dataflow tasks by task type.
+        # *   DataTypes: filters dataflow tasks by data type.
+        # *   Status: filters dataflow tasks by dataflow status.
+        # *   CreateTimeBegin: filters dataflow tasks that are created after a specified time.
+        # *   CreateTimeEnd: filters dataflow tasks that are created before a specified time.
+        # *   StartTimeBegin: filters dataflow tasks that are started after a specified time.
+        # *   StartTimeEnd: filters dataflow tasks that are started before a specified time.
+        # *   EndTimeBegin: filters dataflow tasks that are stopped after a specified time.
+        # *   EndTimeEnd: filters dataflow tasks that are stopped before a specified time.
         self.key = key
-        # The filter value. This parameter does not support wildcards.
+        # The value of the filter. This parameter does not support wildcards.
         # 
-        # *   If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
-        # *   If Key is set to TaskId, set Value to a data flow task ID or a part of the data flow task ID. You can specify a data flow task ID or a group of data flow task IDs. You can specify a maximum of 10 data flow task IDs. Example: `task-38aa8e890f45****` or `task-38aa8e890f45****,task-29ae8e890f45****`.
-        # *   If Key is set to TaskActions, set Value to the type of data flow task. The task type can be **Import**, **Export**, **Evict**, **Inventory**, **StreamImport**, or **StreamExport**. Combined query is supported. CPFS for LINGJUN supports only the Import, Export, StreamImport, and StreamExport tasks. Only CPFS for LINGJUN V2.6.0 and later support the StreamImport and StreamExport tasks.
-        # *   If Key is set to DataTypes, set Value to the data type of the data flow task. The data type can be MetaAndData, Metadata, or Data. Combined query is supported.
-        # *   If Key is set to Originator, set Value to the initiator of the data flow task. The initiator can be User or System.
-        # *   If Key is set to Status, set Value to the status of the data flow task. The status can be Pending, Executing, Failed, Completed, Canceling, or Canceled. Combined query is supported.
-        # *   If Key is set to CreateTimeBegin, set Value to the beginning of the time range to create the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to CreateTimeEnd, set Value to the end of the time range to create the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to StartTimeBegin, set Value to the beginning of the time range to start the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to StartTimeEnd, set Value to the end of the time range to start the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to EndTimeBegin, set Value to the beginning of the time range to stop the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to EndTimeEnd, set Value to the end of the time range to stop the data flow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # *   If Key is set to DataFlowIds, set Value to a dataflow ID or a part of the dataflow ID. You can specify a dataflow ID or a group of dataflow IDs. You can specify a maximum of 10 dataflow IDs. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
+        # *   If Key is set to TaskId, set Value to a dataflow task ID or a part of the dataflow task ID. You can specify a dataflow task ID or a group of dataflow task IDs. You can specify a maximum of 10 dataflow task IDs. Example: `task-38aa8e890f45****` or `task-38aa8e890f45****,task-29ae8e890f45****`.
+        # *   If Key is set to TaskActions, set Value to the type of dataflow task. The task type can be **Import**, **Export**, **Evict**, **Inventory**, **StreamImport**, or **StreamExport**. Combined query is supported. CPFS for Lingjun supports only the Import, Export, StreamImport, and StreamExport tasks. Only CPFS for Lingjun V2.6.0 and later support the StreamImport and StreamExport tasks.
+        # *   If Key is set to DataTypes, set Value to the data type of the dataflow task. The data type can be MetaAndData, Metadata, or Data. Combined query is supported.
+        # *   If Key is set to Originator, set Value to the initiator of the dataflow task. The initiator can be User or System.
+        # *   If Key is set to Status, set Value to the status of the dataflow task. The status can be Pending, Executing, Failed, Completed, Canceling, or Canceled. Combined query is supported.
+        # *   If Key is set to CreateTimeBegin, set Value to the beginning of the time range to create the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # *   If Key is set to CreateTimeEnd, set Value to the end of the time range to create the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # *   If Key is set to StartTimeBegin, set Value to the beginning of the time range to start the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # *   If Key is set to StartTimeEnd, set Value to the end of the time range to start the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # *   If Key is set to EndTimeBegin, set Value to the beginning of the time range to stop the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # *   If Key is set to EndTimeEnd, set Value to the end of the time range to stop the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
         self.value = value
 
     def validate(self):
@@ -10173,9 +10206,7 @@ class DescribeDataFlowTasksRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*. .
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -10189,6 +10220,16 @@ class DescribeDataFlowTasksRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # Whether to query report information.
+        # 
+        # *   True (default)
+        # *   False
+        # 
+        # > 
+        # 
+        # *   Set it to False to speed up the query.
+        # 
+        # *   Only CPFS for Lingjun supports this parameter.
         self.with_reports = with_reports
 
     def validate(self):
@@ -10247,17 +10288,17 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats(TeaModel):
         files_total: int = None,
         remain_time: int = None,
     ):
-        # The actual amount of data for which the data flow task is complete. Unit: bytes.
+        # The actual amount of data for which the dataflow task is complete. Unit: bytes.
         self.actual_bytes = actual_bytes
-        # The actual number of files for which the data flow task is complete.
+        # The actual number of files for which the dataflow task is complete.
         self.actual_files = actual_files
         # The average flow velocity. Unit: bytes/s.
         self.average_speed = average_speed
-        # The amount of data (including skipped data) for which the data flow task is complete. Unit: bytes.
+        # The amount of data (including skipped data) for which the dataflow task is complete. Unit: bytes.
         self.bytes_done = bytes_done
         # The amount of data scanned on the source. Unit: bytes.
         self.bytes_total = bytes_total
-        # The number of files (including skipped files) for which the data flow task is complete.
+        # The number of files (including skipped files) for which the dataflow task is complete.
         self.files_done = files_done
         # The number of files scanned on the source.
         self.files_total = files_total
@@ -10324,7 +10365,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport(TeaModel):
         # 
         #     TotalFilesReport: task reports.
         # 
-        # *   CPFS for LINGJUN:
+        # *   CPFS for Lingjun:
         # 
         #     *   FailedFilesReport: failed file reports.
         #     *   SkippedFilesReport: skipped file reports.
@@ -10427,21 +10468,21 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.conflict_policy = conflict_policy
         # The time when the task was created.
         self.create_time = create_time
-        # The ID of the data flow.
+        # The ID of the dataflow.
         self.data_flow_id = data_flow_id
-        # The type of data on which operations are performed by the data flow task. Valid values:
+        # The type of data on which operations are performed by the dataflow task. The following information is displayed:
         # 
         # *   Metadata: the metadata of a file, including the timestamp, ownership, and permission information of the file. If you select Metadata, only the metadata of the file is imported. You can only query the file. When you access the file data, the file is loaded from the source storage as required.
         # *   Data: the data blocks of the file.
         # *   MetaAndData: the metadata and data blocks of the file.
         # 
-        # >  CPFS for LINGJUN supports only the MetaAndData type.
+        # >  CPFS for Lingjun supports only the MetaAndData type.
         self.data_type = data_type
-        # The directory in which the data flow task is executed.
+        # The directory in which the dataflow task is executed.
         self.directory = directory
-        # The directory mapped to the data flow task.
+        # The directory mapped to the dataflow task.
         self.dst_directory = dst_directory
-        # The time when the task ended.
+        # The end time of the task.
         self.end_time = end_time
         # The cause of the task exception.
         # 
@@ -10462,31 +10503,39 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.filesystem_id = filesystem_id
         # The path of the smart directory.
         self.fs_path = fs_path
-        # Filter the directories under directory and transfer the folder contents contained in the filtered directory.
+        # Filters subdirectories and transfers their contents.
+        # 
+        # >  Only CPFS for Lingjun supports this operation.
         self.includes = includes
-        # The initiator of the data flow task. Valid values:
+        # The initiator of the dataflow task. The following information is displayed:
         # 
         # *   User: The task is initiated by a user.
         # *   System: The task is automatically initiated by CPFS based on the automatic update interval.
         # 
         # >  Only CPFS supports this parameter.
         self.originator = originator
-        # The progress of the data flow task. The number of operations that have been performed by the data flow task.
+        # The progress of the dataflow task. The number of operations that have been performed by the dataflow task.
         self.progress = progress
-        # The progress of the data flow task.
+        # The progress of the dataflow task.
         self.progress_stats = progress_stats
-        # The save path of data flow task reports in the CPFS file system.
+        # The save path of dataflow task reports in the CPFS file system.
         # 
         # *   The task reports for a CPFS file system are generated in the `.dataflow_report` directory of the CPFS file system.
-        # *   CPFS for LINGJUN returns an OSS download link for you to download the task reports.
+        # *   CPFS for Lingjun returns an OSS download link for you to download the task reports.
         self.report_path = report_path
         # The reports.
         # 
-        # >  Streaming tasks do not support reports.
+        # > 
+        # 
+        # *   Streaming tasks do not support reports.
+        # 
+        # *   If the WithReport parameter is set to True, the CPFS for Lingjun report data is returned.
+        # 
+        # *   Only CPFS for Lingjun supports the WithReport parameter.
         self.reports = reports
         # The access path of the source storage. Format: `<storage type>://[<account id>:]<path>`.
         # 
-        # Parameters:
+        # Among them:
         # 
         # *   storage type: Only Object Storage Service (OSS) is supported.
         # 
@@ -10502,32 +10551,35 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         # 
         # *   The OSS bucket must be an existing bucket in the region.
         # 
-        # *   Only CPFS for LINGJUN V2.6.0 and later support the account id parameter.
+        # *   Only CPFS for Lingjun V2.6.0 and later support the account id parameter.
         self.source_storage = source_storage
-        # The time when the task started.
+        # The start time of the task.
         self.start_time = start_time
-        # The status of the data flow task. Valid values:
+        # The status of the dataflow task. The following information is displayed:
         # 
-        # *   Pending: The data flow task has been created and has not started.
-        # *   Executing: The data flow task is being executed.
-        # *   Failed: The data flow task failed to be executed. You can view the cause of the failure in the data flow task report.
-        # *   Completed: The data flow task is completed. You can check that all the files have been correctly transferred in the data flow task report.
-        # *   Canceled: The data flow task is canceled and is not completed.
-        # *   Canceling: The data flow task is being canceled.
+        # *   Pending: The dataflow task has been created and has not started.
+        # *   Executing: The dataflow task is being executed.
+        # *   Failed: The dataflow task failed to be executed. You can view the cause of the failure in the dataflow task report.
+        # *   Completed: The dataflow task is completed. You can check that all the files have been correctly transferred in the dataflow task report.
+        # *   Canceled: The dataflow task is canceled and is not completed.
+        # *   Canceling: The dataflow task is being canceled.
         self.status = status
-        # The type of the data flow task. Valid values:
+        # The type of the dataflow task. The following information is displayed:
         # 
         # *   Import: imports data stored in the source storage to a CPFS file system.
         # *   Export: exports specified data from a CPFS file system to the source storage.
         # *   StreamImport: imports the specified data from the source storage to a CPFS file system in streaming mode.
         # *   StreamExport: exports specified data from a CPFS file system to the source storage in streaming mode.
         # *   Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
-        # *   Inventory: obtains the inventory list managed by a data flow from the CPFS file system, providing the cache status of inventories in the data flow.
+        # *   Inventory: obtains the inventory list managed by a dataflow from the CPFS file system, providing the cache status of inventories in the dataflow.
         # 
-        # >  Only CPFS for LINGJUN V2.6.0 and later support StreamImport and StreamExport.
+        # >  Only CPFS for Lingjun V2.6.0 and later support StreamImport and StreamExport.
         self.task_action = task_action
-        # The ID of the data flow task.
+        # The ID of the dataflow task.
         self.task_id = task_id
+        # Specify the OSS directory and synchronize data based on the content of the CSV file in the OSS directory.
+        # 
+        # >  Only CPFS for Lingjun supports this operation.
         self.transfer_file_list_path = transfer_file_list_path
 
     def validate(self):
@@ -10685,11 +10737,11 @@ class DescribeDataFlowTasksResponseBody(TeaModel):
         request_id: str = None,
         task_info: DescribeDataFlowTasksResponseBodyTaskInfo = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about data flow tasks.
+        # The information about dataflow tasks.
         self.task_info = task_info
 
     def validate(self):
@@ -10769,25 +10821,25 @@ class DescribeDataFlowsRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter name. Valid values:
+        # The filter name. Valid value:
         # 
-        # *   DataFlowIds: filters data flows by data flow ID.
-        # *   FsetIds: filters data flows by fileset ID.
-        # *   FileSystemPath: filters data flows based on the path of a fileset in a CPFS file system.
-        # *   SourceStorage: filters data flows based on the access path of the source storage.
-        # *   ThroughputList: filters data flows based on data flow throughput.
-        # *   Description: filters data flows based on the fileset description.
-        # *   Status: filters data flows based on data flow status.
+        # *   DataFlowIds: filters dataflow tasks by dataflow ID.
+        # *   FsetIds: filters dataflows by fileset ID.
+        # *   FileSystemPath: filters dataflows based on the path of a fileset in a CPFS file system.
+        # *   SourceStorage: filters dataflows based on the access path of the source storage.
+        # *   ThroughputList: filters dataflows based on dataflow throughput.
+        # *   Description: filters dataflows based on the fileset description.
+        # *   Status: filters dataflows based on dataflow status.
         self.key = key
-        # The filter value. This parameter does not support wildcards.
+        # The value of the filter. This parameter does not support wildcards.
         # 
-        # *   If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `df-194433a5be31****` or `df-194433a5be31****,df-184433a5be31****`.
-        # *   If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-1242718ea0ae****`.
+        # *   If Key is set to DataFlowIds, set Value to a dataflow ID or a part of the dataflow ID. You can specify a dataflow ID or a group of dataflow IDs. You can specify a maximum of 10 dataflow IDs. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
+        # *   If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. For example, `fset-1902718ea0ae****` or `fset-235718ea0ae****,fset-5122718ea0ae****`.
         # *   If Key is set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value of the parameter must be 1 to 1,024 characters in length.
         # *   If Key is set to SourceStorage, set Value to the access path or a part of the access path of the source storage. The path can be up to 1,024 characters in length.
-        # *   If Key is set to ThroughputList, set Value to the data flow throughput. Combined query is supported.
-        # *   If Key is set to Description, set Value to a data flow description or a part of the data flow description.
-        # *   If Key is set to Status, set Value to the data flow status.
+        # *   If Key is set to ThroughputList, set Value to the dataflow throughput. Combined query is supported.
+        # *   If Key is set to Description, set Value to a dataflow description or a part of the dataflow description.
+        # *   If Key is set to Status, set Value to the dataflow status.
         # *   If Key is set to SourceStoragePath, set Value to the access path or a part of the access path of the source storage. The path can be up to 1,024 characters in length.
         self.value = value
 
@@ -10826,13 +10878,11 @@ class DescribeDataFlowsRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
-        # 
-        # >  CPFS file systems are available only on the China site (aliyun.com).
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The filter that is used to query data flows.
+        # The filter that is used to query dataflows.
         self.filters = filters
         # The number of results for each query.
         # 
@@ -10983,28 +11033,30 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # 
         # >  Only CPFS supports this parameter.
         self.auto_refresh_interval = auto_refresh_interval
-        # The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy. Valid values:
+        # The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy. The following information is displayed:
         # 
-        # *   None: Updated data in the source storage is not automatically imported into the CPFS file system. You can run a data flow task to import the updated data from the source storage.
+        # *   None: Updated data in the source storage is not automatically imported into the CPFS file system. You can run a dataflow task to import the updated data from the source storage.
         # *   ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
         # 
-        # >  Only CPFS supports this parameter.
+        # >  Only CPFS is supported.
         self.auto_refresh_policy = auto_refresh_policy
         # The time when the fileset was created.
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # 
+        # >  Only CPFS supports this parameter.
         self.create_time = create_time
-        # The dataflow ID.
+        # The ID of the dataflow.
         self.data_flow_id = data_flow_id
         # The description of the dataflow.
         # 
         # Limits:
         # 
-        # *   The description must be 2 to 128 characters in length.
-        # *   The description must start with a letter but cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # *   The name must be 2 to 128 characters in length and
+        # *   start with a letter but cannot start with `http://` or `https://`.
+        # *   The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
         self.description = description
-        # The error message returned. Valid values:
+        # The error message. Valid values:
         # 
         # *   None (default): The dataflow status is normal.
         # *   SourceStorageUnreachable: The access path of the source storage is not found.
@@ -11016,44 +11068,52 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # 
         # Limits:
         # 
-        # *   The directory must be 2 to 1,024 characters in length.
+        # *   The directory must be 2 to 1024 characters in length.
         # *   The directory must be encoded in UTF-8.
         # *   The directory must start and end with a forward slash (/).
         # *   The directory must be a fileset directory in the CPFS file system.
         # 
-        # >  Only CPFS supports this parameter.
+        # >  Only CPFS is supported.
         self.file_system_path = file_system_path
         # The description of the automatic update.
         # 
         # >  Only CPFS supports this parameter.
         self.fset_description = fset_description
         # The fileset ID.
-        self.fset_id = fset_id
-        # The type of security mechanism for the source storage. This parameter must be specified if the source storage is accessed with a security mechanism. Valid values:
         # 
-        # *   None (default): The source storage can be accessed without a security mechanism.
+        # >  Only CPFS supports this parameter.
+        self.fset_id = fset_id
+        # The type of security mechanism for the source storage. This parameter must be specified if the source storage is accessed with a security mechanism. Valid value:
+        # 
+        # *   Null (default): The OSS bucket can be accessed without a security mechanism.
         # *   SSL: The source storage must be accessed with an SSL certificate.
         self.source_security_type = source_security_type
-        # The access path of the source storage. Format: `<storage type>://<path>`.
+        # The access path of the source storage. Format: `<storage type>://[<account id>:]<path>`.
         # 
-        # Parameters:
+        # Among them:
         # 
-        # *   storage type: Only Object Storage Service (OSS) is supported.
+        # *   storage type: Only OSS is supported.
         # 
-        # *   path: the name of the OSS bucket.
+        # *   account id: The UID of the account of the source storage.
+        # 
+        # *   path: The name of the OSS bucket.
         # 
         #     *   The name can contain only lowercase letters, digits, and hyphens (-). The name must start and end with a lowercase letter or digit.
         #     *   The name must be 8 to 128 characters in length.
-        #     *   The name must be encoded in UTF-8.
+        #     *   Must be encoded in UTF-8.
         #     *   The name cannot start with http:// or https://.
         # 
-        # >  The OSS bucket must be an existing bucket in the region.
+        # > 
+        # 
+        # *   The OSS bucket must be an existing bucket in the region.
+        # 
+        # *   Only CPFS for Lingjun V2.6.0 and later support the account id parameter.
         self.source_storage = source_storage
         # The access path in the bucket of the source storage.
         # 
-        # >  Only CPFS for LINGJUN supports this parameter.
+        # >  Only CPFS for Lingjun supports this parameter.
         self.source_storage_path = source_storage_path
-        # The dataflow status. Valid values:
+        # The dataflow status. The following information is displayed:
         # 
         # *   Starting: The dataflow is being created or enabled.
         # *   Running: The dataflow has been created and is running properly.
@@ -11063,17 +11123,23 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # *   Stopped: The dataflow has been disabled.
         # *   Misconfigured: The dataflow configuration is abnormal. For example, the source storage is inaccessible, and the automatic update cannot be completed due to low dataflow throughput.
         self.status = status
-        # The maximum dataflow throughput. Unit: MB/s. Valid values:
+        # The maximum dataflow throughput. Unit: MB/s. Valid value:
         # 
         # *   600
-        # *   1,200
-        # *   1,500
+        # *   1200
+        # *   1500
         # 
-        # >  The dataflow throughput must be less than the I/O throughput of the file system.
+        # > 
+        # 
+        # *   The dataflow throughput must be less than the I/O throughput of the file system.
+        # 
+        # *   Only CPFS supports this parameter.
         self.throughput = throughput
         # The time when the fileset was last updated.
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # 
+        # >  Only CPFS supports this parameter.
         self.update_time = update_time
 
     def validate(self):
@@ -11204,7 +11270,7 @@ class DescribeDataFlowsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details about data flows.
+        # The dataflow details.
         self.data_flow_info = data_flow_info
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -12176,10 +12242,9 @@ class DescribeFileSystemsRequest(TeaModel):
     ):
         # The ID of the file system.
         # 
-        # - Sample ID of a General-purpose NAS file system: 31a8e4****.
-        # - The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015****.
-        # - The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487****.
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+        # *   The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of CPFS file systems must start with cpfs-. Example: cpfs-125487\\*\\*\\*\\*.
         self.file_system_id = file_system_id
         # The type of the file system.
         # 
@@ -12188,10 +12253,9 @@ class DescribeFileSystemsRequest(TeaModel):
         # *   all (default): All types.
         # *   standard: General-purpose NAS file system.
         # *   extreme: Extreme NAS file system.
-        # *   cpfs: Cloud Parallel File Storage (CPFS) file system.
+        # *   cpfs: CPFS file system.
         # 
-        # > *   CPFS file systems are available only on the China site (aliyun.com).
-        # > *   Separate multiple file types with commas (,).
+        # >  Separate multiple data types with commas (,).
         self.file_system_type = file_system_type
         # The page number.
         # 
@@ -12720,6 +12784,33 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages(TeaModel):
         return self
 
 
+class DescribeFileSystemsResponseBodyFileSystemsFileSystemRedundancyVSwitchIds(TeaModel):
+    def __init__(
+        self,
+        redundancy_vswitch_id: List[str] = None,
+    ):
+        self.redundancy_vswitch_id = redundancy_vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.redundancy_vswitch_id is not None:
+            result['RedundancyVSwitchId'] = self.redundancy_vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RedundancyVSwitchId') is not None:
+            self.redundancy_vswitch_id = m.get('RedundancyVSwitchId')
+        return self
+
+
 class DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures(TeaModel):
     def __init__(
         self,
@@ -12868,6 +12959,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         packages: DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages = None,
         protocol_type: str = None,
         quorum_vsw_id: str = None,
+        redundancy_type: str = None,
+        redundancy_vswitch_ids: DescribeFileSystemsResponseBodyFileSystemsFileSystemRedundancyVSwitchIds = None,
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
@@ -12918,13 +13011,11 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.file_system_id = file_system_id
         # The file system type.
         # 
-        # Valid values:
+        # The following information is displayed:
         # 
         # *   standard: General-purpose NAS file system.
         # *   extreme: Extreme NAS file system.
         # *   cpfs: CPFS file system.
-        # 
-        # >  CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
         # The ID of the key that is managed by Key Management Service (KMS).
         self.kmskey_id = kmskey_id
@@ -12952,16 +13043,16 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.packages = packages
         # The protocol type of the file system.
         # 
-        # Valid values:
+        # The following information is displayed:
         # 
         # *   NFS: Network File System.
         # *   SMB: Server Message Block.
         # *   cpfs: The protocol type supported by the CPFS file system.
-        # 
-        # >  CPFS file systems are available only on the China site (aliyun.com).
         self.protocol_type = protocol_type
         # The vSwitch ID.
         self.quorum_vsw_id = quorum_vsw_id
+        self.redundancy_type = redundancy_type
+        self.redundancy_vswitch_ids = redundancy_vswitch_ids
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
@@ -12974,13 +13065,13 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # - Stopping: The file system is being stopped.
         # - Deleting: The file system is being deleted.
         self.status = status
-        # The storage type.
+        # The type of the storage.
         # 
-        # Valid values:
-        # - Valid values for General-purpose NAS file systems: Capacity,Premium and Performance.
-        # - Valid values for Extreme NAS file systems: standard and advance.
-        # - Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
-        #  > CPFS file systems are available only on the China site (aliyun.com).
+        # The following information is displayed:
+        # 
+        # *   Valid values for General-purpose NAS file systems: Capacity, Performance, and Premium
+        # *   Valid values for Extreme NAS file systems: standard and advance
+        # *   Valid values for Cloud Parallel File Storage (CPFS) file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline)
         self.storage_type = storage_type
         # The features that are supported by the file system.
         self.supported_features = supported_features
@@ -13008,6 +13099,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.options.validate()
         if self.packages:
             self.packages.validate()
+        if self.redundancy_vswitch_ids:
+            self.redundancy_vswitch_ids.validate()
         if self.supported_features:
             self.supported_features.validate()
         if self.tags:
@@ -13063,6 +13156,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['ProtocolType'] = self.protocol_type
         if self.quorum_vsw_id is not None:
             result['QuorumVswId'] = self.quorum_vsw_id
+        if self.redundancy_type is not None:
+            result['RedundancyType'] = self.redundancy_type
+        if self.redundancy_vswitch_ids is not None:
+            result['RedundancyVSwitchIds'] = self.redundancy_vswitch_ids.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -13135,6 +13232,11 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.protocol_type = m.get('ProtocolType')
         if m.get('QuorumVswId') is not None:
             self.quorum_vsw_id = m.get('QuorumVswId')
+        if m.get('RedundancyType') is not None:
+            self.redundancy_type = m.get('RedundancyType')
+        if m.get('RedundancyVSwitchIds') is not None:
+            temp_model = DescribeFileSystemsResponseBodyFileSystemsFileSystemRedundancyVSwitchIds()
+            self.redundancy_vswitch_ids = temp_model.from_map(m['RedundancyVSwitchIds'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -13359,8 +13461,6 @@ class DescribeFilesetsRequest(TeaModel):
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
         # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         # 
-        # >  CPFS is not supported on the international site.
-        # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # The filter that is used to query filesets.
@@ -13494,12 +13594,12 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation. Valid values:
+        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true: enables release protection.
+        # *   false: disables release protection.
         # 
-        # >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+        # > This parameter can protect filesets only against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
@@ -13511,8 +13611,6 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
         # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
         self.file_system_id = file_system_id
         # The fileset path.
         self.file_system_path = file_system_path
@@ -13649,8 +13747,6 @@ class DescribeFilesetsResponseBody(TeaModel):
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
         # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
         self.file_system_id = file_system_id
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -14563,13 +14659,11 @@ class DescribeMountTargetsRequest(TeaModel):
         # 
         # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The domain name of the mount target.
+        # The address of the mount target.
         self.mount_target_domain = mount_target_domain
         # The page number.
         # 
@@ -15456,6 +15550,7 @@ class DescribeProtocolMountTargetRequest(TeaModel):
         filters: List[DescribeProtocolMountTargetRequestFilters] = None,
         max_results: int = None,
         next_token: str = None,
+        protocol_service_ids: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
@@ -15476,6 +15571,7 @@ class DescribeProtocolMountTargetRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.protocol_service_ids = protocol_service_ids
 
     def validate(self):
         if self.filters:
@@ -15501,6 +15597,8 @@ class DescribeProtocolMountTargetRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.protocol_service_ids is not None:
+            result['ProtocolServiceIds'] = self.protocol_service_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -15518,6 +15616,8 @@ class DescribeProtocolMountTargetRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ProtocolServiceIds') is not None:
+            self.protocol_service_ids = m.get('ProtocolServiceIds')
         return self
 
 
@@ -15535,6 +15635,7 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(TeaModel):
         protocol_type: str = None,
         status: str = None,
         v_switch_id: str = None,
+        v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
         # The permission group that is associated with the export directory of the protocol service.
@@ -15559,6 +15660,7 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(TeaModel):
         self.status = status
         # The vSwitch ID of the export directory for the protocol service.
         self.v_switch_id = v_switch_id
+        self.v_switch_ids = v_switch_ids
         # The VPC ID of the export directory for the protocol service.
         self.vpc_id = vpc_id
 
@@ -15593,6 +15695,8 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(TeaModel):
             result['Status'] = self.status
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -15621,6 +15725,8 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(TeaModel):
             self.status = m.get('Status')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -15832,6 +15938,8 @@ class DescribeProtocolServiceResponseBodyProtocolServices(TeaModel):
         protocol_throughput: int = None,
         protocol_type: str = None,
         status: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
     ):
         # The time when the protocol service was created. The time is displayed in UTC.
         self.create_time = create_time
@@ -15882,6 +15990,8 @@ class DescribeProtocolServiceResponseBodyProtocolServices(TeaModel):
         # *   Stopping: The protocol service is being stopped.
         # *   Stopped: The protocol service is stopped.
         self.status = status
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -15918,6 +16028,10 @@ class DescribeProtocolServiceResponseBodyProtocolServices(TeaModel):
             result['ProtocolType'] = self.protocol_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15948,6 +16062,10 @@ class DescribeProtocolServiceResponseBodyProtocolServices(TeaModel):
             self.protocol_type = m.get('ProtocolType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -17139,13 +17257,11 @@ class DescribeZonesRequest(TeaModel):
     ):
         # The type of the file system.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: Cloud Parallel File Storage (CPFS) file system
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
+        # *   extreme: Extreme NAS file system.
+        # *   cpfs: CPFS file system.
         self.file_system_type = file_system_type
         # The ID of the region where you want to query zones.
         # 
@@ -17216,16 +17332,12 @@ class DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType(TeaModel):
         # *   If the FileSystemType parameter is set to standard, the protocol type is nfs or smb.
         # *   If the FileSystemType parameter is set to extreme, the protocol type is nfs.
         # *   If the FileSystemType parameter is set to cpfs, the protocol type is cpfs.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
         self.protocol_type = protocol_type
         # The storage type.
         # 
         # *   If the FileSystemType parameter is set to standard, the storage type is Performance or Capacity.
         # *   If the FileSystemType parameter is set to extreme, the storage type is standard or advance.
         # *   If the FileSystemType parameter is set to cpfs, the storage type is advance_100 (100 MB/s/TiB baseline) or advance_200 (200 MB/s/TiB baseline).
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
         self.storage_type = storage_type
 
     def validate(self):
@@ -20590,8 +20702,8 @@ class ModifyAccessRuleRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
+        # *   standard (default): General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
         # The IPv6 address or CIDR block of the authorized object.
         # 
@@ -20611,8 +20723,8 @@ class ModifyAccessRuleRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   RDWR (default): the read and write permissions
-        # *   RDONLY: the read-only permissions
+        # *   RDWR (default): the read and write permissions.
+        # *   RDONLY: the read-only permissions.
         self.rwaccess_type = rwaccess_type
         # The IP address or CIDR block of the authorized object.
         # 
@@ -20914,7 +21026,7 @@ class ModifyDataFlowRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -20938,9 +21050,7 @@ class ModifyDataFlowRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -21072,33 +21182,33 @@ class ModifyDataFlowAutoRefreshRequest(TeaModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
-        # The automatic update interval. CPFS checks whether data is updated in the directory at the interval. If data is updated, CPFS runs an AutoRefresh task. Unit: minutes.
+        # The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minute.
         # 
         # Valid values: 5 to 526600. Default value: 10.
         self.auto_refresh_interval = auto_refresh_interval
-        # The automatic update policy. CPFS imports data updates in the Object Storage Service (OSS) bucket to the CPFS file system based on this policy. Valid values:
+        # The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy. The following information is displayed:
         # 
-        # *   None: CPFS does not automatically import data updates in the OSS bucket to the CPFS file system. You can import the data updates by using a dataflow task.
-        # *   ImportChanged: CPFS automatically imports data updates in the OSS bucket to the CPFS file system.
+        # *   None: Updated data in the source storage is not automatically imported into the CPFS file system. You can run a dataflow task to import the updated data from the source storage.
+        # *   ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
         self.auto_refresh_policy = auto_refresh_policy
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform a dry run.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset quota is canceled and no fee is incurred.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. Otherwise, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
+        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is created.
         self.dry_run = dry_run
         # The ID of the file system.
         # 
@@ -21267,7 +21377,6 @@ class ModifyFileSystemRequest(TeaModel):
         # *   Sample ID of a General-purpose NAS file system: `31a8e4****`.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`. Example: `extreme-0015****`.
         # *   The IDs of Cloud Paralleled File System (CPFS) file systems must start with `cpfs-`. Example: `cpfs-125487****`.
-        # >CPFS file systems are available only on the China site (aliyun.com).
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -21324,7 +21433,6 @@ class ModifyFileSystemShrinkRequest(TeaModel):
         # *   Sample ID of a General-purpose NAS file system: `31a8e4****`.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`. Example: `extreme-0015****`.
         # *   The IDs of Cloud Paralleled File System (CPFS) file systems must start with `cpfs-`. Example: `cpfs-125487****`.
-        # >CPFS file systems are available only on the China site (aliyun.com).
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -21444,12 +21552,12 @@ class ModifyFilesetRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2838077.html) operation.
+        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
         # 
         # *   true: enables release protection.
         # *   false: disables release protection.
         # 
-        # >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+        # > This parameter can protect filesets only against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
@@ -21466,8 +21574,6 @@ class ModifyFilesetRequest(TeaModel):
         # 
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
         # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
-        # 
-        # >  CPFS is not supported on the international site.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -23247,7 +23353,7 @@ class StartDataFlowRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -23376,22 +23482,22 @@ class StopDataFlowRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform a dry run.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset quota is canceled and no fee is incurred.
         # 
-        # Valid values:
+        # Valid value:
         # 
-        # *   true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. Otherwise, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
+        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the fileset quota is canceled.
         self.dry_run = dry_run
         # The ID of the file system.
         # 
@@ -23953,9 +24059,7 @@ class UpgradeFileSystemRequest(TeaModel):
         # The ID of the file system.
         # 
         # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of CPFS file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
