@@ -12431,6 +12431,7 @@ class SingleSendMailRequest(TeaModel):
         account_name: str = None,
         address_type: int = None,
         attachments: List[SingleSendMailRequestAttachments] = None,
+        bcc_address: str = None,
         click_trace: str = None,
         from_alias: str = None,
         headers: str = None,
@@ -12455,6 +12456,7 @@ class SingleSendMailRequest(TeaModel):
         # This parameter is required.
         self.address_type = address_type
         self.attachments = attachments
+        self.bcc_address = bcc_address
         self.click_trace = click_trace
         self.from_alias = from_alias
         self.headers = headers
@@ -12499,6 +12501,8 @@ class SingleSendMailRequest(TeaModel):
         if self.attachments is not None:
             for k in self.attachments:
                 result['Attachments'].append(k.to_map() if k else None)
+        if self.bcc_address is not None:
+            result['BccAddress'] = self.bcc_address
         if self.click_trace is not None:
             result['ClickTrace'] = self.click_trace
         if self.from_alias is not None:
@@ -12548,6 +12552,8 @@ class SingleSendMailRequest(TeaModel):
             for k in m.get('Attachments'):
                 temp_model = SingleSendMailRequestAttachments()
                 self.attachments.append(temp_model.from_map(k))
+        if m.get('BccAddress') is not None:
+            self.bcc_address = m.get('BccAddress')
         if m.get('ClickTrace') is not None:
             self.click_trace = m.get('ClickTrace')
         if m.get('FromAlias') is not None:
@@ -12660,6 +12666,7 @@ class SingleSendMailAdvanceRequest(TeaModel):
         account_name: str = None,
         address_type: int = None,
         attachments: List[SingleSendMailAdvanceRequestAttachments] = None,
+        bcc_address: str = None,
         click_trace: str = None,
         from_alias: str = None,
         headers: str = None,
@@ -12684,6 +12691,7 @@ class SingleSendMailAdvanceRequest(TeaModel):
         # This parameter is required.
         self.address_type = address_type
         self.attachments = attachments
+        self.bcc_address = bcc_address
         self.click_trace = click_trace
         self.from_alias = from_alias
         self.headers = headers
@@ -12728,6 +12736,8 @@ class SingleSendMailAdvanceRequest(TeaModel):
         if self.attachments is not None:
             for k in self.attachments:
                 result['Attachments'].append(k.to_map() if k else None)
+        if self.bcc_address is not None:
+            result['BccAddress'] = self.bcc_address
         if self.click_trace is not None:
             result['ClickTrace'] = self.click_trace
         if self.from_alias is not None:
@@ -12777,6 +12787,8 @@ class SingleSendMailAdvanceRequest(TeaModel):
             for k in m.get('Attachments'):
                 temp_model = SingleSendMailAdvanceRequestAttachments()
                 self.attachments.append(temp_model.from_map(k))
+        if m.get('BccAddress') is not None:
+            self.bcc_address = m.get('BccAddress')
         if m.get('ClickTrace') is not None:
             self.click_trace = m.get('ClickTrace')
         if m.get('FromAlias') is not None:
@@ -12856,6 +12868,7 @@ class SingleSendMailShrinkRequest(TeaModel):
         account_name: str = None,
         address_type: int = None,
         attachments: List[SingleSendMailShrinkRequestAttachments] = None,
+        bcc_address: str = None,
         click_trace: str = None,
         from_alias: str = None,
         headers: str = None,
@@ -12880,6 +12893,7 @@ class SingleSendMailShrinkRequest(TeaModel):
         # This parameter is required.
         self.address_type = address_type
         self.attachments = attachments
+        self.bcc_address = bcc_address
         self.click_trace = click_trace
         self.from_alias = from_alias
         self.headers = headers
@@ -12922,6 +12936,8 @@ class SingleSendMailShrinkRequest(TeaModel):
         if self.attachments is not None:
             for k in self.attachments:
                 result['Attachments'].append(k.to_map() if k else None)
+        if self.bcc_address is not None:
+            result['BccAddress'] = self.bcc_address
         if self.click_trace is not None:
             result['ClickTrace'] = self.click_trace
         if self.from_alias is not None:
@@ -12971,6 +12987,8 @@ class SingleSendMailShrinkRequest(TeaModel):
             for k in m.get('Attachments'):
                 temp_model = SingleSendMailShrinkRequestAttachments()
                 self.attachments.append(temp_model.from_map(k))
+        if m.get('BccAddress') is not None:
+            self.bcc_address = m.get('BccAddress')
         if m.get('ClickTrace') is not None:
             self.click_trace = m.get('ClickTrace')
         if m.get('FromAlias') is not None:

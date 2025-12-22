@@ -1,3 +1,7 @@
+2025-12-22 Version: 1.8.1
+- Update API SingleSendMail: add request parameters BccAddress.
+
+
 2025-12-19 Version: 1.8.0
 - Support API ListValidateFile.
 - Update API GetValidateFileStatus: add response parameters Body.FileId.

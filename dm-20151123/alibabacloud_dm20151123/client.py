@@ -8178,6 +8178,8 @@ class Client(OpenApiClient):
             body['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.attachments):
             body['Attachments'] = request.attachments
+        if not UtilClient.is_unset(request.bcc_address):
+            body['BccAddress'] = request.bcc_address
         if not UtilClient.is_unset(request.click_trace):
             body['ClickTrace'] = request.click_trace
         if not UtilClient.is_unset(request.from_alias):
@@ -8259,6 +8261,8 @@ class Client(OpenApiClient):
             body['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.attachments):
             body['Attachments'] = request.attachments
+        if not UtilClient.is_unset(request.bcc_address):
+            body['BccAddress'] = request.bcc_address
         if not UtilClient.is_unset(request.click_trace):
             body['ClickTrace'] = request.click_trace
         if not UtilClient.is_unset(request.from_alias):
