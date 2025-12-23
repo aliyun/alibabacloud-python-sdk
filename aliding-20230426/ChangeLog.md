@@ -1,3 +1,19 @@
+2025-12-23 Version: 2.46.2
+- Update API CreateThread: add request parameters body.clientEnum.
+- Update API InvokeAssistant: add request parameters body.clientEnum.
+- Update API PatchEvent: add request parameters categories.
+- Update API PatchEvent: add request parameters freeBusyStatus.
+- Update API PatchEvent: add request parameters onlineMeetingInfo.
+- Update API PatchEvent: add request parameters richTextDescription.
+- Update API PatchEvent: add request parameters uiConfigs.
+- Update API PatchEvent: add response parameters Body.cardInstances.
+- Update API PatchEvent: add response parameters Body.categories.
+- Update API PatchEvent: add response parameters Body.freeBusyStatus.
+- Update API PatchEvent: add response parameters Body.onlineMeetingInfo.
+- Update API PatchEvent: add response parameters Body.richTextDescription.
+- Update API PatchEvent: add response parameters Body.uiConfigs.
+
+
 2025-12-04 Version: 2.46.1
 - Update API CreateMessage: add request parameters body.extLoginUser.
 - Update API CreateRun: add request parameters body.extLoginUser.

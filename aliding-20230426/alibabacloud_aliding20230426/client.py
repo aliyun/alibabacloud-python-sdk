@@ -7587,6 +7587,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.client_enum):
+            body['clientEnum'] = request.client_enum
         if not UtilClient.is_unset(request.ext_login_user):
             body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -7638,6 +7640,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.client_enum):
+            body['clientEnum'] = request.client_enum
         if not UtilClient.is_unset(request.ext_login_user):
             body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.original_assistant_id):
@@ -22667,6 +22671,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.client_enum):
+            body['clientEnum'] = request.client_enum
         if not UtilClient.is_unset(request.ext_login_user):
             body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
@@ -22724,6 +22730,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.assistant_id):
             body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.client_enum):
+            body['clientEnum'] = request.client_enum
         if not UtilClient.is_unset(request.ext_login_user):
             body['extLoginUser'] = request.ext_login_user
         if not UtilClient.is_unset(request.messages):
@@ -25700,6 +25708,25 @@ class Client(OpenApiClient):
             request.reminders_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reminders, 'Reminders', 'json')
         if not UtilClient.is_unset(tmp_req.start):
             request.start_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start, 'Start', 'json')
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'categories', 'json')
+        if not UtilClient.is_unset(tmp_req.online_meeting_info):
+            request.online_meeting_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.online_meeting_info, 'onlineMeetingInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.rich_text_description):
+            request.rich_text_description_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rich_text_description, 'richTextDescription', 'json')
+        if not UtilClient.is_unset(tmp_req.ui_configs):
+            request.ui_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ui_configs, 'uiConfigs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            query['categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.free_busy_status):
+            query['freeBusyStatus'] = request.free_busy_status
+        if not UtilClient.is_unset(request.online_meeting_info_shrink):
+            query['onlineMeetingInfo'] = request.online_meeting_info_shrink
+        if not UtilClient.is_unset(request.rich_text_description_shrink):
+            query['richTextDescription'] = request.rich_text_description_shrink
+        if not UtilClient.is_unset(request.ui_configs_shrink):
+            query['uiConfigs'] = request.ui_configs_shrink
         body = {}
         if not UtilClient.is_unset(request.attendees_shrink):
             body['Attendees'] = request.attendees_shrink
@@ -25734,6 +25761,7 @@ class Client(OpenApiClient):
             real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -25789,6 +25817,25 @@ class Client(OpenApiClient):
             request.reminders_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reminders, 'Reminders', 'json')
         if not UtilClient.is_unset(tmp_req.start):
             request.start_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start, 'Start', 'json')
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'categories', 'json')
+        if not UtilClient.is_unset(tmp_req.online_meeting_info):
+            request.online_meeting_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.online_meeting_info, 'onlineMeetingInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.rich_text_description):
+            request.rich_text_description_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rich_text_description, 'richTextDescription', 'json')
+        if not UtilClient.is_unset(tmp_req.ui_configs):
+            request.ui_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ui_configs, 'uiConfigs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            query['categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.free_busy_status):
+            query['freeBusyStatus'] = request.free_busy_status
+        if not UtilClient.is_unset(request.online_meeting_info_shrink):
+            query['onlineMeetingInfo'] = request.online_meeting_info_shrink
+        if not UtilClient.is_unset(request.rich_text_description_shrink):
+            query['richTextDescription'] = request.rich_text_description_shrink
+        if not UtilClient.is_unset(request.ui_configs_shrink):
+            query['uiConfigs'] = request.ui_configs_shrink
         body = {}
         if not UtilClient.is_unset(request.attendees_shrink):
             body['Attendees'] = request.attendees_shrink
@@ -25823,6 +25870,7 @@ class Client(OpenApiClient):
             real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -26735,8 +26783,6 @@ class Client(OpenApiClient):
             body['SpaceId'] = request.space_id
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
-        if not UtilClient.is_unset(request.union_id):
-            body['UnionId'] = request.union_id
         if not UtilClient.is_unset(request.with_thumbnail):
             body['WithThumbnail'] = request.with_thumbnail
         real_headers = {}
@@ -26798,8 +26844,6 @@ class Client(OpenApiClient):
             body['SpaceId'] = request.space_id
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
-        if not UtilClient.is_unset(request.union_id):
-            body['UnionId'] = request.union_id
         if not UtilClient.is_unset(request.with_thumbnail):
             body['WithThumbnail'] = request.with_thumbnail
         real_headers = {}

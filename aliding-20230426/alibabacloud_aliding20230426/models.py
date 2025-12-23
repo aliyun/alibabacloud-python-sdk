@@ -22562,6 +22562,7 @@ class CreateThreadRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
+        client_enum: str = None,
         ext_login_user: CreateThreadRequestExtLoginUser = None,
         original_assistant_id: str = None,
         source_id_of_original_assistant_id: str = None,
@@ -22569,6 +22570,7 @@ class CreateThreadRequest(TeaModel):
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
+        self.client_enum = client_enum
         self.ext_login_user = ext_login_user
         self.original_assistant_id = original_assistant_id
         self.source_id_of_original_assistant_id = source_id_of_original_assistant_id
@@ -22586,6 +22588,8 @@ class CreateThreadRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.client_enum is not None:
+            result['clientEnum'] = self.client_enum
         if self.ext_login_user is not None:
             result['extLoginUser'] = self.ext_login_user.to_map()
         if self.original_assistant_id is not None:
@@ -22600,6 +22604,8 @@ class CreateThreadRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('clientEnum') is not None:
+            self.client_enum = m.get('clientEnum')
         if m.get('extLoginUser') is not None:
             temp_model = CreateThreadRequestExtLoginUser()
             self.ext_login_user = temp_model.from_map(m['extLoginUser'])
@@ -63656,6 +63662,7 @@ class InvokeAssistantRequest(TeaModel):
     def __init__(
         self,
         assistant_id: str = None,
+        client_enum: str = None,
         ext_login_user: InvokeAssistantRequestExtLoginUser = None,
         messages: List[InvokeAssistantRequestMessages] = None,
         original_assistant_id: str = None,
@@ -63666,6 +63673,7 @@ class InvokeAssistantRequest(TeaModel):
     ):
         # This parameter is required.
         self.assistant_id = assistant_id
+        self.client_enum = client_enum
         self.ext_login_user = ext_login_user
         # This parameter is required.
         self.messages = messages
@@ -63691,6 +63699,8 @@ class InvokeAssistantRequest(TeaModel):
         result = dict()
         if self.assistant_id is not None:
             result['assistantId'] = self.assistant_id
+        if self.client_enum is not None:
+            result['clientEnum'] = self.client_enum
         if self.ext_login_user is not None:
             result['extLoginUser'] = self.ext_login_user.to_map()
         result['messages'] = []
@@ -63713,6 +63723,8 @@ class InvokeAssistantRequest(TeaModel):
         m = m or dict()
         if m.get('assistantId') is not None:
             self.assistant_id = m.get('assistantId')
+        if m.get('clientEnum') is not None:
+            self.client_enum = m.get('clientEnum')
         if m.get('extLoginUser') is not None:
             temp_model = InvokeAssistantRequestExtLoginUser()
             self.ext_login_user = temp_model.from_map(m['extLoginUser'])
@@ -75051,6 +75063,126 @@ class PatchEventRequestStart(TeaModel):
         return self
 
 
+class PatchEventRequestCategories(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        display_name: str = None,
+    ):
+        self.category_id = category_id
+        self.display_name = display_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['categoryId'] = self.category_id
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categoryId') is not None:
+            self.category_id = m.get('categoryId')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        return self
+
+
+class PatchEventRequestOnlineMeetingInfo(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class PatchEventRequestRichTextDescription(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class PatchEventRequestUiConfigs(TeaModel):
+    def __init__(
+        self,
+        ui_name: str = None,
+        ui_status: str = None,
+    ):
+        self.ui_name = ui_name
+        self.ui_status = ui_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ui_name is not None:
+            result['uiName'] = self.ui_name
+        if self.ui_status is not None:
+            result['uiStatus'] = self.ui_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('uiName') is not None:
+            self.ui_name = m.get('uiName')
+        if m.get('uiStatus') is not None:
+            self.ui_status = m.get('uiStatus')
+        return self
+
+
 class PatchEventRequest(TeaModel):
     def __init__(
         self,
@@ -75067,6 +75199,11 @@ class PatchEventRequest(TeaModel):
         reminders: List[PatchEventRequestReminders] = None,
         start: PatchEventRequestStart = None,
         summary: str = None,
+        categories: List[PatchEventRequestCategories] = None,
+        free_busy_status: str = None,
+        online_meeting_info: PatchEventRequestOnlineMeetingInfo = None,
+        rich_text_description: PatchEventRequestRichTextDescription = None,
+        ui_configs: List[PatchEventRequestUiConfigs] = None,
     ):
         self.attendees = attendees
         # This parameter is required.
@@ -75083,6 +75220,11 @@ class PatchEventRequest(TeaModel):
         self.reminders = reminders
         self.start = start
         self.summary = summary
+        self.categories = categories
+        self.free_busy_status = free_busy_status
+        self.online_meeting_info = online_meeting_info
+        self.rich_text_description = rich_text_description
+        self.ui_configs = ui_configs
 
     def validate(self):
         if self.attendees:
@@ -75105,6 +75247,18 @@ class PatchEventRequest(TeaModel):
                     k.validate()
         if self.start:
             self.start.validate()
+        if self.categories:
+            for k in self.categories:
+                if k:
+                    k.validate()
+        if self.online_meeting_info:
+            self.online_meeting_info.validate()
+        if self.rich_text_description:
+            self.rich_text_description.validate()
+        if self.ui_configs:
+            for k in self.ui_configs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -75144,6 +75298,20 @@ class PatchEventRequest(TeaModel):
             result['Start'] = self.start.to_map()
         if self.summary is not None:
             result['Summary'] = self.summary
+        result['categories'] = []
+        if self.categories is not None:
+            for k in self.categories:
+                result['categories'].append(k.to_map() if k else None)
+        if self.free_busy_status is not None:
+            result['freeBusyStatus'] = self.free_busy_status
+        if self.online_meeting_info is not None:
+            result['onlineMeetingInfo'] = self.online_meeting_info.to_map()
+        if self.rich_text_description is not None:
+            result['richTextDescription'] = self.rich_text_description.to_map()
+        result['uiConfigs'] = []
+        if self.ui_configs is not None:
+            for k in self.ui_configs:
+                result['uiConfigs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -75187,6 +75355,24 @@ class PatchEventRequest(TeaModel):
             self.start = temp_model.from_map(m['Start'])
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+        self.categories = []
+        if m.get('categories') is not None:
+            for k in m.get('categories'):
+                temp_model = PatchEventRequestCategories()
+                self.categories.append(temp_model.from_map(k))
+        if m.get('freeBusyStatus') is not None:
+            self.free_busy_status = m.get('freeBusyStatus')
+        if m.get('onlineMeetingInfo') is not None:
+            temp_model = PatchEventRequestOnlineMeetingInfo()
+            self.online_meeting_info = temp_model.from_map(m['onlineMeetingInfo'])
+        if m.get('richTextDescription') is not None:
+            temp_model = PatchEventRequestRichTextDescription()
+            self.rich_text_description = temp_model.from_map(m['richTextDescription'])
+        self.ui_configs = []
+        if m.get('uiConfigs') is not None:
+            for k in m.get('uiConfigs'):
+                temp_model = PatchEventRequestUiConfigs()
+                self.ui_configs.append(temp_model.from_map(k))
         return self
 
 
@@ -75206,6 +75392,11 @@ class PatchEventShrinkRequest(TeaModel):
         reminders_shrink: str = None,
         start_shrink: str = None,
         summary: str = None,
+        categories_shrink: str = None,
+        free_busy_status: str = None,
+        online_meeting_info_shrink: str = None,
+        rich_text_description_shrink: str = None,
+        ui_configs_shrink: str = None,
     ):
         self.attendees_shrink = attendees_shrink
         # This parameter is required.
@@ -75222,6 +75413,11 @@ class PatchEventShrinkRequest(TeaModel):
         self.reminders_shrink = reminders_shrink
         self.start_shrink = start_shrink
         self.summary = summary
+        self.categories_shrink = categories_shrink
+        self.free_busy_status = free_busy_status
+        self.online_meeting_info_shrink = online_meeting_info_shrink
+        self.rich_text_description_shrink = rich_text_description_shrink
+        self.ui_configs_shrink = ui_configs_shrink
 
     def validate(self):
         pass
@@ -75258,6 +75454,16 @@ class PatchEventShrinkRequest(TeaModel):
             result['Start'] = self.start_shrink
         if self.summary is not None:
             result['Summary'] = self.summary
+        if self.categories_shrink is not None:
+            result['categories'] = self.categories_shrink
+        if self.free_busy_status is not None:
+            result['freeBusyStatus'] = self.free_busy_status
+        if self.online_meeting_info_shrink is not None:
+            result['onlineMeetingInfo'] = self.online_meeting_info_shrink
+        if self.rich_text_description_shrink is not None:
+            result['richTextDescription'] = self.rich_text_description_shrink
+        if self.ui_configs_shrink is not None:
+            result['uiConfigs'] = self.ui_configs_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -75288,6 +75494,16 @@ class PatchEventShrinkRequest(TeaModel):
             self.start_shrink = m.get('Start')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+        if m.get('categories') is not None:
+            self.categories_shrink = m.get('categories')
+        if m.get('freeBusyStatus') is not None:
+            self.free_busy_status = m.get('freeBusyStatus')
+        if m.get('onlineMeetingInfo') is not None:
+            self.online_meeting_info_shrink = m.get('onlineMeetingInfo')
+        if m.get('richTextDescription') is not None:
+            self.rich_text_description_shrink = m.get('richTextDescription')
+        if m.get('uiConfigs') is not None:
+            self.ui_configs_shrink = m.get('uiConfigs')
         return self
 
 
@@ -75339,6 +75555,72 @@ class PatchEventResponseBodyAttendees(TeaModel):
             self.response_status = m.get('ResponseStatus')
         if m.get('Self') is not None:
             self.self_ = m.get('Self')
+        return self
+
+
+class PatchEventResponseBodyCardInstances(TeaModel):
+    def __init__(
+        self,
+        out_track_id: str = None,
+        scenario: str = None,
+    ):
+        self.out_track_id = out_track_id
+        self.scenario = scenario
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_track_id is not None:
+            result['outTrackId'] = self.out_track_id
+        if self.scenario is not None:
+            result['scenario'] = self.scenario
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('outTrackId') is not None:
+            self.out_track_id = m.get('outTrackId')
+        if m.get('scenario') is not None:
+            self.scenario = m.get('scenario')
+        return self
+
+
+class PatchEventResponseBodyCategories(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        display_name: str = None,
+    ):
+        self.category_id = category_id
+        self.display_name = display_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['categoryId'] = self.category_id
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categoryId') is not None:
+            self.category_id = m.get('categoryId')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
         return self
 
 
@@ -75411,6 +75693,45 @@ class PatchEventResponseBodyLocation(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('MeetingRooms') is not None:
             self.meeting_rooms = m.get('MeetingRooms')
+        return self
+
+
+class PatchEventResponseBodyOnlineMeetingInfo(TeaModel):
+    def __init__(
+        self,
+        conference_id: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.conference_id = conference_id
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('url') is not None:
+            self.url = m.get('url')
         return self
 
 
@@ -75620,6 +75941,33 @@ class PatchEventResponseBodyReminders(TeaModel):
         return self
 
 
+class PatchEventResponseBodyRichTextDescription(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
 class PatchEventResponseBodyStart(TeaModel):
     def __init__(
         self,
@@ -75659,38 +76007,83 @@ class PatchEventResponseBodyStart(TeaModel):
         return self
 
 
+class PatchEventResponseBodyUiConfigs(TeaModel):
+    def __init__(
+        self,
+        ui_name: str = None,
+        ui_status: str = None,
+    ):
+        self.ui_name = ui_name
+        self.ui_status = ui_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ui_name is not None:
+            result['uiName'] = self.ui_name
+        if self.ui_status is not None:
+            result['uiStatus'] = self.ui_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('uiName') is not None:
+            self.ui_name = m.get('uiName')
+        if m.get('uiStatus') is not None:
+            self.ui_status = m.get('uiStatus')
+        return self
+
+
 class PatchEventResponseBody(TeaModel):
     def __init__(
         self,
         attendees: List[PatchEventResponseBodyAttendees] = None,
+        card_instances: List[PatchEventResponseBodyCardInstances] = None,
+        categories: List[PatchEventResponseBodyCategories] = None,
         create_time: str = None,
         description: str = None,
         end: PatchEventResponseBodyEnd = None,
+        free_busy_status: str = None,
         id: str = None,
         is_all_day: bool = None,
         location: PatchEventResponseBodyLocation = None,
+        online_meeting_info: PatchEventResponseBodyOnlineMeetingInfo = None,
         organizer: PatchEventResponseBodyOrganizer = None,
         recurrence: PatchEventResponseBodyRecurrence = None,
         reminders: List[PatchEventResponseBodyReminders] = None,
         request_id: str = None,
+        rich_text_description: PatchEventResponseBodyRichTextDescription = None,
         start: PatchEventResponseBodyStart = None,
         summary: str = None,
+        ui_configs: List[PatchEventResponseBodyUiConfigs] = None,
         update_time: str = None,
     ):
         self.attendees = attendees
+        self.card_instances = card_instances
+        self.categories = categories
         self.create_time = create_time
         self.description = description
         self.end = end
+        self.free_busy_status = free_busy_status
         self.id = id
         self.is_all_day = is_all_day
         self.location = location
+        self.online_meeting_info = online_meeting_info
         self.organizer = organizer
         self.recurrence = recurrence
         self.reminders = reminders
         # requestId
         self.request_id = request_id
+        self.rich_text_description = rich_text_description
         self.start = start
         self.summary = summary
+        self.ui_configs = ui_configs
         self.update_time = update_time
 
     def validate(self):
@@ -75698,10 +76091,20 @@ class PatchEventResponseBody(TeaModel):
             for k in self.attendees:
                 if k:
                     k.validate()
+        if self.card_instances:
+            for k in self.card_instances:
+                if k:
+                    k.validate()
+        if self.categories:
+            for k in self.categories:
+                if k:
+                    k.validate()
         if self.end:
             self.end.validate()
         if self.location:
             self.location.validate()
+        if self.online_meeting_info:
+            self.online_meeting_info.validate()
         if self.organizer:
             self.organizer.validate()
         if self.recurrence:
@@ -75710,8 +76113,14 @@ class PatchEventResponseBody(TeaModel):
             for k in self.reminders:
                 if k:
                     k.validate()
+        if self.rich_text_description:
+            self.rich_text_description.validate()
         if self.start:
             self.start.validate()
+        if self.ui_configs:
+            for k in self.ui_configs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -75723,18 +76132,30 @@ class PatchEventResponseBody(TeaModel):
         if self.attendees is not None:
             for k in self.attendees:
                 result['attendees'].append(k.to_map() if k else None)
+        result['cardInstances'] = []
+        if self.card_instances is not None:
+            for k in self.card_instances:
+                result['cardInstances'].append(k.to_map() if k else None)
+        result['categories'] = []
+        if self.categories is not None:
+            for k in self.categories:
+                result['categories'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.description is not None:
             result['description'] = self.description
         if self.end is not None:
             result['end'] = self.end.to_map()
+        if self.free_busy_status is not None:
+            result['freeBusyStatus'] = self.free_busy_status
         if self.id is not None:
             result['id'] = self.id
         if self.is_all_day is not None:
             result['isAllDay'] = self.is_all_day
         if self.location is not None:
             result['location'] = self.location.to_map()
+        if self.online_meeting_info is not None:
+            result['onlineMeetingInfo'] = self.online_meeting_info.to_map()
         if self.organizer is not None:
             result['organizer'] = self.organizer.to_map()
         if self.recurrence is not None:
@@ -75745,10 +76166,16 @@ class PatchEventResponseBody(TeaModel):
                 result['reminders'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.rich_text_description is not None:
+            result['richTextDescription'] = self.rich_text_description.to_map()
         if self.start is not None:
             result['start'] = self.start.to_map()
         if self.summary is not None:
             result['summary'] = self.summary
+        result['uiConfigs'] = []
+        if self.ui_configs is not None:
+            for k in self.ui_configs:
+                result['uiConfigs'].append(k.to_map() if k else None)
         if self.update_time is not None:
             result['updateTime'] = self.update_time
         return result
@@ -75760,6 +76187,16 @@ class PatchEventResponseBody(TeaModel):
             for k in m.get('attendees'):
                 temp_model = PatchEventResponseBodyAttendees()
                 self.attendees.append(temp_model.from_map(k))
+        self.card_instances = []
+        if m.get('cardInstances') is not None:
+            for k in m.get('cardInstances'):
+                temp_model = PatchEventResponseBodyCardInstances()
+                self.card_instances.append(temp_model.from_map(k))
+        self.categories = []
+        if m.get('categories') is not None:
+            for k in m.get('categories'):
+                temp_model = PatchEventResponseBodyCategories()
+                self.categories.append(temp_model.from_map(k))
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('description') is not None:
@@ -75767,6 +76204,8 @@ class PatchEventResponseBody(TeaModel):
         if m.get('end') is not None:
             temp_model = PatchEventResponseBodyEnd()
             self.end = temp_model.from_map(m['end'])
+        if m.get('freeBusyStatus') is not None:
+            self.free_busy_status = m.get('freeBusyStatus')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('isAllDay') is not None:
@@ -75774,6 +76213,9 @@ class PatchEventResponseBody(TeaModel):
         if m.get('location') is not None:
             temp_model = PatchEventResponseBodyLocation()
             self.location = temp_model.from_map(m['location'])
+        if m.get('onlineMeetingInfo') is not None:
+            temp_model = PatchEventResponseBodyOnlineMeetingInfo()
+            self.online_meeting_info = temp_model.from_map(m['onlineMeetingInfo'])
         if m.get('organizer') is not None:
             temp_model = PatchEventResponseBodyOrganizer()
             self.organizer = temp_model.from_map(m['organizer'])
@@ -75787,11 +76229,19 @@ class PatchEventResponseBody(TeaModel):
                 self.reminders.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('richTextDescription') is not None:
+            temp_model = PatchEventResponseBodyRichTextDescription()
+            self.rich_text_description = temp_model.from_map(m['richTextDescription'])
         if m.get('start') is not None:
             temp_model = PatchEventResponseBodyStart()
             self.start = temp_model.from_map(m['start'])
         if m.get('summary') is not None:
             self.summary = m.get('summary')
+        self.ui_configs = []
+        if m.get('uiConfigs') is not None:
+            for k in m.get('uiConfigs'):
+                temp_model = PatchEventResponseBodyUiConfigs()
+                self.ui_configs.append(temp_model.from_map(k))
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
         return self
@@ -78284,7 +78734,6 @@ class QueryDentriesInfoRequest(TeaModel):
         dentry_id: str = None,
         space_id: str = None,
         tenant_context: QueryDentriesInfoRequestTenantContext = None,
-        union_id: str = None,
         with_thumbnail: bool = None,
     ):
         self.app_ids_for_app_properties = app_ids_for_app_properties
@@ -78293,8 +78742,6 @@ class QueryDentriesInfoRequest(TeaModel):
         # This parameter is required.
         self.space_id = space_id
         self.tenant_context = tenant_context
-        # This parameter is required.
-        self.union_id = union_id
         self.with_thumbnail = with_thumbnail
 
     def validate(self):
@@ -78315,8 +78762,6 @@ class QueryDentriesInfoRequest(TeaModel):
             result['SpaceId'] = self.space_id
         if self.tenant_context is not None:
             result['TenantContext'] = self.tenant_context.to_map()
-        if self.union_id is not None:
-            result['UnionId'] = self.union_id
         if self.with_thumbnail is not None:
             result['WithThumbnail'] = self.with_thumbnail
         return result
@@ -78332,8 +78777,6 @@ class QueryDentriesInfoRequest(TeaModel):
         if m.get('TenantContext') is not None:
             temp_model = QueryDentriesInfoRequestTenantContext()
             self.tenant_context = temp_model.from_map(m['TenantContext'])
-        if m.get('UnionId') is not None:
-            self.union_id = m.get('UnionId')
         if m.get('WithThumbnail') is not None:
             self.with_thumbnail = m.get('WithThumbnail')
         return self
@@ -78346,7 +78789,6 @@ class QueryDentriesInfoShrinkRequest(TeaModel):
         dentry_id: str = None,
         space_id: str = None,
         tenant_context_shrink: str = None,
-        union_id: str = None,
         with_thumbnail: bool = None,
     ):
         self.app_ids_for_app_properties_shrink = app_ids_for_app_properties_shrink
@@ -78355,8 +78797,6 @@ class QueryDentriesInfoShrinkRequest(TeaModel):
         # This parameter is required.
         self.space_id = space_id
         self.tenant_context_shrink = tenant_context_shrink
-        # This parameter is required.
-        self.union_id = union_id
         self.with_thumbnail = with_thumbnail
 
     def validate(self):
@@ -78376,8 +78816,6 @@ class QueryDentriesInfoShrinkRequest(TeaModel):
             result['SpaceId'] = self.space_id
         if self.tenant_context_shrink is not None:
             result['TenantContext'] = self.tenant_context_shrink
-        if self.union_id is not None:
-            result['UnionId'] = self.union_id
         if self.with_thumbnail is not None:
             result['WithThumbnail'] = self.with_thumbnail
         return result
@@ -78392,8 +78830,6 @@ class QueryDentriesInfoShrinkRequest(TeaModel):
             self.space_id = m.get('SpaceId')
         if m.get('TenantContext') is not None:
             self.tenant_context_shrink = m.get('TenantContext')
-        if m.get('UnionId') is not None:
-            self.union_id = m.get('UnionId')
         if m.get('WithThumbnail') is not None:
             self.with_thumbnail = m.get('WithThumbnail')
         return self
