@@ -13276,6 +13276,119 @@ class CreateHotwordLibraryResponse(TeaModel):
         return self
 
 
+class CreateIpcOrderRequest(TeaModel):
+    def __init__(
+        self,
+        capability: str = None,
+        device_id: str = None,
+        period: str = None,
+    ):
+        self.capability = capability
+        self.device_id = device_id
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capability is not None:
+            result['Capability'] = self.capability
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.period is not None:
+            result['Period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capability') is not None:
+            self.capability = m.get('Capability')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        return self
+
+
+class CreateIpcOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        purchase_status: str = None,
+        request_id: str = None,
+    ):
+        self.purchase_status = purchase_status
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.purchase_status is not None:
+            result['PurchaseStatus'] = self.purchase_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PurchaseStatus') is not None:
+            self.purchase_status = m.get('PurchaseStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateIpcOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIpcOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIpcOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLivePackageChannelRequest(TeaModel):
     def __init__(
         self,
@@ -32331,6 +32444,190 @@ class GetHotwordLibraryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetHotwordLibraryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIpcDeviceInfoRequest(TeaModel):
+    def __init__(
+        self,
+        capability: str = None,
+        device_id: str = None,
+        end_time: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_time: str = None,
+    ):
+        self.capability = capability
+        self.device_id = device_id
+        self.end_time = end_time
+        self.page_no = page_no
+        self.page_size = page_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capability is not None:
+            result['Capability'] = self.capability
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capability') is not None:
+            self.capability = m.get('Capability')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetIpcDeviceInfoResponseBodyDeviceInfos(TeaModel):
+    def __init__(
+        self,
+        capability: str = None,
+        device_id: str = None,
+        expire_time: str = None,
+    ):
+        self.capability = capability
+        self.device_id = device_id
+        self.expire_time = expire_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capability is not None:
+            result['Capability'] = self.capability
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capability') is not None:
+            self.capability = m.get('Capability')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        return self
+
+
+class GetIpcDeviceInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        device_infos: List[GetIpcDeviceInfoResponseBodyDeviceInfos] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.device_infos = device_infos
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.device_infos:
+            for k in self.device_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeviceInfos'] = []
+        if self.device_infos is not None:
+            for k in self.device_infos:
+                result['DeviceInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.device_infos = []
+        if m.get('DeviceInfos') is not None:
+            for k in m.get('DeviceInfos'):
+                temp_model = GetIpcDeviceInfoResponseBodyDeviceInfos()
+                self.device_infos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetIpcDeviceInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIpcDeviceInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIpcDeviceInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -71231,6 +71528,190 @@ class QueryIProductionJobResponse(TeaModel):
         return self
 
 
+class QueryIpcQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        capability: str = None,
+        end_time: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_time: str = None,
+    ):
+        self.capability = capability
+        self.end_time = end_time
+        self.page_no = page_no
+        self.page_size = page_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capability is not None:
+            result['Capability'] = self.capability
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capability') is not None:
+            self.capability = m.get('Capability')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QueryIpcQuotaResponseBodyIpcQuotaInfos(TeaModel):
+    def __init__(
+        self,
+        capability: str = None,
+        consumed_quota: int = None,
+        date_time: str = None,
+        max_quota: int = None,
+    ):
+        self.capability = capability
+        self.consumed_quota = consumed_quota
+        self.date_time = date_time
+        self.max_quota = max_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capability is not None:
+            result['Capability'] = self.capability
+        if self.consumed_quota is not None:
+            result['ConsumedQuota'] = self.consumed_quota
+        if self.date_time is not None:
+            result['DateTime'] = self.date_time
+        if self.max_quota is not None:
+            result['MaxQuota'] = self.max_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capability') is not None:
+            self.capability = m.get('Capability')
+        if m.get('ConsumedQuota') is not None:
+            self.consumed_quota = m.get('ConsumedQuota')
+        if m.get('DateTime') is not None:
+            self.date_time = m.get('DateTime')
+        if m.get('MaxQuota') is not None:
+            self.max_quota = m.get('MaxQuota')
+        return self
+
+
+class QueryIpcQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        ipc_quota_infos: List[QueryIpcQuotaResponseBodyIpcQuotaInfos] = None,
+        request_id: str = None,
+        total: str = None,
+    ):
+        self.ipc_quota_infos = ipc_quota_infos
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.ipc_quota_infos:
+            for k in self.ipc_quota_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IpcQuotaInfos'] = []
+        if self.ipc_quota_infos is not None:
+            for k in self.ipc_quota_infos:
+                result['IpcQuotaInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipc_quota_infos = []
+        if m.get('IpcQuotaInfos') is not None:
+            for k in m.get('IpcQuotaInfos'):
+                temp_model = QueryIpcQuotaResponseBodyIpcQuotaInfos()
+                self.ipc_quota_infos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryIpcQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryIpcQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryIpcQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryMediaCensorJobDetailRequest(TeaModel):
     def __init__(
         self,
@@ -74573,12 +75054,81 @@ class QuerySmarttagJobResponseBodyResults(TeaModel):
         return self
 
 
+class QuerySmarttagJobResponseBodyUsagesUsage(TeaModel):
+    def __init__(
+        self,
+        quota: int = None,
+        type: str = None,
+    ):
+        self.quota = quota
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota is not None:
+            result['Quota'] = self.quota
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Quota') is not None:
+            self.quota = m.get('Quota')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QuerySmarttagJobResponseBodyUsages(TeaModel):
+    def __init__(
+        self,
+        usage: List[QuerySmarttagJobResponseBodyUsagesUsage] = None,
+    ):
+        self.usage = usage
+
+    def validate(self):
+        if self.usage:
+            for k in self.usage:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Usage'] = []
+        if self.usage is not None:
+            for k in self.usage:
+                result['Usage'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage = []
+        if m.get('Usage') is not None:
+            for k in m.get('Usage'):
+                temp_model = QuerySmarttagJobResponseBodyUsagesUsage()
+                self.usage.append(temp_model.from_map(k))
+        return self
+
+
 class QuerySmarttagJobResponseBody(TeaModel):
     def __init__(
         self,
         job_status: str = None,
         request_id: str = None,
         results: QuerySmarttagJobResponseBodyResults = None,
+        usages: QuerySmarttagJobResponseBodyUsages = None,
         user_data: str = None,
     ):
         # The status of the job. Valid values:
@@ -74592,12 +75142,15 @@ class QuerySmarttagJobResponseBody(TeaModel):
         self.request_id = request_id
         # The analysis results of the smart tagging job. The value is an array.
         self.results = results
+        self.usages = usages
         # The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
         self.user_data = user_data
 
     def validate(self):
         if self.results:
             self.results.validate()
+        if self.usages:
+            self.usages.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -74611,6 +75164,8 @@ class QuerySmarttagJobResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.results is not None:
             result['Results'] = self.results.to_map()
+        if self.usages is not None:
+            result['Usages'] = self.usages.to_map()
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -74624,6 +75179,9 @@ class QuerySmarttagJobResponseBody(TeaModel):
         if m.get('Results') is not None:
             temp_model = QuerySmarttagJobResponseBodyResults()
             self.results = temp_model.from_map(m['Results'])
+        if m.get('Usages') is not None:
+            temp_model = QuerySmarttagJobResponseBodyUsages()
+            self.usages = temp_model.from_map(m['Usages'])
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self

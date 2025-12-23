@@ -3259,6 +3259,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_hotword_library_with_options_async(request, runtime)
 
+    def create_ipc_order_with_options(
+        self,
+        request: ice20201109_models.CreateIpcOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateIpcOrderResponse:
+        """
+        @summary IPC下单
+        
+        @param request: CreateIpcOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIpcOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capability):
+            query['Capability'] = request.capability
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIpcOrder',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateIpcOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ipc_order_with_options_async(
+        self,
+        request: ice20201109_models.CreateIpcOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateIpcOrderResponse:
+        """
+        @summary IPC下单
+        
+        @param request: CreateIpcOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIpcOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capability):
+            query['Capability'] = request.capability
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIpcOrder',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateIpcOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ipc_order(
+        self,
+        request: ice20201109_models.CreateIpcOrderRequest,
+    ) -> ice20201109_models.CreateIpcOrderResponse:
+        """
+        @summary IPC下单
+        
+        @param request: CreateIpcOrderRequest
+        @return: CreateIpcOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ipc_order_with_options(request, runtime)
+
+    async def create_ipc_order_async(
+        self,
+        request: ice20201109_models.CreateIpcOrderRequest,
+    ) -> ice20201109_models.CreateIpcOrderResponse:
+        """
+        @summary IPC下单
+        
+        @param request: CreateIpcOrderRequest
+        @return: CreateIpcOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ipc_order_with_options_async(request, runtime)
+
     def create_live_package_channel_with_options(
         self,
         request: ice20201109_models.CreateLivePackageChannelRequest,
@@ -14914,6 +15018,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_hotword_library_with_options_async(request, runtime)
+
+    def get_ipc_device_info_with_options(
+        self,
+        request: ice20201109_models.GetIpcDeviceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetIpcDeviceInfoResponse:
+        """
+        @summary 查询IPC设备信息
+        
+        @param request: GetIpcDeviceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIpcDeviceInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capability):
+            query['Capability'] = request.capability
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIpcDeviceInfo',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetIpcDeviceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ipc_device_info_with_options_async(
+        self,
+        request: ice20201109_models.GetIpcDeviceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetIpcDeviceInfoResponse:
+        """
+        @summary 查询IPC设备信息
+        
+        @param request: GetIpcDeviceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIpcDeviceInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capability):
+            query['Capability'] = request.capability
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIpcDeviceInfo',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetIpcDeviceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ipc_device_info(
+        self,
+        request: ice20201109_models.GetIpcDeviceInfoRequest,
+    ) -> ice20201109_models.GetIpcDeviceInfoResponse:
+        """
+        @summary 查询IPC设备信息
+        
+        @param request: GetIpcDeviceInfoRequest
+        @return: GetIpcDeviceInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ipc_device_info_with_options(request, runtime)
+
+    async def get_ipc_device_info_async(
+        self,
+        request: ice20201109_models.GetIpcDeviceInfoRequest,
+    ) -> ice20201109_models.GetIpcDeviceInfoResponse:
+        """
+        @summary 查询IPC设备信息
+        
+        @param request: GetIpcDeviceInfoRequest
+        @return: GetIpcDeviceInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ipc_device_info_with_options_async(request, runtime)
 
     def get_live_editing_index_file_with_options(
         self,
@@ -27636,6 +27856,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_iproduction_job_with_options_async(request, runtime)
+
+    def query_ipc_quota_with_options(
+        self,
+        request: ice20201109_models.QueryIpcQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryIpcQuotaResponse:
+        """
+        @summary 查询IPC用量
+        
+        @param request: QueryIpcQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIpcQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capability):
+            query['Capability'] = request.capability
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIpcQuota',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryIpcQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_ipc_quota_with_options_async(
+        self,
+        request: ice20201109_models.QueryIpcQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryIpcQuotaResponse:
+        """
+        @summary 查询IPC用量
+        
+        @param request: QueryIpcQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIpcQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capability):
+            query['Capability'] = request.capability
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIpcQuota',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryIpcQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_ipc_quota(
+        self,
+        request: ice20201109_models.QueryIpcQuotaRequest,
+    ) -> ice20201109_models.QueryIpcQuotaResponse:
+        """
+        @summary 查询IPC用量
+        
+        @param request: QueryIpcQuotaRequest
+        @return: QueryIpcQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_ipc_quota_with_options(request, runtime)
+
+    async def query_ipc_quota_async(
+        self,
+        request: ice20201109_models.QueryIpcQuotaRequest,
+    ) -> ice20201109_models.QueryIpcQuotaResponse:
+        """
+        @summary 查询IPC用量
+        
+        @param request: QueryIpcQuotaRequest
+        @return: QueryIpcQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_ipc_quota_with_options_async(request, runtime)
 
     def query_media_censor_job_detail_with_options(
         self,

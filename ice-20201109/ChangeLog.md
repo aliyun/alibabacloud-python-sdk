@@ -1,3 +1,10 @@
+2025-12-23 Version: 6.9.0
+- Support API CreateIpcOrder.
+- Support API GetIpcDeviceInfo.
+- Support API QueryIpcQuota.
+- Update API QuerySmarttagJob: add response parameters Body.Usages.
+
+
 2025-12-05 Version: 6.8.5
 - Update API GetTemplateParams: add response parameters Body.ParamList.$.Height.
 - Update API GetTemplateParams: add response parameters Body.ParamList.$.TimelineIn.
