@@ -8009,6 +8009,92 @@ class DescribeHotBigKeysResponseBodyDataHotKeys(TeaModel):
         return self
 
 
+class DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey(TeaModel):
+    def __init__(
+        self,
+        data_size: str = None,
+        db: str = None,
+        key: str = None,
+        key_type: str = None,
+        node_id: str = None,
+    ):
+        self.data_size = data_size
+        self.db = db
+        self.key = key
+        self.key_type = key_type
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class DescribeHotBigKeysResponseBodyDataLargeKeys(TeaModel):
+    def __init__(
+        self,
+        large_key: List[DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey] = None,
+    ):
+        self.large_key = large_key
+
+    def validate(self):
+        if self.large_key:
+            for k in self.large_key:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LargeKey'] = []
+        if self.large_key is not None:
+            for k in self.large_key:
+                result['LargeKey'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.large_key = []
+        if m.get('LargeKey') is not None:
+            for k in m.get('LargeKey'):
+                temp_model = DescribeHotBigKeysResponseBodyDataLargeKeysLargeKey()
+                self.large_key.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeHotBigKeysResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -8018,6 +8104,8 @@ class DescribeHotBigKeysResponseBodyData(TeaModel):
         high_traffic_keys: DescribeHotBigKeysResponseBodyDataHighTrafficKeys = None,
         hot_key_msg: str = None,
         hot_keys: DescribeHotBigKeysResponseBodyDataHotKeys = None,
+        large_key_msg: str = None,
+        large_keys: DescribeHotBigKeysResponseBodyDataLargeKeys = None,
     ):
         # The reason why the large key failed to be queried.
         self.big_key_msg = big_key_msg
@@ -8029,6 +8117,8 @@ class DescribeHotBigKeysResponseBodyData(TeaModel):
         self.hot_key_msg = hot_key_msg
         # The list of hot keys.
         self.hot_keys = hot_keys
+        self.large_key_msg = large_key_msg
+        self.large_keys = large_keys
 
     def validate(self):
         if self.big_keys:
@@ -8037,6 +8127,8 @@ class DescribeHotBigKeysResponseBodyData(TeaModel):
             self.high_traffic_keys.validate()
         if self.hot_keys:
             self.hot_keys.validate()
+        if self.large_keys:
+            self.large_keys.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8056,6 +8148,10 @@ class DescribeHotBigKeysResponseBodyData(TeaModel):
             result['HotKeyMsg'] = self.hot_key_msg
         if self.hot_keys is not None:
             result['HotKeys'] = self.hot_keys.to_map()
+        if self.large_key_msg is not None:
+            result['LargeKeyMsg'] = self.large_key_msg
+        if self.large_keys is not None:
+            result['LargeKeys'] = self.large_keys.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8075,6 +8171,11 @@ class DescribeHotBigKeysResponseBodyData(TeaModel):
         if m.get('HotKeys') is not None:
             temp_model = DescribeHotBigKeysResponseBodyDataHotKeys()
             self.hot_keys = temp_model.from_map(m['HotKeys'])
+        if m.get('LargeKeyMsg') is not None:
+            self.large_key_msg = m.get('LargeKeyMsg')
+        if m.get('LargeKeys') is not None:
+            temp_model = DescribeHotBigKeysResponseBodyDataLargeKeys()
+            self.large_keys = temp_model.from_map(m['LargeKeys'])
         return self
 
 

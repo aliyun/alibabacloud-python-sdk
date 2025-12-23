@@ -1,3 +1,8 @@
+2025-12-23 Version: 2.11.1
+- Update API DescribeHotBigKeys: add response parameters Body.Data.LargeKeyMsg.
+- Update API DescribeHotBigKeys: add response parameters Body.Data.LargeKeys.
+
+
 2025-12-18 Version: 2.11.0
 - Support API GetInstanceGroupInspectReportDetail.
 - Support API GetInstanceGroupInspectReportList.
