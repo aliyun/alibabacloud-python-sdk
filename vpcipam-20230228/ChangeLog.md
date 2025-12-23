@@ -1,3 +1,9 @@
+2025-12-23 Version: 2.3.0
+- Support API AddIpamMembers.
+- Support API ListIpamMembers.
+- Support API RemoveIpamMembers.
+
+
 2025-09-19 Version: 2.2.3
 - Update API ListIpamPools: add response parameters Body.IpamPools.$.Cidrs.
 

@@ -41,6 +41,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_ipam_members_with_options(
+        self,
+        request: vpc_ipam_20230228_models.AddIpamMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.AddIpamMembersResponse:
+        """
+        @summary 添加ipam可信服务纳管成员
+        
+        @param request: AddIpamMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIpamMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddIpamMembers',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.AddIpamMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_ipam_members_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.AddIpamMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.AddIpamMembersResponse:
+        """
+        @summary 添加ipam可信服务纳管成员
+        
+        @param request: AddIpamMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIpamMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddIpamMembers',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.AddIpamMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_ipam_members(
+        self,
+        request: vpc_ipam_20230228_models.AddIpamMembersRequest,
+    ) -> vpc_ipam_20230228_models.AddIpamMembersResponse:
+        """
+        @summary 添加ipam可信服务纳管成员
+        
+        @param request: AddIpamMembersRequest
+        @return: AddIpamMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_ipam_members_with_options(request, runtime)
+
+    async def add_ipam_members_async(
+        self,
+        request: vpc_ipam_20230228_models.AddIpamMembersRequest,
+    ) -> vpc_ipam_20230228_models.AddIpamMembersResponse:
+        """
+        @summary 添加ipam可信服务纳管成员
+        
+        @param request: AddIpamMembersRequest
+        @return: AddIpamMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_ipam_members_with_options_async(request, runtime)
+
     def add_ipam_pool_cidr_with_options(
         self,
         request: vpc_ipam_20230228_models.AddIpamPoolCidrRequest,
@@ -2573,6 +2697,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_ipam_discovered_resource_with_options_async(request, runtime)
 
+    def list_ipam_members_with_options(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.ListIpamMembersResponse:
+        """
+        @summary 查询ipam可信服务纳管成员
+        
+        @param request: ListIpamMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIpamMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpamMembers',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ipam_members_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.ListIpamMembersResponse:
+        """
+        @summary 查询ipam可信服务纳管成员
+        
+        @param request: ListIpamMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIpamMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpamMembers',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.ListIpamMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ipam_members(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamMembersRequest,
+    ) -> vpc_ipam_20230228_models.ListIpamMembersResponse:
+        """
+        @summary 查询ipam可信服务纳管成员
+        
+        @param request: ListIpamMembersRequest
+        @return: ListIpamMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ipam_members_with_options(request, runtime)
+
+    async def list_ipam_members_async(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamMembersRequest,
+    ) -> vpc_ipam_20230228_models.ListIpamMembersResponse:
+        """
+        @summary 查询ipam可信服务纳管成员
+        
+        @param request: ListIpamMembersRequest
+        @return: ListIpamMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ipam_members_with_options_async(request, runtime)
+
     def list_ipam_pool_allocations_with_options(
         self,
         request: vpc_ipam_20230228_models.ListIpamPoolAllocationsRequest,
@@ -3916,6 +4164,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.open_vpc_ipam_service_with_options_async(request, runtime)
+
+    def remove_ipam_members_with_options(
+        self,
+        request: vpc_ipam_20230228_models.RemoveIpamMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.RemoveIpamMembersResponse:
+        """
+        @summary 移除ipam可信服务纳管成员
+        
+        @param request: RemoveIpamMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveIpamMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveIpamMembers',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.RemoveIpamMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_ipam_members_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.RemoveIpamMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.RemoveIpamMembersResponse:
+        """
+        @summary 移除ipam可信服务纳管成员
+        
+        @param request: RemoveIpamMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveIpamMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveIpamMembers',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_ipam_20230228_models.RemoveIpamMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_ipam_members(
+        self,
+        request: vpc_ipam_20230228_models.RemoveIpamMembersRequest,
+    ) -> vpc_ipam_20230228_models.RemoveIpamMembersResponse:
+        """
+        @summary 移除ipam可信服务纳管成员
+        
+        @param request: RemoveIpamMembersRequest
+        @return: RemoveIpamMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_ipam_members_with_options(request, runtime)
+
+    async def remove_ipam_members_async(
+        self,
+        request: vpc_ipam_20230228_models.RemoveIpamMembersRequest,
+    ) -> vpc_ipam_20230228_models.RemoveIpamMembersResponse:
+        """
+        @summary 移除ipam可信服务纳管成员
+        
+        @param request: RemoveIpamMembersRequest
+        @return: RemoveIpamMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_ipam_members_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
