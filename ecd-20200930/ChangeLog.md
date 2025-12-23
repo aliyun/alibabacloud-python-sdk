@@ -1,3 +1,24 @@
+2025-12-23 Version: 4.20.1
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.AppointmentTimer.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.ImageId.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.LockScreenTime.
+- Update API DescribeConfigGroup: add response parameters Body.Data.$.InnerTimerDesc.
+- Update API DescribeConfigGroup: add response parameters Body.Data.$.InnerTimerName.
+- Update API DescribeConfigGroup: add response parameters Body.Data.$.IsBind.
+- Update API DescribeConfigGroup: add response parameters Body.Data.$.IsUpdate.
+- Update API DescribeOfficeSites: add request parameters AccountType.
+- Update API DescribeTimerGroup: add response parameters Body.Data.InnerTimerDesc.
+- Update API DescribeTimerGroup: add response parameters Body.Data.InnerTimerName.
+- Update API DescribeTimerGroup: add response parameters Body.Data.IsBind.
+- Update API DescribeTimerGroup: add response parameters Body.Data.IsUpdate.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.AppointmentTimer.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.ImageId.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.LockScreenTime.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.AppointmentTimer.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.ImageId.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.LockScreenTime.
+
+
 2025-12-23 Version: 4.20.0
 - Support API DescribeDesktopMetadata.
 

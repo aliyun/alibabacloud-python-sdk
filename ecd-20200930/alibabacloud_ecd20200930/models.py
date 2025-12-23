@@ -9528,9 +9528,12 @@ class CreateCloudDriveUsersResponse(TeaModel):
 class CreateConfigGroupRequestConfigTimersSegmentTimers(TeaModel):
     def __init__(
         self,
+        appointment_timer: int = None,
         end_cron_expression: str = None,
         enforce: bool = None,
+        image_id: str = None,
         interval: int = None,
+        lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
         process_whitelist: List[str] = None,
@@ -9540,9 +9543,12 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(TeaModel):
         timezone: str = None,
         trigger_type: str = None,
     ):
+        self.appointment_timer = appointment_timer
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
+        self.image_id = image_id
         self.interval = interval
+        self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
         self.process_whitelist = process_whitelist
@@ -9561,12 +9567,18 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(TeaModel):
             return _map
 
         result = dict()
+        if self.appointment_timer is not None:
+            result['AppointmentTimer'] = self.appointment_timer
         if self.end_cron_expression is not None:
             result['EndCronExpression'] = self.end_cron_expression
         if self.enforce is not None:
             result['Enforce'] = self.enforce
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.lock_screen_time is not None:
+            result['LockScreenTime'] = self.lock_screen_time
         if self.notification_time is not None:
             result['NotificationTime'] = self.notification_time
         if self.operation_type is not None:
@@ -9587,12 +9599,18 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppointmentTimer') is not None:
+            self.appointment_timer = m.get('AppointmentTimer')
         if m.get('EndCronExpression') is not None:
             self.end_cron_expression = m.get('EndCronExpression')
         if m.get('Enforce') is not None:
             self.enforce = m.get('Enforce')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('LockScreenTime') is not None:
+            self.lock_screen_time = m.get('LockScreenTime')
         if m.get('NotificationTime') is not None:
             self.notification_time = m.get('NotificationTime')
         if m.get('OperationType') is not None:
@@ -25614,6 +25632,10 @@ class DescribeConfigGroupResponseBodyData(TeaModel):
         bind_count_map: Dict[str, int] = None,
         description: str = None,
         group_id: str = None,
+        inner_timer_desc: str = None,
+        inner_timer_name: str = None,
+        is_bind: bool = None,
+        is_update: bool = None,
         name: str = None,
         product_type: str = None,
         status: str = None,
@@ -25627,6 +25649,10 @@ class DescribeConfigGroupResponseBodyData(TeaModel):
         self.description = description
         # The ID of the configuration group.
         self.group_id = group_id
+        self.inner_timer_desc = inner_timer_desc
+        self.inner_timer_name = inner_timer_name
+        self.is_bind = is_bind
+        self.is_update = is_update
         # The name of the configuration group.
         self.name = name
         # The service type of the configuration group.
@@ -25668,6 +25694,14 @@ class DescribeConfigGroupResponseBodyData(TeaModel):
             result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.inner_timer_desc is not None:
+            result['InnerTimerDesc'] = self.inner_timer_desc
+        if self.inner_timer_name is not None:
+            result['InnerTimerName'] = self.inner_timer_name
+        if self.is_bind is not None:
+            result['IsBind'] = self.is_bind
+        if self.is_update is not None:
+            result['IsUpdate'] = self.is_update
         if self.name is not None:
             result['Name'] = self.name
         if self.product_type is not None:
@@ -25688,6 +25722,14 @@ class DescribeConfigGroupResponseBodyData(TeaModel):
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('InnerTimerDesc') is not None:
+            self.inner_timer_desc = m.get('InnerTimerDesc')
+        if m.get('InnerTimerName') is not None:
+            self.inner_timer_name = m.get('InnerTimerName')
+        if m.get('IsBind') is not None:
+            self.is_bind = m.get('IsBind')
+        if m.get('IsUpdate') is not None:
+            self.is_update = m.get('IsUpdate')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductType') is not None:
@@ -39706,6 +39748,7 @@ class DescribeNetworkPackagesResponse(TeaModel):
 class DescribeOfficeSitesRequest(TeaModel):
     def __init__(
         self,
+        account_type: str = None,
         max_results: int = None,
         next_token: str = None,
         office_site_id: List[str] = None,
@@ -39715,6 +39758,7 @@ class DescribeOfficeSitesRequest(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        self.account_type = account_type
         # The number of entries to return on each page.
         # 
         # *   Maximum value: 100.
@@ -39843,6 +39887,8 @@ class DescribeOfficeSitesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -39863,6 +39909,8 @@ class DescribeOfficeSitesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -47828,9 +47876,12 @@ class DescribeTimerGroupRequest(TeaModel):
 class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(TeaModel):
     def __init__(
         self,
+        appointment_timer: int = None,
         end_cron_expression: str = None,
         enforce: bool = None,
+        image_id: str = None,
         interval: int = None,
+        lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
         process_whitelist: List[str] = None,
@@ -47840,9 +47891,12 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(TeaModel):
         timezone: str = None,
         trigger_type: str = None,
     ):
+        self.appointment_timer = appointment_timer
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
+        self.image_id = image_id
         self.interval = interval
+        self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
         self.process_whitelist = process_whitelist
@@ -47861,12 +47915,18 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(TeaModel):
             return _map
 
         result = dict()
+        if self.appointment_timer is not None:
+            result['AppointmentTimer'] = self.appointment_timer
         if self.end_cron_expression is not None:
             result['EndCronExpression'] = self.end_cron_expression
         if self.enforce is not None:
             result['Enforce'] = self.enforce
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.lock_screen_time is not None:
+            result['LockScreenTime'] = self.lock_screen_time
         if self.notification_time is not None:
             result['NotificationTime'] = self.notification_time
         if self.operation_type is not None:
@@ -47887,12 +47947,18 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppointmentTimer') is not None:
+            self.appointment_timer = m.get('AppointmentTimer')
         if m.get('EndCronExpression') is not None:
             self.end_cron_expression = m.get('EndCronExpression')
         if m.get('Enforce') is not None:
             self.enforce = m.get('Enforce')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('LockScreenTime') is not None:
+            self.lock_screen_time = m.get('LockScreenTime')
         if m.get('NotificationTime') is not None:
             self.notification_time = m.get('NotificationTime')
         if m.get('OperationType') is not None:
@@ -48052,6 +48118,10 @@ class DescribeTimerGroupResponseBodyData(TeaModel):
         config_timers: List[DescribeTimerGroupResponseBodyDataConfigTimers] = None,
         description: str = None,
         group_id: str = None,
+        inner_timer_desc: str = None,
+        inner_timer_name: str = None,
+        is_bind: bool = None,
+        is_update: bool = None,
         name: str = None,
         product_type: str = None,
         status: str = None,
@@ -48067,6 +48137,10 @@ class DescribeTimerGroupResponseBodyData(TeaModel):
         self.description = description
         # The ID of the configuration group.
         self.group_id = group_id
+        self.inner_timer_desc = inner_timer_desc
+        self.inner_timer_name = inner_timer_name
+        self.is_bind = is_bind
+        self.is_update = is_update
         # The name of the configuration group.
         self.name = name
         # The service type of the configuration group.
@@ -48115,6 +48189,14 @@ class DescribeTimerGroupResponseBodyData(TeaModel):
             result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.inner_timer_desc is not None:
+            result['InnerTimerDesc'] = self.inner_timer_desc
+        if self.inner_timer_name is not None:
+            result['InnerTimerName'] = self.inner_timer_name
+        if self.is_bind is not None:
+            result['IsBind'] = self.is_bind
+        if self.is_update is not None:
+            result['IsUpdate'] = self.is_update
         if self.name is not None:
             result['Name'] = self.name
         if self.product_type is not None:
@@ -48140,6 +48222,14 @@ class DescribeTimerGroupResponseBodyData(TeaModel):
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('InnerTimerDesc') is not None:
+            self.inner_timer_desc = m.get('InnerTimerDesc')
+        if m.get('InnerTimerName') is not None:
+            self.inner_timer_name = m.get('InnerTimerName')
+        if m.get('IsBind') is not None:
+            self.is_bind = m.get('IsBind')
+        if m.get('IsUpdate') is not None:
+            self.is_update = m.get('IsUpdate')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductType') is not None:
@@ -67130,9 +67220,12 @@ class ModifyTemplateBaseInfoResponse(TeaModel):
 class ModifyTimerGroupRequestConfigTimersSegmentTimers(TeaModel):
     def __init__(
         self,
+        appointment_timer: int = None,
         end_cron_expression: str = None,
         enforce: bool = None,
+        image_id: str = None,
         interval: int = None,
+        lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
         process_whitelist: List[str] = None,
@@ -67142,9 +67235,12 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(TeaModel):
         timezone: str = None,
         trigger_type: str = None,
     ):
+        self.appointment_timer = appointment_timer
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
+        self.image_id = image_id
         self.interval = interval
+        self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
         self.process_whitelist = process_whitelist
@@ -67163,12 +67259,18 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(TeaModel):
             return _map
 
         result = dict()
+        if self.appointment_timer is not None:
+            result['AppointmentTimer'] = self.appointment_timer
         if self.end_cron_expression is not None:
             result['EndCronExpression'] = self.end_cron_expression
         if self.enforce is not None:
             result['Enforce'] = self.enforce
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.lock_screen_time is not None:
+            result['LockScreenTime'] = self.lock_screen_time
         if self.notification_time is not None:
             result['NotificationTime'] = self.notification_time
         if self.operation_type is not None:
@@ -67189,12 +67291,18 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppointmentTimer') is not None:
+            self.appointment_timer = m.get('AppointmentTimer')
         if m.get('EndCronExpression') is not None:
             self.end_cron_expression = m.get('EndCronExpression')
         if m.get('Enforce') is not None:
             self.enforce = m.get('Enforce')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('LockScreenTime') is not None:
+            self.lock_screen_time = m.get('LockScreenTime')
         if m.get('NotificationTime') is not None:
             self.notification_time = m.get('NotificationTime')
         if m.get('OperationType') is not None:
