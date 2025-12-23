@@ -1,3 +1,11 @@
+2025-12-23 Version: 1.5.2
+- Update API GetResourceCounts: add request parameters IncludeDeletedResources.
+- Update API GetResourceCounts: add request parameters SearchExpression.
+- Update API SearchResources: add request parameters IncludeDeletedResources.
+- Update API SearchResources: add request parameters SearchExpression.
+- Update API SearchResources: add response parameters Body.Resources.$.Deleted.
+
+
 2025-10-11 Version: 1.5.1
 - Update API GetDeliveryChannel: add response parameters Body.ResourceChangeDelivery.Enabled.
 - Update API GetDeliveryChannel: add response parameters Body.ResourceSnapshotDelivery.Enabled.

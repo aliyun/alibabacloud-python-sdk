@@ -4507,6 +4507,8 @@ class GetResourceCountsRequest(TeaModel):
         self,
         filter: List[GetResourceCountsRequestFilter] = None,
         group_by_key: str = None,
+        include_deleted_resources: bool = None,
+        search_expression: str = None,
     ):
         # The filter conditions.
         self.filter = filter
@@ -4518,6 +4520,8 @@ class GetResourceCountsRequest(TeaModel):
         # *   TagKey
         # *   TagValue
         self.group_by_key = group_by_key
+        self.include_deleted_resources = include_deleted_resources
+        self.search_expression = search_expression
 
     def validate(self):
         if self.filter:
@@ -4537,6 +4541,10 @@ class GetResourceCountsRequest(TeaModel):
                 result['Filter'].append(k.to_map() if k else None)
         if self.group_by_key is not None:
             result['GroupByKey'] = self.group_by_key
+        if self.include_deleted_resources is not None:
+            result['IncludeDeletedResources'] = self.include_deleted_resources
+        if self.search_expression is not None:
+            result['SearchExpression'] = self.search_expression
         return result
 
     def from_map(self, m: dict = None):
@@ -4548,6 +4556,10 @@ class GetResourceCountsRequest(TeaModel):
                 self.filter.append(temp_model.from_map(k))
         if m.get('GroupByKey') is not None:
             self.group_by_key = m.get('GroupByKey')
+        if m.get('IncludeDeletedResources') is not None:
+            self.include_deleted_resources = m.get('IncludeDeletedResources')
+        if m.get('SearchExpression') is not None:
+            self.search_expression = m.get('SearchExpression')
         return self
 
 
@@ -8060,13 +8072,16 @@ class SearchResourcesRequest(TeaModel):
     def __init__(
         self,
         filter: List[SearchResourcesRequestFilter] = None,
+        include_deleted_resources: bool = None,
         max_results: int = None,
         next_token: str = None,
         resource_group_id: str = None,
+        search_expression: str = None,
         sort_criterion: SearchResourcesRequestSortCriterion = None,
     ):
         # The filter conditions.
         self.filter = filter
+        self.include_deleted_resources = include_deleted_resources
         # The maximum number of entries per page.
         # 
         # Valid values: 1 to 100.
@@ -8079,6 +8094,7 @@ class SearchResourcesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.search_expression = search_expression
         # The method that is used to sort the entries returned.
         self.sort_criterion = sort_criterion
 
@@ -8100,12 +8116,16 @@ class SearchResourcesRequest(TeaModel):
         if self.filter is not None:
             for k in self.filter:
                 result['Filter'].append(k.to_map() if k else None)
+        if self.include_deleted_resources is not None:
+            result['IncludeDeletedResources'] = self.include_deleted_resources
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.search_expression is not None:
+            result['SearchExpression'] = self.search_expression
         if self.sort_criterion is not None:
             result['SortCriterion'] = self.sort_criterion.to_map()
         return result
@@ -8117,12 +8137,16 @@ class SearchResourcesRequest(TeaModel):
             for k in m.get('Filter'):
                 temp_model = SearchResourcesRequestFilter()
                 self.filter.append(temp_model.from_map(k))
+        if m.get('IncludeDeletedResources') is not None:
+            self.include_deleted_resources = m.get('IncludeDeletedResources')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SearchExpression') is not None:
+            self.search_expression = m.get('SearchExpression')
         if m.get('SortCriterion') is not None:
             temp_model = SearchResourcesRequestSortCriterion()
             self.sort_criterion = temp_model.from_map(m['SortCriterion'])
@@ -8256,6 +8280,7 @@ class SearchResourcesResponseBodyResources(TeaModel):
         self,
         account_id: str = None,
         create_time: str = None,
+        deleted: bool = None,
         expire_time: str = None,
         ip_address_attributes: List[SearchResourcesResponseBodyResourcesIpAddressAttributes] = None,
         ip_addresses: List[str] = None,
@@ -8273,6 +8298,7 @@ class SearchResourcesResponseBodyResources(TeaModel):
         # 
         # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
+        self.deleted = deleted
         # The time when the resource expires.
         self.expire_time = expire_time
         # The attributes of the IP address.
@@ -8318,6 +8344,8 @@ class SearchResourcesResponseBodyResources(TeaModel):
             result['AccountId'] = self.account_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         result['IpAddressAttributes'] = []
@@ -8350,6 +8378,8 @@ class SearchResourcesResponseBodyResources(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         self.ip_address_attributes = []

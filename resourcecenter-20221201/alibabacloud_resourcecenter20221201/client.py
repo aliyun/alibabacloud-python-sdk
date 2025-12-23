@@ -2545,6 +2545,10 @@ class Client(OpenApiClient):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.group_by_key):
             query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.include_deleted_resources):
+            query['IncludeDeletedResources'] = request.include_deleted_resources
+        if not UtilClient.is_unset(request.search_expression):
+            query['SearchExpression'] = request.search_expression
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2582,6 +2586,10 @@ class Client(OpenApiClient):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.group_by_key):
             query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.include_deleted_resources):
+            query['IncludeDeletedResources'] = request.include_deleted_resources
+        if not UtilClient.is_unset(request.search_expression):
+            query['SearchExpression'] = request.search_expression
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4295,12 +4303,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_deleted_resources):
+            query['IncludeDeletedResources'] = request.include_deleted_resources
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.search_expression):
+            query['SearchExpression'] = request.search_expression
         if not UtilClient.is_unset(request.sort_criterion):
             query['SortCriterion'] = request.sort_criterion
         req = open_api_models.OpenApiRequest(
@@ -4344,12 +4356,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_deleted_resources):
+            query['IncludeDeletedResources'] = request.include_deleted_resources
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.search_expression):
+            query['SearchExpression'] = request.search_expression
         if not UtilClient.is_unset(request.sort_criterion):
             query['SortCriterion'] = request.sort_criterion
         req = open_api_models.OpenApiRequest(
