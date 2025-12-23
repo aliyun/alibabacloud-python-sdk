@@ -27874,9 +27874,11 @@ class DescribeApplicationSlbsRequest(TeaModel):
 class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
     def __init__(
         self,
+        connection_drain_timeout: int = None,
         cookie: str = None,
         cookie_timeout: int = None,
         create_time: int = None,
+        enable_connection_drain: bool = None,
         https_ca_cert_id: str = None,
         https_cert_id: str = None,
         port: int = None,
@@ -27884,11 +27886,14 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
         sticky_session: bool = None,
         sticky_session_type: str = None,
         target_port: int = None,
+        vserver_group_id: str = None,
     ):
+        self.connection_drain_timeout = connection_drain_timeout
         self.cookie = cookie
         self.cookie_timeout = cookie_timeout
         # The timestamp when the canary release rule was created.
         self.create_time = create_time
+        self.enable_connection_drain = enable_connection_drain
         self.https_ca_cert_id = https_ca_cert_id
         # The supported protocol.
         self.https_cert_id = https_cert_id
@@ -27900,6 +27905,7 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
         self.sticky_session_type = sticky_session_type
         # The port specified for the SLB listener.
         self.target_port = target_port
+        self.vserver_group_id = vserver_group_id
 
     def validate(self):
         pass
@@ -27910,12 +27916,16 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
             return _map
 
         result = dict()
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
         if self.cookie is not None:
             result['Cookie'] = self.cookie
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_connection_drain is not None:
+            result['EnableConnectionDrain'] = self.enable_connection_drain
         if self.https_ca_cert_id is not None:
             result['HttpsCaCertId'] = self.https_ca_cert_id
         if self.https_cert_id is not None:
@@ -27930,16 +27940,22 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
             result['StickySessionType'] = self.sticky_session_type
         if self.target_port is not None:
             result['TargetPort'] = self.target_port
+        if self.vserver_group_id is not None:
+            result['VServerGroupId'] = self.vserver_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
         if m.get('Cookie') is not None:
             self.cookie = m.get('Cookie')
         if m.get('CookieTimeout') is not None:
             self.cookie_timeout = m.get('CookieTimeout')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableConnectionDrain') is not None:
+            self.enable_connection_drain = m.get('EnableConnectionDrain')
         if m.get('HttpsCaCertId') is not None:
             self.https_ca_cert_id = m.get('HttpsCaCertId')
         if m.get('HttpsCertId') is not None:
@@ -27954,15 +27970,19 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
             self.sticky_session_type = m.get('StickySessionType')
         if m.get('TargetPort') is not None:
             self.target_port = m.get('TargetPort')
+        if m.get('VServerGroupId') is not None:
+            self.vserver_group_id = m.get('VServerGroupId')
         return self
 
 
 class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
     def __init__(
         self,
+        connection_drain_timeout: int = None,
         cookie: str = None,
         cookie_timeout: int = None,
         create_time: int = None,
+        enable_connection_drain: bool = None,
         https_ca_cert_id: str = None,
         https_cert_id: str = None,
         port: int = None,
@@ -27970,11 +27990,14 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
         sticky_session: bool = None,
         sticky_session_type: str = None,
         target_port: int = None,
+        vserver_group_id: str = None,
     ):
+        self.connection_drain_timeout = connection_drain_timeout
         self.cookie = cookie
         self.cookie_timeout = cookie_timeout
         # The timestamp when the canary release rule was created.
         self.create_time = create_time
+        self.enable_connection_drain = enable_connection_drain
         self.https_ca_cert_id = https_ca_cert_id
         # The supported protocol.
         self.https_cert_id = https_cert_id
@@ -27986,6 +28009,7 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
         self.sticky_session_type = sticky_session_type
         # The port specified for the SLB listener.
         self.target_port = target_port
+        self.vserver_group_id = vserver_group_id
 
     def validate(self):
         pass
@@ -27996,12 +28020,16 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
             return _map
 
         result = dict()
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
         if self.cookie is not None:
             result['Cookie'] = self.cookie
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_connection_drain is not None:
+            result['EnableConnectionDrain'] = self.enable_connection_drain
         if self.https_ca_cert_id is not None:
             result['HttpsCaCertId'] = self.https_ca_cert_id
         if self.https_cert_id is not None:
@@ -28016,16 +28044,22 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
             result['StickySessionType'] = self.sticky_session_type
         if self.target_port is not None:
             result['TargetPort'] = self.target_port
+        if self.vserver_group_id is not None:
+            result['VServerGroupId'] = self.vserver_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
         if m.get('Cookie') is not None:
             self.cookie = m.get('Cookie')
         if m.get('CookieTimeout') is not None:
             self.cookie_timeout = m.get('CookieTimeout')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableConnectionDrain') is not None:
+            self.enable_connection_drain = m.get('EnableConnectionDrain')
         if m.get('HttpsCaCertId') is not None:
             self.https_ca_cert_id = m.get('HttpsCaCertId')
         if m.get('HttpsCertId') is not None:
@@ -28040,6 +28074,8 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
             self.sticky_session_type = m.get('StickySessionType')
         if m.get('TargetPort') is not None:
             self.target_port = m.get('TargetPort')
+        if m.get('VServerGroupId') is not None:
+            self.vserver_group_id = m.get('VServerGroupId')
         return self
 
 

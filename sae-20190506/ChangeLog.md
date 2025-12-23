@@ -1,3 +1,12 @@
+2025-12-23 Version: 2.10.4
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.Internet.$.ConnectionDrainTimeout.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.Internet.$.EnableConnectionDrain.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.Internet.$.VServerGroupId.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.Intranet.$.ConnectionDrainTimeout.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.Intranet.$.EnableConnectionDrain.
+- Update API DescribeApplicationSlbs: add response parameters Body.Data.Intranet.$.VServerGroupId.
+
+
 2025-12-22 Version: 2.10.3
 - Update API CreateApplication: add request parameters LokiConfigs.
 - Update API DeployApplication: add request parameters LokiConfigs.
