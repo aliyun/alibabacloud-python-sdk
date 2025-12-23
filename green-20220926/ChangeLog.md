@@ -8,6 +8,11 @@
 - Update API GetTextScanResult: add response parameters Body.Data.Items.$.DataId.
 
 
+2025-12-23 Version: 1.5.4
+- Update API GetTextScanResult: add response parameters Body.Data.Items.$.AccountId.
+- Update API GetTextScanResult: add response parameters Body.Data.Items.$.DataId.
+
+
 2025-12-19 Version: 1.5.3
 - Update API GetScanResult: add response parameters Body.Data.Items.$.AccountId.
 - Update API GetScanResult: add response parameters Body.Data.Items.$.LiveId.
