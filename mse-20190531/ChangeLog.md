@@ -1,3 +1,11 @@
+2025-12-23 Version: 6.22.2
+- Update API ListNacosConfigs: add response parameters Body.Configurations.$.ConfigTags.
+- Update API ListNacosConfigs: add response parameters Body.Configurations.$.Description.
+- Update API QueryConfig: add response parameters Body.Data.PrometheusSdProtocolEnabled.
+- Update API QueryConfig: add response parameters Body.Data.NacosRunningEnv.fenceEnabled.
+- Update API QueryConfig: add response parameters Body.Data.NacosRunningEnv.fencePolicy.
+
+
 2025-12-10 Version: 6.22.1
 - Update API GetGatewayConfig: add response parameters Body.Data.LiteMetrics.
 - Update API GetGatewayConfig: add response parameters Body.Data.PreserveExternalRequestID.

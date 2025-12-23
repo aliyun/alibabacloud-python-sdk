@@ -50488,14 +50488,18 @@ class ListNacosConfigsResponseBodyConfigurations(TeaModel):
     def __init__(
         self,
         app_name: str = None,
+        config_tags: str = None,
         data_id: str = None,
+        description: str = None,
         group: str = None,
         id: str = None,
     ):
         # The name of the application.
         self.app_name = app_name
+        self.config_tags = config_tags
         # The ID of the configuration.
         self.data_id = data_id
+        self.description = description
         # The ID of the group.
         self.group = group
         # The ID of the application.
@@ -50512,8 +50516,12 @@ class ListNacosConfigsResponseBodyConfigurations(TeaModel):
         result = dict()
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.config_tags is not None:
+            result['ConfigTags'] = self.config_tags
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.group is not None:
             result['Group'] = self.group
         if self.id is not None:
@@ -50524,8 +50532,12 @@ class ListNacosConfigsResponseBodyConfigurations(TeaModel):
         m = m or dict()
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('ConfigTags') is not None:
+            self.config_tags = m.get('ConfigTags')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Group') is not None:
             self.group = m.get('Group')
         if m.get('Id') is not None:
@@ -58945,15 +58957,14 @@ class QueryConfigRequest(TeaModel):
         return self
 
 
-class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
+class QueryConfigResponseBodyDataNacosRunningEnvFencePolicy(TeaModel):
     def __init__(
         self,
-        empty_protect: bool = None,
-        gray_auth: str = None,
+        enabled_modules: List[str] = None,
+        intercept_policy: Dict[str, str] = None,
     ):
-        # Indicates whether empty list protection is enabled.
-        self.empty_protect = empty_protect
-        self.gray_auth = gray_auth
+        self.enabled_modules = enabled_modules
+        self.intercept_policy = intercept_policy
 
     def validate(self):
         pass
@@ -58964,8 +58975,51 @@ class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
             return _map
 
         result = dict()
+        if self.enabled_modules is not None:
+            result['enabledModules'] = self.enabled_modules
+        if self.intercept_policy is not None:
+            result['interceptPolicy'] = self.intercept_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabledModules') is not None:
+            self.enabled_modules = m.get('enabledModules')
+        if m.get('interceptPolicy') is not None:
+            self.intercept_policy = m.get('interceptPolicy')
+        return self
+
+
+class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
+    def __init__(
+        self,
+        empty_protect: bool = None,
+        fence_enabled: bool = None,
+        fence_policy: QueryConfigResponseBodyDataNacosRunningEnvFencePolicy = None,
+        gray_auth: str = None,
+    ):
+        # Indicates whether empty list protection is enabled.
+        self.empty_protect = empty_protect
+        self.fence_enabled = fence_enabled
+        self.fence_policy = fence_policy
+        self.gray_auth = gray_auth
+
+    def validate(self):
+        if self.fence_policy:
+            self.fence_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.empty_protect is not None:
             result['emptyProtect'] = self.empty_protect
+        if self.fence_enabled is not None:
+            result['fenceEnabled'] = self.fence_enabled
+        if self.fence_policy is not None:
+            result['fencePolicy'] = self.fence_policy.to_map()
         if self.gray_auth is not None:
             result['grayAuth'] = self.gray_auth
         return result
@@ -58974,6 +59028,11 @@ class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
         m = m or dict()
         if m.get('emptyProtect') is not None:
             self.empty_protect = m.get('emptyProtect')
+        if m.get('fenceEnabled') is not None:
+            self.fence_enabled = m.get('fenceEnabled')
+        if m.get('fencePolicy') is not None:
+            temp_model = QueryConfigResponseBodyDataNacosRunningEnvFencePolicy()
+            self.fence_policy = temp_model.from_map(m['fencePolicy'])
         if m.get('grayAuth') is not None:
             self.gray_auth = m.get('grayAuth')
         return self
@@ -59009,6 +59068,7 @@ class QueryConfigResponseBodyData(TeaModel):
         naming_create_service_supported: bool = None,
         open_super_acl: bool = None,
         pass_word: str = None,
+        prometheus_sd_protocol_enabled: str = None,
         restart_flag: bool = None,
         snapshot_count: str = None,
         sync_limit: str = None,
@@ -59100,6 +59160,7 @@ class QueryConfigResponseBodyData(TeaModel):
         self.open_super_acl = open_super_acl
         # The password that corresponds to the username. This parameter is valid only if OpenSuperAcl is set to true.
         self.pass_word = pass_word
+        self.prometheus_sd_protocol_enabled = prometheus_sd_protocol_enabled
         # Indicates whether the instance was restarted and new configurations have taken effect. Valid values:
         # 
         # *   `true`: The restart was successful.
@@ -59180,6 +59241,8 @@ class QueryConfigResponseBodyData(TeaModel):
             result['OpenSuperAcl'] = self.open_super_acl
         if self.pass_word is not None:
             result['PassWord'] = self.pass_word
+        if self.prometheus_sd_protocol_enabled is not None:
+            result['PrometheusSdProtocolEnabled'] = self.prometheus_sd_protocol_enabled
         if self.restart_flag is not None:
             result['RestartFlag'] = self.restart_flag
         if self.snapshot_count is not None:
@@ -59251,6 +59314,8 @@ class QueryConfigResponseBodyData(TeaModel):
             self.open_super_acl = m.get('OpenSuperAcl')
         if m.get('PassWord') is not None:
             self.pass_word = m.get('PassWord')
+        if m.get('PrometheusSdProtocolEnabled') is not None:
+            self.prometheus_sd_protocol_enabled = m.get('PrometheusSdProtocolEnabled')
         if m.get('RestartFlag') is not None:
             self.restart_flag = m.get('RestartFlag')
         if m.get('SnapshotCount') is not None:
