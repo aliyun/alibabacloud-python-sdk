@@ -1,3 +1,7 @@
+2025-12-23 Version: 2.7.1
+- Update API ListUserAuthnSourceMappings: add response parameters Body.UserAuthnSourceMappings.$.ExternalData.
+
+
 2025-12-16 Version: 2.7.0
 - Support API GetApplicationAdvancedConfig.
 - Support API UpdateApplicationAdvancedConfig.

@@ -33479,6 +33479,7 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(TeaModel):
         self,
         authn_source_type: str = None,
         create_time: int = None,
+        external_data: str = None,
         identity_provider_id: str = None,
         instance_id: str = None,
         update_time: int = None,
@@ -33489,6 +33490,7 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(TeaModel):
         self.authn_source_type = authn_source_type
         # 创建时间
         self.create_time = create_time
+        self.external_data = external_data
         # 来源Idp Id
         self.identity_provider_id = identity_provider_id
         # 实例Id
@@ -33513,6 +33515,8 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(TeaModel):
             result['AuthnSourceType'] = self.authn_source_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.external_data is not None:
+            result['ExternalData'] = self.external_data
         if self.identity_provider_id is not None:
             result['IdentityProviderId'] = self.identity_provider_id
         if self.instance_id is not None:
@@ -33531,6 +33535,8 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(TeaModel):
             self.authn_source_type = m.get('AuthnSourceType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ExternalData') is not None:
+            self.external_data = m.get('ExternalData')
         if m.get('IdentityProviderId') is not None:
             self.identity_provider_id = m.get('IdentityProviderId')
         if m.get('InstanceId') is not None:
