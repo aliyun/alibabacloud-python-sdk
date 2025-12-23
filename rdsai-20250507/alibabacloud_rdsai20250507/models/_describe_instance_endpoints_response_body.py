@@ -10,15 +10,21 @@ from darabonba.model import DaraModel
 class DescribeInstanceEndpointsResponseBody(DaraModel):
     def __init__(
         self,
+        dbinstance_endpoints: List[main_models.DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints] = None,
         instance_endpoints: List[main_models.DescribeInstanceEndpointsResponseBodyInstanceEndpoints] = None,
         instance_name: str = None,
         request_id: str = None,
     ):
+        self.dbinstance_endpoints = dbinstance_endpoints
         self.instance_endpoints = instance_endpoints
         self.instance_name = instance_name
         self.request_id = request_id
 
     def validate(self):
+        if self.dbinstance_endpoints:
+            for v1 in self.dbinstance_endpoints:
+                 if v1:
+                    v1.validate()
         if self.instance_endpoints:
             for v1 in self.instance_endpoints:
                  if v1:
@@ -29,6 +35,11 @@ class DescribeInstanceEndpointsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['DBInstanceEndpoints'] = []
+        if self.dbinstance_endpoints is not None:
+            for k1 in self.dbinstance_endpoints:
+                result['DBInstanceEndpoints'].append(k1.to_map() if k1 else None)
+
         result['InstanceEndpoints'] = []
         if self.instance_endpoints is not None:
             for k1 in self.instance_endpoints:
@@ -44,6 +55,12 @@ class DescribeInstanceEndpointsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.dbinstance_endpoints = []
+        if m.get('DBInstanceEndpoints') is not None:
+            for k1 in m.get('DBInstanceEndpoints'):
+                temp_model = main_models.DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints()
+                self.dbinstance_endpoints.append(temp_model.from_map(k1))
+
         self.instance_endpoints = []
         if m.get('InstanceEndpoints') is not None:
             for k1 in m.get('InstanceEndpoints'):
@@ -100,6 +117,49 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
 
         if m.get('IP') is not None:
             self.ip = m.get('IP')
+
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+
+        return self
+
+class DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints(DaraModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        ip_type: str = None,
+        port: str = None,
+    ):
+        self.connection_string = connection_string
+        self.ip_type = ip_type
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+
+        if self.port is not None:
+            result['Port'] = self.port
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
 
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')

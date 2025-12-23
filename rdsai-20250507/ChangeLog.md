@@ -1,3 +1,8 @@
+2025-12-23 Version: 2.0.3
+- Update API DescribeEventsList: add response parameters Body.Events.$.RegionId.
+- Update API DescribeInstanceEndpoints: add response parameters Body.DBInstanceEndpoints.
+
+
 2025-12-19 Version: 2.0.2
 - Update API CreateAppInstance: add request parameters InitializeWithExistingData.
 

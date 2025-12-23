@@ -107,6 +107,7 @@ class DescribeEventsListResponseBodyEvents(DaraModel):
         instance_description: str = None,
         instance_id: str = None,
         recovery_time: str = None,
+        region_id: str = None,
     ):
         self.event_code = event_code
         self.event_status = event_status
@@ -114,6 +115,7 @@ class DescribeEventsListResponseBodyEvents(DaraModel):
         self.instance_description = instance_description
         self.instance_id = instance_id
         self.recovery_time = recovery_time
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -141,6 +143,9 @@ class DescribeEventsListResponseBodyEvents(DaraModel):
         if self.recovery_time is not None:
             result['RecoveryTime'] = self.recovery_time
 
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -162,6 +167,9 @@ class DescribeEventsListResponseBodyEvents(DaraModel):
 
         if m.get('RecoveryTime') is not None:
             self.recovery_time = m.get('RecoveryTime')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         return self
 
