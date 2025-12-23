@@ -556,21 +556,21 @@ class ChangeResourceGroupInput(TeaModel):
 
         result = dict()
         if self.new_resource_group_id is not None:
-            result['newResourceGroupId'] = self.new_resource_group_id
+            result['NewResourceGroupId'] = self.new_resource_group_id
         if self.resource_id is not None:
-            result['resourceId'] = self.resource_id
+            result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
-            result['resourceType'] = self.resource_type
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('newResourceGroupId') is not None:
-            self.new_resource_group_id = m.get('newResourceGroupId')
-        if m.get('resourceId') is not None:
-            self.resource_id = m.get('resourceId')
-        if m.get('resourceType') is not None:
-            self.resource_type = m.get('resourceType')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -595,21 +595,21 @@ class ChangeResourceGroupOutput(TeaModel):
 
         result = dict()
         if self.new_resource_group_id is not None:
-            result['newResourceGroupId'] = self.new_resource_group_id
+            result['NewResourceGroupId'] = self.new_resource_group_id
         if self.old_resource_group_id is not None:
-            result['oldResourceGroupId'] = self.old_resource_group_id
+            result['OldResourceGroupId'] = self.old_resource_group_id
         if self.resource_id is not None:
-            result['resourceId'] = self.resource_id
+            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('newResourceGroupId') is not None:
-            self.new_resource_group_id = m.get('newResourceGroupId')
-        if m.get('oldResourceGroupId') is not None:
-            self.old_resource_group_id = m.get('oldResourceGroupId')
-        if m.get('resourceId') is not None:
-            self.resource_id = m.get('resourceId')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('OldResourceGroupId') is not None:
+            self.old_resource_group_id = m.get('OldResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
@@ -2468,12 +2468,16 @@ class CreateSessionInput(TeaModel):
         self,
         disable_session_id_reuse: bool = None,
         nas_config: NASConfig = None,
+        oss_mount_config: OSSMountConfig = None,
+        polar_fs_config: PolarFsConfig = None,
         session_id: str = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
         self.disable_session_id_reuse = disable_session_id_reuse
         self.nas_config = nas_config
+        self.oss_mount_config = oss_mount_config
+        self.polar_fs_config = polar_fs_config
         self.session_id = session_id
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         self.session_ttlin_seconds = session_ttlin_seconds
@@ -2481,6 +2485,10 @@ class CreateSessionInput(TeaModel):
     def validate(self):
         if self.nas_config:
             self.nas_config.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
+        if self.polar_fs_config:
+            self.polar_fs_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2492,6 +2500,10 @@ class CreateSessionInput(TeaModel):
             result['disableSessionIdReuse'] = self.disable_session_id_reuse
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.polar_fs_config is not None:
+            result['polarFsConfig'] = self.polar_fs_config.to_map()
         if self.session_id is not None:
             result['sessionId'] = self.session_id
         if self.session_idle_timeout_in_seconds is not None:
@@ -2507,6 +2519,12 @@ class CreateSessionInput(TeaModel):
         if m.get('nasConfig') is not None:
             temp_model = NASConfig()
             self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('ossMountConfig') is not None:
+            temp_model = OSSMountConfig()
+            self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('polarFsConfig') is not None:
+            temp_model = PolarFsConfig()
+            self.polar_fs_config = temp_model.from_map(m['polarFsConfig'])
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
         if m.get('sessionIdleTimeoutInSeconds') is not None:
@@ -5952,6 +5970,8 @@ class Session(TeaModel):
         function_name: str = None,
         last_modified_time: str = None,
         nas_config: NASConfig = None,
+        oss_mount_config: OSSMountConfig = None,
+        polar_fs_config: PolarFsConfig = None,
         qualifier: str = None,
         session_affinity_type: str = None,
         session_id: str = None,
@@ -5965,6 +5985,8 @@ class Session(TeaModel):
         self.function_name = function_name
         self.last_modified_time = last_modified_time
         self.nas_config = nas_config
+        self.oss_mount_config = oss_mount_config
+        self.polar_fs_config = polar_fs_config
         self.qualifier = qualifier
         self.session_affinity_type = session_affinity_type
         self.session_id = session_id
@@ -5975,6 +5997,10 @@ class Session(TeaModel):
     def validate(self):
         if self.nas_config:
             self.nas_config.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
+        if self.polar_fs_config:
+            self.polar_fs_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5994,6 +6020,10 @@ class Session(TeaModel):
             result['lastModifiedTime'] = self.last_modified_time
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.polar_fs_config is not None:
+            result['polarFsConfig'] = self.polar_fs_config.to_map()
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
         if self.session_affinity_type is not None:
@@ -6023,6 +6053,12 @@ class Session(TeaModel):
         if m.get('nasConfig') is not None:
             temp_model = NASConfig()
             self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('ossMountConfig') is not None:
+            temp_model = OSSMountConfig()
+            self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('polarFsConfig') is not None:
+            temp_model = PolarFsConfig()
+            self.polar_fs_config = temp_model.from_map(m['polarFsConfig'])
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
         if m.get('sessionAffinityType') is not None:
