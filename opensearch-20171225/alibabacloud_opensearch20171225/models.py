@@ -1756,7 +1756,7 @@ class CompileSortScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2193,14 +2193,14 @@ class CreateABTestSceneRequest(TeaModel):
         body: ABTestScene = None,
         dry_run: bool = None,
     ):
-        # The request body.
+        # The ABTest scenario. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html)
         self.body = body
-        # Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
+        # Specifies whether to check the validity of input parameters. Default value: false.
         # 
         # Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: checks only the validity of input parameters.
+        # *   **false**: checks the validity of input parameters and creates an attribution configuration.
         self.dry_run = dry_run
 
     def validate(self):
@@ -2243,16 +2243,16 @@ class CreateABTestSceneResponseBodyResult(TeaModel):
         self.created = created
         # The ID of the test group.
         self.id = id
-        # The name of the test group.
+        # The name of the A/B test group.
         self.name = name
-        # The status of the test scenario. Valid values:
+        # The status. Valid values:
         # 
         # *   0: not in effect
         # *   1: in effect
         self.status = status
-        # The time when the test scenario was last modified.
+        # The time when the test scenario was last updated.
         self.updated = updated
-        # The tag of the test scenario.
+        # The ID of the test scenario
         self.values = values
 
     def validate(self):
@@ -2301,9 +2301,9 @@ class CreateABTestSceneResponseBody(TeaModel):
         request_id: str = None,
         result: CreateABTestSceneResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return result.
+        # The returned data.
         self.result = result
 
     def validate(self):
@@ -2376,11 +2376,25 @@ class CreateABTestSceneResponse(TeaModel):
 class CreateAppRequestCluster(TeaModel):
     def __init__(
         self,
+        chunk_models: List[Dict[str, Any]] = None,
+        graph_rag: Dict[str, Any] = None,
+        image_content_recognizer_models: List[Dict[str, Any]] = None,
         max_query_clause_length: int = None,
         max_timeout_ms: int = None,
+        text_embedding_model: str = None,
+        text_sparse_embedding_model: str = None,
+        vector_index_configs: List[Dict[str, Any]] = None,
     ):
+        self.chunk_models = chunk_models
+        self.graph_rag = graph_rag
+        self.image_content_recognizer_models = image_content_recognizer_models
+        # The maximum length of the query clause.
         self.max_query_clause_length = max_query_clause_length
+        # The timeout period. Unit: milliseconds.
         self.max_timeout_ms = max_timeout_ms
+        self.text_embedding_model = text_embedding_model
+        self.text_sparse_embedding_model = text_sparse_embedding_model
+        self.vector_index_configs = vector_index_configs
 
     def validate(self):
         pass
@@ -2391,18 +2405,42 @@ class CreateAppRequestCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.chunk_models is not None:
+            result['chunkModels'] = self.chunk_models
+        if self.graph_rag is not None:
+            result['graphRag'] = self.graph_rag
+        if self.image_content_recognizer_models is not None:
+            result['imageContentRecognizerModels'] = self.image_content_recognizer_models
         if self.max_query_clause_length is not None:
             result['maxQueryClauseLength'] = self.max_query_clause_length
         if self.max_timeout_ms is not None:
             result['maxTimeoutMS'] = self.max_timeout_ms
+        if self.text_embedding_model is not None:
+            result['textEmbeddingModel'] = self.text_embedding_model
+        if self.text_sparse_embedding_model is not None:
+            result['textSparseEmbeddingModel'] = self.text_sparse_embedding_model
+        if self.vector_index_configs is not None:
+            result['vectorIndexConfigs'] = self.vector_index_configs
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('chunkModels') is not None:
+            self.chunk_models = m.get('chunkModels')
+        if m.get('graphRag') is not None:
+            self.graph_rag = m.get('graphRag')
+        if m.get('imageContentRecognizerModels') is not None:
+            self.image_content_recognizer_models = m.get('imageContentRecognizerModels')
         if m.get('maxQueryClauseLength') is not None:
             self.max_query_clause_length = m.get('maxQueryClauseLength')
         if m.get('maxTimeoutMS') is not None:
             self.max_timeout_ms = m.get('maxTimeoutMS')
+        if m.get('textEmbeddingModel') is not None:
+            self.text_embedding_model = m.get('textEmbeddingModel')
+        if m.get('textSparseEmbeddingModel') is not None:
+            self.text_sparse_embedding_model = m.get('textSparseEmbeddingModel')
+        if m.get('vectorIndexConfigs') is not None:
+            self.vector_index_configs = m.get('vectorIndexConfigs')
         return self
 
 
@@ -2417,12 +2455,40 @@ class CreateAppRequestDataSources(TeaModel):
         table_name: str = None,
         type: str = None,
     ):
+        # The information about field mappings.
         self.fields = fields
+        # The primary key.
         self.key_field = key_field
+        # The information about the data source.
         self.parameters = parameters
+        # The plug-ins that are used for data processing.
+        # 
+        # name:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
+        # 
+        # parameters:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
         self.plugins = plugins
+        # The name of the wide table.
         self.schema_name = schema_name
+        # The name of the table in the application.
         self.table_name = table_name
+        # The type of the data source. Valid values:
+        # 
+        # *   rds
+        # *   odps
+        # *   opensearch
+        # *   polardb
         self.type = type
 
     def validate(self):
@@ -2476,8 +2542,15 @@ class CreateAppRequestDomain(TeaModel):
         functions: Dict[str, Any] = None,
         name: str = None,
     ):
+        # The industry category.
         self.category = category
+        # The selected feature category. Valid values:
+        # 
+        # *   qp: query analysis
+        # *   algo: sort policy
+        # *   service: service
         self.functions = functions
+        # The industry type.
         self.name = name
 
     def validate(self):
@@ -2517,10 +2590,18 @@ class CreateAppRequestFirstRanks(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # Specifies whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The information about the expression. The information can be of the array or string type.
         self.meta = meta
+        # The name of the rough sort expression.
         self.name = name
+        # The expression type. Valid values:
+        # 
+        # *   STRUCT: The content of the expression is a structure.
+        # *   STRING (default): You can configure a custom formula.
         self.type = type
 
     def validate(self):
@@ -2569,11 +2650,21 @@ class CreateAppRequestQueryProcessors(TeaModel):
         name: str = None,
         processors: List[Dict[str, Any]] = None,
     ):
+        # Specifies whether the rule is the default one.
         self.active = active
+        # The industry category.
         self.category = category
+        # The industry type. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The index range.
         self.indexes = indexes
+        # The rule name.
         self.name = name
+        # The features.
         self.processors = processors
 
     def validate(self):
@@ -2622,7 +2713,9 @@ class CreateAppRequestSchemaIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method.
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -2655,7 +2748,9 @@ class CreateAppRequestSchemaIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -2688,7 +2783,9 @@ class CreateAppRequestSchemaTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The name of the document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -2727,13 +2824,21 @@ class CreateAppRequestSchema(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: CreateAppRequestSchemaTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The name of the level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
         self.route_field_values = route_field_values
+        # The name of the level-2 routing field. This parameter takes effect only when the `routeFieldValues` parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -2804,7 +2909,12 @@ class CreateAppRequestSchemasIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method.
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -2837,7 +2947,9 @@ class CreateAppRequestSchemasIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -2870,7 +2982,9 @@ class CreateAppRequestSchemasTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The name of the document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -2909,13 +3023,21 @@ class CreateAppRequestSchemas(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: CreateAppRequestSchemasTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The name of the level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
         self.route_field_values = route_field_values
+        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -2988,9 +3110,13 @@ class CreateAppRequestSecondRanks(TeaModel):
         meta: Any = None,
         name: str = None,
     ):
+        # Specifies whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the fine sort expression.
         self.name = name
 
     def validate(self):
@@ -3034,10 +3160,15 @@ class CreateAppRequestSummariesMeta(TeaModel):
         len: int = None,
         snippet: str = None,
     ):
+        # The element that is used for highlighting.
         self.element = element
+        # The connector that is used to connect segments.
         self.ellipsis = ellipsis
+        # The field.
         self.field = field
+        # The length of the segment. Valid values: 1 to 300.
         self.len = len
+        # The number of segments. Valid values: 1 to 5.
         self.snippet = snippet
 
     def validate(self):
@@ -3082,7 +3213,9 @@ class CreateAppRequestSummaries(TeaModel):
         meta: List[CreateAppRequestSummariesMeta] = None,
         name: str = None,
     ):
+        # The collection of summary configurations.
         self.meta = meta
+        # The group name.
         self.name = name
 
     def validate(self):
@@ -3122,31 +3255,58 @@ class CreateAppRequest(TeaModel):
         self,
         auto_switch: bool = None,
         cluster: CreateAppRequestCluster = None,
+        config_items: List[Dict[str, Any]] = None,
         data_sources: List[CreateAppRequestDataSources] = None,
         description: str = None,
         domain: CreateAppRequestDomain = None,
         fetch_fields: List[str] = None,
         first_ranks: List[CreateAppRequestFirstRanks] = None,
+        interpretations: List[Dict[str, Any]] = None,
         network_type: str = None,
+        prompts: List[Dict[str, Any]] = None,
         query_processors: List[CreateAppRequestQueryProcessors] = None,
+        realtime_shared: bool = None,
         schema: CreateAppRequestSchema = None,
         schemas: List[CreateAppRequestSchemas] = None,
         second_ranks: List[CreateAppRequestSecondRanks] = None,
         summaries: List[CreateAppRequestSummaries] = None,
         dry_run: bool = None,
     ):
+        # Specifies whether to automatically switch the created version to an online version. Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_switch = auto_switch
+        # The capability opening configurations.
         self.cluster = cluster
+        self.config_items = config_items
+        # The configurations of data sources.
         self.data_sources = data_sources
+        # The version description.
         self.description = description
+        # The industry model module.
         self.domain = domain
+        # The default display fields.
         self.fetch_fields = fetch_fields
+        # The configurations of rough sort.
         self.first_ranks = first_ranks
+        self.interpretations = interpretations
+        # The zone identifier. Valid values:
+        # 
+        # *   vpc
+        # *   oxs
         self.network_type = network_type
+        self.prompts = prompts
+        # The query intent understanding configurations.
         self.query_processors = query_processors
+        self.realtime_shared = realtime_shared
+        # The single-table schema.
         self.schema = schema
+        # The multi-table schema.
         self.schemas = schemas
+        # The configurations of fine sort.
         self.second_ranks = second_ranks
+        # The summary configurations of search results.
         self.summaries = summaries
         # Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
         self.dry_run = dry_run
@@ -3193,6 +3353,8 @@ class CreateAppRequest(TeaModel):
             result['autoSwitch'] = self.auto_switch
         if self.cluster is not None:
             result['cluster'] = self.cluster.to_map()
+        if self.config_items is not None:
+            result['configItems'] = self.config_items
         result['dataSources'] = []
         if self.data_sources is not None:
             for k in self.data_sources:
@@ -3207,12 +3369,18 @@ class CreateAppRequest(TeaModel):
         if self.first_ranks is not None:
             for k in self.first_ranks:
                 result['firstRanks'].append(k.to_map() if k else None)
+        if self.interpretations is not None:
+            result['interpretations'] = self.interpretations
         if self.network_type is not None:
             result['networkType'] = self.network_type
+        if self.prompts is not None:
+            result['prompts'] = self.prompts
         result['queryProcessors'] = []
         if self.query_processors is not None:
             for k in self.query_processors:
                 result['queryProcessors'].append(k.to_map() if k else None)
+        if self.realtime_shared is not None:
+            result['realtimeShared'] = self.realtime_shared
         if self.schema is not None:
             result['schema'] = self.schema.to_map()
         result['schemas'] = []
@@ -3238,6 +3406,8 @@ class CreateAppRequest(TeaModel):
         if m.get('cluster') is not None:
             temp_model = CreateAppRequestCluster()
             self.cluster = temp_model.from_map(m['cluster'])
+        if m.get('configItems') is not None:
+            self.config_items = m.get('configItems')
         self.data_sources = []
         if m.get('dataSources') is not None:
             for k in m.get('dataSources'):
@@ -3255,13 +3425,19 @@ class CreateAppRequest(TeaModel):
             for k in m.get('firstRanks'):
                 temp_model = CreateAppRequestFirstRanks()
                 self.first_ranks.append(temp_model.from_map(k))
+        if m.get('interpretations') is not None:
+            self.interpretations = m.get('interpretations')
         if m.get('networkType') is not None:
             self.network_type = m.get('networkType')
+        if m.get('prompts') is not None:
+            self.prompts = m.get('prompts')
         self.query_processors = []
         if m.get('queryProcessors') is not None:
             for k in m.get('queryProcessors'):
                 temp_model = CreateAppRequestQueryProcessors()
                 self.query_processors.append(temp_model.from_map(k))
+        if m.get('realtimeShared') is not None:
+            self.realtime_shared = m.get('realtimeShared')
         if m.get('schema') is not None:
             temp_model = CreateAppRequestSchema()
             self.schema = temp_model.from_map(m['schema'])
@@ -3288,11 +3464,25 @@ class CreateAppRequest(TeaModel):
 class CreateAppResponseBodyResultCluster(TeaModel):
     def __init__(
         self,
+        chunk_models: List[Dict[str, Any]] = None,
+        graph_rag: Dict[str, Any] = None,
+        image_content_recognizer_models: List[Dict[str, Any]] = None,
         max_query_clause_length: int = None,
         max_timeout_ms: int = None,
+        text_embedding_model: str = None,
+        text_sparse_embedding_model: str = None,
+        vector_index_configs: List[Dict[str, Any]] = None,
     ):
+        self.chunk_models = chunk_models
+        self.graph_rag = graph_rag
+        self.image_content_recognizer_models = image_content_recognizer_models
+        # The maximum length of the query clause.
         self.max_query_clause_length = max_query_clause_length
+        # The timeout period. Unit: milliseconds.
         self.max_timeout_ms = max_timeout_ms
+        self.text_embedding_model = text_embedding_model
+        self.text_sparse_embedding_model = text_sparse_embedding_model
+        self.vector_index_configs = vector_index_configs
 
     def validate(self):
         pass
@@ -3303,18 +3493,42 @@ class CreateAppResponseBodyResultCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.chunk_models is not None:
+            result['chunkModels'] = self.chunk_models
+        if self.graph_rag is not None:
+            result['graphRag'] = self.graph_rag
+        if self.image_content_recognizer_models is not None:
+            result['imageContentRecognizerModels'] = self.image_content_recognizer_models
         if self.max_query_clause_length is not None:
             result['maxQueryClauseLength'] = self.max_query_clause_length
         if self.max_timeout_ms is not None:
             result['maxTimeoutMS'] = self.max_timeout_ms
+        if self.text_embedding_model is not None:
+            result['textEmbeddingModel'] = self.text_embedding_model
+        if self.text_sparse_embedding_model is not None:
+            result['textSparseEmbeddingModel'] = self.text_sparse_embedding_model
+        if self.vector_index_configs is not None:
+            result['vectorIndexConfigs'] = self.vector_index_configs
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('chunkModels') is not None:
+            self.chunk_models = m.get('chunkModels')
+        if m.get('graphRag') is not None:
+            self.graph_rag = m.get('graphRag')
+        if m.get('imageContentRecognizerModels') is not None:
+            self.image_content_recognizer_models = m.get('imageContentRecognizerModels')
         if m.get('maxQueryClauseLength') is not None:
             self.max_query_clause_length = m.get('maxQueryClauseLength')
         if m.get('maxTimeoutMS') is not None:
             self.max_timeout_ms = m.get('maxTimeoutMS')
+        if m.get('textEmbeddingModel') is not None:
+            self.text_embedding_model = m.get('textEmbeddingModel')
+        if m.get('textSparseEmbeddingModel') is not None:
+            self.text_sparse_embedding_model = m.get('textSparseEmbeddingModel')
+        if m.get('vectorIndexConfigs') is not None:
+            self.vector_index_configs = m.get('vectorIndexConfigs')
         return self
 
 
@@ -3329,12 +3543,40 @@ class CreateAppResponseBodyResultDataSources(TeaModel):
         table_name: str = None,
         type: str = None,
     ):
+        # The information about field mappings.
         self.fields = fields
+        # The primary key.
         self.key_field = key_field
+        # The information about the data source.
         self.parameters = parameters
+        # The plug-ins that are used for data processing.
+        # 
+        # name:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
+        # 
+        # parameters:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
         self.plugins = plugins
+        # The name of the wide table.
         self.schema_name = schema_name
+        # The name of the table in the application.
         self.table_name = table_name
+        # The type of the data source. Valid values:
+        # 
+        # *   rds
+        # *   odps
+        # *   opensearch
+        # *   polardb
         self.type = type
 
     def validate(self):
@@ -3388,8 +3630,11 @@ class CreateAppResponseBodyResultDomainFunctions(TeaModel):
         qp: List[str] = None,
         service: List[str] = None,
     ):
+        # The features of the sort policy category.
         self.algo = algo
+        # The features of the query analysis category.
         self.qp = qp
+        # The features of the service category.
         self.service = service
 
     def validate(self):
@@ -3427,8 +3672,15 @@ class CreateAppResponseBodyResultDomain(TeaModel):
         functions: CreateAppResponseBodyResultDomainFunctions = None,
         name: str = None,
     ):
+        # The industry category.
         self.category = category
+        # The selected features.
         self.functions = functions
+        # The industry type. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.name = name
 
     def validate(self):
@@ -3470,10 +3722,17 @@ class CreateAppResponseBodyResultFirstRanks(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The information about the expression. The information can be of the array or string type.
         self.meta = meta
+        # The name of the rough sort expression.
         self.name = name
+        # The expression type. Valid values:
+        # 
+        # STRUCT: The content of the expression is a structure. STRING (default): You can configure a custom formula.
         self.type = type
 
     def validate(self):
@@ -3522,11 +3781,21 @@ class CreateAppResponseBodyResultQueryProcessors(TeaModel):
         name: str = None,
         processors: List[Dict[str, Any]] = None,
     ):
+        # Indicates whether the rule is the default one.
         self.active = active
+        # The industry category.
         self.category = category
+        # The industry type. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The index range.
         self.indexes = indexes
+        # The rule name.
         self.name = name
+        # The features.
         self.processors = processors
 
     def validate(self):
@@ -3576,11 +3845,29 @@ class CreateAppResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         qps: int = None,
         spec: str = None,
+        used_compute_resource: int = None,
+        used_doc_size: float = None,
+        used_qps: int = None,
     ):
+        # The computing resources.
         self.compute_resource = compute_resource
+        # The storage capacity.
         self.doc_size = doc_size
+        # The search request.
         self.qps = qps
+        # The specifications. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
+        self.used_compute_resource = used_compute_resource
+        self.used_doc_size = used_doc_size
+        self.used_qps = used_qps
 
     def validate(self):
         pass
@@ -3599,6 +3886,12 @@ class CreateAppResponseBodyResultQuota(TeaModel):
             result['qps'] = self.qps
         if self.spec is not None:
             result['spec'] = self.spec
+        if self.used_compute_resource is not None:
+            result['usedComputeResource'] = self.used_compute_resource
+        if self.used_doc_size is not None:
+            result['usedDocSize'] = self.used_doc_size
+        if self.used_qps is not None:
+            result['usedQps'] = self.used_qps
         return result
 
     def from_map(self, m: dict = None):
@@ -3611,6 +3904,12 @@ class CreateAppResponseBodyResultQuota(TeaModel):
             self.qps = m.get('qps')
         if m.get('spec') is not None:
             self.spec = m.get('spec')
+        if m.get('usedComputeResource') is not None:
+            self.used_compute_resource = m.get('usedComputeResource')
+        if m.get('usedDocSize') is not None:
+            self.used_doc_size = m.get('usedDocSize')
+        if m.get('usedQps') is not None:
+            self.used_qps = m.get('usedQps')
         return self
 
 
@@ -3620,7 +3919,12 @@ class CreateAppResponseBodyResultSchemaIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -3653,7 +3957,9 @@ class CreateAppResponseBodyResultSchemaIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -3686,7 +3992,9 @@ class CreateAppResponseBodyResultSchemaTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The name of the document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -3725,13 +4033,21 @@ class CreateAppResponseBodyResultSchema(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: CreateAppResponseBodyResultSchemaTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The name of the level-1 routing field.
         self.route_field = route_field
+        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.route_field_values = route_field_values
+        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -3802,7 +4118,12 @@ class CreateAppResponseBodyResultSchemasIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -3835,7 +4156,9 @@ class CreateAppResponseBodyResultSchemasIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -3868,7 +4191,9 @@ class CreateAppResponseBodyResultSchemasTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The name of the document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -3907,13 +4232,21 @@ class CreateAppResponseBodyResultSchemas(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: CreateAppResponseBodyResultSchemasTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The name of the level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
         self.route_field_values = route_field_values
+        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -3986,9 +4319,13 @@ class CreateAppResponseBodyResultSecondRanks(TeaModel):
         meta: Any = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the fine sort expression.
         self.name = name
 
     def validate(self):
@@ -4032,10 +4369,15 @@ class CreateAppResponseBodyResultSummariesMeta(TeaModel):
         len: int = None,
         snippet: str = None,
     ):
+        # The element that is used for highlighting.
         self.element = element
+        # The connector that is used to connect segments.
         self.ellipsis = ellipsis
+        # The field.
         self.field = field
+        # The length of the segment. Valid values: 1 to 300.
         self.len = len
+        # The number of segments. Valid values: 1 to 5.
         self.snippet = snippet
 
     def validate(self):
@@ -4080,7 +4422,9 @@ class CreateAppResponseBodyResultSummaries(TeaModel):
         meta: List[CreateAppResponseBodyResultSummariesMeta] = None,
         name: str = None,
     ):
+        # The collection of summary configurations.
         self.meta = meta
+        # The group name.
         self.name = name
 
     def validate(self):
@@ -4118,16 +4462,17 @@ class CreateAppResponseBodyResultSummaries(TeaModel):
 class CreateAppResponseBodyResult(TeaModel):
     def __init__(
         self,
-        auto_switch: bool = None,
         cluster: CreateAppResponseBodyResultCluster = None,
         cluster_name: str = None,
+        config_items: List[Dict[str, Any]] = None,
+        created: int = None,
         data_sources: List[CreateAppResponseBodyResultDataSources] = None,
         description: str = None,
         domain: CreateAppResponseBodyResultDomain = None,
         fetch_fields: List[str] = None,
         first_ranks: List[CreateAppResponseBodyResultFirstRanks] = None,
         id: str = None,
-        interpretations: Dict[str, Any] = None,
+        interpretations: List[Dict[str, Any]] = None,
         is_current: bool = None,
         progress_percent: int = None,
         prompts: List[Dict[str, Any]] = None,
@@ -4138,29 +4483,65 @@ class CreateAppResponseBodyResult(TeaModel):
         second_ranks: List[CreateAppResponseBodyResultSecondRanks] = None,
         status: str = None,
         summaries: List[CreateAppResponseBodyResultSummaries] = None,
+        switch_time: int = None,
         type: str = None,
+        updated: int = None,
     ):
-        self.auto_switch = auto_switch
+        # The capability opening configurations.
         self.cluster = cluster
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        self.config_items = config_items
+        self.created = created
+        # The configurations of the data sources.
         self.data_sources = data_sources
+        # The description of the application.
         self.description = description
+        # The industry model module.
         self.domain = domain
+        # The default display fields.
         self.fetch_fields = fetch_fields
+        # The configurations of rough sort.
         self.first_ranks = first_ranks
+        # The application ID.
         self.id = id
+        # The descriptions of the LLM table fields.
         self.interpretations = interpretations
+        # Indicates whether the version is an online version.
         self.is_current = is_current
+        # The percentage for the data import progress.
         self.progress_percent = progress_percent
+        # The prompt configurations
         self.prompts = prompts
+        # The query intent understanding configurations.
         self.query_processors = query_processors
+        # The quota.
         self.quota = quota
+        # The single-table schema.
         self.schema = schema
+        # The multi-table schema.
         self.schemas = schemas
+        # The configurations of fine sort.
         self.second_ranks = second_ranks
+        # The status of the application. Valid values:
+        # 
+        # *   OK
+        # *   STOPPED
+        # *   FROZEN
+        # *   INITIALIZING
+        # *   UNAVAILABLE
+        # *   DATA_WAITING
+        # *   DATA_PREPARING
         self.status = status
+        # The summary configurations of search results.
         self.summaries = summaries
+        self.switch_time = switch_time
+        # The type of the application. Valid values:
+        # 
+        # *   standard
+        # *   enhanced
         self.type = type
+        self.updated = updated
 
     def validate(self):
         if self.cluster:
@@ -4202,12 +4583,14 @@ class CreateAppResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
-        if self.auto_switch is not None:
-            result['autoSwitch'] = self.auto_switch
         if self.cluster is not None:
             result['cluster'] = self.cluster.to_map()
         if self.cluster_name is not None:
             result['clusterName'] = self.cluster_name
+        if self.config_items is not None:
+            result['configItems'] = self.config_items
+        if self.created is not None:
+            result['created'] = self.created
         result['dataSources'] = []
         if self.data_sources is not None:
             for k in self.data_sources:
@@ -4254,19 +4637,25 @@ class CreateAppResponseBodyResult(TeaModel):
         if self.summaries is not None:
             for k in self.summaries:
                 result['summaries'].append(k.to_map() if k else None)
+        if self.switch_time is not None:
+            result['switchTime'] = self.switch_time
         if self.type is not None:
             result['type'] = self.type
+        if self.updated is not None:
+            result['updated'] = self.updated
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('autoSwitch') is not None:
-            self.auto_switch = m.get('autoSwitch')
         if m.get('cluster') is not None:
             temp_model = CreateAppResponseBodyResultCluster()
             self.cluster = temp_model.from_map(m['cluster'])
         if m.get('clusterName') is not None:
             self.cluster_name = m.get('clusterName')
+        if m.get('configItems') is not None:
+            self.config_items = m.get('configItems')
+        if m.get('created') is not None:
+            self.created = m.get('created')
         self.data_sources = []
         if m.get('dataSources') is not None:
             for k in m.get('dataSources'):
@@ -4322,8 +4711,12 @@ class CreateAppResponseBodyResult(TeaModel):
             for k in m.get('summaries'):
                 temp_model = CreateAppResponseBodyResultSummaries()
                 self.summaries.append(temp_model.from_map(k))
+        if m.get('switchTime') is not None:
+            self.switch_time = m.get('switchTime')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
         return self
 
 
@@ -4335,7 +4728,7 @@ class CreateAppResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The response parameters.
         self.result = result
 
     def validate(self):
@@ -4412,8 +4805,19 @@ class CreateAppGroupRequestQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing unit (LCU).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The specifications. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -4450,7 +4854,9 @@ class CreateAppGroupRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4487,11 +4893,23 @@ class CreateAppGroupRequest(TeaModel):
         tags: List[CreateAppGroupRequestTags] = None,
         type: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   POSTPAY: pay-as-you-go
+        # *   PREPAY: subscription
         self.charge_type = charge_type
+        # The name of the application.
         self.name = name
+        # The quota.
         self.quota = quota
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
+        # The type of the application. Valid values:
+        # 
+        # *   standard
+        # *   enhanced
         self.type = type
 
     def validate(self):
@@ -4556,15 +4974,15 @@ class CreateAppGroupResponseBodyResultQuota(TeaModel):
         self.compute_resource = compute_resource
         # The storage capacity. Unit: GB.
         self.doc_size = doc_size
-        # The specifications of the application. Valid values:
+        # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic
-        # *   opensearch.share.common: shared general-purpose
-        # *   opensearch.share.compute: shared computing
-        # *   opensearch.share.storage: shared storage
-        # *   opensearch.private.common: exclusive general-purpose
-        # *   opensearch.private.compute: exclusive computing
-        # *   opensearch.private.storage: exclusive storage
+        # *   opensearch.share.junior: basic.
+        # *   opensearch.share.common: shared general-purpose.
+        # *   opensearch.share.compute: shared computing.
+        # *   opensearch.share.storage: shared storage.
+        # *   opensearch.private.common: exclusive general-purpose.
+        # *   opensearch.private.compute: exclusive computing.
+        # *   opensearch.private.storage: exclusive storage.
         self.spec = spec
 
     def validate(self):
@@ -4620,17 +5038,17 @@ class CreateAppGroupResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
-        # The billing method of the application. Valid values:
+        # The billing method. Valid values:
         # 
-        # *   POSTPAY: pay-as-you-go
-        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go.
+        # *   PREPAY: subscription.
         self.charge_type = charge_type
-        # The billing model. Valid values:
+        # The type of billing. Valid values:
         # 
-        # *   1: computing resources
-        # *   2: queries per second (QPS)
+        # *   1: computing resources.
+        # *   2: queries per second (QPS).
         self.charging_way = charging_way
-        # The code of the commodity.
+        # The commodity code.
         self.commodity_code = commodity_code
         # The timestamp when the application was created.
         self.created = created
@@ -4640,34 +5058,35 @@ class CreateAppGroupResponseBodyResult(TeaModel):
         self.description = description
         # The type of the industry. Valid values:
         # 
-        # *   GENERAL: general.
-        # *   ECOMMERCE: e-commerce.
-        # *   IT_CONTENT: IT content.
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The engine type.
         self.engine_type = engine_type
         # The expiration time.
         self.expire_on = expire_on
-        # The approval status of the quotas. Valid values:
+        # The approval state of the quotas. Valid values:
         # 
-        # *   0: The quotas are approved.
-        # *   1: The quotas are being approved.
+        # *   0: The application is in service.
+        # *   1: The quotas are being reviewed.
         self.has_pending_quota_review_task = has_pending_quota_review_task
-        # The ID of the application.
+        # The application ID.
         self.id = id
         # The ID of the instance.
         self.instance_id = instance_id
-        # The lock mode of the instance. Valid values:
+        # The lock state. Valid values:
         # 
-        # *   Unlock: The instance is not locked.
+        # *   Unlock: The instance is unlocked.
         # *   LockByExpiration: The instance is automatically locked after it expires.
         # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
         # The name of the application.
         self.name = name
-        # Indicates whether the order is complete. Valid values:
+        # Indicates whether the application is created. Valid values:
         # 
-        # *   0: The order is in progress.
-        # *   1: The order is complete.
+        # *   0: The application is being created.
+        # *   1: The application is created.
         self.produced = produced
         # The name of the A/B test group.
         self.project_id = project_id
@@ -4675,21 +5094,21 @@ class CreateAppGroupResponseBodyResult(TeaModel):
         self.quota = quota
         # The status of the application. Valid values:
         # 
-        # *   producing
-        # *   review_pending
-        # *   config_pending
-        # *   normal
-        # *   frozen
+        # *   producing: The application is being created.
+        # *   review_pending: The application is being reviewed.
+        # *   config_pending: The application is to be configured.
+        # *   normal: The application is in service.
+        # *   frozen: The application is frozen.
         self.status = status
         # The timestamp when the current online version was published.
         self.switched_time = switched_time
         # The type of the application. Valid values:
         # 
-        # *   standard: a standard application.
-        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-        # *   enhanced: an advanced application which is of a new application type.
+        # *   standard: a standard edition application.
+        # *   advance: an advanced edition which is of an old version. New version is not supported for this edition.
+        # *   enhanced: an advanced edition application of a new version.
         self.type = type
-        # The timestamp when the application was last updated.
+        # The timestamp when the application was last modified.
         self.updated = updated
 
     def validate(self):
@@ -4800,9 +5219,9 @@ class CreateAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: CreateAppGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # N/A
+        # None
         self.result = result
 
     def validate(self):
@@ -6424,7 +6843,7 @@ class CreateScheduledTaskRequest(TeaModel):
         self,
         body: ScheduledTask = None,
     ):
-        # 请求体
+        # The request body.
         self.body = body
 
     def validate(self):
@@ -6455,9 +6874,9 @@ class CreateScheduledTaskResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the scheduled task.
+        # For more information about a scheduled task, see [ScheduledTask](https://help.aliyun.com/document_detail/173610.html).
         self.result = result
 
     def validate(self):
@@ -6920,9 +7339,7 @@ class CreateUserAnalyzerRequest(TeaModel):
         # The engine type. Valid values: HA3 and ES.
         self.type = type
         # Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
-        # 
         # Valid values:
-        # 
         # *   **true**\
         # *   **false**\
         self.dry_run = dry_run
@@ -7049,9 +7466,9 @@ class DeleteABTestExperimentResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result that was returned.
+        # The returned data.
         self.result = result
 
     def validate(self):
@@ -7663,7 +8080,7 @@ class DeleteSortScriptFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7921,14 +8338,14 @@ class DescribeABTestGroupResponseBodyResult(TeaModel):
         self.created = created
         # The ID of the test group.
         self.id = id
-        # The name of the test group.
+        # The alias of the test group.
         self.name = name
         # The status of the test group. Valid values:
         # 
         # *   0: not in effect
         # *   1: in effect
         self.status = status
-        # The time when the test group was last modified.
+        # The time when the test group was last updated.
         self.updated = updated
 
     def validate(self):
@@ -7973,7 +8390,7 @@ class DescribeABTestGroupResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeABTestGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The details of the test group.
         self.result = result
@@ -8195,7 +8612,9 @@ class DescribeAppResponseBodyResultCluster(TeaModel):
         max_query_clause_length: int = None,
         max_timeout_ms: int = None,
     ):
+        # The maximum length of the query clause.
         self.max_query_clause_length = max_query_clause_length
+        # The timeout period. Unit: milliseconds.
         self.max_timeout_ms = max_timeout_ms
 
     def validate(self):
@@ -8233,12 +8652,40 @@ class DescribeAppResponseBodyResultDataSources(TeaModel):
         table_name: str = None,
         type: str = None,
     ):
+        # The information about field mappings.
         self.fields = fields
+        # The primary key.
         self.key_field = key_field
+        # The information about the data source.
         self.parameters = parameters
+        # The plug-ins that are used for data processing.
+        # 
+        # name:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
+        # 
+        # parameters:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
         self.plugins = plugins
+        # The name of the wide table.
         self.schema_name = schema_name
+        # The name of the table in the application.
         self.table_name = table_name
+        # The type of the data source. Valid values:
+        # 
+        # *   rds
+        # *   odps
+        # *   opensearch
+        # *   polardb
         self.type = type
 
     def validate(self):
@@ -8292,11 +8739,11 @@ class DescribeAppResponseBodyResultDomainFunctions(TeaModel):
         qp: List[str] = None,
         service: List[str] = None,
     ):
-        # Algorithm structure
+        # The structure of the algorithm.
         self.algo = algo
-        # Queryprocessor description
+        # The information about the layout.
         self.qp = qp
-        # Function description
+        # The description of each feature.
         self.service = service
 
     def validate(self):
@@ -8334,11 +8781,11 @@ class DescribeAppResponseBodyResultDomain(TeaModel):
         functions: DescribeAppResponseBodyResultDomainFunctions = None,
         name: str = None,
     ):
-        # The category. By default, this parameter is left empty.
+        # The type of the edition. Valid values: standard, advance, and enhanced. A value of standard indicates a standard edition. A value of advance indicates an advanced edition which is of an old version. New version is not supported for this edition. A value of enhanced indicates an advanced edition which is of a new version.
         self.category = category
-        # search functions
+        # The search results.
         self.functions = functions
-        # The name
+        # The name (in English).
         self.name = name
 
     def validate(self):
@@ -8380,10 +8827,17 @@ class DescribeAppResponseBodyResultFirstRanks(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The information about the expression. The information can be of the array or string type.
         self.meta = meta
+        # The name of the rough sort expression.
         self.name = name
+        # The expression type. Valid values:
+        # 
+        # STRUCT: The content of the expression is a structure. STRING (default): custom formula.
         self.type = type
 
     def validate(self):
@@ -8432,11 +8886,21 @@ class DescribeAppResponseBodyResultQueryProcessors(TeaModel):
         name: str = None,
         processors: List[Dict[str, Any]] = None,
     ):
+        # Indicates whether the rule is the default one.
         self.active = active
+        # The industry category.
         self.category = category
+        # The industry type. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # Then index range.
         self.indexes = indexes
+        # The rule name.
         self.name = name
+        # The features.
         self.processors = processors
 
     def validate(self):
@@ -8487,13 +8951,13 @@ class DescribeAppResponseBodyResultQuota(TeaModel):
         qps: int = None,
         spec: str = None,
     ):
-        # The computing resources. Unit: logical computing units (LCUs).
+        # The computing resources. Unit: logical computing unit (LCU).
         self.compute_resource = compute_resource
         # The storage capacity. Unit: GB.
         self.doc_size = doc_size
         # The number of search requests per second. You are charged based on the number of search requests per second in the earlier billing model.
         self.qps = qps
-        # The specifications of the application. Valid values:
+        # The specifications. Valid values:
         # 
         # *   opensearch.share.junior: basic
         # *   opensearch.share.common: shared general-purpose
@@ -8542,7 +9006,12 @@ class DescribeAppResponseBodyResultSchemaIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -8575,7 +9044,9 @@ class DescribeAppResponseBodyResultSchemaIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -8608,7 +9079,9 @@ class DescribeAppResponseBodyResultSchemaTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -8647,13 +9120,21 @@ class DescribeAppResponseBodyResultSchema(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: DescribeAppResponseBodyResultSchemaTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The name of the level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field.
         self.route_field_values = route_field_values
+        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -8724,7 +9205,12 @@ class DescribeAppResponseBodyResultSchemasIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -8757,7 +9243,9 @@ class DescribeAppResponseBodyResultSchemasIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -8790,7 +9278,9 @@ class DescribeAppResponseBodyResultSchemasTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -8829,13 +9319,21 @@ class DescribeAppResponseBodyResultSchemas(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: DescribeAppResponseBodyResultSchemasTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The name of the level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field.
         self.route_field_values = route_field_values
+        # The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -8908,9 +9406,13 @@ class DescribeAppResponseBodyResultSecondRanks(TeaModel):
         meta: Any = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the fine sort expression.
         self.name = name
 
     def validate(self):
@@ -8954,10 +9456,15 @@ class DescribeAppResponseBodyResultSummariesMeta(TeaModel):
         len: int = None,
         snippet: str = None,
     ):
+        # The element that is used for highlighting.
         self.element = element
+        # The connector that is used to connect segments.
         self.ellipsis = ellipsis
+        # The field.
         self.field = field
+        # The length of the segment. Valid values: 1 to 300.
         self.len = len
+        # The number of segments. Valid values: 1 to 5.
         self.snippet = snippet
 
     def validate(self):
@@ -9002,7 +9509,9 @@ class DescribeAppResponseBodyResultSummaries(TeaModel):
         meta: List[DescribeAppResponseBodyResultSummariesMeta] = None,
         name: str = None,
     ):
+        # The summary configurations.
         self.meta = meta
+        # The group name.
         self.name = name
 
     def validate(self):
@@ -9062,15 +9571,17 @@ class DescribeAppResponseBodyResult(TeaModel):
         summaries: List[DescribeAppResponseBodyResultSummaries] = None,
         type: str = None,
     ):
-        # Indicates whether the version is automatically published to the online environment.
+        # Indicates whether the version is automatically switched to an online version.
         self.auto_switch = auto_switch
+        # The capability opening configurations.
         self.cluster = cluster
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The configurations of the data sources.
         self.data_sources = data_sources
         # The description of the version.
         self.description = description
-        # The type of the industry. Valid values:
+        # The industry type. Valid values:
         # 
         # *   GENERAL
         # *   ECOMMERCE
@@ -9078,37 +9589,45 @@ class DescribeAppResponseBodyResult(TeaModel):
         self.domain = domain
         # The default display fields.
         self.fetch_fields = fetch_fields
+        # The configurations of rough sort.
         self.first_ranks = first_ranks
-        # The ID of the version.
+        # The version ID.
         self.id = id
+        # The industry model module.
         self.interpretations = interpretations
+        # Indices whether the version is an online version.
         self.is_current = is_current
         # The progress of data import, in percentage. For example, a value of 83 indicates 83%.
         self.progress_percent = progress_percent
+        # The prompt configurations.
         self.prompts = prompts
+        # The query intent understanding configurations.
         self.query_processors = query_processors
-        # The quota information about the version.
+        # The quota information.
         self.quota = quota
-        # The application schema.
+        # The schema of the application.
         self.schema = schema
+        # The multi-table schema.
         self.schemas = schemas
+        # The configurations of fine sort.
         self.second_ranks = second_ranks
         # The status of the version. Valid values:
         # 
-        # *   ok
-        # *   stopped
-        # *   frozen
-        # *   initializing
-        # *   unavailable
-        # *   data_waiting
-        # *   data_preparing
+        # *   ok: The version is normal.
+        # *   stopped: The version is suspended.
+        # *   frozen: The version is frozen.
+        # *   initializing: The version is being initialized.
+        # *   unavailable: The version is invalid.
+        # *   data_waiting: Data is to be initialized.
+        # *   data_preparing: Data is being initialized.
         self.status = status
+        # The summary configurations of search results.
         self.summaries = summaries
-        # The type of the application. Valid values:
+        # The edition type. Valid values:
         # 
-        # *   standard: a standard application.
-        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-        # *   enhanced: an advanced application which is of a new application type.
+        # *   standard: a standard edition application.
+        # *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
+        # *   enhanced: an advanced edition application of a new version.
         self.type = type
 
     def validate(self):
@@ -9282,9 +9801,9 @@ class DescribeAppResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeAppResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the version.
+        # The version information.
         self.result = result
 
     def validate(self):
@@ -9491,6 +10010,7 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         self.description = description
         # The industry of the application.
         self.domain = domain
+        # The engine type.
         self.engine_type = engine_type
         # The expiration time.
         self.expire_on = expire_on
@@ -9528,7 +10048,7 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         self.project_id = project_id
         # The information about the quotas of the application.
         self.quota = quota
-        # The ID of the resource group.
+        # The ID of the resource group to which the network instance belongs.
         self.resource_group_id = resource_group_id
         # The ID of the created fine sort expression.
         self.second_rank_algo_deployment_id = second_rank_algo_deployment_id
@@ -9547,7 +10067,6 @@ class DescribeAppGroupResponseBodyResult(TeaModel):
         # The type of the application. Valid values:
         # 
         # *   standard: a High-performance Search Edition application.
-        # *\
         # *   enhanced: an Industry Algorithm Edition application.
         self.type = type
         # The timestamp when the application was last updated.
@@ -9776,7 +10295,7 @@ class DescribeAppStatisticsResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The statistics.
         self.result = result
@@ -9852,7 +10371,9 @@ class DescribeAppsResponseBodyResultCluster(TeaModel):
         max_query_clause_length: int = None,
         max_timeout_ms: int = None,
     ):
+        # The maximum length of the query clause.
         self.max_query_clause_length = max_query_clause_length
+        # The timeout period. Unit: milliseconds.
         self.max_timeout_ms = max_timeout_ms
 
     def validate(self):
@@ -9890,12 +10411,40 @@ class DescribeAppsResponseBodyResultDataSources(TeaModel):
         table_name: str = None,
         type: str = None,
     ):
+        # The information about field mappings.
         self.fields = fields
+        # The primary key.
         self.key_field = key_field
+        # The information about the data source.
         self.parameters = parameters
+        # The plug-ins that are used for data processing.
+        # 
+        # name:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
+        # 
+        # parameters:
+        # 
+        # *   JsonKeyValueExtractor
+        # *   MultiValueSpliter
+        # *   KeyValueExtractor
+        # *   StringCatenateExtractor
+        # *   HTMLTagRemover
         self.plugins = plugins
+        # The name of the wide table.
         self.schema_name = schema_name
+        # The name of the table in the application.
         self.table_name = table_name
+        # The type of the data source. Valid values:
+        # 
+        # *   rds
+        # *   odps
+        # *   opensearch
+        # *   polardb
         self.type = type
 
     def validate(self):
@@ -9949,8 +10498,11 @@ class DescribeAppsResponseBodyResultDomainFunctions(TeaModel):
         qp: List[str] = None,
         service: List[str] = None,
     ):
+        # Structure 1.
         self.algo = algo
+        # Information 1.
         self.qp = qp
+        # Feature 1.
         self.service = service
 
     def validate(self):
@@ -9988,8 +10540,11 @@ class DescribeAppsResponseBodyResultDomain(TeaModel):
         functions: DescribeAppsResponseBodyResultDomainFunctions = None,
         name: str = None,
     ):
+        # The type of the edition. Valid values: standard, advance, and enhanced. A value of standard indicates a standard edition. A value of advance indicates an advanced edition which is of an old version. New version is not supported for this edition. A value of enhanced indicates an advanced edition which is of a new version.
         self.category = category
+        # The search results.
         self.functions = functions
+        # The name (in English).
         self.name = name
 
     def validate(self):
@@ -10031,10 +10586,17 @@ class DescribeAppsResponseBodyResultFirstRanks(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The information about the expression. The information is displayed in the array or string format.
         self.meta = meta
+        # The name of the rough sort expression.
         self.name = name
+        # The expression type. Valid values:
+        # 
+        # STRUCT: The content of the expression is a structure. STRING (default): a custom formula.
         self.type = type
 
     def validate(self):
@@ -10083,11 +10645,21 @@ class DescribeAppsResponseBodyResultQueryProcessors(TeaModel):
         name: str = None,
         processors: List[Dict[str, Any]] = None,
     ):
+        # Indicates whether the rule is the default one.
         self.active = active
+        # The industry category.
         self.category = category
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The indexes.
         self.indexes = indexes
+        # The rule name.
         self.name = name
+        # The features.
         self.processors = processors
 
     def validate(self):
@@ -10138,9 +10710,21 @@ class DescribeAppsResponseBodyResultQuota(TeaModel):
         qps: int = None,
         spec: str = None,
     ):
+        # The computing resources. Unit: logical computing unit (LCU).
         self.compute_resource = compute_resource
+        # The storage capacity. Unit: GB.
         self.doc_size = doc_size
+        # The number of search requests per second. You are charged based on the number of search requests per second in the earlier billing model.
         self.qps = qps
+        # The specifications. Valid values:
+        # 
+        # *   opensearch.share.junior: basic
+        # *   opensearch.share.common: shared general-purpose
+        # *   opensearch.share.compute: shared computing
+        # *   opensearch.share.storage: shared storage
+        # *   opensearch.private.common: exclusive general-purpose
+        # *   opensearch.private.compute: exclusive computing
+        # *   opensearch.private.storage: exclusive storage
         self.spec = spec
 
     def validate(self):
@@ -10181,7 +10765,12 @@ class DescribeAppsResponseBodyResultSchemaIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -10214,7 +10803,9 @@ class DescribeAppsResponseBodyResultSchemaIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -10247,7 +10838,9 @@ class DescribeAppsResponseBodyResultSchemaTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The document clearing field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -10286,13 +10879,21 @@ class DescribeAppsResponseBodyResultSchema(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: DescribeAppsResponseBodyResultSchemaTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field.
         self.route_field_values = route_field_values
+        # The level-2 routing field. This parameter is returned if the routeFieldValues parameter is returned. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -10363,7 +10964,12 @@ class DescribeAppsResponseBodyResultSchemasIndexSortConfig(TeaModel):
         direction: str = None,
         field: str = None,
     ):
+        # The sort method. Valid values:
+        # 
+        # *   ASC
+        # *   DESC
         self.direction = direction
+        # The sort field.
         self.field = field
 
     def validate(self):
@@ -10396,7 +11002,9 @@ class DescribeAppsResponseBodyResultSchemasIndexes(TeaModel):
         filter_fields: List[str] = None,
         search_fields: Dict[str, Any] = None,
     ):
+        # The attribute fields.
         self.filter_fields = filter_fields
+        # The index fields.
         self.search_fields = search_fields
 
     def validate(self):
@@ -10429,7 +11037,9 @@ class DescribeAppsResponseBodyResultSchemasTtlField(TeaModel):
         name: str = None,
         ttl: int = None,
     ):
+        # The document time field.
         self.name = name
+        # The TTL. Unit: milliseconds.
         self.ttl = ttl
 
     def validate(self):
@@ -10468,13 +11078,21 @@ class DescribeAppsResponseBodyResultSchemas(TeaModel):
         tables: Dict[str, Any] = None,
         ttl_field: DescribeAppsResponseBodyResultSchemasTtlField = None,
     ):
+        # The sort configurations.
         self.index_sort_config = index_sort_config
+        # The index schema.
         self.indexes = indexes
+        # The name of the wide table.
         self.name = name
+        # The level-1 routing field.
         self.route_field = route_field
+        # The hot values of the level-1 routing field.
         self.route_field_values = route_field_values
+        # The level-2 routing field. This parameter is returned if the routeFieldValues parameter is returned. By default, the wide-table primary key field is used as the level-2 routing field.
         self.second_route_field = second_route_field
+        # The table schema.
         self.tables = tables
+        # The document clearing configurations.
         self.ttl_field = ttl_field
 
     def validate(self):
@@ -10547,9 +11165,13 @@ class DescribeAppsResponseBodyResultSecondRanks(TeaModel):
         meta: Any = None,
         name: str = None,
     ):
+        # Indicates whether the expression is the default one.
         self.active = active
+        # The description.
         self.description = description
+        # The fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
+        # The name of the fine sort expression.
         self.name = name
 
     def validate(self):
@@ -10593,10 +11215,15 @@ class DescribeAppsResponseBodyResultSummariesMeta(TeaModel):
         len: int = None,
         snippet: str = None,
     ):
+        # The element that is used for highlighting.
         self.element = element
+        # The connector that is used to connect segments.
         self.ellipsis = ellipsis
+        # The field.
         self.field = field
+        # The length of the segment. Valid values: 1 to 300.
         self.len = len
+        # The number of segments. Valid values: 1 to 5.
         self.snippet = snippet
 
     def validate(self):
@@ -10641,7 +11268,9 @@ class DescribeAppsResponseBodyResultSummaries(TeaModel):
         meta: List[DescribeAppsResponseBodyResultSummariesMeta] = None,
         name: str = None,
     ):
+        # The summary configurations.
         self.meta = meta
+        # The group name.
         self.name = name
 
     def validate(self):
@@ -10701,26 +11330,63 @@ class DescribeAppsResponseBodyResult(TeaModel):
         summaries: List[DescribeAppsResponseBodyResultSummaries] = None,
         type: str = None,
     ):
+        # Indicates whether the version is automatically switched to an online version.
         self.auto_switch = auto_switch
+        # The capability opening configurations.
         self.cluster = cluster
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The configurations of data sources.
         self.data_sources = data_sources
+        # The description.
         self.description = description
+        # The type of the industry. Valid values:
+        # 
+        # *   GENERAL
+        # *   ECOMMERCE
+        # *   IT_CONTENT
         self.domain = domain
+        # The default display fields.
         self.fetch_fields = fetch_fields
+        # The configurations of rough sort.
         self.first_ranks = first_ranks
+        # The group ID.
         self.id = id
+        # The field model.
         self.interpretations = interpretations
+        # Indicates whether the version is an online version.
         self.is_current = is_current
+        # The progress of data import, in percentage. For example, a value of 83 indicates 83%.
         self.progress_percent = progress_percent
+        # The prompt configurations.
         self.prompts = prompts
+        # The query intent understanding configurations.
         self.query_processors = query_processors
+        # The quota information.
         self.quota = quota
+        # The application schema.
         self.schema = schema
+        # The single-table schema.
         self.schemas = schemas
+        # The configurations of fine sort.
         self.second_ranks = second_ranks
+        # The status of the version. Valid values:
+        # 
+        # *   ok: The version is normal.
+        # *   stopped: The version is suspended.
+        # *   frozen: The version is frozen.
+        # *   initializing: The version is being initialized.
+        # *   unavailable: The version is invalid.
+        # *   data_waiting: Data is to be initialized.
+        # *   data_preparing: Data is being initialized.
         self.status = status
+        # The search result summary configurations.
         self.summaries = summaries
+        # The type of the application. Valid values:
+        # 
+        # *   standard: a standard edition application.
+        # *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
+        # *   enhanced: an advanced edition application of a new version.
         self.type = type
 
     def validate(self):
@@ -10896,7 +11562,7 @@ class DescribeAppsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The information about each version.
+        # The response parameters.
         self.result = result
 
     def validate(self):
@@ -11161,9 +11827,7 @@ class DescribeFirstRankResponseBodyResultMeta(TeaModel):
         self.arg = arg
         # The attribute, feature function, or field to be searched for.
         self.attribute = attribute
-        # The weight.
-        # 
-        # Valid values: [-100000,100000] (excluding 0).
+        # The weight. Valid values: -100000 to 100000. The value cannot be 0.
         self.weight = weight
 
     def validate(self):
@@ -11204,11 +11868,11 @@ class DescribeFirstRankResponseBodyResult(TeaModel):
     ):
         # Indicates whether the expression is the default one.
         self.active = active
-        # The description of the expression.
+        # Description
         self.description = description
-        # The content of the expression.
+        # The information about the expression.
         self.meta = meta
-        # The name of the expression.
+        # Parameter
         self.name = name
 
     def validate(self):
@@ -11257,7 +11921,7 @@ class DescribeFirstRankResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeFirstRankResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the rough sort expression.
         self.result = result
@@ -11340,20 +12004,20 @@ class DescribeInterventionDictionaryResponseBodyResult(TeaModel):
     ):
         # The custom analyzer.
         self.analyzer = analyzer
-        # The time when the intervention dictionary was created.
+        # The time when the the intervention dictionary was created.
         self.created = created
-        # The name of the intervention dictionary.
+        # The name of the the intervention dictionary.
         self.name = name
-        # The type of the intervention dictionary. Valid values:
+        # Type
         # 
-        # *   stopword: an intervention dictionary for stop word filtering
-        # *   synonym: an intervention dictionary for synonym configuration
-        # *   correction: an intervention dictionary for spelling correction
-        # *   category_prediction: an intervention dictionary for category prediction
-        # *   ner: an intervention dictionary for named entity recognition (NER)
-        # *   term_weighting: an intervention dictionary for term weight analysis
+        # *   stopword: an intervention dictionary for stop word filtering.
+        # *   synonym: an intervention dictionary for synonym configuration.
+        # *   correction: an intervention dictionary for spelling correction.
+        # *   category_prediction: an intervention dictionary for category prediction.
+        # *   ner: an intervention dictionary for named entity recognition.
+        # *   term_weighting: an intervention dictionary for term weight analysis.
         self.type = type
-        # The time when the intervention dictionary was last updated.
+        # The time when the the intervention dictionary was modified.
         self.updated = updated
 
     def validate(self):
@@ -11398,9 +12062,9 @@ class DescribeInterventionDictionaryResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeInterventionDictionaryResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information the intervention dictionary.
+        # The details about the intervention dictionary.
         self.result = result
 
     def validate(self):
@@ -11844,11 +12508,11 @@ class DescribeSecondRankResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
-        # Indicates whether the expression is the default one.
+        # Specifies whether to set the fine sort expression as the default sort expression.
         self.active = active
         # The time when the expression was created.
         self.created = created
-        # The description of the expression.
+        # Description
         self.description = description
         # The ID of the expression. This parameter appears only in the response.
         self.id = id
@@ -11862,13 +12526,11 @@ class DescribeSecondRankResponseBodyResult(TeaModel):
         # *   true
         # *   false
         self.is_sys = is_sys
-        # The content of the fine sort expression.
-        # 
-        # You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+        # The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
-        # The name of the expression.
+        # The name.
         self.name = name
-        # The time when the expression was last updated.
+        # The time when the expression was updated.
         self.updated = updated
 
     def validate(self):
@@ -11929,7 +12591,7 @@ class DescribeSecondRankResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeSecondRankResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the fine sort expression.
         self.result = result
@@ -12315,9 +12977,9 @@ class EnableSlowQueryResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return result.
+        # The returned data.
         self.result = result
 
     def validate(self):
@@ -15262,9 +15924,8 @@ class ListABTestFixedFlowDividersResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The queried whitelists.
         self.result = result
 
     def validate(self):
@@ -15487,18 +16148,18 @@ class ListABTestScenesResponseBodyResult(TeaModel):
         updated: int = None,
         values: List[str] = None,
     ):
-        # The time when the test scenario was created.
+        # The time when the test group was created.
         self.created = created
         # The ID of the test group.
         self.id = id
-        # The name of the test group.
+        # The alias of the test group.
         self.name = name
-        # The status of the test scenario. Valid values:
+        # The status of the test group. Valid values:
         # 
         # *   0: not in effect
         # *   1: in effect
         self.status = status
-        # The time when the test scenario was last modified.
+        # The time when the test group was last updated.
         self.updated = updated
         # The name of the test scenario.
         self.values = values
@@ -15549,9 +16210,9 @@ class ListABTestScenesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListABTestScenesResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the test scenarios.
+        # The details of the test scenario.
         # 
         # For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
         self.result = result
@@ -15974,6 +16635,7 @@ class ListAppGroupsResponseBodyResult(TeaModel):
         self.description = description
         # The industry of the application.
         self.domain = domain
+        # The engine type.
         self.engine_type = engine_type
         # The time when the application expired.
         self.expire_on = expire_on
@@ -16020,7 +16682,6 @@ class ListAppGroupsResponseBodyResult(TeaModel):
         # The type of the application. Valid values:
         # 
         # *   standard: a High-performance Search Edition application.
-        # *\
         # *   enhanced: an Industry Algorithm Edition application.
         self.type = type
         # The timestamp when the application was last updated.
@@ -16244,9 +16905,9 @@ class ListDataCollectionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 1
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -16286,39 +16947,39 @@ class ListDataCollectionsResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
-        # The time when the data collection task was created.
+        # The time when the task was created.
         self.created = created
-        # The type of the data that is collected by the task. Valid values:
+        # The type of data collected. Valid values:
         # 
-        # *   behavior: behavioral data
-        # *   item_info: project data
-        # *   industry_specific: industry-specific data
+        # *   behavior: behavioral data.
+        # *   item_info: project information.
+        # *   industry_specific: industry-specific data.
         self.data_collection_type = data_collection_type
-        # The ID of the data collection task.
+        # The data collection ID.
         self.id = id
-        # The industry to which the data collection task applies. Valid values:
+        # The industry name. Valid values:
         # 
         # *   general
         # *   ecommerce
         self.industry_name = industry_name
         # The name of the data collection task.
         self.name = name
-        # The status of the data collection task. Valid values:
+        # The status of the data collection feature. Valid values:
         # 
-        # *   0: disabled
-        # *   1: being enabled
-        # *   2: enabled
-        # *   3: failed to be enabled
+        # *   0: The feature is disabled.
+        # *   1: The feature is being enabled.
+        # *   2: The feature is enabled.
+        # *   3: The feature failed to be enabled.
         self.status = status
-        # The ID of the sundial.
+        # The sundial ID.
         self.sundial_id = sundial_id
-        # The type of the data source. Valid values:
+        # The type of the source from which data was collected. Valid values:
         # 
         # *   server
         # *   web
         # *   app
         # 
-        # Note: Only server is supported.
+        # Only server is supported.
         self.type = type
         # The time when the data collection task was updated.
         self.updated = updated
@@ -16382,13 +17043,13 @@ class ListDataCollectionsResponseBody(TeaModel):
         result: List[ListDataCollectionsResponseBodyResult] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the data collection tasks.
+        # The details of the data collection task.
         # 
         # For more information, see [DataCollection](https://help.aliyun.com/document_detail/173605.html).
         self.result = result
-        # The total number of the returned data collection tasks.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16594,7 +17255,15 @@ class ListDataSourceTablesRequest(TeaModel):
         self,
         params: str = None,
     ):
-        # N/A
+        # The parameters of the data source. The value is a JSON string which must be encoded in the urlencode format.
+        # 
+        # Different types of data sources use different parameters. For more information, see the following sections of the "DataSource" topic:
+        # 
+        # *   [rds](https://help.aliyun.com/document_detail/170005.html)
+        # *   [polardb](https://help.aliyun.com/document_detail/170005.html)
+        # *   [odps](https://help.aliyun.com/document_detail/170005.html)
+        # *   [mysql](https://help.aliyun.com/document_detail/173627.html)
+        # *   [drds](https://help.aliyun.com/document_detail/173627.html)
         # 
         # This parameter is required.
         self.params = params
@@ -16625,9 +17294,8 @@ class ListDataSourceTablesResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The data tables.
         self.result = result
 
     def validate(self):
@@ -16710,9 +17378,7 @@ class ListFirstRanksResponseBodyResultMeta(TeaModel):
         # 
         # For more information about supported feature functions, see [Rough sort functions](https://help.aliyun.com/document_detail/180765.html).
         self.attribute = attribute
-        # The weight.
-        # 
-        # Valid values: [-100000,100000] (excluding 0).
+        # The weight. Valid values: -100000 to 100000. The value cannot be 0.
         self.weight = weight
 
     def validate(self):
@@ -16753,17 +17419,17 @@ class ListFirstRanksResponseBodyResult(TeaModel):
         name: str = None,
         updated: int = None,
     ):
-        # Indicates whether the expression is the default one.
+        # Specifies whether to set the fine sort expression as the default sort expression.
         self.active = active
-        # The time when the cluster was created.
+        # The time when the expression was created.
         self.created = created
-        # The description of the expression.
+        # Description
         self.description = description
-        # The content of the expression.
+        # The information about the expression.
         self.meta = meta
-        # The name of the expression.
+        # The name.
         self.name = name
-        # The time when the cluster was updated.
+        # The time when the expression was updated.
         self.updated = updated
 
     def validate(self):
@@ -16820,9 +17486,9 @@ class ListFirstRanksResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListFirstRanksResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about each rough sort expression.
+        # The information about the rough sort expression.
         # 
         # For more information, see [FirstRank](https://help.aliyun.com/document_detail/170007.html).
         self.result = result
@@ -18799,9 +19465,9 @@ class ListInterventionDictionaryRelatedEntitiesResponseBody(TeaModel):
         request_id: str = None,
         result: List[Dict[str, Any]] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about each application and each query analysis rule. If no query analysis rule references the intervention dictionary, the value of the result parameter is an empty list.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -19907,27 +20573,25 @@ class ListSecondRanksResponseBodyResult(TeaModel):
         self.active = active
         # The time when the expression was created.
         self.created = created
-        # The description of the expression.
+        # Description
         self.description = description
-        # The ID of the expression. This parameter appears only in the response.
+        # The expression ID. This parameter is displayed only in the response.
         self.id = id
-        # Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+        # Indicates whether the expression is the default one. This parameter is displayed only in the response. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true: the expression is the default one.
+        # *   false: the expression is not the default one.
         self.is_default = is_default
-        # Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+        # Indicates whether the expression is a system expression. This parameter is displayed only in the response. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true: The expression is a system expression.
+        # *   false:The expression is not a system expression
         self.is_sys = is_sys
-        # The content of the fine sort expression.
-        # 
-        # You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+        # The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
         self.meta = meta
-        # The name of the expression.
+        # Parameter
         self.name = name
-        # The time when the expression was last updated.
+        # The time when the expression was updated.
         self.updated = updated
 
     def validate(self):
@@ -19989,9 +20653,9 @@ class ListSecondRanksResponseBody(TeaModel):
         result: List[ListSecondRanksResponseBodyResult] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about each fine sort expression.
+        # The information about the fine sort expression.
         # 
         # For more information, see [SecondRank](https://help.aliyun.com/document_detail/170008.html).
         self.result = result
@@ -20797,17 +21461,24 @@ class ListStatisticReportRequest(TeaModel):
         query: str = None,
         start_time: int = None,
     ):
-        # pv,uv
+        # The fields to query. Set this parameter in the format of columns="pv,uv,ipv". For more information, see [Metrics of statistical reports](https://help.aliyun.com/document_detail/187665.html).
         self.columns = columns
-        # 1582646399
+        # The end timestamp of the query. By default, the end time is the current time. Unit: seconds.
         self.end_time = end_time
-        # 1
+        # The page number.
+        # 
+        # Default value: 1.
         self.page_number = page_number
-        # 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # bizType:test,sceneTag:myTag
+        # The query conditions. Set this parameter in the format of k1:v1,k2:v2. Valid values:
+        # 
+        # *   experimentSerialNumber: the globally unique sequence number of the test
+        # *   sceneTag: the tag of the test scenario
+        # *   bizType: the type of the business
+        # *   modelId: the ID of the algorithm model
         self.query = query
-        # 1582214400
+        # The start timestamp of the query. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -20857,17 +21528,15 @@ class ListStatisticReportResponseBody(TeaModel):
         result: List[Dict[str, Any]] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The queried reports. Valid values:
+        # The statistical reports. Valid values:
         # 
-        # For more information about the metrics in data quality reports, see the Upload behavioral data section of [Data collection 2.0](https://help.aliyun.com/document_detail/131547.html).
-        # 
-        # For more information about the metrics in application and A/B test reports, see the Core metrics section of [Metrics of statistical reports](https://help.aliyun.com/document_detail/187654.html).
-        # 
-        # For more information about the metrics in query analysis reports, see the Query analysis metrics section of [Metrics of statistical reports](https://help.aliyun.com/document_detail/187654.html).
+        # *   For more information about the metrics in data quality reports, see the Upload behavioral data section of [Data collection 2.0](https://help.aliyun.com/document_detail/131547.html).
+        # *   For more information about the metrics in application and A/B test reports, see the Core metrics section of [Metrics of statistical reports](https://help.aliyun.com/document_detail/187665.html).
+        # *   For more information about the metrics in query analysis reports, see the Query analysis metrics section of [Metrics of statistical reports](https://help.aliyun.com/document_detail/187665.html).
         self.result = result
-        # The total number of the queried reports.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21797,6 +22466,7 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
         # *   ECOMMERCE: e-commerce.
         # *   IT_CONTENT: IT content.
         self.domain = domain
+        # The engine type.
         self.engine_type = engine_type
         # The time when the application expired.
         self.expire_on = expire_on
@@ -21826,6 +22496,7 @@ class ModifyAppGroupResponseBodyResult(TeaModel):
         self.project_id = project_id
         # The information about the quotas of the application.
         self.quota = quota
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The state of the application. Valid values:
         # 
@@ -21960,7 +22631,7 @@ class ModifyAppGroupResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned data.
+        # Response parameters
         self.result = result
 
     def validate(self):
@@ -22034,11 +22705,18 @@ class ModifyAppGroupQuotaRequest(TeaModel):
     def __init__(
         self,
         body: Quota = None,
+        client_token: str = None,
         dry_run: bool = None,
     ):
         # The request body.
         self.body = body
-        # Specifies whether to verify the application before modification. Valid values: true and false.
+        self.client_token = client_token
+        # Specifies whether to check the validity of input parameters. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   **true**: checks only the validity of input parameters.
+        # *   **false**: checks the validity of input parameters and creates an attribution configuration.
         self.dry_run = dry_run
 
     def validate(self):
@@ -22053,6 +22731,8 @@ class ModifyAppGroupQuotaRequest(TeaModel):
         result = dict()
         if self.body is not None:
             result['body'] = self.body.to_map()
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
         return result
@@ -22062,6 +22742,8 @@ class ModifyAppGroupQuotaRequest(TeaModel):
         if m.get('body') is not None:
             temp_model = Quota()
             self.body = temp_model.from_map(m['body'])
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
         return self
@@ -22074,19 +22756,19 @@ class ModifyAppGroupQuotaResponseBodyResultQuota(TeaModel):
         doc_size: int = None,
         spec: str = None,
     ):
-        # The computing resources. Unit: logical computing units (LCUs).
+        # The computing resources. Unit: logical computing unit (LCU).
         self.compute_resource = compute_resource
         # The storage capacity. Unit: GB.
         self.doc_size = doc_size
-        # The specifications of the application. Valid values:
+        # The specifications. Valid values:
         # 
-        # *   opensearch.share.junior: basic
-        # *   opensearch.share.common: shared general-purpose
-        # *   opensearch.share.compute: shared computing
-        # *   opensearch.share.storage: shared storage
-        # *   opensearch.private.common: exclusive general-purpose
-        # *   opensearch.private.compute: exclusive computing
-        # *   opensearch.private.storage: exclusive storage
+        # *   opensearch.share.junior: basic.
+        # *   opensearch.share.common: shared general-purpose.
+        # *   opensearch.share.compute: shared computing.
+        # *   opensearch.share.storage: shared storage.
+        # *   opensearch.private.common: exclusive general-purpose.
+        # *   opensearch.private.compute: exclusive computing.
+        # *   opensearch.private.storage: exclusive storage.
         self.spec = spec
 
     def validate(self):
@@ -22142,17 +22824,17 @@ class ModifyAppGroupQuotaResponseBodyResult(TeaModel):
         type: str = None,
         updated: int = None,
     ):
-        # The billing method of the application. Valid values:
+        # The billing method. Valid values:
         # 
-        # *   POSTPAY: pay-as-you-go
-        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go.
+        # *   PREPAY: subscription.
         self.charge_type = charge_type
-        # The billing model. Valid values:
+        # The billable item. Valid values:
         # 
-        # *   1: computing resources
-        # *   2: queries per second (QPS)
+        # *   1: computing resources.
+        # *   2: queries per second (QPS).
         self.charging_way = charging_way
-        # The code of the commodity.
+        # The commodity code.
         self.commodity_code = commodity_code
         # The timestamp when the application was created.
         self.created = created
@@ -22160,53 +22842,59 @@ class ModifyAppGroupQuotaResponseBodyResult(TeaModel):
         self.current_version = current_version
         # The description of the application.
         self.description = description
+        # The engine type.
+        # 
+        # Valid values:
+        # 
+        # *   ha3: ha3.
         self.engine_type = engine_type
-        # The expiration time.
+        # The time when the application expired.
         self.expire_on = expire_on
-        # The approval status of the quotas. Valid values:
+        # The approval state of the quotas. Valid values:
         # 
-        # *   0: The quotas are approved.
-        # *   1: The quotas are being approved.
+        # *   0: The application is in service.
+        # *   1: The quotas are being reviewed.
         self.has_pending_quota_review_task = has_pending_quota_review_task
-        # The ID of the application.
+        # The application ID.
         self.id = id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The lock mode of the instance. Valid values:
+        # The lock state. Valid values:
         # 
-        # *   Unlock: The instance is not locked.
+        # *   Unlock: The instance is unlocked.
         # *   LockByExpiration: The instance is automatically locked after it expires.
         # *   ManualLock: The instance is manually locked.
         self.lock_mode = lock_mode
-        # The name of the application.
+        # The name of the application
         self.name = name
-        # Indicates whether the order is complete. Valid values:
+        # Indicates whether the application is created. Valid values:
         # 
-        # *   0: The order is in progress.
-        # *   1: The order is complete.
+        # *   0: The application is being created.
+        # *   1: The application is created.
         self.produced = produced
         # The name of the A/B test group.
         self.project_id = project_id
         # The information about the quotas of the application.
         self.quota = quota
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The status of the application. Valid values:
+        # The state of the application. Valid values:
         # 
-        # *   producing
-        # *   review_pending
-        # *   config_pending
-        # *   normal
-        # *   frozen
+        # *   producing: The application is being created.
+        # *   review_pending: The application is being reviewed.
+        # *   config_pending: The application is to be configured.
+        # *   normal: The application is in service.
+        # *   frozen: The application is frozen.
         self.status = status
         # The timestamp when the current online version was published.
         self.switched_time = switched_time
         # The type of the application. Valid values:
         # 
-        # *   standard: a standard application.
-        # *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-        # *   enhanced: an advanced application which is of a new application type.
+        # *   standard: a standard edition application.
+        # *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
+        # *   enhanced: an advanced edition application of a new version.
         self.type = type
-        # The timestamp when the application was last updated.
+        # The timestamp when the application was last modified.
         self.updated = updated
 
     def validate(self):
@@ -22317,7 +23005,7 @@ class ModifyAppGroupQuotaResponseBody(TeaModel):
         request_id: str = None,
         result: ModifyAppGroupQuotaResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the application.
         self.result = result
@@ -23541,9 +24229,9 @@ class RemoveAppGroupResponseBody(TeaModel):
         request_id: str = None,
         result: List[int] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # N/A
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -23619,7 +24307,7 @@ class RemoveDataCollectionResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # —
+        # -\
         self.result = result
 
     def validate(self):
@@ -23694,17 +24382,11 @@ class RemoveFirstRankResponseBodyResultMeta(TeaModel):
         attribute: str = None,
         weight: float = None,
     ):
-        # The parameters that are used by a function in the expression.
-        # 
-        # For more information, see Rough sort functions.
+        # The parameters that are used by a function in the expression. For more information, see Rough sort functions.[](~~170007~~)
         self.arg = arg
-        # The attribute, feature function, or field to be searched for.
-        # 
-        # For more information about supported feature functions, see Rough sort functions.
+        # The attribute, which refers to the scoring feature or search field, For more information about supported feature functions, see Rough sort functions.[](~~170007~~)
         self.attribute = attribute
-        # The weight.
-        # 
-        # Valid values: [-100000,100000] (excluding 0).
+        # The weight. Valid values: -100000 to 100000. The value cannot be 0.
         self.weight = weight
 
     def validate(self):
@@ -23743,13 +24425,13 @@ class RemoveFirstRankResponseBodyResult(TeaModel):
         meta: List[RemoveFirstRankResponseBodyResultMeta] = None,
         name: str = None,
     ):
-        # Indicates whether the expression is the default one.
+        # Specifies whether to set the fine sort expression as the default sort expression.
         self.active = active
-        # The description of the expression.
+        # Description
         self.description = description
-        # The content of the expression.
+        # The information about the expression.
         self.meta = meta
-        # The name of the expression.
+        # Parameter
         self.name = name
 
     def validate(self):
@@ -23798,7 +24480,7 @@ class RemoveFirstRankResponseBody(TeaModel):
         request_id: str = None,
         result: RemoveFirstRankResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the rough sort expression.
         self.result = result
@@ -23883,18 +24565,18 @@ class RemoveInterventionDictionaryResponseBodyResult(TeaModel):
         self.analyzer = analyzer
         # The time when the intervention dictionary was created.
         self.created = created
-        # The name of the intervention dictionary.
+        # Parameter
         self.name = name
-        # The type of the intervention dictionary. Valid values:
+        # Type
         # 
-        # *   stopword: an intervention dictionary for stop word filtering
-        # *   synonym: an intervention dictionary for synonym configuration
-        # *   correction: an intervention dictionary for spelling correction
-        # *   category_prediction: an intervention dictionary for category prediction
-        # *   ner: an intervention dictionary for named entity recognition (NER)
-        # *   term_weighting: an intervention dictionary for term weight analysis
+        # *   stopword: an intervention dictionary for stop word filtering.
+        # *   synonym: an intervention dictionary for synonym configuration.
+        # *   correction: an intervention dictionary for spelling correction.
+        # *   category_prediction: an intervention dictionary for category prediction.
+        # *   ner: an intervention dictionary for named entity recognition.
+        # *   term_weighting: an intervention dictionary for term weight analysis.
         self.type = type
-        # The time when the intervention dictionary was last updated.
+        # The time when the the intervention dictionary was modified.
         self.updated = updated
 
     def validate(self):
@@ -23939,7 +24621,7 @@ class RemoveInterventionDictionaryResponseBody(TeaModel):
         request_id: str = None,
         result: RemoveInterventionDictionaryResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the intervention dictionary.
         self.result = result
@@ -24017,9 +24699,9 @@ class RemoveQueryProcessorResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # N/A
+        # \\--\
         self.result = result
 
     def validate(self):
@@ -24093,9 +24775,9 @@ class RemoveScheduledTaskResponseBody(TeaModel):
         request_id: str = None,
         result: List[int] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # N/A
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -24238,9 +24920,9 @@ class RemoveSecondRankResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # N/A
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -24314,9 +24996,9 @@ class RemoveUserAnalyzerResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # N/A
+        # The result set. This parameter is not returned if the request is successful.
         self.result = result
 
     def validate(self):
@@ -26194,7 +26876,7 @@ class UpdateFetchFieldsRequest(TeaModel):
     ):
         # The request body.
         self.body = body
-        # true
+        # Specifies whether the request is a dry run.
         self.dry_run = dry_run
 
     def validate(self):
@@ -26227,7 +26909,7 @@ class UpdateFetchFieldsResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the operation was successful.
         self.result = result

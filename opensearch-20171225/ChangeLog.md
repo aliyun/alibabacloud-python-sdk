@@ -1,3 +1,32 @@
+2025-12-23 Version: 4.0.0
+- Update API CreateApp: add request parameters body.configItems.
+- Update API CreateApp: add request parameters body.interpretations.
+- Update API CreateApp: add request parameters body.prompts.
+- Update API CreateApp: add request parameters body.realtimeShared.
+- Update API CreateApp: add request parameters body.cluster.chunkModels.
+- Update API CreateApp: add request parameters body.cluster.graphRag.
+- Update API CreateApp: add request parameters body.cluster.imageContentRecognizerModels.
+- Update API CreateApp: add request parameters body.cluster.textEmbeddingModel.
+- Update API CreateApp: add request parameters body.cluster.textSparseEmbeddingModel.
+- Update API CreateApp: add request parameters body.cluster.vectorIndexConfigs.
+- Update API CreateApp: add response parameters Body.result.configItems.
+- Update API CreateApp: add response parameters Body.result.created.
+- Update API CreateApp: add response parameters Body.result.switchTime.
+- Update API CreateApp: add response parameters Body.result.updated.
+- Update API CreateApp: add response parameters Body.result.cluster.chunkModels.
+- Update API CreateApp: add response parameters Body.result.cluster.graphRag.
+- Update API CreateApp: add response parameters Body.result.cluster.imageContentRecognizerModels.
+- Update API CreateApp: add response parameters Body.result.cluster.textEmbeddingModel.
+- Update API CreateApp: add response parameters Body.result.cluster.textSparseEmbeddingModel.
+- Update API CreateApp: add response parameters Body.result.cluster.vectorIndexConfigs.
+- Update API CreateApp: add response parameters Body.result.quota.usedComputeResource.
+- Update API CreateApp: add response parameters Body.result.quota.usedDocSize.
+- Update API CreateApp: add response parameters Body.result.quota.usedQps.
+- Update API CreateApp: delete response parameters Body.result.autoSwitch.
+- Update API CreateApp: update response parameters Body.result.interpretations' type has changed.
+- Update API ModifyAppGroupQuota: add request parameters clientToken.
+
+
 2024-09-05 Version: 3.0.1
 - Update API CreateAppGroup: update param body.
 

@@ -264,6 +264,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
         """
+        @summary Compiles a sort script.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompileSortScriptResponse
@@ -296,6 +298,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
         """
+        @summary Compiles a sort script.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompileSortScriptResponse
@@ -326,6 +330,8 @@ class Client(OpenApiClient):
         app_version_id: str,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
         """
+        @summary Compiles a sort script.
+        
         @return: CompileSortScriptResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -339,6 +345,8 @@ class Client(OpenApiClient):
         app_version_id: str,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
         """
+        @summary Compiles a sort script.
+        
         @return: CompileSortScriptResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -585,6 +593,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
         """
+        @summary Creates an scenario.
+        
         @param request: CreateABTestSceneRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -623,6 +633,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
         """
+        @summary Creates an scenario.
+        
         @param request: CreateABTestSceneRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -659,6 +671,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateABTestSceneRequest,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
         """
+        @summary Creates an scenario.
+        
         @param request: CreateABTestSceneRequest
         @return: CreateABTestSceneResponse
         """
@@ -672,6 +686,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateABTestSceneRequest,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
         """
+        @summary Creates an scenario.
+        
         @param request: CreateABTestSceneRequest
         @return: CreateABTestSceneResponse
         """
@@ -708,6 +724,8 @@ class Client(OpenApiClient):
             body['autoSwitch'] = request.auto_switch
         if not UtilClient.is_unset(request.cluster):
             body['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.config_items):
+            body['configItems'] = request.config_items
         if not UtilClient.is_unset(request.data_sources):
             body['dataSources'] = request.data_sources
         if not UtilClient.is_unset(request.description):
@@ -718,10 +736,16 @@ class Client(OpenApiClient):
             body['fetchFields'] = request.fetch_fields
         if not UtilClient.is_unset(request.first_ranks):
             body['firstRanks'] = request.first_ranks
+        if not UtilClient.is_unset(request.interpretations):
+            body['interpretations'] = request.interpretations
         if not UtilClient.is_unset(request.network_type):
             body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.prompts):
+            body['prompts'] = request.prompts
         if not UtilClient.is_unset(request.query_processors):
             body['queryProcessors'] = request.query_processors
+        if not UtilClient.is_unset(request.realtime_shared):
+            body['realtimeShared'] = request.realtime_shared
         if not UtilClient.is_unset(request.schema):
             body['schema'] = request.schema
         if not UtilClient.is_unset(request.schemas):
@@ -780,6 +804,8 @@ class Client(OpenApiClient):
             body['autoSwitch'] = request.auto_switch
         if not UtilClient.is_unset(request.cluster):
             body['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.config_items):
+            body['configItems'] = request.config_items
         if not UtilClient.is_unset(request.data_sources):
             body['dataSources'] = request.data_sources
         if not UtilClient.is_unset(request.description):
@@ -790,10 +816,16 @@ class Client(OpenApiClient):
             body['fetchFields'] = request.fetch_fields
         if not UtilClient.is_unset(request.first_ranks):
             body['firstRanks'] = request.first_ranks
+        if not UtilClient.is_unset(request.interpretations):
+            body['interpretations'] = request.interpretations
         if not UtilClient.is_unset(request.network_type):
             body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.prompts):
+            body['prompts'] = request.prompts
         if not UtilClient.is_unset(request.query_processors):
             body['queryProcessors'] = request.query_processors
+        if not UtilClient.is_unset(request.realtime_shared):
+            body['realtimeShared'] = request.realtime_shared
         if not UtilClient.is_unset(request.schema):
             body['schema'] = request.schema
         if not UtilClient.is_unset(request.schemas):
@@ -870,7 +902,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
         """
-        @summary Create an OpenSearch application.
+        @summary Creates an OpenSearch application.
         
         @param request: CreateAppGroupRequest
         @param headers: map
@@ -918,7 +950,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
         """
-        @summary Create an OpenSearch application.
+        @summary Creates an OpenSearch application.
         
         @param request: CreateAppGroupRequest
         @param headers: map
@@ -964,7 +996,7 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateAppGroupRequest,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
         """
-        @summary Create an OpenSearch application.
+        @summary Creates an OpenSearch application.
         
         @param request: CreateAppGroupRequest
         @return: CreateAppGroupResponse
@@ -978,7 +1010,7 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateAppGroupRequest,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
         """
-        @summary Create an OpenSearch application.
+        @summary Creates an OpenSearch application.
         
         @param request: CreateAppGroupRequest
         @return: CreateAppGroupResponse
@@ -1817,6 +1849,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
         """
+        @summary Creates a scheduled task for an OpenSearch application.
+        
         @param request: CreateScheduledTaskRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1851,6 +1885,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
         """
+        @summary Creates a scheduled task for an OpenSearch application.
+        
         @param request: CreateScheduledTaskRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1883,6 +1919,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateScheduledTaskRequest,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
         """
+        @summary Creates a scheduled task for an OpenSearch application.
+        
         @param request: CreateScheduledTaskRequest
         @return: CreateScheduledTaskResponse
         """
@@ -1896,6 +1934,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateScheduledTaskRequest,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
         """
+        @summary Creates a scheduled task for an OpenSearch application.
+        
         @param request: CreateScheduledTaskRequest
         @return: CreateScheduledTaskResponse
         """
@@ -2250,6 +2290,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
+        @summary Create a custom analyzer.
+        
         @param request: CreateUserAnalyzerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2298,6 +2340,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
+        @summary Create a custom analyzer.
+        
         @param request: CreateUserAnalyzerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2344,6 +2388,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateUserAnalyzerRequest,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
+        @summary Create a custom analyzer.
+        
         @param request: CreateUserAnalyzerRequest
         @return: CreateUserAnalyzerResponse
         """
@@ -2356,6 +2402,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateUserAnalyzerRequest,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
+        @summary Create a custom analyzer.
+        
         @param request: CreateUserAnalyzerRequest
         @return: CreateUserAnalyzerResponse
         """
@@ -2373,6 +2421,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
         """
+        @summary Deletes a test.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteABTestExperimentResponse
@@ -2406,6 +2456,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
         """
+        @summary Deletes a test.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteABTestExperimentResponse
@@ -2437,6 +2489,8 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
         """
+        @summary Deletes a test.
+        
         @return: DeleteABTestExperimentResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2451,6 +2505,8 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
         """
+        @summary Deletes a test.
+        
         @return: DeleteABTestExperimentResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2466,6 +2522,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
         """
+        @summary 删除实验组
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteABTestGroupResponse
@@ -2498,6 +2556,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
         """
+        @summary 删除实验组
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteABTestGroupResponse
@@ -2528,6 +2588,8 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
         """
+        @summary 删除实验组
+        
         @return: DeleteABTestGroupResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2541,6 +2603,8 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
         """
+        @summary 删除实验组
+        
         @return: DeleteABTestGroupResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2948,6 +3012,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
         """
+        @summary 删除排序脚本
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSortScriptResponse
@@ -2980,6 +3046,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
         """
+        @summary 删除排序脚本
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSortScriptResponse
@@ -3010,6 +3078,8 @@ class Client(OpenApiClient):
         app_version_id: str,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
         """
+        @summary 删除排序脚本
+        
         @return: DeleteSortScriptResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3023,6 +3093,8 @@ class Client(OpenApiClient):
         app_version_id: str,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
         """
+        @summary 删除排序脚本
+        
         @return: DeleteSortScriptResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3039,6 +3111,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
         """
+        @summary Deletes a script file.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSortScriptFileResponse
@@ -3072,6 +3146,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
         """
+        @summary Deletes a script file.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSortScriptFileResponse
@@ -3103,6 +3179,8 @@ class Client(OpenApiClient):
         file_name: str,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
         """
+        @summary Deletes a script file.
+        
         @return: DeleteSortScriptFileResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3117,6 +3195,8 @@ class Client(OpenApiClient):
         file_name: str,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
         """
+        @summary Deletes a script file.
+        
         @return: DeleteSortScriptFileResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3133,6 +3213,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
         """
+        @summary 获取实验详情
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeABTestExperimentResponse
@@ -3166,6 +3248,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
         """
+        @summary 获取实验详情
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeABTestExperimentResponse
@@ -3197,6 +3281,8 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
         """
+        @summary 获取实验详情
+        
         @return: DescribeABTestExperimentResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3211,6 +3297,8 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
         """
+        @summary 获取实验详情
+        
         @return: DescribeABTestExperimentResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3226,6 +3314,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
         """
+        @summary Queries the details of a test group.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeABTestGroupResponse
@@ -3258,6 +3348,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
         """
+        @summary Queries the details of a test group.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeABTestGroupResponse
@@ -3288,6 +3380,8 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
         """
+        @summary Queries the details of a test group.
+        
         @return: DescribeABTestGroupResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3301,6 +3395,8 @@ class Client(OpenApiClient):
         group_id: str,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
         """
+        @summary Queries the details of a test group.
+        
         @return: DescribeABTestGroupResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3409,6 +3505,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
         """
+        @summary Queries the information about a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAppResponse
@@ -3440,6 +3538,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
         """
+        @summary Queries the information about a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAppResponse
@@ -3469,6 +3569,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppResponse:
         """
+        @summary Queries the information about a version of an OpenSearch application.
+        
         @return: DescribeAppResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3481,6 +3583,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppResponse:
         """
+        @summary Queries the information about a version of an OpenSearch application.
+        
         @return: DescribeAppResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3585,6 +3689,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
         """
+        @summary Queries the statistics about a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAppStatisticsResponse
@@ -3616,6 +3722,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
         """
+        @summary Queries the statistics about a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAppStatisticsResponse
@@ -3645,6 +3753,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
         """
+        @summary Queries the statistics about a version of an OpenSearch application.
+        
         @return: DescribeAppStatisticsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3657,6 +3767,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
         """
+        @summary Queries the statistics about a version of an OpenSearch application.
+        
         @return: DescribeAppStatisticsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3670,6 +3782,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppsResponse:
         """
+        @summary Queries the version list of an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAppsResponse
@@ -3700,6 +3819,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppsResponse:
         """
+        @summary Queries the version list of an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAppsResponse
@@ -3728,6 +3854,13 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeAppsResponse:
         """
+        @summary Queries the version list of an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        
         @return: DescribeAppsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3739,6 +3872,13 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeAppsResponse:
         """
+        @summary Queries the version list of an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        
         @return: DescribeAppsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3848,6 +3988,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
         """
+        @summary Queries a rough sort expression that is configured for an OpenSearch application version.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeFirstRankResponse
@@ -3880,6 +4022,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
         """
+        @summary Queries a rough sort expression that is configured for an OpenSearch application version.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeFirstRankResponse
@@ -3910,6 +4054,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
         """
+        @summary Queries a rough sort expression that is configured for an OpenSearch application version.
+        
         @return: DescribeFirstRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3923,6 +4069,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
         """
+        @summary Queries a rough sort expression that is configured for an OpenSearch application version.
+        
         @return: DescribeFirstRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3936,6 +4084,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
         """
+        @summary Queries the details of an intervention dictionary.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInterventionDictionaryResponse
@@ -3966,6 +4116,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
         """
+        @summary Queries the details of an intervention dictionary.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInterventionDictionaryResponse
@@ -3994,6 +4146,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
         """
+        @summary Queries the details of an intervention dictionary.
+        
         @return: DescribeInterventionDictionaryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4005,6 +4159,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
         """
+        @summary Queries the details of an intervention dictionary.
+        
         @return: DescribeInterventionDictionaryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4191,6 +4347,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
         """
+        @summary 查看应用定时任务详情
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeScheduledTaskResponse
@@ -4222,6 +4380,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
         """
+        @summary 查看应用定时任务详情
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeScheduledTaskResponse
@@ -4251,6 +4411,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
         """
+        @summary 查看应用定时任务详情
+        
         @return: DescribeScheduledTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4263,6 +4425,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
         """
+        @summary 查看应用定时任务详情
+        
         @return: DescribeScheduledTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4278,6 +4442,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
         """
+        @summary Queries a fine sort expression that is configured for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSecondRankResponse
@@ -4310,6 +4476,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
         """
+        @summary Queries a fine sort expression that is configured for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSecondRankResponse
@@ -4340,6 +4508,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
         """
+        @summary Queries a fine sort expression that is configured for a version of an OpenSearch application.
+        
         @return: DescribeSecondRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4353,6 +4523,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
         """
+        @summary Queries a fine sort expression that is configured for a version of an OpenSearch application.
+        
         @return: DescribeSecondRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4366,6 +4538,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
         """
+        @summary 获取优化大师慢查询开通状态
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSlowQueryStatusResponse
@@ -4396,6 +4570,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
         """
+        @summary 获取优化大师慢查询开通状态
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSlowQueryStatusResponse
@@ -4424,6 +4600,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
         """
+        @summary 获取优化大师慢查询开通状态
+        
         @return: DescribeSlowQueryStatusResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4435,6 +4613,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
         """
+        @summary 获取优化大师慢查询开通状态
+        
         @return: DescribeSlowQueryStatusResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4449,6 +4629,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         """
+        @summary 获取自定义分析器详情
+        
         @param request: DescribeUserAnalyzerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4486,6 +4668,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         """
+        @summary 获取自定义分析器详情
+        
         @param request: DescribeUserAnalyzerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4521,6 +4705,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.DescribeUserAnalyzerRequest,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         """
+        @summary 获取自定义分析器详情
+        
         @param request: DescribeUserAnalyzerRequest
         @return: DescribeUserAnalyzerResponse
         """
@@ -4534,6 +4720,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.DescribeUserAnalyzerRequest,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         """
+        @summary 获取自定义分析器详情
+        
         @param request: DescribeUserAnalyzerRequest
         @return: DescribeUserAnalyzerResponse
         """
@@ -4548,6 +4736,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
         """
+        @summary 禁用优化大师慢查询服务
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableSlowQueryResponse
@@ -4578,6 +4768,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
         """
+        @summary 禁用优化大师慢查询服务
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableSlowQueryResponse
@@ -4606,6 +4798,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
         """
+        @summary 禁用优化大师慢查询服务
+        
         @return: DisableSlowQueryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4617,6 +4811,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
         """
+        @summary 禁用优化大师慢查询服务
+        
         @return: DisableSlowQueryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4630,6 +4826,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
         """
+        @summary Enables slow query optimization of Optimization Master.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableSlowQueryResponse
@@ -4660,6 +4858,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
         """
+        @summary Enables slow query optimization of Optimization Master.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableSlowQueryResponse
@@ -4688,6 +4888,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
         """
+        @summary Enables slow query optimization of Optimization Master.
+        
         @return: EnableSlowQueryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -4699,6 +4901,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
         """
+        @summary Enables slow query optimization of Optimization Master.
+        
         @return: EnableSlowQueryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6057,6 +6261,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
         """
+        @summary Queries whitelists.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListABTestFixedFlowDividersResponse
@@ -6090,6 +6296,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
         """
+        @summary Queries whitelists.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListABTestFixedFlowDividersResponse
@@ -6121,6 +6329,8 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
         """
+        @summary Queries whitelists.
+        
         @return: ListABTestFixedFlowDividersResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6135,6 +6345,8 @@ class Client(OpenApiClient):
         experiment_id: str,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
         """
+        @summary Queries whitelists.
+        
         @return: ListABTestFixedFlowDividersResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6149,6 +6361,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
         """
+        @summary 获取实验组清单
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListABTestGroupsResponse
@@ -6180,6 +6394,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
         """
+        @summary 获取实验组清单
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListABTestGroupsResponse
@@ -6209,6 +6425,8 @@ class Client(OpenApiClient):
         scene_id: str,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
         """
+        @summary 获取实验组清单
+        
         @return: ListABTestGroupsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6221,6 +6439,8 @@ class Client(OpenApiClient):
         scene_id: str,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
         """
+        @summary 获取实验组清单
+        
         @return: ListABTestGroupsResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6234,6 +6454,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
         """
+        @summary Queries test scenarios.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListABTestScenesResponse
@@ -6264,6 +6486,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
         """
+        @summary Queries test scenarios.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListABTestScenesResponse
@@ -6292,6 +6516,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
         """
+        @summary Queries test scenarios.
+        
         @return: ListABTestScenesResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6303,6 +6529,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
         """
+        @summary Queries test scenarios.
+        
         @return: ListABTestScenesResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6473,6 +6701,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         """
+        @summary Queries the data collection tasks of an OpenSearch application.
+        
         @param request: ListDataCollectionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6512,6 +6742,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         """
+        @summary Queries the data collection tasks of an OpenSearch application.
+        
         @param request: ListDataCollectionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6549,6 +6781,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListDataCollectionsRequest,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         """
+        @summary Queries the data collection tasks of an OpenSearch application.
+        
         @param request: ListDataCollectionsRequest
         @return: ListDataCollectionsResponse
         """
@@ -6562,6 +6796,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListDataCollectionsRequest,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         """
+        @summary Queries the data collection tasks of an OpenSearch application.
+        
         @param request: ListDataCollectionsRequest
         @return: ListDataCollectionsResponse
         """
@@ -6689,6 +6925,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         """
+        @summary Obtains all data from a specified data source.
+        
         @param request: ListDataSourceTablesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6726,6 +6964,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         """
+        @summary Obtains all data from a specified data source.
+        
         @param request: ListDataSourceTablesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6761,6 +7001,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListDataSourceTablesRequest,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         """
+        @summary Obtains all data from a specified data source.
+        
         @param request: ListDataSourceTablesRequest
         @return: ListDataSourceTablesResponse
         """
@@ -6774,6 +7016,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListDataSourceTablesRequest,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         """
+        @summary Obtains all data from a specified data source.
+        
         @param request: ListDataSourceTablesRequest
         @return: ListDataSourceTablesResponse
         """
@@ -6789,6 +7033,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
         """
+        @summary Queries the rough sort expressions that are configured for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFirstRanksResponse
@@ -6820,6 +7066,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
         """
+        @summary Queries the rough sort expressions that are configured for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFirstRanksResponse
@@ -6849,6 +7097,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
         """
+        @summary Queries the rough sort expressions that are configured for a version of an OpenSearch application.
+        
         @return: ListFirstRanksResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6861,6 +7111,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
         """
+        @summary Queries the rough sort expressions that are configured for a version of an OpenSearch application.
+        
         @return: ListFirstRanksResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -7262,6 +7514,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         """
+        @summary 获取用户的干预词典列表
+        
         @param request: ListInterventionDictionariesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7302,6 +7556,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         """
+        @summary 获取用户的干预词典列表
+        
         @param request: ListInterventionDictionariesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7340,6 +7596,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListInterventionDictionariesRequest,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         """
+        @summary 获取用户的干预词典列表
+        
         @param request: ListInterventionDictionariesRequest
         @return: ListInterventionDictionariesResponse
         """
@@ -7352,6 +7610,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListInterventionDictionariesRequest,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         """
+        @summary 获取用户的干预词典列表
+        
         @param request: ListInterventionDictionariesRequest
         @return: ListInterventionDictionariesResponse
         """
@@ -7483,6 +7743,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         """
+        @summary 获取实体识别结果
+        
         @param request: ListInterventionDictionaryNerResultsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7520,6 +7782,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         """
+        @summary 获取实体识别结果
+        
         @param request: ListInterventionDictionaryNerResultsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7555,6 +7819,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         """
+        @summary 获取实体识别结果
+        
         @param request: ListInterventionDictionaryNerResultsRequest
         @return: ListInterventionDictionaryNerResultsResponse
         """
@@ -7568,6 +7834,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         """
+        @summary 获取实体识别结果
+        
         @param request: ListInterventionDictionaryNerResultsRequest
         @return: ListInterventionDictionaryNerResultsResponse
         """
@@ -7582,6 +7850,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
         """
+        @summary Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInterventionDictionaryRelatedEntitiesResponse
@@ -7612,6 +7882,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
         """
+        @summary Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInterventionDictionaryRelatedEntitiesResponse
@@ -7640,6 +7912,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
         """
+        @summary Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+        
         @return: ListInterventionDictionaryRelatedEntitiesResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -7651,6 +7925,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
         """
+        @summary Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+        
         @return: ListInterventionDictionaryRelatedEntitiesResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8427,6 +8703,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
         """
+        @summary Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSecondRanksResponse
@@ -8458,6 +8736,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
         """
+        @summary Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSecondRanksResponse
@@ -8487,6 +8767,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
         """
+        @summary Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+        
         @return: ListSecondRanksResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8499,6 +8781,8 @@ class Client(OpenApiClient):
         app_id: str,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
         """
+        @summary Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+        
         @return: ListSecondRanksResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8603,6 +8887,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
         """
+        @summary 列出优化大师慢查询Query清单
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSlowQueryQueriesResponse
@@ -8634,6 +8920,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
         """
+        @summary 列出优化大师慢查询Query清单
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSlowQueryQueriesResponse
@@ -8663,6 +8951,8 @@ class Client(OpenApiClient):
         category_index: str,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
         """
+        @summary 列出优化大师慢查询Query清单
+        
         @return: ListSlowQueryQueriesResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8675,6 +8965,8 @@ class Client(OpenApiClient):
         category_index: str,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
         """
+        @summary 列出优化大师慢查询Query清单
+        
         @return: ListSlowQueryQueriesResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -9018,6 +9310,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         """
+        @summary Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+        
         @param request: ListStatisticReportRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9066,6 +9360,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         """
+        @summary Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+        
         @param request: ListStatisticReportRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9112,6 +9408,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListStatisticReportRequest,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         """
+        @summary Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+        
         @param request: ListStatisticReportRequest
         @return: ListStatisticReportResponse
         """
@@ -9126,6 +9424,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListStatisticReportRequest,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         """
+        @summary Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+        
         @param request: ListStatisticReportRequest
         @return: ListStatisticReportResponse
         """
@@ -9621,6 +9921,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
         """
+        @summary Modifies the quotas of an OpenSearch application.
+        
         @param request: ModifyAppGroupQuotaRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9628,6 +9930,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
@@ -9659,6 +9963,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
         """
+        @summary Modifies the quotas of an OpenSearch application.
+        
         @param request: ModifyAppGroupQuotaRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9666,6 +9972,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
@@ -9695,6 +10003,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
         """
+        @summary Modifies the quotas of an OpenSearch application.
+        
         @param request: ModifyAppGroupQuotaRequest
         @return: ModifyAppGroupQuotaResponse
         """
@@ -9708,6 +10018,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
         """
+        @summary Modifies the quotas of an OpenSearch application.
+        
         @param request: ModifyAppGroupQuotaRequest
         @return: ModifyAppGroupQuotaResponse
         """
@@ -10410,6 +10722,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
         """
+        @summary 发布排序脚本
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleaseSortScriptResponse
@@ -10442,6 +10756,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
         """
+        @summary 发布排序脚本
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleaseSortScriptResponse
@@ -10472,6 +10788,8 @@ class Client(OpenApiClient):
         app_version_id: str,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
         """
+        @summary 发布排序脚本
+        
         @return: ReleaseSortScriptResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10485,6 +10803,8 @@ class Client(OpenApiClient):
         app_version_id: str,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
         """
+        @summary 发布排序脚本
+        
         @return: ReleaseSortScriptResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10592,6 +10912,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
         """
+        @summary Deletes an OpenSearch application.
+        
+        @description You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveAppGroupResponse
@@ -10622,6 +10946,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
         """
+        @summary Deletes an OpenSearch application.
+        
+        @description You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveAppGroupResponse
@@ -10650,6 +10978,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
         """
+        @summary Deletes an OpenSearch application.
+        
+        @description You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+        
         @return: RemoveAppGroupResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10661,6 +10993,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
         """
+        @summary Deletes an OpenSearch application.
+        
+        @description You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+        
         @return: RemoveAppGroupResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10770,6 +11106,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
         """
+        @summary Deletes a rough sort expression for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveFirstRankResponse
@@ -10802,6 +11140,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
         """
+        @summary Deletes a rough sort expression for a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveFirstRankResponse
@@ -10832,6 +11172,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
         """
+        @summary Deletes a rough sort expression for a version of an OpenSearch application.
+        
         @return: RemoveFirstRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10845,6 +11187,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
         """
+        @summary Deletes a rough sort expression for a version of an OpenSearch application.
+        
         @return: RemoveFirstRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10858,6 +11202,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
         """
+        @summary Deletes an intervention dictionary.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveInterventionDictionaryResponse
@@ -10888,6 +11234,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
         """
+        @summary Deletes an intervention dictionary.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveInterventionDictionaryResponse
@@ -10916,6 +11264,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
         """
+        @summary Deletes an intervention dictionary.
+        
         @return: RemoveInterventionDictionaryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10927,6 +11277,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
         """
+        @summary Deletes an intervention dictionary.
+        
         @return: RemoveInterventionDictionaryResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -10942,6 +11294,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
         """
+        @summary Deletes a query analysis rule for an OpenSearch application version.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveQueryProcessorResponse
@@ -10974,6 +11328,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
         """
+        @summary Deletes a query analysis rule for an OpenSearch application version.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveQueryProcessorResponse
@@ -11004,6 +11360,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
         """
+        @summary Deletes a query analysis rule for an OpenSearch application version.
+        
         @return: RemoveQueryProcessorResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11017,6 +11375,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
         """
+        @summary Deletes a query analysis rule for an OpenSearch application version.
+        
         @return: RemoveQueryProcessorResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11031,6 +11391,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
         """
+        @summary Deletes a scheduled task of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveScheduledTaskResponse
@@ -11062,6 +11424,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
         """
+        @summary Deletes a scheduled task of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveScheduledTaskResponse
@@ -11091,6 +11455,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
         """
+        @summary Deletes a scheduled task of an OpenSearch application.
+        
         @return: RemoveScheduledTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11103,6 +11469,8 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
         """
+        @summary Deletes a scheduled task of an OpenSearch application.
+        
         @return: RemoveScheduledTaskResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11216,6 +11584,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
         """
+        @summary Deletes a fine sort expression from a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveSecondRankResponse
@@ -11248,6 +11618,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
         """
+        @summary Deletes a fine sort expression from a version of an OpenSearch application.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveSecondRankResponse
@@ -11278,6 +11650,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
         """
+        @summary Deletes a fine sort expression from a version of an OpenSearch application.
+        
         @return: RemoveSecondRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11291,6 +11665,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
         """
+        @summary Deletes a fine sort expression from a version of an OpenSearch application.
+        
         @return: RemoveSecondRankResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11304,6 +11680,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
         """
+        @summary Deletes a custom analyzer.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveUserAnalyzerResponse
@@ -11334,6 +11712,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
         """
+        @summary Deletes a custom analyzer.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveUserAnalyzerResponse
@@ -11362,6 +11742,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
         """
+        @summary Deletes a custom analyzer.
+        
         @return: RemoveUserAnalyzerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11373,6 +11755,8 @@ class Client(OpenApiClient):
         name: str,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
         """
+        @summary Deletes a custom analyzer.
+        
         @return: RemoveUserAnalyzerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11710,6 +12094,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
         """
+        @summary 立即进行慢查询分析
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartSlowQueryAnalyzerResponse
@@ -11740,6 +12126,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
         """
+        @summary 立即进行慢查询分析
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartSlowQueryAnalyzerResponse
@@ -11768,6 +12156,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
         """
+        @summary 立即进行慢查询分析
+        
         @return: StartSlowQueryAnalyzerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -11779,6 +12169,8 @@ class Client(OpenApiClient):
         app_group_identity: str,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
         """
+        @summary 立即进行慢查询分析
+        
         @return: StartSlowQueryAnalyzerResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -12706,6 +13098,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         """
+        @summary Updates fetch fields. A dry run is supported.
+        
         @param request: UpdateFetchFieldsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -12745,6 +13139,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         """
+        @summary Updates fetch fields. A dry run is supported.
+        
         @param request: UpdateFetchFieldsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -12782,6 +13178,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.UpdateFetchFieldsRequest,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         """
+        @summary Updates fetch fields. A dry run is supported.
+        
         @param request: UpdateFetchFieldsRequest
         @return: UpdateFetchFieldsResponse
         """
@@ -12796,6 +13194,8 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.UpdateFetchFieldsRequest,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         """
+        @summary Updates fetch fields. A dry run is supported.
+        
         @param request: UpdateFetchFieldsRequest
         @return: UpdateFetchFieldsResponse
         """
