@@ -27687,6 +27687,304 @@ class DescribeDesktopInfoResponse(TeaModel):
         return self
 
 
+class DescribeDesktopMetadataRequest(TeaModel):
+    def __init__(
+        self,
+        creation_time_start: str = None,
+        desktop_ids: List[str] = None,
+        group_id: str = None,
+        host_name: str = None,
+        image_id: str = None,
+        include_desktop_group: bool = None,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        office_site_id: str = None,
+        operation_time_start: str = None,
+        region_id: str = None,
+        search_region_id: str = None,
+    ):
+        self.creation_time_start = creation_time_start
+        self.desktop_ids = desktop_ids
+        self.group_id = group_id
+        self.host_name = host_name
+        self.image_id = image_id
+        self.include_desktop_group = include_desktop_group
+        self.keyword = keyword
+        self.max_results = max_results
+        self.next_token = next_token
+        self.office_site_id = office_site_id
+        self.operation_time_start = operation_time_start
+        self.region_id = region_id
+        self.search_region_id = search_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time_start is not None:
+            result['CreationTimeStart'] = self.creation_time_start
+        if self.desktop_ids is not None:
+            result['DesktopIds'] = self.desktop_ids
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.include_desktop_group is not None:
+            result['IncludeDesktopGroup'] = self.include_desktop_group
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.operation_time_start is not None:
+            result['OperationTimeStart'] = self.operation_time_start
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.search_region_id is not None:
+            result['SearchRegionId'] = self.search_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTimeStart') is not None:
+            self.creation_time_start = m.get('CreationTimeStart')
+        if m.get('DesktopIds') is not None:
+            self.desktop_ids = m.get('DesktopIds')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('IncludeDesktopGroup') is not None:
+            self.include_desktop_group = m.get('IncludeDesktopGroup')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OperationTimeStart') is not None:
+            self.operation_time_start = m.get('OperationTimeStart')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SearchRegionId') is not None:
+            self.search_region_id = m.get('SearchRegionId')
+        return self
+
+
+class DescribeDesktopMetadataResponseBodyDesktops(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        creation_time: str = None,
+        desktop_group_id: str = None,
+        desktop_id: str = None,
+        desktop_name: str = None,
+        desktop_status: str = None,
+        expired_time: str = None,
+        image_id: str = None,
+        local_name: str = None,
+        management_flags: List[str] = None,
+        office_site_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+        start_time: str = None,
+    ):
+        self.charge_type = charge_type
+        self.creation_time = creation_time
+        self.desktop_group_id = desktop_group_id
+        self.desktop_id = desktop_id
+        self.desktop_name = desktop_name
+        self.desktop_status = desktop_status
+        self.expired_time = expired_time
+        self.image_id = image_id
+        self.local_name = local_name
+        self.management_flags = management_flags
+        self.office_site_id = office_site_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.desktop_name is not None:
+            result['DesktopName'] = self.desktop_name
+        if self.desktop_status is not None:
+            result['DesktopStatus'] = self.desktop_status
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.management_flags is not None:
+            result['ManagementFlags'] = self.management_flags
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('DesktopName') is not None:
+            self.desktop_name = m.get('DesktopName')
+        if m.get('DesktopStatus') is not None:
+            self.desktop_status = m.get('DesktopStatus')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('ManagementFlags') is not None:
+            self.management_flags = m.get('ManagementFlags')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDesktopMetadataResponseBody(TeaModel):
+    def __init__(
+        self,
+        desktops: List[DescribeDesktopMetadataResponseBodyDesktops] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.desktops = desktops
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.desktops:
+            for k in self.desktops:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Desktops'] = []
+        if self.desktops is not None:
+            for k in self.desktops:
+                result['Desktops'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.desktops = []
+        if m.get('Desktops') is not None:
+            for k in m.get('Desktops'):
+                temp_model = DescribeDesktopMetadataResponseBodyDesktops()
+                self.desktops.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDesktopMetadataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDesktopMetadataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDesktopMetadataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDesktopOversoldGroupRequest(TeaModel):
     def __init__(
         self,

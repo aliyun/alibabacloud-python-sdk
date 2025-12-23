@@ -1,3 +1,7 @@
+2025-12-23 Version: 4.20.0
+- Support API DescribeDesktopMetadata.
+
+
 2025-12-19 Version: 4.19.0
 - Support API DescribeRecordFile.
 

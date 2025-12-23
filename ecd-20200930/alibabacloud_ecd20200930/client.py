@@ -13807,6 +13807,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_info_with_options_async(request, runtime)
 
+    def describe_desktop_metadata_with_options(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDesktopMetadataResponse:
+        """
+        @summary 查询云电脑基础元数据
+        
+        @param request: DescribeDesktopMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creation_time_start):
+            query['CreationTimeStart'] = request.creation_time_start
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.include_desktop_group):
+            query['IncludeDesktopGroup'] = request.include_desktop_group
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.operation_time_start):
+            query['OperationTimeStart'] = request.operation_time_start
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDesktopMetadata',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDesktopMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_desktop_metadata_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDesktopMetadataResponse:
+        """
+        @summary 查询云电脑基础元数据
+        
+        @param request: DescribeDesktopMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creation_time_start):
+            query['CreationTimeStart'] = request.creation_time_start
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.include_desktop_group):
+            query['IncludeDesktopGroup'] = request.include_desktop_group
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.operation_time_start):
+            query['OperationTimeStart'] = request.operation_time_start
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDesktopMetadata',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDesktopMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_desktop_metadata(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetadataRequest,
+    ) -> ecd_20200930_models.DescribeDesktopMetadataResponse:
+        """
+        @summary 查询云电脑基础元数据
+        
+        @param request: DescribeDesktopMetadataRequest
+        @return: DescribeDesktopMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_desktop_metadata_with_options(request, runtime)
+
+    async def describe_desktop_metadata_async(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetadataRequest,
+    ) -> ecd_20200930_models.DescribeDesktopMetadataResponse:
+        """
+        @summary 查询云电脑基础元数据
+        
+        @param request: DescribeDesktopMetadataRequest
+        @return: DescribeDesktopMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_desktop_metadata_with_options_async(request, runtime)
+
     def describe_desktop_oversold_group_with_options(
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldGroupRequest,
