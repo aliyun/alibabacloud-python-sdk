@@ -1,3 +1,8 @@
+2025-12-23 Version: 1.2.0
+- Support API DescribeId.
+- Support API GetInstanceLog.
+
+
 2024-09-29 Version: 1.1.0
 - Support API ListAlertGroups.
 - Support API ListResourceGroups.

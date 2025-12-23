@@ -5,7 +5,6 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_emrstudio20240430 import models as emr_studio_20240430_models
@@ -22,9 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'EmrStudio'
-        gateway_client = GatewayClientClient()
-        self._spi = gateway_client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('emrstudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -121,16 +117,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.CreateWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.CreateWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.CreateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_workflow_with_options_async(
         self,
@@ -208,16 +198,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.CreateWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.CreateWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.CreateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_workflow(
         self,
@@ -284,16 +268,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DeleteWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DeleteWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DeleteWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_workflow_with_options_async(
         self,
@@ -330,16 +308,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DeleteWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DeleteWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DeleteWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_workflow(
         self,
@@ -372,6 +344,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_workflow_with_options_async(project_id, workflow_id, request, headers, runtime)
+
+    def describe_id_with_options(
+        self,
+        request: emr_studio_20240430_models.DescribeIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.DescribeIdResponse:
+        """
+        @summary 获取id关联信息
+        
+        @param request: DescribeIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeId',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/relatedIds',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_id_with_options_async(
+        self,
+        request: emr_studio_20240430_models.DescribeIdRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.DescribeIdResponse:
+        """
+        @summary 获取id关联信息
+        
+        @param request: DescribeIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeId',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/relatedIds',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_id(
+        self,
+        request: emr_studio_20240430_models.DescribeIdRequest,
+    ) -> emr_studio_20240430_models.DescribeIdResponse:
+        """
+        @summary 获取id关联信息
+        
+        @param request: DescribeIdRequest
+        @return: DescribeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_id_with_options(request, headers, runtime)
+
+    async def describe_id_async(
+        self,
+        request: emr_studio_20240430_models.DescribeIdRequest,
+    ) -> emr_studio_20240430_models.DescribeIdResponse:
+        """
+        @summary 获取id关联信息
+        
+        @param request: DescribeIdRequest
+        @return: DescribeIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_id_with_options_async(request, headers, runtime)
 
     def describe_manual_task_with_options(
         self,
@@ -408,16 +488,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeManualTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_manual_task_with_options_async(
         self,
@@ -454,16 +528,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeManualTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_manual_task(
         self,
@@ -532,16 +600,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeManualTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_manual_task_instance_with_options_async(
         self,
@@ -578,16 +640,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeManualTaskInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeManualTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_manual_task_instance(
         self,
@@ -655,16 +711,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeProjectResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeProjectResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_project_with_options_async(
         self,
@@ -700,16 +750,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeProjectResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeProjectResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_project(
         self,
@@ -777,16 +821,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_task_with_options_async(
         self,
@@ -824,16 +862,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_task(
         self,
@@ -905,16 +937,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeTaskInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_task_instance_with_options_async(
         self,
@@ -952,16 +978,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeTaskInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeTaskInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_task_instance(
         self,
@@ -1032,16 +1052,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_workflow_with_options_async(
         self,
@@ -1078,16 +1092,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_workflow(
         self,
@@ -1156,16 +1164,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_workflow_instance_with_options_async(
         self,
@@ -1202,16 +1204,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.DescribeWorkflowInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.DescribeWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_workflow_instance(
         self,
@@ -1244,6 +1240,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_workflow_instance_with_options_async(project_id, workflow_instance_id, request, headers, runtime)
+
+    def get_instance_log_with_options(
+        self,
+        project_id: str,
+        instance_id: str,
+        request: emr_studio_20240430_models.GetInstanceLogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.GetInstanceLogResponse:
+        """
+        @summary 获取实例的日志
+        
+        @param request: GetInstanceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.skip_line_num):
+            query['skipLineNum'] = request.skip_line_num
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceLog',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/projects/{OpenApiUtilClient.get_encode_param(project_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/log',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.GetInstanceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_log_with_options_async(
+        self,
+        project_id: str,
+        instance_id: str,
+        request: emr_studio_20240430_models.GetInstanceLogRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.GetInstanceLogResponse:
+        """
+        @summary 获取实例的日志
+        
+        @param request: GetInstanceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.skip_line_num):
+            query['skipLineNum'] = request.skip_line_num
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceLog',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/projects/{OpenApiUtilClient.get_encode_param(project_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/log',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.GetInstanceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_log(
+        self,
+        project_id: str,
+        instance_id: str,
+        request: emr_studio_20240430_models.GetInstanceLogRequest,
+    ) -> emr_studio_20240430_models.GetInstanceLogResponse:
+        """
+        @summary 获取实例的日志
+        
+        @param request: GetInstanceLogRequest
+        @return: GetInstanceLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instance_log_with_options(project_id, instance_id, request, headers, runtime)
+
+    async def get_instance_log_async(
+        self,
+        project_id: str,
+        instance_id: str,
+        request: emr_studio_20240430_models.GetInstanceLogRequest,
+    ) -> emr_studio_20240430_models.GetInstanceLogResponse:
+        """
+        @summary 获取实例的日志
+        
+        @param request: GetInstanceLogRequest
+        @return: GetInstanceLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instance_log_with_options_async(project_id, instance_id, request, headers, runtime)
 
     def list_alert_groups_with_options(
         self,
@@ -1285,16 +1401,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListAlertGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListAlertGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListAlertGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_alert_groups_with_options_async(
         self,
@@ -1336,16 +1446,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListAlertGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListAlertGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListAlertGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_alert_groups(
         self,
@@ -1423,16 +1527,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListManualTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_manual_task_instances_with_options_async(
         self,
@@ -1480,16 +1578,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListManualTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_manual_task_instances(
         self,
@@ -1563,16 +1655,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListManualTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_manual_tasks_with_options_async(
         self,
@@ -1616,16 +1702,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListManualTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListManualTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_manual_tasks(
         self,
@@ -1696,16 +1776,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListProjectsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListProjectsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_projects_with_options_async(
         self,
@@ -1746,16 +1820,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListProjectsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListProjectsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_projects(
         self,
@@ -1826,16 +1894,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListResourceGroupsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListResourceGroupsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListResourceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resource_groups_with_options_async(
         self,
@@ -1878,16 +1940,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListResourceGroupsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListResourceGroupsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListResourceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resource_groups(
         self,
@@ -1965,16 +2021,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTaskInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTaskInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListTaskInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_task_instances_with_options_async(
         self,
@@ -2024,16 +2074,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTaskInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTaskInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListTaskInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_task_instances(
         self,
@@ -2109,16 +2153,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTasksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tasks_with_options_async(
         self,
@@ -2164,16 +2202,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tasks(
         self,
@@ -2247,16 +2279,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_workflow_directories_with_options_async(
         self,
@@ -2300,16 +2326,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_workflow_directories(
         self,
@@ -2387,16 +2407,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_workflow_instances_with_options_async(
         self,
@@ -2444,16 +2458,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_workflow_instances(
         self,
@@ -2525,16 +2533,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_workflows_with_options_async(
         self,
@@ -2576,16 +2578,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.ListWorkflowsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.ListWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_workflows(
         self,
@@ -2657,16 +2653,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def operate_workflow_instance_with_options_async(
         self,
@@ -2708,16 +2698,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def operate_workflow_instance(
         self,
@@ -2809,16 +2793,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.RunWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.RunWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.RunWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_workflow_with_options_async(
         self,
@@ -2880,16 +2858,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.RunWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.RunWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.RunWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_workflow(
         self,
@@ -2998,16 +2970,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.UpdateWorkflowResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.UpdateWorkflowResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.UpdateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_workflow_with_options_async(
         self,
@@ -3086,16 +3052,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                emr_studio_20240430_models.UpdateWorkflowResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                emr_studio_20240430_models.UpdateWorkflowResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            emr_studio_20240430_models.UpdateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_workflow(
         self,

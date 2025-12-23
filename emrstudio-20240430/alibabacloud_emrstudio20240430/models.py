@@ -368,6 +368,201 @@ class DeleteWorkflowResponse(TeaModel):
         return self
 
 
+class DescribeIdRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        workspace_id: str = None,
+    ):
+        # id
+        # 
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class DescribeIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        input_id: str = None,
+        input_id_type: str = None,
+        manual_task_id: str = None,
+        manual_task_instance_id: str = None,
+        project_id: str = None,
+        task_id: str = None,
+        task_instance_id: str = None,
+        workflow_id: str = None,
+        workflow_instance_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.input_id = input_id
+        self.input_id_type = input_id_type
+        self.manual_task_id = manual_task_id
+        self.manual_task_instance_id = manual_task_instance_id
+        self.project_id = project_id
+        self.task_id = task_id
+        self.task_instance_id = task_instance_id
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_id is not None:
+            result['inputId'] = self.input_id
+        if self.input_id_type is not None:
+            result['inputIdType'] = self.input_id_type
+        if self.manual_task_id is not None:
+            result['manualTaskId'] = self.manual_task_id
+        if self.manual_task_instance_id is not None:
+            result['manualTaskInstanceId'] = self.manual_task_instance_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_instance_id is not None:
+            result['taskInstanceId'] = self.task_instance_id
+        if self.workflow_id is not None:
+            result['workflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['workflowInstanceId'] = self.workflow_instance_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputId') is not None:
+            self.input_id = m.get('inputId')
+        if m.get('inputIdType') is not None:
+            self.input_id_type = m.get('inputIdType')
+        if m.get('manualTaskId') is not None:
+            self.manual_task_id = m.get('manualTaskId')
+        if m.get('manualTaskInstanceId') is not None:
+            self.manual_task_instance_id = m.get('manualTaskInstanceId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskInstanceId') is not None:
+            self.task_instance_id = m.get('taskInstanceId')
+        if m.get('workflowId') is not None:
+            self.workflow_id = m.get('workflowId')
+        if m.get('workflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('workflowInstanceId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class DescribeIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeIdResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = DescribeIdResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DescribeIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeManualTaskRequest(TeaModel):
     def __init__(
         self,
@@ -1785,6 +1980,156 @@ class DescribeWorkflowInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeWorkflowInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstanceLogRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        skip_line_num: int = None,
+        workspace_id: str = None,
+    ):
+        self.limit = limit
+        self.skip_line_num = skip_line_num
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.skip_line_num is not None:
+            result['skipLineNum'] = self.skip_line_num
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('skipLineNum') is not None:
+            self.skip_line_num = m.get('skipLineNum')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class GetInstanceLogResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        line_num: int = None,
+        message: str = None,
+    ):
+        self.line_num = line_num
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.line_num is not None:
+            result['lineNum'] = self.line_num
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lineNum') is not None:
+            self.line_num = m.get('lineNum')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class GetInstanceLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetInstanceLogResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetInstanceLogResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetInstanceLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
