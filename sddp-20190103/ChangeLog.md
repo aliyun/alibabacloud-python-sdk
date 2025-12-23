@@ -1,3 +1,7 @@
+2025-12-23 Version: 1.6.1
+- Update API DescribeAuditLogs: add request parameters LogQueryOpJson.
+
+
 2025-12-01 Version: 1.6.0
 - Support API MaskOssImage.
 - Support API RestoreOssImage.

@@ -1303,6 +1303,7 @@ class DescribeAuditLogsRequest(TeaModel):
         ip_type: str = None,
         lang: str = None,
         load_white_list: bool = None,
+        log_query_op_json: str = None,
         log_source: str = None,
         member_account: str = None,
         message: str = None,
@@ -1331,6 +1332,7 @@ class DescribeAuditLogsRequest(TeaModel):
         self.ip_type = ip_type
         self.lang = lang
         self.load_white_list = load_white_list
+        self.log_query_op_json = log_query_op_json
         self.log_source = log_source
         self.member_account = member_account
         self.message = message
@@ -1380,6 +1382,8 @@ class DescribeAuditLogsRequest(TeaModel):
             result['Lang'] = self.lang
         if self.load_white_list is not None:
             result['LoadWhiteList'] = self.load_white_list
+        if self.log_query_op_json is not None:
+            result['LogQueryOpJson'] = self.log_query_op_json
         if self.log_source is not None:
             result['LogSource'] = self.log_source
         if self.member_account is not None:
@@ -1438,6 +1442,8 @@ class DescribeAuditLogsRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('LoadWhiteList') is not None:
             self.load_white_list = m.get('LoadWhiteList')
+        if m.get('LogQueryOpJson') is not None:
+            self.log_query_op_json = m.get('LogQueryOpJson')
         if m.get('LogSource') is not None:
             self.log_source = m.get('LogSource')
         if m.get('MemberAccount') is not None:

@@ -1070,6 +1070,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.load_white_list):
             query['LoadWhiteList'] = request.load_white_list
+        if not UtilClient.is_unset(request.log_query_op_json):
+            query['LogQueryOpJson'] = request.log_query_op_json
         if not UtilClient.is_unset(request.log_source):
             query['LogSource'] = request.log_source
         if not UtilClient.is_unset(request.member_account):
@@ -1157,6 +1159,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.load_white_list):
             query['LoadWhiteList'] = request.load_white_list
+        if not UtilClient.is_unset(request.log_query_op_json):
+            query['LogQueryOpJson'] = request.log_query_op_json
         if not UtilClient.is_unset(request.log_source):
             query['LogSource'] = request.log_source
         if not UtilClient.is_unset(request.member_account):
