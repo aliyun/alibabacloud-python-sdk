@@ -1,3 +1,10 @@
+2025-12-23 Version: 3.0.4
+- Update API Decrypt: add request parameters CustomIdentifier.
+- Update API Encrypt: add request parameters CustomIdentifier.
+- Update API Sign: add request parameters CustomIdentifier.
+- Update API Verify: add request parameters CustomIdentifier.
+
+
 2025-09-28 Version: 3.0.3
 - Generated python 2020-04-07 for cas.
 

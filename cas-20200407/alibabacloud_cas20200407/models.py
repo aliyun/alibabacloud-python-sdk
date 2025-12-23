@@ -1241,6 +1241,7 @@ class DecryptRequest(TeaModel):
         algorithm: str = None,
         cert_identifier: str = None,
         ciphertext_blob: str = None,
+        custom_identifier: str = None,
         message_type: str = None,
     ):
         # The encryption algorithm. Valid values:
@@ -1255,13 +1256,12 @@ class DecryptRequest(TeaModel):
         # 
         # *   If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
         # *   If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
-        # 
-        # This parameter is required.
         self.cert_identifier = cert_identifier
         # The data that you want to decrypt. The value is encoded in Base64.
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        self.custom_identifier = custom_identifier
         # The value type of the Message parameter. Valid values:
         # 
         # *   RAW: The returned result is raw data encoded in UTF-8.
@@ -1283,6 +1283,8 @@ class DecryptRequest(TeaModel):
             result['CertIdentifier'] = self.cert_identifier
         if self.ciphertext_blob is not None:
             result['CiphertextBlob'] = self.ciphertext_blob
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.message_type is not None:
             result['MessageType'] = self.message_type
         return result
@@ -1295,6 +1297,8 @@ class DecryptRequest(TeaModel):
             self.cert_identifier = m.get('CertIdentifier')
         if m.get('CiphertextBlob') is not None:
             self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('MessageType') is not None:
             self.message_type = m.get('MessageType')
         return self
@@ -3078,6 +3082,7 @@ class EncryptRequest(TeaModel):
         self,
         algorithm: str = None,
         cert_identifier: str = None,
+        custom_identifier: str = None,
         message_type: str = None,
         plaintext: str = None,
     ):
@@ -3093,9 +3098,8 @@ class EncryptRequest(TeaModel):
         # 
         # *   If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
         # *   If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
-        # 
-        # This parameter is required.
         self.cert_identifier = cert_identifier
+        self.custom_identifier = custom_identifier
         # The value type of the Message parameter. Valid values:
         # 
         # *   RAW: The value of the Plaintext parameter is directly encrypted. This is the default value.
@@ -3123,6 +3127,8 @@ class EncryptRequest(TeaModel):
             result['Algorithm'] = self.algorithm
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.message_type is not None:
             result['MessageType'] = self.message_type
         if self.plaintext is not None:
@@ -3135,6 +3141,8 @@ class EncryptRequest(TeaModel):
             self.algorithm = m.get('Algorithm')
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('MessageType') is not None:
             self.message_type = m.get('MessageType')
         if m.get('Plaintext') is not None:
@@ -7736,6 +7744,7 @@ class SignRequest(TeaModel):
     def __init__(
         self,
         cert_identifier: str = None,
+        custom_identifier: str = None,
         message: str = None,
         message_type: str = None,
         signing_algorithm: str = None,
@@ -7744,9 +7753,8 @@ class SignRequest(TeaModel):
         # 
         # *   If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
         # *   If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
-        # 
-        # This parameter is required.
         self.cert_identifier = cert_identifier
+        self.custom_identifier = custom_identifier
         # The data to sign. The value must be encoded in Base64.\\
         # For example, if the hexadecimal data that you want to sign is [0x31, 0x32, 0x33, 0x34], set the parameter to the Base64-encoded value MTIzNA==. If you set MessageType to RAW, the size of the data must be less than 4 KB. If the size of the data is greater than 4 KB, you can set MessageType to DIGEST and set Message to the digest of the data. The digest is a hash value. You can compute the digest of the data on an on-premises machine. The certificate application repository uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. The following items describe the details:
         # 
@@ -7783,6 +7791,8 @@ class SignRequest(TeaModel):
         result = dict()
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.message is not None:
             result['Message'] = self.message
         if self.message_type is not None:
@@ -7795,6 +7805,8 @@ class SignRequest(TeaModel):
         m = m or dict()
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('MessageType') is not None:
@@ -8709,6 +8721,7 @@ class VerifyRequest(TeaModel):
     def __init__(
         self,
         cert_identifier: str = None,
+        custom_identifier: str = None,
         message: str = None,
         message_type: str = None,
         signature_value: str = None,
@@ -8718,9 +8731,8 @@ class VerifyRequest(TeaModel):
         # 
         # *   If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
         # *   If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
-        # 
-        # This parameter is required.
         self.cert_identifier = cert_identifier
+        self.custom_identifier = custom_identifier
         # The data for which you want to verify the signature. The value must be encoded in Base64.\\
         # For example, if the hexadecimal data that you want to verify is [0x31, 0x32, 0x33, 0x34], set the parameter to the Base64-encoded value MTIzNA==. If you set MessageType to RAW, the size of the data must be less than 4 KB. If the size of the data is greater than 4 KB, you can set MessageType to DIGEST and set Message to the digest of the data. The digest is also called hash value. You can compute the digest of the data on an on-premises machine. The certificate repository uses your certificate application system to compute the message digest. The message digest algorithm that is used must meet the requirements of the specified signature algorithm. The following signature algorithms require different message digest algorithms:
         # 
@@ -8761,6 +8773,8 @@ class VerifyRequest(TeaModel):
         result = dict()
         if self.cert_identifier is not None:
             result['CertIdentifier'] = self.cert_identifier
+        if self.custom_identifier is not None:
+            result['CustomIdentifier'] = self.custom_identifier
         if self.message is not None:
             result['Message'] = self.message
         if self.message_type is not None:
@@ -8775,6 +8789,8 @@ class VerifyRequest(TeaModel):
         m = m or dict()
         if m.get('CertIdentifier') is not None:
             self.cert_identifier = m.get('CertIdentifier')
+        if m.get('CustomIdentifier') is not None:
+            self.custom_identifier = m.get('CustomIdentifier')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('MessageType') is not None:

@@ -1004,6 +1004,8 @@ class Client(OpenApiClient):
             query['CertIdentifier'] = request.cert_identifier
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message_type):
             query['MessageType'] = request.message_type
         req = open_api_models.OpenApiRequest(
@@ -1047,6 +1049,8 @@ class Client(OpenApiClient):
             query['CertIdentifier'] = request.cert_identifier
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message_type):
             query['MessageType'] = request.message_type
         req = open_api_models.OpenApiRequest(
@@ -2230,6 +2234,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message_type):
             query['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.plaintext):
@@ -2273,6 +2279,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message_type):
             query['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.plaintext):
@@ -4104,6 +4112,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message):
             query['Message'] = request.message
         if not UtilClient.is_unset(request.message_type):
@@ -4149,6 +4159,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message):
             query['Message'] = request.message
         if not UtilClient.is_unset(request.message_type):
@@ -4888,6 +4900,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message):
             query['Message'] = request.message
         if not UtilClient.is_unset(request.message_type):
@@ -4935,6 +4949,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cert_identifier):
             query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.custom_identifier):
+            query['CustomIdentifier'] = request.custom_identifier
         if not UtilClient.is_unset(request.message):
             query['Message'] = request.message
         if not UtilClient.is_unset(request.message_type):
