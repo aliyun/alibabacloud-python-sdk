@@ -12059,8 +12059,10 @@ class GetTextScanResultResponseBodyDataItemsResult(TeaModel):
 class GetTextScanResultResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
         bailian_request_id: str = None,
         content: str = None,
+        data_id: str = None,
         ext_feedback: str = None,
         extra: Dict[str, Any] = None,
         gmt_create: str = None,
@@ -12075,10 +12077,12 @@ class GetTextScanResultResponseBodyDataItems(TeaModel):
         suggestion: str = None,
         task_id: str = None,
     ):
+        self.account_id = account_id
         # Bailian Request ID
         self.bailian_request_id = bailian_request_id
         # Content.
         self.content = content
+        self.data_id = data_id
         # Feedback information.
         self.ext_feedback = ext_feedback
         # Spare parameters.
@@ -12126,10 +12130,14 @@ class GetTextScanResultResponseBodyDataItems(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.bailian_request_id is not None:
             result['BailianRequestId'] = self.bailian_request_id
         if self.content is not None:
             result['Content'] = self.content
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.ext_feedback is not None:
             result['ExtFeedback'] = self.ext_feedback
         if self.extra is not None:
@@ -12162,10 +12170,14 @@ class GetTextScanResultResponseBodyDataItems(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('BailianRequestId') is not None:
             self.bailian_request_id = m.get('BailianRequestId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('ExtFeedback') is not None:
             self.ext_feedback = m.get('ExtFeedback')
         if m.get('Extra') is not None:
