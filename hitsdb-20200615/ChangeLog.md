@@ -1,3 +1,7 @@
+2025-12-24 Version: 4.15.0
+- Support API GetInstanceSummary.
+
+
 2025-12-12 Version: 4.14.0
 - Support API UpdateLindormV2WhiteIpList.
 - Update API CreateAutoScalingConfig: add request parameters StorageCapacityMax.

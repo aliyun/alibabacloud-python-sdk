@@ -1,0 +1,531 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._check_ldps_columnar_index_status_request import CheckLdpsColumnarIndexStatusRequest
+from ._check_ldps_columnar_index_status_response_body import CheckLdpsColumnarIndexStatusResponseBody
+from ._check_ldps_columnar_index_status_response import CheckLdpsColumnarIndexStatusResponse
+from ._create_auto_scaling_config_request import CreateAutoScalingConfigRequest
+from ._create_auto_scaling_config_shrink_request import CreateAutoScalingConfigShrinkRequest
+from ._create_auto_scaling_config_response_body import CreateAutoScalingConfigResponseBody
+from ._create_auto_scaling_config_response import CreateAutoScalingConfigResponse
+from ._create_auto_scaling_rule_request import CreateAutoScalingRuleRequest
+from ._create_auto_scaling_rule_response_body import CreateAutoScalingRuleResponseBody
+from ._create_auto_scaling_rule_response import CreateAutoScalingRuleResponse
+from ._create_ldps_compute_group_request import CreateLdpsComputeGroupRequest
+from ._create_ldps_compute_group_response_body import CreateLdpsComputeGroupResponseBody
+from ._create_ldps_compute_group_response import CreateLdpsComputeGroupResponse
+from ._create_lindorm_instance_request import CreateLindormInstanceRequest
+from ._create_lindorm_instance_response_body import CreateLindormInstanceResponseBody
+from ._create_lindorm_instance_response import CreateLindormInstanceResponse
+from ._create_lindorm_v2instance_request import CreateLindormV2InstanceRequest
+from ._create_lindorm_v2instance_response_body import CreateLindormV2InstanceResponseBody
+from ._create_lindorm_v2instance_response import CreateLindormV2InstanceResponse
+from ._delete_auto_scaling_config_request import DeleteAutoScalingConfigRequest
+from ._delete_auto_scaling_config_response_body import DeleteAutoScalingConfigResponseBody
+from ._delete_auto_scaling_config_response import DeleteAutoScalingConfigResponse
+from ._delete_auto_scaling_rule_request import DeleteAutoScalingRuleRequest
+from ._delete_auto_scaling_rule_response_body import DeleteAutoScalingRuleResponseBody
+from ._delete_auto_scaling_rule_response import DeleteAutoScalingRuleResponse
+from ._delete_custom_resource_request import DeleteCustomResourceRequest
+from ._delete_custom_resource_response_body import DeleteCustomResourceResponseBody
+from ._delete_custom_resource_response import DeleteCustomResourceResponse
+from ._delete_ldps_compute_group_request import DeleteLdpsComputeGroupRequest
+from ._delete_ldps_compute_group_response_body import DeleteLdpsComputeGroupResponseBody
+from ._delete_ldps_compute_group_response import DeleteLdpsComputeGroupResponse
+from ._deploy_ldps_semi_managed_component_request import DeployLdpsSemiManagedComponentRequest
+from ._deploy_ldps_semi_managed_component_response_body import DeployLdpsSemiManagedComponentResponseBody
+from ._deploy_ldps_semi_managed_component_response import DeployLdpsSemiManagedComponentResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._get_auto_scaling_config_request import GetAutoScalingConfigRequest
+from ._get_auto_scaling_config_response_body import GetAutoScalingConfigResponseBody
+from ._get_auto_scaling_config_response import GetAutoScalingConfigResponse
+from ._get_auto_scaling_rule_request import GetAutoScalingRuleRequest
+from ._get_auto_scaling_rule_response_body import GetAutoScalingRuleResponseBody
+from ._get_auto_scaling_rule_response import GetAutoScalingRuleResponse
+from ._get_client_source_ip_request import GetClientSourceIpRequest
+from ._get_client_source_ip_response_body import GetClientSourceIpResponseBody
+from ._get_client_source_ip_response import GetClientSourceIpResponse
+from ._get_engine_default_auth_request import GetEngineDefaultAuthRequest
+from ._get_engine_default_auth_response_body import GetEngineDefaultAuthResponseBody
+from ._get_engine_default_auth_response import GetEngineDefaultAuthResponse
+from ._get_instance_ip_white_list_request import GetInstanceIpWhiteListRequest
+from ._get_instance_ip_white_list_response_body import GetInstanceIpWhiteListResponseBody
+from ._get_instance_ip_white_list_response import GetInstanceIpWhiteListResponse
+from ._get_instance_security_groups_request import GetInstanceSecurityGroupsRequest
+from ._get_instance_security_groups_response_body import GetInstanceSecurityGroupsResponseBody
+from ._get_instance_security_groups_response import GetInstanceSecurityGroupsResponse
+from ._get_instance_summary_request import GetInstanceSummaryRequest
+from ._get_instance_summary_response_body import GetInstanceSummaryResponseBody
+from ._get_instance_summary_response import GetInstanceSummaryResponse
+from ._get_ldps_compute_group_request import GetLdpsComputeGroupRequest
+from ._get_ldps_compute_group_response_body import GetLdpsComputeGroupResponseBody
+from ._get_ldps_compute_group_response import GetLdpsComputeGroupResponse
+from ._get_ldps_namespaced_quota_request import GetLdpsNamespacedQuotaRequest
+from ._get_ldps_namespaced_quota_response_body import GetLdpsNamespacedQuotaResponseBody
+from ._get_ldps_namespaced_quota_response import GetLdpsNamespacedQuotaResponse
+from ._get_ldps_resource_cost_request import GetLdpsResourceCostRequest
+from ._get_ldps_resource_cost_response_body import GetLdpsResourceCostResponseBody
+from ._get_ldps_resource_cost_response import GetLdpsResourceCostResponse
+from ._get_lindorm_engine_config_request import GetLindormEngineConfigRequest
+from ._get_lindorm_engine_config_response_body import GetLindormEngineConfigResponseBody
+from ._get_lindorm_engine_config_response import GetLindormEngineConfigResponse
+from ._get_lindorm_fs_used_detail_request import GetLindormFsUsedDetailRequest
+from ._get_lindorm_fs_used_detail_response_body import GetLindormFsUsedDetailResponseBody
+from ._get_lindorm_fs_used_detail_response import GetLindormFsUsedDetailResponse
+from ._get_lindorm_instance_request import GetLindormInstanceRequest
+from ._get_lindorm_instance_response_body import GetLindormInstanceResponseBody
+from ._get_lindorm_instance_response import GetLindormInstanceResponse
+from ._get_lindorm_instance_engine_list_request import GetLindormInstanceEngineListRequest
+from ._get_lindorm_instance_engine_list_response_body import GetLindormInstanceEngineListResponseBody
+from ._get_lindorm_instance_engine_list_response import GetLindormInstanceEngineListResponse
+from ._get_lindorm_instance_list_request import GetLindormInstanceListRequest
+from ._get_lindorm_instance_list_response_body import GetLindormInstanceListResponseBody
+from ._get_lindorm_instance_list_response import GetLindormInstanceListResponse
+from ._get_lindorm_v2instance_request import GetLindormV2InstanceRequest
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBody
+from ._get_lindorm_v2instance_response import GetLindormV2InstanceResponse
+from ._get_lindorm_v2instance_details_request import GetLindormV2InstanceDetailsRequest
+from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBody
+from ._get_lindorm_v2instance_details_response import GetLindormV2InstanceDetailsResponse
+from ._get_lindorm_v2instance_engine_list_request import GetLindormV2InstanceEngineListRequest
+from ._get_lindorm_v2instance_engine_list_response_body import GetLindormV2InstanceEngineListResponseBody
+from ._get_lindorm_v2instance_engine_list_response import GetLindormV2InstanceEngineListResponse
+from ._get_lindorm_v2instance_for_terraform_request import GetLindormV2InstanceForTerraformRequest
+from ._get_lindorm_v2instance_for_terraform_response_body import GetLindormV2InstanceForTerraformResponseBody
+from ._get_lindorm_v2instance_for_terraform_response import GetLindormV2InstanceForTerraformResponse
+from ._get_lindorm_v2instance_security_groups_request import GetLindormV2InstanceSecurityGroupsRequest
+from ._get_lindorm_v2instance_security_groups_response_body import GetLindormV2InstanceSecurityGroupsResponseBody
+from ._get_lindorm_v2instance_security_groups_response import GetLindormV2InstanceSecurityGroupsResponse
+from ._get_lindorm_v2storage_usage_request import GetLindormV2StorageUsageRequest
+from ._get_lindorm_v2storage_usage_response_body import GetLindormV2StorageUsageResponseBody
+from ._get_lindorm_v2storage_usage_response import GetLindormV2StorageUsageResponse
+from ._get_lindorm_v2stream_engine_info_request import GetLindormV2StreamEngineInfoRequest
+from ._get_lindorm_v2stream_engine_info_response_body import GetLindormV2StreamEngineInfoResponseBody
+from ._get_lindorm_v2stream_engine_info_response import GetLindormV2StreamEngineInfoResponse
+from ._list_auto_scaling_configs_request import ListAutoScalingConfigsRequest
+from ._list_auto_scaling_configs_shrink_request import ListAutoScalingConfigsShrinkRequest
+from ._list_auto_scaling_configs_response_body import ListAutoScalingConfigsResponseBody
+from ._list_auto_scaling_configs_response import ListAutoScalingConfigsResponse
+from ._list_auto_scaling_records_request import ListAutoScalingRecordsRequest
+from ._list_auto_scaling_records_shrink_request import ListAutoScalingRecordsShrinkRequest
+from ._list_auto_scaling_records_response_body import ListAutoScalingRecordsResponseBody
+from ._list_auto_scaling_records_response import ListAutoScalingRecordsResponse
+from ._list_auto_scaling_rules_request import ListAutoScalingRulesRequest
+from ._list_auto_scaling_rules_response_body import ListAutoScalingRulesResponseBody
+from ._list_auto_scaling_rules_response import ListAutoScalingRulesResponse
+from ._list_ldps_compute_groups_request import ListLdpsComputeGroupsRequest
+from ._list_ldps_compute_groups_response_body import ListLdpsComputeGroupsResponseBody
+from ._list_ldps_compute_groups_response import ListLdpsComputeGroupsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._migrate_single_zone_to_multi_zone_request import MigrateSingleZoneToMultiZoneRequest
+from ._migrate_single_zone_to_multi_zone_response_body import MigrateSingleZoneToMultiZoneResponseBody
+from ._migrate_single_zone_to_multi_zone_response import MigrateSingleZoneToMultiZoneResponse
+from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequest
+from ._modify_auto_scaling_config_shrink_request import ModifyAutoScalingConfigShrinkRequest
+from ._modify_auto_scaling_config_response_body import ModifyAutoScalingConfigResponseBody
+from ._modify_auto_scaling_config_response import ModifyAutoScalingConfigResponse
+from ._modify_auto_scaling_rule_request import ModifyAutoScalingRuleRequest
+from ._modify_auto_scaling_rule_response_body import ModifyAutoScalingRuleResponseBody
+from ._modify_auto_scaling_rule_response import ModifyAutoScalingRuleResponse
+from ._modify_instance_pay_type_request import ModifyInstancePayTypeRequest
+from ._modify_instance_pay_type_response_body import ModifyInstancePayTypeResponseBody
+from ._modify_instance_pay_type_response import ModifyInstancePayTypeResponse
+from ._modify_lindorm_v2instance_request import ModifyLindormV2InstanceRequest
+from ._modify_lindorm_v2instance_response_body import ModifyLindormV2InstanceResponseBody
+from ._modify_lindorm_v2instance_response import ModifyLindormV2InstanceResponse
+from ._modify_lindorm_v2instance_security_groups_request import ModifyLindormV2InstanceSecurityGroupsRequest
+from ._modify_lindorm_v2instance_security_groups_response_body import ModifyLindormV2InstanceSecurityGroupsResponseBody
+from ._modify_lindorm_v2instance_security_groups_response import ModifyLindormV2InstanceSecurityGroupsResponse
+from ._modify_lindorm_v2white_ip_list_request import ModifyLindormV2WhiteIpListRequest
+from ._modify_lindorm_v2white_ip_list_response_body import ModifyLindormV2WhiteIpListResponseBody
+from ._modify_lindorm_v2white_ip_list_response import ModifyLindormV2WhiteIpListResponse
+from ._open_compute_engine_request import OpenComputeEngineRequest
+from ._open_compute_engine_response_body import OpenComputeEngineResponseBody
+from ._open_compute_engine_response import OpenComputeEngineResponse
+from ._open_compute_pre_check_request import OpenComputePreCheckRequest
+from ._open_compute_pre_check_response_body import OpenComputePreCheckResponseBody
+from ._open_compute_pre_check_response import OpenComputePreCheckResponse
+from ._open_ldps_columnar_index_request import OpenLdpsColumnarIndexRequest
+from ._open_ldps_columnar_index_response_body import OpenLdpsColumnarIndexResponseBody
+from ._open_ldps_columnar_index_response import OpenLdpsColumnarIndexResponse
+from ._release_lindorm_instance_request import ReleaseLindormInstanceRequest
+from ._release_lindorm_instance_response_body import ReleaseLindormInstanceResponseBody
+from ._release_lindorm_instance_response import ReleaseLindormInstanceResponse
+from ._release_lindorm_v2instance_request import ReleaseLindormV2InstanceRequest
+from ._release_lindorm_v2instance_response_body import ReleaseLindormV2InstanceResponseBody
+from ._release_lindorm_v2instance_response import ReleaseLindormV2InstanceResponse
+from ._renew_lindorm_instance_request import RenewLindormInstanceRequest
+from ._renew_lindorm_instance_response_body import RenewLindormInstanceResponseBody
+from ._renew_lindorm_instance_response import RenewLindormInstanceResponse
+from ._restart_ldps_compute_group_request import RestartLdpsComputeGroupRequest
+from ._restart_ldps_compute_group_response_body import RestartLdpsComputeGroupResponseBody
+from ._restart_ldps_compute_group_response import RestartLdpsComputeGroupResponse
+from ._set_default_olap_compute_group_request import SetDefaultOlapComputeGroupRequest
+from ._set_default_olap_compute_group_response_body import SetDefaultOlapComputeGroupResponseBody
+from ._set_default_olap_compute_group_response import SetDefaultOlapComputeGroupResponse
+from ._switch_lsqlv3my_sqlservice_request import SwitchLSQLV3MySQLServiceRequest
+from ._switch_lsqlv3my_sqlservice_response_body import SwitchLSQLV3MySQLServiceResponseBody
+from ._switch_lsqlv3my_sqlservice_response import SwitchLSQLV3MySQLServiceResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_instance_ip_white_list_request import UpdateInstanceIpWhiteListRequest
+from ._update_instance_ip_white_list_response_body import UpdateInstanceIpWhiteListResponseBody
+from ._update_instance_ip_white_list_response import UpdateInstanceIpWhiteListResponse
+from ._update_instance_security_groups_request import UpdateInstanceSecurityGroupsRequest
+from ._update_instance_security_groups_response_body import UpdateInstanceSecurityGroupsResponseBody
+from ._update_instance_security_groups_response import UpdateInstanceSecurityGroupsResponse
+from ._update_ldps_compute_group_request import UpdateLdpsComputeGroupRequest
+from ._update_ldps_compute_group_response_body import UpdateLdpsComputeGroupResponseBody
+from ._update_ldps_compute_group_response import UpdateLdpsComputeGroupResponse
+from ._update_lindorm_instance_attribute_request import UpdateLindormInstanceAttributeRequest
+from ._update_lindorm_instance_attribute_response_body import UpdateLindormInstanceAttributeResponseBody
+from ._update_lindorm_instance_attribute_response import UpdateLindormInstanceAttributeResponse
+from ._update_lindorm_v2instance_request import UpdateLindormV2InstanceRequest
+from ._update_lindorm_v2instance_response_body import UpdateLindormV2InstanceResponseBody
+from ._update_lindorm_v2instance_response import UpdateLindormV2InstanceResponse
+from ._update_lindorm_v2instance_parameter_request import UpdateLindormV2InstanceParameterRequest
+from ._update_lindorm_v2instance_parameter_response_body import UpdateLindormV2InstanceParameterResponseBody
+from ._update_lindorm_v2instance_parameter_response import UpdateLindormV2InstanceParameterResponse
+from ._update_lindorm_v2white_ip_list_request import UpdateLindormV2WhiteIpListRequest
+from ._update_lindorm_v2white_ip_list_response_body import UpdateLindormV2WhiteIpListResponseBody
+from ._update_lindorm_v2white_ip_list_response import UpdateLindormV2WhiteIpListResponse
+from ._upgrade_lindorm_instance_request import UpgradeLindormInstanceRequest
+from ._upgrade_lindorm_instance_response_body import UpgradeLindormInstanceResponseBody
+from ._upgrade_lindorm_instance_response import UpgradeLindormInstanceResponse
+from ._upgrade_lindorm_v2stream_engine_request import UpgradeLindormV2StreamEngineRequest
+from ._upgrade_lindorm_v2stream_engine_response_body import UpgradeLindormV2StreamEngineResponseBody
+from ._upgrade_lindorm_v2stream_engine_response import UpgradeLindormV2StreamEngineResponse
+from ._create_auto_scaling_config_request import CreateAutoScalingConfigRequestScaleRuleList
+from ._create_lindorm_instance_request import CreateLindormInstanceRequestTag
+from ._create_lindorm_v2instance_request import CreateLindormV2InstanceRequestEngineListNodeGroupList
+from ._create_lindorm_v2instance_request import CreateLindormV2InstanceRequestEngineList
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._get_auto_scaling_config_response_body import GetAutoScalingConfigResponseBodyDataScaleRuleList
+from ._get_auto_scaling_config_response_body import GetAutoScalingConfigResponseBodyData
+from ._get_auto_scaling_rule_response_body import GetAutoScalingRuleResponseBodyData
+from ._get_engine_default_auth_response_body import GetEngineDefaultAuthResponseBodyAuthInfos
+from ._get_instance_ip_white_list_response_body import GetInstanceIpWhiteListResponseBodyGroupList
+from ._get_instance_summary_response_body import GetInstanceSummaryResponseBodyRegionalSummary
+from ._get_ldps_namespaced_quota_response_body import GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas
+from ._get_lindorm_engine_config_response_body import GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems
+from ._get_lindorm_engine_config_response_body import GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles
+from ._get_lindorm_engine_config_response_body import GetLindormEngineConfigResponseBodyEngineConfigs
+from ._get_lindorm_fs_used_detail_response_body import GetLindormFsUsedDetailResponseBodyLStorageUsageList
+from ._get_lindorm_instance_response_body import GetLindormInstanceResponseBodyEngineList
+from ._get_lindorm_instance_engine_list_response_body import GetLindormInstanceEngineListResponseBodyEngineListNetInfoList
+from ._get_lindorm_instance_engine_list_response_body import GetLindormInstanceEngineListResponseBodyEngineList
+from ._get_lindorm_instance_list_request import GetLindormInstanceListRequestTag
+from ._get_lindorm_instance_list_response_body import GetLindormInstanceListResponseBodyInstanceListTags
+from ._get_lindorm_instance_list_response_body import GetLindormInstanceListResponseBodyInstanceList
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyEngineListConnectAddressList
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyEngineListNodeGroup
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyEngineList
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyStorageUsage
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyWhiteIpList
+from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList
+from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup
+from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBodyEngineList
+from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBodyStorageUsage
+from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBodyWhiteIpList
+from ._get_lindorm_v2instance_engine_list_response_body import GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList
+from ._get_lindorm_v2instance_engine_list_response_body import GetLindormV2InstanceEngineListResponseBodyEngineList
+from ._get_lindorm_v2instance_for_terraform_response_body import GetLindormV2InstanceForTerraformResponseBodyEngineListConnectAddressList
+from ._get_lindorm_v2instance_for_terraform_response_body import GetLindormV2InstanceForTerraformResponseBodyEngineListNodeGroup
+from ._get_lindorm_v2instance_for_terraform_response_body import GetLindormV2InstanceForTerraformResponseBodyEngineList
+from ._get_lindorm_v2instance_for_terraform_response_body import GetLindormV2InstanceForTerraformResponseBodyStorageUsage
+from ._get_lindorm_v2instance_for_terraform_response_body import GetLindormV2InstanceForTerraformResponseBodyWhiteIpList
+from ._get_lindorm_v2instance_security_groups_response_body import GetLindormV2InstanceSecurityGroupsResponseBodySgList
+from ._get_lindorm_v2stream_engine_info_response_body import GetLindormV2StreamEngineInfoResponseBodyResourceGroupList
+from ._list_auto_scaling_configs_response_body import ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList
+from ._list_auto_scaling_configs_response_body import ListAutoScalingConfigsResponseBodyDataScaleConfigs
+from ._list_auto_scaling_configs_response_body import ListAutoScalingConfigsResponseBodyData
+from ._list_auto_scaling_records_response_body import ListAutoScalingRecordsResponseBodyDataScaleRecords
+from ._list_auto_scaling_records_response_body import ListAutoScalingRecordsResponseBodyData
+from ._list_auto_scaling_rules_response_body import ListAutoScalingRulesResponseBodyDataScaleRules
+from ._list_auto_scaling_rules_response_body import ListAutoScalingRulesResponseBodyData
+from ._list_ldps_compute_groups_response_body import ListLdpsComputeGroupsResponseBodyGroupList
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestScaleRuleList
+from ._modify_lindorm_v2instance_request import ModifyLindormV2InstanceRequestNodeGroupList
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_lindorm_v2instance_request import UpdateLindormV2InstanceRequestEngineListNodeGroupList
+from ._update_lindorm_v2instance_request import UpdateLindormV2InstanceRequestEngineList
+from ._update_lindorm_v2white_ip_list_request import UpdateLindormV2WhiteIpListRequestWhiteIpGroupList
+
+__all__ = [
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CheckLdpsColumnarIndexStatusRequest,
+    CheckLdpsColumnarIndexStatusResponseBody,
+    CheckLdpsColumnarIndexStatusResponse,
+    CreateAutoScalingConfigRequest,
+    CreateAutoScalingConfigShrinkRequest,
+    CreateAutoScalingConfigResponseBody,
+    CreateAutoScalingConfigResponse,
+    CreateAutoScalingRuleRequest,
+    CreateAutoScalingRuleResponseBody,
+    CreateAutoScalingRuleResponse,
+    CreateLdpsComputeGroupRequest,
+    CreateLdpsComputeGroupResponseBody,
+    CreateLdpsComputeGroupResponse,
+    CreateLindormInstanceRequest,
+    CreateLindormInstanceResponseBody,
+    CreateLindormInstanceResponse,
+    CreateLindormV2InstanceRequest,
+    CreateLindormV2InstanceResponseBody,
+    CreateLindormV2InstanceResponse,
+    DeleteAutoScalingConfigRequest,
+    DeleteAutoScalingConfigResponseBody,
+    DeleteAutoScalingConfigResponse,
+    DeleteAutoScalingRuleRequest,
+    DeleteAutoScalingRuleResponseBody,
+    DeleteAutoScalingRuleResponse,
+    DeleteCustomResourceRequest,
+    DeleteCustomResourceResponseBody,
+    DeleteCustomResourceResponse,
+    DeleteLdpsComputeGroupRequest,
+    DeleteLdpsComputeGroupResponseBody,
+    DeleteLdpsComputeGroupResponse,
+    DeployLdpsSemiManagedComponentRequest,
+    DeployLdpsSemiManagedComponentResponseBody,
+    DeployLdpsSemiManagedComponentResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    GetAutoScalingConfigRequest,
+    GetAutoScalingConfigResponseBody,
+    GetAutoScalingConfigResponse,
+    GetAutoScalingRuleRequest,
+    GetAutoScalingRuleResponseBody,
+    GetAutoScalingRuleResponse,
+    GetClientSourceIpRequest,
+    GetClientSourceIpResponseBody,
+    GetClientSourceIpResponse,
+    GetEngineDefaultAuthRequest,
+    GetEngineDefaultAuthResponseBody,
+    GetEngineDefaultAuthResponse,
+    GetInstanceIpWhiteListRequest,
+    GetInstanceIpWhiteListResponseBody,
+    GetInstanceIpWhiteListResponse,
+    GetInstanceSecurityGroupsRequest,
+    GetInstanceSecurityGroupsResponseBody,
+    GetInstanceSecurityGroupsResponse,
+    GetInstanceSummaryRequest,
+    GetInstanceSummaryResponseBody,
+    GetInstanceSummaryResponse,
+    GetLdpsComputeGroupRequest,
+    GetLdpsComputeGroupResponseBody,
+    GetLdpsComputeGroupResponse,
+    GetLdpsNamespacedQuotaRequest,
+    GetLdpsNamespacedQuotaResponseBody,
+    GetLdpsNamespacedQuotaResponse,
+    GetLdpsResourceCostRequest,
+    GetLdpsResourceCostResponseBody,
+    GetLdpsResourceCostResponse,
+    GetLindormEngineConfigRequest,
+    GetLindormEngineConfigResponseBody,
+    GetLindormEngineConfigResponse,
+    GetLindormFsUsedDetailRequest,
+    GetLindormFsUsedDetailResponseBody,
+    GetLindormFsUsedDetailResponse,
+    GetLindormInstanceRequest,
+    GetLindormInstanceResponseBody,
+    GetLindormInstanceResponse,
+    GetLindormInstanceEngineListRequest,
+    GetLindormInstanceEngineListResponseBody,
+    GetLindormInstanceEngineListResponse,
+    GetLindormInstanceListRequest,
+    GetLindormInstanceListResponseBody,
+    GetLindormInstanceListResponse,
+    GetLindormV2InstanceRequest,
+    GetLindormV2InstanceResponseBody,
+    GetLindormV2InstanceResponse,
+    GetLindormV2InstanceDetailsRequest,
+    GetLindormV2InstanceDetailsResponseBody,
+    GetLindormV2InstanceDetailsResponse,
+    GetLindormV2InstanceEngineListRequest,
+    GetLindormV2InstanceEngineListResponseBody,
+    GetLindormV2InstanceEngineListResponse,
+    GetLindormV2InstanceForTerraformRequest,
+    GetLindormV2InstanceForTerraformResponseBody,
+    GetLindormV2InstanceForTerraformResponse,
+    GetLindormV2InstanceSecurityGroupsRequest,
+    GetLindormV2InstanceSecurityGroupsResponseBody,
+    GetLindormV2InstanceSecurityGroupsResponse,
+    GetLindormV2StorageUsageRequest,
+    GetLindormV2StorageUsageResponseBody,
+    GetLindormV2StorageUsageResponse,
+    GetLindormV2StreamEngineInfoRequest,
+    GetLindormV2StreamEngineInfoResponseBody,
+    GetLindormV2StreamEngineInfoResponse,
+    ListAutoScalingConfigsRequest,
+    ListAutoScalingConfigsShrinkRequest,
+    ListAutoScalingConfigsResponseBody,
+    ListAutoScalingConfigsResponse,
+    ListAutoScalingRecordsRequest,
+    ListAutoScalingRecordsShrinkRequest,
+    ListAutoScalingRecordsResponseBody,
+    ListAutoScalingRecordsResponse,
+    ListAutoScalingRulesRequest,
+    ListAutoScalingRulesResponseBody,
+    ListAutoScalingRulesResponse,
+    ListLdpsComputeGroupsRequest,
+    ListLdpsComputeGroupsResponseBody,
+    ListLdpsComputeGroupsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    MigrateSingleZoneToMultiZoneRequest,
+    MigrateSingleZoneToMultiZoneResponseBody,
+    MigrateSingleZoneToMultiZoneResponse,
+    ModifyAutoScalingConfigRequest,
+    ModifyAutoScalingConfigShrinkRequest,
+    ModifyAutoScalingConfigResponseBody,
+    ModifyAutoScalingConfigResponse,
+    ModifyAutoScalingRuleRequest,
+    ModifyAutoScalingRuleResponseBody,
+    ModifyAutoScalingRuleResponse,
+    ModifyInstancePayTypeRequest,
+    ModifyInstancePayTypeResponseBody,
+    ModifyInstancePayTypeResponse,
+    ModifyLindormV2InstanceRequest,
+    ModifyLindormV2InstanceResponseBody,
+    ModifyLindormV2InstanceResponse,
+    ModifyLindormV2InstanceSecurityGroupsRequest,
+    ModifyLindormV2InstanceSecurityGroupsResponseBody,
+    ModifyLindormV2InstanceSecurityGroupsResponse,
+    ModifyLindormV2WhiteIpListRequest,
+    ModifyLindormV2WhiteIpListResponseBody,
+    ModifyLindormV2WhiteIpListResponse,
+    OpenComputeEngineRequest,
+    OpenComputeEngineResponseBody,
+    OpenComputeEngineResponse,
+    OpenComputePreCheckRequest,
+    OpenComputePreCheckResponseBody,
+    OpenComputePreCheckResponse,
+    OpenLdpsColumnarIndexRequest,
+    OpenLdpsColumnarIndexResponseBody,
+    OpenLdpsColumnarIndexResponse,
+    ReleaseLindormInstanceRequest,
+    ReleaseLindormInstanceResponseBody,
+    ReleaseLindormInstanceResponse,
+    ReleaseLindormV2InstanceRequest,
+    ReleaseLindormV2InstanceResponseBody,
+    ReleaseLindormV2InstanceResponse,
+    RenewLindormInstanceRequest,
+    RenewLindormInstanceResponseBody,
+    RenewLindormInstanceResponse,
+    RestartLdpsComputeGroupRequest,
+    RestartLdpsComputeGroupResponseBody,
+    RestartLdpsComputeGroupResponse,
+    SetDefaultOlapComputeGroupRequest,
+    SetDefaultOlapComputeGroupResponseBody,
+    SetDefaultOlapComputeGroupResponse,
+    SwitchLSQLV3MySQLServiceRequest,
+    SwitchLSQLV3MySQLServiceResponseBody,
+    SwitchLSQLV3MySQLServiceResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateInstanceIpWhiteListRequest,
+    UpdateInstanceIpWhiteListResponseBody,
+    UpdateInstanceIpWhiteListResponse,
+    UpdateInstanceSecurityGroupsRequest,
+    UpdateInstanceSecurityGroupsResponseBody,
+    UpdateInstanceSecurityGroupsResponse,
+    UpdateLdpsComputeGroupRequest,
+    UpdateLdpsComputeGroupResponseBody,
+    UpdateLdpsComputeGroupResponse,
+    UpdateLindormInstanceAttributeRequest,
+    UpdateLindormInstanceAttributeResponseBody,
+    UpdateLindormInstanceAttributeResponse,
+    UpdateLindormV2InstanceRequest,
+    UpdateLindormV2InstanceResponseBody,
+    UpdateLindormV2InstanceResponse,
+    UpdateLindormV2InstanceParameterRequest,
+    UpdateLindormV2InstanceParameterResponseBody,
+    UpdateLindormV2InstanceParameterResponse,
+    UpdateLindormV2WhiteIpListRequest,
+    UpdateLindormV2WhiteIpListResponseBody,
+    UpdateLindormV2WhiteIpListResponse,
+    UpgradeLindormInstanceRequest,
+    UpgradeLindormInstanceResponseBody,
+    UpgradeLindormInstanceResponse,
+    UpgradeLindormV2StreamEngineRequest,
+    UpgradeLindormV2StreamEngineResponseBody,
+    UpgradeLindormV2StreamEngineResponse,
+    CreateAutoScalingConfigRequestScaleRuleList,
+    CreateLindormInstanceRequestTag,
+    CreateLindormV2InstanceRequestEngineListNodeGroupList,
+    CreateLindormV2InstanceRequestEngineList,
+    DescribeRegionsResponseBodyRegions,
+    GetAutoScalingConfigResponseBodyDataScaleRuleList,
+    GetAutoScalingConfigResponseBodyData,
+    GetAutoScalingRuleResponseBodyData,
+    GetEngineDefaultAuthResponseBodyAuthInfos,
+    GetInstanceIpWhiteListResponseBodyGroupList,
+    GetInstanceSummaryResponseBodyRegionalSummary,
+    GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas,
+    GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems,
+    GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles,
+    GetLindormEngineConfigResponseBodyEngineConfigs,
+    GetLindormFsUsedDetailResponseBodyLStorageUsageList,
+    GetLindormInstanceResponseBodyEngineList,
+    GetLindormInstanceEngineListResponseBodyEngineListNetInfoList,
+    GetLindormInstanceEngineListResponseBodyEngineList,
+    GetLindormInstanceListRequestTag,
+    GetLindormInstanceListResponseBodyInstanceListTags,
+    GetLindormInstanceListResponseBodyInstanceList,
+    GetLindormV2InstanceResponseBodyEngineListConnectAddressList,
+    GetLindormV2InstanceResponseBodyEngineListNodeGroup,
+    GetLindormV2InstanceResponseBodyEngineList,
+    GetLindormV2InstanceResponseBodyStorageUsage,
+    GetLindormV2InstanceResponseBodyWhiteIpList,
+    GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList,
+    GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup,
+    GetLindormV2InstanceDetailsResponseBodyEngineList,
+    GetLindormV2InstanceDetailsResponseBodyStorageUsage,
+    GetLindormV2InstanceDetailsResponseBodyWhiteIpList,
+    GetLindormV2InstanceEngineListResponseBodyEngineListNetInfoList,
+    GetLindormV2InstanceEngineListResponseBodyEngineList,
+    GetLindormV2InstanceForTerraformResponseBodyEngineListConnectAddressList,
+    GetLindormV2InstanceForTerraformResponseBodyEngineListNodeGroup,
+    GetLindormV2InstanceForTerraformResponseBodyEngineList,
+    GetLindormV2InstanceForTerraformResponseBodyStorageUsage,
+    GetLindormV2InstanceForTerraformResponseBodyWhiteIpList,
+    GetLindormV2InstanceSecurityGroupsResponseBodySgList,
+    GetLindormV2StreamEngineInfoResponseBodyResourceGroupList,
+    ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList,
+    ListAutoScalingConfigsResponseBodyDataScaleConfigs,
+    ListAutoScalingConfigsResponseBodyData,
+    ListAutoScalingRecordsResponseBodyDataScaleRecords,
+    ListAutoScalingRecordsResponseBodyData,
+    ListAutoScalingRulesResponseBodyDataScaleRules,
+    ListAutoScalingRulesResponseBodyData,
+    ListLdpsComputeGroupsResponseBodyGroupList,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    ModifyAutoScalingConfigRequestScaleRuleList,
+    ModifyLindormV2InstanceRequestNodeGroupList,
+    TagResourcesRequestTag,
+    UpdateLindormV2InstanceRequestEngineListNodeGroupList,
+    UpdateLindormV2InstanceRequestEngineList,
+    UpdateLindormV2WhiteIpListRequestWhiteIpGroupList
+]

@@ -1,0 +1,114 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ModifyInstancePayTypeRequest(DaraModel):
+    def __init__(
+        self,
+        duration: int = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        pay_type: str = None,
+        pricing_cycle: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The subscription duration of the instance. The parameter is required if the instance is an subscription instance.
+        # 
+        # *   If PricingCycle is set to Month, set this parameter to an integer that ranges from 1 to 9.
+        # *   If PricingCycle is set to Year, set this parameter to an integer that ranges from 1 to 3.
+        self.duration = duration
+        # The ID of the instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **PREPAY**: subscription.
+        # *   **POSTPAY**: pay-as-you-go.
+        # 
+        # This parameter is required.
+        self.pay_type = pay_type
+        # The unit of the subscription duration for the instance. Valid values:
+        # 
+        # *   Month
+        # *   Year
+        self.pricing_cycle = pricing_cycle
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.duration is not None:
+            result['Duration'] = self.duration
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+
+        return self
+
