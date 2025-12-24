@@ -1,3 +1,43 @@
+2025-12-24 Version: 1.4.0
+- Support API CreateExecutors.
+- Support API GetExecutorConfig.
+- Support API ListK8sResource.
+- Support API SyncJobs.
+- Support API UpdateExecutors.
+- Update API CreateJob: add request parameters Coordinate.
+- Update API CreateJob: add request parameters DependentStrategy.
+- Update API CreateJob: add request parameters StartTimeType.
+- Update API CreateJob: add request parameters NoticeConfig.EndEarly.
+- Update API CreateJob: add request parameters NoticeConfig.EndEarlyEnable.
+- Update API GetCluster: add response parameters Body.Data.MaxWorkflowNum.
+- Update API GetCluster: add response parameters Body.Data.WorkflowNum.
+- Update API GetLogEvent: add request parameters EventType.
+- Update API GetLogEvent: add request parameters WorkflowExecutionId.
+- Update API GetLogEvent: add request parameters WorkflowName.
+- Update API GetLogEvent: add response parameters Body.Data.Records.$.EventType.
+- Update API GetLogEvent: add response parameters Body.Data.Records.$.WorkflowExecutionId.
+- Update API GetLogEvent: add response parameters Body.Data.Records.$.WorkflowName.
+- Update API ListJobExecutions: add request parameters WorkflowExecutionId.
+- Update API ListJobExecutions: add response parameters Body.Data.Records.$.WorkflowExecutionId.
+- Update API ListJobExecutions: add response parameters Body.Data.Records.$.WorkflowId.
+- Update API ListJobExecutions: add response parameters Body.Data.Records.$.WorkflowName.
+- Update API ListJobs: add request parameters WorkflowId.
+- Update API ListJobs: add response parameters Body.Data.Records.$.DependentStrategy.
+- Update API ListJobs: add response parameters Body.Data.Records.$.NodeType.
+- Update API ListJobs: add response parameters Body.Data.Records.$.StartTimeType.
+- Update API ListJobs: add response parameters Body.Data.Records.$.WorkflowId.
+- Update API ListScheduleEvent: add request parameters WorkflowExecutionId.
+- Update API ListScheduleEvent: add request parameters WorkflowName.
+- Update API ListScheduleEvent: add response parameters Body.Data.Records.$.EventType.
+- Update API ListScheduleEvent: add response parameters Body.Data.Records.$.WorkflowExecutionId.
+- Update API ListScheduleEvent: add response parameters Body.Data.Records.$.WorkflowName.
+- Update API OperateRetryJobExecution: add request parameters TriggerChild.
+- Update API UpdateJob: add request parameters DependentStrategy.
+- Update API UpdateJob: add request parameters StartTimeType.
+- Update API UpdateJob: add request parameters NoticeConfig.EndEarly.
+- Update API UpdateJob: add request parameters NoticeConfig.EndEarlyEnable.
+
+
 2025-10-17 Version: 1.3.3
 - Update API GetLog: add request parameters ScheduleTime.
 - Update API GetLog: add request parameters WorkerAddr.
