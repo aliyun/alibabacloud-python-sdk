@@ -1,0 +1,719 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._container_info import ContainerInfo
+from ._group import Group
+from ._instance import Instance
+from ._resource import Resource
+from ._resource_instance import ResourceInstance
+from ._resource_instance_worker import ResourceInstanceWorker
+from ._service import Service
+from ._attach_gateway_domain_request import AttachGatewayDomainRequest
+from ._attach_gateway_domain_shrink_request import AttachGatewayDomainShrinkRequest
+from ._attach_gateway_domain_response_body import AttachGatewayDomainResponseBody
+from ._attach_gateway_domain_response import AttachGatewayDomainResponse
+from ._clone_service_request import CloneServiceRequest
+from ._clone_service_shrink_request import CloneServiceShrinkRequest
+from ._clone_service_response_body import CloneServiceResponseBody
+from ._clone_service_response import CloneServiceResponse
+from ._commit_service_response_body import CommitServiceResponseBody
+from ._commit_service_response import CommitServiceResponse
+from ._create_acl_policy_request import CreateAclPolicyRequest
+from ._create_acl_policy_shrink_request import CreateAclPolicyShrinkRequest
+from ._create_acl_policy_response_body import CreateAclPolicyResponseBody
+from ._create_acl_policy_response import CreateAclPolicyResponse
+from ._create_app_service_request import CreateAppServiceRequest
+from ._create_app_service_response_body import CreateAppServiceResponseBody
+from ._create_app_service_response import CreateAppServiceResponse
+from ._create_benchmark_task_request import CreateBenchmarkTaskRequest
+from ._create_benchmark_task_response_body import CreateBenchmarkTaskResponseBody
+from ._create_benchmark_task_response import CreateBenchmarkTaskResponse
+from ._create_fault_injection_request import CreateFaultInjectionRequest
+from ._create_fault_injection_response_body import CreateFaultInjectionResponseBody
+from ._create_fault_injection_response import CreateFaultInjectionResponse
+from ._create_gateway_request import CreateGatewayRequest
+from ._create_gateway_response_body import CreateGatewayResponseBody
+from ._create_gateway_response import CreateGatewayResponse
+from ._create_gateway_intranet_linked_vpc_request import CreateGatewayIntranetLinkedVpcRequest
+from ._create_gateway_intranet_linked_vpc_response_body import CreateGatewayIntranetLinkedVpcResponseBody
+from ._create_gateway_intranet_linked_vpc_response import CreateGatewayIntranetLinkedVpcResponse
+from ._create_gateway_intranet_linked_vpc_peer_request import CreateGatewayIntranetLinkedVpcPeerRequest
+from ._create_gateway_intranet_linked_vpc_peer_shrink_request import CreateGatewayIntranetLinkedVpcPeerShrinkRequest
+from ._create_gateway_intranet_linked_vpc_peer_response_body import CreateGatewayIntranetLinkedVpcPeerResponseBody
+from ._create_gateway_intranet_linked_vpc_peer_response import CreateGatewayIntranetLinkedVpcPeerResponse
+from ._create_resource_request import CreateResourceRequest
+from ._create_resource_response_body import CreateResourceResponseBody
+from ._create_resource_response import CreateResourceResponse
+from ._create_resource_instances_request import CreateResourceInstancesRequest
+from ._create_resource_instances_response_body import CreateResourceInstancesResponseBody
+from ._create_resource_instances_response import CreateResourceInstancesResponse
+from ._create_resource_log_request import CreateResourceLogRequest
+from ._create_resource_log_response_body import CreateResourceLogResponseBody
+from ._create_resource_log_response import CreateResourceLogResponse
+from ._create_service_request import CreateServiceRequest
+from ._create_service_shrink_request import CreateServiceShrinkRequest
+from ._create_service_response_body import CreateServiceResponseBody
+from ._create_service_response import CreateServiceResponse
+from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequest
+from ._create_service_auto_scaler_response_body import CreateServiceAutoScalerResponseBody
+from ._create_service_auto_scaler_response import CreateServiceAutoScalerResponse
+from ._create_service_cron_scaler_request import CreateServiceCronScalerRequest
+from ._create_service_cron_scaler_response_body import CreateServiceCronScalerResponseBody
+from ._create_service_cron_scaler_response import CreateServiceCronScalerResponse
+from ._create_service_mirror_request import CreateServiceMirrorRequest
+from ._create_service_mirror_response_body import CreateServiceMirrorResponseBody
+from ._create_service_mirror_response import CreateServiceMirrorResponse
+from ._create_virtual_resource_request import CreateVirtualResourceRequest
+from ._create_virtual_resource_response_body import CreateVirtualResourceResponseBody
+from ._create_virtual_resource_response import CreateVirtualResourceResponse
+from ._delete_acl_policy_request import DeleteAclPolicyRequest
+from ._delete_acl_policy_shrink_request import DeleteAclPolicyShrinkRequest
+from ._delete_acl_policy_response_body import DeleteAclPolicyResponseBody
+from ._delete_acl_policy_response import DeleteAclPolicyResponse
+from ._delete_benchmark_task_response_body import DeleteBenchmarkTaskResponseBody
+from ._delete_benchmark_task_response import DeleteBenchmarkTaskResponse
+from ._delete_fault_injection_response_body import DeleteFaultInjectionResponseBody
+from ._delete_fault_injection_response import DeleteFaultInjectionResponse
+from ._delete_gateway_response_body import DeleteGatewayResponseBody
+from ._delete_gateway_response import DeleteGatewayResponse
+from ._delete_gateway_intranet_linked_vpc_request import DeleteGatewayIntranetLinkedVpcRequest
+from ._delete_gateway_intranet_linked_vpc_response_body import DeleteGatewayIntranetLinkedVpcResponseBody
+from ._delete_gateway_intranet_linked_vpc_response import DeleteGatewayIntranetLinkedVpcResponse
+from ._delete_gateway_intranet_linked_vpc_peer_request import DeleteGatewayIntranetLinkedVpcPeerRequest
+from ._delete_gateway_intranet_linked_vpc_peer_shrink_request import DeleteGatewayIntranetLinkedVpcPeerShrinkRequest
+from ._delete_gateway_intranet_linked_vpc_peer_response_body import DeleteGatewayIntranetLinkedVpcPeerResponseBody
+from ._delete_gateway_intranet_linked_vpc_peer_response import DeleteGatewayIntranetLinkedVpcPeerResponse
+from ._delete_gateway_label_request import DeleteGatewayLabelRequest
+from ._delete_gateway_label_shrink_request import DeleteGatewayLabelShrinkRequest
+from ._delete_gateway_label_response_body import DeleteGatewayLabelResponseBody
+from ._delete_gateway_label_response import DeleteGatewayLabelResponse
+from ._delete_resource_response_body import DeleteResourceResponseBody
+from ._delete_resource_response import DeleteResourceResponse
+from ._delete_resource_dlink_response_body import DeleteResourceDLinkResponseBody
+from ._delete_resource_dlink_response import DeleteResourceDLinkResponse
+from ._delete_resource_instance_label_request import DeleteResourceInstanceLabelRequest
+from ._delete_resource_instance_label_shrink_request import DeleteResourceInstanceLabelShrinkRequest
+from ._delete_resource_instance_label_response_body import DeleteResourceInstanceLabelResponseBody
+from ._delete_resource_instance_label_response import DeleteResourceInstanceLabelResponse
+from ._delete_resource_instances_request import DeleteResourceInstancesRequest
+from ._delete_resource_instances_response_body import DeleteResourceInstancesResponseBody
+from ._delete_resource_instances_response import DeleteResourceInstancesResponse
+from ._delete_resource_log_response_body import DeleteResourceLogResponseBody
+from ._delete_resource_log_response import DeleteResourceLogResponse
+from ._delete_service_response_body import DeleteServiceResponseBody
+from ._delete_service_response import DeleteServiceResponse
+from ._delete_service_auto_scaler_response_body import DeleteServiceAutoScalerResponseBody
+from ._delete_service_auto_scaler_response import DeleteServiceAutoScalerResponse
+from ._delete_service_cron_scaler_response_body import DeleteServiceCronScalerResponseBody
+from ._delete_service_cron_scaler_response import DeleteServiceCronScalerResponse
+from ._delete_service_instances_request import DeleteServiceInstancesRequest
+from ._delete_service_instances_response_body import DeleteServiceInstancesResponseBody
+from ._delete_service_instances_response import DeleteServiceInstancesResponse
+from ._delete_service_label_request import DeleteServiceLabelRequest
+from ._delete_service_label_shrink_request import DeleteServiceLabelShrinkRequest
+from ._delete_service_label_response_body import DeleteServiceLabelResponseBody
+from ._delete_service_label_response import DeleteServiceLabelResponse
+from ._delete_service_mirror_response_body import DeleteServiceMirrorResponseBody
+from ._delete_service_mirror_response import DeleteServiceMirrorResponse
+from ._delete_virtual_resource_response_body import DeleteVirtualResourceResponseBody
+from ._delete_virtual_resource_response import DeleteVirtualResourceResponse
+from ._describe_benchmark_task_response_body import DescribeBenchmarkTaskResponseBody
+from ._describe_benchmark_task_response import DescribeBenchmarkTaskResponse
+from ._describe_benchmark_task_report_request import DescribeBenchmarkTaskReportRequest
+from ._describe_benchmark_task_report_response_body import DescribeBenchmarkTaskReportResponseBody
+from ._describe_benchmark_task_report_response import DescribeBenchmarkTaskReportResponse
+from ._describe_gateway_response_body import DescribeGatewayResponseBody
+from ._describe_gateway_response import DescribeGatewayResponse
+from ._describe_group_response import DescribeGroupResponse
+from ._describe_group_endpoints_response_body import DescribeGroupEndpointsResponseBody
+from ._describe_group_endpoints_response import DescribeGroupEndpointsResponse
+from ._describe_machine_spec_request import DescribeMachineSpecRequest
+from ._describe_machine_spec_shrink_request import DescribeMachineSpecShrinkRequest
+from ._describe_machine_spec_response_body import DescribeMachineSpecResponseBody
+from ._describe_machine_spec_response import DescribeMachineSpecResponse
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_resource_response_body import DescribeResourceResponseBody
+from ._describe_resource_response import DescribeResourceResponse
+from ._describe_resource_dlink_response_body import DescribeResourceDLinkResponseBody
+from ._describe_resource_dlink_response import DescribeResourceDLinkResponse
+from ._describe_resource_log_response_body import DescribeResourceLogResponseBody
+from ._describe_resource_log_response import DescribeResourceLogResponse
+from ._describe_service_response import DescribeServiceResponse
+from ._describe_service_auto_scaler_response_body import DescribeServiceAutoScalerResponseBody
+from ._describe_service_auto_scaler_response import DescribeServiceAutoScalerResponse
+from ._describe_service_cron_scaler_response_body import DescribeServiceCronScalerResponseBody
+from ._describe_service_cron_scaler_response import DescribeServiceCronScalerResponse
+from ._describe_service_diagnosis_response_body import DescribeServiceDiagnosisResponseBody
+from ._describe_service_diagnosis_response import DescribeServiceDiagnosisResponse
+from ._describe_service_endpoints_response_body import DescribeServiceEndpointsResponseBody
+from ._describe_service_endpoints_response import DescribeServiceEndpointsResponse
+from ._describe_service_event_request import DescribeServiceEventRequest
+from ._describe_service_event_response_body import DescribeServiceEventResponseBody
+from ._describe_service_event_response import DescribeServiceEventResponse
+from ._describe_service_instance_diagnosis_response_body import DescribeServiceInstanceDiagnosisResponseBody
+from ._describe_service_instance_diagnosis_response import DescribeServiceInstanceDiagnosisResponse
+from ._describe_service_log_request import DescribeServiceLogRequest
+from ._describe_service_log_response_body import DescribeServiceLogResponseBody
+from ._describe_service_log_response import DescribeServiceLogResponse
+from ._describe_service_mirror_response_body import DescribeServiceMirrorResponseBody
+from ._describe_service_mirror_response import DescribeServiceMirrorResponse
+from ._describe_service_signed_url_request import DescribeServiceSignedUrlRequest
+from ._describe_service_signed_url_response_body import DescribeServiceSignedUrlResponseBody
+from ._describe_service_signed_url_response import DescribeServiceSignedUrlResponse
+from ._describe_spot_discount_history_request import DescribeSpotDiscountHistoryRequest
+from ._describe_spot_discount_history_response_body import DescribeSpotDiscountHistoryResponseBody
+from ._describe_spot_discount_history_response import DescribeSpotDiscountHistoryResponse
+from ._describe_virtual_resource_response_body import DescribeVirtualResourceResponseBody
+from ._describe_virtual_resource_response import DescribeVirtualResourceResponse
+from ._detach_gateway_domain_request import DetachGatewayDomainRequest
+from ._detach_gateway_domain_shrink_request import DetachGatewayDomainShrinkRequest
+from ._detach_gateway_domain_response_body import DetachGatewayDomainResponseBody
+from ._detach_gateway_domain_response import DetachGatewayDomainResponse
+from ._develop_service_request import DevelopServiceRequest
+from ._develop_service_response_body import DevelopServiceResponseBody
+from ._develop_service_response import DevelopServiceResponse
+from ._list_acl_policy_request import ListAclPolicyRequest
+from ._list_acl_policy_response_body import ListAclPolicyResponseBody
+from ._list_acl_policy_response import ListAclPolicyResponse
+from ._list_benchmark_task_request import ListBenchmarkTaskRequest
+from ._list_benchmark_task_response_body import ListBenchmarkTaskResponseBody
+from ._list_benchmark_task_response import ListBenchmarkTaskResponse
+from ._list_gateway_request import ListGatewayRequest
+from ._list_gateway_shrink_request import ListGatewayShrinkRequest
+from ._list_gateway_response_body import ListGatewayResponseBody
+from ._list_gateway_response import ListGatewayResponse
+from ._list_gateway_domains_response_body import ListGatewayDomainsResponseBody
+from ._list_gateway_domains_response import ListGatewayDomainsResponse
+from ._list_gateway_intranet_linked_vpc_response_body import ListGatewayIntranetLinkedVpcResponseBody
+from ._list_gateway_intranet_linked_vpc_response import ListGatewayIntranetLinkedVpcResponse
+from ._list_gateway_intranet_linked_vpc_peer_request import ListGatewayIntranetLinkedVpcPeerRequest
+from ._list_gateway_intranet_linked_vpc_peer_response_body import ListGatewayIntranetLinkedVpcPeerResponseBody
+from ._list_gateway_intranet_linked_vpc_peer_response import ListGatewayIntranetLinkedVpcPeerResponse
+from ._list_gateway_intranet_supported_zone_response_body import ListGatewayIntranetSupportedZoneResponseBody
+from ._list_gateway_intranet_supported_zone_response import ListGatewayIntranetSupportedZoneResponse
+from ._list_groups_request import ListGroupsRequest
+from ._list_groups_response_body import ListGroupsResponseBody
+from ._list_groups_response import ListGroupsResponse
+from ._list_resource_instance_worker_request import ListResourceInstanceWorkerRequest
+from ._list_resource_instance_worker_response_body import ListResourceInstanceWorkerResponseBody
+from ._list_resource_instance_worker_response import ListResourceInstanceWorkerResponse
+from ._list_resource_instances_request import ListResourceInstancesRequest
+from ._list_resource_instances_shrink_request import ListResourceInstancesShrinkRequest
+from ._list_resource_instances_response_body import ListResourceInstancesResponseBody
+from ._list_resource_instances_response import ListResourceInstancesResponse
+from ._list_resource_services_request import ListResourceServicesRequest
+from ._list_resource_services_response_body import ListResourceServicesResponseBody
+from ._list_resource_services_response import ListResourceServicesResponse
+from ._list_resources_request import ListResourcesRequest
+from ._list_resources_response_body import ListResourcesResponseBody
+from ._list_resources_response import ListResourcesResponse
+from ._list_service_containers_response_body import ListServiceContainersResponseBody
+from ._list_service_containers_response import ListServiceContainersResponse
+from ._list_service_instance_fault_injection_info_response_body import ListServiceInstanceFaultInjectionInfoResponseBody
+from ._list_service_instance_fault_injection_info_response import ListServiceInstanceFaultInjectionInfoResponse
+from ._list_service_instances_request import ListServiceInstancesRequest
+from ._list_service_instances_response_body import ListServiceInstancesResponseBody
+from ._list_service_instances_response import ListServiceInstancesResponse
+from ._list_service_versions_request import ListServiceVersionsRequest
+from ._list_service_versions_response_body import ListServiceVersionsResponseBody
+from ._list_service_versions_response import ListServiceVersionsResponse
+from ._list_services_request import ListServicesRequest
+from ._list_services_shrink_request import ListServicesShrinkRequest
+from ._list_services_response_body import ListServicesResponseBody
+from ._list_services_response import ListServicesResponse
+from ._list_tenant_addons_response_body import ListTenantAddonsResponseBody
+from ._list_tenant_addons_response import ListTenantAddonsResponse
+from ._list_virtual_resource_request import ListVirtualResourceRequest
+from ._list_virtual_resource_response_body import ListVirtualResourceResponseBody
+from ._list_virtual_resource_response import ListVirtualResourceResponse
+from ._migrate_resource_instance_request import MigrateResourceInstanceRequest
+from ._migrate_resource_instance_response_body import MigrateResourceInstanceResponseBody
+from ._migrate_resource_instance_response import MigrateResourceInstanceResponse
+from ._reinstall_tenant_addon_response_body import ReinstallTenantAddonResponseBody
+from ._reinstall_tenant_addon_response import ReinstallTenantAddonResponse
+from ._release_service_request import ReleaseServiceRequest
+from ._release_service_response_body import ReleaseServiceResponseBody
+from ._release_service_response import ReleaseServiceResponse
+from ._restart_service_response_body import RestartServiceResponseBody
+from ._restart_service_response import RestartServiceResponse
+from ._start_benchmark_task_response_body import StartBenchmarkTaskResponseBody
+from ._start_benchmark_task_response import StartBenchmarkTaskResponse
+from ._start_service_response_body import StartServiceResponseBody
+from ._start_service_response import StartServiceResponse
+from ._stop_benchmark_task_response_body import StopBenchmarkTaskResponseBody
+from ._stop_benchmark_task_response import StopBenchmarkTaskResponse
+from ._stop_service_response_body import StopServiceResponseBody
+from ._stop_service_response import StopServiceResponse
+from ._update_app_service_request import UpdateAppServiceRequest
+from ._update_app_service_response_body import UpdateAppServiceResponseBody
+from ._update_app_service_response import UpdateAppServiceResponse
+from ._update_benchmark_task_request import UpdateBenchmarkTaskRequest
+from ._update_benchmark_task_response_body import UpdateBenchmarkTaskResponseBody
+from ._update_benchmark_task_response import UpdateBenchmarkTaskResponse
+from ._update_gateway_request import UpdateGatewayRequest
+from ._update_gateway_response_body import UpdateGatewayResponseBody
+from ._update_gateway_response import UpdateGatewayResponse
+from ._update_gateway_label_request import UpdateGatewayLabelRequest
+from ._update_gateway_label_response_body import UpdateGatewayLabelResponseBody
+from ._update_gateway_label_response import UpdateGatewayLabelResponse
+from ._update_group_request import UpdateGroupRequest
+from ._update_group_response_body import UpdateGroupResponseBody
+from ._update_group_response import UpdateGroupResponse
+from ._update_resource_request import UpdateResourceRequest
+from ._update_resource_response_body import UpdateResourceResponseBody
+from ._update_resource_response import UpdateResourceResponse
+from ._update_resource_dlink_request import UpdateResourceDLinkRequest
+from ._update_resource_dlink_response_body import UpdateResourceDLinkResponseBody
+from ._update_resource_dlink_response import UpdateResourceDLinkResponse
+from ._update_resource_instance_request import UpdateResourceInstanceRequest
+from ._update_resource_instance_response_body import UpdateResourceInstanceResponseBody
+from ._update_resource_instance_response import UpdateResourceInstanceResponse
+from ._update_resource_instance_label_request import UpdateResourceInstanceLabelRequest
+from ._update_resource_instance_label_shrink_request import UpdateResourceInstanceLabelShrinkRequest
+from ._update_resource_instance_label_response_body import UpdateResourceInstanceLabelResponseBody
+from ._update_resource_instance_label_response import UpdateResourceInstanceLabelResponse
+from ._update_service_request import UpdateServiceRequest
+from ._update_service_response_body import UpdateServiceResponseBody
+from ._update_service_response import UpdateServiceResponse
+from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequest
+from ._update_service_auto_scaler_response_body import UpdateServiceAutoScalerResponseBody
+from ._update_service_auto_scaler_response import UpdateServiceAutoScalerResponse
+from ._update_service_cron_scaler_request import UpdateServiceCronScalerRequest
+from ._update_service_cron_scaler_response_body import UpdateServiceCronScalerResponseBody
+from ._update_service_cron_scaler_response import UpdateServiceCronScalerResponse
+from ._update_service_instance_request import UpdateServiceInstanceRequest
+from ._update_service_instance_response_body import UpdateServiceInstanceResponseBody
+from ._update_service_instance_response import UpdateServiceInstanceResponse
+from ._update_service_label_request import UpdateServiceLabelRequest
+from ._update_service_label_response_body import UpdateServiceLabelResponseBody
+from ._update_service_label_response import UpdateServiceLabelResponse
+from ._update_service_mirror_request import UpdateServiceMirrorRequest
+from ._update_service_mirror_response_body import UpdateServiceMirrorResponseBody
+from ._update_service_mirror_response import UpdateServiceMirrorResponse
+from ._update_service_safety_lock_request import UpdateServiceSafetyLockRequest
+from ._update_service_safety_lock_response_body import UpdateServiceSafetyLockResponseBody
+from ._update_service_safety_lock_response import UpdateServiceSafetyLockResponse
+from ._update_service_version_request import UpdateServiceVersionRequest
+from ._update_service_version_response_body import UpdateServiceVersionResponseBody
+from ._update_service_version_response import UpdateServiceVersionResponse
+from ._update_virtual_resource_request import UpdateVirtualResourceRequest
+from ._update_virtual_resource_response_body import UpdateVirtualResourceResponseBody
+from ._update_virtual_resource_response import UpdateVirtualResourceResponse
+from ._resource_instance import ResourceInstanceLabels
+from ._service import ServiceInstanceCountInResource
+from ._service import ServiceLabels
+from ._attach_gateway_domain_request import AttachGatewayDomainRequestCustomDomain
+from ._create_acl_policy_request import CreateAclPolicyRequestAclPolicyList
+from ._create_gateway_intranet_linked_vpc_peer_request import CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs
+from ._create_resource_request import CreateResourceRequestSelfManagedResourceOptionsNodeTolerations
+from ._create_resource_request import CreateResourceRequestSelfManagedResourceOptions
+from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestBehaviorOnZero
+from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestBehaviorScaleDown
+from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestBehaviorScaleUp
+from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestBehavior
+from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestScaleStrategies
+from ._create_service_cron_scaler_request import CreateServiceCronScalerRequestScaleJobs
+from ._create_virtual_resource_request import CreateVirtualResourceRequestResources
+from ._delete_acl_policy_request import DeleteAclPolicyRequestAclPolicyList
+from ._delete_gateway_intranet_linked_vpc_peer_request import DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs
+from ._describe_gateway_response_body import DescribeGatewayResponseBodyLabels
+from ._describe_group_endpoints_response_body import DescribeGroupEndpointsResponseBodyEndpoints
+from ._describe_machine_spec_response_body import DescribeMachineSpecResponseBodyInstanceMetas
+from ._describe_machine_spec_response_body import DescribeMachineSpecResponseBodyTypes
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._describe_service_auto_scaler_response_body import DescribeServiceAutoScalerResponseBodyCurrentMetrics
+from ._describe_service_auto_scaler_response_body import DescribeServiceAutoScalerResponseBodyScaleStrategies
+from ._describe_service_cron_scaler_response_body import DescribeServiceCronScalerResponseBodyScaleJobs
+from ._describe_service_diagnosis_response_body import DescribeServiceDiagnosisResponseBodyDiagnosisList
+from ._describe_service_endpoints_response_body import DescribeServiceEndpointsResponseBodyEndpoints
+from ._describe_service_event_response_body import DescribeServiceEventResponseBodyEvents
+from ._describe_service_instance_diagnosis_response_body import DescribeServiceInstanceDiagnosisResponseBodyDiagnosis
+from ._describe_spot_discount_history_response_body import DescribeSpotDiscountHistoryResponseBodySpotDiscounts
+from ._describe_virtual_resource_response_body import DescribeVirtualResourceResponseBodyResources
+from ._detach_gateway_domain_request import DetachGatewayDomainRequestCustomDomain
+from ._list_acl_policy_response_body import ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList
+from ._list_acl_policy_response_body import ListAclPolicyResponseBodyInternetAclPolicyList
+from ._list_acl_policy_response_body import ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList
+from ._list_acl_policy_response_body import ListAclPolicyResponseBodyIntranetVpcAclPolicyList
+from ._list_benchmark_task_response_body import ListBenchmarkTaskResponseBodyTasks
+from ._list_gateway_response_body import ListGatewayResponseBodyGatewaysLabels
+from ._list_gateway_response_body import ListGatewayResponseBodyGateways
+from ._list_gateway_domains_response_body import ListGatewayDomainsResponseBodyCustomDomains
+from ._list_gateway_intranet_linked_vpc_response_body import ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList
+from ._list_gateway_intranet_linked_vpc_peer_response_body import ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs
+from ._list_gateway_intranet_linked_vpc_peer_response_body import ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList
+from ._list_service_instance_fault_injection_info_response_body import ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus
+from ._list_service_instance_fault_injection_info_response_body import ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList
+from ._list_service_versions_response_body import ListServiceVersionsResponseBodyVersions
+from ._list_tenant_addons_response_body import ListTenantAddonsResponseBodyAddons
+from ._list_virtual_resource_response_body import ListVirtualResourceResponseBodyVirtualResources
+from ._update_resource_request import UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations
+from ._update_resource_request import UpdateResourceRequestSelfManagedResourceOptions
+from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestBehaviorOnZero
+from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestBehaviorScaleDown
+from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestBehaviorScaleUp
+from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestBehavior
+from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestScaleStrategies
+from ._update_service_cron_scaler_request import UpdateServiceCronScalerRequestScaleJobs
+from ._update_virtual_resource_request import UpdateVirtualResourceRequestResources
+
+__all__ = [
+    ContainerInfo,
+    Group,
+    Instance,
+    Resource,
+    ResourceInstance,
+    ResourceInstanceWorker,
+    Service,
+    AttachGatewayDomainRequest,
+    AttachGatewayDomainShrinkRequest,
+    AttachGatewayDomainResponseBody,
+    AttachGatewayDomainResponse,
+    CloneServiceRequest,
+    CloneServiceShrinkRequest,
+    CloneServiceResponseBody,
+    CloneServiceResponse,
+    CommitServiceResponseBody,
+    CommitServiceResponse,
+    CreateAclPolicyRequest,
+    CreateAclPolicyShrinkRequest,
+    CreateAclPolicyResponseBody,
+    CreateAclPolicyResponse,
+    CreateAppServiceRequest,
+    CreateAppServiceResponseBody,
+    CreateAppServiceResponse,
+    CreateBenchmarkTaskRequest,
+    CreateBenchmarkTaskResponseBody,
+    CreateBenchmarkTaskResponse,
+    CreateFaultInjectionRequest,
+    CreateFaultInjectionResponseBody,
+    CreateFaultInjectionResponse,
+    CreateGatewayRequest,
+    CreateGatewayResponseBody,
+    CreateGatewayResponse,
+    CreateGatewayIntranetLinkedVpcRequest,
+    CreateGatewayIntranetLinkedVpcResponseBody,
+    CreateGatewayIntranetLinkedVpcResponse,
+    CreateGatewayIntranetLinkedVpcPeerRequest,
+    CreateGatewayIntranetLinkedVpcPeerShrinkRequest,
+    CreateGatewayIntranetLinkedVpcPeerResponseBody,
+    CreateGatewayIntranetLinkedVpcPeerResponse,
+    CreateResourceRequest,
+    CreateResourceResponseBody,
+    CreateResourceResponse,
+    CreateResourceInstancesRequest,
+    CreateResourceInstancesResponseBody,
+    CreateResourceInstancesResponse,
+    CreateResourceLogRequest,
+    CreateResourceLogResponseBody,
+    CreateResourceLogResponse,
+    CreateServiceRequest,
+    CreateServiceShrinkRequest,
+    CreateServiceResponseBody,
+    CreateServiceResponse,
+    CreateServiceAutoScalerRequest,
+    CreateServiceAutoScalerResponseBody,
+    CreateServiceAutoScalerResponse,
+    CreateServiceCronScalerRequest,
+    CreateServiceCronScalerResponseBody,
+    CreateServiceCronScalerResponse,
+    CreateServiceMirrorRequest,
+    CreateServiceMirrorResponseBody,
+    CreateServiceMirrorResponse,
+    CreateVirtualResourceRequest,
+    CreateVirtualResourceResponseBody,
+    CreateVirtualResourceResponse,
+    DeleteAclPolicyRequest,
+    DeleteAclPolicyShrinkRequest,
+    DeleteAclPolicyResponseBody,
+    DeleteAclPolicyResponse,
+    DeleteBenchmarkTaskResponseBody,
+    DeleteBenchmarkTaskResponse,
+    DeleteFaultInjectionResponseBody,
+    DeleteFaultInjectionResponse,
+    DeleteGatewayResponseBody,
+    DeleteGatewayResponse,
+    DeleteGatewayIntranetLinkedVpcRequest,
+    DeleteGatewayIntranetLinkedVpcResponseBody,
+    DeleteGatewayIntranetLinkedVpcResponse,
+    DeleteGatewayIntranetLinkedVpcPeerRequest,
+    DeleteGatewayIntranetLinkedVpcPeerShrinkRequest,
+    DeleteGatewayIntranetLinkedVpcPeerResponseBody,
+    DeleteGatewayIntranetLinkedVpcPeerResponse,
+    DeleteGatewayLabelRequest,
+    DeleteGatewayLabelShrinkRequest,
+    DeleteGatewayLabelResponseBody,
+    DeleteGatewayLabelResponse,
+    DeleteResourceResponseBody,
+    DeleteResourceResponse,
+    DeleteResourceDLinkResponseBody,
+    DeleteResourceDLinkResponse,
+    DeleteResourceInstanceLabelRequest,
+    DeleteResourceInstanceLabelShrinkRequest,
+    DeleteResourceInstanceLabelResponseBody,
+    DeleteResourceInstanceLabelResponse,
+    DeleteResourceInstancesRequest,
+    DeleteResourceInstancesResponseBody,
+    DeleteResourceInstancesResponse,
+    DeleteResourceLogResponseBody,
+    DeleteResourceLogResponse,
+    DeleteServiceResponseBody,
+    DeleteServiceResponse,
+    DeleteServiceAutoScalerResponseBody,
+    DeleteServiceAutoScalerResponse,
+    DeleteServiceCronScalerResponseBody,
+    DeleteServiceCronScalerResponse,
+    DeleteServiceInstancesRequest,
+    DeleteServiceInstancesResponseBody,
+    DeleteServiceInstancesResponse,
+    DeleteServiceLabelRequest,
+    DeleteServiceLabelShrinkRequest,
+    DeleteServiceLabelResponseBody,
+    DeleteServiceLabelResponse,
+    DeleteServiceMirrorResponseBody,
+    DeleteServiceMirrorResponse,
+    DeleteVirtualResourceResponseBody,
+    DeleteVirtualResourceResponse,
+    DescribeBenchmarkTaskResponseBody,
+    DescribeBenchmarkTaskResponse,
+    DescribeBenchmarkTaskReportRequest,
+    DescribeBenchmarkTaskReportResponseBody,
+    DescribeBenchmarkTaskReportResponse,
+    DescribeGatewayResponseBody,
+    DescribeGatewayResponse,
+    DescribeGroupResponse,
+    DescribeGroupEndpointsResponseBody,
+    DescribeGroupEndpointsResponse,
+    DescribeMachineSpecRequest,
+    DescribeMachineSpecShrinkRequest,
+    DescribeMachineSpecResponseBody,
+    DescribeMachineSpecResponse,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DescribeResourceResponseBody,
+    DescribeResourceResponse,
+    DescribeResourceDLinkResponseBody,
+    DescribeResourceDLinkResponse,
+    DescribeResourceLogResponseBody,
+    DescribeResourceLogResponse,
+    DescribeServiceResponse,
+    DescribeServiceAutoScalerResponseBody,
+    DescribeServiceAutoScalerResponse,
+    DescribeServiceCronScalerResponseBody,
+    DescribeServiceCronScalerResponse,
+    DescribeServiceDiagnosisResponseBody,
+    DescribeServiceDiagnosisResponse,
+    DescribeServiceEndpointsResponseBody,
+    DescribeServiceEndpointsResponse,
+    DescribeServiceEventRequest,
+    DescribeServiceEventResponseBody,
+    DescribeServiceEventResponse,
+    DescribeServiceInstanceDiagnosisResponseBody,
+    DescribeServiceInstanceDiagnosisResponse,
+    DescribeServiceLogRequest,
+    DescribeServiceLogResponseBody,
+    DescribeServiceLogResponse,
+    DescribeServiceMirrorResponseBody,
+    DescribeServiceMirrorResponse,
+    DescribeServiceSignedUrlRequest,
+    DescribeServiceSignedUrlResponseBody,
+    DescribeServiceSignedUrlResponse,
+    DescribeSpotDiscountHistoryRequest,
+    DescribeSpotDiscountHistoryResponseBody,
+    DescribeSpotDiscountHistoryResponse,
+    DescribeVirtualResourceResponseBody,
+    DescribeVirtualResourceResponse,
+    DetachGatewayDomainRequest,
+    DetachGatewayDomainShrinkRequest,
+    DetachGatewayDomainResponseBody,
+    DetachGatewayDomainResponse,
+    DevelopServiceRequest,
+    DevelopServiceResponseBody,
+    DevelopServiceResponse,
+    ListAclPolicyRequest,
+    ListAclPolicyResponseBody,
+    ListAclPolicyResponse,
+    ListBenchmarkTaskRequest,
+    ListBenchmarkTaskResponseBody,
+    ListBenchmarkTaskResponse,
+    ListGatewayRequest,
+    ListGatewayShrinkRequest,
+    ListGatewayResponseBody,
+    ListGatewayResponse,
+    ListGatewayDomainsResponseBody,
+    ListGatewayDomainsResponse,
+    ListGatewayIntranetLinkedVpcResponseBody,
+    ListGatewayIntranetLinkedVpcResponse,
+    ListGatewayIntranetLinkedVpcPeerRequest,
+    ListGatewayIntranetLinkedVpcPeerResponseBody,
+    ListGatewayIntranetLinkedVpcPeerResponse,
+    ListGatewayIntranetSupportedZoneResponseBody,
+    ListGatewayIntranetSupportedZoneResponse,
+    ListGroupsRequest,
+    ListGroupsResponseBody,
+    ListGroupsResponse,
+    ListResourceInstanceWorkerRequest,
+    ListResourceInstanceWorkerResponseBody,
+    ListResourceInstanceWorkerResponse,
+    ListResourceInstancesRequest,
+    ListResourceInstancesShrinkRequest,
+    ListResourceInstancesResponseBody,
+    ListResourceInstancesResponse,
+    ListResourceServicesRequest,
+    ListResourceServicesResponseBody,
+    ListResourceServicesResponse,
+    ListResourcesRequest,
+    ListResourcesResponseBody,
+    ListResourcesResponse,
+    ListServiceContainersResponseBody,
+    ListServiceContainersResponse,
+    ListServiceInstanceFaultInjectionInfoResponseBody,
+    ListServiceInstanceFaultInjectionInfoResponse,
+    ListServiceInstancesRequest,
+    ListServiceInstancesResponseBody,
+    ListServiceInstancesResponse,
+    ListServiceVersionsRequest,
+    ListServiceVersionsResponseBody,
+    ListServiceVersionsResponse,
+    ListServicesRequest,
+    ListServicesShrinkRequest,
+    ListServicesResponseBody,
+    ListServicesResponse,
+    ListTenantAddonsResponseBody,
+    ListTenantAddonsResponse,
+    ListVirtualResourceRequest,
+    ListVirtualResourceResponseBody,
+    ListVirtualResourceResponse,
+    MigrateResourceInstanceRequest,
+    MigrateResourceInstanceResponseBody,
+    MigrateResourceInstanceResponse,
+    ReinstallTenantAddonResponseBody,
+    ReinstallTenantAddonResponse,
+    ReleaseServiceRequest,
+    ReleaseServiceResponseBody,
+    ReleaseServiceResponse,
+    RestartServiceResponseBody,
+    RestartServiceResponse,
+    StartBenchmarkTaskResponseBody,
+    StartBenchmarkTaskResponse,
+    StartServiceResponseBody,
+    StartServiceResponse,
+    StopBenchmarkTaskResponseBody,
+    StopBenchmarkTaskResponse,
+    StopServiceResponseBody,
+    StopServiceResponse,
+    UpdateAppServiceRequest,
+    UpdateAppServiceResponseBody,
+    UpdateAppServiceResponse,
+    UpdateBenchmarkTaskRequest,
+    UpdateBenchmarkTaskResponseBody,
+    UpdateBenchmarkTaskResponse,
+    UpdateGatewayRequest,
+    UpdateGatewayResponseBody,
+    UpdateGatewayResponse,
+    UpdateGatewayLabelRequest,
+    UpdateGatewayLabelResponseBody,
+    UpdateGatewayLabelResponse,
+    UpdateGroupRequest,
+    UpdateGroupResponseBody,
+    UpdateGroupResponse,
+    UpdateResourceRequest,
+    UpdateResourceResponseBody,
+    UpdateResourceResponse,
+    UpdateResourceDLinkRequest,
+    UpdateResourceDLinkResponseBody,
+    UpdateResourceDLinkResponse,
+    UpdateResourceInstanceRequest,
+    UpdateResourceInstanceResponseBody,
+    UpdateResourceInstanceResponse,
+    UpdateResourceInstanceLabelRequest,
+    UpdateResourceInstanceLabelShrinkRequest,
+    UpdateResourceInstanceLabelResponseBody,
+    UpdateResourceInstanceLabelResponse,
+    UpdateServiceRequest,
+    UpdateServiceResponseBody,
+    UpdateServiceResponse,
+    UpdateServiceAutoScalerRequest,
+    UpdateServiceAutoScalerResponseBody,
+    UpdateServiceAutoScalerResponse,
+    UpdateServiceCronScalerRequest,
+    UpdateServiceCronScalerResponseBody,
+    UpdateServiceCronScalerResponse,
+    UpdateServiceInstanceRequest,
+    UpdateServiceInstanceResponseBody,
+    UpdateServiceInstanceResponse,
+    UpdateServiceLabelRequest,
+    UpdateServiceLabelResponseBody,
+    UpdateServiceLabelResponse,
+    UpdateServiceMirrorRequest,
+    UpdateServiceMirrorResponseBody,
+    UpdateServiceMirrorResponse,
+    UpdateServiceSafetyLockRequest,
+    UpdateServiceSafetyLockResponseBody,
+    UpdateServiceSafetyLockResponse,
+    UpdateServiceVersionRequest,
+    UpdateServiceVersionResponseBody,
+    UpdateServiceVersionResponse,
+    UpdateVirtualResourceRequest,
+    UpdateVirtualResourceResponseBody,
+    UpdateVirtualResourceResponse,
+    ResourceInstanceLabels,
+    ServiceInstanceCountInResource,
+    ServiceLabels,
+    AttachGatewayDomainRequestCustomDomain,
+    CreateAclPolicyRequestAclPolicyList,
+    CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs,
+    CreateResourceRequestSelfManagedResourceOptionsNodeTolerations,
+    CreateResourceRequestSelfManagedResourceOptions,
+    CreateServiceAutoScalerRequestBehaviorOnZero,
+    CreateServiceAutoScalerRequestBehaviorScaleDown,
+    CreateServiceAutoScalerRequestBehaviorScaleUp,
+    CreateServiceAutoScalerRequestBehavior,
+    CreateServiceAutoScalerRequestScaleStrategies,
+    CreateServiceCronScalerRequestScaleJobs,
+    CreateVirtualResourceRequestResources,
+    DeleteAclPolicyRequestAclPolicyList,
+    DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs,
+    DescribeGatewayResponseBodyLabels,
+    DescribeGroupEndpointsResponseBodyEndpoints,
+    DescribeMachineSpecResponseBodyInstanceMetas,
+    DescribeMachineSpecResponseBodyTypes,
+    DescribeRegionsResponseBodyRegions,
+    DescribeServiceAutoScalerResponseBodyCurrentMetrics,
+    DescribeServiceAutoScalerResponseBodyScaleStrategies,
+    DescribeServiceCronScalerResponseBodyScaleJobs,
+    DescribeServiceDiagnosisResponseBodyDiagnosisList,
+    DescribeServiceEndpointsResponseBodyEndpoints,
+    DescribeServiceEventResponseBodyEvents,
+    DescribeServiceInstanceDiagnosisResponseBodyDiagnosis,
+    DescribeSpotDiscountHistoryResponseBodySpotDiscounts,
+    DescribeVirtualResourceResponseBodyResources,
+    DetachGatewayDomainRequestCustomDomain,
+    ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList,
+    ListAclPolicyResponseBodyInternetAclPolicyList,
+    ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList,
+    ListAclPolicyResponseBodyIntranetVpcAclPolicyList,
+    ListBenchmarkTaskResponseBodyTasks,
+    ListGatewayResponseBodyGatewaysLabels,
+    ListGatewayResponseBodyGateways,
+    ListGatewayDomainsResponseBodyCustomDomains,
+    ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList,
+    ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs,
+    ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList,
+    ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus,
+    ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList,
+    ListServiceVersionsResponseBodyVersions,
+    ListTenantAddonsResponseBodyAddons,
+    ListVirtualResourceResponseBodyVirtualResources,
+    UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations,
+    UpdateResourceRequestSelfManagedResourceOptions,
+    UpdateServiceAutoScalerRequestBehaviorOnZero,
+    UpdateServiceAutoScalerRequestBehaviorScaleDown,
+    UpdateServiceAutoScalerRequestBehaviorScaleUp,
+    UpdateServiceAutoScalerRequestBehavior,
+    UpdateServiceAutoScalerRequestScaleStrategies,
+    UpdateServiceCronScalerRequestScaleJobs,
+    UpdateVirtualResourceRequestResources
+]
