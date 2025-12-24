@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_agentidentity20250901.
 
-Created on 19/12/2025
+Created on 24/12/2025
 
 @author: Alibaba Cloud SDK
 """
