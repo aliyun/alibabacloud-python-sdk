@@ -1,3 +1,7 @@
+2025-12-24 Version: 3.3.30
+- Update API DescribeZones: add request parameters AcceptLanguage.
+
+
 2025-12-05 Version: 3.3.29
 - Generated python 2014-05-15 for Slb.
 
