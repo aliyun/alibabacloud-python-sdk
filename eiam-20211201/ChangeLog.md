@@ -1,3 +1,17 @@
+2025-12-24 Version: 2.8.0
+- Support API CreateIdentityProviderStatusCheckJob.
+- Support API DeleteUsers.
+- Support API DeleteWebAuthnAuthenticator.
+- Support API DisableIdentityProviderAdvancedAbility.
+- Support API DisableInternalAuthenticationSource.
+- Support API EnableIdentityProviderAdvancedAbility.
+- Support API EnableInternalAuthenticationSource.
+- Support API GenerateDownloadUrlForSynchronizationJob.
+- Support API GenerateFileImportTemplate.
+- Support API GenerateUploadAuth.
+- Support API SetApplicationProvisioningUserPrimaryOrganizationalUnit.
+
+
 2025-12-23 Version: 2.7.1
 - Update API ListUserAuthnSourceMappings: add response parameters Body.UserAuthnSourceMappings.$.ExternalData.
 

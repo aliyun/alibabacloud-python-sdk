@@ -2301,6 +2301,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_identity_provider_with_options_async(request, runtime)
 
+    def create_identity_provider_status_check_job_with_options(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderStatusCheckJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateIdentityProviderStatusCheckJobResponse:
+        """
+        @summary 创建IdP状态检查任务
+        
+        @param request: CreateIdentityProviderStatusCheckJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentityProviderStatusCheckJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentityProviderStatusCheckJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateIdentityProviderStatusCheckJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_identity_provider_status_check_job_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderStatusCheckJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateIdentityProviderStatusCheckJobResponse:
+        """
+        @summary 创建IdP状态检查任务
+        
+        @param request: CreateIdentityProviderStatusCheckJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentityProviderStatusCheckJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIdentityProviderStatusCheckJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.CreateIdentityProviderStatusCheckJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_identity_provider_status_check_job(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderStatusCheckJobRequest,
+    ) -> eiam_20211201_models.CreateIdentityProviderStatusCheckJobResponse:
+        """
+        @summary 创建IdP状态检查任务
+        
+        @param request: CreateIdentityProviderStatusCheckJobRequest
+        @return: CreateIdentityProviderStatusCheckJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_identity_provider_status_check_job_with_options(request, runtime)
+
+    async def create_identity_provider_status_check_job_async(
+        self,
+        request: eiam_20211201_models.CreateIdentityProviderStatusCheckJobRequest,
+    ) -> eiam_20211201_models.CreateIdentityProviderStatusCheckJobResponse:
+        """
+        @summary 创建IdP状态检查任务
+        
+        @param request: CreateIdentityProviderStatusCheckJobRequest
+        @return: CreateIdentityProviderStatusCheckJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_identity_provider_status_check_job_with_options_async(request, runtime)
+
     def create_instance_with_options(
         self,
         request: eiam_20211201_models.CreateInstanceRequest,
@@ -4741,6 +4841,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
+    def delete_users_with_options(
+        self,
+        request: eiam_20211201_models.DeleteUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteUsersResponse:
+        """
+        @summary 批量删除账号
+        
+        @param request: DeleteUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUsers',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_users_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteUsersResponse:
+        """
+        @summary 批量删除账号
+        
+        @param request: DeleteUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_ids):
+            query['UserIds'] = request.user_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUsers',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_users(
+        self,
+        request: eiam_20211201_models.DeleteUsersRequest,
+    ) -> eiam_20211201_models.DeleteUsersResponse:
+        """
+        @summary 批量删除账号
+        
+        @param request: DeleteUsersRequest
+        @return: DeleteUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_users_with_options(request, runtime)
+
+    async def delete_users_async(
+        self,
+        request: eiam_20211201_models.DeleteUsersRequest,
+    ) -> eiam_20211201_models.DeleteUsersResponse:
+        """
+        @summary 批量删除账号
+        
+        @param request: DeleteUsersRequest
+        @return: DeleteUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_users_with_options_async(request, runtime)
+
+    def delete_web_authn_authenticator_with_options(
+        self,
+        request: eiam_20211201_models.DeleteWebAuthnAuthenticatorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteWebAuthnAuthenticatorResponse:
+        """
+        @summary 删除指定WebAuthn认证器名称
+        
+        @param request: DeleteWebAuthnAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebAuthnAuthenticatorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authenticator_id):
+            query['AuthenticatorId'] = request.authenticator_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebAuthnAuthenticator',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteWebAuthnAuthenticatorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_authn_authenticator_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteWebAuthnAuthenticatorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteWebAuthnAuthenticatorResponse:
+        """
+        @summary 删除指定WebAuthn认证器名称
+        
+        @param request: DeleteWebAuthnAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebAuthnAuthenticatorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authenticator_id):
+            query['AuthenticatorId'] = request.authenticator_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebAuthnAuthenticator',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteWebAuthnAuthenticatorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_authn_authenticator(
+        self,
+        request: eiam_20211201_models.DeleteWebAuthnAuthenticatorRequest,
+    ) -> eiam_20211201_models.DeleteWebAuthnAuthenticatorResponse:
+        """
+        @summary 删除指定WebAuthn认证器名称
+        
+        @param request: DeleteWebAuthnAuthenticatorRequest
+        @return: DeleteWebAuthnAuthenticatorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_web_authn_authenticator_with_options(request, runtime)
+
+    async def delete_web_authn_authenticator_async(
+        self,
+        request: eiam_20211201_models.DeleteWebAuthnAuthenticatorRequest,
+    ) -> eiam_20211201_models.DeleteWebAuthnAuthenticatorResponse:
+        """
+        @summary 删除指定WebAuthn认证器名称
+        
+        @param request: DeleteWebAuthnAuthenticatorRequest
+        @return: DeleteWebAuthnAuthenticatorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_web_authn_authenticator_with_options_async(request, runtime)
+
     def disable_application_with_options(
         self,
         request: eiam_20211201_models.DisableApplicationRequest,
@@ -5973,6 +6277,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_federated_credential_provider_with_options_async(request, runtime)
 
+    def disable_identity_provider_advanced_ability_with_options(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAdvancedAbilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 禁用高级配置
+        
+        @param request: DisableIdentityProviderAdvancedAbilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableIdentityProviderAdvancedAbilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIdentityProviderAdvancedAbility',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderAdvancedAbilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_identity_provider_advanced_ability_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAdvancedAbilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 禁用高级配置
+        
+        @param request: DisableIdentityProviderAdvancedAbilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableIdentityProviderAdvancedAbilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIdentityProviderAdvancedAbility',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableIdentityProviderAdvancedAbilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_identity_provider_advanced_ability(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAdvancedAbilityRequest,
+    ) -> eiam_20211201_models.DisableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 禁用高级配置
+        
+        @param request: DisableIdentityProviderAdvancedAbilityRequest
+        @return: DisableIdentityProviderAdvancedAbilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_identity_provider_advanced_ability_with_options(request, runtime)
+
+    async def disable_identity_provider_advanced_ability_async(
+        self,
+        request: eiam_20211201_models.DisableIdentityProviderAdvancedAbilityRequest,
+    ) -> eiam_20211201_models.DisableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 禁用高级配置
+        
+        @param request: DisableIdentityProviderAdvancedAbilityRequest
+        @return: DisableIdentityProviderAdvancedAbilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_identity_provider_advanced_ability_with_options_async(request, runtime)
+
     def disable_identity_provider_authn_with_options(
         self,
         request: eiam_20211201_models.DisableIdentityProviderAuthnRequest,
@@ -6268,6 +6672,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.disable_init_domain_auto_redirect_with_options_async(request, runtime)
+
+    def disable_internal_authentication_source_with_options(
+        self,
+        request: eiam_20211201_models.DisableInternalAuthenticationSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableInternalAuthenticationSourceResponse:
+        """
+        @summary 禁用内部认证源
+        
+        @param request: DisableInternalAuthenticationSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableInternalAuthenticationSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_source_id):
+            query['AuthenticationSourceId'] = request.authentication_source_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableInternalAuthenticationSource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableInternalAuthenticationSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_internal_authentication_source_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableInternalAuthenticationSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableInternalAuthenticationSourceResponse:
+        """
+        @summary 禁用内部认证源
+        
+        @param request: DisableInternalAuthenticationSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableInternalAuthenticationSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_source_id):
+            query['AuthenticationSourceId'] = request.authentication_source_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableInternalAuthenticationSource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DisableInternalAuthenticationSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_internal_authentication_source(
+        self,
+        request: eiam_20211201_models.DisableInternalAuthenticationSourceRequest,
+    ) -> eiam_20211201_models.DisableInternalAuthenticationSourceResponse:
+        """
+        @summary 禁用内部认证源
+        
+        @param request: DisableInternalAuthenticationSourceRequest
+        @return: DisableInternalAuthenticationSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_internal_authentication_source_with_options(request, runtime)
+
+    async def disable_internal_authentication_source_async(
+        self,
+        request: eiam_20211201_models.DisableInternalAuthenticationSourceRequest,
+    ) -> eiam_20211201_models.DisableInternalAuthenticationSourceResponse:
+        """
+        @summary 禁用内部认证源
+        
+        @param request: DisableInternalAuthenticationSourceRequest
+        @return: DisableInternalAuthenticationSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_internal_authentication_source_with_options_async(request, runtime)
 
     def disable_user_with_options(
         self,
@@ -7593,6 +8097,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_federated_credential_provider_with_options_async(request, runtime)
 
+    def enable_identity_provider_advanced_ability_with_options(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAdvancedAbilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 启用高级配置
+        
+        @param request: EnableIdentityProviderAdvancedAbilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableIdentityProviderAdvancedAbilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIdentityProviderAdvancedAbility',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderAdvancedAbilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_identity_provider_advanced_ability_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAdvancedAbilityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 启用高级配置
+        
+        @param request: EnableIdentityProviderAdvancedAbilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableIdentityProviderAdvancedAbilityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIdentityProviderAdvancedAbility',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableIdentityProviderAdvancedAbilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_identity_provider_advanced_ability(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAdvancedAbilityRequest,
+    ) -> eiam_20211201_models.EnableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 启用高级配置
+        
+        @param request: EnableIdentityProviderAdvancedAbilityRequest
+        @return: EnableIdentityProviderAdvancedAbilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_identity_provider_advanced_ability_with_options(request, runtime)
+
+    async def enable_identity_provider_advanced_ability_async(
+        self,
+        request: eiam_20211201_models.EnableIdentityProviderAdvancedAbilityRequest,
+    ) -> eiam_20211201_models.EnableIdentityProviderAdvancedAbilityResponse:
+        """
+        @summary 启用高级配置
+        
+        @param request: EnableIdentityProviderAdvancedAbilityRequest
+        @return: EnableIdentityProviderAdvancedAbilityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_identity_provider_advanced_ability_with_options_async(request, runtime)
+
     def enable_identity_provider_authn_with_options(
         self,
         request: eiam_20211201_models.EnableIdentityProviderAuthnRequest,
@@ -7889,6 +8493,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_init_domain_auto_redirect_with_options_async(request, runtime)
 
+    def enable_internal_authentication_source_with_options(
+        self,
+        request: eiam_20211201_models.EnableInternalAuthenticationSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableInternalAuthenticationSourceResponse:
+        """
+        @summary 启用内部认证源
+        
+        @param request: EnableInternalAuthenticationSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableInternalAuthenticationSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_source_id):
+            query['AuthenticationSourceId'] = request.authentication_source_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableInternalAuthenticationSource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableInternalAuthenticationSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_internal_authentication_source_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableInternalAuthenticationSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableInternalAuthenticationSourceResponse:
+        """
+        @summary 启用内部认证源
+        
+        @param request: EnableInternalAuthenticationSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableInternalAuthenticationSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_source_id):
+            query['AuthenticationSourceId'] = request.authentication_source_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableInternalAuthenticationSource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.EnableInternalAuthenticationSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_internal_authentication_source(
+        self,
+        request: eiam_20211201_models.EnableInternalAuthenticationSourceRequest,
+    ) -> eiam_20211201_models.EnableInternalAuthenticationSourceResponse:
+        """
+        @summary 启用内部认证源
+        
+        @param request: EnableInternalAuthenticationSourceRequest
+        @return: EnableInternalAuthenticationSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_internal_authentication_source_with_options(request, runtime)
+
+    async def enable_internal_authentication_source_async(
+        self,
+        request: eiam_20211201_models.EnableInternalAuthenticationSourceRequest,
+    ) -> eiam_20211201_models.EnableInternalAuthenticationSourceResponse:
+        """
+        @summary 启用内部认证源
+        
+        @param request: EnableInternalAuthenticationSourceRequest
+        @return: EnableInternalAuthenticationSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_internal_authentication_source_with_options_async(request, runtime)
+
     def enable_user_with_options(
         self,
         request: eiam_20211201_models.EnableUserRequest,
@@ -7988,6 +8692,310 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_user_with_options_async(request, runtime)
+
+    def generate_download_url_for_synchronization_job_with_options(
+        self,
+        request: eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobResponse:
+        """
+        @summary 生成文件导入结果下载地址
+        
+        @param request: GenerateDownloadUrlForSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateDownloadUrlForSynchronizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateDownloadUrlForSynchronizationJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_download_url_for_synchronization_job_with_options_async(
+        self,
+        request: eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobResponse:
+        """
+        @summary 生成文件导入结果下载地址
+        
+        @param request: GenerateDownloadUrlForSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateDownloadUrlForSynchronizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateDownloadUrlForSynchronizationJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_download_url_for_synchronization_job(
+        self,
+        request: eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobRequest,
+    ) -> eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobResponse:
+        """
+        @summary 生成文件导入结果下载地址
+        
+        @param request: GenerateDownloadUrlForSynchronizationJobRequest
+        @return: GenerateDownloadUrlForSynchronizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_download_url_for_synchronization_job_with_options(request, runtime)
+
+    async def generate_download_url_for_synchronization_job_async(
+        self,
+        request: eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobRequest,
+    ) -> eiam_20211201_models.GenerateDownloadUrlForSynchronizationJobResponse:
+        """
+        @summary 生成文件导入结果下载地址
+        
+        @param request: GenerateDownloadUrlForSynchronizationJobRequest
+        @return: GenerateDownloadUrlForSynchronizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_download_url_for_synchronization_job_with_options_async(request, runtime)
+
+    def generate_file_import_template_with_options(
+        self,
+        request: eiam_20211201_models.GenerateFileImportTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GenerateFileImportTemplateResponse:
+        """
+        @summary 生成文件导入模板
+        
+        @param request: GenerateFileImportTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateFileImportTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateFileImportTemplate',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GenerateFileImportTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_file_import_template_with_options_async(
+        self,
+        request: eiam_20211201_models.GenerateFileImportTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GenerateFileImportTemplateResponse:
+        """
+        @summary 生成文件导入模板
+        
+        @param request: GenerateFileImportTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateFileImportTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateFileImportTemplate',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GenerateFileImportTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_file_import_template(
+        self,
+        request: eiam_20211201_models.GenerateFileImportTemplateRequest,
+    ) -> eiam_20211201_models.GenerateFileImportTemplateResponse:
+        """
+        @summary 生成文件导入模板
+        
+        @param request: GenerateFileImportTemplateRequest
+        @return: GenerateFileImportTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_file_import_template_with_options(request, runtime)
+
+    async def generate_file_import_template_async(
+        self,
+        request: eiam_20211201_models.GenerateFileImportTemplateRequest,
+    ) -> eiam_20211201_models.GenerateFileImportTemplateResponse:
+        """
+        @summary 生成文件导入模板
+        
+        @param request: GenerateFileImportTemplateRequest
+        @return: GenerateFileImportTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_file_import_template_with_options_async(request, runtime)
+
+    def generate_upload_auth_with_options(
+        self,
+        request: eiam_20211201_models.GenerateUploadAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GenerateUploadAuthResponse:
+        """
+        @summary 获取上传认证
+        
+        @param request: GenerateUploadAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadAuthResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.purpose):
+            query['Purpose'] = request.purpose
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateUploadAuth',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GenerateUploadAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_upload_auth_with_options_async(
+        self,
+        request: eiam_20211201_models.GenerateUploadAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GenerateUploadAuthResponse:
+        """
+        @summary 获取上传认证
+        
+        @param request: GenerateUploadAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadAuthResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.purpose):
+            query['Purpose'] = request.purpose
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateUploadAuth',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GenerateUploadAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_upload_auth(
+        self,
+        request: eiam_20211201_models.GenerateUploadAuthRequest,
+    ) -> eiam_20211201_models.GenerateUploadAuthResponse:
+        """
+        @summary 获取上传认证
+        
+        @param request: GenerateUploadAuthRequest
+        @return: GenerateUploadAuthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_upload_auth_with_options(request, runtime)
+
+    async def generate_upload_auth_async(
+        self,
+        request: eiam_20211201_models.GenerateUploadAuthRequest,
+    ) -> eiam_20211201_models.GenerateUploadAuthResponse:
+        """
+        @summary 获取上传认证
+        
+        @param request: GenerateUploadAuthRequest
+        @return: GenerateUploadAuthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_upload_auth_with_options_async(request, runtime)
 
     def get_application_with_options(
         self,
@@ -17462,6 +18470,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_application_provisioning_scope_with_options_async(request, runtime)
+
+    def set_application_provisioning_user_primary_organizational_unit_with_options(
+        self,
+        request: eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        """
+        @summary 配置应用同步用户主组织
+        
+        @param request: SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_primary_organizational_unit_id):
+            query['UserPrimaryOrganizationalUnitId'] = request.user_primary_organizational_unit_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetApplicationProvisioningUserPrimaryOrganizationalUnit',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_application_provisioning_user_primary_organizational_unit_with_options_async(
+        self,
+        request: eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        """
+        @summary 配置应用同步用户主组织
+        
+        @param request: SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_primary_organizational_unit_id):
+            query['UserPrimaryOrganizationalUnitId'] = request.user_primary_organizational_unit_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetApplicationProvisioningUserPrimaryOrganizationalUnit',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_application_provisioning_user_primary_organizational_unit(
+        self,
+        request: eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+    ) -> eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        """
+        @summary 配置应用同步用户主组织
+        
+        @param request: SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+        @return: SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_application_provisioning_user_primary_organizational_unit_with_options(request, runtime)
+
+    async def set_application_provisioning_user_primary_organizational_unit_async(
+        self,
+        request: eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+    ) -> eiam_20211201_models.SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        """
+        @summary 配置应用同步用户主组织
+        
+        @param request: SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest
+        @return: SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_application_provisioning_user_primary_organizational_unit_with_options_async(request, runtime)
 
     def set_application_sso_config_with_options(
         self,

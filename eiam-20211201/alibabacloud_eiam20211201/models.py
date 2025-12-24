@@ -4534,6 +4534,119 @@ class CreateIdentityProviderResponse(TeaModel):
         return self
 
 
+class CreateIdentityProviderStatusCheckJobRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateIdentityProviderStatusCheckJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        identity_provider_status_check_job_id: str = None,
+        request_id: str = None,
+    ):
+        self.identity_provider_status_check_job_id = identity_provider_status_check_job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_status_check_job_id is not None:
+            result['IdentityProviderStatusCheckJobId'] = self.identity_provider_status_check_job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderStatusCheckJobId') is not None:
+            self.identity_provider_status_check_job_id = m.get('IdentityProviderStatusCheckJobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateIdentityProviderStatusCheckJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIdentityProviderStatusCheckJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIdentityProviderStatusCheckJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -7362,6 +7475,229 @@ class DeleteUserResponse(TeaModel):
         return self
 
 
+class DeleteUsersRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        user_ids: List[str] = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 账号ID列表
+        # 
+        # This parameter is required.
+        self.user_ids = user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
+        return self
+
+
+class DeleteUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWebAuthnAuthenticatorRequest(TeaModel):
+    def __init__(
+        self,
+        authenticator_id: str = None,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        # 认证器ID
+        # 
+        # This parameter is required.
+        self.authenticator_id = authenticator_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # UserID
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authenticator_id is not None:
+            result['AuthenticatorId'] = self.authenticator_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthenticatorId') is not None:
+            self.authenticator_id = m.get('AuthenticatorId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteWebAuthnAuthenticatorResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteWebAuthnAuthenticatorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWebAuthnAuthenticatorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWebAuthnAuthenticatorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -8687,6 +9023,113 @@ class DisableFederatedCredentialProviderResponse(TeaModel):
         return self
 
 
+class DisableIdentityProviderAdvancedAbilityRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableIdentityProviderAdvancedAbilityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableIdentityProviderAdvancedAbilityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableIdentityProviderAdvancedAbilityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableIdentityProviderAdvancedAbilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableIdentityProviderAuthnRequest(TeaModel):
     def __init__(
         self,
@@ -8997,6 +9440,111 @@ class DisableInitDomainAutoRedirectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableInitDomainAutoRedirectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableInternalAuthenticationSourceRequest(TeaModel):
+    def __init__(
+        self,
+        authentication_source_id: str = None,
+        instance_id: str = None,
+    ):
+        # 内部认证源ID，比如 ia_password, ia_otp_sms 等
+        self.authentication_source_id = authentication_source_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authentication_source_id is not None:
+            result['AuthenticationSourceId'] = self.authentication_source_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthenticationSourceId') is not None:
+            self.authentication_source_id = m.get('AuthenticationSourceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableInternalAuthenticationSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableInternalAuthenticationSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableInternalAuthenticationSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableInternalAuthenticationSourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10434,6 +10982,113 @@ class EnableFederatedCredentialProviderResponse(TeaModel):
         return self
 
 
+class EnableIdentityProviderAdvancedAbilityRequest(TeaModel):
+    def __init__(
+        self,
+        identity_provider_id: str = None,
+        instance_id: str = None,
+    ):
+        # IDaaS的身份提供方主键id
+        # 
+        # This parameter is required.
+        self.identity_provider_id = identity_provider_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_provider_id is not None:
+            result['IdentityProviderId'] = self.identity_provider_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentityProviderId') is not None:
+            self.identity_provider_id = m.get('IdentityProviderId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableIdentityProviderAdvancedAbilityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableIdentityProviderAdvancedAbilityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableIdentityProviderAdvancedAbilityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableIdentityProviderAdvancedAbilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableIdentityProviderAuthnRequest(TeaModel):
     def __init__(
         self,
@@ -10748,6 +11403,111 @@ class EnableInitDomainAutoRedirectResponse(TeaModel):
         return self
 
 
+class EnableInternalAuthenticationSourceRequest(TeaModel):
+    def __init__(
+        self,
+        authentication_source_id: str = None,
+        instance_id: str = None,
+    ):
+        # 内部认证源ID，比如 ia_password, ia_otp_sms 等
+        self.authentication_source_id = authentication_source_id
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authentication_source_id is not None:
+            result['AuthenticationSourceId'] = self.authentication_source_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthenticationSourceId') is not None:
+            self.authentication_source_id = m.get('AuthenticationSourceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableInternalAuthenticationSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableInternalAuthenticationSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableInternalAuthenticationSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableInternalAuthenticationSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableUserRequest(TeaModel):
     def __init__(
         self,
@@ -10852,6 +11612,411 @@ class EnableUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateDownloadUrlForSynchronizationJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        synchronization_job_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 同步任务ID
+        # 
+        # This parameter is required.
+        self.synchronization_job_id = synchronization_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.synchronization_job_id is not None:
+            result['SynchronizationJobId'] = self.synchronization_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SynchronizationJobId') is not None:
+            self.synchronization_job_id = m.get('SynchronizationJobId')
+        return self
+
+
+class GenerateDownloadUrlForSynchronizationJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        file_download_url: str = None,
+        request_id: str = None,
+    ):
+        self.file_download_url = file_download_url
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_download_url is not None:
+            result['FileDownloadUrl'] = self.file_download_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileDownloadUrl') is not None:
+            self.file_download_url = m.get('FileDownloadUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateDownloadUrlForSynchronizationJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateDownloadUrlForSynchronizationJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateDownloadUrlForSynchronizationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateFileImportTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        target_type: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 同步目标类型
+        # 
+        # This parameter is required.
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class GenerateFileImportTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        file_download_url: str = None,
+        request_id: str = None,
+    ):
+        self.file_download_url = file_download_url
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_download_url is not None:
+            result['FileDownloadUrl'] = self.file_download_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileDownloadUrl') is not None:
+            self.file_download_url = m.get('FileDownloadUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateFileImportTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateFileImportTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateFileImportTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateUploadAuthRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        purpose: str = None,
+        type: str = None,
+    ):
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 文件用途
+        self.purpose = purpose
+        # 文件类型，目前只支持image,最大1M
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.purpose is not None:
+            result['Purpose'] = self.purpose
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Purpose') is not None:
+            self.purpose = m.get('Purpose')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GenerateUploadAuthResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        down_load_url: str = None,
+        encrypted_key: str = None,
+        expire: int = None,
+        host: str = None,
+        key: str = None,
+        plaintext_key: str = None,
+        policy: str = None,
+        request_id: str = None,
+        security_token: str = None,
+        signature: str = None,
+    ):
+        # 认证的AccessId
+        self.access_id = access_id
+        # 预下载地址
+        self.down_load_url = down_load_url
+        self.encrypted_key = encrypted_key
+        # 过期时间
+        self.expire = expire
+        # bucket地址host
+        self.host = host
+        # 认证对应的key
+        self.key = key
+        self.plaintext_key = plaintext_key
+        # 认证的policy
+        self.policy = policy
+        self.request_id = request_id
+        self.security_token = security_token
+        # 认证的签名
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.down_load_url is not None:
+            result['DownLoadUrl'] = self.down_load_url
+        if self.encrypted_key is not None:
+            result['EncryptedKey'] = self.encrypted_key
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.plaintext_key is not None:
+            result['PlaintextKey'] = self.plaintext_key
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('DownLoadUrl') is not None:
+            self.down_load_url = m.get('DownLoadUrl')
+        if m.get('EncryptedKey') is not None:
+            self.encrypted_key = m.get('EncryptedKey')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('PlaintextKey') is not None:
+            self.plaintext_key = m.get('PlaintextKey')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class GenerateUploadAuthResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateUploadAuthResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateUploadAuthResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36685,6 +37850,122 @@ class SetApplicationProvisioningScopeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetApplicationProvisioningScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        instance_id: str = None,
+        user_primary_organizational_unit_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 组织ID。
+        # 
+        # This parameter is required.
+        self.user_primary_organizational_unit_id = user_primary_organizational_unit_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_primary_organizational_unit_id is not None:
+            result['UserPrimaryOrganizationalUnitId'] = self.user_primary_organizational_unit_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserPrimaryOrganizationalUnitId') is not None:
+            self.user_primary_organizational_unit_id = m.get('UserPrimaryOrganizationalUnitId')
+        return self
+
+
+class SetApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetApplicationProvisioningUserPrimaryOrganizationalUnitResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
