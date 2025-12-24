@@ -1,3 +1,7 @@
+2025-12-24 Version: 7.4.2
+- Update API CreateAutoProvisioningGroup: add request parameters ExecutionMode.
+
+
 2025-12-19 Version: 7.4.1
 - Update API DescribeManagedInstances: add request parameters Connected.
 
