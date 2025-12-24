@@ -1,3 +1,49 @@
+2025-12-24 Version: 4.0.0
+- Delete API BatchModifyInstanceStatus.
+- Delete API DescribeNodeUsedInfos.
+- Delete API DescribePopApiItemList.
+- Delete API ModifyPlaybookInstanceStatus.
+- Delete API RenamePlaybookNode.
+- Update API CreatePlaybook: add request parameters InputParams.
+- Update API CreatePlaybook: add request parameters OutputParams.
+- Update API DescribeComponentPlaybook: add response parameters Body.Playbooks.$.ParamType.
+- Update API DescribePlaybooks: add response parameters Body.Playbooks.$.Description.
+- Update API DescribePlaybooks: add response parameters Body.Playbooks.$.TenantId.
+- Update API DescribePlaybooks: update request parameters Sort' type has changed.
+- Update API DescribePlaybooks: update request parameters Sort' format has changed.
+- Update API DescribePopApi: add response parameters Body.OpenApiMetaList.$.Style.
+- Update API DescribePopApi: delete request parameters Env.
+- Update API DescribeProcessTasks: add request parameters ReqUuid.
+- Update API DescribeSoarRecords: add request parameters CompletedBeginTime.
+- Update API DescribeSoarRecords: add request parameters CompletedEndTime.
+- Update API DescribeSoarRecords: add request parameters QueryValue.
+- Update API DescribeSoarRecords: add request parameters TriggerType.
+- Update API DescribeSoarRecords: add response parameters Body.SoarExecuteRecords.$.OutputList.
+- Update API DescribeSoarRecords: delete response parameters Body.SoarExecuteRecords.$.ResultMessage.
+- Update API DescribeSoarRecords: delete response parameters Body.SoarExecuteRecords.$.TaskType.
+- Update API DescribeSoarTaskAndActions: add request parameters PageNumber.
+- Update API DescribeSoarTaskAndActions: add request parameters PageSize.
+- Update API DescribeSoarTaskAndActions: add request parameters QueryType.
+- Update API DescribeSoarTaskAndActions: add request parameters QueryValue.
+- Update API DescribeSoarTaskAndActions: add response parameters Body.Page.
+- Update API DescribeSoarTaskAndActions: add response parameters Body.Details.ActionLogNum.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.Actions.$.RequestUuid.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.Actions.$.TaskName.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.Actions.$.TaskStatus.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.Actions.$.TriggerUser.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.ResultLevel.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.ResultMessage.
+- Update API DescribeSoarTaskAndActions: delete response parameters Body.Details.TaskTenantId.
+- Update API RunNotifyComponentWithEmail: update request parameters AssetId' type has changed.
+- Update API RunNotifyComponentWithEmail: update request parameters AssetId' format has changed.
+- Update API RunNotifyComponentWithMessageCenter: update request parameters AssetId' type has changed.
+- Update API RunNotifyComponentWithMessageCenter: update request parameters AssetId' format has changed.
+- Update API RunNotifyComponentWithWebhook: update request parameters AssetId' type has changed.
+- Update API RunNotifyComponentWithWebhook: update request parameters AssetId' format has changed.
+- Update API RunPython3Script: add request parameters PythonVersion.
+- Update API VerifyPlaybook: add response parameters Body.Prerequisites.
+
+
 2025-03-18 Version: 3.0.0
 - Support API ConvertPlaybook.
 - Support API CopyPlaybook.

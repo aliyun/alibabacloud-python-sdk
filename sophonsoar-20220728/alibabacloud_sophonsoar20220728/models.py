@@ -4,129 +4,6 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
-class BatchModifyInstanceStatusRequest(TeaModel):
-    def __init__(
-        self,
-        active: int = None,
-        lang: str = None,
-        playbook_uuid: str = None,
-    ):
-        # Specifies whether to start or stop the playbook.
-        # 
-        # *   **0**: stops the playbook.
-        # *   **1**: starts the playbook.
-        # 
-        # This parameter is required.
-        self.active = active
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
-        self.lang = lang
-        # The playbook UUID. If you want to specify multiple playbooks, separate the playbook UUIDs with commas (,).
-        # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
-        # 
-        # This parameter is required.
-        self.playbook_uuid = playbook_uuid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.active is not None:
-            result['Active'] = self.active
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.playbook_uuid is not None:
-            result['PlaybookUuid'] = self.playbook_uuid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Active') is not None:
-            self.active = m.get('Active')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('PlaybookUuid') is not None:
-            self.playbook_uuid = m.get('PlaybookUuid')
-        return self
-
-
-class BatchModifyInstanceStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class BatchModifyInstanceStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: BatchModifyInstanceStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = BatchModifyInstanceStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ComparePlaybooksRequest(TeaModel):
     def __init__(
         self,
@@ -461,13 +338,33 @@ class CopyPlaybookRequest(TeaModel):
         role_type: str = None,
         source_playbook_uuid: str = None,
     ):
+        # The description of the playbook.
         self.description = description
+        # The display name of the playbook.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default).
+        # *   **en**: English.
         self.lang = lang
+        # The release version of the playbook that you want to copy. Default value: 0. Valid values:
+        # 
+        # *   \\-1: The version that is being edited.
+        # *   0: The latest online version of the current playbook.
         self.release_version = release_version
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *   **0** (default): the view of the current account.
+        # *   **1**: the view of the global account.
         self.role_type = role_type
+        # The UUID of the playbook that you want to copy.
+        # 
+        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+        # 
         # This parameter is required.
         self.source_playbook_uuid = source_playbook_uuid
 
@@ -537,23 +434,50 @@ class CopyPlaybookResponseBodyData(TeaModel):
         succ_num: int = None,
         tenant_id: str = None,
     ):
+        # The status of the playbook. Valid values:
+        # 
+        # *   1: enabled.
+        # *   0: disabled.
         self.active = active
+        # The description of the playbook.
         self.description = description
+        # The name of the new playbook.
         self.display_name = display_name
+        # The number of playbook execution failures.
         self.fail_num = fail_num
+        # The failure rate of playbook execution.
         self.fail_rate = fail_rate
+        # The time when the playbook was created. The value is a 13-digit timestamp.
         self.gmt_create = gmt_create
+        # The time when the playbook was modified. The value is a 13-digit timestamp.
         self.gmt_modified = gmt_modified
+        # The number of historical versions of the playbook.
         self.history_md_5 = history_md_5
+        # The input parameters of the playbook.
         self.input_params = input_params
+        # The time when the playbook was last run. The value is a 13-digit timestamp.
         self.last_runtime = last_runtime
+        # The online version MD5 of the playbook.
         self.logic_release_taskflow_md_5 = logic_release_taskflow_md_5
+        # The output parameters of the playbook.
         self.output_params = output_params
+        # The type of the playbook. Valid values:
+        # 
+        # *   preset: predefined playbook.
+        # *   user: custom playbook.
         self.own_type = own_type
+        # The permission to operate the playbook. Valid values:
+        # 
+        # *   1: view.
+        # *   2: edit.
         self.permission = permission
+        # The status of the playbook.
         self.playbook_status = playbook_status
+        # The UUID of the new playbook.
         self.playbook_uuid = playbook_uuid
+        # The number of successful playbook executions.
         self.succ_num = succ_num
+        # The ID of the user to which the playbook belongs.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -651,8 +575,11 @@ class CopyPlaybookResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -690,8 +617,11 @@ class CopyPlaybookResponseBody(TeaModel):
         page: CopyPlaybookResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The response parameters.
         self.data = data
+        # The pagination information.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -773,7 +703,9 @@ class CreatePlaybookRequest(TeaModel):
         self,
         description: str = None,
         display_name: str = None,
+        input_params: str = None,
         lang: str = None,
+        output_params: str = None,
         taskflow_type: str = None,
     ):
         # Description of the playbook.
@@ -782,11 +714,13 @@ class CreatePlaybookRequest(TeaModel):
         # 
         # This parameter is required.
         self.display_name = display_name
+        self.input_params = input_params
         # Language type for receiving messages. Values:
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
+        self.output_params = output_params
         # Playbook TaskFlow type.
         # - **x6** : x6
         # - **bpmn**: bpmn
@@ -805,8 +739,12 @@ class CreatePlaybookRequest(TeaModel):
             result['Description'] = self.description
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.input_params is not None:
+            result['InputParams'] = self.input_params
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.output_params is not None:
+            result['OutputParams'] = self.output_params
         if self.taskflow_type is not None:
             result['TaskflowType'] = self.taskflow_type
         return result
@@ -817,8 +755,12 @@ class CreatePlaybookRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('InputParams') is not None:
+            self.input_params = m.get('InputParams')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('OutputParams') is not None:
+            self.output_params = m.get('OutputParams')
         if m.get('TaskflowType') is not None:
             self.taskflow_type = m.get('TaskflowType')
         return self
@@ -1771,6 +1713,7 @@ class DescribeComponentPlaybookResponseBodyPlaybooks(TeaModel):
         description: str = None,
         display_name: str = None,
         input_params: str = None,
+        param_type: str = None,
     ):
         # The description of the predefined component.
         self.description = description
@@ -1780,6 +1723,7 @@ class DescribeComponentPlaybookResponseBodyPlaybooks(TeaModel):
         # 
         # >  For more information, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
         self.input_params = input_params
+        self.param_type = param_type
 
     def validate(self):
         pass
@@ -1796,6 +1740,8 @@ class DescribeComponentPlaybookResponseBodyPlaybooks(TeaModel):
             result['DisplayName'] = self.display_name
         if self.input_params is not None:
             result['InputParams'] = self.input_params
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
         return result
 
     def from_map(self, m: dict = None):
@@ -1806,6 +1752,8 @@ class DescribeComponentPlaybookResponseBodyPlaybooks(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('InputParams') is not None:
             self.input_params = m.get('InputParams')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
         return self
 
 
@@ -2688,8 +2636,17 @@ class DescribeGroupProductionsRequest(TeaModel):
         role_for: int = None,
         role_type: str = None,
     ):
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *  **0**  (default): the view of the current Alibaba Cloud account.
+        # *   **1**: the view of all accounts for the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -2726,7 +2683,12 @@ class DescribeGroupProductionsResponseBodyDataProductionsPolicyList(TeaModel):
         policy_name: str = None,
         type: str = None,
     ):
+        # The name of the RAM policy.
         self.policy_name = policy_name
+        # The type of the RAM policy. Valid values:
+        # 
+        # *   **All**: permissions.
+        # *   **Read-only**: permissions.
         self.type = type
 
     def validate(self):
@@ -2769,17 +2731,29 @@ class DescribeGroupProductionsResponseBodyDataProductions(TeaModel):
         source: str = None,
         versions: List[str] = None,
     ):
+        # The code of the cloud service.
         self.code = code
+        # The default requested domain name.
         self.default_domain = default_domain
+        # The default version.
         self.default_version = default_version
+        # The description of the cloud service.
         self.description = description
+        # The requested domain names.
         self.full_domains = full_domains
+        # The name of the group.
         self.group = group
+        # The name of the cloud service.
         self.name = name
+        # The RAM policies of the cloud service.
         self.policy_list = policy_list
+        # The Resource Access Management (RAM) code of the POP to which the resource belongs.
         self.ram_code = ram_code
+        # The short name of the cloud service.
         self.short_name = short_name
+        # The information source of the cloud service.
         self.source = source
+        # The API versions.
         self.versions = versions
 
     def validate(self):
@@ -2860,7 +2834,9 @@ class DescribeGroupProductionsResponseBodyData(TeaModel):
         group_name: str = None,
         productions: List[DescribeGroupProductionsResponseBodyDataProductions] = None,
     ):
+        # The name of the cloud service.
         self.group_name = group_name
+        # The information about the cloud services.
         self.productions = productions
 
     def validate(self):
@@ -2902,8 +2878,11 @@ class DescribeGroupProductionsResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2941,8 +2920,11 @@ class DescribeGroupProductionsResponseBody(TeaModel):
         page: DescribeGroupProductionsResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The information about the groups.
         self.data = data
+        # The pagination information.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3400,138 +3382,6 @@ class DescribeNodeParamTagsResponse(TeaModel):
         return self
 
 
-class DescribeNodeUsedInfosRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        node_name: str = None,
-        playbook_uuid: str = None,
-    ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
-        self.lang = lang
-        # The node name of the component.
-        # 
-        # This parameter is required.
-        self.node_name = node_name
-        # The playbook UUID.
-        # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
-        # 
-        # This parameter is required.
-        self.playbook_uuid = playbook_uuid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.node_name is not None:
-            result['NodeName'] = self.node_name
-        if self.playbook_uuid is not None:
-            result['PlaybookUuid'] = self.playbook_uuid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('NodeName') is not None:
-            self.node_name = m.get('NodeName')
-        if m.get('PlaybookUuid') is not None:
-            self.playbook_uuid = m.get('PlaybookUuid')
-        return self
-
-
-class DescribeNodeUsedInfosResponseBody(TeaModel):
-    def __init__(
-        self,
-        node_used_infos: str = None,
-        request_id: str = None,
-    ):
-        # The node reference information. The value is in the JSON format and contains the following fields:
-        # 
-        # *   **action**: the referencing action. This field contains the following information:
-        # 
-        #     *   **name**: the name of the referencing node.
-        #     *   **inputParams**: the parameter settings of the referencing node.
-        self.node_used_infos = node_used_infos
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.node_used_infos is not None:
-            result['NodeUsedInfos'] = self.node_used_infos
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('NodeUsedInfos') is not None:
-            self.node_used_infos = m.get('NodeUsedInfos')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeNodeUsedInfosResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeNodeUsedInfosResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeNodeUsedInfosResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeNotifyTemplateListRequest(TeaModel):
     def __init__(
         self,
@@ -3539,8 +3389,17 @@ class DescribeNotifyTemplateListRequest(TeaModel):
         role_for: int = None,
         role_type: str = None,
     ):
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese.
+        # *   **en**: English.
         self.lang = lang
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Default value: 0. Valid values:
+        # 
+        # *   0: the view of the current Alibaba Cloud account.
+        # *   1: the view of all accounts for the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -3580,10 +3439,15 @@ class DescribeNotifyTemplateListResponseBodyData(TeaModel):
         subject: str = None,
         template_name: str = None,
     ):
+        # The body of the template.
         self.content = content
+        # The ID of the message event corresponding to the template.
         self.event_id = event_id
+        # The parameters of the template.
         self.params = params
+        # The title of the template.
         self.subject = subject
+        # The name of the template.
         self.template_name = template_name
 
     def validate(self):
@@ -3629,8 +3493,11 @@ class DescribeNotifyTemplateListResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3668,8 +3535,11 @@ class DescribeNotifyTemplateListResponseBody(TeaModel):
         page: DescribeNotifyTemplateListResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The pagination information.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3762,14 +3632,31 @@ class DescribeOpenApiInfoRequest(TeaModel):
         role_for: int = None,
         role_type: str = None,
     ):
+        # The operation that you want to perform.
+        # 
         # This parameter is required.
         self.api_name = api_name
+        # The version number of the API.
+        # 
+        # >  You can call the [DescribeGroupProductions](~~DescribeGroupProductions~~) operation to query version numbers.
+        # 
         # This parameter is required.
         self.api_version = api_version
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese.
+        # *   **en**: English.
         self.lang = lang
+        # The POP code of the Alibaba Cloud service.
+        # 
         # This parameter is required.
         self.pop_code = pop_code
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *   0 (default): the view of the current Alibaba Cloud account.
+        # *   1: the view of all accounts for the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -3822,11 +3709,17 @@ class DescribeOpenApiInfoResponseBodyData(TeaModel):
         summary: str = None,
         title: str = None,
     ):
+        # The description of the API operation.
         self.description = description
+        # The input parameters of the API operation.
         self.input_params = input_params
+        # The output parameters of the API operation.
         self.output_params = output_params
+        # The sample response parameters.
         self.response_demo = response_demo
+        # The summary of the API operation.
         self.summary = summary
+        # The title of the API operation.
         self.title = title
 
     def validate(self):
@@ -3875,7 +3768,9 @@ class DescribeOpenApiInfoResponseBody(TeaModel):
         data: DescribeOpenApiInfoResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3955,13 +3850,29 @@ class DescribeOpenApiListRequest(TeaModel):
         role_for: int = None,
         role_type: str = None,
     ):
+        # The operation that you want to perform.
         self.api_name = api_name
+        # The version number of the API.
+        # 
+        # >  You can call the [DescribeGroupProductions](~~DescribeGroupProductions~~) operation to query the version number.
+        # 
         # This parameter is required.
         self.api_version = api_version
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese.
+        # *   **en**: English.
         self.lang = lang
+        # The POP code of the Alibaba Cloud service.
+        # 
         # This parameter is required.
         self.pop_code = pop_code
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Default value: 0. Valid values:
+        # 
+        # *   0: the view of the current Alibaba Cloud account.
+        # *   1: the view of all accounts for the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -4011,8 +3922,14 @@ class DescribeOpenApiListResponseBodyData(TeaModel):
         directories: Any = None,
         version: str = None,
     ):
+        # The response code. Valid values:
+        # 
+        # *   200: successful.
+        # *   500: failed.
         self.code = code
+        # The information about the returned APIs.
         self.directories = directories
+        # The version number of the API.
         self.version = version
 
     def validate(self):
@@ -4049,7 +3966,9 @@ class DescribeOpenApiListResponseBody(TeaModel):
         data: DescribeOpenApiListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5360,7 +5279,7 @@ class DescribePlaybooksRequest(TeaModel):
         param_types: str = None,
         playbook_uuid: str = None,
         playbook_uuids: str = None,
-        sort: str = None,
+        sort: int = None,
         start_millis: int = None,
     ):
         # Activation status of the playbook. Values:
@@ -5403,7 +5322,7 @@ class DescribePlaybooksRequest(TeaModel):
         self.param_types = param_types
         # The UUID of the playbook.
         # > You can use the UUID to query specific playbook information.
-        # > - Call the [DescribePlaybooks](~~DescribePlaybooks~~) API to obtain this parameter.
+        # > - Call the [CreatePlaybook](~~CreatePlaybook~~) API to obtain this parameter.
         self.playbook_uuid = playbook_uuid
         # UUID List of the playbook.
         # 
@@ -5531,6 +5450,7 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
     def __init__(
         self,
         active: int = None,
+        description: str = None,
         display_name: str = None,
         gmt_create: int = None,
         gmt_modified: str = None,
@@ -5538,12 +5458,15 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
         own_type: str = None,
         param_type: str = None,
         playbook_uuid: str = None,
+        tenant_id: str = None,
     ):
         # The status indicator of the playbook. Values:
         # 
         # - **1**: Indicates the playbook is activated.
         # - **0**: Indicates the playbook is deactivated.
         self.active = active
+        # The description of the playbook.
+        self.description = description
         # The display name of the playbook.
         self.display_name = display_name
         # The creation time of the playbook, in 13-digit timestamp format.
@@ -5569,6 +5492,8 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
         self.param_type = param_type
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
+        # The ID of the tenant.
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -5581,6 +5506,8 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
         result = dict()
         if self.active is not None:
             result['Active'] = self.active
+        if self.description is not None:
+            result['Description'] = self.description
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.gmt_create is not None:
@@ -5595,12 +5522,16 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
             result['ParamType'] = self.param_type
         if self.playbook_uuid is not None:
             result['PlaybookUuid'] = self.playbook_uuid
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Active') is not None:
             self.active = m.get('Active')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('GmtCreate') is not None:
@@ -5615,6 +5546,8 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
             self.param_type = m.get('ParamType')
         if m.get('PlaybookUuid') is not None:
             self.playbook_uuid = m.get('PlaybookUuid')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 
@@ -5717,7 +5650,6 @@ class DescribePopApiRequest(TeaModel):
         self,
         api_name: str = None,
         api_version: str = None,
-        env: str = None,
         pop_code: str = None,
     ):
         # The operation name of the Alibaba Cloud service.
@@ -5730,10 +5662,6 @@ class DescribePopApiRequest(TeaModel):
         # 
         # This parameter is required.
         self.api_version = api_version
-        # The environment in which the API operation parameter is used. Set the value to online.
-        # 
-        # This parameter is required.
-        self.env = env
         # The POP code of the Alibaba Cloud service.
         # 
         # >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
@@ -5754,8 +5682,6 @@ class DescribePopApiRequest(TeaModel):
             result['ApiName'] = self.api_name
         if self.api_version is not None:
             result['ApiVersion'] = self.api_version
-        if self.env is not None:
-            result['Env'] = self.env
         if self.pop_code is not None:
             result['PopCode'] = self.pop_code
         return result
@@ -5766,8 +5692,6 @@ class DescribePopApiRequest(TeaModel):
             self.api_name = m.get('ApiName')
         if m.get('ApiVersion') is not None:
             self.api_version = m.get('ApiVersion')
-        if m.get('Env') is not None:
-            self.env = m.get('Env')
         if m.get('PopCode') is not None:
             self.pop_code = m.get('PopCode')
         return self
@@ -5780,6 +5704,7 @@ class DescribePopApiResponseBodyOpenApiMetaList(TeaModel):
         example_value: str = None,
         name: str = None,
         required: bool = None,
+        style: str = None,
         type: str = None,
     ):
         # The parameter description.
@@ -5793,6 +5718,7 @@ class DescribePopApiResponseBodyOpenApiMetaList(TeaModel):
         # *   true
         # *   false
         self.required = required
+        self.style = style
         # The data type of the parameter field. Valid values:
         # 
         # *   **string**\
@@ -5818,6 +5744,8 @@ class DescribePopApiResponseBodyOpenApiMetaList(TeaModel):
             result['Name'] = self.name
         if self.required is not None:
             result['Required'] = self.required
+        if self.style is not None:
+            result['Style'] = self.style
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -5832,6 +5760,8 @@ class DescribePopApiResponseBodyOpenApiMetaList(TeaModel):
             self.name = m.get('Name')
         if m.get('Required') is not None:
             self.required = m.get('Required')
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -5942,172 +5872,6 @@ class DescribePopApiResponse(TeaModel):
         return self
 
 
-class DescribePopApiItemListRequest(TeaModel):
-    def __init__(
-        self,
-        api_name: str = None,
-        api_version: str = None,
-        env: str = None,
-        lang: str = None,
-        pop_code: str = None,
-    ):
-        # The API operation name of the Alibaba Cloud service. Fuzzy match is supported.
-        self.api_name = api_name
-        # The version number of the API.
-        # 
-        # >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the version number.
-        # 
-        # This parameter is required.
-        self.api_version = api_version
-        # The environment in which the API operation parameters are used. Set the value to online.
-        # 
-        # This parameter is required.
-        self.env = env
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
-        self.lang = lang
-        # The POP code of the Alibaba Cloud service.
-        # 
-        # >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
-        # 
-        # This parameter is required.
-        self.pop_code = pop_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.api_name is not None:
-            result['ApiName'] = self.api_name
-        if self.api_version is not None:
-            result['ApiVersion'] = self.api_version
-        if self.env is not None:
-            result['Env'] = self.env
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.pop_code is not None:
-            result['PopCode'] = self.pop_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApiName') is not None:
-            self.api_name = m.get('ApiName')
-        if m.get('ApiVersion') is not None:
-            self.api_version = m.get('ApiVersion')
-        if m.get('Env') is not None:
-            self.env = m.get('Env')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('PopCode') is not None:
-            self.pop_code = m.get('PopCode')
-        return self
-
-
-class DescribePopApiItemListResponseBody(TeaModel):
-    def __init__(
-        self,
-        names: List[str] = None,
-        pop_code: str = None,
-        request_id: str = None,
-        total: int = None,
-        version: str = None,
-    ):
-        # The names of API operations.
-        self.names = names
-        # The POP code of the Alibaba Cloud service.
-        self.pop_code = pop_code
-        # The request ID.
-        self.request_id = request_id
-        # The total number of entries returned.
-        self.total = total
-        # The version number of the API for the Alibaba Cloud service.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.names is not None:
-            result['Names'] = self.names
-        if self.pop_code is not None:
-            result['PopCode'] = self.pop_code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total is not None:
-            result['Total'] = self.total
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Names') is not None:
-            self.names = m.get('Names')
-        if m.get('PopCode') is not None:
-            self.pop_code = m.get('PopCode')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        return self
-
-
-class DescribePopApiItemListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribePopApiItemListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribePopApiItemListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeProcessStatisticsRequest(TeaModel):
     def __init__(
         self,
@@ -6115,8 +5879,17 @@ class DescribeProcessStatisticsRequest(TeaModel):
         role_for: str = None,
         role_type: str = None,
     ):
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese.
+        # *   **en**: English.
         self.lang = lang
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *   0 (default): the view of the current Alibaba Cloud account.
+        # *   1: the view of all accounts for the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -6155,9 +5928,13 @@ class DescribeProcessStatisticsResponseBodyMetrics(TeaModel):
         ban_process_num: int = None,
         task_num: int = None,
     ):
+        # The number of blocked files.
         self.ban_file_num = ban_file_num
+        # The number of blocked IP addresses.
         self.ban_ip_num = ban_ip_num
+        # The number of blocked processes.
         self.ban_process_num = ban_process_num
+        # The number of handling tasks.
         self.task_num = task_num
 
     def validate(self):
@@ -6198,7 +5975,9 @@ class DescribeProcessStatisticsResponseBody(TeaModel):
         metrics: DescribeProcessStatisticsResponseBodyMetrics = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.metrics = metrics
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6462,6 +6241,7 @@ class DescribeProcessTasksRequest(TeaModel):
         process_remove_end: int = None,
         process_remove_start: int = None,
         process_strategy_uuid: str = None,
+        req_uuid: str = None,
         scene_code: str = None,
         scope: str = None,
         source: str = None,
@@ -6472,18 +6252,20 @@ class DescribeProcessTasksRequest(TeaModel):
     ):
         # The sort order. Valid values:
         # 
-        # *   **desc** (default)
-        # *   **asc**\
+        # *   **desc** (default).
+        # *   **asc**.
         self.direction = direction
         # The name of the handling entity.
         self.entity_name = entity_name
         # The type of the handling entity. Valid values:
         # 
-        # *   **ip**\
-        # *   **file**\
-        # *   **process**\
+        # *   **ip**.
+        # *   **file**.
+        # *   **process**.
         self.entity_type = entity_type
+        # The UUID of the handling entity.
         self.entity_uuid = entity_uuid
+        # The UUID of the event.
         self.event_uuid = event_uuid
         # The field that you use to sort the result.
         # 
@@ -6509,6 +6291,7 @@ class DescribeProcessTasksRequest(TeaModel):
         # 
         # >  You can call the [ListDisposeStrategy](https://help.aliyun.com/document_detail/2584440.html) operation to query the UUID of the handling policy.
         self.process_strategy_uuid = process_strategy_uuid
+        self.req_uuid = req_uuid
         # The scenario code of the handling task.
         # 
         # >  You can call the [DescribeEnumItems](~~DescribeEnumItems~~) operation to query the scenario code of the handling task. This parameter is available when you set **EnumType** to **process**.
@@ -6517,11 +6300,11 @@ class DescribeProcessTasksRequest(TeaModel):
         self.scope = scope
         # The triggering source of the handling task. The value is a string array. Valid values:
         # 
-        # *   **system**: triggered when you manually handle an event
-        # *   **custom**: triggered by an event based on an automatic response rule
-        # *   **custom_alert**: triggered by an alert based on an automatic response rule
-        # *   **soar-manual**: triggered when you use SOAR to manually run a playbook
-        # *   **soar-mdr**: triggered by Managed Security Service
+        # *   **system**: triggered when you manually handle an event.
+        # *   **custom**: triggered by an event based on an automatic response rule.
+        # *   **custom_alert**: triggered by an alert based on an automatic response rule.
+        # *   **soar-manual**: triggered when you use SOAR to manually run a playbook.
+        # *   **soar-mdr**: triggered by Managed Security Service.
         self.source = source
         # The unique identifier of the handling task.
         # 
@@ -6529,22 +6312,29 @@ class DescribeProcessTasksRequest(TeaModel):
         self.task_id = task_id
         # The status of the handling task. The value is a string. Valid values:
         # 
-        # *   **11**: being handled
-        # *   **21**: being blocked
-        # *   **22**: being quarantined
-        # *   **23**: completed
-        # *   **24**: added to the whitelist
-        # *   **20**: successful
-        # *   **90**: failed
-        # *   **91**: unblocking failed
+        # *   **11**: being handled.
+        # *   **21**: being blocked.
+        # *   **22**: being quarantined.
+        # *   **23**: completed.
+        # *   **24**: added to the whitelist.
+        # *   **20**: successful.
+        # *   **90**: failed.
+        # *   **91**: unblocking failed.
         # *   **92**: restoring quarantined files failed
         self.task_status = task_status
+        # The triggering source of the handling task. Valid values:
+        # 
+        # *   **system**: triggered when you manually handle an event.
+        # *   **custom**: triggered by an event based on an automatic response rule.
+        # *   **custom_alert**: triggered by an alert based on an automatic response rule.
+        # *   **soar-manual**: triggered when you use SOAR to manually run a playbook.
+        # *   **soar-mdr**: triggered by Managed Security Service.
         self.trigger_source = trigger_source
         # The cloud service that is associated with the handling task. The value is a string. Valid values:
         # 
-        # *   **WAF**: Web Application Firewall (WAF)
-        # *   **CFW**: Cloud Firewall
-        # *   **Aegis**: Security Center
+        # *   **WAF**: Web Application Firewall (WAF).
+        # *   **CFW**: Cloud Firewall.
+        # *   **Aegis**: Security Center.
         self.yun_code = yun_code
 
     def validate(self):
@@ -6584,6 +6374,8 @@ class DescribeProcessTasksRequest(TeaModel):
             result['ProcessRemoveStart'] = self.process_remove_start
         if self.process_strategy_uuid is not None:
             result['ProcessStrategyUuid'] = self.process_strategy_uuid
+        if self.req_uuid is not None:
+            result['ReqUuid'] = self.req_uuid
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
         if self.scope is not None:
@@ -6630,6 +6422,8 @@ class DescribeProcessTasksRequest(TeaModel):
             self.process_remove_start = m.get('ProcessRemoveStart')
         if m.get('ProcessStrategyUuid') is not None:
             self.process_strategy_uuid = m.get('ProcessStrategyUuid')
+        if m.get('ReqUuid') is not None:
+            self.req_uuid = m.get('ReqUuid')
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')
         if m.get('Scope') is not None:
@@ -6722,6 +6516,7 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         self.entity_name = entity_name
         # The type of the handling entity.
         self.entity_type = entity_type
+        # The UUID of the handling entity.
         self.entity_uuid = entity_uuid
         # The error code returned if the call failed.
         self.err_code = err_code
@@ -6729,6 +6524,7 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         self.err_msg = err_msg
         # The error tip returned if the call failed.
         self.err_tip = err_tip
+        # The UUID of the event.
         self.event_uuid = event_uuid
         # The creation time of the handling task. The value is a 13-digit timestamp.
         self.gmt_create_millis = gmt_create_millis
@@ -6742,6 +6538,7 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         self.process_time = process_time
         # The unblocking time of the handling task. The value is a 13-digit timestamp.
         self.remove_time = remove_time
+        # The UUID of the playbook execution record.
         self.req_uuid = req_uuid
         # The scenario code of the handling task.
         self.scene_code = scene_code
@@ -6755,6 +6552,13 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         self.task_id = task_id
         # The status of the handling task.
         self.task_status = task_status
+        # The triggering source of the handling task. Valid values:
+        # 
+        # *   **system**: triggered when you manually handle an event.
+        # *   **custom**: triggered by an event based on an automatic response rule.
+        # *   **custom_alert**: triggered by an alert based on an automatic response rule.
+        # *   **soar-manual**: triggered when you use SOAR to manually run a playbook.
+        # *   **soar-mdr**: triggered by Managed Security Service.
         self.trigger_source = trigger_source
         # The code of the cloud service that is associated with the handling task.
         self.yun_code = yun_code
@@ -7243,17 +7047,23 @@ class DescribeSoarRecordInOutputResponse(TeaModel):
 class DescribeSoarRecordsRequest(TeaModel):
     def __init__(
         self,
+        completed_begin_time: int = None,
+        completed_end_time: int = None,
         end_millis: int = None,
         lang: str = None,
         page_number: int = None,
         page_size: int = None,
         playbook_uuid: str = None,
+        query_value: str = None,
         request_uuid: str = None,
         start_millis: int = None,
         task_status: str = None,
         taskflow_md_5: str = None,
+        trigger_type: str = None,
         trigger_user: str = None,
     ):
+        self.completed_begin_time = completed_begin_time
+        self.completed_end_time = completed_end_time
         # The end time of the task execution, in 13-digit timestamp format.
         self.end_millis = end_millis
         # Set the language type for requests and received messages. The default is **zh**. Values:
@@ -7267,9 +7077,8 @@ class DescribeSoarRecordsRequest(TeaModel):
         self.page_size = page_size
         # The UUID of the playbook.
         # > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
-        # 
-        # This parameter is required.
         self.playbook_uuid = playbook_uuid
+        self.query_value = query_value
         # UUID of the playbook task execution.
         # > You can obtain this parameter by calling the [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html) interface.
         self.request_uuid = request_uuid
@@ -7283,6 +7092,7 @@ class DescribeSoarRecordsRequest(TeaModel):
         self.task_status = task_status
         # The MD5 value of the playbook configuration.
         self.taskflow_md_5 = taskflow_md_5
+        self.trigger_type = trigger_type
         # The Alibaba Cloud account ID that executed the playbook task.
         self.trigger_user = trigger_user
 
@@ -7295,6 +7105,10 @@ class DescribeSoarRecordsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.completed_begin_time is not None:
+            result['CompletedBeginTime'] = self.completed_begin_time
+        if self.completed_end_time is not None:
+            result['CompletedEndTime'] = self.completed_end_time
         if self.end_millis is not None:
             result['EndMillis'] = self.end_millis
         if self.lang is not None:
@@ -7305,6 +7119,8 @@ class DescribeSoarRecordsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.playbook_uuid is not None:
             result['PlaybookUuid'] = self.playbook_uuid
+        if self.query_value is not None:
+            result['QueryValue'] = self.query_value
         if self.request_uuid is not None:
             result['RequestUuid'] = self.request_uuid
         if self.start_millis is not None:
@@ -7313,12 +7129,18 @@ class DescribeSoarRecordsRequest(TeaModel):
             result['TaskStatus'] = self.task_status
         if self.taskflow_md_5 is not None:
             result['TaskflowMd5'] = self.taskflow_md_5
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
         if self.trigger_user is not None:
             result['TriggerUser'] = self.trigger_user
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CompletedBeginTime') is not None:
+            self.completed_begin_time = m.get('CompletedBeginTime')
+        if m.get('CompletedEndTime') is not None:
+            self.completed_end_time = m.get('CompletedEndTime')
         if m.get('EndMillis') is not None:
             self.end_millis = m.get('EndMillis')
         if m.get('Lang') is not None:
@@ -7329,6 +7151,8 @@ class DescribeSoarRecordsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PlaybookUuid') is not None:
             self.playbook_uuid = m.get('PlaybookUuid')
+        if m.get('QueryValue') is not None:
+            self.query_value = m.get('QueryValue')
         if m.get('RequestUuid') is not None:
             self.request_uuid = m.get('RequestUuid')
         if m.get('StartMillis') is not None:
@@ -7337,6 +7161,8 @@ class DescribeSoarRecordsRequest(TeaModel):
             self.task_status = m.get('TaskStatus')
         if m.get('TaskflowMd5') is not None:
             self.taskflow_md_5 = m.get('TaskflowMd5')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
         if m.get('TriggerUser') is not None:
             self.trigger_user = m.get('TriggerUser')
         return self
@@ -7384,18 +7210,56 @@ class DescribeSoarRecordsResponseBodyPage(TeaModel):
         return self
 
 
+class DescribeSoarRecordsResponseBodySoarExecuteRecordsOutputList(TeaModel):
+    def __init__(
+        self,
+        action_uuid: str = None,
+        content: str = None,
+        node_name: str = None,
+    ):
+        self.action_uuid = action_uuid
+        self.content = content
+        self.node_name = node_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_uuid is not None:
+            result['ActionUuid'] = self.action_uuid
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionUuid') is not None:
+            self.action_uuid = m.get('ActionUuid')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        return self
+
+
 class DescribeSoarRecordsResponseBodySoarExecuteRecords(TeaModel):
     def __init__(
         self,
         end_time: int = None,
         error_msg: str = None,
+        output_list: List[DescribeSoarRecordsResponseBodySoarExecuteRecordsOutputList] = None,
         raw_event_req: str = None,
         request_uuid: str = None,
-        result_message: str = None,
         start_time: int = None,
         status: str = None,
         task_name: str = None,
-        task_type: str = None,
         taskflow_md_5: str = None,
         trigger_type: str = None,
         trigger_user: str = None,
@@ -7404,12 +7268,11 @@ class DescribeSoarRecordsResponseBodySoarExecuteRecords(TeaModel):
         self.end_time = end_time
         # The error message of the playbook task. This field is empty when the task succeeds.
         self.error_msg = error_msg
+        self.output_list = output_list
         # The request parameters of the playbook task.
         self.raw_event_req = raw_event_req
         # The request ID of the playbook task, a unique ID for each task run.
         self.request_uuid = request_uuid
-        # The return information of the playbook, defined by the user within the playbook.
-        self.result_message = result_message
         # The start time of the task execution, in 13-digit timestamp format.
         self.start_time = start_time
         # The status of the playbook task. Values:
@@ -7420,11 +7283,6 @@ class DescribeSoarRecordsResponseBodySoarExecuteRecords(TeaModel):
         self.status = status
         # The name of the playbook task, which is the same as the playbook\\"s UUID.
         self.task_name = task_name
-        # The type of the playbook task, with values:
-        # 
-        # - **general**: Represents a general playbook task.
-        # - **standard**: Represents a component execution task.
-        self.task_type = task_type
         # The MD5 value of the playbook configuration.
         self.taskflow_md_5 = taskflow_md_5
         # The type of the playbook task. Values:
@@ -7437,7 +7295,10 @@ class DescribeSoarRecordsResponseBodySoarExecuteRecords(TeaModel):
         self.trigger_user = trigger_user
 
     def validate(self):
-        pass
+        if self.output_list:
+            for k in self.output_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7449,20 +7310,20 @@ class DescribeSoarRecordsResponseBodySoarExecuteRecords(TeaModel):
             result['EndTime'] = self.end_time
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        result['OutputList'] = []
+        if self.output_list is not None:
+            for k in self.output_list:
+                result['OutputList'].append(k.to_map() if k else None)
         if self.raw_event_req is not None:
             result['RawEventReq'] = self.raw_event_req
         if self.request_uuid is not None:
             result['RequestUuid'] = self.request_uuid
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.task_name is not None:
             result['TaskName'] = self.task_name
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
         if self.taskflow_md_5 is not None:
             result['TaskflowMd5'] = self.taskflow_md_5
         if self.trigger_type is not None:
@@ -7477,20 +7338,21 @@ class DescribeSoarRecordsResponseBodySoarExecuteRecords(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        self.output_list = []
+        if m.get('OutputList') is not None:
+            for k in m.get('OutputList'):
+                temp_model = DescribeSoarRecordsResponseBodySoarExecuteRecordsOutputList()
+                self.output_list.append(temp_model.from_map(k))
         if m.get('RawEventReq') is not None:
             self.raw_event_req = m.get('RawEventReq')
         if m.get('RequestUuid') is not None:
             self.request_uuid = m.get('RequestUuid')
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
         if m.get('TaskflowMd5') is not None:
             self.taskflow_md_5 = m.get('TaskflowMd5')
         if m.get('TriggerType') is not None:
@@ -7600,6 +7462,10 @@ class DescribeSoarTaskAndActionsRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        query_type: str = None,
+        query_value: str = None,
         request_uuid: str = None,
     ):
         # The language of the content within the request and response.
@@ -7607,6 +7473,10 @@ class DescribeSoarTaskAndActionsRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
+        self.page_number = page_number
+        self.page_size = page_size
+        self.query_type = query_type
+        self.query_value = query_value
         # The playbook UUID.
         self.request_uuid = request_uuid
 
@@ -7621,6 +7491,14 @@ class DescribeSoarTaskAndActionsRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.query_value is not None:
+            result['QueryValue'] = self.query_value
         if self.request_uuid is not None:
             result['RequestUuid'] = self.request_uuid
         return result
@@ -7629,6 +7507,14 @@ class DescribeSoarTaskAndActionsRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('QueryValue') is not None:
+            self.query_value = m.get('QueryValue')
         if m.get('RequestUuid') is not None:
             self.request_uuid = m.get('RequestUuid')
         return self
@@ -7643,12 +7529,8 @@ class DescribeSoarTaskAndActionsResponseBodyDetailsActions(TeaModel):
         component: str = None,
         end_time: int = None,
         node_name: str = None,
-        request_uuid: str = None,
         start_time: int = None,
         status: str = None,
-        task_name: str = None,
-        task_status: str = None,
-        trigger_user: str = None,
     ):
         # The action name of the component.
         self.action = action
@@ -7662,8 +7544,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetailsActions(TeaModel):
         self.end_time = end_time
         # The custom name of the node in the component.
         self.node_name = node_name
-        # The request ID of the task. The value is unique.
-        self.request_uuid = request_uuid
         # The beginning of the time range during which the component is run. The value is a 13-digit timestamp.
         self.start_time = start_time
         # The running result of the component. Valid values:
@@ -7671,14 +7551,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetailsActions(TeaModel):
         # *   **success**\
         # *   **fail**\
         self.status = status
-        # The name of the task. The value is the same as the playbook UUID.
-        self.task_name = task_name
-        # The status of the triggered component action.
-        # 
-        # >  This parameter is disabled and left empty.
-        self.task_status = task_status
-        # The ID of the Alibaba Cloud account that is used to execute the task.
-        self.trigger_user = trigger_user
 
     def validate(self):
         pass
@@ -7701,18 +7573,10 @@ class DescribeSoarTaskAndActionsResponseBodyDetailsActions(TeaModel):
             result['EndTime'] = self.end_time
         if self.node_name is not None:
             result['NodeName'] = self.node_name
-        if self.request_uuid is not None:
-            result['RequestUuid'] = self.request_uuid
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
-        if self.task_name is not None:
-            result['TaskName'] = self.task_name
-        if self.task_status is not None:
-            result['TaskStatus'] = self.task_status
-        if self.trigger_user is not None:
-            result['TriggerUser'] = self.trigger_user
         return result
 
     def from_map(self, m: dict = None):
@@ -7729,39 +7593,30 @@ class DescribeSoarTaskAndActionsResponseBodyDetailsActions(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
-        if m.get('RequestUuid') is not None:
-            self.request_uuid = m.get('RequestUuid')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('TaskName') is not None:
-            self.task_name = m.get('TaskName')
-        if m.get('TaskStatus') is not None:
-            self.task_status = m.get('TaskStatus')
-        if m.get('TriggerUser') is not None:
-            self.trigger_user = m.get('TriggerUser')
         return self
 
 
 class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
     def __init__(
         self,
+        action_log_num: int = None,
         actions: List[DescribeSoarTaskAndActionsResponseBodyDetailsActions] = None,
         end_time: int = None,
         error_msg: str = None,
         raw_event_req: str = None,
         request_uuid: str = None,
-        result_level: str = None,
-        result_message: str = None,
         start_time: int = None,
         status: str = None,
         task_flow_md_5: str = None,
         task_name: str = None,
-        task_tenant_id: str = None,
         trigger_type: str = None,
         trigger_user: str = None,
     ):
+        self.action_log_num = action_log_num
         # The list of component actions during the running of the playbook.
         self.actions = actions
         # The end of the time range during which the playbook is run. The value is a 13-digit timestamp.
@@ -7772,10 +7627,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
         self.raw_event_req = raw_event_req
         # The request ID of the task. The value is unique.
         self.request_uuid = request_uuid
-        # The flag of the task. For debugging tasks, the value is **DEBUG**. For other tasks, the parameter is left empty.
-        self.result_level = result_level
-        # The returned information about the playbook. You can define the value in the playbook.
-        self.result_message = result_message
         # The beginning of the time range during which the playbook is run. The value is a 13-digit timestamp.
         self.start_time = start_time
         # The task status. Valid values:
@@ -7788,8 +7639,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
         self.task_flow_md_5 = task_flow_md_5
         # The name of the task. The value is the same as the playbook UUID.
         self.task_name = task_name
-        # The ID of the Alibaba Cloud account to which the task belongs.
-        self.task_tenant_id = task_tenant_id
         # The task type. Valid values:
         # 
         # *   **debug**: a debugging task
@@ -7811,6 +7660,8 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
             return _map
 
         result = dict()
+        if self.action_log_num is not None:
+            result['ActionLogNum'] = self.action_log_num
         result['Actions'] = []
         if self.actions is not None:
             for k in self.actions:
@@ -7823,10 +7674,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
             result['RawEventReq'] = self.raw_event_req
         if self.request_uuid is not None:
             result['RequestUuid'] = self.request_uuid
-        if self.result_level is not None:
-            result['ResultLevel'] = self.result_level
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -7835,8 +7682,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
             result['TaskFlowMd5'] = self.task_flow_md_5
         if self.task_name is not None:
             result['TaskName'] = self.task_name
-        if self.task_tenant_id is not None:
-            result['TaskTenantId'] = self.task_tenant_id
         if self.trigger_type is not None:
             result['TriggerType'] = self.trigger_type
         if self.trigger_user is not None:
@@ -7845,6 +7690,8 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActionLogNum') is not None:
+            self.action_log_num = m.get('ActionLogNum')
         self.actions = []
         if m.get('Actions') is not None:
             for k in m.get('Actions'):
@@ -7858,10 +7705,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
             self.raw_event_req = m.get('RawEventReq')
         if m.get('RequestUuid') is not None:
             self.request_uuid = m.get('RequestUuid')
-        if m.get('ResultLevel') is not None:
-            self.result_level = m.get('ResultLevel')
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
@@ -7870,8 +7713,6 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
             self.task_flow_md_5 = m.get('TaskFlowMd5')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
-        if m.get('TaskTenantId') is not None:
-            self.task_tenant_id = m.get('TaskTenantId')
         if m.get('TriggerType') is not None:
             self.trigger_type = m.get('TriggerType')
         if m.get('TriggerUser') is not None:
@@ -7879,20 +7720,63 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(TeaModel):
         return self
 
 
+class DescribeSoarTaskAndActionsResponseBodyPage(TeaModel):
+    def __init__(
+        self,
+        page_number: str = None,
+        page_size: str = None,
+        total_count: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
 class DescribeSoarTaskAndActionsResponseBody(TeaModel):
     def __init__(
         self,
         details: DescribeSoarTaskAndActionsResponseBodyDetails = None,
+        page: DescribeSoarTaskAndActionsResponseBodyPage = None,
         request_id: str = None,
     ):
         # The execution details of each task.
         self.details = details
+        self.page = page
         # The request ID.
         self.request_id = request_id
 
     def validate(self):
         if self.details:
             self.details.validate()
+        if self.page:
+            self.page.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7902,6 +7786,8 @@ class DescribeSoarTaskAndActionsResponseBody(TeaModel):
         result = dict()
         if self.details is not None:
             result['Details'] = self.details.to_map()
+        if self.page is not None:
+            result['Page'] = self.page.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -7911,6 +7797,9 @@ class DescribeSoarTaskAndActionsResponseBody(TeaModel):
         if m.get('Details') is not None:
             temp_model = DescribeSoarTaskAndActionsResponseBodyDetails()
             self.details = temp_model.from_map(m['Details'])
+        if m.get('Page') is not None:
+            temp_model = DescribeSoarTaskAndActionsResponseBodyPage()
+            self.page = temp_model.from_map(m['Page'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -8188,11 +8077,24 @@ class DescribeVendorApiListRequest(TeaModel):
         product_code: str = None,
         vendor_code: str = None,
     ):
+        # The name of the Alibaba Cloud product interface, supporting fuzzy search.
         self.api_name = api_name
+        # Keyword.
         self.key_word = key_word
+        # The current page number for pagination. The default value is 1.
         self.page_number = page_number
+        # The number of items per page when displaying paginated results. The default is 10.
         self.page_size = page_size
+        # Vendor\\"s product identifier:
+        # - **waf**: Web Application Firewall.
+        # - **cfw**: Cloud Firewall.
         self.product_code = product_code
+        # Vendor code:
+        # - **Tencent**: Tencent.
+        # - **HUAWEICLOUD**: Huawei.
+        # - **Azure**: Microsoft Azure.
+        # - **AWS**: Amazon Web Services.
+        # - **Chaitin**: Chaitin.
         self.vendor_code = vendor_code
 
     def validate(self):
@@ -8252,18 +8154,48 @@ class DescribeVendorApiListResponseBodyApiList(TeaModel):
         protocol: str = None,
         vendor_code: str = None,
     ):
+        # Advanced configuration for the API.
         self.advance_config = advance_config
+        # The name of the vendor\\"s API.
         self.api_name = api_name
+        # The version number of the API.
         self.api_version = api_version
+        # Request methods: 
+        # - **POST**: POST request method. 
+        # - **GET**: GET request method. 
+        # - **PUT**: PUT request method. 
+        # - **DELETE**: DELETE request method.
         self.method = method
+        # Indicates whether advanced configuration is included.
+        # - **true**: Yes.
+        # - **false**: No.
         self.need_advance_config = need_advance_config
+        # Indicates whether pagination is needed.
+        # - **true**: Yes.
+        # - **false**: No.
         self.need_page_info = need_page_info
+        # Information displayed on the page.
         self.page_info = page_info
+        # Interface request parameter configuration information.
         self.parameter = parameter
+        # Vendor\\"s product identifier:
+        # - **waf**: Web Application Firewall.
+        # - **cfw**: Cloud Firewall.
         self.product_code = product_code
+        # Default domain of the product.
         self.product_domain = product_domain
+        # Product name.
         self.product_name = product_name
+        # Request protocol. Values:
+        # - **http**: HTTP request protocol.
+        # - **https**: HTTPS request protocol.
         self.protocol = protocol
+        # Vendor code:
+        # - **Tencent**: Tencent.
+        # - **HUAWEICLOUD**: Huawei.
+        # - **Azure**: Microsoft Azure.
+        # - **AWS**: Amazon Web Services.
+        # - **Chaitin**: Chaitin.
         self.vendor_code = vendor_code
 
     def validate(self):
@@ -8341,8 +8273,11 @@ class DescribeVendorApiListResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number in the pagination query.
         self.page_number = page_number
+        # The number of items displayed per page in the pagination query.
         self.page_size = page_size
+        # Total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -8380,8 +8315,11 @@ class DescribeVendorApiListResponseBody(TeaModel):
         page: DescribeVendorApiListResponseBodyPage = None,
         request_id: str = None,
     ):
+        # Product information.
         self.api_list = api_list
+        # Pagination query information.
         self.page = page
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request, and can be used to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8973,129 +8911,6 @@ class ModifyPlaybookInputOutputResponse(TeaModel):
         return self
 
 
-class ModifyPlaybookInstanceStatusRequest(TeaModel):
-    def __init__(
-        self,
-        active: int = None,
-        lang: str = None,
-        playbook_uuid: str = None,
-    ):
-        # The playbook status. Valid values:
-        # 
-        # *   **1**: starts the playbook.
-        # *   **0**: stops the playbook.
-        # 
-        # This parameter is required.
-        self.active = active
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
-        self.lang = lang
-        # The playbook UUID.
-        # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
-        # 
-        # This parameter is required.
-        self.playbook_uuid = playbook_uuid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.active is not None:
-            result['Active'] = self.active
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.playbook_uuid is not None:
-            result['PlaybookUuid'] = self.playbook_uuid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Active') is not None:
-            self.active = m.get('Active')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('PlaybookUuid') is not None:
-            self.playbook_uuid = m.get('PlaybookUuid')
-        return self
-
-
-class ModifyPlaybookInstanceStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ModifyPlaybookInstanceStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyPlaybookInstanceStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyPlaybookInstanceStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class PublishPlaybookRequest(TeaModel):
     def __init__(
         self,
@@ -9311,142 +9126,6 @@ class QueryTreeDataResponse(TeaModel):
         return self
 
 
-class RenamePlaybookNodeRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        new_node_name: str = None,
-        old_node_name: str = None,
-        playbook_uuid: str = None,
-    ):
-        # The language of the content within the request and the response. Valid values:
-        # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
-        self.lang = lang
-        # The new name of the node.
-        # 
-        # This parameter is required.
-        self.new_node_name = new_node_name
-        # The original name of the node.
-        # 
-        # This parameter is required.
-        self.old_node_name = old_node_name
-        # The UUID of the playbook.
-        # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
-        # 
-        # This parameter is required.
-        self.playbook_uuid = playbook_uuid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.new_node_name is not None:
-            result['NewNodeName'] = self.new_node_name
-        if self.old_node_name is not None:
-            result['OldNodeName'] = self.old_node_name
-        if self.playbook_uuid is not None:
-            result['PlaybookUuid'] = self.playbook_uuid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('NewNodeName') is not None:
-            self.new_node_name = m.get('NewNodeName')
-        if m.get('OldNodeName') is not None:
-            self.old_node_name = m.get('OldNodeName')
-        if m.get('PlaybookUuid') is not None:
-            self.playbook_uuid = m.get('PlaybookUuid')
-        return self
-
-
-class RenamePlaybookNodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        rename_result: str = None,
-        request_id: str = None,
-    ):
-        # The returned new name of the node.
-        self.rename_result = rename_result
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.rename_result is not None:
-            result['RenameResult'] = self.rename_result
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RenameResult') is not None:
-            self.rename_result = m.get('RenameResult')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RenamePlaybookNodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RenamePlaybookNodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RenamePlaybookNodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RevertPlaybookReleaseRequest(TeaModel):
     def __init__(
         self,
@@ -9573,7 +9252,7 @@ class RunNotifyComponentWithEmailRequest(TeaModel):
     def __init__(
         self,
         action_name: str = None,
-        asset_id: int = None,
+        asset_id: str = None,
         component_name: str = None,
         content: str = None,
         lang: str = None,
@@ -9584,23 +9263,50 @@ class RunNotifyComponentWithEmailRequest(TeaModel):
         role_type: str = None,
         subject: str = None,
     ):
+        # The action name of the component.
+        # 
         # This parameter is required.
         self.action_name = action_name
-        # This parameter is required.
+        # The resource instance ID of the email sender.
+        # 
+        # >  You can call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to query the ID.
         self.asset_id = asset_id
+        # The name of component in the playbook.
+        # 
         # This parameter is required.
         self.component_name = component_name
+        # The body of the email.
+        # 
         # This parameter is required.
         self.content = content
+        # The language of the content within the request and the response. Valid value:
+        # 
+        # *   **zh** (default): Chinese.
+        # *   **en**: English.
         self.lang = lang
+        # The name of the node in the playbook.
+        # 
         # This parameter is required.
         self.node_name = node_name
+        # The UUID of the playbook.
+        # 
+        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+        # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
+        # The email addresses.
+        # 
         # This parameter is required.
         self.receivers = receivers
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *   0: the view of the current Alibaba Cloud account.
+        # *   1: the view of all accounts for the enterprise.
         self.role_type = role_type
+        # The subject of the email.
+        # 
         # This parameter is required.
         self.subject = subject
 
@@ -9671,8 +9377,11 @@ class RunNotifyComponentWithEmailResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9710,8 +9419,11 @@ class RunNotifyComponentWithEmailResponseBody(TeaModel):
         page: RunNotifyComponentWithEmailResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The pagination information.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9790,7 +9502,7 @@ class RunNotifyComponentWithMessageCenterRequest(TeaModel):
         self,
         action_name: str = None,
         aliuid: str = None,
-        asset_id: int = None,
+        asset_id: str = None,
         channel_type_list: List[str] = None,
         component_name: str = None,
         event_id: str = None,
@@ -9801,23 +9513,52 @@ class RunNotifyComponentWithMessageCenterRequest(TeaModel):
         role_for: int = None,
         role_type: str = None,
     ):
+        # The action name of the playbook.
+        # 
         # This parameter is required.
         self.action_name = action_name
+        # The user ID receiving the message.
+        # 
         # This parameter is required.
         self.aliuid = aliuid
+        # Resource instance ID. This parameter is currently deprecated and no longer in use.
         self.asset_id = asset_id
+        # Collection of channel types. If not provided, all channels will be used by default, and it is not required to provide this parameter by default.
         self.channel_type_list = channel_type_list
+        # The component name of the playbook.
+        # 
         # This parameter is required.
         self.component_name = component_name
+        # Cloud Pigeon\\"s message event ID. Values:
+        # - yundun_soar_incident_generate: Incident generation.
+        # - yundun_soar_alert_generate: Alert generation.
+        # - yundun_soar_incident_update: Incident update.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # The language type for requesting and receiving messages. Values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The node name of the playbook.
+        # 
         # This parameter is required.
         self.node_name = node_name
+        # Template parameters for the message event.
+        # - For incident generation: aliyunUID, incidentName, incidentID, startTime
+        # - For alert generation: aliyunUID, alertName, alertID, startTime
+        # - For incident update: aliyunUID, incidentName, incidentID, startTime, endTime, status, level
         self.params = params
+        # The UUID of the playbook.
+        # > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
+        # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
+        # The user ID when an administrator switches to another member\\"s perspective.
         self.role_for = role_for
+        # View type. Values:
+        # - 0 (default): Current Alibaba Cloud account view.
+        # - 1: View for all accounts under the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -9891,8 +9632,11 @@ class RunNotifyComponentWithMessageCenterResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Page number in pagination queries.
         self.page_number = page_number
+        # The number of items to display per page when performing a paginated query.
         self.page_size = page_size
+        # Number of list entries.
         self.total_count = total_count
 
     def validate(self):
@@ -9930,8 +9674,11 @@ class RunNotifyComponentWithMessageCenterResponseBody(TeaModel):
         page: RunNotifyComponentWithMessageCenterResponseBodyPage = None,
         request_id: str = None,
     ):
+        # Data returned by the interface.
         self.data = data
+        # Pagination query information.
         self.page = page
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request, and can be used for troubleshooting and problem localization.
         self.request_id = request_id
 
     def validate(self):
@@ -10009,7 +9756,7 @@ class RunNotifyComponentWithWebhookRequest(TeaModel):
     def __init__(
         self,
         action_name: str = None,
-        asset_id: int = None,
+        asset_id: str = None,
         component_name: str = None,
         content: str = None,
         lang: str = None,
@@ -10021,23 +9768,55 @@ class RunNotifyComponentWithWebhookRequest(TeaModel):
         secret: str = None,
         webhook: str = None,
     ):
+        # The name of the action in the playbook.
+        # 
         # This parameter is required.
         self.action_name = action_name
+        # The ID of the resource. This parameter is deprecated.
         self.asset_id = asset_id
+        # The name of the component in the playbook.
+        # 
         # This parameter is required.
         self.component_name = component_name
+        # The message body sent by the DingTalk group chatbot webhook.
+        # 
         # This parameter is required.
         self.content = content
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese.
+        # *   **en**: English.
         self.lang = lang
+        # The type of the webhook message. Valid values:
+        # *   text.
+        # *   markdown.
+        # *   actionCard.
+        # 
         # This parameter is required.
         self.msg_type = msg_type
+        # The name of the node in the playbook.
+        # 
         # This parameter is required.
         self.node_name = node_name
+        # The UUID of the playbook.
+        # 
+        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+        # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
+        # The ID of the user who switches from the current view to the destination view by using the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *   0 (default): the view of the current Alibaba Cloud account.
+        # *   1: the view of all accounts for the enterprise.
         self.role_type = role_type
+        # The message key of the DingTalk chatbot webhook. This parameter is deprecated.
         self.secret = secret
+        # The IDs of chatbots that are configured in the message center. Only DingTalk chatbots are supported.
+        # 
+        # >  You can call the [ListEncryptWebhooks](~~ListEncryptWebhooks~~) operation to query the chatbot IDs.
+        # 
         # This parameter is required.
         self.webhook = webhook
 
@@ -10112,8 +9891,11 @@ class RunNotifyComponentWithWebhookResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10151,8 +9933,11 @@ class RunNotifyComponentWithWebhookResponseBody(TeaModel):
         page: RunNotifyComponentWithWebhookResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The pagination information.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10233,6 +10018,7 @@ class RunPython3ScriptRequest(TeaModel):
         params: str = None,
         playbook_uuid: str = None,
         python_script: str = None,
+        python_version: str = None,
     ):
         # The name of the node in the playbook.
         self.node_name = node_name
@@ -10244,6 +10030,7 @@ class RunPython3ScriptRequest(TeaModel):
         self.playbook_uuid = playbook_uuid
         # The Python3 script.
         self.python_script = python_script
+        self.python_version = python_version
 
     def validate(self):
         pass
@@ -10262,6 +10049,8 @@ class RunPython3ScriptRequest(TeaModel):
             result['PlaybookUuid'] = self.playbook_uuid
         if self.python_script is not None:
             result['PythonScript'] = self.python_script
+        if self.python_version is not None:
+            result['PythonVersion'] = self.python_version
         return result
 
     def from_map(self, m: dict = None):
@@ -10274,6 +10063,8 @@ class RunPython3ScriptRequest(TeaModel):
             self.playbook_uuid = m.get('PlaybookUuid')
         if m.get('PythonScript') is not None:
             self.python_script = m.get('PythonScript')
+        if m.get('PythonVersion') is not None:
+            self.python_version = m.get('PythonVersion')
         return self
 
 
@@ -10763,12 +10554,8 @@ class VerifyPlaybookRequest(TeaModel):
         # The playbook UUID.
         # 
         # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
-        # 
-        # This parameter is required.
         self.playbook_uuid = playbook_uuid
         # The XML configuration of the playbook.
-        # 
-        # This parameter is required.
         self.task_flow = task_flow
 
     def validate(self):
@@ -10841,20 +10628,59 @@ class VerifyPlaybookResponseBodyCheckTaskInfos(TeaModel):
         return self
 
 
+class VerifyPlaybookResponseBodyPrerequisites(TeaModel):
+    def __init__(
+        self,
+        prerequisite_type: str = None,
+        prerequisite_value: str = None,
+    ):
+        self.prerequisite_type = prerequisite_type
+        self.prerequisite_value = prerequisite_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prerequisite_type is not None:
+            result['PrerequisiteType'] = self.prerequisite_type
+        if self.prerequisite_value is not None:
+            result['PrerequisiteValue'] = self.prerequisite_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrerequisiteType') is not None:
+            self.prerequisite_type = m.get('PrerequisiteType')
+        if m.get('PrerequisiteValue') is not None:
+            self.prerequisite_value = m.get('PrerequisiteValue')
+        return self
+
+
 class VerifyPlaybookResponseBody(TeaModel):
     def __init__(
         self,
         check_task_infos: List[VerifyPlaybookResponseBodyCheckTaskInfos] = None,
+        prerequisites: List[VerifyPlaybookResponseBodyPrerequisites] = None,
         request_id: str = None,
     ):
         # The result of the verification.
         self.check_task_infos = check_task_infos
+        self.prerequisites = prerequisites
         # The request ID.
         self.request_id = request_id
 
     def validate(self):
         if self.check_task_infos:
             for k in self.check_task_infos:
+                if k:
+                    k.validate()
+        if self.prerequisites:
+            for k in self.prerequisites:
                 if k:
                     k.validate()
 
@@ -10868,6 +10694,10 @@ class VerifyPlaybookResponseBody(TeaModel):
         if self.check_task_infos is not None:
             for k in self.check_task_infos:
                 result['CheckTaskInfos'].append(k.to_map() if k else None)
+        result['Prerequisites'] = []
+        if self.prerequisites is not None:
+            for k in self.prerequisites:
+                result['Prerequisites'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -10879,6 +10709,11 @@ class VerifyPlaybookResponseBody(TeaModel):
             for k in m.get('CheckTaskInfos'):
                 temp_model = VerifyPlaybookResponseBodyCheckTaskInfos()
                 self.check_task_infos.append(temp_model.from_map(k))
+        self.prerequisites = []
+        if m.get('Prerequisites') is not None:
+            for k in m.get('Prerequisites'):
+                temp_model = VerifyPlaybookResponseBodyPrerequisites()
+                self.prerequisites.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self

@@ -41,126 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def batch_modify_instance_status_with_options(
-        self,
-        request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
-        """
-        @summary Modifies the statuses of playbooks at a time.
-        
-        @param request: BatchModifyInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchModifyInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        body = {}
-        if not UtilClient.is_unset(request.active):
-            body['Active'] = request.active
-        if not UtilClient.is_unset(request.playbook_uuid):
-            body['PlaybookUuid'] = request.playbook_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BatchModifyInstanceStatus',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.BatchModifyInstanceStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.BatchModifyInstanceStatusResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def batch_modify_instance_status_with_options_async(
-        self,
-        request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
-        """
-        @summary Modifies the statuses of playbooks at a time.
-        
-        @param request: BatchModifyInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchModifyInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        body = {}
-        if not UtilClient.is_unset(request.active):
-            body['Active'] = request.active
-        if not UtilClient.is_unset(request.playbook_uuid):
-            body['PlaybookUuid'] = request.playbook_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BatchModifyInstanceStatus',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.BatchModifyInstanceStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.BatchModifyInstanceStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def batch_modify_instance_status(
-        self,
-        request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
-    ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
-        """
-        @summary Modifies the statuses of playbooks at a time.
-        
-        @param request: BatchModifyInstanceStatusRequest
-        @return: BatchModifyInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.batch_modify_instance_status_with_options(request, runtime)
-
-    async def batch_modify_instance_status_async(
-        self,
-        request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
-    ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
-        """
-        @summary Modifies the statuses of playbooks at a time.
-        
-        @param request: BatchModifyInstanceStatusRequest
-        @return: BatchModifyInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.batch_modify_instance_status_with_options_async(request, runtime)
-
     def compare_playbooks_with_options(
         self,
         request: sophonsoar_20220728_models.ComparePlaybooksRequest,
@@ -197,16 +77,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ComparePlaybooksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ComparePlaybooksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ComparePlaybooksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def compare_playbooks_with_options_async(
         self,
@@ -244,16 +118,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ComparePlaybooksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ComparePlaybooksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ComparePlaybooksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def compare_playbooks(
         self,
@@ -321,16 +189,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ConvertPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ConvertPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ConvertPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def convert_playbook_with_options_async(
         self,
@@ -372,16 +234,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ConvertPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ConvertPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ConvertPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def convert_playbook(
         self,
@@ -419,7 +275,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.CopyPlaybookResponse:
         """
-        @summary 剧本复制
+        @summary Copies a playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: CopyPlaybookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -457,16 +315,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CopyPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CopyPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.CopyPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def copy_playbook_with_options_async(
         self,
@@ -474,7 +326,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.CopyPlaybookResponse:
         """
-        @summary 剧本复制
+        @summary Copies a playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: CopyPlaybookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -512,23 +366,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CopyPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CopyPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.CopyPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def copy_playbook(
         self,
         request: sophonsoar_20220728_models.CopyPlaybookRequest,
     ) -> sophonsoar_20220728_models.CopyPlaybookResponse:
         """
-        @summary 剧本复制
+        @summary Copies a playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: CopyPlaybookRequest
         @return: CopyPlaybookResponse
@@ -541,7 +391,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.CopyPlaybookRequest,
     ) -> sophonsoar_20220728_models.CopyPlaybookResponse:
         """
-        @summary 剧本复制
+        @summary Copies a playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: CopyPlaybookRequest
         @return: CopyPlaybookResponse
@@ -569,8 +421,12 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.display_name):
             body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.input_params):
+            body['InputParams'] = request.input_params
         if not UtilClient.is_unset(request.lang):
             body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.output_params):
+            body['OutputParams'] = request.output_params
         if not UtilClient.is_unset(request.taskflow_type):
             body['TaskflowType'] = request.taskflow_type
         req = open_api_models.OpenApiRequest(
@@ -587,16 +443,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CreatePlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CreatePlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.CreatePlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_playbook_with_options_async(
         self,
@@ -618,8 +468,12 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.display_name):
             body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.input_params):
+            body['InputParams'] = request.input_params
         if not UtilClient.is_unset(request.lang):
             body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.output_params):
+            body['OutputParams'] = request.output_params
         if not UtilClient.is_unset(request.taskflow_type):
             body['TaskflowType'] = request.taskflow_type
         req = open_api_models.OpenApiRequest(
@@ -636,16 +490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CreatePlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.CreatePlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.CreatePlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_playbook(
         self,
@@ -713,16 +561,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DebugPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DebugPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DebugPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def debug_playbook_with_options_async(
         self,
@@ -760,16 +602,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DebugPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DebugPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DebugPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def debug_playbook(
         self,
@@ -829,16 +665,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeleteComponentAssetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeleteComponentAssetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DeleteComponentAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_component_asset_with_options_async(
         self,
@@ -872,16 +702,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeleteComponentAssetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeleteComponentAssetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DeleteComponentAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_component_asset(
         self,
@@ -941,16 +765,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeletePlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeletePlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DeletePlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_playbook_with_options_async(
         self,
@@ -984,16 +802,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeletePlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DeletePlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DeletePlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_playbook(
         self,
@@ -1049,16 +861,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetFormResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetFormResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentAssetFormResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_component_asset_form_with_options_async(
         self,
@@ -1088,16 +894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetFormResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetFormResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentAssetFormResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_component_asset_form(
         self,
@@ -1153,16 +953,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_component_assets_with_options_async(
         self,
@@ -1192,16 +986,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentAssetsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_component_assets(
         self,
@@ -1257,16 +1045,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_component_list_with_options_async(
         self,
@@ -1296,16 +1078,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_component_list(
         self,
@@ -1361,16 +1137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_component_playbook_with_options_async(
         self,
@@ -1400,16 +1170,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_component_playbook(
         self,
@@ -1465,16 +1229,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentsJsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentsJsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentsJsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_components_js_with_options_async(
         self,
@@ -1504,16 +1262,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentsJsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeComponentsJsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeComponentsJsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_components_js(
         self,
@@ -1569,16 +1321,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeDistinctReleasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeDistinctReleasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeDistinctReleasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_distinct_releases_with_options_async(
         self,
@@ -1608,16 +1354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeDistinctReleasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeDistinctReleasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeDistinctReleasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_distinct_releases(
         self,
@@ -1673,16 +1413,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeEnumItemsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeEnumItemsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeEnumItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_enum_items_with_options_async(
         self,
@@ -1712,16 +1446,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeEnumItemsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeEnumItemsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeEnumItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_enum_items(
         self,
@@ -1777,16 +1505,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeExecutePlaybooksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeExecutePlaybooksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeExecutePlaybooksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_execute_playbooks_with_options_async(
         self,
@@ -1816,16 +1538,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeExecutePlaybooksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeExecutePlaybooksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeExecutePlaybooksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_execute_playbooks(
         self,
@@ -1881,16 +1597,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeFieldResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeFieldResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_field_with_options_async(
         self,
@@ -1920,16 +1630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeFieldResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeFieldResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_field(
         self,
@@ -1963,7 +1667,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeGroupProductionsResponse:
         """
-        @summary 获取OpenAPI的产品列表
+        @summary Queries groups of Alibaba Cloud services.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeGroupProductionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1985,16 +1691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeGroupProductionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeGroupProductionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeGroupProductionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_group_productions_with_options_async(
         self,
@@ -2002,7 +1702,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeGroupProductionsResponse:
         """
-        @summary 获取OpenAPI的产品列表
+        @summary Queries groups of Alibaba Cloud services.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeGroupProductionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2024,23 +1726,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeGroupProductionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeGroupProductionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeGroupProductionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_group_productions(
         self,
         request: sophonsoar_20220728_models.DescribeGroupProductionsRequest,
     ) -> sophonsoar_20220728_models.DescribeGroupProductionsResponse:
         """
-        @summary 获取OpenAPI的产品列表
+        @summary Queries groups of Alibaba Cloud services.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeGroupProductionsRequest
         @return: DescribeGroupProductionsResponse
@@ -2053,7 +1751,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeGroupProductionsRequest,
     ) -> sophonsoar_20220728_models.DescribeGroupProductionsResponse:
         """
-        @summary 获取OpenAPI的产品列表
+        @summary Queries groups of Alibaba Cloud services.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeGroupProductionsRequest
         @return: DescribeGroupProductionsResponse
@@ -2089,16 +1789,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_latest_record_schema_with_options_async(
         self,
@@ -2128,16 +1822,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_latest_record_schema(
         self,
@@ -2193,16 +1881,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeParamTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeParamTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeNodeParamTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_node_param_tags_with_options_async(
         self,
@@ -2232,16 +1914,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeParamTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeParamTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeNodeParamTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_node_param_tags(
         self,
@@ -2269,117 +1945,15 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_param_tags_with_options_async(request, runtime)
 
-    def describe_node_used_infos_with_options(
-        self,
-        request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
-        """
-        @summary Queries the nodes that reference the same node in a playbook.
-        
-        @param request: DescribeNodeUsedInfosRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeNodeUsedInfosResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeNodeUsedInfos',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeUsedInfosResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeUsedInfosResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def describe_node_used_infos_with_options_async(
-        self,
-        request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
-        """
-        @summary Queries the nodes that reference the same node in a playbook.
-        
-        @param request: DescribeNodeUsedInfosRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeNodeUsedInfosResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeNodeUsedInfos',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeUsedInfosResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNodeUsedInfosResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def describe_node_used_infos(
-        self,
-        request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
-    ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
-        """
-        @summary Queries the nodes that reference the same node in a playbook.
-        
-        @param request: DescribeNodeUsedInfosRequest
-        @return: DescribeNodeUsedInfosResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_node_used_infos_with_options(request, runtime)
-
-    async def describe_node_used_infos_async(
-        self,
-        request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
-    ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
-        """
-        @summary Queries the nodes that reference the same node in a playbook.
-        
-        @param request: DescribeNodeUsedInfosRequest
-        @return: DescribeNodeUsedInfosResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_node_used_infos_with_options_async(request, runtime)
-
     def describe_notify_template_list_with_options(
         self,
         request: sophonsoar_20220728_models.DescribeNotifyTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeNotifyTemplateListResponse:
         """
-        @summary 查询通知消息模版列表
+        @summary Queries notification templates.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeNotifyTemplateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2401,16 +1975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNotifyTemplateListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNotifyTemplateListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeNotifyTemplateListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_notify_template_list_with_options_async(
         self,
@@ -2418,7 +1986,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeNotifyTemplateListResponse:
         """
-        @summary 查询通知消息模版列表
+        @summary Queries notification templates.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeNotifyTemplateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2440,23 +2010,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNotifyTemplateListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeNotifyTemplateListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeNotifyTemplateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_notify_template_list(
         self,
         request: sophonsoar_20220728_models.DescribeNotifyTemplateListRequest,
     ) -> sophonsoar_20220728_models.DescribeNotifyTemplateListResponse:
         """
-        @summary 查询通知消息模版列表
+        @summary Queries notification templates.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeNotifyTemplateListRequest
         @return: DescribeNotifyTemplateListResponse
@@ -2469,7 +2035,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeNotifyTemplateListRequest,
     ) -> sophonsoar_20220728_models.DescribeNotifyTemplateListResponse:
         """
-        @summary 查询通知消息模版列表
+        @summary Queries notification templates.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeNotifyTemplateListRequest
         @return: DescribeNotifyTemplateListResponse
@@ -2483,7 +2051,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeOpenApiInfoResponse:
         """
-        @summary 获取产品接口的详情
+        @summary Queries the details of an API operation.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2505,16 +2075,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeOpenApiInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_open_api_info_with_options_async(
         self,
@@ -2522,7 +2086,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeOpenApiInfoResponse:
         """
-        @summary 获取产品接口的详情
+        @summary Queries the details of an API operation.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2544,23 +2110,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeOpenApiInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_open_api_info(
         self,
         request: sophonsoar_20220728_models.DescribeOpenApiInfoRequest,
     ) -> sophonsoar_20220728_models.DescribeOpenApiInfoResponse:
         """
-        @summary 获取产品接口的详情
+        @summary Queries the details of an API operation.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiInfoRequest
         @return: DescribeOpenApiInfoResponse
@@ -2573,7 +2135,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeOpenApiInfoRequest,
     ) -> sophonsoar_20220728_models.DescribeOpenApiInfoResponse:
         """
-        @summary 获取产品接口的详情
+        @summary Queries the details of an API operation.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiInfoRequest
         @return: DescribeOpenApiInfoResponse
@@ -2587,7 +2151,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeOpenApiListResponse:
         """
-        @summary 获取产品的接口列表
+        @summary Queries the API operations of an Alibaba Cloud service.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or the pricing for log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2609,16 +2175,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeOpenApiListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_open_api_list_with_options_async(
         self,
@@ -2626,7 +2186,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeOpenApiListResponse:
         """
-        @summary 获取产品的接口列表
+        @summary Queries the API operations of an Alibaba Cloud service.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or the pricing for log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2648,23 +2210,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeOpenApiListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeOpenApiListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_open_api_list(
         self,
         request: sophonsoar_20220728_models.DescribeOpenApiListRequest,
     ) -> sophonsoar_20220728_models.DescribeOpenApiListResponse:
         """
-        @summary 获取产品的接口列表
+        @summary Queries the API operations of an Alibaba Cloud service.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or the pricing for log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiListRequest
         @return: DescribeOpenApiListResponse
@@ -2677,7 +2235,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeOpenApiListRequest,
     ) -> sophonsoar_20220728_models.DescribeOpenApiListResponse:
         """
-        @summary 获取产品的接口列表
+        @summary Queries the API operations of an Alibaba Cloud service.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or the pricing for log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeOpenApiListRequest
         @return: DescribeOpenApiListResponse
@@ -2713,16 +2273,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbook_with_options_async(
         self,
@@ -2752,16 +2306,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbook(
         self,
@@ -2817,16 +2365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookInputOutputResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookInputOutputResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookInputOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbook_input_output_with_options_async(
         self,
@@ -2856,16 +2398,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookInputOutputResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookInputOutputResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookInputOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbook_input_output(
         self,
@@ -2921,16 +2457,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbook_metrics_with_options_async(
         self,
@@ -2960,16 +2490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbook_metrics(
         self,
@@ -3025,16 +2549,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbook_nodes_output_with_options_async(
         self,
@@ -3064,16 +2582,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbook_nodes_output(
         self,
@@ -3129,16 +2641,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbook_number_metrics_with_options_async(
         self,
@@ -3168,16 +2674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbook_number_metrics(
         self,
@@ -3233,16 +2733,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookReleasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookReleasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookReleasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbook_releases_with_options_async(
         self,
@@ -3272,16 +2766,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookReleasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybookReleasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybookReleasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbook_releases(
         self,
@@ -3337,16 +2825,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybooksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybooksResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybooksResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_playbooks_with_options_async(
         self,
@@ -3376,16 +2858,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybooksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePlaybooksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePlaybooksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_playbooks(
         self,
@@ -3441,16 +2917,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePopApiResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_pop_api_with_options_async(
         self,
@@ -3480,16 +2950,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribePopApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_pop_api(
         self,
@@ -3517,117 +2981,15 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_pop_api_with_options_async(request, runtime)
 
-    def describe_pop_api_item_list_with_options(
-        self,
-        request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
-        """
-        @summary Queries a list of API operations for an Alibaba Cloud service.
-        
-        @param request: DescribePopApiItemListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePopApiItemListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePopApiItemList',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiItemListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiItemListResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def describe_pop_api_item_list_with_options_async(
-        self,
-        request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
-        """
-        @summary Queries a list of API operations for an Alibaba Cloud service.
-        
-        @param request: DescribePopApiItemListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePopApiItemListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePopApiItemList',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiItemListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribePopApiItemListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def describe_pop_api_item_list(
-        self,
-        request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
-    ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
-        """
-        @summary Queries a list of API operations for an Alibaba Cloud service.
-        
-        @param request: DescribePopApiItemListRequest
-        @return: DescribePopApiItemListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_pop_api_item_list_with_options(request, runtime)
-
-    async def describe_pop_api_item_list_async(
-        self,
-        request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
-    ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
-        """
-        @summary Queries a list of API operations for an Alibaba Cloud service.
-        
-        @param request: DescribePopApiItemListRequest
-        @return: DescribePopApiItemListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_pop_api_item_list_with_options_async(request, runtime)
-
     def describe_process_statistics_with_options(
         self,
         request: sophonsoar_20220728_models.DescribeProcessStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeProcessStatisticsResponse:
         """
-        @summary 获取统计信息
+        @summary Queries statistics.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3649,16 +3011,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessStatisticsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessStatisticsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_process_statistics_with_options_async(
         self,
@@ -3666,7 +3022,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeProcessStatisticsResponse:
         """
-        @summary 获取统计信息
+        @summary Queries statistics.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3688,23 +3046,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessStatisticsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessStatisticsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_process_statistics(
         self,
         request: sophonsoar_20220728_models.DescribeProcessStatisticsRequest,
     ) -> sophonsoar_20220728_models.DescribeProcessStatisticsResponse:
         """
-        @summary 获取统计信息
+        @summary Queries statistics.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessStatisticsRequest
         @return: DescribeProcessStatisticsResponse
@@ -3717,7 +3071,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeProcessStatisticsRequest,
     ) -> sophonsoar_20220728_models.DescribeProcessStatisticsResponse:
         """
-        @summary 获取统计信息
+        @summary Queries statistics.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessStatisticsRequest
         @return: DescribeProcessStatisticsResponse
@@ -3753,16 +3109,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_process_task_count_with_options_async(
         self,
@@ -3792,16 +3142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_process_task_count(
         self,
@@ -3837,86 +3181,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
         
-        @param request: DescribeProcessTasksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeProcessTasksResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.direction):
-            query['Direction'] = request.direction
-        if not UtilClient.is_unset(request.entity_name):
-            query['EntityName'] = request.entity_name
-        if not UtilClient.is_unset(request.entity_type):
-            query['EntityType'] = request.entity_type
-        if not UtilClient.is_unset(request.entity_uuid):
-            query['EntityUuid'] = request.entity_uuid
-        if not UtilClient.is_unset(request.event_uuid):
-            query['EventUuid'] = request.event_uuid
-        if not UtilClient.is_unset(request.order_field):
-            query['OrderField'] = request.order_field
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.param_content):
-            query['ParamContent'] = request.param_content
-        if not UtilClient.is_unset(request.process_action_end):
-            query['ProcessActionEnd'] = request.process_action_end
-        if not UtilClient.is_unset(request.process_action_start):
-            query['ProcessActionStart'] = request.process_action_start
-        if not UtilClient.is_unset(request.process_remove_end):
-            query['ProcessRemoveEnd'] = request.process_remove_end
-        if not UtilClient.is_unset(request.process_remove_start):
-            query['ProcessRemoveStart'] = request.process_remove_start
-        if not UtilClient.is_unset(request.process_strategy_uuid):
-            query['ProcessStrategyUuid'] = request.process_strategy_uuid
-        if not UtilClient.is_unset(request.scene_code):
-            query['SceneCode'] = request.scene_code
-        if not UtilClient.is_unset(request.scope):
-            query['Scope'] = request.scope
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_status):
-            query['TaskStatus'] = request.task_status
-        if not UtilClient.is_unset(request.trigger_source):
-            query['TriggerSource'] = request.trigger_source
-        if not UtilClient.is_unset(request.yun_code):
-            query['YunCode'] = request.yun_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeProcessTasks',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTasksResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTasksResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def describe_process_tasks_with_options_async(
-        self,
-        request: sophonsoar_20220728_models.DescribeProcessTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
-        """
-        @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3952,6 +3217,8 @@ class Client(OpenApiClient):
             query['ProcessRemoveStart'] = request.process_remove_start
         if not UtilClient.is_unset(request.process_strategy_uuid):
             query['ProcessStrategyUuid'] = request.process_strategy_uuid
+        if not UtilClient.is_unset(request.req_uuid):
+            query['ReqUuid'] = request.req_uuid
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.scope):
@@ -3980,16 +3247,89 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTasksResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeProcessTasksResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_process_tasks_with_options_async(
+        self,
+        request: sophonsoar_20220728_models.DescribeProcessTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
+        """
+        @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        
+        @param request: DescribeProcessTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.entity_uuid):
+            query['EntityUuid'] = request.entity_uuid
+        if not UtilClient.is_unset(request.event_uuid):
+            query['EventUuid'] = request.event_uuid
+        if not UtilClient.is_unset(request.order_field):
+            query['OrderField'] = request.order_field
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.param_content):
+            query['ParamContent'] = request.param_content
+        if not UtilClient.is_unset(request.process_action_end):
+            query['ProcessActionEnd'] = request.process_action_end
+        if not UtilClient.is_unset(request.process_action_start):
+            query['ProcessActionStart'] = request.process_action_start
+        if not UtilClient.is_unset(request.process_remove_end):
+            query['ProcessRemoveEnd'] = request.process_remove_end
+        if not UtilClient.is_unset(request.process_remove_start):
+            query['ProcessRemoveStart'] = request.process_remove_start
+        if not UtilClient.is_unset(request.process_strategy_uuid):
+            query['ProcessStrategyUuid'] = request.process_strategy_uuid
+        if not UtilClient.is_unset(request.req_uuid):
+            query['ReqUuid'] = request.req_uuid
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.trigger_source):
+            query['TriggerSource'] = request.trigger_source
+        if not UtilClient.is_unset(request.yun_code):
+            query['YunCode'] = request.yun_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeProcessTasks',
+            version='2022-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_process_tasks(
         self,
@@ -3997,6 +3337,8 @@ class Client(OpenApiClient):
     ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
         """
         @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessTasksRequest
         @return: DescribeProcessTasksResponse
@@ -4010,6 +3352,8 @@ class Client(OpenApiClient):
     ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
         """
         @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: DescribeProcessTasksRequest
         @return: DescribeProcessTasksResponse
@@ -4045,16 +3389,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_soar_record_action_output_list_with_options_async(
         self,
@@ -4084,16 +3422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_soar_record_action_output_list(
         self,
@@ -4149,16 +3481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_soar_record_in_output_with_options_async(
         self,
@@ -4188,16 +3514,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_soar_record_in_output(
         self,
@@ -4253,16 +3573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_soar_records_with_options_async(
         self,
@@ -4292,16 +3606,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarRecordsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_soar_records(
         self,
@@ -4357,16 +3665,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_soar_task_and_actions_with_options_async(
         self,
@@ -4396,16 +3698,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_soar_task_and_actions(
         self,
@@ -4463,16 +3759,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSophonCommandsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSophonCommandsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSophonCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sophon_commands_with_options_async(
         self,
@@ -4504,16 +3794,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSophonCommandsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeSophonCommandsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeSophonCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sophon_commands(
         self,
@@ -4547,7 +3831,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeVendorApiListResponse:
         """
-        @summary 查询云厂商OpenApi列表
+        @summary Query OpenApi List of Cloud Vendors.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., threat analysis and response log access traffic) before using this interface.
         
         @param request: DescribeVendorApiListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4581,16 +3867,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeVendorApiListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeVendorApiListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeVendorApiListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_vendor_api_list_with_options_async(
         self,
@@ -4598,7 +3878,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeVendorApiListResponse:
         """
-        @summary 查询云厂商OpenApi列表
+        @summary Query OpenApi List of Cloud Vendors.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., threat analysis and response log access traffic) before using this interface.
         
         @param request: DescribeVendorApiListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4632,23 +3914,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeVendorApiListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescribeVendorApiListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeVendorApiListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_vendor_api_list(
         self,
         request: sophonsoar_20220728_models.DescribeVendorApiListRequest,
     ) -> sophonsoar_20220728_models.DescribeVendorApiListResponse:
         """
-        @summary 查询云厂商OpenApi列表
+        @summary Query OpenApi List of Cloud Vendors.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., threat analysis and response log access traffic) before using this interface.
         
         @param request: DescribeVendorApiListRequest
         @return: DescribeVendorApiListResponse
@@ -4661,7 +3939,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeVendorApiListRequest,
     ) -> sophonsoar_20220728_models.DescribeVendorApiListResponse:
         """
-        @summary 查询云厂商OpenApi列表
+        @summary Query OpenApi List of Cloud Vendors.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., threat analysis and response log access traffic) before using this interface.
         
         @param request: DescribeVendorApiListRequest
         @return: DescribeVendorApiListResponse
@@ -4697,16 +3977,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describer_python_3script_logs_with_options_async(
         self,
@@ -4736,16 +4010,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describer_python_3script_logs(
         self,
@@ -4805,16 +4073,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyComponentAssetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyComponentAssetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ModifyComponentAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_component_asset_with_options_async(
         self,
@@ -4848,16 +4110,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyComponentAssetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyComponentAssetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ModifyComponentAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_component_asset(
         self,
@@ -4923,16 +4179,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ModifyPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_playbook_with_options_async(
         self,
@@ -4972,16 +4222,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ModifyPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_playbook(
         self,
@@ -5049,16 +4293,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_playbook_input_output_with_options_async(
         self,
@@ -5100,16 +4338,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_playbook_input_output(
         self,
@@ -5136,126 +4368,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_playbook_input_output_with_options_async(request, runtime)
-
-    def modify_playbook_instance_status_with_options(
-        self,
-        request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
-        """
-        @summary Modifies the status of a playbook.
-        
-        @param request: ModifyPlaybookInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPlaybookInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        body = {}
-        if not UtilClient.is_unset(request.active):
-            body['Active'] = request.active
-        if not UtilClient.is_unset(request.playbook_uuid):
-            body['PlaybookUuid'] = request.playbook_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ModifyPlaybookInstanceStatus',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def modify_playbook_instance_status_with_options_async(
-        self,
-        request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
-        """
-        @summary Modifies the status of a playbook.
-        
-        @param request: ModifyPlaybookInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPlaybookInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        body = {}
-        if not UtilClient.is_unset(request.active):
-            body['Active'] = request.active
-        if not UtilClient.is_unset(request.playbook_uuid):
-            body['PlaybookUuid'] = request.playbook_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ModifyPlaybookInstanceStatus',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def modify_playbook_instance_status(
-        self,
-        request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
-    ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
-        """
-        @summary Modifies the status of a playbook.
-        
-        @param request: ModifyPlaybookInstanceStatusRequest
-        @return: ModifyPlaybookInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_playbook_instance_status_with_options(request, runtime)
-
-    async def modify_playbook_instance_status_async(
-        self,
-        request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
-    ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
-        """
-        @summary Modifies the status of a playbook.
-        
-        @param request: ModifyPlaybookInstanceStatusRequest
-        @return: ModifyPlaybookInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_playbook_instance_status_with_options_async(request, runtime)
 
     def publish_playbook_with_options(
         self,
@@ -5289,16 +4401,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.PublishPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.PublishPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.PublishPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def publish_playbook_with_options_async(
         self,
@@ -5332,16 +4438,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.PublishPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.PublishPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.PublishPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def publish_playbook(
         self,
@@ -5397,16 +4497,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.QueryTreeDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.QueryTreeDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.QueryTreeDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def query_tree_data_with_options_async(
         self,
@@ -5436,16 +4530,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.QueryTreeDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.QueryTreeDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.QueryTreeDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def query_tree_data(
         self,
@@ -5472,126 +4560,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_tree_data_with_options_async(request, runtime)
-
-    def rename_playbook_node_with_options(
-        self,
-        request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
-        """
-        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
-        
-        @param request: RenamePlaybookNodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RenamePlaybookNodeResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.new_node_name):
-            query['NewNodeName'] = request.new_node_name
-        if not UtilClient.is_unset(request.old_node_name):
-            query['OldNodeName'] = request.old_node_name
-        if not UtilClient.is_unset(request.playbook_uuid):
-            query['PlaybookUuid'] = request.playbook_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RenamePlaybookNode',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RenamePlaybookNodeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RenamePlaybookNodeResponse(),
-                self.execute(params, req, runtime)
-            )
-
-    async def rename_playbook_node_with_options_async(
-        self,
-        request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
-        """
-        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
-        
-        @param request: RenamePlaybookNodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RenamePlaybookNodeResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.new_node_name):
-            query['NewNodeName'] = request.new_node_name
-        if not UtilClient.is_unset(request.old_node_name):
-            query['OldNodeName'] = request.old_node_name
-        if not UtilClient.is_unset(request.playbook_uuid):
-            query['PlaybookUuid'] = request.playbook_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RenamePlaybookNode',
-            version='2022-07-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RenamePlaybookNodeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RenamePlaybookNodeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
-
-    def rename_playbook_node(
-        self,
-        request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
-    ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
-        """
-        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
-        
-        @param request: RenamePlaybookNodeRequest
-        @return: RenamePlaybookNodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.rename_playbook_node_with_options(request, runtime)
-
-    async def rename_playbook_node_async(
-        self,
-        request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
-    ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
-        """
-        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
-        
-        @param request: RenamePlaybookNodeRequest
-        @return: RenamePlaybookNodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.rename_playbook_node_with_options_async(request, runtime)
 
     def revert_playbook_release_with_options(
         self,
@@ -5627,16 +4595,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RevertPlaybookReleaseResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RevertPlaybookReleaseResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RevertPlaybookReleaseResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def revert_playbook_release_with_options_async(
         self,
@@ -5672,16 +4634,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RevertPlaybookReleaseResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RevertPlaybookReleaseResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RevertPlaybookReleaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def revert_playbook_release(
         self,
@@ -5715,7 +4671,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse:
         """
-        @summary 执行通知组件-email发送消息
+        @summary Runs the email notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithEmailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5759,16 +4717,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_notify_component_with_email_with_options_async(
         self,
@@ -5776,7 +4728,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse:
         """
-        @summary 执行通知组件-email发送消息
+        @summary Runs the email notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithEmailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5820,23 +4774,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_notify_component_with_email(
         self,
         request: sophonsoar_20220728_models.RunNotifyComponentWithEmailRequest,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse:
         """
-        @summary 执行通知组件-email发送消息
+        @summary Runs the email notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithEmailRequest
         @return: RunNotifyComponentWithEmailResponse
@@ -5849,7 +4799,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunNotifyComponentWithEmailRequest,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithEmailResponse:
         """
-        @summary 执行通知组件-email发送消息
+        @summary Runs the email notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithEmailRequest
         @return: RunNotifyComponentWithEmailResponse
@@ -5863,7 +4815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse:
         """
-        @summary 执行通知组件-消息中心发送消息
+        @summary Execute Notification Component - Send Message via Message Center.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., Threat Analysis and Response Log Access Traffic) before using this interface.
         
         @param request: RunNotifyComponentWithMessageCenterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5909,16 +4863,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_notify_component_with_message_center_with_options_async(
         self,
@@ -5926,7 +4874,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse:
         """
-        @summary 执行通知组件-消息中心发送消息
+        @summary Execute Notification Component - Send Message via Message Center.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., Threat Analysis and Response Log Access Traffic) before using this interface.
         
         @param request: RunNotifyComponentWithMessageCenterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5972,23 +4922,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_notify_component_with_message_center(
         self,
         request: sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterRequest,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse:
         """
-        @summary 执行通知组件-消息中心发送消息
+        @summary Execute Notification Component - Send Message via Message Center.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., Threat Analysis and Response Log Access Traffic) before using this interface.
         
         @param request: RunNotifyComponentWithMessageCenterRequest
         @return: RunNotifyComponentWithMessageCenterResponse
@@ -6001,7 +4947,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterRequest,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithMessageCenterResponse:
         """
-        @summary 执行通知组件-消息中心发送消息
+        @summary Execute Notification Component - Send Message via Message Center.
+        
+        @description Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., Threat Analysis and Response Log Access Traffic) before using this interface.
         
         @param request: RunNotifyComponentWithMessageCenterRequest
         @return: RunNotifyComponentWithMessageCenterResponse
@@ -6015,7 +4963,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse:
         """
-        @summary 执行通知组件-webhook发送消息
+        @summary Runs the webhook notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6061,16 +5011,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_notify_component_with_webhook_with_options_async(
         self,
@@ -6078,7 +5022,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse:
         """
-        @summary 执行通知组件-webhook发送消息
+        @summary Runs the webhook notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithWebhookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6124,23 +5070,19 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_notify_component_with_webhook(
         self,
         request: sophonsoar_20220728_models.RunNotifyComponentWithWebhookRequest,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse:
         """
-        @summary 执行通知组件-webhook发送消息
+        @summary Runs the webhook notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithWebhookRequest
         @return: RunNotifyComponentWithWebhookResponse
@@ -6153,7 +5095,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunNotifyComponentWithWebhookRequest,
     ) -> sophonsoar_20220728_models.RunNotifyComponentWithWebhookResponse:
         """
-        @summary 执行通知组件-webhook发送消息
+        @summary Runs the webhook notification component to send messages.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunNotifyComponentWithWebhookRequest
         @return: RunNotifyComponentWithWebhookResponse
@@ -6176,6 +5120,9 @@ class Client(OpenApiClient):
         @return: RunPython3ScriptResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.python_version):
+            query['PythonVersion'] = request.python_version
         body = {}
         if not UtilClient.is_unset(request.node_name):
             body['NodeName'] = request.node_name
@@ -6186,6 +5133,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.python_script):
             body['PythonScript'] = request.python_script
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6199,16 +5147,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunPython3ScriptResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunPython3ScriptResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunPython3ScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def run_python_3script_with_options_async(
         self,
@@ -6225,6 +5167,9 @@ class Client(OpenApiClient):
         @return: RunPython3ScriptResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.python_version):
+            query['PythonVersion'] = request.python_version
         body = {}
         if not UtilClient.is_unset(request.node_name):
             body['NodeName'] = request.node_name
@@ -6235,6 +5180,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.python_script):
             body['PythonScript'] = request.python_script
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6248,16 +5194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunPython3ScriptResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.RunPython3ScriptResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.RunPython3ScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def run_python_3script(
         self,
@@ -6323,16 +5263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.TriggerPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def trigger_playbook_with_options_async(
         self,
@@ -6368,16 +5302,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.TriggerPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def trigger_playbook(
         self,
@@ -6443,16 +5371,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerProcessTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerProcessTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.TriggerProcessTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def trigger_process_task_with_options_async(
         self,
@@ -6488,16 +5410,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerProcessTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerProcessTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.TriggerProcessTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def trigger_process_task(
         self,
@@ -6565,16 +5481,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerSophonPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerSophonPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.TriggerSophonPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def trigger_sophon_playbook_with_options_async(
         self,
@@ -6616,16 +5526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerSophonPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.TriggerSophonPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.TriggerSophonPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def trigger_sophon_playbook(
         self,
@@ -6689,16 +5593,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPlaybookResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPlaybookResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.VerifyPlaybookResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def verify_playbook_with_options_async(
         self,
@@ -6732,16 +5630,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPlaybookResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPlaybookResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.VerifyPlaybookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def verify_playbook(
         self,
@@ -6799,16 +5691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPythonFileResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPythonFileResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.VerifyPythonFileResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def verify_python_file_with_options_async(
         self,
@@ -6840,16 +5726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPythonFileResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                sophonsoar_20220728_models.VerifyPythonFileResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.VerifyPythonFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def verify_python_file(
         self,
