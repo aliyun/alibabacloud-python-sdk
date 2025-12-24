@@ -1,3 +1,6 @@
+2025-12-24 Version: 2.7.1
+- Generated python 2025-04-29 for WebsiteBuild.
+
 2025-12-19 Version: 2.7.0
 - Support API CreateAppInstance.
 - Support API CreateAppInstanceTicket.
