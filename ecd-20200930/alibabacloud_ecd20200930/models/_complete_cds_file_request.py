@@ -1,0 +1,87 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CompleteCdsFileRequest(DaraModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        end_user_id: str = None,
+        file_id: str = None,
+        group_id: str = None,
+        region_id: str = None,
+        upload_id: str = None,
+    ):
+        # The ID of the enterprise drive.
+        # 
+        # This parameter is required.
+        self.cds_id = cds_id
+        # The username. You must specify at least one of `EndUserId` and `GroupId`.
+        self.end_user_id = end_user_id
+        # The file ID.
+        # 
+        # This parameter is required.
+        self.file_id = file_id
+        # The ID of the team space. You must specify at least one of `EndUserId` and `GroupId`.
+        self.group_id = group_id
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the file upload task. Callable interface [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html).
+        # 
+        # This parameter is required.
+        self.upload_id = upload_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.upload_id is not None:
+            result['UploadId'] = self.upload_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('UploadId') is not None:
+            self.upload_id = m.get('UploadId')
+
+        return self
+

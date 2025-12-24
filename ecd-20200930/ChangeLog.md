@@ -1,3 +1,11 @@
+2025-12-24 Version: 4.20.2
+- Update API DescribeGlobalTimerRecords: add request parameters DisplayResultName.
+- Update API DescribeGlobalTimerRecords: add request parameters Retryable.
+- Update API DescribeGlobalTimerRecords: add response parameters Body.Results.$.DisplayResultName.
+- Update API DescribeGlobalTimerRecords: add response parameters Body.Results.$.Retryable.
+- Update API DescribeGlobalTimerRecords: add response parameters Body.Results.$.TimerRecordId.
+
+
 2025-12-23 Version: 4.20.1
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.AppointmentTimer.
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.ImageId.

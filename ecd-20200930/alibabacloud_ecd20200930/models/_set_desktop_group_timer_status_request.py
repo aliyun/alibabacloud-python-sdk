@@ -1,0 +1,81 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class SetDesktopGroupTimerStatusRequest(DaraModel):
+    def __init__(
+        self,
+        desktop_group_id: str = None,
+        region_id: str = None,
+        status: int = None,
+        timer_type: int = None,
+    ):
+        # The ID of the cloud computer share.
+        # 
+        # This parameter is required.
+        self.desktop_group_id = desktop_group_id
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The status of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   1: enabled
+        # *   2: disabled
+        # *   3: deleted
+        # *   100: unknown
+        self.status = status
+        # The type of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   1: scheduled reset
+        # *   2: scheduled startup
+        # *   3: scheduled stop
+        # *   4: scheduled restart
+        # 
+        # This parameter is required.
+        self.timer_type = timer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.timer_type is not None:
+            result['TimerType'] = self.timer_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('TimerType') is not None:
+            self.timer_type = m.get('TimerType')
+
+        return self
+
