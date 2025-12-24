@@ -1,3 +1,12 @@
+2025-12-24 Version: 1.12.0
+- Support API DescribeInstanceCreateAndDeleteStatistics.
+- Support API DescribeScalingActivityStatistics.
+- Support API QueryHistoricalMetric.
+- Support API QueryPredictiveMetric.
+- Support API QueryPredictiveTaskInfo.
+- Support API QueryPredictiveValue.
+
+
 2025-12-17 Version: 1.11.0
 - Support API DeleteDiagnoseReport.
 

@@ -1,0 +1,123 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class DescribeScalingConfigurationsRequest(DaraModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scaling_configuration_ids: List[str] = None,
+        scaling_configuration_names: List[str] = None,
+        scaling_group_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The page number. Pages start from page 1.
+        # 
+        # Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Maximum value: 50.
+        # 
+        # Default value: 10.
+        self.page_size = page_size
+        # The region ID of the scaling group to which the scaling configuration that you want to query belongs.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The IDs of the scaling configurations that you want to query.
+        # 
+        # The IDs of active and inactive scaling configurations are displayed in the query results. You can differentiate between active and inactive scaling configurations based on the value of the `LifecycleState` parameter.
+        self.scaling_configuration_ids = scaling_configuration_ids
+        # The names of the scaling configurations that you want to query.
+        # 
+        # The names of inactive scaling configurations are not displayed in the query results, and no error is reported.
+        self.scaling_configuration_names = scaling_configuration_names
+        # The ID of the scaling group. You can use the ID to query all scaling configurations in the scaling group.
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.scaling_configuration_ids is not None:
+            result['ScalingConfigurationIds'] = self.scaling_configuration_ids
+
+        if self.scaling_configuration_names is not None:
+            result['ScalingConfigurationNames'] = self.scaling_configuration_names
+
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('ScalingConfigurationIds') is not None:
+            self.scaling_configuration_ids = m.get('ScalingConfigurationIds')
+
+        if m.get('ScalingConfigurationNames') is not None:
+            self.scaling_configuration_names = m.get('ScalingConfigurationNames')
+
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+
+        return self
+
