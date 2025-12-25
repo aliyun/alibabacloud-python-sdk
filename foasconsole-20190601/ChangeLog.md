@@ -1,3 +1,11 @@
+2025-12-25 Version: 1.0.4
+- Update API QueryConvertInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryConvertPrepayInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryCreateInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryModifyInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryRenewInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+
+
 2024-04-07 Version: 1.0.3
 - Update API QueryConvertInstancePrice: update response param.
 - Update API QueryConvertPrepayInstancePrice: update response param.
