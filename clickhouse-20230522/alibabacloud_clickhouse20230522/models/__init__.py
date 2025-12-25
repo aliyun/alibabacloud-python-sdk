@@ -1,0 +1,459 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._attach_whitelist_template_to_instance_request import AttachWhitelistTemplateToInstanceRequest
+from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBody
+from ._attach_whitelist_template_to_instance_response import AttachWhitelistTemplateToInstanceResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_account_request import CreateAccountRequest
+from ._create_account_shrink_request import CreateAccountShrinkRequest
+from ._create_account_response_body import CreateAccountResponseBody
+from ._create_account_response import CreateAccountResponse
+from ._create_backup_policy_request import CreateBackupPolicyRequest
+from ._create_backup_policy_response_body import CreateBackupPolicyResponseBody
+from ._create_backup_policy_response import CreateBackupPolicyResponse
+from ._create_dbrequest import CreateDBRequest
+from ._create_dbresponse_body import CreateDBResponseBody
+from ._create_dbresponse import CreateDBResponse
+from ._create_dbinstance_request import CreateDBInstanceRequest
+from ._create_dbinstance_shrink_request import CreateDBInstanceShrinkRequest
+from ._create_dbinstance_response_body import CreateDBInstanceResponseBody
+from ._create_dbinstance_response import CreateDBInstanceResponse
+from ._create_endpoint_request import CreateEndpointRequest
+from ._create_endpoint_response_body import CreateEndpointResponseBody
+from ._create_endpoint_response import CreateEndpointResponse
+from ._create_whitelist_template_request import CreateWhitelistTemplateRequest
+from ._create_whitelist_template_response_body import CreateWhitelistTemplateResponseBody
+from ._create_whitelist_template_response import CreateWhitelistTemplateResponse
+from ._delete_account_request import DeleteAccountRequest
+from ._delete_account_response_body import DeleteAccountResponseBody
+from ._delete_account_response import DeleteAccountResponse
+from ._delete_backup_policy_request import DeleteBackupPolicyRequest
+from ._delete_backup_policy_response_body import DeleteBackupPolicyResponseBody
+from ._delete_backup_policy_response import DeleteBackupPolicyResponse
+from ._delete_dbrequest import DeleteDBRequest
+from ._delete_dbresponse_body import DeleteDBResponseBody
+from ._delete_dbresponse import DeleteDBResponse
+from ._delete_dbinstance_request import DeleteDBInstanceRequest
+from ._delete_dbinstance_response_body import DeleteDBInstanceResponseBody
+from ._delete_dbinstance_response import DeleteDBInstanceResponse
+from ._delete_endpoint_request import DeleteEndpointRequest
+from ._delete_endpoint_response_body import DeleteEndpointResponseBody
+from ._delete_endpoint_response import DeleteEndpointResponse
+from ._delete_whitelist_template_request import DeleteWhitelistTemplateRequest
+from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBody
+from ._delete_whitelist_template_response import DeleteWhitelistTemplateResponse
+from ._describe_account_authority_request import DescribeAccountAuthorityRequest
+from ._describe_account_authority_response_body import DescribeAccountAuthorityResponseBody
+from ._describe_account_authority_response import DescribeAccountAuthorityResponse
+from ._describe_accounts_request import DescribeAccountsRequest
+from ._describe_accounts_response_body import DescribeAccountsResponseBody
+from ._describe_accounts_response import DescribeAccountsResponse
+from ._describe_backup_policy_request import DescribeBackupPolicyRequest
+from ._describe_backup_policy_response_body import DescribeBackupPolicyResponseBody
+from ._describe_backup_policy_response import DescribeBackupPolicyResponse
+from ._describe_backups_request import DescribeBackupsRequest
+from ._describe_backups_response_body import DescribeBackupsResponseBody
+from ._describe_backups_response import DescribeBackupsResponse
+from ._describe_dbinstance_attribute_request import DescribeDBInstanceAttributeRequest
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBody
+from ._describe_dbinstance_attribute_response import DescribeDBInstanceAttributeResponse
+from ._describe_dbinstance_config_request import DescribeDBInstanceConfigRequest
+from ._describe_dbinstance_config_response_body import DescribeDBInstanceConfigResponseBody
+from ._describe_dbinstance_config_response import DescribeDBInstanceConfigResponse
+from ._describe_dbinstance_config_change_log_request import DescribeDBInstanceConfigChangeLogRequest
+from ._describe_dbinstance_config_change_log_response_body import DescribeDBInstanceConfigChangeLogResponseBody
+from ._describe_dbinstance_config_change_log_response import DescribeDBInstanceConfigChangeLogResponse
+from ._describe_dbinstance_data_sources_request import DescribeDBInstanceDataSourcesRequest
+from ._describe_dbinstance_data_sources_response_body import DescribeDBInstanceDataSourcesResponseBody
+from ._describe_dbinstance_data_sources_response import DescribeDBInstanceDataSourcesResponse
+from ._describe_dbinstances_request import DescribeDBInstancesRequest
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBody
+from ._describe_dbinstances_response import DescribeDBInstancesResponse
+from ._describe_endpoints_request import DescribeEndpointsRequest
+from ._describe_endpoints_response_body import DescribeEndpointsResponseBody
+from ._describe_endpoints_response import DescribeEndpointsResponse
+from ._describe_process_list_request import DescribeProcessListRequest
+from ._describe_process_list_response_body import DescribeProcessListResponseBody
+from ._describe_process_list_response import DescribeProcessListResponse
+from ._describe_security_iplist_request import DescribeSecurityIPListRequest
+from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBody
+from ._describe_security_iplist_response import DescribeSecurityIPListResponse
+from ._describe_slow_log_records_request import DescribeSlowLogRecordsRequest
+from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBody
+from ._describe_slow_log_records_response import DescribeSlowLogRecordsResponse
+from ._describe_slow_log_trend_request import DescribeSlowLogTrendRequest
+from ._describe_slow_log_trend_response_body import DescribeSlowLogTrendResponseBody
+from ._describe_slow_log_trend_response import DescribeSlowLogTrendResponse
+from ._detach_whitelist_template_to_instance_request import DetachWhitelistTemplateToInstanceRequest
+from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBody
+from ._detach_whitelist_template_to_instance_response import DetachWhitelistTemplateToInstanceResponse
+from ._get_whitelist_template_request import GetWhitelistTemplateRequest
+from ._get_whitelist_template_response_body import GetWhitelistTemplateResponseBody
+from ._get_whitelist_template_response import GetWhitelistTemplateResponse
+from ._kill_process_request import KillProcessRequest
+from ._kill_process_response_body import KillProcessResponseBody
+from ._kill_process_response import KillProcessResponse
+from ._list_click_house_dbtimezones_request import ListClickHouseDBTimezonesRequest
+from ._list_click_house_dbtimezones_response_body import ListClickHouseDBTimezonesResponseBody
+from ._list_click_house_dbtimezones_response import ListClickHouseDBTimezonesResponse
+from ._list_instance_linked_whitelist_templates_request import ListInstanceLinkedWhitelistTemplatesRequest
+from ._list_instance_linked_whitelist_templates_response_body import ListInstanceLinkedWhitelistTemplatesResponseBody
+from ._list_instance_linked_whitelist_templates_response import ListInstanceLinkedWhitelistTemplatesResponse
+from ._list_whitelist_templates_request import ListWhitelistTemplatesRequest
+from ._list_whitelist_templates_response_body import ListWhitelistTemplatesResponseBody
+from ._list_whitelist_templates_response import ListWhitelistTemplatesResponse
+from ._modify_account_authority_request import ModifyAccountAuthorityRequest
+from ._modify_account_authority_shrink_request import ModifyAccountAuthorityShrinkRequest
+from ._modify_account_authority_response_body import ModifyAccountAuthorityResponseBody
+from ._modify_account_authority_response import ModifyAccountAuthorityResponse
+from ._modify_account_description_request import ModifyAccountDescriptionRequest
+from ._modify_account_description_response_body import ModifyAccountDescriptionResponseBody
+from ._modify_account_description_response import ModifyAccountDescriptionResponse
+from ._modify_backup_policy_request import ModifyBackupPolicyRequest
+from ._modify_backup_policy_response_body import ModifyBackupPolicyResponseBody
+from ._modify_backup_policy_response import ModifyBackupPolicyResponse
+from ._modify_dbinstance_attribute_request import ModifyDBInstanceAttributeRequest
+from ._modify_dbinstance_attribute_response_body import ModifyDBInstanceAttributeResponseBody
+from ._modify_dbinstance_attribute_response import ModifyDBInstanceAttributeResponse
+from ._modify_dbinstance_class_request import ModifyDBInstanceClassRequest
+from ._modify_dbinstance_class_response_body import ModifyDBInstanceClassResponseBody
+from ._modify_dbinstance_class_response import ModifyDBInstanceClassResponse
+from ._modify_dbinstance_config_request import ModifyDBInstanceConfigRequest
+from ._modify_dbinstance_config_response_body import ModifyDBInstanceConfigResponseBody
+from ._modify_dbinstance_config_response import ModifyDBInstanceConfigResponse
+from ._modify_dbinstance_connection_string_request import ModifyDBInstanceConnectionStringRequest
+from ._modify_dbinstance_connection_string_response_body import ModifyDBInstanceConnectionStringResponseBody
+from ._modify_dbinstance_connection_string_response import ModifyDBInstanceConnectionStringResponse
+from ._modify_security_iplist_request import ModifySecurityIPListRequest
+from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBody
+from ._modify_security_iplist_response import ModifySecurityIPListResponse
+from ._reset_account_password_request import ResetAccountPasswordRequest
+from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
+from ._reset_account_password_response import ResetAccountPasswordResponse
+from ._restart_dbinstance_request import RestartDBInstanceRequest
+from ._restart_dbinstance_response_body import RestartDBInstanceResponseBody
+from ._restart_dbinstance_response import RestartDBInstanceResponse
+from ._start_dbinstance_request import StartDBInstanceRequest
+from ._start_dbinstance_response_body import StartDBInstanceResponseBody
+from ._start_dbinstance_response import StartDBInstanceResponse
+from ._stop_dbinstance_request import StopDBInstanceRequest
+from ._stop_dbinstance_response_body import StopDBInstanceResponseBody
+from ._stop_dbinstance_response import StopDBInstanceResponse
+from ._update_whitelist_template_request import UpdateWhitelistTemplateRequest
+from ._update_whitelist_template_response_body import UpdateWhitelistTemplateResponseBody
+from ._update_whitelist_template_response import UpdateWhitelistTemplateResponse
+from ._upgrade_minor_version_request import UpgradeMinorVersionRequest
+from ._upgrade_minor_version_response_body import UpgradeMinorVersionResponseBody
+from ._upgrade_minor_version_response import UpgradeMinorVersionResponse
+from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList
+from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances
+from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates
+from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList
+from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyData
+from ._create_account_request import CreateAccountRequestDmlAuthSetting
+from ._create_account_response_body import CreateAccountResponseBodyData
+from ._create_dbresponse_body import CreateDBResponseBodyData
+from ._create_dbinstance_request import CreateDBInstanceRequestMultiZone
+from ._create_dbinstance_request import CreateDBInstanceRequestTags
+from ._create_dbinstance_shrink_request import CreateDBInstanceShrinkRequestTags
+from ._create_dbinstance_response_body import CreateDBInstanceResponseBodyData
+from ._create_whitelist_template_response_body import CreateWhitelistTemplateResponseBodyDataTemplates
+from ._create_whitelist_template_response_body import CreateWhitelistTemplateResponseBodyData
+from ._delete_account_response_body import DeleteAccountResponseBodyData
+from ._delete_dbresponse_body import DeleteDBResponseBodyData
+from ._delete_dbinstance_response_body import DeleteDBInstanceResponseBodyData
+from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances
+from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBodyDataTemplates
+from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBodyData
+from ._describe_account_authority_response_body import DescribeAccountAuthorityResponseBodyData
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyDataAccounts
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyData
+from ._describe_backups_response_body import DescribeBackupsResponseBodyItems
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyDataMultiZones
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyDataNodes
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyDataTags
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyData
+from ._describe_dbinstance_config_response_body import DescribeDBInstanceConfigResponseBodyDataParams
+from ._describe_dbinstance_config_response_body import DescribeDBInstanceConfigResponseBodyData
+from ._describe_dbinstance_config_change_log_response_body import DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs
+from ._describe_dbinstance_config_change_log_response_body import DescribeDBInstanceConfigChangeLogResponseBodyData
+from ._describe_dbinstance_data_sources_response_body import DescribeDBInstanceDataSourcesResponseBodyDataColumns
+from ._describe_dbinstance_data_sources_response_body import DescribeDBInstanceDataSourcesResponseBodyData
+from ._describe_dbinstances_request import DescribeDBInstancesRequestTags
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyDataDBInstancesTags
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyDataDBInstances
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyData
+from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyDataEndpointsPorts
+from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyDataEndpoints
+from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyData
+from ._describe_process_list_response_body import DescribeProcessListResponseBodyDataResultSet
+from ._describe_process_list_response_body import DescribeProcessListResponseBodyData
+from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBodyDataGroupItems
+from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBodyData
+from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBodyDataResultSet
+from ._describe_slow_log_records_response_body import DescribeSlowLogRecordsResponseBodyData
+from ._describe_slow_log_trend_response_body import DescribeSlowLogTrendResponseBodyDataResultSet
+from ._describe_slow_log_trend_response_body import DescribeSlowLogTrendResponseBodyData
+from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList
+from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances
+from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates
+from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList
+from ._detach_whitelist_template_to_instance_response_body import DetachWhitelistTemplateToInstanceResponseBodyData
+from ._get_whitelist_template_response_body import GetWhitelistTemplateResponseBodyDataTemplatesDbInstances
+from ._get_whitelist_template_response_body import GetWhitelistTemplateResponseBodyDataTemplates
+from ._get_whitelist_template_response_body import GetWhitelistTemplateResponseBodyData
+from ._kill_process_response_body import KillProcessResponseBodyData
+from ._list_click_house_dbtimezones_response_body import ListClickHouseDBTimezonesResponseBodyTimeZones
+from ._list_instance_linked_whitelist_templates_response_body import ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates
+from ._list_instance_linked_whitelist_templates_response_body import ListInstanceLinkedWhitelistTemplatesResponseBodyData
+from ._list_whitelist_templates_response_body import ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances
+from ._list_whitelist_templates_response_body import ListWhitelistTemplatesResponseBodyDataTemplates
+from ._list_whitelist_templates_response_body import ListWhitelistTemplatesResponseBodyData
+from ._modify_account_authority_request import ModifyAccountAuthorityRequestDmlAuthSetting
+from ._modify_account_authority_response_body import ModifyAccountAuthorityResponseBodyData
+from ._modify_account_description_response_body import ModifyAccountDescriptionResponseBodyData
+from ._modify_dbinstance_class_response_body import ModifyDBInstanceClassResponseBodyData
+from ._modify_dbinstance_config_response_body import ModifyDBInstanceConfigResponseBodyData
+from ._modify_dbinstance_connection_string_response_body import ModifyDBInstanceConnectionStringResponseBodyData
+from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBodyData
+from ._reset_account_password_response_body import ResetAccountPasswordResponseBodyData
+from ._restart_dbinstance_response_body import RestartDBInstanceResponseBodyData
+from ._start_dbinstance_response_body import StartDBInstanceResponseBodyData
+from ._stop_dbinstance_response_body import StopDBInstanceResponseBodyData
+from ._update_whitelist_template_response_body import UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances
+from ._update_whitelist_template_response_body import UpdateWhitelistTemplateResponseBodyDataTemplates
+from ._update_whitelist_template_response_body import UpdateWhitelistTemplateResponseBodyData
+from ._upgrade_minor_version_response_body import UpgradeMinorVersionResponseBodyData
+
+__all__ = [
+    AttachWhitelistTemplateToInstanceRequest,
+    AttachWhitelistTemplateToInstanceResponseBody,
+    AttachWhitelistTemplateToInstanceResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CreateAccountRequest,
+    CreateAccountShrinkRequest,
+    CreateAccountResponseBody,
+    CreateAccountResponse,
+    CreateBackupPolicyRequest,
+    CreateBackupPolicyResponseBody,
+    CreateBackupPolicyResponse,
+    CreateDBRequest,
+    CreateDBResponseBody,
+    CreateDBResponse,
+    CreateDBInstanceRequest,
+    CreateDBInstanceShrinkRequest,
+    CreateDBInstanceResponseBody,
+    CreateDBInstanceResponse,
+    CreateEndpointRequest,
+    CreateEndpointResponseBody,
+    CreateEndpointResponse,
+    CreateWhitelistTemplateRequest,
+    CreateWhitelistTemplateResponseBody,
+    CreateWhitelistTemplateResponse,
+    DeleteAccountRequest,
+    DeleteAccountResponseBody,
+    DeleteAccountResponse,
+    DeleteBackupPolicyRequest,
+    DeleteBackupPolicyResponseBody,
+    DeleteBackupPolicyResponse,
+    DeleteDBRequest,
+    DeleteDBResponseBody,
+    DeleteDBResponse,
+    DeleteDBInstanceRequest,
+    DeleteDBInstanceResponseBody,
+    DeleteDBInstanceResponse,
+    DeleteEndpointRequest,
+    DeleteEndpointResponseBody,
+    DeleteEndpointResponse,
+    DeleteWhitelistTemplateRequest,
+    DeleteWhitelistTemplateResponseBody,
+    DeleteWhitelistTemplateResponse,
+    DescribeAccountAuthorityRequest,
+    DescribeAccountAuthorityResponseBody,
+    DescribeAccountAuthorityResponse,
+    DescribeAccountsRequest,
+    DescribeAccountsResponseBody,
+    DescribeAccountsResponse,
+    DescribeBackupPolicyRequest,
+    DescribeBackupPolicyResponseBody,
+    DescribeBackupPolicyResponse,
+    DescribeBackupsRequest,
+    DescribeBackupsResponseBody,
+    DescribeBackupsResponse,
+    DescribeDBInstanceAttributeRequest,
+    DescribeDBInstanceAttributeResponseBody,
+    DescribeDBInstanceAttributeResponse,
+    DescribeDBInstanceConfigRequest,
+    DescribeDBInstanceConfigResponseBody,
+    DescribeDBInstanceConfigResponse,
+    DescribeDBInstanceConfigChangeLogRequest,
+    DescribeDBInstanceConfigChangeLogResponseBody,
+    DescribeDBInstanceConfigChangeLogResponse,
+    DescribeDBInstanceDataSourcesRequest,
+    DescribeDBInstanceDataSourcesResponseBody,
+    DescribeDBInstanceDataSourcesResponse,
+    DescribeDBInstancesRequest,
+    DescribeDBInstancesResponseBody,
+    DescribeDBInstancesResponse,
+    DescribeEndpointsRequest,
+    DescribeEndpointsResponseBody,
+    DescribeEndpointsResponse,
+    DescribeProcessListRequest,
+    DescribeProcessListResponseBody,
+    DescribeProcessListResponse,
+    DescribeSecurityIPListRequest,
+    DescribeSecurityIPListResponseBody,
+    DescribeSecurityIPListResponse,
+    DescribeSlowLogRecordsRequest,
+    DescribeSlowLogRecordsResponseBody,
+    DescribeSlowLogRecordsResponse,
+    DescribeSlowLogTrendRequest,
+    DescribeSlowLogTrendResponseBody,
+    DescribeSlowLogTrendResponse,
+    DetachWhitelistTemplateToInstanceRequest,
+    DetachWhitelistTemplateToInstanceResponseBody,
+    DetachWhitelistTemplateToInstanceResponse,
+    GetWhitelistTemplateRequest,
+    GetWhitelistTemplateResponseBody,
+    GetWhitelistTemplateResponse,
+    KillProcessRequest,
+    KillProcessResponseBody,
+    KillProcessResponse,
+    ListClickHouseDBTimezonesRequest,
+    ListClickHouseDBTimezonesResponseBody,
+    ListClickHouseDBTimezonesResponse,
+    ListInstanceLinkedWhitelistTemplatesRequest,
+    ListInstanceLinkedWhitelistTemplatesResponseBody,
+    ListInstanceLinkedWhitelistTemplatesResponse,
+    ListWhitelistTemplatesRequest,
+    ListWhitelistTemplatesResponseBody,
+    ListWhitelistTemplatesResponse,
+    ModifyAccountAuthorityRequest,
+    ModifyAccountAuthorityShrinkRequest,
+    ModifyAccountAuthorityResponseBody,
+    ModifyAccountAuthorityResponse,
+    ModifyAccountDescriptionRequest,
+    ModifyAccountDescriptionResponseBody,
+    ModifyAccountDescriptionResponse,
+    ModifyBackupPolicyRequest,
+    ModifyBackupPolicyResponseBody,
+    ModifyBackupPolicyResponse,
+    ModifyDBInstanceAttributeRequest,
+    ModifyDBInstanceAttributeResponseBody,
+    ModifyDBInstanceAttributeResponse,
+    ModifyDBInstanceClassRequest,
+    ModifyDBInstanceClassResponseBody,
+    ModifyDBInstanceClassResponse,
+    ModifyDBInstanceConfigRequest,
+    ModifyDBInstanceConfigResponseBody,
+    ModifyDBInstanceConfigResponse,
+    ModifyDBInstanceConnectionStringRequest,
+    ModifyDBInstanceConnectionStringResponseBody,
+    ModifyDBInstanceConnectionStringResponse,
+    ModifySecurityIPListRequest,
+    ModifySecurityIPListResponseBody,
+    ModifySecurityIPListResponse,
+    ResetAccountPasswordRequest,
+    ResetAccountPasswordResponseBody,
+    ResetAccountPasswordResponse,
+    RestartDBInstanceRequest,
+    RestartDBInstanceResponseBody,
+    RestartDBInstanceResponse,
+    StartDBInstanceRequest,
+    StartDBInstanceResponseBody,
+    StartDBInstanceResponse,
+    StopDBInstanceRequest,
+    StopDBInstanceResponseBody,
+    StopDBInstanceResponse,
+    UpdateWhitelistTemplateRequest,
+    UpdateWhitelistTemplateResponseBody,
+    UpdateWhitelistTemplateResponse,
+    UpgradeMinorVersionRequest,
+    UpgradeMinorVersionResponseBody,
+    UpgradeMinorVersionResponse,
+    AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList,
+    AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances,
+    AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates,
+    AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList,
+    AttachWhitelistTemplateToInstanceResponseBodyData,
+    CreateAccountRequestDmlAuthSetting,
+    CreateAccountResponseBodyData,
+    CreateDBResponseBodyData,
+    CreateDBInstanceRequestMultiZone,
+    CreateDBInstanceRequestTags,
+    CreateDBInstanceShrinkRequestTags,
+    CreateDBInstanceResponseBodyData,
+    CreateWhitelistTemplateResponseBodyDataTemplates,
+    CreateWhitelistTemplateResponseBodyData,
+    DeleteAccountResponseBodyData,
+    DeleteDBResponseBodyData,
+    DeleteDBInstanceResponseBodyData,
+    DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances,
+    DeleteWhitelistTemplateResponseBodyDataTemplates,
+    DeleteWhitelistTemplateResponseBodyData,
+    DescribeAccountAuthorityResponseBodyData,
+    DescribeAccountsResponseBodyDataAccounts,
+    DescribeAccountsResponseBodyData,
+    DescribeBackupsResponseBodyItems,
+    DescribeDBInstanceAttributeResponseBodyDataMultiZones,
+    DescribeDBInstanceAttributeResponseBodyDataNodes,
+    DescribeDBInstanceAttributeResponseBodyDataTags,
+    DescribeDBInstanceAttributeResponseBodyData,
+    DescribeDBInstanceConfigResponseBodyDataParams,
+    DescribeDBInstanceConfigResponseBodyData,
+    DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs,
+    DescribeDBInstanceConfigChangeLogResponseBodyData,
+    DescribeDBInstanceDataSourcesResponseBodyDataColumns,
+    DescribeDBInstanceDataSourcesResponseBodyData,
+    DescribeDBInstancesRequestTags,
+    DescribeDBInstancesResponseBodyDataDBInstancesTags,
+    DescribeDBInstancesResponseBodyDataDBInstances,
+    DescribeDBInstancesResponseBodyData,
+    DescribeEndpointsResponseBodyDataEndpointsPorts,
+    DescribeEndpointsResponseBodyDataEndpoints,
+    DescribeEndpointsResponseBodyData,
+    DescribeProcessListResponseBodyDataResultSet,
+    DescribeProcessListResponseBodyData,
+    DescribeSecurityIPListResponseBodyDataGroupItems,
+    DescribeSecurityIPListResponseBodyData,
+    DescribeSlowLogRecordsResponseBodyDataResultSet,
+    DescribeSlowLogRecordsResponseBodyData,
+    DescribeSlowLogTrendResponseBodyDataResultSet,
+    DescribeSlowLogTrendResponseBodyData,
+    DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList,
+    DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances,
+    DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates,
+    DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList,
+    DetachWhitelistTemplateToInstanceResponseBodyData,
+    GetWhitelistTemplateResponseBodyDataTemplatesDbInstances,
+    GetWhitelistTemplateResponseBodyDataTemplates,
+    GetWhitelistTemplateResponseBodyData,
+    KillProcessResponseBodyData,
+    ListClickHouseDBTimezonesResponseBodyTimeZones,
+    ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates,
+    ListInstanceLinkedWhitelistTemplatesResponseBodyData,
+    ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances,
+    ListWhitelistTemplatesResponseBodyDataTemplates,
+    ListWhitelistTemplatesResponseBodyData,
+    ModifyAccountAuthorityRequestDmlAuthSetting,
+    ModifyAccountAuthorityResponseBodyData,
+    ModifyAccountDescriptionResponseBodyData,
+    ModifyDBInstanceClassResponseBodyData,
+    ModifyDBInstanceConfigResponseBodyData,
+    ModifyDBInstanceConnectionStringResponseBodyData,
+    ModifySecurityIPListResponseBodyData,
+    ResetAccountPasswordResponseBodyData,
+    RestartDBInstanceResponseBodyData,
+    StartDBInstanceResponseBodyData,
+    StopDBInstanceResponseBodyData,
+    UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances,
+    UpdateWhitelistTemplateResponseBodyDataTemplates,
+    UpdateWhitelistTemplateResponseBodyData,
+    UpgradeMinorVersionResponseBodyData
+]

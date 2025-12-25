@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_clickhouse20230522 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_clickhouse20230522 import models as clickhouse_20230522_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
@@ -81,5208 +80,4060 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def attach_whitelist_template_to_instance_with_options(
         self,
-        request: clickhouse_20230522_models.AttachWhitelistTemplateToInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.AttachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 白名单模板关联实例
-        
-        @param request: AttachWhitelistTemplateToInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachWhitelistTemplateToInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AttachWhitelistTemplateToInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachWhitelistTemplateToInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AttachWhitelistTemplateToInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AttachWhitelistTemplateToInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.AttachWhitelistTemplateToInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.AttachWhitelistTemplateToInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def attach_whitelist_template_to_instance_with_options_async(
         self,
-        request: clickhouse_20230522_models.AttachWhitelistTemplateToInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.AttachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 白名单模板关联实例
-        
-        @param request: AttachWhitelistTemplateToInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachWhitelistTemplateToInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AttachWhitelistTemplateToInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachWhitelistTemplateToInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AttachWhitelistTemplateToInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AttachWhitelistTemplateToInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.AttachWhitelistTemplateToInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.AttachWhitelistTemplateToInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def attach_whitelist_template_to_instance(
         self,
-        request: clickhouse_20230522_models.AttachWhitelistTemplateToInstanceRequest,
-    ) -> clickhouse_20230522_models.AttachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 白名单模板关联实例
-        
-        @param request: AttachWhitelistTemplateToInstanceRequest
-        @return: AttachWhitelistTemplateToInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AttachWhitelistTemplateToInstanceRequest,
+    ) -> main_models.AttachWhitelistTemplateToInstanceResponse:
+        runtime = RuntimeOptions()
         return self.attach_whitelist_template_to_instance_with_options(request, runtime)
 
     async def attach_whitelist_template_to_instance_async(
         self,
-        request: clickhouse_20230522_models.AttachWhitelistTemplateToInstanceRequest,
-    ) -> clickhouse_20230522_models.AttachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 白名单模板关联实例
-        
-        @param request: AttachWhitelistTemplateToInstanceRequest
-        @return: AttachWhitelistTemplateToInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AttachWhitelistTemplateToInstanceRequest,
+    ) -> main_models.AttachWhitelistTemplateToInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.attach_whitelist_template_to_instance_with_options_async(request, runtime)
 
     def change_resource_group_with_options(
         self,
-        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
-        """
-        @summary 资源转组
-        
-        @param request: ChangeResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_region_id):
+        if not DaraCore.is_null(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ChangeResourceGroup',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ChangeResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def change_resource_group_with_options_async(
         self,
-        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
-        """
-        @summary 资源转组
-        
-        @param request: ChangeResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_region_id):
+        if not DaraCore.is_null(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ChangeResourceGroup',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ChangeResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def change_resource_group(
         self,
-        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
-    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
-        """
-        @summary 资源转组
-        
-        @param request: ChangeResourceGroupRequest
-        @return: ChangeResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
     async def change_resource_group_async(
         self,
-        request: clickhouse_20230522_models.ChangeResourceGroupRequest,
-    ) -> clickhouse_20230522_models.ChangeResourceGroupResponse:
-        """
-        @summary 资源转组
-        
-        @param request: ChangeResourceGroupRequest
-        @return: ChangeResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
     def create_account_with_options(
         self,
-        tmp_req: clickhouse_20230522_models.CreateAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateAccountResponse:
-        """
-        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param tmp_req: CreateAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAccountResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = clickhouse_20230522_models.CreateAccountShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dml_auth_setting):
-            request.dml_auth_setting_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
+        tmp_req: main_models.CreateAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAccountResponse:
+        tmp_req.validate()
+        request = main_models.CreateAccountShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dml_auth_setting):
+            request.dml_auth_setting_shrink = Utils.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.account_type):
+        if not DaraCore.is_null(request.account_type):
             query['AccountType'] = request.account_type
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.dml_auth_setting_shrink):
+        if not DaraCore.is_null(request.dml_auth_setting_shrink):
             query['DmlAuthSetting'] = request.dml_auth_setting_shrink
-        if not UtilClient.is_unset(request.password):
+        if not DaraCore.is_null(request.password):
             query['Password'] = request.password
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAccount',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAccount',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_account_with_options_async(
         self,
-        tmp_req: clickhouse_20230522_models.CreateAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateAccountResponse:
-        """
-        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param tmp_req: CreateAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAccountResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = clickhouse_20230522_models.CreateAccountShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dml_auth_setting):
-            request.dml_auth_setting_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
+        tmp_req: main_models.CreateAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAccountResponse:
+        tmp_req.validate()
+        request = main_models.CreateAccountShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dml_auth_setting):
+            request.dml_auth_setting_shrink = Utils.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.account_type):
+        if not DaraCore.is_null(request.account_type):
             query['AccountType'] = request.account_type
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.dml_auth_setting_shrink):
+        if not DaraCore.is_null(request.dml_auth_setting_shrink):
             query['DmlAuthSetting'] = request.dml_auth_setting_shrink
-        if not UtilClient.is_unset(request.password):
+        if not DaraCore.is_null(request.password):
             query['Password'] = request.password
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAccount',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAccount',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_account(
         self,
-        request: clickhouse_20230522_models.CreateAccountRequest,
-    ) -> clickhouse_20230522_models.CreateAccountResponse:
-        """
-        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: CreateAccountRequest
-        @return: CreateAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAccountRequest,
+    ) -> main_models.CreateAccountResponse:
+        runtime = RuntimeOptions()
         return self.create_account_with_options(request, runtime)
 
     async def create_account_async(
         self,
-        request: clickhouse_20230522_models.CreateAccountRequest,
-    ) -> clickhouse_20230522_models.CreateAccountResponse:
-        """
-        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: CreateAccountRequest
-        @return: CreateAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAccountRequest,
+    ) -> main_models.CreateAccountResponse:
+        runtime = RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
     def create_backup_policy_with_options(
         self,
-        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
-        """
-        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: CreateBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.backup_retention_period):
+        if not DaraCore.is_null(request.backup_retention_period):
             query['BackupRetentionPeriod'] = request.backup_retention_period
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.preferred_backup_period):
+        if not DaraCore.is_null(request.preferred_backup_period):
             query['PreferredBackupPeriod'] = request.preferred_backup_period
-        if not UtilClient.is_unset(request.preferred_backup_time):
+        if not DaraCore.is_null(request.preferred_backup_time):
             query['PreferredBackupTime'] = request.preferred_backup_time
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateBackupPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_backup_policy_with_options_async(
         self,
-        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
-        """
-        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: CreateBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.backup_retention_period):
+        if not DaraCore.is_null(request.backup_retention_period):
             query['BackupRetentionPeriod'] = request.backup_retention_period
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.preferred_backup_period):
+        if not DaraCore.is_null(request.preferred_backup_period):
             query['PreferredBackupPeriod'] = request.preferred_backup_period
-        if not UtilClient.is_unset(request.preferred_backup_time):
+        if not DaraCore.is_null(request.preferred_backup_time):
             query['PreferredBackupTime'] = request.preferred_backup_time
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateBackupPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_backup_policy(
         self,
-        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
-        """
-        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: CreateBackupPolicyRequest
-        @return: CreateBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateBackupPolicyRequest,
+    ) -> main_models.CreateBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return self.create_backup_policy_with_options(request, runtime)
 
     async def create_backup_policy_async(
         self,
-        request: clickhouse_20230522_models.CreateBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.CreateBackupPolicyResponse:
-        """
-        @summary Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: CreateBackupPolicyRequest
-        @return: CreateBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateBackupPolicyRequest,
+    ) -> main_models.CreateBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.create_backup_policy_with_options_async(request, runtime)
 
     def create_dbwith_options(
         self,
-        request: clickhouse_20230522_models.CreateDBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateDBResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse database.
-        
-        @param request: CreateDBRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDBResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.comment):
+        if not DaraCore.is_null(request.comment):
             query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbname):
+        if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDB',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateDB',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateDBResponse(),
+        return DaraCore.from_map(
+            main_models.CreateDBResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_dbwith_options_async(
         self,
-        request: clickhouse_20230522_models.CreateDBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateDBResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse database.
-        
-        @param request: CreateDBRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDBResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.comment):
+        if not DaraCore.is_null(request.comment):
             query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbname):
+        if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDB',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateDB',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateDBResponse(),
+        return DaraCore.from_map(
+            main_models.CreateDBResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_db(
         self,
-        request: clickhouse_20230522_models.CreateDBRequest,
-    ) -> clickhouse_20230522_models.CreateDBResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse database.
-        
-        @param request: CreateDBRequest
-        @return: CreateDBResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateDBRequest,
+    ) -> main_models.CreateDBResponse:
+        runtime = RuntimeOptions()
         return self.create_dbwith_options(request, runtime)
 
     async def create_db_async(
         self,
-        request: clickhouse_20230522_models.CreateDBRequest,
-    ) -> clickhouse_20230522_models.CreateDBResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse database.
-        
-        @param request: CreateDBRequest
-        @return: CreateDBResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateDBRequest,
+    ) -> main_models.CreateDBResponse:
+        runtime = RuntimeOptions()
         return await self.create_dbwith_options_async(request, runtime)
 
     def create_dbinstance_with_options(
         self,
-        tmp_req: clickhouse_20230522_models.CreateDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param tmp_req: CreateDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDBInstanceResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = clickhouse_20230522_models.CreateDBInstanceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.multi_zone):
-            request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
+        tmp_req: main_models.CreateDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBInstanceResponse:
+        tmp_req.validate()
+        request = main_models.CreateDBInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multi_zone):
+            request.multi_zone_shrink = Utils.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
         query = {}
-        if not UtilClient.is_unset(request.backup_set_id):
+        if not DaraCore.is_null(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.category):
+        if not DaraCore.is_null(request.category):
             query['Category'] = request.category
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dbinstance_description):
+        if not DaraCore.is_null(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
-        if not UtilClient.is_unset(request.dbtime_zone):
+        if not DaraCore.is_null(request.dbtime_zone):
             query['DBTimeZone'] = request.dbtime_zone
-        if not UtilClient.is_unset(request.deploy_schema):
+        if not DaraCore.is_null(request.deploy_schema):
             query['DeploySchema'] = request.deploy_schema
-        if not UtilClient.is_unset(request.engine):
+        if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
-        if not UtilClient.is_unset(request.engine_version):
+        if not DaraCore.is_null(request.engine_version):
             query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.multi_zone_shrink):
+        if not DaraCore.is_null(request.multi_zone_shrink):
             query['MultiZone'] = request.multi_zone_shrink
-        if not UtilClient.is_unset(request.node_count):
+        if not DaraCore.is_null(request.node_count):
             query['NodeCount'] = request.node_count
-        if not UtilClient.is_unset(request.node_scale_max):
+        if not DaraCore.is_null(request.node_scale_max):
             query['NodeScaleMax'] = request.node_scale_max
-        if not UtilClient.is_unset(request.node_scale_min):
+        if not DaraCore.is_null(request.node_scale_min):
             query['NodeScaleMin'] = request.node_scale_min
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.scale_max):
+        if not DaraCore.is_null(request.scale_max):
             query['ScaleMax'] = request.scale_max
-        if not UtilClient.is_unset(request.scale_min):
+        if not DaraCore.is_null(request.scale_min):
             query['ScaleMin'] = request.scale_min
-        if not UtilClient.is_unset(request.source_dbinstance_id):
+        if not DaraCore.is_null(request.source_dbinstance_id):
             query['SourceDBInstanceId'] = request.source_dbinstance_id
-        if not UtilClient.is_unset(request.storage_quota):
+        if not DaraCore.is_null(request.storage_quota):
             query['StorageQuota'] = request.storage_quota
-        if not UtilClient.is_unset(request.storage_type):
+        if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vswitch_id):
+        if not DaraCore.is_null(request.vswitch_id):
             query['VswitchId'] = request.vswitch_id
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateDBInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_dbinstance_with_options_async(
         self,
-        tmp_req: clickhouse_20230522_models.CreateDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param tmp_req: CreateDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDBInstanceResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = clickhouse_20230522_models.CreateDBInstanceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.multi_zone):
-            request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
+        tmp_req: main_models.CreateDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBInstanceResponse:
+        tmp_req.validate()
+        request = main_models.CreateDBInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multi_zone):
+            request.multi_zone_shrink = Utils.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
         query = {}
-        if not UtilClient.is_unset(request.backup_set_id):
+        if not DaraCore.is_null(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.category):
+        if not DaraCore.is_null(request.category):
             query['Category'] = request.category
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dbinstance_description):
+        if not DaraCore.is_null(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
-        if not UtilClient.is_unset(request.dbtime_zone):
+        if not DaraCore.is_null(request.dbtime_zone):
             query['DBTimeZone'] = request.dbtime_zone
-        if not UtilClient.is_unset(request.deploy_schema):
+        if not DaraCore.is_null(request.deploy_schema):
             query['DeploySchema'] = request.deploy_schema
-        if not UtilClient.is_unset(request.engine):
+        if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
-        if not UtilClient.is_unset(request.engine_version):
+        if not DaraCore.is_null(request.engine_version):
             query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.multi_zone_shrink):
+        if not DaraCore.is_null(request.multi_zone_shrink):
             query['MultiZone'] = request.multi_zone_shrink
-        if not UtilClient.is_unset(request.node_count):
+        if not DaraCore.is_null(request.node_count):
             query['NodeCount'] = request.node_count
-        if not UtilClient.is_unset(request.node_scale_max):
+        if not DaraCore.is_null(request.node_scale_max):
             query['NodeScaleMax'] = request.node_scale_max
-        if not UtilClient.is_unset(request.node_scale_min):
+        if not DaraCore.is_null(request.node_scale_min):
             query['NodeScaleMin'] = request.node_scale_min
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.scale_max):
+        if not DaraCore.is_null(request.scale_max):
             query['ScaleMax'] = request.scale_max
-        if not UtilClient.is_unset(request.scale_min):
+        if not DaraCore.is_null(request.scale_min):
             query['ScaleMin'] = request.scale_min
-        if not UtilClient.is_unset(request.source_dbinstance_id):
+        if not DaraCore.is_null(request.source_dbinstance_id):
             query['SourceDBInstanceId'] = request.source_dbinstance_id
-        if not UtilClient.is_unset(request.storage_quota):
+        if not DaraCore.is_null(request.storage_quota):
             query['StorageQuota'] = request.storage_quota
-        if not UtilClient.is_unset(request.storage_type):
+        if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vswitch_id):
+        if not DaraCore.is_null(request.vswitch_id):
             query['VswitchId'] = request.vswitch_id
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateDBInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_dbinstance(
         self,
-        request: clickhouse_20230522_models.CreateDBInstanceRequest,
-    ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: CreateDBInstanceRequest
-        @return: CreateDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateDBInstanceRequest,
+    ) -> main_models.CreateDBInstanceResponse:
+        runtime = RuntimeOptions()
         return self.create_dbinstance_with_options(request, runtime)
 
     async def create_dbinstance_async(
         self,
-        request: clickhouse_20230522_models.CreateDBInstanceRequest,
-    ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
-        """
-        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: CreateDBInstanceRequest
-        @return: CreateDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateDBInstanceRequest,
+    ) -> main_models.CreateDBInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
 
     def create_endpoint_with_options(
         self,
-        request: clickhouse_20230522_models.CreateEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateEndpointResponse:
-        """
-        @summary Applies for a public endpoint.
-        
-        @param request: CreateEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.connection_prefix):
+        if not DaraCore.is_null(request.connection_prefix):
             query['ConnectionPrefix'] = request.connection_prefix
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_net_type):
+        if not DaraCore.is_null(request.dbinstance_net_type):
             query['DBInstanceNetType'] = request.dbinstance_net_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateEndpoint',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateEndpoint',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.CreateEndpointResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_endpoint_with_options_async(
         self,
-        request: clickhouse_20230522_models.CreateEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateEndpointResponse:
-        """
-        @summary Applies for a public endpoint.
-        
-        @param request: CreateEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.connection_prefix):
+        if not DaraCore.is_null(request.connection_prefix):
             query['ConnectionPrefix'] = request.connection_prefix
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_net_type):
+        if not DaraCore.is_null(request.dbinstance_net_type):
             query['DBInstanceNetType'] = request.dbinstance_net_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateEndpoint',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateEndpoint',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.CreateEndpointResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_endpoint(
         self,
-        request: clickhouse_20230522_models.CreateEndpointRequest,
-    ) -> clickhouse_20230522_models.CreateEndpointResponse:
-        """
-        @summary Applies for a public endpoint.
-        
-        @param request: CreateEndpointRequest
-        @return: CreateEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateEndpointRequest,
+    ) -> main_models.CreateEndpointResponse:
+        runtime = RuntimeOptions()
         return self.create_endpoint_with_options(request, runtime)
 
     async def create_endpoint_async(
         self,
-        request: clickhouse_20230522_models.CreateEndpointRequest,
-    ) -> clickhouse_20230522_models.CreateEndpointResponse:
-        """
-        @summary Applies for a public endpoint.
-        
-        @param request: CreateEndpointRequest
-        @return: CreateEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateEndpointRequest,
+    ) -> main_models.CreateEndpointResponse:
+        runtime = RuntimeOptions()
         return await self.create_endpoint_with_options_async(request, runtime)
 
     def create_whitelist_template_with_options(
         self,
-        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
-        """
-        @summary 新增白名单模板
-        
-        @param request: CreateWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
         body = {}
-        if not UtilClient.is_unset(request.security_iplist):
+        if not DaraCore.is_null(request.security_iplist):
             body['SecurityIPList'] = request.security_iplist
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateWhitelistTemplateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_whitelist_template_with_options_async(
         self,
-        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
-        """
-        @summary 新增白名单模板
-        
-        @param request: CreateWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
         body = {}
-        if not UtilClient.is_unset(request.security_iplist):
+        if not DaraCore.is_null(request.security_iplist):
             body['SecurityIPList'] = request.security_iplist
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.CreateWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateWhitelistTemplateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_whitelist_template(
         self,
-        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
-        """
-        @summary 新增白名单模板
-        
-        @param request: CreateWhitelistTemplateRequest
-        @return: CreateWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateWhitelistTemplateRequest,
+    ) -> main_models.CreateWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return self.create_whitelist_template_with_options(request, runtime)
 
     async def create_whitelist_template_async(
         self,
-        request: clickhouse_20230522_models.CreateWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.CreateWhitelistTemplateResponse:
-        """
-        @summary 新增白名单模板
-        
-        @param request: CreateWhitelistTemplateRequest
-        @return: CreateWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateWhitelistTemplateRequest,
+    ) -> main_models.CreateWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return await self.create_whitelist_template_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
-        request: clickhouse_20230522_models.DeleteAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteAccountResponse:
-        """
-        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DeleteAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAccount',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAccount',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteAccountResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_account_with_options_async(
         self,
-        request: clickhouse_20230522_models.DeleteAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteAccountResponse:
-        """
-        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DeleteAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAccount',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAccount',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteAccountResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_account(
         self,
-        request: clickhouse_20230522_models.DeleteAccountRequest,
-    ) -> clickhouse_20230522_models.DeleteAccountResponse:
-        """
-        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DeleteAccountRequest
-        @return: DeleteAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAccountRequest,
+    ) -> main_models.DeleteAccountResponse:
+        runtime = RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
     async def delete_account_async(
         self,
-        request: clickhouse_20230522_models.DeleteAccountRequest,
-    ) -> clickhouse_20230522_models.DeleteAccountResponse:
-        """
-        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DeleteAccountRequest
-        @return: DeleteAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAccountRequest,
+    ) -> main_models.DeleteAccountResponse:
+        runtime = RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
     def delete_backup_policy_with_options(
         self,
-        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: DeleteBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteBackupPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_backup_policy_with_options_async(
         self,
-        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: DeleteBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteBackupPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_backup_policy(
         self,
-        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: DeleteBackupPolicyRequest
-        @return: DeleteBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteBackupPolicyRequest,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return self.delete_backup_policy_with_options(request, runtime)
 
     async def delete_backup_policy_async(
         self,
-        request: clickhouse_20230522_models.DeleteBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.DeleteBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: DeleteBackupPolicyRequest
-        @return: DeleteBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteBackupPolicyRequest,
+    ) -> main_models.DeleteBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_backup_policy_with_options_async(request, runtime)
 
     def delete_dbwith_options(
         self,
-        request: clickhouse_20230522_models.DeleteDBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteDBResponse:
-        """
-        @summary Deletes an ApsaraDB for ClickHouse database.
-        
-        @param request: DeleteDBRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDBResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbname):
+        if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDB',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteDB',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteDBResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteDBResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_dbwith_options_async(
         self,
-        request: clickhouse_20230522_models.DeleteDBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteDBResponse:
-        """
-        @summary Deletes an ApsaraDB for ClickHouse database.
-        
-        @param request: DeleteDBRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDBResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbname):
+        if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDB',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteDB',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteDBResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteDBResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_db(
         self,
-        request: clickhouse_20230522_models.DeleteDBRequest,
-    ) -> clickhouse_20230522_models.DeleteDBResponse:
-        """
-        @summary Deletes an ApsaraDB for ClickHouse database.
-        
-        @param request: DeleteDBRequest
-        @return: DeleteDBResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteDBRequest,
+    ) -> main_models.DeleteDBResponse:
+        runtime = RuntimeOptions()
         return self.delete_dbwith_options(request, runtime)
 
     async def delete_db_async(
         self,
-        request: clickhouse_20230522_models.DeleteDBRequest,
-    ) -> clickhouse_20230522_models.DeleteDBResponse:
-        """
-        @summary Deletes an ApsaraDB for ClickHouse database.
-        
-        @param request: DeleteDBRequest
-        @return: DeleteDBResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteDBRequest,
+    ) -> main_models.DeleteDBResponse:
+        runtime = RuntimeOptions()
         return await self.delete_dbwith_options_async(request, runtime)
 
     def delete_dbinstance_with_options(
         self,
-        request: clickhouse_20230522_models.DeleteDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
-        """
-        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: DeleteDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteDBInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_dbinstance_with_options_async(
         self,
-        request: clickhouse_20230522_models.DeleteDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
-        """
-        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: DeleteDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteDBInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbinstance(
         self,
-        request: clickhouse_20230522_models.DeleteDBInstanceRequest,
-    ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
-        """
-        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: DeleteDBInstanceRequest
-        @return: DeleteDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteDBInstanceRequest,
+    ) -> main_models.DeleteDBInstanceResponse:
+        runtime = RuntimeOptions()
         return self.delete_dbinstance_with_options(request, runtime)
 
     async def delete_dbinstance_async(
         self,
-        request: clickhouse_20230522_models.DeleteDBInstanceRequest,
-    ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
-        """
-        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: DeleteDBInstanceRequest
-        @return: DeleteDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteDBInstanceRequest,
+    ) -> main_models.DeleteDBInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
     def delete_endpoint_with_options(
         self,
-        request: clickhouse_20230522_models.DeleteEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteEndpointResponse:
-        """
-        @summary Releases a public endpoint.
-        
-        @param request: DeleteEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.connection_string):
+        if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_net_type):
+        if not DaraCore.is_null(request.dbinstance_net_type):
             query['DBInstanceNetType'] = request.dbinstance_net_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteEndpoint',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteEndpoint',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteEndpointResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_endpoint_with_options_async(
         self,
-        request: clickhouse_20230522_models.DeleteEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteEndpointResponse:
-        """
-        @summary Releases a public endpoint.
-        
-        @param request: DeleteEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.connection_string):
+        if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_net_type):
+        if not DaraCore.is_null(request.dbinstance_net_type):
             query['DBInstanceNetType'] = request.dbinstance_net_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteEndpoint',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteEndpoint',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteEndpointResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_endpoint(
         self,
-        request: clickhouse_20230522_models.DeleteEndpointRequest,
-    ) -> clickhouse_20230522_models.DeleteEndpointResponse:
-        """
-        @summary Releases a public endpoint.
-        
-        @param request: DeleteEndpointRequest
-        @return: DeleteEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteEndpointRequest,
+    ) -> main_models.DeleteEndpointResponse:
+        runtime = RuntimeOptions()
         return self.delete_endpoint_with_options(request, runtime)
 
     async def delete_endpoint_async(
         self,
-        request: clickhouse_20230522_models.DeleteEndpointRequest,
-    ) -> clickhouse_20230522_models.DeleteEndpointResponse:
-        """
-        @summary Releases a public endpoint.
-        
-        @param request: DeleteEndpointRequest
-        @return: DeleteEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteEndpointRequest,
+    ) -> main_models.DeleteEndpointResponse:
+        runtime = RuntimeOptions()
         return await self.delete_endpoint_with_options_async(request, runtime)
 
     def delete_whitelist_template_with_options(
         self,
-        request: clickhouse_20230522_models.DeleteWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteWhitelistTemplateResponse:
-        """
-        @summary 删除白名单模板
-        
-        @param request: DeleteWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteWhitelistTemplateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_whitelist_template_with_options_async(
         self,
-        request: clickhouse_20230522_models.DeleteWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DeleteWhitelistTemplateResponse:
-        """
-        @summary 删除白名单模板
-        
-        @param request: DeleteWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DeleteWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteWhitelistTemplateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_whitelist_template(
         self,
-        request: clickhouse_20230522_models.DeleteWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.DeleteWhitelistTemplateResponse:
-        """
-        @summary 删除白名单模板
-        
-        @param request: DeleteWhitelistTemplateRequest
-        @return: DeleteWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteWhitelistTemplateRequest,
+    ) -> main_models.DeleteWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return self.delete_whitelist_template_with_options(request, runtime)
 
     async def delete_whitelist_template_async(
         self,
-        request: clickhouse_20230522_models.DeleteWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.DeleteWhitelistTemplateResponse:
-        """
-        @summary 删除白名单模板
-        
-        @param request: DeleteWhitelistTemplateRequest
-        @return: DeleteWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteWhitelistTemplateRequest,
+    ) -> main_models.DeleteWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return await self.delete_whitelist_template_with_options_async(request, runtime)
 
     def describe_account_authority_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeAccountAuthorityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
-        """
-        @summary Queries the permissions of a database account.
-        
-        @param request: DescribeAccountAuthorityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAccountAuthorityResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeAccountAuthorityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccountAuthorityResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeAccountAuthority',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeAccountAuthority',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAccountAuthorityResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_account_authority_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeAccountAuthorityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
-        """
-        @summary Queries the permissions of a database account.
-        
-        @param request: DescribeAccountAuthorityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAccountAuthorityResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeAccountAuthorityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccountAuthorityResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeAccountAuthority',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeAccountAuthority',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeAccountAuthorityResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAccountAuthorityResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_account_authority(
         self,
-        request: clickhouse_20230522_models.DescribeAccountAuthorityRequest,
-    ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
-        """
-        @summary Queries the permissions of a database account.
-        
-        @param request: DescribeAccountAuthorityRequest
-        @return: DescribeAccountAuthorityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeAccountAuthorityRequest,
+    ) -> main_models.DescribeAccountAuthorityResponse:
+        runtime = RuntimeOptions()
         return self.describe_account_authority_with_options(request, runtime)
 
     async def describe_account_authority_async(
         self,
-        request: clickhouse_20230522_models.DescribeAccountAuthorityRequest,
-    ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
-        """
-        @summary Queries the permissions of a database account.
-        
-        @param request: DescribeAccountAuthorityRequest
-        @return: DescribeAccountAuthorityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeAccountAuthorityRequest,
+    ) -> main_models.DescribeAccountAuthorityResponse:
+        runtime = RuntimeOptions()
         return await self.describe_account_authority_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeAccountsResponse:
-        """
-        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeAccountsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAccountsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeAccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccountsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeAccounts',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeAccounts',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeAccountsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAccountsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_accounts_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeAccountsResponse:
-        """
-        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeAccountsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAccountsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeAccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccountsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeAccounts',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeAccounts',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeAccountsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAccountsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_accounts(
         self,
-        request: clickhouse_20230522_models.DescribeAccountsRequest,
-    ) -> clickhouse_20230522_models.DescribeAccountsResponse:
-        """
-        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeAccountsRequest
-        @return: DescribeAccountsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeAccountsRequest,
+    ) -> main_models.DescribeAccountsResponse:
+        runtime = RuntimeOptions()
         return self.describe_accounts_with_options(request, runtime)
 
     async def describe_accounts_async(
         self,
-        request: clickhouse_20230522_models.DescribeAccountsRequest,
-    ) -> clickhouse_20230522_models.DescribeAccountsResponse:
-        """
-        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeAccountsRequest
-        @return: DescribeAccountsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeAccountsRequest,
+    ) -> main_models.DescribeAccountsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
     def describe_backup_policy_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
-        """
-        @summary 创建备份策略
-        
-        @param request: DescribeBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeBackupPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_backup_policy_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
-        """
-        @summary 创建备份策略
-        
-        @param request: DescribeBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeBackupPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_policy(
         self,
-        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
-        """
-        @summary 创建备份策略
-        
-        @param request: DescribeBackupPolicyRequest
-        @return: DescribeBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeBackupPolicyRequest,
+    ) -> main_models.DescribeBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return self.describe_backup_policy_with_options(request, runtime)
 
     async def describe_backup_policy_async(
         self,
-        request: clickhouse_20230522_models.DescribeBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.DescribeBackupPolicyResponse:
-        """
-        @summary 创建备份策略
-        
-        @param request: DescribeBackupPolicyRequest
-        @return: DescribeBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeBackupPolicyRequest,
+    ) -> main_models.DescribeBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
     def describe_backups_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
-        """
-        @summary 查询备份集
-        
-        @param request: DescribeBackupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeBackupsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.backup_id):
+        if not DaraCore.is_null(request.backup_id):
             query['BackupId'] = request.backup_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeBackups',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeBackups',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeBackupsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeBackupsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_backups_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
-        """
-        @summary 查询备份集
-        
-        @param request: DescribeBackupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeBackupsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.backup_id):
+        if not DaraCore.is_null(request.backup_id):
             query['BackupId'] = request.backup_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeBackups',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeBackups',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeBackupsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeBackupsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_backups(
         self,
-        request: clickhouse_20230522_models.DescribeBackupsRequest,
-    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
-        """
-        @summary 查询备份集
-        
-        @param request: DescribeBackupsRequest
-        @return: DescribeBackupsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeBackupsRequest,
+    ) -> main_models.DescribeBackupsResponse:
+        runtime = RuntimeOptions()
         return self.describe_backups_with_options(request, runtime)
 
     async def describe_backups_async(
         self,
-        request: clickhouse_20230522_models.DescribeBackupsRequest,
-    ) -> clickhouse_20230522_models.DescribeBackupsResponse:
-        """
-        @summary 查询备份集
-        
-        @param request: DescribeBackupsRequest
-        @return: DescribeBackupsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeBackupsRequest,
+    ) -> main_models.DescribeBackupsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
     def describe_dbinstance_attribute_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
-        """
-        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: DescribeDBInstanceAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceAttributeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDBInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceAttributeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceAttribute',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceAttribute',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceAttributeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_attribute_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
-        """
-        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: DescribeDBInstanceAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceAttributeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDBInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceAttributeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceAttribute',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceAttribute',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceAttributeResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_attribute(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceAttributeRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
-        """
-        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: DescribeDBInstanceAttributeRequest
-        @return: DescribeDBInstanceAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceAttributeRequest,
+    ) -> main_models.DescribeDBInstanceAttributeResponse:
+        runtime = RuntimeOptions()
         return self.describe_dbinstance_attribute_with_options(request, runtime)
 
     async def describe_dbinstance_attribute_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceAttributeRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
-        """
-        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: DescribeDBInstanceAttributeRequest
-        @return: DescribeDBInstanceAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceAttributeRequest,
+    ) -> main_models.DescribeDBInstanceAttributeResponse:
+        runtime = RuntimeOptions()
         return await self.describe_dbinstance_attribute_with_options_async(request, runtime)
 
     def describe_dbinstance_config_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
-        """
-        @summary 查询实例参数配置
-        
-        @param request: DescribeDBInstanceConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceConfigResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DescribeDBInstanceConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceConfigResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceConfig',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceConfig',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceConfigResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_config_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
-        """
-        @summary 查询实例参数配置
-        
-        @param request: DescribeDBInstanceConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceConfigResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DescribeDBInstanceConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceConfigResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceConfig',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceConfig',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceConfigResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_config(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
-        """
-        @summary 查询实例参数配置
-        
-        @param request: DescribeDBInstanceConfigRequest
-        @return: DescribeDBInstanceConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceConfigRequest,
+    ) -> main_models.DescribeDBInstanceConfigResponse:
+        runtime = RuntimeOptions()
         return self.describe_dbinstance_config_with_options(request, runtime)
 
     async def describe_dbinstance_config_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigResponse:
-        """
-        @summary 查询实例参数配置
-        
-        @param request: DescribeDBInstanceConfigRequest
-        @return: DescribeDBInstanceConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceConfigRequest,
+    ) -> main_models.DescribeDBInstanceConfigResponse:
+        runtime = RuntimeOptions()
         return await self.describe_dbinstance_config_with_options_async(request, runtime)
 
     def describe_dbinstance_config_change_log_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
-        """
-        @summary 查询实例参数配置记录
-        
-        @param request: DescribeDBInstanceConfigChangeLogRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceConfigChangeLogResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DescribeDBInstanceConfigChangeLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceConfigChangeLogResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceConfigChangeLog',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceConfigChangeLog',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceConfigChangeLogResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_config_change_log_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
-        """
-        @summary 查询实例参数配置记录
-        
-        @param request: DescribeDBInstanceConfigChangeLogRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceConfigChangeLogResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.DescribeDBInstanceConfigChangeLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceConfigChangeLogResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceConfigChangeLog',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceConfigChangeLog',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceConfigChangeLogResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_config_change_log(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
-        """
-        @summary 查询实例参数配置记录
-        
-        @param request: DescribeDBInstanceConfigChangeLogRequest
-        @return: DescribeDBInstanceConfigChangeLogResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceConfigChangeLogRequest,
+    ) -> main_models.DescribeDBInstanceConfigChangeLogResponse:
+        runtime = RuntimeOptions()
         return self.describe_dbinstance_config_change_log_with_options(request, runtime)
 
     async def describe_dbinstance_config_change_log_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceConfigChangeLogResponse:
-        """
-        @summary 查询实例参数配置记录
-        
-        @param request: DescribeDBInstanceConfigChangeLogRequest
-        @return: DescribeDBInstanceConfigChangeLogResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceConfigChangeLogRequest,
+    ) -> main_models.DescribeDBInstanceConfigChangeLogResponse:
+        runtime = RuntimeOptions()
         return await self.describe_dbinstance_config_change_log_with_options_async(request, runtime)
 
     def describe_dbinstance_data_sources_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceDataSourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
-        """
-        @summary Queries the schema of a database or a table.
-        
-        @param request: DescribeDBInstanceDataSourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceDataSourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDBInstanceDataSourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceDataSourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbname):
+        if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.table_name):
+        if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceDataSources',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceDataSources',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceDataSourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_data_sources_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceDataSourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
-        """
-        @summary Queries the schema of a database or a table.
-        
-        @param request: DescribeDBInstanceDataSourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstanceDataSourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDBInstanceDataSourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceDataSourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbname):
+        if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.table_name):
+        if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstanceDataSources',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceDataSources',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceDataSourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_data_sources(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceDataSourcesRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
-        """
-        @summary Queries the schema of a database or a table.
-        
-        @param request: DescribeDBInstanceDataSourcesRequest
-        @return: DescribeDBInstanceDataSourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceDataSourcesRequest,
+    ) -> main_models.DescribeDBInstanceDataSourcesResponse:
+        runtime = RuntimeOptions()
         return self.describe_dbinstance_data_sources_with_options(request, runtime)
 
     async def describe_dbinstance_data_sources_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstanceDataSourcesRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
-        """
-        @summary Queries the schema of a database or a table.
-        
-        @param request: DescribeDBInstanceDataSourcesRequest
-        @return: DescribeDBInstanceDataSourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstanceDataSourcesRequest,
+    ) -> main_models.DescribeDBInstanceDataSourcesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_dbinstance_data_sources_with_options_async(request, runtime)
 
     def describe_dbinstances_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
-        """
-        @summary Queries a list of ApsaraDB for ClickHouse clusters.
-        
-        @param request: DescribeDBInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDBInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_ids):
+        if not DaraCore.is_null(request.dbinstance_ids):
             query['DBInstanceIds'] = request.dbinstance_ids
-        if not UtilClient.is_unset(request.dbinstance_status):
+        if not DaraCore.is_null(request.dbinstance_status):
             query['DBInstanceStatus'] = request.dbinstance_status
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstances',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstances',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstancesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstances_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
-        """
-        @summary Queries a list of ApsaraDB for ClickHouse clusters.
-        
-        @param request: DescribeDBInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDBInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDBInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_ids):
+        if not DaraCore.is_null(request.dbinstance_ids):
             query['DBInstanceIds'] = request.dbinstance_ids
-        if not UtilClient.is_unset(request.dbinstance_status):
+        if not DaraCore.is_null(request.dbinstance_status):
             query['DBInstanceStatus'] = request.dbinstance_status
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDBInstances',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstances',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeDBInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDBInstancesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstances(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstancesRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
-        """
-        @summary Queries a list of ApsaraDB for ClickHouse clusters.
-        
-        @param request: DescribeDBInstancesRequest
-        @return: DescribeDBInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstancesRequest,
+    ) -> main_models.DescribeDBInstancesResponse:
+        runtime = RuntimeOptions()
         return self.describe_dbinstances_with_options(request, runtime)
 
     async def describe_dbinstances_async(
         self,
-        request: clickhouse_20230522_models.DescribeDBInstancesRequest,
-    ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
-        """
-        @summary Queries a list of ApsaraDB for ClickHouse clusters.
-        
-        @param request: DescribeDBInstancesRequest
-        @return: DescribeDBInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDBInstancesRequest,
+    ) -> main_models.DescribeDBInstancesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
 
     def describe_endpoints_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeEndpointsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
-        """
-        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeEndpointsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeEndpointsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEndpointsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeEndpoints',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeEndpoints',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeEndpointsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeEndpointsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_endpoints_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeEndpointsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
-        """
-        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeEndpointsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeEndpointsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEndpointsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeEndpoints',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeEndpoints',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeEndpointsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeEndpointsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_endpoints(
         self,
-        request: clickhouse_20230522_models.DescribeEndpointsRequest,
-    ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
-        """
-        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeEndpointsRequest
-        @return: DescribeEndpointsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeEndpointsRequest,
+    ) -> main_models.DescribeEndpointsResponse:
+        runtime = RuntimeOptions()
         return self.describe_endpoints_with_options(request, runtime)
 
     async def describe_endpoints_async(
         self,
-        request: clickhouse_20230522_models.DescribeEndpointsRequest,
-    ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
-        """
-        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeEndpointsRequest
-        @return: DescribeEndpointsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeEndpointsRequest,
+    ) -> main_models.DescribeEndpointsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_endpoints_with_options_async(request, runtime)
 
     def describe_process_list_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeProcessListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeProcessListResponse:
-        """
-        @summary Views running queries.
-        
-        @param request: DescribeProcessListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeProcessListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeProcessListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeProcessListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.initial_query_id):
+        if not DaraCore.is_null(request.initial_query_id):
             query['InitialQueryId'] = request.initial_query_id
-        if not UtilClient.is_unset(request.initial_user):
+        if not DaraCore.is_null(request.initial_user):
             query['InitialUser'] = request.initial_user
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query_duration_ms):
+        if not DaraCore.is_null(request.query_duration_ms):
             query['QueryDurationMs'] = request.query_duration_ms
-        if not UtilClient.is_unset(request.query_order):
+        if not DaraCore.is_null(request.query_order):
             query['QueryOrder'] = request.query_order
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeProcessList',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeProcessList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeProcessListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeProcessListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_process_list_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeProcessListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeProcessListResponse:
-        """
-        @summary Views running queries.
-        
-        @param request: DescribeProcessListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeProcessListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeProcessListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeProcessListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.initial_query_id):
+        if not DaraCore.is_null(request.initial_query_id):
             query['InitialQueryId'] = request.initial_query_id
-        if not UtilClient.is_unset(request.initial_user):
+        if not DaraCore.is_null(request.initial_user):
             query['InitialUser'] = request.initial_user
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query_duration_ms):
+        if not DaraCore.is_null(request.query_duration_ms):
             query['QueryDurationMs'] = request.query_duration_ms
-        if not UtilClient.is_unset(request.query_order):
+        if not DaraCore.is_null(request.query_order):
             query['QueryOrder'] = request.query_order
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeProcessList',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeProcessList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeProcessListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeProcessListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_process_list(
         self,
-        request: clickhouse_20230522_models.DescribeProcessListRequest,
-    ) -> clickhouse_20230522_models.DescribeProcessListResponse:
-        """
-        @summary Views running queries.
-        
-        @param request: DescribeProcessListRequest
-        @return: DescribeProcessListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeProcessListRequest,
+    ) -> main_models.DescribeProcessListResponse:
+        runtime = RuntimeOptions()
         return self.describe_process_list_with_options(request, runtime)
 
     async def describe_process_list_async(
         self,
-        request: clickhouse_20230522_models.DescribeProcessListRequest,
-    ) -> clickhouse_20230522_models.DescribeProcessListResponse:
-        """
-        @summary Views running queries.
-        
-        @param request: DescribeProcessListRequest
-        @return: DescribeProcessListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeProcessListRequest,
+    ) -> main_models.DescribeProcessListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_process_list_with_options_async(request, runtime)
 
     def describe_security_iplist_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeSecurityIPListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeSecurityIPListResponse:
-        """
-        @summary Queries the whitelist of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeSecurityIPListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSecurityIPListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSecurityIPListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSecurityIPList',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeSecurityIPListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSecurityIPListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_security_iplist_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeSecurityIPListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeSecurityIPListResponse:
-        """
-        @summary Queries the whitelist of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeSecurityIPListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSecurityIPListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSecurityIPListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSecurityIPList',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeSecurityIPListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSecurityIPListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_security_iplist(
         self,
-        request: clickhouse_20230522_models.DescribeSecurityIPListRequest,
-    ) -> clickhouse_20230522_models.DescribeSecurityIPListResponse:
-        """
-        @summary Queries the whitelist of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeSecurityIPListRequest
-        @return: DescribeSecurityIPListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSecurityIPListRequest,
+    ) -> main_models.DescribeSecurityIPListResponse:
+        runtime = RuntimeOptions()
         return self.describe_security_iplist_with_options(request, runtime)
 
     async def describe_security_iplist_async(
         self,
-        request: clickhouse_20230522_models.DescribeSecurityIPListRequest,
-    ) -> clickhouse_20230522_models.DescribeSecurityIPListResponse:
-        """
-        @summary Queries the whitelist of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: DescribeSecurityIPListRequest
-        @return: DescribeSecurityIPListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSecurityIPListRequest,
+    ) -> main_models.DescribeSecurityIPListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_security_iplist_with_options_async(request, runtime)
 
     def describe_slow_log_records_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeSlowLogRecordsResponse:
-        """
-        @summary Queries the details of slow query logs.
-        
-        @param request: DescribeSlowLogRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSlowLogRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSlowLogRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSlowLogRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query_duration_ms):
+        if not DaraCore.is_null(request.query_duration_ms):
             query['QueryDurationMs'] = request.query_duration_ms
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSlowLogRecords',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSlowLogRecords',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSlowLogRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_slow_log_records_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeSlowLogRecordsResponse:
-        """
-        @summary Queries the details of slow query logs.
-        
-        @param request: DescribeSlowLogRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSlowLogRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSlowLogRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSlowLogRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query_duration_ms):
+        if not DaraCore.is_null(request.query_duration_ms):
             query['QueryDurationMs'] = request.query_duration_ms
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSlowLogRecords',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSlowLogRecords',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeSlowLogRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSlowLogRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_slow_log_records(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogRecordsRequest,
-    ) -> clickhouse_20230522_models.DescribeSlowLogRecordsResponse:
-        """
-        @summary Queries the details of slow query logs.
-        
-        @param request: DescribeSlowLogRecordsRequest
-        @return: DescribeSlowLogRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSlowLogRecordsRequest,
+    ) -> main_models.DescribeSlowLogRecordsResponse:
+        runtime = RuntimeOptions()
         return self.describe_slow_log_records_with_options(request, runtime)
 
     async def describe_slow_log_records_async(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogRecordsRequest,
-    ) -> clickhouse_20230522_models.DescribeSlowLogRecordsResponse:
-        """
-        @summary Queries the details of slow query logs.
-        
-        @param request: DescribeSlowLogRecordsRequest
-        @return: DescribeSlowLogRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSlowLogRecordsRequest,
+    ) -> main_models.DescribeSlowLogRecordsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
     def describe_slow_log_trend_with_options(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogTrendRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
-        """
-        @summary Queries the trend of slow query logs.
-        
-        @param request: DescribeSlowLogTrendRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSlowLogTrendResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSlowLogTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSlowLogTrendResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.query_duration_ms):
+        if not DaraCore.is_null(request.query_duration_ms):
             query['QueryDurationMs'] = request.query_duration_ms
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSlowLogTrend',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSlowLogTrend',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSlowLogTrendResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_slow_log_trend_with_options_async(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogTrendRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
-        """
-        @summary Queries the trend of slow query logs.
-        
-        @param request: DescribeSlowLogTrendRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSlowLogTrendResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSlowLogTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSlowLogTrendResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.query_duration_ms):
+        if not DaraCore.is_null(request.query_duration_ms):
             query['QueryDurationMs'] = request.query_duration_ms
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSlowLogTrend',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSlowLogTrend',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DescribeSlowLogTrendResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSlowLogTrendResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_slow_log_trend(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogTrendRequest,
-    ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
-        """
-        @summary Queries the trend of slow query logs.
-        
-        @param request: DescribeSlowLogTrendRequest
-        @return: DescribeSlowLogTrendResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSlowLogTrendRequest,
+    ) -> main_models.DescribeSlowLogTrendResponse:
+        runtime = RuntimeOptions()
         return self.describe_slow_log_trend_with_options(request, runtime)
 
     async def describe_slow_log_trend_async(
         self,
-        request: clickhouse_20230522_models.DescribeSlowLogTrendRequest,
-    ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
-        """
-        @summary Queries the trend of slow query logs.
-        
-        @param request: DescribeSlowLogTrendRequest
-        @return: DescribeSlowLogTrendResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSlowLogTrendRequest,
+    ) -> main_models.DescribeSlowLogTrendResponse:
+        runtime = RuntimeOptions()
         return await self.describe_slow_log_trend_with_options_async(request, runtime)
 
     def detach_whitelist_template_to_instance_with_options(
         self,
-        request: clickhouse_20230522_models.DetachWhitelistTemplateToInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DetachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 取消白名单模板和实例关联关系
-        
-        @param request: DetachWhitelistTemplateToInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachWhitelistTemplateToInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetachWhitelistTemplateToInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachWhitelistTemplateToInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DetachWhitelistTemplateToInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetachWhitelistTemplateToInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DetachWhitelistTemplateToInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.DetachWhitelistTemplateToInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def detach_whitelist_template_to_instance_with_options_async(
         self,
-        request: clickhouse_20230522_models.DetachWhitelistTemplateToInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.DetachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 取消白名单模板和实例关联关系
-        
-        @param request: DetachWhitelistTemplateToInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachWhitelistTemplateToInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetachWhitelistTemplateToInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachWhitelistTemplateToInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DetachWhitelistTemplateToInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetachWhitelistTemplateToInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.DetachWhitelistTemplateToInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.DetachWhitelistTemplateToInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def detach_whitelist_template_to_instance(
         self,
-        request: clickhouse_20230522_models.DetachWhitelistTemplateToInstanceRequest,
-    ) -> clickhouse_20230522_models.DetachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 取消白名单模板和实例关联关系
-        
-        @param request: DetachWhitelistTemplateToInstanceRequest
-        @return: DetachWhitelistTemplateToInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetachWhitelistTemplateToInstanceRequest,
+    ) -> main_models.DetachWhitelistTemplateToInstanceResponse:
+        runtime = RuntimeOptions()
         return self.detach_whitelist_template_to_instance_with_options(request, runtime)
 
     async def detach_whitelist_template_to_instance_async(
         self,
-        request: clickhouse_20230522_models.DetachWhitelistTemplateToInstanceRequest,
-    ) -> clickhouse_20230522_models.DetachWhitelistTemplateToInstanceResponse:
-        """
-        @summary 取消白名单模板和实例关联关系
-        
-        @param request: DetachWhitelistTemplateToInstanceRequest
-        @return: DetachWhitelistTemplateToInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetachWhitelistTemplateToInstanceRequest,
+    ) -> main_models.DetachWhitelistTemplateToInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.detach_whitelist_template_to_instance_with_options_async(request, runtime)
 
     def get_whitelist_template_with_options(
         self,
-        request: clickhouse_20230522_models.GetWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.GetWhitelistTemplateResponse:
-        """
-        @summary 查询白名单模板详情
-        
-        @param request: GetWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.GetWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.GetWhitelistTemplateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_whitelist_template_with_options_async(
         self,
-        request: clickhouse_20230522_models.GetWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.GetWhitelistTemplateResponse:
-        """
-        @summary 查询白名单模板详情
-        
-        @param request: GetWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.GetWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.GetWhitelistTemplateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_whitelist_template(
         self,
-        request: clickhouse_20230522_models.GetWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.GetWhitelistTemplateResponse:
-        """
-        @summary 查询白名单模板详情
-        
-        @param request: GetWhitelistTemplateRequest
-        @return: GetWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWhitelistTemplateRequest,
+    ) -> main_models.GetWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return self.get_whitelist_template_with_options(request, runtime)
 
     async def get_whitelist_template_async(
         self,
-        request: clickhouse_20230522_models.GetWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.GetWhitelistTemplateResponse:
-        """
-        @summary 查询白名单模板详情
-        
-        @param request: GetWhitelistTemplateRequest
-        @return: GetWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetWhitelistTemplateRequest,
+    ) -> main_models.GetWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return await self.get_whitelist_template_with_options_async(request, runtime)
 
     def kill_process_with_options(
         self,
-        request: clickhouse_20230522_models.KillProcessRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.KillProcessResponse:
-        """
-        @summary Terminates an ongoing query.
-        
-        @param request: KillProcessRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: KillProcessResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.KillProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.KillProcessResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.initial_query_id):
+        if not DaraCore.is_null(request.initial_query_id):
             query['InitialQueryId'] = request.initial_query_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='KillProcess',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'KillProcess',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.KillProcessResponse(),
+        return DaraCore.from_map(
+            main_models.KillProcessResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def kill_process_with_options_async(
         self,
-        request: clickhouse_20230522_models.KillProcessRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.KillProcessResponse:
-        """
-        @summary Terminates an ongoing query.
-        
-        @param request: KillProcessRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: KillProcessResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.KillProcessRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.KillProcessResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.initial_query_id):
+        if not DaraCore.is_null(request.initial_query_id):
             query['InitialQueryId'] = request.initial_query_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='KillProcess',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'KillProcess',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.KillProcessResponse(),
+        return DaraCore.from_map(
+            main_models.KillProcessResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def kill_process(
         self,
-        request: clickhouse_20230522_models.KillProcessRequest,
-    ) -> clickhouse_20230522_models.KillProcessResponse:
-        """
-        @summary Terminates an ongoing query.
-        
-        @param request: KillProcessRequest
-        @return: KillProcessResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.KillProcessRequest,
+    ) -> main_models.KillProcessResponse:
+        runtime = RuntimeOptions()
         return self.kill_process_with_options(request, runtime)
 
     async def kill_process_async(
         self,
-        request: clickhouse_20230522_models.KillProcessRequest,
-    ) -> clickhouse_20230522_models.KillProcessResponse:
-        """
-        @summary Terminates an ongoing query.
-        
-        @param request: KillProcessRequest
-        @return: KillProcessResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.KillProcessRequest,
+    ) -> main_models.KillProcessResponse:
+        runtime = RuntimeOptions()
         return await self.kill_process_with_options_async(request, runtime)
+
+    def list_click_house_dbtimezones_with_options(
+        self,
+        request: main_models.ListClickHouseDBTimezonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClickHouseDBTimezonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListClickHouseDBTimezones',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListClickHouseDBTimezonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_click_house_dbtimezones_with_options_async(
+        self,
+        request: main_models.ListClickHouseDBTimezonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClickHouseDBTimezonesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListClickHouseDBTimezones',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListClickHouseDBTimezonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_click_house_dbtimezones(
+        self,
+        request: main_models.ListClickHouseDBTimezonesRequest,
+    ) -> main_models.ListClickHouseDBTimezonesResponse:
+        runtime = RuntimeOptions()
+        return self.list_click_house_dbtimezones_with_options(request, runtime)
+
+    async def list_click_house_dbtimezones_async(
+        self,
+        request: main_models.ListClickHouseDBTimezonesRequest,
+    ) -> main_models.ListClickHouseDBTimezonesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_click_house_dbtimezones_with_options_async(request, runtime)
 
     def list_instance_linked_whitelist_templates_with_options(
         self,
-        request: clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesResponse:
-        """
-        @summary 查询实例关联的白名单模板清单
-        
-        @param request: ListInstanceLinkedWhitelistTemplatesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstanceLinkedWhitelistTemplatesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListInstanceLinkedWhitelistTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceLinkedWhitelistTemplatesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceLinkedWhitelistTemplates',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstanceLinkedWhitelistTemplates',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstanceLinkedWhitelistTemplatesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instance_linked_whitelist_templates_with_options_async(
         self,
-        request: clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesResponse:
-        """
-        @summary 查询实例关联的白名单模板清单
-        
-        @param request: ListInstanceLinkedWhitelistTemplatesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstanceLinkedWhitelistTemplatesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListInstanceLinkedWhitelistTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceLinkedWhitelistTemplatesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceLinkedWhitelistTemplates',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstanceLinkedWhitelistTemplates',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstanceLinkedWhitelistTemplatesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_linked_whitelist_templates(
         self,
-        request: clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesRequest,
-    ) -> clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesResponse:
-        """
-        @summary 查询实例关联的白名单模板清单
-        
-        @param request: ListInstanceLinkedWhitelistTemplatesRequest
-        @return: ListInstanceLinkedWhitelistTemplatesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstanceLinkedWhitelistTemplatesRequest,
+    ) -> main_models.ListInstanceLinkedWhitelistTemplatesResponse:
+        runtime = RuntimeOptions()
         return self.list_instance_linked_whitelist_templates_with_options(request, runtime)
 
     async def list_instance_linked_whitelist_templates_async(
         self,
-        request: clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesRequest,
-    ) -> clickhouse_20230522_models.ListInstanceLinkedWhitelistTemplatesResponse:
-        """
-        @summary 查询实例关联的白名单模板清单
-        
-        @param request: ListInstanceLinkedWhitelistTemplatesRequest
-        @return: ListInstanceLinkedWhitelistTemplatesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstanceLinkedWhitelistTemplatesRequest,
+    ) -> main_models.ListInstanceLinkedWhitelistTemplatesResponse:
+        runtime = RuntimeOptions()
         return await self.list_instance_linked_whitelist_templates_with_options_async(request, runtime)
 
     def list_whitelist_templates_with_options(
         self,
-        request: clickhouse_20230522_models.ListWhitelistTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ListWhitelistTemplatesResponse:
-        """
-        @summary 查询白名单模板清单
-        
-        @param request: ListWhitelistTemplatesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListWhitelistTemplatesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListWhitelistTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWhitelistTemplatesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListWhitelistTemplates',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListWhitelistTemplates',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ListWhitelistTemplatesResponse(),
+        return DaraCore.from_map(
+            main_models.ListWhitelistTemplatesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_whitelist_templates_with_options_async(
         self,
-        request: clickhouse_20230522_models.ListWhitelistTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ListWhitelistTemplatesResponse:
-        """
-        @summary 查询白名单模板清单
-        
-        @param request: ListWhitelistTemplatesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListWhitelistTemplatesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListWhitelistTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWhitelistTemplatesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListWhitelistTemplates',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListWhitelistTemplates',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ListWhitelistTemplatesResponse(),
+        return DaraCore.from_map(
+            main_models.ListWhitelistTemplatesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_whitelist_templates(
         self,
-        request: clickhouse_20230522_models.ListWhitelistTemplatesRequest,
-    ) -> clickhouse_20230522_models.ListWhitelistTemplatesResponse:
-        """
-        @summary 查询白名单模板清单
-        
-        @param request: ListWhitelistTemplatesRequest
-        @return: ListWhitelistTemplatesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListWhitelistTemplatesRequest,
+    ) -> main_models.ListWhitelistTemplatesResponse:
+        runtime = RuntimeOptions()
         return self.list_whitelist_templates_with_options(request, runtime)
 
     async def list_whitelist_templates_async(
         self,
-        request: clickhouse_20230522_models.ListWhitelistTemplatesRequest,
-    ) -> clickhouse_20230522_models.ListWhitelistTemplatesResponse:
-        """
-        @summary 查询白名单模板清单
-        
-        @param request: ListWhitelistTemplatesRequest
-        @return: ListWhitelistTemplatesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListWhitelistTemplatesRequest,
+    ) -> main_models.ListWhitelistTemplatesResponse:
+        runtime = RuntimeOptions()
         return await self.list_whitelist_templates_with_options_async(request, runtime)
 
     def modify_account_authority_with_options(
         self,
-        tmp_req: clickhouse_20230522_models.ModifyAccountAuthorityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
-        """
-        @summary Modifies the permissions of a database account.
-        
-        @param tmp_req: ModifyAccountAuthorityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyAccountAuthorityResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = clickhouse_20230522_models.ModifyAccountAuthorityShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dml_auth_setting):
-            request.dml_auth_setting_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
+        tmp_req: main_models.ModifyAccountAuthorityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccountAuthorityResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAccountAuthorityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dml_auth_setting):
+            request.dml_auth_setting_shrink = Utils.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dml_auth_setting_shrink):
+        if not DaraCore.is_null(request.dml_auth_setting_shrink):
             query['DmlAuthSetting'] = request.dml_auth_setting_shrink
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyAccountAuthority',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyAccountAuthority',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyAccountAuthorityResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_account_authority_with_options_async(
         self,
-        tmp_req: clickhouse_20230522_models.ModifyAccountAuthorityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
-        """
-        @summary Modifies the permissions of a database account.
-        
-        @param tmp_req: ModifyAccountAuthorityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyAccountAuthorityResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = clickhouse_20230522_models.ModifyAccountAuthorityShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dml_auth_setting):
-            request.dml_auth_setting_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
+        tmp_req: main_models.ModifyAccountAuthorityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccountAuthorityResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAccountAuthorityShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dml_auth_setting):
+            request.dml_auth_setting_shrink = Utils.array_to_string_with_specified_style(tmp_req.dml_auth_setting, 'DmlAuthSetting', 'json')
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dml_auth_setting_shrink):
+        if not DaraCore.is_null(request.dml_auth_setting_shrink):
             query['DmlAuthSetting'] = request.dml_auth_setting_shrink
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyAccountAuthority',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyAccountAuthority',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyAccountAuthorityResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyAccountAuthorityResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_account_authority(
         self,
-        request: clickhouse_20230522_models.ModifyAccountAuthorityRequest,
-    ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
-        """
-        @summary Modifies the permissions of a database account.
-        
-        @param request: ModifyAccountAuthorityRequest
-        @return: ModifyAccountAuthorityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyAccountAuthorityRequest,
+    ) -> main_models.ModifyAccountAuthorityResponse:
+        runtime = RuntimeOptions()
         return self.modify_account_authority_with_options(request, runtime)
 
     async def modify_account_authority_async(
         self,
-        request: clickhouse_20230522_models.ModifyAccountAuthorityRequest,
-    ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
-        """
-        @summary Modifies the permissions of a database account.
-        
-        @param request: ModifyAccountAuthorityRequest
-        @return: ModifyAccountAuthorityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyAccountAuthorityRequest,
+    ) -> main_models.ModifyAccountAuthorityResponse:
+        runtime = RuntimeOptions()
         return await self.modify_account_authority_with_options_async(request, runtime)
 
     def modify_account_description_with_options(
         self,
-        request: clickhouse_20230522_models.ModifyAccountDescriptionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
-        """
-        @summary Modifies the description of a database account.
-        
-        @param request: ModifyAccountDescriptionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyAccountDescriptionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyAccountDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccountDescriptionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyAccountDescription',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyAccountDescription',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyAccountDescriptionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_account_description_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifyAccountDescriptionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
-        """
-        @summary Modifies the description of a database account.
-        
-        @param request: ModifyAccountDescriptionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyAccountDescriptionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyAccountDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccountDescriptionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyAccountDescription',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyAccountDescription',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyAccountDescriptionResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyAccountDescriptionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_account_description(
         self,
-        request: clickhouse_20230522_models.ModifyAccountDescriptionRequest,
-    ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
-        """
-        @summary Modifies the description of a database account.
-        
-        @param request: ModifyAccountDescriptionRequest
-        @return: ModifyAccountDescriptionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyAccountDescriptionRequest,
+    ) -> main_models.ModifyAccountDescriptionResponse:
+        runtime = RuntimeOptions()
         return self.modify_account_description_with_options(request, runtime)
 
     async def modify_account_description_async(
         self,
-        request: clickhouse_20230522_models.ModifyAccountDescriptionRequest,
-    ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
-        """
-        @summary Modifies the description of a database account.
-        
-        @param request: ModifyAccountDescriptionRequest
-        @return: ModifyAccountDescriptionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyAccountDescriptionRequest,
+    ) -> main_models.ModifyAccountDescriptionResponse:
+        runtime = RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
 
     def modify_backup_policy_with_options(
         self,
-        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: ModifyBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.backup_retention_period):
+        if not DaraCore.is_null(request.backup_retention_period):
             query['BackupRetentionPeriod'] = request.backup_retention_period
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.preferred_backup_period):
+        if not DaraCore.is_null(request.preferred_backup_period):
             query['PreferredBackupPeriod'] = request.preferred_backup_period
-        if not UtilClient.is_unset(request.preferred_backup_time):
+        if not DaraCore.is_null(request.preferred_backup_time):
             query['PreferredBackupTime'] = request.preferred_backup_time
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyBackupPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_backup_policy_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: ModifyBackupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyBackupPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyBackupPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.backup_retention_period):
+        if not DaraCore.is_null(request.backup_retention_period):
             query['BackupRetentionPeriod'] = request.backup_retention_period
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.preferred_backup_period):
+        if not DaraCore.is_null(request.preferred_backup_period):
             query['PreferredBackupPeriod'] = request.preferred_backup_period
-        if not UtilClient.is_unset(request.preferred_backup_time):
+        if not DaraCore.is_null(request.preferred_backup_time):
             query['PreferredBackupTime'] = request.preferred_backup_time
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyBackupPolicy',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyBackupPolicy',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyBackupPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyBackupPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_backup_policy(
         self,
-        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: ModifyBackupPolicyRequest
-        @return: ModifyBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyBackupPolicyRequest,
+    ) -> main_models.ModifyBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return self.modify_backup_policy_with_options(request, runtime)
 
     async def modify_backup_policy_async(
         self,
-        request: clickhouse_20230522_models.ModifyBackupPolicyRequest,
-    ) -> clickhouse_20230522_models.ModifyBackupPolicyResponse:
-        """
-        @summary 修改备份策略
-        
-        @param request: ModifyBackupPolicyRequest
-        @return: ModifyBackupPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyBackupPolicyRequest,
+    ) -> main_models.ModifyBackupPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
 
     def modify_dbinstance_attribute_with_options(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
-        """
-        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceAttributeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceAttributeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.attribute_type):
+        if not DaraCore.is_null(request.attribute_type):
             query['AttributeType'] = request.attribute_type
-        if not UtilClient.is_unset(request.attribute_value):
+        if not DaraCore.is_null(request.attribute_value):
             query['AttributeValue'] = request.attribute_value
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceAttribute',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceAttribute',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceAttributeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_attribute_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
-        """
-        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceAttributeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceAttributeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.attribute_type):
+        if not DaraCore.is_null(request.attribute_type):
             query['AttributeType'] = request.attribute_type
-        if not UtilClient.is_unset(request.attribute_value):
+        if not DaraCore.is_null(request.attribute_value):
             query['AttributeValue'] = request.attribute_value
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceAttribute',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceAttribute',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceAttributeResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_attribute(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceAttributeRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
-        """
-        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceAttributeRequest
-        @return: ModifyDBInstanceAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceAttributeRequest,
+    ) -> main_models.ModifyDBInstanceAttributeResponse:
+        runtime = RuntimeOptions()
         return self.modify_dbinstance_attribute_with_options(request, runtime)
 
     async def modify_dbinstance_attribute_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceAttributeRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
-        """
-        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceAttributeRequest
-        @return: ModifyDBInstanceAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceAttributeRequest,
+    ) -> main_models.ModifyDBInstanceAttributeResponse:
+        runtime = RuntimeOptions()
         return await self.modify_dbinstance_attribute_with_options_async(request, runtime)
 
     def modify_dbinstance_class_with_options(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceClassRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
-        """
-        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceClassRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceClassResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceClassRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceClassResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.node_count):
+        if not DaraCore.is_null(request.node_count):
             query['NodeCount'] = request.node_count
-        if not UtilClient.is_unset(request.node_scale_max):
+        if not DaraCore.is_null(request.node_scale_max):
             query['NodeScaleMax'] = request.node_scale_max
-        if not UtilClient.is_unset(request.node_scale_min):
+        if not DaraCore.is_null(request.node_scale_min):
             query['NodeScaleMin'] = request.node_scale_min
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.scale_max):
+        if not DaraCore.is_null(request.scale_max):
             query['ScaleMax'] = request.scale_max
-        if not UtilClient.is_unset(request.scale_min):
+        if not DaraCore.is_null(request.scale_min):
             query['ScaleMin'] = request.scale_min
-        if not UtilClient.is_unset(request.storage_quota):
+        if not DaraCore.is_null(request.storage_quota):
             query['StorageQuota'] = request.storage_quota
-        if not UtilClient.is_unset(request.storage_type):
+        if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceClass',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceClass',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceClassResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_class_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceClassRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
-        """
-        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceClassRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceClassResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceClassRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceClassResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.node_count):
+        if not DaraCore.is_null(request.node_count):
             query['NodeCount'] = request.node_count
-        if not UtilClient.is_unset(request.node_scale_max):
+        if not DaraCore.is_null(request.node_scale_max):
             query['NodeScaleMax'] = request.node_scale_max
-        if not UtilClient.is_unset(request.node_scale_min):
+        if not DaraCore.is_null(request.node_scale_min):
             query['NodeScaleMin'] = request.node_scale_min
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.scale_max):
+        if not DaraCore.is_null(request.scale_max):
             query['ScaleMax'] = request.scale_max
-        if not UtilClient.is_unset(request.scale_min):
+        if not DaraCore.is_null(request.scale_min):
             query['ScaleMin'] = request.scale_min
-        if not UtilClient.is_unset(request.storage_quota):
+        if not DaraCore.is_null(request.storage_quota):
             query['StorageQuota'] = request.storage_quota
-        if not UtilClient.is_unset(request.storage_type):
+        if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceClass',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceClass',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceClassResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceClassResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_class(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceClassRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
-        """
-        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceClassRequest
-        @return: ModifyDBInstanceClassResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceClassRequest,
+    ) -> main_models.ModifyDBInstanceClassResponse:
+        runtime = RuntimeOptions()
         return self.modify_dbinstance_class_with_options(request, runtime)
 
     async def modify_dbinstance_class_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceClassRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
-        """
-        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceClassRequest
-        @return: ModifyDBInstanceClassResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceClassRequest,
+    ) -> main_models.ModifyDBInstanceClassResponse:
+        runtime = RuntimeOptions()
         return await self.modify_dbinstance_class_with_options_async(request, runtime)
 
     def modify_dbinstance_config_with_options(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
-        """
-        @summary 修改实例参数配置
-        
-        @param request: ModifyDBInstanceConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             query['Parameters'] = request.parameters
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceConfig',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceConfig',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceConfigResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_config_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
-        """
-        @summary 修改实例参数配置
-        
-        @param request: ModifyDBInstanceConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             query['Parameters'] = request.parameters
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceConfig',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceConfig',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceConfigResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_config(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
-        """
-        @summary 修改实例参数配置
-        
-        @param request: ModifyDBInstanceConfigRequest
-        @return: ModifyDBInstanceConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceConfigRequest,
+    ) -> main_models.ModifyDBInstanceConfigResponse:
+        runtime = RuntimeOptions()
         return self.modify_dbinstance_config_with_options(request, runtime)
 
     async def modify_dbinstance_config_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConfigRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConfigResponse:
-        """
-        @summary 修改实例参数配置
-        
-        @param request: ModifyDBInstanceConfigRequest
-        @return: ModifyDBInstanceConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceConfigRequest,
+    ) -> main_models.ModifyDBInstanceConfigResponse:
+        runtime = RuntimeOptions()
         return await self.modify_dbinstance_config_with_options_async(request, runtime)
 
     def modify_dbinstance_connection_string_with_options(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConnectionStringRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
-        """
-        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceConnectionStringRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceConnectionStringResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceConnectionStringRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceConnectionStringResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.connection_string):
+        if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
-        if not UtilClient.is_unset(request.connection_string_prefix):
+        if not DaraCore.is_null(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_net_type):
+        if not DaraCore.is_null(request.dbinstance_net_type):
             query['DBInstanceNetType'] = request.dbinstance_net_type
-        if not UtilClient.is_unset(request.disable_ports):
+        if not DaraCore.is_null(request.disable_ports):
             query['DisablePorts'] = request.disable_ports
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceConnectionString',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceConnectionString',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceConnectionStringResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_connection_string_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConnectionStringRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
-        """
-        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceConnectionStringRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceConnectionStringResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDBInstanceConnectionStringRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceConnectionStringResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.computing_group_id):
+        if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
-        if not UtilClient.is_unset(request.connection_string):
+        if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
-        if not UtilClient.is_unset(request.connection_string_prefix):
+        if not DaraCore.is_null(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_net_type):
+        if not DaraCore.is_null(request.dbinstance_net_type):
             query['DBInstanceNetType'] = request.dbinstance_net_type
-        if not UtilClient.is_unset(request.disable_ports):
+        if not DaraCore.is_null(request.disable_ports):
             query['DisablePorts'] = request.disable_ports
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceConnectionString',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceConnectionString',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceConnectionStringResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_connection_string(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConnectionStringRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
-        """
-        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceConnectionStringRequest
-        @return: ModifyDBInstanceConnectionStringResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceConnectionStringRequest,
+    ) -> main_models.ModifyDBInstanceConnectionStringResponse:
+        runtime = RuntimeOptions()
         return self.modify_dbinstance_connection_string_with_options(request, runtime)
 
     async def modify_dbinstance_connection_string_async(
         self,
-        request: clickhouse_20230522_models.ModifyDBInstanceConnectionStringRequest,
-    ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
-        """
-        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifyDBInstanceConnectionStringRequest
-        @return: ModifyDBInstanceConnectionStringResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDBInstanceConnectionStringRequest,
+    ) -> main_models.ModifyDBInstanceConnectionStringResponse:
+        runtime = RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
 
     def modify_security_iplist_with_options(
         self,
-        request: clickhouse_20230522_models.ModifySecurityIPListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
-        """
-        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifySecurityIPListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifySecurityIPListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifySecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySecurityIPListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.group_name):
+        if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
-        if not UtilClient.is_unset(request.modify_mode):
+        if not DaraCore.is_null(request.modify_mode):
             query['ModifyMode'] = request.modify_mode
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_iplist):
+        if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifySecurityIPList',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifySecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifySecurityIPListResponse(),
+        return DaraCore.from_map(
+            main_models.ModifySecurityIPListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_security_iplist_with_options_async(
         self,
-        request: clickhouse_20230522_models.ModifySecurityIPListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
-        """
-        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifySecurityIPListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifySecurityIPListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifySecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySecurityIPListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.group_name):
+        if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
-        if not UtilClient.is_unset(request.modify_mode):
+        if not DaraCore.is_null(request.modify_mode):
             query['ModifyMode'] = request.modify_mode
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_iplist):
+        if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifySecurityIPList',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifySecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ModifySecurityIPListResponse(),
+        return DaraCore.from_map(
+            main_models.ModifySecurityIPListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_security_iplist(
         self,
-        request: clickhouse_20230522_models.ModifySecurityIPListRequest,
-    ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
-        """
-        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifySecurityIPListRequest
-        @return: ModifySecurityIPListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifySecurityIPListRequest,
+    ) -> main_models.ModifySecurityIPListResponse:
+        runtime = RuntimeOptions()
         return self.modify_security_iplist_with_options(request, runtime)
 
     async def modify_security_iplist_async(
         self,
-        request: clickhouse_20230522_models.ModifySecurityIPListRequest,
-    ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
-        """
-        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
-        
-        @param request: ModifySecurityIPListRequest
-        @return: ModifySecurityIPListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifySecurityIPListRequest,
+    ) -> main_models.ModifySecurityIPListResponse:
+        runtime = RuntimeOptions()
         return await self.modify_security_iplist_with_options_async(request, runtime)
 
     def reset_account_password_with_options(
         self,
-        request: clickhouse_20230522_models.ResetAccountPasswordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
-        """
-        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: ResetAccountPasswordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResetAccountPasswordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ResetAccountPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetAccountPasswordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.password):
+        if not DaraCore.is_null(request.password):
             query['Password'] = request.password
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ResetAccountPassword',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ResetAccountPassword',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ResetAccountPasswordResponse(),
+        return DaraCore.from_map(
+            main_models.ResetAccountPasswordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def reset_account_password_with_options_async(
         self,
-        request: clickhouse_20230522_models.ResetAccountPasswordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
-        """
-        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: ResetAccountPasswordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResetAccountPasswordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ResetAccountPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetAccountPasswordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account):
+        if not DaraCore.is_null(request.account):
             query['Account'] = request.account
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.password):
+        if not DaraCore.is_null(request.password):
             query['Password'] = request.password
-        if not UtilClient.is_unset(request.product):
+        if not DaraCore.is_null(request.product):
             query['Product'] = request.product
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ResetAccountPassword',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ResetAccountPassword',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.ResetAccountPasswordResponse(),
+        return DaraCore.from_map(
+            main_models.ResetAccountPasswordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def reset_account_password(
         self,
-        request: clickhouse_20230522_models.ResetAccountPasswordRequest,
-    ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
-        """
-        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: ResetAccountPasswordRequest
-        @return: ResetAccountPasswordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ResetAccountPasswordRequest,
+    ) -> main_models.ResetAccountPasswordResponse:
+        runtime = RuntimeOptions()
         return self.reset_account_password_with_options(request, runtime)
 
     async def reset_account_password_async(
         self,
-        request: clickhouse_20230522_models.ResetAccountPasswordRequest,
-    ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
-        """
-        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: ResetAccountPasswordRequest
-        @return: ResetAccountPasswordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ResetAccountPasswordRequest,
+    ) -> main_models.ResetAccountPasswordResponse:
+        runtime = RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
 
     def restart_dbinstance_with_options(
         self,
-        request: clickhouse_20230522_models.RestartDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.RestartDBInstanceResponse:
-        """
-        @summary Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: RestartDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RestartDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RestartDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RestartDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.RestartDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.RestartDBInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def restart_dbinstance_with_options_async(
         self,
-        request: clickhouse_20230522_models.RestartDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.RestartDBInstanceResponse:
-        """
-        @summary Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: RestartDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RestartDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RestartDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RestartDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.RestartDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.RestartDBInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def restart_dbinstance(
         self,
-        request: clickhouse_20230522_models.RestartDBInstanceRequest,
-    ) -> clickhouse_20230522_models.RestartDBInstanceResponse:
-        """
-        @summary Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: RestartDBInstanceRequest
-        @return: RestartDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RestartDBInstanceRequest,
+    ) -> main_models.RestartDBInstanceResponse:
+        runtime = RuntimeOptions()
         return self.restart_dbinstance_with_options(request, runtime)
 
     async def restart_dbinstance_async(
         self,
-        request: clickhouse_20230522_models.RestartDBInstanceRequest,
-    ) -> clickhouse_20230522_models.RestartDBInstanceResponse:
-        """
-        @summary Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: RestartDBInstanceRequest
-        @return: RestartDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RestartDBInstanceRequest,
+    ) -> main_models.RestartDBInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
 
     def start_dbinstance_with_options(
         self,
-        request: clickhouse_20230522_models.StartDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.StartDBInstanceResponse:
-        """
-        @summary Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StartDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.StartDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StartDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.StartDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.StartDBInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def start_dbinstance_with_options_async(
         self,
-        request: clickhouse_20230522_models.StartDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.StartDBInstanceResponse:
-        """
-        @summary Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StartDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.StartDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StartDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.StartDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.StartDBInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def start_dbinstance(
         self,
-        request: clickhouse_20230522_models.StartDBInstanceRequest,
-    ) -> clickhouse_20230522_models.StartDBInstanceResponse:
-        """
-        @summary Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StartDBInstanceRequest
-        @return: StartDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartDBInstanceRequest,
+    ) -> main_models.StartDBInstanceResponse:
+        runtime = RuntimeOptions()
         return self.start_dbinstance_with_options(request, runtime)
 
     async def start_dbinstance_async(
         self,
-        request: clickhouse_20230522_models.StartDBInstanceRequest,
-    ) -> clickhouse_20230522_models.StartDBInstanceResponse:
-        """
-        @summary Starts an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StartDBInstanceRequest
-        @return: StartDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartDBInstanceRequest,
+    ) -> main_models.StartDBInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.start_dbinstance_with_options_async(request, runtime)
 
     def stop_dbinstance_with_options(
         self,
-        request: clickhouse_20230522_models.StopDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.StopDBInstanceResponse:
-        """
-        @summary Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StopDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.StopDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StopDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StopDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.StopDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.StopDBInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def stop_dbinstance_with_options_async(
         self,
-        request: clickhouse_20230522_models.StopDBInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.StopDBInstanceResponse:
-        """
-        @summary Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StopDBInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopDBInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.StopDBInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopDBInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StopDBInstance',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StopDBInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.StopDBInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.StopDBInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def stop_dbinstance(
         self,
-        request: clickhouse_20230522_models.StopDBInstanceRequest,
-    ) -> clickhouse_20230522_models.StopDBInstanceResponse:
-        """
-        @summary Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StopDBInstanceRequest
-        @return: StopDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StopDBInstanceRequest,
+    ) -> main_models.StopDBInstanceResponse:
+        runtime = RuntimeOptions()
         return self.stop_dbinstance_with_options(request, runtime)
 
     async def stop_dbinstance_async(
         self,
-        request: clickhouse_20230522_models.StopDBInstanceRequest,
-    ) -> clickhouse_20230522_models.StopDBInstanceResponse:
-        """
-        @summary Stops an ApsaraDB for ClickHouse Enterprise Edition cluster.
-        
-        @param request: StopDBInstanceRequest
-        @return: StopDBInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StopDBInstanceRequest,
+    ) -> main_models.StopDBInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.stop_dbinstance_with_options_async(request, runtime)
 
     def update_whitelist_template_with_options(
         self,
-        request: clickhouse_20230522_models.UpdateWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.UpdateWhitelistTemplateResponse:
-        """
-        @summary 更新白名单模板
-        
-        @param request: UpdateWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_iplist):
+        if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.UpdateWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateWhitelistTemplateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_whitelist_template_with_options_async(
         self,
-        request: clickhouse_20230522_models.UpdateWhitelistTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.UpdateWhitelistTemplateResponse:
-        """
-        @summary 更新白名单模板
-        
-        @param request: UpdateWhitelistTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateWhitelistTemplateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateWhitelistTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWhitelistTemplateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_iplist):
+        if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        if not UtilClient.is_unset(request.template_id):
+        if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.template_name):
+        if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateWhitelistTemplate',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateWhitelistTemplate',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.UpdateWhitelistTemplateResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateWhitelistTemplateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_whitelist_template(
         self,
-        request: clickhouse_20230522_models.UpdateWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.UpdateWhitelistTemplateResponse:
-        """
-        @summary 更新白名单模板
-        
-        @param request: UpdateWhitelistTemplateRequest
-        @return: UpdateWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateWhitelistTemplateRequest,
+    ) -> main_models.UpdateWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return self.update_whitelist_template_with_options(request, runtime)
 
     async def update_whitelist_template_async(
         self,
-        request: clickhouse_20230522_models.UpdateWhitelistTemplateRequest,
-    ) -> clickhouse_20230522_models.UpdateWhitelistTemplateResponse:
-        """
-        @summary 更新白名单模板
-        
-        @param request: UpdateWhitelistTemplateRequest
-        @return: UpdateWhitelistTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateWhitelistTemplateRequest,
+    ) -> main_models.UpdateWhitelistTemplateResponse:
+        runtime = RuntimeOptions()
         return await self.update_whitelist_template_with_options_async(request, runtime)
 
     def upgrade_minor_version_with_options(
         self,
-        request: clickhouse_20230522_models.UpgradeMinorVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
-        """
-        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: UpgradeMinorVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpgradeMinorVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpgradeMinorVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeMinorVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.switch_time):
+        if not DaraCore.is_null(request.switch_time):
             query['SwitchTime'] = request.switch_time
-        if not UtilClient.is_unset(request.switch_time_mode):
+        if not DaraCore.is_null(request.switch_time_mode):
             query['SwitchTimeMode'] = request.switch_time_mode
-        if not UtilClient.is_unset(request.target_minor_version):
+        if not DaraCore.is_null(request.target_minor_version):
             query['TargetMinorVersion'] = request.target_minor_version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpgradeMinorVersion',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpgradeMinorVersion',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.UpgradeMinorVersionResponse(),
+        return DaraCore.from_map(
+            main_models.UpgradeMinorVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def upgrade_minor_version_with_options_async(
         self,
-        request: clickhouse_20230522_models.UpgradeMinorVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
-        """
-        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: UpgradeMinorVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpgradeMinorVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpgradeMinorVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeMinorVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
+        if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.switch_time):
+        if not DaraCore.is_null(request.switch_time):
             query['SwitchTime'] = request.switch_time
-        if not UtilClient.is_unset(request.switch_time_mode):
+        if not DaraCore.is_null(request.switch_time_mode):
             query['SwitchTimeMode'] = request.switch_time_mode
-        if not UtilClient.is_unset(request.target_minor_version):
+        if not DaraCore.is_null(request.target_minor_version):
             query['TargetMinorVersion'] = request.target_minor_version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpgradeMinorVersion',
-            version='2023-05-22',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpgradeMinorVersion',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            clickhouse_20230522_models.UpgradeMinorVersionResponse(),
+        return DaraCore.from_map(
+            main_models.UpgradeMinorVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_minor_version(
         self,
-        request: clickhouse_20230522_models.UpgradeMinorVersionRequest,
-    ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
-        """
-        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: UpgradeMinorVersionRequest
-        @return: UpgradeMinorVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpgradeMinorVersionRequest,
+    ) -> main_models.UpgradeMinorVersionResponse:
+        runtime = RuntimeOptions()
         return self.upgrade_minor_version_with_options(request, runtime)
 
     async def upgrade_minor_version_async(
         self,
-        request: clickhouse_20230522_models.UpgradeMinorVersionRequest,
-    ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
-        """
-        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
-        
-        @param request: UpgradeMinorVersionRequest
-        @return: UpgradeMinorVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpgradeMinorVersionRequest,
+    ) -> main_models.UpgradeMinorVersionResponse:
+        runtime = RuntimeOptions()
         return await self.upgrade_minor_version_with_options_async(request, runtime)

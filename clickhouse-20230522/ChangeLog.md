@@ -1,3 +1,7 @@
+2025-12-25 Version: 2.4.0
+- Support API ListClickHouseDBTimezones.
+
+
 2025-12-22 Version: 2.3.0
 - Support API CreateWhitelistTemplate.
 
