@@ -1,3 +1,7 @@
+2025-12-25 Version: 1.38.2
+- Update API RunTextPolishing: add request parameters OriginContent.
+
+
 2025-12-19 Version: 1.38.1
 - Generated python 2023-08-01 for AiMiaoBi.
 

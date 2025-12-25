@@ -1,0 +1,127 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_aimiaobi20230801 import models as main_models
+from darabonba.model import DaraModel
+
+class UpdateGeneralConfigResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: main_models.UpdateGeneralConfigResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            temp_model = main_models.UpdateGeneralConfigResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class UpdateGeneralConfigResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        config_desc: str = None,
+        config_key: str = None,
+        config_value: str = None,
+        config_value_type: str = None,
+    ):
+        self.config_desc = config_desc
+        self.config_key = config_key
+        self.config_value = config_value
+        self.config_value_type = config_value_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.config_desc is not None:
+            result['ConfigDesc'] = self.config_desc
+
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+
+        if self.config_value_type is not None:
+            result['ConfigValueType'] = self.config_value_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigDesc') is not None:
+            self.config_desc = m.get('ConfigDesc')
+
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+
+        if m.get('ConfigValueType') is not None:
+            self.config_value_type = m.get('ConfigValueType')
+
+        return self
+
