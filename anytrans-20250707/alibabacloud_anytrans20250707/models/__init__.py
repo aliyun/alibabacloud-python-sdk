@@ -1,0 +1,235 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._batch_translate_request import BatchTranslateRequest
+from ._batch_translate_shrink_request import BatchTranslateShrinkRequest
+from ._batch_translate_response_body import BatchTranslateResponseBody
+from ._batch_translate_response import BatchTranslateResponse
+from ._batch_translate_for_html_request import BatchTranslateForHtmlRequest
+from ._batch_translate_for_html_shrink_request import BatchTranslateForHtmlShrinkRequest
+from ._batch_translate_for_html_response_body import BatchTranslateForHtmlResponseBody
+from ._batch_translate_for_html_response import BatchTranslateForHtmlResponse
+from ._get_doc_translate_task_request import GetDocTranslateTaskRequest
+from ._get_doc_translate_task_response_body import GetDocTranslateTaskResponseBody
+from ._get_doc_translate_task_response import GetDocTranslateTaskResponse
+from ._get_html_translate_task_request import GetHtmlTranslateTaskRequest
+from ._get_html_translate_task_response_body import GetHtmlTranslateTaskResponseBody
+from ._get_html_translate_task_response import GetHtmlTranslateTaskResponse
+from ._get_image_translate_task_request import GetImageTranslateTaskRequest
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBody
+from ._get_image_translate_task_response import GetImageTranslateTaskResponse
+from ._get_long_text_translate_task_request import GetLongTextTranslateTaskRequest
+from ._get_long_text_translate_task_response_body import GetLongTextTranslateTaskResponseBody
+from ._get_long_text_translate_task_response import GetLongTextTranslateTaskResponse
+from ._submit_doc_translate_task_request import SubmitDocTranslateTaskRequest
+from ._submit_doc_translate_task_shrink_request import SubmitDocTranslateTaskShrinkRequest
+from ._submit_doc_translate_task_response_body import SubmitDocTranslateTaskResponseBody
+from ._submit_doc_translate_task_response import SubmitDocTranslateTaskResponse
+from ._submit_html_translate_task_request import SubmitHtmlTranslateTaskRequest
+from ._submit_html_translate_task_shrink_request import SubmitHtmlTranslateTaskShrinkRequest
+from ._submit_html_translate_task_response_body import SubmitHtmlTranslateTaskResponseBody
+from ._submit_html_translate_task_response import SubmitHtmlTranslateTaskResponse
+from ._submit_image_translate_task_request import SubmitImageTranslateTaskRequest
+from ._submit_image_translate_task_shrink_request import SubmitImageTranslateTaskShrinkRequest
+from ._submit_image_translate_task_response_body import SubmitImageTranslateTaskResponseBody
+from ._submit_image_translate_task_response import SubmitImageTranslateTaskResponse
+from ._submit_long_text_translate_task_request import SubmitLongTextTranslateTaskRequest
+from ._submit_long_text_translate_task_shrink_request import SubmitLongTextTranslateTaskShrinkRequest
+from ._submit_long_text_translate_task_response_body import SubmitLongTextTranslateTaskResponseBody
+from ._submit_long_text_translate_task_response import SubmitLongTextTranslateTaskResponse
+from ._term_edit_request import TermEditRequest
+from ._term_edit_shrink_request import TermEditShrinkRequest
+from ._term_edit_response_body import TermEditResponseBody
+from ._term_edit_response import TermEditResponse
+from ._term_query_request import TermQueryRequest
+from ._term_query_shrink_request import TermQueryShrinkRequest
+from ._term_query_response_body import TermQueryResponseBody
+from ._term_query_response import TermQueryResponse
+from ._text_translate_request import TextTranslateRequest
+from ._text_translate_shrink_request import TextTranslateShrinkRequest
+from ._text_translate_response_body import TextTranslateResponseBody
+from ._text_translate_response import TextTranslateResponse
+from ._batch_translate_request import BatchTranslateRequestExtConfig
+from ._batch_translate_request import BatchTranslateRequestExtExamples
+from ._batch_translate_request import BatchTranslateRequestExtTerminologies
+from ._batch_translate_request import BatchTranslateRequestExtTextTransform
+from ._batch_translate_request import BatchTranslateRequestExt
+from ._batch_translate_response_body import BatchTranslateResponseBodyDataTranslationListUsage
+from ._batch_translate_response_body import BatchTranslateResponseBodyDataTranslationList
+from ._batch_translate_response_body import BatchTranslateResponseBodyData
+from ._batch_translate_for_html_request import BatchTranslateForHtmlRequestExtConfig
+from ._batch_translate_for_html_request import BatchTranslateForHtmlRequestExtExamples
+from ._batch_translate_for_html_request import BatchTranslateForHtmlRequestExtTerminologies
+from ._batch_translate_for_html_request import BatchTranslateForHtmlRequestExtTextTransform
+from ._batch_translate_for_html_request import BatchTranslateForHtmlRequestExt
+from ._batch_translate_for_html_response_body import BatchTranslateForHtmlResponseBodyDataTranslationListUsage
+from ._batch_translate_for_html_response_body import BatchTranslateForHtmlResponseBodyDataTranslationList
+from ._batch_translate_for_html_response_body import BatchTranslateForHtmlResponseBodyData
+from ._get_doc_translate_task_response_body import GetDocTranslateTaskResponseBodyData
+from ._get_html_translate_task_response_body import GetHtmlTranslateTaskResponseBodyDataUsage
+from ._get_html_translate_task_response_body import GetHtmlTranslateTaskResponseBodyData
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownRight
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfosPos
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslationTableInfos
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyDataTranslation
+from ._get_image_translate_task_response_body import GetImageTranslateTaskResponseBodyData
+from ._get_long_text_translate_task_response_body import GetLongTextTranslateTaskResponseBodyDataUsage
+from ._get_long_text_translate_task_response_body import GetLongTextTranslateTaskResponseBodyData
+from ._submit_doc_translate_task_request import SubmitDocTranslateTaskRequestExtConfig
+from ._submit_doc_translate_task_request import SubmitDocTranslateTaskRequestExtTerminologies
+from ._submit_doc_translate_task_request import SubmitDocTranslateTaskRequestExt
+from ._submit_doc_translate_task_response_body import SubmitDocTranslateTaskResponseBodyData
+from ._submit_html_translate_task_request import SubmitHtmlTranslateTaskRequestExtConfig
+from ._submit_html_translate_task_request import SubmitHtmlTranslateTaskRequestExtExamples
+from ._submit_html_translate_task_request import SubmitHtmlTranslateTaskRequestExtTerminologies
+from ._submit_html_translate_task_request import SubmitHtmlTranslateTaskRequestExtTextTransform
+from ._submit_html_translate_task_request import SubmitHtmlTranslateTaskRequestExt
+from ._submit_html_translate_task_response_body import SubmitHtmlTranslateTaskResponseBodyData
+from ._submit_image_translate_task_request import SubmitImageTranslateTaskRequestExtExamples
+from ._submit_image_translate_task_request import SubmitImageTranslateTaskRequestExtTerminologies
+from ._submit_image_translate_task_request import SubmitImageTranslateTaskRequestExtTextTransform
+from ._submit_image_translate_task_request import SubmitImageTranslateTaskRequestExt
+from ._submit_image_translate_task_response_body import SubmitImageTranslateTaskResponseBodyData
+from ._submit_long_text_translate_task_request import SubmitLongTextTranslateTaskRequestExtConfig
+from ._submit_long_text_translate_task_request import SubmitLongTextTranslateTaskRequestExtExamples
+from ._submit_long_text_translate_task_request import SubmitLongTextTranslateTaskRequestExtTerminologies
+from ._submit_long_text_translate_task_request import SubmitLongTextTranslateTaskRequestExtTextTransform
+from ._submit_long_text_translate_task_request import SubmitLongTextTranslateTaskRequestExt
+from ._submit_long_text_translate_task_response_body import SubmitLongTextTranslateTaskResponseBodyData
+from ._term_edit_request import TermEditRequestExtTerms
+from ._term_edit_request import TermEditRequestExt
+from ._term_edit_response_body import TermEditResponseBodyDataTerms
+from ._term_edit_response_body import TermEditResponseBodyData
+from ._term_query_request import TermQueryRequestExt
+from ._term_query_response_body import TermQueryResponseBodyDataTerms
+from ._term_query_response_body import TermQueryResponseBodyData
+from ._text_translate_request import TextTranslateRequestExtConfig
+from ._text_translate_request import TextTranslateRequestExtExamples
+from ._text_translate_request import TextTranslateRequestExtTerminologies
+from ._text_translate_request import TextTranslateRequestExtTextTransform
+from ._text_translate_request import TextTranslateRequestExt
+from ._text_translate_response_body import TextTranslateResponseBodyDataUsage
+from ._text_translate_response_body import TextTranslateResponseBodyData
+
+__all__ = [
+    BatchTranslateRequest,
+    BatchTranslateShrinkRequest,
+    BatchTranslateResponseBody,
+    BatchTranslateResponse,
+    BatchTranslateForHtmlRequest,
+    BatchTranslateForHtmlShrinkRequest,
+    BatchTranslateForHtmlResponseBody,
+    BatchTranslateForHtmlResponse,
+    GetDocTranslateTaskRequest,
+    GetDocTranslateTaskResponseBody,
+    GetDocTranslateTaskResponse,
+    GetHtmlTranslateTaskRequest,
+    GetHtmlTranslateTaskResponseBody,
+    GetHtmlTranslateTaskResponse,
+    GetImageTranslateTaskRequest,
+    GetImageTranslateTaskResponseBody,
+    GetImageTranslateTaskResponse,
+    GetLongTextTranslateTaskRequest,
+    GetLongTextTranslateTaskResponseBody,
+    GetLongTextTranslateTaskResponse,
+    SubmitDocTranslateTaskRequest,
+    SubmitDocTranslateTaskShrinkRequest,
+    SubmitDocTranslateTaskResponseBody,
+    SubmitDocTranslateTaskResponse,
+    SubmitHtmlTranslateTaskRequest,
+    SubmitHtmlTranslateTaskShrinkRequest,
+    SubmitHtmlTranslateTaskResponseBody,
+    SubmitHtmlTranslateTaskResponse,
+    SubmitImageTranslateTaskRequest,
+    SubmitImageTranslateTaskShrinkRequest,
+    SubmitImageTranslateTaskResponseBody,
+    SubmitImageTranslateTaskResponse,
+    SubmitLongTextTranslateTaskRequest,
+    SubmitLongTextTranslateTaskShrinkRequest,
+    SubmitLongTextTranslateTaskResponseBody,
+    SubmitLongTextTranslateTaskResponse,
+    TermEditRequest,
+    TermEditShrinkRequest,
+    TermEditResponseBody,
+    TermEditResponse,
+    TermQueryRequest,
+    TermQueryShrinkRequest,
+    TermQueryResponseBody,
+    TermQueryResponse,
+    TextTranslateRequest,
+    TextTranslateShrinkRequest,
+    TextTranslateResponseBody,
+    TextTranslateResponse,
+    BatchTranslateRequestExtConfig,
+    BatchTranslateRequestExtExamples,
+    BatchTranslateRequestExtTerminologies,
+    BatchTranslateRequestExtTextTransform,
+    BatchTranslateRequestExt,
+    BatchTranslateResponseBodyDataTranslationListUsage,
+    BatchTranslateResponseBodyDataTranslationList,
+    BatchTranslateResponseBodyData,
+    BatchTranslateForHtmlRequestExtConfig,
+    BatchTranslateForHtmlRequestExtExamples,
+    BatchTranslateForHtmlRequestExtTerminologies,
+    BatchTranslateForHtmlRequestExtTextTransform,
+    BatchTranslateForHtmlRequestExt,
+    BatchTranslateForHtmlResponseBodyDataTranslationListUsage,
+    BatchTranslateForHtmlResponseBodyDataTranslationList,
+    BatchTranslateForHtmlResponseBodyData,
+    GetDocTranslateTaskResponseBodyData,
+    GetHtmlTranslateTaskResponseBodyDataUsage,
+    GetHtmlTranslateTaskResponseBodyData,
+    GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft,
+    GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownRight,
+    GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft,
+    GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight,
+    GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes,
+    GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfosPos,
+    GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos,
+    GetImageTranslateTaskResponseBodyDataTranslationTableInfos,
+    GetImageTranslateTaskResponseBodyDataTranslation,
+    GetImageTranslateTaskResponseBodyData,
+    GetLongTextTranslateTaskResponseBodyDataUsage,
+    GetLongTextTranslateTaskResponseBodyData,
+    SubmitDocTranslateTaskRequestExtConfig,
+    SubmitDocTranslateTaskRequestExtTerminologies,
+    SubmitDocTranslateTaskRequestExt,
+    SubmitDocTranslateTaskResponseBodyData,
+    SubmitHtmlTranslateTaskRequestExtConfig,
+    SubmitHtmlTranslateTaskRequestExtExamples,
+    SubmitHtmlTranslateTaskRequestExtTerminologies,
+    SubmitHtmlTranslateTaskRequestExtTextTransform,
+    SubmitHtmlTranslateTaskRequestExt,
+    SubmitHtmlTranslateTaskResponseBodyData,
+    SubmitImageTranslateTaskRequestExtExamples,
+    SubmitImageTranslateTaskRequestExtTerminologies,
+    SubmitImageTranslateTaskRequestExtTextTransform,
+    SubmitImageTranslateTaskRequestExt,
+    SubmitImageTranslateTaskResponseBodyData,
+    SubmitLongTextTranslateTaskRequestExtConfig,
+    SubmitLongTextTranslateTaskRequestExtExamples,
+    SubmitLongTextTranslateTaskRequestExtTerminologies,
+    SubmitLongTextTranslateTaskRequestExtTextTransform,
+    SubmitLongTextTranslateTaskRequestExt,
+    SubmitLongTextTranslateTaskResponseBodyData,
+    TermEditRequestExtTerms,
+    TermEditRequestExt,
+    TermEditResponseBodyDataTerms,
+    TermEditResponseBodyData,
+    TermQueryRequestExt,
+    TermQueryResponseBodyDataTerms,
+    TermQueryResponseBodyData,
+    TextTranslateRequestExtConfig,
+    TextTranslateRequestExtExamples,
+    TextTranslateRequestExtTerminologies,
+    TextTranslateRequestExtTextTransform,
+    TextTranslateRequestExt,
+    TextTranslateResponseBodyDataUsage,
+    TextTranslateResponseBodyData
+]

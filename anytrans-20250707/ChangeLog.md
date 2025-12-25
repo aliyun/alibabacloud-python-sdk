@@ -1,3 +1,14 @@
+2025-12-25 Version: 2.1.2
+- Update API BatchTranslate: add request parameters ext.paramMap.
+- Update API SubmitDocTranslateTask: add request parameters ext.paramMap.
+- Update API SubmitHtmlTranslateTask: add request parameters ext.paramMap.
+- Update API SubmitImageTranslateTask: add request parameters ext.paramMap.
+- Update API SubmitLongTextTranslateTask: add request parameters ext.paramMap.
+- Update API TermEdit: add request parameters ext.paramMap.
+- Update API TermQuery: add request parameters ext.
+- Update API TextTranslate: add request parameters ext.paramMap.
+
+
 2025-12-11 Version: 2.1.1
 - Update API TextTranslate: add request parameters ext.prefix.
 
