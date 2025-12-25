@@ -373,12 +373,14 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(DaraModel):
         file_name_pattern: str = None,
         file_path_prefix: List[str] = None,
         format: str = None,
+        slice_duration: int = None,
         slice_name_pattern: str = None,
     ):
         self.file_name_pattern = file_name_pattern
         self.file_path_prefix = file_path_prefix
         # This parameter is required.
         self.format = format
+        self.slice_duration = slice_duration
         self.slice_name_pattern = slice_name_pattern
 
     def validate(self):
@@ -398,6 +400,9 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(DaraModel):
         if self.format is not None:
             result['Format'] = self.format
 
+        if self.slice_duration is not None:
+            result['SliceDuration'] = self.slice_duration
+
         if self.slice_name_pattern is not None:
             result['SliceNamePattern'] = self.slice_name_pattern
 
@@ -413,6 +418,9 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(DaraModel):
 
         if m.get('Format') is not None:
             self.format = m.get('Format')
+
+        if m.get('SliceDuration') is not None:
+            self.slice_duration = m.get('SliceDuration')
 
         if m.get('SliceNamePattern') is not None:
             self.slice_name_pattern = m.get('SliceNamePattern')

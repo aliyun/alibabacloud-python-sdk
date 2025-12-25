@@ -1,3 +1,7 @@
+2025-12-25 Version: 2.5.1
+- Update API StartRtcCloudRecording: add request parameters StorageParams.FileInfo.$.SliceDuration.
+
+
 2025-12-24 Version: 2.5.0
 - Support API ListLiveTagResources.
 
