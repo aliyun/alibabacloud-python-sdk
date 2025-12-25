@@ -1,3 +1,12 @@
+2025-12-25 Version: 2.33.0
+- Support API CreateUserWafRuleset.
+- Support API DeleteUserWafRuleset.
+- Support API GetRoutineAccessToken.
+- Support API GetUserWafRuleset.
+- Support API ListUserWafRulesets.
+- Support API UpdateUserWafRuleset.
+
+
 2025-12-22 Version: 2.32.0
 - Support API DeleteHttpDDoSIntelligentRule.
 - Support API SetHttpDDoSAttackRuleAction.

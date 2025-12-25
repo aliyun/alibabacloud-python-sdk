@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class UpdateSiteCustomLogShrinkRequest(DaraModel):
+    def __init__(
+        self,
+        cookies_shrink: str = None,
+        request_headers_shrink: str = None,
+        response_headers_shrink: str = None,
+        site_id: int = None,
+    ):
+        # The cookie fields.
+        self.cookies_shrink = cookies_shrink
+        # The request header fields.
+        self.request_headers_shrink = request_headers_shrink
+        # The response header fields.
+        self.response_headers_shrink = response_headers_shrink
+        # site id
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cookies_shrink is not None:
+            result['Cookies'] = self.cookies_shrink
+
+        if self.request_headers_shrink is not None:
+            result['RequestHeaders'] = self.request_headers_shrink
+
+        if self.response_headers_shrink is not None:
+            result['ResponseHeaders'] = self.response_headers_shrink
+
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cookies') is not None:
+            self.cookies_shrink = m.get('Cookies')
+
+        if m.get('RequestHeaders') is not None:
+            self.request_headers_shrink = m.get('RequestHeaders')
+
+        if m.get('ResponseHeaders') is not None:
+            self.response_headers_shrink = m.get('ResponseHeaders')
+
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+
+        return self
+
