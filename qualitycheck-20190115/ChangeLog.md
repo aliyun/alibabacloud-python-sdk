@@ -1,3 +1,9 @@
+2025-12-25 Version: 8.5.0
+- Support API CreateUser.
+- Support API SubmitReviewInfoV4.
+- Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.ReviewInfo.SentenceReviewResults.
+
+
 2025-12-12 Version: 8.4.2
 - Generated python 2019-01-15 for Qualitycheck.
 
