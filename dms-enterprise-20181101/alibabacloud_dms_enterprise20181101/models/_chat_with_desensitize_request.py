@@ -1,0 +1,220 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List, Any, Dict
+
+from darabonba.model import DaraModel
+
+class ChatWithDesensitizeRequest(DaraModel):
+    def __init__(
+        self,
+        audio_json: str = None,
+        desensitization_rule: str = None,
+        enable_code_interpreter: bool = None,
+        enable_search: bool = None,
+        enable_thinking: bool = None,
+        instance_id: int = None,
+        logprobs: bool = None,
+        max_tokens: int = None,
+        messages: List[Any] = None,
+        modalities_list: List[str] = None,
+        model: str = None,
+        need_desensitization: bool = None,
+        presence_penalty: str = None,
+        response_format: str = None,
+        search_options: Dict[str, str] = None,
+        seed: int = None,
+        stop: List[str] = None,
+        temperature: str = None,
+        thinking_budget: int = None,
+        top_k: int = None,
+        top_logprobs: int = None,
+        top_p: str = None,
+        vl_high_resolution_images: bool = None,
+        xdash_scope_data_inspection: str = None,
+    ):
+        self.audio_json = audio_json
+        self.desensitization_rule = desensitization_rule
+        self.enable_code_interpreter = enable_code_interpreter
+        self.enable_search = enable_search
+        self.enable_thinking = enable_thinking
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.logprobs = logprobs
+        self.max_tokens = max_tokens
+        self.messages = messages
+        self.modalities_list = modalities_list
+        self.model = model
+        self.need_desensitization = need_desensitization
+        self.presence_penalty = presence_penalty
+        self.response_format = response_format
+        self.search_options = search_options
+        self.seed = seed
+        self.stop = stop
+        self.temperature = temperature
+        self.thinking_budget = thinking_budget
+        self.top_k = top_k
+        self.top_logprobs = top_logprobs
+        self.top_p = top_p
+        self.vl_high_resolution_images = vl_high_resolution_images
+        self.xdash_scope_data_inspection = xdash_scope_data_inspection
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio_json is not None:
+            result['AudioJson'] = self.audio_json
+
+        if self.desensitization_rule is not None:
+            result['DesensitizationRule'] = self.desensitization_rule
+
+        if self.enable_code_interpreter is not None:
+            result['EnableCodeInterpreter'] = self.enable_code_interpreter
+
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+
+        if self.enable_thinking is not None:
+            result['EnableThinking'] = self.enable_thinking
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.logprobs is not None:
+            result['Logprobs'] = self.logprobs
+
+        if self.max_tokens is not None:
+            result['MaxTokens'] = self.max_tokens
+
+        if self.messages is not None:
+            result['Messages'] = self.messages
+
+        if self.modalities_list is not None:
+            result['ModalitiesList'] = self.modalities_list
+
+        if self.model is not None:
+            result['Model'] = self.model
+
+        if self.need_desensitization is not None:
+            result['NeedDesensitization'] = self.need_desensitization
+
+        if self.presence_penalty is not None:
+            result['PresencePenalty'] = self.presence_penalty
+
+        if self.response_format is not None:
+            result['ResponseFormat'] = self.response_format
+
+        if self.search_options is not None:
+            result['SearchOptions'] = self.search_options
+
+        if self.seed is not None:
+            result['Seed'] = self.seed
+
+        if self.stop is not None:
+            result['Stop'] = self.stop
+
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature
+
+        if self.thinking_budget is not None:
+            result['ThinkingBudget'] = self.thinking_budget
+
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+
+        if self.top_logprobs is not None:
+            result['TopLogprobs'] = self.top_logprobs
+
+        if self.top_p is not None:
+            result['TopP'] = self.top_p
+
+        if self.vl_high_resolution_images is not None:
+            result['VlHighResolutionImages'] = self.vl_high_resolution_images
+
+        if self.xdash_scope_data_inspection is not None:
+            result['XDashScopeDataInspection'] = self.xdash_scope_data_inspection
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioJson') is not None:
+            self.audio_json = m.get('AudioJson')
+
+        if m.get('DesensitizationRule') is not None:
+            self.desensitization_rule = m.get('DesensitizationRule')
+
+        if m.get('EnableCodeInterpreter') is not None:
+            self.enable_code_interpreter = m.get('EnableCodeInterpreter')
+
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+
+        if m.get('EnableThinking') is not None:
+            self.enable_thinking = m.get('EnableThinking')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('Logprobs') is not None:
+            self.logprobs = m.get('Logprobs')
+
+        if m.get('MaxTokens') is not None:
+            self.max_tokens = m.get('MaxTokens')
+
+        if m.get('Messages') is not None:
+            self.messages = m.get('Messages')
+
+        if m.get('ModalitiesList') is not None:
+            self.modalities_list = m.get('ModalitiesList')
+
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
+        if m.get('NeedDesensitization') is not None:
+            self.need_desensitization = m.get('NeedDesensitization')
+
+        if m.get('PresencePenalty') is not None:
+            self.presence_penalty = m.get('PresencePenalty')
+
+        if m.get('ResponseFormat') is not None:
+            self.response_format = m.get('ResponseFormat')
+
+        if m.get('SearchOptions') is not None:
+            self.search_options = m.get('SearchOptions')
+
+        if m.get('Seed') is not None:
+            self.seed = m.get('Seed')
+
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+
+        if m.get('Temperature') is not None:
+            self.temperature = m.get('Temperature')
+
+        if m.get('ThinkingBudget') is not None:
+            self.thinking_budget = m.get('ThinkingBudget')
+
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+
+        if m.get('TopLogprobs') is not None:
+            self.top_logprobs = m.get('TopLogprobs')
+
+        if m.get('TopP') is not None:
+            self.top_p = m.get('TopP')
+
+        if m.get('VlHighResolutionImages') is not None:
+            self.vl_high_resolution_images = m.get('VlHighResolutionImages')
+
+        if m.get('XDashScopeDataInspection') is not None:
+            self.xdash_scope_data_inspection = m.get('XDashScopeDataInspection')
+
+        return self
+

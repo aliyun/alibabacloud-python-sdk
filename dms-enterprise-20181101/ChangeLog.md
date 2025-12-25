@@ -1,3 +1,7 @@
+2025-12-25 Version: 2.1.3
+- Update API ChatWithDesensitizeSSE: add request parameters Parameters.
+
+
 2025-12-03 Version: 2.1.2
 - Update API CreateMetaCategory: add request parameters Description.
 - Update API CreateMetaCategory: add request parameters OwnerIds.

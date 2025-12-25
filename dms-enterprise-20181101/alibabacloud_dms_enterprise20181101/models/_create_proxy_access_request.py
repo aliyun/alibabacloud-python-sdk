@@ -1,0 +1,74 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CreateProxyAccessRequest(DaraModel):
+    def __init__(
+        self,
+        indep_account: str = None,
+        indep_password: str = None,
+        proxy_id: int = None,
+        tid: int = None,
+        user_id: int = None,
+    ):
+        # The database account.
+        self.indep_account = indep_account
+        # The password that is used to log on to the database.
+        self.indep_password = indep_password
+        # The ID of the security protection agent. You can call the [ListProxies](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxies) or [GetProxy](https://www.alibabacloud.com/help/en/data-management-service/latest/getproxy) operation to obtain this parameter.
+        # 
+        # This parameter is required.
+        self.proxy_id = proxy_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to obtain this parameter.
+        self.tid = tid
+        # The ID of the user. You can call the [ListUsers](https://www.alibabacloud.com/help/en/data-management-service/latest/listusers) or [GetUser](https://www.alibabacloud.com/help/en/data-management-service/latest/getuser) operation to obtain this parameter.
+        # 
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.indep_account is not None:
+            result['IndepAccount'] = self.indep_account
+
+        if self.indep_password is not None:
+            result['IndepPassword'] = self.indep_password
+
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+
+        if self.tid is not None:
+            result['Tid'] = self.tid
+
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IndepAccount') is not None:
+            self.indep_account = m.get('IndepAccount')
+
+        if m.get('IndepPassword') is not None:
+            self.indep_password = m.get('IndepPassword')
+
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+
+        return self
+
