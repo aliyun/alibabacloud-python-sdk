@@ -1,3 +1,8 @@
+2025-12-25 Version: 13.1.0
+- Support API ModifyRCDiskChargeType.
+- Update API DescribeRCDisks: add response parameters Body.Disks.$.AttachedTime.
+
+
 2025-12-05 Version: 13.0.1
 - Update API ReleaseReadWriteSplittingConnection: add request parameters RWAddressType.
 

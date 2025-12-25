@@ -1,0 +1,187 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_rds20140815 import models as main_models
+from darabonba.model import DaraModel
+
+class DescribeSQLLogFilesResponseBody(DaraModel):
+    def __init__(
+        self,
+        items: main_models.DescribeSQLLogFilesResponseBodyItems = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        # An array that consists of the returned audit log files.
+        self.items = items
+        # The page number of the returned page.
+        self.page_number = page_number
+        # The number of entries returned per page.
+        self.page_record_count = page_record_count
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            self.items.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.items is not None:
+            result['Items'] = self.items.to_map()
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Items') is not None:
+            temp_model = main_models.DescribeSQLLogFilesResponseBodyItems()
+            self.items = temp_model.from_map(m.get('Items'))
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+
+        return self
+
+class DescribeSQLLogFilesResponseBodyItems(DaraModel):
+    def __init__(
+        self,
+        log_file: List[main_models.DescribeSQLLogFilesResponseBodyItemsLogFile] = None,
+    ):
+        self.log_file = log_file
+
+    def validate(self):
+        if self.log_file:
+            for v1 in self.log_file:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['LogFile'] = []
+        if self.log_file is not None:
+            for k1 in self.log_file:
+                result['LogFile'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.log_file = []
+        if m.get('LogFile') is not None:
+            for k1 in m.get('LogFile'):
+                temp_model = main_models.DescribeSQLLogFilesResponseBodyItemsLogFile()
+                self.log_file.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeSQLLogFilesResponseBodyItemsLogFile(DaraModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        log_download_url: str = None,
+        log_end_time: str = None,
+        log_size: str = None,
+        log_start_time: str = None,
+        log_status: str = None,
+    ):
+        # The file name.
+        self.file_id = file_id
+        # The download URL of the file. If the audit log file cannot be downloaded, this parameter is null.
+        self.log_download_url = log_download_url
+        # The time at which the last SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.log_end_time = log_end_time
+        # The size of the audit log file. Unit: bytes.
+        self.log_size = log_size
+        # The time at which the first SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        self.log_start_time = log_start_time
+        # The status of the audit log file. Valid values:
+        # 
+        # *   **Success**
+        # *   **Failed**
+        # *   **Generating**
+        self.log_status = log_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.file_id is not None:
+            result['FileID'] = self.file_id
+
+        if self.log_download_url is not None:
+            result['LogDownloadURL'] = self.log_download_url
+
+        if self.log_end_time is not None:
+            result['LogEndTime'] = self.log_end_time
+
+        if self.log_size is not None:
+            result['LogSize'] = self.log_size
+
+        if self.log_start_time is not None:
+            result['LogStartTime'] = self.log_start_time
+
+        if self.log_status is not None:
+            result['LogStatus'] = self.log_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileID') is not None:
+            self.file_id = m.get('FileID')
+
+        if m.get('LogDownloadURL') is not None:
+            self.log_download_url = m.get('LogDownloadURL')
+
+        if m.get('LogEndTime') is not None:
+            self.log_end_time = m.get('LogEndTime')
+
+        if m.get('LogSize') is not None:
+            self.log_size = m.get('LogSize')
+
+        if m.get('LogStartTime') is not None:
+            self.log_start_time = m.get('LogStartTime')
+
+        if m.get('LogStatus') is not None:
+            self.log_status = m.get('LogStatus')
+
+        return self
+
