@@ -1,3 +1,14 @@
+2025-12-25 Version: 2.1.3
+- Update API DescribeInstances: add request parameters InstanceName.
+- Update API DescribeInstances: add request parameters NamespaceName.
+- Update API DescribeInstances: add response parameters Body.Instances.$.ElasticInstanceId.
+- Update API QueryConvertInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryConvertPrepayInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryCreateInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryModifyInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+- Update API QueryRenewInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
+
+
 2025-09-16 Version: 2.1.2
 - Update API ConvertInstance: add request parameters PromotionCode.
 - Update API ConvertInstance: add request parameters UsePromotionCode.

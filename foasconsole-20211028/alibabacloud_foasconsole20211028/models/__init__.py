@@ -1,0 +1,345 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._cluster_stage import ClusterStage
+from ._cluster_state import ClusterState
+from ._fluss_instance import FlussInstance
+from ._fluss_vswitch import FlussVswitch
+from ._stage_with_weight import StageWithWeight
+from ._convert_hybrid_instance_request import ConvertHybridInstanceRequest
+from ._convert_hybrid_instance_shrink_request import ConvertHybridInstanceShrinkRequest
+from ._convert_hybrid_instance_response_body import ConvertHybridInstanceResponseBody
+from ._convert_hybrid_instance_response import ConvertHybridInstanceResponse
+from ._convert_instance_request import ConvertInstanceRequest
+from ._convert_instance_shrink_request import ConvertInstanceShrinkRequest
+from ._convert_instance_response_body import ConvertInstanceResponseBody
+from ._convert_instance_response import ConvertInstanceResponse
+from ._convert_prepay_instance_request import ConvertPrepayInstanceRequest
+from ._convert_prepay_instance_response_body import ConvertPrepayInstanceResponseBody
+from ._convert_prepay_instance_response import ConvertPrepayInstanceResponse
+from ._create_instance_request import CreateInstanceRequest
+from ._create_instance_shrink_request import CreateInstanceShrinkRequest
+from ._create_instance_response_body import CreateInstanceResponseBody
+from ._create_instance_response import CreateInstanceResponse
+from ._create_namespace_request import CreateNamespaceRequest
+from ._create_namespace_shrink_request import CreateNamespaceShrinkRequest
+from ._create_namespace_response_body import CreateNamespaceResponseBody
+from ._create_namespace_response import CreateNamespaceResponse
+from ._delete_instance_request import DeleteInstanceRequest
+from ._delete_instance_response_body import DeleteInstanceResponseBody
+from ._delete_instance_response import DeleteInstanceResponse
+from ._delete_namespace_request import DeleteNamespaceRequest
+from ._delete_namespace_response_body import DeleteNamespaceResponseBody
+from ._delete_namespace_response import DeleteNamespaceResponse
+from ._describe_instances_request import DescribeInstancesRequest
+from ._describe_instances_shrink_request import DescribeInstancesShrinkRequest
+from ._describe_instances_response_body import DescribeInstancesResponseBody
+from ._describe_instances_response import DescribeInstancesResponse
+from ._describe_namespaces_request import DescribeNamespacesRequest
+from ._describe_namespaces_shrink_request import DescribeNamespacesShrinkRequest
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBody
+from ._describe_namespaces_response import DescribeNamespacesResponse
+from ._describe_supported_regions_response_body import DescribeSupportedRegionsResponseBody
+from ._describe_supported_regions_response import DescribeSupportedRegionsResponse
+from ._describe_supported_zones_request import DescribeSupportedZonesRequest
+from ._describe_supported_zones_response_body import DescribeSupportedZonesResponseBody
+from ._describe_supported_zones_response import DescribeSupportedZonesResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_elastic_resource_spec_request import ModifyElasticResourceSpecRequest
+from ._modify_elastic_resource_spec_shrink_request import ModifyElasticResourceSpecShrinkRequest
+from ._modify_elastic_resource_spec_response_body import ModifyElasticResourceSpecResponseBody
+from ._modify_elastic_resource_spec_response import ModifyElasticResourceSpecResponse
+from ._modify_instance_vswitch_request import ModifyInstanceVswitchRequest
+from ._modify_instance_vswitch_shrink_request import ModifyInstanceVswitchShrinkRequest
+from ._modify_instance_vswitch_response_body import ModifyInstanceVswitchResponseBody
+from ._modify_instance_vswitch_response import ModifyInstanceVswitchResponse
+from ._modify_namespace_spec_v2request import ModifyNamespaceSpecV2Request
+from ._modify_namespace_spec_v2shrink_request import ModifyNamespaceSpecV2ShrinkRequest
+from ._modify_namespace_spec_v2response_body import ModifyNamespaceSpecV2ResponseBody
+from ._modify_namespace_spec_v2response import ModifyNamespaceSpecV2Response
+from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequest
+from ._modify_prepay_instance_spec_shrink_request import ModifyPrepayInstanceSpecShrinkRequest
+from ._modify_prepay_instance_spec_response_body import ModifyPrepayInstanceSpecResponseBody
+from ._modify_prepay_instance_spec_response import ModifyPrepayInstanceSpecResponse
+from ._modify_prepay_namespace_spec_request import ModifyPrepayNamespaceSpecRequest
+from ._modify_prepay_namespace_spec_shrink_request import ModifyPrepayNamespaceSpecShrinkRequest
+from ._modify_prepay_namespace_spec_response_body import ModifyPrepayNamespaceSpecResponseBody
+from ._modify_prepay_namespace_spec_response import ModifyPrepayNamespaceSpecResponse
+from ._query_convert_instance_price_request import QueryConvertInstancePriceRequest
+from ._query_convert_instance_price_shrink_request import QueryConvertInstancePriceShrinkRequest
+from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBody
+from ._query_convert_instance_price_response import QueryConvertInstancePriceResponse
+from ._query_convert_prepay_instance_price_request import QueryConvertPrepayInstancePriceRequest
+from ._query_convert_prepay_instance_price_response_body import QueryConvertPrepayInstancePriceResponseBody
+from ._query_convert_prepay_instance_price_response import QueryConvertPrepayInstancePriceResponse
+from ._query_create_instance_price_request import QueryCreateInstancePriceRequest
+from ._query_create_instance_price_shrink_request import QueryCreateInstancePriceShrinkRequest
+from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBody
+from ._query_create_instance_price_response import QueryCreateInstancePriceResponse
+from ._query_modify_instance_price_request import QueryModifyInstancePriceRequest
+from ._query_modify_instance_price_shrink_request import QueryModifyInstancePriceShrinkRequest
+from ._query_modify_instance_price_response_body import QueryModifyInstancePriceResponseBody
+from ._query_modify_instance_price_response import QueryModifyInstancePriceResponse
+from ._query_renew_instance_price_request import QueryRenewInstancePriceRequest
+from ._query_renew_instance_price_response_body import QueryRenewInstancePriceResponseBody
+from ._query_renew_instance_price_response import QueryRenewInstancePriceResponse
+from ._renew_instance_request import RenewInstanceRequest
+from ._renew_instance_response_body import RenewInstanceResponseBody
+from ._renew_instance_response import RenewInstanceResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._convert_hybrid_instance_request import ConvertHybridInstanceRequestResourceSpec
+from ._convert_hybrid_instance_response_body import ConvertHybridInstanceResponseBodyOrderInfo
+from ._convert_instance_request import ConvertInstanceRequestNamespaceResourceSpecsResourceSpec
+from ._convert_instance_request import ConvertInstanceRequestNamespaceResourceSpecs
+from ._create_instance_request import CreateInstanceRequestHaResourceSpec
+from ._create_instance_request import CreateInstanceRequestResourceSpec
+from ._create_instance_request import CreateInstanceRequestStorageOss
+from ._create_instance_request import CreateInstanceRequestStorage
+from ._create_instance_request import CreateInstanceRequestTag
+from ._create_instance_response_body import CreateInstanceResponseBodyOrderInfo
+from ._create_namespace_request import CreateNamespaceRequestResourceSpec
+from ._describe_instances_request import DescribeInstancesRequestTags
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterStateClusterStage
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterState
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterUsedResources
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesClusterUsedStorage
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesElasticResourceSpec
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesHaResourceSpec
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesHaVSwitchInfo
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesHostAliases
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesOssInfo
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesResourceSpec
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesStorageOss
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesStorage
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesTags
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesVSwitchInfo
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesVpcInfo
+from ._describe_instances_response_body import DescribeInstancesResponseBodyInstances
+from ._describe_namespaces_request import DescribeNamespacesRequestTags
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespacesElasticResourceSpec
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespacesResourceSpec
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespacesResourceUsed
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespacesTags
+from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespaces
+from ._describe_supported_regions_response_body import DescribeSupportedRegionsResponseBodyRegions
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_elastic_resource_spec_request import ModifyElasticResourceSpecRequestResourceSpec
+from ._modify_namespace_spec_v2request import ModifyNamespaceSpecV2RequestElasticResourceSpec
+from ._modify_namespace_spec_v2request import ModifyNamespaceSpecV2RequestGuaranteedResourceSpec
+from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequestHaResourceSpec
+from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequestResourceSpec
+from ._modify_prepay_namespace_spec_request import ModifyPrepayNamespaceSpecRequestResourceSpec
+from ._query_convert_instance_price_request import QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec
+from ._query_convert_instance_price_request import QueryConvertInstancePriceRequestNamespaceResourceSpecs
+from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo
+from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions
+from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBodyPriceInfoRules
+from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBodyPriceInfo
+from ._query_convert_prepay_instance_price_response_body import QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo
+from ._query_convert_prepay_instance_price_response_body import QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions
+from ._query_convert_prepay_instance_price_response_body import QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules
+from ._query_convert_prepay_instance_price_response_body import QueryConvertPrepayInstancePriceResponseBodyPriceInfo
+from ._query_create_instance_price_request import QueryCreateInstancePriceRequestHaResourceSpec
+from ._query_create_instance_price_request import QueryCreateInstancePriceRequestResourceSpec
+from ._query_create_instance_price_request import QueryCreateInstancePriceRequestStorageOss
+from ._query_create_instance_price_request import QueryCreateInstancePriceRequestStorage
+from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo
+from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions
+from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoRules
+from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfo
+from ._query_modify_instance_price_request import QueryModifyInstancePriceRequestHaResourceSpec
+from ._query_modify_instance_price_request import QueryModifyInstancePriceRequestResourceSpec
+from ._query_modify_instance_price_response_body import QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo
+from ._query_modify_instance_price_response_body import QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions
+from ._query_modify_instance_price_response_body import QueryModifyInstancePriceResponseBodyPriceInfoRules
+from ._query_modify_instance_price_response_body import QueryModifyInstancePriceResponseBodyPriceInfo
+from ._query_renew_instance_price_response_body import QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo
+from ._query_renew_instance_price_response_body import QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions
+from ._query_renew_instance_price_response_body import QueryRenewInstancePriceResponseBodyPriceInfoRules
+from ._query_renew_instance_price_response_body import QueryRenewInstancePriceResponseBodyPriceInfo
+from ._tag_resources_request import TagResourcesRequestTag
+
+__all__ = [
+    ClusterStage,
+    ClusterState,
+    FlussInstance,
+    FlussVswitch,
+    StageWithWeight,
+    ConvertHybridInstanceRequest,
+    ConvertHybridInstanceShrinkRequest,
+    ConvertHybridInstanceResponseBody,
+    ConvertHybridInstanceResponse,
+    ConvertInstanceRequest,
+    ConvertInstanceShrinkRequest,
+    ConvertInstanceResponseBody,
+    ConvertInstanceResponse,
+    ConvertPrepayInstanceRequest,
+    ConvertPrepayInstanceResponseBody,
+    ConvertPrepayInstanceResponse,
+    CreateInstanceRequest,
+    CreateInstanceShrinkRequest,
+    CreateInstanceResponseBody,
+    CreateInstanceResponse,
+    CreateNamespaceRequest,
+    CreateNamespaceShrinkRequest,
+    CreateNamespaceResponseBody,
+    CreateNamespaceResponse,
+    DeleteInstanceRequest,
+    DeleteInstanceResponseBody,
+    DeleteInstanceResponse,
+    DeleteNamespaceRequest,
+    DeleteNamespaceResponseBody,
+    DeleteNamespaceResponse,
+    DescribeInstancesRequest,
+    DescribeInstancesShrinkRequest,
+    DescribeInstancesResponseBody,
+    DescribeInstancesResponse,
+    DescribeNamespacesRequest,
+    DescribeNamespacesShrinkRequest,
+    DescribeNamespacesResponseBody,
+    DescribeNamespacesResponse,
+    DescribeSupportedRegionsResponseBody,
+    DescribeSupportedRegionsResponse,
+    DescribeSupportedZonesRequest,
+    DescribeSupportedZonesResponseBody,
+    DescribeSupportedZonesResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ModifyElasticResourceSpecRequest,
+    ModifyElasticResourceSpecShrinkRequest,
+    ModifyElasticResourceSpecResponseBody,
+    ModifyElasticResourceSpecResponse,
+    ModifyInstanceVswitchRequest,
+    ModifyInstanceVswitchShrinkRequest,
+    ModifyInstanceVswitchResponseBody,
+    ModifyInstanceVswitchResponse,
+    ModifyNamespaceSpecV2Request,
+    ModifyNamespaceSpecV2ShrinkRequest,
+    ModifyNamespaceSpecV2ResponseBody,
+    ModifyNamespaceSpecV2Response,
+    ModifyPrepayInstanceSpecRequest,
+    ModifyPrepayInstanceSpecShrinkRequest,
+    ModifyPrepayInstanceSpecResponseBody,
+    ModifyPrepayInstanceSpecResponse,
+    ModifyPrepayNamespaceSpecRequest,
+    ModifyPrepayNamespaceSpecShrinkRequest,
+    ModifyPrepayNamespaceSpecResponseBody,
+    ModifyPrepayNamespaceSpecResponse,
+    QueryConvertInstancePriceRequest,
+    QueryConvertInstancePriceShrinkRequest,
+    QueryConvertInstancePriceResponseBody,
+    QueryConvertInstancePriceResponse,
+    QueryConvertPrepayInstancePriceRequest,
+    QueryConvertPrepayInstancePriceResponseBody,
+    QueryConvertPrepayInstancePriceResponse,
+    QueryCreateInstancePriceRequest,
+    QueryCreateInstancePriceShrinkRequest,
+    QueryCreateInstancePriceResponseBody,
+    QueryCreateInstancePriceResponse,
+    QueryModifyInstancePriceRequest,
+    QueryModifyInstancePriceShrinkRequest,
+    QueryModifyInstancePriceResponseBody,
+    QueryModifyInstancePriceResponse,
+    QueryRenewInstancePriceRequest,
+    QueryRenewInstancePriceResponseBody,
+    QueryRenewInstancePriceResponse,
+    RenewInstanceRequest,
+    RenewInstanceResponseBody,
+    RenewInstanceResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    ConvertHybridInstanceRequestResourceSpec,
+    ConvertHybridInstanceResponseBodyOrderInfo,
+    ConvertInstanceRequestNamespaceResourceSpecsResourceSpec,
+    ConvertInstanceRequestNamespaceResourceSpecs,
+    CreateInstanceRequestHaResourceSpec,
+    CreateInstanceRequestResourceSpec,
+    CreateInstanceRequestStorageOss,
+    CreateInstanceRequestStorage,
+    CreateInstanceRequestTag,
+    CreateInstanceResponseBodyOrderInfo,
+    CreateNamespaceRequestResourceSpec,
+    DescribeInstancesRequestTags,
+    DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight,
+    DescribeInstancesResponseBodyInstancesClusterStateClusterStage,
+    DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners,
+    DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto,
+    DescribeInstancesResponseBodyInstancesClusterState,
+    DescribeInstancesResponseBodyInstancesClusterUsedResources,
+    DescribeInstancesResponseBodyInstancesClusterUsedStorage,
+    DescribeInstancesResponseBodyInstancesElasticResourceSpec,
+    DescribeInstancesResponseBodyInstancesHaResourceSpec,
+    DescribeInstancesResponseBodyInstancesHaVSwitchInfo,
+    DescribeInstancesResponseBodyInstancesHostAliases,
+    DescribeInstancesResponseBodyInstancesOssInfo,
+    DescribeInstancesResponseBodyInstancesResourceSpec,
+    DescribeInstancesResponseBodyInstancesStorageOss,
+    DescribeInstancesResponseBodyInstancesStorage,
+    DescribeInstancesResponseBodyInstancesTags,
+    DescribeInstancesResponseBodyInstancesVSwitchInfo,
+    DescribeInstancesResponseBodyInstancesVpcInfo,
+    DescribeInstancesResponseBodyInstances,
+    DescribeNamespacesRequestTags,
+    DescribeNamespacesResponseBodyNamespacesElasticResourceSpec,
+    DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec,
+    DescribeNamespacesResponseBodyNamespacesResourceSpec,
+    DescribeNamespacesResponseBodyNamespacesResourceUsed,
+    DescribeNamespacesResponseBodyNamespacesTags,
+    DescribeNamespacesResponseBodyNamespaces,
+    DescribeSupportedRegionsResponseBodyRegions,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    ModifyElasticResourceSpecRequestResourceSpec,
+    ModifyNamespaceSpecV2RequestElasticResourceSpec,
+    ModifyNamespaceSpecV2RequestGuaranteedResourceSpec,
+    ModifyPrepayInstanceSpecRequestHaResourceSpec,
+    ModifyPrepayInstanceSpecRequestResourceSpec,
+    ModifyPrepayNamespaceSpecRequestResourceSpec,
+    QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec,
+    QueryConvertInstancePriceRequestNamespaceResourceSpecs,
+    QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo,
+    QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions,
+    QueryConvertInstancePriceResponseBodyPriceInfoRules,
+    QueryConvertInstancePriceResponseBodyPriceInfo,
+    QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo,
+    QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions,
+    QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules,
+    QueryConvertPrepayInstancePriceResponseBodyPriceInfo,
+    QueryCreateInstancePriceRequestHaResourceSpec,
+    QueryCreateInstancePriceRequestResourceSpec,
+    QueryCreateInstancePriceRequestStorageOss,
+    QueryCreateInstancePriceRequestStorage,
+    QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo,
+    QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions,
+    QueryCreateInstancePriceResponseBodyPriceInfoRules,
+    QueryCreateInstancePriceResponseBodyPriceInfo,
+    QueryModifyInstancePriceRequestHaResourceSpec,
+    QueryModifyInstancePriceRequestResourceSpec,
+    QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo,
+    QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions,
+    QueryModifyInstancePriceResponseBodyPriceInfoRules,
+    QueryModifyInstancePriceResponseBodyPriceInfo,
+    QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo,
+    QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions,
+    QueryRenewInstancePriceResponseBodyPriceInfoRules,
+    QueryRenewInstancePriceResponseBodyPriceInfo,
+    TagResourcesRequestTag
+]
