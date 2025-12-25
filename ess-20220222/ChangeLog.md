@@ -1,3 +1,6 @@
+2025-12-25 Version: 1.12.1
+- Generated python 2022-02-22 for Ess.
+
 2025-12-24 Version: 1.12.0
 - Support API DescribeInstanceCreateAndDeleteStatistics.
 - Support API DescribeScalingActivityStatistics.

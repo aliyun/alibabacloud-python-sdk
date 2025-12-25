@@ -119,8 +119,6 @@ class AttachServerGroupsRequestServerGroups(DaraModel):
         # The port used by ECS instances or elastic container instances after being added as backend servers to the server group.
         # 
         # Valid values: 1 to 65535.
-        # 
-        # This parameter is required.
         self.port = port
         # The ID of the server group.
         # 
@@ -136,8 +134,6 @@ class AttachServerGroupsRequestServerGroups(DaraModel):
         # The weight of an ECS instance or elastic container instance as a backend server of the server group. Valid values: 0 to 100.
         # 
         # If you assign a higher weight to an instance, the instance is allocated a larger proportion of access requests. If you assign zero weight to an instance, the instance is allocated no access requests.
-        # 
-        # This parameter is required.
         self.weight = weight
 
     def validate(self):

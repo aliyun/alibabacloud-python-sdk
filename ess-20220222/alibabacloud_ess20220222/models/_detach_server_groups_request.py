@@ -116,8 +116,6 @@ class DetachServerGroupsRequestServerGroups(DaraModel):
         type: str = None,
     ):
         # The port used by ECS instances or elastic container instances as backend servers of the server group.
-        # 
-        # This parameter is required.
         self.port = port
         # The ID of the server group.
         # 
