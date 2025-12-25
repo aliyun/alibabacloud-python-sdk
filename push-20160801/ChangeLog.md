@@ -1,3 +1,6 @@
+2025-12-25 Version: 2.1.2
+- Generated python 2016-08-01 for Push.
+
 2025-11-25 Version: 2.1.1
 - Update API MassPush: add request parameters PushTask.$.AndroidOppoDeleteIntentData.
 - Update API MassPush: add request parameters PushTask.$.AndroidOppoIntelligentIntent.
