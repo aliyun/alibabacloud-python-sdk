@@ -1,3 +1,8 @@
+2025-12-25 Version: 5.5.0
+- Support API SyncMCPServers.
+- Update API CreateService: add request parameters body.serviceConfigs.$.sourceId.
+
+
 2025-12-18 Version: 5.4.1
 - Update API GetResourceOverview: add response parameters Body.data.riskOverview.
 
