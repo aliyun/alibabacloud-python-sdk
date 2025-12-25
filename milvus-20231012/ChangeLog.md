@@ -1,3 +1,13 @@
+2025-12-25 Version: 1.2.1
+- Update API CreateInstance: add request parameters body.autoRenew.
+- Update API CreateInstance: add request parameters body.isMultiAzStorage.
+- Update API CreateInstance: add request parameters body.loadReplicas.
+- Update API CreateInstance: add request parameters body.promotionNo.
+- Update API GetInstanceDetail: add response parameters Body.Data.HighAvailability.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.MilvusResourceInfoList.$.ZoneId.
+- Update API ListInstances: add response parameters Body.Data.$.Version.
+
+
 2025-11-21 Version: 1.2.0
 - Support API ChangeResourceGroup.
 - Support API CreateInstance.
