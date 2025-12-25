@@ -7,17 +7,16 @@ from typing import List
 from alibabacloud_schedulerx320240624 import models as main_models
 from darabonba.model import DaraModel
 
-class ListAppsResponseBody(DaraModel):
+class ListWorkflowsResponseBody(DaraModel):
     def __init__(
         self,
         code: int = None,
-        data: main_models.ListAppsResponseBodyData = None,
+        data: main_models.ListWorkflowsResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
         self.code = code
-        # -
         self.data = data
         self.message = message
         self.request_id = request_id
@@ -55,7 +54,7 @@ class ListAppsResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.ListAppsResponseBodyData()
+            temp_model = main_models.ListWorkflowsResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -69,17 +68,20 @@ class ListAppsResponseBody(DaraModel):
 
         return self
 
-class ListAppsResponseBodyData(DaraModel):
+class ListWorkflowsResponseBodyData(DaraModel):
     def __init__(
         self,
+        max_results: int = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
-        records: List[main_models.ListAppsResponseBodyDataRecords] = None,
+        records: List[main_models.ListWorkflowsResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        self.max_results = max_results
+        self.next_token = next_token
         self.page_number = page_number
         self.page_size = page_size
-        # -
         self.records = records
         self.total = total
 
@@ -94,6 +96,12 @@ class ListAppsResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -112,6 +120,12 @@ class ListAppsResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -121,7 +135,7 @@ class ListAppsResponseBodyData(DaraModel):
         self.records = []
         if m.get('Records') is not None:
             for k1 in m.get('Records'):
-                temp_model = main_models.ListAppsResponseBodyDataRecords()
+                temp_model = main_models.ListWorkflowsResponseBodyDataRecords()
                 self.records.append(temp_model.from_map(k1))
 
         if m.get('Total') is not None:
@@ -129,43 +143,44 @@ class ListAppsResponseBodyData(DaraModel):
 
         return self
 
-class ListAppsResponseBodyDataRecords(DaraModel):
+class ListWorkflowsResponseBodyDataRecords(DaraModel):
     def __init__(
         self,
-        access_token: str = None,
         app_name: str = None,
         app_type: int = None,
+        calendar: str = None,
         creator: str = None,
-        enable_log: bool = None,
-        executor_num: int = None,
-        id: int = None,
-        job_num: int = None,
-        label_route_strategy: int = None,
-        leader: str = None,
+        current_execute_status: int = None,
+        description: str = None,
+        last_execute_end_time: str = None,
+        last_execute_status: int = None,
         max_concurrency: int = None,
-        max_jobs: int = None,
-        title: str = None,
+        name: str = None,
+        status: int = None,
+        time_expression: str = None,
+        time_type: int = None,
+        timezone: str = None,
         updater: str = None,
-        worker_registry: str = None,
-        workflow_num: int = None,
+        workflow_id: int = None,
+        xattrs: str = None,
     ):
-        # AccessToken
-        self.access_token = access_token
         self.app_name = app_name
         self.app_type = app_type
+        self.calendar = calendar
         self.creator = creator
-        self.enable_log = enable_log
-        self.executor_num = executor_num
-        self.id = id
-        self.job_num = job_num
-        self.label_route_strategy = label_route_strategy
-        self.leader = leader
+        self.current_execute_status = current_execute_status
+        self.description = description
+        self.last_execute_end_time = last_execute_end_time
+        self.last_execute_status = last_execute_status
         self.max_concurrency = max_concurrency
-        self.max_jobs = max_jobs
-        self.title = title
+        self.name = name
+        self.status = status
+        self.time_expression = time_expression
+        self.time_type = time_type
+        self.timezone = timezone
         self.updater = updater
-        self.worker_registry = worker_registry
-        self.workflow_num = workflow_num
+        self.workflow_id = workflow_id
+        self.xattrs = xattrs
 
     def validate(self):
         pass
@@ -175,105 +190,111 @@ class ListAppsResponseBodyDataRecords(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.access_token is not None:
-            result['AccessToken'] = self.access_token
-
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
         if self.app_type is not None:
             result['AppType'] = self.app_type
 
+        if self.calendar is not None:
+            result['Calendar'] = self.calendar
+
         if self.creator is not None:
             result['Creator'] = self.creator
 
-        if self.enable_log is not None:
-            result['EnableLog'] = self.enable_log
+        if self.current_execute_status is not None:
+            result['CurrentExecuteStatus'] = self.current_execute_status
 
-        if self.executor_num is not None:
-            result['ExecutorNum'] = self.executor_num
+        if self.description is not None:
+            result['Description'] = self.description
 
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.last_execute_end_time is not None:
+            result['LastExecuteEndTime'] = self.last_execute_end_time
 
-        if self.job_num is not None:
-            result['JobNum'] = self.job_num
-
-        if self.label_route_strategy is not None:
-            result['LabelRouteStrategy'] = self.label_route_strategy
-
-        if self.leader is not None:
-            result['Leader'] = self.leader
+        if self.last_execute_status is not None:
+            result['LastExecuteStatus'] = self.last_execute_status
 
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
 
-        if self.max_jobs is not None:
-            result['MaxJobs'] = self.max_jobs
+        if self.name is not None:
+            result['Name'] = self.name
 
-        if self.title is not None:
-            result['Title'] = self.title
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.time_expression is not None:
+            result['TimeExpression'] = self.time_expression
+
+        if self.time_type is not None:
+            result['TimeType'] = self.time_type
+
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
 
         if self.updater is not None:
             result['Updater'] = self.updater
 
-        if self.worker_registry is not None:
-            result['WorkerRegistry'] = self.worker_registry
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
 
-        if self.workflow_num is not None:
-            result['WorkflowNum'] = self.workflow_num
+        if self.xattrs is not None:
+            result['Xattrs'] = self.xattrs
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessToken') is not None:
-            self.access_token = m.get('AccessToken')
-
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
 
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
 
+        if m.get('Calendar') is not None:
+            self.calendar = m.get('Calendar')
+
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
 
-        if m.get('EnableLog') is not None:
-            self.enable_log = m.get('EnableLog')
+        if m.get('CurrentExecuteStatus') is not None:
+            self.current_execute_status = m.get('CurrentExecuteStatus')
 
-        if m.get('ExecutorNum') is not None:
-            self.executor_num = m.get('ExecutorNum')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('LastExecuteEndTime') is not None:
+            self.last_execute_end_time = m.get('LastExecuteEndTime')
 
-        if m.get('JobNum') is not None:
-            self.job_num = m.get('JobNum')
-
-        if m.get('LabelRouteStrategy') is not None:
-            self.label_route_strategy = m.get('LabelRouteStrategy')
-
-        if m.get('Leader') is not None:
-            self.leader = m.get('Leader')
+        if m.get('LastExecuteStatus') is not None:
+            self.last_execute_status = m.get('LastExecuteStatus')
 
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
 
-        if m.get('MaxJobs') is not None:
-            self.max_jobs = m.get('MaxJobs')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('TimeExpression') is not None:
+            self.time_expression = m.get('TimeExpression')
+
+        if m.get('TimeType') is not None:
+            self.time_type = m.get('TimeType')
+
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
 
         if m.get('Updater') is not None:
             self.updater = m.get('Updater')
 
-        if m.get('WorkerRegistry') is not None:
-            self.worker_registry = m.get('WorkerRegistry')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
 
-        if m.get('WorkflowNum') is not None:
-            self.workflow_num = m.get('WorkflowNum')
+        if m.get('Xattrs') is not None:
+            self.xattrs = m.get('Xattrs')
 
         return self
 

@@ -1,3 +1,41 @@
+2025-12-25 Version: 1.5.0
+- Support API CreateCalendar.
+- Support API CreateWorkflow.
+- Support API DeleteCalendar.
+- Support API DeleteWorkflow.
+- Support API DeleteWorkflows.
+- Support API ExportWorkflows.
+- Support API GetCalendar.
+- Support API GetWorkflow.
+- Support API GetWorkflowDAG.
+- Support API GetWorkflowDAGPreview.
+- Support API GetWorkflowExecutionDAG.
+- Support API ImportWorkflows.
+- Support API ListCalendars.
+- Support API ListWorkflowExecutions.
+- Support API ListWorkflowVersions.
+- Support API ListWorkflows.
+- Support API OperateBackfillWorkflow.
+- Support API OperateDisableWorkflows.
+- Support API OperateEnableWorkflows.
+- Support API OperateExecuteWorkflow.
+- Support API OperateHoldJobExecution.
+- Support API OperateHoldWorkflowExecution.
+- Support API OperateMarkSuccessJobExecution.
+- Support API OperateMarkSuccessWorkflowExecution.
+- Support API OperateRetryWorkflowExecution.
+- Support API OperateSkipJobExecution.
+- Support API OperateStopWorkflowExecution.
+- Support API OperateUnholdJobExecution.
+- Support API OperateUnholdWorkflowExecution.
+- Support API OperateUnskipJobExecution.
+- Support API UpdateCalendar.
+- Support API UpdateWorkflow.
+- Support API UpdateWorkflowDAG.
+- Support API UpdateWorkflowDAGVersion.
+- Update API ListApps: add response parameters Body.Data.Records.$.WorkflowNum.
+
+
 2025-12-24 Version: 1.4.0
 - Support API CreateExecutors.
 - Support API GetExecutorConfig.

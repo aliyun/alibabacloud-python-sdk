@@ -138,6 +138,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_with_options_async(request, runtime)
 
+    def create_calendar_with_options(
+        self,
+        request: main_models.CreateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.year):
+            body['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_calendar_with_options_async(
+        self,
+        request: main_models.CreateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.year):
+            body['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_calendar(
+        self,
+        request: main_models.CreateCalendarRequest,
+    ) -> main_models.CreateCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.create_calendar_with_options(request, runtime)
+
+    async def create_calendar_async(
+        self,
+        request: main_models.CreateCalendarRequest,
+    ) -> main_models.CreateCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.create_calendar_with_options_async(request, runtime)
+
     def create_cluster_with_options(
         self,
         tmp_req: main_models.CreateClusterRequest,
@@ -524,6 +610,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_job_with_options_async(request, runtime)
 
+    def create_workflow_with_options(
+        self,
+        request: main_models.CreateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.calendar):
+            body['Calendar'] = request.calendar
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.max_concurrency):
+            body['MaxConcurrency'] = request.max_concurrency
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not DaraCore.is_null(request.time_type):
+            body['TimeType'] = request.time_type
+        if not DaraCore.is_null(request.timezone):
+            body['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workflow_with_options_async(
+        self,
+        request: main_models.CreateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.calendar):
+            body['Calendar'] = request.calendar
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.max_concurrency):
+            body['MaxConcurrency'] = request.max_concurrency
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not DaraCore.is_null(request.time_type):
+            body['TimeType'] = request.time_type
+        if not DaraCore.is_null(request.timezone):
+            body['Timezone'] = request.timezone
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workflow(
+        self,
+        request: main_models.CreateWorkflowRequest,
+    ) -> main_models.CreateWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.create_workflow_with_options(request, runtime)
+
+    async def create_workflow_async(
+        self,
+        request: main_models.CreateWorkflowRequest,
+    ) -> main_models.CreateWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.create_workflow_with_options_async(request, runtime)
+
     def delete_app_with_options(
         self,
         request: main_models.DeleteAppRequest,
@@ -597,6 +793,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_with_options_async(request, runtime)
+
+    def delete_calendar_with_options(
+        self,
+        request: main_models.DeleteCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.year):
+            body['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_calendar_with_options_async(
+        self,
+        request: main_models.DeleteCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.year):
+            body['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_calendar(
+        self,
+        request: main_models.DeleteCalendarRequest,
+    ) -> main_models.DeleteCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.delete_calendar_with_options(request, runtime)
+
+    async def delete_calendar_async(
+        self,
+        request: main_models.DeleteCalendarRequest,
+    ) -> main_models.DeleteCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_calendar_with_options_async(request, runtime)
 
     def delete_cluster_with_options(
         self,
@@ -754,6 +1028,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_jobs_with_options_async(request, runtime)
 
+    def delete_workflow_with_options(
+        self,
+        request: main_models.DeleteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.delete_jobs):
+            body['DeleteJobs'] = request.delete_jobs
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workflow_with_options_async(
+        self,
+        request: main_models.DeleteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.delete_jobs):
+            body['DeleteJobs'] = request.delete_jobs
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workflow(
+        self,
+        request: main_models.DeleteWorkflowRequest,
+    ) -> main_models.DeleteWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.delete_workflow_with_options(request, runtime)
+
+    async def delete_workflow_async(
+        self,
+        request: main_models.DeleteWorkflowRequest,
+    ) -> main_models.DeleteWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_workflow_with_options_async(request, runtime)
+
+    def delete_workflows_with_options(
+        self,
+        tmp_req: main_models.DeleteWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.delete_jobs):
+            body['DeleteJobs'] = request.delete_jobs
+        if not DaraCore.is_null(request.workflow_ids_shrink):
+            body['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workflows_with_options_async(
+        self,
+        tmp_req: main_models.DeleteWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.delete_jobs):
+            body['DeleteJobs'] = request.delete_jobs
+        if not DaraCore.is_null(request.workflow_ids_shrink):
+            body['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workflows(
+        self,
+        request: main_models.DeleteWorkflowsRequest,
+    ) -> main_models.DeleteWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_workflows_with_options(request, runtime)
+
+    async def delete_workflows_async(
+        self,
+        request: main_models.DeleteWorkflowsRequest,
+    ) -> main_models.DeleteWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_workflows_with_options_async(request, runtime)
+
     def export_jobs_with_options(
         self,
         tmp_req: main_models.ExportJobsRequest,
@@ -844,6 +1290,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.export_jobs_with_options_async(request, runtime)
 
+    def export_workflows_with_options(
+        self,
+        tmp_req: main_models.ExportWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.ExportWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_id):
+            request.workflow_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_id, 'WorkflowId', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id_shrink):
+            body['WorkflowId'] = request.workflow_id_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'byte'
+        )
+        return DaraCore.from_map(
+            main_models.ExportWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_workflows_with_options_async(
+        self,
+        tmp_req: main_models.ExportWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.ExportWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_id):
+            request.workflow_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_id, 'WorkflowId', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id_shrink):
+            body['WorkflowId'] = request.workflow_id_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'byte'
+        )
+        return DaraCore.from_map(
+            main_models.ExportWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_workflows(
+        self,
+        request: main_models.ExportWorkflowsRequest,
+    ) -> main_models.ExportWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.export_workflows_with_options(request, runtime)
+
+    async def export_workflows_async(
+        self,
+        request: main_models.ExportWorkflowsRequest,
+    ) -> main_models.ExportWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.export_workflows_with_options_async(request, runtime)
+
     def get_app_with_options(
         self,
         request: main_models.GetAppRequest,
@@ -917,6 +1449,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetAppResponse:
         runtime = RuntimeOptions()
         return await self.get_app_with_options_async(request, runtime)
+
+    def get_calendar_with_options(
+        self,
+        request: main_models.GetCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCalendarResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.calendar_name):
+            query['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.year):
+            query['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_calendar_with_options_async(
+        self,
+        request: main_models.GetCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCalendarResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.calendar_name):
+            query['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.year):
+            query['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_calendar(
+        self,
+        request: main_models.GetCalendarRequest,
+    ) -> main_models.GetCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.get_calendar_with_options(request, runtime)
+
+    async def get_calendar_async(
+        self,
+        request: main_models.GetCalendarRequest,
+    ) -> main_models.GetCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.get_calendar_with_options_async(request, runtime)
 
     def get_cluster_with_options(
         self,
@@ -1470,6 +2080,322 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_log_event_with_options_async(request, runtime)
 
+    def get_workflow_with_options(
+        self,
+        request: main_models.GetWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_with_options_async(
+        self,
+        request: main_models.GetWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow(
+        self,
+        request: main_models.GetWorkflowRequest,
+    ) -> main_models.GetWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.get_workflow_with_options(request, runtime)
+
+    async def get_workflow_async(
+        self,
+        request: main_models.GetWorkflowRequest,
+    ) -> main_models.GetWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workflow_with_options_async(request, runtime)
+
+    def get_workflow_dagwith_options(
+        self,
+        request: main_models.GetWorkflowDAGRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowDAGResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowDAG',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowDAGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_dagwith_options_async(
+        self,
+        request: main_models.GetWorkflowDAGRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowDAGResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowDAG',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowDAGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_dag(
+        self,
+        request: main_models.GetWorkflowDAGRequest,
+    ) -> main_models.GetWorkflowDAGResponse:
+        runtime = RuntimeOptions()
+        return self.get_workflow_dagwith_options(request, runtime)
+
+    async def get_workflow_dag_async(
+        self,
+        request: main_models.GetWorkflowDAGRequest,
+    ) -> main_models.GetWorkflowDAGResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workflow_dagwith_options_async(request, runtime)
+
+    def get_workflow_dagpreview_with_options(
+        self,
+        request: main_models.GetWorkflowDAGPreviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowDAGPreviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowDAGPreview',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowDAGPreviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_dagpreview_with_options_async(
+        self,
+        request: main_models.GetWorkflowDAGPreviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowDAGPreviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowDAGPreview',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowDAGPreviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_dagpreview(
+        self,
+        request: main_models.GetWorkflowDAGPreviewRequest,
+    ) -> main_models.GetWorkflowDAGPreviewResponse:
+        runtime = RuntimeOptions()
+        return self.get_workflow_dagpreview_with_options(request, runtime)
+
+    async def get_workflow_dagpreview_async(
+        self,
+        request: main_models.GetWorkflowDAGPreviewRequest,
+    ) -> main_models.GetWorkflowDAGPreviewResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workflow_dagpreview_with_options_async(request, runtime)
+
+    def get_workflow_execution_dagwith_options(
+        self,
+        request: main_models.GetWorkflowExecutionDAGRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowExecutionDAGResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            query['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowExecutionDAG',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowExecutionDAGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_execution_dagwith_options_async(
+        self,
+        request: main_models.GetWorkflowExecutionDAGRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowExecutionDAGResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            query['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowExecutionDAG',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowExecutionDAGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_execution_dag(
+        self,
+        request: main_models.GetWorkflowExecutionDAGRequest,
+    ) -> main_models.GetWorkflowExecutionDAGResponse:
+        runtime = RuntimeOptions()
+        return self.get_workflow_execution_dagwith_options(request, runtime)
+
+    async def get_workflow_execution_dag_async(
+        self,
+        request: main_models.GetWorkflowExecutionDAGRequest,
+    ) -> main_models.GetWorkflowExecutionDAGResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workflow_execution_dagwith_options_async(request, runtime)
+
     def import_calendar_with_options(
         self,
         request: main_models.ImportCalendarRequest,
@@ -1633,6 +2559,88 @@ class Client(OpenApiClient):
     ) -> main_models.ImportJobsResponse:
         runtime = RuntimeOptions()
         return await self.import_jobs_with_options_async(request, runtime)
+
+    def import_workflows_with_options(
+        self,
+        request: main_models.ImportWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportWorkflowsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_create_app):
+            body['AutoCreateApp'] = request.auto_create_app
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.overwrite):
+            body['Overwrite'] = request.overwrite
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_workflows_with_options_async(
+        self,
+        request: main_models.ImportWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportWorkflowsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auto_create_app):
+            body['AutoCreateApp'] = request.auto_create_app
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.overwrite):
+            body['Overwrite'] = request.overwrite
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_workflows(
+        self,
+        request: main_models.ImportWorkflowsRequest,
+    ) -> main_models.ImportWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.import_workflows_with_options(request, runtime)
+
+    async def import_workflows_async(
+        self,
+        request: main_models.ImportWorkflowsRequest,
+    ) -> main_models.ImportWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.import_workflows_with_options_async(request, runtime)
 
     def list_alarm_event_with_options(
         self,
@@ -1897,6 +2905,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListCalendarNamesResponse:
         runtime = RuntimeOptions()
         return await self.list_calendar_names_with_options_async(request, runtime)
+
+    def list_calendars_with_options(
+        self,
+        request: main_models.ListCalendarsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCalendarsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.calendar_name):
+            query['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.fetch_calendar_detail):
+            query['FetchCalendarDetail'] = request.fetch_calendar_detail
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.year):
+            query['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCalendars',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCalendarsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_calendars_with_options_async(
+        self,
+        request: main_models.ListCalendarsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCalendarsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.calendar_name):
+            query['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.fetch_calendar_detail):
+            query['FetchCalendarDetail'] = request.fetch_calendar_detail
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.year):
+            query['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCalendars',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCalendarsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_calendars(
+        self,
+        request: main_models.ListCalendarsRequest,
+    ) -> main_models.ListCalendarsResponse:
+        runtime = RuntimeOptions()
+        return self.list_calendars_with_options(request, runtime)
+
+    async def list_calendars_async(
+        self,
+        request: main_models.ListCalendarsRequest,
+    ) -> main_models.ListCalendarsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_calendars_with_options_async(request, runtime)
 
     def list_clusters_with_options(
         self,
@@ -2716,6 +3814,398 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_schedule_times_with_options_async(request, runtime)
 
+    def list_workflow_executions_with_options(
+        self,
+        request: main_models.ListWorkflowExecutionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowExecutionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workflow_execution_id):
+            query['WorkflowExecutionId'] = request.workflow_execution_id
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        if not DaraCore.is_null(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowExecutions',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowExecutionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_executions_with_options_async(
+        self,
+        request: main_models.ListWorkflowExecutionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowExecutionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workflow_execution_id):
+            query['WorkflowExecutionId'] = request.workflow_execution_id
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        if not DaraCore.is_null(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowExecutions',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowExecutionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_executions(
+        self,
+        request: main_models.ListWorkflowExecutionsRequest,
+    ) -> main_models.ListWorkflowExecutionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_workflow_executions_with_options(request, runtime)
+
+    async def list_workflow_executions_async(
+        self,
+        request: main_models.ListWorkflowExecutionsRequest,
+    ) -> main_models.ListWorkflowExecutionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workflow_executions_with_options_async(request, runtime)
+
+    def list_workflow_versions_with_options(
+        self,
+        request: main_models.ListWorkflowVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowVersions',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_versions_with_options_async(
+        self,
+        request: main_models.ListWorkflowVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowVersions',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_versions(
+        self,
+        request: main_models.ListWorkflowVersionsRequest,
+    ) -> main_models.ListWorkflowVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_workflow_versions_with_options(request, runtime)
+
+    async def list_workflow_versions_async(
+        self,
+        request: main_models.ListWorkflowVersionsRequest,
+    ) -> main_models.ListWorkflowVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workflow_versions_with_options_async(request, runtime)
+
+    def list_workflows_with_options(
+        self,
+        request: main_models.ListWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflows_with_options_async(
+        self,
+        request: main_models.ListWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflows(
+        self,
+        request: main_models.ListWorkflowsRequest,
+    ) -> main_models.ListWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.list_workflows_with_options(request, runtime)
+
+    async def list_workflows_async(
+        self,
+        request: main_models.ListWorkflowsRequest,
+    ) -> main_models.ListWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workflows_with_options_async(request, runtime)
+
+    def operate_backfill_workflow_with_options(
+        self,
+        request: main_models.OperateBackfillWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateBackfillWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateBackfillWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateBackfillWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_backfill_workflow_with_options_async(
+        self,
+        request: main_models.OperateBackfillWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateBackfillWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateBackfillWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateBackfillWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_backfill_workflow(
+        self,
+        request: main_models.OperateBackfillWorkflowRequest,
+    ) -> main_models.OperateBackfillWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.operate_backfill_workflow_with_options(request, runtime)
+
+    async def operate_backfill_workflow_async(
+        self,
+        request: main_models.OperateBackfillWorkflowRequest,
+    ) -> main_models.OperateBackfillWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_backfill_workflow_with_options_async(request, runtime)
+
     def operate_designate_executors_with_options(
         self,
         tmp_req: main_models.OperateDesignateExecutorsRequest,
@@ -2900,6 +4390,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.operate_disable_jobs_with_options_async(request, runtime)
 
+    def operate_disable_workflows_with_options(
+        self,
+        tmp_req: main_models.OperateDisableWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateDisableWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.OperateDisableWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_ids_shrink):
+            body['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateDisableWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateDisableWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_disable_workflows_with_options_async(
+        self,
+        tmp_req: main_models.OperateDisableWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateDisableWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.OperateDisableWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_ids_shrink):
+            body['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateDisableWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateDisableWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_disable_workflows(
+        self,
+        request: main_models.OperateDisableWorkflowsRequest,
+    ) -> main_models.OperateDisableWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.operate_disable_workflows_with_options(request, runtime)
+
+    async def operate_disable_workflows_async(
+        self,
+        request: main_models.OperateDisableWorkflowsRequest,
+    ) -> main_models.OperateDisableWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_disable_workflows_with_options_async(request, runtime)
+
     def operate_enable_jobs_with_options(
         self,
         tmp_req: main_models.OperateEnableJobsRequest,
@@ -2985,6 +4561,92 @@ class Client(OpenApiClient):
     ) -> main_models.OperateEnableJobsResponse:
         runtime = RuntimeOptions()
         return await self.operate_enable_jobs_with_options_async(request, runtime)
+
+    def operate_enable_workflows_with_options(
+        self,
+        tmp_req: main_models.OperateEnableWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateEnableWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.OperateEnableWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_ids_shrink):
+            body['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateEnableWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateEnableWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_enable_workflows_with_options_async(
+        self,
+        tmp_req: main_models.OperateEnableWorkflowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateEnableWorkflowsResponse:
+        tmp_req.validate()
+        request = main_models.OperateEnableWorkflowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.workflow_ids):
+            request.workflow_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_ids_shrink):
+            body['WorkflowIds'] = request.workflow_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateEnableWorkflows',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateEnableWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_enable_workflows(
+        self,
+        request: main_models.OperateEnableWorkflowsRequest,
+    ) -> main_models.OperateEnableWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return self.operate_enable_workflows_with_options(request, runtime)
+
+    async def operate_enable_workflows_async(
+        self,
+        request: main_models.OperateEnableWorkflowsRequest,
+    ) -> main_models.OperateEnableWorkflowsResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_enable_workflows_with_options_async(request, runtime)
 
     def operate_execute_job_with_options(
         self,
@@ -3075,6 +4737,396 @@ class Client(OpenApiClient):
     ) -> main_models.OperateExecuteJobResponse:
         runtime = RuntimeOptions()
         return await self.operate_execute_job_with_options_async(request, runtime)
+
+    def operate_execute_workflow_with_options(
+        self,
+        request: main_models.OperateExecuteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateExecuteWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateExecuteWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateExecuteWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_execute_workflow_with_options_async(
+        self,
+        request: main_models.OperateExecuteWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateExecuteWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateExecuteWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateExecuteWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_execute_workflow(
+        self,
+        request: main_models.OperateExecuteWorkflowRequest,
+    ) -> main_models.OperateExecuteWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.operate_execute_workflow_with_options(request, runtime)
+
+    async def operate_execute_workflow_async(
+        self,
+        request: main_models.OperateExecuteWorkflowRequest,
+    ) -> main_models.OperateExecuteWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_execute_workflow_with_options_async(request, runtime)
+
+    def operate_hold_job_execution_with_options(
+        self,
+        request: main_models.OperateHoldJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateHoldJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateHoldJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateHoldJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_hold_job_execution_with_options_async(
+        self,
+        request: main_models.OperateHoldJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateHoldJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateHoldJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateHoldJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_hold_job_execution(
+        self,
+        request: main_models.OperateHoldJobExecutionRequest,
+    ) -> main_models.OperateHoldJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_hold_job_execution_with_options(request, runtime)
+
+    async def operate_hold_job_execution_async(
+        self,
+        request: main_models.OperateHoldJobExecutionRequest,
+    ) -> main_models.OperateHoldJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_hold_job_execution_with_options_async(request, runtime)
+
+    def operate_hold_workflow_execution_with_options(
+        self,
+        request: main_models.OperateHoldWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateHoldWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateHoldWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateHoldWorkflowExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_hold_workflow_execution_with_options_async(
+        self,
+        request: main_models.OperateHoldWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateHoldWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateHoldWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateHoldWorkflowExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_hold_workflow_execution(
+        self,
+        request: main_models.OperateHoldWorkflowExecutionRequest,
+    ) -> main_models.OperateHoldWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_hold_workflow_execution_with_options(request, runtime)
+
+    async def operate_hold_workflow_execution_async(
+        self,
+        request: main_models.OperateHoldWorkflowExecutionRequest,
+    ) -> main_models.OperateHoldWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_hold_workflow_execution_with_options_async(request, runtime)
+
+    def operate_mark_success_job_execution_with_options(
+        self,
+        request: main_models.OperateMarkSuccessJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateMarkSuccessJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateMarkSuccessJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateMarkSuccessJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_mark_success_job_execution_with_options_async(
+        self,
+        request: main_models.OperateMarkSuccessJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateMarkSuccessJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateMarkSuccessJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateMarkSuccessJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_mark_success_job_execution(
+        self,
+        request: main_models.OperateMarkSuccessJobExecutionRequest,
+    ) -> main_models.OperateMarkSuccessJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_mark_success_job_execution_with_options(request, runtime)
+
+    async def operate_mark_success_job_execution_async(
+        self,
+        request: main_models.OperateMarkSuccessJobExecutionRequest,
+    ) -> main_models.OperateMarkSuccessJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_mark_success_job_execution_with_options_async(request, runtime)
+
+    def operate_mark_success_workflow_execution_with_options(
+        self,
+        request: main_models.OperateMarkSuccessWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateMarkSuccessWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateMarkSuccessWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateMarkSuccessWorkflowExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_mark_success_workflow_execution_with_options_async(
+        self,
+        request: main_models.OperateMarkSuccessWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateMarkSuccessWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateMarkSuccessWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateMarkSuccessWorkflowExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_mark_success_workflow_execution(
+        self,
+        request: main_models.OperateMarkSuccessWorkflowExecutionRequest,
+    ) -> main_models.OperateMarkSuccessWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_mark_success_workflow_execution_with_options(request, runtime)
+
+    async def operate_mark_success_workflow_execution_async(
+        self,
+        request: main_models.OperateMarkSuccessWorkflowExecutionRequest,
+    ) -> main_models.OperateMarkSuccessWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_mark_success_workflow_execution_with_options_async(request, runtime)
 
     def operate_rerun_job_with_options(
         self,
@@ -3260,6 +5312,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.operate_retry_job_execution_with_options_async(request, runtime)
 
+    def operate_retry_workflow_execution_with_options(
+        self,
+        request: main_models.OperateRetryWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateRetryWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.only_failed):
+            body['OnlyFailed'] = request.only_failed
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateRetryWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateRetryWorkflowExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_retry_workflow_execution_with_options_async(
+        self,
+        request: main_models.OperateRetryWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateRetryWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.only_failed):
+            body['OnlyFailed'] = request.only_failed
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateRetryWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateRetryWorkflowExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_retry_workflow_execution(
+        self,
+        request: main_models.OperateRetryWorkflowExecutionRequest,
+    ) -> main_models.OperateRetryWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_retry_workflow_execution_with_options(request, runtime)
+
+    async def operate_retry_workflow_execution_async(
+        self,
+        request: main_models.OperateRetryWorkflowExecutionRequest,
+    ) -> main_models.OperateRetryWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_retry_workflow_execution_with_options_async(request, runtime)
+
+    def operate_skip_job_execution_with_options(
+        self,
+        request: main_models.OperateSkipJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateSkipJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateSkipJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateSkipJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_skip_job_execution_with_options_async(
+        self,
+        request: main_models.OperateSkipJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateSkipJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateSkipJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateSkipJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_skip_job_execution(
+        self,
+        request: main_models.OperateSkipJobExecutionRequest,
+    ) -> main_models.OperateSkipJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_skip_job_execution_with_options(request, runtime)
+
+    async def operate_skip_job_execution_async(
+        self,
+        request: main_models.OperateSkipJobExecutionRequest,
+    ) -> main_models.OperateSkipJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_skip_job_execution_with_options_async(request, runtime)
+
     def operate_stop_job_execution_with_options(
         self,
         tmp_req: main_models.OperateStopJobExecutionRequest,
@@ -3349,6 +5561,318 @@ class Client(OpenApiClient):
     ) -> main_models.OperateStopJobExecutionResponse:
         runtime = RuntimeOptions()
         return await self.operate_stop_job_execution_with_options_async(request, runtime)
+
+    def operate_stop_workflow_execution_with_options(
+        self,
+        request: main_models.OperateStopWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateStopWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateStopWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateStopWorkflowExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_stop_workflow_execution_with_options_async(
+        self,
+        request: main_models.OperateStopWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateStopWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateStopWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateStopWorkflowExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_stop_workflow_execution(
+        self,
+        request: main_models.OperateStopWorkflowExecutionRequest,
+    ) -> main_models.OperateStopWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_stop_workflow_execution_with_options(request, runtime)
+
+    async def operate_stop_workflow_execution_async(
+        self,
+        request: main_models.OperateStopWorkflowExecutionRequest,
+    ) -> main_models.OperateStopWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_stop_workflow_execution_with_options_async(request, runtime)
+
+    def operate_unhold_job_execution_with_options(
+        self,
+        request: main_models.OperateUnholdJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnholdJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnholdJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnholdJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_unhold_job_execution_with_options_async(
+        self,
+        request: main_models.OperateUnholdJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnholdJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnholdJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnholdJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_unhold_job_execution(
+        self,
+        request: main_models.OperateUnholdJobExecutionRequest,
+    ) -> main_models.OperateUnholdJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_unhold_job_execution_with_options(request, runtime)
+
+    async def operate_unhold_job_execution_async(
+        self,
+        request: main_models.OperateUnholdJobExecutionRequest,
+    ) -> main_models.OperateUnholdJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_unhold_job_execution_with_options_async(request, runtime)
+
+    def operate_unhold_workflow_execution_with_options(
+        self,
+        request: main_models.OperateUnholdWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnholdWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnholdWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnholdWorkflowExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_unhold_workflow_execution_with_options_async(
+        self,
+        request: main_models.OperateUnholdWorkflowExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnholdWorkflowExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.workflow_execution_id):
+            body['WorkflowExecutionId'] = request.workflow_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnholdWorkflowExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnholdWorkflowExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_unhold_workflow_execution(
+        self,
+        request: main_models.OperateUnholdWorkflowExecutionRequest,
+    ) -> main_models.OperateUnholdWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_unhold_workflow_execution_with_options(request, runtime)
+
+    async def operate_unhold_workflow_execution_async(
+        self,
+        request: main_models.OperateUnholdWorkflowExecutionRequest,
+    ) -> main_models.OperateUnholdWorkflowExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_unhold_workflow_execution_with_options_async(request, runtime)
+
+    def operate_unskip_job_execution_with_options(
+        self,
+        request: main_models.OperateUnskipJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnskipJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnskipJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnskipJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_unskip_job_execution_with_options_async(
+        self,
+        request: main_models.OperateUnskipJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateUnskipJobExecutionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            query['JobExecutionId'] = request.job_execution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateUnskipJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateUnskipJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_unskip_job_execution(
+        self,
+        request: main_models.OperateUnskipJobExecutionRequest,
+    ) -> main_models.OperateUnskipJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.operate_unskip_job_execution_with_options(request, runtime)
+
+    async def operate_unskip_job_execution_async(
+        self,
+        request: main_models.OperateUnskipJobExecutionRequest,
+    ) -> main_models.OperateUnskipJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_unskip_job_execution_with_options_async(request, runtime)
 
     def sync_jobs_with_options(
         self,
@@ -3537,6 +6061,96 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAppResponse:
         runtime = RuntimeOptions()
         return await self.update_app_with_options_async(request, runtime)
+
+    def update_calendar_with_options(
+        self,
+        request: main_models.UpdateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.incremental):
+            body['Incremental'] = request.incremental
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.year):
+            body['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_calendar_with_options_async(
+        self,
+        request: main_models.UpdateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.calendar_name):
+            body['CalendarName'] = request.calendar_name
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.incremental):
+            body['Incremental'] = request.incremental
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.year):
+            body['Year'] = request.year
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCalendar',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_calendar(
+        self,
+        request: main_models.UpdateCalendarRequest,
+    ) -> main_models.UpdateCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.update_calendar_with_options(request, runtime)
+
+    async def update_calendar_async(
+        self,
+        request: main_models.UpdateCalendarRequest,
+    ) -> main_models.UpdateCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.update_calendar_with_options_async(request, runtime)
 
     def update_cluster_with_options(
         self,
@@ -3957,3 +6571,289 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateJobScriptResponse:
         runtime = RuntimeOptions()
         return await self.update_job_script_with_options_async(request, runtime)
+
+    def update_workflow_with_options(
+        self,
+        request: main_models.UpdateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.calendar):
+            body['Calendar'] = request.calendar
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.max_concurrency):
+            body['MaxConcurrency'] = request.max_concurrency
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not DaraCore.is_null(request.time_type):
+            body['TimeType'] = request.time_type
+        if not DaraCore.is_null(request.timezone):
+            body['Timezone'] = request.timezone
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workflow_with_options_async(
+        self,
+        request: main_models.UpdateWorkflowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.calendar):
+            body['Calendar'] = request.calendar
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.max_concurrency):
+            body['MaxConcurrency'] = request.max_concurrency
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not DaraCore.is_null(request.time_type):
+            body['TimeType'] = request.time_type
+        if not DaraCore.is_null(request.timezone):
+            body['Timezone'] = request.timezone
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflow',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workflow(
+        self,
+        request: main_models.UpdateWorkflowRequest,
+    ) -> main_models.UpdateWorkflowResponse:
+        runtime = RuntimeOptions()
+        return self.update_workflow_with_options(request, runtime)
+
+    async def update_workflow_async(
+        self,
+        request: main_models.UpdateWorkflowRequest,
+    ) -> main_models.UpdateWorkflowResponse:
+        runtime = RuntimeOptions()
+        return await self.update_workflow_with_options_async(request, runtime)
+
+    def update_workflow_dagwith_options(
+        self,
+        tmp_req: main_models.UpdateWorkflowDAGRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowDAGResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkflowDAGShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dag):
+            request.dag_shrink = Utils.array_to_string_with_specified_style(tmp_req.dag, 'Dag', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dag_shrink):
+            body['Dag'] = request.dag_shrink
+        if not DaraCore.is_null(request.dag_version):
+            body['DagVersion'] = request.dag_version
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowDAG',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowDAGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workflow_dagwith_options_async(
+        self,
+        tmp_req: main_models.UpdateWorkflowDAGRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowDAGResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkflowDAGShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dag):
+            request.dag_shrink = Utils.array_to_string_with_specified_style(tmp_req.dag, 'Dag', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dag_shrink):
+            body['Dag'] = request.dag_shrink
+        if not DaraCore.is_null(request.dag_version):
+            body['DagVersion'] = request.dag_version
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowDAG',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowDAGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workflow_dag(
+        self,
+        request: main_models.UpdateWorkflowDAGRequest,
+    ) -> main_models.UpdateWorkflowDAGResponse:
+        runtime = RuntimeOptions()
+        return self.update_workflow_dagwith_options(request, runtime)
+
+    async def update_workflow_dag_async(
+        self,
+        request: main_models.UpdateWorkflowDAGRequest,
+    ) -> main_models.UpdateWorkflowDAGResponse:
+        runtime = RuntimeOptions()
+        return await self.update_workflow_dagwith_options_async(request, runtime)
+
+    def update_workflow_dagversion_with_options(
+        self,
+        request: main_models.UpdateWorkflowDAGVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowDAGVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dag_version):
+            body['DagVersion'] = request.dag_version
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowDAGVersion',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowDAGVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workflow_dagversion_with_options_async(
+        self,
+        request: main_models.UpdateWorkflowDAGVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowDAGVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.dag_version):
+            body['DagVersion'] = request.dag_version
+        if not DaraCore.is_null(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowDAGVersion',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowDAGVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workflow_dagversion(
+        self,
+        request: main_models.UpdateWorkflowDAGVersionRequest,
+    ) -> main_models.UpdateWorkflowDAGVersionResponse:
+        runtime = RuntimeOptions()
+        return self.update_workflow_dagversion_with_options(request, runtime)
+
+    async def update_workflow_dagversion_async(
+        self,
+        request: main_models.UpdateWorkflowDAGVersionRequest,
+    ) -> main_models.UpdateWorkflowDAGVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_workflow_dagversion_with_options_async(request, runtime)
