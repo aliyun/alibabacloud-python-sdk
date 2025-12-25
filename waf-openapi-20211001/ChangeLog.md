@@ -1,3 +1,11 @@
+2025-12-25 Version: 7.2.0
+- Support API DescribeAlarmBanner.
+- Support API DescribeAlarmList.
+- Support API DescribeBotAppKey.
+- Support API DescribeThreatEvent.
+- Support API DescribeThreatEventDetail.
+
+
 2025-12-11 Version: 7.1.1
 - Update API CreateDomain: add request parameters Redirect.Http2Origin.
 - Update API CreateDomain: add request parameters Redirect.Http2OriginMaxConcurrency.
