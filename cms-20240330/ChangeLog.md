@@ -1,3 +1,18 @@
+2025-12-25 Version: 3.6.0
+- Support API CreateChat.
+- Support API CreateDigitalEmployee.
+- Support API CreateThread.
+- Support API DeleteDigitalEmployee.
+- Support API DeleteThread.
+- Support API GetDigitalEmployee.
+- Support API GetThread.
+- Support API GetThreadData.
+- Support API ListDigitalEmployees.
+- Support API ListThreads.
+- Support API UpdateDigitalEmployee.
+- Support API UpdateThread.
+
+
 2025-11-27 Version: 3.5.0
 - Support API CreateBizTrace.
 - Support API DeleteBizTrace.

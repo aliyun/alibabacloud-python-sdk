@@ -1,0 +1,164 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_cms20240330 import models as main_models
+from darabonba.model import DaraModel
+
+class GetServiceResponseBody(DaraModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service: main_models.GetServiceResponseBodyService = None,
+    ):
+        # Request ID
+        self.request_id = request_id
+        # Service object.
+        self.service = service
+
+    def validate(self):
+        if self.service:
+            self.service.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+
+        if self.service is not None:
+            result['service'] = self.service.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+
+        if m.get('service') is not None:
+            temp_model = main_models.GetServiceResponseBodyService()
+            self.service = temp_model.from_map(m.get('service'))
+
+        return self
+
+class GetServiceResponseBodyService(DaraModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        create_time: str = None,
+        description: str = None,
+        display_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        service_id: str = None,
+        service_name: str = None,
+        service_status: str = None,
+        service_type: str = None,
+        workspace: str = None,
+    ):
+        # Extended information.
+        self.attributes = attributes
+        # Creation time
+        self.create_time = create_time
+        # Description, only valid when serviceType=RUM.
+        self.description = description
+        # Display name, only valid when serviceType=RUM.
+        self.display_name = display_name
+        # Legacy ARMS application ID
+        self.pid = pid
+        # Region ID
+        self.region_id = region_id
+        # Service ID.
+        self.service_id = service_id
+        # Service name
+        self.service_name = service_name
+        # Service status, only valid when serviceType=RUM.
+        self.service_status = service_status
+        # Service type.
+        self.service_type = service_type
+        # Workspace name
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+
+        if self.description is not None:
+            result['description'] = self.description
+
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+
+        if self.pid is not None:
+            result['pid'] = self.pid
+
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+
+        if self.service_status is not None:
+            result['serviceStatus'] = self.service_status
+
+        if self.service_type is not None:
+            result['serviceType'] = self.service_type
+
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
+
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+
+        if m.get('serviceStatus') is not None:
+            self.service_status = m.get('serviceStatus')
+
+        if m.get('serviceType') is not None:
+            self.service_type = m.get('serviceType')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+
+        return self
+
