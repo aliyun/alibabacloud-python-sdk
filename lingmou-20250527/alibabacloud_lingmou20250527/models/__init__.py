@@ -1,0 +1,169 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._broadcast_template import BroadcastTemplate
+from ._broadcast_video import BroadcastVideo
+from ._chat_session_info import ChatSessionInfo
+from ._template_variable import TemplateVariable
+from ._close_chat_instance_sessions_request import CloseChatInstanceSessionsRequest
+from ._close_chat_instance_sessions_shrink_request import CloseChatInstanceSessionsShrinkRequest
+from ._close_chat_instance_sessions_response_body import CloseChatInstanceSessionsResponseBody
+from ._close_chat_instance_sessions_response import CloseChatInstanceSessionsResponse
+from ._confirm_train_pic_avatar_request import ConfirmTrainPicAvatarRequest
+from ._confirm_train_pic_avatar_response_body import ConfirmTrainPicAvatarResponseBody
+from ._confirm_train_pic_avatar_response import ConfirmTrainPicAvatarResponse
+from ._create_background_pic_request import CreateBackgroundPicRequest
+from ._create_background_pic_response_body import CreateBackgroundPicResponseBody
+from ._create_background_pic_response import CreateBackgroundPicResponse
+from ._create_broadcast_sticker_request import CreateBroadcastStickerRequest
+from ._create_broadcast_sticker_response_body import CreateBroadcastStickerResponseBody
+from ._create_broadcast_sticker_response import CreateBroadcastStickerResponse
+from ._create_broadcast_video_from_template_request import CreateBroadcastVideoFromTemplateRequest
+from ._create_broadcast_video_from_template_response_body import CreateBroadcastVideoFromTemplateResponseBody
+from ._create_broadcast_video_from_template_response import CreateBroadcastVideoFromTemplateResponse
+from ._create_chat_config_request import CreateChatConfigRequest
+from ._create_chat_config_response_body import CreateChatConfigResponseBody
+from ._create_chat_config_response import CreateChatConfigResponse
+from ._create_chat_session_request import CreateChatSessionRequest
+from ._create_chat_session_response_body import CreateChatSessionResponseBody
+from ._create_chat_session_response import CreateChatSessionResponse
+from ._create_no_train_pic_avatar_request import CreateNoTrainPicAvatarRequest
+from ._create_no_train_pic_avatar_response_body import CreateNoTrainPicAvatarResponseBody
+from ._create_no_train_pic_avatar_response import CreateNoTrainPicAvatarResponse
+from ._create_ttsvoice_custom_request import CreateTTSVoiceCustomRequest
+from ._create_ttsvoice_custom_response_body import CreateTTSVoiceCustomResponseBody
+from ._create_ttsvoice_custom_response import CreateTTSVoiceCustomResponse
+from ._create_train_pic_avatar_request import CreateTrainPicAvatarRequest
+from ._create_train_pic_avatar_response_body import CreateTrainPicAvatarResponseBody
+from ._create_train_pic_avatar_response import CreateTrainPicAvatarResponse
+from ._get_broadcast_template_request import GetBroadcastTemplateRequest
+from ._get_broadcast_template_response_body import GetBroadcastTemplateResponseBody
+from ._get_broadcast_template_response import GetBroadcastTemplateResponse
+from ._get_ttsvoice_by_id_custom_request import GetTTSVoiceByIdCustomRequest
+from ._get_ttsvoice_by_id_custom_response_body import GetTTSVoiceByIdCustomResponseBody
+from ._get_ttsvoice_by_id_custom_response import GetTTSVoiceByIdCustomResponse
+from ._get_train_pic_avatar_status_request import GetTrainPicAvatarStatusRequest
+from ._get_train_pic_avatar_status_response_body import GetTrainPicAvatarStatusResponseBody
+from ._get_train_pic_avatar_status_response import GetTrainPicAvatarStatusResponse
+from ._get_upload_policy_request import GetUploadPolicyRequest
+from ._get_upload_policy_response_body import GetUploadPolicyResponseBody
+from ._get_upload_policy_response import GetUploadPolicyResponse
+from ._list_broadcast_templates_request import ListBroadcastTemplatesRequest
+from ._list_broadcast_templates_response_body import ListBroadcastTemplatesResponseBody
+from ._list_broadcast_templates_response import ListBroadcastTemplatesResponse
+from ._list_broadcast_videos_by_id_request import ListBroadcastVideosByIdRequest
+from ._list_broadcast_videos_by_id_shrink_request import ListBroadcastVideosByIdShrinkRequest
+from ._list_broadcast_videos_by_id_response_body import ListBroadcastVideosByIdResponseBody
+from ._list_broadcast_videos_by_id_response import ListBroadcastVideosByIdResponse
+from ._list_private_ttsvoices_custom_request import ListPrivateTTSVoicesCustomRequest
+from ._list_private_ttsvoices_custom_response_body import ListPrivateTTSVoicesCustomResponseBody
+from ._list_private_ttsvoices_custom_response import ListPrivateTTSVoicesCustomResponse
+from ._list_template_material_request import ListTemplateMaterialRequest
+from ._list_template_material_response_body import ListTemplateMaterialResponseBody
+from ._list_template_material_response import ListTemplateMaterialResponse
+from ._query_chat_instance_sessions_request import QueryChatInstanceSessionsRequest
+from ._query_chat_instance_sessions_shrink_request import QueryChatInstanceSessionsShrinkRequest
+from ._query_chat_instance_sessions_response_body import QueryChatInstanceSessionsResponseBody
+from ._query_chat_instance_sessions_response import QueryChatInstanceSessionsResponse
+from ._create_background_pic_response_body import CreateBackgroundPicResponseBodyData
+from ._create_broadcast_sticker_response_body import CreateBroadcastStickerResponseBodyData
+from ._create_broadcast_video_from_template_request import CreateBroadcastVideoFromTemplateRequestVideoOptions
+from ._create_chat_config_response_body import CreateChatConfigResponseBodyData
+from ._create_chat_session_response_body import CreateChatSessionResponseBodyDataAvatarAssets
+from ._create_chat_session_response_body import CreateChatSessionResponseBodyDataRtcParams
+from ._create_chat_session_response_body import CreateChatSessionResponseBodyData
+from ._create_no_train_pic_avatar_response_body import CreateNoTrainPicAvatarResponseBodyData
+from ._create_ttsvoice_custom_response_body import CreateTTSVoiceCustomResponseBodyData
+from ._create_train_pic_avatar_response_body import CreateTrainPicAvatarResponseBodyData
+from ._get_ttsvoice_by_id_custom_response_body import GetTTSVoiceByIdCustomResponseBodyData
+from ._get_train_pic_avatar_status_response_body import GetTrainPicAvatarStatusResponseBodyData
+from ._get_upload_policy_response_body import GetUploadPolicyResponseBodyDataOssPolicy
+from ._get_upload_policy_response_body import GetUploadPolicyResponseBodyData
+from ._list_private_ttsvoices_custom_response_body import ListPrivateTTSVoicesCustomResponseBodyDataData
+from ._list_private_ttsvoices_custom_response_body import ListPrivateTTSVoicesCustomResponseBodyData
+from ._list_template_material_response_body import ListTemplateMaterialResponseBodyData
+
+__all__ = [
+    BroadcastTemplate,
+    BroadcastVideo,
+    ChatSessionInfo,
+    TemplateVariable,
+    CloseChatInstanceSessionsRequest,
+    CloseChatInstanceSessionsShrinkRequest,
+    CloseChatInstanceSessionsResponseBody,
+    CloseChatInstanceSessionsResponse,
+    ConfirmTrainPicAvatarRequest,
+    ConfirmTrainPicAvatarResponseBody,
+    ConfirmTrainPicAvatarResponse,
+    CreateBackgroundPicRequest,
+    CreateBackgroundPicResponseBody,
+    CreateBackgroundPicResponse,
+    CreateBroadcastStickerRequest,
+    CreateBroadcastStickerResponseBody,
+    CreateBroadcastStickerResponse,
+    CreateBroadcastVideoFromTemplateRequest,
+    CreateBroadcastVideoFromTemplateResponseBody,
+    CreateBroadcastVideoFromTemplateResponse,
+    CreateChatConfigRequest,
+    CreateChatConfigResponseBody,
+    CreateChatConfigResponse,
+    CreateChatSessionRequest,
+    CreateChatSessionResponseBody,
+    CreateChatSessionResponse,
+    CreateNoTrainPicAvatarRequest,
+    CreateNoTrainPicAvatarResponseBody,
+    CreateNoTrainPicAvatarResponse,
+    CreateTTSVoiceCustomRequest,
+    CreateTTSVoiceCustomResponseBody,
+    CreateTTSVoiceCustomResponse,
+    CreateTrainPicAvatarRequest,
+    CreateTrainPicAvatarResponseBody,
+    CreateTrainPicAvatarResponse,
+    GetBroadcastTemplateRequest,
+    GetBroadcastTemplateResponseBody,
+    GetBroadcastTemplateResponse,
+    GetTTSVoiceByIdCustomRequest,
+    GetTTSVoiceByIdCustomResponseBody,
+    GetTTSVoiceByIdCustomResponse,
+    GetTrainPicAvatarStatusRequest,
+    GetTrainPicAvatarStatusResponseBody,
+    GetTrainPicAvatarStatusResponse,
+    GetUploadPolicyRequest,
+    GetUploadPolicyResponseBody,
+    GetUploadPolicyResponse,
+    ListBroadcastTemplatesRequest,
+    ListBroadcastTemplatesResponseBody,
+    ListBroadcastTemplatesResponse,
+    ListBroadcastVideosByIdRequest,
+    ListBroadcastVideosByIdShrinkRequest,
+    ListBroadcastVideosByIdResponseBody,
+    ListBroadcastVideosByIdResponse,
+    ListPrivateTTSVoicesCustomRequest,
+    ListPrivateTTSVoicesCustomResponseBody,
+    ListPrivateTTSVoicesCustomResponse,
+    ListTemplateMaterialRequest,
+    ListTemplateMaterialResponseBody,
+    ListTemplateMaterialResponse,
+    QueryChatInstanceSessionsRequest,
+    QueryChatInstanceSessionsShrinkRequest,
+    QueryChatInstanceSessionsResponseBody,
+    QueryChatInstanceSessionsResponse,
+    CreateBackgroundPicResponseBodyData,
+    CreateBroadcastStickerResponseBodyData,
+    CreateBroadcastVideoFromTemplateRequestVideoOptions,
+    CreateChatConfigResponseBodyData,
+    CreateChatSessionResponseBodyDataAvatarAssets,
+    CreateChatSessionResponseBodyDataRtcParams,
+    CreateChatSessionResponseBodyData,
+    CreateNoTrainPicAvatarResponseBodyData,
+    CreateTTSVoiceCustomResponseBodyData,
+    CreateTrainPicAvatarResponseBodyData,
+    GetTTSVoiceByIdCustomResponseBodyData,
+    GetTrainPicAvatarStatusResponseBodyData,
+    GetUploadPolicyResponseBodyDataOssPolicy,
+    GetUploadPolicyResponseBodyData,
+    ListPrivateTTSVoicesCustomResponseBodyDataData,
+    ListPrivateTTSVoicesCustomResponseBodyData,
+    ListTemplateMaterialResponseBodyData
+]

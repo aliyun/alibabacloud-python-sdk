@@ -1,3 +1,7 @@
+2025-12-26 Version: 1.5.0
+- Support API GetTTSVoiceByIdCustom.
+
+
 2025-11-28 Version: 1.4.0
 - Support API CreateBroadcastSticker.
 - Support API CreateBroadcastVideoFromTemplate.
