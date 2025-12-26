@@ -552,6 +552,9 @@ from ._get_kv_response_body import GetKvResponseBody
 from ._get_kv_response import GetKvResponse
 from ._get_kv_account_response_body import GetKvAccountResponseBody
 from ._get_kv_account_response import GetKvAccountResponse
+from ._get_kv_detail_request import GetKvDetailRequest
+from ._get_kv_detail_response_body import GetKvDetailResponseBody
+from ._get_kv_detail_response import GetKvDetailResponse
 from ._get_kv_namespace_request import GetKvNamespaceRequest
 from ._get_kv_namespace_response_body import GetKvNamespaceResponseBody
 from ._get_kv_namespace_response import GetKvNamespaceResponse
@@ -2039,6 +2042,9 @@ __all__ = [
     GetKvResponse,
     GetKvAccountResponseBody,
     GetKvAccountResponse,
+    GetKvDetailRequest,
+    GetKvDetailResponseBody,
+    GetKvDetailResponse,
     GetKvNamespaceRequest,
     GetKvNamespaceResponseBody,
     GetKvNamespaceResponse,

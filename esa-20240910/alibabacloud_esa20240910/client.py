@@ -14265,6 +14265,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_kv_account_with_options_async(runtime)
 
+    def get_kv_detail_with_options(
+        self,
+        request: main_models.GetKvDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKvDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKvDetail',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKvDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kv_detail_with_options_async(
+        self,
+        request: main_models.GetKvDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKvDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKvDetail',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKvDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kv_detail(
+        self,
+        request: main_models.GetKvDetailRequest,
+    ) -> main_models.GetKvDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_kv_detail_with_options(request, runtime)
+
+    async def get_kv_detail_async(
+        self,
+        request: main_models.GetKvDetailRequest,
+    ) -> main_models.GetKvDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_kv_detail_with_options_async(request, runtime)
+
     def get_kv_namespace_with_options(
         self,
         request: main_models.GetKvNamespaceRequest,
