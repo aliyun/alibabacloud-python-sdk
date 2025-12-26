@@ -1,3 +1,14 @@
+2025-12-26 Version: 3.6.1
+- Update API CreateService: add request parameters body.resourceGroupId.
+- Update API CreateService: add request parameters body.tags.
+- Update API GetService: add response parameters Body.service.resourceGroupId.
+- Update API GetService: add response parameters Body.service.tags.
+- Update API ListServices: add request parameters resourceGroupId.
+- Update API ListServices: add request parameters serviceName.
+- Update API ListServices: add request parameters tags.
+- Update API ListServices: add response parameters Body.services.$.resourceGroupId.
+
+
 2025-12-25 Version: 3.6.0
 - Support API CreateChat.
 - Support API CreateDigitalEmployee.

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
@@ -53,10 +55,12 @@ class GetServiceResponseBodyService(DaraModel):
         display_name: str = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_id: str = None,
         service_name: str = None,
         service_status: str = None,
         service_type: str = None,
+        tags: List[main_models.GetServiceResponseBodyServiceTags] = None,
         workspace: str = None,
     ):
         # Extended information.
@@ -71,6 +75,7 @@ class GetServiceResponseBodyService(DaraModel):
         self.pid = pid
         # Region ID
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # Service ID.
         self.service_id = service_id
         # Service name
@@ -79,11 +84,15 @@ class GetServiceResponseBodyService(DaraModel):
         self.service_status = service_status
         # Service type.
         self.service_type = service_type
+        self.tags = tags
         # Workspace name
         self.workspace = workspace
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -108,6 +117,9 @@ class GetServiceResponseBodyService(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.service_id is not None:
             result['serviceId'] = self.service_id
 
@@ -119,6 +131,11 @@ class GetServiceResponseBodyService(DaraModel):
 
         if self.service_type is not None:
             result['serviceType'] = self.service_type
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.workspace is not None:
             result['workspace'] = self.workspace
@@ -145,6 +162,9 @@ class GetServiceResponseBodyService(DaraModel):
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
 
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
 
@@ -157,8 +177,49 @@ class GetServiceResponseBodyService(DaraModel):
         if m.get('serviceType') is not None:
             self.service_type = m.get('serviceType')
 
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.GetServiceResponseBodyServiceTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
+
+        return self
+
+class GetServiceResponseBodyServiceTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

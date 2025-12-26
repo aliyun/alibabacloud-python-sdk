@@ -1227,12 +1227,16 @@ class Client(OpenApiClient):
             body['displayName'] = request.display_name
         if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.service_name):
             body['serviceName'] = request.service_name
         if not DaraCore.is_null(request.service_status):
             body['serviceStatus'] = request.service_status
         if not DaraCore.is_null(request.service_type):
             body['serviceType'] = request.service_type
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1270,12 +1274,16 @@ class Client(OpenApiClient):
             body['displayName'] = request.display_name
         if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.service_name):
             body['serviceName'] = request.service_name
         if not DaraCore.is_null(request.service_status):
             body['serviceStatus'] = request.service_status
         if not DaraCore.is_null(request.service_type):
             body['serviceType'] = request.service_type
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -6277,18 +6285,28 @@ class Client(OpenApiClient):
     def list_services_with_options(
         self,
         workspace: str,
-        request: main_models.ListServicesRequest,
+        tmp_req: main_models.ListServicesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListServicesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListServicesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.service_name):
+            query['serviceName'] = request.service_name
         if not DaraCore.is_null(request.service_type):
             query['serviceType'] = request.service_type
+        if not DaraCore.is_null(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6312,18 +6330,28 @@ class Client(OpenApiClient):
     async def list_services_with_options_async(
         self,
         workspace: str,
-        request: main_models.ListServicesRequest,
+        tmp_req: main_models.ListServicesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListServicesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListServicesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.service_name):
+            query['serviceName'] = request.service_name
         if not DaraCore.is_null(request.service_type):
             query['serviceType'] = request.service_type
+        if not DaraCore.is_null(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

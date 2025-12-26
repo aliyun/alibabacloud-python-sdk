@@ -87,6 +87,7 @@ class ListServicesResponseBodyServices(DaraModel):
         description: str = None,
         display_name: str = None,
         pid: str = None,
+        resource_group_id: str = None,
         service_id: str = None,
         service_name: str = None,
         service_status: str = None,
@@ -103,6 +104,7 @@ class ListServicesResponseBodyServices(DaraModel):
         self.display_name = display_name
         # Historical compatible ARMS application ID
         self.pid = pid
+        self.resource_group_id = resource_group_id
         # Service ID
         self.service_id = service_id
         # Service name
@@ -137,6 +139,9 @@ class ListServicesResponseBodyServices(DaraModel):
         if self.pid is not None:
             result['pid'] = self.pid
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.service_id is not None:
             result['serviceId'] = self.service_id
 
@@ -170,6 +175,9 @@ class ListServicesResponseBodyServices(DaraModel):
 
         if m.get('pid') is not None:
             self.pid = m.get('pid')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')

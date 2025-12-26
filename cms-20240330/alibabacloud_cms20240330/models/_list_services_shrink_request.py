@@ -2,12 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
-class ListServicesRequest(DaraModel):
+class ListServicesShrinkRequest(DaraModel):
     def __init__(
         self,
         max_results: int = None,
@@ -15,7 +12,7 @@ class ListServicesRequest(DaraModel):
         resource_group_id: str = None,
         service_name: str = None,
         service_type: str = None,
-        tags: List[main_models.ListServicesRequestTags] = None,
+        tags_shrink: str = None,
     ):
         # The maximum number of records to return in this request.
         self.max_results = max_results
@@ -25,13 +22,10 @@ class ListServicesRequest(DaraModel):
         self.service_name = service_name
         # Service type
         self.service_type = service_type
-        self.tags = tags
+        self.tags_shrink = tags_shrink
 
     def validate(self):
-        if self.tags:
-            for v1 in self.tags:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -53,10 +47,8 @@ class ListServicesRequest(DaraModel):
         if self.service_type is not None:
             result['serviceType'] = self.service_type
 
-        result['tags'] = []
-        if self.tags is not None:
-            for k1 in self.tags:
-                result['tags'].append(k1.to_map() if k1 else None)
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
 
         return result
 
@@ -77,46 +69,8 @@ class ListServicesRequest(DaraModel):
         if m.get('serviceType') is not None:
             self.service_type = m.get('serviceType')
 
-        self.tags = []
         if m.get('tags') is not None:
-            for k1 in m.get('tags'):
-                temp_model = main_models.ListServicesRequestTags()
-                self.tags.append(temp_model.from_map(k1))
-
-        return self
-
-class ListServicesRequestTags(DaraModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.key is not None:
-            result['key'] = self.key
-
-        if self.value is not None:
-            result['value'] = self.value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
+            self.tags_shrink = m.get('tags')
 
         return self
 

@@ -272,6 +272,7 @@ from ._list_prometheus_virtual_instances_request import ListPrometheusVirtualIns
 from ._list_prometheus_virtual_instances_response_body import ListPrometheusVirtualInstancesResponseBody
 from ._list_prometheus_virtual_instances_response import ListPrometheusVirtualInstancesResponse
 from ._list_services_request import ListServicesRequest
+from ._list_services_shrink_request import ListServicesShrinkRequest
 from ._list_services_response_body import ListServicesResponseBody
 from ._list_services_response import ListServicesResponse
 from ._list_threads_request import ListThreadsRequest
@@ -406,6 +407,7 @@ from ._create_prometheus_instance_request import CreatePrometheusInstanceRequest
 from ._create_prometheus_view_request import CreatePrometheusViewRequestPrometheusInstances
 from ._create_prometheus_view_request import CreatePrometheusViewRequestTags
 from ._create_prometheus_virtual_instance_response_body import CreatePrometheusVirtualInstanceResponseBodyInstance
+from ._create_service_request import CreateServiceRequestTags
 from ._create_thread_request import CreateThreadRequestVariables
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._get_addon_response_body import GetAddonResponseBodyDataDashboards
@@ -446,6 +448,7 @@ from ._get_prometheus_instance_response_body import GetPrometheusInstanceRespons
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusViewTags
 from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPrometheusView
+from ._get_service_response_body import GetServiceResponseBodyServiceTags
 from ._get_service_response_body import GetServiceResponseBodyService
 from ._get_service_observability_response_body import GetServiceObservabilityResponseBodyEntryPointInfo
 from ._get_thread_response_body import GetThreadResponseBodyVariables
@@ -522,6 +525,7 @@ from ._list_prometheus_views_request import ListPrometheusViewsRequestTag
 from ._list_prometheus_views_response_body import ListPrometheusViewsResponseBodyPrometheusViewsTags
 from ._list_prometheus_views_response_body import ListPrometheusViewsResponseBodyPrometheusViews
 from ._list_prometheus_virtual_instances_response_body import ListPrometheusVirtualInstancesResponseBodyInstances
+from ._list_services_request import ListServicesRequestTags
 from ._list_services_response_body import ListServicesResponseBodyServices
 from ._list_threads_request import ListThreadsRequestFilter
 from ._list_threads_response_body import ListThreadsResponseBodyThreadsVariables
@@ -804,6 +808,7 @@ __all__ = [
     ListPrometheusVirtualInstancesResponseBody,
     ListPrometheusVirtualInstancesResponse,
     ListServicesRequest,
+    ListServicesShrinkRequest,
     ListServicesResponseBody,
     ListServicesResponse,
     ListThreadsRequest,
@@ -938,6 +943,7 @@ __all__ = [
     CreatePrometheusViewRequestPrometheusInstances,
     CreatePrometheusViewRequestTags,
     CreatePrometheusVirtualInstanceResponseBodyInstance,
+    CreateServiceRequestTags,
     CreateThreadRequestVariables,
     DescribeRegionsResponseBodyRegions,
     GetAddonResponseBodyDataDashboards,
@@ -978,6 +984,7 @@ __all__ = [
     GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances,
     GetPrometheusViewResponseBodyPrometheusViewTags,
     GetPrometheusViewResponseBodyPrometheusView,
+    GetServiceResponseBodyServiceTags,
     GetServiceResponseBodyService,
     GetServiceObservabilityResponseBodyEntryPointInfo,
     GetThreadResponseBodyVariables,
@@ -1054,6 +1061,7 @@ __all__ = [
     ListPrometheusViewsResponseBodyPrometheusViewsTags,
     ListPrometheusViewsResponseBodyPrometheusViews,
     ListPrometheusVirtualInstancesResponseBodyInstances,
+    ListServicesRequestTags,
     ListServicesResponseBodyServices,
     ListThreadsRequestFilter,
     ListThreadsResponseBodyThreadsVariables,
