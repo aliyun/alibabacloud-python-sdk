@@ -2,9 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_address_request import AddAddressRequest
+from ._add_address_response_body import AddAddressResponseBody
+from ._add_address_response import AddAddressResponse
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._clear_address_request import ClearAddressRequest
+from ._clear_address_response_body import ClearAddressResponseBody
+from ._clear_address_response import ClearAddressResponse
 from ._clear_major_protection_black_ip_request import ClearMajorProtectionBlackIpRequest
 from ._clear_major_protection_black_ip_response_body import ClearMajorProtectionBlackIpResponseBody
 from ._clear_major_protection_black_ip_response import ClearMajorProtectionBlackIpResponse
@@ -65,6 +71,9 @@ from ._create_postpaid_instance_response import CreatePostpaidInstanceResponse
 from ._create_sm2cert_request import CreateSM2CertRequest
 from ._create_sm2cert_response_body import CreateSM2CertResponseBody
 from ._create_sm2cert_response import CreateSM2CertResponse
+from ._delete_address_request import DeleteAddressRequest
+from ._delete_address_response_body import DeleteAddressResponseBody
+from ._delete_address_response import DeleteAddressResponse
 from ._delete_apisec_abnormals_request import DeleteApisecAbnormalsRequest
 from ._delete_apisec_abnormals_response_body import DeleteApisecAbnormalsResponseBody
 from ._delete_apisec_abnormals_response import DeleteApisecAbnormalsResponse
@@ -113,6 +122,9 @@ from ._describe_abnormal_cloud_resources_response import DescribeAbnormalCloudRe
 from ._describe_account_delegated_status_request import DescribeAccountDelegatedStatusRequest
 from ._describe_account_delegated_status_response_body import DescribeAccountDelegatedStatusResponseBody
 from ._describe_account_delegated_status_response import DescribeAccountDelegatedStatusResponse
+from ._describe_addresses_request import DescribeAddressesRequest
+from ._describe_addresses_response_body import DescribeAddressesResponseBody
+from ._describe_addresses_response import DescribeAddressesResponse
 from ._describe_alarm_banner_request import DescribeAlarmBannerRequest
 from ._describe_alarm_banner_response_body import DescribeAlarmBannerResponseBody
 from ._describe_alarm_banner_response import DescribeAlarmBannerResponse
@@ -143,6 +155,9 @@ from ._describe_apisec_event_domain_statistic_response import DescribeApisecEven
 from ._describe_apisec_events_request import DescribeApisecEventsRequest
 from ._describe_apisec_events_response_body import DescribeApisecEventsResponseBody
 from ._describe_apisec_events_response import DescribeApisecEventsResponse
+from ._describe_apisec_examples_request import DescribeApisecExamplesRequest
+from ._describe_apisec_examples_response_body import DescribeApisecExamplesResponseBody
+from ._describe_apisec_examples_response import DescribeApisecExamplesResponse
 from ._describe_apisec_log_deliveries_request import DescribeApisecLogDeliveriesRequest
 from ._describe_apisec_log_deliveries_response_body import DescribeApisecLogDeliveriesResponseBody
 from ._describe_apisec_log_deliveries_response import DescribeApisecLogDeliveriesResponse
@@ -395,6 +410,9 @@ from ._describe_product_instances_response import DescribeProductInstancesRespon
 from ._describe_punished_domains_request import DescribePunishedDomainsRequest
 from ._describe_punished_domains_response_body import DescribePunishedDomainsResponseBody
 from ._describe_punished_domains_response import DescribePunishedDomainsResponse
+from ._describe_related_defense_rules_request import DescribeRelatedDefenseRulesRequest
+from ._describe_related_defense_rules_response_body import DescribeRelatedDefenseRulesResponseBody
+from ._describe_related_defense_rules_response import DescribeRelatedDefenseRulesResponse
 from ._describe_resource_instance_certs_request import DescribeResourceInstanceCertsRequest
 from ._describe_resource_instance_certs_response_body import DescribeResourceInstanceCertsResponseBody
 from ._describe_resource_instance_certs_response import DescribeResourceInstanceCertsResponse
@@ -705,6 +723,7 @@ from ._create_domain_shrink_request import CreateDomainShrinkRequestTag
 from ._create_domain_response_body import CreateDomainResponseBodyDomainInfo
 from ._describe_abnormal_cloud_resources_response_body import DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails
 from ._describe_abnormal_cloud_resources_response_body import DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources
+from ._describe_addresses_response_body import DescribeAddressesResponseBodyAddressList
 from ._describe_alarm_banner_response_body import DescribeAlarmBannerResponseBodyBannerStatus
 from ._describe_alarm_list_response_body import DescribeAlarmListResponseBodyAlarms
 from ._describe_api_exports_response_body import DescribeApiExportsResponseBodyApiExports
@@ -714,6 +733,9 @@ from ._describe_apisec_api_resources_response_body import DescribeApisecApiResou
 from ._describe_apisec_asset_trend_response_body import DescribeApisecAssetTrendResponseBodyData
 from ._describe_apisec_event_domain_statistic_response_body import DescribeApisecEventDomainStatisticResponseBodyData
 from ._describe_apisec_events_response_body import DescribeApisecEventsResponseBodyData
+from ._describe_apisec_examples_response_body import DescribeApisecExamplesResponseBodyExamplesRequestSensitiveData
+from ._describe_apisec_examples_response_body import DescribeApisecExamplesResponseBodyExamplesResponseSensitiveData
+from ._describe_apisec_examples_response_body import DescribeApisecExamplesResponseBodyExamples
 from ._describe_apisec_log_deliveries_response_body import DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs
 from ._describe_apisec_matched_hosts_response_body import DescribeApisecMatchedHostsResponseBodyData
 from ._describe_apisec_protection_groups_response_body import DescribeApisecProtectionGroupsResponseBodyData
@@ -818,6 +840,7 @@ from ._describe_product_instances_response_body import DescribeProductInstancesR
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesResourcePorts
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstances
+from ._describe_related_defense_rules_response_body import DescribeRelatedDefenseRulesResponseBodyRules
 from ._describe_resource_instance_certs_response_body import DescribeResourceInstanceCertsResponseBodyCerts
 from ._describe_resource_log_delivery_status_response_body import DescribeResourceLogDeliveryStatusResponseBodyLogConfigs
 from ._describe_resource_log_status_response_body import DescribeResourceLogStatusResponseBodyResult
@@ -891,9 +914,15 @@ from ._tag_resources_request import TagResourcesRequestTag
 from ._verify_domain_owner_response_body import VerifyDomainOwnerResponseBodyVerifyResult
 
 __all__ = [
+    AddAddressRequest,
+    AddAddressResponseBody,
+    AddAddressResponse,
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    ClearAddressRequest,
+    ClearAddressResponseBody,
+    ClearAddressResponse,
     ClearMajorProtectionBlackIpRequest,
     ClearMajorProtectionBlackIpResponseBody,
     ClearMajorProtectionBlackIpResponse,
@@ -954,6 +983,9 @@ __all__ = [
     CreateSM2CertRequest,
     CreateSM2CertResponseBody,
     CreateSM2CertResponse,
+    DeleteAddressRequest,
+    DeleteAddressResponseBody,
+    DeleteAddressResponse,
     DeleteApisecAbnormalsRequest,
     DeleteApisecAbnormalsResponseBody,
     DeleteApisecAbnormalsResponse,
@@ -1002,6 +1034,9 @@ __all__ = [
     DescribeAccountDelegatedStatusRequest,
     DescribeAccountDelegatedStatusResponseBody,
     DescribeAccountDelegatedStatusResponse,
+    DescribeAddressesRequest,
+    DescribeAddressesResponseBody,
+    DescribeAddressesResponse,
     DescribeAlarmBannerRequest,
     DescribeAlarmBannerResponseBody,
     DescribeAlarmBannerResponse,
@@ -1032,6 +1067,9 @@ __all__ = [
     DescribeApisecEventsRequest,
     DescribeApisecEventsResponseBody,
     DescribeApisecEventsResponse,
+    DescribeApisecExamplesRequest,
+    DescribeApisecExamplesResponseBody,
+    DescribeApisecExamplesResponse,
     DescribeApisecLogDeliveriesRequest,
     DescribeApisecLogDeliveriesResponseBody,
     DescribeApisecLogDeliveriesResponse,
@@ -1284,6 +1322,9 @@ __all__ = [
     DescribePunishedDomainsRequest,
     DescribePunishedDomainsResponseBody,
     DescribePunishedDomainsResponse,
+    DescribeRelatedDefenseRulesRequest,
+    DescribeRelatedDefenseRulesResponseBody,
+    DescribeRelatedDefenseRulesResponse,
     DescribeResourceInstanceCertsRequest,
     DescribeResourceInstanceCertsResponseBody,
     DescribeResourceInstanceCertsResponse,
@@ -1594,6 +1635,7 @@ __all__ = [
     CreateDomainResponseBodyDomainInfo,
     DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails,
     DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources,
+    DescribeAddressesResponseBodyAddressList,
     DescribeAlarmBannerResponseBodyBannerStatus,
     DescribeAlarmListResponseBodyAlarms,
     DescribeApiExportsResponseBodyApiExports,
@@ -1603,6 +1645,9 @@ __all__ = [
     DescribeApisecAssetTrendResponseBodyData,
     DescribeApisecEventDomainStatisticResponseBodyData,
     DescribeApisecEventsResponseBodyData,
+    DescribeApisecExamplesResponseBodyExamplesRequestSensitiveData,
+    DescribeApisecExamplesResponseBodyExamplesResponseSensitiveData,
+    DescribeApisecExamplesResponseBodyExamples,
     DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs,
     DescribeApisecMatchedHostsResponseBodyData,
     DescribeApisecProtectionGroupsResponseBodyData,
@@ -1707,6 +1752,7 @@ __all__ = [
     DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates,
     DescribeProductInstancesResponseBodyProductInstancesResourcePorts,
     DescribeProductInstancesResponseBodyProductInstances,
+    DescribeRelatedDefenseRulesResponseBodyRules,
     DescribeResourceInstanceCertsResponseBodyCerts,
     DescribeResourceLogDeliveryStatusResponseBodyLogConfigs,
     DescribeResourceLogStatusResponseBodyResult,

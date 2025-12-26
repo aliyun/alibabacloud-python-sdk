@@ -1,3 +1,12 @@
+2025-12-26 Version: 7.3.0
+- Support API AddAddress.
+- Support API ClearAddress.
+- Support API DeleteAddress.
+- Support API DescribeAddresses.
+- Support API DescribeApisecExamples.
+- Support API DescribeRelatedDefenseRules.
+
+
 2025-12-25 Version: 7.2.0
 - Support API DescribeAlarmBanner.
 - Support API DescribeAlarmList.

@@ -66,6 +66,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_address_with_options(
+        self,
+        request: main_models.AddAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_list):
+            query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAddress',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_address_with_options_async(
+        self,
+        request: main_models.AddAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_list):
+            query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAddress',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_address(
+        self,
+        request: main_models.AddAddressRequest,
+    ) -> main_models.AddAddressResponse:
+        runtime = RuntimeOptions()
+        return self.add_address_with_options(request, runtime)
+
+    async def add_address_async(
+        self,
+        request: main_models.AddAddressRequest,
+    ) -> main_models.AddAddressResponse:
+        runtime = RuntimeOptions()
+        return await self.add_address_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: main_models.ChangeResourceGroupRequest,
@@ -151,6 +233,84 @@ class Client(OpenApiClient):
     ) -> main_models.ChangeResourceGroupResponse:
         runtime = RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
+
+    def clear_address_with_options(
+        self,
+        request: main_models.ClearAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearAddress',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_address_with_options_async(
+        self,
+        request: main_models.ClearAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearAddress',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_address(
+        self,
+        request: main_models.ClearAddressRequest,
+    ) -> main_models.ClearAddressResponse:
+        runtime = RuntimeOptions()
+        return self.clear_address_with_options(request, runtime)
+
+    async def clear_address_async(
+        self,
+        request: main_models.ClearAddressRequest,
+    ) -> main_models.ClearAddressResponse:
+        runtime = RuntimeOptions()
+        return await self.clear_address_with_options_async(request, runtime)
 
     def clear_major_protection_black_ip_with_options(
         self,
@@ -2014,6 +2174,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_sm2cert_with_options_async(request, runtime)
 
+    def delete_address_with_options(
+        self,
+        request: main_models.DeleteAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_list):
+            query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAddress',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_address_with_options_async(
+        self,
+        request: main_models.DeleteAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_list):
+            query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAddress',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_address(
+        self,
+        request: main_models.DeleteAddressRequest,
+    ) -> main_models.DeleteAddressResponse:
+        runtime = RuntimeOptions()
+        return self.delete_address_with_options(request, runtime)
+
+    async def delete_address_async(
+        self,
+        request: main_models.DeleteAddressRequest,
+    ) -> main_models.DeleteAddressResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_address_with_options_async(request, runtime)
+
     def delete_apisec_abnormals_with_options(
         self,
         request: main_models.DeleteApisecAbnormalsRequest,
@@ -3378,6 +3620,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_account_delegated_status_with_options_async(request, runtime)
 
+    def describe_addresses_with_options(
+        self,
+        request: main_models.DescribeAddressesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAddressesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_like):
+            query['AddressLike'] = request.address_like
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAddresses',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_addresses_with_options_async(
+        self,
+        request: main_models.DescribeAddressesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAddressesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.address_like):
+            query['AddressLike'] = request.address_like
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAddresses',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_addresses(
+        self,
+        request: main_models.DescribeAddressesRequest,
+    ) -> main_models.DescribeAddressesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_addresses_with_options(request, runtime)
+
+    async def describe_addresses_async(
+        self,
+        request: main_models.DescribeAddressesRequest,
+    ) -> main_models.DescribeAddressesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_addresses_with_options_async(request, runtime)
+
     def describe_alarm_banner_with_options(
         self,
         request: main_models.DescribeAlarmBannerRequest,
@@ -4465,6 +4801,116 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeApisecEventsResponse:
         runtime = RuntimeOptions()
         return await self.describe_apisec_events_with_options_async(request, runtime)
+
+    def describe_apisec_examples_with_options(
+        self,
+        request: main_models.DescribeApisecExamplesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApisecExamplesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.abnormal_tag):
+            query['AbnormalTag'] = request.abnormal_tag
+        if not DaraCore.is_null(request.api_id):
+            query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.example_type):
+            query['ExampleType'] = request.example_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.request_sensitive_type_list):
+            query['RequestSensitiveTypeList'] = request.request_sensitive_type_list
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.response_sensitive_type_list):
+            query['ResponseSensitiveTypeList'] = request.response_sensitive_type_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApisecExamples',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApisecExamplesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_examples_with_options_async(
+        self,
+        request: main_models.DescribeApisecExamplesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApisecExamplesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.abnormal_tag):
+            query['AbnormalTag'] = request.abnormal_tag
+        if not DaraCore.is_null(request.api_id):
+            query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.example_type):
+            query['ExampleType'] = request.example_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.request_sensitive_type_list):
+            query['RequestSensitiveTypeList'] = request.request_sensitive_type_list
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.response_sensitive_type_list):
+            query['ResponseSensitiveTypeList'] = request.response_sensitive_type_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApisecExamples',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApisecExamplesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_examples(
+        self,
+        request: main_models.DescribeApisecExamplesRequest,
+    ) -> main_models.DescribeApisecExamplesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_apisec_examples_with_options(request, runtime)
+
+    async def describe_apisec_examples_async(
+        self,
+        request: main_models.DescribeApisecExamplesRequest,
+    ) -> main_models.DescribeApisecExamplesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_apisec_examples_with_options_async(request, runtime)
 
     def describe_apisec_log_deliveries_with_options(
         self,
@@ -11931,6 +12377,104 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePunishedDomainsResponse:
         runtime = RuntimeOptions()
         return await self.describe_punished_domains_with_options_async(request, runtime)
+
+    def describe_related_defense_rules_with_options(
+        self,
+        request: main_models.DescribeRelatedDefenseRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRelatedDefenseRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not DaraCore.is_null(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRelatedDefenseRules',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRelatedDefenseRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_related_defense_rules_with_options_async(
+        self,
+        request: main_models.DescribeRelatedDefenseRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRelatedDefenseRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not DaraCore.is_null(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRelatedDefenseRules',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRelatedDefenseRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_related_defense_rules(
+        self,
+        request: main_models.DescribeRelatedDefenseRulesRequest,
+    ) -> main_models.DescribeRelatedDefenseRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_related_defense_rules_with_options(request, runtime)
+
+    async def describe_related_defense_rules_async(
+        self,
+        request: main_models.DescribeRelatedDefenseRulesRequest,
+    ) -> main_models.DescribeRelatedDefenseRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_related_defense_rules_with_options_async(request, runtime)
 
     def describe_resource_instance_certs_with_options(
         self,
