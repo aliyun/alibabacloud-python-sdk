@@ -1,0 +1,511 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._approve_ota_task_request import ApproveOtaTaskRequest
+from ._approve_ota_task_response_body import ApproveOtaTaskResponseBody
+from ._approve_ota_task_response import ApproveOtaTaskResponse
+from ._authorize_instance_group_request import AuthorizeInstanceGroupRequest
+from ._authorize_instance_group_shrink_request import AuthorizeInstanceGroupShrinkRequest
+from ._authorize_instance_group_response_body import AuthorizeInstanceGroupResponseBody
+from ._authorize_instance_group_response import AuthorizeInstanceGroupResponse
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequest
+from ._create_app_instance_group_shrink_request import CreateAppInstanceGroupShrinkRequest
+from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBody
+from ._create_app_instance_group_response import CreateAppInstanceGroupResponse
+from ._create_image_by_instance_request import CreateImageByInstanceRequest
+from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBody
+from ._create_image_by_instance_response import CreateImageByInstanceResponse
+from ._create_image_from_app_instance_group_request import CreateImageFromAppInstanceGroupRequest
+from ._create_image_from_app_instance_group_response_body import CreateImageFromAppInstanceGroupResponseBody
+from ._create_image_from_app_instance_group_response import CreateImageFromAppInstanceGroupResponse
+from ._create_wuying_server_request import CreateWuyingServerRequest
+from ._create_wuying_server_response_body import CreateWuyingServerResponseBody
+from ._create_wuying_server_response import CreateWuyingServerResponse
+from ._delete_app_instance_group_request import DeleteAppInstanceGroupRequest
+from ._delete_app_instance_group_response_body import DeleteAppInstanceGroupResponseBody
+from ._delete_app_instance_group_response import DeleteAppInstanceGroupResponse
+from ._delete_app_instances_request import DeleteAppInstancesRequest
+from ._delete_app_instances_response_body import DeleteAppInstancesResponseBody
+from ._delete_app_instances_response import DeleteAppInstancesResponse
+from ._delete_image_request import DeleteImageRequest
+from ._delete_image_response_body import DeleteImageResponseBody
+from ._delete_image_response import DeleteImageResponse
+from ._delete_wuying_server_request import DeleteWuyingServerRequest
+from ._delete_wuying_server_response_body import DeleteWuyingServerResponseBody
+from ._delete_wuying_server_response import DeleteWuyingServerResponse
+from ._describe_wuying_server_eip_info_request import DescribeWuyingServerEipInfoRequest
+from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBody
+from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipInfoResponse
+from ._get_app_instance_group_request import GetAppInstanceGroupRequest
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBody
+from ._get_app_instance_group_response import GetAppInstanceGroupResponse
+from ._get_connection_ticket_request import GetConnectionTicketRequest
+from ._get_connection_ticket_response_body import GetConnectionTicketResponseBody
+from ._get_connection_ticket_response import GetConnectionTicketResponse
+from ._get_debug_app_instance_request import GetDebugAppInstanceRequest
+from ._get_debug_app_instance_response_body import GetDebugAppInstanceResponseBody
+from ._get_debug_app_instance_response import GetDebugAppInstanceResponse
+from ._get_ota_task_by_task_id_request import GetOtaTaskByTaskIdRequest
+from ._get_ota_task_by_task_id_response_body import GetOtaTaskByTaskIdResponseBody
+from ._get_ota_task_by_task_id_response import GetOtaTaskByTaskIdResponse
+from ._get_resource_price_request import GetResourcePriceRequest
+from ._get_resource_price_response_body import GetResourcePriceResponseBody
+from ._get_resource_price_response import GetResourcePriceResponse
+from ._get_resource_renew_price_request import GetResourceRenewPriceRequest
+from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBody
+from ._get_resource_renew_price_response import GetResourceRenewPriceResponse
+from ._list_app_instance_group_request import ListAppInstanceGroupRequest
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBody
+from ._list_app_instance_group_response import ListAppInstanceGroupResponse
+from ._list_app_instances_request import ListAppInstancesRequest
+from ._list_app_instances_response_body import ListAppInstancesResponseBody
+from ._list_app_instances_response import ListAppInstancesResponse
+from ._list_authorized_user_groups_request import ListAuthorizedUserGroupsRequest
+from ._list_authorized_user_groups_response_body import ListAuthorizedUserGroupsResponseBody
+from ._list_authorized_user_groups_response import ListAuthorizedUserGroupsResponse
+from ._list_bind_info_request import ListBindInfoRequest
+from ._list_bind_info_response_body import ListBindInfoResponseBody
+from ._list_bind_info_response import ListBindInfoResponse
+from ._list_image_request import ListImageRequest
+from ._list_image_response_body import ListImageResponseBody
+from ._list_image_response import ListImageResponse
+from ._list_node_instance_type_request import ListNodeInstanceTypeRequest
+from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBody
+from ._list_node_instance_type_response import ListNodeInstanceTypeResponse
+from ._list_nodes_request import ListNodesRequest
+from ._list_nodes_response_body import ListNodesResponseBody
+from ._list_nodes_response import ListNodesResponse
+from ._list_ota_task_request import ListOtaTaskRequest
+from ._list_ota_task_response_body import ListOtaTaskResponseBody
+from ._list_ota_task_response import ListOtaTaskResponse
+from ._list_persistent_app_instances_request import ListPersistentAppInstancesRequest
+from ._list_persistent_app_instances_response_body import ListPersistentAppInstancesResponseBody
+from ._list_persistent_app_instances_response import ListPersistentAppInstancesResponse
+from ._list_regions_request import ListRegionsRequest
+from ._list_regions_response_body import ListRegionsResponseBody
+from ._list_regions_response import ListRegionsResponse
+from ._list_tag_cloud_resources_request import ListTagCloudResourcesRequest
+from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBody
+from ._list_tag_cloud_resources_response import ListTagCloudResourcesResponse
+from ._list_tenant_config_response_body import ListTenantConfigResponseBody
+from ._list_tenant_config_response import ListTenantConfigResponse
+from ._list_wuying_server_request import ListWuyingServerRequest
+from ._list_wuying_server_response_body import ListWuyingServerResponseBody
+from ._list_wuying_server_response import ListWuyingServerResponse
+from ._log_off_all_sessions_in_app_instance_group_request import LogOffAllSessionsInAppInstanceGroupRequest
+from ._log_off_all_sessions_in_app_instance_group_response_body import LogOffAllSessionsInAppInstanceGroupResponseBody
+from ._log_off_all_sessions_in_app_instance_group_response import LogOffAllSessionsInAppInstanceGroupResponse
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequest
+from ._modify_app_instance_group_attribute_shrink_request import ModifyAppInstanceGroupAttributeShrinkRequest
+from ._modify_app_instance_group_attribute_response_body import ModifyAppInstanceGroupAttributeResponseBody
+from ._modify_app_instance_group_attribute_response import ModifyAppInstanceGroupAttributeResponse
+from ._modify_app_policy_request import ModifyAppPolicyRequest
+from ._modify_app_policy_shrink_request import ModifyAppPolicyShrinkRequest
+from ._modify_app_policy_response_body import ModifyAppPolicyResponseBody
+from ._modify_app_policy_response import ModifyAppPolicyResponse
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequest
+from ._modify_browser_instance_group_shrink_request import ModifyBrowserInstanceGroupShrinkRequest
+from ._modify_browser_instance_group_response_body import ModifyBrowserInstanceGroupResponseBody
+from ._modify_browser_instance_group_response import ModifyBrowserInstanceGroupResponse
+from ._modify_node_pool_amount_request import ModifyNodePoolAmountRequest
+from ._modify_node_pool_amount_shrink_request import ModifyNodePoolAmountShrinkRequest
+from ._modify_node_pool_amount_response_body import ModifyNodePoolAmountResponseBody
+from ._modify_node_pool_amount_response import ModifyNodePoolAmountResponse
+from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequest
+from ._modify_node_pool_attribute_shrink_request import ModifyNodePoolAttributeShrinkRequest
+from ._modify_node_pool_attribute_response_body import ModifyNodePoolAttributeResponseBody
+from ._modify_node_pool_attribute_response import ModifyNodePoolAttributeResponse
+from ._modify_tenant_config_request import ModifyTenantConfigRequest
+from ._modify_tenant_config_response_body import ModifyTenantConfigResponseBody
+from ._modify_tenant_config_response import ModifyTenantConfigResponse
+from ._modify_wuying_server_attribute_request import ModifyWuyingServerAttributeRequest
+from ._modify_wuying_server_attribute_response_body import ModifyWuyingServerAttributeResponseBody
+from ._modify_wuying_server_attribute_response import ModifyWuyingServerAttributeResponse
+from ._page_list_app_instance_group_user_request import PageListAppInstanceGroupUserRequest
+from ._page_list_app_instance_group_user_response_body import PageListAppInstanceGroupUserResponseBody
+from ._page_list_app_instance_group_user_response import PageListAppInstanceGroupUserResponse
+from ._renew_app_instance_group_request import RenewAppInstanceGroupRequest
+from ._renew_app_instance_group_shrink_request import RenewAppInstanceGroupShrinkRequest
+from ._renew_app_instance_group_response_body import RenewAppInstanceGroupResponseBody
+from ._renew_app_instance_group_response import RenewAppInstanceGroupResponse
+from ._renew_wuying_server_request import RenewWuyingServerRequest
+from ._renew_wuying_server_response_body import RenewWuyingServerResponseBody
+from ._renew_wuying_server_response import RenewWuyingServerResponse
+from ._restart_wuying_server_request import RestartWuyingServerRequest
+from ._restart_wuying_server_response_body import RestartWuyingServerResponseBody
+from ._restart_wuying_server_response import RestartWuyingServerResponse
+from ._start_task_for_distribute_image_request import StartTaskForDistributeImageRequest
+from ._start_task_for_distribute_image_response_body import StartTaskForDistributeImageResponseBody
+from ._start_task_for_distribute_image_response import StartTaskForDistributeImageResponse
+from ._start_wuying_server_request import StartWuyingServerRequest
+from ._start_wuying_server_response_body import StartWuyingServerResponseBody
+from ._start_wuying_server_response import StartWuyingServerResponse
+from ._stop_wuying_server_request import StopWuyingServerRequest
+from ._stop_wuying_server_response_body import StopWuyingServerResponseBody
+from ._stop_wuying_server_response import StopWuyingServerResponse
+from ._tag_cloud_resources_request import TagCloudResourcesRequest
+from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBody
+from ._tag_cloud_resources_response import TagCloudResourcesResponse
+from ._unbind_request import UnbindRequest
+from ._unbind_response_body import UnbindResponseBody
+from ._unbind_response import UnbindResponse
+from ._untag_cloud_resources_request import UntagCloudResourcesRequest
+from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBody
+from ._untag_cloud_resources_response import UntagCloudResourcesResponse
+from ._update_app_instance_group_image_request import UpdateAppInstanceGroupImageRequest
+from ._update_app_instance_group_image_response_body import UpdateAppInstanceGroupImageResponseBody
+from ._update_app_instance_group_image_response import UpdateAppInstanceGroupImageResponse
+from ._update_wuying_server_image_request import UpdateWuyingServerImageRequest
+from ._update_wuying_server_image_response_body import UpdateWuyingServerImageResponseBody
+from ._update_wuying_server_image_response import UpdateWuyingServerImageResponse
+from ._authorize_instance_group_request import AuthorizeInstanceGroupRequestUserMeta
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkDomainRules
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetworkRoutes
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNetwork
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestNodePool
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestRuntimePolicy
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestSecurityPolicy
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestStoragePolicyUserProfile
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestStoragePolicy
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestUserDefinePolicy
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestUserInfo
+from ._create_app_instance_group_request import CreateAppInstanceGroupRequestVideoPolicy
+from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBodyAppInstanceGroupModel
+from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBodyData
+from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
+from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
+from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
+from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags
+from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPricePromotions
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPrice
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListRules
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceList
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceModelPricePromotions
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceModelPrice
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceModelRules
+from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceModel
+from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyDataPricePromotions
+from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyDataPrice
+from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyDataRules
+from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyData
+from ._list_app_instance_group_request import ListAppInstanceGroupRequestTag
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags
+from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModelsBindInfo
+from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModels
+from ._list_authorized_user_groups_response_body import ListAuthorizedUserGroupsResponseBodyUserGroups
+from ._list_bind_info_response_body import ListBindInfoResponseBodyBindInfoModels
+from ._list_image_request import ListImageRequestTagList
+from ._list_image_response_body import ListImageResponseBodyDataAppList
+from ._list_image_response_body import ListImageResponseBodyDataImageRegionDistributeList
+from ._list_image_response_body import ListImageResponseBodyData
+from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels
+from ._list_nodes_response_body import ListNodesResponseBodyNodeModels
+from ._list_ota_task_response_body import ListOtaTaskResponseBodyTaskList
+from ._list_persistent_app_instances_response_body import ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels
+from ._list_regions_response_body import ListRegionsResponseBodyRegionModels
+from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTagsTags
+from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTags
+from ._list_tenant_config_response_body import ListTenantConfigResponseBodyTenantConfigModel
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListDataDisk
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListInstanceInfoList
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerList
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetworkDomainRules
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetwork
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNodePool
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestSecurityPolicy
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow
+from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestStoragePolicy
+from ._modify_app_policy_request import ModifyAppPolicyRequestVideoPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestBrowserConfig
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestNetwork
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyVideoPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestTimers
+from ._modify_node_pool_amount_request import ModifyNodePoolAmountRequestNodePool
+from ._modify_node_pool_amount_response_body import ModifyNodePoolAmountResponseBodyData
+from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods
+from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules
+from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategy
+from ._tag_cloud_resources_request import TagCloudResourcesRequestTags
+from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResourcesTags
+from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResources
+from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResourcesTags
+from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResources
+
+__all__ = [
+    ApproveOtaTaskRequest,
+    ApproveOtaTaskResponseBody,
+    ApproveOtaTaskResponse,
+    AuthorizeInstanceGroupRequest,
+    AuthorizeInstanceGroupShrinkRequest,
+    AuthorizeInstanceGroupResponseBody,
+    AuthorizeInstanceGroupResponse,
+    CreateAppInstanceGroupRequest,
+    CreateAppInstanceGroupShrinkRequest,
+    CreateAppInstanceGroupResponseBody,
+    CreateAppInstanceGroupResponse,
+    CreateImageByInstanceRequest,
+    CreateImageByInstanceResponseBody,
+    CreateImageByInstanceResponse,
+    CreateImageFromAppInstanceGroupRequest,
+    CreateImageFromAppInstanceGroupResponseBody,
+    CreateImageFromAppInstanceGroupResponse,
+    CreateWuyingServerRequest,
+    CreateWuyingServerResponseBody,
+    CreateWuyingServerResponse,
+    DeleteAppInstanceGroupRequest,
+    DeleteAppInstanceGroupResponseBody,
+    DeleteAppInstanceGroupResponse,
+    DeleteAppInstancesRequest,
+    DeleteAppInstancesResponseBody,
+    DeleteAppInstancesResponse,
+    DeleteImageRequest,
+    DeleteImageResponseBody,
+    DeleteImageResponse,
+    DeleteWuyingServerRequest,
+    DeleteWuyingServerResponseBody,
+    DeleteWuyingServerResponse,
+    DescribeWuyingServerEipInfoRequest,
+    DescribeWuyingServerEipInfoResponseBody,
+    DescribeWuyingServerEipInfoResponse,
+    GetAppInstanceGroupRequest,
+    GetAppInstanceGroupResponseBody,
+    GetAppInstanceGroupResponse,
+    GetConnectionTicketRequest,
+    GetConnectionTicketResponseBody,
+    GetConnectionTicketResponse,
+    GetDebugAppInstanceRequest,
+    GetDebugAppInstanceResponseBody,
+    GetDebugAppInstanceResponse,
+    GetOtaTaskByTaskIdRequest,
+    GetOtaTaskByTaskIdResponseBody,
+    GetOtaTaskByTaskIdResponse,
+    GetResourcePriceRequest,
+    GetResourcePriceResponseBody,
+    GetResourcePriceResponse,
+    GetResourceRenewPriceRequest,
+    GetResourceRenewPriceResponseBody,
+    GetResourceRenewPriceResponse,
+    ListAppInstanceGroupRequest,
+    ListAppInstanceGroupResponseBody,
+    ListAppInstanceGroupResponse,
+    ListAppInstancesRequest,
+    ListAppInstancesResponseBody,
+    ListAppInstancesResponse,
+    ListAuthorizedUserGroupsRequest,
+    ListAuthorizedUserGroupsResponseBody,
+    ListAuthorizedUserGroupsResponse,
+    ListBindInfoRequest,
+    ListBindInfoResponseBody,
+    ListBindInfoResponse,
+    ListImageRequest,
+    ListImageResponseBody,
+    ListImageResponse,
+    ListNodeInstanceTypeRequest,
+    ListNodeInstanceTypeResponseBody,
+    ListNodeInstanceTypeResponse,
+    ListNodesRequest,
+    ListNodesResponseBody,
+    ListNodesResponse,
+    ListOtaTaskRequest,
+    ListOtaTaskResponseBody,
+    ListOtaTaskResponse,
+    ListPersistentAppInstancesRequest,
+    ListPersistentAppInstancesResponseBody,
+    ListPersistentAppInstancesResponse,
+    ListRegionsRequest,
+    ListRegionsResponseBody,
+    ListRegionsResponse,
+    ListTagCloudResourcesRequest,
+    ListTagCloudResourcesResponseBody,
+    ListTagCloudResourcesResponse,
+    ListTenantConfigResponseBody,
+    ListTenantConfigResponse,
+    ListWuyingServerRequest,
+    ListWuyingServerResponseBody,
+    ListWuyingServerResponse,
+    LogOffAllSessionsInAppInstanceGroupRequest,
+    LogOffAllSessionsInAppInstanceGroupResponseBody,
+    LogOffAllSessionsInAppInstanceGroupResponse,
+    ModifyAppInstanceGroupAttributeRequest,
+    ModifyAppInstanceGroupAttributeShrinkRequest,
+    ModifyAppInstanceGroupAttributeResponseBody,
+    ModifyAppInstanceGroupAttributeResponse,
+    ModifyAppPolicyRequest,
+    ModifyAppPolicyShrinkRequest,
+    ModifyAppPolicyResponseBody,
+    ModifyAppPolicyResponse,
+    ModifyBrowserInstanceGroupRequest,
+    ModifyBrowserInstanceGroupShrinkRequest,
+    ModifyBrowserInstanceGroupResponseBody,
+    ModifyBrowserInstanceGroupResponse,
+    ModifyNodePoolAmountRequest,
+    ModifyNodePoolAmountShrinkRequest,
+    ModifyNodePoolAmountResponseBody,
+    ModifyNodePoolAmountResponse,
+    ModifyNodePoolAttributeRequest,
+    ModifyNodePoolAttributeShrinkRequest,
+    ModifyNodePoolAttributeResponseBody,
+    ModifyNodePoolAttributeResponse,
+    ModifyTenantConfigRequest,
+    ModifyTenantConfigResponseBody,
+    ModifyTenantConfigResponse,
+    ModifyWuyingServerAttributeRequest,
+    ModifyWuyingServerAttributeResponseBody,
+    ModifyWuyingServerAttributeResponse,
+    PageListAppInstanceGroupUserRequest,
+    PageListAppInstanceGroupUserResponseBody,
+    PageListAppInstanceGroupUserResponse,
+    RenewAppInstanceGroupRequest,
+    RenewAppInstanceGroupShrinkRequest,
+    RenewAppInstanceGroupResponseBody,
+    RenewAppInstanceGroupResponse,
+    RenewWuyingServerRequest,
+    RenewWuyingServerResponseBody,
+    RenewWuyingServerResponse,
+    RestartWuyingServerRequest,
+    RestartWuyingServerResponseBody,
+    RestartWuyingServerResponse,
+    StartTaskForDistributeImageRequest,
+    StartTaskForDistributeImageResponseBody,
+    StartTaskForDistributeImageResponse,
+    StartWuyingServerRequest,
+    StartWuyingServerResponseBody,
+    StartWuyingServerResponse,
+    StopWuyingServerRequest,
+    StopWuyingServerResponseBody,
+    StopWuyingServerResponse,
+    TagCloudResourcesRequest,
+    TagCloudResourcesResponseBody,
+    TagCloudResourcesResponse,
+    UnbindRequest,
+    UnbindResponseBody,
+    UnbindResponse,
+    UntagCloudResourcesRequest,
+    UntagCloudResourcesResponseBody,
+    UntagCloudResourcesResponse,
+    UpdateAppInstanceGroupImageRequest,
+    UpdateAppInstanceGroupImageResponseBody,
+    UpdateAppInstanceGroupImageResponse,
+    UpdateWuyingServerImageRequest,
+    UpdateWuyingServerImageResponseBody,
+    UpdateWuyingServerImageResponse,
+    AuthorizeInstanceGroupRequestUserMeta,
+    CreateAppInstanceGroupRequestNetworkDomainRules,
+    CreateAppInstanceGroupRequestNetworkRoutes,
+    CreateAppInstanceGroupRequestNetwork,
+    CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods,
+    CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules,
+    CreateAppInstanceGroupRequestNodePool,
+    CreateAppInstanceGroupRequestRuntimePolicy,
+    CreateAppInstanceGroupRequestSecurityPolicy,
+    CreateAppInstanceGroupRequestStoragePolicyUserProfile,
+    CreateAppInstanceGroupRequestStoragePolicy,
+    CreateAppInstanceGroupRequestUserDefinePolicy,
+    CreateAppInstanceGroupRequestUserInfo,
+    CreateAppInstanceGroupRequestVideoPolicy,
+    CreateAppInstanceGroupResponseBodyAppInstanceGroupModel,
+    CreateImageByInstanceResponseBodyData,
+    CreateWuyingServerRequestDataDisk,
+    CreateWuyingServerResponseBodyData,
+    DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
+    DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags,
+    GetAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    GetResourcePriceResponseBodyPriceListPricePromotions,
+    GetResourcePriceResponseBodyPriceListPrice,
+    GetResourcePriceResponseBodyPriceListRules,
+    GetResourcePriceResponseBodyPriceList,
+    GetResourcePriceResponseBodyPriceModelPricePromotions,
+    GetResourcePriceResponseBodyPriceModelPrice,
+    GetResourcePriceResponseBodyPriceModelRules,
+    GetResourcePriceResponseBodyPriceModel,
+    GetResourceRenewPriceResponseBodyDataPricePromotions,
+    GetResourceRenewPriceResponseBodyDataPrice,
+    GetResourceRenewPriceResponseBodyDataRules,
+    GetResourceRenewPriceResponseBodyData,
+    ListAppInstanceGroupRequestTag,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags,
+    ListAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    ListAppInstancesResponseBodyAppInstanceModelsBindInfo,
+    ListAppInstancesResponseBodyAppInstanceModels,
+    ListAuthorizedUserGroupsResponseBodyUserGroups,
+    ListBindInfoResponseBodyBindInfoModels,
+    ListImageRequestTagList,
+    ListImageResponseBodyDataAppList,
+    ListImageResponseBodyDataImageRegionDistributeList,
+    ListImageResponseBodyData,
+    ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels,
+    ListNodesResponseBodyNodeModels,
+    ListOtaTaskResponseBodyTaskList,
+    ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels,
+    ListRegionsResponseBodyRegionModels,
+    ListTagCloudResourcesResponseBodyResourceTagsTags,
+    ListTagCloudResourcesResponseBodyResourceTags,
+    ListTenantConfigResponseBodyTenantConfigModel,
+    ListWuyingServerResponseBodyWuyingServerListDataDisk,
+    ListWuyingServerResponseBodyWuyingServerListInstanceInfoList,
+    ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo,
+    ListWuyingServerResponseBodyWuyingServerList,
+    ModifyAppInstanceGroupAttributeRequestNetworkDomainRules,
+    ModifyAppInstanceGroupAttributeRequestNetwork,
+    ModifyAppInstanceGroupAttributeRequestNodePool,
+    ModifyAppInstanceGroupAttributeRequestSecurityPolicy,
+    ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile,
+    ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow,
+    ModifyAppInstanceGroupAttributeRequestStoragePolicy,
+    ModifyAppPolicyRequestVideoPolicy,
+    ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks,
+    ModifyBrowserInstanceGroupRequestBrowserConfig,
+    ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs,
+    ModifyBrowserInstanceGroupRequestNetwork,
+    ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy,
+    ModifyBrowserInstanceGroupRequestPolicyVideoPolicy,
+    ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy,
+    ModifyBrowserInstanceGroupRequestPolicy,
+    ModifyBrowserInstanceGroupRequestTimers,
+    ModifyNodePoolAmountRequestNodePool,
+    ModifyNodePoolAmountResponseBodyData,
+    ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods,
+    ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules,
+    ModifyNodePoolAttributeRequestNodePoolStrategy,
+    TagCloudResourcesRequestTags,
+    TagCloudResourcesResponseBodyFailedResourcesTags,
+    TagCloudResourcesResponseBodyFailedResources,
+    UntagCloudResourcesResponseBodyFailedResourcesTags,
+    UntagCloudResourcesResponseBodyFailedResources
+]

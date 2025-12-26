@@ -1,3 +1,10 @@
+2025-12-26 Version: 4.7.5
+- Update API CreateWuyingServer: add request parameters MaxPrice.
+- Update API CreateWuyingServer: add request parameters SubPayType.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.MaxPrice.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.SubPayType.
+
+
 2025-12-17 Version: 4.7.4
 - Generated python 2021-09-01 for appstream-center.
 
