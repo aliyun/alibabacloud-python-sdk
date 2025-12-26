@@ -1,3 +1,6 @@
+2025-12-26 Version: 2.2.2
+- Generated python 2022-01-12 for PaiStudio.
+
 2025-12-19 Version: 2.2.1
 - Update API ListNodes: add request parameters HealthCount.
 - Update API ListNodes: add request parameters HealthRate.
