@@ -57,6 +57,7 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
         self,
         cpu_count: str = None,
         data_disk_size: str = None,
+        description: str = None,
         desktop_type_id: str = None,
         desktop_type_status: str = None,
         gpu_count: float = None,
@@ -73,6 +74,7 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
         self.cpu_count = cpu_count
         # The size of the data disk. Unit: GiB.
         self.data_disk_size = data_disk_size
+        self.description = description
         # The ID of the cloud desktop type.
         self.desktop_type_id = desktop_type_id
         # The status of the cloud desktop type. If SUFFICIENT is returned, the number of cloud desktops of the type is sufficient.
@@ -114,6 +116,9 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
 
         if self.data_disk_size is not None:
             result['DataDiskSize'] = self.data_disk_size
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.desktop_type_id is not None:
             result['DesktopTypeId'] = self.desktop_type_id
@@ -157,6 +162,9 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
 
         if m.get('DataDiskSize') is not None:
             self.data_disk_size = m.get('DataDiskSize')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('DesktopTypeId') is not None:
             self.desktop_type_id = m.get('DesktopTypeId')

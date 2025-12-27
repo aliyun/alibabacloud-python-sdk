@@ -1,3 +1,10 @@
+2025-12-27 Version: 4.20.3
+- Update API DescribeDesktopMetadata: add response parameters Body.Desktops.$.DesktopType.
+- Update API DescribeDesktopMetadata: add response parameters Body.Desktops.$.MemberEniIp.
+- Update API DescribeDesktopMetadata: add response parameters Body.Desktops.$.Platform.
+- Update API DescribeDesktopTypes: add response parameters Body.DesktopTypes.$.Description.
+
+
 2025-12-24 Version: 4.20.2
 - Update API DescribeGlobalTimerRecords: add request parameters DisplayResultName.
 - Update API DescribeGlobalTimerRecords: add request parameters Retryable.

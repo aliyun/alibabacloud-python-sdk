@@ -67,11 +67,14 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         desktop_id: str = None,
         desktop_name: str = None,
         desktop_status: str = None,
+        desktop_type: str = None,
         expired_time: str = None,
         image_id: str = None,
         local_name: str = None,
         management_flags: List[str] = None,
+        member_eni_ip: str = None,
         office_site_id: str = None,
+        platform: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_group_name: str = None,
@@ -83,11 +86,14 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         self.desktop_id = desktop_id
         self.desktop_name = desktop_name
         self.desktop_status = desktop_status
+        self.desktop_type = desktop_type
         self.expired_time = expired_time
         self.image_id = image_id
         self.local_name = local_name
         self.management_flags = management_flags
+        self.member_eni_ip = member_eni_ip
         self.office_site_id = office_site_id
+        self.platform = platform
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_group_name = resource_group_name
@@ -119,6 +125,9 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         if self.desktop_status is not None:
             result['DesktopStatus'] = self.desktop_status
 
+        if self.desktop_type is not None:
+            result['DesktopType'] = self.desktop_type
+
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
 
@@ -131,8 +140,14 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         if self.management_flags is not None:
             result['ManagementFlags'] = self.management_flags
 
+        if self.member_eni_ip is not None:
+            result['MemberEniIp'] = self.member_eni_ip
+
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
+
+        if self.platform is not None:
+            result['Platform'] = self.platform
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -168,6 +183,9 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         if m.get('DesktopStatus') is not None:
             self.desktop_status = m.get('DesktopStatus')
 
+        if m.get('DesktopType') is not None:
+            self.desktop_type = m.get('DesktopType')
+
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
 
@@ -180,8 +198,14 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         if m.get('ManagementFlags') is not None:
             self.management_flags = m.get('ManagementFlags')
 
+        if m.get('MemberEniIp') is not None:
+            self.member_eni_ip = m.get('MemberEniIp')
+
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
+
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
