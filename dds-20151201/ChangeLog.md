@@ -1,3 +1,19 @@
+2025-12-29 Version: 9.3.0
+- Support API CancelActiveOperationTasks.
+- Support API CreateNodeRoleTag.
+- Support API DeleteBackup.
+- Support API DescribeRdsVSwitchs.
+- Support API DescribeRdsVpcs.
+- Support API DescribeRoleTagStatus.
+- Support API DescribeVpcsForMongoDB.
+- Support API ModifyActiveOperationMaintenanceConfig.
+- Support API ModifyBackupExpireTime.
+- Update API DescribeDBInstancePerformance: add request parameters SearchId.
+- Update API DescribeDBInstanceSSL: add response parameters Body.ForceEncryption.
+- Update API DescribeShardingNetworkAddress: add request parameters NetworkType.
+- Update API ModifyDBInstanceSSL: add request parameters ForceEncryption.
+
+
 2025-11-03 Version: 9.2.1
 - Update API CreateBackup: add response parameters Body.BackupJobId.
 - Update API DescribeBackups: add request parameters BackupJobId.
