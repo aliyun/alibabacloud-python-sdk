@@ -1,3 +1,9 @@
+2025-12-29 Version: 2.10.5
+- Update API DescribeApplicationInstances: add response parameters Body.Data.Instances.$.Tags.
+- Update API UpdateApplicationVswitches: add request parameters MinReadyInstanceRatio.
+- Update API UpdateApplicationVswitches: add request parameters MinReadyInstances.
+
+
 2025-12-23 Version: 2.10.4
 - Update API DescribeApplicationSlbs: add response parameters Body.Data.Internet.$.ConnectionDrainTimeout.
 - Update API DescribeApplicationSlbs: add response parameters Body.Data.Internet.$.EnableConnectionDrain.
